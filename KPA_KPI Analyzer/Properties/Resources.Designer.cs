@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KPA_KPI_Analyzer.Properties {
-    using System;
-    
-    
+namespace KPA_KPI_Analyzer.Properties
+{
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
