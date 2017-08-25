@@ -1,0 +1,675 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7E6D695C-BC2A-4A07-B78F-35E750342A48}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KPA_KPI_Analyzer</RootNamespace>
+    <AssemblyName>KPA_KPI Analyzer</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>lgo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BunifuDataViz 1.0.1, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\BunifuDataViz 1.0.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu_UI_v1.5.3">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Bunifu Technologies\Bunifu Framework Manager\bin\updates\Bunifu UI 1.5.3\Bunifu_UI_v1.5.3.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Configuration.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="DatabaseUtils\PRPOCommands.cs" />
+    <Compile Include="DatabaseUtils\PRPO_DB_Utils.cs" />
+    <Compile Include="DataComingSoon.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataComingSoon.Designer.cs">
+      <DependentUpon>DataComingSoon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataViewer.Designer.cs">
+      <DependentUpon>DataViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DragDropFeature\Exceptions\DragDropExceptions.cs" />
+    <Compile Include="DragDropFeature\DragDropUtils.cs" />
+    <Compile Include="FilterFeeature\Filters.cs" />
+    <Compile Include="FilterFeeature\FilterUtils.cs" />
+    <Compile Include="IOUtils\AppDirectoryUtils.cs" />
+    <Compile Include="IOUtils\ErrorMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IOUtils\ErrorMessageBox.Designer.cs">
+      <DependentUpon>ErrorMessageBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IOUtils\Logger.cs" />
+    <Compile Include="KPACurrentPlanActualTemplate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="KPACurrentPlanActualTemplate.Designer.cs">
+      <DependentUpon>KPACurrentPlanActualTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KPAFollowUpTemplate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="KPAFollowUpTemplate.Designer.cs">
+      <DependentUpon>KPAFollowUpTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KPAHotJobsTemplate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="KPAHotJobsTemplate.Designer.cs">
+      <DependentUpon>KPAHotJobsTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KPAOverall.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="KPAOverall.Designer.cs">
+      <DependentUpon>KPAOverall.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KPAPlanTemplate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="KPAPlanTemplate.Designer.cs">
+      <DependentUpon>KPAPlanTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KPAPurchSubTemplate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="KPAPurchSubTemplate.Designer.cs">
+      <DependentUpon>KPAPurchSubTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KPAPurchTemplate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="KPAPurchTemplate.Designer.cs">
+      <DependentUpon>KPAPurchTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KPAPurchTotalTemplate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="KPAPurchTotalTemplate.Designer.cs">
+      <DependentUpon>KPAPurchTotalTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KPA_KPI_Overall\KPA_Sections\Cancellations.cs" />
+    <Compile Include="KPA_KPI_Overall\KPA_Sections\Current_Plan_vs_Actual.cs" />
+    <Compile Include="KPA_KPI_Overall\KPA_Sections\Excess_Stock_Open_Order.cs" />
+    <Compile Include="KPA_KPI_Overall\KPA_Sections\Excess_Stock_Stock.cs" />
+    <Compile Include="KPA_KPI_Overall\KPA_Sections\Follow_Up.cs" />
+    <Compile Include="KPA_KPI_Overall\KPA_Sections\Hot_Jobs.cs" />
+    <Compile Include="KPA_KPI_Overall\KPA.cs" />
+    <Compile Include="KPA_KPI_Overall\KPA_Sections\MTC.cs" />
+    <Compile Include="KPA_KPI_Overall\KPA_Sections\NCRs.cs" />
+    <Compile Include="KPA_KPI_Overall\KPA_Sections\Plan.cs" />
+    <Compile Include="KPA_KPI_Overall\KPA_Sections\Purch.cs" />
+    <Compile Include="KPA_KPI_Overall\KPA_Sections\Purch_Plan_Total.cs" />
+    <Compile Include="KPA_KPI_Overall\KPA_Sections\Purch_Sub.cs" />
+    <Compile Include="KPA_KPI_Overall\KPA_Sections\Purch_Total.cs" />
+    <Compile Include="KPA_KPI_Overall\KPI_Sections\FollowUp.cs" />
+    <Compile Include="KPA_KPI_Overall\KPI.cs" />
+    <Compile Include="KPA_KPI_Overall\KPI_Sections\Other.cs" />
+    <Compile Include="KPA_KPI_Overall\KPI_Sections\Plan.cs" />
+    <Compile Include="KPA_KPI_Overall\KPI_Sections\PlanTwo.cs" />
+    <Compile Include="KPA_KPI_Overall\KPI_Sections\Purch.cs" />
+    <Compile Include="KPA_KPI_Overall\KPI_Sections\PurchPlan.cs" />
+    <Compile Include="KPA_KPI_Overall\KPI_Sections\PurchPlanTotal.cs" />
+    <Compile Include="KPA_KPI_Overall\KPI_Sections\PurchSub.cs" />
+    <Compile Include="KPA_KPI_Overall\KPI_Sections\PurchTotal.cs" />
+    <Compile Include="KPA_KPI_Overall\KPI_Sections\PurchTwo.cs" />
+    <Compile Include="KPA_KPI_Overall\Overall.cs" />
+    <Compile Include="KPA_KPI_UI.CountrySelectorControlEvents.cs">
+      <DependentUpon>KPA_KPI_UI.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KPA_KPI_UI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KPA_KPI_UI.DashboardControls.cs">
+      <DependentUpon>KPA_KPI_UI.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KPA_KPI_UI.Designer.cs">
+      <DependentUpon>KPA_KPI_UI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormData.cs" />
+    <Compile Include="KPA_KPI_UI.Filters.cs">
+      <DependentUpon>KPA_KPI_UI.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KPA_KPI_UI.Navigation.cs">
+      <DependentUpon>KPA_KPI_UI.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KPA_KPI_UI.SectionNavigation.cs">
+      <DependentUpon>KPA_KPI_UI.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KPIFollowUpTemplate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="KPIFollowUpTemplate.Designer.cs">
+      <DependentUpon>KPIFollowUpTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KPIOtherTemplate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="KPIOtherTemplate.Designer.cs">
+      <DependentUpon>KPIOtherTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KPIOverall.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="KPIOverall.Designer.cs">
+      <DependentUpon>KPIOverall.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KPIPlanTemplate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="KPIPlanTemplate.Designer.cs">
+      <DependentUpon>KPIPlanTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KPIPurchPlanTemplate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="KPIPurchPlanTemplate.Designer.cs">
+      <DependentUpon>KPIPurchPlanTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KPIPurchSubTemplate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="KPIPurchSubTemplate.Designer.cs">
+      <DependentUpon>KPIPurchSubTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KPIPurchTemplate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="KPIPurchTemplate.Designer.cs">
+      <DependentUpon>KPIPurchTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KPIPurchTotalTemplate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="KPIPurchTotalTemplate.Designer.cs">
+      <DependentUpon>KPIPurchTotalTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KPIPurchTwoTemplate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="KPIPurchTwoTemplate.Designer.cs">
+      <DependentUpon>KPIPurchTwoTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoadingScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LoadingScreen.Designer.cs">
+      <DependentUpon>LoadingScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SplashScreen.Designer.cs">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Templates\TemplateFive.cs" />
+    <Compile Include="Templates\TemplateFour.cs" />
+    <Compile Include="Templates\TemplateOne.cs" />
+    <Compile Include="Templates\TemplateThree.cs" />
+    <Compile Include="Templates\TemplateTwo.cs" />
+    <EmbeddedResource Include="DataComingSoon.resx">
+      <DependentUpon>DataComingSoon.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataViewer.resx">
+      <DependentUpon>DataViewer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IOUtils\ErrorMessageBox.resx">
+      <DependentUpon>ErrorMessageBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KPACurrentPlanActualTemplate.resx">
+      <DependentUpon>KPACurrentPlanActualTemplate.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KPAFollowUpTemplate.resx">
+      <DependentUpon>KPAFollowUpTemplate.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KPAHotJobsTemplate.resx">
+      <DependentUpon>KPAHotJobsTemplate.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KPAOverall.resx">
+      <DependentUpon>KPAOverall.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KPAPlanTemplate.resx">
+      <DependentUpon>KPAPlanTemplate.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KPAPurchSubTemplate.resx">
+      <DependentUpon>KPAPurchSubTemplate.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KPAPurchTemplate.resx">
+      <DependentUpon>KPAPurchTemplate.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KPAPurchTotalTemplate.resx">
+      <DependentUpon>KPAPurchTotalTemplate.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KPA_KPI_UI.resx">
+      <DependentUpon>KPA_KPI_UI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KPIFollowUpTemplate.resx">
+      <DependentUpon>KPIFollowUpTemplate.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KPIOtherTemplate.resx">
+      <DependentUpon>KPIOtherTemplate.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KPIOverall.resx">
+      <DependentUpon>KPIOverall.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KPIPlanTemplate.resx">
+      <DependentUpon>KPIPlanTemplate.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KPIPurchPlanTemplate.resx">
+      <DependentUpon>KPIPurchPlanTemplate.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KPIPurchSubTemplate.resx">
+      <DependentUpon>KPIPurchSubTemplate.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KPIPurchTemplate.resx">
+      <DependentUpon>KPIPurchTemplate.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KPIPurchTotalTemplate.resx">
+      <DependentUpon>KPIPurchTotalTemplate.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KPIPurchTwoTemplate.resx">
+      <DependentUpon>KPIPurchTwoTemplate.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoadingScreen.resx">
+      <DependentUpon>LoadingScreen.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SplashScreen.resx">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\databaseConn_Connected_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\databaseConn_Disconnected_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Maximize_Hover_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Maximize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Minimize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Minimize_Hover_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Close_Hover_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MaxMin_Icon_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MaxMin_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ArrowBtn_BG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ArrowBtn__Hover_BG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MainNavBtn_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\House_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\House_Icon_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MainNavBtn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Charts_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Charts_Icon_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Filter_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Filter_Icon_Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SectionBtn__inactive_BG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CategoryBtn__active_BG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CategoryBtn__inactive_BG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OverrallBtn__active_BG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OverrallBtn__inactive_BG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SectionBtn__active_BG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ArrowBtn__Active_BG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SectionBtn_activeClosed_BG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\legendOne.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\legendTwo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\legendThree.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\legendFour.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\legendFive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\legendSix.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\legendSeven.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KPA_KPI_SplashScreen.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DragDrop_Inactive_BG.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataImporter\Excel_Access_Tools.csproj">
+      <Project>{be102b8a-42d8-48d2-a37e-b1d83ad9ff12}</Project>
+      <Name>Excel_Access_Tools</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\drag_drop_Section.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\drag_drop_Section1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Untitled-1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\navBG.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\navBG1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\test.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KPABG_Normal.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KPABG_Normal1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KPIBG_Normal.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ChartsBG_Normal.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FilterBG_Normal.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KPABG_Normal2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KPABG_Normal3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KPIBG_Normal1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ChartsBG_HoverActive.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DashboardBG_HoverActive.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FilterBG_HoverActive.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KPABG_Active.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KPABG_Hover.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KPIBG_Active.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KPIBG_Hover.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DashboardBG_Normal.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KPABG_Hover1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KPABG_Normal4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KPIBG_Hover1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KPIBG_Normal2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KPABG_Normal5.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KPIBG_Normal3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KPABG_Active1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KPIBG_Active1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KPABG_Active2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KPIBG_Active2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SectionBG.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GreenIndicator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GreenIndicator1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RedIndicator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\YellowIndicator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\axisColorPanelOne.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\axisColorPanelTwo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\axisColorPanelThree.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\axisColorPanelFour.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\axisColorPanelFive.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\axisColorPanelSix.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\axisColorPanelSeven.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\axisColorPanelEight.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\axisColorPanelNine.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\axisColorPanelTen.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TemplateFilters.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TemplateFiltersClear.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TemplateFilters1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TemplateFiltersClear1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Untitled-11.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\drag &amp; drop small.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\drag &amp; drop small1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\drag &amp; drop Large.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dragDropLargeCenter.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="lgo.ico" />
+    <None Include="Resources\Logo-Comau-ok.png" />
+    <None Include="Resources\logo.jpg" />
+    <None Include="Resources\splashscreen.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
