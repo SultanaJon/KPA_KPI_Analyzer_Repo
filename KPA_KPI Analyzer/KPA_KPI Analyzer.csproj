@@ -311,6 +311,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="KPA_KPI_UI.resx">
       <DependentUpon>KPA_KPI_UI.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="KPIFollowUpTemplate.resx">
       <DependentUpon>KPIFollowUpTemplate.cs</DependentUpon>
@@ -384,9 +385,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Maximize.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Minimize.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Minimize_Hover_Icon.png" />
@@ -660,6 +658,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="lgo.ico" />
+    <None Include="Resources\Minimize.jpg" />
+    <None Include="Resources\Minimize_Hover_Icon.jpg" />
+    <None Include="Resources\Minimize.png" />
+    <None Include="Resources\Maximize_Hover_icon.jpg" />
+    <None Include="Resources\Maximize.jpg" />
+    <None Include="Resources\Close_Hover_icon.jpg" />
+    <None Include="Resources\Close.jpg" />
+    <None Include="Resources\Minimize.bmp" />
+    <None Include="Resources\testBtnClose1.jpg" />
+    <None Include="Resources\testBtnClose.jpg" />
     <None Include="Resources\Logo-Comau-ok.png" />
     <None Include="Resources\logo.jpg" />
     <None Include="Resources\splashscreen.jpg" />

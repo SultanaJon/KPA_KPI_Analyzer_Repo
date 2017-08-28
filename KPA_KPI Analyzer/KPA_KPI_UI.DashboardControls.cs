@@ -146,7 +146,7 @@ namespace KPA_KPI_Analyzer
                         AccessUtils.CreateAccessDB();
 
 
-                    btn_DatabaseConnectionStatus.Invoke((MethodInvoker)delegate { btn_DatabaseConnectionStatus.Image = Properties.Resources.databaseConn_Disconnected_Icon; });
+                    //btn_DatabaseConnectionStatus.Invoke((MethodInvoker)delegate { btn_DatabaseConnectionStatus.Image = Properties.Resources.databaseConn_Disconnected_Icon; });
 
                     pnl_activePage.Controls.Clear();
                     pnl_loadingScreen.Visible = true;

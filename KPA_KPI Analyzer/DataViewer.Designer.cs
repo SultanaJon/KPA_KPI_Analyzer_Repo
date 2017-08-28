@@ -99,7 +99,6 @@
             // 
             // btn_Close
             // 
-            this.btn_Close.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.Close;
             this.btn_Close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btn_Close.Dock = System.Windows.Forms.DockStyle.Right;
             this.btn_Close.FlatAppearance.BorderSize = 0;

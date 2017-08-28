@@ -135,10 +135,10 @@ namespace KPA_KPI_Analyzer
             Button btn = sender as Button;
             int tag = int.Parse(btn.Tag.ToString());
 
-            if (tag == 4)
-                btn_NavExpander.Enabled = false;
-            else
-                btn_NavExpander.Enabled = true;
+            if (tag == 4) ;
+            //btn_NavExpander.Enabled = false;
+            else ;
+            //btn_NavExpander.Enabled = true;
 
             if (mainNavActiveBtn != btn) // activate the button unless already activated
                 activateButton(sender);

@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KPA_KPI_Analyzer.Properties
-{
-
-
+namespace KPA_KPI_Analyzer.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -166,16 +166,6 @@ namespace KPA_KPI_Analyzer.Properties
         internal static System.Drawing.Bitmap FilterBG_Normal {
             get {
                 object obj = ResourceManager.GetObject("FilterBG_Normal", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap GreenIndicator {
-            get {
-                object obj = ResourceManager.GetObject("GreenIndicator", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -346,26 +336,6 @@ namespace KPA_KPI_Analyzer.Properties
         internal static System.Drawing.Bitmap splashscreen {
             get {
                 object obj = ResourceManager.GetObject("splashscreen", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap TemplateFilters {
-            get {
-                object obj = ResourceManager.GetObject("TemplateFilters", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap TemplateFiltersClear {
-            get {
-                object obj = ResourceManager.GetObject("TemplateFiltersClear", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

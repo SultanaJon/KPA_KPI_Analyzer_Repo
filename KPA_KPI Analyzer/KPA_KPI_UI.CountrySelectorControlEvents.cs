@@ -56,12 +56,12 @@ namespace KPA_KPI_Analyzer
             if (btn_usSwitch.Value)
             {
                 Overall.SelectedCountry = AccessInfo.MainTables.US_PRPO;
-                lbl_country.Text = "United States";
+                //lbl_country.Text = "United States";
             }
             else
             {
                 Overall.SelectedCountry = AccessInfo.MainTables.MX_PRPO;
-                lbl_country.Text = "Mexico";
+                //lbl_country.Text = "Mexico";
             }
 
 

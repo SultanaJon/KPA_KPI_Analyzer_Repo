@@ -90,7 +90,7 @@ namespace KPA_KPI_Analyzer
                 try
                 {
                     PRPO_DB_Utils.ConnectToDatabase();
-                    btn_DatabaseConnectionStatus.Image = Properties.Resources.databaseConn_Connected_Icon;
+                    //btn_DatabaseConnectionStatus.Image = Properties.Resources.databaseConn_Connected_Icon;
                     Logger.Log(AppDirectoryUtils.LogFiles.DbConnectionEvents, "Successfully Connected to MS Access Database");
 
                     if (AccessUtils.US_PRPO_TableExists && AccessUtils.MX_PRPO_TableExists)
@@ -173,7 +173,7 @@ namespace KPA_KPI_Analyzer
         /// <param name="e">The Mouse Hover Event</param>
         private void btn_Expand_MouseHover(object sender, EventArgs e)
         {
-            btn_Expand.Image = Properties.Resources.Maximize_Hover_icon;
+            pnl_Maximize.BackgroundImage = Properties.Resources.Maximize_Hover_icon;
         }
 
 
@@ -188,7 +188,7 @@ namespace KPA_KPI_Analyzer
         /// <param name="e">the Mouse Leave Event</param>
         private void btn_Expand_MouseLeave(object sender, EventArgs e)
         {
-            btn_Expand.Image = Properties.Resources.Maximize;
+            pnl_Maximize.BackgroundImage = Properties.Resources.Maximize;
         }
 
 
@@ -218,7 +218,7 @@ namespace KPA_KPI_Analyzer
         /// <param name="e">The Mouse Enter Event</param>
         private void btn_Minimize_MouseEnter(object sender, EventArgs e)
         {
-            btn_Minimize.Image = Properties.Resources.Minimize_Hover_Icon;
+            pnl_Minimize.BackgroundImage = Properties.Resources.Minimize_Hover_Icon;
         }
 
 
@@ -232,8 +232,8 @@ namespace KPA_KPI_Analyzer
         /// <param name="sender">the button</param>
         /// <param name="e">the Mouse Leave event</param>
         private void btn_Minimize_MouseLeave(object sender, EventArgs e)
-        {
-            btn_Minimize.Image = Properties.Resources.Minimize;
+        { 
+            pnl_Minimize.BackgroundImage = Properties.Resources.Minimize;
         }
 
 
@@ -260,7 +260,7 @@ namespace KPA_KPI_Analyzer
         /// <param name="e">The Mouse Over event</param>
         private void btn_Close_MouseHover(object sender, EventArgs e)
         {
-            btn_Close.Image = Properties.Resources.Close_Hover_icon;
+            pnl_Close.BackgroundImage = Properties.Resources.Close_Hover_icon;
         }
 
 
@@ -275,7 +275,7 @@ namespace KPA_KPI_Analyzer
         /// <param name="e">The MouseLeave event</param>
         private void btn_Close_MouseLeave(object sender, EventArgs e)
         {
-            btn_Close.Image = Properties.Resources.Close;
+            pnl_Close.BackgroundImage = Properties.Resources.Close;
         }
 
 
@@ -526,7 +526,7 @@ namespace KPA_KPI_Analyzer
 
                 if (PRPO_DB_Utils.DatabaseConnection != null & PRPO_DB_Utils.DatabaseConnection.State == System.Data.ConnectionState.Open)
                 {
-                    btn_DatabaseConnectionStatus.Image = Properties.Resources.databaseConn_Connected_Icon;
+                    //btn_DatabaseConnectionStatus.Image = Properties.Resources.databaseConn_Connected_Icon;
                 }
                 else
                 {

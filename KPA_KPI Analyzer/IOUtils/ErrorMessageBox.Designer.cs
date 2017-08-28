@@ -86,7 +86,6 @@
             // 
             this.btn_Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Close.BackColor = System.Drawing.Color.Transparent;
-            this.btn_Close.Image = global::KPA_KPI_Analyzer.Properties.Resources.Close;
             this.btn_Close.ImageActive = null;
             this.btn_Close.Location = new System.Drawing.Point(865, 0);
             this.btn_Close.Name = "btn_Close";
@@ -95,7 +94,6 @@
             this.btn_Close.TabIndex = 3;
             this.btn_Close.TabStop = false;
             this.btn_Close.Zoom = 10;
-            this.btn_Close.MouseLeave += new System.EventHandler(this.btn_Close_MouseLeave);
             this.btn_Close.MouseHover += new System.EventHandler(this.btn_Close_MouseHover);
             // 
             // btn_ok
