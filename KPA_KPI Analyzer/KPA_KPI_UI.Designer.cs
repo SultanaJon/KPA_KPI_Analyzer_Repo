@@ -2314,6 +2314,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1200, 700);
             this.Controls.Add(this.tblpnl_Filters);
@@ -2329,8 +2330,9 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1200, 700);
             this.Name = "KPA_KPI_UI";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Tag = "S";
+            this.Tag = "";
             this.Load += new System.EventHandler(this.KPA_KPI_UI_Load);
             this.pnl_TopPanel.ResumeLayout(false);
             this.pnl_TopPanel.PerformLayout();
