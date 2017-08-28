@@ -103,6 +103,16 @@ namespace KPA_KPI_Analyzer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap comau_logo {
+            get {
+                object obj = ResourceManager.GetObject("comau_logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap DashboardBG_HoverActive {
             get {
                 object obj = ResourceManager.GetObject("DashboardBG_HoverActive", resourceCulture);

@@ -1018,5 +1018,24 @@ namespace KPA_KPI_Analyzer
                 }
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pnl_CountrySelectorButton_Click(object sender, EventArgs e)
+        {
+            if(pnl_CountrySelectorMenu.Visible)
+            {
+                pnl_CountrySelectorMenu.Visible = false;
+            }
+            else
+            {
+                pnl_CountrySelectorMenu.BackColor = System.Drawing.Color.FromArgb(0, 0, 0, 0);
+                pnl_CountrySelectorMenu.Visible = true;
+                pnl_CountrySelectorMenu.BringToFront();
+            }
+        }
     }
 }
