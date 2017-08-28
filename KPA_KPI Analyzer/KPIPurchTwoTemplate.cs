@@ -69,6 +69,7 @@ namespace KPA_KPI_Analyzer
         private string TimeBucketTen{ get { return lbl_timebuckTen.Text; } set { lbl_timebuckTen.Text = value;  } }
         private string TimeBucketEleven { get { return lbl_timebuckEleven.Text; } set { lbl_timebuckEleven.Text = value; } }
         private string PercNoConf { get { return lbl_Percent.Text; } set { lbl_Percent.Text = value + "%"; } }
+        private string PercNoConfTotal { get { return lbl_percUnconfTotal.Text; } set { lbl_percUnconfTotal.Text = value; } }
         private System.Drawing.Color DefaultButtonTextColor
         {
             set
@@ -171,14 +172,17 @@ namespace KPA_KPI_Analyzer
             {
                 case 0:
                     pnl_PercentagePanel.Visible = false;
+                    btn_unconfIncludedStatusButton.Visible = false;
                     RenderOne();
                     break;
                 case 1:
                     pnl_PercentagePanel.Visible = false;
+                    btn_unconfIncludedStatusButton.Visible = false;
                     RenderTwo();
                     break;
                 case 2:
                     pnl_PercentagePanel.Visible = true;
+                    btn_unconfIncludedStatusButton.Visible = true;
                     RenderThree();
                     break;
                 default:
@@ -358,7 +362,8 @@ namespace KPA_KPI_Analyzer
 
             TotalOrders = String.Format("{0:n0}", overallData.kpi.purchTwo.poRelVsPOConf.data.Total);
             Average = String.Format("{0:n}", overallData.kpi.purchTwo.poRelVsPOConf.data.Average);
-            PercNoConf = String.Format("{0:n0}", overallData.kpi.purchTwo.poRelVsPOConf.data.PercentUnconf);
+            PercNoConf = String.Format("{0:n}", overallData.kpi.purchTwo.poRelVsPOConf.data.PercentUnconf);
+            PercNoConfTotal = String.Format("{0:n0}", overallData.kpi.purchTwo.poRelVsPOConf.data.PercentUnconfTotal);
             TimeBucketOne = String.Format("{0:n0}", overallData.kpi.purchTwo.poRelVsPOConf.data.LessThanZero);
             TimeBucketTwo = String.Format("{0:n0}", overallData.kpi.purchTwo.poRelVsPOConf.data.One_Three);
             TimeBucketThree = String.Format("{0:n0}", overallData.kpi.purchTwo.poRelVsPOConf.data.Four_Seven);

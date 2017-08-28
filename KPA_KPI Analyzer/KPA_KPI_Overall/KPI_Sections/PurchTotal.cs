@@ -42,7 +42,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                     if(firstConfCreateYear == 0 && firstConfCreateMonth == 0 & firstConfCreateDay == 0)
                     {
-
+                        prRelConfEntry.data.PercentUnconfTotal++;
                         continue;
                     }
                     else
@@ -113,7 +113,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                 try
                 {
-                    prRelConfEntry.data.PercentUnconf = Math.Round(((double)(Overall.prsOnPOsDt.Rows.Count - prRelConfEntry.data.Total) / Overall.prsOnPOsDt.Rows.Count) * 100, 2);
+                    prRelConfEntry.data.PercentUnconf = Math.Round(((double)prRelConfEntry.data.PercentUnconfTotal / prRelConfEntry.data.Total) * 100, 2);
                 }
                 catch (DivideByZeroException)
                 {

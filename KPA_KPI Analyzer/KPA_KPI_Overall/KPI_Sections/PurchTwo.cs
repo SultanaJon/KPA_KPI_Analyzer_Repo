@@ -254,7 +254,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                     if(poLineFirstConfCreateYear == 0 && poLineFirstConfCreateMonth == 0 && poLineFirstConfCreateDay == 0)
                     {
-                        totalUnconf++;
+                        poRelVsPOConf.data.PercentUnconfTotal++;
                         continue;
                     }
                     else
@@ -316,7 +316,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                     }
                 }
 
-                poRelVsPOConf.data.Total = Overall.prsOnPOsDt.Rows.Count - (int)totalUnconf;
+                poRelVsPOConf.data.Total = Overall.prsOnPOsDt.Rows.Count - poRelVsPOConf.data.PercentUnconfTotal;
 
                 try
                 {
@@ -329,7 +329,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                 try
                 {
-                    poRelVsPOConf.data.PercentUnconf = Math.Round((totalUnconf / poRelVsPOConf.data.Total) * 100, 2);
+                    poRelVsPOConf.data.PercentUnconf = Math.Round(((double)poRelVsPOConf.data.PercentUnconfTotal / poRelVsPOConf.data.Total) * 100, 2);
                 }
                 catch (DivideByZeroException)
                 {
@@ -346,7 +346,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.StackTrace, "KPI -> Purch Two Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "KPI -> Purch Two Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

@@ -14,6 +14,7 @@
         public int TwentyTwo { get; set; }
         public int Total { get; set; }
         public double PercentUnconf { get; set; }
+        public int PercentUnconfTotal { get; set; }
 
 
 
@@ -36,6 +37,7 @@
             TwentyTwo  = 0;
             Total  = 0;
             PercentUnconf = 0;
+            PercentUnconfTotal = 0;
          }
     }
 }

@@ -11,7 +11,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
     {
         public Init_Conf_vs_PR_Plan_Date initConfVsPRPlanDate;
         private double totalDays = 0;
-        private double totalPOsUnconf = 0;
 
 
         // Default Constructor
@@ -46,7 +45,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                     if (firstConfYear == 0 && firstConfMonth == 0 && firstConfDay == 0)
                     {
-                        totalPOsUnconf++;
+                        initConfVsPRPlanDate.data.PercentUnconfTotal++;
                         continue;
                     }
                     else
@@ -123,7 +122,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                 try
                 {
-                    initConfVsPRPlanDate.data.PercentUnconf = Math.Round((totalPOsUnconf / Overall.prsOnPOsDt.Rows.Count) * 100, 2);
+                    initConfVsPRPlanDate.data.PercentUnconf = Math.Round(((double)initConfVsPRPlanDate.data.PercentUnconfTotal / initConfVsPRPlanDate.data.Total) * 100, 2);
                 }
                 catch (DivideByZeroException)
                 {
@@ -132,7 +131,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
 
 
-                initConfVsPRPlanDate.data.Total = Overall.prsOnPOsDt.Rows.Count - (int)totalPOsUnconf;
+                initConfVsPRPlanDate.data.Total = Overall.prsOnPOsDt.Rows.Count - initConfVsPRPlanDate.data.PercentUnconfTotal;
 
                 totalDays = 0;
 

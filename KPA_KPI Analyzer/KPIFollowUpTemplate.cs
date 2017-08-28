@@ -67,6 +67,7 @@ namespace KPA_KPI_Analyzer
         private string TimeBucketEight { get { return lbl_timebuckEight.Text; } set { lbl_timebuckEight.Text = value; } }
         private string TimeBucketNine { get { return lbl_timebuckNine.Text; } set { lbl_timebuckNine.Text = value; } }
         private string PercNoConf { get { return lbl_Percent.Text; } set { lbl_Percent.Text = value + "%"; } }
+        private string PercNoConfTotal { get { return lbl_percUnconfTotal.Text; } set { lbl_percUnconfTotal.Text = value; } }
         private System.Drawing.Color DefaultButtonTextColor
         {
             set
@@ -170,22 +171,31 @@ namespace KPA_KPI_Analyzer
             {
                 case 0:
                     pnl_PercentagePanel.Visible = true;
+                    btn_unconfIncludedStatusButton.Visible = true;
+                    btn_unconfIncludedStatusButton.Text = "Not including Unconfirmed!";
                     RenderOne();
                     break;
                 case 1:
                     pnl_PercentagePanel.Visible = true;
+                    btn_unconfIncludedStatusButton.Visible = true;
+                    btn_unconfIncludedStatusButton.Text = "Including Unconfirmed!";
                     RenderTwo();
                     break;
                 case 2:
                     pnl_PercentagePanel.Visible = false;
+                    btn_unconfIncludedStatusButton.Visible = false;
                     RenderThree();
                     break;
                 case 3:
                     pnl_PercentagePanel.Visible = true;
+                    btn_unconfIncludedStatusButton.Visible = true;
+                    btn_unconfIncludedStatusButton.Text = "Including Unconfirmed!";
                     RenderFour();
                     break;
                 case 4:
                     pnl_PercentagePanel.Visible = true;
+                    btn_unconfIncludedStatusButton.Visible = true;
+                    btn_unconfIncludedStatusButton.Text = "Including Unconfirmed!";
                     RenderFive();
                     break;
                 default:
@@ -220,8 +230,6 @@ namespace KPA_KPI_Analyzer
             TimeBucketEight = overallData.kpi.followUp.initConfVsCurrConf.data.Fifteen_TwentyOne.ToString();
             TimeBucketNine = overallData.kpi.followUp.initConfVsCurrConf.data.TwentyTwo.ToString();
 
-
-
             AnalysisOne = "- Will show if PO line item is received complete and the line has a confirmation date.";
             AnalysisTwo = "- Difference between first confirmed date and final confirmation date.";
 
@@ -236,10 +244,10 @@ namespace KPA_KPI_Analyzer
             dp.addLabely(lbl_xLabelEight.Text, TimeBucketEight);
             dp.addLabely(lbl_xLabelNine.Text, TimeBucketNine);
 
-
             TotalOrders = String.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.Total);
             Average = String.Format("{0:n}", overallData.kpi.followUp.initConfVsCurrConf.data.Average);
             PercNoConf = String.Format("{0:n}", overallData.kpi.followUp.initConfVsCurrConf.data.PercentUnconf);
+            PercNoConfTotal = String.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.PercentUnconfTotal);
             TimeBucketOne = String.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.Minus_TwentyTwo);
             TimeBucketTwo = String.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.Minus_Fifteen_TwentyOne);
             TimeBucketThree = String.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.Minus_Eight_Fourteen);
@@ -249,8 +257,6 @@ namespace KPA_KPI_Analyzer
             TimeBucketSeven = String.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.Eight_Fourteen);
             TimeBucketEight = String.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.Fifteen_TwentyOne);
             TimeBucketNine = String.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.TwentyTwo);
-
-
 
             canvas.addData(dp);
             dataviz.Render(canvas);
@@ -283,12 +289,8 @@ namespace KPA_KPI_Analyzer
             TimeBucketEight = overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Fifteen_TwentyOne.ToString();
             TimeBucketNine = overallData.kpi.followUp.finalConfDateVsFinalPlan.data.TwentyTwo.ToString();
 
-
-
             AnalysisOne = "- Will show if PO line item has been received complete.";
             AnalysisTwo = "- Difference between current confirmation date and current planned date.";
-
-
 
             dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
             dp.addLabely(lbl_xLabelTwo.Text, TimeBucketTwo);
@@ -300,12 +302,10 @@ namespace KPA_KPI_Analyzer
             dp.addLabely(lbl_xLabelEight.Text, TimeBucketEight);
             dp.addLabely(lbl_xLabelNine.Text, TimeBucketNine);
 
-
-
-
             TotalOrders = String.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Total);
             Average = String.Format("{0:n}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Average);
             PercNoConf = String.Format("{0:n}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.PercentUnconf);
+            PercNoConfTotal = String.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.PercentUnconfTotal);
             TimeBucketOne = String.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Minus_TwentyTwo);
             TimeBucketTwo = String.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Minus_Fifteen_TwentyOne);
             TimeBucketThree = String.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Minus_Eight_Fourteen);
@@ -315,7 +315,6 @@ namespace KPA_KPI_Analyzer
             TimeBucketSeven = String.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Eight_Fourteen);
             TimeBucketEight = String.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Fifteen_TwentyOne);
             TimeBucketNine = String.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.TwentyTwo);
-
 
             canvas.addData(dp);
             dataviz.Render(canvas);
@@ -348,12 +347,8 @@ namespace KPA_KPI_Analyzer
             TimeBucketEight = overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Fifteen_TwentyOne.ToString();
             TimeBucketNine = overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.TwentyTwo.ToString();
 
-
-
             AnalysisOne = "- Will show if PO line has been received complete.";
             AnalysisTwo = "- Difference between final receipt date and current planned date.";
-
-
 
             dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
             dp.addLabely(lbl_xLabelTwo.Text, TimeBucketTwo);
@@ -364,8 +359,6 @@ namespace KPA_KPI_Analyzer
             dp.addLabely(lbl_xLabelSeven.Text, TimeBucketSeven);
             dp.addLabely(lbl_xLabelEight.Text, TimeBucketEight);
             dp.addLabely(lbl_xLabelNine.Text, TimeBucketNine);
-
-
 
             TotalOrders = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Total);
             Average = String.Format("{0:n}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Average);
@@ -378,8 +371,6 @@ namespace KPA_KPI_Analyzer
             TimeBucketSeven = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Eight_Fourteen);
             TimeBucketEight = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Fifteen_TwentyOne);
             TimeBucketNine = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.TwentyTwo);
-
-
 
             canvas.addData(dp);
             dataviz.Render(canvas);
@@ -412,12 +403,8 @@ namespace KPA_KPI_Analyzer
             TimeBucketEight = overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Fifteen_TwentyOne.ToString();
             TimeBucketNine = overallData.kpi.followUp.receiptDateVsOrigConfDate.data.TwentyTwo.ToString();
 
-
-
             AnalysisOne = "- Will show if PO line has been received complete.";
             AnalysisTwo = "- Difference between final receipt date and the original confirmation date.";
-
-
 
             dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
             dp.addLabely(lbl_xLabelTwo.Text, TimeBucketTwo);
@@ -432,6 +419,7 @@ namespace KPA_KPI_Analyzer
             TotalOrders = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Total);
             Average = String.Format("{0:n}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Average);
             PercNoConf = String.Format("{0:n}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.PercentUnconf);
+            PercNoConfTotal = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.PercentUnconfTotal);
             TimeBucketOne = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Minus_TwentyTwo);
             TimeBucketTwo = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Minus_Fifteen_TwentyOne);
             TimeBucketThree = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Minus_Eight_Fourteen);
@@ -441,7 +429,6 @@ namespace KPA_KPI_Analyzer
             TimeBucketSeven = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Eight_Fourteen);
             TimeBucketEight = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Fifteen_TwentyOne);
             TimeBucketNine = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.TwentyTwo);
-
 
             canvas.addData(dp);
             dataviz.Render(canvas);
@@ -475,8 +462,6 @@ namespace KPA_KPI_Analyzer
             TimeBucketEight = overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Fifteen_TwentyOne.ToString();
             TimeBucketNine = overallData.kpi.followUp.receiptDateVsCurrConfDate.data.TwentyTwo.ToString();
 
-
-
             AnalysisOne = "- Will show if PO line has been received complete.";
             AnalysisTwo = "- Difference between final receipt date and the current confirmation date.";
 
@@ -493,6 +478,7 @@ namespace KPA_KPI_Analyzer
             TotalOrders = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Total);
             Average = String.Format("{0:n}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Average);
             PercNoConf = String.Format("{0:n}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.PercentUnconf);
+            PercNoConfTotal = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.PercentUnconfTotal);
             TimeBucketOne = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Minus_TwentyTwo);
             TimeBucketTwo = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Minus_Fifteen_TwentyOne);
             TimeBucketThree = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Minus_Eight_Fourteen);

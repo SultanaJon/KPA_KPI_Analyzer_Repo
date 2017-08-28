@@ -229,7 +229,7 @@
             this.pnl_TopPanel.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pnl_TopPanel_MouseDoubleClick);
             // 
             // lbl_country
-            //
+            // 
             this.lbl_country.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_country.AutoSize = true;
             this.lbl_country.ForeColor = System.Drawing.Color.DimGray;
@@ -623,7 +623,7 @@
             this.bunifuCustomLabel8.Name = "bunifuCustomLabel8";
             this.bunifuCustomLabel8.Size = new System.Drawing.Size(146, 15);
             this.bunifuCustomLabel8.TabIndex = 0;
-            this.bunifuCustomLabel8.Text = "WBS Elmnt/Prd Ord WBS:";
+            this.bunifuCustomLabel8.Text = "Project Number:";
             // 
             // ChkdListBx_WBSElement
             // 
@@ -998,7 +998,7 @@
             this.bunifuCustomLabel18.Name = "bunifuCustomLabel18";
             this.bunifuCustomLabel18.Size = new System.Drawing.Size(146, 15);
             this.bunifuCustomLabel18.TabIndex = 0;
-            this.bunifuCustomLabel18.Text = "WBS Project:";
+            this.bunifuCustomLabel18.Text = "WBS Element:";
             // 
             // ChkdListBx_WBSProject
             // 
@@ -1313,7 +1313,7 @@
             this.bunifuCustomLabel25.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel25.Location = new System.Drawing.Point(69, 9);
             this.bunifuCustomLabel25.Name = "bunifuCustomLabel25";
-            this.bunifuCustomLabel25.Size = new System.Drawing.Size(175, 20);
+            this.bunifuCustomLabel25.Size = new System.Drawing.Size(293, 20);
             this.bunifuCustomLabel25.TabIndex = 0;
             this.bunifuCustomLabel25.Text = "Select a Overall.SelectedCountry to load";
             // 
@@ -2282,7 +2282,7 @@
             this.dc_appTitle.TargetControl = this.appTitlePanel;
             this.dc_appTitle.Vertical = true;
             // 
-            // dc_Overall.SelectedCountryLbl
+            // dc_countryLbl
             // 
             this.dc_countryLbl.Fixed = true;
             this.dc_countryLbl.Horizontal = true;

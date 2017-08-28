@@ -143,7 +143,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                     if(poLineFirstConfYear == 0 && poLineFirstConfMonth == 0 && poLineFirstConfDay == 0)
                     {
-                        totalUnconf++;
+                        poCreateVsConfEntry.data.PercentUnconfTotal++;
                         continue;
                     }
                     else
@@ -226,7 +226,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                 try
                 {
-                    poCreateVsConfEntry.data.PercentUnconf = Math.Round((totalUnconf / poCreateVsConfEntry.data.Total) * 100, 2);
+                    poCreateVsConfEntry.data.PercentUnconf = Math.Round(((double)poCreateVsConfEntry.data.PercentUnconfTotal / poCreateVsConfEntry.data.Total) * 100, 2);
                 }
                 catch (DivideByZeroException)
                 {

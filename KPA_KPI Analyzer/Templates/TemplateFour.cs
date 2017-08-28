@@ -16,6 +16,7 @@
         public int greaterThanEqualFiftySeven { get; set; }
         public int Total { get; set; }
         public double PercentUnconf { get; set; }
+        public int PercentUnconfTotal { get; set; }
 
 
 
@@ -41,6 +42,7 @@
              greaterThanEqualFiftySeven = 0;
              Total = 0;
              PercentUnconf = 0;
+            PercentUnconfTotal = 0;
         }
     }
 }

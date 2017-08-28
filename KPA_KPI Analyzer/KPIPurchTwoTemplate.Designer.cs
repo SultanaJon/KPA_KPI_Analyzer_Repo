@@ -48,6 +48,8 @@
             this.panel50 = new System.Windows.Forms.Panel();
             this.bunifuFlatButton16 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.panel51 = new System.Windows.Forms.Panel();
+            this.lbl_percUnconfTotal = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.lbl_Percent = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.panel56 = new System.Windows.Forms.Panel();
             this.bunifuSeparator12 = new Bunifu.Framework.UI.BunifuSeparator();
@@ -183,6 +185,8 @@
             this.panel55 = new System.Windows.Forms.Panel();
             this.bunifuFlatButton13 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.datavizLoadTimer = new System.Windows.Forms.Timer(this.components);
+            this.panel59 = new System.Windows.Forms.Panel();
+            this.btn_unconfIncludedStatusButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.tblPnl_template.SuspendLayout();
             this.tableLayoutPanel13.SuspendLayout();
             this.tableLayoutPanel14.SuspendLayout();
@@ -274,6 +278,7 @@
             this.panel53.SuspendLayout();
             this.panel54.SuspendLayout();
             this.panel55.SuspendLayout();
+            this.panel59.SuspendLayout();
             this.SuspendLayout();
             // 
             // tblPnl_template
@@ -633,7 +638,7 @@
             this.bunifuFlatButton16.IconVisible = true;
             this.bunifuFlatButton16.IconZoom = 90D;
             this.bunifuFlatButton16.IsTab = false;
-            this.bunifuFlatButton16.Location = new System.Drawing.Point(1, 11);
+            this.bunifuFlatButton16.Location = new System.Drawing.Point(0, 12);
             this.bunifuFlatButton16.Name = "bunifuFlatButton16";
             this.bunifuFlatButton16.Normalcolor = System.Drawing.Color.DarkSalmon;
             this.bunifuFlatButton16.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -651,6 +656,8 @@
             // panel51
             // 
             this.tableLayoutPanel16.SetColumnSpan(this.panel51, 2);
+            this.panel51.Controls.Add(this.lbl_percUnconfTotal);
+            this.panel51.Controls.Add(this.bunifuCustomLabel1);
             this.panel51.Controls.Add(this.lbl_Percent);
             this.panel51.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel51.Location = new System.Drawing.Point(0, 48);
@@ -658,6 +665,28 @@
             this.panel51.Name = "panel51";
             this.panel51.Size = new System.Drawing.Size(308, 37);
             this.panel51.TabIndex = 2;
+            // 
+            // lbl_percUnconfTotal
+            // 
+            this.lbl_percUnconfTotal.AutoSize = true;
+            this.lbl_percUnconfTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_percUnconfTotal.ForeColor = System.Drawing.Color.IndianRed;
+            this.lbl_percUnconfTotal.Location = new System.Drawing.Point(142, 3);
+            this.lbl_percUnconfTotal.Name = "lbl_percUnconfTotal";
+            this.lbl_percUnconfTotal.Size = new System.Drawing.Size(49, 20);
+            this.lbl_percUnconfTotal.TabIndex = 10;
+            this.lbl_percUnconfTotal.Text = "9,645";
+            // 
+            // bunifuCustomLabel1
+            // 
+            this.bunifuCustomLabel1.AutoSize = true;
+            this.bunifuCustomLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel1.ForeColor = System.Drawing.Color.IndianRed;
+            this.bunifuCustomLabel1.Location = new System.Drawing.Point(95, 3);
+            this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
+            this.bunifuCustomLabel1.Size = new System.Drawing.Size(48, 20);
+            this.bunifuCustomLabel1.TabIndex = 11;
+            this.bunifuCustomLabel1.Text = "Total:";
             // 
             // lbl_Percent
             // 
@@ -710,7 +739,7 @@
             this.bunifuCustomLabel2.AutoSize = true;
             this.bunifuCustomLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel2.ForeColor = System.Drawing.Color.IndianRed;
-            this.bunifuCustomLabel2.Location = new System.Drawing.Point(6, 10);
+            this.bunifuCustomLabel2.Location = new System.Drawing.Point(6, 8);
             this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
             this.bunifuCustomLabel2.Size = new System.Drawing.Size(174, 24);
             this.bunifuCustomLabel2.TabIndex = 13;
@@ -851,6 +880,7 @@
             this.tableLayoutPanel5.Controls.Add(this.panel8, 0, 1);
             this.tableLayoutPanel5.Controls.Add(this.panel7, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.panel9, 1, 0);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -864,6 +894,7 @@
             // panel6
             // 
             this.tableLayoutPanel5.SetColumnSpan(this.panel6, 2);
+            this.panel6.Controls.Add(this.panel59);
             this.panel6.Controls.Add(this.lbl_totalOrders);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(0, 48);
@@ -2705,6 +2736,54 @@
             // 
             this.datavizLoadTimer.Tick += new System.EventHandler(this.datavizLoadTimer_Tick);
             // 
+            // panel59
+            // 
+            this.panel59.Controls.Add(this.btn_unconfIncludedStatusButton);
+            this.panel59.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel59.Location = new System.Drawing.Point(146, 0);
+            this.panel59.Name = "panel59";
+            this.panel59.Size = new System.Drawing.Size(162, 37);
+            this.panel59.TabIndex = 11;
+            // 
+            // btn_unconfIncludedStatusButton
+            // 
+            this.btn_unconfIncludedStatusButton.Activecolor = System.Drawing.Color.IndianRed;
+            this.btn_unconfIncludedStatusButton.BackColor = System.Drawing.Color.IndianRed;
+            this.btn_unconfIncludedStatusButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_unconfIncludedStatusButton.BorderRadius = 5;
+            this.btn_unconfIncludedStatusButton.ButtonText = "Not including Unconfirmed!";
+            this.btn_unconfIncludedStatusButton.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.btn_unconfIncludedStatusButton.DisabledColor = System.Drawing.Color.IndianRed;
+            this.btn_unconfIncludedStatusButton.Enabled = false;
+            this.btn_unconfIncludedStatusButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_unconfIncludedStatusButton.ForeColor = System.Drawing.Color.White;
+            this.btn_unconfIncludedStatusButton.Iconcolor = System.Drawing.Color.Transparent;
+            this.btn_unconfIncludedStatusButton.Iconimage = null;
+            this.btn_unconfIncludedStatusButton.Iconimage_right = null;
+            this.btn_unconfIncludedStatusButton.Iconimage_right_Selected = null;
+            this.btn_unconfIncludedStatusButton.Iconimage_Selected = null;
+            this.btn_unconfIncludedStatusButton.IconMarginLeft = 0;
+            this.btn_unconfIncludedStatusButton.IconMarginRight = 0;
+            this.btn_unconfIncludedStatusButton.IconRightVisible = true;
+            this.btn_unconfIncludedStatusButton.IconRightZoom = 0D;
+            this.btn_unconfIncludedStatusButton.IconVisible = true;
+            this.btn_unconfIncludedStatusButton.IconZoom = 90D;
+            this.btn_unconfIncludedStatusButton.IsTab = false;
+            this.btn_unconfIncludedStatusButton.Location = new System.Drawing.Point(5, 7);
+            this.btn_unconfIncludedStatusButton.Name = "btn_unconfIncludedStatusButton";
+            this.btn_unconfIncludedStatusButton.Normalcolor = System.Drawing.Color.IndianRed;
+            this.btn_unconfIncludedStatusButton.OnHovercolor = System.Drawing.Color.IndianRed;
+            this.btn_unconfIncludedStatusButton.OnHoverTextColor = System.Drawing.Color.White;
+            this.btn_unconfIncludedStatusButton.selected = false;
+            this.btn_unconfIncludedStatusButton.Size = new System.Drawing.Size(151, 19);
+            this.btn_unconfIncludedStatusButton.TabIndex = 15;
+            this.btn_unconfIncludedStatusButton.Tag = "0";
+            this.btn_unconfIncludedStatusButton.Text = "Not including Unconfirmed!";
+            this.btn_unconfIncludedStatusButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_unconfIncludedStatusButton.Textcolor = System.Drawing.Color.White;
+            this.btn_unconfIncludedStatusButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_unconfIncludedStatusButton.Visible = false;
+            // 
             // KPIPurchTwoTemplate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2834,6 +2913,7 @@
             this.panel54.ResumeLayout(false);
             this.panel54.PerformLayout();
             this.panel55.ResumeLayout(false);
+            this.panel59.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2994,5 +3074,9 @@
         private Bunifu.Framework.UI.BunifuCustomLabel lbl_xLabelEleven;
         private System.Windows.Forms.Panel panel58;
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton1;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_percUnconfTotal;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
+        private System.Windows.Forms.Panel panel59;
+        private Bunifu.Framework.UI.BunifuFlatButton btn_unconfIncludedStatusButton;
     }
 }

@@ -57,9 +57,6 @@
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.bunifuCustomLabel8 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel12 = new System.Windows.Forms.Panel();
-            this.bunifuCustomLabel12 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
             this.panel11 = new System.Windows.Forms.Panel();
             this.bunifuCustomLabel34 = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -101,24 +98,6 @@
             this.tableLayoutPanel24 = new System.Windows.Forms.TableLayoutPanel();
             this.panel23 = new System.Windows.Forms.Panel();
             this.bunifuCustomLabel25 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.tableLayoutPanel25 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel24 = new System.Windows.Forms.Panel();
-            this.bunifuCustomLabel26 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.tableLayoutPanel26 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel25 = new System.Windows.Forms.Panel();
-            this.bunifuCustomLabel27 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.tableLayoutPanel27 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel26 = new System.Windows.Forms.Panel();
-            this.bunifuCustomLabel28 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.tableLayoutPanel28 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel27 = new System.Windows.Forms.Panel();
-            this.bunifuCustomLabel29 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.tableLayoutPanel29 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel28 = new System.Windows.Forms.Panel();
-            this.bunifuCustomLabel30 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.tableLayoutPanel30 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel29 = new System.Windows.Forms.Panel();
-            this.bunifuCustomLabel31 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.tableLayoutPanel32 = new System.Windows.Forms.TableLayoutPanel();
             this.panel31 = new System.Windows.Forms.Panel();
             this.bunifuCustomLabel33 = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -169,7 +148,6 @@
             this.bunifuCustomLabel69 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel70 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel71 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.bunifuCustomLabel72 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.lbl_kpaPlanPRsAgingNotRel_One = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.lbl_kpaPlanPRsAgingNotRel_Two = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.lbl_kpaPlanPRsAgingNotRel_Three = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -349,8 +327,6 @@
             this.panel7.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
             this.panel8.SuspendLayout();
-            this.tableLayoutPanel13.SuspendLayout();
-            this.panel12.SuspendLayout();
             this.tableLayoutPanel12.SuspendLayout();
             this.panel11.SuspendLayout();
             this.tableLayoutPanel11.SuspendLayout();
@@ -377,18 +353,6 @@
             this.panel22.SuspendLayout();
             this.tableLayoutPanel24.SuspendLayout();
             this.panel23.SuspendLayout();
-            this.tableLayoutPanel25.SuspendLayout();
-            this.panel24.SuspendLayout();
-            this.tableLayoutPanel26.SuspendLayout();
-            this.panel25.SuspendLayout();
-            this.tableLayoutPanel27.SuspendLayout();
-            this.panel26.SuspendLayout();
-            this.tableLayoutPanel28.SuspendLayout();
-            this.panel27.SuspendLayout();
-            this.tableLayoutPanel29.SuspendLayout();
-            this.panel28.SuspendLayout();
-            this.tableLayoutPanel30.SuspendLayout();
-            this.panel29.SuspendLayout();
             this.tableLayoutPanel32.SuspendLayout();
             this.panel31.SuspendLayout();
             this.tableLayoutPanel33.SuspendLayout();
@@ -415,21 +379,19 @@
             // 
             this.tabllayoutpanel.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tabllayoutpanel.ColumnCount = 13;
-            this.tabllayoutpanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.097753F));
-            this.tabllayoutpanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.19486F));
-            this.tabllayoutpanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.554473F));
-            this.tabllayoutpanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.375445F));
-            this.tabllayoutpanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.375445F));
-            this.tabllayoutpanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.375445F));
-            this.tabllayoutpanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.375445F));
-            this.tabllayoutpanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.375445F));
-            this.tabllayoutpanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.375445F));
-            this.tabllayoutpanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.375445F));
-            this.tabllayoutpanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.375445F));
-            this.tabllayoutpanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.375445F));
-            this.tabllayoutpanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.375445F));
-            this.tabllayoutpanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tabllayoutpanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tabllayoutpanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.13415F));
+            this.tabllayoutpanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.27565F));
+            this.tabllayoutpanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.580695F));
+            this.tabllayoutpanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.40095F));
+            this.tabllayoutpanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.40095F));
+            this.tabllayoutpanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.40095F));
+            this.tabllayoutpanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.40095F));
+            this.tabllayoutpanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.40095F));
+            this.tabllayoutpanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.40095F));
+            this.tabllayoutpanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.40095F));
+            this.tabllayoutpanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.40095F));
+            this.tabllayoutpanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.40095F));
+            this.tabllayoutpanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.40095F));
             this.tabllayoutpanel.Controls.Add(this.tableLayoutPanel39, 11, 31);
             this.tabllayoutpanel.Controls.Add(this.bunifuCustomLabel41, 1, 1);
             this.tabllayoutpanel.Controls.Add(this.tableLayoutPanel2, 0, 1);
@@ -440,7 +402,6 @@
             this.tabllayoutpanel.Controls.Add(this.tableLayoutPanel7, 0, 10);
             this.tabllayoutpanel.Controls.Add(this.tableLayoutPanel8, 0, 11);
             this.tabllayoutpanel.Controls.Add(this.tableLayoutPanel9, 0, 17);
-            this.tabllayoutpanel.Controls.Add(this.tableLayoutPanel13, 0, 35);
             this.tabllayoutpanel.Controls.Add(this.tableLayoutPanel12, 0, 32);
             this.tabllayoutpanel.Controls.Add(this.tableLayoutPanel11, 0, 26);
             this.tabllayoutpanel.Controls.Add(this.tableLayoutPanel14, 0, 19);
@@ -454,12 +415,6 @@
             this.tabllayoutpanel.Controls.Add(this.tableLayoutPanel22, 9, 0);
             this.tabllayoutpanel.Controls.Add(this.tableLayoutPanel23, 10, 0);
             this.tabllayoutpanel.Controls.Add(this.tableLayoutPanel24, 2, 31);
-            this.tabllayoutpanel.Controls.Add(this.tableLayoutPanel25, 2, 34);
-            this.tabllayoutpanel.Controls.Add(this.tableLayoutPanel26, 3, 34);
-            this.tabllayoutpanel.Controls.Add(this.tableLayoutPanel27, 4, 34);
-            this.tabllayoutpanel.Controls.Add(this.tableLayoutPanel28, 5, 34);
-            this.tabllayoutpanel.Controls.Add(this.tableLayoutPanel29, 6, 34);
-            this.tabllayoutpanel.Controls.Add(this.tableLayoutPanel30, 7, 34);
             this.tabllayoutpanel.Controls.Add(this.tableLayoutPanel32, 4, 31);
             this.tabllayoutpanel.Controls.Add(this.tableLayoutPanel33, 5, 31);
             this.tabllayoutpanel.Controls.Add(this.tableLayoutPanel34, 6, 31);
@@ -494,7 +449,6 @@
             this.tabllayoutpanel.Controls.Add(this.bunifuCustomLabel69, 1, 30);
             this.tabllayoutpanel.Controls.Add(this.bunifuCustomLabel70, 1, 32);
             this.tabllayoutpanel.Controls.Add(this.bunifuCustomLabel71, 1, 33);
-            this.tabllayoutpanel.Controls.Add(this.bunifuCustomLabel72, 1, 35);
             this.tabllayoutpanel.Controls.Add(this.lbl_kpaPlanPRsAgingNotRel_One, 2, 2);
             this.tabllayoutpanel.Controls.Add(this.lbl_kpaPlanPRsAgingNotRel_Two, 3, 2);
             this.tabllayoutpanel.Controls.Add(this.lbl_kpaPlanPRsAgingNotRel_Three, 4, 2);
@@ -655,43 +609,43 @@
             this.tabllayoutpanel.Margin = new System.Windows.Forms.Padding(10);
             this.tabllayoutpanel.Name = "tabllayoutpanel";
             this.tabllayoutpanel.Padding = new System.Windows.Forms.Padding(10);
-            this.tabllayoutpanel.RowCount = 36;
-            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.862233F));
-            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.862233F));
-            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.862233F));
-            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.862233F));
-            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.862233F));
-            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.862233F));
-            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.020728F));
-            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.702757F));
-            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.862233F));
-            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.862233F));
-            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.862233F));
-            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.862233F));
-            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.702757F));
-            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.020728F));
-            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.862233F));
-            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.862233F));
-            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.862233F));
-            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.862233F));
-            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.862233F));
-            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.862233F));
-            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.862233F));
+            this.tabllayoutpanel.RowCount = 34;
+            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.036027F));
+            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.036027F));
+            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.036027F));
+            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.036027F));
+            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.036027F));
+            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.036027F));
+            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.204146F));
+            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.866868F));
+            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.036027F));
+            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.036027F));
+            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.036027F));
+            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.036027F));
+            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.866868F));
+            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.204146F));
+            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.036027F));
+            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.036027F));
+            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.036027F));
+            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.036027F));
+            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.036027F));
+            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.036027F));
+            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.036027F));
             this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.862233F));
-            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.620045F));
-            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.928284F));
-            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.862233F));
-            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.862233F));
-            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.862233F));
-            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.862233F));
-            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.862233F));
-            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.862233F));
-            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.862233F));
-            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.862233F));
-            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.862233F));
-            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.862233F));
-            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.862233F));
+            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.036027F));
+            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.779133F));
+            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.106088F));
+            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.036027F));
+            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.036027F));
+            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.036027F));
+            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.036027F));
+            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.036027F));
+            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.036027F));
+            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.036027F));
+            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.036027F));
+            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.036027F));
+            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tabllayoutpanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tabllayoutpanel.Size = new System.Drawing.Size(1150, 650);
             this.tabllayoutpanel.TabIndex = 0;
             // 
@@ -704,21 +658,21 @@
             this.tableLayoutPanel39.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel39.Controls.Add(this.panel38, 1, 1);
             this.tableLayoutPanel39.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel39.Location = new System.Drawing.Point(990, 541);
+            this.tableLayoutPanel39.Location = new System.Drawing.Point(990, 570);
             this.tableLayoutPanel39.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel39.Name = "tableLayoutPanel39";
             this.tableLayoutPanel39.RowCount = 3;
             this.tableLayoutPanel39.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel39.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel39.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel39.Size = new System.Drawing.Size(71, 16);
+            this.tableLayoutPanel39.Size = new System.Drawing.Size(71, 17);
             this.tableLayoutPanel39.TabIndex = 2;
             // 
             // panel38
             // 
             this.panel38.Controls.Add(this.bunifuCustomLabel73);
             this.panel38.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel38.Location = new System.Drawing.Point(0, -2);
+            this.panel38.Location = new System.Drawing.Point(0, -1);
             this.panel38.Margin = new System.Windows.Forms.Padding(0);
             this.panel38.Name = "panel38";
             this.panel38.Size = new System.Drawing.Size(70, 20);
@@ -737,7 +691,7 @@
             // bunifuCustomLabel41
             // 
             this.bunifuCustomLabel41.AutoSize = true;
-            this.bunifuCustomLabel41.Location = new System.Drawing.Point(116, 28);
+            this.bunifuCustomLabel41.Location = new System.Drawing.Point(116, 29);
             this.bunifuCustomLabel41.Name = "bunifuCustomLabel41";
             this.bunifuCustomLabel41.Size = new System.Drawing.Size(105, 13);
             this.bunifuCustomLabel41.TabIndex = 0;
@@ -752,7 +706,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Controls.Add(this.panel1, 1, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(11, 28);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(11, 29);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
@@ -760,7 +714,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.00001F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(101, 50);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(101, 53);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // panel1
@@ -768,7 +722,7 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(220)))), ((int)(((byte)(219)))));
             this.panel1.Controls.Add(this.bunifuCustomLabel1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(20, 14);
+            this.panel1.Location = new System.Drawing.Point(20, 16);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(60, 20);
@@ -793,7 +747,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Controls.Add(this.panel2, 1, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(11, 79);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(11, 83);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 3;
@@ -801,7 +755,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.00001F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(101, 67);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(101, 71);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // panel2
@@ -809,7 +763,7 @@
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(220)))), ((int)(((byte)(219)))));
             this.panel2.Controls.Add(this.bunifuCustomLabel2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(20, 23);
+            this.panel2.Location = new System.Drawing.Point(20, 25);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(60, 20);
@@ -833,7 +787,7 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.Controls.Add(this.panel3, 1, 1);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(11, 147);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(11, 155);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 3;
@@ -841,14 +795,14 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.00001F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(101, 33);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(101, 35);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.bunifuCustomLabel3);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(20, 6);
+            this.panel3.Location = new System.Drawing.Point(20, 7);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(60, 20);
@@ -872,7 +826,7 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.Controls.Add(this.panel4, 1, 1);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(11, 215);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(11, 227);
             this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 3;
@@ -880,7 +834,7 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.00001F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(101, 50);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(101, 53);
             this.tableLayoutPanel5.TabIndex = 1;
             // 
             // panel4
@@ -888,7 +842,7 @@
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(220)))), ((int)(((byte)(219)))));
             this.panel4.Controls.Add(this.bunifuCustomLabel4);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(20, 14);
+            this.panel4.Location = new System.Drawing.Point(20, 16);
             this.panel4.Margin = new System.Windows.Forms.Padding(0);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(60, 20);
@@ -913,7 +867,7 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.Controls.Add(this.panel5, 1, 1);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(11, 266);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(11, 281);
             this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 3;
@@ -921,14 +875,14 @@
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.00001F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(101, 33);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(101, 35);
             this.tableLayoutPanel6.TabIndex = 1;
             // 
             // panel5
             // 
             this.panel5.Controls.Add(this.bunifuCustomLabel5);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(13, 6);
+            this.panel5.Location = new System.Drawing.Point(13, 7);
             this.panel5.Margin = new System.Windows.Forms.Padding(0);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(75, 20);
@@ -953,14 +907,14 @@
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel7.Controls.Add(this.panel6, 1, 1);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(11, 181);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(11, 191);
             this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 3;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.00001F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(101, 16);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(101, 17);
             this.tableLayoutPanel7.TabIndex = 1;
             // 
             // panel6
@@ -992,14 +946,14 @@
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel8.Controls.Add(this.panel7, 1, 1);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(11, 198);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(11, 209);
             this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 3;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(101, 16);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(101, 17);
             this.tableLayoutPanel8.TabIndex = 1;
             // 
             // panel7
@@ -1007,7 +961,7 @@
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(220)))), ((int)(((byte)(219)))));
             this.panel7.Controls.Add(this.bunifuCustomLabel7);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(0, -2);
+            this.panel7.Location = new System.Drawing.Point(0, -1);
             this.panel7.Margin = new System.Windows.Forms.Padding(0);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(100, 20);
@@ -1032,7 +986,7 @@
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel9.Controls.Add(this.panel8, 1, 1);
             this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(11, 300);
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(11, 317);
             this.tableLayoutPanel9.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 3;
@@ -1040,7 +994,7 @@
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.00001F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(101, 33);
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(101, 35);
             this.tableLayoutPanel9.TabIndex = 1;
             // 
             // panel8
@@ -1048,7 +1002,7 @@
             this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(220)))), ((int)(((byte)(219)))));
             this.panel8.Controls.Add(this.bunifuCustomLabel8);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(13, 6);
+            this.panel8.Location = new System.Drawing.Point(13, 7);
             this.panel8.Margin = new System.Windows.Forms.Padding(0);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(75, 20);
@@ -1063,45 +1017,6 @@
             this.bunifuCustomLabel8.TabIndex = 0;
             this.bunifuCustomLabel8.Text = "NCRs";
             // 
-            // tableLayoutPanel13
-            // 
-            this.tableLayoutPanel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(220)))), ((int)(((byte)(219)))));
-            this.tableLayoutPanel13.ColumnCount = 3;
-            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
-            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel13.Controls.Add(this.panel12, 1, 1);
-            this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel13.Location = new System.Drawing.Point(11, 609);
-            this.tableLayoutPanel13.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel13.Name = "tableLayoutPanel13";
-            this.tableLayoutPanel13.RowCount = 3;
-            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.00001F));
-            this.tableLayoutPanel13.Size = new System.Drawing.Size(101, 30);
-            this.tableLayoutPanel13.TabIndex = 1;
-            // 
-            // panel12
-            // 
-            this.panel12.Controls.Add(this.bunifuCustomLabel12);
-            this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel12.Location = new System.Drawing.Point(13, 4);
-            this.panel12.Margin = new System.Windows.Forms.Padding(0);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(75, 20);
-            this.panel12.TabIndex = 0;
-            // 
-            // bunifuCustomLabel12
-            // 
-            this.bunifuCustomLabel12.AutoSize = true;
-            this.bunifuCustomLabel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(220)))), ((int)(((byte)(219)))));
-            this.bunifuCustomLabel12.Location = new System.Drawing.Point(21, 3);
-            this.bunifuCustomLabel12.Name = "bunifuCustomLabel12";
-            this.bunifuCustomLabel12.Size = new System.Drawing.Size(30, 13);
-            this.bunifuCustomLabel12.TabIndex = 0;
-            this.bunifuCustomLabel12.Text = "MTC";
-            // 
             // tableLayoutPanel12
             // 
             this.tableLayoutPanel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(220)))), ((int)(((byte)(219)))));
@@ -1111,7 +1026,7 @@
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel12.Controls.Add(this.panel11, 1, 1);
             this.tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel12.Location = new System.Drawing.Point(11, 558);
+            this.tableLayoutPanel12.Location = new System.Drawing.Point(11, 588);
             this.tableLayoutPanel12.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel12.Name = "tableLayoutPanel12";
             this.tableLayoutPanel12.RowCount = 3;
@@ -1119,7 +1034,7 @@
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel12.Size = new System.Drawing.Size(101, 33);
+            this.tableLayoutPanel12.Size = new System.Drawing.Size(101, 51);
             this.tableLayoutPanel12.TabIndex = 1;
             // 
             // panel11
@@ -1128,7 +1043,7 @@
             this.panel11.Controls.Add(this.bunifuCustomLabel34);
             this.panel11.Controls.Add(this.bunifuCustomLabel11);
             this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel11.Location = new System.Drawing.Point(13, -3);
+            this.panel11.Location = new System.Drawing.Point(13, 5);
             this.panel11.Margin = new System.Windows.Forms.Padding(0);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(75, 40);
@@ -1161,7 +1076,7 @@
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel11.Controls.Add(this.panel10, 1, 1);
             this.tableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel11.Location = new System.Drawing.Point(11, 456);
+            this.tableLayoutPanel11.Location = new System.Drawing.Point(11, 480);
             this.tableLayoutPanel11.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel11.Name = "tableLayoutPanel11";
             this.tableLayoutPanel11.RowCount = 3;
@@ -1169,7 +1084,7 @@
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.00001F));
-            this.tableLayoutPanel11.Size = new System.Drawing.Size(101, 84);
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(101, 89);
             this.tableLayoutPanel11.TabIndex = 1;
             // 
             // panel10
@@ -1178,7 +1093,7 @@
             this.panel10.Controls.Add(this.bunifuCustomLabel13);
             this.panel10.Controls.Add(this.bunifuCustomLabel10);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel10.Location = new System.Drawing.Point(13, 24);
+            this.panel10.Location = new System.Drawing.Point(13, 26);
             this.panel10.Margin = new System.Windows.Forms.Padding(0);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(75, 35);
@@ -1211,7 +1126,7 @@
             this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel14.Controls.Add(this.panel13, 1, 1);
             this.tableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel14.Location = new System.Drawing.Point(11, 334);
+            this.tableLayoutPanel14.Location = new System.Drawing.Point(11, 353);
             this.tableLayoutPanel14.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel14.Name = "tableLayoutPanel14";
             this.tableLayoutPanel14.RowCount = 3;
@@ -1219,7 +1134,7 @@
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.00001F));
-            this.tableLayoutPanel14.Size = new System.Drawing.Size(101, 33);
+            this.tableLayoutPanel14.Size = new System.Drawing.Size(101, 35);
             this.tableLayoutPanel14.TabIndex = 1;
             // 
             // panel13
@@ -1227,7 +1142,7 @@
             this.panel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(220)))), ((int)(((byte)(219)))));
             this.panel13.Controls.Add(this.bunifuCustomLabel15);
             this.panel13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel13.Location = new System.Drawing.Point(13, 6);
+            this.panel13.Location = new System.Drawing.Point(13, 7);
             this.panel13.Margin = new System.Windows.Forms.Padding(0);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(75, 20);
@@ -1258,14 +1173,14 @@
             this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel15.Size = new System.Drawing.Size(73, 16);
+            this.tableLayoutPanel15.Size = new System.Drawing.Size(73, 17);
             this.tableLayoutPanel15.TabIndex = 1;
             // 
             // panel14
             // 
             this.panel14.Controls.Add(this.bunifuCustomLabel16);
             this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel14.Location = new System.Drawing.Point(11, -2);
+            this.panel14.Location = new System.Drawing.Point(11, -1);
             this.panel14.Margin = new System.Windows.Forms.Padding(0);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(50, 20);
@@ -1296,14 +1211,14 @@
             this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel16.Size = new System.Drawing.Size(71, 16);
+            this.tableLayoutPanel16.Size = new System.Drawing.Size(71, 17);
             this.tableLayoutPanel16.TabIndex = 1;
             // 
             // panel15
             // 
             this.panel15.Controls.Add(this.bunifuCustomLabel17);
             this.panel15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel15.Location = new System.Drawing.Point(0, -2);
+            this.panel15.Location = new System.Drawing.Point(0, -1);
             this.panel15.Margin = new System.Windows.Forms.Padding(0);
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(70, 20);
@@ -1334,14 +1249,14 @@
             this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel17.Size = new System.Drawing.Size(71, 16);
+            this.tableLayoutPanel17.Size = new System.Drawing.Size(71, 17);
             this.tableLayoutPanel17.TabIndex = 1;
             // 
             // panel16
             // 
             this.panel16.Controls.Add(this.bunifuCustomLabel18);
             this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel16.Location = new System.Drawing.Point(0, -2);
+            this.panel16.Location = new System.Drawing.Point(0, -1);
             this.panel16.Margin = new System.Windows.Forms.Padding(0);
             this.panel16.Name = "panel16";
             this.panel16.Size = new System.Drawing.Size(70, 20);
@@ -1372,14 +1287,14 @@
             this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel18.Size = new System.Drawing.Size(71, 16);
+            this.tableLayoutPanel18.Size = new System.Drawing.Size(71, 17);
             this.tableLayoutPanel18.TabIndex = 1;
             // 
             // panel17
             // 
             this.panel17.Controls.Add(this.bunifuCustomLabel19);
             this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel17.Location = new System.Drawing.Point(0, -2);
+            this.panel17.Location = new System.Drawing.Point(0, -1);
             this.panel17.Margin = new System.Windows.Forms.Padding(0);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(70, 20);
@@ -1411,14 +1326,14 @@
             this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel19.Size = new System.Drawing.Size(71, 16);
+            this.tableLayoutPanel19.Size = new System.Drawing.Size(71, 17);
             this.tableLayoutPanel19.TabIndex = 1;
             // 
             // panel18
             // 
             this.panel18.Controls.Add(this.bunifuCustomLabel20);
             this.panel18.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel18.Location = new System.Drawing.Point(0, -2);
+            this.panel18.Location = new System.Drawing.Point(0, -1);
             this.panel18.Margin = new System.Windows.Forms.Padding(0);
             this.panel18.Name = "panel18";
             this.panel18.Size = new System.Drawing.Size(70, 20);
@@ -1450,14 +1365,14 @@
             this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel20.Size = new System.Drawing.Size(71, 16);
+            this.tableLayoutPanel20.Size = new System.Drawing.Size(71, 17);
             this.tableLayoutPanel20.TabIndex = 1;
             // 
             // panel19
             // 
             this.panel19.Controls.Add(this.bunifuCustomLabel21);
             this.panel19.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel19.Location = new System.Drawing.Point(0, -2);
+            this.panel19.Location = new System.Drawing.Point(0, -1);
             this.panel19.Margin = new System.Windows.Forms.Padding(0);
             this.panel19.Name = "panel19";
             this.panel19.Size = new System.Drawing.Size(70, 20);
@@ -1489,14 +1404,14 @@
             this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel21.Size = new System.Drawing.Size(71, 16);
+            this.tableLayoutPanel21.Size = new System.Drawing.Size(71, 17);
             this.tableLayoutPanel21.TabIndex = 1;
             // 
             // panel20
             // 
             this.panel20.Controls.Add(this.bunifuCustomLabel22);
             this.panel20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel20.Location = new System.Drawing.Point(0, -2);
+            this.panel20.Location = new System.Drawing.Point(0, -1);
             this.panel20.Margin = new System.Windows.Forms.Padding(0);
             this.panel20.Name = "panel20";
             this.panel20.Size = new System.Drawing.Size(70, 20);
@@ -1528,14 +1443,14 @@
             this.tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel22.Size = new System.Drawing.Size(71, 16);
+            this.tableLayoutPanel22.Size = new System.Drawing.Size(71, 17);
             this.tableLayoutPanel22.TabIndex = 1;
             // 
             // panel21
             // 
             this.panel21.Controls.Add(this.bunifuCustomLabel23);
             this.panel21.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel21.Location = new System.Drawing.Point(0, -2);
+            this.panel21.Location = new System.Drawing.Point(0, -1);
             this.panel21.Margin = new System.Windows.Forms.Padding(0);
             this.panel21.Name = "panel21";
             this.panel21.Size = new System.Drawing.Size(70, 20);
@@ -1567,7 +1482,7 @@
             this.tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel23.Size = new System.Drawing.Size(71, 16);
+            this.tableLayoutPanel23.Size = new System.Drawing.Size(71, 17);
             this.tableLayoutPanel23.TabIndex = 1;
             // 
             // panel22
@@ -1575,7 +1490,7 @@
             this.panel22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(150)))), ((int)(((byte)(148)))));
             this.panel22.Controls.Add(this.bunifuCustomLabel24);
             this.panel22.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel22.Location = new System.Drawing.Point(0, -2);
+            this.panel22.Location = new System.Drawing.Point(0, -1);
             this.panel22.Margin = new System.Windows.Forms.Padding(0);
             this.panel22.Name = "panel22";
             this.panel22.Size = new System.Drawing.Size(70, 20);
@@ -1601,21 +1516,21 @@
             this.tableLayoutPanel24.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel24.Controls.Add(this.panel23, 1, 1);
             this.tableLayoutPanel24.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel24.Location = new System.Drawing.Point(340, 541);
+            this.tableLayoutPanel24.Location = new System.Drawing.Point(340, 570);
             this.tableLayoutPanel24.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel24.Name = "tableLayoutPanel24";
             this.tableLayoutPanel24.RowCount = 3;
             this.tableLayoutPanel24.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel24.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel24.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel24.Size = new System.Drawing.Size(73, 16);
+            this.tableLayoutPanel24.Size = new System.Drawing.Size(73, 17);
             this.tableLayoutPanel24.TabIndex = 1;
             // 
             // panel23
             // 
             this.panel23.Controls.Add(this.bunifuCustomLabel25);
             this.panel23.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel23.Location = new System.Drawing.Point(11, -2);
+            this.panel23.Location = new System.Drawing.Point(11, -1);
             this.panel23.Margin = new System.Windows.Forms.Padding(0);
             this.panel23.Name = "panel23";
             this.panel23.Size = new System.Drawing.Size(50, 20);
@@ -1630,236 +1545,6 @@
             this.bunifuCustomLabel25.TabIndex = 0;
             this.bunifuCustomLabel25.Text = "Average";
             // 
-            // tableLayoutPanel25
-            // 
-            this.tableLayoutPanel25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(96)))), ((int)(((byte)(146)))));
-            this.tableLayoutPanel25.ColumnCount = 3;
-            this.tableLayoutPanel25.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel25.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel25.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel25.Controls.Add(this.panel24, 1, 1);
-            this.tableLayoutPanel25.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel25.Location = new System.Drawing.Point(340, 592);
-            this.tableLayoutPanel25.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel25.Name = "tableLayoutPanel25";
-            this.tableLayoutPanel25.RowCount = 3;
-            this.tableLayoutPanel25.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel25.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel25.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel25.Size = new System.Drawing.Size(73, 16);
-            this.tableLayoutPanel25.TabIndex = 1;
-            // 
-            // panel24
-            // 
-            this.panel24.Controls.Add(this.bunifuCustomLabel26);
-            this.panel24.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel24.Location = new System.Drawing.Point(11, -2);
-            this.panel24.Margin = new System.Windows.Forms.Padding(0);
-            this.panel24.Name = "panel24";
-            this.panel24.Size = new System.Drawing.Size(50, 20);
-            this.panel24.TabIndex = 0;
-            // 
-            // bunifuCustomLabel26
-            // 
-            this.bunifuCustomLabel26.AutoSize = true;
-            this.bunifuCustomLabel26.Location = new System.Drawing.Point(12, 3);
-            this.bunifuCustomLabel26.Name = "bunifuCustomLabel26";
-            this.bunifuCustomLabel26.Size = new System.Drawing.Size(28, 13);
-            this.bunifuCustomLabel26.TabIndex = 0;
-            this.bunifuCustomLabel26.Text = "Plan";
-            // 
-            // tableLayoutPanel26
-            // 
-            this.tableLayoutPanel26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.tableLayoutPanel26.ColumnCount = 3;
-            this.tableLayoutPanel26.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel26.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
-            this.tableLayoutPanel26.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel26.Controls.Add(this.panel25, 1, 1);
-            this.tableLayoutPanel26.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel26.Location = new System.Drawing.Point(414, 592);
-            this.tableLayoutPanel26.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel26.Name = "tableLayoutPanel26";
-            this.tableLayoutPanel26.RowCount = 3;
-            this.tableLayoutPanel26.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel26.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel26.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel26.Size = new System.Drawing.Size(71, 16);
-            this.tableLayoutPanel26.TabIndex = 1;
-            // 
-            // panel25
-            // 
-            this.panel25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(179)))), ((int)(((byte)(215)))));
-            this.panel25.Controls.Add(this.bunifuCustomLabel27);
-            this.panel25.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel25.Location = new System.Drawing.Point(-2, -2);
-            this.panel25.Margin = new System.Windows.Forms.Padding(0);
-            this.panel25.Name = "panel25";
-            this.panel25.Size = new System.Drawing.Size(75, 20);
-            this.panel25.TabIndex = 0;
-            // 
-            // bunifuCustomLabel27
-            // 
-            this.bunifuCustomLabel27.AutoSize = true;
-            this.bunifuCustomLabel27.Location = new System.Drawing.Point(9, 3);
-            this.bunifuCustomLabel27.Name = "bunifuCustomLabel27";
-            this.bunifuCustomLabel27.Size = new System.Drawing.Size(58, 13);
-            this.bunifuCustomLabel27.TabIndex = 0;
-            this.bunifuCustomLabel27.Text = "Purch Req";
-            // 
-            // tableLayoutPanel27
-            // 
-            this.tableLayoutPanel27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(192)))), ((int)(((byte)(218)))));
-            this.tableLayoutPanel27.ColumnCount = 3;
-            this.tableLayoutPanel27.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel27.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.tableLayoutPanel27.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel27.Controls.Add(this.panel26, 1, 1);
-            this.tableLayoutPanel27.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel27.Location = new System.Drawing.Point(486, 592);
-            this.tableLayoutPanel27.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel27.Name = "tableLayoutPanel27";
-            this.tableLayoutPanel27.RowCount = 3;
-            this.tableLayoutPanel27.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel27.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel27.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel27.Size = new System.Drawing.Size(71, 16);
-            this.tableLayoutPanel27.TabIndex = 1;
-            // 
-            // panel26
-            // 
-            this.panel26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(192)))), ((int)(((byte)(218)))));
-            this.panel26.Controls.Add(this.bunifuCustomLabel28);
-            this.panel26.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel26.Location = new System.Drawing.Point(0, -2);
-            this.panel26.Margin = new System.Windows.Forms.Padding(0);
-            this.panel26.Name = "panel26";
-            this.panel26.Size = new System.Drawing.Size(70, 20);
-            this.panel26.TabIndex = 0;
-            // 
-            // bunifuCustomLabel28
-            // 
-            this.bunifuCustomLabel28.AutoSize = true;
-            this.bunifuCustomLabel28.Location = new System.Drawing.Point(4, 3);
-            this.bunifuCustomLabel28.Name = "bunifuCustomLabel28";
-            this.bunifuCustomLabel28.Size = new System.Drawing.Size(64, 13);
-            this.bunifuCustomLabel28.TabIndex = 0;
-            this.bunifuCustomLabel28.Text = "Prod on Ord";
-            // 
-            // tableLayoutPanel28
-            // 
-            this.tableLayoutPanel28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.tableLayoutPanel28.ColumnCount = 3;
-            this.tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel28.Controls.Add(this.panel27, 1, 1);
-            this.tableLayoutPanel28.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel28.Location = new System.Drawing.Point(558, 592);
-            this.tableLayoutPanel28.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel28.Name = "tableLayoutPanel28";
-            this.tableLayoutPanel28.RowCount = 3;
-            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel28.Size = new System.Drawing.Size(71, 16);
-            this.tableLayoutPanel28.TabIndex = 1;
-            // 
-            // panel27
-            // 
-            this.panel27.Controls.Add(this.bunifuCustomLabel29);
-            this.panel27.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel27.Location = new System.Drawing.Point(0, -2);
-            this.panel27.Margin = new System.Windows.Forms.Padding(0);
-            this.panel27.Name = "panel27";
-            this.panel27.Size = new System.Drawing.Size(70, 20);
-            this.panel27.TabIndex = 0;
-            // 
-            // bunifuCustomLabel29
-            // 
-            this.bunifuCustomLabel29.AutoSize = true;
-            this.bunifuCustomLabel29.Location = new System.Drawing.Point(12, 3);
-            this.bunifuCustomLabel29.Name = "bunifuCustomLabel29";
-            this.bunifuCustomLabel29.Size = new System.Drawing.Size(50, 13);
-            this.bunifuCustomLabel29.TabIndex = 0;
-            this.bunifuCustomLabel29.Text = "PO Items";
-            // 
-            // tableLayoutPanel29
-            // 
-            this.tableLayoutPanel29.BackColor = System.Drawing.Color.Red;
-            this.tableLayoutPanel29.ColumnCount = 3;
-            this.tableLayoutPanel29.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel29.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.tableLayoutPanel29.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel29.Controls.Add(this.panel28, 1, 1);
-            this.tableLayoutPanel29.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel29.Location = new System.Drawing.Point(630, 592);
-            this.tableLayoutPanel29.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel29.Name = "tableLayoutPanel29";
-            this.tableLayoutPanel29.RowCount = 3;
-            this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel29.Size = new System.Drawing.Size(71, 16);
-            this.tableLayoutPanel29.TabIndex = 1;
-            // 
-            // panel28
-            // 
-            this.panel28.Controls.Add(this.bunifuCustomLabel30);
-            this.panel28.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel28.Location = new System.Drawing.Point(0, -2);
-            this.panel28.Margin = new System.Windows.Forms.Padding(0);
-            this.panel28.Name = "panel28";
-            this.panel28.Size = new System.Drawing.Size(70, 20);
-            this.panel28.TabIndex = 0;
-            // 
-            // bunifuCustomLabel30
-            // 
-            this.bunifuCustomLabel30.AutoSize = true;
-            this.bunifuCustomLabel30.Location = new System.Drawing.Point(8, 3);
-            this.bunifuCustomLabel30.Name = "bunifuCustomLabel30";
-            this.bunifuCustomLabel30.Size = new System.Drawing.Size(54, 13);
-            this.bunifuCustomLabel30.TabIndex = 0;
-            this.bunifuCustomLabel30.Text = "Ship Note";
-            // 
-            // tableLayoutPanel30
-            // 
-            this.tableLayoutPanel30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(204)))), ((int)(((byte)(228)))));
-            this.tableLayoutPanel30.ColumnCount = 3;
-            this.tableLayoutPanel30.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel30.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel30.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel30.Controls.Add(this.panel29, 1, 1);
-            this.tableLayoutPanel30.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel30.Location = new System.Drawing.Point(702, 592);
-            this.tableLayoutPanel30.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel30.Name = "tableLayoutPanel30";
-            this.tableLayoutPanel30.RowCount = 3;
-            this.tableLayoutPanel30.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel30.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel30.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel30.Size = new System.Drawing.Size(71, 16);
-            this.tableLayoutPanel30.TabIndex = 1;
-            // 
-            // panel29
-            // 
-            this.panel29.Controls.Add(this.bunifuCustomLabel31);
-            this.panel29.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel29.Location = new System.Drawing.Point(10, -2);
-            this.panel29.Margin = new System.Windows.Forms.Padding(0);
-            this.panel29.Name = "panel29";
-            this.panel29.Size = new System.Drawing.Size(50, 20);
-            this.panel29.TabIndex = 0;
-            // 
-            // bunifuCustomLabel31
-            // 
-            this.bunifuCustomLabel31.AutoSize = true;
-            this.bunifuCustomLabel31.Location = new System.Drawing.Point(7, 3);
-            this.bunifuCustomLabel31.Name = "bunifuCustomLabel31";
-            this.bunifuCustomLabel31.Size = new System.Drawing.Size(35, 13);
-            this.bunifuCustomLabel31.TabIndex = 0;
-            this.bunifuCustomLabel31.Text = "Stock";
-            // 
             // tableLayoutPanel32
             // 
             this.tableLayoutPanel32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(215)))), ((int)(((byte)(155)))));
@@ -1869,21 +1554,21 @@
             this.tableLayoutPanel32.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel32.Controls.Add(this.panel31, 1, 1);
             this.tableLayoutPanel32.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel32.Location = new System.Drawing.Point(486, 541);
+            this.tableLayoutPanel32.Location = new System.Drawing.Point(486, 570);
             this.tableLayoutPanel32.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel32.Name = "tableLayoutPanel32";
             this.tableLayoutPanel32.RowCount = 3;
             this.tableLayoutPanel32.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel32.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel32.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel32.Size = new System.Drawing.Size(71, 16);
+            this.tableLayoutPanel32.Size = new System.Drawing.Size(71, 17);
             this.tableLayoutPanel32.TabIndex = 1;
             // 
             // panel31
             // 
             this.panel31.Controls.Add(this.bunifuCustomLabel33);
             this.panel31.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel31.Location = new System.Drawing.Point(0, -2);
+            this.panel31.Location = new System.Drawing.Point(0, -1);
             this.panel31.Margin = new System.Windows.Forms.Padding(0);
             this.panel31.Name = "panel31";
             this.panel31.Size = new System.Drawing.Size(70, 20);
@@ -1908,21 +1593,21 @@
             this.tableLayoutPanel33.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel33.Controls.Add(this.panel32, 1, 1);
             this.tableLayoutPanel33.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel33.Location = new System.Drawing.Point(558, 541);
+            this.tableLayoutPanel33.Location = new System.Drawing.Point(558, 570);
             this.tableLayoutPanel33.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel33.Name = "tableLayoutPanel33";
             this.tableLayoutPanel33.RowCount = 3;
             this.tableLayoutPanel33.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel33.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel33.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel33.Size = new System.Drawing.Size(71, 16);
+            this.tableLayoutPanel33.Size = new System.Drawing.Size(71, 17);
             this.tableLayoutPanel33.TabIndex = 1;
             // 
             // panel32
             // 
             this.panel32.Controls.Add(this.bunifuCustomLabel35);
             this.panel32.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel32.Location = new System.Drawing.Point(0, -2);
+            this.panel32.Location = new System.Drawing.Point(0, -1);
             this.panel32.Margin = new System.Windows.Forms.Padding(0);
             this.panel32.Name = "panel32";
             this.panel32.Size = new System.Drawing.Size(70, 20);
@@ -1946,21 +1631,21 @@
             this.tableLayoutPanel34.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel34.Controls.Add(this.panel33, 1, 1);
             this.tableLayoutPanel34.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel34.Location = new System.Drawing.Point(630, 541);
+            this.tableLayoutPanel34.Location = new System.Drawing.Point(630, 570);
             this.tableLayoutPanel34.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel34.Name = "tableLayoutPanel34";
             this.tableLayoutPanel34.RowCount = 3;
             this.tableLayoutPanel34.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel34.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel34.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel34.Size = new System.Drawing.Size(71, 16);
+            this.tableLayoutPanel34.Size = new System.Drawing.Size(71, 17);
             this.tableLayoutPanel34.TabIndex = 1;
             // 
             // panel33
             // 
             this.panel33.Controls.Add(this.bunifuCustomLabel36);
             this.panel33.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel33.Location = new System.Drawing.Point(0, -2);
+            this.panel33.Location = new System.Drawing.Point(0, -1);
             this.panel33.Margin = new System.Windows.Forms.Padding(0);
             this.panel33.Name = "panel33";
             this.panel33.Size = new System.Drawing.Size(70, 20);
@@ -1984,21 +1669,21 @@
             this.tableLayoutPanel35.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel35.Controls.Add(this.panel34, 1, 1);
             this.tableLayoutPanel35.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel35.Location = new System.Drawing.Point(702, 541);
+            this.tableLayoutPanel35.Location = new System.Drawing.Point(702, 570);
             this.tableLayoutPanel35.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel35.Name = "tableLayoutPanel35";
             this.tableLayoutPanel35.RowCount = 3;
             this.tableLayoutPanel35.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel35.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel35.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel35.Size = new System.Drawing.Size(71, 16);
+            this.tableLayoutPanel35.Size = new System.Drawing.Size(71, 17);
             this.tableLayoutPanel35.TabIndex = 1;
             // 
             // panel34
             // 
             this.panel34.Controls.Add(this.bunifuCustomLabel37);
             this.panel34.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel34.Location = new System.Drawing.Point(0, -2);
+            this.panel34.Location = new System.Drawing.Point(0, -1);
             this.panel34.Margin = new System.Windows.Forms.Padding(0);
             this.panel34.Name = "panel34";
             this.panel34.Size = new System.Drawing.Size(70, 20);
@@ -2022,21 +1707,21 @@
             this.tableLayoutPanel36.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel36.Controls.Add(this.panel35, 1, 1);
             this.tableLayoutPanel36.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel36.Location = new System.Drawing.Point(774, 541);
+            this.tableLayoutPanel36.Location = new System.Drawing.Point(774, 570);
             this.tableLayoutPanel36.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel36.Name = "tableLayoutPanel36";
             this.tableLayoutPanel36.RowCount = 3;
             this.tableLayoutPanel36.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel36.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel36.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel36.Size = new System.Drawing.Size(71, 16);
+            this.tableLayoutPanel36.Size = new System.Drawing.Size(71, 17);
             this.tableLayoutPanel36.TabIndex = 1;
             // 
             // panel35
             // 
             this.panel35.Controls.Add(this.bunifuCustomLabel38);
             this.panel35.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel35.Location = new System.Drawing.Point(0, -2);
+            this.panel35.Location = new System.Drawing.Point(0, -1);
             this.panel35.Margin = new System.Windows.Forms.Padding(0);
             this.panel35.Name = "panel35";
             this.panel35.Size = new System.Drawing.Size(70, 20);
@@ -2060,21 +1745,21 @@
             this.tableLayoutPanel37.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel37.Controls.Add(this.panel36, 1, 1);
             this.tableLayoutPanel37.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel37.Location = new System.Drawing.Point(846, 541);
+            this.tableLayoutPanel37.Location = new System.Drawing.Point(846, 570);
             this.tableLayoutPanel37.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel37.Name = "tableLayoutPanel37";
             this.tableLayoutPanel37.RowCount = 3;
             this.tableLayoutPanel37.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel37.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel37.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel37.Size = new System.Drawing.Size(71, 16);
+            this.tableLayoutPanel37.Size = new System.Drawing.Size(71, 17);
             this.tableLayoutPanel37.TabIndex = 1;
             // 
             // panel36
             // 
             this.panel36.Controls.Add(this.bunifuCustomLabel39);
             this.panel36.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel36.Location = new System.Drawing.Point(0, -2);
+            this.panel36.Location = new System.Drawing.Point(0, -1);
             this.panel36.Margin = new System.Windows.Forms.Padding(0);
             this.panel36.Name = "panel36";
             this.panel36.Size = new System.Drawing.Size(70, 20);
@@ -2098,21 +1783,21 @@
             this.tableLayoutPanel38.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel38.Controls.Add(this.panel37, 1, 1);
             this.tableLayoutPanel38.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel38.Location = new System.Drawing.Point(918, 541);
+            this.tableLayoutPanel38.Location = new System.Drawing.Point(918, 570);
             this.tableLayoutPanel38.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel38.Name = "tableLayoutPanel38";
             this.tableLayoutPanel38.RowCount = 3;
             this.tableLayoutPanel38.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel38.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel38.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel38.Size = new System.Drawing.Size(71, 16);
+            this.tableLayoutPanel38.Size = new System.Drawing.Size(71, 17);
             this.tableLayoutPanel38.TabIndex = 1;
             // 
             // panel37
             // 
             this.panel37.Controls.Add(this.bunifuCustomLabel40);
             this.panel37.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel37.Location = new System.Drawing.Point(0, -2);
+            this.panel37.Location = new System.Drawing.Point(0, -1);
             this.panel37.Margin = new System.Windows.Forms.Padding(0);
             this.panel37.Name = "panel37";
             this.panel37.Size = new System.Drawing.Size(70, 20);
@@ -2136,21 +1821,21 @@
             this.tableLayoutPanel31.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel31.Controls.Add(this.panel30, 1, 1);
             this.tableLayoutPanel31.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel31.Location = new System.Drawing.Point(414, 541);
+            this.tableLayoutPanel31.Location = new System.Drawing.Point(414, 570);
             this.tableLayoutPanel31.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel31.Name = "tableLayoutPanel31";
             this.tableLayoutPanel31.RowCount = 3;
             this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel31.Size = new System.Drawing.Size(71, 16);
+            this.tableLayoutPanel31.Size = new System.Drawing.Size(71, 17);
             this.tableLayoutPanel31.TabIndex = 1;
             // 
             // panel30
             // 
             this.panel30.Controls.Add(this.bunifuCustomLabel32);
             this.panel30.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel30.Location = new System.Drawing.Point(0, -2);
+            this.panel30.Location = new System.Drawing.Point(0, -1);
             this.panel30.Margin = new System.Windows.Forms.Padding(0);
             this.panel30.Name = "panel30";
             this.panel30.Size = new System.Drawing.Size(70, 20);
@@ -2168,7 +1853,7 @@
             // bunifuCustomLabel42
             // 
             this.bunifuCustomLabel42.AutoSize = true;
-            this.bunifuCustomLabel42.Location = new System.Drawing.Point(116, 45);
+            this.bunifuCustomLabel42.Location = new System.Drawing.Point(116, 47);
             this.bunifuCustomLabel42.Name = "bunifuCustomLabel42";
             this.bunifuCustomLabel42.Size = new System.Drawing.Size(131, 13);
             this.bunifuCustomLabel42.TabIndex = 0;
@@ -2177,7 +1862,7 @@
             // bunifuCustomLabel43
             // 
             this.bunifuCustomLabel43.AutoSize = true;
-            this.bunifuCustomLabel43.Location = new System.Drawing.Point(116, 62);
+            this.bunifuCustomLabel43.Location = new System.Drawing.Point(116, 65);
             this.bunifuCustomLabel43.Name = "bunifuCustomLabel43";
             this.bunifuCustomLabel43.Size = new System.Drawing.Size(67, 13);
             this.bunifuCustomLabel43.TabIndex = 0;
@@ -2186,7 +1871,7 @@
             // bunifuCustomLabel44
             // 
             this.bunifuCustomLabel44.AutoSize = true;
-            this.bunifuCustomLabel44.Location = new System.Drawing.Point(116, 79);
+            this.bunifuCustomLabel44.Location = new System.Drawing.Point(116, 83);
             this.bunifuCustomLabel44.Name = "bunifuCustomLabel44";
             this.bunifuCustomLabel44.Size = new System.Drawing.Size(111, 13);
             this.bunifuCustomLabel44.TabIndex = 0;
@@ -2195,7 +1880,7 @@
             // bunifuCustomLabel45
             // 
             this.bunifuCustomLabel45.AutoSize = true;
-            this.bunifuCustomLabel45.Location = new System.Drawing.Point(116, 96);
+            this.bunifuCustomLabel45.Location = new System.Drawing.Point(116, 101);
             this.bunifuCustomLabel45.Name = "bunifuCustomLabel45";
             this.bunifuCustomLabel45.Size = new System.Drawing.Size(86, 13);
             this.bunifuCustomLabel45.TabIndex = 0;
@@ -2204,7 +1889,7 @@
             // bunifuCustomLabel46
             // 
             this.bunifuCustomLabel46.AutoSize = true;
-            this.bunifuCustomLabel46.Location = new System.Drawing.Point(116, 113);
+            this.bunifuCustomLabel46.Location = new System.Drawing.Point(116, 119);
             this.bunifuCustomLabel46.Name = "bunifuCustomLabel46";
             this.bunifuCustomLabel46.Size = new System.Drawing.Size(89, 13);
             this.bunifuCustomLabel46.TabIndex = 0;
@@ -2213,7 +1898,7 @@
             // bunifuCustomLabel47
             // 
             this.bunifuCustomLabel47.AutoSize = true;
-            this.bunifuCustomLabel47.Location = new System.Drawing.Point(116, 131);
+            this.bunifuCustomLabel47.Location = new System.Drawing.Point(116, 138);
             this.bunifuCustomLabel47.Name = "bunifuCustomLabel47";
             this.bunifuCustomLabel47.Size = new System.Drawing.Size(82, 13);
             this.bunifuCustomLabel47.TabIndex = 0;
@@ -2222,7 +1907,7 @@
             // bunifuCustomLabel48
             // 
             this.bunifuCustomLabel48.AutoSize = true;
-            this.bunifuCustomLabel48.Location = new System.Drawing.Point(116, 147);
+            this.bunifuCustomLabel48.Location = new System.Drawing.Point(116, 155);
             this.bunifuCustomLabel48.Name = "bunifuCustomLabel48";
             this.bunifuCustomLabel48.Size = new System.Drawing.Size(136, 13);
             this.bunifuCustomLabel48.TabIndex = 0;
@@ -2231,7 +1916,7 @@
             // bunifuCustomLabel49
             // 
             this.bunifuCustomLabel49.AutoSize = true;
-            this.bunifuCustomLabel49.Location = new System.Drawing.Point(116, 164);
+            this.bunifuCustomLabel49.Location = new System.Drawing.Point(116, 173);
             this.bunifuCustomLabel49.Name = "bunifuCustomLabel49";
             this.bunifuCustomLabel49.Size = new System.Drawing.Size(164, 13);
             this.bunifuCustomLabel49.TabIndex = 0;
@@ -2240,7 +1925,7 @@
             // bunifuCustomLabel50
             // 
             this.bunifuCustomLabel50.AutoSize = true;
-            this.bunifuCustomLabel50.Location = new System.Drawing.Point(116, 181);
+            this.bunifuCustomLabel50.Location = new System.Drawing.Point(116, 191);
             this.bunifuCustomLabel50.Name = "bunifuCustomLabel50";
             this.bunifuCustomLabel50.Size = new System.Drawing.Size(164, 13);
             this.bunifuCustomLabel50.TabIndex = 0;
@@ -2249,7 +1934,7 @@
             // bunifuCustomLabel51
             // 
             this.bunifuCustomLabel51.AutoSize = true;
-            this.bunifuCustomLabel51.Location = new System.Drawing.Point(116, 198);
+            this.bunifuCustomLabel51.Location = new System.Drawing.Point(116, 209);
             this.bunifuCustomLabel51.Name = "bunifuCustomLabel51";
             this.bunifuCustomLabel51.Size = new System.Drawing.Size(105, 13);
             this.bunifuCustomLabel51.TabIndex = 0;
@@ -2258,7 +1943,7 @@
             // bunifuCustomLabel52
             // 
             this.bunifuCustomLabel52.AutoSize = true;
-            this.bunifuCustomLabel52.Location = new System.Drawing.Point(116, 215);
+            this.bunifuCustomLabel52.Location = new System.Drawing.Point(116, 227);
             this.bunifuCustomLabel52.Name = "bunifuCustomLabel52";
             this.bunifuCustomLabel52.Size = new System.Drawing.Size(118, 13);
             this.bunifuCustomLabel52.TabIndex = 0;
@@ -2267,7 +1952,7 @@
             // bunifuCustomLabel53
             // 
             this.bunifuCustomLabel53.AutoSize = true;
-            this.bunifuCustomLabel53.Location = new System.Drawing.Point(116, 231);
+            this.bunifuCustomLabel53.Location = new System.Drawing.Point(116, 244);
             this.bunifuCustomLabel53.Name = "bunifuCustomLabel53";
             this.bunifuCustomLabel53.Size = new System.Drawing.Size(195, 13);
             this.bunifuCustomLabel53.TabIndex = 0;
@@ -2276,7 +1961,7 @@
             // bunifuCustomLabel54
             // 
             this.bunifuCustomLabel54.AutoSize = true;
-            this.bunifuCustomLabel54.Location = new System.Drawing.Point(116, 249);
+            this.bunifuCustomLabel54.Location = new System.Drawing.Point(116, 263);
             this.bunifuCustomLabel54.Name = "bunifuCustomLabel54";
             this.bunifuCustomLabel54.Size = new System.Drawing.Size(90, 13);
             this.bunifuCustomLabel54.TabIndex = 0;
@@ -2285,7 +1970,7 @@
             // bunifuCustomLabel55
             // 
             this.bunifuCustomLabel55.AutoSize = true;
-            this.bunifuCustomLabel55.Location = new System.Drawing.Point(116, 266);
+            this.bunifuCustomLabel55.Location = new System.Drawing.Point(116, 281);
             this.bunifuCustomLabel55.Name = "bunifuCustomLabel55";
             this.bunifuCustomLabel55.Size = new System.Drawing.Size(96, 13);
             this.bunifuCustomLabel55.TabIndex = 0;
@@ -2294,7 +1979,7 @@
             // bunifuCustomLabel56
             // 
             this.bunifuCustomLabel56.AutoSize = true;
-            this.bunifuCustomLabel56.Location = new System.Drawing.Point(116, 283);
+            this.bunifuCustomLabel56.Location = new System.Drawing.Point(116, 299);
             this.bunifuCustomLabel56.Name = "bunifuCustomLabel56";
             this.bunifuCustomLabel56.Size = new System.Drawing.Size(95, 13);
             this.bunifuCustomLabel56.TabIndex = 0;
@@ -2303,7 +1988,7 @@
             // bunifuCustomLabel57
             // 
             this.bunifuCustomLabel57.AutoSize = true;
-            this.bunifuCustomLabel57.Location = new System.Drawing.Point(116, 300);
+            this.bunifuCustomLabel57.Location = new System.Drawing.Point(116, 317);
             this.bunifuCustomLabel57.Name = "bunifuCustomLabel57";
             this.bunifuCustomLabel57.Size = new System.Drawing.Size(64, 13);
             this.bunifuCustomLabel57.TabIndex = 0;
@@ -2312,7 +1997,7 @@
             // bunifuCustomLabel58
             // 
             this.bunifuCustomLabel58.AutoSize = true;
-            this.bunifuCustomLabel58.Location = new System.Drawing.Point(116, 317);
+            this.bunifuCustomLabel58.Location = new System.Drawing.Point(116, 335);
             this.bunifuCustomLabel58.Name = "bunifuCustomLabel58";
             this.bunifuCustomLabel58.Size = new System.Drawing.Size(94, 13);
             this.bunifuCustomLabel58.TabIndex = 0;
@@ -2321,7 +2006,7 @@
             // bunifuCustomLabel59
             // 
             this.bunifuCustomLabel59.AutoSize = true;
-            this.bunifuCustomLabel59.Location = new System.Drawing.Point(116, 334);
+            this.bunifuCustomLabel59.Location = new System.Drawing.Point(116, 353);
             this.bunifuCustomLabel59.Name = "bunifuCustomLabel59";
             this.bunifuCustomLabel59.Size = new System.Drawing.Size(156, 13);
             this.bunifuCustomLabel59.TabIndex = 0;
@@ -2330,7 +2015,7 @@
             // bunifuCustomLabel60
             // 
             this.bunifuCustomLabel60.AutoSize = true;
-            this.bunifuCustomLabel60.Location = new System.Drawing.Point(116, 351);
+            this.bunifuCustomLabel60.Location = new System.Drawing.Point(116, 371);
             this.bunifuCustomLabel60.Name = "bunifuCustomLabel60";
             this.bunifuCustomLabel60.Size = new System.Drawing.Size(152, 13);
             this.bunifuCustomLabel60.TabIndex = 0;
@@ -2339,7 +2024,7 @@
             // bunifuCustomLabel65
             // 
             this.bunifuCustomLabel65.AutoSize = true;
-            this.bunifuCustomLabel65.Location = new System.Drawing.Point(116, 456);
+            this.bunifuCustomLabel65.Location = new System.Drawing.Point(116, 480);
             this.bunifuCustomLabel65.Name = "bunifuCustomLabel65";
             this.bunifuCustomLabel65.Size = new System.Drawing.Size(131, 13);
             this.bunifuCustomLabel65.TabIndex = 0;
@@ -2348,7 +2033,7 @@
             // bunifuCustomLabel66
             // 
             this.bunifuCustomLabel66.AutoSize = true;
-            this.bunifuCustomLabel66.Location = new System.Drawing.Point(116, 473);
+            this.bunifuCustomLabel66.Location = new System.Drawing.Point(116, 498);
             this.bunifuCustomLabel66.Name = "bunifuCustomLabel66";
             this.bunifuCustomLabel66.Size = new System.Drawing.Size(111, 13);
             this.bunifuCustomLabel66.TabIndex = 0;
@@ -2357,7 +2042,7 @@
             // bunifuCustomLabel67
             // 
             this.bunifuCustomLabel67.AutoSize = true;
-            this.bunifuCustomLabel67.Location = new System.Drawing.Point(116, 490);
+            this.bunifuCustomLabel67.Location = new System.Drawing.Point(116, 516);
             this.bunifuCustomLabel67.Name = "bunifuCustomLabel67";
             this.bunifuCustomLabel67.Size = new System.Drawing.Size(164, 13);
             this.bunifuCustomLabel67.TabIndex = 0;
@@ -2366,7 +2051,7 @@
             // bunifuCustomLabel68
             // 
             this.bunifuCustomLabel68.AutoSize = true;
-            this.bunifuCustomLabel68.Location = new System.Drawing.Point(116, 507);
+            this.bunifuCustomLabel68.Location = new System.Drawing.Point(116, 534);
             this.bunifuCustomLabel68.Name = "bunifuCustomLabel68";
             this.bunifuCustomLabel68.Size = new System.Drawing.Size(118, 13);
             this.bunifuCustomLabel68.TabIndex = 0;
@@ -2375,7 +2060,7 @@
             // bunifuCustomLabel69
             // 
             this.bunifuCustomLabel69.AutoSize = true;
-            this.bunifuCustomLabel69.Location = new System.Drawing.Point(116, 524);
+            this.bunifuCustomLabel69.Location = new System.Drawing.Point(116, 552);
             this.bunifuCustomLabel69.Name = "bunifuCustomLabel69";
             this.bunifuCustomLabel69.Size = new System.Drawing.Size(195, 13);
             this.bunifuCustomLabel69.TabIndex = 0;
@@ -2384,7 +2069,7 @@
             // bunifuCustomLabel70
             // 
             this.bunifuCustomLabel70.AutoSize = true;
-            this.bunifuCustomLabel70.Location = new System.Drawing.Point(116, 558);
+            this.bunifuCustomLabel70.Location = new System.Drawing.Point(116, 588);
             this.bunifuCustomLabel70.Name = "bunifuCustomLabel70";
             this.bunifuCustomLabel70.Size = new System.Drawing.Size(145, 13);
             this.bunifuCustomLabel70.TabIndex = 0;
@@ -2393,26 +2078,17 @@
             // bunifuCustomLabel71
             // 
             this.bunifuCustomLabel71.AutoSize = true;
-            this.bunifuCustomLabel71.Location = new System.Drawing.Point(116, 575);
+            this.bunifuCustomLabel71.Location = new System.Drawing.Point(116, 606);
             this.bunifuCustomLabel71.Name = "bunifuCustomLabel71";
             this.bunifuCustomLabel71.Size = new System.Drawing.Size(166, 13);
             this.bunifuCustomLabel71.TabIndex = 0;
             this.bunifuCustomLabel71.Text = "Curr Plan Dt vs Curr Conf Dt - HJs";
             this.bunifuCustomLabel71.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // bunifuCustomLabel72
-            // 
-            this.bunifuCustomLabel72.AutoSize = true;
-            this.bunifuCustomLabel72.Location = new System.Drawing.Point(116, 609);
-            this.bunifuCustomLabel72.Name = "bunifuCustomLabel72";
-            this.bunifuCustomLabel72.Size = new System.Drawing.Size(77, 13);
-            this.bunifuCustomLabel72.TabIndex = 0;
-            this.bunifuCustomLabel72.Text = "Material Status";
-            // 
             // lbl_kpaPlanPRsAgingNotRel_One
             // 
             this.lbl_kpaPlanPRsAgingNotRel_One.AutoSize = true;
-            this.lbl_kpaPlanPRsAgingNotRel_One.Location = new System.Drawing.Point(343, 45);
+            this.lbl_kpaPlanPRsAgingNotRel_One.Location = new System.Drawing.Point(343, 47);
             this.lbl_kpaPlanPRsAgingNotRel_One.Name = "lbl_kpaPlanPRsAgingNotRel_One";
             this.lbl_kpaPlanPRsAgingNotRel_One.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPlanPRsAgingNotRel_One.TabIndex = 3;
@@ -2421,7 +2097,7 @@
             // lbl_kpaPlanPRsAgingNotRel_Two
             // 
             this.lbl_kpaPlanPRsAgingNotRel_Two.AutoSize = true;
-            this.lbl_kpaPlanPRsAgingNotRel_Two.Location = new System.Drawing.Point(417, 45);
+            this.lbl_kpaPlanPRsAgingNotRel_Two.Location = new System.Drawing.Point(417, 47);
             this.lbl_kpaPlanPRsAgingNotRel_Two.Name = "lbl_kpaPlanPRsAgingNotRel_Two";
             this.lbl_kpaPlanPRsAgingNotRel_Two.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPlanPRsAgingNotRel_Two.TabIndex = 3;
@@ -2430,7 +2106,7 @@
             // lbl_kpaPlanPRsAgingNotRel_Three
             // 
             this.lbl_kpaPlanPRsAgingNotRel_Three.AutoSize = true;
-            this.lbl_kpaPlanPRsAgingNotRel_Three.Location = new System.Drawing.Point(489, 45);
+            this.lbl_kpaPlanPRsAgingNotRel_Three.Location = new System.Drawing.Point(489, 47);
             this.lbl_kpaPlanPRsAgingNotRel_Three.Name = "lbl_kpaPlanPRsAgingNotRel_Three";
             this.lbl_kpaPlanPRsAgingNotRel_Three.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPlanPRsAgingNotRel_Three.TabIndex = 3;
@@ -2439,7 +2115,7 @@
             // lbl_kpaPlanPRsAgingNotRel_Four
             // 
             this.lbl_kpaPlanPRsAgingNotRel_Four.AutoSize = true;
-            this.lbl_kpaPlanPRsAgingNotRel_Four.Location = new System.Drawing.Point(561, 45);
+            this.lbl_kpaPlanPRsAgingNotRel_Four.Location = new System.Drawing.Point(561, 47);
             this.lbl_kpaPlanPRsAgingNotRel_Four.Name = "lbl_kpaPlanPRsAgingNotRel_Four";
             this.lbl_kpaPlanPRsAgingNotRel_Four.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPlanPRsAgingNotRel_Four.TabIndex = 3;
@@ -2448,7 +2124,7 @@
             // lbl_kpaPlanPRsAgingNotRel_Five
             // 
             this.lbl_kpaPlanPRsAgingNotRel_Five.AutoSize = true;
-            this.lbl_kpaPlanPRsAgingNotRel_Five.Location = new System.Drawing.Point(633, 45);
+            this.lbl_kpaPlanPRsAgingNotRel_Five.Location = new System.Drawing.Point(633, 47);
             this.lbl_kpaPlanPRsAgingNotRel_Five.Name = "lbl_kpaPlanPRsAgingNotRel_Five";
             this.lbl_kpaPlanPRsAgingNotRel_Five.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPlanPRsAgingNotRel_Five.TabIndex = 3;
@@ -2457,7 +2133,7 @@
             // lbl_kpaPlanPRsAgingNotRel_Six
             // 
             this.lbl_kpaPlanPRsAgingNotRel_Six.AutoSize = true;
-            this.lbl_kpaPlanPRsAgingNotRel_Six.Location = new System.Drawing.Point(705, 45);
+            this.lbl_kpaPlanPRsAgingNotRel_Six.Location = new System.Drawing.Point(705, 47);
             this.lbl_kpaPlanPRsAgingNotRel_Six.Name = "lbl_kpaPlanPRsAgingNotRel_Six";
             this.lbl_kpaPlanPRsAgingNotRel_Six.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPlanPRsAgingNotRel_Six.TabIndex = 3;
@@ -2466,7 +2142,7 @@
             // lbl_kpaPlanPRsAgingNotRel_Seven
             // 
             this.lbl_kpaPlanPRsAgingNotRel_Seven.AutoSize = true;
-            this.lbl_kpaPlanPRsAgingNotRel_Seven.Location = new System.Drawing.Point(777, 45);
+            this.lbl_kpaPlanPRsAgingNotRel_Seven.Location = new System.Drawing.Point(777, 47);
             this.lbl_kpaPlanPRsAgingNotRel_Seven.Name = "lbl_kpaPlanPRsAgingNotRel_Seven";
             this.lbl_kpaPlanPRsAgingNotRel_Seven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPlanPRsAgingNotRel_Seven.TabIndex = 3;
@@ -2475,7 +2151,7 @@
             // lbl_kpaPlanPRsAgingNotRel_Eight
             // 
             this.lbl_kpaPlanPRsAgingNotRel_Eight.AutoSize = true;
-            this.lbl_kpaPlanPRsAgingNotRel_Eight.Location = new System.Drawing.Point(849, 45);
+            this.lbl_kpaPlanPRsAgingNotRel_Eight.Location = new System.Drawing.Point(849, 47);
             this.lbl_kpaPlanPRsAgingNotRel_Eight.Name = "lbl_kpaPlanPRsAgingNotRel_Eight";
             this.lbl_kpaPlanPRsAgingNotRel_Eight.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPlanPRsAgingNotRel_Eight.TabIndex = 3;
@@ -2484,7 +2160,7 @@
             // lbl_kpaPlanPRsAgingNotRel_Nine
             // 
             this.lbl_kpaPlanPRsAgingNotRel_Nine.AutoSize = true;
-            this.lbl_kpaPlanPRsAgingNotRel_Nine.Location = new System.Drawing.Point(921, 45);
+            this.lbl_kpaPlanPRsAgingNotRel_Nine.Location = new System.Drawing.Point(921, 47);
             this.lbl_kpaPlanPRsAgingNotRel_Nine.Name = "lbl_kpaPlanPRsAgingNotRel_Nine";
             this.lbl_kpaPlanPRsAgingNotRel_Nine.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPlanPRsAgingNotRel_Nine.TabIndex = 3;
@@ -2493,7 +2169,7 @@
             // lbl_kpaPlanMaterialDue_One
             // 
             this.lbl_kpaPlanMaterialDue_One.AutoSize = true;
-            this.lbl_kpaPlanMaterialDue_One.Location = new System.Drawing.Point(343, 62);
+            this.lbl_kpaPlanMaterialDue_One.Location = new System.Drawing.Point(343, 65);
             this.lbl_kpaPlanMaterialDue_One.Name = "lbl_kpaPlanMaterialDue_One";
             this.lbl_kpaPlanMaterialDue_One.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPlanMaterialDue_One.TabIndex = 3;
@@ -2502,7 +2178,7 @@
             // lbl_kpaPurchPRsAgingRel_One
             // 
             this.lbl_kpaPurchPRsAgingRel_One.AutoSize = true;
-            this.lbl_kpaPurchPRsAgingRel_One.Location = new System.Drawing.Point(343, 79);
+            this.lbl_kpaPurchPRsAgingRel_One.Location = new System.Drawing.Point(343, 83);
             this.lbl_kpaPurchPRsAgingRel_One.Name = "lbl_kpaPurchPRsAgingRel_One";
             this.lbl_kpaPurchPRsAgingRel_One.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchPRsAgingRel_One.TabIndex = 3;
@@ -2511,7 +2187,7 @@
             // lbl_kpaPurchPOFirstRel_One
             // 
             this.lbl_kpaPurchPOFirstRel_One.AutoSize = true;
-            this.lbl_kpaPurchPOFirstRel_One.Location = new System.Drawing.Point(343, 96);
+            this.lbl_kpaPurchPOFirstRel_One.Location = new System.Drawing.Point(343, 101);
             this.lbl_kpaPurchPOFirstRel_One.Name = "lbl_kpaPurchPOFirstRel_One";
             this.lbl_kpaPurchPOFirstRel_One.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchPOFirstRel_One.TabIndex = 3;
@@ -2520,7 +2196,7 @@
             // lbl_kpaPurchPOPrevRel_One
             // 
             this.lbl_kpaPurchPOPrevRel_One.AutoSize = true;
-            this.lbl_kpaPurchPOPrevRel_One.Location = new System.Drawing.Point(343, 113);
+            this.lbl_kpaPurchPOPrevRel_One.Location = new System.Drawing.Point(343, 119);
             this.lbl_kpaPurchPOPrevRel_One.Name = "lbl_kpaPurchPOPrevRel_One";
             this.lbl_kpaPurchPOPrevRel_One.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchPOPrevRel_One.TabIndex = 3;
@@ -2529,7 +2205,7 @@
             // lbl_kpaPurchNoConfirmation_One
             // 
             this.lbl_kpaPurchNoConfirmation_One.AutoSize = true;
-            this.lbl_kpaPurchNoConfirmation_One.Location = new System.Drawing.Point(343, 131);
+            this.lbl_kpaPurchNoConfirmation_One.Location = new System.Drawing.Point(343, 138);
             this.lbl_kpaPurchNoConfirmation_One.Name = "lbl_kpaPurchNoConfirmation_One";
             this.lbl_kpaPurchNoConfirmation_One.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchNoConfirmation_One.TabIndex = 3;
@@ -2538,7 +2214,7 @@
             // lbl_kpaPurchSubPRReleasePORelease_One
             // 
             this.lbl_kpaPurchSubPRReleasePORelease_One.AutoSize = true;
-            this.lbl_kpaPurchSubPRReleasePORelease_One.Location = new System.Drawing.Point(343, 147);
+            this.lbl_kpaPurchSubPRReleasePORelease_One.Location = new System.Drawing.Point(343, 155);
             this.lbl_kpaPurchSubPRReleasePORelease_One.Name = "lbl_kpaPurchSubPRReleasePORelease_One";
             this.lbl_kpaPurchSubPRReleasePORelease_One.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchSubPRReleasePORelease_One.TabIndex = 3;
@@ -2547,7 +2223,7 @@
             // lbl_kpaPurchSubPOCreateConfEntry_One
             // 
             this.lbl_kpaPurchSubPOCreateConfEntry_One.AutoSize = true;
-            this.lbl_kpaPurchSubPOCreateConfEntry_One.Location = new System.Drawing.Point(343, 164);
+            this.lbl_kpaPurchSubPOCreateConfEntry_One.Location = new System.Drawing.Point(343, 173);
             this.lbl_kpaPurchSubPOCreateConfEntry_One.Name = "lbl_kpaPurchSubPOCreateConfEntry_One";
             this.lbl_kpaPurchSubPOCreateConfEntry_One.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchSubPOCreateConfEntry_One.TabIndex = 3;
@@ -2556,7 +2232,7 @@
             // lbl_kpaPurchTotalPRReleaseConfEntry_One
             // 
             this.lbl_kpaPurchTotalPRReleaseConfEntry_One.AutoSize = true;
-            this.lbl_kpaPurchTotalPRReleaseConfEntry_One.Location = new System.Drawing.Point(343, 181);
+            this.lbl_kpaPurchTotalPRReleaseConfEntry_One.Location = new System.Drawing.Point(343, 191);
             this.lbl_kpaPurchTotalPRReleaseConfEntry_One.Name = "lbl_kpaPurchTotalPRReleaseConfEntry_One";
             this.lbl_kpaPurchTotalPRReleaseConfEntry_One.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchTotalPRReleaseConfEntry_One.TabIndex = 3;
@@ -2565,7 +2241,7 @@
             // lbl_kpaPurchTotalPRReleaseConfEntry_Two
             // 
             this.lbl_kpaPurchTotalPRReleaseConfEntry_Two.AutoSize = true;
-            this.lbl_kpaPurchTotalPRReleaseConfEntry_Two.Location = new System.Drawing.Point(417, 181);
+            this.lbl_kpaPurchTotalPRReleaseConfEntry_Two.Location = new System.Drawing.Point(417, 191);
             this.lbl_kpaPurchTotalPRReleaseConfEntry_Two.Name = "lbl_kpaPurchTotalPRReleaseConfEntry_Two";
             this.lbl_kpaPurchTotalPRReleaseConfEntry_Two.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchTotalPRReleaseConfEntry_Two.TabIndex = 3;
@@ -2574,7 +2250,7 @@
             // lbl_kpaPurchTotalPRReleaseConfEntry_Three
             // 
             this.lbl_kpaPurchTotalPRReleaseConfEntry_Three.AutoSize = true;
-            this.lbl_kpaPurchTotalPRReleaseConfEntry_Three.Location = new System.Drawing.Point(489, 181);
+            this.lbl_kpaPurchTotalPRReleaseConfEntry_Three.Location = new System.Drawing.Point(489, 191);
             this.lbl_kpaPurchTotalPRReleaseConfEntry_Three.Name = "lbl_kpaPurchTotalPRReleaseConfEntry_Three";
             this.lbl_kpaPurchTotalPRReleaseConfEntry_Three.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchTotalPRReleaseConfEntry_Three.TabIndex = 3;
@@ -2583,7 +2259,7 @@
             // lbl_kpaPurchTotalPRReleaseConfEntry_Four
             // 
             this.lbl_kpaPurchTotalPRReleaseConfEntry_Four.AutoSize = true;
-            this.lbl_kpaPurchTotalPRReleaseConfEntry_Four.Location = new System.Drawing.Point(561, 181);
+            this.lbl_kpaPurchTotalPRReleaseConfEntry_Four.Location = new System.Drawing.Point(561, 191);
             this.lbl_kpaPurchTotalPRReleaseConfEntry_Four.Name = "lbl_kpaPurchTotalPRReleaseConfEntry_Four";
             this.lbl_kpaPurchTotalPRReleaseConfEntry_Four.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchTotalPRReleaseConfEntry_Four.TabIndex = 3;
@@ -2592,7 +2268,7 @@
             // lbl_kpaPurchTotalPRReleaseConfEntry_Five
             // 
             this.lbl_kpaPurchTotalPRReleaseConfEntry_Five.AutoSize = true;
-            this.lbl_kpaPurchTotalPRReleaseConfEntry_Five.Location = new System.Drawing.Point(633, 181);
+            this.lbl_kpaPurchTotalPRReleaseConfEntry_Five.Location = new System.Drawing.Point(633, 191);
             this.lbl_kpaPurchTotalPRReleaseConfEntry_Five.Name = "lbl_kpaPurchTotalPRReleaseConfEntry_Five";
             this.lbl_kpaPurchTotalPRReleaseConfEntry_Five.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchTotalPRReleaseConfEntry_Five.TabIndex = 3;
@@ -2601,7 +2277,7 @@
             // lbl_kpaPurchTotalPRReleaseConfEntry_Six
             // 
             this.lbl_kpaPurchTotalPRReleaseConfEntry_Six.AutoSize = true;
-            this.lbl_kpaPurchTotalPRReleaseConfEntry_Six.Location = new System.Drawing.Point(705, 181);
+            this.lbl_kpaPurchTotalPRReleaseConfEntry_Six.Location = new System.Drawing.Point(705, 191);
             this.lbl_kpaPurchTotalPRReleaseConfEntry_Six.Name = "lbl_kpaPurchTotalPRReleaseConfEntry_Six";
             this.lbl_kpaPurchTotalPRReleaseConfEntry_Six.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchTotalPRReleaseConfEntry_Six.TabIndex = 3;
@@ -2610,7 +2286,7 @@
             // lbl_kpaPurchTotalPRReleaseConfEntry_Seven
             // 
             this.lbl_kpaPurchTotalPRReleaseConfEntry_Seven.AutoSize = true;
-            this.lbl_kpaPurchTotalPRReleaseConfEntry_Seven.Location = new System.Drawing.Point(777, 181);
+            this.lbl_kpaPurchTotalPRReleaseConfEntry_Seven.Location = new System.Drawing.Point(777, 191);
             this.lbl_kpaPurchTotalPRReleaseConfEntry_Seven.Name = "lbl_kpaPurchTotalPRReleaseConfEntry_Seven";
             this.lbl_kpaPurchTotalPRReleaseConfEntry_Seven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchTotalPRReleaseConfEntry_Seven.TabIndex = 3;
@@ -2619,7 +2295,7 @@
             // lbl_kpaPurchTotalPRReleaseConfEntry_Eight
             // 
             this.lbl_kpaPurchTotalPRReleaseConfEntry_Eight.AutoSize = true;
-            this.lbl_kpaPurchTotalPRReleaseConfEntry_Eight.Location = new System.Drawing.Point(849, 181);
+            this.lbl_kpaPurchTotalPRReleaseConfEntry_Eight.Location = new System.Drawing.Point(849, 191);
             this.lbl_kpaPurchTotalPRReleaseConfEntry_Eight.Name = "lbl_kpaPurchTotalPRReleaseConfEntry_Eight";
             this.lbl_kpaPurchTotalPRReleaseConfEntry_Eight.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchTotalPRReleaseConfEntry_Eight.TabIndex = 3;
@@ -2628,7 +2304,7 @@
             // lbl_kpaPurchTotalPRReleaseConfEntry_Nine
             // 
             this.lbl_kpaPurchTotalPRReleaseConfEntry_Nine.AutoSize = true;
-            this.lbl_kpaPurchTotalPRReleaseConfEntry_Nine.Location = new System.Drawing.Point(921, 181);
+            this.lbl_kpaPurchTotalPRReleaseConfEntry_Nine.Location = new System.Drawing.Point(921, 191);
             this.lbl_kpaPurchTotalPRReleaseConfEntry_Nine.Name = "lbl_kpaPurchTotalPRReleaseConfEntry_Nine";
             this.lbl_kpaPurchTotalPRReleaseConfEntry_Nine.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchTotalPRReleaseConfEntry_Nine.TabIndex = 3;
@@ -2637,7 +2313,7 @@
             // lbl_kpaPurchSubPOCreateConfEntry_Nine
             // 
             this.lbl_kpaPurchSubPOCreateConfEntry_Nine.AutoSize = true;
-            this.lbl_kpaPurchSubPOCreateConfEntry_Nine.Location = new System.Drawing.Point(921, 164);
+            this.lbl_kpaPurchSubPOCreateConfEntry_Nine.Location = new System.Drawing.Point(921, 173);
             this.lbl_kpaPurchSubPOCreateConfEntry_Nine.Name = "lbl_kpaPurchSubPOCreateConfEntry_Nine";
             this.lbl_kpaPurchSubPOCreateConfEntry_Nine.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchSubPOCreateConfEntry_Nine.TabIndex = 3;
@@ -2646,7 +2322,7 @@
             // lbl_kpaPurchSubPRReleasePORelease_Nine
             // 
             this.lbl_kpaPurchSubPRReleasePORelease_Nine.AutoSize = true;
-            this.lbl_kpaPurchSubPRReleasePORelease_Nine.Location = new System.Drawing.Point(921, 147);
+            this.lbl_kpaPurchSubPRReleasePORelease_Nine.Location = new System.Drawing.Point(921, 155);
             this.lbl_kpaPurchSubPRReleasePORelease_Nine.Name = "lbl_kpaPurchSubPRReleasePORelease_Nine";
             this.lbl_kpaPurchSubPRReleasePORelease_Nine.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchSubPRReleasePORelease_Nine.TabIndex = 3;
@@ -2655,7 +2331,7 @@
             // lbl_kpaPurchNoConfirmation_Nine
             // 
             this.lbl_kpaPurchNoConfirmation_Nine.AutoSize = true;
-            this.lbl_kpaPurchNoConfirmation_Nine.Location = new System.Drawing.Point(921, 131);
+            this.lbl_kpaPurchNoConfirmation_Nine.Location = new System.Drawing.Point(921, 138);
             this.lbl_kpaPurchNoConfirmation_Nine.Name = "lbl_kpaPurchNoConfirmation_Nine";
             this.lbl_kpaPurchNoConfirmation_Nine.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchNoConfirmation_Nine.TabIndex = 3;
@@ -2664,7 +2340,7 @@
             // lbl_kpaPurchPOPrevRel_Nine
             // 
             this.lbl_kpaPurchPOPrevRel_Nine.AutoSize = true;
-            this.lbl_kpaPurchPOPrevRel_Nine.Location = new System.Drawing.Point(921, 113);
+            this.lbl_kpaPurchPOPrevRel_Nine.Location = new System.Drawing.Point(921, 119);
             this.lbl_kpaPurchPOPrevRel_Nine.Name = "lbl_kpaPurchPOPrevRel_Nine";
             this.lbl_kpaPurchPOPrevRel_Nine.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchPOPrevRel_Nine.TabIndex = 3;
@@ -2673,7 +2349,7 @@
             // lbl_kpaPurchPOFirstRel_Nine
             // 
             this.lbl_kpaPurchPOFirstRel_Nine.AutoSize = true;
-            this.lbl_kpaPurchPOFirstRel_Nine.Location = new System.Drawing.Point(921, 96);
+            this.lbl_kpaPurchPOFirstRel_Nine.Location = new System.Drawing.Point(921, 101);
             this.lbl_kpaPurchPOFirstRel_Nine.Name = "lbl_kpaPurchPOFirstRel_Nine";
             this.lbl_kpaPurchPOFirstRel_Nine.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchPOFirstRel_Nine.TabIndex = 3;
@@ -2682,7 +2358,7 @@
             // lbl_kpaPurchPRsAgingRel_Nine
             // 
             this.lbl_kpaPurchPRsAgingRel_Nine.AutoSize = true;
-            this.lbl_kpaPurchPRsAgingRel_Nine.Location = new System.Drawing.Point(921, 79);
+            this.lbl_kpaPurchPRsAgingRel_Nine.Location = new System.Drawing.Point(921, 83);
             this.lbl_kpaPurchPRsAgingRel_Nine.Name = "lbl_kpaPurchPRsAgingRel_Nine";
             this.lbl_kpaPurchPRsAgingRel_Nine.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchPRsAgingRel_Nine.TabIndex = 3;
@@ -2691,7 +2367,7 @@
             // lbl_kpaPlanMaterialDue_Nine
             // 
             this.lbl_kpaPlanMaterialDue_Nine.AutoSize = true;
-            this.lbl_kpaPlanMaterialDue_Nine.Location = new System.Drawing.Point(921, 62);
+            this.lbl_kpaPlanMaterialDue_Nine.Location = new System.Drawing.Point(921, 65);
             this.lbl_kpaPlanMaterialDue_Nine.Name = "lbl_kpaPlanMaterialDue_Nine";
             this.lbl_kpaPlanMaterialDue_Nine.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPlanMaterialDue_Nine.TabIndex = 3;
@@ -2700,7 +2376,7 @@
             // lbl_kpaPlanMaterialDue_Eight
             // 
             this.lbl_kpaPlanMaterialDue_Eight.AutoSize = true;
-            this.lbl_kpaPlanMaterialDue_Eight.Location = new System.Drawing.Point(849, 62);
+            this.lbl_kpaPlanMaterialDue_Eight.Location = new System.Drawing.Point(849, 65);
             this.lbl_kpaPlanMaterialDue_Eight.Name = "lbl_kpaPlanMaterialDue_Eight";
             this.lbl_kpaPlanMaterialDue_Eight.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPlanMaterialDue_Eight.TabIndex = 3;
@@ -2709,7 +2385,7 @@
             // lbl_kpaPlanMaterialDue_Seven
             // 
             this.lbl_kpaPlanMaterialDue_Seven.AutoSize = true;
-            this.lbl_kpaPlanMaterialDue_Seven.Location = new System.Drawing.Point(777, 62);
+            this.lbl_kpaPlanMaterialDue_Seven.Location = new System.Drawing.Point(777, 65);
             this.lbl_kpaPlanMaterialDue_Seven.Name = "lbl_kpaPlanMaterialDue_Seven";
             this.lbl_kpaPlanMaterialDue_Seven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPlanMaterialDue_Seven.TabIndex = 3;
@@ -2718,7 +2394,7 @@
             // lbl_kpaPlanMaterialDue_Six
             // 
             this.lbl_kpaPlanMaterialDue_Six.AutoSize = true;
-            this.lbl_kpaPlanMaterialDue_Six.Location = new System.Drawing.Point(705, 62);
+            this.lbl_kpaPlanMaterialDue_Six.Location = new System.Drawing.Point(705, 65);
             this.lbl_kpaPlanMaterialDue_Six.Name = "lbl_kpaPlanMaterialDue_Six";
             this.lbl_kpaPlanMaterialDue_Six.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPlanMaterialDue_Six.TabIndex = 3;
@@ -2727,7 +2403,7 @@
             // lbl_kpaPlanMaterialDue_Five
             // 
             this.lbl_kpaPlanMaterialDue_Five.AutoSize = true;
-            this.lbl_kpaPlanMaterialDue_Five.Location = new System.Drawing.Point(633, 62);
+            this.lbl_kpaPlanMaterialDue_Five.Location = new System.Drawing.Point(633, 65);
             this.lbl_kpaPlanMaterialDue_Five.Name = "lbl_kpaPlanMaterialDue_Five";
             this.lbl_kpaPlanMaterialDue_Five.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPlanMaterialDue_Five.TabIndex = 3;
@@ -2736,7 +2412,7 @@
             // lbl_kpaPlanMaterialDue_Four
             // 
             this.lbl_kpaPlanMaterialDue_Four.AutoSize = true;
-            this.lbl_kpaPlanMaterialDue_Four.Location = new System.Drawing.Point(561, 62);
+            this.lbl_kpaPlanMaterialDue_Four.Location = new System.Drawing.Point(561, 65);
             this.lbl_kpaPlanMaterialDue_Four.Name = "lbl_kpaPlanMaterialDue_Four";
             this.lbl_kpaPlanMaterialDue_Four.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPlanMaterialDue_Four.TabIndex = 3;
@@ -2745,7 +2421,7 @@
             // lbl_kpaPlanMaterialDue_Three
             // 
             this.lbl_kpaPlanMaterialDue_Three.AutoSize = true;
-            this.lbl_kpaPlanMaterialDue_Three.Location = new System.Drawing.Point(489, 62);
+            this.lbl_kpaPlanMaterialDue_Three.Location = new System.Drawing.Point(489, 65);
             this.lbl_kpaPlanMaterialDue_Three.Name = "lbl_kpaPlanMaterialDue_Three";
             this.lbl_kpaPlanMaterialDue_Three.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPlanMaterialDue_Three.TabIndex = 3;
@@ -2754,7 +2430,7 @@
             // lbl_kpaPlanMaterialDue_Two
             // 
             this.lbl_kpaPlanMaterialDue_Two.AutoSize = true;
-            this.lbl_kpaPlanMaterialDue_Two.Location = new System.Drawing.Point(417, 62);
+            this.lbl_kpaPlanMaterialDue_Two.Location = new System.Drawing.Point(417, 65);
             this.lbl_kpaPlanMaterialDue_Two.Name = "lbl_kpaPlanMaterialDue_Two";
             this.lbl_kpaPlanMaterialDue_Two.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPlanMaterialDue_Two.TabIndex = 3;
@@ -2763,7 +2439,7 @@
             // lbl_kpaPurchPRsAgingRel_Two
             // 
             this.lbl_kpaPurchPRsAgingRel_Two.AutoSize = true;
-            this.lbl_kpaPurchPRsAgingRel_Two.Location = new System.Drawing.Point(417, 79);
+            this.lbl_kpaPurchPRsAgingRel_Two.Location = new System.Drawing.Point(417, 83);
             this.lbl_kpaPurchPRsAgingRel_Two.Name = "lbl_kpaPurchPRsAgingRel_Two";
             this.lbl_kpaPurchPRsAgingRel_Two.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchPRsAgingRel_Two.TabIndex = 3;
@@ -2772,7 +2448,7 @@
             // lbl_kpaPurchPOFirstRel_Two
             // 
             this.lbl_kpaPurchPOFirstRel_Two.AutoSize = true;
-            this.lbl_kpaPurchPOFirstRel_Two.Location = new System.Drawing.Point(417, 96);
+            this.lbl_kpaPurchPOFirstRel_Two.Location = new System.Drawing.Point(417, 101);
             this.lbl_kpaPurchPOFirstRel_Two.Name = "lbl_kpaPurchPOFirstRel_Two";
             this.lbl_kpaPurchPOFirstRel_Two.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchPOFirstRel_Two.TabIndex = 3;
@@ -2781,7 +2457,7 @@
             // lbl_kpaPurchPOPrevRel_Two
             // 
             this.lbl_kpaPurchPOPrevRel_Two.AutoSize = true;
-            this.lbl_kpaPurchPOPrevRel_Two.Location = new System.Drawing.Point(417, 113);
+            this.lbl_kpaPurchPOPrevRel_Two.Location = new System.Drawing.Point(417, 119);
             this.lbl_kpaPurchPOPrevRel_Two.Name = "lbl_kpaPurchPOPrevRel_Two";
             this.lbl_kpaPurchPOPrevRel_Two.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchPOPrevRel_Two.TabIndex = 3;
@@ -2790,7 +2466,7 @@
             // lbl_kpaPurchNoConfirmation_Two
             // 
             this.lbl_kpaPurchNoConfirmation_Two.AutoSize = true;
-            this.lbl_kpaPurchNoConfirmation_Two.Location = new System.Drawing.Point(417, 131);
+            this.lbl_kpaPurchNoConfirmation_Two.Location = new System.Drawing.Point(417, 138);
             this.lbl_kpaPurchNoConfirmation_Two.Name = "lbl_kpaPurchNoConfirmation_Two";
             this.lbl_kpaPurchNoConfirmation_Two.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchNoConfirmation_Two.TabIndex = 3;
@@ -2799,7 +2475,7 @@
             // lbl_kpaPurchSubPRReleasePORelease_Two
             // 
             this.lbl_kpaPurchSubPRReleasePORelease_Two.AutoSize = true;
-            this.lbl_kpaPurchSubPRReleasePORelease_Two.Location = new System.Drawing.Point(417, 147);
+            this.lbl_kpaPurchSubPRReleasePORelease_Two.Location = new System.Drawing.Point(417, 155);
             this.lbl_kpaPurchSubPRReleasePORelease_Two.Name = "lbl_kpaPurchSubPRReleasePORelease_Two";
             this.lbl_kpaPurchSubPRReleasePORelease_Two.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchSubPRReleasePORelease_Two.TabIndex = 3;
@@ -2808,7 +2484,7 @@
             // lbl_kpaPurchSubPOCreateConfEntry_Two
             // 
             this.lbl_kpaPurchSubPOCreateConfEntry_Two.AutoSize = true;
-            this.lbl_kpaPurchSubPOCreateConfEntry_Two.Location = new System.Drawing.Point(417, 164);
+            this.lbl_kpaPurchSubPOCreateConfEntry_Two.Location = new System.Drawing.Point(417, 173);
             this.lbl_kpaPurchSubPOCreateConfEntry_Two.Name = "lbl_kpaPurchSubPOCreateConfEntry_Two";
             this.lbl_kpaPurchSubPOCreateConfEntry_Two.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchSubPOCreateConfEntry_Two.TabIndex = 3;
@@ -2817,7 +2493,7 @@
             // lbl_kpaPurchSubPOCreateConfEntry_Three
             // 
             this.lbl_kpaPurchSubPOCreateConfEntry_Three.AutoSize = true;
-            this.lbl_kpaPurchSubPOCreateConfEntry_Three.Location = new System.Drawing.Point(489, 164);
+            this.lbl_kpaPurchSubPOCreateConfEntry_Three.Location = new System.Drawing.Point(489, 173);
             this.lbl_kpaPurchSubPOCreateConfEntry_Three.Name = "lbl_kpaPurchSubPOCreateConfEntry_Three";
             this.lbl_kpaPurchSubPOCreateConfEntry_Three.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchSubPOCreateConfEntry_Three.TabIndex = 3;
@@ -2826,7 +2502,7 @@
             // lbl_kpaPurchSubPOCreateConfEntry_Four
             // 
             this.lbl_kpaPurchSubPOCreateConfEntry_Four.AutoSize = true;
-            this.lbl_kpaPurchSubPOCreateConfEntry_Four.Location = new System.Drawing.Point(561, 164);
+            this.lbl_kpaPurchSubPOCreateConfEntry_Four.Location = new System.Drawing.Point(561, 173);
             this.lbl_kpaPurchSubPOCreateConfEntry_Four.Name = "lbl_kpaPurchSubPOCreateConfEntry_Four";
             this.lbl_kpaPurchSubPOCreateConfEntry_Four.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchSubPOCreateConfEntry_Four.TabIndex = 3;
@@ -2835,7 +2511,7 @@
             // lbl_kpaPurchSubPOCreateConfEntry_Five
             // 
             this.lbl_kpaPurchSubPOCreateConfEntry_Five.AutoSize = true;
-            this.lbl_kpaPurchSubPOCreateConfEntry_Five.Location = new System.Drawing.Point(633, 164);
+            this.lbl_kpaPurchSubPOCreateConfEntry_Five.Location = new System.Drawing.Point(633, 173);
             this.lbl_kpaPurchSubPOCreateConfEntry_Five.Name = "lbl_kpaPurchSubPOCreateConfEntry_Five";
             this.lbl_kpaPurchSubPOCreateConfEntry_Five.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchSubPOCreateConfEntry_Five.TabIndex = 3;
@@ -2844,7 +2520,7 @@
             // lbl_kpaPurchSubPOCreateConfEntry_Six
             // 
             this.lbl_kpaPurchSubPOCreateConfEntry_Six.AutoSize = true;
-            this.lbl_kpaPurchSubPOCreateConfEntry_Six.Location = new System.Drawing.Point(705, 164);
+            this.lbl_kpaPurchSubPOCreateConfEntry_Six.Location = new System.Drawing.Point(705, 173);
             this.lbl_kpaPurchSubPOCreateConfEntry_Six.Name = "lbl_kpaPurchSubPOCreateConfEntry_Six";
             this.lbl_kpaPurchSubPOCreateConfEntry_Six.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchSubPOCreateConfEntry_Six.TabIndex = 3;
@@ -2853,7 +2529,7 @@
             // lbl_kpaPurchSubPOCreateConfEntry_Seven
             // 
             this.lbl_kpaPurchSubPOCreateConfEntry_Seven.AutoSize = true;
-            this.lbl_kpaPurchSubPOCreateConfEntry_Seven.Location = new System.Drawing.Point(777, 164);
+            this.lbl_kpaPurchSubPOCreateConfEntry_Seven.Location = new System.Drawing.Point(777, 173);
             this.lbl_kpaPurchSubPOCreateConfEntry_Seven.Name = "lbl_kpaPurchSubPOCreateConfEntry_Seven";
             this.lbl_kpaPurchSubPOCreateConfEntry_Seven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchSubPOCreateConfEntry_Seven.TabIndex = 3;
@@ -2862,7 +2538,7 @@
             // lbl_kpaPurchSubPOCreateConfEntry_Eight
             // 
             this.lbl_kpaPurchSubPOCreateConfEntry_Eight.AutoSize = true;
-            this.lbl_kpaPurchSubPOCreateConfEntry_Eight.Location = new System.Drawing.Point(849, 164);
+            this.lbl_kpaPurchSubPOCreateConfEntry_Eight.Location = new System.Drawing.Point(849, 173);
             this.lbl_kpaPurchSubPOCreateConfEntry_Eight.Name = "lbl_kpaPurchSubPOCreateConfEntry_Eight";
             this.lbl_kpaPurchSubPOCreateConfEntry_Eight.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchSubPOCreateConfEntry_Eight.TabIndex = 3;
@@ -2871,7 +2547,7 @@
             // lbl_kpaPurchSubPRReleasePORelease_Eight
             // 
             this.lbl_kpaPurchSubPRReleasePORelease_Eight.AutoSize = true;
-            this.lbl_kpaPurchSubPRReleasePORelease_Eight.Location = new System.Drawing.Point(849, 147);
+            this.lbl_kpaPurchSubPRReleasePORelease_Eight.Location = new System.Drawing.Point(849, 155);
             this.lbl_kpaPurchSubPRReleasePORelease_Eight.Name = "lbl_kpaPurchSubPRReleasePORelease_Eight";
             this.lbl_kpaPurchSubPRReleasePORelease_Eight.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchSubPRReleasePORelease_Eight.TabIndex = 3;
@@ -2880,7 +2556,7 @@
             // lbl_kpaPurchNoConfirmation_Eight
             // 
             this.lbl_kpaPurchNoConfirmation_Eight.AutoSize = true;
-            this.lbl_kpaPurchNoConfirmation_Eight.Location = new System.Drawing.Point(849, 131);
+            this.lbl_kpaPurchNoConfirmation_Eight.Location = new System.Drawing.Point(849, 138);
             this.lbl_kpaPurchNoConfirmation_Eight.Name = "lbl_kpaPurchNoConfirmation_Eight";
             this.lbl_kpaPurchNoConfirmation_Eight.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchNoConfirmation_Eight.TabIndex = 3;
@@ -2889,7 +2565,7 @@
             // lbl_kpaPurchPOPrevRel_Eight
             // 
             this.lbl_kpaPurchPOPrevRel_Eight.AutoSize = true;
-            this.lbl_kpaPurchPOPrevRel_Eight.Location = new System.Drawing.Point(849, 113);
+            this.lbl_kpaPurchPOPrevRel_Eight.Location = new System.Drawing.Point(849, 119);
             this.lbl_kpaPurchPOPrevRel_Eight.Name = "lbl_kpaPurchPOPrevRel_Eight";
             this.lbl_kpaPurchPOPrevRel_Eight.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchPOPrevRel_Eight.TabIndex = 3;
@@ -2898,7 +2574,7 @@
             // lbl_kpaPurchPOFirstRel_Eight
             // 
             this.lbl_kpaPurchPOFirstRel_Eight.AutoSize = true;
-            this.lbl_kpaPurchPOFirstRel_Eight.Location = new System.Drawing.Point(849, 96);
+            this.lbl_kpaPurchPOFirstRel_Eight.Location = new System.Drawing.Point(849, 101);
             this.lbl_kpaPurchPOFirstRel_Eight.Name = "lbl_kpaPurchPOFirstRel_Eight";
             this.lbl_kpaPurchPOFirstRel_Eight.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchPOFirstRel_Eight.TabIndex = 3;
@@ -2907,7 +2583,7 @@
             // lbl_kpaPurchPRsAgingRel_Eight
             // 
             this.lbl_kpaPurchPRsAgingRel_Eight.AutoSize = true;
-            this.lbl_kpaPurchPRsAgingRel_Eight.Location = new System.Drawing.Point(849, 79);
+            this.lbl_kpaPurchPRsAgingRel_Eight.Location = new System.Drawing.Point(849, 83);
             this.lbl_kpaPurchPRsAgingRel_Eight.Name = "lbl_kpaPurchPRsAgingRel_Eight";
             this.lbl_kpaPurchPRsAgingRel_Eight.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchPRsAgingRel_Eight.TabIndex = 3;
@@ -2916,7 +2592,7 @@
             // lbl_kpaPurchPRsAgingRel_Seven
             // 
             this.lbl_kpaPurchPRsAgingRel_Seven.AutoSize = true;
-            this.lbl_kpaPurchPRsAgingRel_Seven.Location = new System.Drawing.Point(777, 79);
+            this.lbl_kpaPurchPRsAgingRel_Seven.Location = new System.Drawing.Point(777, 83);
             this.lbl_kpaPurchPRsAgingRel_Seven.Name = "lbl_kpaPurchPRsAgingRel_Seven";
             this.lbl_kpaPurchPRsAgingRel_Seven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchPRsAgingRel_Seven.TabIndex = 3;
@@ -2925,7 +2601,7 @@
             // lbl_kpaPurchPRsAgingRel_Six
             // 
             this.lbl_kpaPurchPRsAgingRel_Six.AutoSize = true;
-            this.lbl_kpaPurchPRsAgingRel_Six.Location = new System.Drawing.Point(705, 79);
+            this.lbl_kpaPurchPRsAgingRel_Six.Location = new System.Drawing.Point(705, 83);
             this.lbl_kpaPurchPRsAgingRel_Six.Name = "lbl_kpaPurchPRsAgingRel_Six";
             this.lbl_kpaPurchPRsAgingRel_Six.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchPRsAgingRel_Six.TabIndex = 3;
@@ -2934,7 +2610,7 @@
             // lbl_kpaPurchPRsAgingRel_Five
             // 
             this.lbl_kpaPurchPRsAgingRel_Five.AutoSize = true;
-            this.lbl_kpaPurchPRsAgingRel_Five.Location = new System.Drawing.Point(633, 79);
+            this.lbl_kpaPurchPRsAgingRel_Five.Location = new System.Drawing.Point(633, 83);
             this.lbl_kpaPurchPRsAgingRel_Five.Name = "lbl_kpaPurchPRsAgingRel_Five";
             this.lbl_kpaPurchPRsAgingRel_Five.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchPRsAgingRel_Five.TabIndex = 3;
@@ -2943,7 +2619,7 @@
             // lbl_kpaPurchPRsAgingRel_Four
             // 
             this.lbl_kpaPurchPRsAgingRel_Four.AutoSize = true;
-            this.lbl_kpaPurchPRsAgingRel_Four.Location = new System.Drawing.Point(561, 79);
+            this.lbl_kpaPurchPRsAgingRel_Four.Location = new System.Drawing.Point(561, 83);
             this.lbl_kpaPurchPRsAgingRel_Four.Name = "lbl_kpaPurchPRsAgingRel_Four";
             this.lbl_kpaPurchPRsAgingRel_Four.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchPRsAgingRel_Four.TabIndex = 3;
@@ -2952,7 +2628,7 @@
             // lbl_kpaPurchPRsAgingRel_Three
             // 
             this.lbl_kpaPurchPRsAgingRel_Three.AutoSize = true;
-            this.lbl_kpaPurchPRsAgingRel_Three.Location = new System.Drawing.Point(489, 79);
+            this.lbl_kpaPurchPRsAgingRel_Three.Location = new System.Drawing.Point(489, 83);
             this.lbl_kpaPurchPRsAgingRel_Three.Name = "lbl_kpaPurchPRsAgingRel_Three";
             this.lbl_kpaPurchPRsAgingRel_Three.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchPRsAgingRel_Three.TabIndex = 3;
@@ -2961,7 +2637,7 @@
             // lbl_kpaPurchPOFirstRel_Three
             // 
             this.lbl_kpaPurchPOFirstRel_Three.AutoSize = true;
-            this.lbl_kpaPurchPOFirstRel_Three.Location = new System.Drawing.Point(489, 96);
+            this.lbl_kpaPurchPOFirstRel_Three.Location = new System.Drawing.Point(489, 101);
             this.lbl_kpaPurchPOFirstRel_Three.Name = "lbl_kpaPurchPOFirstRel_Three";
             this.lbl_kpaPurchPOFirstRel_Three.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchPOFirstRel_Three.TabIndex = 3;
@@ -2970,7 +2646,7 @@
             // lbl_kpaPurchPOPrevRel_Three
             // 
             this.lbl_kpaPurchPOPrevRel_Three.AutoSize = true;
-            this.lbl_kpaPurchPOPrevRel_Three.Location = new System.Drawing.Point(489, 113);
+            this.lbl_kpaPurchPOPrevRel_Three.Location = new System.Drawing.Point(489, 119);
             this.lbl_kpaPurchPOPrevRel_Three.Name = "lbl_kpaPurchPOPrevRel_Three";
             this.lbl_kpaPurchPOPrevRel_Three.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchPOPrevRel_Three.TabIndex = 3;
@@ -2979,7 +2655,7 @@
             // lbl_kpaPurchNoConfirmation_Three
             // 
             this.lbl_kpaPurchNoConfirmation_Three.AutoSize = true;
-            this.lbl_kpaPurchNoConfirmation_Three.Location = new System.Drawing.Point(489, 131);
+            this.lbl_kpaPurchNoConfirmation_Three.Location = new System.Drawing.Point(489, 138);
             this.lbl_kpaPurchNoConfirmation_Three.Name = "lbl_kpaPurchNoConfirmation_Three";
             this.lbl_kpaPurchNoConfirmation_Three.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchNoConfirmation_Three.TabIndex = 3;
@@ -2988,7 +2664,7 @@
             // lbl_kpaPurchSubPRReleasePORelease_Three
             // 
             this.lbl_kpaPurchSubPRReleasePORelease_Three.AutoSize = true;
-            this.lbl_kpaPurchSubPRReleasePORelease_Three.Location = new System.Drawing.Point(489, 147);
+            this.lbl_kpaPurchSubPRReleasePORelease_Three.Location = new System.Drawing.Point(489, 155);
             this.lbl_kpaPurchSubPRReleasePORelease_Three.Name = "lbl_kpaPurchSubPRReleasePORelease_Three";
             this.lbl_kpaPurchSubPRReleasePORelease_Three.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchSubPRReleasePORelease_Three.TabIndex = 3;
@@ -2997,7 +2673,7 @@
             // lbl_kpaPurchSubPRReleasePORelease_Four
             // 
             this.lbl_kpaPurchSubPRReleasePORelease_Four.AutoSize = true;
-            this.lbl_kpaPurchSubPRReleasePORelease_Four.Location = new System.Drawing.Point(561, 147);
+            this.lbl_kpaPurchSubPRReleasePORelease_Four.Location = new System.Drawing.Point(561, 155);
             this.lbl_kpaPurchSubPRReleasePORelease_Four.Name = "lbl_kpaPurchSubPRReleasePORelease_Four";
             this.lbl_kpaPurchSubPRReleasePORelease_Four.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchSubPRReleasePORelease_Four.TabIndex = 3;
@@ -3006,7 +2682,7 @@
             // lbl_kpaPurchSubPRReleasePORelease_Five
             // 
             this.lbl_kpaPurchSubPRReleasePORelease_Five.AutoSize = true;
-            this.lbl_kpaPurchSubPRReleasePORelease_Five.Location = new System.Drawing.Point(633, 147);
+            this.lbl_kpaPurchSubPRReleasePORelease_Five.Location = new System.Drawing.Point(633, 155);
             this.lbl_kpaPurchSubPRReleasePORelease_Five.Name = "lbl_kpaPurchSubPRReleasePORelease_Five";
             this.lbl_kpaPurchSubPRReleasePORelease_Five.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchSubPRReleasePORelease_Five.TabIndex = 3;
@@ -3015,7 +2691,7 @@
             // lbl_kpaPurchSubPRReleasePORelease_Six
             // 
             this.lbl_kpaPurchSubPRReleasePORelease_Six.AutoSize = true;
-            this.lbl_kpaPurchSubPRReleasePORelease_Six.Location = new System.Drawing.Point(705, 147);
+            this.lbl_kpaPurchSubPRReleasePORelease_Six.Location = new System.Drawing.Point(705, 155);
             this.lbl_kpaPurchSubPRReleasePORelease_Six.Name = "lbl_kpaPurchSubPRReleasePORelease_Six";
             this.lbl_kpaPurchSubPRReleasePORelease_Six.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchSubPRReleasePORelease_Six.TabIndex = 3;
@@ -3024,7 +2700,7 @@
             // lbl_kpaPurchSubPRReleasePORelease_Seven
             // 
             this.lbl_kpaPurchSubPRReleasePORelease_Seven.AutoSize = true;
-            this.lbl_kpaPurchSubPRReleasePORelease_Seven.Location = new System.Drawing.Point(777, 147);
+            this.lbl_kpaPurchSubPRReleasePORelease_Seven.Location = new System.Drawing.Point(777, 155);
             this.lbl_kpaPurchSubPRReleasePORelease_Seven.Name = "lbl_kpaPurchSubPRReleasePORelease_Seven";
             this.lbl_kpaPurchSubPRReleasePORelease_Seven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchSubPRReleasePORelease_Seven.TabIndex = 3;
@@ -3033,7 +2709,7 @@
             // lbl_kpaPurchNoConfirmation_Seven
             // 
             this.lbl_kpaPurchNoConfirmation_Seven.AutoSize = true;
-            this.lbl_kpaPurchNoConfirmation_Seven.Location = new System.Drawing.Point(777, 131);
+            this.lbl_kpaPurchNoConfirmation_Seven.Location = new System.Drawing.Point(777, 138);
             this.lbl_kpaPurchNoConfirmation_Seven.Name = "lbl_kpaPurchNoConfirmation_Seven";
             this.lbl_kpaPurchNoConfirmation_Seven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchNoConfirmation_Seven.TabIndex = 3;
@@ -3042,7 +2718,7 @@
             // lbl_kpaPurchPOPrevRel_Seven
             // 
             this.lbl_kpaPurchPOPrevRel_Seven.AutoSize = true;
-            this.lbl_kpaPurchPOPrevRel_Seven.Location = new System.Drawing.Point(777, 113);
+            this.lbl_kpaPurchPOPrevRel_Seven.Location = new System.Drawing.Point(777, 119);
             this.lbl_kpaPurchPOPrevRel_Seven.Name = "lbl_kpaPurchPOPrevRel_Seven";
             this.lbl_kpaPurchPOPrevRel_Seven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchPOPrevRel_Seven.TabIndex = 3;
@@ -3051,7 +2727,7 @@
             // lbl_kpaPurchPOFirstRel_Seven
             // 
             this.lbl_kpaPurchPOFirstRel_Seven.AutoSize = true;
-            this.lbl_kpaPurchPOFirstRel_Seven.Location = new System.Drawing.Point(777, 96);
+            this.lbl_kpaPurchPOFirstRel_Seven.Location = new System.Drawing.Point(777, 101);
             this.lbl_kpaPurchPOFirstRel_Seven.Name = "lbl_kpaPurchPOFirstRel_Seven";
             this.lbl_kpaPurchPOFirstRel_Seven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchPOFirstRel_Seven.TabIndex = 3;
@@ -3060,7 +2736,7 @@
             // lbl_kpaPurchPOFirstRel_Six
             // 
             this.lbl_kpaPurchPOFirstRel_Six.AutoSize = true;
-            this.lbl_kpaPurchPOFirstRel_Six.Location = new System.Drawing.Point(705, 96);
+            this.lbl_kpaPurchPOFirstRel_Six.Location = new System.Drawing.Point(705, 101);
             this.lbl_kpaPurchPOFirstRel_Six.Name = "lbl_kpaPurchPOFirstRel_Six";
             this.lbl_kpaPurchPOFirstRel_Six.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchPOFirstRel_Six.TabIndex = 3;
@@ -3069,7 +2745,7 @@
             // lbl_kpaPurchPOFirstRel_Five
             // 
             this.lbl_kpaPurchPOFirstRel_Five.AutoSize = true;
-            this.lbl_kpaPurchPOFirstRel_Five.Location = new System.Drawing.Point(633, 96);
+            this.lbl_kpaPurchPOFirstRel_Five.Location = new System.Drawing.Point(633, 101);
             this.lbl_kpaPurchPOFirstRel_Five.Name = "lbl_kpaPurchPOFirstRel_Five";
             this.lbl_kpaPurchPOFirstRel_Five.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchPOFirstRel_Five.TabIndex = 3;
@@ -3078,7 +2754,7 @@
             // lbl_kpaPurchPOFirstRel_Four
             // 
             this.lbl_kpaPurchPOFirstRel_Four.AutoSize = true;
-            this.lbl_kpaPurchPOFirstRel_Four.Location = new System.Drawing.Point(561, 96);
+            this.lbl_kpaPurchPOFirstRel_Four.Location = new System.Drawing.Point(561, 101);
             this.lbl_kpaPurchPOFirstRel_Four.Name = "lbl_kpaPurchPOFirstRel_Four";
             this.lbl_kpaPurchPOFirstRel_Four.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchPOFirstRel_Four.TabIndex = 3;
@@ -3087,7 +2763,7 @@
             // lbl_kpaPurchPOPrevRel_Four
             // 
             this.lbl_kpaPurchPOPrevRel_Four.AutoSize = true;
-            this.lbl_kpaPurchPOPrevRel_Four.Location = new System.Drawing.Point(561, 113);
+            this.lbl_kpaPurchPOPrevRel_Four.Location = new System.Drawing.Point(561, 119);
             this.lbl_kpaPurchPOPrevRel_Four.Name = "lbl_kpaPurchPOPrevRel_Four";
             this.lbl_kpaPurchPOPrevRel_Four.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchPOPrevRel_Four.TabIndex = 3;
@@ -3096,7 +2772,7 @@
             // lbl_kpaPurchNoConfirmation_Four
             // 
             this.lbl_kpaPurchNoConfirmation_Four.AutoSize = true;
-            this.lbl_kpaPurchNoConfirmation_Four.Location = new System.Drawing.Point(561, 131);
+            this.lbl_kpaPurchNoConfirmation_Four.Location = new System.Drawing.Point(561, 138);
             this.lbl_kpaPurchNoConfirmation_Four.Name = "lbl_kpaPurchNoConfirmation_Four";
             this.lbl_kpaPurchNoConfirmation_Four.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchNoConfirmation_Four.TabIndex = 3;
@@ -3105,7 +2781,7 @@
             // lbl_kpaPurchNoConfirmation_Five
             // 
             this.lbl_kpaPurchNoConfirmation_Five.AutoSize = true;
-            this.lbl_kpaPurchNoConfirmation_Five.Location = new System.Drawing.Point(633, 131);
+            this.lbl_kpaPurchNoConfirmation_Five.Location = new System.Drawing.Point(633, 138);
             this.lbl_kpaPurchNoConfirmation_Five.Name = "lbl_kpaPurchNoConfirmation_Five";
             this.lbl_kpaPurchNoConfirmation_Five.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchNoConfirmation_Five.TabIndex = 3;
@@ -3114,7 +2790,7 @@
             // lbl_kpaPurchNoConfirmation_Six
             // 
             this.lbl_kpaPurchNoConfirmation_Six.AutoSize = true;
-            this.lbl_kpaPurchNoConfirmation_Six.Location = new System.Drawing.Point(705, 131);
+            this.lbl_kpaPurchNoConfirmation_Six.Location = new System.Drawing.Point(705, 138);
             this.lbl_kpaPurchNoConfirmation_Six.Name = "lbl_kpaPurchNoConfirmation_Six";
             this.lbl_kpaPurchNoConfirmation_Six.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchNoConfirmation_Six.TabIndex = 3;
@@ -3123,7 +2799,7 @@
             // lbl_kpaPurchPOPrevRel_Six
             // 
             this.lbl_kpaPurchPOPrevRel_Six.AutoSize = true;
-            this.lbl_kpaPurchPOPrevRel_Six.Location = new System.Drawing.Point(705, 113);
+            this.lbl_kpaPurchPOPrevRel_Six.Location = new System.Drawing.Point(705, 119);
             this.lbl_kpaPurchPOPrevRel_Six.Name = "lbl_kpaPurchPOPrevRel_Six";
             this.lbl_kpaPurchPOPrevRel_Six.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchPOPrevRel_Six.TabIndex = 3;
@@ -3132,7 +2808,7 @@
             // lbl_kpaPurchPOPrevRel_Five
             // 
             this.lbl_kpaPurchPOPrevRel_Five.AutoSize = true;
-            this.lbl_kpaPurchPOPrevRel_Five.Location = new System.Drawing.Point(633, 113);
+            this.lbl_kpaPurchPOPrevRel_Five.Location = new System.Drawing.Point(633, 119);
             this.lbl_kpaPurchPOPrevRel_Five.Name = "lbl_kpaPurchPOPrevRel_Five";
             this.lbl_kpaPurchPOPrevRel_Five.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaPurchPOPrevRel_Five.TabIndex = 3;
@@ -3141,7 +2817,7 @@
             // lbl_kpaFollowUpConfvsPlanDate_One
             // 
             this.lbl_kpaFollowUpConfvsPlanDate_One.AutoSize = true;
-            this.lbl_kpaFollowUpConfvsPlanDate_One.Location = new System.Drawing.Point(343, 215);
+            this.lbl_kpaFollowUpConfvsPlanDate_One.Location = new System.Drawing.Point(343, 227);
             this.lbl_kpaFollowUpConfvsPlanDate_One.Name = "lbl_kpaFollowUpConfvsPlanDate_One";
             this.lbl_kpaFollowUpConfvsPlanDate_One.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaFollowUpConfvsPlanDate_One.TabIndex = 3;
@@ -3150,7 +2826,7 @@
             // lbl_kpaFollowUpConfDateUpcomingDel_One
             // 
             this.lbl_kpaFollowUpConfDateUpcomingDel_One.AutoSize = true;
-            this.lbl_kpaFollowUpConfDateUpcomingDel_One.Location = new System.Drawing.Point(343, 231);
+            this.lbl_kpaFollowUpConfDateUpcomingDel_One.Location = new System.Drawing.Point(343, 244);
             this.lbl_kpaFollowUpConfDateUpcomingDel_One.Name = "lbl_kpaFollowUpConfDateUpcomingDel_One";
             this.lbl_kpaFollowUpConfDateUpcomingDel_One.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaFollowUpConfDateUpcomingDel_One.TabIndex = 3;
@@ -3159,7 +2835,7 @@
             // lbl_kpaFollowUpLateToConfirmed_One
             // 
             this.lbl_kpaFollowUpLateToConfirmed_One.AutoSize = true;
-            this.lbl_kpaFollowUpLateToConfirmed_One.Location = new System.Drawing.Point(343, 249);
+            this.lbl_kpaFollowUpLateToConfirmed_One.Location = new System.Drawing.Point(343, 263);
             this.lbl_kpaFollowUpLateToConfirmed_One.Name = "lbl_kpaFollowUpLateToConfirmed_One";
             this.lbl_kpaFollowUpLateToConfirmed_One.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaFollowUpLateToConfirmed_One.TabIndex = 3;
@@ -3168,7 +2844,7 @@
             // lbl_kpaHotJobsprsNotOnPO_One
             // 
             this.lbl_kpaHotJobsprsNotOnPO_One.AutoSize = true;
-            this.lbl_kpaHotJobsprsNotOnPO_One.Location = new System.Drawing.Point(343, 334);
+            this.lbl_kpaHotJobsprsNotOnPO_One.Location = new System.Drawing.Point(343, 353);
             this.lbl_kpaHotJobsprsNotOnPO_One.Name = "lbl_kpaHotJobsprsNotOnPO_One";
             this.lbl_kpaHotJobsprsNotOnPO_One.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaHotJobsprsNotOnPO_One.TabIndex = 3;
@@ -3177,7 +2853,7 @@
             // lbl_kpaHotJobsNoConf_One
             // 
             this.lbl_kpaHotJobsNoConf_One.AutoSize = true;
-            this.lbl_kpaHotJobsNoConf_One.Location = new System.Drawing.Point(343, 351);
+            this.lbl_kpaHotJobsNoConf_One.Location = new System.Drawing.Point(343, 371);
             this.lbl_kpaHotJobsNoConf_One.Name = "lbl_kpaHotJobsNoConf_One";
             this.lbl_kpaHotJobsNoConf_One.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaHotJobsNoConf_One.TabIndex = 3;
@@ -3186,7 +2862,7 @@
             // lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_One
             // 
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_One.AutoSize = true;
-            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_One.Location = new System.Drawing.Point(343, 558);
+            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_One.Location = new System.Drawing.Point(343, 588);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_One.Name = "lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_One";
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_One.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_One.TabIndex = 3;
@@ -3195,7 +2871,7 @@
             // lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Ten
             // 
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Ten.AutoSize = true;
-            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Ten.Location = new System.Drawing.Point(993, 558);
+            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Ten.Location = new System.Drawing.Point(993, 588);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Ten.Name = "lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Ten";
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Ten.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Ten.TabIndex = 3;
@@ -3204,7 +2880,7 @@
             // lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Nine
             // 
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Nine.AutoSize = true;
-            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Nine.Location = new System.Drawing.Point(921, 558);
+            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Nine.Location = new System.Drawing.Point(921, 588);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Nine.Name = "lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Nine";
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Nine.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Nine.TabIndex = 3;
@@ -3213,7 +2889,7 @@
             // lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Eight
             // 
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Eight.AutoSize = true;
-            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Eight.Location = new System.Drawing.Point(849, 558);
+            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Eight.Location = new System.Drawing.Point(849, 588);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Eight.Name = "lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Eight";
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Eight.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Eight.TabIndex = 3;
@@ -3222,7 +2898,7 @@
             // lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Seven
             // 
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Seven.AutoSize = true;
-            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Seven.Location = new System.Drawing.Point(777, 558);
+            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Seven.Location = new System.Drawing.Point(777, 588);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Seven.Name = "lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Seven";
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Seven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Seven.TabIndex = 3;
@@ -3231,7 +2907,7 @@
             // lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Six
             // 
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Six.AutoSize = true;
-            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Six.Location = new System.Drawing.Point(705, 558);
+            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Six.Location = new System.Drawing.Point(705, 588);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Six.Name = "lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Six";
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Six.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Six.TabIndex = 3;
@@ -3240,7 +2916,7 @@
             // lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Five
             // 
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Five.AutoSize = true;
-            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Five.Location = new System.Drawing.Point(633, 558);
+            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Five.Location = new System.Drawing.Point(633, 588);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Five.Name = "lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Five";
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Five.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Five.TabIndex = 3;
@@ -3249,7 +2925,7 @@
             // lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Four
             // 
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Four.AutoSize = true;
-            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Four.Location = new System.Drawing.Point(561, 558);
+            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Four.Location = new System.Drawing.Point(561, 588);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Four.Name = "lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Four";
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Four.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Four.TabIndex = 3;
@@ -3258,7 +2934,7 @@
             // lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Three
             // 
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Three.AutoSize = true;
-            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Three.Location = new System.Drawing.Point(489, 558);
+            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Three.Location = new System.Drawing.Point(489, 588);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Three.Name = "lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Three";
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Three.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Three.TabIndex = 3;
@@ -3267,7 +2943,7 @@
             // lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Two
             // 
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Two.AutoSize = true;
-            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Two.Location = new System.Drawing.Point(417, 558);
+            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Two.Location = new System.Drawing.Point(417, 588);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Two.Name = "lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Two";
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Two.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Two.TabIndex = 3;
@@ -3276,7 +2952,7 @@
             // lbl_kpaHotJobsNoConf_Two
             // 
             this.lbl_kpaHotJobsNoConf_Two.AutoSize = true;
-            this.lbl_kpaHotJobsNoConf_Two.Location = new System.Drawing.Point(417, 351);
+            this.lbl_kpaHotJobsNoConf_Two.Location = new System.Drawing.Point(417, 371);
             this.lbl_kpaHotJobsNoConf_Two.Name = "lbl_kpaHotJobsNoConf_Two";
             this.lbl_kpaHotJobsNoConf_Two.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaHotJobsNoConf_Two.TabIndex = 3;
@@ -3285,7 +2961,7 @@
             // lbl_kpaHotJobsNoConf_Three
             // 
             this.lbl_kpaHotJobsNoConf_Three.AutoSize = true;
-            this.lbl_kpaHotJobsNoConf_Three.Location = new System.Drawing.Point(489, 351);
+            this.lbl_kpaHotJobsNoConf_Three.Location = new System.Drawing.Point(489, 371);
             this.lbl_kpaHotJobsNoConf_Three.Name = "lbl_kpaHotJobsNoConf_Three";
             this.lbl_kpaHotJobsNoConf_Three.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaHotJobsNoConf_Three.TabIndex = 3;
@@ -3294,7 +2970,7 @@
             // lbl_kpaHotJobsNoConf_Four
             // 
             this.lbl_kpaHotJobsNoConf_Four.AutoSize = true;
-            this.lbl_kpaHotJobsNoConf_Four.Location = new System.Drawing.Point(561, 351);
+            this.lbl_kpaHotJobsNoConf_Four.Location = new System.Drawing.Point(561, 371);
             this.lbl_kpaHotJobsNoConf_Four.Name = "lbl_kpaHotJobsNoConf_Four";
             this.lbl_kpaHotJobsNoConf_Four.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaHotJobsNoConf_Four.TabIndex = 3;
@@ -3303,7 +2979,7 @@
             // lbl_kpaHotJobsNoConf_Five
             // 
             this.lbl_kpaHotJobsNoConf_Five.AutoSize = true;
-            this.lbl_kpaHotJobsNoConf_Five.Location = new System.Drawing.Point(633, 351);
+            this.lbl_kpaHotJobsNoConf_Five.Location = new System.Drawing.Point(633, 371);
             this.lbl_kpaHotJobsNoConf_Five.Name = "lbl_kpaHotJobsNoConf_Five";
             this.lbl_kpaHotJobsNoConf_Five.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaHotJobsNoConf_Five.TabIndex = 3;
@@ -3312,7 +2988,7 @@
             // lbl_kpaHotJobsNoConf_Six
             // 
             this.lbl_kpaHotJobsNoConf_Six.AutoSize = true;
-            this.lbl_kpaHotJobsNoConf_Six.Location = new System.Drawing.Point(705, 351);
+            this.lbl_kpaHotJobsNoConf_Six.Location = new System.Drawing.Point(705, 371);
             this.lbl_kpaHotJobsNoConf_Six.Name = "lbl_kpaHotJobsNoConf_Six";
             this.lbl_kpaHotJobsNoConf_Six.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaHotJobsNoConf_Six.TabIndex = 3;
@@ -3321,7 +2997,7 @@
             // lbl_kpaHotJobsNoConf_Seven
             // 
             this.lbl_kpaHotJobsNoConf_Seven.AutoSize = true;
-            this.lbl_kpaHotJobsNoConf_Seven.Location = new System.Drawing.Point(777, 351);
+            this.lbl_kpaHotJobsNoConf_Seven.Location = new System.Drawing.Point(777, 371);
             this.lbl_kpaHotJobsNoConf_Seven.Name = "lbl_kpaHotJobsNoConf_Seven";
             this.lbl_kpaHotJobsNoConf_Seven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaHotJobsNoConf_Seven.TabIndex = 3;
@@ -3330,7 +3006,7 @@
             // lbl_kpaHotJobsNoConf_Eight
             // 
             this.lbl_kpaHotJobsNoConf_Eight.AutoSize = true;
-            this.lbl_kpaHotJobsNoConf_Eight.Location = new System.Drawing.Point(849, 351);
+            this.lbl_kpaHotJobsNoConf_Eight.Location = new System.Drawing.Point(849, 371);
             this.lbl_kpaHotJobsNoConf_Eight.Name = "lbl_kpaHotJobsNoConf_Eight";
             this.lbl_kpaHotJobsNoConf_Eight.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaHotJobsNoConf_Eight.TabIndex = 3;
@@ -3339,7 +3015,7 @@
             // lbl_kpaHotJobsNoConf_Nine
             // 
             this.lbl_kpaHotJobsNoConf_Nine.AutoSize = true;
-            this.lbl_kpaHotJobsNoConf_Nine.Location = new System.Drawing.Point(921, 351);
+            this.lbl_kpaHotJobsNoConf_Nine.Location = new System.Drawing.Point(921, 371);
             this.lbl_kpaHotJobsNoConf_Nine.Name = "lbl_kpaHotJobsNoConf_Nine";
             this.lbl_kpaHotJobsNoConf_Nine.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaHotJobsNoConf_Nine.TabIndex = 3;
@@ -3348,7 +3024,7 @@
             // lbl_kpaHotJobsprsNotOnPO_Two
             // 
             this.lbl_kpaHotJobsprsNotOnPO_Two.AutoSize = true;
-            this.lbl_kpaHotJobsprsNotOnPO_Two.Location = new System.Drawing.Point(417, 334);
+            this.lbl_kpaHotJobsprsNotOnPO_Two.Location = new System.Drawing.Point(417, 353);
             this.lbl_kpaHotJobsprsNotOnPO_Two.Name = "lbl_kpaHotJobsprsNotOnPO_Two";
             this.lbl_kpaHotJobsprsNotOnPO_Two.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaHotJobsprsNotOnPO_Two.TabIndex = 3;
@@ -3357,7 +3033,7 @@
             // lbl_kpaHotJobsprsNotOnPO_Three
             // 
             this.lbl_kpaHotJobsprsNotOnPO_Three.AutoSize = true;
-            this.lbl_kpaHotJobsprsNotOnPO_Three.Location = new System.Drawing.Point(489, 334);
+            this.lbl_kpaHotJobsprsNotOnPO_Three.Location = new System.Drawing.Point(489, 353);
             this.lbl_kpaHotJobsprsNotOnPO_Three.Name = "lbl_kpaHotJobsprsNotOnPO_Three";
             this.lbl_kpaHotJobsprsNotOnPO_Three.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaHotJobsprsNotOnPO_Three.TabIndex = 3;
@@ -3366,7 +3042,7 @@
             // lbl_kpaHotJobsprsNotOnPO_Four
             // 
             this.lbl_kpaHotJobsprsNotOnPO_Four.AutoSize = true;
-            this.lbl_kpaHotJobsprsNotOnPO_Four.Location = new System.Drawing.Point(561, 334);
+            this.lbl_kpaHotJobsprsNotOnPO_Four.Location = new System.Drawing.Point(561, 353);
             this.lbl_kpaHotJobsprsNotOnPO_Four.Name = "lbl_kpaHotJobsprsNotOnPO_Four";
             this.lbl_kpaHotJobsprsNotOnPO_Four.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaHotJobsprsNotOnPO_Four.TabIndex = 3;
@@ -3375,7 +3051,7 @@
             // lbl_kpaHotJobsprsNotOnPO_Five
             // 
             this.lbl_kpaHotJobsprsNotOnPO_Five.AutoSize = true;
-            this.lbl_kpaHotJobsprsNotOnPO_Five.Location = new System.Drawing.Point(633, 334);
+            this.lbl_kpaHotJobsprsNotOnPO_Five.Location = new System.Drawing.Point(633, 353);
             this.lbl_kpaHotJobsprsNotOnPO_Five.Name = "lbl_kpaHotJobsprsNotOnPO_Five";
             this.lbl_kpaHotJobsprsNotOnPO_Five.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaHotJobsprsNotOnPO_Five.TabIndex = 3;
@@ -3384,7 +3060,7 @@
             // lbl_kpaHotJobsprsNotOnPO_Six
             // 
             this.lbl_kpaHotJobsprsNotOnPO_Six.AutoSize = true;
-            this.lbl_kpaHotJobsprsNotOnPO_Six.Location = new System.Drawing.Point(705, 334);
+            this.lbl_kpaHotJobsprsNotOnPO_Six.Location = new System.Drawing.Point(705, 353);
             this.lbl_kpaHotJobsprsNotOnPO_Six.Name = "lbl_kpaHotJobsprsNotOnPO_Six";
             this.lbl_kpaHotJobsprsNotOnPO_Six.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaHotJobsprsNotOnPO_Six.TabIndex = 3;
@@ -3393,7 +3069,7 @@
             // lbl_kpaHotJobsprsNotOnPO_Seven
             // 
             this.lbl_kpaHotJobsprsNotOnPO_Seven.AutoSize = true;
-            this.lbl_kpaHotJobsprsNotOnPO_Seven.Location = new System.Drawing.Point(777, 334);
+            this.lbl_kpaHotJobsprsNotOnPO_Seven.Location = new System.Drawing.Point(777, 353);
             this.lbl_kpaHotJobsprsNotOnPO_Seven.Name = "lbl_kpaHotJobsprsNotOnPO_Seven";
             this.lbl_kpaHotJobsprsNotOnPO_Seven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaHotJobsprsNotOnPO_Seven.TabIndex = 3;
@@ -3402,7 +3078,7 @@
             // lbl_kpaHotJobsprsNotOnPO_Eight
             // 
             this.lbl_kpaHotJobsprsNotOnPO_Eight.AutoSize = true;
-            this.lbl_kpaHotJobsprsNotOnPO_Eight.Location = new System.Drawing.Point(849, 334);
+            this.lbl_kpaHotJobsprsNotOnPO_Eight.Location = new System.Drawing.Point(849, 353);
             this.lbl_kpaHotJobsprsNotOnPO_Eight.Name = "lbl_kpaHotJobsprsNotOnPO_Eight";
             this.lbl_kpaHotJobsprsNotOnPO_Eight.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaHotJobsprsNotOnPO_Eight.TabIndex = 3;
@@ -3411,7 +3087,7 @@
             // lbl_kpaHotJobsprsNotOnPO_Nine
             // 
             this.lbl_kpaHotJobsprsNotOnPO_Nine.AutoSize = true;
-            this.lbl_kpaHotJobsprsNotOnPO_Nine.Location = new System.Drawing.Point(921, 334);
+            this.lbl_kpaHotJobsprsNotOnPO_Nine.Location = new System.Drawing.Point(921, 353);
             this.lbl_kpaHotJobsprsNotOnPO_Nine.Name = "lbl_kpaHotJobsprsNotOnPO_Nine";
             this.lbl_kpaHotJobsprsNotOnPO_Nine.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaHotJobsprsNotOnPO_Nine.TabIndex = 3;
@@ -3420,7 +3096,7 @@
             // lbl_kpaFollowUpLateToConfirmed_Two
             // 
             this.lbl_kpaFollowUpLateToConfirmed_Two.AutoSize = true;
-            this.lbl_kpaFollowUpLateToConfirmed_Two.Location = new System.Drawing.Point(417, 249);
+            this.lbl_kpaFollowUpLateToConfirmed_Two.Location = new System.Drawing.Point(417, 263);
             this.lbl_kpaFollowUpLateToConfirmed_Two.Name = "lbl_kpaFollowUpLateToConfirmed_Two";
             this.lbl_kpaFollowUpLateToConfirmed_Two.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaFollowUpLateToConfirmed_Two.TabIndex = 3;
@@ -3429,7 +3105,7 @@
             // lbl_kpaFollowUpLateToConfirmed_Three
             // 
             this.lbl_kpaFollowUpLateToConfirmed_Three.AutoSize = true;
-            this.lbl_kpaFollowUpLateToConfirmed_Three.Location = new System.Drawing.Point(489, 249);
+            this.lbl_kpaFollowUpLateToConfirmed_Three.Location = new System.Drawing.Point(489, 263);
             this.lbl_kpaFollowUpLateToConfirmed_Three.Name = "lbl_kpaFollowUpLateToConfirmed_Three";
             this.lbl_kpaFollowUpLateToConfirmed_Three.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaFollowUpLateToConfirmed_Three.TabIndex = 3;
@@ -3438,7 +3114,7 @@
             // lbl_kpaFollowUpLateToConfirmed_Four
             // 
             this.lbl_kpaFollowUpLateToConfirmed_Four.AutoSize = true;
-            this.lbl_kpaFollowUpLateToConfirmed_Four.Location = new System.Drawing.Point(561, 249);
+            this.lbl_kpaFollowUpLateToConfirmed_Four.Location = new System.Drawing.Point(561, 263);
             this.lbl_kpaFollowUpLateToConfirmed_Four.Name = "lbl_kpaFollowUpLateToConfirmed_Four";
             this.lbl_kpaFollowUpLateToConfirmed_Four.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaFollowUpLateToConfirmed_Four.TabIndex = 3;
@@ -3447,7 +3123,7 @@
             // lbl_kpaFollowUpLateToConfirmed_Five
             // 
             this.lbl_kpaFollowUpLateToConfirmed_Five.AutoSize = true;
-            this.lbl_kpaFollowUpLateToConfirmed_Five.Location = new System.Drawing.Point(633, 249);
+            this.lbl_kpaFollowUpLateToConfirmed_Five.Location = new System.Drawing.Point(633, 263);
             this.lbl_kpaFollowUpLateToConfirmed_Five.Name = "lbl_kpaFollowUpLateToConfirmed_Five";
             this.lbl_kpaFollowUpLateToConfirmed_Five.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaFollowUpLateToConfirmed_Five.TabIndex = 3;
@@ -3456,7 +3132,7 @@
             // lbl_kpaFollowUpLateToConfirmed_Six
             // 
             this.lbl_kpaFollowUpLateToConfirmed_Six.AutoSize = true;
-            this.lbl_kpaFollowUpLateToConfirmed_Six.Location = new System.Drawing.Point(705, 249);
+            this.lbl_kpaFollowUpLateToConfirmed_Six.Location = new System.Drawing.Point(705, 263);
             this.lbl_kpaFollowUpLateToConfirmed_Six.Name = "lbl_kpaFollowUpLateToConfirmed_Six";
             this.lbl_kpaFollowUpLateToConfirmed_Six.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaFollowUpLateToConfirmed_Six.TabIndex = 3;
@@ -3465,7 +3141,7 @@
             // lbl_kpaFollowUpLateToConfirmed_Eight
             // 
             this.lbl_kpaFollowUpLateToConfirmed_Eight.AutoSize = true;
-            this.lbl_kpaFollowUpLateToConfirmed_Eight.Location = new System.Drawing.Point(849, 249);
+            this.lbl_kpaFollowUpLateToConfirmed_Eight.Location = new System.Drawing.Point(849, 263);
             this.lbl_kpaFollowUpLateToConfirmed_Eight.Name = "lbl_kpaFollowUpLateToConfirmed_Eight";
             this.lbl_kpaFollowUpLateToConfirmed_Eight.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaFollowUpLateToConfirmed_Eight.TabIndex = 3;
@@ -3474,7 +3150,7 @@
             // lbl_kpaFollowUpLateToConfirmed_Seven
             // 
             this.lbl_kpaFollowUpLateToConfirmed_Seven.AutoSize = true;
-            this.lbl_kpaFollowUpLateToConfirmed_Seven.Location = new System.Drawing.Point(777, 249);
+            this.lbl_kpaFollowUpLateToConfirmed_Seven.Location = new System.Drawing.Point(777, 263);
             this.lbl_kpaFollowUpLateToConfirmed_Seven.Name = "lbl_kpaFollowUpLateToConfirmed_Seven";
             this.lbl_kpaFollowUpLateToConfirmed_Seven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaFollowUpLateToConfirmed_Seven.TabIndex = 3;
@@ -3483,7 +3159,7 @@
             // lbl_kpaFollowUpLateToConfirmed_Nine
             // 
             this.lbl_kpaFollowUpLateToConfirmed_Nine.AutoSize = true;
-            this.lbl_kpaFollowUpLateToConfirmed_Nine.Location = new System.Drawing.Point(921, 249);
+            this.lbl_kpaFollowUpLateToConfirmed_Nine.Location = new System.Drawing.Point(921, 263);
             this.lbl_kpaFollowUpLateToConfirmed_Nine.Name = "lbl_kpaFollowUpLateToConfirmed_Nine";
             this.lbl_kpaFollowUpLateToConfirmed_Nine.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaFollowUpLateToConfirmed_Nine.TabIndex = 3;
@@ -3492,7 +3168,7 @@
             // lbl_kpaFollowUpConfvsPlanDate_Nine
             // 
             this.lbl_kpaFollowUpConfvsPlanDate_Nine.AutoSize = true;
-            this.lbl_kpaFollowUpConfvsPlanDate_Nine.Location = new System.Drawing.Point(921, 215);
+            this.lbl_kpaFollowUpConfvsPlanDate_Nine.Location = new System.Drawing.Point(921, 227);
             this.lbl_kpaFollowUpConfvsPlanDate_Nine.Name = "lbl_kpaFollowUpConfvsPlanDate_Nine";
             this.lbl_kpaFollowUpConfvsPlanDate_Nine.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaFollowUpConfvsPlanDate_Nine.TabIndex = 3;
@@ -3501,7 +3177,7 @@
             // lbl_kpaFollowUpConfDateUpcomingDel_Nine
             // 
             this.lbl_kpaFollowUpConfDateUpcomingDel_Nine.AutoSize = true;
-            this.lbl_kpaFollowUpConfDateUpcomingDel_Nine.Location = new System.Drawing.Point(921, 231);
+            this.lbl_kpaFollowUpConfDateUpcomingDel_Nine.Location = new System.Drawing.Point(921, 244);
             this.lbl_kpaFollowUpConfDateUpcomingDel_Nine.Name = "lbl_kpaFollowUpConfDateUpcomingDel_Nine";
             this.lbl_kpaFollowUpConfDateUpcomingDel_Nine.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaFollowUpConfDateUpcomingDel_Nine.TabIndex = 3;
@@ -3510,7 +3186,7 @@
             // lbl_kpaFollowUpConfDateUpcomingDel_Eight
             // 
             this.lbl_kpaFollowUpConfDateUpcomingDel_Eight.AutoSize = true;
-            this.lbl_kpaFollowUpConfDateUpcomingDel_Eight.Location = new System.Drawing.Point(849, 231);
+            this.lbl_kpaFollowUpConfDateUpcomingDel_Eight.Location = new System.Drawing.Point(849, 244);
             this.lbl_kpaFollowUpConfDateUpcomingDel_Eight.Name = "lbl_kpaFollowUpConfDateUpcomingDel_Eight";
             this.lbl_kpaFollowUpConfDateUpcomingDel_Eight.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaFollowUpConfDateUpcomingDel_Eight.TabIndex = 3;
@@ -3519,7 +3195,7 @@
             // lbl_kpaFollowUpConfDateUpcomingDel_Seven
             // 
             this.lbl_kpaFollowUpConfDateUpcomingDel_Seven.AutoSize = true;
-            this.lbl_kpaFollowUpConfDateUpcomingDel_Seven.Location = new System.Drawing.Point(777, 231);
+            this.lbl_kpaFollowUpConfDateUpcomingDel_Seven.Location = new System.Drawing.Point(777, 244);
             this.lbl_kpaFollowUpConfDateUpcomingDel_Seven.Name = "lbl_kpaFollowUpConfDateUpcomingDel_Seven";
             this.lbl_kpaFollowUpConfDateUpcomingDel_Seven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaFollowUpConfDateUpcomingDel_Seven.TabIndex = 3;
@@ -3528,7 +3204,7 @@
             // lbl_kpaFollowUpConfDateUpcomingDel_Six
             // 
             this.lbl_kpaFollowUpConfDateUpcomingDel_Six.AutoSize = true;
-            this.lbl_kpaFollowUpConfDateUpcomingDel_Six.Location = new System.Drawing.Point(705, 231);
+            this.lbl_kpaFollowUpConfDateUpcomingDel_Six.Location = new System.Drawing.Point(705, 244);
             this.lbl_kpaFollowUpConfDateUpcomingDel_Six.Name = "lbl_kpaFollowUpConfDateUpcomingDel_Six";
             this.lbl_kpaFollowUpConfDateUpcomingDel_Six.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaFollowUpConfDateUpcomingDel_Six.TabIndex = 3;
@@ -3537,7 +3213,7 @@
             // lbl_kpaFollowUpConfDateUpcomingDel_Five
             // 
             this.lbl_kpaFollowUpConfDateUpcomingDel_Five.AutoSize = true;
-            this.lbl_kpaFollowUpConfDateUpcomingDel_Five.Location = new System.Drawing.Point(633, 231);
+            this.lbl_kpaFollowUpConfDateUpcomingDel_Five.Location = new System.Drawing.Point(633, 244);
             this.lbl_kpaFollowUpConfDateUpcomingDel_Five.Name = "lbl_kpaFollowUpConfDateUpcomingDel_Five";
             this.lbl_kpaFollowUpConfDateUpcomingDel_Five.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaFollowUpConfDateUpcomingDel_Five.TabIndex = 3;
@@ -3546,7 +3222,7 @@
             // lbl_kpaFollowUpConfDateUpcomingDel_Four
             // 
             this.lbl_kpaFollowUpConfDateUpcomingDel_Four.AutoSize = true;
-            this.lbl_kpaFollowUpConfDateUpcomingDel_Four.Location = new System.Drawing.Point(561, 231);
+            this.lbl_kpaFollowUpConfDateUpcomingDel_Four.Location = new System.Drawing.Point(561, 244);
             this.lbl_kpaFollowUpConfDateUpcomingDel_Four.Name = "lbl_kpaFollowUpConfDateUpcomingDel_Four";
             this.lbl_kpaFollowUpConfDateUpcomingDel_Four.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaFollowUpConfDateUpcomingDel_Four.TabIndex = 3;
@@ -3555,7 +3231,7 @@
             // lbl_kpaFollowUpConfDateUpcomingDel_Three
             // 
             this.lbl_kpaFollowUpConfDateUpcomingDel_Three.AutoSize = true;
-            this.lbl_kpaFollowUpConfDateUpcomingDel_Three.Location = new System.Drawing.Point(489, 231);
+            this.lbl_kpaFollowUpConfDateUpcomingDel_Three.Location = new System.Drawing.Point(489, 244);
             this.lbl_kpaFollowUpConfDateUpcomingDel_Three.Name = "lbl_kpaFollowUpConfDateUpcomingDel_Three";
             this.lbl_kpaFollowUpConfDateUpcomingDel_Three.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaFollowUpConfDateUpcomingDel_Three.TabIndex = 3;
@@ -3564,7 +3240,7 @@
             // lbl_kpaFollowUpConfDateUpcomingDel_Two
             // 
             this.lbl_kpaFollowUpConfDateUpcomingDel_Two.AutoSize = true;
-            this.lbl_kpaFollowUpConfDateUpcomingDel_Two.Location = new System.Drawing.Point(417, 231);
+            this.lbl_kpaFollowUpConfDateUpcomingDel_Two.Location = new System.Drawing.Point(417, 244);
             this.lbl_kpaFollowUpConfDateUpcomingDel_Two.Name = "lbl_kpaFollowUpConfDateUpcomingDel_Two";
             this.lbl_kpaFollowUpConfDateUpcomingDel_Two.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaFollowUpConfDateUpcomingDel_Two.TabIndex = 3;
@@ -3573,7 +3249,7 @@
             // lbl_kpaFollowUpConfvsPlanDate_Two
             // 
             this.lbl_kpaFollowUpConfvsPlanDate_Two.AutoSize = true;
-            this.lbl_kpaFollowUpConfvsPlanDate_Two.Location = new System.Drawing.Point(417, 215);
+            this.lbl_kpaFollowUpConfvsPlanDate_Two.Location = new System.Drawing.Point(417, 227);
             this.lbl_kpaFollowUpConfvsPlanDate_Two.Name = "lbl_kpaFollowUpConfvsPlanDate_Two";
             this.lbl_kpaFollowUpConfvsPlanDate_Two.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaFollowUpConfvsPlanDate_Two.TabIndex = 3;
@@ -3582,7 +3258,7 @@
             // lbl_kpaFollowUpConfvsPlanDate_Three
             // 
             this.lbl_kpaFollowUpConfvsPlanDate_Three.AutoSize = true;
-            this.lbl_kpaFollowUpConfvsPlanDate_Three.Location = new System.Drawing.Point(489, 215);
+            this.lbl_kpaFollowUpConfvsPlanDate_Three.Location = new System.Drawing.Point(489, 227);
             this.lbl_kpaFollowUpConfvsPlanDate_Three.Name = "lbl_kpaFollowUpConfvsPlanDate_Three";
             this.lbl_kpaFollowUpConfvsPlanDate_Three.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaFollowUpConfvsPlanDate_Three.TabIndex = 3;
@@ -3591,7 +3267,7 @@
             // lbl_kpaFollowUpConfvsPlanDate_Four
             // 
             this.lbl_kpaFollowUpConfvsPlanDate_Four.AutoSize = true;
-            this.lbl_kpaFollowUpConfvsPlanDate_Four.Location = new System.Drawing.Point(561, 215);
+            this.lbl_kpaFollowUpConfvsPlanDate_Four.Location = new System.Drawing.Point(561, 227);
             this.lbl_kpaFollowUpConfvsPlanDate_Four.Name = "lbl_kpaFollowUpConfvsPlanDate_Four";
             this.lbl_kpaFollowUpConfvsPlanDate_Four.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaFollowUpConfvsPlanDate_Four.TabIndex = 3;
@@ -3600,7 +3276,7 @@
             // lbl_kpaFollowUpConfvsPlanDate_Five
             // 
             this.lbl_kpaFollowUpConfvsPlanDate_Five.AutoSize = true;
-            this.lbl_kpaFollowUpConfvsPlanDate_Five.Location = new System.Drawing.Point(633, 215);
+            this.lbl_kpaFollowUpConfvsPlanDate_Five.Location = new System.Drawing.Point(633, 227);
             this.lbl_kpaFollowUpConfvsPlanDate_Five.Name = "lbl_kpaFollowUpConfvsPlanDate_Five";
             this.lbl_kpaFollowUpConfvsPlanDate_Five.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaFollowUpConfvsPlanDate_Five.TabIndex = 3;
@@ -3609,7 +3285,7 @@
             // lbl_kpaFollowUpConfvsPlanDate_Six
             // 
             this.lbl_kpaFollowUpConfvsPlanDate_Six.AutoSize = true;
-            this.lbl_kpaFollowUpConfvsPlanDate_Six.Location = new System.Drawing.Point(705, 215);
+            this.lbl_kpaFollowUpConfvsPlanDate_Six.Location = new System.Drawing.Point(705, 227);
             this.lbl_kpaFollowUpConfvsPlanDate_Six.Name = "lbl_kpaFollowUpConfvsPlanDate_Six";
             this.lbl_kpaFollowUpConfvsPlanDate_Six.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaFollowUpConfvsPlanDate_Six.TabIndex = 3;
@@ -3618,7 +3294,7 @@
             // lbl_kpaFollowUpConfvsPlanDate_Seven
             // 
             this.lbl_kpaFollowUpConfvsPlanDate_Seven.AutoSize = true;
-            this.lbl_kpaFollowUpConfvsPlanDate_Seven.Location = new System.Drawing.Point(777, 215);
+            this.lbl_kpaFollowUpConfvsPlanDate_Seven.Location = new System.Drawing.Point(777, 227);
             this.lbl_kpaFollowUpConfvsPlanDate_Seven.Name = "lbl_kpaFollowUpConfvsPlanDate_Seven";
             this.lbl_kpaFollowUpConfvsPlanDate_Seven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaFollowUpConfvsPlanDate_Seven.TabIndex = 3;
@@ -3627,7 +3303,7 @@
             // lbl_kpaFollowUpConfvsPlanDate_Eight
             // 
             this.lbl_kpaFollowUpConfvsPlanDate_Eight.AutoSize = true;
-            this.lbl_kpaFollowUpConfvsPlanDate_Eight.Location = new System.Drawing.Point(849, 215);
+            this.lbl_kpaFollowUpConfvsPlanDate_Eight.Location = new System.Drawing.Point(849, 227);
             this.lbl_kpaFollowUpConfvsPlanDate_Eight.Name = "lbl_kpaFollowUpConfvsPlanDate_Eight";
             this.lbl_kpaFollowUpConfvsPlanDate_Eight.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaFollowUpConfvsPlanDate_Eight.TabIndex = 3;
@@ -3642,7 +3318,7 @@
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel10.Controls.Add(this.panel9, 1, 1);
             this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel10.Location = new System.Drawing.Point(11, 368);
+            this.tableLayoutPanel10.Location = new System.Drawing.Point(11, 389);
             this.tableLayoutPanel10.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
             this.tableLayoutPanel10.RowCount = 3;
@@ -3651,7 +3327,7 @@
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.00001F));
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel10.Size = new System.Drawing.Size(101, 87);
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(101, 90);
             this.tableLayoutPanel10.TabIndex = 1;
             // 
             // panel9
@@ -3660,7 +3336,7 @@
             this.panel9.Controls.Add(this.bunifuCustomLabel9);
             this.panel9.Controls.Add(this.bunifuCustomLabel14);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel9.Location = new System.Drawing.Point(13, 25);
+            this.panel9.Location = new System.Drawing.Point(13, 27);
             this.panel9.Margin = new System.Windows.Forms.Padding(0);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(75, 35);
@@ -3687,7 +3363,7 @@
             // bunifuCustomLabel74
             // 
             this.bunifuCustomLabel74.AutoSize = true;
-            this.bunifuCustomLabel74.Location = new System.Drawing.Point(116, 368);
+            this.bunifuCustomLabel74.Location = new System.Drawing.Point(116, 389);
             this.bunifuCustomLabel74.Name = "bunifuCustomLabel74";
             this.bunifuCustomLabel74.Size = new System.Drawing.Size(131, 13);
             this.bunifuCustomLabel74.TabIndex = 0;
@@ -3696,7 +3372,7 @@
             // bunifuCustomLabel61
             // 
             this.bunifuCustomLabel61.AutoSize = true;
-            this.bunifuCustomLabel61.Location = new System.Drawing.Point(116, 389);
+            this.bunifuCustomLabel61.Location = new System.Drawing.Point(116, 410);
             this.bunifuCustomLabel61.Name = "bunifuCustomLabel61";
             this.bunifuCustomLabel61.Size = new System.Drawing.Size(111, 13);
             this.bunifuCustomLabel61.TabIndex = 0;
@@ -3705,7 +3381,7 @@
             // bunifuCustomLabel63
             // 
             this.bunifuCustomLabel63.AutoSize = true;
-            this.bunifuCustomLabel63.Location = new System.Drawing.Point(116, 406);
+            this.bunifuCustomLabel63.Location = new System.Drawing.Point(116, 428);
             this.bunifuCustomLabel63.Name = "bunifuCustomLabel63";
             this.bunifuCustomLabel63.Size = new System.Drawing.Size(164, 13);
             this.bunifuCustomLabel63.TabIndex = 0;
@@ -3714,7 +3390,7 @@
             // bunifuCustomLabel64
             // 
             this.bunifuCustomLabel64.AutoSize = true;
-            this.bunifuCustomLabel64.Location = new System.Drawing.Point(116, 422);
+            this.bunifuCustomLabel64.Location = new System.Drawing.Point(116, 444);
             this.bunifuCustomLabel64.Name = "bunifuCustomLabel64";
             this.bunifuCustomLabel64.Size = new System.Drawing.Size(118, 13);
             this.bunifuCustomLabel64.TabIndex = 0;
@@ -3723,7 +3399,7 @@
             // bunifuCustomLabel62
             // 
             this.bunifuCustomLabel62.AutoSize = true;
-            this.bunifuCustomLabel62.Location = new System.Drawing.Point(116, 439);
+            this.bunifuCustomLabel62.Location = new System.Drawing.Point(116, 462);
             this.bunifuCustomLabel62.Name = "bunifuCustomLabel62";
             this.bunifuCustomLabel62.Size = new System.Drawing.Size(195, 13);
             this.bunifuCustomLabel62.TabIndex = 0;
@@ -3732,7 +3408,7 @@
             // lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_One
             // 
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_One.AutoSize = true;
-            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_One.Location = new System.Drawing.Point(343, 575);
+            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_One.Location = new System.Drawing.Point(343, 606);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_One.Name = "lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_One";
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_One.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_One.TabIndex = 3;
@@ -3741,7 +3417,7 @@
             // lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Two
             // 
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Two.AutoSize = true;
-            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Two.Location = new System.Drawing.Point(417, 575);
+            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Two.Location = new System.Drawing.Point(417, 606);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Two.Name = "lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Two";
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Two.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Two.TabIndex = 3;
@@ -3750,7 +3426,7 @@
             // lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Three
             // 
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Three.AutoSize = true;
-            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Three.Location = new System.Drawing.Point(489, 575);
+            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Three.Location = new System.Drawing.Point(489, 606);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Three.Name = "lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Three";
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Three.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Three.TabIndex = 3;
@@ -3759,7 +3435,7 @@
             // lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Four
             // 
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Four.AutoSize = true;
-            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Four.Location = new System.Drawing.Point(561, 575);
+            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Four.Location = new System.Drawing.Point(561, 606);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Four.Name = "lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Four";
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Four.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Four.TabIndex = 3;
@@ -3768,7 +3444,7 @@
             // lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Five
             // 
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Five.AutoSize = true;
-            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Five.Location = new System.Drawing.Point(633, 575);
+            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Five.Location = new System.Drawing.Point(633, 606);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Five.Name = "lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Five";
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Five.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Five.TabIndex = 3;
@@ -3777,7 +3453,7 @@
             // lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Six
             // 
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Six.AutoSize = true;
-            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Six.Location = new System.Drawing.Point(705, 575);
+            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Six.Location = new System.Drawing.Point(705, 606);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Six.Name = "lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Six";
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Six.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Six.TabIndex = 3;
@@ -3786,7 +3462,7 @@
             // lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Seven
             // 
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Seven.AutoSize = true;
-            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Seven.Location = new System.Drawing.Point(777, 575);
+            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Seven.Location = new System.Drawing.Point(777, 606);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Seven.Name = "lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Seven";
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Seven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Seven.TabIndex = 3;
@@ -3795,7 +3471,7 @@
             // lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Eight
             // 
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Eight.AutoSize = true;
-            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Eight.Location = new System.Drawing.Point(849, 575);
+            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Eight.Location = new System.Drawing.Point(849, 606);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Eight.Name = "lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Eight";
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Eight.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Eight.TabIndex = 3;
@@ -3804,7 +3480,7 @@
             // lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Nine
             // 
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Nine.AutoSize = true;
-            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Nine.Location = new System.Drawing.Point(921, 575);
+            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Nine.Location = new System.Drawing.Point(921, 606);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Nine.Name = "lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Nine";
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Nine.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Nine.TabIndex = 3;
@@ -3813,7 +3489,7 @@
             // lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Ten
             // 
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Ten.AutoSize = true;
-            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Ten.Location = new System.Drawing.Point(993, 575);
+            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Ten.Location = new System.Drawing.Point(993, 606);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Ten.Name = "lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Ten";
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Ten.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Ten.TabIndex = 3;
@@ -3828,21 +3504,21 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.panel39, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(1062, 541);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(1062, 570);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(77, 16);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(77, 17);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // panel39
             // 
             this.panel39.Controls.Add(this.bunifuCustomLabel75);
             this.panel39.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel39.Location = new System.Drawing.Point(3, -2);
+            this.panel39.Location = new System.Drawing.Point(3, -1);
             this.panel39.Margin = new System.Windows.Forms.Padding(0);
             this.panel39.Name = "panel39";
             this.panel39.Size = new System.Drawing.Size(70, 20);
@@ -3861,7 +3537,7 @@
             // lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Eleven
             // 
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Eleven.AutoSize = true;
-            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Eleven.Location = new System.Drawing.Point(1065, 558);
+            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Eleven.Location = new System.Drawing.Point(1065, 588);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Eleven.Name = "lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Eleven";
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Eleven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Eleven.TabIndex = 3;
@@ -3870,7 +3546,7 @@
             // lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Eleven
             // 
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Eleven.AutoSize = true;
-            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Eleven.Location = new System.Drawing.Point(1065, 575);
+            this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Eleven.Location = new System.Drawing.Point(1065, 606);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Eleven.Name = "lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Eleven";
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Eleven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Eleven.TabIndex = 3;
@@ -3912,9 +3588,6 @@
             this.tableLayoutPanel9.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
-            this.tableLayoutPanel13.ResumeLayout(false);
-            this.panel12.ResumeLayout(false);
-            this.panel12.PerformLayout();
             this.tableLayoutPanel12.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
@@ -3954,24 +3627,6 @@
             this.tableLayoutPanel24.ResumeLayout(false);
             this.panel23.ResumeLayout(false);
             this.panel23.PerformLayout();
-            this.tableLayoutPanel25.ResumeLayout(false);
-            this.panel24.ResumeLayout(false);
-            this.panel24.PerformLayout();
-            this.tableLayoutPanel26.ResumeLayout(false);
-            this.panel25.ResumeLayout(false);
-            this.panel25.PerformLayout();
-            this.tableLayoutPanel27.ResumeLayout(false);
-            this.panel26.ResumeLayout(false);
-            this.panel26.PerformLayout();
-            this.tableLayoutPanel28.ResumeLayout(false);
-            this.panel27.ResumeLayout(false);
-            this.panel27.PerformLayout();
-            this.tableLayoutPanel29.ResumeLayout(false);
-            this.panel28.ResumeLayout(false);
-            this.panel28.PerformLayout();
-            this.tableLayoutPanel30.ResumeLayout(false);
-            this.panel29.ResumeLayout(false);
-            this.panel29.PerformLayout();
             this.tableLayoutPanel32.ResumeLayout(false);
             this.panel31.ResumeLayout(false);
             this.panel31.PerformLayout();
@@ -4039,9 +3694,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
         private System.Windows.Forms.Panel panel11;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel11;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
-        private System.Windows.Forms.Panel panel12;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel12;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel13;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
         private System.Windows.Forms.Panel panel9;
@@ -4080,24 +3732,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel24;
         private System.Windows.Forms.Panel panel23;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel25;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel25;
-        private System.Windows.Forms.Panel panel24;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel26;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel26;
-        private System.Windows.Forms.Panel panel25;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel27;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel27;
-        private System.Windows.Forms.Panel panel26;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel28;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel28;
-        private System.Windows.Forms.Panel panel27;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel29;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel29;
-        private System.Windows.Forms.Panel panel28;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel30;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel30;
-        private System.Windows.Forms.Panel panel29;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel31;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel31;
         private System.Windows.Forms.Panel panel30;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel32;
@@ -4152,7 +3786,6 @@
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel69;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel70;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel71;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel72;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel39;
         private System.Windows.Forms.Panel panel38;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel73;

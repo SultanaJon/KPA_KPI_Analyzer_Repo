@@ -55,7 +55,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                     if(firstConfYear == 0 && firstConfMonth == 0 && firstConfDay == 0)
                     {
-                        totalUnconfPOs++;
+                        initConfVsCurrConf.data.PercentUnconfTotal++;
                         continue;
                     }
                     else
@@ -121,11 +121,11 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                     }
                 }
 
-                initConfVsCurrConf.data.Total = Overall.posRecCompDt.Rows.Count - (int)totalUnconfPOs;
+                initConfVsCurrConf.data.Total = Overall.posRecCompDt.Rows.Count - initConfVsCurrConf.data.PercentUnconfTotal;
 
                 try
                 {
-                    initConfVsCurrConf.data.PercentUnconf = Math.Round((totalUnconfPOs / Overall.posRecCompDt.Rows.Count) * 100, 2);
+                    initConfVsCurrConf.data.PercentUnconf = Math.Round(((double)initConfVsCurrConf.data.PercentUnconfTotal / Overall.posRecCompDt.Rows.Count) * 100, 2);
                 }
                 catch (DivideByZeroException)
                 {
@@ -166,7 +166,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                     if(firstConfYear == 0 && firstConfMonth == 0 && firstConfDay == 0)
                     {
-                        totalUnconfPOs++;
+                        finalConfDateVsFinalPlan.data.PercentUnconfTotal++;
                         continue;
                     }
                     else
@@ -235,7 +235,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                 try
                 {
-                    finalConfDateVsFinalPlan.data.Average = Math.Round(totalDays / (finalConfDateVsFinalPlan.data.Total - totalUnconfPOs), 2);
+                    finalConfDateVsFinalPlan.data.Average = Math.Round(totalDays / (finalConfDateVsFinalPlan.data.Total - finalConfDateVsFinalPlan.data.PercentUnconfTotal), 2);
                 }
                 catch (DivideByZeroException)
                 {
@@ -246,7 +246,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                 try
                 {
-                    finalConfDateVsFinalPlan.data.PercentUnconf = Math.Round((totalUnconfPOs / Overall.posRecCompDt.Rows.Count) * 100, 2);
+                    finalConfDateVsFinalPlan.data.PercentUnconf = Math.Round(((double)finalConfDateVsFinalPlan.data.PercentUnconfTotal / Overall.posRecCompDt.Rows.Count) * 100, 2);
                 }
                 catch (DivideByZeroException)
                 {
@@ -381,7 +381,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                     if (firstConfYear == 0 && firstConfMonth == 0 && firstConfDay == 0)
                     {
-                        totalUnconfPOs++;
+                        receiptDateVsOrigConfDate.data.PercentUnconfTotal++;
                         continue;
                     }
                     else
@@ -443,7 +443,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                 try
                 {
-                    receiptDateVsOrigConfDate.data.Average = Math.Round(totalDays / (receiptDateVsOrigConfDate.data.Total - totalUnconfPOs), 2);
+                    receiptDateVsOrigConfDate.data.Average = Math.Round(totalDays / (receiptDateVsOrigConfDate.data.Total - receiptDateVsOrigConfDate.data.PercentUnconfTotal), 2);
                 }
                 catch (DivideByZeroException)
                 {
@@ -454,7 +454,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                 try
                 {
-                    receiptDateVsOrigConfDate.data.PercentUnconf = Math.Round((totalUnconfPOs / Overall.posRecCompDt.Rows.Count) * 100, 2);
+                    receiptDateVsOrigConfDate.data.PercentUnconf = Math.Round(((double)receiptDateVsOrigConfDate.data.PercentUnconfTotal / Overall.posRecCompDt.Rows.Count) * 100, 2);
                 }
                 catch (DivideByZeroException)
                 {
@@ -489,7 +489,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                     if (currConfYear == 0 && currConfMonth == 0 && currConfDay == 0)
                     {
-                        totalUnconfPOs++;
+                        receiptDateVsCurrConfDate.data.PercentUnconfTotal++;
                         continue;
                     }
                     else
@@ -554,7 +554,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                 try
                 {
-                    receiptDateVsCurrConfDate.data.Average = Math.Round(totalDays / (receiptDateVsCurrConfDate.data.Total - totalUnconfPOs), 2);
+                    receiptDateVsCurrConfDate.data.Average = Math.Round(totalDays / (receiptDateVsCurrConfDate.data.Total - receiptDateVsCurrConfDate.data.PercentUnconfTotal), 2);
                 }
                 catch (DivideByZeroException)
                 {
@@ -565,7 +565,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                 try
                 {
-                    receiptDateVsCurrConfDate.data.PercentUnconf = Math.Round((totalUnconfPOs / Overall.posRecCompDt.Rows.Count) * 100, 2);
+                    receiptDateVsCurrConfDate.data.PercentUnconf = Math.Round(((double)receiptDateVsCurrConfDate.data.PercentUnconfTotal / Overall.posRecCompDt.Rows.Count) * 100, 2);
                 }
                 catch (DivideByZeroException)
                 {

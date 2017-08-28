@@ -66,6 +66,7 @@ namespace KPA_KPI_Analyzer
         private string TimeBucketTen { get { return lbl_timebuckTen.Text; } set { lbl_timebuckTen.Text = value;  } }
         private string TimeBucketEleven { get { return lbl_timebuckEleven.Text; } set { lbl_timebuckEleven.Text = value; } }
         private string PercNoConf { get { return lbl_Percent.Text; } set { lbl_Percent.Text = value + "%"; } }
+        private string PercNoConfTotal { get { return lbl_percUnconfTotal.Text; } set { lbl_percUnconfTotal.Text = value; } }
         private System.Drawing.Color DefaultButtonTextColor
         {
             set
@@ -221,7 +222,8 @@ namespace KPA_KPI_Analyzer
 
             TotalOrders = String.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.Total);
             Average = String.Format("{0:n}", overallData.kpi.purchTotal.prRelConfEntry.data.Average);
-            PercNoConf = String.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.PercentUnconf);
+            PercNoConf = String.Format("{0:n}", overallData.kpi.purchTotal.prRelConfEntry.data.PercentUnconf);
+            PercNoConfTotal = String.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.PercentUnconfTotal);
             TimeBucketOne = String.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.LessThanZero);
             TimeBucketTwo = String.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.One_Three);
             TimeBucketThree = String.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.Four_Seven);
