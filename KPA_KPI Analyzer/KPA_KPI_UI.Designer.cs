@@ -177,6 +177,19 @@
             this.btn_KPA = new System.Windows.Forms.Button();
             this.btn_Dashboard = new System.Windows.Forms.Button();
             this.pnl_LogoSection = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
             this.panel11.SuspendLayout();
             this.panel14.SuspendLayout();
             this.tblpnl_Filters.SuspendLayout();
@@ -203,6 +216,7 @@
             this.tblpnl_DragDrop.SuspendLayout();
             this.tblpnl_DashbaordPage.SuspendLayout();
             this.pnl_ViewPrintReports.SuspendLayout();
+            this.pnl_Navigation.SuspendLayout();
             this.pnl_loadingScreen.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -217,6 +231,7 @@
             this.pnl_NavigationPanelMax.SuspendLayout();
             this.pnl_KPISectionsPanel.SuspendLayout();
             this.pnl_KPASectionsPanel.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dc_MainUI
@@ -1082,11 +1097,11 @@
             // 
             // pnl_activePage
             // 
+            this.pnl_activePage.Controls.Add(this.pnl_Navigation);
             this.pnl_activePage.Controls.Add(this.pnl_CountrySelector);
             this.pnl_activePage.Controls.Add(this.tblpnl_Filters);
             this.pnl_activePage.Controls.Add(this.tblpnl_DragDrop);
             this.pnl_activePage.Controls.Add(this.tblpnl_DashbaordPage);
-            this.pnl_activePage.Controls.Add(this.pnl_Navigation);
             this.pnl_activePage.Controls.Add(this.pnl_loadingScreen);
             this.pnl_activePage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_activePage.Location = new System.Drawing.Point(0, 76);
@@ -1439,10 +1454,12 @@
             // pnl_Navigation
             // 
             this.pnl_Navigation.BackColor = System.Drawing.Color.White;
+            this.pnl_Navigation.Controls.Add(this.flowLayoutPanel1);
             this.pnl_Navigation.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnl_Navigation.Location = new System.Drawing.Point(0, 0);
+            this.pnl_Navigation.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_Navigation.Name = "pnl_Navigation";
-            this.pnl_Navigation.Size = new System.Drawing.Size(0, 624);
+            this.pnl_Navigation.Size = new System.Drawing.Size(222, 624);
             this.pnl_Navigation.TabIndex = 59;
             // 
             // pnl_loadingScreen
@@ -2491,6 +2508,193 @@
             this.pnl_LogoSection.Size = new System.Drawing.Size(0, 119);
             this.pnl_LogoSection.TabIndex = 4;
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.button1);
+            this.flowLayoutPanel1.Controls.Add(this.button2);
+            this.flowLayoutPanel1.Controls.Add(this.button3);
+            this.flowLayoutPanel1.Controls.Add(this.button4);
+            this.flowLayoutPanel1.Controls.Add(this.button5);
+            this.flowLayoutPanel1.Controls.Add(this.button6);
+            this.flowLayoutPanel1.Controls.Add(this.button7);
+            this.flowLayoutPanel1.Controls.Add(this.button8);
+            this.flowLayoutPanel1.Controls.Add(this.button9);
+            this.flowLayoutPanel1.Controls.Add(this.button10);
+            this.flowLayoutPanel1.Controls.Add(this.button11);
+            this.flowLayoutPanel1.Controls.Add(this.button12);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(222, 624);
+            this.flowLayoutPanel1.TabIndex = 2;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Margin = new System.Windows.Forms.Padding(0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(111, 70);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Plan";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(111, 0);
+            this.button2.Margin = new System.Windows.Forms.Padding(0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(111, 70);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Purch";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(195)))), ((int)(((byte)(128)))));
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Location = new System.Drawing.Point(0, 70);
+            this.button3.Margin = new System.Windows.Forms.Padding(0);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(111, 70);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "Purch Sub";
+            this.button3.UseVisualStyleBackColor = false;
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(152)))), ((int)(((byte)(117)))));
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.ForeColor = System.Drawing.Color.White;
+            this.button4.Location = new System.Drawing.Point(111, 70);
+            this.button4.Margin = new System.Windows.Forms.Padding(0);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(111, 70);
+            this.button4.TabIndex = 5;
+            this.button4.Text = "Purch Total";
+            this.button4.UseVisualStyleBackColor = false;
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(166)))), ((int)(((byte)(120)))));
+            this.button5.FlatAppearance.BorderSize = 0;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.ForeColor = System.Drawing.Color.White;
+            this.button5.Location = new System.Drawing.Point(0, 140);
+            this.button5.Margin = new System.Windows.Forms.Padding(0);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(111, 70);
+            this.button5.TabIndex = 6;
+            this.button5.Text = "Purch/Plan Total";
+            this.button5.UseVisualStyleBackColor = false;
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(175)))), ((int)(((byte)(124)))));
+            this.button6.FlatAppearance.BorderSize = 0;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.ForeColor = System.Drawing.Color.White;
+            this.button6.Location = new System.Drawing.Point(111, 140);
+            this.button6.Margin = new System.Windows.Forms.Padding(0);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(111, 70);
+            this.button6.TabIndex = 7;
+            this.button6.Text = "Follow Up";
+            this.button6.UseVisualStyleBackColor = false;
+            // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(187)))), ((int)(((byte)(155)))));
+            this.button7.FlatAppearance.BorderSize = 0;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.ForeColor = System.Drawing.Color.White;
+            this.button7.Location = new System.Drawing.Point(0, 210);
+            this.button7.Margin = new System.Windows.Forms.Padding(0);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(111, 70);
+            this.button7.TabIndex = 8;
+            this.button7.Text = "Cancellations";
+            this.button7.UseVisualStyleBackColor = false;
+            // 
+            // button8
+            // 
+            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(106)))));
+            this.button8.FlatAppearance.BorderSize = 0;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button8.ForeColor = System.Drawing.Color.White;
+            this.button8.Location = new System.Drawing.Point(111, 210);
+            this.button8.Margin = new System.Windows.Forms.Padding(0);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(111, 70);
+            this.button8.TabIndex = 9;
+            this.button8.Text = "NCRs";
+            this.button8.UseVisualStyleBackColor = false;
+            // 
+            // button9
+            // 
+            this.button9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(130)))), ((int)(((byte)(76)))));
+            this.button9.FlatAppearance.BorderSize = 0;
+            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button9.ForeColor = System.Drawing.Color.White;
+            this.button9.Location = new System.Drawing.Point(0, 280);
+            this.button9.Margin = new System.Windows.Forms.Padding(0);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(111, 70);
+            this.button9.TabIndex = 10;
+            this.button9.Text = "Hot Jobs";
+            this.button9.UseVisualStyleBackColor = false;
+            // 
+            // button10
+            // 
+            this.button10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(147)))), ((int)(((byte)(114)))));
+            this.button10.FlatAppearance.BorderSize = 0;
+            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button10.ForeColor = System.Drawing.Color.White;
+            this.button10.Location = new System.Drawing.Point(111, 280);
+            this.button10.Margin = new System.Windows.Forms.Padding(0);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(111, 70);
+            this.button10.TabIndex = 11;
+            this.button10.Text = "Excess Stock - Stock";
+            this.button10.UseVisualStyleBackColor = false;
+            // 
+            // button11
+            // 
+            this.button11.FlatAppearance.BorderSize = 0;
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button11.ForeColor = System.Drawing.Color.White;
+            this.button11.Location = new System.Drawing.Point(0, 350);
+            this.button11.Margin = new System.Windows.Forms.Padding(0);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(111, 70);
+            this.button11.TabIndex = 12;
+            this.button11.Text = "Excess Stock - Open Orders";
+            this.button11.UseVisualStyleBackColor = true;
+            // 
+            // button12
+            // 
+            this.button12.FlatAppearance.BorderSize = 0;
+            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button12.ForeColor = System.Drawing.Color.White;
+            this.button12.Location = new System.Drawing.Point(111, 350);
+            this.button12.Margin = new System.Windows.Forms.Padding(0);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(111, 70);
+            this.button12.TabIndex = 13;
+            this.button12.Text = "Current Plan vs Actual";
+            this.button12.UseVisualStyleBackColor = true;
+            // 
             // KPA_KPI_UI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2556,6 +2760,7 @@
             this.tblpnl_DashbaordPage.ResumeLayout(false);
             this.pnl_ViewPrintReports.ResumeLayout(false);
             this.pnl_ViewPrintReports.PerformLayout();
+            this.pnl_Navigation.ResumeLayout(false);
             this.pnl_loadingScreen.ResumeLayout(false);
             this.tableLayoutPanel9.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
@@ -2576,6 +2781,7 @@
             this.pnl_NavigationPanelMax.PerformLayout();
             this.pnl_KPISectionsPanel.ResumeLayout(false);
             this.pnl_KPASectionsPanel.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2729,6 +2935,19 @@
         private System.Windows.Forms.Panel panel19;
         private System.Windows.Forms.Panel pnl_SubMenu;
         private System.Windows.Forms.Panel pnl_Navigation;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button12;
     }
 }
 
