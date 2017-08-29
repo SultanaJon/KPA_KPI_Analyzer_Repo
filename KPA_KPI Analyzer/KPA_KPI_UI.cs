@@ -579,7 +579,7 @@ namespace KPA_KPI_Analyzer
                 PRPO_DB_Utils.DataLoadProcessStarted = true;
                 PRPO_DB_Utils.KPITablesLoaded = false;
 
-                pnl_activePage.Controls.Clear();
+                // TODO: pnl_activePage.Controls.Clear();
                 pnl_loadingScreen.Visible = true;
                 pnl_loadingScreen.BringToFront();
                 lbl_loadingStatus.Text = "Loading Data...";
@@ -788,23 +788,33 @@ namespace KPA_KPI_Analyzer
         /// <summary>
         /// Loads either the KPA or KPI overall data template depending on what navigation button was pressed.
         /// </summary>
-        public void LoadOverallTemplate()
+        private void LoadOverallTemplate()
         {
             if(int.Parse(mainNavActiveBtn.Tag.ToString()) == 1)
             {
-                pnl_activePage.Controls.Clear();
-                pnl_activePage.BringToFront();
+                // TODO: pnl_activePage.Controls.Clear();
+                // TODO: pnl_activePage.BringToFront();
                 KPAOverall kpaOverall = new KPAOverall();
-                kpaOverall.Dock = DockStyle.Fill;
+                // TODO: kpaOverall.Dock = DockStyle.Fill;
+                kpaOverall.Anchor = AnchorStyles.Bottom;
+                kpaOverall.Anchor = AnchorStyles.Top;
+                kpaOverall.Anchor = AnchorStyles.Right;
+                kpaOverall.Anchor = AnchorStyles.Left;
+
                 kpaOverall.LoadTemplate(overallData);
                 pnl_activePage.Controls.Add(kpaOverall);
             }
             else
             {
-                pnl_activePage.Controls.Clear();
-                pnl_activePage.BringToFront();
+                // TODO: pnl_activePage.Controls.Clear();
+                // TODO: pnl_activePage.BringToFront();
                 KPIOverall kpiOverall = new KPIOverall();
-                kpiOverall.Dock = DockStyle.Fill;
+                // TODO: kpiOverall.Dock = DockStyle.Fill;
+                kpiOverall.Anchor = AnchorStyles.Bottom;
+                kpiOverall.Anchor = AnchorStyles.Top;
+                kpiOverall.Anchor = AnchorStyles.Right;
+                kpiOverall.Anchor = AnchorStyles.Left;
+
                 kpiOverall.LoadTemplate(overallData);
                 pnl_activePage.Controls.Add(kpiOverall);
             }
@@ -818,12 +828,16 @@ namespace KPA_KPI_Analyzer
         /// <summary>
         /// Loads the data coming soon template.
         /// </summary>
-        public void LoadDataComingSoonTemplate()
+        private void LoadDataComingSoonTemplate()
         {
-            pnl_activePage.Controls.Clear();
-            pnl_activePage.BringToFront();
+            // TODO: pnl_activePage.Controls.Clear();
+            // TODO: pnl_activePage.BringToFront();
             DataComingSoon comingSoon = new DataComingSoon();
-            comingSoon.Dock = DockStyle.Fill;
+            // TODO:comingSoon.Dock = DockStyle.Fill;
+            comingSoon.Anchor = AnchorStyles.Bottom;
+            comingSoon.Anchor = AnchorStyles.Top;
+            comingSoon.Anchor = AnchorStyles.Right;
+            comingSoon.Anchor = AnchorStyles.Left;
             pnl_activePage.Controls.Add(comingSoon);
         }
 
@@ -845,9 +859,6 @@ namespace KPA_KPI_Analyzer
         {
             if(e.Control is UserControl)
             {
-                //if (e.Control.GetType() == typeof(LoadingScreen))
-                //    return;
-
                 int tag = int.Parse(activeSectionBtn.Tag.ToString());
 
                 switch (tag)
@@ -1016,25 +1027,6 @@ namespace KPA_KPI_Analyzer
                     default:
                         break;
                 }
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void pnl_CountrySelectorButton_Click(object sender, EventArgs e)
-        {
-            if(pnl_CountrySelectorMenu.Visible)
-            {
-                pnl_CountrySelectorMenu.Visible = false;
-            }
-            else
-            {
-                pnl_CountrySelectorMenu.BackColor = System.Drawing.Color.FromArgb(0, 0, 0, 0);
-                pnl_CountrySelectorMenu.Visible = true;
-                pnl_CountrySelectorMenu.BringToFront();
             }
         }
     }

@@ -125,7 +125,7 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void mainNavButton_Click(object sender, EventArgs e)
+        private void mainNavButton_Click(object sender, EventArgs e)
         {
             bool toggleDefaultSection = true;
 
@@ -199,7 +199,7 @@ namespace KPA_KPI_Analyzer
         /// <summary>
         /// This function will toggle the main navigation sections when either KPA or KPI buttons are clicked.
         /// </summary>
-        public void toggleMainNavSection()
+        private void toggleMainNavSection()
         {
             switch (int.Parse(mainNavActiveBtn.Tag as string))
             {
@@ -259,7 +259,7 @@ namespace KPA_KPI_Analyzer
         /// This function will activeate the new active button and deactivate the current active button
         /// </summary>
         /// <param name="sender"></param>
-        public void activateButton(object sender)
+        private void activateButton(object sender)
         {
             int mainActTag = int.Parse(mainNavActiveBtn.Tag.ToString());
 
@@ -324,7 +324,7 @@ namespace KPA_KPI_Analyzer
         /// <summary>
         /// This function will set the current active button back to its default state.
         /// </summary>
-        public void setCurrActiveButtonToDefault()
+        private void setCurrActiveButtonToDefault()
         {
             switch (int.Parse(mainNavActiveBtn.Tag as string))
             {
@@ -357,6 +357,52 @@ namespace KPA_KPI_Analyzer
                 case 4:
                     // update the icon image of the current active button
                     mainNavActiveBtn.BackgroundImage = Properties.Resources.FilterBG_Normal;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+
+
+        /// <summary>
+        /// This function will handle the click event of the main navigation and will open the side menu
+        /// revealing buttons that fall under that navigation request.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Navigation_Click(object sender, EventArgs e)
+        {
+            Panel mainNavPanel = (Panel)sender;
+            int tag = int.Parse(mainNavPanel.Tag.ToString());
+
+            if (pnl_Navigation.Width == 222)
+            {
+                pnl_Navigation.SendToBack();
+                pnl_Navigation.Width = 0;
+            }
+            else
+            {
+                pnl_Navigation.BringToFront();
+                pnl_Navigation.Width = 222;
+            }
+
+            switch (tag)
+            {
+                case 0: // sub navigation - include dashboard, charts, and filters
+                        //LoadSubNav();
+                    break;
+                case 1: // country selector
+                        //LoadCountryNav();
+                    break;
+                case 2: // Performance selector
+                        //LoadPerformanceNav();
+                    break;
+                case 3: // Section selector
+                        //LoadSectionNav();
+                    break;
+                case 4: // Category selector
+                        //LoadCategoryNav();
                     break;
                 default:
                     break;
