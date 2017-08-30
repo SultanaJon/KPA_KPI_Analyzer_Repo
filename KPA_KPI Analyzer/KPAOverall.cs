@@ -32,7 +32,7 @@ namespace KPA_KPI_Analyzer
             lbl_kpaPlanPRsAgingNotRel_Five.Text = string.Format("{0:n0}", overallData.kpa.plan.prsAgingNotRel.data.Fifteen_TwentyOne);
             lbl_kpaPlanPRsAgingNotRel_Six.Text = string.Format("{0:n0}", overallData.kpa.plan.prsAgingNotRel.data.TwentyTwo_TwentyEight);
             lbl_kpaPlanPRsAgingNotRel_Seven.Text = string.Format("{0:n0}", overallData.kpa.plan.prsAgingNotRel.data.TwentyNinePlus);
-            lbl_kpaPlanPRsAgingNotRel_Eight.Text = string.Format("{0:n}", overallData.kpa.plan.prsAgingNotRel.data.Average) + " Day(s)";
+            lbl_kpaPlanPRsAgingNotRel_Eight.Text = string.Format("{0:n}", overallData.kpa.plan.prsAgingNotRel.data.Average);
             lbl_kpaPlanPRsAgingNotRel_Nine.Text = string.Format("{0:n0}", overallData.kpa.plan.prsAgingNotRel.data.Total);
 
             // KPA -> Plan -> Material Due
@@ -43,7 +43,7 @@ namespace KPA_KPI_Analyzer
             lbl_kpaPlanMaterialDue_Five.Text = string.Format("{0:n0}", overallData.kpa.plan.matDueDate.data.Fifteen_TwentyOne);
             lbl_kpaPlanMaterialDue_Six.Text = string.Format("{0:n0}", overallData.kpa.plan.matDueDate.data.TwentyTwo_TwentyEight);
             lbl_kpaPlanMaterialDue_Seven.Text = string.Format("{0:n0}", overallData.kpa.plan.matDueDate.data.TwentyNinePlus);
-            lbl_kpaPlanMaterialDue_Eight.Text = string.Format("{0:n}", overallData.kpa.plan.matDueDate.data.Average + " Day(s)");
+            lbl_kpaPlanMaterialDue_Eight.Text = string.Format("{0:n}", overallData.kpa.plan.matDueDate.data.Average);
             lbl_kpaPlanMaterialDue_Nine.Text = string.Format("{0:n0}", overallData.kpa.plan.matDueDate.data.Total);
 
             // KPA -> Purch -> PRs Agin Rel
@@ -54,7 +54,7 @@ namespace KPA_KPI_Analyzer
             lbl_kpaPurchPRsAgingRel_Five.Text = string.Format("{0:n0}", overallData.kpa.purch.prsAgingRel.data.Fifteen_TwentyOne);
             lbl_kpaPurchPRsAgingRel_Six.Text = string.Format("{0:n0}", overallData.kpa.purch.prsAgingRel.data.TwentyTwo_TwentyEight);
             lbl_kpaPurchPRsAgingRel_Seven.Text = string.Format("{0:n0}", overallData.kpa.purch.prsAgingRel.data.TwentyNinePlus);
-            lbl_kpaPurchPRsAgingRel_Eight.Text = string.Format("{0:n0}", overallData.kpa.purch.prsAgingRel.data.Average + " Day(s)");
+            lbl_kpaPurchPRsAgingRel_Eight.Text = string.Format("{0:n0}", overallData.kpa.purch.prsAgingRel.data.Average);
             lbl_kpaPurchPRsAgingRel_Nine.Text = string.Format("{0:n0}", overallData.kpa.purch.prsAgingRel.data.Total);
 
             // KPA -> Purch -> PO First Rel
@@ -65,7 +65,7 @@ namespace KPA_KPI_Analyzer
             lbl_kpaPurchPOFirstRel_Five.Text = string.Format("{0:n0}", overallData.kpa.purch.poFirstRel.data.Fifteen_TwentyOne);
             lbl_kpaPurchPOFirstRel_Six.Text = string.Format("{0:n0}", overallData.kpa.purch.poFirstRel.data.TwentyTwo_TwentyEight);
             lbl_kpaPurchPOFirstRel_Seven.Text = string.Format("{0:n0}", overallData.kpa.purch.poFirstRel.data.TwentyNinePlus);
-            lbl_kpaPurchPOFirstRel_Eight.Text = string.Format("{0:n}", overallData.kpa.purch.poFirstRel.data.Average + " Day(s)");
+            lbl_kpaPurchPOFirstRel_Eight.Text = string.Format("{0:n}", overallData.kpa.purch.poFirstRel.data.Average);
             lbl_kpaPurchPOFirstRel_Nine.Text = string.Format("{0:n0}", overallData.kpa.purch.poFirstRel.data.Total);
 
             // KPA -> Purch -> PO Prev Rel
@@ -76,7 +76,7 @@ namespace KPA_KPI_Analyzer
             lbl_kpaPurchPOPrevRel_Five.Text = string.Format("{0:n0}", overallData.kpa.purch.poPrevRel.data.Fifteen_TwentyOne);
             lbl_kpaPurchPOPrevRel_Six.Text = string.Format("{0:n0}", overallData.kpa.purch.poPrevRel.data.TwentyTwo_TwentyEight);
             lbl_kpaPurchPOPrevRel_Seven.Text = string.Format("{0:n0}", overallData.kpa.purch.poPrevRel.data.TwentyNinePlus);
-            lbl_kpaPurchPOPrevRel_Eight.Text = string.Format("{0:n}", overallData.kpa.purch.poPrevRel.data.Average + " Day(s)");
+            lbl_kpaPurchPOPrevRel_Eight.Text = string.Format("{0:n}", overallData.kpa.purch.poPrevRel.data.Average);
             lbl_kpaPurchPOPrevRel_Nine.Text = string.Format("{0:n0}", overallData.kpa.purch.poPrevRel.data.Total);
 
             // KPA -> Purch -> No Confirmation
@@ -87,7 +87,7 @@ namespace KPA_KPI_Analyzer
             lbl_kpaPurchNoConfirmation_Five.Text = string.Format("{0:n0}", overallData.kpa.purch.noConfirmation.data.Fifteen_TwentyOne);
             lbl_kpaPurchNoConfirmation_Six.Text = string.Format("{0:n0}", overallData.kpa.purch.noConfirmation.data.TwentyTwo_TwentyEight);
             lbl_kpaPurchNoConfirmation_Seven.Text = string.Format("{0:n0}", overallData.kpa.purch.noConfirmation.data.TwentyNinePlus);
-            lbl_kpaPurchNoConfirmation_Eight.Text = string.Format("{0:n}", overallData.kpa.purch.noConfirmation.data.Average + " Day(s)");
+            lbl_kpaPurchNoConfirmation_Eight.Text = string.Format("{0:n}", overallData.kpa.purch.noConfirmation.data.Average);
             lbl_kpaPurchNoConfirmation_Nine.Text = string.Format("{0:n0}", overallData.kpa.purch.noConfirmation.data.Total);
 
 
@@ -100,7 +100,7 @@ namespace KPA_KPI_Analyzer
             lbl_kpaPurchSubPRReleasePORelease_Five.Text = string.Format("{0:n0}", overallData.kpa.purchSub.prRelToPORel.data.Fifteen_TwentyOne);
             lbl_kpaPurchSubPRReleasePORelease_Six.Text = string.Format( "{0:n0}", overallData.kpa.purchSub.prRelToPORel.data.TwentyTwo_TwentyEight);
             lbl_kpaPurchSubPRReleasePORelease_Seven.Text = string.Format("{0:n0}", overallData.kpa.purchSub.prRelToPORel.data.TwentyNinePlus);
-            lbl_kpaPurchSubPRReleasePORelease_Eight.Text = string.Format("{0:n}", overallData.kpa.purchSub.prRelToPORel.data.Average + " Day(s)");
+            lbl_kpaPurchSubPRReleasePORelease_Eight.Text = string.Format("{0:n}", overallData.kpa.purchSub.prRelToPORel.data.Average);
             lbl_kpaPurchSubPRReleasePORelease_Nine.Text = string.Format("{0:n0}", overallData.kpa.purchSub.prRelToPORel.data.Total);
 
 
@@ -112,7 +112,7 @@ namespace KPA_KPI_Analyzer
             lbl_kpaPurchSubPOCreateConfEntry_Five.Text = string.Format("{0:n0}", overallData.kpa.purchSub.POCreatToConfEntry.data.Fifteen_TwentyOne);
             lbl_kpaPurchSubPOCreateConfEntry_Six.Text = string.Format("{0:n0}", overallData.kpa.purchSub.POCreatToConfEntry.data.TwentyTwo_TwentyEight);
             lbl_kpaPurchSubPOCreateConfEntry_Seven.Text = string.Format("{0:n0}", overallData.kpa.purchSub.POCreatToConfEntry.data.TwentyNinePlus);
-            lbl_kpaPurchSubPOCreateConfEntry_Eight.Text = string.Format("{0:n}", overallData.kpa.purchSub.POCreatToConfEntry.data.Average + " Day(s)");
+            lbl_kpaPurchSubPOCreateConfEntry_Eight.Text = string.Format("{0:n}", overallData.kpa.purchSub.POCreatToConfEntry.data.Average);
             lbl_kpaPurchSubPOCreateConfEntry_Nine.Text = string.Format("{0:n0}", overallData.kpa.purchSub.POCreatToConfEntry.data.Total);
 
             // KPA -> Purch Total -> PR Release to Confirmation Entry
@@ -123,7 +123,7 @@ namespace KPA_KPI_Analyzer
             lbl_kpaPurchTotalPRReleaseConfEntry_Five.Text = string.Format("{0:n0}", overallData.kpa.purchTotal.prRelConfEntry.data.Fifteen_TwentyOne);
             lbl_kpaPurchTotalPRReleaseConfEntry_Six.Text = string.Format("{0:n0}", overallData.kpa.purchTotal.prRelConfEntry.data.TwentyTwo_TwentyEight);
             lbl_kpaPurchTotalPRReleaseConfEntry_Seven.Text = string.Format("{0:n0}", overallData.kpa.purchTotal.prRelConfEntry.data.TwentyNinePlus);
-            lbl_kpaPurchTotalPRReleaseConfEntry_Eight.Text = string.Format("{0:n}", overallData.kpa.purchTotal.prRelConfEntry.data.Average + " Day(s)");
+            lbl_kpaPurchTotalPRReleaseConfEntry_Eight.Text = string.Format("{0:n}", overallData.kpa.purchTotal.prRelConfEntry.data.Average);
             lbl_kpaPurchTotalPRReleaseConfEntry_Nine.Text = string.Format("{0:n0}", overallData.kpa.purchTotal.prRelConfEntry.data.Total);
 
             // KPA -> Follow Up -> Confirmed vs Plan Date
@@ -134,7 +134,7 @@ namespace KPA_KPI_Analyzer
             lbl_kpaFollowUpConfvsPlanDate_Five.Text = string.Format( "{0:n0}",  overallData.kpa.followUp.confDateVsPlanDate.data.Fifteen_TwentyOne);
             lbl_kpaFollowUpConfvsPlanDate_Six.Text = string.Format( "{0:n0}",  overallData.kpa.followUp.confDateVsPlanDate.data.TwentyTwo_TwentyEight);
             lbl_kpaFollowUpConfvsPlanDate_Seven.Text = string.Format( "{0:n0}",  overallData.kpa.followUp.confDateVsPlanDate.data.TwentyNinePlus);
-            lbl_kpaFollowUpConfvsPlanDate_Eight.Text = string.Format( "{0:n}",  overallData.kpa.followUp.confDateVsPlanDate.data.Average + " Day(s)");
+            lbl_kpaFollowUpConfvsPlanDate_Eight.Text = string.Format( "{0:n}",  overallData.kpa.followUp.confDateVsPlanDate.data.Average);
             lbl_kpaFollowUpConfvsPlanDate_Nine.Text = string.Format( "{0:n0}",  overallData.kpa.followUp.confDateVsPlanDate.data.Total);
 
             // KPA -> Follow Up -> Confirmed Date for Upcoming Deliveries
@@ -145,7 +145,7 @@ namespace KPA_KPI_Analyzer
             lbl_kpaFollowUpConfDateUpcomingDel_Five.Text = string.Format( "{0:n0}",  overallData.kpa.followUp.ConfDateForUpcomingDel.data.Fifteen_TwentyOne);
             lbl_kpaFollowUpConfDateUpcomingDel_Six.Text = string.Format( "{0:n0}",  overallData.kpa.followUp.ConfDateForUpcomingDel.data.TwentyTwo_TwentyEight);
             lbl_kpaFollowUpConfDateUpcomingDel_Seven.Text = string.Format( "{0:n0}",  overallData.kpa.followUp.ConfDateForUpcomingDel.data.TwentyNinePlus);
-            lbl_kpaFollowUpConfDateUpcomingDel_Eight.Text = string.Format( "{0:n}",  overallData.kpa.followUp.ConfDateForUpcomingDel.data.Average + " Day(s)");
+            lbl_kpaFollowUpConfDateUpcomingDel_Eight.Text = string.Format( "{0:n}",  overallData.kpa.followUp.ConfDateForUpcomingDel.data.Average);
             lbl_kpaFollowUpConfDateUpcomingDel_Nine.Text = string.Format( "{0:n0}",  overallData.kpa.followUp.ConfDateForUpcomingDel.data.Total);
 
 
@@ -157,7 +157,7 @@ namespace KPA_KPI_Analyzer
             lbl_kpaFollowUpLateToConfirmed_Five.Text = string.Format("{0:n0}", overallData.kpa.followUp.LateToConfDate.data.Fifteen_TwentyOne);
             lbl_kpaFollowUpLateToConfirmed_Six.Text = string.Format("{0:n0}", overallData.kpa.followUp.LateToConfDate.data.TwentyTwo_TwentyEight);
             lbl_kpaFollowUpLateToConfirmed_Seven.Text = string.Format("{0:n0}", overallData.kpa.followUp.LateToConfDate.data.TwentyNinePlus);
-            lbl_kpaFollowUpLateToConfirmed_Eight.Text = string.Format("{0:n}", overallData.kpa.followUp.LateToConfDate.data.Average + " Day(s)");
+            lbl_kpaFollowUpLateToConfirmed_Eight.Text = string.Format("{0:n}", overallData.kpa.followUp.LateToConfDate.data.Average);
             lbl_kpaFollowUpLateToConfirmed_Nine.Text = string.Format("{0:n0}", overallData.kpa.followUp.LateToConfDate.data.Total);
 
             // KPA -> Hot Jobs-> PRs (Not on PO) - Hot Jobs Only
@@ -168,7 +168,7 @@ namespace KPA_KPI_Analyzer
             lbl_kpaHotJobsprsNotOnPO_Five.Text = string.Format("{0:n0}", overallData.kpa.hotJobs.prsNotOnPO.data.Fifteen_TwentyOne);
             lbl_kpaHotJobsprsNotOnPO_Six.Text = string.Format("{0:n0}", overallData.kpa.hotJobs.prsNotOnPO.data.TwentyTwo_TwentyEight);
             lbl_kpaHotJobsprsNotOnPO_Seven.Text = string.Format("{0:n0}", overallData.kpa.hotJobs.prsNotOnPO.data.TwentyNinePlus);
-            lbl_kpaHotJobsprsNotOnPO_Eight.Text = string.Format("{0:n}", overallData.kpa.hotJobs.prsNotOnPO.data.Average + " Day(s)");
+            lbl_kpaHotJobsprsNotOnPO_Eight.Text = string.Format("{0:n}", overallData.kpa.hotJobs.prsNotOnPO.data.Average);
             lbl_kpaHotJobsprsNotOnPO_Nine.Text = string.Format("{0:n0}", overallData.kpa.hotJobs.prsNotOnPO.data.Total);
 
             // KPA -> Hot Jobs -> No Confirmations - Hot Jobs Only
@@ -179,7 +179,7 @@ namespace KPA_KPI_Analyzer
             lbl_kpaHotJobsNoConf_Five.Text = string.Format("{0:n0}", overallData.kpa.hotJobs.noConfirmation.data.Fifteen_TwentyOne);
             lbl_kpaHotJobsNoConf_Six.Text = string.Format("{0:n0}", overallData.kpa.hotJobs.noConfirmation.data.TwentyTwo_TwentyEight);
             lbl_kpaHotJobsNoConf_Seven.Text = string.Format("{0:n0}", overallData.kpa.hotJobs.noConfirmation.data.TwentyNinePlus);
-            lbl_kpaHotJobsNoConf_Eight.Text = string.Format("{0:n}", overallData.kpa.hotJobs.noConfirmation.data.Average + " Day(s)");
+            lbl_kpaHotJobsNoConf_Eight.Text = string.Format("{0:n}", overallData.kpa.hotJobs.noConfirmation.data.Average);
             lbl_kpaHotJobsNoConf_Nine.Text = string.Format("{0:n0}", overallData.kpa.hotJobs.noConfirmation.data.Total);
 
 
@@ -188,7 +188,7 @@ namespace KPA_KPI_Analyzer
 
 
             // KPA -> Current Planned Date vs Current Conf Date
-            lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_One.Text = string.Format( "{0:n}",  overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.Average + " Day(s)");
+            lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_One.Text = string.Format( "{0:n}",  overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.Average);
             lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Two.Text = string.Format( "{0:n0}",  overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.LessThanMinusThree);
             lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Three.Text = string.Format( "{0:n0}",  overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.GreaterThanEqualMinusThree);
             lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConf_Four.Text = string.Format( "{0:n0}",  overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.GreaterThanEqualMinusTwo);
@@ -203,7 +203,7 @@ namespace KPA_KPI_Analyzer
 
 
             // KPA -> Current Planned Date vs Current Conf Date (Hot Jobs Only)
-            lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_One.Text = string.Format("{0:n}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.Average + " Day(s)");
+            lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_One.Text = string.Format("{0:n}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.Average);
             lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Two.Text = string.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.LessThanMinusThree);
             lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Three.Text = string.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.GreaterThanEqualMinusThree);
             lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Four.Text = string.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.GreaterThanEqualMinusTwo);

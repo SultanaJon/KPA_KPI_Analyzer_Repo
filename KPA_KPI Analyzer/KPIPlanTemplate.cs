@@ -52,7 +52,7 @@ namespace KPA_KPI_Analyzer
         private string Title { get { return lbl_title.Text; } set { lbl_title.Text = value;  } }
         private string AnalysisOne { get { return lbl_analysisOne.Text; } set { lbl_analysisOne.Text = value;  } }
         private string AnalysisTwo { get { return lbl_analysisTwo.Text; } set { lbl_analysisTwo.Text = value;  } }
-        private string Average { get { return lbl_average.Text; } set { lbl_average.Text = value + " Day(s)"; } }
+        private string Average { get { return lbl_average.Text; } set { lbl_average.Text = value; } }
         private string TimeBucketOne { get { return lbl_timebuckOne.Text; } set { lbl_timebuckOne.Text = value;  } }
         private string TimeBucketTwo { get { return lbl_timebuckTwo.Text; } set { lbl_timebuckTwo.Text = value;  } }
         private string TimeBucketThree { get { return lbl_timebuckThree.Text; } set { lbl_timebuckThree.Text = value;  } }

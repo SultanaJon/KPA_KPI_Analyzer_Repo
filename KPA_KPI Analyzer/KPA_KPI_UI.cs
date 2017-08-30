@@ -476,7 +476,7 @@ namespace KPA_KPI_Analyzer
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.StackTrace, "Import Function Error");
+                MessageBox.Show(ex.Message, "Import Function Error");
             }
         }
 
@@ -526,18 +526,6 @@ namespace KPA_KPI_Analyzer
                 DataRemovalTimer.Stop();
                 PRPO_DB_Utils.DataRemoved = false;
 
-                if (PRPO_DB_Utils.DatabaseConnection != null & PRPO_DB_Utils.DatabaseConnection.State == System.Data.ConnectionState.Open)
-                {
-                    //btn_DatabaseConnectionStatus.Image = Properties.Resources.databaseConn_Connected_Icon;
-                }
-                else
-                {
-                    MessageBox.Show("There was an error while attempting to connect to the database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
-
-
-
                 if (AccessUtils.US_PRPO_TableExists && AccessUtils.MX_PRPO_TableExists)
                 {
                     pnl_CountrySelector.BringToFront();
@@ -581,7 +569,6 @@ namespace KPA_KPI_Analyzer
                 PRPO_DB_Utils.DataLoadProcessStarted = true;
                 PRPO_DB_Utils.KPITablesLoaded = false;
 
-                // TODO: pnl_activePage.Controls.Clear();
                 pnl_loadingScreen.Visible = true;
                 pnl_loadingScreen.BringToFront();
                 lbl_loadingStatus.Text = "Loading Data...";
@@ -774,9 +761,9 @@ namespace KPA_KPI_Analyzer
 
             if(FilterUtils.FiltersLoaded)
             {
-                pnl_loadingScreen.Visible = false;
                 FilterUtils.FiltersLoaded = false;
                 FiltersTimer.Stop();
+                pnl_loadingScreen.Visible = false;
                 tblpnl_DashbaordPage.BringToFront();
                 NavigationLocked = false;
             }

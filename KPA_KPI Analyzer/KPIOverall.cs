@@ -22,7 +22,7 @@ namespace KPA_KPI_Analyzer
         public void LoadTemplate(Overall overallData)
         {
             // KPI -> Plan -> PR Plan Date vs Current Plan Date
-            lbl_kpiPlanPRPlannedDateVsCurrPlan_One.Text = string.Format("{0:n}", overallData.kpi.plan.prPlanDateVsCurrPlan.data.Average) + " Day(s)";
+            lbl_kpiPlanPRPlannedDateVsCurrPlan_One.Text = string.Format("{0:n}", overallData.kpi.plan.prPlanDateVsCurrPlan.data.Average);
             lbl_kpiPlanPRPlannedDateVsCurrPlan_Two.Text = string.Format("{0:n0}", overallData.kpi.plan.prPlanDateVsCurrPlan.data.Minus_TwentyTwo);
             lbl_kpiPlanPRPlannedDateVsCurrPlan_Three.Text = string.Format("{0:n0}", overallData.kpi.plan.prPlanDateVsCurrPlan.data.Minus_Fifteen_TwentyOne);
             lbl_kpiPlanPRPlannedDateVsCurrPlan_Four.Text = string.Format("{0:n0}", overallData.kpi.plan.prPlanDateVsCurrPlan.data.Minus_Eight_Fourteen);
@@ -32,10 +32,11 @@ namespace KPA_KPI_Analyzer
             lbl_kpiPlanPRPlannedDateVsCurrPlan_Eight.Text = string.Format("{0:n0}", overallData.kpi.plan.prPlanDateVsCurrPlan.data.Eight_Fourteen);
             lbl_kpiPlanPRPlannedDateVsCurrPlan_Nine.Text = string.Format("{0:n0}", overallData.kpi.plan.prPlanDateVsCurrPlan.data.Fifteen_TwentyOne);
             lbl_kpiPlanPRPlannedDateVsCurrPlan_Ten.Text = string.Format("{0:n0}", overallData.kpi.plan.prPlanDateVsCurrPlan.data.TwentyTwo);
+            lbl_kpiPlanPRPlannedDateVsCurrPlan_Eleven.Text = string.Format("{0:n0}", overallData.kpi.plan.prPlanDateVsCurrPlan.data.Total);
 
 
             // KPI -> Purch -> Initial Confirmation vs PR Planned Date
-            lbl_kpiPurchInitConfVsPrPlanDate_One.Text = string.Format("{0:n}", overallData.kpi.purch.initConfVsPRPlanDate.data.Average) + " Day(s)";
+            lbl_kpiPurchInitConfVsPrPlanDate_One.Text = string.Format("{0:n}", overallData.kpi.purch.initConfVsPRPlanDate.data.Average);
             lbl_kpiPurchInitConfVsPrPlanDate_Two.Text = string.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.Minus_TwentyTwo);
             lbl_kpiPurchInitConfVsPrPlanDate_Three.Text = string.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.Minus_Fifteen_TwentyOne);
             lbl_kpiPurchInitConfVsPrPlanDate_Four.Text = string.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.Minus_Eight_Fourteen);
@@ -45,10 +46,12 @@ namespace KPA_KPI_Analyzer
             lbl_kpiPurchInitConfVsPrPlanDate_Eight.Text = string.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.Eight_Fourteen);
             lbl_kpiPurchInitConfVsPrPlanDate_Nine.Text = string.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.Fifteen_TwentyOne);
             lbl_kpiPurchInitConfVsPrPlanDate_Ten.Text = string.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.TwentyTwo);
-            lbl_kpiPurchInitConfVsPrPlanDate_Eleven.Text = string.Format("{0:n}", overallData.kpi.purch.initConfVsPRPlanDate.data.PercentUnconf + "%");
+            lbl_kpiPurchInitConfVsPrPlanDate_Eleven.Text = string.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.Total);
+            lbl_kpiPurchInitConfVsPrPlanDate_Twelve.Text = string.Format("{0:n}", overallData.kpi.purch.initConfVsPRPlanDate.data.PercentUnconf + "%");
+
 
             // KPI -> Follow Up -> Initial Confirmation vs Current Confirmation
-            lbl_kpiFollowUpInitConfVsCurrConf_One.Text = string.Format("{0:n}", overallData.kpi.followUp.initConfVsCurrConf.data.Average) + " Day(s)";
+            lbl_kpiFollowUpInitConfVsCurrConf_One.Text = string.Format("{0:n}", overallData.kpi.followUp.initConfVsCurrConf.data.Average);
             lbl_kpiFollowUpInitConfVsCurrConf_Two.Text = string.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.Minus_TwentyTwo);
             lbl_kpiFollowUpInitConfVsCurrConf_Three.Text = string.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.Minus_Fifteen_TwentyOne);
             lbl_kpiFollowUpInitConfVsCurrConf_Four.Text = string.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.Minus_Eight_Fourteen);
@@ -58,11 +61,12 @@ namespace KPA_KPI_Analyzer
             lbl_kpiFollowUpInitConfVsCurrConf_Eight.Text = string.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.Eight_Fourteen);
             lbl_kpiFollowUpInitConfVsCurrConf_Nine.Text = string.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.Fifteen_TwentyOne);
             lbl_kpiFollowUpInitConfVsCurrConf_Ten.Text = string.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.TwentyTwo);
-            lbl_kpiFollowUpInitConfVsCurrConf_Eleven.Text = string.Format("{0:n}", overallData.kpi.followUp.initConfVsCurrConf.data.PercentUnconf + "%");
+            lbl_kpiFollowUpInitConfVsCurrConf_Eleven.Text = string.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.Total);
+            lbl_kpiFollowUpInitConfVsCurrConf_Twelve.Text = string.Format("{0:n}", overallData.kpi.followUp.initConfVsCurrConf.data.PercentUnconf + "%");
 
 
             // KPI -> Follow Up -> Final Confirmation Date vs Final Planned Date
-            lbl_kpiFollowUpFinalConfVsFinalPlanDate_One.Text = string.Format("{0:n}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Average) + " Day(s)";
+            lbl_kpiFollowUpFinalConfVsFinalPlanDate_One.Text = string.Format("{0:n}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Average);
             lbl_kpiFollowUpFinalConfVsFinalPlanDate_Two.Text = string.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Minus_TwentyTwo);
             lbl_kpiFollowUpFinalConfVsFinalPlanDate_Three.Text = string.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Minus_Fifteen_TwentyOne);
             lbl_kpiFollowUpFinalConfVsFinalPlanDate_Four.Text = string.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Minus_Eight_Fourteen);
@@ -72,11 +76,12 @@ namespace KPA_KPI_Analyzer
             lbl_kpiFollowUpFinalConfVsFinalPlanDate_Eight.Text = string.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Eight_Fourteen);
             lbl_kpiFollowUpFinalConfVsFinalPlanDate_Nine.Text = string.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Fifteen_TwentyOne);
             lbl_kpiFollowUpFinalConfVsFinalPlanDate_Ten.Text = string.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.TwentyTwo);
-            lbl_kpiFollowUpFinalConfVsFinalPlanDate_Eleven.Text = string.Format("{0:n}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.PercentUnconf + "%");
+            lbl_kpiFollowUpFinalConfVsFinalPlanDate_Eleven.Text = string.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Total);
+            lbl_kpiFollowUpFinalConfVsFinalPlanDate_Twelve.Text = string.Format("{0:n}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.PercentUnconf + "%");
 
 
             // KPI -> Follow Up -> Receipt Date vs Current Planned Date
-            lbl_kpiFollowUpRecVsCurrPlanDate_One.Text = string.Format("{0:n}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Average) + " Day(s)";
+            lbl_kpiFollowUpRecVsCurrPlanDate_One.Text = string.Format("{0:n}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Average);
             lbl_kpiFollowUpRecVsCurrPlanDate_Two.Text = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Minus_TwentyTwo);
             lbl_kpiFollowUpRecVsCurrPlanDate_Three.Text = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Minus_Fifteen_TwentyOne);
             lbl_kpiFollowUpRecVsCurrPlanDate_Four.Text = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Minus_Eight_Fourteen);
@@ -86,10 +91,10 @@ namespace KPA_KPI_Analyzer
             lbl_kpiFollowUpRecVsCurrPlanDate_Eight.Text = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Eight_Fourteen);
             lbl_kpiFollowUpRecVsCurrPlanDate_Nine.Text = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Fifteen_TwentyOne);
             lbl_kpiFollowUpRecVsCurrPlanDate_Ten.Text = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.TwentyTwo);
-
+            lbl_kpiFollowUpRecVsCurrPlanDate_Eleven.Text = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Total);
 
             // KPI -> Follow Up -> Receipt Date vs Original Confirmed Date
-            lbl_kpiFollowUpRecVsOrigConfDate_One.Text = string.Format("{0:n}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Average) + " Day(s)";
+            lbl_kpiFollowUpRecVsOrigConfDate_One.Text = string.Format("{0:n}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Average);
             lbl_kpiFollowUpRecVsOrigConfDate_Two.Text = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Minus_TwentyTwo);
             lbl_kpiFollowUpRecVsOrigConfDate_Three.Text = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Minus_Fifteen_TwentyOne);
             lbl_kpiFollowUpRecVsOrigConfDate_Four.Text = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Minus_Eight_Fourteen);
@@ -99,10 +104,11 @@ namespace KPA_KPI_Analyzer
             lbl_kpiFollowUpRecVsOrigConfDate_Eight.Text = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Eight_Fourteen);
             lbl_kpiFollowUpRecVsOrigConfDate_Nine.Text = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Fifteen_TwentyOne);
             lbl_kpiFollowUpRecVsOrigConfDate_Ten.Text = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.TwentyTwo);
-            lbl_kpiFollowUpRecVsOrigConfDate_Eleven.Text = string.Format("{0:n}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.PercentUnconf + "%");
+            lbl_kpiFollowUpRecVsOrigConfDate_Eleven.Text = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Total);
+            lbl_kpiFollowUpRecVsOrigConfDate_Twelve.Text = string.Format("{0:n}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.PercentUnconf + "%");
 
             // KPI -> Follow Up -> Receipt Date vs Current Confirmed Date
-            lbl_kpiFollowUpRecVsCurrConfDate_One.Text = string.Format("{0:n}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Average) + " Day(s)";
+            lbl_kpiFollowUpRecVsCurrConfDate_One.Text = string.Format("{0:n}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Average);
             lbl_kpiFollowUpRecVsCurrConfDate_Two.Text = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Minus_TwentyTwo);
             lbl_kpiFollowUpRecVsCurrConfDate_Three.Text = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Minus_Fifteen_TwentyOne);
             lbl_kpiFollowUpRecVsCurrConfDate_Four.Text = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Minus_Eight_Fourteen);
@@ -112,11 +118,12 @@ namespace KPA_KPI_Analyzer
             lbl_kpiFollowUpRecVsCurrConfDate_Eight.Text = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Eight_Fourteen);
             lbl_kpiFollowUpRecVsCurrConfDate_Nine.Text = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Fifteen_TwentyOne);
             lbl_kpiFollowUpRecVsCurrConfDate_Ten.Text = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.TwentyTwo);
-            lbl_kpiFollowUpRecVsCurrConfDate_Eleven.Text = string.Format("{0:n}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.PercentUnconf + "%");
+            lbl_kpiFollowUpRecVsCurrConfDate_Eleven.Text = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Total);
+            lbl_kpiFollowUpRecVsCurrConfDate_Twelve.Text = string.Format("{0:n}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.PercentUnconf + "%");
 
 
             // KPI -> PurchTwo -> PR 2nd Lvl Release vs PO Creation
-            lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_One.Text = string.Format("{0:n}", overallData.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.Average) + " Day(s)";
+            lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_One.Text = string.Format("{0:n}", overallData.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.Average);
             lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Two.Text = string.Format("{0:n0}", overallData.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.LessThanZero);
             lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Three.Text = string.Format("{0:n0}", overallData.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.One_Three);
             lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Four.Text = string.Format("{0:n0}", overallData.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.Four_Seven);
@@ -128,9 +135,10 @@ namespace KPA_KPI_Analyzer
             lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Ten.Text = string.Format("{0:n0}", overallData.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.FourtyThree_FourtyNine);
             lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Eleven.Text = string.Format("{0:n0}", overallData.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.Fifty_FiftySix);
             lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Twelve.Text = string.Format("{0:n0}", overallData.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.greaterThanEqualFiftySeven);
+            lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Thirteen.Text = string.Format("{0:n0}", overallData.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.Total);
 
             // KPI -> PurchTwo -> PO Creation vs PO Release
-            lbl_kpiPurchTwoPOCreateVsPORel_One.Text = string.Format("{0:n}", overallData.kpi.purchTwo.poCreationVsPORel.data.Average) + " Day(s)";
+            lbl_kpiPurchTwoPOCreateVsPORel_One.Text = string.Format("{0:n}", overallData.kpi.purchTwo.poCreationVsPORel.data.Average);
             lbl_kpiPurchTwoPOCreateVsPORel_Two.Text = string.Format("{0:n0}", overallData.kpi.purchTwo.poCreationVsPORel.data.LessThanZero);
             lbl_kpiPurchTwoPOCreateVsPORel_Three.Text = string.Format("{0:n0}", overallData.kpi.purchTwo.poCreationVsPORel.data.One_Three);
             lbl_kpiPurchTwoPOCreateVsPORel_Four.Text = string.Format("{0:n0}", overallData.kpi.purchTwo.poCreationVsPORel.data.Four_Seven);
@@ -142,9 +150,10 @@ namespace KPA_KPI_Analyzer
             lbl_kpiPurchTwoPOCreateVsPORel_Ten.Text = string.Format("{0:n0}", overallData.kpi.purchTwo.poCreationVsPORel.data.FourtyThree_FourtyNine);
             lbl_kpiPurchTwoPOCreateVsPORel_Eleven.Text = string.Format("{0:n0}", overallData.kpi.purchTwo.poCreationVsPORel.data.Fifty_FiftySix);
             lbl_kpiPurchTwoPOCreateVsPORel_Twelve.Text = string.Format("{0:n0}", overallData.kpi.purchTwo.poCreationVsPORel.data.greaterThanEqualFiftySeven);
+            lbl_kpiPurchTwoPOCreateVsPORel_Thirteen.Text = string.Format("{0:n0}", overallData.kpi.purchTwo.poCreationVsPORel.data.Total);
 
             // KPI -> Purch Two - PO Release vs Po Confirm
-            lbl_kpiPurchTwoPORelVsPOConf_One.Text = string.Format("{0:n}", overallData.kpi.purchTwo.poRelVsPOConf.data.Average) + " Day(s)";
+            lbl_kpiPurchTwoPORelVsPOConf_One.Text = string.Format("{0:n}", overallData.kpi.purchTwo.poRelVsPOConf.data.Average);
             lbl_kpiPurchTwoPORelVsPOConf_Two.Text = string.Format("{0:n0}", overallData.kpi.purchTwo.poRelVsPOConf.data.LessThanZero);
             lbl_kpiPurchTwoPORelVsPOConf_Three.Text = string.Format("{0:n0}", overallData.kpi.purchTwo.poRelVsPOConf.data.One_Three);
             lbl_kpiPurchTwoPORelVsPOConf_Four.Text = string.Format("{0:n0}", overallData.kpi.purchTwo.poRelVsPOConf.data.Four_Seven);
@@ -156,10 +165,11 @@ namespace KPA_KPI_Analyzer
             lbl_kpiPurchTwoPORelVsPOConf_Ten.Text = string.Format("{0:n0}", overallData.kpi.purchTwo.poRelVsPOConf.data.FourtyThree_FourtyNine);
             lbl_kpiPurchTwoPORelVsPOConf_Eleven.Text = string.Format("{0:n0}", overallData.kpi.purchTwo.poRelVsPOConf.data.Fifty_FiftySix);
             lbl_kpiPurchTwoPORelVsPOConf_Twelve.Text = string.Format("{0:n0}", overallData.kpi.purchTwo.poRelVsPOConf.data.greaterThanEqualFiftySeven);
-            lbl_kpiPurchTwoPORelVsPOConf_Thirteen.Text = string.Format("{0:n}", overallData.kpi.purchTwo.poRelVsPOConf.data.PercentUnconf + "%");
+            lbl_kpiPurchTwoPORelVsPOConf_Thirteen.Text = string.Format("{0:n0}", overallData.kpi.purchTwo.poRelVsPOConf.data.Total);
+            lbl_kpiPurchTwoPORelVsPOConf_Fourteen.Text = string.Format("{0:n}", overallData.kpi.purchTwo.poRelVsPOConf.data.PercentUnconf + "%");
 
             // KPI -> Purch Sub -> PR Release vs PO Release
-            lbl_kpiPurchSubPRRelVsPORel_One.Text = string.Format("{0:n}", overallData.kpi.purchSub.prRelVsPORel.data.Average) + " Day(s)";
+            lbl_kpiPurchSubPRRelVsPORel_One.Text = string.Format("{0:n}", overallData.kpi.purchSub.prRelVsPORel.data.Average);
             lbl_kpiPurchSubPRRelVsPORel_Two.Text = string.Format("{0:n0}", overallData.kpi.purchSub.prRelVsPORel.data.LessThanZero);
             lbl_kpiPurchSubPRRelVsPORel_Three.Text = string.Format("{0:n0}", overallData.kpi.purchSub.prRelVsPORel.data.One_Three);
             lbl_kpiPurchSubPRRelVsPORel_Four.Text = string.Format("{0:n0}", overallData.kpi.purchSub.prRelVsPORel.data.Four_Seven);
@@ -171,9 +181,10 @@ namespace KPA_KPI_Analyzer
             lbl_kpiPurchSubPRRelVsPORel_Ten.Text = string.Format("{0:n0}", overallData.kpi.purchSub.prRelVsPORel.data.FourtyThree_FourtyNine);
             lbl_kpiPurchSubPRRelVsPORel_Eleven.Text = string.Format("{0:n0}", overallData.kpi.purchSub.prRelVsPORel.data.Fifty_FiftySix);
             lbl_kpiPurchSubPRRelVsPORel_Twelve.Text = string.Format("{0:n0}", overallData.kpi.purchSub.prRelVsPORel.data.greaterThanEqualFiftySeven);
+            lbl_kpiPurchSubPRRelVsPORel_Thirteen.Text = string.Format("{0:n0}", overallData.kpi.purchSub.prRelVsPORel.data.Total);
 
             // KPI -> Purch Sub - PO Creation vs Confirmation Entry
-            lbl_kpiPurchSubPOCreateVsConfEntry_One.Text = string.Format("{0:n}", overallData.kpi.purchSub.poCreateVsConfEntry.data.Average) + " Day(s)";
+            lbl_kpiPurchSubPOCreateVsConfEntry_One.Text = string.Format("{0:n}", overallData.kpi.purchSub.poCreateVsConfEntry.data.Average);
             lbl_kpiPurchSubPOCreateVsConfEntry_Two.Text = string.Format("{0:n0}", overallData.kpi.purchSub.poCreateVsConfEntry.data.LessThanZero);
             lbl_kpiPurchSubPOCreateVsConfEntry_Three.Text = string.Format("{0:n0}", overallData.kpi.purchSub.poCreateVsConfEntry.data.One_Three);
             lbl_kpiPurchSubPOCreateVsConfEntry_Four.Text = string.Format("{0:n0}", overallData.kpi.purchSub.poCreateVsConfEntry.data.Four_Seven);
@@ -185,10 +196,11 @@ namespace KPA_KPI_Analyzer
             lbl_kpiPurchSubPOCreateVsConfEntry_Ten.Text = string.Format("{0:n0}", overallData.kpi.purchSub.poCreateVsConfEntry.data.FourtyThree_FourtyNine);
             lbl_kpiPurchSubPOCreateVsConfEntry_Eleven.Text = string.Format("{0:n0}", overallData.kpi.purchSub.poCreateVsConfEntry.data.Fifty_FiftySix);
             lbl_kpiPurchSubPOCreateVsConfEntry_Twelve.Text = string.Format("{0:n0}", overallData.kpi.purchSub.poCreateVsConfEntry.data.greaterThanEqualFiftySeven);
-            lbl_kpiPurchSubPOCreateVsConfEntry_Thirteen.Text = string.Format("{0:n}", overallData.kpi.purchSub.poCreateVsConfEntry.data.PercentUnconf + "%");
+            lbl_kpiPurchSubPOCreateVsConfEntry_Thirteen.Text = string.Format("{0:n0}", overallData.kpi.purchSub.poCreateVsConfEntry.data.Total);
+            lbl_kpiPurchSubPOCreateVsConfEntry_Fourteen.Text = string.Format("{0:n}", overallData.kpi.purchSub.poCreateVsConfEntry.data.PercentUnconf + "%");
 
             // KPI -> Purch Total -> PR Release vs Confirmation Entry
-            lbl_kpiPurchTotalPRRelConfEntry_One.Text = string.Format("{0:n}", overallData.kpi.purchTotal.prRelConfEntry.data.Average) + " Day(s)";
+            lbl_kpiPurchTotalPRRelConfEntry_One.Text = string.Format("{0:n}", overallData.kpi.purchTotal.prRelConfEntry.data.Average);
             lbl_kpiPurchTotalPRRelConfEntry_Two.Text = string.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.LessThanZero);
             lbl_kpiPurchTotalPRRelConfEntry_Three.Text = string.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.One_Three);
             lbl_kpiPurchTotalPRRelConfEntry_Four.Text = string.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.Four_Seven);
@@ -200,13 +212,14 @@ namespace KPA_KPI_Analyzer
             lbl_kpiPurchTotalPRRelConfEntry_Ten.Text = string.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.FourtyThree_FourtyNine);
             lbl_kpiPurchTotalPRRelConfEntry_Eleven.Text = string.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.Fifty_FiftySix);
             lbl_kpiPurchTotalPRRelConfEntry_Twelve.Text = string.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.greaterThanEqualFiftySeven);
-            lbl_kpiPurchTotalPRRelConfEntry_Thirteen.Text = string.Format("{0:n}", overallData.kpi.purchTotal.prRelConfEntry.data.PercentUnconf + "%");
+            lbl_kpiPurchTotalPRRelConfEntry_Thirteen.Text = string.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.Total);
+            lbl_kpiPurchTotalPRRelConfEntry_Fourteen.Text = string.Format("{0:n}", overallData.kpi.purchTotal.prRelConfEntry.data.PercentUnconf + "%");
 
 
 
 
             // KPI -> Purch/Plan - PO Release vs PR Delivery Date
-            lbl_kpiPurchPlanPORelVsPRDelDate_One.Text = string.Format("{0:n}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.Average) + " Day(s)";
+            lbl_kpiPurchPlanPORelVsPRDelDate_One.Text = string.Format("{0:n}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.Average);
             lbl_kpiPurchPlanPORelVsPRDelDate_Two.Text = string.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.LessThanZero);
             lbl_kpiPurchPlanPORelVsPRDelDate_Three.Text = string.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.One_Three);
             lbl_kpiPurchPlanPORelVsPRDelDate_Four.Text = string.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.Four_Seven);
@@ -218,9 +231,10 @@ namespace KPA_KPI_Analyzer
             lbl_kpiPurchPlanPORelVsPRDelDate_Ten.Text = string.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.FourtyThree_FourtyNine);
             lbl_kpiPurchPlanPORelVsPRDelDate_Eleven.Text = string.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.Fifty_FiftySix);
             lbl_kpiPurchPlanPORelVsPRDelDate_Twelve.Text = string.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.greaterThanEqualFiftySeven);
+            lbl_kpiPurchPlanPORelVsPRDelDate_Thirteen.Text = string.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.Total);
 
             // KPI -> Purch/Plan - PR 2nd Lvl Rel to Orig Del Date
-            lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_One.Text = string.Format("{0:n}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Average) + " Day(s)";
+            lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_One.Text = string.Format("{0:n}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Average);
             lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Two.Text = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.LessThanZero);
             lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Three.Text = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.One_Three);
             lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Four.Text = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Four_Seven);
@@ -232,6 +246,8 @@ namespace KPA_KPI_Analyzer
             lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Ten.Text = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.FourtyThree_FourtyNine);
             lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Eleven.Text = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Fifty_FiftySix);
             lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Twelve.Text = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.greaterThanEqualFiftySeven);
+            lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Thirteen.Text = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Total);
+
 
 
             // KPI -> Other - PRs Created
@@ -246,6 +262,7 @@ namespace KPA_KPI_Analyzer
             lbl_kpiOtherPrsCreated_Nine.Text = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessSevenWeeks);
             lbl_kpiOtherPrsCreated_Ten.Text = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessEightWeeks);
             lbl_kpiOtherPrsCreated_Eleven.Text = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessNinePlusWeeks);
+            lbl_kpiOtherPrsCreated_Twelve.Text = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.Total);
 
             // KPI -> Other - PRs Released
             lbl_kpiOtherPRsReleased_One.Text = "$" + string.Format("{0:n}", overallData.kpi.other.prsReleased.data.TotalValue);
@@ -259,6 +276,8 @@ namespace KPA_KPI_Analyzer
             lbl_kpiOtherPRsReleased_Nine.Text = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessSevenWeeks);
             lbl_kpiOtherPRsReleased_Ten.Text = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessEightWeeks);
             lbl_kpiOtherPRsReleased_Eleven.Text = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessNinePlusWeeks);
+            lbl_kpiOtherPRsReleased_Twelve.Text = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.Total);
+
 
             // KPI -> Other - Total Spend
             lbl_kpiOtherTotalSpend_One.Text = "$" + string.Format("{0:n}", overallData.kpi.other.totalSpend.data.TotalValue);
@@ -272,6 +291,9 @@ namespace KPA_KPI_Analyzer
             lbl_kpiOtherTotalSpend_Nine.Text = string.Format("{0:n0}", overallData.kpi.other.totalSpend.data.LessSevenWeeks);
             lbl_kpiOtherTotalSpend_Ten.Text = string.Format("{0:n0}", overallData.kpi.other.totalSpend.data.LessEightWeeks);
             lbl_kpiOtherTotalSpend_Eleven.Text = string.Format("{0:n0}", overallData.kpi.other.totalSpend.data.LessNinePlusWeeks);
+            lbl_kpiOtherTotalSpend_Twelve.Text = string.Format("{0:n0}", overallData.kpi.other.totalSpend.data.Total);
+
+
 
             // KPI -> Other - PR vs PO Value
             lbl_kpiOtherPRsVsPOValue_One.Text = "$" + string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.TotalValue);
@@ -285,6 +307,8 @@ namespace KPA_KPI_Analyzer
             lbl_kpiOtherPRsVsPOValue_Nine.Text = string.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.LessSevenWeeks);
             lbl_kpiOtherPRsVsPOValue_Ten.Text = string.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.LessEightWeeks);
             lbl_kpiOtherPRsVsPOValue_Eleven.Text = string.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.LessNinePlusWeeks);
+            lbl_kpiOtherPRsVsPOValue_Twelve.Text = string.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.Total);
+
 
 
 
@@ -301,7 +325,7 @@ namespace KPA_KPI_Analyzer
             lbl_kpiOtherHotJobPrs_Nine.Text = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessSevenWeeks);
             lbl_kpiOtherHotJobPrs_Ten.Text = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessEightWeeks);
             lbl_kpiOtherHotJobPrs_Eleven.Text = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessNinePlusWeeks);
-
+            lbl_kpiOtherHotJobPrs_Twelve.Text = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.Total);
         }
     }
 }

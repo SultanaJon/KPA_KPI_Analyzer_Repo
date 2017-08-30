@@ -203,7 +203,7 @@ namespace KPA_KPI_Analyzer
             TimeBucketNine = overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.GreaterThanThreeWeeks.ToString();
 
             TotalOrders = String.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.Total);
-            Average = String.Format("{0:n}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.Average) + " Day(s)";
+            Average = String.Format("{0:n}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.Average);
 
             AnalysisOne = "- Will only show if the PO line has a confirmed date AND is not received complete.";
             AnalysisTwo = "- Difference between the confirmation date and the current planned date.";

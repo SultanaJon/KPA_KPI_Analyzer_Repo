@@ -410,7 +410,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "KPA -> Purch Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.StackTrace, "KPA -> Purch Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

@@ -382,17 +382,14 @@
             this.lbl_kpiOtherPrsCreated_Nine = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.lbl_kpiOtherPrsCreated_Ten = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.lbl_kpiOtherPrsCreated_Eleven = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.lbl_kpiPurchTwoPORelVsPOConf_Thirteen = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.lbl_kpiPurchSubPOCreateVsConfEntry_Thirteen = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.lbl_kpiPurchTotalPRRelConfEntry_Thirteen = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.tableLayoutPanel28 = new System.Windows.Forms.TableLayoutPanel();
             this.panel27 = new System.Windows.Forms.Panel();
             this.bunifuCustomLabel27 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.lbl_kpiPurchInitConfVsPrPlanDate_Eleven = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.lbl_kpiFollowUpInitConfVsCurrConf_Eleven = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Eleven = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.lbl_kpiFollowUpRecVsOrigConfDate_Eleven = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.lbl_kpiFollowUpRecVsCurrConfDate_Eleven = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiPurchInitConfVsPrPlanDate_Twelve = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiFollowUpInitConfVsCurrConf_Twelve = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Twelve = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiFollowUpRecVsOrigConfDate_Twelve = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiFollowUpRecVsCurrConfDate_Twelve = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.lbl_kpiOtherHotJobPrs_One = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.lbl_kpiOtherHotJobPrs_Two = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.lbl_kpiOtherHotJobPrs_Three = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -410,6 +407,9 @@
             this.tableLayoutPanel46 = new System.Windows.Forms.TableLayoutPanel();
             this.panel45 = new System.Windows.Forms.Panel();
             this.bunifuCustomLabel66 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiPurchTwoPORelVsPOConf_Fourteen = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiPurchSubPOCreateVsConfEntry_Fourteen = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiPurchTotalPRRelConfEntry_Fourteen = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Twelve = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.lbl_kpiPurchTwoPOCreateVsPORel_Twelve = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.lbl_kpiPurchTwoPORelVsPOConf_Twelve = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -418,6 +418,35 @@
             this.lbl_kpiPurchTotalPRRelConfEntry_Twelve = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Twelve = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Twelve = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.tableLayoutPanel47 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel46 = new System.Windows.Forms.Panel();
+            this.bunifuCustomLabel67 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.tableLayoutPanel48 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel47 = new System.Windows.Forms.Panel();
+            this.bunifuCustomLabel68 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.tableLayoutPanel49 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel48 = new System.Windows.Forms.Panel();
+            this.bunifuCustomLabel69 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Thirteen = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiPurchTwoPOCreateVsPORel_Thirteen = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiPurchTwoPORelVsPOConf_Thirteen = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiPurchSubPRRelVsPORel_Thirteen = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiPurchSubPOCreateVsConfEntry_Thirteen = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiPurchTotalPRRelConfEntry_Thirteen = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiPurchPlanPORelVsPRDelDate_Thirteen = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Thirteen = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Eleven = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiPurchInitConfVsPrPlanDate_Eleven = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiFollowUpInitConfVsCurrConf_Eleven = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Eleven = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiFollowUpRecVsCurrPlanDate_Eleven = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiFollowUpRecVsCurrConfDate_Eleven = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiFollowUpRecVsOrigConfDate_Eleven = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiOtherPrsCreated_Twelve = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiOtherPRsReleased_Twelve = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiOtherTotalSpend_Twelve = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiOtherPRsVsPOValue_Twelve = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiOtherHotJobPrs_Twelve = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel39.SuspendLayout();
             this.panel38.SuspendLayout();
@@ -509,12 +538,18 @@
             this.panel3.SuspendLayout();
             this.tableLayoutPanel46.SuspendLayout();
             this.panel45.SuspendLayout();
+            this.tableLayoutPanel47.SuspendLayout();
+            this.panel46.SuspendLayout();
+            this.tableLayoutPanel48.SuspendLayout();
+            this.panel47.SuspendLayout();
+            this.tableLayoutPanel49.SuspendLayout();
+            this.panel48.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbl_kpiFollowUpRecVsCurrConfDate_Eight
             // 
             this.lbl_kpiFollowUpRecVsCurrConfDate_Eight.AutoSize = true;
-            this.lbl_kpiFollowUpRecVsCurrConfDate_Eight.Location = new System.Drawing.Point(757, 209);
+            this.lbl_kpiFollowUpRecVsCurrConfDate_Eight.Location = new System.Drawing.Point(703, 209);
             this.lbl_kpiFollowUpRecVsCurrConfDate_Eight.Name = "lbl_kpiFollowUpRecVsCurrConfDate_Eight";
             this.lbl_kpiFollowUpRecVsCurrConfDate_Eight.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpRecVsCurrConfDate_Eight.TabIndex = 3;
@@ -523,22 +558,23 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel1.ColumnCount = 15;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 6.60862F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.3654F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.403011F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.757308F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.617383F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.617383F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.617383F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.617383F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.617383F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.617383F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.617383F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.617383F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.617383F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.617383F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5.617383F));
+            this.tableLayoutPanel1.ColumnCount = 16;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 190F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.142856F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.142856F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.142856F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.142856F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.142856F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.142856F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.142856F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.142856F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.142856F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.142856F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.142856F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.142856F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.266436F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.304499F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel39, 11, 10);
             this.tableLayoutPanel1.Controls.Add(this.bunifuCustomLabel41, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
@@ -809,11 +845,11 @@
             this.tableLayoutPanel1.Controls.Add(this.lbl_kpiOtherPrsCreated_Ten, 11, 23);
             this.tableLayoutPanel1.Controls.Add(this.lbl_kpiOtherPrsCreated_Eleven, 12, 23);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel28, 13, 0);
-            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPurchInitConfVsPrPlanDate_Eleven, 13, 4);
-            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiFollowUpInitConfVsCurrConf_Eleven, 13, 5);
-            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Eleven, 13, 6);
-            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiFollowUpRecVsOrigConfDate_Eleven, 13, 8);
-            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiFollowUpRecVsCurrConfDate_Eleven, 13, 9);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPurchInitConfVsPrPlanDate_Twelve, 13, 4);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiFollowUpInitConfVsCurrConf_Twelve, 13, 5);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Twelve, 13, 6);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiFollowUpRecVsOrigConfDate_Twelve, 13, 8);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiFollowUpRecVsCurrConfDate_Twelve, 13, 9);
             this.tableLayoutPanel1.Controls.Add(this.lbl_kpiOtherHotJobPrs_One, 2, 27);
             this.tableLayoutPanel1.Controls.Add(this.lbl_kpiOtherHotJobPrs_Two, 3, 27);
             this.tableLayoutPanel1.Controls.Add(this.lbl_kpiOtherHotJobPrs_Three, 4, 27);
@@ -825,11 +861,11 @@
             this.tableLayoutPanel1.Controls.Add(this.lbl_kpiOtherHotJobPrs_Nine, 10, 27);
             this.tableLayoutPanel1.Controls.Add(this.lbl_kpiOtherHotJobPrs_Ten, 11, 27);
             this.tableLayoutPanel1.Controls.Add(this.lbl_kpiOtherHotJobPrs_Eleven, 12, 27);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 14, 10);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 15, 10);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel46, 13, 10);
-            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPurchTwoPORelVsPOConf_Thirteen, 14, 15);
-            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPurchSubPOCreateVsConfEntry_Thirteen, 14, 17);
-            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPurchTotalPRRelConfEntry_Thirteen, 14, 18);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPurchTwoPORelVsPOConf_Fourteen, 15, 15);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPurchSubPOCreateVsConfEntry_Fourteen, 15, 17);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPurchTotalPRRelConfEntry_Fourteen, 15, 18);
             this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Twelve, 13, 13);
             this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPurchTwoPOCreateVsPORel_Twelve, 13, 14);
             this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPurchTwoPORelVsPOConf_Twelve, 13, 15);
@@ -838,6 +874,29 @@
             this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPurchTotalPRRelConfEntry_Twelve, 13, 18);
             this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPurchPlanPORelVsPRDelDate_Twelve, 13, 19);
             this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Twelve, 13, 20);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel47, 12, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel48, 14, 10);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel49, 13, 22);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Thirteen, 14, 13);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPurchTwoPOCreateVsPORel_Thirteen, 14, 14);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPurchTwoPORelVsPOConf_Thirteen, 14, 15);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPurchSubPRRelVsPORel_Thirteen, 14, 16);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPurchSubPOCreateVsConfEntry_Thirteen, 14, 17);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPurchTotalPRRelConfEntry_Thirteen, 14, 18);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPurchPlanPORelVsPRDelDate_Thirteen, 14, 19);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Thirteen, 14, 20);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Eleven, 12, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPurchInitConfVsPrPlanDate_Eleven, 12, 4);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiFollowUpInitConfVsCurrConf_Eleven, 12, 5);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Eleven, 12, 6);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiFollowUpRecVsCurrPlanDate_Eleven, 12, 7);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiFollowUpRecVsCurrConfDate_Eleven, 12, 9);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiFollowUpRecVsOrigConfDate_Eleven, 12, 8);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiOtherPrsCreated_Twelve, 13, 23);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiOtherPRsReleased_Twelve, 13, 24);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiOtherTotalSpend_Twelve, 13, 25);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiOtherPRsVsPOValue_Twelve, 13, 26);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiOtherHotJobPrs_Twelve, 13, 27);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(10);
@@ -864,8 +923,8 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.571429F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.571429F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.571429F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.571429F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.571429F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.656598F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.338633F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.571429F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.571429F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.571429F));
@@ -884,14 +943,14 @@
             this.tableLayoutPanel39.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel39.Controls.Add(this.panel38, 1, 1);
             this.tableLayoutPanel39.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel39.Location = new System.Drawing.Point(880, 231);
+            this.tableLayoutPanel39.Location = new System.Drawing.Point(822, 231);
             this.tableLayoutPanel39.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel39.Name = "tableLayoutPanel39";
             this.tableLayoutPanel39.RowCount = 3;
             this.tableLayoutPanel39.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel39.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel39.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel39.Size = new System.Drawing.Size(62, 21);
+            this.tableLayoutPanel39.Size = new System.Drawing.Size(60, 21);
             this.tableLayoutPanel39.TabIndex = 2;
             // 
             // panel38
@@ -899,7 +958,7 @@
             this.panel38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(217)))), ((int)(((byte)(241)))));
             this.panel38.Controls.Add(this.bunifuCustomLabel73);
             this.panel38.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel38.Location = new System.Drawing.Point(-4, 0);
+            this.panel38.Location = new System.Drawing.Point(-5, 0);
             this.panel38.Margin = new System.Windows.Forms.Padding(0);
             this.panel38.Name = "panel38";
             this.panel38.Size = new System.Drawing.Size(70, 20);
@@ -918,7 +977,7 @@
             // bunifuCustomLabel41
             // 
             this.bunifuCustomLabel41.AutoSize = true;
-            this.bunifuCustomLabel41.Location = new System.Drawing.Point(88, 33);
+            this.bunifuCustomLabel41.Location = new System.Drawing.Point(85, 33);
             this.bunifuCustomLabel41.Name = "bunifuCustomLabel41";
             this.bunifuCustomLabel41.Size = new System.Drawing.Size(183, 13);
             this.bunifuCustomLabel41.TabIndex = 0;
@@ -941,7 +1000,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.00001F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(73, 65);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(70, 65);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // panel1
@@ -949,7 +1008,7 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(220)))), ((int)(((byte)(219)))));
             this.panel1.Controls.Add(this.bunifuCustomLabel1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(6, 22);
+            this.panel1.Location = new System.Drawing.Point(5, 22);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(60, 20);
@@ -981,7 +1040,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.00001F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(73, 21);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(70, 21);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // panel2
@@ -989,7 +1048,7 @@
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(220)))), ((int)(((byte)(219)))));
             this.panel2.Controls.Add(this.bunifuCustomLabel2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(6, 1);
+            this.panel2.Location = new System.Drawing.Point(5, 1);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(60, 20);
@@ -1013,7 +1072,7 @@
             this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel15.Controls.Add(this.panel14, 1, 1);
             this.tableLayoutPanel15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel15.Location = new System.Drawing.Point(313, 11);
+            this.tableLayoutPanel15.Location = new System.Drawing.Point(273, 11);
             this.tableLayoutPanel15.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel15.Name = "tableLayoutPanel15";
             this.tableLayoutPanel15.RowCount = 3;
@@ -1052,14 +1111,14 @@
             this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel16.Controls.Add(this.panel15, 1, 1);
             this.tableLayoutPanel16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel16.Location = new System.Drawing.Point(374, 11);
+            this.tableLayoutPanel16.Location = new System.Drawing.Point(334, 11);
             this.tableLayoutPanel16.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel16.Name = "tableLayoutPanel16";
             this.tableLayoutPanel16.RowCount = 3;
             this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel16.Size = new System.Drawing.Size(64, 21);
+            this.tableLayoutPanel16.Size = new System.Drawing.Size(60, 21);
             this.tableLayoutPanel16.TabIndex = 1;
             // 
             // panel15
@@ -1067,7 +1126,7 @@
             this.panel15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(187)))), ((int)(((byte)(89)))));
             this.panel15.Controls.Add(this.bunifuCustomLabel17);
             this.panel15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel15.Location = new System.Drawing.Point(-3, 0);
+            this.panel15.Location = new System.Drawing.Point(-5, 0);
             this.panel15.Margin = new System.Windows.Forms.Padding(0);
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(70, 20);
@@ -1092,14 +1151,14 @@
             this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel17.Controls.Add(this.panel16, 1, 1);
             this.tableLayoutPanel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel17.Location = new System.Drawing.Point(439, 11);
+            this.tableLayoutPanel17.Location = new System.Drawing.Point(395, 11);
             this.tableLayoutPanel17.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel17.Name = "tableLayoutPanel17";
             this.tableLayoutPanel17.RowCount = 3;
             this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel17.Size = new System.Drawing.Size(62, 21);
+            this.tableLayoutPanel17.Size = new System.Drawing.Size(60, 21);
             this.tableLayoutPanel17.TabIndex = 1;
             // 
             // panel16
@@ -1107,7 +1166,7 @@
             this.panel16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(215)))), ((int)(((byte)(155)))));
             this.panel16.Controls.Add(this.bunifuCustomLabel18);
             this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel16.Location = new System.Drawing.Point(-4, 0);
+            this.panel16.Location = new System.Drawing.Point(-5, 0);
             this.panel16.Margin = new System.Windows.Forms.Padding(0);
             this.panel16.Name = "panel16";
             this.panel16.Size = new System.Drawing.Size(70, 20);
@@ -1133,14 +1192,14 @@
             this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel18.Controls.Add(this.panel17, 1, 1);
             this.tableLayoutPanel18.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel18.Location = new System.Drawing.Point(502, 11);
+            this.tableLayoutPanel18.Location = new System.Drawing.Point(456, 11);
             this.tableLayoutPanel18.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel18.Name = "tableLayoutPanel18";
             this.tableLayoutPanel18.RowCount = 3;
             this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel18.Size = new System.Drawing.Size(62, 21);
+            this.tableLayoutPanel18.Size = new System.Drawing.Size(60, 21);
             this.tableLayoutPanel18.TabIndex = 1;
             // 
             // panel17
@@ -1148,7 +1207,7 @@
             this.panel17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(228)))), ((int)(((byte)(188)))));
             this.panel17.Controls.Add(this.bunifuCustomLabel19);
             this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel17.Location = new System.Drawing.Point(-4, 0);
+            this.panel17.Location = new System.Drawing.Point(-5, 0);
             this.panel17.Margin = new System.Windows.Forms.Padding(0);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(70, 20);
@@ -1173,14 +1232,14 @@
             this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel19.Controls.Add(this.panel18, 1, 1);
             this.tableLayoutPanel19.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel19.Location = new System.Drawing.Point(565, 11);
+            this.tableLayoutPanel19.Location = new System.Drawing.Point(517, 11);
             this.tableLayoutPanel19.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel19.Name = "tableLayoutPanel19";
             this.tableLayoutPanel19.RowCount = 3;
             this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel19.Size = new System.Drawing.Size(62, 21);
+            this.tableLayoutPanel19.Size = new System.Drawing.Size(60, 21);
             this.tableLayoutPanel19.TabIndex = 1;
             // 
             // panel18
@@ -1188,7 +1247,7 @@
             this.panel18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(241)))), ((int)(((byte)(222)))));
             this.panel18.Controls.Add(this.bunifuCustomLabel20);
             this.panel18.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel18.Location = new System.Drawing.Point(-4, 0);
+            this.panel18.Location = new System.Drawing.Point(-5, 0);
             this.panel18.Margin = new System.Windows.Forms.Padding(0);
             this.panel18.Name = "panel18";
             this.panel18.Size = new System.Drawing.Size(70, 20);
@@ -1213,14 +1272,14 @@
             this.tableLayoutPanel20.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel20.Controls.Add(this.panel19, 1, 1);
             this.tableLayoutPanel20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel20.Location = new System.Drawing.Point(628, 11);
+            this.tableLayoutPanel20.Location = new System.Drawing.Point(578, 11);
             this.tableLayoutPanel20.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel20.Name = "tableLayoutPanel20";
             this.tableLayoutPanel20.RowCount = 3;
             this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel20.Size = new System.Drawing.Size(62, 21);
+            this.tableLayoutPanel20.Size = new System.Drawing.Size(60, 21);
             this.tableLayoutPanel20.TabIndex = 1;
             // 
             // panel19
@@ -1228,7 +1287,7 @@
             this.panel19.BackColor = System.Drawing.Color.White;
             this.panel19.Controls.Add(this.bunifuCustomLabel21);
             this.panel19.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel19.Location = new System.Drawing.Point(-4, 0);
+            this.panel19.Location = new System.Drawing.Point(-5, 0);
             this.panel19.Margin = new System.Windows.Forms.Padding(0);
             this.panel19.Name = "panel19";
             this.panel19.Size = new System.Drawing.Size(70, 20);
@@ -1253,14 +1312,14 @@
             this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel21.Controls.Add(this.panel20, 1, 1);
             this.tableLayoutPanel21.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel21.Location = new System.Drawing.Point(691, 11);
+            this.tableLayoutPanel21.Location = new System.Drawing.Point(639, 11);
             this.tableLayoutPanel21.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel21.Name = "tableLayoutPanel21";
             this.tableLayoutPanel21.RowCount = 3;
             this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel21.Size = new System.Drawing.Size(62, 21);
+            this.tableLayoutPanel21.Size = new System.Drawing.Size(60, 21);
             this.tableLayoutPanel21.TabIndex = 1;
             // 
             // panel20
@@ -1268,7 +1327,7 @@
             this.panel20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(233)))), ((int)(((byte)(217)))));
             this.panel20.Controls.Add(this.bunifuCustomLabel22);
             this.panel20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel20.Location = new System.Drawing.Point(-4, 0);
+            this.panel20.Location = new System.Drawing.Point(-5, 0);
             this.panel20.Margin = new System.Windows.Forms.Padding(0);
             this.panel20.Name = "panel20";
             this.panel20.Size = new System.Drawing.Size(70, 20);
@@ -1293,14 +1352,14 @@
             this.tableLayoutPanel22.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel22.Controls.Add(this.panel21, 1, 1);
             this.tableLayoutPanel22.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel22.Location = new System.Drawing.Point(754, 11);
+            this.tableLayoutPanel22.Location = new System.Drawing.Point(700, 11);
             this.tableLayoutPanel22.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel22.Name = "tableLayoutPanel22";
             this.tableLayoutPanel22.RowCount = 3;
             this.tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel22.Size = new System.Drawing.Size(62, 21);
+            this.tableLayoutPanel22.Size = new System.Drawing.Size(60, 21);
             this.tableLayoutPanel22.TabIndex = 1;
             // 
             // panel21
@@ -1308,7 +1367,7 @@
             this.panel21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(213)))), ((int)(((byte)(180)))));
             this.panel21.Controls.Add(this.bunifuCustomLabel23);
             this.panel21.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel21.Location = new System.Drawing.Point(-4, 0);
+            this.panel21.Location = new System.Drawing.Point(-5, 0);
             this.panel21.Margin = new System.Windows.Forms.Padding(0);
             this.panel21.Name = "panel21";
             this.panel21.Size = new System.Drawing.Size(70, 20);
@@ -1334,14 +1393,14 @@
             this.tableLayoutPanel23.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel23.Controls.Add(this.panel22, 1, 1);
             this.tableLayoutPanel23.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel23.Location = new System.Drawing.Point(817, 11);
+            this.tableLayoutPanel23.Location = new System.Drawing.Point(761, 11);
             this.tableLayoutPanel23.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel23.Name = "tableLayoutPanel23";
             this.tableLayoutPanel23.RowCount = 3;
             this.tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel23.Size = new System.Drawing.Size(62, 21);
+            this.tableLayoutPanel23.Size = new System.Drawing.Size(60, 21);
             this.tableLayoutPanel23.TabIndex = 1;
             // 
             // panel22
@@ -1349,7 +1408,7 @@
             this.panel22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(191)))), ((int)(((byte)(143)))));
             this.panel22.Controls.Add(this.bunifuCustomLabel24);
             this.panel22.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel22.Location = new System.Drawing.Point(-4, 0);
+            this.panel22.Location = new System.Drawing.Point(-5, 0);
             this.panel22.Margin = new System.Windows.Forms.Padding(0);
             this.panel22.Name = "panel22";
             this.panel22.Size = new System.Drawing.Size(70, 20);
@@ -1375,7 +1434,7 @@
             this.tableLayoutPanel24.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel24.Controls.Add(this.panel23, 1, 1);
             this.tableLayoutPanel24.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel24.Location = new System.Drawing.Point(313, 231);
+            this.tableLayoutPanel24.Location = new System.Drawing.Point(273, 231);
             this.tableLayoutPanel24.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel24.Name = "tableLayoutPanel24";
             this.tableLayoutPanel24.RowCount = 3;
@@ -1413,21 +1472,21 @@
             this.tableLayoutPanel30.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel30.Controls.Add(this.panel29, 1, 1);
             this.tableLayoutPanel30.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel30.Location = new System.Drawing.Point(628, 495);
+            this.tableLayoutPanel30.Location = new System.Drawing.Point(578, 495);
             this.tableLayoutPanel30.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel30.Name = "tableLayoutPanel30";
             this.tableLayoutPanel30.RowCount = 3;
             this.tableLayoutPanel30.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel30.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel30.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel30.Size = new System.Drawing.Size(62, 21);
+            this.tableLayoutPanel30.Size = new System.Drawing.Size(60, 21);
             this.tableLayoutPanel30.TabIndex = 1;
             // 
             // panel29
             // 
             this.panel29.Controls.Add(this.bunifuCustomLabel31);
             this.panel29.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel29.Location = new System.Drawing.Point(-6, 0);
+            this.panel29.Location = new System.Drawing.Point(-7, 0);
             this.panel29.Margin = new System.Windows.Forms.Padding(0);
             this.panel29.Name = "panel29";
             this.panel29.Size = new System.Drawing.Size(75, 20);
@@ -1451,14 +1510,14 @@
             this.tableLayoutPanel32.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel32.Controls.Add(this.panel31, 1, 1);
             this.tableLayoutPanel32.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel32.Location = new System.Drawing.Point(439, 231);
+            this.tableLayoutPanel32.Location = new System.Drawing.Point(395, 231);
             this.tableLayoutPanel32.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel32.Name = "tableLayoutPanel32";
             this.tableLayoutPanel32.RowCount = 3;
             this.tableLayoutPanel32.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel32.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel32.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel32.Size = new System.Drawing.Size(62, 21);
+            this.tableLayoutPanel32.Size = new System.Drawing.Size(60, 21);
             this.tableLayoutPanel32.TabIndex = 1;
             // 
             // panel31
@@ -1466,7 +1525,7 @@
             this.panel31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(217)))), ((int)(((byte)(241)))));
             this.panel31.Controls.Add(this.bunifuCustomLabel33);
             this.panel31.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel31.Location = new System.Drawing.Point(-4, 0);
+            this.panel31.Location = new System.Drawing.Point(-5, 0);
             this.panel31.Margin = new System.Windows.Forms.Padding(0);
             this.panel31.Name = "panel31";
             this.panel31.Size = new System.Drawing.Size(70, 20);
@@ -1491,14 +1550,14 @@
             this.tableLayoutPanel33.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel33.Controls.Add(this.panel32, 1, 1);
             this.tableLayoutPanel33.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel33.Location = new System.Drawing.Point(502, 231);
+            this.tableLayoutPanel33.Location = new System.Drawing.Point(456, 231);
             this.tableLayoutPanel33.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel33.Name = "tableLayoutPanel33";
             this.tableLayoutPanel33.RowCount = 3;
             this.tableLayoutPanel33.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel33.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel33.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel33.Size = new System.Drawing.Size(62, 21);
+            this.tableLayoutPanel33.Size = new System.Drawing.Size(60, 21);
             this.tableLayoutPanel33.TabIndex = 1;
             // 
             // panel32
@@ -1506,7 +1565,7 @@
             this.panel32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(217)))), ((int)(((byte)(241)))));
             this.panel32.Controls.Add(this.bunifuCustomLabel35);
             this.panel32.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel32.Location = new System.Drawing.Point(-4, 0);
+            this.panel32.Location = new System.Drawing.Point(-5, 0);
             this.panel32.Margin = new System.Windows.Forms.Padding(0);
             this.panel32.Name = "panel32";
             this.panel32.Size = new System.Drawing.Size(70, 20);
@@ -1530,14 +1589,14 @@
             this.tableLayoutPanel34.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel34.Controls.Add(this.panel33, 1, 1);
             this.tableLayoutPanel34.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel34.Location = new System.Drawing.Point(565, 231);
+            this.tableLayoutPanel34.Location = new System.Drawing.Point(517, 231);
             this.tableLayoutPanel34.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel34.Name = "tableLayoutPanel34";
             this.tableLayoutPanel34.RowCount = 3;
             this.tableLayoutPanel34.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel34.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel34.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel34.Size = new System.Drawing.Size(62, 21);
+            this.tableLayoutPanel34.Size = new System.Drawing.Size(60, 21);
             this.tableLayoutPanel34.TabIndex = 1;
             // 
             // panel33
@@ -1545,7 +1604,7 @@
             this.panel33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(217)))), ((int)(((byte)(241)))));
             this.panel33.Controls.Add(this.bunifuCustomLabel36);
             this.panel33.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel33.Location = new System.Drawing.Point(-4, 0);
+            this.panel33.Location = new System.Drawing.Point(-5, 0);
             this.panel33.Margin = new System.Windows.Forms.Padding(0);
             this.panel33.Name = "panel33";
             this.panel33.Size = new System.Drawing.Size(70, 20);
@@ -1569,14 +1628,14 @@
             this.tableLayoutPanel35.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel35.Controls.Add(this.panel34, 1, 1);
             this.tableLayoutPanel35.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel35.Location = new System.Drawing.Point(628, 231);
+            this.tableLayoutPanel35.Location = new System.Drawing.Point(578, 231);
             this.tableLayoutPanel35.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel35.Name = "tableLayoutPanel35";
             this.tableLayoutPanel35.RowCount = 3;
             this.tableLayoutPanel35.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel35.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel35.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel35.Size = new System.Drawing.Size(62, 21);
+            this.tableLayoutPanel35.Size = new System.Drawing.Size(60, 21);
             this.tableLayoutPanel35.TabIndex = 1;
             // 
             // panel34
@@ -1584,7 +1643,7 @@
             this.panel34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(217)))), ((int)(((byte)(241)))));
             this.panel34.Controls.Add(this.bunifuCustomLabel37);
             this.panel34.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel34.Location = new System.Drawing.Point(-4, 0);
+            this.panel34.Location = new System.Drawing.Point(-5, 0);
             this.panel34.Margin = new System.Windows.Forms.Padding(0);
             this.panel34.Name = "panel34";
             this.panel34.Size = new System.Drawing.Size(70, 20);
@@ -1608,14 +1667,14 @@
             this.tableLayoutPanel36.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel36.Controls.Add(this.panel35, 1, 1);
             this.tableLayoutPanel36.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel36.Location = new System.Drawing.Point(691, 231);
+            this.tableLayoutPanel36.Location = new System.Drawing.Point(639, 231);
             this.tableLayoutPanel36.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel36.Name = "tableLayoutPanel36";
             this.tableLayoutPanel36.RowCount = 3;
             this.tableLayoutPanel36.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel36.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel36.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel36.Size = new System.Drawing.Size(62, 21);
+            this.tableLayoutPanel36.Size = new System.Drawing.Size(60, 21);
             this.tableLayoutPanel36.TabIndex = 1;
             // 
             // panel35
@@ -1623,7 +1682,7 @@
             this.panel35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(217)))), ((int)(((byte)(241)))));
             this.panel35.Controls.Add(this.bunifuCustomLabel38);
             this.panel35.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel35.Location = new System.Drawing.Point(-4, 0);
+            this.panel35.Location = new System.Drawing.Point(-5, 0);
             this.panel35.Margin = new System.Windows.Forms.Padding(0);
             this.panel35.Name = "panel35";
             this.panel35.Size = new System.Drawing.Size(70, 20);
@@ -1647,21 +1706,21 @@
             this.tableLayoutPanel37.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel37.Controls.Add(this.panel36, 1, 1);
             this.tableLayoutPanel37.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel37.Location = new System.Drawing.Point(754, 231);
+            this.tableLayoutPanel37.Location = new System.Drawing.Point(700, 231);
             this.tableLayoutPanel37.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel37.Name = "tableLayoutPanel37";
             this.tableLayoutPanel37.RowCount = 3;
             this.tableLayoutPanel37.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel37.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel37.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel37.Size = new System.Drawing.Size(62, 21);
+            this.tableLayoutPanel37.Size = new System.Drawing.Size(60, 21);
             this.tableLayoutPanel37.TabIndex = 1;
             // 
             // panel36
             // 
             this.panel36.Controls.Add(this.bunifuCustomLabel39);
             this.panel36.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel36.Location = new System.Drawing.Point(-4, 0);
+            this.panel36.Location = new System.Drawing.Point(-5, 0);
             this.panel36.Margin = new System.Windows.Forms.Padding(0);
             this.panel36.Name = "panel36";
             this.panel36.Size = new System.Drawing.Size(70, 20);
@@ -1685,14 +1744,14 @@
             this.tableLayoutPanel38.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel38.Controls.Add(this.panel37, 1, 1);
             this.tableLayoutPanel38.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel38.Location = new System.Drawing.Point(817, 231);
+            this.tableLayoutPanel38.Location = new System.Drawing.Point(761, 231);
             this.tableLayoutPanel38.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel38.Name = "tableLayoutPanel38";
             this.tableLayoutPanel38.RowCount = 3;
             this.tableLayoutPanel38.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel38.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel38.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel38.Size = new System.Drawing.Size(62, 21);
+            this.tableLayoutPanel38.Size = new System.Drawing.Size(60, 21);
             this.tableLayoutPanel38.TabIndex = 1;
             // 
             // panel37
@@ -1700,7 +1759,7 @@
             this.panel37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(217)))), ((int)(((byte)(241)))));
             this.panel37.Controls.Add(this.bunifuCustomLabel40);
             this.panel37.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel37.Location = new System.Drawing.Point(-4, 0);
+            this.panel37.Location = new System.Drawing.Point(-5, 0);
             this.panel37.Margin = new System.Windows.Forms.Padding(0);
             this.panel37.Name = "panel37";
             this.panel37.Size = new System.Drawing.Size(70, 20);
@@ -1724,14 +1783,14 @@
             this.tableLayoutPanel31.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel31.Controls.Add(this.panel30, 1, 1);
             this.tableLayoutPanel31.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel31.Location = new System.Drawing.Point(374, 231);
+            this.tableLayoutPanel31.Location = new System.Drawing.Point(334, 231);
             this.tableLayoutPanel31.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel31.Name = "tableLayoutPanel31";
             this.tableLayoutPanel31.RowCount = 3;
             this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel31.Size = new System.Drawing.Size(64, 21);
+            this.tableLayoutPanel31.Size = new System.Drawing.Size(60, 21);
             this.tableLayoutPanel31.TabIndex = 1;
             // 
             // panel30
@@ -1739,7 +1798,7 @@
             this.panel30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(217)))), ((int)(((byte)(241)))));
             this.panel30.Controls.Add(this.bunifuCustomLabel32);
             this.panel30.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel30.Location = new System.Drawing.Point(-3, 0);
+            this.panel30.Location = new System.Drawing.Point(-5, 0);
             this.panel30.Margin = new System.Windows.Forms.Padding(0);
             this.panel30.Name = "panel30";
             this.panel30.Size = new System.Drawing.Size(70, 20);
@@ -1757,25 +1816,25 @@
             // bunifuCustomLabel42
             // 
             this.bunifuCustomLabel42.AutoSize = true;
-            this.bunifuCustomLabel42.Location = new System.Drawing.Point(88, 55);
+            this.bunifuCustomLabel42.Location = new System.Drawing.Point(85, 55);
             this.bunifuCustomLabel42.Name = "bunifuCustomLabel42";
-            this.bunifuCustomLabel42.Size = new System.Drawing.Size(192, 21);
+            this.bunifuCustomLabel42.Size = new System.Drawing.Size(158, 21);
             this.bunifuCustomLabel42.TabIndex = 0;
-            this.bunifuCustomLabel42.Text = "(Orig Pln Dt - 2nd Lvl Rel Dt) vs Coded Lead-time";
+            this.bunifuCustomLabel42.Text = "(Orig Pln Dt - 2nd Lvl Rel Dt) vs Coded Lead-Time";
             // 
             // bunifuCustomLabel43
             // 
             this.bunifuCustomLabel43.AutoSize = true;
-            this.bunifuCustomLabel43.Location = new System.Drawing.Point(88, 77);
+            this.bunifuCustomLabel43.Location = new System.Drawing.Point(85, 77);
             this.bunifuCustomLabel43.Name = "bunifuCustomLabel43";
-            this.bunifuCustomLabel43.Size = new System.Drawing.Size(192, 21);
+            this.bunifuCustomLabel43.Size = new System.Drawing.Size(158, 21);
             this.bunifuCustomLabel43.TabIndex = 0;
             this.bunifuCustomLabel43.Text = "(Curr Pln Dt - 2nd Lvl Rel Dt) vs Coded Lead-Time";
             // 
             // bunifuCustomLabel44
             // 
             this.bunifuCustomLabel44.AutoSize = true;
-            this.bunifuCustomLabel44.Location = new System.Drawing.Point(88, 99);
+            this.bunifuCustomLabel44.Location = new System.Drawing.Point(85, 99);
             this.bunifuCustomLabel44.Name = "bunifuCustomLabel44";
             this.bunifuCustomLabel44.Size = new System.Drawing.Size(124, 13);
             this.bunifuCustomLabel44.TabIndex = 0;
@@ -1784,7 +1843,7 @@
             // bunifuCustomLabel45
             // 
             this.bunifuCustomLabel45.AutoSize = true;
-            this.bunifuCustomLabel45.Location = new System.Drawing.Point(88, 121);
+            this.bunifuCustomLabel45.Location = new System.Drawing.Point(85, 121);
             this.bunifuCustomLabel45.Name = "bunifuCustomLabel45";
             this.bunifuCustomLabel45.Size = new System.Drawing.Size(135, 13);
             this.bunifuCustomLabel45.TabIndex = 0;
@@ -1793,7 +1852,7 @@
             // bunifuCustomLabel46
             // 
             this.bunifuCustomLabel46.AutoSize = true;
-            this.bunifuCustomLabel46.Location = new System.Drawing.Point(88, 143);
+            this.bunifuCustomLabel46.Location = new System.Drawing.Point(85, 143);
             this.bunifuCustomLabel46.Name = "bunifuCustomLabel46";
             this.bunifuCustomLabel46.Size = new System.Drawing.Size(139, 13);
             this.bunifuCustomLabel46.TabIndex = 0;
@@ -1802,7 +1861,7 @@
             // bunifuCustomLabel47
             // 
             this.bunifuCustomLabel47.AutoSize = true;
-            this.bunifuCustomLabel47.Location = new System.Drawing.Point(88, 165);
+            this.bunifuCustomLabel47.Location = new System.Drawing.Point(85, 165);
             this.bunifuCustomLabel47.Name = "bunifuCustomLabel47";
             this.bunifuCustomLabel47.Size = new System.Drawing.Size(109, 13);
             this.bunifuCustomLabel47.TabIndex = 0;
@@ -1811,7 +1870,7 @@
             // bunifuCustomLabel48
             // 
             this.bunifuCustomLabel48.AutoSize = true;
-            this.bunifuCustomLabel48.Location = new System.Drawing.Point(88, 187);
+            this.bunifuCustomLabel48.Location = new System.Drawing.Point(85, 187);
             this.bunifuCustomLabel48.Name = "bunifuCustomLabel48";
             this.bunifuCustomLabel48.Size = new System.Drawing.Size(116, 13);
             this.bunifuCustomLabel48.TabIndex = 0;
@@ -1820,7 +1879,7 @@
             // bunifuCustomLabel49
             // 
             this.bunifuCustomLabel49.AutoSize = true;
-            this.bunifuCustomLabel49.Location = new System.Drawing.Point(88, 209);
+            this.bunifuCustomLabel49.Location = new System.Drawing.Point(85, 209);
             this.bunifuCustomLabel49.Name = "bunifuCustomLabel49";
             this.bunifuCustomLabel49.Size = new System.Drawing.Size(116, 13);
             this.bunifuCustomLabel49.TabIndex = 0;
@@ -1829,7 +1888,7 @@
             // bunifuCustomLabel70
             // 
             this.bunifuCustomLabel70.AutoSize = true;
-            this.bunifuCustomLabel70.Location = new System.Drawing.Point(88, 451);
+            this.bunifuCustomLabel70.Location = new System.Drawing.Point(85, 451);
             this.bunifuCustomLabel70.Name = "bunifuCustomLabel70";
             this.bunifuCustomLabel70.Size = new System.Drawing.Size(184, 13);
             this.bunifuCustomLabel70.TabIndex = 0;
@@ -1838,7 +1897,7 @@
             // bunifuCustomLabel71
             // 
             this.bunifuCustomLabel71.AutoSize = true;
-            this.bunifuCustomLabel71.Location = new System.Drawing.Point(88, 473);
+            this.bunifuCustomLabel71.Location = new System.Drawing.Point(85, 474);
             this.bunifuCustomLabel71.Name = "bunifuCustomLabel71";
             this.bunifuCustomLabel71.Size = new System.Drawing.Size(176, 13);
             this.bunifuCustomLabel71.TabIndex = 0;
@@ -1847,7 +1906,7 @@
             // bunifuCustomLabel72
             // 
             this.bunifuCustomLabel72.AutoSize = true;
-            this.bunifuCustomLabel72.Location = new System.Drawing.Point(88, 605);
+            this.bunifuCustomLabel72.Location = new System.Drawing.Point(85, 605);
             this.bunifuCustomLabel72.Name = "bunifuCustomLabel72";
             this.bunifuCustomLabel72.Size = new System.Drawing.Size(67, 13);
             this.bunifuCustomLabel72.TabIndex = 0;
@@ -1856,7 +1915,7 @@
             // lbl_kpiPurchInitConfVsPrPlanDate_One
             // 
             this.lbl_kpiPurchInitConfVsPrPlanDate_One.AutoSize = true;
-            this.lbl_kpiPurchInitConfVsPrPlanDate_One.Location = new System.Drawing.Point(316, 99);
+            this.lbl_kpiPurchInitConfVsPrPlanDate_One.Location = new System.Drawing.Point(276, 99);
             this.lbl_kpiPurchInitConfVsPrPlanDate_One.Name = "lbl_kpiPurchInitConfVsPrPlanDate_One";
             this.lbl_kpiPurchInitConfVsPrPlanDate_One.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchInitConfVsPrPlanDate_One.TabIndex = 3;
@@ -1865,7 +1924,7 @@
             // lbl_kpiFollowUpInitConfVsCurrConf_One
             // 
             this.lbl_kpiFollowUpInitConfVsCurrConf_One.AutoSize = true;
-            this.lbl_kpiFollowUpInitConfVsCurrConf_One.Location = new System.Drawing.Point(316, 121);
+            this.lbl_kpiFollowUpInitConfVsCurrConf_One.Location = new System.Drawing.Point(276, 121);
             this.lbl_kpiFollowUpInitConfVsCurrConf_One.Name = "lbl_kpiFollowUpInitConfVsCurrConf_One";
             this.lbl_kpiFollowUpInitConfVsCurrConf_One.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpInitConfVsCurrConf_One.TabIndex = 3;
@@ -1874,7 +1933,7 @@
             // lbl_kpiFollowUpFinalConfVsFinalPlanDate_One
             // 
             this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_One.AutoSize = true;
-            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_One.Location = new System.Drawing.Point(316, 143);
+            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_One.Location = new System.Drawing.Point(276, 143);
             this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_One.Name = "lbl_kpiFollowUpFinalConfVsFinalPlanDate_One";
             this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_One.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_One.TabIndex = 3;
@@ -1883,7 +1942,7 @@
             // lbl_kpiFollowUpRecVsCurrPlanDate_One
             // 
             this.lbl_kpiFollowUpRecVsCurrPlanDate_One.AutoSize = true;
-            this.lbl_kpiFollowUpRecVsCurrPlanDate_One.Location = new System.Drawing.Point(316, 165);
+            this.lbl_kpiFollowUpRecVsCurrPlanDate_One.Location = new System.Drawing.Point(276, 165);
             this.lbl_kpiFollowUpRecVsCurrPlanDate_One.Name = "lbl_kpiFollowUpRecVsCurrPlanDate_One";
             this.lbl_kpiFollowUpRecVsCurrPlanDate_One.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpRecVsCurrPlanDate_One.TabIndex = 3;
@@ -1892,7 +1951,7 @@
             // lbl_kpiFollowUpRecVsOrigConfDate_One
             // 
             this.lbl_kpiFollowUpRecVsOrigConfDate_One.AutoSize = true;
-            this.lbl_kpiFollowUpRecVsOrigConfDate_One.Location = new System.Drawing.Point(316, 187);
+            this.lbl_kpiFollowUpRecVsOrigConfDate_One.Location = new System.Drawing.Point(276, 187);
             this.lbl_kpiFollowUpRecVsOrigConfDate_One.Name = "lbl_kpiFollowUpRecVsOrigConfDate_One";
             this.lbl_kpiFollowUpRecVsOrigConfDate_One.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpRecVsOrigConfDate_One.TabIndex = 3;
@@ -1901,7 +1960,7 @@
             // lbl_kpiFollowUpRecVsCurrConfDate_One
             // 
             this.lbl_kpiFollowUpRecVsCurrConfDate_One.AutoSize = true;
-            this.lbl_kpiFollowUpRecVsCurrConfDate_One.Location = new System.Drawing.Point(316, 209);
+            this.lbl_kpiFollowUpRecVsCurrConfDate_One.Location = new System.Drawing.Point(276, 209);
             this.lbl_kpiFollowUpRecVsCurrConfDate_One.Name = "lbl_kpiFollowUpRecVsCurrConfDate_One";
             this.lbl_kpiFollowUpRecVsCurrConfDate_One.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpRecVsCurrConfDate_One.TabIndex = 3;
@@ -1910,7 +1969,7 @@
             // lbl_kpiFollowUpRecVsCurrConfDate_Nine
             // 
             this.lbl_kpiFollowUpRecVsCurrConfDate_Nine.AutoSize = true;
-            this.lbl_kpiFollowUpRecVsCurrConfDate_Nine.Location = new System.Drawing.Point(820, 209);
+            this.lbl_kpiFollowUpRecVsCurrConfDate_Nine.Location = new System.Drawing.Point(764, 209);
             this.lbl_kpiFollowUpRecVsCurrConfDate_Nine.Name = "lbl_kpiFollowUpRecVsCurrConfDate_Nine";
             this.lbl_kpiFollowUpRecVsCurrConfDate_Nine.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpRecVsCurrConfDate_Nine.TabIndex = 3;
@@ -1919,7 +1978,7 @@
             // lbl_kpiFollowUpRecVsOrigConfDate_Nine
             // 
             this.lbl_kpiFollowUpRecVsOrigConfDate_Nine.AutoSize = true;
-            this.lbl_kpiFollowUpRecVsOrigConfDate_Nine.Location = new System.Drawing.Point(820, 187);
+            this.lbl_kpiFollowUpRecVsOrigConfDate_Nine.Location = new System.Drawing.Point(764, 187);
             this.lbl_kpiFollowUpRecVsOrigConfDate_Nine.Name = "lbl_kpiFollowUpRecVsOrigConfDate_Nine";
             this.lbl_kpiFollowUpRecVsOrigConfDate_Nine.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpRecVsOrigConfDate_Nine.TabIndex = 3;
@@ -1928,7 +1987,7 @@
             // lbl_kpiFollowUpRecVsCurrPlanDate_Nine
             // 
             this.lbl_kpiFollowUpRecVsCurrPlanDate_Nine.AutoSize = true;
-            this.lbl_kpiFollowUpRecVsCurrPlanDate_Nine.Location = new System.Drawing.Point(820, 165);
+            this.lbl_kpiFollowUpRecVsCurrPlanDate_Nine.Location = new System.Drawing.Point(764, 165);
             this.lbl_kpiFollowUpRecVsCurrPlanDate_Nine.Name = "lbl_kpiFollowUpRecVsCurrPlanDate_Nine";
             this.lbl_kpiFollowUpRecVsCurrPlanDate_Nine.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpRecVsCurrPlanDate_Nine.TabIndex = 3;
@@ -1937,7 +1996,7 @@
             // lbl_kpiFollowUpFinalConfVsFinalPlanDate_Nine
             // 
             this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Nine.AutoSize = true;
-            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Nine.Location = new System.Drawing.Point(820, 143);
+            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Nine.Location = new System.Drawing.Point(764, 143);
             this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Nine.Name = "lbl_kpiFollowUpFinalConfVsFinalPlanDate_Nine";
             this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Nine.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Nine.TabIndex = 3;
@@ -1946,7 +2005,7 @@
             // lbl_kpiFollowUpInitConfVsCurrConf_Nine
             // 
             this.lbl_kpiFollowUpInitConfVsCurrConf_Nine.AutoSize = true;
-            this.lbl_kpiFollowUpInitConfVsCurrConf_Nine.Location = new System.Drawing.Point(820, 121);
+            this.lbl_kpiFollowUpInitConfVsCurrConf_Nine.Location = new System.Drawing.Point(764, 121);
             this.lbl_kpiFollowUpInitConfVsCurrConf_Nine.Name = "lbl_kpiFollowUpInitConfVsCurrConf_Nine";
             this.lbl_kpiFollowUpInitConfVsCurrConf_Nine.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpInitConfVsCurrConf_Nine.TabIndex = 3;
@@ -1955,7 +2014,7 @@
             // lbl_kpiPurchInitConfVsPrPlanDate_Nine
             // 
             this.lbl_kpiPurchInitConfVsPrPlanDate_Nine.AutoSize = true;
-            this.lbl_kpiPurchInitConfVsPrPlanDate_Nine.Location = new System.Drawing.Point(820, 99);
+            this.lbl_kpiPurchInitConfVsPrPlanDate_Nine.Location = new System.Drawing.Point(764, 99);
             this.lbl_kpiPurchInitConfVsPrPlanDate_Nine.Name = "lbl_kpiPurchInitConfVsPrPlanDate_Nine";
             this.lbl_kpiPurchInitConfVsPrPlanDate_Nine.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchInitConfVsPrPlanDate_Nine.TabIndex = 3;
@@ -1964,7 +2023,7 @@
             // lbl_kpiPurchInitConfVsPrPlanDate_Two
             // 
             this.lbl_kpiPurchInitConfVsPrPlanDate_Two.AutoSize = true;
-            this.lbl_kpiPurchInitConfVsPrPlanDate_Two.Location = new System.Drawing.Point(377, 99);
+            this.lbl_kpiPurchInitConfVsPrPlanDate_Two.Location = new System.Drawing.Point(337, 99);
             this.lbl_kpiPurchInitConfVsPrPlanDate_Two.Name = "lbl_kpiPurchInitConfVsPrPlanDate_Two";
             this.lbl_kpiPurchInitConfVsPrPlanDate_Two.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchInitConfVsPrPlanDate_Two.TabIndex = 3;
@@ -1973,7 +2032,7 @@
             // lbl_kpiFollowUpInitConfVsCurrConf_Two
             // 
             this.lbl_kpiFollowUpInitConfVsCurrConf_Two.AutoSize = true;
-            this.lbl_kpiFollowUpInitConfVsCurrConf_Two.Location = new System.Drawing.Point(377, 121);
+            this.lbl_kpiFollowUpInitConfVsCurrConf_Two.Location = new System.Drawing.Point(337, 121);
             this.lbl_kpiFollowUpInitConfVsCurrConf_Two.Name = "lbl_kpiFollowUpInitConfVsCurrConf_Two";
             this.lbl_kpiFollowUpInitConfVsCurrConf_Two.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpInitConfVsCurrConf_Two.TabIndex = 3;
@@ -1982,7 +2041,7 @@
             // lbl_kpiFollowUpFinalConfVsFinalPlanDate_Two
             // 
             this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Two.AutoSize = true;
-            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Two.Location = new System.Drawing.Point(377, 143);
+            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Two.Location = new System.Drawing.Point(337, 143);
             this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Two.Name = "lbl_kpiFollowUpFinalConfVsFinalPlanDate_Two";
             this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Two.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Two.TabIndex = 3;
@@ -1991,7 +2050,7 @@
             // lbl_kpiFollowUpRecVsCurrPlanDate_Two
             // 
             this.lbl_kpiFollowUpRecVsCurrPlanDate_Two.AutoSize = true;
-            this.lbl_kpiFollowUpRecVsCurrPlanDate_Two.Location = new System.Drawing.Point(377, 165);
+            this.lbl_kpiFollowUpRecVsCurrPlanDate_Two.Location = new System.Drawing.Point(337, 165);
             this.lbl_kpiFollowUpRecVsCurrPlanDate_Two.Name = "lbl_kpiFollowUpRecVsCurrPlanDate_Two";
             this.lbl_kpiFollowUpRecVsCurrPlanDate_Two.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpRecVsCurrPlanDate_Two.TabIndex = 3;
@@ -2000,7 +2059,7 @@
             // lbl_kpiFollowUpRecVsOrigConfDate_Two
             // 
             this.lbl_kpiFollowUpRecVsOrigConfDate_Two.AutoSize = true;
-            this.lbl_kpiFollowUpRecVsOrigConfDate_Two.Location = new System.Drawing.Point(377, 187);
+            this.lbl_kpiFollowUpRecVsOrigConfDate_Two.Location = new System.Drawing.Point(337, 187);
             this.lbl_kpiFollowUpRecVsOrigConfDate_Two.Name = "lbl_kpiFollowUpRecVsOrigConfDate_Two";
             this.lbl_kpiFollowUpRecVsOrigConfDate_Two.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpRecVsOrigConfDate_Two.TabIndex = 3;
@@ -2009,7 +2068,7 @@
             // lbl_kpiFollowUpRecVsCurrConfDate_Two
             // 
             this.lbl_kpiFollowUpRecVsCurrConfDate_Two.AutoSize = true;
-            this.lbl_kpiFollowUpRecVsCurrConfDate_Two.Location = new System.Drawing.Point(377, 209);
+            this.lbl_kpiFollowUpRecVsCurrConfDate_Two.Location = new System.Drawing.Point(337, 209);
             this.lbl_kpiFollowUpRecVsCurrConfDate_Two.Name = "lbl_kpiFollowUpRecVsCurrConfDate_Two";
             this.lbl_kpiFollowUpRecVsCurrConfDate_Two.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpRecVsCurrConfDate_Two.TabIndex = 3;
@@ -2018,7 +2077,7 @@
             // lbl_kpiFollowUpRecVsCurrConfDate_Three
             // 
             this.lbl_kpiFollowUpRecVsCurrConfDate_Three.AutoSize = true;
-            this.lbl_kpiFollowUpRecVsCurrConfDate_Three.Location = new System.Drawing.Point(442, 209);
+            this.lbl_kpiFollowUpRecVsCurrConfDate_Three.Location = new System.Drawing.Point(398, 209);
             this.lbl_kpiFollowUpRecVsCurrConfDate_Three.Name = "lbl_kpiFollowUpRecVsCurrConfDate_Three";
             this.lbl_kpiFollowUpRecVsCurrConfDate_Three.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpRecVsCurrConfDate_Three.TabIndex = 3;
@@ -2027,7 +2086,7 @@
             // lbl_kpiFollowUpRecVsCurrConfDate_Four
             // 
             this.lbl_kpiFollowUpRecVsCurrConfDate_Four.AutoSize = true;
-            this.lbl_kpiFollowUpRecVsCurrConfDate_Four.Location = new System.Drawing.Point(505, 209);
+            this.lbl_kpiFollowUpRecVsCurrConfDate_Four.Location = new System.Drawing.Point(459, 209);
             this.lbl_kpiFollowUpRecVsCurrConfDate_Four.Name = "lbl_kpiFollowUpRecVsCurrConfDate_Four";
             this.lbl_kpiFollowUpRecVsCurrConfDate_Four.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpRecVsCurrConfDate_Four.TabIndex = 3;
@@ -2036,7 +2095,7 @@
             // lbl_kpiFollowUpRecVsCurrConfDate_Five
             // 
             this.lbl_kpiFollowUpRecVsCurrConfDate_Five.AutoSize = true;
-            this.lbl_kpiFollowUpRecVsCurrConfDate_Five.Location = new System.Drawing.Point(568, 209);
+            this.lbl_kpiFollowUpRecVsCurrConfDate_Five.Location = new System.Drawing.Point(520, 209);
             this.lbl_kpiFollowUpRecVsCurrConfDate_Five.Name = "lbl_kpiFollowUpRecVsCurrConfDate_Five";
             this.lbl_kpiFollowUpRecVsCurrConfDate_Five.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpRecVsCurrConfDate_Five.TabIndex = 3;
@@ -2045,7 +2104,7 @@
             // lbl_kpiFollowUpRecVsCurrConfDate_Six
             // 
             this.lbl_kpiFollowUpRecVsCurrConfDate_Six.AutoSize = true;
-            this.lbl_kpiFollowUpRecVsCurrConfDate_Six.Location = new System.Drawing.Point(631, 209);
+            this.lbl_kpiFollowUpRecVsCurrConfDate_Six.Location = new System.Drawing.Point(581, 209);
             this.lbl_kpiFollowUpRecVsCurrConfDate_Six.Name = "lbl_kpiFollowUpRecVsCurrConfDate_Six";
             this.lbl_kpiFollowUpRecVsCurrConfDate_Six.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpRecVsCurrConfDate_Six.TabIndex = 3;
@@ -2054,7 +2113,7 @@
             // lbl_kpiFollowUpRecVsCurrConfDate_Seven
             // 
             this.lbl_kpiFollowUpRecVsCurrConfDate_Seven.AutoSize = true;
-            this.lbl_kpiFollowUpRecVsCurrConfDate_Seven.Location = new System.Drawing.Point(694, 209);
+            this.lbl_kpiFollowUpRecVsCurrConfDate_Seven.Location = new System.Drawing.Point(642, 209);
             this.lbl_kpiFollowUpRecVsCurrConfDate_Seven.Name = "lbl_kpiFollowUpRecVsCurrConfDate_Seven";
             this.lbl_kpiFollowUpRecVsCurrConfDate_Seven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpRecVsCurrConfDate_Seven.TabIndex = 3;
@@ -2063,7 +2122,7 @@
             // lbl_kpiFollowUpRecVsOrigConfDate_Eight
             // 
             this.lbl_kpiFollowUpRecVsOrigConfDate_Eight.AutoSize = true;
-            this.lbl_kpiFollowUpRecVsOrigConfDate_Eight.Location = new System.Drawing.Point(757, 187);
+            this.lbl_kpiFollowUpRecVsOrigConfDate_Eight.Location = new System.Drawing.Point(703, 187);
             this.lbl_kpiFollowUpRecVsOrigConfDate_Eight.Name = "lbl_kpiFollowUpRecVsOrigConfDate_Eight";
             this.lbl_kpiFollowUpRecVsOrigConfDate_Eight.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpRecVsOrigConfDate_Eight.TabIndex = 3;
@@ -2072,7 +2131,7 @@
             // lbl_kpiFollowUpRecVsCurrPlanDate_Eight
             // 
             this.lbl_kpiFollowUpRecVsCurrPlanDate_Eight.AutoSize = true;
-            this.lbl_kpiFollowUpRecVsCurrPlanDate_Eight.Location = new System.Drawing.Point(757, 165);
+            this.lbl_kpiFollowUpRecVsCurrPlanDate_Eight.Location = new System.Drawing.Point(703, 165);
             this.lbl_kpiFollowUpRecVsCurrPlanDate_Eight.Name = "lbl_kpiFollowUpRecVsCurrPlanDate_Eight";
             this.lbl_kpiFollowUpRecVsCurrPlanDate_Eight.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpRecVsCurrPlanDate_Eight.TabIndex = 3;
@@ -2081,7 +2140,7 @@
             // lbl_kpiFollowUpFinalConfVsFinalPlanDate_Eight
             // 
             this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Eight.AutoSize = true;
-            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Eight.Location = new System.Drawing.Point(757, 143);
+            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Eight.Location = new System.Drawing.Point(703, 143);
             this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Eight.Name = "lbl_kpiFollowUpFinalConfVsFinalPlanDate_Eight";
             this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Eight.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Eight.TabIndex = 3;
@@ -2090,7 +2149,7 @@
             // lbl_kpiFollowUpInitConfVsCurrConf_Eight
             // 
             this.lbl_kpiFollowUpInitConfVsCurrConf_Eight.AutoSize = true;
-            this.lbl_kpiFollowUpInitConfVsCurrConf_Eight.Location = new System.Drawing.Point(757, 121);
+            this.lbl_kpiFollowUpInitConfVsCurrConf_Eight.Location = new System.Drawing.Point(703, 121);
             this.lbl_kpiFollowUpInitConfVsCurrConf_Eight.Name = "lbl_kpiFollowUpInitConfVsCurrConf_Eight";
             this.lbl_kpiFollowUpInitConfVsCurrConf_Eight.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpInitConfVsCurrConf_Eight.TabIndex = 3;
@@ -2099,7 +2158,7 @@
             // lbl_kpiPurchInitConfVsPrPlanDate_Eight
             // 
             this.lbl_kpiPurchInitConfVsPrPlanDate_Eight.AutoSize = true;
-            this.lbl_kpiPurchInitConfVsPrPlanDate_Eight.Location = new System.Drawing.Point(757, 99);
+            this.lbl_kpiPurchInitConfVsPrPlanDate_Eight.Location = new System.Drawing.Point(703, 99);
             this.lbl_kpiPurchInitConfVsPrPlanDate_Eight.Name = "lbl_kpiPurchInitConfVsPrPlanDate_Eight";
             this.lbl_kpiPurchInitConfVsPrPlanDate_Eight.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchInitConfVsPrPlanDate_Eight.TabIndex = 3;
@@ -2108,7 +2167,7 @@
             // lbl_kpiPurchInitConfVsPrPlanDate_Seven
             // 
             this.lbl_kpiPurchInitConfVsPrPlanDate_Seven.AutoSize = true;
-            this.lbl_kpiPurchInitConfVsPrPlanDate_Seven.Location = new System.Drawing.Point(694, 99);
+            this.lbl_kpiPurchInitConfVsPrPlanDate_Seven.Location = new System.Drawing.Point(642, 99);
             this.lbl_kpiPurchInitConfVsPrPlanDate_Seven.Name = "lbl_kpiPurchInitConfVsPrPlanDate_Seven";
             this.lbl_kpiPurchInitConfVsPrPlanDate_Seven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchInitConfVsPrPlanDate_Seven.TabIndex = 3;
@@ -2117,7 +2176,7 @@
             // lbl_kpiPurchInitConfVsPrPlanDate_Six
             // 
             this.lbl_kpiPurchInitConfVsPrPlanDate_Six.AutoSize = true;
-            this.lbl_kpiPurchInitConfVsPrPlanDate_Six.Location = new System.Drawing.Point(631, 99);
+            this.lbl_kpiPurchInitConfVsPrPlanDate_Six.Location = new System.Drawing.Point(581, 99);
             this.lbl_kpiPurchInitConfVsPrPlanDate_Six.Name = "lbl_kpiPurchInitConfVsPrPlanDate_Six";
             this.lbl_kpiPurchInitConfVsPrPlanDate_Six.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchInitConfVsPrPlanDate_Six.TabIndex = 3;
@@ -2126,7 +2185,7 @@
             // lbl_kpiPurchInitConfVsPrPlanDate_Five
             // 
             this.lbl_kpiPurchInitConfVsPrPlanDate_Five.AutoSize = true;
-            this.lbl_kpiPurchInitConfVsPrPlanDate_Five.Location = new System.Drawing.Point(568, 99);
+            this.lbl_kpiPurchInitConfVsPrPlanDate_Five.Location = new System.Drawing.Point(520, 99);
             this.lbl_kpiPurchInitConfVsPrPlanDate_Five.Name = "lbl_kpiPurchInitConfVsPrPlanDate_Five";
             this.lbl_kpiPurchInitConfVsPrPlanDate_Five.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchInitConfVsPrPlanDate_Five.TabIndex = 3;
@@ -2135,7 +2194,7 @@
             // lbl_kpiPurchInitConfVsPrPlanDate_Four
             // 
             this.lbl_kpiPurchInitConfVsPrPlanDate_Four.AutoSize = true;
-            this.lbl_kpiPurchInitConfVsPrPlanDate_Four.Location = new System.Drawing.Point(505, 99);
+            this.lbl_kpiPurchInitConfVsPrPlanDate_Four.Location = new System.Drawing.Point(459, 99);
             this.lbl_kpiPurchInitConfVsPrPlanDate_Four.Name = "lbl_kpiPurchInitConfVsPrPlanDate_Four";
             this.lbl_kpiPurchInitConfVsPrPlanDate_Four.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchInitConfVsPrPlanDate_Four.TabIndex = 3;
@@ -2144,7 +2203,7 @@
             // lbl_kpiPurchInitConfVsPrPlanDate_Three
             // 
             this.lbl_kpiPurchInitConfVsPrPlanDate_Three.AutoSize = true;
-            this.lbl_kpiPurchInitConfVsPrPlanDate_Three.Location = new System.Drawing.Point(442, 99);
+            this.lbl_kpiPurchInitConfVsPrPlanDate_Three.Location = new System.Drawing.Point(398, 99);
             this.lbl_kpiPurchInitConfVsPrPlanDate_Three.Name = "lbl_kpiPurchInitConfVsPrPlanDate_Three";
             this.lbl_kpiPurchInitConfVsPrPlanDate_Three.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchInitConfVsPrPlanDate_Three.TabIndex = 3;
@@ -2153,7 +2212,7 @@
             // lbl_kpiFollowUpInitConfVsCurrConf_Three
             // 
             this.lbl_kpiFollowUpInitConfVsCurrConf_Three.AutoSize = true;
-            this.lbl_kpiFollowUpInitConfVsCurrConf_Three.Location = new System.Drawing.Point(442, 121);
+            this.lbl_kpiFollowUpInitConfVsCurrConf_Three.Location = new System.Drawing.Point(398, 121);
             this.lbl_kpiFollowUpInitConfVsCurrConf_Three.Name = "lbl_kpiFollowUpInitConfVsCurrConf_Three";
             this.lbl_kpiFollowUpInitConfVsCurrConf_Three.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpInitConfVsCurrConf_Three.TabIndex = 3;
@@ -2162,7 +2221,7 @@
             // lbl_kpiFollowUpFinalConfVsFinalPlanDate_Three
             // 
             this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Three.AutoSize = true;
-            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Three.Location = new System.Drawing.Point(442, 143);
+            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Three.Location = new System.Drawing.Point(398, 143);
             this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Three.Name = "lbl_kpiFollowUpFinalConfVsFinalPlanDate_Three";
             this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Three.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Three.TabIndex = 3;
@@ -2171,7 +2230,7 @@
             // lbl_kpiFollowUpRecVsCurrPlanDate_Three
             // 
             this.lbl_kpiFollowUpRecVsCurrPlanDate_Three.AutoSize = true;
-            this.lbl_kpiFollowUpRecVsCurrPlanDate_Three.Location = new System.Drawing.Point(442, 165);
+            this.lbl_kpiFollowUpRecVsCurrPlanDate_Three.Location = new System.Drawing.Point(398, 165);
             this.lbl_kpiFollowUpRecVsCurrPlanDate_Three.Name = "lbl_kpiFollowUpRecVsCurrPlanDate_Three";
             this.lbl_kpiFollowUpRecVsCurrPlanDate_Three.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpRecVsCurrPlanDate_Three.TabIndex = 3;
@@ -2180,7 +2239,7 @@
             // lbl_kpiFollowUpRecVsOrigConfDate_Three
             // 
             this.lbl_kpiFollowUpRecVsOrigConfDate_Three.AutoSize = true;
-            this.lbl_kpiFollowUpRecVsOrigConfDate_Three.Location = new System.Drawing.Point(442, 187);
+            this.lbl_kpiFollowUpRecVsOrigConfDate_Three.Location = new System.Drawing.Point(398, 187);
             this.lbl_kpiFollowUpRecVsOrigConfDate_Three.Name = "lbl_kpiFollowUpRecVsOrigConfDate_Three";
             this.lbl_kpiFollowUpRecVsOrigConfDate_Three.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpRecVsOrigConfDate_Three.TabIndex = 3;
@@ -2189,7 +2248,7 @@
             // lbl_kpiFollowUpRecVsOrigConfDate_Four
             // 
             this.lbl_kpiFollowUpRecVsOrigConfDate_Four.AutoSize = true;
-            this.lbl_kpiFollowUpRecVsOrigConfDate_Four.Location = new System.Drawing.Point(505, 187);
+            this.lbl_kpiFollowUpRecVsOrigConfDate_Four.Location = new System.Drawing.Point(459, 187);
             this.lbl_kpiFollowUpRecVsOrigConfDate_Four.Name = "lbl_kpiFollowUpRecVsOrigConfDate_Four";
             this.lbl_kpiFollowUpRecVsOrigConfDate_Four.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpRecVsOrigConfDate_Four.TabIndex = 3;
@@ -2198,7 +2257,7 @@
             // lbl_kpiFollowUpRecVsOrigConfDate_Five
             // 
             this.lbl_kpiFollowUpRecVsOrigConfDate_Five.AutoSize = true;
-            this.lbl_kpiFollowUpRecVsOrigConfDate_Five.Location = new System.Drawing.Point(568, 187);
+            this.lbl_kpiFollowUpRecVsOrigConfDate_Five.Location = new System.Drawing.Point(520, 187);
             this.lbl_kpiFollowUpRecVsOrigConfDate_Five.Name = "lbl_kpiFollowUpRecVsOrigConfDate_Five";
             this.lbl_kpiFollowUpRecVsOrigConfDate_Five.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpRecVsOrigConfDate_Five.TabIndex = 3;
@@ -2207,7 +2266,7 @@
             // lbl_kpiFollowUpRecVsOrigConfDate_Six
             // 
             this.lbl_kpiFollowUpRecVsOrigConfDate_Six.AutoSize = true;
-            this.lbl_kpiFollowUpRecVsOrigConfDate_Six.Location = new System.Drawing.Point(631, 187);
+            this.lbl_kpiFollowUpRecVsOrigConfDate_Six.Location = new System.Drawing.Point(581, 187);
             this.lbl_kpiFollowUpRecVsOrigConfDate_Six.Name = "lbl_kpiFollowUpRecVsOrigConfDate_Six";
             this.lbl_kpiFollowUpRecVsOrigConfDate_Six.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpRecVsOrigConfDate_Six.TabIndex = 3;
@@ -2216,7 +2275,7 @@
             // lbl_kpiFollowUpRecVsOrigConfDate_Seven
             // 
             this.lbl_kpiFollowUpRecVsOrigConfDate_Seven.AutoSize = true;
-            this.lbl_kpiFollowUpRecVsOrigConfDate_Seven.Location = new System.Drawing.Point(694, 187);
+            this.lbl_kpiFollowUpRecVsOrigConfDate_Seven.Location = new System.Drawing.Point(642, 187);
             this.lbl_kpiFollowUpRecVsOrigConfDate_Seven.Name = "lbl_kpiFollowUpRecVsOrigConfDate_Seven";
             this.lbl_kpiFollowUpRecVsOrigConfDate_Seven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpRecVsOrigConfDate_Seven.TabIndex = 3;
@@ -2225,7 +2284,7 @@
             // lbl_kpiFollowUpRecVsCurrPlanDate_Seven
             // 
             this.lbl_kpiFollowUpRecVsCurrPlanDate_Seven.AutoSize = true;
-            this.lbl_kpiFollowUpRecVsCurrPlanDate_Seven.Location = new System.Drawing.Point(694, 165);
+            this.lbl_kpiFollowUpRecVsCurrPlanDate_Seven.Location = new System.Drawing.Point(642, 165);
             this.lbl_kpiFollowUpRecVsCurrPlanDate_Seven.Name = "lbl_kpiFollowUpRecVsCurrPlanDate_Seven";
             this.lbl_kpiFollowUpRecVsCurrPlanDate_Seven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpRecVsCurrPlanDate_Seven.TabIndex = 3;
@@ -2234,7 +2293,7 @@
             // lbl_kpiFollowUpFinalConfVsFinalPlanDate_Seven
             // 
             this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Seven.AutoSize = true;
-            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Seven.Location = new System.Drawing.Point(694, 143);
+            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Seven.Location = new System.Drawing.Point(642, 143);
             this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Seven.Name = "lbl_kpiFollowUpFinalConfVsFinalPlanDate_Seven";
             this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Seven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Seven.TabIndex = 3;
@@ -2243,7 +2302,7 @@
             // lbl_kpiFollowUpInitConfVsCurrConf_Seven
             // 
             this.lbl_kpiFollowUpInitConfVsCurrConf_Seven.AutoSize = true;
-            this.lbl_kpiFollowUpInitConfVsCurrConf_Seven.Location = new System.Drawing.Point(694, 121);
+            this.lbl_kpiFollowUpInitConfVsCurrConf_Seven.Location = new System.Drawing.Point(642, 121);
             this.lbl_kpiFollowUpInitConfVsCurrConf_Seven.Name = "lbl_kpiFollowUpInitConfVsCurrConf_Seven";
             this.lbl_kpiFollowUpInitConfVsCurrConf_Seven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpInitConfVsCurrConf_Seven.TabIndex = 3;
@@ -2252,7 +2311,7 @@
             // lbl_kpiFollowUpInitConfVsCurrConf_Six
             // 
             this.lbl_kpiFollowUpInitConfVsCurrConf_Six.AutoSize = true;
-            this.lbl_kpiFollowUpInitConfVsCurrConf_Six.Location = new System.Drawing.Point(631, 121);
+            this.lbl_kpiFollowUpInitConfVsCurrConf_Six.Location = new System.Drawing.Point(581, 121);
             this.lbl_kpiFollowUpInitConfVsCurrConf_Six.Name = "lbl_kpiFollowUpInitConfVsCurrConf_Six";
             this.lbl_kpiFollowUpInitConfVsCurrConf_Six.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpInitConfVsCurrConf_Six.TabIndex = 3;
@@ -2261,7 +2320,7 @@
             // lbl_kpiFollowUpInitConfVsCurrConf_Five
             // 
             this.lbl_kpiFollowUpInitConfVsCurrConf_Five.AutoSize = true;
-            this.lbl_kpiFollowUpInitConfVsCurrConf_Five.Location = new System.Drawing.Point(568, 121);
+            this.lbl_kpiFollowUpInitConfVsCurrConf_Five.Location = new System.Drawing.Point(520, 121);
             this.lbl_kpiFollowUpInitConfVsCurrConf_Five.Name = "lbl_kpiFollowUpInitConfVsCurrConf_Five";
             this.lbl_kpiFollowUpInitConfVsCurrConf_Five.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpInitConfVsCurrConf_Five.TabIndex = 3;
@@ -2270,7 +2329,7 @@
             // lbl_kpiFollowUpInitConfVsCurrConf_Four
             // 
             this.lbl_kpiFollowUpInitConfVsCurrConf_Four.AutoSize = true;
-            this.lbl_kpiFollowUpInitConfVsCurrConf_Four.Location = new System.Drawing.Point(505, 121);
+            this.lbl_kpiFollowUpInitConfVsCurrConf_Four.Location = new System.Drawing.Point(459, 121);
             this.lbl_kpiFollowUpInitConfVsCurrConf_Four.Name = "lbl_kpiFollowUpInitConfVsCurrConf_Four";
             this.lbl_kpiFollowUpInitConfVsCurrConf_Four.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpInitConfVsCurrConf_Four.TabIndex = 3;
@@ -2279,7 +2338,7 @@
             // lbl_kpiFollowUpFinalConfVsFinalPlanDate_Four
             // 
             this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Four.AutoSize = true;
-            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Four.Location = new System.Drawing.Point(505, 143);
+            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Four.Location = new System.Drawing.Point(459, 143);
             this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Four.Name = "lbl_kpiFollowUpFinalConfVsFinalPlanDate_Four";
             this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Four.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Four.TabIndex = 3;
@@ -2288,7 +2347,7 @@
             // lbl_kpiFollowUpRecVsCurrPlanDate_Four
             // 
             this.lbl_kpiFollowUpRecVsCurrPlanDate_Four.AutoSize = true;
-            this.lbl_kpiFollowUpRecVsCurrPlanDate_Four.Location = new System.Drawing.Point(505, 165);
+            this.lbl_kpiFollowUpRecVsCurrPlanDate_Four.Location = new System.Drawing.Point(459, 165);
             this.lbl_kpiFollowUpRecVsCurrPlanDate_Four.Name = "lbl_kpiFollowUpRecVsCurrPlanDate_Four";
             this.lbl_kpiFollowUpRecVsCurrPlanDate_Four.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpRecVsCurrPlanDate_Four.TabIndex = 3;
@@ -2297,7 +2356,7 @@
             // lbl_kpiFollowUpRecVsCurrPlanDate_Five
             // 
             this.lbl_kpiFollowUpRecVsCurrPlanDate_Five.AutoSize = true;
-            this.lbl_kpiFollowUpRecVsCurrPlanDate_Five.Location = new System.Drawing.Point(568, 165);
+            this.lbl_kpiFollowUpRecVsCurrPlanDate_Five.Location = new System.Drawing.Point(520, 165);
             this.lbl_kpiFollowUpRecVsCurrPlanDate_Five.Name = "lbl_kpiFollowUpRecVsCurrPlanDate_Five";
             this.lbl_kpiFollowUpRecVsCurrPlanDate_Five.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpRecVsCurrPlanDate_Five.TabIndex = 3;
@@ -2306,7 +2365,7 @@
             // lbl_kpiFollowUpRecVsCurrPlanDate_Six
             // 
             this.lbl_kpiFollowUpRecVsCurrPlanDate_Six.AutoSize = true;
-            this.lbl_kpiFollowUpRecVsCurrPlanDate_Six.Location = new System.Drawing.Point(631, 165);
+            this.lbl_kpiFollowUpRecVsCurrPlanDate_Six.Location = new System.Drawing.Point(581, 165);
             this.lbl_kpiFollowUpRecVsCurrPlanDate_Six.Name = "lbl_kpiFollowUpRecVsCurrPlanDate_Six";
             this.lbl_kpiFollowUpRecVsCurrPlanDate_Six.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpRecVsCurrPlanDate_Six.TabIndex = 3;
@@ -2315,7 +2374,7 @@
             // lbl_kpiFollowUpFinalConfVsFinalPlanDate_Six
             // 
             this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Six.AutoSize = true;
-            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Six.Location = new System.Drawing.Point(631, 143);
+            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Six.Location = new System.Drawing.Point(581, 143);
             this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Six.Name = "lbl_kpiFollowUpFinalConfVsFinalPlanDate_Six";
             this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Six.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Six.TabIndex = 3;
@@ -2324,7 +2383,7 @@
             // lbl_kpiFollowUpFinalConfVsFinalPlanDate_Five
             // 
             this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Five.AutoSize = true;
-            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Five.Location = new System.Drawing.Point(568, 143);
+            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Five.Location = new System.Drawing.Point(520, 143);
             this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Five.Name = "lbl_kpiFollowUpFinalConfVsFinalPlanDate_Five";
             this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Five.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Five.TabIndex = 3;
@@ -2333,7 +2392,7 @@
             // lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_One
             // 
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_One.AutoSize = true;
-            this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_One.Location = new System.Drawing.Point(316, 451);
+            this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_One.Location = new System.Drawing.Point(276, 451);
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_One.Name = "lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_One";
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_One.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_One.TabIndex = 3;
@@ -2342,7 +2401,7 @@
             // lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Ten
             // 
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Ten.AutoSize = true;
-            this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Ten.Location = new System.Drawing.Point(883, 451);
+            this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Ten.Location = new System.Drawing.Point(825, 451);
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Ten.Name = "lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Ten";
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Ten.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Ten.TabIndex = 3;
@@ -2351,7 +2410,7 @@
             // lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Nine
             // 
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Nine.AutoSize = true;
-            this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Nine.Location = new System.Drawing.Point(820, 451);
+            this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Nine.Location = new System.Drawing.Point(764, 451);
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Nine.Name = "lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Nine";
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Nine.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Nine.TabIndex = 3;
@@ -2360,7 +2419,7 @@
             // lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Eight
             // 
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Eight.AutoSize = true;
-            this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Eight.Location = new System.Drawing.Point(757, 451);
+            this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Eight.Location = new System.Drawing.Point(703, 451);
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Eight.Name = "lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Eight";
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Eight.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Eight.TabIndex = 3;
@@ -2369,7 +2428,7 @@
             // lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Seven
             // 
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Seven.AutoSize = true;
-            this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Seven.Location = new System.Drawing.Point(694, 451);
+            this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Seven.Location = new System.Drawing.Point(642, 451);
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Seven.Name = "lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Seven";
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Seven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Seven.TabIndex = 3;
@@ -2378,7 +2437,7 @@
             // lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Six
             // 
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Six.AutoSize = true;
-            this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Six.Location = new System.Drawing.Point(631, 451);
+            this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Six.Location = new System.Drawing.Point(581, 451);
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Six.Name = "lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Six";
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Six.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Six.TabIndex = 3;
@@ -2387,7 +2446,7 @@
             // lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Five
             // 
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Five.AutoSize = true;
-            this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Five.Location = new System.Drawing.Point(568, 451);
+            this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Five.Location = new System.Drawing.Point(520, 451);
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Five.Name = "lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Five";
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Five.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Five.TabIndex = 3;
@@ -2396,7 +2455,7 @@
             // lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Four
             // 
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Four.AutoSize = true;
-            this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Four.Location = new System.Drawing.Point(505, 451);
+            this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Four.Location = new System.Drawing.Point(459, 451);
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Four.Name = "lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Four";
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Four.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Four.TabIndex = 3;
@@ -2405,7 +2464,7 @@
             // lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Three
             // 
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Three.AutoSize = true;
-            this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Three.Location = new System.Drawing.Point(442, 451);
+            this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Three.Location = new System.Drawing.Point(398, 451);
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Three.Name = "lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Three";
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Three.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Three.TabIndex = 3;
@@ -2414,7 +2473,7 @@
             // lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Two
             // 
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Two.AutoSize = true;
-            this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Two.Location = new System.Drawing.Point(377, 451);
+            this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Two.Location = new System.Drawing.Point(337, 451);
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Two.Name = "lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Two";
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Two.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Two.TabIndex = 3;
@@ -2429,21 +2488,21 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.Controls.Add(this.panel4, 1, 1);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(691, 495);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(639, 495);
             this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 3;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(62, 21);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(60, 21);
             this.tableLayoutPanel5.TabIndex = 1;
             // 
             // panel4
             // 
             this.panel4.Controls.Add(this.bunifuCustomLabel4);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(-6, 0);
+            this.panel4.Location = new System.Drawing.Point(-7, 0);
             this.panel4.Margin = new System.Windows.Forms.Padding(0);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(75, 20);
@@ -2467,21 +2526,21 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.Controls.Add(this.panel5, 1, 1);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(754, 495);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(700, 495);
             this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 3;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(62, 21);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(60, 21);
             this.tableLayoutPanel6.TabIndex = 1;
             // 
             // panel5
             // 
             this.panel5.Controls.Add(this.bunifuCustomLabel5);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(-6, 0);
+            this.panel5.Location = new System.Drawing.Point(-7, 0);
             this.panel5.Margin = new System.Windows.Forms.Padding(0);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(75, 20);
@@ -2505,21 +2564,21 @@
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel7.Controls.Add(this.panel6, 1, 1);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(817, 495);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(761, 495);
             this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 3;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(62, 21);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(60, 21);
             this.tableLayoutPanel7.TabIndex = 1;
             // 
             // panel6
             // 
             this.panel6.Controls.Add(this.bunifuCustomLabel6);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(-6, 0);
+            this.panel6.Location = new System.Drawing.Point(-7, 0);
             this.panel6.Margin = new System.Windows.Forms.Padding(0);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(75, 20);
@@ -2543,21 +2602,21 @@
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel8.Controls.Add(this.panel7, 1, 1);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(880, 495);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(822, 495);
             this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 3;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(62, 21);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(60, 21);
             this.tableLayoutPanel8.TabIndex = 1;
             // 
             // panel7
             // 
             this.panel7.Controls.Add(this.bunifuCustomLabel7);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(-6, 0);
+            this.panel7.Location = new System.Drawing.Point(-7, 0);
             this.panel7.Margin = new System.Windows.Forms.Padding(0);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(75, 20);
@@ -2581,21 +2640,21 @@
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel9.Controls.Add(this.panel8, 1, 1);
             this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(943, 495);
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(883, 495);
             this.tableLayoutPanel9.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 3;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(62, 21);
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(60, 21);
             this.tableLayoutPanel9.TabIndex = 1;
             // 
             // panel8
             // 
             this.panel8.Controls.Add(this.bunifuCustomLabel8);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(-6, 0);
+            this.panel8.Location = new System.Drawing.Point(-7, 0);
             this.panel8.Margin = new System.Windows.Forms.Padding(0);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(75, 20);
@@ -2619,21 +2678,21 @@
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel10.Controls.Add(this.panel9, 1, 1);
             this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel10.Location = new System.Drawing.Point(565, 495);
+            this.tableLayoutPanel10.Location = new System.Drawing.Point(517, 495);
             this.tableLayoutPanel10.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
             this.tableLayoutPanel10.RowCount = 3;
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel10.Size = new System.Drawing.Size(62, 21);
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(60, 21);
             this.tableLayoutPanel10.TabIndex = 1;
             // 
             // panel9
             // 
             this.panel9.Controls.Add(this.bunifuCustomLabel9);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel9.Location = new System.Drawing.Point(-6, 0);
+            this.panel9.Location = new System.Drawing.Point(-7, 0);
             this.panel9.Margin = new System.Windows.Forms.Padding(0);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(75, 20);
@@ -2657,21 +2716,21 @@
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel11.Controls.Add(this.panel10, 1, 1);
             this.tableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel11.Location = new System.Drawing.Point(502, 495);
+            this.tableLayoutPanel11.Location = new System.Drawing.Point(456, 495);
             this.tableLayoutPanel11.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel11.Name = "tableLayoutPanel11";
             this.tableLayoutPanel11.RowCount = 3;
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel11.Size = new System.Drawing.Size(62, 21);
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(60, 21);
             this.tableLayoutPanel11.TabIndex = 1;
             // 
             // panel10
             // 
             this.panel10.Controls.Add(this.bunifuCustomLabel10);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel10.Location = new System.Drawing.Point(-6, 0);
+            this.panel10.Location = new System.Drawing.Point(-7, 0);
             this.panel10.Margin = new System.Windows.Forms.Padding(0);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(75, 20);
@@ -2695,21 +2754,21 @@
             this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel14.Controls.Add(this.panel13, 1, 1);
             this.tableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel14.Location = new System.Drawing.Point(439, 495);
+            this.tableLayoutPanel14.Location = new System.Drawing.Point(395, 495);
             this.tableLayoutPanel14.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel14.Name = "tableLayoutPanel14";
             this.tableLayoutPanel14.RowCount = 3;
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel14.Size = new System.Drawing.Size(62, 21);
+            this.tableLayoutPanel14.Size = new System.Drawing.Size(60, 21);
             this.tableLayoutPanel14.TabIndex = 1;
             // 
             // panel13
             // 
             this.panel13.Controls.Add(this.bunifuCustomLabel13);
             this.panel13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel13.Location = new System.Drawing.Point(-6, 0);
+            this.panel13.Location = new System.Drawing.Point(-7, 0);
             this.panel13.Margin = new System.Windows.Forms.Padding(0);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(75, 20);
@@ -2733,21 +2792,21 @@
             this.tableLayoutPanel25.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel25.Controls.Add(this.panel24, 1, 1);
             this.tableLayoutPanel25.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel25.Location = new System.Drawing.Point(374, 495);
+            this.tableLayoutPanel25.Location = new System.Drawing.Point(334, 495);
             this.tableLayoutPanel25.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel25.Name = "tableLayoutPanel25";
             this.tableLayoutPanel25.RowCount = 3;
             this.tableLayoutPanel25.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel25.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel25.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel25.Size = new System.Drawing.Size(64, 21);
+            this.tableLayoutPanel25.Size = new System.Drawing.Size(60, 21);
             this.tableLayoutPanel25.TabIndex = 1;
             // 
             // panel24
             // 
             this.panel24.Controls.Add(this.bunifuCustomLabel14);
             this.panel24.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel24.Location = new System.Drawing.Point(7, 0);
+            this.panel24.Location = new System.Drawing.Point(5, 0);
             this.panel24.Margin = new System.Windows.Forms.Padding(0);
             this.panel24.Name = "panel24";
             this.panel24.Size = new System.Drawing.Size(50, 20);
@@ -2771,7 +2830,7 @@
             this.tableLayoutPanel26.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel26.Controls.Add(this.panel25, 1, 1);
             this.tableLayoutPanel26.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel26.Location = new System.Drawing.Point(313, 495);
+            this.tableLayoutPanel26.Location = new System.Drawing.Point(273, 495);
             this.tableLayoutPanel26.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel26.Name = "tableLayoutPanel26";
             this.tableLayoutPanel26.RowCount = 3;
@@ -2817,7 +2876,7 @@
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel12.Size = new System.Drawing.Size(73, 43);
+            this.tableLayoutPanel12.Size = new System.Drawing.Size(70, 43);
             this.tableLayoutPanel12.TabIndex = 1;
             // 
             // panel11
@@ -2825,7 +2884,7 @@
             this.panel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(220)))), ((int)(((byte)(219)))));
             this.panel11.Controls.Add(this.bunifuCustomLabel11);
             this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel11.Location = new System.Drawing.Point(-1, 11);
+            this.panel11.Location = new System.Drawing.Point(-2, 11);
             this.panel11.Margin = new System.Windows.Forms.Padding(0);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(75, 20);
@@ -2849,14 +2908,14 @@
             this.tableLayoutPanel27.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel27.Controls.Add(this.panel26, 1, 1);
             this.tableLayoutPanel27.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel27.Location = new System.Drawing.Point(880, 11);
+            this.tableLayoutPanel27.Location = new System.Drawing.Point(822, 11);
             this.tableLayoutPanel27.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel27.Name = "tableLayoutPanel27";
             this.tableLayoutPanel27.RowCount = 3;
             this.tableLayoutPanel27.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel27.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel27.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel27.Size = new System.Drawing.Size(62, 21);
+            this.tableLayoutPanel27.Size = new System.Drawing.Size(60, 21);
             this.tableLayoutPanel27.TabIndex = 1;
             // 
             // panel26
@@ -2864,7 +2923,7 @@
             this.panel26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(144)))), ((int)(((byte)(60)))));
             this.panel26.Controls.Add(this.bunifuCustomLabel26);
             this.panel26.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel26.Location = new System.Drawing.Point(-4, 0);
+            this.panel26.Location = new System.Drawing.Point(-5, 0);
             this.panel26.Margin = new System.Windows.Forms.Padding(0);
             this.panel26.Name = "panel26";
             this.panel26.Size = new System.Drawing.Size(70, 20);
@@ -2891,14 +2950,14 @@
             this.tableLayoutPanel29.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel29.Controls.Add(this.panel28, 1, 1);
             this.tableLayoutPanel29.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel29.Location = new System.Drawing.Point(943, 231);
+            this.tableLayoutPanel29.Location = new System.Drawing.Point(883, 231);
             this.tableLayoutPanel29.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel29.Name = "tableLayoutPanel29";
             this.tableLayoutPanel29.RowCount = 3;
             this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel29.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel29.Size = new System.Drawing.Size(62, 21);
+            this.tableLayoutPanel29.Size = new System.Drawing.Size(60, 21);
             this.tableLayoutPanel29.TabIndex = 2;
             // 
             // panel28
@@ -2906,7 +2965,7 @@
             this.panel28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(217)))), ((int)(((byte)(241)))));
             this.panel28.Controls.Add(this.bunifuCustomLabel28);
             this.panel28.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel28.Location = new System.Drawing.Point(-4, 0);
+            this.panel28.Location = new System.Drawing.Point(-5, 0);
             this.panel28.Margin = new System.Windows.Forms.Padding(0);
             this.panel28.Name = "panel28";
             this.panel28.Size = new System.Drawing.Size(70, 20);
@@ -2939,7 +2998,7 @@
             this.tableLayoutPanel40.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel40.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel40.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel40.Size = new System.Drawing.Size(73, 65);
+            this.tableLayoutPanel40.Size = new System.Drawing.Size(70, 65);
             this.tableLayoutPanel40.TabIndex = 1;
             // 
             // panel39
@@ -2947,7 +3006,7 @@
             this.panel39.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(220)))), ((int)(((byte)(219)))));
             this.panel39.Controls.Add(this.bunifuCustomLabel30);
             this.panel39.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel39.Location = new System.Drawing.Point(-1, 22);
+            this.panel39.Location = new System.Drawing.Point(-2, 22);
             this.panel39.Margin = new System.Windows.Forms.Padding(0);
             this.panel39.Name = "panel39";
             this.panel39.Size = new System.Drawing.Size(75, 20);
@@ -2979,7 +3038,7 @@
             this.tableLayoutPanel41.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel41.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel41.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel41.Size = new System.Drawing.Size(73, 43);
+            this.tableLayoutPanel41.Size = new System.Drawing.Size(70, 43);
             this.tableLayoutPanel41.TabIndex = 1;
             // 
             // panel40
@@ -2987,7 +3046,7 @@
             this.panel40.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(220)))), ((int)(((byte)(219)))));
             this.panel40.Controls.Add(this.bunifuCustomLabel51);
             this.panel40.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel40.Location = new System.Drawing.Point(-1, 11);
+            this.panel40.Location = new System.Drawing.Point(-2, 11);
             this.panel40.Margin = new System.Windows.Forms.Padding(0);
             this.panel40.Name = "panel40";
             this.panel40.Size = new System.Drawing.Size(75, 20);
@@ -3018,7 +3077,7 @@
             this.tableLayoutPanel42.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel42.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel42.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel42.Size = new System.Drawing.Size(73, 21);
+            this.tableLayoutPanel42.Size = new System.Drawing.Size(70, 21);
             this.tableLayoutPanel42.TabIndex = 1;
             // 
             // panel41
@@ -3026,7 +3085,7 @@
             this.panel41.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(220)))), ((int)(((byte)(219)))));
             this.panel41.Controls.Add(this.bunifuCustomLabel53);
             this.panel41.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel41.Location = new System.Drawing.Point(-1, -9);
+            this.panel41.Location = new System.Drawing.Point(-2, -9);
             this.panel41.Margin = new System.Windows.Forms.Padding(0);
             this.panel41.Name = "panel41";
             this.panel41.Size = new System.Drawing.Size(75, 40);
@@ -3058,7 +3117,7 @@
             this.tableLayoutPanel43.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel43.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel43.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel43.Size = new System.Drawing.Size(73, 43);
+            this.tableLayoutPanel43.Size = new System.Drawing.Size(70, 44);
             this.tableLayoutPanel43.TabIndex = 1;
             // 
             // panel42
@@ -3066,7 +3125,7 @@
             this.panel42.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(220)))), ((int)(((byte)(219)))));
             this.panel42.Controls.Add(this.bunifuCustomLabel55);
             this.panel42.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel42.Location = new System.Drawing.Point(-1, 11);
+            this.panel42.Location = new System.Drawing.Point(-2, 12);
             this.panel42.Margin = new System.Windows.Forms.Padding(0);
             this.panel42.Name = "panel42";
             this.panel42.Size = new System.Drawing.Size(75, 20);
@@ -3090,14 +3149,14 @@
             this.tableLayoutPanel44.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel44.Controls.Add(this.panel43, 1, 1);
             this.tableLayoutPanel44.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel44.Location = new System.Drawing.Point(11, 473);
+            this.tableLayoutPanel44.Location = new System.Drawing.Point(11, 474);
             this.tableLayoutPanel44.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel44.Name = "tableLayoutPanel44";
             this.tableLayoutPanel44.RowCount = 3;
             this.tableLayoutPanel44.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel44.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel44.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel44.Size = new System.Drawing.Size(73, 21);
+            this.tableLayoutPanel44.Size = new System.Drawing.Size(70, 20);
             this.tableLayoutPanel44.TabIndex = 1;
             // 
             // panel43
@@ -3105,7 +3164,7 @@
             this.panel43.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(220)))), ((int)(((byte)(219)))));
             this.panel43.Controls.Add(this.bunifuCustomLabel57);
             this.panel43.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel43.Location = new System.Drawing.Point(-1, -9);
+            this.panel43.Location = new System.Drawing.Point(-2, -10);
             this.panel43.Margin = new System.Windows.Forms.Padding(0);
             this.panel43.Name = "panel43";
             this.panel43.Size = new System.Drawing.Size(75, 40);
@@ -3137,7 +3196,7 @@
             this.tableLayoutPanel45.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel45.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
             this.tableLayoutPanel45.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel45.Size = new System.Drawing.Size(73, 109);
+            this.tableLayoutPanel45.Size = new System.Drawing.Size(70, 109);
             this.tableLayoutPanel45.TabIndex = 1;
             // 
             // panel44
@@ -3145,7 +3204,7 @@
             this.panel44.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(220)))), ((int)(((byte)(219)))));
             this.panel44.Controls.Add(this.bunifuCustomLabel56);
             this.panel44.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel44.Location = new System.Drawing.Point(6, 36);
+            this.panel44.Location = new System.Drawing.Point(5, 36);
             this.panel44.Margin = new System.Windows.Forms.Padding(0);
             this.panel44.Name = "panel44";
             this.panel44.Size = new System.Drawing.Size(60, 37);
@@ -3177,14 +3236,14 @@
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.00001F));
-            this.tableLayoutPanel13.Size = new System.Drawing.Size(73, 122);
+            this.tableLayoutPanel13.Size = new System.Drawing.Size(70, 122);
             this.tableLayoutPanel13.TabIndex = 1;
             // 
             // panel12
             // 
             this.panel12.Controls.Add(this.bunifuCustomLabel12);
             this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel12.Location = new System.Drawing.Point(-1, 50);
+            this.panel12.Location = new System.Drawing.Point(-2, 50);
             this.panel12.Margin = new System.Windows.Forms.Padding(0);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(75, 20);
@@ -3203,7 +3262,7 @@
             // bunifuCustomLabel3
             // 
             this.bunifuCustomLabel3.AutoSize = true;
-            this.bunifuCustomLabel3.Location = new System.Drawing.Point(88, 341);
+            this.bunifuCustomLabel3.Location = new System.Drawing.Point(85, 341);
             this.bunifuCustomLabel3.Name = "bunifuCustomLabel3";
             this.bunifuCustomLabel3.Size = new System.Drawing.Size(126, 13);
             this.bunifuCustomLabel3.TabIndex = 0;
@@ -3212,7 +3271,7 @@
             // bunifuCustomLabel29
             // 
             this.bunifuCustomLabel29.AutoSize = true;
-            this.bunifuCustomLabel29.Location = new System.Drawing.Point(88, 253);
+            this.bunifuCustomLabel29.Location = new System.Drawing.Point(85, 253);
             this.bunifuCustomLabel29.Name = "bunifuCustomLabel29";
             this.bunifuCustomLabel29.Size = new System.Drawing.Size(157, 13);
             this.bunifuCustomLabel29.TabIndex = 0;
@@ -3221,7 +3280,7 @@
             // bunifuCustomLabel34
             // 
             this.bunifuCustomLabel34.AutoSize = true;
-            this.bunifuCustomLabel34.Location = new System.Drawing.Point(88, 275);
+            this.bunifuCustomLabel34.Location = new System.Drawing.Point(85, 275);
             this.bunifuCustomLabel34.Name = "bunifuCustomLabel34";
             this.bunifuCustomLabel34.Size = new System.Drawing.Size(175, 13);
             this.bunifuCustomLabel34.TabIndex = 0;
@@ -3230,7 +3289,7 @@
             // bunifuCustomLabel50
             // 
             this.bunifuCustomLabel50.AutoSize = true;
-            this.bunifuCustomLabel50.Location = new System.Drawing.Point(88, 297);
+            this.bunifuCustomLabel50.Location = new System.Drawing.Point(85, 297);
             this.bunifuCustomLabel50.Name = "bunifuCustomLabel50";
             this.bunifuCustomLabel50.Size = new System.Drawing.Size(173, 13);
             this.bunifuCustomLabel50.TabIndex = 0;
@@ -3239,7 +3298,7 @@
             // bunifuCustomLabel52
             // 
             this.bunifuCustomLabel52.AutoSize = true;
-            this.bunifuCustomLabel52.Location = new System.Drawing.Point(88, 319);
+            this.bunifuCustomLabel52.Location = new System.Drawing.Point(85, 319);
             this.bunifuCustomLabel52.Name = "bunifuCustomLabel52";
             this.bunifuCustomLabel52.Size = new System.Drawing.Size(135, 13);
             this.bunifuCustomLabel52.TabIndex = 0;
@@ -3248,7 +3307,7 @@
             // bunifuCustomLabel54
             // 
             this.bunifuCustomLabel54.AutoSize = true;
-            this.bunifuCustomLabel54.Location = new System.Drawing.Point(88, 363);
+            this.bunifuCustomLabel54.Location = new System.Drawing.Point(85, 363);
             this.bunifuCustomLabel54.Name = "bunifuCustomLabel54";
             this.bunifuCustomLabel54.Size = new System.Drawing.Size(120, 13);
             this.bunifuCustomLabel54.TabIndex = 0;
@@ -3257,7 +3316,7 @@
             // bunifuCustomLabel58
             // 
             this.bunifuCustomLabel58.AutoSize = true;
-            this.bunifuCustomLabel58.Location = new System.Drawing.Point(88, 385);
+            this.bunifuCustomLabel58.Location = new System.Drawing.Point(85, 385);
             this.bunifuCustomLabel58.Name = "bunifuCustomLabel58";
             this.bunifuCustomLabel58.Size = new System.Drawing.Size(144, 13);
             this.bunifuCustomLabel58.TabIndex = 0;
@@ -3266,7 +3325,7 @@
             // bunifuCustomLabel59
             // 
             this.bunifuCustomLabel59.AutoSize = true;
-            this.bunifuCustomLabel59.Location = new System.Drawing.Point(88, 407);
+            this.bunifuCustomLabel59.Location = new System.Drawing.Point(85, 407);
             this.bunifuCustomLabel59.Name = "bunifuCustomLabel59";
             this.bunifuCustomLabel59.Size = new System.Drawing.Size(133, 13);
             this.bunifuCustomLabel59.TabIndex = 0;
@@ -3275,7 +3334,7 @@
             // bunifuCustomLabel60
             // 
             this.bunifuCustomLabel60.AutoSize = true;
-            this.bunifuCustomLabel60.Location = new System.Drawing.Point(88, 429);
+            this.bunifuCustomLabel60.Location = new System.Drawing.Point(85, 429);
             this.bunifuCustomLabel60.Name = "bunifuCustomLabel60";
             this.bunifuCustomLabel60.Size = new System.Drawing.Size(120, 13);
             this.bunifuCustomLabel60.TabIndex = 0;
@@ -3284,7 +3343,7 @@
             // bunifuCustomLabel61
             // 
             this.bunifuCustomLabel61.AutoSize = true;
-            this.bunifuCustomLabel61.Location = new System.Drawing.Point(88, 517);
+            this.bunifuCustomLabel61.Location = new System.Drawing.Point(85, 517);
             this.bunifuCustomLabel61.Name = "bunifuCustomLabel61";
             this.bunifuCustomLabel61.Size = new System.Drawing.Size(67, 13);
             this.bunifuCustomLabel61.TabIndex = 0;
@@ -3293,7 +3352,7 @@
             // bunifuCustomLabel62
             // 
             this.bunifuCustomLabel62.AutoSize = true;
-            this.bunifuCustomLabel62.Location = new System.Drawing.Point(88, 539);
+            this.bunifuCustomLabel62.Location = new System.Drawing.Point(85, 539);
             this.bunifuCustomLabel62.Name = "bunifuCustomLabel62";
             this.bunifuCustomLabel62.Size = new System.Drawing.Size(75, 13);
             this.bunifuCustomLabel62.TabIndex = 0;
@@ -3302,7 +3361,7 @@
             // bunifuCustomLabel63
             // 
             this.bunifuCustomLabel63.AutoSize = true;
-            this.bunifuCustomLabel63.Location = new System.Drawing.Point(88, 561);
+            this.bunifuCustomLabel63.Location = new System.Drawing.Point(85, 561);
             this.bunifuCustomLabel63.Name = "bunifuCustomLabel63";
             this.bunifuCustomLabel63.Size = new System.Drawing.Size(65, 13);
             this.bunifuCustomLabel63.TabIndex = 0;
@@ -3311,7 +3370,7 @@
             // bunifuCustomLabel64
             // 
             this.bunifuCustomLabel64.AutoSize = true;
-            this.bunifuCustomLabel64.Location = new System.Drawing.Point(88, 583);
+            this.bunifuCustomLabel64.Location = new System.Drawing.Point(85, 583);
             this.bunifuCustomLabel64.Name = "bunifuCustomLabel64";
             this.bunifuCustomLabel64.Size = new System.Drawing.Size(81, 13);
             this.bunifuCustomLabel64.TabIndex = 0;
@@ -3320,7 +3379,7 @@
             // lbl_kpiFollowUpRecVsCurrConfDate_Ten
             // 
             this.lbl_kpiFollowUpRecVsCurrConfDate_Ten.AutoSize = true;
-            this.lbl_kpiFollowUpRecVsCurrConfDate_Ten.Location = new System.Drawing.Point(883, 209);
+            this.lbl_kpiFollowUpRecVsCurrConfDate_Ten.Location = new System.Drawing.Point(825, 209);
             this.lbl_kpiFollowUpRecVsCurrConfDate_Ten.Name = "lbl_kpiFollowUpRecVsCurrConfDate_Ten";
             this.lbl_kpiFollowUpRecVsCurrConfDate_Ten.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpRecVsCurrConfDate_Ten.TabIndex = 3;
@@ -3329,7 +3388,7 @@
             // lbl_kpiFollowUpRecVsOrigConfDate_Ten
             // 
             this.lbl_kpiFollowUpRecVsOrigConfDate_Ten.AutoSize = true;
-            this.lbl_kpiFollowUpRecVsOrigConfDate_Ten.Location = new System.Drawing.Point(883, 187);
+            this.lbl_kpiFollowUpRecVsOrigConfDate_Ten.Location = new System.Drawing.Point(825, 187);
             this.lbl_kpiFollowUpRecVsOrigConfDate_Ten.Name = "lbl_kpiFollowUpRecVsOrigConfDate_Ten";
             this.lbl_kpiFollowUpRecVsOrigConfDate_Ten.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpRecVsOrigConfDate_Ten.TabIndex = 3;
@@ -3338,7 +3397,7 @@
             // lbl_kpiFollowUpRecVsCurrPlanDate_Ten
             // 
             this.lbl_kpiFollowUpRecVsCurrPlanDate_Ten.AutoSize = true;
-            this.lbl_kpiFollowUpRecVsCurrPlanDate_Ten.Location = new System.Drawing.Point(883, 165);
+            this.lbl_kpiFollowUpRecVsCurrPlanDate_Ten.Location = new System.Drawing.Point(825, 165);
             this.lbl_kpiFollowUpRecVsCurrPlanDate_Ten.Name = "lbl_kpiFollowUpRecVsCurrPlanDate_Ten";
             this.lbl_kpiFollowUpRecVsCurrPlanDate_Ten.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpRecVsCurrPlanDate_Ten.TabIndex = 3;
@@ -3347,7 +3406,7 @@
             // lbl_kpiFollowUpFinalConfVsFinalPlanDate_Ten
             // 
             this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Ten.AutoSize = true;
-            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Ten.Location = new System.Drawing.Point(883, 143);
+            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Ten.Location = new System.Drawing.Point(825, 143);
             this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Ten.Name = "lbl_kpiFollowUpFinalConfVsFinalPlanDate_Ten";
             this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Ten.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Ten.TabIndex = 3;
@@ -3356,7 +3415,7 @@
             // lbl_kpiFollowUpInitConfVsCurrConf_Ten
             // 
             this.lbl_kpiFollowUpInitConfVsCurrConf_Ten.AutoSize = true;
-            this.lbl_kpiFollowUpInitConfVsCurrConf_Ten.Location = new System.Drawing.Point(883, 121);
+            this.lbl_kpiFollowUpInitConfVsCurrConf_Ten.Location = new System.Drawing.Point(825, 121);
             this.lbl_kpiFollowUpInitConfVsCurrConf_Ten.Name = "lbl_kpiFollowUpInitConfVsCurrConf_Ten";
             this.lbl_kpiFollowUpInitConfVsCurrConf_Ten.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiFollowUpInitConfVsCurrConf_Ten.TabIndex = 3;
@@ -3365,7 +3424,7 @@
             // lbl_kpiPurchInitConfVsPrPlanDate_Ten
             // 
             this.lbl_kpiPurchInitConfVsPrPlanDate_Ten.AutoSize = true;
-            this.lbl_kpiPurchInitConfVsPrPlanDate_Ten.Location = new System.Drawing.Point(883, 99);
+            this.lbl_kpiPurchInitConfVsPrPlanDate_Ten.Location = new System.Drawing.Point(825, 99);
             this.lbl_kpiPurchInitConfVsPrPlanDate_Ten.Name = "lbl_kpiPurchInitConfVsPrPlanDate_Ten";
             this.lbl_kpiPurchInitConfVsPrPlanDate_Ten.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchInitConfVsPrPlanDate_Ten.TabIndex = 3;
@@ -3374,7 +3433,7 @@
             // lbl_kpiPlanPRPlannedDateVsCurrPlan_One
             // 
             this.lbl_kpiPlanPRPlannedDateVsCurrPlan_One.AutoSize = true;
-            this.lbl_kpiPlanPRPlannedDateVsCurrPlan_One.Location = new System.Drawing.Point(316, 33);
+            this.lbl_kpiPlanPRPlannedDateVsCurrPlan_One.Location = new System.Drawing.Point(276, 33);
             this.lbl_kpiPlanPRPlannedDateVsCurrPlan_One.Name = "lbl_kpiPlanPRPlannedDateVsCurrPlan_One";
             this.lbl_kpiPlanPRPlannedDateVsCurrPlan_One.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPlanPRPlannedDateVsCurrPlan_One.TabIndex = 3;
@@ -3383,7 +3442,7 @@
             // lbl_kpiPlanPRPlannedDateVsCurrPlan_Two
             // 
             this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Two.AutoSize = true;
-            this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Two.Location = new System.Drawing.Point(377, 33);
+            this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Two.Location = new System.Drawing.Point(337, 33);
             this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Two.Name = "lbl_kpiPlanPRPlannedDateVsCurrPlan_Two";
             this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Two.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Two.TabIndex = 3;
@@ -3392,7 +3451,7 @@
             // lbl_kpiPlanPRPlannedDateVsCurrPlan_Three
             // 
             this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Three.AutoSize = true;
-            this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Three.Location = new System.Drawing.Point(442, 33);
+            this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Three.Location = new System.Drawing.Point(398, 33);
             this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Three.Name = "lbl_kpiPlanPRPlannedDateVsCurrPlan_Three";
             this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Three.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Three.TabIndex = 3;
@@ -3401,7 +3460,7 @@
             // lbl_kpiPlanPRPlannedDateVsCurrPlan_Four
             // 
             this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Four.AutoSize = true;
-            this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Four.Location = new System.Drawing.Point(505, 33);
+            this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Four.Location = new System.Drawing.Point(459, 33);
             this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Four.Name = "lbl_kpiPlanPRPlannedDateVsCurrPlan_Four";
             this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Four.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Four.TabIndex = 3;
@@ -3410,7 +3469,7 @@
             // lbl_kpiPlanPRPlannedDateVsCurrPlan_Five
             // 
             this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Five.AutoSize = true;
-            this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Five.Location = new System.Drawing.Point(568, 33);
+            this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Five.Location = new System.Drawing.Point(520, 33);
             this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Five.Name = "lbl_kpiPlanPRPlannedDateVsCurrPlan_Five";
             this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Five.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Five.TabIndex = 3;
@@ -3419,7 +3478,7 @@
             // lbl_kpiPlanPRPlannedDateVsCurrPlan_Six
             // 
             this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Six.AutoSize = true;
-            this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Six.Location = new System.Drawing.Point(631, 33);
+            this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Six.Location = new System.Drawing.Point(581, 33);
             this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Six.Name = "lbl_kpiPlanPRPlannedDateVsCurrPlan_Six";
             this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Six.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Six.TabIndex = 3;
@@ -3428,7 +3487,7 @@
             // lbl_kpiPlanPRPlannedDateVsCurrPlan_Seven
             // 
             this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Seven.AutoSize = true;
-            this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Seven.Location = new System.Drawing.Point(694, 33);
+            this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Seven.Location = new System.Drawing.Point(642, 33);
             this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Seven.Name = "lbl_kpiPlanPRPlannedDateVsCurrPlan_Seven";
             this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Seven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Seven.TabIndex = 3;
@@ -3437,7 +3496,7 @@
             // lbl_kpiPlanPRPlannedDateVsCurrPlan_Eight
             // 
             this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Eight.AutoSize = true;
-            this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Eight.Location = new System.Drawing.Point(757, 33);
+            this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Eight.Location = new System.Drawing.Point(703, 33);
             this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Eight.Name = "lbl_kpiPlanPRPlannedDateVsCurrPlan_Eight";
             this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Eight.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Eight.TabIndex = 3;
@@ -3446,7 +3505,7 @@
             // lbl_kpiPlanPRPlannedDateVsCurrPlan_Nine
             // 
             this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Nine.AutoSize = true;
-            this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Nine.Location = new System.Drawing.Point(820, 33);
+            this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Nine.Location = new System.Drawing.Point(764, 33);
             this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Nine.Name = "lbl_kpiPlanPRPlannedDateVsCurrPlan_Nine";
             this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Nine.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Nine.TabIndex = 3;
@@ -3455,7 +3514,7 @@
             // lbl_kpiPlanPRPlannedDateVsCurrPlan_Ten
             // 
             this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Ten.AutoSize = true;
-            this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Ten.Location = new System.Drawing.Point(883, 33);
+            this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Ten.Location = new System.Drawing.Point(825, 33);
             this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Ten.Name = "lbl_kpiPlanPRPlannedDateVsCurrPlan_Ten";
             this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Ten.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Ten.TabIndex = 3;
@@ -3464,7 +3523,7 @@
             // lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_One
             // 
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_One.AutoSize = true;
-            this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_One.Location = new System.Drawing.Point(316, 297);
+            this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_One.Location = new System.Drawing.Point(276, 297);
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_One.Name = "lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_One";
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_One.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_One.TabIndex = 3;
@@ -3473,7 +3532,7 @@
             // lbl_kpiOtherPRsVsPOValue_One
             // 
             this.lbl_kpiOtherPRsVsPOValue_One.AutoSize = true;
-            this.lbl_kpiOtherPRsVsPOValue_One.Location = new System.Drawing.Point(316, 583);
+            this.lbl_kpiOtherPRsVsPOValue_One.Location = new System.Drawing.Point(276, 583);
             this.lbl_kpiOtherPRsVsPOValue_One.Name = "lbl_kpiOtherPRsVsPOValue_One";
             this.lbl_kpiOtherPRsVsPOValue_One.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherPRsVsPOValue_One.TabIndex = 3;
@@ -3482,7 +3541,7 @@
             // lbl_kpiOtherTotalSpend_One
             // 
             this.lbl_kpiOtherTotalSpend_One.AutoSize = true;
-            this.lbl_kpiOtherTotalSpend_One.Location = new System.Drawing.Point(316, 561);
+            this.lbl_kpiOtherTotalSpend_One.Location = new System.Drawing.Point(276, 561);
             this.lbl_kpiOtherTotalSpend_One.Name = "lbl_kpiOtherTotalSpend_One";
             this.lbl_kpiOtherTotalSpend_One.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherTotalSpend_One.TabIndex = 3;
@@ -3491,7 +3550,7 @@
             // lbl_kpiOtherPRsReleased_One
             // 
             this.lbl_kpiOtherPRsReleased_One.AutoSize = true;
-            this.lbl_kpiOtherPRsReleased_One.Location = new System.Drawing.Point(316, 539);
+            this.lbl_kpiOtherPRsReleased_One.Location = new System.Drawing.Point(276, 539);
             this.lbl_kpiOtherPRsReleased_One.Name = "lbl_kpiOtherPRsReleased_One";
             this.lbl_kpiOtherPRsReleased_One.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherPRsReleased_One.TabIndex = 3;
@@ -3500,7 +3559,7 @@
             // lbl_kpiPurchPlanPORelVsPRDelDate_One
             // 
             this.lbl_kpiPurchPlanPORelVsPRDelDate_One.AutoSize = true;
-            this.lbl_kpiPurchPlanPORelVsPRDelDate_One.Location = new System.Drawing.Point(316, 429);
+            this.lbl_kpiPurchPlanPORelVsPRDelDate_One.Location = new System.Drawing.Point(276, 429);
             this.lbl_kpiPurchPlanPORelVsPRDelDate_One.Name = "lbl_kpiPurchPlanPORelVsPRDelDate_One";
             this.lbl_kpiPurchPlanPORelVsPRDelDate_One.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchPlanPORelVsPRDelDate_One.TabIndex = 3;
@@ -3509,7 +3568,7 @@
             // lbl_kpiPurchTotalPRRelConfEntry_One
             // 
             this.lbl_kpiPurchTotalPRRelConfEntry_One.AutoSize = true;
-            this.lbl_kpiPurchTotalPRRelConfEntry_One.Location = new System.Drawing.Point(316, 407);
+            this.lbl_kpiPurchTotalPRRelConfEntry_One.Location = new System.Drawing.Point(276, 407);
             this.lbl_kpiPurchTotalPRRelConfEntry_One.Name = "lbl_kpiPurchTotalPRRelConfEntry_One";
             this.lbl_kpiPurchTotalPRRelConfEntry_One.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTotalPRRelConfEntry_One.TabIndex = 3;
@@ -3518,7 +3577,7 @@
             // lbl_kpiPurchSubPOCreateVsConfEntry_One
             // 
             this.lbl_kpiPurchSubPOCreateVsConfEntry_One.AutoSize = true;
-            this.lbl_kpiPurchSubPOCreateVsConfEntry_One.Location = new System.Drawing.Point(316, 385);
+            this.lbl_kpiPurchSubPOCreateVsConfEntry_One.Location = new System.Drawing.Point(276, 385);
             this.lbl_kpiPurchSubPOCreateVsConfEntry_One.Name = "lbl_kpiPurchSubPOCreateVsConfEntry_One";
             this.lbl_kpiPurchSubPOCreateVsConfEntry_One.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchSubPOCreateVsConfEntry_One.TabIndex = 3;
@@ -3527,7 +3586,7 @@
             // lbl_kpiPurchSubPRRelVsPORel_One
             // 
             this.lbl_kpiPurchSubPRRelVsPORel_One.AutoSize = true;
-            this.lbl_kpiPurchSubPRRelVsPORel_One.Location = new System.Drawing.Point(316, 363);
+            this.lbl_kpiPurchSubPRRelVsPORel_One.Location = new System.Drawing.Point(276, 363);
             this.lbl_kpiPurchSubPRRelVsPORel_One.Name = "lbl_kpiPurchSubPRRelVsPORel_One";
             this.lbl_kpiPurchSubPRRelVsPORel_One.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchSubPRRelVsPORel_One.TabIndex = 3;
@@ -3536,7 +3595,7 @@
             // lbl_kpiPurchTwoPORelVsPOConf_One
             // 
             this.lbl_kpiPurchTwoPORelVsPOConf_One.AutoSize = true;
-            this.lbl_kpiPurchTwoPORelVsPOConf_One.Location = new System.Drawing.Point(316, 341);
+            this.lbl_kpiPurchTwoPORelVsPOConf_One.Location = new System.Drawing.Point(276, 341);
             this.lbl_kpiPurchTwoPORelVsPOConf_One.Name = "lbl_kpiPurchTwoPORelVsPOConf_One";
             this.lbl_kpiPurchTwoPORelVsPOConf_One.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTwoPORelVsPOConf_One.TabIndex = 3;
@@ -3545,7 +3604,7 @@
             // lbl_kpiPurchTwoPOCreateVsPORel_One
             // 
             this.lbl_kpiPurchTwoPOCreateVsPORel_One.AutoSize = true;
-            this.lbl_kpiPurchTwoPOCreateVsPORel_One.Location = new System.Drawing.Point(316, 319);
+            this.lbl_kpiPurchTwoPOCreateVsPORel_One.Location = new System.Drawing.Point(276, 319);
             this.lbl_kpiPurchTwoPOCreateVsPORel_One.Name = "lbl_kpiPurchTwoPOCreateVsPORel_One";
             this.lbl_kpiPurchTwoPOCreateVsPORel_One.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTwoPOCreateVsPORel_One.TabIndex = 3;
@@ -3554,7 +3613,7 @@
             // lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Two
             // 
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Two.AutoSize = true;
-            this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Two.Location = new System.Drawing.Point(377, 297);
+            this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Two.Location = new System.Drawing.Point(337, 297);
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Two.Name = "lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Two";
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Two.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Two.TabIndex = 3;
@@ -3563,7 +3622,7 @@
             // lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Three
             // 
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Three.AutoSize = true;
-            this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Three.Location = new System.Drawing.Point(442, 297);
+            this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Three.Location = new System.Drawing.Point(398, 297);
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Three.Name = "lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Three";
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Three.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Three.TabIndex = 3;
@@ -3572,7 +3631,7 @@
             // lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Four
             // 
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Four.AutoSize = true;
-            this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Four.Location = new System.Drawing.Point(505, 297);
+            this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Four.Location = new System.Drawing.Point(459, 297);
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Four.Name = "lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Four";
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Four.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Four.TabIndex = 3;
@@ -3581,7 +3640,7 @@
             // lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Five
             // 
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Five.AutoSize = true;
-            this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Five.Location = new System.Drawing.Point(568, 297);
+            this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Five.Location = new System.Drawing.Point(520, 297);
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Five.Name = "lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Five";
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Five.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Five.TabIndex = 3;
@@ -3590,7 +3649,7 @@
             // lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Six
             // 
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Six.AutoSize = true;
-            this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Six.Location = new System.Drawing.Point(631, 297);
+            this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Six.Location = new System.Drawing.Point(581, 297);
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Six.Name = "lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Six";
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Six.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Six.TabIndex = 3;
@@ -3599,7 +3658,7 @@
             // lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Seven
             // 
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Seven.AutoSize = true;
-            this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Seven.Location = new System.Drawing.Point(694, 297);
+            this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Seven.Location = new System.Drawing.Point(642, 297);
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Seven.Name = "lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Seven";
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Seven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Seven.TabIndex = 3;
@@ -3608,7 +3667,7 @@
             // lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Eight
             // 
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Eight.AutoSize = true;
-            this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Eight.Location = new System.Drawing.Point(757, 297);
+            this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Eight.Location = new System.Drawing.Point(703, 297);
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Eight.Name = "lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Eight";
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Eight.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Eight.TabIndex = 3;
@@ -3617,7 +3676,7 @@
             // lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Nine
             // 
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Nine.AutoSize = true;
-            this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Nine.Location = new System.Drawing.Point(820, 297);
+            this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Nine.Location = new System.Drawing.Point(764, 297);
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Nine.Name = "lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Nine";
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Nine.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Nine.TabIndex = 3;
@@ -3626,7 +3685,7 @@
             // lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Ten
             // 
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Ten.AutoSize = true;
-            this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Ten.Location = new System.Drawing.Point(883, 297);
+            this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Ten.Location = new System.Drawing.Point(825, 297);
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Ten.Name = "lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Ten";
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Ten.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Ten.TabIndex = 3;
@@ -3635,7 +3694,7 @@
             // lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Eleven
             // 
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Eleven.AutoSize = true;
-            this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Eleven.Location = new System.Drawing.Point(946, 297);
+            this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Eleven.Location = new System.Drawing.Point(886, 297);
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Eleven.Name = "lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Eleven";
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Eleven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Eleven.TabIndex = 3;
@@ -3644,7 +3703,7 @@
             // lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Eleven
             // 
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Eleven.AutoSize = true;
-            this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Eleven.Location = new System.Drawing.Point(946, 451);
+            this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Eleven.Location = new System.Drawing.Point(886, 451);
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Eleven.Name = "lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Eleven";
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Eleven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Eleven.TabIndex = 3;
@@ -3653,7 +3712,7 @@
             // lbl_kpiPurchPlanPORelVsPRDelDate_Eleven
             // 
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Eleven.AutoSize = true;
-            this.lbl_kpiPurchPlanPORelVsPRDelDate_Eleven.Location = new System.Drawing.Point(946, 429);
+            this.lbl_kpiPurchPlanPORelVsPRDelDate_Eleven.Location = new System.Drawing.Point(886, 429);
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Eleven.Name = "lbl_kpiPurchPlanPORelVsPRDelDate_Eleven";
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Eleven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Eleven.TabIndex = 3;
@@ -3662,7 +3721,7 @@
             // lbl_kpiPurchTotalPRRelConfEntry_Eleven
             // 
             this.lbl_kpiPurchTotalPRRelConfEntry_Eleven.AutoSize = true;
-            this.lbl_kpiPurchTotalPRRelConfEntry_Eleven.Location = new System.Drawing.Point(946, 407);
+            this.lbl_kpiPurchTotalPRRelConfEntry_Eleven.Location = new System.Drawing.Point(886, 407);
             this.lbl_kpiPurchTotalPRRelConfEntry_Eleven.Name = "lbl_kpiPurchTotalPRRelConfEntry_Eleven";
             this.lbl_kpiPurchTotalPRRelConfEntry_Eleven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTotalPRRelConfEntry_Eleven.TabIndex = 3;
@@ -3671,7 +3730,7 @@
             // lbl_kpiPurchSubPOCreateVsConfEntry_Eleven
             // 
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Eleven.AutoSize = true;
-            this.lbl_kpiPurchSubPOCreateVsConfEntry_Eleven.Location = new System.Drawing.Point(946, 385);
+            this.lbl_kpiPurchSubPOCreateVsConfEntry_Eleven.Location = new System.Drawing.Point(886, 385);
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Eleven.Name = "lbl_kpiPurchSubPOCreateVsConfEntry_Eleven";
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Eleven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Eleven.TabIndex = 3;
@@ -3680,7 +3739,7 @@
             // lbl_kpiPurchSubPRRelVsPORel_Eleven
             // 
             this.lbl_kpiPurchSubPRRelVsPORel_Eleven.AutoSize = true;
-            this.lbl_kpiPurchSubPRRelVsPORel_Eleven.Location = new System.Drawing.Point(946, 363);
+            this.lbl_kpiPurchSubPRRelVsPORel_Eleven.Location = new System.Drawing.Point(886, 363);
             this.lbl_kpiPurchSubPRRelVsPORel_Eleven.Name = "lbl_kpiPurchSubPRRelVsPORel_Eleven";
             this.lbl_kpiPurchSubPRRelVsPORel_Eleven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchSubPRRelVsPORel_Eleven.TabIndex = 3;
@@ -3689,7 +3748,7 @@
             // lbl_kpiPurchTwoPORelVsPOConf_Eleven
             // 
             this.lbl_kpiPurchTwoPORelVsPOConf_Eleven.AutoSize = true;
-            this.lbl_kpiPurchTwoPORelVsPOConf_Eleven.Location = new System.Drawing.Point(946, 341);
+            this.lbl_kpiPurchTwoPORelVsPOConf_Eleven.Location = new System.Drawing.Point(886, 341);
             this.lbl_kpiPurchTwoPORelVsPOConf_Eleven.Name = "lbl_kpiPurchTwoPORelVsPOConf_Eleven";
             this.lbl_kpiPurchTwoPORelVsPOConf_Eleven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTwoPORelVsPOConf_Eleven.TabIndex = 3;
@@ -3698,7 +3757,7 @@
             // lbl_kpiPurchTwoPOCreateVsPORel_Eleven
             // 
             this.lbl_kpiPurchTwoPOCreateVsPORel_Eleven.AutoSize = true;
-            this.lbl_kpiPurchTwoPOCreateVsPORel_Eleven.Location = new System.Drawing.Point(946, 319);
+            this.lbl_kpiPurchTwoPOCreateVsPORel_Eleven.Location = new System.Drawing.Point(886, 319);
             this.lbl_kpiPurchTwoPOCreateVsPORel_Eleven.Name = "lbl_kpiPurchTwoPOCreateVsPORel_Eleven";
             this.lbl_kpiPurchTwoPOCreateVsPORel_Eleven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTwoPOCreateVsPORel_Eleven.TabIndex = 3;
@@ -3707,7 +3766,7 @@
             // lbl_kpiPurchTwoPOCreateVsPORel_Two
             // 
             this.lbl_kpiPurchTwoPOCreateVsPORel_Two.AutoSize = true;
-            this.lbl_kpiPurchTwoPOCreateVsPORel_Two.Location = new System.Drawing.Point(377, 319);
+            this.lbl_kpiPurchTwoPOCreateVsPORel_Two.Location = new System.Drawing.Point(337, 319);
             this.lbl_kpiPurchTwoPOCreateVsPORel_Two.Name = "lbl_kpiPurchTwoPOCreateVsPORel_Two";
             this.lbl_kpiPurchTwoPOCreateVsPORel_Two.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTwoPOCreateVsPORel_Two.TabIndex = 3;
@@ -3716,7 +3775,7 @@
             // lbl_kpiPurchTwoPOCreateVsPORel_Three
             // 
             this.lbl_kpiPurchTwoPOCreateVsPORel_Three.AutoSize = true;
-            this.lbl_kpiPurchTwoPOCreateVsPORel_Three.Location = new System.Drawing.Point(442, 319);
+            this.lbl_kpiPurchTwoPOCreateVsPORel_Three.Location = new System.Drawing.Point(398, 319);
             this.lbl_kpiPurchTwoPOCreateVsPORel_Three.Name = "lbl_kpiPurchTwoPOCreateVsPORel_Three";
             this.lbl_kpiPurchTwoPOCreateVsPORel_Three.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTwoPOCreateVsPORel_Three.TabIndex = 3;
@@ -3725,7 +3784,7 @@
             // lbl_kpiPurchTwoPOCreateVsPORel_Four
             // 
             this.lbl_kpiPurchTwoPOCreateVsPORel_Four.AutoSize = true;
-            this.lbl_kpiPurchTwoPOCreateVsPORel_Four.Location = new System.Drawing.Point(505, 319);
+            this.lbl_kpiPurchTwoPOCreateVsPORel_Four.Location = new System.Drawing.Point(459, 319);
             this.lbl_kpiPurchTwoPOCreateVsPORel_Four.Name = "lbl_kpiPurchTwoPOCreateVsPORel_Four";
             this.lbl_kpiPurchTwoPOCreateVsPORel_Four.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTwoPOCreateVsPORel_Four.TabIndex = 3;
@@ -3734,7 +3793,7 @@
             // lbl_kpiPurchTwoPOCreateVsPORel_Five
             // 
             this.lbl_kpiPurchTwoPOCreateVsPORel_Five.AutoSize = true;
-            this.lbl_kpiPurchTwoPOCreateVsPORel_Five.Location = new System.Drawing.Point(568, 319);
+            this.lbl_kpiPurchTwoPOCreateVsPORel_Five.Location = new System.Drawing.Point(520, 319);
             this.lbl_kpiPurchTwoPOCreateVsPORel_Five.Name = "lbl_kpiPurchTwoPOCreateVsPORel_Five";
             this.lbl_kpiPurchTwoPOCreateVsPORel_Five.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTwoPOCreateVsPORel_Five.TabIndex = 3;
@@ -3743,7 +3802,7 @@
             // lbl_kpiPurchTwoPOCreateVsPORel_Six
             // 
             this.lbl_kpiPurchTwoPOCreateVsPORel_Six.AutoSize = true;
-            this.lbl_kpiPurchTwoPOCreateVsPORel_Six.Location = new System.Drawing.Point(631, 319);
+            this.lbl_kpiPurchTwoPOCreateVsPORel_Six.Location = new System.Drawing.Point(581, 319);
             this.lbl_kpiPurchTwoPOCreateVsPORel_Six.Name = "lbl_kpiPurchTwoPOCreateVsPORel_Six";
             this.lbl_kpiPurchTwoPOCreateVsPORel_Six.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTwoPOCreateVsPORel_Six.TabIndex = 3;
@@ -3752,7 +3811,7 @@
             // lbl_kpiPurchTwoPOCreateVsPORel_Seven
             // 
             this.lbl_kpiPurchTwoPOCreateVsPORel_Seven.AutoSize = true;
-            this.lbl_kpiPurchTwoPOCreateVsPORel_Seven.Location = new System.Drawing.Point(694, 319);
+            this.lbl_kpiPurchTwoPOCreateVsPORel_Seven.Location = new System.Drawing.Point(642, 319);
             this.lbl_kpiPurchTwoPOCreateVsPORel_Seven.Name = "lbl_kpiPurchTwoPOCreateVsPORel_Seven";
             this.lbl_kpiPurchTwoPOCreateVsPORel_Seven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTwoPOCreateVsPORel_Seven.TabIndex = 3;
@@ -3761,7 +3820,7 @@
             // lbl_kpiPurchTwoPOCreateVsPORel_Eight
             // 
             this.lbl_kpiPurchTwoPOCreateVsPORel_Eight.AutoSize = true;
-            this.lbl_kpiPurchTwoPOCreateVsPORel_Eight.Location = new System.Drawing.Point(757, 319);
+            this.lbl_kpiPurchTwoPOCreateVsPORel_Eight.Location = new System.Drawing.Point(703, 319);
             this.lbl_kpiPurchTwoPOCreateVsPORel_Eight.Name = "lbl_kpiPurchTwoPOCreateVsPORel_Eight";
             this.lbl_kpiPurchTwoPOCreateVsPORel_Eight.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTwoPOCreateVsPORel_Eight.TabIndex = 3;
@@ -3770,7 +3829,7 @@
             // lbl_kpiPurchTwoPOCreateVsPORel_Nine
             // 
             this.lbl_kpiPurchTwoPOCreateVsPORel_Nine.AutoSize = true;
-            this.lbl_kpiPurchTwoPOCreateVsPORel_Nine.Location = new System.Drawing.Point(820, 319);
+            this.lbl_kpiPurchTwoPOCreateVsPORel_Nine.Location = new System.Drawing.Point(764, 319);
             this.lbl_kpiPurchTwoPOCreateVsPORel_Nine.Name = "lbl_kpiPurchTwoPOCreateVsPORel_Nine";
             this.lbl_kpiPurchTwoPOCreateVsPORel_Nine.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTwoPOCreateVsPORel_Nine.TabIndex = 3;
@@ -3779,7 +3838,7 @@
             // lbl_kpiPurchTwoPOCreateVsPORel_Ten
             // 
             this.lbl_kpiPurchTwoPOCreateVsPORel_Ten.AutoSize = true;
-            this.lbl_kpiPurchTwoPOCreateVsPORel_Ten.Location = new System.Drawing.Point(883, 319);
+            this.lbl_kpiPurchTwoPOCreateVsPORel_Ten.Location = new System.Drawing.Point(825, 319);
             this.lbl_kpiPurchTwoPOCreateVsPORel_Ten.Name = "lbl_kpiPurchTwoPOCreateVsPORel_Ten";
             this.lbl_kpiPurchTwoPOCreateVsPORel_Ten.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTwoPOCreateVsPORel_Ten.TabIndex = 3;
@@ -3788,7 +3847,7 @@
             // lbl_kpiPurchTwoPORelVsPOConf_Ten
             // 
             this.lbl_kpiPurchTwoPORelVsPOConf_Ten.AutoSize = true;
-            this.lbl_kpiPurchTwoPORelVsPOConf_Ten.Location = new System.Drawing.Point(883, 341);
+            this.lbl_kpiPurchTwoPORelVsPOConf_Ten.Location = new System.Drawing.Point(825, 341);
             this.lbl_kpiPurchTwoPORelVsPOConf_Ten.Name = "lbl_kpiPurchTwoPORelVsPOConf_Ten";
             this.lbl_kpiPurchTwoPORelVsPOConf_Ten.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTwoPORelVsPOConf_Ten.TabIndex = 3;
@@ -3797,7 +3856,7 @@
             // lbl_kpiPurchSubPRRelVsPORel_Ten
             // 
             this.lbl_kpiPurchSubPRRelVsPORel_Ten.AutoSize = true;
-            this.lbl_kpiPurchSubPRRelVsPORel_Ten.Location = new System.Drawing.Point(883, 363);
+            this.lbl_kpiPurchSubPRRelVsPORel_Ten.Location = new System.Drawing.Point(825, 363);
             this.lbl_kpiPurchSubPRRelVsPORel_Ten.Name = "lbl_kpiPurchSubPRRelVsPORel_Ten";
             this.lbl_kpiPurchSubPRRelVsPORel_Ten.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchSubPRRelVsPORel_Ten.TabIndex = 3;
@@ -3806,7 +3865,7 @@
             // lbl_kpiPurchSubPOCreateVsConfEntry_Ten
             // 
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Ten.AutoSize = true;
-            this.lbl_kpiPurchSubPOCreateVsConfEntry_Ten.Location = new System.Drawing.Point(883, 385);
+            this.lbl_kpiPurchSubPOCreateVsConfEntry_Ten.Location = new System.Drawing.Point(825, 385);
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Ten.Name = "lbl_kpiPurchSubPOCreateVsConfEntry_Ten";
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Ten.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Ten.TabIndex = 3;
@@ -3815,7 +3874,7 @@
             // lbl_kpiPurchTotalPRRelConfEntry_Ten
             // 
             this.lbl_kpiPurchTotalPRRelConfEntry_Ten.AutoSize = true;
-            this.lbl_kpiPurchTotalPRRelConfEntry_Ten.Location = new System.Drawing.Point(883, 407);
+            this.lbl_kpiPurchTotalPRRelConfEntry_Ten.Location = new System.Drawing.Point(825, 407);
             this.lbl_kpiPurchTotalPRRelConfEntry_Ten.Name = "lbl_kpiPurchTotalPRRelConfEntry_Ten";
             this.lbl_kpiPurchTotalPRRelConfEntry_Ten.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTotalPRRelConfEntry_Ten.TabIndex = 3;
@@ -3824,7 +3883,7 @@
             // lbl_kpiPurchPlanPORelVsPRDelDate_Ten
             // 
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Ten.AutoSize = true;
-            this.lbl_kpiPurchPlanPORelVsPRDelDate_Ten.Location = new System.Drawing.Point(883, 429);
+            this.lbl_kpiPurchPlanPORelVsPRDelDate_Ten.Location = new System.Drawing.Point(825, 429);
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Ten.Name = "lbl_kpiPurchPlanPORelVsPRDelDate_Ten";
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Ten.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Ten.TabIndex = 3;
@@ -3833,7 +3892,7 @@
             // lbl_kpiPurchPlanPORelVsPRDelDate_Nine
             // 
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Nine.AutoSize = true;
-            this.lbl_kpiPurchPlanPORelVsPRDelDate_Nine.Location = new System.Drawing.Point(820, 429);
+            this.lbl_kpiPurchPlanPORelVsPRDelDate_Nine.Location = new System.Drawing.Point(764, 429);
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Nine.Name = "lbl_kpiPurchPlanPORelVsPRDelDate_Nine";
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Nine.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Nine.TabIndex = 3;
@@ -3842,7 +3901,7 @@
             // lbl_kpiPurchPlanPORelVsPRDelDate_Eight
             // 
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Eight.AutoSize = true;
-            this.lbl_kpiPurchPlanPORelVsPRDelDate_Eight.Location = new System.Drawing.Point(757, 429);
+            this.lbl_kpiPurchPlanPORelVsPRDelDate_Eight.Location = new System.Drawing.Point(703, 429);
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Eight.Name = "lbl_kpiPurchPlanPORelVsPRDelDate_Eight";
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Eight.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Eight.TabIndex = 3;
@@ -3851,7 +3910,7 @@
             // lbl_kpiPurchPlanPORelVsPRDelDate_Seven
             // 
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Seven.AutoSize = true;
-            this.lbl_kpiPurchPlanPORelVsPRDelDate_Seven.Location = new System.Drawing.Point(694, 429);
+            this.lbl_kpiPurchPlanPORelVsPRDelDate_Seven.Location = new System.Drawing.Point(642, 429);
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Seven.Name = "lbl_kpiPurchPlanPORelVsPRDelDate_Seven";
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Seven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Seven.TabIndex = 3;
@@ -3860,7 +3919,7 @@
             // lbl_kpiPurchPlanPORelVsPRDelDate_Six
             // 
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Six.AutoSize = true;
-            this.lbl_kpiPurchPlanPORelVsPRDelDate_Six.Location = new System.Drawing.Point(631, 429);
+            this.lbl_kpiPurchPlanPORelVsPRDelDate_Six.Location = new System.Drawing.Point(581, 429);
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Six.Name = "lbl_kpiPurchPlanPORelVsPRDelDate_Six";
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Six.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Six.TabIndex = 3;
@@ -3869,7 +3928,7 @@
             // lbl_kpiPurchPlanPORelVsPRDelDate_Five
             // 
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Five.AutoSize = true;
-            this.lbl_kpiPurchPlanPORelVsPRDelDate_Five.Location = new System.Drawing.Point(568, 429);
+            this.lbl_kpiPurchPlanPORelVsPRDelDate_Five.Location = new System.Drawing.Point(520, 429);
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Five.Name = "lbl_kpiPurchPlanPORelVsPRDelDate_Five";
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Five.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Five.TabIndex = 3;
@@ -3878,7 +3937,7 @@
             // lbl_kpiPurchPlanPORelVsPRDelDate_Four
             // 
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Four.AutoSize = true;
-            this.lbl_kpiPurchPlanPORelVsPRDelDate_Four.Location = new System.Drawing.Point(505, 429);
+            this.lbl_kpiPurchPlanPORelVsPRDelDate_Four.Location = new System.Drawing.Point(459, 429);
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Four.Name = "lbl_kpiPurchPlanPORelVsPRDelDate_Four";
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Four.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Four.TabIndex = 3;
@@ -3887,7 +3946,7 @@
             // lbl_kpiPurchPlanPORelVsPRDelDate_Three
             // 
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Three.AutoSize = true;
-            this.lbl_kpiPurchPlanPORelVsPRDelDate_Three.Location = new System.Drawing.Point(442, 429);
+            this.lbl_kpiPurchPlanPORelVsPRDelDate_Three.Location = new System.Drawing.Point(398, 429);
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Three.Name = "lbl_kpiPurchPlanPORelVsPRDelDate_Three";
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Three.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Three.TabIndex = 3;
@@ -3896,7 +3955,7 @@
             // lbl_kpiPurchPlanPORelVsPRDelDate_Two
             // 
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Two.AutoSize = true;
-            this.lbl_kpiPurchPlanPORelVsPRDelDate_Two.Location = new System.Drawing.Point(377, 429);
+            this.lbl_kpiPurchPlanPORelVsPRDelDate_Two.Location = new System.Drawing.Point(337, 429);
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Two.Name = "lbl_kpiPurchPlanPORelVsPRDelDate_Two";
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Two.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Two.TabIndex = 3;
@@ -3905,7 +3964,7 @@
             // lbl_kpiPurchTotalPRRelConfEntry_Two
             // 
             this.lbl_kpiPurchTotalPRRelConfEntry_Two.AutoSize = true;
-            this.lbl_kpiPurchTotalPRRelConfEntry_Two.Location = new System.Drawing.Point(377, 407);
+            this.lbl_kpiPurchTotalPRRelConfEntry_Two.Location = new System.Drawing.Point(337, 407);
             this.lbl_kpiPurchTotalPRRelConfEntry_Two.Name = "lbl_kpiPurchTotalPRRelConfEntry_Two";
             this.lbl_kpiPurchTotalPRRelConfEntry_Two.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTotalPRRelConfEntry_Two.TabIndex = 3;
@@ -3914,7 +3973,7 @@
             // lbl_kpiPurchSubPOCreateVsConfEntry_Two
             // 
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Two.AutoSize = true;
-            this.lbl_kpiPurchSubPOCreateVsConfEntry_Two.Location = new System.Drawing.Point(377, 385);
+            this.lbl_kpiPurchSubPOCreateVsConfEntry_Two.Location = new System.Drawing.Point(337, 385);
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Two.Name = "lbl_kpiPurchSubPOCreateVsConfEntry_Two";
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Two.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Two.TabIndex = 3;
@@ -3923,7 +3982,7 @@
             // lbl_kpiPurchSubPRRelVsPORel_Two
             // 
             this.lbl_kpiPurchSubPRRelVsPORel_Two.AutoSize = true;
-            this.lbl_kpiPurchSubPRRelVsPORel_Two.Location = new System.Drawing.Point(377, 363);
+            this.lbl_kpiPurchSubPRRelVsPORel_Two.Location = new System.Drawing.Point(337, 363);
             this.lbl_kpiPurchSubPRRelVsPORel_Two.Name = "lbl_kpiPurchSubPRRelVsPORel_Two";
             this.lbl_kpiPurchSubPRRelVsPORel_Two.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchSubPRRelVsPORel_Two.TabIndex = 3;
@@ -3932,7 +3991,7 @@
             // lbl_kpiPurchTwoPORelVsPOConf_Two
             // 
             this.lbl_kpiPurchTwoPORelVsPOConf_Two.AutoSize = true;
-            this.lbl_kpiPurchTwoPORelVsPOConf_Two.Location = new System.Drawing.Point(377, 341);
+            this.lbl_kpiPurchTwoPORelVsPOConf_Two.Location = new System.Drawing.Point(337, 341);
             this.lbl_kpiPurchTwoPORelVsPOConf_Two.Name = "lbl_kpiPurchTwoPORelVsPOConf_Two";
             this.lbl_kpiPurchTwoPORelVsPOConf_Two.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTwoPORelVsPOConf_Two.TabIndex = 3;
@@ -3941,7 +4000,7 @@
             // lbl_kpiPurchTwoPORelVsPOConf_Three
             // 
             this.lbl_kpiPurchTwoPORelVsPOConf_Three.AutoSize = true;
-            this.lbl_kpiPurchTwoPORelVsPOConf_Three.Location = new System.Drawing.Point(442, 341);
+            this.lbl_kpiPurchTwoPORelVsPOConf_Three.Location = new System.Drawing.Point(398, 341);
             this.lbl_kpiPurchTwoPORelVsPOConf_Three.Name = "lbl_kpiPurchTwoPORelVsPOConf_Three";
             this.lbl_kpiPurchTwoPORelVsPOConf_Three.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTwoPORelVsPOConf_Three.TabIndex = 3;
@@ -3950,7 +4009,7 @@
             // lbl_kpiPurchTwoPORelVsPOConf_Four
             // 
             this.lbl_kpiPurchTwoPORelVsPOConf_Four.AutoSize = true;
-            this.lbl_kpiPurchTwoPORelVsPOConf_Four.Location = new System.Drawing.Point(505, 341);
+            this.lbl_kpiPurchTwoPORelVsPOConf_Four.Location = new System.Drawing.Point(459, 341);
             this.lbl_kpiPurchTwoPORelVsPOConf_Four.Name = "lbl_kpiPurchTwoPORelVsPOConf_Four";
             this.lbl_kpiPurchTwoPORelVsPOConf_Four.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTwoPORelVsPOConf_Four.TabIndex = 3;
@@ -3959,7 +4018,7 @@
             // lbl_kpiPurchTwoPORelVsPOConf_Five
             // 
             this.lbl_kpiPurchTwoPORelVsPOConf_Five.AutoSize = true;
-            this.lbl_kpiPurchTwoPORelVsPOConf_Five.Location = new System.Drawing.Point(568, 341);
+            this.lbl_kpiPurchTwoPORelVsPOConf_Five.Location = new System.Drawing.Point(520, 341);
             this.lbl_kpiPurchTwoPORelVsPOConf_Five.Name = "lbl_kpiPurchTwoPORelVsPOConf_Five";
             this.lbl_kpiPurchTwoPORelVsPOConf_Five.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTwoPORelVsPOConf_Five.TabIndex = 3;
@@ -3968,7 +4027,7 @@
             // lbl_kpiPurchTwoPORelVsPOConf_Six
             // 
             this.lbl_kpiPurchTwoPORelVsPOConf_Six.AutoSize = true;
-            this.lbl_kpiPurchTwoPORelVsPOConf_Six.Location = new System.Drawing.Point(631, 341);
+            this.lbl_kpiPurchTwoPORelVsPOConf_Six.Location = new System.Drawing.Point(581, 341);
             this.lbl_kpiPurchTwoPORelVsPOConf_Six.Name = "lbl_kpiPurchTwoPORelVsPOConf_Six";
             this.lbl_kpiPurchTwoPORelVsPOConf_Six.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTwoPORelVsPOConf_Six.TabIndex = 3;
@@ -3977,7 +4036,7 @@
             // lbl_kpiPurchTwoPORelVsPOConf_Seven
             // 
             this.lbl_kpiPurchTwoPORelVsPOConf_Seven.AutoSize = true;
-            this.lbl_kpiPurchTwoPORelVsPOConf_Seven.Location = new System.Drawing.Point(694, 341);
+            this.lbl_kpiPurchTwoPORelVsPOConf_Seven.Location = new System.Drawing.Point(642, 341);
             this.lbl_kpiPurchTwoPORelVsPOConf_Seven.Name = "lbl_kpiPurchTwoPORelVsPOConf_Seven";
             this.lbl_kpiPurchTwoPORelVsPOConf_Seven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTwoPORelVsPOConf_Seven.TabIndex = 3;
@@ -3986,7 +4045,7 @@
             // lbl_kpiPurchTwoPORelVsPOConf_Eight
             // 
             this.lbl_kpiPurchTwoPORelVsPOConf_Eight.AutoSize = true;
-            this.lbl_kpiPurchTwoPORelVsPOConf_Eight.Location = new System.Drawing.Point(757, 341);
+            this.lbl_kpiPurchTwoPORelVsPOConf_Eight.Location = new System.Drawing.Point(703, 341);
             this.lbl_kpiPurchTwoPORelVsPOConf_Eight.Name = "lbl_kpiPurchTwoPORelVsPOConf_Eight";
             this.lbl_kpiPurchTwoPORelVsPOConf_Eight.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTwoPORelVsPOConf_Eight.TabIndex = 3;
@@ -3995,7 +4054,7 @@
             // lbl_kpiPurchTwoPORelVsPOConf_Nine
             // 
             this.lbl_kpiPurchTwoPORelVsPOConf_Nine.AutoSize = true;
-            this.lbl_kpiPurchTwoPORelVsPOConf_Nine.Location = new System.Drawing.Point(820, 341);
+            this.lbl_kpiPurchTwoPORelVsPOConf_Nine.Location = new System.Drawing.Point(764, 341);
             this.lbl_kpiPurchTwoPORelVsPOConf_Nine.Name = "lbl_kpiPurchTwoPORelVsPOConf_Nine";
             this.lbl_kpiPurchTwoPORelVsPOConf_Nine.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTwoPORelVsPOConf_Nine.TabIndex = 3;
@@ -4004,7 +4063,7 @@
             // lbl_kpiPurchSubPRRelVsPORel_Three
             // 
             this.lbl_kpiPurchSubPRRelVsPORel_Three.AutoSize = true;
-            this.lbl_kpiPurchSubPRRelVsPORel_Three.Location = new System.Drawing.Point(442, 363);
+            this.lbl_kpiPurchSubPRRelVsPORel_Three.Location = new System.Drawing.Point(398, 363);
             this.lbl_kpiPurchSubPRRelVsPORel_Three.Name = "lbl_kpiPurchSubPRRelVsPORel_Three";
             this.lbl_kpiPurchSubPRRelVsPORel_Three.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchSubPRRelVsPORel_Three.TabIndex = 3;
@@ -4013,7 +4072,7 @@
             // lbl_kpiPurchSubPOCreateVsConfEntry_Three
             // 
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Three.AutoSize = true;
-            this.lbl_kpiPurchSubPOCreateVsConfEntry_Three.Location = new System.Drawing.Point(442, 385);
+            this.lbl_kpiPurchSubPOCreateVsConfEntry_Three.Location = new System.Drawing.Point(398, 385);
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Three.Name = "lbl_kpiPurchSubPOCreateVsConfEntry_Three";
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Three.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Three.TabIndex = 3;
@@ -4022,7 +4081,7 @@
             // lbl_kpiPurchTotalPRRelConfEntry_Three
             // 
             this.lbl_kpiPurchTotalPRRelConfEntry_Three.AutoSize = true;
-            this.lbl_kpiPurchTotalPRRelConfEntry_Three.Location = new System.Drawing.Point(442, 407);
+            this.lbl_kpiPurchTotalPRRelConfEntry_Three.Location = new System.Drawing.Point(398, 407);
             this.lbl_kpiPurchTotalPRRelConfEntry_Three.Name = "lbl_kpiPurchTotalPRRelConfEntry_Three";
             this.lbl_kpiPurchTotalPRRelConfEntry_Three.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTotalPRRelConfEntry_Three.TabIndex = 3;
@@ -4031,7 +4090,7 @@
             // lbl_kpiPurchSubPRRelVsPORel_Four
             // 
             this.lbl_kpiPurchSubPRRelVsPORel_Four.AutoSize = true;
-            this.lbl_kpiPurchSubPRRelVsPORel_Four.Location = new System.Drawing.Point(505, 363);
+            this.lbl_kpiPurchSubPRRelVsPORel_Four.Location = new System.Drawing.Point(459, 363);
             this.lbl_kpiPurchSubPRRelVsPORel_Four.Name = "lbl_kpiPurchSubPRRelVsPORel_Four";
             this.lbl_kpiPurchSubPRRelVsPORel_Four.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchSubPRRelVsPORel_Four.TabIndex = 3;
@@ -4040,7 +4099,7 @@
             // lbl_kpiPurchSubPRRelVsPORel_Five
             // 
             this.lbl_kpiPurchSubPRRelVsPORel_Five.AutoSize = true;
-            this.lbl_kpiPurchSubPRRelVsPORel_Five.Location = new System.Drawing.Point(568, 363);
+            this.lbl_kpiPurchSubPRRelVsPORel_Five.Location = new System.Drawing.Point(520, 363);
             this.lbl_kpiPurchSubPRRelVsPORel_Five.Name = "lbl_kpiPurchSubPRRelVsPORel_Five";
             this.lbl_kpiPurchSubPRRelVsPORel_Five.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchSubPRRelVsPORel_Five.TabIndex = 3;
@@ -4049,7 +4108,7 @@
             // lbl_kpiPurchSubPRRelVsPORel_Six
             // 
             this.lbl_kpiPurchSubPRRelVsPORel_Six.AutoSize = true;
-            this.lbl_kpiPurchSubPRRelVsPORel_Six.Location = new System.Drawing.Point(631, 363);
+            this.lbl_kpiPurchSubPRRelVsPORel_Six.Location = new System.Drawing.Point(581, 363);
             this.lbl_kpiPurchSubPRRelVsPORel_Six.Name = "lbl_kpiPurchSubPRRelVsPORel_Six";
             this.lbl_kpiPurchSubPRRelVsPORel_Six.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchSubPRRelVsPORel_Six.TabIndex = 3;
@@ -4058,7 +4117,7 @@
             // lbl_kpiPurchSubPRRelVsPORel_Seven
             // 
             this.lbl_kpiPurchSubPRRelVsPORel_Seven.AutoSize = true;
-            this.lbl_kpiPurchSubPRRelVsPORel_Seven.Location = new System.Drawing.Point(694, 363);
+            this.lbl_kpiPurchSubPRRelVsPORel_Seven.Location = new System.Drawing.Point(642, 363);
             this.lbl_kpiPurchSubPRRelVsPORel_Seven.Name = "lbl_kpiPurchSubPRRelVsPORel_Seven";
             this.lbl_kpiPurchSubPRRelVsPORel_Seven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchSubPRRelVsPORel_Seven.TabIndex = 3;
@@ -4067,7 +4126,7 @@
             // lbl_kpiPurchSubPRRelVsPORel_Eight
             // 
             this.lbl_kpiPurchSubPRRelVsPORel_Eight.AutoSize = true;
-            this.lbl_kpiPurchSubPRRelVsPORel_Eight.Location = new System.Drawing.Point(757, 363);
+            this.lbl_kpiPurchSubPRRelVsPORel_Eight.Location = new System.Drawing.Point(703, 363);
             this.lbl_kpiPurchSubPRRelVsPORel_Eight.Name = "lbl_kpiPurchSubPRRelVsPORel_Eight";
             this.lbl_kpiPurchSubPRRelVsPORel_Eight.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchSubPRRelVsPORel_Eight.TabIndex = 3;
@@ -4076,7 +4135,7 @@
             // lbl_kpiPurchSubPRRelVsPORel_Nine
             // 
             this.lbl_kpiPurchSubPRRelVsPORel_Nine.AutoSize = true;
-            this.lbl_kpiPurchSubPRRelVsPORel_Nine.Location = new System.Drawing.Point(820, 363);
+            this.lbl_kpiPurchSubPRRelVsPORel_Nine.Location = new System.Drawing.Point(764, 363);
             this.lbl_kpiPurchSubPRRelVsPORel_Nine.Name = "lbl_kpiPurchSubPRRelVsPORel_Nine";
             this.lbl_kpiPurchSubPRRelVsPORel_Nine.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchSubPRRelVsPORel_Nine.TabIndex = 3;
@@ -4085,7 +4144,7 @@
             // lbl_kpiPurchSubPOCreateVsConfEntry_Four
             // 
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Four.AutoSize = true;
-            this.lbl_kpiPurchSubPOCreateVsConfEntry_Four.Location = new System.Drawing.Point(505, 385);
+            this.lbl_kpiPurchSubPOCreateVsConfEntry_Four.Location = new System.Drawing.Point(459, 385);
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Four.Name = "lbl_kpiPurchSubPOCreateVsConfEntry_Four";
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Four.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Four.TabIndex = 3;
@@ -4094,7 +4153,7 @@
             // lbl_kpiPurchSubPOCreateVsConfEntry_Five
             // 
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Five.AutoSize = true;
-            this.lbl_kpiPurchSubPOCreateVsConfEntry_Five.Location = new System.Drawing.Point(568, 385);
+            this.lbl_kpiPurchSubPOCreateVsConfEntry_Five.Location = new System.Drawing.Point(520, 385);
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Five.Name = "lbl_kpiPurchSubPOCreateVsConfEntry_Five";
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Five.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Five.TabIndex = 3;
@@ -4103,7 +4162,7 @@
             // lbl_kpiPurchSubPOCreateVsConfEntry_Six
             // 
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Six.AutoSize = true;
-            this.lbl_kpiPurchSubPOCreateVsConfEntry_Six.Location = new System.Drawing.Point(631, 385);
+            this.lbl_kpiPurchSubPOCreateVsConfEntry_Six.Location = new System.Drawing.Point(581, 385);
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Six.Name = "lbl_kpiPurchSubPOCreateVsConfEntry_Six";
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Six.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Six.TabIndex = 3;
@@ -4112,7 +4171,7 @@
             // lbl_kpiPurchSubPOCreateVsConfEntry_Seven
             // 
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Seven.AutoSize = true;
-            this.lbl_kpiPurchSubPOCreateVsConfEntry_Seven.Location = new System.Drawing.Point(694, 385);
+            this.lbl_kpiPurchSubPOCreateVsConfEntry_Seven.Location = new System.Drawing.Point(642, 385);
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Seven.Name = "lbl_kpiPurchSubPOCreateVsConfEntry_Seven";
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Seven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Seven.TabIndex = 3;
@@ -4121,7 +4180,7 @@
             // lbl_kpiPurchSubPOCreateVsConfEntry_Eight
             // 
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Eight.AutoSize = true;
-            this.lbl_kpiPurchSubPOCreateVsConfEntry_Eight.Location = new System.Drawing.Point(757, 385);
+            this.lbl_kpiPurchSubPOCreateVsConfEntry_Eight.Location = new System.Drawing.Point(703, 385);
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Eight.Name = "lbl_kpiPurchSubPOCreateVsConfEntry_Eight";
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Eight.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Eight.TabIndex = 3;
@@ -4130,7 +4189,7 @@
             // lbl_kpiPurchSubPOCreateVsConfEntry_Nine
             // 
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Nine.AutoSize = true;
-            this.lbl_kpiPurchSubPOCreateVsConfEntry_Nine.Location = new System.Drawing.Point(820, 385);
+            this.lbl_kpiPurchSubPOCreateVsConfEntry_Nine.Location = new System.Drawing.Point(764, 385);
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Nine.Name = "lbl_kpiPurchSubPOCreateVsConfEntry_Nine";
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Nine.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Nine.TabIndex = 3;
@@ -4139,7 +4198,7 @@
             // lbl_kpiPurchTotalPRRelConfEntry_Nine
             // 
             this.lbl_kpiPurchTotalPRRelConfEntry_Nine.AutoSize = true;
-            this.lbl_kpiPurchTotalPRRelConfEntry_Nine.Location = new System.Drawing.Point(820, 407);
+            this.lbl_kpiPurchTotalPRRelConfEntry_Nine.Location = new System.Drawing.Point(764, 407);
             this.lbl_kpiPurchTotalPRRelConfEntry_Nine.Name = "lbl_kpiPurchTotalPRRelConfEntry_Nine";
             this.lbl_kpiPurchTotalPRRelConfEntry_Nine.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTotalPRRelConfEntry_Nine.TabIndex = 3;
@@ -4148,7 +4207,7 @@
             // lbl_kpiPurchTotalPRRelConfEntry_Eight
             // 
             this.lbl_kpiPurchTotalPRRelConfEntry_Eight.AutoSize = true;
-            this.lbl_kpiPurchTotalPRRelConfEntry_Eight.Location = new System.Drawing.Point(757, 407);
+            this.lbl_kpiPurchTotalPRRelConfEntry_Eight.Location = new System.Drawing.Point(703, 407);
             this.lbl_kpiPurchTotalPRRelConfEntry_Eight.Name = "lbl_kpiPurchTotalPRRelConfEntry_Eight";
             this.lbl_kpiPurchTotalPRRelConfEntry_Eight.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTotalPRRelConfEntry_Eight.TabIndex = 3;
@@ -4157,7 +4216,7 @@
             // lbl_kpiPurchTotalPRRelConfEntry_Seven
             // 
             this.lbl_kpiPurchTotalPRRelConfEntry_Seven.AutoSize = true;
-            this.lbl_kpiPurchTotalPRRelConfEntry_Seven.Location = new System.Drawing.Point(694, 407);
+            this.lbl_kpiPurchTotalPRRelConfEntry_Seven.Location = new System.Drawing.Point(642, 407);
             this.lbl_kpiPurchTotalPRRelConfEntry_Seven.Name = "lbl_kpiPurchTotalPRRelConfEntry_Seven";
             this.lbl_kpiPurchTotalPRRelConfEntry_Seven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTotalPRRelConfEntry_Seven.TabIndex = 3;
@@ -4166,7 +4225,7 @@
             // lbl_kpiPurchTotalPRRelConfEntry_Six
             // 
             this.lbl_kpiPurchTotalPRRelConfEntry_Six.AutoSize = true;
-            this.lbl_kpiPurchTotalPRRelConfEntry_Six.Location = new System.Drawing.Point(631, 407);
+            this.lbl_kpiPurchTotalPRRelConfEntry_Six.Location = new System.Drawing.Point(581, 407);
             this.lbl_kpiPurchTotalPRRelConfEntry_Six.Name = "lbl_kpiPurchTotalPRRelConfEntry_Six";
             this.lbl_kpiPurchTotalPRRelConfEntry_Six.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTotalPRRelConfEntry_Six.TabIndex = 3;
@@ -4175,7 +4234,7 @@
             // lbl_kpiPurchTotalPRRelConfEntry_Five
             // 
             this.lbl_kpiPurchTotalPRRelConfEntry_Five.AutoSize = true;
-            this.lbl_kpiPurchTotalPRRelConfEntry_Five.Location = new System.Drawing.Point(568, 407);
+            this.lbl_kpiPurchTotalPRRelConfEntry_Five.Location = new System.Drawing.Point(520, 407);
             this.lbl_kpiPurchTotalPRRelConfEntry_Five.Name = "lbl_kpiPurchTotalPRRelConfEntry_Five";
             this.lbl_kpiPurchTotalPRRelConfEntry_Five.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTotalPRRelConfEntry_Five.TabIndex = 3;
@@ -4184,7 +4243,7 @@
             // lbl_kpiPurchTotalPRRelConfEntry_Four
             // 
             this.lbl_kpiPurchTotalPRRelConfEntry_Four.AutoSize = true;
-            this.lbl_kpiPurchTotalPRRelConfEntry_Four.Location = new System.Drawing.Point(505, 407);
+            this.lbl_kpiPurchTotalPRRelConfEntry_Four.Location = new System.Drawing.Point(459, 407);
             this.lbl_kpiPurchTotalPRRelConfEntry_Four.Name = "lbl_kpiPurchTotalPRRelConfEntry_Four";
             this.lbl_kpiPurchTotalPRRelConfEntry_Four.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTotalPRRelConfEntry_Four.TabIndex = 3;
@@ -4193,7 +4252,7 @@
             // lbl_kpiOtherPRsReleased_Two
             // 
             this.lbl_kpiOtherPRsReleased_Two.AutoSize = true;
-            this.lbl_kpiOtherPRsReleased_Two.Location = new System.Drawing.Point(377, 539);
+            this.lbl_kpiOtherPRsReleased_Two.Location = new System.Drawing.Point(337, 539);
             this.lbl_kpiOtherPRsReleased_Two.Name = "lbl_kpiOtherPRsReleased_Two";
             this.lbl_kpiOtherPRsReleased_Two.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherPRsReleased_Two.TabIndex = 3;
@@ -4202,7 +4261,7 @@
             // lbl_kpiOtherPRsReleased_Three
             // 
             this.lbl_kpiOtherPRsReleased_Three.AutoSize = true;
-            this.lbl_kpiOtherPRsReleased_Three.Location = new System.Drawing.Point(442, 539);
+            this.lbl_kpiOtherPRsReleased_Three.Location = new System.Drawing.Point(398, 539);
             this.lbl_kpiOtherPRsReleased_Three.Name = "lbl_kpiOtherPRsReleased_Three";
             this.lbl_kpiOtherPRsReleased_Three.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherPRsReleased_Three.TabIndex = 3;
@@ -4211,7 +4270,7 @@
             // lbl_kpiOtherPRsReleased_Four
             // 
             this.lbl_kpiOtherPRsReleased_Four.AutoSize = true;
-            this.lbl_kpiOtherPRsReleased_Four.Location = new System.Drawing.Point(505, 539);
+            this.lbl_kpiOtherPRsReleased_Four.Location = new System.Drawing.Point(459, 539);
             this.lbl_kpiOtherPRsReleased_Four.Name = "lbl_kpiOtherPRsReleased_Four";
             this.lbl_kpiOtherPRsReleased_Four.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherPRsReleased_Four.TabIndex = 3;
@@ -4220,7 +4279,7 @@
             // lbl_kpiOtherPRsReleased_Five
             // 
             this.lbl_kpiOtherPRsReleased_Five.AutoSize = true;
-            this.lbl_kpiOtherPRsReleased_Five.Location = new System.Drawing.Point(568, 539);
+            this.lbl_kpiOtherPRsReleased_Five.Location = new System.Drawing.Point(520, 539);
             this.lbl_kpiOtherPRsReleased_Five.Name = "lbl_kpiOtherPRsReleased_Five";
             this.lbl_kpiOtherPRsReleased_Five.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherPRsReleased_Five.TabIndex = 3;
@@ -4229,7 +4288,7 @@
             // lbl_kpiOtherPRsReleased_Six
             // 
             this.lbl_kpiOtherPRsReleased_Six.AutoSize = true;
-            this.lbl_kpiOtherPRsReleased_Six.Location = new System.Drawing.Point(631, 539);
+            this.lbl_kpiOtherPRsReleased_Six.Location = new System.Drawing.Point(581, 539);
             this.lbl_kpiOtherPRsReleased_Six.Name = "lbl_kpiOtherPRsReleased_Six";
             this.lbl_kpiOtherPRsReleased_Six.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherPRsReleased_Six.TabIndex = 3;
@@ -4238,7 +4297,7 @@
             // lbl_kpiOtherPRsReleased_Seven
             // 
             this.lbl_kpiOtherPRsReleased_Seven.AutoSize = true;
-            this.lbl_kpiOtherPRsReleased_Seven.Location = new System.Drawing.Point(694, 539);
+            this.lbl_kpiOtherPRsReleased_Seven.Location = new System.Drawing.Point(642, 539);
             this.lbl_kpiOtherPRsReleased_Seven.Name = "lbl_kpiOtherPRsReleased_Seven";
             this.lbl_kpiOtherPRsReleased_Seven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherPRsReleased_Seven.TabIndex = 3;
@@ -4247,7 +4306,7 @@
             // lbl_kpiOtherPRsReleased_Eight
             // 
             this.lbl_kpiOtherPRsReleased_Eight.AutoSize = true;
-            this.lbl_kpiOtherPRsReleased_Eight.Location = new System.Drawing.Point(757, 539);
+            this.lbl_kpiOtherPRsReleased_Eight.Location = new System.Drawing.Point(703, 539);
             this.lbl_kpiOtherPRsReleased_Eight.Name = "lbl_kpiOtherPRsReleased_Eight";
             this.lbl_kpiOtherPRsReleased_Eight.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherPRsReleased_Eight.TabIndex = 3;
@@ -4256,7 +4315,7 @@
             // lbl_kpiOtherPRsReleased_Nine
             // 
             this.lbl_kpiOtherPRsReleased_Nine.AutoSize = true;
-            this.lbl_kpiOtherPRsReleased_Nine.Location = new System.Drawing.Point(820, 539);
+            this.lbl_kpiOtherPRsReleased_Nine.Location = new System.Drawing.Point(764, 539);
             this.lbl_kpiOtherPRsReleased_Nine.Name = "lbl_kpiOtherPRsReleased_Nine";
             this.lbl_kpiOtherPRsReleased_Nine.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherPRsReleased_Nine.TabIndex = 3;
@@ -4265,7 +4324,7 @@
             // lbl_kpiOtherPRsReleased_Ten
             // 
             this.lbl_kpiOtherPRsReleased_Ten.AutoSize = true;
-            this.lbl_kpiOtherPRsReleased_Ten.Location = new System.Drawing.Point(883, 539);
+            this.lbl_kpiOtherPRsReleased_Ten.Location = new System.Drawing.Point(825, 539);
             this.lbl_kpiOtherPRsReleased_Ten.Name = "lbl_kpiOtherPRsReleased_Ten";
             this.lbl_kpiOtherPRsReleased_Ten.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherPRsReleased_Ten.TabIndex = 3;
@@ -4274,7 +4333,7 @@
             // lbl_kpiOtherPRsReleased_Eleven
             // 
             this.lbl_kpiOtherPRsReleased_Eleven.AutoSize = true;
-            this.lbl_kpiOtherPRsReleased_Eleven.Location = new System.Drawing.Point(946, 539);
+            this.lbl_kpiOtherPRsReleased_Eleven.Location = new System.Drawing.Point(886, 539);
             this.lbl_kpiOtherPRsReleased_Eleven.Name = "lbl_kpiOtherPRsReleased_Eleven";
             this.lbl_kpiOtherPRsReleased_Eleven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherPRsReleased_Eleven.TabIndex = 3;
@@ -4283,7 +4342,7 @@
             // lbl_kpiOtherTotalSpend_Two
             // 
             this.lbl_kpiOtherTotalSpend_Two.AutoSize = true;
-            this.lbl_kpiOtherTotalSpend_Two.Location = new System.Drawing.Point(377, 561);
+            this.lbl_kpiOtherTotalSpend_Two.Location = new System.Drawing.Point(337, 561);
             this.lbl_kpiOtherTotalSpend_Two.Name = "lbl_kpiOtherTotalSpend_Two";
             this.lbl_kpiOtherTotalSpend_Two.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherTotalSpend_Two.TabIndex = 3;
@@ -4292,7 +4351,7 @@
             // lbl_kpiOtherPRsVsPOValue_Two
             // 
             this.lbl_kpiOtherPRsVsPOValue_Two.AutoSize = true;
-            this.lbl_kpiOtherPRsVsPOValue_Two.Location = new System.Drawing.Point(377, 583);
+            this.lbl_kpiOtherPRsVsPOValue_Two.Location = new System.Drawing.Point(337, 583);
             this.lbl_kpiOtherPRsVsPOValue_Two.Name = "lbl_kpiOtherPRsVsPOValue_Two";
             this.lbl_kpiOtherPRsVsPOValue_Two.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherPRsVsPOValue_Two.TabIndex = 3;
@@ -4301,7 +4360,7 @@
             // lbl_kpiOtherPRsVsPOValue_Three
             // 
             this.lbl_kpiOtherPRsVsPOValue_Three.AutoSize = true;
-            this.lbl_kpiOtherPRsVsPOValue_Three.Location = new System.Drawing.Point(442, 583);
+            this.lbl_kpiOtherPRsVsPOValue_Three.Location = new System.Drawing.Point(398, 583);
             this.lbl_kpiOtherPRsVsPOValue_Three.Name = "lbl_kpiOtherPRsVsPOValue_Three";
             this.lbl_kpiOtherPRsVsPOValue_Three.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherPRsVsPOValue_Three.TabIndex = 3;
@@ -4310,7 +4369,7 @@
             // lbl_kpiOtherPRsVsPOValue_Four
             // 
             this.lbl_kpiOtherPRsVsPOValue_Four.AutoSize = true;
-            this.lbl_kpiOtherPRsVsPOValue_Four.Location = new System.Drawing.Point(505, 583);
+            this.lbl_kpiOtherPRsVsPOValue_Four.Location = new System.Drawing.Point(459, 583);
             this.lbl_kpiOtherPRsVsPOValue_Four.Name = "lbl_kpiOtherPRsVsPOValue_Four";
             this.lbl_kpiOtherPRsVsPOValue_Four.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherPRsVsPOValue_Four.TabIndex = 3;
@@ -4319,7 +4378,7 @@
             // lbl_kpiOtherPRsVsPOValue_Five
             // 
             this.lbl_kpiOtherPRsVsPOValue_Five.AutoSize = true;
-            this.lbl_kpiOtherPRsVsPOValue_Five.Location = new System.Drawing.Point(568, 583);
+            this.lbl_kpiOtherPRsVsPOValue_Five.Location = new System.Drawing.Point(520, 583);
             this.lbl_kpiOtherPRsVsPOValue_Five.Name = "lbl_kpiOtherPRsVsPOValue_Five";
             this.lbl_kpiOtherPRsVsPOValue_Five.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherPRsVsPOValue_Five.TabIndex = 3;
@@ -4328,7 +4387,7 @@
             // lbl_kpiOtherPRsVsPOValue_Six
             // 
             this.lbl_kpiOtherPRsVsPOValue_Six.AutoSize = true;
-            this.lbl_kpiOtherPRsVsPOValue_Six.Location = new System.Drawing.Point(631, 583);
+            this.lbl_kpiOtherPRsVsPOValue_Six.Location = new System.Drawing.Point(581, 583);
             this.lbl_kpiOtherPRsVsPOValue_Six.Name = "lbl_kpiOtherPRsVsPOValue_Six";
             this.lbl_kpiOtherPRsVsPOValue_Six.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherPRsVsPOValue_Six.TabIndex = 3;
@@ -4337,7 +4396,7 @@
             // lbl_kpiOtherPRsVsPOValue_Seven
             // 
             this.lbl_kpiOtherPRsVsPOValue_Seven.AutoSize = true;
-            this.lbl_kpiOtherPRsVsPOValue_Seven.Location = new System.Drawing.Point(694, 583);
+            this.lbl_kpiOtherPRsVsPOValue_Seven.Location = new System.Drawing.Point(642, 583);
             this.lbl_kpiOtherPRsVsPOValue_Seven.Name = "lbl_kpiOtherPRsVsPOValue_Seven";
             this.lbl_kpiOtherPRsVsPOValue_Seven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherPRsVsPOValue_Seven.TabIndex = 3;
@@ -4346,7 +4405,7 @@
             // lbl_kpiOtherPRsVsPOValue_Eight
             // 
             this.lbl_kpiOtherPRsVsPOValue_Eight.AutoSize = true;
-            this.lbl_kpiOtherPRsVsPOValue_Eight.Location = new System.Drawing.Point(757, 583);
+            this.lbl_kpiOtherPRsVsPOValue_Eight.Location = new System.Drawing.Point(703, 583);
             this.lbl_kpiOtherPRsVsPOValue_Eight.Name = "lbl_kpiOtherPRsVsPOValue_Eight";
             this.lbl_kpiOtherPRsVsPOValue_Eight.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherPRsVsPOValue_Eight.TabIndex = 3;
@@ -4355,7 +4414,7 @@
             // lbl_kpiOtherPRsVsPOValue_Nine
             // 
             this.lbl_kpiOtherPRsVsPOValue_Nine.AutoSize = true;
-            this.lbl_kpiOtherPRsVsPOValue_Nine.Location = new System.Drawing.Point(820, 583);
+            this.lbl_kpiOtherPRsVsPOValue_Nine.Location = new System.Drawing.Point(764, 583);
             this.lbl_kpiOtherPRsVsPOValue_Nine.Name = "lbl_kpiOtherPRsVsPOValue_Nine";
             this.lbl_kpiOtherPRsVsPOValue_Nine.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherPRsVsPOValue_Nine.TabIndex = 3;
@@ -4364,7 +4423,7 @@
             // lbl_kpiOtherPRsVsPOValue_Ten
             // 
             this.lbl_kpiOtherPRsVsPOValue_Ten.AutoSize = true;
-            this.lbl_kpiOtherPRsVsPOValue_Ten.Location = new System.Drawing.Point(883, 583);
+            this.lbl_kpiOtherPRsVsPOValue_Ten.Location = new System.Drawing.Point(825, 583);
             this.lbl_kpiOtherPRsVsPOValue_Ten.Name = "lbl_kpiOtherPRsVsPOValue_Ten";
             this.lbl_kpiOtherPRsVsPOValue_Ten.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherPRsVsPOValue_Ten.TabIndex = 3;
@@ -4373,7 +4432,7 @@
             // lbl_kpiOtherPRsVsPOValue_Eleven
             // 
             this.lbl_kpiOtherPRsVsPOValue_Eleven.AutoSize = true;
-            this.lbl_kpiOtherPRsVsPOValue_Eleven.Location = new System.Drawing.Point(946, 583);
+            this.lbl_kpiOtherPRsVsPOValue_Eleven.Location = new System.Drawing.Point(886, 583);
             this.lbl_kpiOtherPRsVsPOValue_Eleven.Name = "lbl_kpiOtherPRsVsPOValue_Eleven";
             this.lbl_kpiOtherPRsVsPOValue_Eleven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherPRsVsPOValue_Eleven.TabIndex = 3;
@@ -4382,7 +4441,7 @@
             // lbl_kpiOtherTotalSpend_Three
             // 
             this.lbl_kpiOtherTotalSpend_Three.AutoSize = true;
-            this.lbl_kpiOtherTotalSpend_Three.Location = new System.Drawing.Point(442, 561);
+            this.lbl_kpiOtherTotalSpend_Three.Location = new System.Drawing.Point(398, 561);
             this.lbl_kpiOtherTotalSpend_Three.Name = "lbl_kpiOtherTotalSpend_Three";
             this.lbl_kpiOtherTotalSpend_Three.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherTotalSpend_Three.TabIndex = 3;
@@ -4391,7 +4450,7 @@
             // lbl_kpiOtherTotalSpend_Four
             // 
             this.lbl_kpiOtherTotalSpend_Four.AutoSize = true;
-            this.lbl_kpiOtherTotalSpend_Four.Location = new System.Drawing.Point(505, 561);
+            this.lbl_kpiOtherTotalSpend_Four.Location = new System.Drawing.Point(459, 561);
             this.lbl_kpiOtherTotalSpend_Four.Name = "lbl_kpiOtherTotalSpend_Four";
             this.lbl_kpiOtherTotalSpend_Four.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherTotalSpend_Four.TabIndex = 3;
@@ -4400,7 +4459,7 @@
             // lbl_kpiOtherTotalSpend_Five
             // 
             this.lbl_kpiOtherTotalSpend_Five.AutoSize = true;
-            this.lbl_kpiOtherTotalSpend_Five.Location = new System.Drawing.Point(568, 561);
+            this.lbl_kpiOtherTotalSpend_Five.Location = new System.Drawing.Point(520, 561);
             this.lbl_kpiOtherTotalSpend_Five.Name = "lbl_kpiOtherTotalSpend_Five";
             this.lbl_kpiOtherTotalSpend_Five.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherTotalSpend_Five.TabIndex = 3;
@@ -4409,7 +4468,7 @@
             // lbl_kpiOtherTotalSpend_Six
             // 
             this.lbl_kpiOtherTotalSpend_Six.AutoSize = true;
-            this.lbl_kpiOtherTotalSpend_Six.Location = new System.Drawing.Point(631, 561);
+            this.lbl_kpiOtherTotalSpend_Six.Location = new System.Drawing.Point(581, 561);
             this.lbl_kpiOtherTotalSpend_Six.Name = "lbl_kpiOtherTotalSpend_Six";
             this.lbl_kpiOtherTotalSpend_Six.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherTotalSpend_Six.TabIndex = 3;
@@ -4418,7 +4477,7 @@
             // lbl_kpiOtherTotalSpend_Seven
             // 
             this.lbl_kpiOtherTotalSpend_Seven.AutoSize = true;
-            this.lbl_kpiOtherTotalSpend_Seven.Location = new System.Drawing.Point(694, 561);
+            this.lbl_kpiOtherTotalSpend_Seven.Location = new System.Drawing.Point(642, 561);
             this.lbl_kpiOtherTotalSpend_Seven.Name = "lbl_kpiOtherTotalSpend_Seven";
             this.lbl_kpiOtherTotalSpend_Seven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherTotalSpend_Seven.TabIndex = 3;
@@ -4427,7 +4486,7 @@
             // lbl_kpiOtherTotalSpend_Eight
             // 
             this.lbl_kpiOtherTotalSpend_Eight.AutoSize = true;
-            this.lbl_kpiOtherTotalSpend_Eight.Location = new System.Drawing.Point(757, 561);
+            this.lbl_kpiOtherTotalSpend_Eight.Location = new System.Drawing.Point(703, 561);
             this.lbl_kpiOtherTotalSpend_Eight.Name = "lbl_kpiOtherTotalSpend_Eight";
             this.lbl_kpiOtherTotalSpend_Eight.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherTotalSpend_Eight.TabIndex = 3;
@@ -4436,7 +4495,7 @@
             // lbl_kpiOtherTotalSpend_Nine
             // 
             this.lbl_kpiOtherTotalSpend_Nine.AutoSize = true;
-            this.lbl_kpiOtherTotalSpend_Nine.Location = new System.Drawing.Point(820, 561);
+            this.lbl_kpiOtherTotalSpend_Nine.Location = new System.Drawing.Point(764, 561);
             this.lbl_kpiOtherTotalSpend_Nine.Name = "lbl_kpiOtherTotalSpend_Nine";
             this.lbl_kpiOtherTotalSpend_Nine.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherTotalSpend_Nine.TabIndex = 3;
@@ -4445,7 +4504,7 @@
             // lbl_kpiOtherTotalSpend_Ten
             // 
             this.lbl_kpiOtherTotalSpend_Ten.AutoSize = true;
-            this.lbl_kpiOtherTotalSpend_Ten.Location = new System.Drawing.Point(883, 561);
+            this.lbl_kpiOtherTotalSpend_Ten.Location = new System.Drawing.Point(825, 561);
             this.lbl_kpiOtherTotalSpend_Ten.Name = "lbl_kpiOtherTotalSpend_Ten";
             this.lbl_kpiOtherTotalSpend_Ten.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherTotalSpend_Ten.TabIndex = 3;
@@ -4454,7 +4513,7 @@
             // lbl_kpiOtherTotalSpend_Eleven
             // 
             this.lbl_kpiOtherTotalSpend_Eleven.AutoSize = true;
-            this.lbl_kpiOtherTotalSpend_Eleven.Location = new System.Drawing.Point(946, 561);
+            this.lbl_kpiOtherTotalSpend_Eleven.Location = new System.Drawing.Point(886, 561);
             this.lbl_kpiOtherTotalSpend_Eleven.Name = "lbl_kpiOtherTotalSpend_Eleven";
             this.lbl_kpiOtherTotalSpend_Eleven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherTotalSpend_Eleven.TabIndex = 3;
@@ -4463,7 +4522,7 @@
             // lbl_kpiOtherPrsCreated_One
             // 
             this.lbl_kpiOtherPrsCreated_One.AutoSize = true;
-            this.lbl_kpiOtherPrsCreated_One.Location = new System.Drawing.Point(316, 517);
+            this.lbl_kpiOtherPrsCreated_One.Location = new System.Drawing.Point(276, 517);
             this.lbl_kpiOtherPrsCreated_One.Name = "lbl_kpiOtherPrsCreated_One";
             this.lbl_kpiOtherPrsCreated_One.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherPrsCreated_One.TabIndex = 3;
@@ -4472,7 +4531,7 @@
             // lbl_kpiOtherPrsCreated_Two
             // 
             this.lbl_kpiOtherPrsCreated_Two.AutoSize = true;
-            this.lbl_kpiOtherPrsCreated_Two.Location = new System.Drawing.Point(377, 517);
+            this.lbl_kpiOtherPrsCreated_Two.Location = new System.Drawing.Point(337, 517);
             this.lbl_kpiOtherPrsCreated_Two.Name = "lbl_kpiOtherPrsCreated_Two";
             this.lbl_kpiOtherPrsCreated_Two.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherPrsCreated_Two.TabIndex = 3;
@@ -4481,7 +4540,7 @@
             // lbl_kpiOtherPrsCreated_Three
             // 
             this.lbl_kpiOtherPrsCreated_Three.AutoSize = true;
-            this.lbl_kpiOtherPrsCreated_Three.Location = new System.Drawing.Point(442, 517);
+            this.lbl_kpiOtherPrsCreated_Three.Location = new System.Drawing.Point(398, 517);
             this.lbl_kpiOtherPrsCreated_Three.Name = "lbl_kpiOtherPrsCreated_Three";
             this.lbl_kpiOtherPrsCreated_Three.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherPrsCreated_Three.TabIndex = 3;
@@ -4490,7 +4549,7 @@
             // lbl_kpiOtherPrsCreated_Four
             // 
             this.lbl_kpiOtherPrsCreated_Four.AutoSize = true;
-            this.lbl_kpiOtherPrsCreated_Four.Location = new System.Drawing.Point(505, 517);
+            this.lbl_kpiOtherPrsCreated_Four.Location = new System.Drawing.Point(459, 517);
             this.lbl_kpiOtherPrsCreated_Four.Name = "lbl_kpiOtherPrsCreated_Four";
             this.lbl_kpiOtherPrsCreated_Four.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherPrsCreated_Four.TabIndex = 3;
@@ -4499,7 +4558,7 @@
             // lbl_kpiOtherPrsCreated_Five
             // 
             this.lbl_kpiOtherPrsCreated_Five.AutoSize = true;
-            this.lbl_kpiOtherPrsCreated_Five.Location = new System.Drawing.Point(568, 517);
+            this.lbl_kpiOtherPrsCreated_Five.Location = new System.Drawing.Point(520, 517);
             this.lbl_kpiOtherPrsCreated_Five.Name = "lbl_kpiOtherPrsCreated_Five";
             this.lbl_kpiOtherPrsCreated_Five.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherPrsCreated_Five.TabIndex = 3;
@@ -4508,7 +4567,7 @@
             // lbl_kpiOtherPrsCreated_Six
             // 
             this.lbl_kpiOtherPrsCreated_Six.AutoSize = true;
-            this.lbl_kpiOtherPrsCreated_Six.Location = new System.Drawing.Point(631, 517);
+            this.lbl_kpiOtherPrsCreated_Six.Location = new System.Drawing.Point(581, 517);
             this.lbl_kpiOtherPrsCreated_Six.Name = "lbl_kpiOtherPrsCreated_Six";
             this.lbl_kpiOtherPrsCreated_Six.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherPrsCreated_Six.TabIndex = 3;
@@ -4517,7 +4576,7 @@
             // lbl_kpiOtherPrsCreated_Seven
             // 
             this.lbl_kpiOtherPrsCreated_Seven.AutoSize = true;
-            this.lbl_kpiOtherPrsCreated_Seven.Location = new System.Drawing.Point(694, 517);
+            this.lbl_kpiOtherPrsCreated_Seven.Location = new System.Drawing.Point(642, 517);
             this.lbl_kpiOtherPrsCreated_Seven.Name = "lbl_kpiOtherPrsCreated_Seven";
             this.lbl_kpiOtherPrsCreated_Seven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherPrsCreated_Seven.TabIndex = 3;
@@ -4526,7 +4585,7 @@
             // lbl_kpiOtherPrsCreated_Eight
             // 
             this.lbl_kpiOtherPrsCreated_Eight.AutoSize = true;
-            this.lbl_kpiOtherPrsCreated_Eight.Location = new System.Drawing.Point(757, 517);
+            this.lbl_kpiOtherPrsCreated_Eight.Location = new System.Drawing.Point(703, 517);
             this.lbl_kpiOtherPrsCreated_Eight.Name = "lbl_kpiOtherPrsCreated_Eight";
             this.lbl_kpiOtherPrsCreated_Eight.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherPrsCreated_Eight.TabIndex = 3;
@@ -4535,7 +4594,7 @@
             // lbl_kpiOtherPrsCreated_Nine
             // 
             this.lbl_kpiOtherPrsCreated_Nine.AutoSize = true;
-            this.lbl_kpiOtherPrsCreated_Nine.Location = new System.Drawing.Point(820, 517);
+            this.lbl_kpiOtherPrsCreated_Nine.Location = new System.Drawing.Point(764, 517);
             this.lbl_kpiOtherPrsCreated_Nine.Name = "lbl_kpiOtherPrsCreated_Nine";
             this.lbl_kpiOtherPrsCreated_Nine.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherPrsCreated_Nine.TabIndex = 3;
@@ -4544,7 +4603,7 @@
             // lbl_kpiOtherPrsCreated_Ten
             // 
             this.lbl_kpiOtherPrsCreated_Ten.AutoSize = true;
-            this.lbl_kpiOtherPrsCreated_Ten.Location = new System.Drawing.Point(883, 517);
+            this.lbl_kpiOtherPrsCreated_Ten.Location = new System.Drawing.Point(825, 517);
             this.lbl_kpiOtherPrsCreated_Ten.Name = "lbl_kpiOtherPrsCreated_Ten";
             this.lbl_kpiOtherPrsCreated_Ten.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherPrsCreated_Ten.TabIndex = 3;
@@ -4553,38 +4612,11 @@
             // lbl_kpiOtherPrsCreated_Eleven
             // 
             this.lbl_kpiOtherPrsCreated_Eleven.AutoSize = true;
-            this.lbl_kpiOtherPrsCreated_Eleven.Location = new System.Drawing.Point(946, 517);
+            this.lbl_kpiOtherPrsCreated_Eleven.Location = new System.Drawing.Point(886, 517);
             this.lbl_kpiOtherPrsCreated_Eleven.Name = "lbl_kpiOtherPrsCreated_Eleven";
             this.lbl_kpiOtherPrsCreated_Eleven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherPrsCreated_Eleven.TabIndex = 3;
             this.lbl_kpiOtherPrsCreated_Eleven.Text = "data";
-            // 
-            // lbl_kpiPurchTwoPORelVsPOConf_Thirteen
-            // 
-            this.lbl_kpiPurchTwoPORelVsPOConf_Thirteen.AutoSize = true;
-            this.lbl_kpiPurchTwoPORelVsPOConf_Thirteen.Location = new System.Drawing.Point(1072, 341);
-            this.lbl_kpiPurchTwoPORelVsPOConf_Thirteen.Name = "lbl_kpiPurchTwoPORelVsPOConf_Thirteen";
-            this.lbl_kpiPurchTwoPORelVsPOConf_Thirteen.Size = new System.Drawing.Size(28, 13);
-            this.lbl_kpiPurchTwoPORelVsPOConf_Thirteen.TabIndex = 3;
-            this.lbl_kpiPurchTwoPORelVsPOConf_Thirteen.Text = "data";
-            // 
-            // lbl_kpiPurchSubPOCreateVsConfEntry_Thirteen
-            // 
-            this.lbl_kpiPurchSubPOCreateVsConfEntry_Thirteen.AutoSize = true;
-            this.lbl_kpiPurchSubPOCreateVsConfEntry_Thirteen.Location = new System.Drawing.Point(1072, 385);
-            this.lbl_kpiPurchSubPOCreateVsConfEntry_Thirteen.Name = "lbl_kpiPurchSubPOCreateVsConfEntry_Thirteen";
-            this.lbl_kpiPurchSubPOCreateVsConfEntry_Thirteen.Size = new System.Drawing.Size(28, 13);
-            this.lbl_kpiPurchSubPOCreateVsConfEntry_Thirteen.TabIndex = 3;
-            this.lbl_kpiPurchSubPOCreateVsConfEntry_Thirteen.Text = "data";
-            // 
-            // lbl_kpiPurchTotalPRRelConfEntry_Thirteen
-            // 
-            this.lbl_kpiPurchTotalPRRelConfEntry_Thirteen.AutoSize = true;
-            this.lbl_kpiPurchTotalPRRelConfEntry_Thirteen.Location = new System.Drawing.Point(1072, 407);
-            this.lbl_kpiPurchTotalPRRelConfEntry_Thirteen.Name = "lbl_kpiPurchTotalPRRelConfEntry_Thirteen";
-            this.lbl_kpiPurchTotalPRRelConfEntry_Thirteen.Size = new System.Drawing.Size(28, 13);
-            this.lbl_kpiPurchTotalPRRelConfEntry_Thirteen.TabIndex = 3;
-            this.lbl_kpiPurchTotalPRRelConfEntry_Thirteen.Text = "data";
             // 
             // tableLayoutPanel28
             // 
@@ -4595,14 +4627,14 @@
             this.tableLayoutPanel28.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel28.Controls.Add(this.panel27, 1, 1);
             this.tableLayoutPanel28.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel28.Location = new System.Drawing.Point(1006, 11);
+            this.tableLayoutPanel28.Location = new System.Drawing.Point(944, 11);
             this.tableLayoutPanel28.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel28.Name = "tableLayoutPanel28";
             this.tableLayoutPanel28.RowCount = 3;
             this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel28.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel28.Size = new System.Drawing.Size(62, 21);
+            this.tableLayoutPanel28.Size = new System.Drawing.Size(60, 21);
             this.tableLayoutPanel28.TabIndex = 1;
             // 
             // panel27
@@ -4610,7 +4642,7 @@
             this.panel27.BackColor = System.Drawing.Color.IndianRed;
             this.panel27.Controls.Add(this.bunifuCustomLabel27);
             this.panel27.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel27.Location = new System.Drawing.Point(-4, 0);
+            this.panel27.Location = new System.Drawing.Point(-5, 0);
             this.panel27.Margin = new System.Windows.Forms.Padding(0);
             this.panel27.Name = "panel27";
             this.panel27.Size = new System.Drawing.Size(70, 20);
@@ -4627,55 +4659,55 @@
             this.bunifuCustomLabel27.TabIndex = 0;
             this.bunifuCustomLabel27.Text = "% Unconf";
             // 
-            // lbl_kpiPurchInitConfVsPrPlanDate_Eleven
+            // lbl_kpiPurchInitConfVsPrPlanDate_Twelve
             // 
-            this.lbl_kpiPurchInitConfVsPrPlanDate_Eleven.AutoSize = true;
-            this.lbl_kpiPurchInitConfVsPrPlanDate_Eleven.Location = new System.Drawing.Point(1009, 99);
-            this.lbl_kpiPurchInitConfVsPrPlanDate_Eleven.Name = "lbl_kpiPurchInitConfVsPrPlanDate_Eleven";
-            this.lbl_kpiPurchInitConfVsPrPlanDate_Eleven.Size = new System.Drawing.Size(28, 13);
-            this.lbl_kpiPurchInitConfVsPrPlanDate_Eleven.TabIndex = 3;
-            this.lbl_kpiPurchInitConfVsPrPlanDate_Eleven.Text = "data";
+            this.lbl_kpiPurchInitConfVsPrPlanDate_Twelve.AutoSize = true;
+            this.lbl_kpiPurchInitConfVsPrPlanDate_Twelve.Location = new System.Drawing.Point(947, 99);
+            this.lbl_kpiPurchInitConfVsPrPlanDate_Twelve.Name = "lbl_kpiPurchInitConfVsPrPlanDate_Twelve";
+            this.lbl_kpiPurchInitConfVsPrPlanDate_Twelve.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiPurchInitConfVsPrPlanDate_Twelve.TabIndex = 3;
+            this.lbl_kpiPurchInitConfVsPrPlanDate_Twelve.Text = "data";
             // 
-            // lbl_kpiFollowUpInitConfVsCurrConf_Eleven
+            // lbl_kpiFollowUpInitConfVsCurrConf_Twelve
             // 
-            this.lbl_kpiFollowUpInitConfVsCurrConf_Eleven.AutoSize = true;
-            this.lbl_kpiFollowUpInitConfVsCurrConf_Eleven.Location = new System.Drawing.Point(1009, 121);
-            this.lbl_kpiFollowUpInitConfVsCurrConf_Eleven.Name = "lbl_kpiFollowUpInitConfVsCurrConf_Eleven";
-            this.lbl_kpiFollowUpInitConfVsCurrConf_Eleven.Size = new System.Drawing.Size(28, 13);
-            this.lbl_kpiFollowUpInitConfVsCurrConf_Eleven.TabIndex = 3;
-            this.lbl_kpiFollowUpInitConfVsCurrConf_Eleven.Text = "data";
+            this.lbl_kpiFollowUpInitConfVsCurrConf_Twelve.AutoSize = true;
+            this.lbl_kpiFollowUpInitConfVsCurrConf_Twelve.Location = new System.Drawing.Point(947, 121);
+            this.lbl_kpiFollowUpInitConfVsCurrConf_Twelve.Name = "lbl_kpiFollowUpInitConfVsCurrConf_Twelve";
+            this.lbl_kpiFollowUpInitConfVsCurrConf_Twelve.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiFollowUpInitConfVsCurrConf_Twelve.TabIndex = 3;
+            this.lbl_kpiFollowUpInitConfVsCurrConf_Twelve.Text = "data";
             // 
-            // lbl_kpiFollowUpFinalConfVsFinalPlanDate_Eleven
+            // lbl_kpiFollowUpFinalConfVsFinalPlanDate_Twelve
             // 
-            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Eleven.AutoSize = true;
-            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Eleven.Location = new System.Drawing.Point(1009, 143);
-            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Eleven.Name = "lbl_kpiFollowUpFinalConfVsFinalPlanDate_Eleven";
-            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Eleven.Size = new System.Drawing.Size(28, 13);
-            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Eleven.TabIndex = 3;
-            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Eleven.Text = "data";
+            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Twelve.AutoSize = true;
+            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Twelve.Location = new System.Drawing.Point(947, 143);
+            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Twelve.Name = "lbl_kpiFollowUpFinalConfVsFinalPlanDate_Twelve";
+            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Twelve.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Twelve.TabIndex = 3;
+            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Twelve.Text = "data";
             // 
-            // lbl_kpiFollowUpRecVsOrigConfDate_Eleven
+            // lbl_kpiFollowUpRecVsOrigConfDate_Twelve
             // 
-            this.lbl_kpiFollowUpRecVsOrigConfDate_Eleven.AutoSize = true;
-            this.lbl_kpiFollowUpRecVsOrigConfDate_Eleven.Location = new System.Drawing.Point(1009, 187);
-            this.lbl_kpiFollowUpRecVsOrigConfDate_Eleven.Name = "lbl_kpiFollowUpRecVsOrigConfDate_Eleven";
-            this.lbl_kpiFollowUpRecVsOrigConfDate_Eleven.Size = new System.Drawing.Size(28, 13);
-            this.lbl_kpiFollowUpRecVsOrigConfDate_Eleven.TabIndex = 3;
-            this.lbl_kpiFollowUpRecVsOrigConfDate_Eleven.Text = "data";
+            this.lbl_kpiFollowUpRecVsOrigConfDate_Twelve.AutoSize = true;
+            this.lbl_kpiFollowUpRecVsOrigConfDate_Twelve.Location = new System.Drawing.Point(947, 187);
+            this.lbl_kpiFollowUpRecVsOrigConfDate_Twelve.Name = "lbl_kpiFollowUpRecVsOrigConfDate_Twelve";
+            this.lbl_kpiFollowUpRecVsOrigConfDate_Twelve.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiFollowUpRecVsOrigConfDate_Twelve.TabIndex = 3;
+            this.lbl_kpiFollowUpRecVsOrigConfDate_Twelve.Text = "data";
             // 
-            // lbl_kpiFollowUpRecVsCurrConfDate_Eleven
+            // lbl_kpiFollowUpRecVsCurrConfDate_Twelve
             // 
-            this.lbl_kpiFollowUpRecVsCurrConfDate_Eleven.AutoSize = true;
-            this.lbl_kpiFollowUpRecVsCurrConfDate_Eleven.Location = new System.Drawing.Point(1009, 209);
-            this.lbl_kpiFollowUpRecVsCurrConfDate_Eleven.Name = "lbl_kpiFollowUpRecVsCurrConfDate_Eleven";
-            this.lbl_kpiFollowUpRecVsCurrConfDate_Eleven.Size = new System.Drawing.Size(28, 13);
-            this.lbl_kpiFollowUpRecVsCurrConfDate_Eleven.TabIndex = 3;
-            this.lbl_kpiFollowUpRecVsCurrConfDate_Eleven.Text = "data";
+            this.lbl_kpiFollowUpRecVsCurrConfDate_Twelve.AutoSize = true;
+            this.lbl_kpiFollowUpRecVsCurrConfDate_Twelve.Location = new System.Drawing.Point(947, 209);
+            this.lbl_kpiFollowUpRecVsCurrConfDate_Twelve.Name = "lbl_kpiFollowUpRecVsCurrConfDate_Twelve";
+            this.lbl_kpiFollowUpRecVsCurrConfDate_Twelve.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiFollowUpRecVsCurrConfDate_Twelve.TabIndex = 3;
+            this.lbl_kpiFollowUpRecVsCurrConfDate_Twelve.Text = "data";
             // 
             // lbl_kpiOtherHotJobPrs_One
             // 
             this.lbl_kpiOtherHotJobPrs_One.AutoSize = true;
-            this.lbl_kpiOtherHotJobPrs_One.Location = new System.Drawing.Point(316, 605);
+            this.lbl_kpiOtherHotJobPrs_One.Location = new System.Drawing.Point(276, 605);
             this.lbl_kpiOtherHotJobPrs_One.Name = "lbl_kpiOtherHotJobPrs_One";
             this.lbl_kpiOtherHotJobPrs_One.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherHotJobPrs_One.TabIndex = 3;
@@ -4684,7 +4716,7 @@
             // lbl_kpiOtherHotJobPrs_Two
             // 
             this.lbl_kpiOtherHotJobPrs_Two.AutoSize = true;
-            this.lbl_kpiOtherHotJobPrs_Two.Location = new System.Drawing.Point(377, 605);
+            this.lbl_kpiOtherHotJobPrs_Two.Location = new System.Drawing.Point(337, 605);
             this.lbl_kpiOtherHotJobPrs_Two.Name = "lbl_kpiOtherHotJobPrs_Two";
             this.lbl_kpiOtherHotJobPrs_Two.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherHotJobPrs_Two.TabIndex = 3;
@@ -4693,7 +4725,7 @@
             // lbl_kpiOtherHotJobPrs_Three
             // 
             this.lbl_kpiOtherHotJobPrs_Three.AutoSize = true;
-            this.lbl_kpiOtherHotJobPrs_Three.Location = new System.Drawing.Point(442, 605);
+            this.lbl_kpiOtherHotJobPrs_Three.Location = new System.Drawing.Point(398, 605);
             this.lbl_kpiOtherHotJobPrs_Three.Name = "lbl_kpiOtherHotJobPrs_Three";
             this.lbl_kpiOtherHotJobPrs_Three.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherHotJobPrs_Three.TabIndex = 3;
@@ -4702,7 +4734,7 @@
             // lbl_kpiOtherHotJobPrs_Four
             // 
             this.lbl_kpiOtherHotJobPrs_Four.AutoSize = true;
-            this.lbl_kpiOtherHotJobPrs_Four.Location = new System.Drawing.Point(505, 605);
+            this.lbl_kpiOtherHotJobPrs_Four.Location = new System.Drawing.Point(459, 605);
             this.lbl_kpiOtherHotJobPrs_Four.Name = "lbl_kpiOtherHotJobPrs_Four";
             this.lbl_kpiOtherHotJobPrs_Four.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherHotJobPrs_Four.TabIndex = 3;
@@ -4711,7 +4743,7 @@
             // lbl_kpiOtherHotJobPrs_Five
             // 
             this.lbl_kpiOtherHotJobPrs_Five.AutoSize = true;
-            this.lbl_kpiOtherHotJobPrs_Five.Location = new System.Drawing.Point(568, 605);
+            this.lbl_kpiOtherHotJobPrs_Five.Location = new System.Drawing.Point(520, 605);
             this.lbl_kpiOtherHotJobPrs_Five.Name = "lbl_kpiOtherHotJobPrs_Five";
             this.lbl_kpiOtherHotJobPrs_Five.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherHotJobPrs_Five.TabIndex = 3;
@@ -4720,7 +4752,7 @@
             // lbl_kpiOtherHotJobPrs_Six
             // 
             this.lbl_kpiOtherHotJobPrs_Six.AutoSize = true;
-            this.lbl_kpiOtherHotJobPrs_Six.Location = new System.Drawing.Point(631, 605);
+            this.lbl_kpiOtherHotJobPrs_Six.Location = new System.Drawing.Point(581, 605);
             this.lbl_kpiOtherHotJobPrs_Six.Name = "lbl_kpiOtherHotJobPrs_Six";
             this.lbl_kpiOtherHotJobPrs_Six.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherHotJobPrs_Six.TabIndex = 3;
@@ -4729,7 +4761,7 @@
             // lbl_kpiOtherHotJobPrs_Seven
             // 
             this.lbl_kpiOtherHotJobPrs_Seven.AutoSize = true;
-            this.lbl_kpiOtherHotJobPrs_Seven.Location = new System.Drawing.Point(694, 605);
+            this.lbl_kpiOtherHotJobPrs_Seven.Location = new System.Drawing.Point(642, 605);
             this.lbl_kpiOtherHotJobPrs_Seven.Name = "lbl_kpiOtherHotJobPrs_Seven";
             this.lbl_kpiOtherHotJobPrs_Seven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherHotJobPrs_Seven.TabIndex = 3;
@@ -4738,7 +4770,7 @@
             // lbl_kpiOtherHotJobPrs_Eight
             // 
             this.lbl_kpiOtherHotJobPrs_Eight.AutoSize = true;
-            this.lbl_kpiOtherHotJobPrs_Eight.Location = new System.Drawing.Point(757, 605);
+            this.lbl_kpiOtherHotJobPrs_Eight.Location = new System.Drawing.Point(703, 605);
             this.lbl_kpiOtherHotJobPrs_Eight.Name = "lbl_kpiOtherHotJobPrs_Eight";
             this.lbl_kpiOtherHotJobPrs_Eight.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherHotJobPrs_Eight.TabIndex = 3;
@@ -4747,7 +4779,7 @@
             // lbl_kpiOtherHotJobPrs_Nine
             // 
             this.lbl_kpiOtherHotJobPrs_Nine.AutoSize = true;
-            this.lbl_kpiOtherHotJobPrs_Nine.Location = new System.Drawing.Point(820, 605);
+            this.lbl_kpiOtherHotJobPrs_Nine.Location = new System.Drawing.Point(764, 605);
             this.lbl_kpiOtherHotJobPrs_Nine.Name = "lbl_kpiOtherHotJobPrs_Nine";
             this.lbl_kpiOtherHotJobPrs_Nine.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherHotJobPrs_Nine.TabIndex = 3;
@@ -4756,7 +4788,7 @@
             // lbl_kpiOtherHotJobPrs_Ten
             // 
             this.lbl_kpiOtherHotJobPrs_Ten.AutoSize = true;
-            this.lbl_kpiOtherHotJobPrs_Ten.Location = new System.Drawing.Point(883, 605);
+            this.lbl_kpiOtherHotJobPrs_Ten.Location = new System.Drawing.Point(825, 605);
             this.lbl_kpiOtherHotJobPrs_Ten.Name = "lbl_kpiOtherHotJobPrs_Ten";
             this.lbl_kpiOtherHotJobPrs_Ten.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherHotJobPrs_Ten.TabIndex = 3;
@@ -4765,7 +4797,7 @@
             // lbl_kpiOtherHotJobPrs_Eleven
             // 
             this.lbl_kpiOtherHotJobPrs_Eleven.AutoSize = true;
-            this.lbl_kpiOtherHotJobPrs_Eleven.Location = new System.Drawing.Point(946, 605);
+            this.lbl_kpiOtherHotJobPrs_Eleven.Location = new System.Drawing.Point(886, 605);
             this.lbl_kpiOtherHotJobPrs_Eleven.Name = "lbl_kpiOtherHotJobPrs_Eleven";
             this.lbl_kpiOtherHotJobPrs_Eleven.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiOtherHotJobPrs_Eleven.TabIndex = 3;
@@ -4780,14 +4812,14 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.Controls.Add(this.panel3, 1, 1);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(1069, 231);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(1067, 231);
             this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 3;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(70, 21);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(72, 21);
             this.tableLayoutPanel4.TabIndex = 4;
             // 
             // panel3
@@ -4795,7 +4827,7 @@
             this.panel3.BackColor = System.Drawing.Color.IndianRed;
             this.panel3.Controls.Add(this.bunifuCustomLabel65);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Location = new System.Drawing.Point(1, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(70, 20);
@@ -4821,14 +4853,14 @@
             this.tableLayoutPanel46.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel46.Controls.Add(this.panel45, 1, 1);
             this.tableLayoutPanel46.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel46.Location = new System.Drawing.Point(1006, 231);
+            this.tableLayoutPanel46.Location = new System.Drawing.Point(944, 231);
             this.tableLayoutPanel46.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel46.Name = "tableLayoutPanel46";
             this.tableLayoutPanel46.RowCount = 3;
             this.tableLayoutPanel46.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel46.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel46.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel46.Size = new System.Drawing.Size(62, 21);
+            this.tableLayoutPanel46.Size = new System.Drawing.Size(60, 21);
             this.tableLayoutPanel46.TabIndex = 2;
             // 
             // panel45
@@ -4836,7 +4868,7 @@
             this.panel45.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(217)))), ((int)(((byte)(241)))));
             this.panel45.Controls.Add(this.bunifuCustomLabel66);
             this.panel45.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel45.Location = new System.Drawing.Point(-4, 0);
+            this.panel45.Location = new System.Drawing.Point(-5, 0);
             this.panel45.Margin = new System.Windows.Forms.Padding(0);
             this.panel45.Name = "panel45";
             this.panel45.Size = new System.Drawing.Size(70, 20);
@@ -4852,10 +4884,37 @@
             this.bunifuCustomLabel66.TabIndex = 0;
             this.bunifuCustomLabel66.Text = "57+ Days";
             // 
+            // lbl_kpiPurchTwoPORelVsPOConf_Fourteen
+            // 
+            this.lbl_kpiPurchTwoPORelVsPOConf_Fourteen.AutoSize = true;
+            this.lbl_kpiPurchTwoPORelVsPOConf_Fourteen.Location = new System.Drawing.Point(1070, 341);
+            this.lbl_kpiPurchTwoPORelVsPOConf_Fourteen.Name = "lbl_kpiPurchTwoPORelVsPOConf_Fourteen";
+            this.lbl_kpiPurchTwoPORelVsPOConf_Fourteen.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiPurchTwoPORelVsPOConf_Fourteen.TabIndex = 3;
+            this.lbl_kpiPurchTwoPORelVsPOConf_Fourteen.Text = "data";
+            // 
+            // lbl_kpiPurchSubPOCreateVsConfEntry_Fourteen
+            // 
+            this.lbl_kpiPurchSubPOCreateVsConfEntry_Fourteen.AutoSize = true;
+            this.lbl_kpiPurchSubPOCreateVsConfEntry_Fourteen.Location = new System.Drawing.Point(1070, 385);
+            this.lbl_kpiPurchSubPOCreateVsConfEntry_Fourteen.Name = "lbl_kpiPurchSubPOCreateVsConfEntry_Fourteen";
+            this.lbl_kpiPurchSubPOCreateVsConfEntry_Fourteen.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiPurchSubPOCreateVsConfEntry_Fourteen.TabIndex = 3;
+            this.lbl_kpiPurchSubPOCreateVsConfEntry_Fourteen.Text = "data";
+            // 
+            // lbl_kpiPurchTotalPRRelConfEntry_Fourteen
+            // 
+            this.lbl_kpiPurchTotalPRRelConfEntry_Fourteen.AutoSize = true;
+            this.lbl_kpiPurchTotalPRRelConfEntry_Fourteen.Location = new System.Drawing.Point(1070, 407);
+            this.lbl_kpiPurchTotalPRRelConfEntry_Fourteen.Name = "lbl_kpiPurchTotalPRRelConfEntry_Fourteen";
+            this.lbl_kpiPurchTotalPRRelConfEntry_Fourteen.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiPurchTotalPRRelConfEntry_Fourteen.TabIndex = 3;
+            this.lbl_kpiPurchTotalPRRelConfEntry_Fourteen.Text = "data";
+            // 
             // lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Twelve
             // 
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Twelve.AutoSize = true;
-            this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Twelve.Location = new System.Drawing.Point(1009, 297);
+            this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Twelve.Location = new System.Drawing.Point(947, 297);
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Twelve.Name = "lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Twelve";
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Twelve.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Twelve.TabIndex = 3;
@@ -4864,7 +4923,7 @@
             // lbl_kpiPurchTwoPOCreateVsPORel_Twelve
             // 
             this.lbl_kpiPurchTwoPOCreateVsPORel_Twelve.AutoSize = true;
-            this.lbl_kpiPurchTwoPOCreateVsPORel_Twelve.Location = new System.Drawing.Point(1009, 319);
+            this.lbl_kpiPurchTwoPOCreateVsPORel_Twelve.Location = new System.Drawing.Point(947, 319);
             this.lbl_kpiPurchTwoPOCreateVsPORel_Twelve.Name = "lbl_kpiPurchTwoPOCreateVsPORel_Twelve";
             this.lbl_kpiPurchTwoPOCreateVsPORel_Twelve.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTwoPOCreateVsPORel_Twelve.TabIndex = 3;
@@ -4873,7 +4932,7 @@
             // lbl_kpiPurchTwoPORelVsPOConf_Twelve
             // 
             this.lbl_kpiPurchTwoPORelVsPOConf_Twelve.AutoSize = true;
-            this.lbl_kpiPurchTwoPORelVsPOConf_Twelve.Location = new System.Drawing.Point(1009, 341);
+            this.lbl_kpiPurchTwoPORelVsPOConf_Twelve.Location = new System.Drawing.Point(947, 341);
             this.lbl_kpiPurchTwoPORelVsPOConf_Twelve.Name = "lbl_kpiPurchTwoPORelVsPOConf_Twelve";
             this.lbl_kpiPurchTwoPORelVsPOConf_Twelve.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTwoPORelVsPOConf_Twelve.TabIndex = 3;
@@ -4882,7 +4941,7 @@
             // lbl_kpiPurchSubPRRelVsPORel_Twelve
             // 
             this.lbl_kpiPurchSubPRRelVsPORel_Twelve.AutoSize = true;
-            this.lbl_kpiPurchSubPRRelVsPORel_Twelve.Location = new System.Drawing.Point(1009, 363);
+            this.lbl_kpiPurchSubPRRelVsPORel_Twelve.Location = new System.Drawing.Point(947, 363);
             this.lbl_kpiPurchSubPRRelVsPORel_Twelve.Name = "lbl_kpiPurchSubPRRelVsPORel_Twelve";
             this.lbl_kpiPurchSubPRRelVsPORel_Twelve.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchSubPRRelVsPORel_Twelve.TabIndex = 3;
@@ -4891,7 +4950,7 @@
             // lbl_kpiPurchSubPOCreateVsConfEntry_Twelve
             // 
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Twelve.AutoSize = true;
-            this.lbl_kpiPurchSubPOCreateVsConfEntry_Twelve.Location = new System.Drawing.Point(1009, 385);
+            this.lbl_kpiPurchSubPOCreateVsConfEntry_Twelve.Location = new System.Drawing.Point(947, 385);
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Twelve.Name = "lbl_kpiPurchSubPOCreateVsConfEntry_Twelve";
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Twelve.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchSubPOCreateVsConfEntry_Twelve.TabIndex = 3;
@@ -4900,7 +4959,7 @@
             // lbl_kpiPurchTotalPRRelConfEntry_Twelve
             // 
             this.lbl_kpiPurchTotalPRRelConfEntry_Twelve.AutoSize = true;
-            this.lbl_kpiPurchTotalPRRelConfEntry_Twelve.Location = new System.Drawing.Point(1009, 407);
+            this.lbl_kpiPurchTotalPRRelConfEntry_Twelve.Location = new System.Drawing.Point(947, 407);
             this.lbl_kpiPurchTotalPRRelConfEntry_Twelve.Name = "lbl_kpiPurchTotalPRRelConfEntry_Twelve";
             this.lbl_kpiPurchTotalPRRelConfEntry_Twelve.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchTotalPRRelConfEntry_Twelve.TabIndex = 3;
@@ -4909,7 +4968,7 @@
             // lbl_kpiPurchPlanPORelVsPRDelDate_Twelve
             // 
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Twelve.AutoSize = true;
-            this.lbl_kpiPurchPlanPORelVsPRDelDate_Twelve.Location = new System.Drawing.Point(1009, 429);
+            this.lbl_kpiPurchPlanPORelVsPRDelDate_Twelve.Location = new System.Drawing.Point(947, 429);
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Twelve.Name = "lbl_kpiPurchPlanPORelVsPRDelDate_Twelve";
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Twelve.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchPlanPORelVsPRDelDate_Twelve.TabIndex = 3;
@@ -4918,11 +4977,314 @@
             // lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Twelve
             // 
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Twelve.AutoSize = true;
-            this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Twelve.Location = new System.Drawing.Point(1009, 451);
+            this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Twelve.Location = new System.Drawing.Point(947, 451);
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Twelve.Name = "lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Twelve";
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Twelve.Size = new System.Drawing.Size(28, 13);
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Twelve.TabIndex = 3;
             this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Twelve.Text = "data";
+            // 
+            // tableLayoutPanel47
+            // 
+            this.tableLayoutPanel47.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(65)))), ((int)(((byte)(114)))));
+            this.tableLayoutPanel47.ColumnCount = 3;
+            this.tableLayoutPanel47.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel47.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel47.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel47.Controls.Add(this.panel46, 1, 1);
+            this.tableLayoutPanel47.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel47.Location = new System.Drawing.Point(883, 11);
+            this.tableLayoutPanel47.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel47.Name = "tableLayoutPanel47";
+            this.tableLayoutPanel47.RowCount = 3;
+            this.tableLayoutPanel47.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel47.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel47.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel47.Size = new System.Drawing.Size(60, 21);
+            this.tableLayoutPanel47.TabIndex = 1;
+            // 
+            // panel46
+            // 
+            this.panel46.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(65)))), ((int)(((byte)(114)))));
+            this.panel46.Controls.Add(this.bunifuCustomLabel67);
+            this.panel46.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel46.Location = new System.Drawing.Point(-5, 0);
+            this.panel46.Margin = new System.Windows.Forms.Padding(0);
+            this.panel46.Name = "panel46";
+            this.panel46.Size = new System.Drawing.Size(70, 20);
+            this.panel46.TabIndex = 0;
+            // 
+            // bunifuCustomLabel67
+            // 
+            this.bunifuCustomLabel67.AutoSize = true;
+            this.bunifuCustomLabel67.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(65)))), ((int)(((byte)(114)))));
+            this.bunifuCustomLabel67.ForeColor = System.Drawing.Color.White;
+            this.bunifuCustomLabel67.Location = new System.Drawing.Point(20, 3);
+            this.bunifuCustomLabel67.Name = "bunifuCustomLabel67";
+            this.bunifuCustomLabel67.Size = new System.Drawing.Size(31, 13);
+            this.bunifuCustomLabel67.TabIndex = 0;
+            this.bunifuCustomLabel67.Text = "Total";
+            // 
+            // tableLayoutPanel48
+            // 
+            this.tableLayoutPanel48.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(65)))), ((int)(((byte)(114)))));
+            this.tableLayoutPanel48.ColumnCount = 3;
+            this.tableLayoutPanel48.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel48.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel48.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel48.Controls.Add(this.panel47, 1, 1);
+            this.tableLayoutPanel48.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel48.Location = new System.Drawing.Point(1005, 231);
+            this.tableLayoutPanel48.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel48.Name = "tableLayoutPanel48";
+            this.tableLayoutPanel48.RowCount = 3;
+            this.tableLayoutPanel48.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel48.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel48.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel48.Size = new System.Drawing.Size(61, 21);
+            this.tableLayoutPanel48.TabIndex = 4;
+            // 
+            // panel47
+            // 
+            this.panel47.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(65)))), ((int)(((byte)(114)))));
+            this.panel47.Controls.Add(this.bunifuCustomLabel68);
+            this.panel47.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel47.Location = new System.Drawing.Point(-4, 0);
+            this.panel47.Margin = new System.Windows.Forms.Padding(0);
+            this.panel47.Name = "panel47";
+            this.panel47.Size = new System.Drawing.Size(70, 20);
+            this.panel47.TabIndex = 0;
+            // 
+            // bunifuCustomLabel68
+            // 
+            this.bunifuCustomLabel68.AutoSize = true;
+            this.bunifuCustomLabel68.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(65)))), ((int)(((byte)(114)))));
+            this.bunifuCustomLabel68.ForeColor = System.Drawing.Color.White;
+            this.bunifuCustomLabel68.Location = new System.Drawing.Point(19, 3);
+            this.bunifuCustomLabel68.Name = "bunifuCustomLabel68";
+            this.bunifuCustomLabel68.Size = new System.Drawing.Size(31, 13);
+            this.bunifuCustomLabel68.TabIndex = 0;
+            this.bunifuCustomLabel68.Text = "Total";
+            // 
+            // tableLayoutPanel49
+            // 
+            this.tableLayoutPanel49.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(65)))), ((int)(((byte)(114)))));
+            this.tableLayoutPanel49.ColumnCount = 3;
+            this.tableLayoutPanel49.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel49.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel49.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel49.Controls.Add(this.panel48, 1, 1);
+            this.tableLayoutPanel49.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel49.Location = new System.Drawing.Point(944, 495);
+            this.tableLayoutPanel49.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel49.Name = "tableLayoutPanel49";
+            this.tableLayoutPanel49.RowCount = 3;
+            this.tableLayoutPanel49.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel49.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel49.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel49.Size = new System.Drawing.Size(60, 21);
+            this.tableLayoutPanel49.TabIndex = 4;
+            // 
+            // panel48
+            // 
+            this.panel48.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(65)))), ((int)(((byte)(114)))));
+            this.panel48.Controls.Add(this.bunifuCustomLabel69);
+            this.panel48.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel48.Location = new System.Drawing.Point(-5, 0);
+            this.panel48.Margin = new System.Windows.Forms.Padding(0);
+            this.panel48.Name = "panel48";
+            this.panel48.Size = new System.Drawing.Size(70, 20);
+            this.panel48.TabIndex = 0;
+            // 
+            // bunifuCustomLabel69
+            // 
+            this.bunifuCustomLabel69.AutoSize = true;
+            this.bunifuCustomLabel69.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(65)))), ((int)(((byte)(114)))));
+            this.bunifuCustomLabel69.ForeColor = System.Drawing.Color.White;
+            this.bunifuCustomLabel69.Location = new System.Drawing.Point(19, 3);
+            this.bunifuCustomLabel69.Name = "bunifuCustomLabel69";
+            this.bunifuCustomLabel69.Size = new System.Drawing.Size(31, 13);
+            this.bunifuCustomLabel69.TabIndex = 0;
+            this.bunifuCustomLabel69.Text = "Total";
+            // 
+            // lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Thirteen
+            // 
+            this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Thirteen.AutoSize = true;
+            this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Thirteen.Location = new System.Drawing.Point(1008, 297);
+            this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Thirteen.Name = "lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Thirteen";
+            this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Thirteen.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Thirteen.TabIndex = 3;
+            this.lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Thirteen.Text = "data";
+            // 
+            // lbl_kpiPurchTwoPOCreateVsPORel_Thirteen
+            // 
+            this.lbl_kpiPurchTwoPOCreateVsPORel_Thirteen.AutoSize = true;
+            this.lbl_kpiPurchTwoPOCreateVsPORel_Thirteen.Location = new System.Drawing.Point(1008, 319);
+            this.lbl_kpiPurchTwoPOCreateVsPORel_Thirteen.Name = "lbl_kpiPurchTwoPOCreateVsPORel_Thirteen";
+            this.lbl_kpiPurchTwoPOCreateVsPORel_Thirteen.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiPurchTwoPOCreateVsPORel_Thirteen.TabIndex = 3;
+            this.lbl_kpiPurchTwoPOCreateVsPORel_Thirteen.Text = "data";
+            // 
+            // lbl_kpiPurchTwoPORelVsPOConf_Thirteen
+            // 
+            this.lbl_kpiPurchTwoPORelVsPOConf_Thirteen.AutoSize = true;
+            this.lbl_kpiPurchTwoPORelVsPOConf_Thirteen.Location = new System.Drawing.Point(1008, 341);
+            this.lbl_kpiPurchTwoPORelVsPOConf_Thirteen.Name = "lbl_kpiPurchTwoPORelVsPOConf_Thirteen";
+            this.lbl_kpiPurchTwoPORelVsPOConf_Thirteen.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiPurchTwoPORelVsPOConf_Thirteen.TabIndex = 3;
+            this.lbl_kpiPurchTwoPORelVsPOConf_Thirteen.Text = "data";
+            // 
+            // lbl_kpiPurchSubPRRelVsPORel_Thirteen
+            // 
+            this.lbl_kpiPurchSubPRRelVsPORel_Thirteen.AutoSize = true;
+            this.lbl_kpiPurchSubPRRelVsPORel_Thirteen.Location = new System.Drawing.Point(1008, 363);
+            this.lbl_kpiPurchSubPRRelVsPORel_Thirteen.Name = "lbl_kpiPurchSubPRRelVsPORel_Thirteen";
+            this.lbl_kpiPurchSubPRRelVsPORel_Thirteen.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiPurchSubPRRelVsPORel_Thirteen.TabIndex = 3;
+            this.lbl_kpiPurchSubPRRelVsPORel_Thirteen.Text = "data";
+            // 
+            // lbl_kpiPurchSubPOCreateVsConfEntry_Thirteen
+            // 
+            this.lbl_kpiPurchSubPOCreateVsConfEntry_Thirteen.AutoSize = true;
+            this.lbl_kpiPurchSubPOCreateVsConfEntry_Thirteen.Location = new System.Drawing.Point(1008, 385);
+            this.lbl_kpiPurchSubPOCreateVsConfEntry_Thirteen.Name = "lbl_kpiPurchSubPOCreateVsConfEntry_Thirteen";
+            this.lbl_kpiPurchSubPOCreateVsConfEntry_Thirteen.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiPurchSubPOCreateVsConfEntry_Thirteen.TabIndex = 3;
+            this.lbl_kpiPurchSubPOCreateVsConfEntry_Thirteen.Text = "data";
+            // 
+            // lbl_kpiPurchTotalPRRelConfEntry_Thirteen
+            // 
+            this.lbl_kpiPurchTotalPRRelConfEntry_Thirteen.AutoSize = true;
+            this.lbl_kpiPurchTotalPRRelConfEntry_Thirteen.Location = new System.Drawing.Point(1008, 407);
+            this.lbl_kpiPurchTotalPRRelConfEntry_Thirteen.Name = "lbl_kpiPurchTotalPRRelConfEntry_Thirteen";
+            this.lbl_kpiPurchTotalPRRelConfEntry_Thirteen.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiPurchTotalPRRelConfEntry_Thirteen.TabIndex = 3;
+            this.lbl_kpiPurchTotalPRRelConfEntry_Thirteen.Text = "data";
+            // 
+            // lbl_kpiPurchPlanPORelVsPRDelDate_Thirteen
+            // 
+            this.lbl_kpiPurchPlanPORelVsPRDelDate_Thirteen.AutoSize = true;
+            this.lbl_kpiPurchPlanPORelVsPRDelDate_Thirteen.Location = new System.Drawing.Point(1008, 429);
+            this.lbl_kpiPurchPlanPORelVsPRDelDate_Thirteen.Name = "lbl_kpiPurchPlanPORelVsPRDelDate_Thirteen";
+            this.lbl_kpiPurchPlanPORelVsPRDelDate_Thirteen.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiPurchPlanPORelVsPRDelDate_Thirteen.TabIndex = 3;
+            this.lbl_kpiPurchPlanPORelVsPRDelDate_Thirteen.Text = "data";
+            // 
+            // lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Thirteen
+            // 
+            this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Thirteen.AutoSize = true;
+            this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Thirteen.Location = new System.Drawing.Point(1008, 451);
+            this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Thirteen.Name = "lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Thirteen";
+            this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Thirteen.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Thirteen.TabIndex = 3;
+            this.lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Thirteen.Text = "data";
+            // 
+            // lbl_kpiPlanPRPlannedDateVsCurrPlan_Eleven
+            // 
+            this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Eleven.AutoSize = true;
+            this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Eleven.Location = new System.Drawing.Point(886, 33);
+            this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Eleven.Name = "lbl_kpiPlanPRPlannedDateVsCurrPlan_Eleven";
+            this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Eleven.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Eleven.TabIndex = 3;
+            this.lbl_kpiPlanPRPlannedDateVsCurrPlan_Eleven.Text = "data";
+            // 
+            // lbl_kpiPurchInitConfVsPrPlanDate_Eleven
+            // 
+            this.lbl_kpiPurchInitConfVsPrPlanDate_Eleven.AutoSize = true;
+            this.lbl_kpiPurchInitConfVsPrPlanDate_Eleven.Location = new System.Drawing.Point(886, 99);
+            this.lbl_kpiPurchInitConfVsPrPlanDate_Eleven.Name = "lbl_kpiPurchInitConfVsPrPlanDate_Eleven";
+            this.lbl_kpiPurchInitConfVsPrPlanDate_Eleven.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiPurchInitConfVsPrPlanDate_Eleven.TabIndex = 3;
+            this.lbl_kpiPurchInitConfVsPrPlanDate_Eleven.Text = "data";
+            // 
+            // lbl_kpiFollowUpInitConfVsCurrConf_Eleven
+            // 
+            this.lbl_kpiFollowUpInitConfVsCurrConf_Eleven.AutoSize = true;
+            this.lbl_kpiFollowUpInitConfVsCurrConf_Eleven.Location = new System.Drawing.Point(886, 121);
+            this.lbl_kpiFollowUpInitConfVsCurrConf_Eleven.Name = "lbl_kpiFollowUpInitConfVsCurrConf_Eleven";
+            this.lbl_kpiFollowUpInitConfVsCurrConf_Eleven.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiFollowUpInitConfVsCurrConf_Eleven.TabIndex = 3;
+            this.lbl_kpiFollowUpInitConfVsCurrConf_Eleven.Text = "data";
+            // 
+            // lbl_kpiFollowUpFinalConfVsFinalPlanDate_Eleven
+            // 
+            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Eleven.AutoSize = true;
+            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Eleven.Location = new System.Drawing.Point(886, 143);
+            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Eleven.Name = "lbl_kpiFollowUpFinalConfVsFinalPlanDate_Eleven";
+            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Eleven.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Eleven.TabIndex = 3;
+            this.lbl_kpiFollowUpFinalConfVsFinalPlanDate_Eleven.Text = "data";
+            // 
+            // lbl_kpiFollowUpRecVsCurrPlanDate_Eleven
+            // 
+            this.lbl_kpiFollowUpRecVsCurrPlanDate_Eleven.AutoSize = true;
+            this.lbl_kpiFollowUpRecVsCurrPlanDate_Eleven.Location = new System.Drawing.Point(886, 165);
+            this.lbl_kpiFollowUpRecVsCurrPlanDate_Eleven.Name = "lbl_kpiFollowUpRecVsCurrPlanDate_Eleven";
+            this.lbl_kpiFollowUpRecVsCurrPlanDate_Eleven.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiFollowUpRecVsCurrPlanDate_Eleven.TabIndex = 3;
+            this.lbl_kpiFollowUpRecVsCurrPlanDate_Eleven.Text = "data";
+            // 
+            // lbl_kpiFollowUpRecVsCurrConfDate_Eleven
+            // 
+            this.lbl_kpiFollowUpRecVsCurrConfDate_Eleven.AutoSize = true;
+            this.lbl_kpiFollowUpRecVsCurrConfDate_Eleven.Location = new System.Drawing.Point(886, 209);
+            this.lbl_kpiFollowUpRecVsCurrConfDate_Eleven.Name = "lbl_kpiFollowUpRecVsCurrConfDate_Eleven";
+            this.lbl_kpiFollowUpRecVsCurrConfDate_Eleven.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiFollowUpRecVsCurrConfDate_Eleven.TabIndex = 3;
+            this.lbl_kpiFollowUpRecVsCurrConfDate_Eleven.Text = "data";
+            // 
+            // lbl_kpiFollowUpRecVsOrigConfDate_Eleven
+            // 
+            this.lbl_kpiFollowUpRecVsOrigConfDate_Eleven.AutoSize = true;
+            this.lbl_kpiFollowUpRecVsOrigConfDate_Eleven.Location = new System.Drawing.Point(886, 187);
+            this.lbl_kpiFollowUpRecVsOrigConfDate_Eleven.Name = "lbl_kpiFollowUpRecVsOrigConfDate_Eleven";
+            this.lbl_kpiFollowUpRecVsOrigConfDate_Eleven.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiFollowUpRecVsOrigConfDate_Eleven.TabIndex = 3;
+            this.lbl_kpiFollowUpRecVsOrigConfDate_Eleven.Text = "data";
+            // 
+            // lbl_kpiOtherPrsCreated_Twelve
+            // 
+            this.lbl_kpiOtherPrsCreated_Twelve.AutoSize = true;
+            this.lbl_kpiOtherPrsCreated_Twelve.Location = new System.Drawing.Point(947, 517);
+            this.lbl_kpiOtherPrsCreated_Twelve.Name = "lbl_kpiOtherPrsCreated_Twelve";
+            this.lbl_kpiOtherPrsCreated_Twelve.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiOtherPrsCreated_Twelve.TabIndex = 3;
+            this.lbl_kpiOtherPrsCreated_Twelve.Text = "data";
+            // 
+            // lbl_kpiOtherPRsReleased_Twelve
+            // 
+            this.lbl_kpiOtherPRsReleased_Twelve.AutoSize = true;
+            this.lbl_kpiOtherPRsReleased_Twelve.Location = new System.Drawing.Point(947, 539);
+            this.lbl_kpiOtherPRsReleased_Twelve.Name = "lbl_kpiOtherPRsReleased_Twelve";
+            this.lbl_kpiOtherPRsReleased_Twelve.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiOtherPRsReleased_Twelve.TabIndex = 3;
+            this.lbl_kpiOtherPRsReleased_Twelve.Text = "data";
+            // 
+            // lbl_kpiOtherTotalSpend_Twelve
+            // 
+            this.lbl_kpiOtherTotalSpend_Twelve.AutoSize = true;
+            this.lbl_kpiOtherTotalSpend_Twelve.Location = new System.Drawing.Point(947, 561);
+            this.lbl_kpiOtherTotalSpend_Twelve.Name = "lbl_kpiOtherTotalSpend_Twelve";
+            this.lbl_kpiOtherTotalSpend_Twelve.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiOtherTotalSpend_Twelve.TabIndex = 3;
+            this.lbl_kpiOtherTotalSpend_Twelve.Text = "data";
+            // 
+            // lbl_kpiOtherPRsVsPOValue_Twelve
+            // 
+            this.lbl_kpiOtherPRsVsPOValue_Twelve.AutoSize = true;
+            this.lbl_kpiOtherPRsVsPOValue_Twelve.Location = new System.Drawing.Point(947, 583);
+            this.lbl_kpiOtherPRsVsPOValue_Twelve.Name = "lbl_kpiOtherPRsVsPOValue_Twelve";
+            this.lbl_kpiOtherPRsVsPOValue_Twelve.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiOtherPRsVsPOValue_Twelve.TabIndex = 3;
+            this.lbl_kpiOtherPRsVsPOValue_Twelve.Text = "data";
+            // 
+            // lbl_kpiOtherHotJobPrs_Twelve
+            // 
+            this.lbl_kpiOtherHotJobPrs_Twelve.AutoSize = true;
+            this.lbl_kpiOtherHotJobPrs_Twelve.Location = new System.Drawing.Point(947, 605);
+            this.lbl_kpiOtherHotJobPrs_Twelve.Name = "lbl_kpiOtherHotJobPrs_Twelve";
+            this.lbl_kpiOtherHotJobPrs_Twelve.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiOtherHotJobPrs_Twelve.TabIndex = 3;
+            this.lbl_kpiOtherHotJobPrs_Twelve.Text = "data";
             // 
             // KPIOverall
             // 
@@ -5068,6 +5430,15 @@
             this.tableLayoutPanel46.ResumeLayout(false);
             this.panel45.ResumeLayout(false);
             this.panel45.PerformLayout();
+            this.tableLayoutPanel47.ResumeLayout(false);
+            this.panel46.ResumeLayout(false);
+            this.panel46.PerformLayout();
+            this.tableLayoutPanel48.ResumeLayout(false);
+            this.panel47.ResumeLayout(false);
+            this.panel47.PerformLayout();
+            this.tableLayoutPanel49.ResumeLayout(false);
+            this.panel48.ResumeLayout(false);
+            this.panel48.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -5290,10 +5661,10 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel29;
         private System.Windows.Forms.Panel panel28;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel28;
-        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPurchInitConfVsPrPlanDate_Eleven;
-        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiFollowUpInitConfVsCurrConf_Eleven;
-        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiFollowUpRecVsOrigConfDate_Eleven;
-        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiFollowUpRecVsCurrConfDate_Eleven;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPurchInitConfVsPrPlanDate_Twelve;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiFollowUpInitConfVsCurrConf_Twelve;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiFollowUpRecVsOrigConfDate_Twelve;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiFollowUpRecVsCurrConfDate_Twelve;
         private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiFollowUpRecVsCurrConfDate_Ten;
         private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiFollowUpRecVsOrigConfDate_Ten;
         private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiFollowUpRecVsCurrPlanDate_Ten;
@@ -5437,11 +5808,11 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Panel panel3;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel65;
-        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPurchTwoPORelVsPOConf_Thirteen;
-        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPurchSubPOCreateVsConfEntry_Thirteen;
-        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPurchTotalPRRelConfEntry_Thirteen;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPurchTwoPORelVsPOConf_Fourteen;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPurchSubPOCreateVsConfEntry_Fourteen;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPurchTotalPRRelConfEntry_Fourteen;
         private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiFollowUpRecVsCurrConfDate_Eight;
-        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiFollowUpFinalConfVsFinalPlanDate_Eleven;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiFollowUpFinalConfVsFinalPlanDate_Twelve;
         private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiOtherHotJobPrs_One;
         private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiOtherHotJobPrs_Two;
         private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiOtherHotJobPrs_Three;
@@ -5464,5 +5835,34 @@
         private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPurchTotalPRRelConfEntry_Twelve;
         private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPurchPlanPORelVsPRDelDate_Twelve;
         private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Twelve;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel47;
+        private System.Windows.Forms.Panel panel46;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel67;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel48;
+        private System.Windows.Forms.Panel panel47;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel68;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel49;
+        private System.Windows.Forms.Panel panel48;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel69;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Thirteen;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPurchTwoPOCreateVsPORel_Thirteen;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPurchTwoPORelVsPOConf_Thirteen;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPurchSubPRRelVsPORel_Thirteen;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPurchSubPOCreateVsConfEntry_Thirteen;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPurchTotalPRRelConfEntry_Thirteen;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPurchPlanPORelVsPRDelDate_Thirteen;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Thirteen;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPlanPRPlannedDateVsCurrPlan_Eleven;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPurchInitConfVsPrPlanDate_Eleven;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiFollowUpInitConfVsCurrConf_Eleven;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiFollowUpFinalConfVsFinalPlanDate_Eleven;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiFollowUpRecVsCurrPlanDate_Eleven;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiFollowUpRecVsCurrConfDate_Eleven;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiFollowUpRecVsOrigConfDate_Eleven;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiOtherPrsCreated_Twelve;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiOtherPRsReleased_Twelve;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiOtherTotalSpend_Twelve;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiOtherPRsVsPOValue_Twelve;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiOtherHotJobPrs_Twelve;
     }
 }

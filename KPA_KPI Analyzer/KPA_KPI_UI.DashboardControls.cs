@@ -145,15 +145,9 @@ namespace KPA_KPI_Analyzer
                     else
                         AccessUtils.CreateAccessDB();
 
-
-                    //btn_DatabaseConnectionStatus.Invoke((MethodInvoker)delegate { btn_DatabaseConnectionStatus.Image = Properties.Resources.databaseConn_Disconnected_Icon; });
-
-                    pnl_activePage.Controls.Clear();
                     pnl_loadingScreen.Visible = true;
                     pnl_loadingScreen.BringToFront();
                     lbl_loadingStatus.Text = "Importing Data...";
-
-
                     ImportTimer.Start();
                 }
             }

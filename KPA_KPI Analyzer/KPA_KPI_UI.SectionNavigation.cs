@@ -72,6 +72,7 @@ namespace KPA_KPI_Analyzer
                     lbl_Section.Text = "All";
                     lbl_Category.Text = "All";
                     LoadOverallTemplate();
+                    MenuInFront = false;
                     break;
                 case 1: // KPA --> Plan
                     lbl_Section.Text = "Plan";
@@ -80,6 +81,7 @@ namespace KPA_KPI_Analyzer
                     kpaPlanTemp.Dock = DockStyle.Fill;
                     pnl_activePage.Controls.Add(kpaPlanTemp);
                     kpaPlanTemp.BringToFront();
+                    MenuInFront = false;
                     break;
                 case 2: // KPA --> Purch
                     lbl_Section.Text = "Purch";
@@ -89,6 +91,7 @@ namespace KPA_KPI_Analyzer
                     kpaPurchTemp.Dock = DockStyle.Fill;
                     pnl_activePage.Controls.Add(kpaPurchTemp);
                     kpaPurchTemp.BringToFront();
+                    MenuInFront = false;
                     break;
                 case 3: // KPA --> Purch Sub
                     lbl_Section.Text = "Purch Sub";
@@ -98,6 +101,7 @@ namespace KPA_KPI_Analyzer
                     kpaPurchSubTemp.Dock = DockStyle.Fill;
                     pnl_activePage.Controls.Add(kpaPurchSubTemp);
                     kpaPurchSubTemp.BringToFront();
+                    MenuInFront = false;
                     break;
                 case 4: // KPA --> Purch Total
                     lbl_Section.Text = "Purch Total";
@@ -107,12 +111,14 @@ namespace KPA_KPI_Analyzer
                     kpaPurchTotalTemp.Dock = DockStyle.Fill;
                     pnl_activePage.Controls.Add(kpaPurchTotalTemp);
                     kpaPurchTotalTemp.BringToFront();
+                    MenuInFront = false;
                     break;
                 case 5: // KPA --> Purch/Plan Total
                     lbl_Section.Text = "N/A";
                     lbl_Category.Text = "N/A";
                     lbl_Section.Text = "Purch/Plan Total";
                     LoadDataComingSoonTemplate();
+                    MenuInFront = true;
                     break;
                 case 6: // KPA --> Follow Up
                     lbl_Section.Text = "Follow Up";
@@ -122,16 +128,19 @@ namespace KPA_KPI_Analyzer
                     kpaFollowUpTemp.Dock = DockStyle.Fill;
                     pnl_activePage.Controls.Add(kpaFollowUpTemp);
                     kpaFollowUpTemp.BringToFront();
+                    MenuInFront = false;
                     break;
                 case 7: // KPA --> Cancellations
                     lbl_Section.Text = "N/A";
                     lbl_Category.Text = "N/A";
                     LoadDataComingSoonTemplate();
+                    MenuInFront = true;
                     break;
                 case 8: // KPA --> NCRs
                     lbl_Section.Text = "N/A";
                     lbl_Category.Text = "N/A";
                     LoadDataComingSoonTemplate();
+                    MenuInFront = true;
                     break;
                 case 9: // KPA --> Hot Jobs
                     lbl_Section.Text = "Hot Jobs";
@@ -141,16 +150,19 @@ namespace KPA_KPI_Analyzer
                     kpaHotJobs.Dock = DockStyle.Fill;
                     pnl_activePage.Controls.Add(kpaHotJobs);
                     kpaHotJobs.BringToFront();
+                    MenuInFront = false;
                     break;
                 case 10: // KPA --> Excess Stock - Stock
                     lbl_Section.Text = "N/A";
                     lbl_Category.Text = "N/A";
                     LoadDataComingSoonTemplate();
+                    MenuInFront = true;
                     break;
                 case 11: // KPA --> Excess Stock - Open Orders
                     lbl_Section.Text = "N/A";
                     lbl_Category.Text = "N/A";
                     LoadDataComingSoonTemplate();
+                    MenuInFront = true;
                     break;
                 case 12: // KPA --> Current Plan vs Actual
                     lbl_Section.Text = "Current Plan vs Actual";
@@ -160,16 +172,19 @@ namespace KPA_KPI_Analyzer
                     kpaCurrPlanActual.Dock = DockStyle.Fill;
                     pnl_activePage.Controls.Add(kpaCurrPlanActual);
                     kpaCurrPlanActual.BringToFront();
+                    MenuInFront = false;
                     break;
                 case 13: // KPA --> MTC
                     lbl_Section.Text = "N/A";
                     lbl_Category.Text = "N/A";
                     LoadDataComingSoonTemplate();
+                    MenuInFront = true;
                     break;
                 case 14: // KPI --> Overall
                     lbl_Section.Text = "All";
                     lbl_Category.Text = "All";
                     LoadOverallTemplate();
+                    MenuInFront = false;
                     break;
                 case 15: // KPI --> Plan
                     lbl_Section.Text = "Plan";
@@ -179,6 +194,7 @@ namespace KPA_KPI_Analyzer
                     kpiPlanTemplate.Dock = DockStyle.Fill;
                     pnl_activePage.Controls.Add(kpiPlanTemplate);
                     kpiPlanTemplate.BringToFront();
+                    MenuInFront = false;
                     break;
                 case 16: // KPI --> Purch
                     lbl_Section.Text = "Purch";
@@ -188,6 +204,7 @@ namespace KPA_KPI_Analyzer
                     kpiPurchTemplate.Dock = DockStyle.Fill;
                     pnl_activePage.Controls.Add(kpiPurchTemplate);
                     kpiPurchTemplate.BringToFront();
+                    MenuInFront = false;
                     break;
                 case 17: // KPI --> Follow Up
                     lbl_Section.Text = "Follow Up";
@@ -197,11 +214,13 @@ namespace KPA_KPI_Analyzer
                     kpiFollowUpTemplate.Dock = DockStyle.Fill;
                     pnl_activePage.Controls.Add(kpiFollowUpTemplate);
                     kpiFollowUpTemplate.BringToFront();
+                    MenuInFront = false;
                     break;
                 case 18: // KPI --> Plan
                     lbl_Section.Text = "N/A";
                     lbl_Category.Text = "N/A";
                     LoadDataComingSoonTemplate();
+                    MenuInFront = true;
                     break;
                 case 19: // KPI --> Purch
                     lbl_Section.Text = "Purch";
@@ -211,6 +230,7 @@ namespace KPA_KPI_Analyzer
                     kpiPurchTwoTemplate.Dock = DockStyle.Fill;
                     pnl_activePage.Controls.Add(kpiPurchTwoTemplate);
                     kpiPurchTwoTemplate.BringToFront();
+                    MenuInFront = false;
                     break;
                 case 20: // KPI --> Purch Sub
                     lbl_Section.Text = "Purch Sub";
@@ -220,6 +240,7 @@ namespace KPA_KPI_Analyzer
                     kpiPurchSubTemplate.Dock = DockStyle.Fill;
                     pnl_activePage.Controls.Add(kpiPurchSubTemplate);
                     kpiPurchSubTemplate.BringToFront();
+                    MenuInFront = false;
                     break;
                 case 21: // KPI --> Purch Total
                     lbl_Section.Text = "Purch Total";
@@ -229,6 +250,7 @@ namespace KPA_KPI_Analyzer
                     kpiPurchTotalTemplate.Dock = DockStyle.Fill;
                     pnl_activePage.Controls.Add(kpiPurchTotalTemplate);
                     kpiPurchTotalTemplate.BringToFront();
+                    MenuInFront = false;
                     break;
                 case 22: // KPI --> Purch/Plan
                     lbl_Section.Text = "Purch/Plan";
@@ -238,11 +260,13 @@ namespace KPA_KPI_Analyzer
                     kpiPurchPlanTemplate.Dock = DockStyle.Fill;
                     pnl_activePage.Controls.Add(kpiPurchPlanTemplate);
                     kpiPurchPlanTemplate.BringToFront();
+                    MenuInFront = false;
                     break;
                 case 23: // KPI --> Purch/Plan Total
                     lbl_Section.Text = "N/A";
                     lbl_Category.Text = "N/A";
                     LoadDataComingSoonTemplate();
+                    MenuInFront = true;
                     break;
                 case 24: // KPI --> Other
                     lbl_Section.Text = "Other";
@@ -252,6 +276,7 @@ namespace KPA_KPI_Analyzer
                     kpiOtherTemplate.Dock = DockStyle.Fill;
                     pnl_activePage.Controls.Add(kpiOtherTemplate);
                     kpiOtherTemplate.BringToFront();
+                    MenuInFront = false;
                     break;
                 default:
                     break;

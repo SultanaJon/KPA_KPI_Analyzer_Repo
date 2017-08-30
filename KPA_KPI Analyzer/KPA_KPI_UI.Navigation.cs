@@ -150,6 +150,7 @@ namespace KPA_KPI_Analyzer
             switch (int.Parse(btn.Tag.ToString()))
             {
                 case 0: // Dashboard btn clicked
+                    RemoveActivePanelControls();
                     lbl_Performance.Text = "Not Selected";
                     lbl_Section.Text = "Not Selected";
                     lbl_Category.Text = "Not Selected";
@@ -157,6 +158,8 @@ namespace KPA_KPI_Analyzer
                     tblpnl_DashbaordPage.BringToFront();
                     break;
                 case 1: // KPA btn clicked
+                    RemoveActivePanelControls();
+
                     if (pnl_NavigationPanelMax.Width == Constants.minNavWidth)
                         pnl_NavigationPanelMax.Width = Constants.maxNavWidth;
 
@@ -168,6 +171,8 @@ namespace KPA_KPI_Analyzer
                     }
                     break;
                 case 2: // KPI btn clicked
+                    RemoveActivePanelControls();
+
                     if (pnl_NavigationPanelMax.Width == Constants.minNavWidth)
                         pnl_NavigationPanelMax.Width = Constants.maxNavWidth;
 
@@ -182,6 +187,7 @@ namespace KPA_KPI_Analyzer
                     toggleMainNavSection();
                     break;
                 case 4: // Filters btn clicked
+                    RemoveActivePanelControls();
                     lbl_Performance.Text = "Not Selected";
                     lbl_Section.Text = "Not Selected";
                     lbl_Category.Text = "Not Selected";
