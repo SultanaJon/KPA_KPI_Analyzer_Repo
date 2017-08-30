@@ -22,6 +22,10 @@ namespace KPA_KPI_Analyzer
         OleDbDataAdapter da;
 
 
+        public delegate void UpdateCategoryHandler(string categoryName);
+        public static event UpdateCategoryHandler ChangeCategory;
+
+
         /// <summary>
         /// Boolean value indicating whether the data was loaded into the dataviz control
         /// </summary>
@@ -197,6 +201,7 @@ namespace KPA_KPI_Analyzer
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = "PR Aging (Released)";
+            ChangeCategory(Title);
             TimeBucketOne = overallData.kpa.purch.prsAgingRel.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpa.purch.prsAgingRel.data.One_Three.ToString();
             TimeBucketThree = overallData.kpa.purch.prsAgingRel.data.Four_Seven.ToString();
@@ -247,7 +252,7 @@ namespace KPA_KPI_Analyzer
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = "PO First Release";
-
+            ChangeCategory(Title);
             TimeBucketOne = overallData.kpa.purch.poFirstRel.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpa.purch.poFirstRel.data.One_Three.ToString();
             TimeBucketThree = overallData.kpa.purch.poFirstRel.data.Four_Seven.ToString();
@@ -297,6 +302,7 @@ namespace KPA_KPI_Analyzer
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = "PO Previous Release";
+            ChangeCategory(Title);
 
             TimeBucketOne = overallData.kpa.purch.poPrevRel.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpa.purch.poPrevRel.data.One_Three.ToString();
@@ -348,6 +354,7 @@ namespace KPA_KPI_Analyzer
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = "No Confirmations";
+            ChangeCategory(Title);
 
             TimeBucketOne = overallData.kpa.purch.noConfirmation.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpa.purch.noConfirmation.data.One_Three.ToString();

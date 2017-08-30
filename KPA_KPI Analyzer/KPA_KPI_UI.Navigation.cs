@@ -8,6 +8,7 @@ namespace KPA_KPI_Analyzer
         Button mainNavActiveBtn = new Button();
         Panel mainNavActivePanel = new Panel() { Visible = false };
         bool NavigationLocked = false;
+        bool MenuInFront = false;
 
 
         /// <summary>
@@ -96,9 +97,10 @@ namespace KPA_KPI_Analyzer
         /// <param name="e"></param>
         private void btn_NavExpander_Click(object sender, EventArgs e)
         {
-            if (pnl_NavigationPanelMax.Width == Constants.maxNavWidth)
+            if (MenuInFront)
             {
-                pnl_NavigationPanelMax.Width = Constants.minNavWidth;
+                MenuInFront = false;
+                pnl_NavigationPanelMax.SendToBack();
                 if(mainNavActivePanel.Visible)
                 {
                     mainNavActivePanel.Visible = false;
@@ -110,6 +112,8 @@ namespace KPA_KPI_Analyzer
             }
             else
             {
+                MenuInFront = true;
+                pnl_NavigationPanelMax.BringToFront();
                 pnl_NavigationPanelMax.Width = Constants.maxNavWidth;
             }
         }
@@ -135,10 +139,6 @@ namespace KPA_KPI_Analyzer
             Button btn = sender as Button;
             int tag = int.Parse(btn.Tag.ToString());
 
-            if (tag == 4) ;
-            //btn_NavExpander.Enabled = false;
-            else ;
-            //btn_NavExpander.Enabled = true;
 
             if (mainNavActiveBtn != btn) // activate the button unless already activated
                 activateButton(sender);
@@ -150,6 +150,9 @@ namespace KPA_KPI_Analyzer
             switch (int.Parse(btn.Tag.ToString()))
             {
                 case 0: // Dashboard btn clicked
+                    lbl_Performance.Text = "Not Selected";
+                    lbl_Section.Text = "Not Selected";
+                    lbl_Category.Text = "Not Selected";
                     toggleMainNavSection();
                     tblpnl_DashbaordPage.BringToFront();
                     break;
@@ -179,10 +182,10 @@ namespace KPA_KPI_Analyzer
                     toggleMainNavSection();
                     break;
                 case 4: // Filters btn clicked
+                    lbl_Performance.Text = "Not Selected";
+                    lbl_Section.Text = "Not Selected";
+                    lbl_Category.Text = "Not Selected";
                     toggleMainNavSection();
-                    if (pnl_NavigationPanelMax.Width == Constants.maxNavWidth)
-                        pnl_NavigationPanelMax.Width = Constants.minNavWidth;
-
                     tblpnl_Filters.BringToFront();
                     break;
                 default:
@@ -357,52 +360,6 @@ namespace KPA_KPI_Analyzer
                 case 4:
                     // update the icon image of the current active button
                     mainNavActiveBtn.BackgroundImage = Properties.Resources.FilterBG_Normal;
-                    break;
-                default:
-                    break;
-            }
-        }
-
-
-
-        /// <summary>
-        /// This function will handle the click event of the main navigation and will open the side menu
-        /// revealing buttons that fall under that navigation request.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Navigation_Click(object sender, EventArgs e)
-        {
-            Panel mainNavPanel = (Panel)sender;
-            int tag = int.Parse(mainNavPanel.Tag.ToString());
-
-            if (pnl_Navigation.Width == 222)
-            {
-                pnl_Navigation.SendToBack();
-                pnl_Navigation.Width = 0;
-            }
-            else
-            {
-                pnl_Navigation.BringToFront();
-                pnl_Navigation.Width = 222;
-            }
-
-            switch (tag)
-            {
-                case 0: // sub navigation - include dashboard, charts, and filters
-                        //LoadSubNav();
-                    break;
-                case 1: // country selector
-                        //LoadCountryNav();
-                    break;
-                case 2: // Performance selector
-                        //LoadPerformanceNav();
-                    break;
-                case 3: // Section selector
-                        //LoadSectionNav();
-                    break;
-                case 4: // Category selector
-                        //LoadCategoryNav();
                     break;
                 default:
                     break;

@@ -19,9 +19,8 @@ namespace KPA_KPI_Analyzer
         OleDbCommand cmd;
 
 
-
-
-
+        public delegate void UpdateCategoryHandler(string categoryName);
+        public static event UpdateCategoryHandler ChangeCategory;
 
         /// <summary>
         /// Boolean determining whether or not the dataviz graph was loaded.
@@ -99,6 +98,7 @@ namespace KPA_KPI_Analyzer
             DatavizLoaded = false;
             datavizLoadTimer.Start();
             ActiveCategory = 0;
+            ChangeCategory("Current Planned Date vs Current Confirmed Date (Open POs)");
         }
 
 
@@ -190,6 +190,8 @@ namespace KPA_KPI_Analyzer
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = "Current planned date vs current confirmation date (Open POs)";
+            ChangeCategory(Title);
+
             TimeBucketOne = overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.LessThanMinusThree.ToString();
             TimeBucketTwo = overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.GreaterThanEqualMinusThree.ToString();
             TimeBucketThree = overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.GreaterThanEqualMinusTwo.ToString();
@@ -246,6 +248,7 @@ namespace KPA_KPI_Analyzer
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = "Current planned date vs current confirmation date (Open POs) - Hot Job Only";
+            ChangeCategory(Title);
 
             TimeBucketOne = overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.LessThanMinusThree.ToString();
             TimeBucketTwo = overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.GreaterThanEqualMinusThree.ToString();

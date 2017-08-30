@@ -13,7 +13,8 @@ namespace KPA_KPI_Analyzer
         DataTable pr2ndLvlRelOrigPlanDelDateDt;
         string[] strPoLineFirstRelDate;
 
-
+        public delegate void UpdateCategoryHandler(string categoryName);
+        public static event UpdateCategoryHandler ChangeCategory;
 
 
         /// <summary>
@@ -187,6 +188,7 @@ namespace KPA_KPI_Analyzer
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = "PO Release vs PR Delivery Date";
+            ChangeCategory(Title);
             TimeBucketOne = overallData.kpi.purchPlan.poRelVsPRDelDate.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpi.purchPlan.poRelVsPRDelDate.data.One_Three.ToString();
             TimeBucketThree = overallData.kpi.purchPlan.poRelVsPRDelDate.data.Four_Seven.ToString();
@@ -249,6 +251,7 @@ namespace KPA_KPI_Analyzer
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = "PR 2nd Level Release to Original Planned Delivery Date";
+            ChangeCategory(Title);
             TimeBucketOne = overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.One_Three.ToString();
             TimeBucketThree = overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Four_Seven.ToString();

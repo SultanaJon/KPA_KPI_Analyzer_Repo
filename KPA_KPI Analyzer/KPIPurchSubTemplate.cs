@@ -14,7 +14,8 @@ namespace KPA_KPI_Analyzer
         DataTable unconfirmed;
 
 
-
+        public delegate void UpdateCategoryHandler(string categoryName);
+        public static event UpdateCategoryHandler ChangeCategory;
 
 
         /// <summary>
@@ -198,6 +199,7 @@ namespace KPA_KPI_Analyzer
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = "PR Release vs PO Release";
+            ChangeCategory(Title);
             TimeBucketOne = overallData.kpi.purchSub.prRelVsPORel.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpi.purchSub.prRelVsPORel.data.One_Three.ToString();
             TimeBucketThree = overallData.kpi.purchSub.prRelVsPORel.data.Four_Seven.ToString();
@@ -258,6 +260,7 @@ namespace KPA_KPI_Analyzer
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = "PO Creation vs Confirmation Entry";
+            ChangeCategory(Title);
             TimeBucketOne = overallData.kpi.purchSub.poCreateVsConfEntry.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpi.purchSub.poCreateVsConfEntry.data.One_Three.ToString();
             TimeBucketThree = overallData.kpi.purchSub.poCreateVsConfEntry.data.Four_Seven.ToString();

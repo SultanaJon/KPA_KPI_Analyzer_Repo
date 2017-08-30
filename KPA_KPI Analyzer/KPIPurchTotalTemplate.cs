@@ -14,6 +14,8 @@ namespace KPA_KPI_Analyzer
         DataTable unconfirmed;
 
 
+        public delegate void UpdateCategoryHandler(string categoryName);
+        public static event UpdateCategoryHandler ChangeCategory;
 
 
         /// <summary>
@@ -192,6 +194,7 @@ namespace KPA_KPI_Analyzer
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = "PR Release to Confirmation Entry";
+            ChangeCategory(Title);
             TimeBucketOne = overallData.kpi.purchTotal.prRelConfEntry.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpi.purchTotal.prRelConfEntry.data.One_Three.ToString();
             TimeBucketThree = overallData.kpi.purchTotal.prRelConfEntry.data.Four_Seven.ToString();

@@ -22,6 +22,9 @@ namespace KPA_KPI_Analyzer
         OleDbCommand cmd;
 
 
+        public delegate void UpdateCategoryHandler(string categoryName);
+        public static event UpdateCategoryHandler ChangeCategory;
+
 
 
         /// <summary>
@@ -190,6 +193,7 @@ namespace KPA_KPI_Analyzer
             dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = "PRs Aging (Not Released)";
+            ChangeCategory(Title);
             TimeBucketOne = overallData.kpa.plan.prsAgingNotRel.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpa.plan.prsAgingNotRel.data.One_Three.ToString();
             TimeBucketThree = overallData.kpa.plan.prsAgingNotRel.data.Four_Seven.ToString();
@@ -239,6 +243,7 @@ namespace KPA_KPI_Analyzer
             canvas = new Bunifu.DataViz.Canvas();
             dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = "Material Due";
+            ChangeCategory(Title);
 
             TimeBucketOne = overallData.kpa.plan.matDueDate.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpa.plan.matDueDate.data.One_Three.ToString();

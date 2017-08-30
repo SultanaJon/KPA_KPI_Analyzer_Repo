@@ -21,7 +21,8 @@ namespace KPA_KPI_Analyzer
         OleDbDataAdapter da;
 
 
-
+        public delegate void UpdateCategoryHandler(string categoryName);
+        public static event UpdateCategoryHandler ChangeCategory;
 
 
         /// <summary>
@@ -175,6 +176,7 @@ namespace KPA_KPI_Analyzer
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = "Confirmed vs Plan Date";
+            ChangeCategory(Title);
             TimeBucketOne = overallData.kpa.followUp.confDateVsPlanDate.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpa.followUp.confDateVsPlanDate.data.One_Three.ToString();
             TimeBucketThree = overallData.kpa.followUp.confDateVsPlanDate.data.Four_Seven.ToString();
@@ -228,6 +230,7 @@ namespace KPA_KPI_Analyzer
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = "Confirmed Date for Upcoming Deliveres";
+            ChangeCategory(Title);
 
             TimeBucketOne = overallData.kpa.followUp.ConfDateForUpcomingDel.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpa.followUp.ConfDateForUpcomingDel.data.One_Three.ToString();
@@ -278,6 +281,7 @@ namespace KPA_KPI_Analyzer
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = "Late to Confirmed Date";
+            ChangeCategory(Title);
 
             TimeBucketOne = overallData.kpa.followUp.LateToConfDate.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpa.followUp.LateToConfDate.data.One_Three.ToString();

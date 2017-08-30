@@ -100,6 +100,7 @@ namespace KPA_KPI_Analyzer
                     }
                     else if (AccessUtils.US_PRPO_TableExists)
                     {
+                        lbl_Country.Text = "United States";
                         Overall.SelectedCountry = AccessInfo.MainTables.US_PRPO;
                         PRPO_DB_Utils.DataLoadProcessStarted = false;
                         PRPO_DB_Utils.DataLoaded = false;
@@ -109,6 +110,7 @@ namespace KPA_KPI_Analyzer
                     }
                     else // There is a Mexico table within the database.
                     {
+                        lbl_Country.Text = "Mexico";
                         Overall.SelectedCountry = AccessInfo.MainTables.MX_PRPO;
                         PRPO_DB_Utils.DataLoadProcessStarted = false;
                         PRPO_DB_Utils.DataLoaded = false;
@@ -792,31 +794,29 @@ namespace KPA_KPI_Analyzer
         {
             if(int.Parse(mainNavActiveBtn.Tag.ToString()) == 1)
             {
-                // TODO: pnl_activePage.Controls.Clear();
-                // TODO: pnl_activePage.BringToFront();
-                KPAOverall kpaOverall = new KPAOverall();
-                // TODO: kpaOverall.Dock = DockStyle.Fill;
-                kpaOverall.Anchor = AnchorStyles.Bottom;
-                kpaOverall.Anchor = AnchorStyles.Top;
-                kpaOverall.Anchor = AnchorStyles.Right;
-                kpaOverall.Anchor = AnchorStyles.Left;
-
+                lbl_Performance.Text = "KPA";
+                lbl_Section.Text = "All";
+                lbl_Category.Text = "All";
+                KPAOverall kpaOverall = new KPAOverall() { Name = "Overall" };
+                kpaOverall.Dock = DockStyle.Fill;
                 kpaOverall.LoadTemplate(overallData);
                 pnl_activePage.Controls.Add(kpaOverall);
+                kpaOverall.BringToFront();
+                pnl_NavigationPanelMax.BringToFront();
             }
             else
             {
-                // TODO: pnl_activePage.Controls.Clear();
-                // TODO: pnl_activePage.BringToFront();
-                KPIOverall kpiOverall = new KPIOverall();
-                // TODO: kpiOverall.Dock = DockStyle.Fill;
-                kpiOverall.Anchor = AnchorStyles.Bottom;
-                kpiOverall.Anchor = AnchorStyles.Top;
-                kpiOverall.Anchor = AnchorStyles.Right;
-                kpiOverall.Anchor = AnchorStyles.Left;
+                lbl_Performance.Text = "KPI";
+                lbl_Section.Text = "All";
+                lbl_Category.Text = "All";
+                KPIOverall kpiOverall = new KPIOverall() { Name = "Overall" };
+                kpiOverall.Dock = DockStyle.Fill;
 
                 kpiOverall.LoadTemplate(overallData);
                 pnl_activePage.Controls.Add(kpiOverall);
+                kpiOverall.BringToFront();
+                pnl_NavigationPanelMax.BringToFront();
+
             }
         }
 
@@ -830,15 +830,11 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         private void LoadDataComingSoonTemplate()
         {
-            // TODO: pnl_activePage.Controls.Clear();
-            // TODO: pnl_activePage.BringToFront();
-            DataComingSoon comingSoon = new DataComingSoon();
-            // TODO:comingSoon.Dock = DockStyle.Fill;
-            comingSoon.Anchor = AnchorStyles.Bottom;
-            comingSoon.Anchor = AnchorStyles.Top;
-            comingSoon.Anchor = AnchorStyles.Right;
-            comingSoon.Anchor = AnchorStyles.Left;
+            DataComingSoon comingSoon = new DataComingSoon() { Name = "DataComingSoon" };
+            comingSoon.Dock = DockStyle.Fill;
             pnl_activePage.Controls.Add(comingSoon);
+            comingSoon.BringToFront();
+            pnl_NavigationPanelMax.BringToFront();
         }
 
 

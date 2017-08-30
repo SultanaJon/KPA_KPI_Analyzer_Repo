@@ -273,19 +273,9 @@ namespace KPA_KPI_Analyzer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap MaxMin_Icon {
+        internal static System.Drawing.Bitmap Menu {
             get {
-                object obj = ResourceManager.GetObject("MaxMin_Icon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap MaxMin_Icon_Hover {
-            get {
-                object obj = ResourceManager.GetObject("MaxMin_Icon_Hover", resourceCulture);
+                object obj = ResourceManager.GetObject("Menu", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

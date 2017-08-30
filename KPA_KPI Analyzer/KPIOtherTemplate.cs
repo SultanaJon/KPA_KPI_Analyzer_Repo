@@ -17,7 +17,8 @@ namespace KPA_KPI_Analyzer
 
 
 
-
+        public delegate void UpdateCategoryHandler(string categoryName);
+        public static event UpdateCategoryHandler ChangeCategory;
 
 
         /// <summary>
@@ -207,6 +208,7 @@ namespace KPA_KPI_Analyzer
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = "PRs Created";
+            ChangeCategory(Title);
             TimeBucketOne = overallData.kpi.other.prsCreated.data.Zero.ToString();
             TimeBucketTwo = overallData.kpi.other.prsCreated.data.LessOneWeek.ToString();
             TimeBucketThree = overallData.kpi.other.prsCreated.data.LessTwoWeeks.ToString();
@@ -267,6 +269,7 @@ namespace KPA_KPI_Analyzer
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = "PRs Released";
+            ChangeCategory(Title);
             TimeBucketOne = overallData.kpi.other.prsReleased.data.Zero.ToString();
             TimeBucketTwo = overallData.kpi.other.prsReleased.data.LessOneWeek.ToString();
             TimeBucketThree = overallData.kpi.other.prsReleased.data.LessTwoWeeks.ToString();
@@ -327,6 +330,7 @@ namespace KPA_KPI_Analyzer
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = "Total Spend";
+            ChangeCategory(Title);
             TimeBucketOne = overallData.kpi.other.totalSpend.data.Zero.ToString();
             TimeBucketTwo = overallData.kpi.other.totalSpend.data.LessOneWeek.ToString();
             TimeBucketThree = overallData.kpi.other.totalSpend.data.LessTwoWeeks.ToString();
@@ -386,6 +390,7 @@ namespace KPA_KPI_Analyzer
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = "PR vs PO Value";
+            ChangeCategory(Title);
             TimeBucketOne = overallData.kpi.other.prVsPOValue.data.Zero.ToString();
             TimeBucketTwo = overallData.kpi.other.prVsPOValue.data.LessOneWeek.ToString();
             TimeBucketThree = overallData.kpi.other.prVsPOValue.data.LessTwoWeeks.ToString();
@@ -445,6 +450,7 @@ namespace KPA_KPI_Analyzer
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = "Hot Job PRs";
+            ChangeCategory(Title);
             TimeBucketOne = overallData.kpi.other.hotJobPrs.data.Zero.ToString();
             TimeBucketTwo = overallData.kpi.other.hotJobPrs.data.LessOneWeek.ToString();
             TimeBucketThree = overallData.kpi.other.hotJobPrs.data.LessTwoWeeks.ToString();

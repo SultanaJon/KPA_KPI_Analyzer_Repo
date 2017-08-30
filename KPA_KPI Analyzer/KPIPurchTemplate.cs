@@ -13,7 +13,8 @@ namespace KPA_KPI_Analyzer
         DataTable unconfirmed;
 
 
-
+        public delegate void UpdateCategoryHandler(string categoryName);
+        public static event UpdateCategoryHandler ChangeCategory;
 
 
         /// <summary>
@@ -187,6 +188,7 @@ namespace KPA_KPI_Analyzer
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = "Initial Confirmation vs PR Planned Date";
+            ChangeCategory(Title);
             TimeBucketOne = overallData.kpi.purch.initConfVsPRPlanDate.data.Minus_TwentyTwo.ToString();
             TimeBucketTwo = overallData.kpi.purch.initConfVsPRPlanDate.data.Minus_Fifteen_TwentyOne.ToString();
             TimeBucketThree = overallData.kpi.purch.initConfVsPRPlanDate.data.Minus_Eight_Fourteen.ToString();

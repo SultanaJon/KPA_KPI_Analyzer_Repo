@@ -14,9 +14,6 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
 
 
 
-
-
-
         /// <summary>
         /// data used to check the state of a data removal process.
         /// </summary>

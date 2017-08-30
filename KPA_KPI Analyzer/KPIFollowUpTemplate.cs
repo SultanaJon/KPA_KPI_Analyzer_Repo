@@ -17,7 +17,8 @@ namespace KPA_KPI_Analyzer
         DataTable unconfirmed;
 
 
-
+        public delegate void UpdateCategoryHandler(string categoryName);
+        public static event UpdateCategoryHandler ChangeCategory;
 
         /// <summary>
         /// Boolean value indicating whether the data was loaded into the dataviz control
@@ -217,6 +218,7 @@ namespace KPA_KPI_Analyzer
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = "Initial Confirmation vs Current Confirmation";
+            ChangeCategory(Title);
             TotalOrders = overallData.kpi.followUp.initConfVsCurrConf.data.Total.ToString();
             Average = overallData.kpi.followUp.initConfVsCurrConf.data.Average.ToString();
             PercNoConf = overallData.kpi.followUp.initConfVsCurrConf.data.PercentUnconf.ToString();
@@ -276,6 +278,7 @@ namespace KPA_KPI_Analyzer
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = "Final Confirmation Date vs Final Planned Date";
+            ChangeCategory(Title);
             TotalOrders = overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Total.ToString();
             Average = overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Average.ToString();
             PercNoConf = overallData.kpi.followUp.finalConfDateVsFinalPlan.data.PercentUnconf.ToString();
@@ -335,6 +338,7 @@ namespace KPA_KPI_Analyzer
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = "Receipt Date vs Current Planed Date";
+            ChangeCategory(Title);
             TotalOrders = overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Total.ToString();
             Average = overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Average.ToString();
             TimeBucketOne = overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Minus_TwentyTwo.ToString();
@@ -390,6 +394,7 @@ namespace KPA_KPI_Analyzer
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = "Receipt Date vs Original Confirmed Date";
+            ChangeCategory(Title);
             TotalOrders = overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Total.ToString();
             Average = overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Average.ToString();
             PercNoConf = overallData.kpi.followUp.receiptDateVsOrigConfDate.data.PercentUnconf.ToString();
@@ -449,6 +454,7 @@ namespace KPA_KPI_Analyzer
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = "Receipt Date vs Current Confirmed Date";
+            ChangeCategory(Title);
             TotalOrders = overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Total.ToString();
             Average = overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Average.ToString();
             PercNoConf = overallData.kpi.followUp.receiptDateVsCurrConfDate.data.PercentUnconf.ToString();

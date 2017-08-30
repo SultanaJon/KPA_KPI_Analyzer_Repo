@@ -20,8 +20,10 @@ namespace KPA_KPI_Analyzer
         OleDbCommand cmd;
 
 
+        public delegate void UpdateCategoryHandler(string categoryName);
+        public static event UpdateCategoryHandler ChangeCategory;
 
-        
+
         /// <summary>
         /// Boolean value indicating whether the data was loaded into the dataviz control
         /// </summary>
@@ -181,6 +183,7 @@ namespace KPA_KPI_Analyzer
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = "PRs (Not on PO) - Hot Job Only";
+            ChangeCategory(Title);
             TimeBucketOne = overallData.kpa.hotJobs.prsNotOnPO.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpa.hotJobs.prsNotOnPO.data.One_Three.ToString();
             TimeBucketThree = overallData.kpa.hotJobs.prsNotOnPO.data.Four_Seven.ToString();
@@ -231,6 +234,7 @@ namespace KPA_KPI_Analyzer
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = "No Confirmation - Hot Job Only";
+            ChangeCategory(Title);
 
             TimeBucketOne = overallData.kpa.hotJobs.noConfirmation.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpa.hotJobs.noConfirmation.data.One_Three.ToString();

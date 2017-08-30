@@ -12,6 +12,8 @@ namespace KPA_KPI_Analyzer
         DataTable prPlanDateVsCurrPlanDt;
 
 
+        public delegate void UpdateCategoryHandler(string categoryName);
+        public static event UpdateCategoryHandler ChangeCategory;
 
         /// <summary>
         /// Boolean value indicating whether the data was loaded into the dataviz control
@@ -185,6 +187,7 @@ namespace KPA_KPI_Analyzer
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = "PR Planned Date vs Current Planned";
+            ChangeCategory(Title);
             Average = overallData.kpi.plan.prPlanDateVsCurrPlan.data.Average.ToString();
             TotalOrders = overallData.kpi.plan.prPlanDateVsCurrPlan.data.Total.ToString();
             TimeBucketOne = overallData.kpi.plan.prPlanDateVsCurrPlan.data.Minus_TwentyTwo.ToString();
@@ -244,6 +247,7 @@ namespace KPA_KPI_Analyzer
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = "(Orig Plan Date - 2nd Lvl Rel Date vs Coded Lead-time";
+            ChangeCategory(Title);
             Average = overallData.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Average.ToString();
             TotalOrders = overallData.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Total.ToString();
             TimeBucketOne = overallData.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Minus_TwentyTwo.ToString();
@@ -303,6 +307,7 @@ namespace KPA_KPI_Analyzer
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = "(Curr Plan Date - 2nd Lvl Rel Date) vs Coded Lead-time";
+            ChangeCategory(Title);
             Average = overallData.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Average.ToString();
             TotalOrders = overallData.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Total.ToString();
             TimeBucketOne = overallData.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Minus_TwentyTwo.ToString();

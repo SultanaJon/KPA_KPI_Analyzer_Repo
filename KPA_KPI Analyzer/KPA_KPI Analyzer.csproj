@@ -658,6 +658,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="lgo.ico" />
+    <None Include="Resources\Menu1.jpg" />
+    <None Include="Resources\Menu.jpg" />
     <None Include="Resources\comau_logo.png" />
     <None Include="Resources\Minimize.jpg" />
     <None Include="Resources\Minimize_Hover_Icon.jpg" />
