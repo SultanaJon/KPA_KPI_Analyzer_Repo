@@ -56,233 +56,97 @@ namespace KPA_KPI_Analyzer
         {
             Button btn = sender as Button;
             activateSectionBtn(btn);
+            RemoveActivePanelControls();
 
             int actSecTag = int.Parse(btn.Tag.ToString());
-            int mainActTag = int.Parse(mainNavActiveBtn.Tag.ToString());
-
 
             if (actSecTag >= 0 && actSecTag <= 14)
                 lbl_Performance.Text = "KPA";
             else
                 lbl_Performance.Text = "KPI";
 
+
             switch (actSecTag)
             {
                 case 0: // KPA --> Overall
-                    lbl_Section.Text = "All";
-                    lbl_Category.Text = "All";
                     LoadOverallTemplate();
-                    MenuInFront = false;
                     break;
                 case 1: // KPA --> Plan
-                    lbl_Section.Text = "Plan";
-                    KPAPlanTemplate kpaPlanTemp = new KPAPlanTemplate() { Name = "Plan" };
-                    KPAPlanTemplate.ChangeCategory += UpdateCategoryStatus;
-                    kpaPlanTemp.Dock = DockStyle.Fill;
-                    pnl_activePage.Controls.Add(kpaPlanTemp);
-                    kpaPlanTemp.BringToFront();
-                    MenuInFront = false;
+                    CreateKpaPlanTemplate();
                     break;
                 case 2: // KPA --> Purch
-                    lbl_Section.Text = "Purch";
-                    RemoveActivePanelControls();
-                    KPAPurchTemplate kpaPurchTemp = new KPAPurchTemplate() { Name = "Purch" };
-                    KPAPurchTemplate.ChangeCategory += UpdateCategoryStatus;
-                    kpaPurchTemp.Dock = DockStyle.Fill;
-                    pnl_activePage.Controls.Add(kpaPurchTemp);
-                    kpaPurchTemp.BringToFront();
-                    MenuInFront = false;
+                    CreateKpaPurchTemplate();
                     break;
                 case 3: // KPA --> Purch Sub
-                    lbl_Section.Text = "Purch Sub";
-                    RemoveActivePanelControls();
-                    KPAPurchSubTemplate kpaPurchSubTemp = new KPAPurchSubTemplate() { Name = "PurchSub" };
-                    KPAPurchSubTemplate.ChangeCategory += UpdateCategoryStatus;
-                    kpaPurchSubTemp.Dock = DockStyle.Fill;
-                    pnl_activePage.Controls.Add(kpaPurchSubTemp);
-                    kpaPurchSubTemp.BringToFront();
-                    MenuInFront = false;
+                    CreateKpaPurchSubTemplate();
                     break;
                 case 4: // KPA --> Purch Total
-                    lbl_Section.Text = "Purch Total";
-                    RemoveActivePanelControls();
-                    KPAPurchTotalTemplate kpaPurchTotalTemp = new KPAPurchTotalTemplate() { Name = "PurchTotal" };
-                    KPAPurchTotalTemplate.ChangeCategory += UpdateCategoryStatus;
-                    kpaPurchTotalTemp.Dock = DockStyle.Fill;
-                    pnl_activePage.Controls.Add(kpaPurchTotalTemp);
-                    kpaPurchTotalTemp.BringToFront();
-                    MenuInFront = false;
+                    CreateKpaPurchTotalTemplate();
                     break;
                 case 5: // KPA --> Purch/Plan Total
-                    lbl_Section.Text = "N/A";
-                    lbl_Category.Text = "N/A";
-                    lbl_Section.Text = "Purch/Plan Total";
                     LoadDataComingSoonTemplate();
-                    MenuInFront = true;
                     break;
                 case 6: // KPA --> Follow Up
-                    lbl_Section.Text = "Follow Up";
-                    RemoveActivePanelControls();
-                    KPAFollowUpTemplate kpaFollowUpTemp = new KPAFollowUpTemplate() { Name = "FollowUp" };
-                    KPAFollowUpTemplate.ChangeCategory += UpdateCategoryStatus;
-                    kpaFollowUpTemp.Dock = DockStyle.Fill;
-                    pnl_activePage.Controls.Add(kpaFollowUpTemp);
-                    kpaFollowUpTemp.BringToFront();
-                    MenuInFront = false;
+                    CreatekpaFollowUpTemplate();
                     break;
                 case 7: // KPA --> Cancellations
-                    lbl_Section.Text = "N/A";
-                    lbl_Category.Text = "N/A";
                     LoadDataComingSoonTemplate();
-                    MenuInFront = true;
                     break;
                 case 8: // KPA --> NCRs
-                    lbl_Section.Text = "N/A";
-                    lbl_Category.Text = "N/A";
                     LoadDataComingSoonTemplate();
-                    MenuInFront = true;
                     break;
                 case 9: // KPA --> Hot Jobs
-                    lbl_Section.Text = "Hot Jobs";
-                    RemoveActivePanelControls();
-                    KPAHotJobsTemplate kpaHotJobs = new KPAHotJobsTemplate() { Name = "HotJobs" };
-                    KPAHotJobsTemplate.ChangeCategory += UpdateCategoryStatus;
-                    kpaHotJobs.Dock = DockStyle.Fill;
-                    pnl_activePage.Controls.Add(kpaHotJobs);
-                    kpaHotJobs.BringToFront();
-                    MenuInFront = false;
+                    CreateKpaHotJobsTemplate();
                     break;
                 case 10: // KPA --> Excess Stock - Stock
-                    lbl_Section.Text = "N/A";
-                    lbl_Category.Text = "N/A";
                     LoadDataComingSoonTemplate();
-                    MenuInFront = true;
                     break;
                 case 11: // KPA --> Excess Stock - Open Orders
-                    lbl_Section.Text = "N/A";
-                    lbl_Category.Text = "N/A";
                     LoadDataComingSoonTemplate();
-                    MenuInFront = true;
                     break;
                 case 12: // KPA --> Current Plan vs Actual
-                    lbl_Section.Text = "Current Plan vs Actual";
-                    RemoveActivePanelControls();
-                    KPACurrentPlanActualTemplate kpaCurrPlanActual = new KPACurrentPlanActualTemplate() { Name = "CurrPlanActual" };
-                    KPACurrentPlanActualTemplate.ChangeCategory += UpdateCategoryStatus;
-                    kpaCurrPlanActual.Dock = DockStyle.Fill;
-                    pnl_activePage.Controls.Add(kpaCurrPlanActual);
-                    kpaCurrPlanActual.BringToFront();
-                    MenuInFront = false;
+                    CreateKpaCurrPlanActualTemplate();
                     break;
                 case 13: // KPA --> MTC
-                    lbl_Section.Text = "N/A";
-                    lbl_Category.Text = "N/A";
                     LoadDataComingSoonTemplate();
-                    MenuInFront = true;
                     break;
                 case 14: // KPI --> Overall
-                    lbl_Section.Text = "All";
-                    lbl_Category.Text = "All";
                     LoadOverallTemplate();
-                    MenuInFront = false;
                     break;
                 case 15: // KPI --> Plan
-                    lbl_Section.Text = "Plan";
-                    RemoveActivePanelControls();
-                    KPIPlanTemplate kpiPlanTemplate = new KPIPlanTemplate() { Name = "Plan" };
-                    KPIPlanTemplate.ChangeCategory += UpdateCategoryStatus;
-                    kpiPlanTemplate.Dock = DockStyle.Fill;
-                    pnl_activePage.Controls.Add(kpiPlanTemplate);
-                    kpiPlanTemplate.BringToFront();
-                    MenuInFront = false;
+                    CreateKpiPlanTemplate();
                     break;
                 case 16: // KPI --> Purch
-                    lbl_Section.Text = "Purch";
-                    RemoveActivePanelControls();
-                    KPIPurchTemplate kpiPurchTemplate = new KPIPurchTemplate() { Name = "Purch" };
-                    KPIPurchTemplate.ChangeCategory += UpdateCategoryStatus;
-                    kpiPurchTemplate.Dock = DockStyle.Fill;
-                    pnl_activePage.Controls.Add(kpiPurchTemplate);
-                    kpiPurchTemplate.BringToFront();
-                    MenuInFront = false;
+                    CreateKpiPurchTemplate();
                     break;
                 case 17: // KPI --> Follow Up
-                    lbl_Section.Text = "Follow Up";
-                    RemoveActivePanelControls();
-                    KPIFollowUpTemplate kpiFollowUpTemplate = new KPIFollowUpTemplate() { Name = "FollowUp" };
-                    KPIFollowUpTemplate.ChangeCategory += UpdateCategoryStatus;
-                    kpiFollowUpTemplate.Dock = DockStyle.Fill;
-                    pnl_activePage.Controls.Add(kpiFollowUpTemplate);
-                    kpiFollowUpTemplate.BringToFront();
-                    MenuInFront = false;
+                    CreateKpiFollowUpTemplate();
                     break;
                 case 18: // KPI --> Plan
-                    lbl_Section.Text = "N/A";
-                    lbl_Category.Text = "N/A";
                     LoadDataComingSoonTemplate();
-                    MenuInFront = true;
                     break;
                 case 19: // KPI --> Purch
-                    lbl_Section.Text = "Purch";
-                    RemoveActivePanelControls();
-                    KPIPurchTwoTemplate kpiPurchTwoTemplate = new KPIPurchTwoTemplate() { Name = "Purch" };
-                    KPIPurchTwoTemplate.ChangeCategory += UpdateCategoryStatus;
-                    kpiPurchTwoTemplate.Dock = DockStyle.Fill;
-                    pnl_activePage.Controls.Add(kpiPurchTwoTemplate);
-                    kpiPurchTwoTemplate.BringToFront();
-                    MenuInFront = false;
+                    CreateKpiPurchTwoTemplate();
                     break;
                 case 20: // KPI --> Purch Sub
-                    lbl_Section.Text = "Purch Sub";
-                    RemoveActivePanelControls();
-                    KPIPurchSubTemplate kpiPurchSubTemplate = new KPIPurchSubTemplate() { Name = "PurchSub" };
-                    KPIPurchSubTemplate.ChangeCategory += UpdateCategoryStatus;
-                    kpiPurchSubTemplate.Dock = DockStyle.Fill;
-                    pnl_activePage.Controls.Add(kpiPurchSubTemplate);
-                    kpiPurchSubTemplate.BringToFront();
-                    MenuInFront = false;
+                    CreateKpiPurchSubTemplate();
                     break;
                 case 21: // KPI --> Purch Total
-                    lbl_Section.Text = "Purch Total";
-                    RemoveActivePanelControls();
-                    KPIPurchTotalTemplate kpiPurchTotalTemplate = new KPIPurchTotalTemplate() { Name = "PurchTotal" };
-                    KPIPurchTotalTemplate.ChangeCategory += UpdateCategoryStatus;
-                    kpiPurchTotalTemplate.Dock = DockStyle.Fill;
-                    pnl_activePage.Controls.Add(kpiPurchTotalTemplate);
-                    kpiPurchTotalTemplate.BringToFront();
-                    MenuInFront = false;
+                    CreateKpiPurchTotalTemplate();
                     break;
                 case 22: // KPI --> Purch/Plan
-                    lbl_Section.Text = "Purch/Plan";
-                    RemoveActivePanelControls();
-                    KPIPurchPlanTemplate kpiPurchPlanTemplate = new KPIPurchPlanTemplate() { Name = "PurchPlan" };
-                    KPIPurchPlanTemplate.ChangeCategory += UpdateCategoryStatus;
-                    kpiPurchPlanTemplate.Dock = DockStyle.Fill;
-                    pnl_activePage.Controls.Add(kpiPurchPlanTemplate);
-                    kpiPurchPlanTemplate.BringToFront();
-                    MenuInFront = false;
+                    CreateKpiPurchPlanTemplate();
                     break;
                 case 23: // KPI --> Purch/Plan Total
-                    lbl_Section.Text = "N/A";
-                    lbl_Category.Text = "N/A";
                     LoadDataComingSoonTemplate();
-                    MenuInFront = true;
                     break;
                 case 24: // KPI --> Other
-                    lbl_Section.Text = "Other";
-                    RemoveActivePanelControls();
-                    KPIOtherTemplate kpiOtherTemplate = new KPIOtherTemplate() { Name = "Other" };
-                    KPIOtherTemplate.ChangeCategory += UpdateCategoryStatus;
-                    kpiOtherTemplate.Dock = DockStyle.Fill;
-                    pnl_activePage.Controls.Add(kpiOtherTemplate);
-                    kpiOtherTemplate.BringToFront();
-                    MenuInFront = false;
+                    CreateKpiOtherTemplate();
                     break;
                 default:
                     break;
             }
         }
-
 
 
 
@@ -305,8 +169,6 @@ namespace KPA_KPI_Analyzer
 
 
 
-
-
         /// <summary>
         /// This function will set the current active section button back to its default state.
         /// </summary>
@@ -314,8 +176,6 @@ namespace KPA_KPI_Analyzer
         {
             activeSectionBtn.ForeColor = System.Drawing.Color.White;
         }
-
-
 
 
 
@@ -342,38 +202,6 @@ namespace KPA_KPI_Analyzer
         }
 
 
-
-
-        /// <summary>
-        /// This function will remove any templates that are within the active page. To make the application
-        /// faster we do not want the active page panel to be populated with many templates. The active page
-        /// should only consist of the dashboard, one active template, the loading screen, the dashboard dragdrop
-        /// when needed, and the filters page.
-        /// </summary>
-        private void RemoveActivePanelControls()
-        {
-            foreach (Control ctrl in pnl_activePage.Controls)
-            {
-                switch (ctrl.Name)
-                {
-                    case "Overall":
-                    case "DataComingSoon":
-                    case "Plan":
-                    case "Purch":
-                    case "PurchSub":
-                    case "PurchTotal":
-                    case "FollowUp":
-                    case "HotJobs":
-                    case "CurrPlanActual":
-                    case "PurchPlan":
-                    case "Other":
-                        pnl_activePage.Controls.Remove(ctrl);
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
 
 
 

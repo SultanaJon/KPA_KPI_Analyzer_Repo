@@ -60,7 +60,7 @@ namespace KPA_KPI_Analyzer
         private string Title { get { return lbl_title.Text; } set { lbl_title.Text = value;  } }
         private string AnalysisOne { get { return lbl_analysisOne.Text; } set { lbl_analysisOne.Text = value;  } }
         private string AnalysisTwo { get { return lbl_analysisTwo.Text; } set { lbl_analysisTwo.Text = value;  } }
-        private string Average { get { return lbl_average.Text; } set { lbl_average.Text = value; } }
+        private string Average { get { return lbl_average.Text; } set { lbl_average.Text = value + " Week(s)"; } }
         private string TimeBucketOne { get { return lbl_timebuckOne.Text; } set { lbl_timebuckOne.Text = value;  } }
         private string TimeBucketTwo { get { return lbl_timebuckTwo.Text; } set { lbl_timebuckTwo.Text = value;  } }
         private string TimeBucketThree { get { return lbl_timebuckThree.Text; } set { lbl_timebuckThree.Text = value;  } }
@@ -262,7 +262,7 @@ namespace KPA_KPI_Analyzer
 
 
             TotalOrders = String.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.Total);
-            Average = String.Format("{0:n}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.Average) + " Week(s)";
+            Average = String.Format("{0:n}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.Average);
 
             AnalysisOne = "- Will only show if the PO line has a confirmed date, the PO line is not received complete and the purchase group is UHJ.";
             AnalysisTwo = "- Difference between confirmation date and the current planned date.";

@@ -188,6 +188,14 @@
       <DependentUpon>KPA_KPI_UI.cs</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="KPA_KPI_UI.TemplateLoading.cs">
+      <DependentUpon>KPA_KPI_UI.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KPA_KPI_UI.Timers.cs">
+      <DependentUpon>KPA_KPI_UI.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="KPIFollowUpTemplate.cs">
       <SubType>UserControl</SubType>
     </Compile>
