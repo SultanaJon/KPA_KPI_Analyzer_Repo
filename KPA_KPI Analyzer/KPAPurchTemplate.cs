@@ -214,7 +214,7 @@ namespace KPA_KPI_Analyzer
             TotalOrders = String.Format("{0:n0}", overallData.kpa.purch.prsAgingRel.data.Total);
             Average = String.Format("{0:n}", overallData.kpa.purch.prsAgingRel.data.Average);
 
-            AnalysisOne = "- Will only show in this field if the PR is fully released and the PR open Qty > 0....";
+            AnalysisOne = "- Will only show in this field if the PR is fully released and the PR open Qty > 0.";
             AnalysisTwo = "- Difference between todays date and the date the PR was fully released.";
 
 

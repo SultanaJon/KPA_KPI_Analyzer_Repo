@@ -5,7 +5,7 @@ namespace KPA_KPI_Analyzer
 {
     public partial class KPA_KPI_UI
     {
-        Button mainNavActiveBtn = new Button();
+        Bunifu.Framework.UI.BunifuImageButton mainNavActiveBtn = new Bunifu.Framework.UI.BunifuImageButton();
         Panel mainNavActivePanel = new Panel() { Visible = false };
         bool NavigationLocked = false;
         bool MenuInFront = false;
@@ -18,30 +18,7 @@ namespace KPA_KPI_Analyzer
         /// <param name="e">The hovered event</param>
         private void MainNavBtn_MouseEnter(object sender, EventArgs e)
         {
-            Button btn = sender as Button; // Get the object being hovered over.
-            int tag = int.Parse(btn.Tag as string);
 
-            if (mainNavActiveBtn != btn) // if the hovered button is the active button we do not want to bother changing the background image
-            {
-                switch(tag)
-                {
-                    case 0:
-                        btn.BackgroundImage = Properties.Resources.DashboardBG_HoverActive;
-                        break;
-                    case 1:
-                        btn.BackgroundImage = Properties.Resources.KPABG_Hover;
-                        break;
-                    case 2:
-                        btn.BackgroundImage = Properties.Resources.KPIBG_Hover;
-                        break;
-                    case 3:
-                        btn.BackgroundImage = Properties.Resources.ChartsBG_HoverActive;
-                        break;
-                    case 4:
-                        btn.BackgroundImage = Properties.Resources.FilterBG_HoverActive;
-                        break;
-                }
-            }
         }
 
 
@@ -58,30 +35,6 @@ namespace KPA_KPI_Analyzer
         private void MainNavBtn_MouseLeave(object sender, EventArgs e)
         {
 
-            Button btn = sender as Button;
-            int tag = int.Parse((string)btn.Tag);
-
-            if (mainNavActiveBtn != btn)
-            {
-                switch (tag)
-                {
-                    case 0:
-                        btn.BackgroundImage = Properties.Resources.DashboardBG_Normal;
-                        break;
-                    case 1:
-                        btn.BackgroundImage = Properties.Resources.KPABG_Normal;
-                        break;
-                    case 2:
-                        btn.BackgroundImage = Properties.Resources.KPIBG_Normal;
-                        break;
-                    case 3:
-                        btn.BackgroundImage = Properties.Resources.ChartsBG_Normal;
-                        break;
-                    case 4:
-                        btn.BackgroundImage = Properties.Resources.FilterBG_Normal;
-                        break;
-                }
-            }
         }
 
 
@@ -104,10 +57,8 @@ namespace KPA_KPI_Analyzer
                 if(mainNavActivePanel.Visible)
                 {
                     mainNavActivePanel.Visible = false;
-                    if (int.Parse(mainNavActiveBtn.Tag.ToString()) == 1)
-                        mainNavActiveBtn.BackgroundImage = Properties.Resources.KPABG_Hover;
-                    else
-                        mainNavActiveBtn.BackgroundImage = Properties.Resources.KPIBG_Hover;
+                    if (int.Parse(mainNavActiveBtn.Tag.ToString()) == 1) ;
+                    else ;
                 }
             }
             else
@@ -136,7 +87,7 @@ namespace KPA_KPI_Analyzer
             if (NavigationLocked)
                 return;
 
-            Button btn = sender as Button;
+            Bunifu.Framework.UI.BunifuImageButton btn = sender as Bunifu.Framework.UI.BunifuImageButton;
             int tag = int.Parse(btn.Tag.ToString());
 
 
@@ -216,38 +167,32 @@ namespace KPA_KPI_Analyzer
                     if (pnl_KPISectionsPanel.Visible)
                     {
                         pnl_KPISectionsPanel.Visible = false;
-                        btn_KPI.BackgroundImage = Properties.Resources.KPIBG_Normal;
                     }
 
                     if (!pnl_KPASectionsPanel.Visible)
                     {
                         pnl_KPASectionsPanel.Visible = true;
-                        btn_KPA.BackgroundImage = Properties.Resources.KPABG_Active;
                         mainNavActivePanel = pnl_KPASectionsPanel;
                     }
                     else
                     {
                         pnl_KPASectionsPanel.Visible = false;
-                        btn_KPA.BackgroundImage = Properties.Resources.KPABG_Hover;
                     }
                     break;
                 case 2:
                     if (pnl_KPASectionsPanel.Visible)
                     {
                         pnl_KPASectionsPanel.Visible = false;
-                        btn_KPA.BackgroundImage = Properties.Resources.KPABG_Normal;
                     }
 
                     if (!pnl_KPISectionsPanel.Visible)
                     {
                         pnl_KPISectionsPanel.Visible = true;
-                        btn_KPI.BackgroundImage = Properties.Resources.KPIBG_Active;
                         mainNavActivePanel = pnl_KPISectionsPanel;
                     }
                     else
                     {
                         pnl_KPISectionsPanel.Visible = false;
-                        btn_KPI.BackgroundImage = Properties.Resources.KPIBG_Hover;
                     }
                     mainNavActivePanel = pnl_KPISectionsPanel;
                     break;
@@ -276,42 +221,32 @@ namespace KPA_KPI_Analyzer
             setCurrActiveButtonToDefault();
 
             // get the object being acted upon.
-            Button btn = sender as Button;
+            Bunifu.Framework.UI.BunifuImageButton btn = sender as Bunifu.Framework.UI.BunifuImageButton;
             int tag = int.Parse(btn.Tag.ToString());
 
             switch (tag)
             {
                 case 0:
-                    btn.BackgroundImage = Properties.Resources.DashboardBG_HoverActive;
-
                     // Only load the default state if the main nav active button is not KPA or KPI
                     if (mainActTag != 1 || mainActTag != 2)
                         loadDefaultSectionState(tag);
                     break;
                 case 1: // 1 & 2 are navigation buttons with sub menu
-                    btn.BackgroundImage = Properties.Resources.KPABG_Active;
-
                     // Only load the default state if the main nav active button is not KPA or KPI
                     if (mainActTag != 1 || mainActTag != 2)
                         loadDefaultSectionState(tag);
                     break;
                 case 2:
-                    btn.BackgroundImage = Properties.Resources.KPIBG_Active;
-
                     // Only load the default state if the main nav active button is not KPA or KPI
                     if(mainActTag != 1 || mainActTag != 2)
                         loadDefaultSectionState(tag);
                     break;
                 case 3:
-                    btn.BackgroundImage = Properties.Resources.ChartsBG_HoverActive;
-
                     // Only load the default state if the main nav active button is not KPA or KPI
                     if (mainActTag != 1 || mainActTag != 2)
                         loadDefaultSectionState(tag);
                     break;
                 case 4:
-                    btn.BackgroundImage = Properties.Resources.FilterBG_HoverActive;
-
                     // Only load the default state if the main nav active button is not KPA or KPI
                     if (mainActTag != 1 || mainActTag != 2)
                         loadDefaultSectionState(tag);
@@ -339,10 +274,8 @@ namespace KPA_KPI_Analyzer
             {
                 case 0:
                     // update the icon image of the current active button
-                    mainNavActiveBtn.BackgroundImage = Properties.Resources.DashboardBG_Normal;
                     break;
                 case 1:
-                    mainNavActiveBtn.BackgroundImage = Properties.Resources.KPABG_Normal;
 
                     if (pnl_KPASectionsPanel.Height != Constants.zeroHeight)
                         pnl_KPASectionsPanel.Height = Constants.zeroHeight;
@@ -351,7 +284,6 @@ namespace KPA_KPI_Analyzer
                         pnl_KPISectionsPanel.Height = Constants.zeroHeight;
                     break;
                 case 2:
-                    mainNavActiveBtn.BackgroundImage = Properties.Resources.KPIBG_Normal;
 
                     if (pnl_KPASectionsPanel.Height != Constants.zeroHeight)
                         pnl_KPASectionsPanel.Height = Constants.zeroHeight;
@@ -361,11 +293,9 @@ namespace KPA_KPI_Analyzer
                     break;
                 case 3:
                     // update the icon image of the current active button
-                    mainNavActiveBtn.BackgroundImage = Properties.Resources.ChartsBG_Normal;
                     break;
                 case 4:
                     // update the icon image of the current active button
-                    mainNavActiveBtn.BackgroundImage = Properties.Resources.FilterBG_Normal;
                     break;
                 default:
                     break;

@@ -11,19 +11,14 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-using DataImporter.Classes;
 using Excel_Access_Tools.Access;
-using Excel_Access_Tools.Excel;
 using KPA_KPI_Analyzer.DatabaseUtils;
-using KPA_KPI_Analyzer.DragDropFeatures;
 using KPA_KPI_Analyzer.FilterFeeature;
 using KPA_KPI_Analyzer.IOUtils;
 using KPA_KPI_Analyzer.KPA_KPI_Overall;
 using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
-using System.IO;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace KPA_KPI_Analyzer

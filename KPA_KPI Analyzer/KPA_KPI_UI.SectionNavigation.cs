@@ -16,9 +16,7 @@ namespace KPA_KPI_Analyzer
         /// <param name="e"></param>
         private void MainNavSection_MouseHover(object sender, EventArgs e)
         {
-            Button btn = sender as Button;
-            if (activeSectionBtn != btn)
-                btn.ForeColor = System.Drawing.Color.LightSalmon;
+
         }
 
 

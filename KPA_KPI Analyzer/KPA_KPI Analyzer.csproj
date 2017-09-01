@@ -14,7 +14,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -666,6 +666,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="lgo.ico" />
+    <None Include="Resources\kpiLogo.png" />
+    <None Include="Resources\kpaLogo.png" />
+    <None Include="Resources\test2.png" />
+    <None Include="Resources\test1.png" />
+    <None Include="Resources\FiltersLogo1.png" />
+    <None Include="Resources\ChartsLogo1.png" />
+    <None Include="Resources\DashboardLogo1.png" />
+    <None Include="Resources\FiltersLogo.png" />
+    <None Include="Resources\ChartsLogo.png" />
+    <None Include="Resources\DashboardLogo.png" />
+    <None Include="Resources\test.png" />
     <None Include="Resources\Menu1.jpg" />
     <None Include="Resources\Menu.jpg" />
     <None Include="Resources\comau_logo.png" />

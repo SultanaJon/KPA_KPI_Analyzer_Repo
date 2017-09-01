@@ -7,10 +7,7 @@ using KPA_KPI_Analyzer.FilterFeeature;
 using KPA_KPI_Analyzer.IOUtils;
 using KPA_KPI_Analyzer.KPA_KPI_Overall;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
