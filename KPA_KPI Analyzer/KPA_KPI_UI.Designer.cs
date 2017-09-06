@@ -92,13 +92,20 @@
             this.DataLoaderTimer = new System.Windows.Forms.Timer(this.components);
             this.pnl_activePage = new System.Windows.Forms.Panel();
             this.pnl_NavigationPanelMax = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btn_Dashboard = new Bunifu.Framework.UI.BunifuImageButton();
-            this.btn_Charts = new Bunifu.Framework.UI.BunifuImageButton();
-            this.btn_Filters = new Bunifu.Framework.UI.BunifuImageButton();
-            this.btn_KPA = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.pnl_KPISectionsPanel = new System.Windows.Forms.Panel();
+            this.btn_kpiOther = new System.Windows.Forms.Button();
+            this.btn_kpiPurchPlanTotal = new System.Windows.Forms.Button();
+            this.btn_kpiPurchPlan = new System.Windows.Forms.Button();
+            this.btn_kpiPurchTotal = new System.Windows.Forms.Button();
+            this.btn_kpiPurchSub = new System.Windows.Forms.Button();
+            this.btn_kpiPurchTwo = new System.Windows.Forms.Button();
+            this.btn_kpiPlanTwo = new System.Windows.Forms.Button();
+            this.btn_kpiFollowUp = new System.Windows.Forms.Button();
+            this.btn_kpiPurchOne = new System.Windows.Forms.Button();
+            this.btn_kpiPlanOne = new System.Windows.Forms.Button();
+            this.btn_kpiOverall = new System.Windows.Forms.Button();
+            this.btn_KPI = new Bunifu.Framework.UI.BunifuFlatButton();
             this.pnl_KPASectionsPanel = new System.Windows.Forms.Panel();
-            this.btn_kpaMTC = new System.Windows.Forms.Button();
             this.btn_kpaCurrentPlanActual = new System.Windows.Forms.Button();
             this.btn_kpaExcessStock_OpenOrder = new System.Windows.Forms.Button();
             this.btn_kpaExcessStock_Stock = new System.Windows.Forms.Button();
@@ -112,19 +119,11 @@
             this.btn_kpaPurch = new System.Windows.Forms.Button();
             this.btn_kpaPlan = new System.Windows.Forms.Button();
             this.btn_kpaOverall = new System.Windows.Forms.Button();
-            this.btn_KPI = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.pnl_KPISectionsPanel = new System.Windows.Forms.Panel();
-            this.btn_kpiOther = new System.Windows.Forms.Button();
-            this.btn_kpiPurchPlanTotal = new System.Windows.Forms.Button();
-            this.btn_kpiPurchPlan = new System.Windows.Forms.Button();
-            this.btn_kpiPurchTotal = new System.Windows.Forms.Button();
-            this.btn_kpiPurchSub = new System.Windows.Forms.Button();
-            this.btn_kpiPurchTwo = new System.Windows.Forms.Button();
-            this.btn_kpiPlanTwo = new System.Windows.Forms.Button();
-            this.btn_kpiFollowUp = new System.Windows.Forms.Button();
-            this.btn_kpiPurchOne = new System.Windows.Forms.Button();
-            this.btn_kpiPlanOne = new System.Windows.Forms.Button();
-            this.btn_kpiOverall = new System.Windows.Forms.Button();
+            this.btn_KPA = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btn_Dashboard = new Bunifu.Framework.UI.BunifuImageButton();
+            this.btn_Charts = new Bunifu.Framework.UI.BunifuImageButton();
+            this.btn_Filters = new Bunifu.Framework.UI.BunifuImageButton();
             this.pnl_loadingScreen = new System.Windows.Forms.Panel();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.panel9 = new System.Windows.Forms.Panel();
@@ -155,7 +154,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.pnl_MainNavigation = new System.Windows.Forms.Panel();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
-            this.btn_NavExpander = new System.Windows.Forms.Panel();
             this.pnl_CountrySelectorButton = new System.Windows.Forms.Panel();
             this.lbl_Country = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel3 = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -168,7 +166,7 @@
             this.pnl_CategorySelectorButton = new System.Windows.Forms.Panel();
             this.lbl_Category = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel29 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.panel19 = new System.Windows.Forms.Panel();
+            this.btn_NavExpander = new Bunifu.Framework.UI.BunifuImageButton();
             this.FiltersTimer = new System.Windows.Forms.Timer(this.components);
             this.dc_appTitle = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.dc_countryLbl = new Bunifu.Framework.UI.BunifuDragControl(this.components);
@@ -193,12 +191,12 @@
             this.tableLayoutPanel7.SuspendLayout();
             this.pnl_activePage.SuspendLayout();
             this.pnl_NavigationPanelMax.SuspendLayout();
+            this.pnl_KPISectionsPanel.SuspendLayout();
+            this.pnl_KPASectionsPanel.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Dashboard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Charts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Filters)).BeginInit();
-            this.pnl_KPASectionsPanel.SuspendLayout();
-            this.pnl_KPISectionsPanel.SuspendLayout();
             this.pnl_loadingScreen.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -219,6 +217,7 @@
             this.pnl_SectionSelectorButton.SuspendLayout();
             this.pnl_PerformanceSelectorButton.SuspendLayout();
             this.pnl_CategorySelectorButton.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_NavExpander)).BeginInit();
             this.pnl_TopUIPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -349,7 +348,7 @@
             this.tblpnl_Filters.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tblpnl_Filters.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tblpnl_Filters.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tblpnl_Filters.Size = new System.Drawing.Size(1200, 624);
+            this.tblpnl_Filters.Size = new System.Drawing.Size(1200, 623);
             this.tblpnl_Filters.TabIndex = 27;
             // 
             // tableLayoutPanel6
@@ -359,7 +358,7 @@
             this.tableLayoutPanel6.Controls.Add(this.bunifuCustomLabel14, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.ChkdListBx_PurchGroup, 0, 1);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(13, 415);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(13, 414);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
@@ -559,7 +558,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(190, 196);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(190, 195);
             this.tableLayoutPanel1.TabIndex = 5;
             // 
             // bunifuCustomLabel8
@@ -582,7 +581,7 @@
             this.ChkdListBx_WBSElement.HorizontalScrollbar = true;
             this.ChkdListBx_WBSElement.Location = new System.Drawing.Point(3, 18);
             this.ChkdListBx_WBSElement.Name = "ChkdListBx_WBSElement";
-            this.ChkdListBx_WBSElement.Size = new System.Drawing.Size(184, 175);
+            this.ChkdListBx_WBSElement.Size = new System.Drawing.Size(184, 174);
             this.ChkdListBx_WBSElement.TabIndex = 1;
             this.ChkdListBx_WBSElement.Tag = "0";
             // 
@@ -593,7 +592,7 @@
             this.tableLayoutPanel10.Controls.Add(this.bunifuCustomLabel19, 0, 0);
             this.tableLayoutPanel10.Controls.Add(this.ChkdListBx_IRSuppName, 0, 1);
             this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel10.Location = new System.Drawing.Point(209, 415);
+            this.tableLayoutPanel10.Location = new System.Drawing.Point(209, 414);
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
             this.tableLayoutPanel10.RowCount = 2;
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
@@ -634,7 +633,7 @@
             this.tableLayoutPanel11.Controls.Add(this.bunifuCustomLabel20, 0, 0);
             this.tableLayoutPanel11.Controls.Add(this.ChkdListBx_FxdSuppName, 0, 1);
             this.tableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel11.Location = new System.Drawing.Point(405, 415);
+            this.tableLayoutPanel11.Location = new System.Drawing.Point(405, 414);
             this.tableLayoutPanel11.Name = "tableLayoutPanel11";
             this.tableLayoutPanel11.RowCount = 2;
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
@@ -675,7 +674,7 @@
             this.tableLayoutPanel12.Controls.Add(this.bunifuCustomLabel22, 0, 0);
             this.tableLayoutPanel12.Controls.Add(this.ChkdListBx_DsrdSuppName, 0, 1);
             this.tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel12.Location = new System.Drawing.Point(601, 415);
+            this.tableLayoutPanel12.Location = new System.Drawing.Point(601, 414);
             this.tableLayoutPanel12.Name = "tableLayoutPanel12";
             this.tableLayoutPanel12.RowCount = 2;
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
@@ -716,7 +715,7 @@
             this.tableLayoutPanel13.Controls.Add(this.bunifuCustomLabel24, 0, 0);
             this.tableLayoutPanel13.Controls.Add(this.ChkdListBx_CommodityCat, 0, 1);
             this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel13.Location = new System.Drawing.Point(797, 415);
+            this.tableLayoutPanel13.Location = new System.Drawing.Point(797, 414);
             this.tableLayoutPanel13.Name = "tableLayoutPanel13";
             this.tableLayoutPanel13.RowCount = 2;
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
@@ -774,7 +773,7 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(194, 196);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(194, 195);
             this.tableLayoutPanel5.TabIndex = 5;
             // 
             // bunifuCustomLabel13
@@ -797,7 +796,7 @@
             this.ChkdListBx_VendorDesc.HorizontalScrollbar = true;
             this.ChkdListBx_VendorDesc.Location = new System.Drawing.Point(3, 18);
             this.ChkdListBx_VendorDesc.Name = "ChkdListBx_VendorDesc";
-            this.ChkdListBx_VendorDesc.Size = new System.Drawing.Size(188, 175);
+            this.ChkdListBx_VendorDesc.Size = new System.Drawing.Size(188, 174);
             this.ChkdListBx_VendorDesc.TabIndex = 1;
             this.ChkdListBx_VendorDesc.Tag = "5";
             this.ChkdListBx_VendorDesc.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.ckdListBox_ItemCheck);
@@ -814,7 +813,7 @@
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(190, 196);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(190, 195);
             this.tableLayoutPanel4.TabIndex = 5;
             // 
             // bunifuCustomLabel12
@@ -837,7 +836,7 @@
             this.ChkdListBx_Vendor.HorizontalScrollbar = true;
             this.ChkdListBx_Vendor.Location = new System.Drawing.Point(3, 18);
             this.ChkdListBx_Vendor.Name = "ChkdListBx_Vendor";
-            this.ChkdListBx_Vendor.Size = new System.Drawing.Size(184, 175);
+            this.ChkdListBx_Vendor.Size = new System.Drawing.Size(184, 174);
             this.ChkdListBx_Vendor.TabIndex = 1;
             this.ChkdListBx_Vendor.Tag = "4";
             this.ChkdListBx_Vendor.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.ckdListBox_ItemCheck);
@@ -854,7 +853,7 @@
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(190, 196);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(190, 195);
             this.tableLayoutPanel3.TabIndex = 5;
             // 
             // bunifuCustomLabel10
@@ -877,7 +876,7 @@
             this.ChkdListBx_MaterialGroup.HorizontalScrollbar = true;
             this.ChkdListBx_MaterialGroup.Location = new System.Drawing.Point(3, 18);
             this.ChkdListBx_MaterialGroup.Name = "ChkdListBx_MaterialGroup";
-            this.ChkdListBx_MaterialGroup.Size = new System.Drawing.Size(184, 175);
+            this.ChkdListBx_MaterialGroup.Size = new System.Drawing.Size(184, 174);
             this.ChkdListBx_MaterialGroup.TabIndex = 1;
             this.ChkdListBx_MaterialGroup.Tag = "3";
             this.ChkdListBx_MaterialGroup.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.ckdListBox_ItemCheck);
@@ -894,7 +893,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(190, 196);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(190, 195);
             this.tableLayoutPanel2.TabIndex = 5;
             // 
             // bunifuCustomLabel9
@@ -917,7 +916,7 @@
             this.ChkdListBx_Material.HorizontalScrollbar = true;
             this.ChkdListBx_Material.Location = new System.Drawing.Point(3, 18);
             this.ChkdListBx_Material.Name = "ChkdListBx_Material";
-            this.ChkdListBx_Material.Size = new System.Drawing.Size(184, 175);
+            this.ChkdListBx_Material.Size = new System.Drawing.Size(184, 174);
             this.ChkdListBx_Material.TabIndex = 1;
             this.ChkdListBx_Material.Tag = "2";
             this.ChkdListBx_Material.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.ckdListBox_ItemCheck);
@@ -934,7 +933,7 @@
             this.tableLayoutPanel7.RowCount = 2;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(190, 196);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(190, 195);
             this.tableLayoutPanel7.TabIndex = 5;
             // 
             // bunifuCustomLabel18
@@ -957,7 +956,7 @@
             this.ChkdListBx_WBSProject.HorizontalScrollbar = true;
             this.ChkdListBx_WBSProject.Location = new System.Drawing.Point(3, 18);
             this.ChkdListBx_WBSProject.Name = "ChkdListBx_WBSProject";
-            this.ChkdListBx_WBSProject.Size = new System.Drawing.Size(184, 175);
+            this.ChkdListBx_WBSProject.Size = new System.Drawing.Size(184, 174);
             this.ChkdListBx_WBSProject.TabIndex = 1;
             this.ChkdListBx_WBSProject.Tag = "1";
             // 
@@ -1090,9 +1089,9 @@
             this.pnl_activePage.Controls.Add(this.tblpnl_DragDrop);
             this.pnl_activePage.Controls.Add(this.tblpnl_DashbaordPage);
             this.pnl_activePage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_activePage.Location = new System.Drawing.Point(0, 76);
+            this.pnl_activePage.Location = new System.Drawing.Point(0, 77);
             this.pnl_activePage.Name = "pnl_activePage";
-            this.pnl_activePage.Size = new System.Drawing.Size(1200, 624);
+            this.pnl_activePage.Size = new System.Drawing.Size(1200, 623);
             this.pnl_activePage.TabIndex = 44;
             this.pnl_activePage.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.pnl_activePage_ControlAdded);
             // 
@@ -1100,26 +1099,609 @@
             // 
             this.pnl_NavigationPanelMax.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.pnl_NavigationPanelMax.AutoSize = true;
             this.pnl_NavigationPanelMax.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.pnl_NavigationPanelMax.Controls.Add(this.pnl_KPISectionsPanel);
+            this.pnl_NavigationPanelMax.Controls.Add(this.btn_KPI);
+            this.pnl_NavigationPanelMax.Controls.Add(this.pnl_KPASectionsPanel);
+            this.pnl_NavigationPanelMax.Controls.Add(this.btn_KPA);
             this.pnl_NavigationPanelMax.Controls.Add(this.flowLayoutPanel1);
             this.pnl_NavigationPanelMax.Location = new System.Drawing.Point(0, 0);
             this.pnl_NavigationPanelMax.Name = "pnl_NavigationPanelMax";
-            this.pnl_NavigationPanelMax.Size = new System.Drawing.Size(228, 700);
+            this.pnl_NavigationPanelMax.Size = new System.Drawing.Size(228, 724);
             this.pnl_NavigationPanelMax.TabIndex = 0;
+            this.pnl_NavigationPanelMax.Leave += new System.EventHandler(this.pnl_NavigationPanelMax_Leave);
+            // 
+            // pnl_KPISectionsPanel
+            // 
+            this.pnl_KPISectionsPanel.AutoSize = true;
+            this.pnl_KPISectionsPanel.BackColor = System.Drawing.Color.Transparent;
+            this.pnl_KPISectionsPanel.Controls.Add(this.btn_kpiOther);
+            this.pnl_KPISectionsPanel.Controls.Add(this.btn_kpiPurchPlanTotal);
+            this.pnl_KPISectionsPanel.Controls.Add(this.btn_kpiPurchPlan);
+            this.pnl_KPISectionsPanel.Controls.Add(this.btn_kpiPurchTotal);
+            this.pnl_KPISectionsPanel.Controls.Add(this.btn_kpiPurchSub);
+            this.pnl_KPISectionsPanel.Controls.Add(this.btn_kpiPurchTwo);
+            this.pnl_KPISectionsPanel.Controls.Add(this.btn_kpiPlanTwo);
+            this.pnl_KPISectionsPanel.Controls.Add(this.btn_kpiFollowUp);
+            this.pnl_KPISectionsPanel.Controls.Add(this.btn_kpiPurchOne);
+            this.pnl_KPISectionsPanel.Controls.Add(this.btn_kpiPlanOne);
+            this.pnl_KPISectionsPanel.Controls.Add(this.btn_kpiOverall);
+            this.pnl_KPISectionsPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnl_KPISectionsPanel.Location = new System.Drawing.Point(0, 471);
+            this.pnl_KPISectionsPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.pnl_KPISectionsPanel.Name = "pnl_KPISectionsPanel";
+            this.pnl_KPISectionsPanel.Size = new System.Drawing.Size(228, 253);
+            this.pnl_KPISectionsPanel.TabIndex = 20;
+            this.pnl_KPISectionsPanel.Visible = false;
+            // 
+            // btn_kpiOther
+            // 
+            this.btn_kpiOther.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.btn_kpiOther.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_kpiOther.FlatAppearance.BorderSize = 0;
+            this.btn_kpiOther.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_kpiOther.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_kpiOther.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.btn_kpiOther.Location = new System.Drawing.Point(0, 230);
+            this.btn_kpiOther.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_kpiOther.Name = "btn_kpiOther";
+            this.btn_kpiOther.Size = new System.Drawing.Size(228, 23);
+            this.btn_kpiOther.TabIndex = 46;
+            this.btn_kpiOther.Tag = "24";
+            this.btn_kpiOther.Text = "       Other";
+            this.btn_kpiOther.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_kpiOther.UseVisualStyleBackColor = false;
+            this.btn_kpiOther.Click += new System.EventHandler(this.sectionBtn_Click);
+            // 
+            // btn_kpiPurchPlanTotal
+            // 
+            this.btn_kpiPurchPlanTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.btn_kpiPurchPlanTotal.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_kpiPurchPlanTotal.FlatAppearance.BorderSize = 0;
+            this.btn_kpiPurchPlanTotal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_kpiPurchPlanTotal.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_kpiPurchPlanTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.btn_kpiPurchPlanTotal.Location = new System.Drawing.Point(0, 207);
+            this.btn_kpiPurchPlanTotal.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_kpiPurchPlanTotal.Name = "btn_kpiPurchPlanTotal";
+            this.btn_kpiPurchPlanTotal.Size = new System.Drawing.Size(228, 23);
+            this.btn_kpiPurchPlanTotal.TabIndex = 40;
+            this.btn_kpiPurchPlanTotal.Tag = "23";
+            this.btn_kpiPurchPlanTotal.Text = "       Purch/Plan Total";
+            this.btn_kpiPurchPlanTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_kpiPurchPlanTotal.UseVisualStyleBackColor = false;
+            this.btn_kpiPurchPlanTotal.Click += new System.EventHandler(this.sectionBtn_Click);
+            // 
+            // btn_kpiPurchPlan
+            // 
+            this.btn_kpiPurchPlan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.btn_kpiPurchPlan.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_kpiPurchPlan.FlatAppearance.BorderSize = 0;
+            this.btn_kpiPurchPlan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_kpiPurchPlan.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_kpiPurchPlan.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.btn_kpiPurchPlan.Location = new System.Drawing.Point(0, 184);
+            this.btn_kpiPurchPlan.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_kpiPurchPlan.Name = "btn_kpiPurchPlan";
+            this.btn_kpiPurchPlan.Size = new System.Drawing.Size(228, 23);
+            this.btn_kpiPurchPlan.TabIndex = 38;
+            this.btn_kpiPurchPlan.Tag = "22";
+            this.btn_kpiPurchPlan.Text = "       Purch/Plan";
+            this.btn_kpiPurchPlan.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_kpiPurchPlan.UseVisualStyleBackColor = false;
+            this.btn_kpiPurchPlan.Click += new System.EventHandler(this.sectionBtn_Click);
+            // 
+            // btn_kpiPurchTotal
+            // 
+            this.btn_kpiPurchTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.btn_kpiPurchTotal.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_kpiPurchTotal.FlatAppearance.BorderSize = 0;
+            this.btn_kpiPurchTotal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_kpiPurchTotal.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_kpiPurchTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.btn_kpiPurchTotal.Location = new System.Drawing.Point(0, 161);
+            this.btn_kpiPurchTotal.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_kpiPurchTotal.Name = "btn_kpiPurchTotal";
+            this.btn_kpiPurchTotal.Size = new System.Drawing.Size(228, 23);
+            this.btn_kpiPurchTotal.TabIndex = 36;
+            this.btn_kpiPurchTotal.Tag = "21";
+            this.btn_kpiPurchTotal.Text = "       Purch Total";
+            this.btn_kpiPurchTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_kpiPurchTotal.UseVisualStyleBackColor = false;
+            this.btn_kpiPurchTotal.Click += new System.EventHandler(this.sectionBtn_Click);
+            // 
+            // btn_kpiPurchSub
+            // 
+            this.btn_kpiPurchSub.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.btn_kpiPurchSub.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_kpiPurchSub.FlatAppearance.BorderSize = 0;
+            this.btn_kpiPurchSub.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_kpiPurchSub.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_kpiPurchSub.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.btn_kpiPurchSub.Location = new System.Drawing.Point(0, 138);
+            this.btn_kpiPurchSub.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_kpiPurchSub.Name = "btn_kpiPurchSub";
+            this.btn_kpiPurchSub.Size = new System.Drawing.Size(228, 23);
+            this.btn_kpiPurchSub.TabIndex = 34;
+            this.btn_kpiPurchSub.Tag = "20";
+            this.btn_kpiPurchSub.Text = "       Purch Sub";
+            this.btn_kpiPurchSub.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_kpiPurchSub.UseVisualStyleBackColor = false;
+            this.btn_kpiPurchSub.Click += new System.EventHandler(this.sectionBtn_Click);
+            // 
+            // btn_kpiPurchTwo
+            // 
+            this.btn_kpiPurchTwo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.btn_kpiPurchTwo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_kpiPurchTwo.FlatAppearance.BorderSize = 0;
+            this.btn_kpiPurchTwo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_kpiPurchTwo.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_kpiPurchTwo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.btn_kpiPurchTwo.Location = new System.Drawing.Point(0, 115);
+            this.btn_kpiPurchTwo.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_kpiPurchTwo.Name = "btn_kpiPurchTwo";
+            this.btn_kpiPurchTwo.Size = new System.Drawing.Size(228, 23);
+            this.btn_kpiPurchTwo.TabIndex = 32;
+            this.btn_kpiPurchTwo.Tag = "19";
+            this.btn_kpiPurchTwo.Text = "       Purch";
+            this.btn_kpiPurchTwo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_kpiPurchTwo.UseVisualStyleBackColor = false;
+            this.btn_kpiPurchTwo.Click += new System.EventHandler(this.sectionBtn_Click);
+            // 
+            // btn_kpiPlanTwo
+            // 
+            this.btn_kpiPlanTwo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.btn_kpiPlanTwo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_kpiPlanTwo.FlatAppearance.BorderSize = 0;
+            this.btn_kpiPlanTwo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_kpiPlanTwo.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_kpiPlanTwo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.btn_kpiPlanTwo.Location = new System.Drawing.Point(0, 92);
+            this.btn_kpiPlanTwo.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_kpiPlanTwo.Name = "btn_kpiPlanTwo";
+            this.btn_kpiPlanTwo.Size = new System.Drawing.Size(228, 23);
+            this.btn_kpiPlanTwo.TabIndex = 28;
+            this.btn_kpiPlanTwo.Tag = "18";
+            this.btn_kpiPlanTwo.Text = "       Plan";
+            this.btn_kpiPlanTwo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_kpiPlanTwo.UseVisualStyleBackColor = false;
+            this.btn_kpiPlanTwo.Click += new System.EventHandler(this.sectionBtn_Click);
+            // 
+            // btn_kpiFollowUp
+            // 
+            this.btn_kpiFollowUp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.btn_kpiFollowUp.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_kpiFollowUp.FlatAppearance.BorderSize = 0;
+            this.btn_kpiFollowUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_kpiFollowUp.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_kpiFollowUp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.btn_kpiFollowUp.Location = new System.Drawing.Point(0, 69);
+            this.btn_kpiFollowUp.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_kpiFollowUp.Name = "btn_kpiFollowUp";
+            this.btn_kpiFollowUp.Size = new System.Drawing.Size(228, 23);
+            this.btn_kpiFollowUp.TabIndex = 26;
+            this.btn_kpiFollowUp.Tag = "17";
+            this.btn_kpiFollowUp.Text = "       Follow Up";
+            this.btn_kpiFollowUp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_kpiFollowUp.UseVisualStyleBackColor = false;
+            this.btn_kpiFollowUp.Click += new System.EventHandler(this.sectionBtn_Click);
+            // 
+            // btn_kpiPurchOne
+            // 
+            this.btn_kpiPurchOne.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.btn_kpiPurchOne.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_kpiPurchOne.FlatAppearance.BorderSize = 0;
+            this.btn_kpiPurchOne.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_kpiPurchOne.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_kpiPurchOne.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.btn_kpiPurchOne.Location = new System.Drawing.Point(0, 46);
+            this.btn_kpiPurchOne.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_kpiPurchOne.Name = "btn_kpiPurchOne";
+            this.btn_kpiPurchOne.Size = new System.Drawing.Size(228, 23);
+            this.btn_kpiPurchOne.TabIndex = 24;
+            this.btn_kpiPurchOne.Tag = "16";
+            this.btn_kpiPurchOne.Text = "       Purch";
+            this.btn_kpiPurchOne.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_kpiPurchOne.UseVisualStyleBackColor = false;
+            this.btn_kpiPurchOne.Click += new System.EventHandler(this.sectionBtn_Click);
+            // 
+            // btn_kpiPlanOne
+            // 
+            this.btn_kpiPlanOne.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.btn_kpiPlanOne.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_kpiPlanOne.FlatAppearance.BorderSize = 0;
+            this.btn_kpiPlanOne.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_kpiPlanOne.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_kpiPlanOne.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.btn_kpiPlanOne.Location = new System.Drawing.Point(0, 23);
+            this.btn_kpiPlanOne.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_kpiPlanOne.Name = "btn_kpiPlanOne";
+            this.btn_kpiPlanOne.Size = new System.Drawing.Size(228, 23);
+            this.btn_kpiPlanOne.TabIndex = 2;
+            this.btn_kpiPlanOne.Tag = "15";
+            this.btn_kpiPlanOne.Text = "       Plan";
+            this.btn_kpiPlanOne.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_kpiPlanOne.UseVisualStyleBackColor = false;
+            this.btn_kpiPlanOne.Click += new System.EventHandler(this.sectionBtn_Click);
+            // 
+            // btn_kpiOverall
+            // 
+            this.btn_kpiOverall.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.btn_kpiOverall.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_kpiOverall.FlatAppearance.BorderSize = 0;
+            this.btn_kpiOverall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_kpiOverall.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_kpiOverall.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.btn_kpiOverall.Location = new System.Drawing.Point(0, 0);
+            this.btn_kpiOverall.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_kpiOverall.Name = "btn_kpiOverall";
+            this.btn_kpiOverall.Size = new System.Drawing.Size(228, 23);
+            this.btn_kpiOverall.TabIndex = 1;
+            this.btn_kpiOverall.Tag = "14";
+            this.btn_kpiOverall.Text = "       Overall";
+            this.btn_kpiOverall.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_kpiOverall.UseVisualStyleBackColor = false;
+            this.btn_kpiOverall.Click += new System.EventHandler(this.sectionBtn_Click);
+            // 
+            // btn_KPI
+            // 
+            this.btn_KPI.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(163)))), ((int)(((byte)(156)))));
+            this.btn_KPI.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(163)))), ((int)(((byte)(156)))));
+            this.btn_KPI.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_KPI.BorderRadius = 0;
+            this.btn_KPI.ButtonText = "  KPIs";
+            this.btn_KPI.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_KPI.DisabledColor = System.Drawing.Color.Gray;
+            this.btn_KPI.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_KPI.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_KPI.Iconcolor = System.Drawing.Color.Transparent;
+            this.btn_KPI.Iconimage = global::KPA_KPI_Analyzer.Properties.Resources.kpiLogo;
+            this.btn_KPI.Iconimage_right = null;
+            this.btn_KPI.Iconimage_right_Selected = null;
+            this.btn_KPI.Iconimage_Selected = null;
+            this.btn_KPI.IconMarginLeft = 0;
+            this.btn_KPI.IconMarginRight = 0;
+            this.btn_KPI.IconRightVisible = true;
+            this.btn_KPI.IconRightZoom = 0D;
+            this.btn_KPI.IconVisible = true;
+            this.btn_KPI.IconZoom = 90D;
+            this.btn_KPI.IsTab = false;
+            this.btn_KPI.Location = new System.Drawing.Point(0, 423);
+            this.btn_KPI.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_KPI.Name = "btn_KPI";
+            this.btn_KPI.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(163)))), ((int)(((byte)(156)))));
+            this.btn_KPI.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(183)))), ((int)(((byte)(176)))));
+            this.btn_KPI.OnHoverTextColor = System.Drawing.Color.White;
+            this.btn_KPI.selected = false;
+            this.btn_KPI.Size = new System.Drawing.Size(228, 48);
+            this.btn_KPI.TabIndex = 2;
+            this.btn_KPI.Tag = "2";
+            this.btn_KPI.Text = "  KPIs";
+            this.btn_KPI.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_KPI.Textcolor = System.Drawing.Color.White;
+            this.btn_KPI.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_KPI.Click += new System.EventHandler(this.mainNavButton_Click);
+            // 
+            // pnl_KPASectionsPanel
+            // 
+            this.pnl_KPASectionsPanel.AutoSize = true;
+            this.pnl_KPASectionsPanel.Controls.Add(this.btn_kpaCurrentPlanActual);
+            this.pnl_KPASectionsPanel.Controls.Add(this.btn_kpaExcessStock_OpenOrder);
+            this.pnl_KPASectionsPanel.Controls.Add(this.btn_kpaExcessStock_Stock);
+            this.pnl_KPASectionsPanel.Controls.Add(this.btn_kpaHotJobs);
+            this.pnl_KPASectionsPanel.Controls.Add(this.btn_kpaNCR);
+            this.pnl_KPASectionsPanel.Controls.Add(this.btn_kpaCancellations);
+            this.pnl_KPASectionsPanel.Controls.Add(this.btn_kpaFollowUp);
+            this.pnl_KPASectionsPanel.Controls.Add(this.btn_kpaPurchPlanTotal);
+            this.pnl_KPASectionsPanel.Controls.Add(this.btn_kpaPurchTotal);
+            this.pnl_KPASectionsPanel.Controls.Add(this.btn_kpaPurchSub);
+            this.pnl_KPASectionsPanel.Controls.Add(this.btn_kpaPurch);
+            this.pnl_KPASectionsPanel.Controls.Add(this.btn_kpaPlan);
+            this.pnl_KPASectionsPanel.Controls.Add(this.btn_kpaOverall);
+            this.pnl_KPASectionsPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnl_KPASectionsPanel.Location = new System.Drawing.Point(0, 124);
+            this.pnl_KPASectionsPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.pnl_KPASectionsPanel.Name = "pnl_KPASectionsPanel";
+            this.pnl_KPASectionsPanel.Size = new System.Drawing.Size(228, 299);
+            this.pnl_KPASectionsPanel.TabIndex = 17;
+            this.pnl_KPASectionsPanel.Visible = false;
+            // 
+            // btn_kpaCurrentPlanActual
+            // 
+            this.btn_kpaCurrentPlanActual.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.btn_kpaCurrentPlanActual.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_kpaCurrentPlanActual.FlatAppearance.BorderSize = 0;
+            this.btn_kpaCurrentPlanActual.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_kpaCurrentPlanActual.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_kpaCurrentPlanActual.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.btn_kpaCurrentPlanActual.Location = new System.Drawing.Point(0, 276);
+            this.btn_kpaCurrentPlanActual.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_kpaCurrentPlanActual.Name = "btn_kpaCurrentPlanActual";
+            this.btn_kpaCurrentPlanActual.Size = new System.Drawing.Size(228, 23);
+            this.btn_kpaCurrentPlanActual.TabIndex = 43;
+            this.btn_kpaCurrentPlanActual.Tag = "12";
+            this.btn_kpaCurrentPlanActual.Text = "       Current Plan vs Actual";
+            this.btn_kpaCurrentPlanActual.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_kpaCurrentPlanActual.UseVisualStyleBackColor = false;
+            this.btn_kpaCurrentPlanActual.Click += new System.EventHandler(this.sectionBtn_Click);
+            // 
+            // btn_kpaExcessStock_OpenOrder
+            // 
+            this.btn_kpaExcessStock_OpenOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.btn_kpaExcessStock_OpenOrder.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_kpaExcessStock_OpenOrder.FlatAppearance.BorderSize = 0;
+            this.btn_kpaExcessStock_OpenOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_kpaExcessStock_OpenOrder.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_kpaExcessStock_OpenOrder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.btn_kpaExcessStock_OpenOrder.Location = new System.Drawing.Point(0, 253);
+            this.btn_kpaExcessStock_OpenOrder.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_kpaExcessStock_OpenOrder.Name = "btn_kpaExcessStock_OpenOrder";
+            this.btn_kpaExcessStock_OpenOrder.Size = new System.Drawing.Size(228, 23);
+            this.btn_kpaExcessStock_OpenOrder.TabIndex = 42;
+            this.btn_kpaExcessStock_OpenOrder.Tag = "11";
+            this.btn_kpaExcessStock_OpenOrder.Text = "       Excess Stock  - Open Orders";
+            this.btn_kpaExcessStock_OpenOrder.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_kpaExcessStock_OpenOrder.UseVisualStyleBackColor = false;
+            this.btn_kpaExcessStock_OpenOrder.Click += new System.EventHandler(this.sectionBtn_Click);
+            // 
+            // btn_kpaExcessStock_Stock
+            // 
+            this.btn_kpaExcessStock_Stock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.btn_kpaExcessStock_Stock.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_kpaExcessStock_Stock.FlatAppearance.BorderSize = 0;
+            this.btn_kpaExcessStock_Stock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_kpaExcessStock_Stock.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_kpaExcessStock_Stock.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.btn_kpaExcessStock_Stock.Location = new System.Drawing.Point(0, 230);
+            this.btn_kpaExcessStock_Stock.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_kpaExcessStock_Stock.Name = "btn_kpaExcessStock_Stock";
+            this.btn_kpaExcessStock_Stock.Size = new System.Drawing.Size(228, 23);
+            this.btn_kpaExcessStock_Stock.TabIndex = 41;
+            this.btn_kpaExcessStock_Stock.Tag = "10";
+            this.btn_kpaExcessStock_Stock.Text = "       Exces Stock - Stock";
+            this.btn_kpaExcessStock_Stock.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_kpaExcessStock_Stock.UseVisualStyleBackColor = false;
+            this.btn_kpaExcessStock_Stock.Click += new System.EventHandler(this.sectionBtn_Click);
+            // 
+            // btn_kpaHotJobs
+            // 
+            this.btn_kpaHotJobs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.btn_kpaHotJobs.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_kpaHotJobs.FlatAppearance.BorderSize = 0;
+            this.btn_kpaHotJobs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_kpaHotJobs.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_kpaHotJobs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.btn_kpaHotJobs.Location = new System.Drawing.Point(0, 207);
+            this.btn_kpaHotJobs.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_kpaHotJobs.Name = "btn_kpaHotJobs";
+            this.btn_kpaHotJobs.Size = new System.Drawing.Size(228, 23);
+            this.btn_kpaHotJobs.TabIndex = 37;
+            this.btn_kpaHotJobs.Tag = "9";
+            this.btn_kpaHotJobs.Text = "       Hot Jobs";
+            this.btn_kpaHotJobs.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_kpaHotJobs.UseVisualStyleBackColor = false;
+            this.btn_kpaHotJobs.Click += new System.EventHandler(this.sectionBtn_Click);
+            // 
+            // btn_kpaNCR
+            // 
+            this.btn_kpaNCR.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.btn_kpaNCR.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_kpaNCR.FlatAppearance.BorderSize = 0;
+            this.btn_kpaNCR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_kpaNCR.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_kpaNCR.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.btn_kpaNCR.Location = new System.Drawing.Point(0, 184);
+            this.btn_kpaNCR.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_kpaNCR.Name = "btn_kpaNCR";
+            this.btn_kpaNCR.Size = new System.Drawing.Size(228, 23);
+            this.btn_kpaNCR.TabIndex = 35;
+            this.btn_kpaNCR.Tag = "8";
+            this.btn_kpaNCR.Text = "       NCRs";
+            this.btn_kpaNCR.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_kpaNCR.UseVisualStyleBackColor = false;
+            this.btn_kpaNCR.Click += new System.EventHandler(this.sectionBtn_Click);
+            // 
+            // btn_kpaCancellations
+            // 
+            this.btn_kpaCancellations.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.btn_kpaCancellations.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_kpaCancellations.FlatAppearance.BorderSize = 0;
+            this.btn_kpaCancellations.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_kpaCancellations.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_kpaCancellations.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.btn_kpaCancellations.Location = new System.Drawing.Point(0, 161);
+            this.btn_kpaCancellations.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_kpaCancellations.Name = "btn_kpaCancellations";
+            this.btn_kpaCancellations.Size = new System.Drawing.Size(228, 23);
+            this.btn_kpaCancellations.TabIndex = 33;
+            this.btn_kpaCancellations.Tag = "7";
+            this.btn_kpaCancellations.Text = "       Cancellations";
+            this.btn_kpaCancellations.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_kpaCancellations.UseVisualStyleBackColor = false;
+            this.btn_kpaCancellations.Click += new System.EventHandler(this.sectionBtn_Click);
+            // 
+            // btn_kpaFollowUp
+            // 
+            this.btn_kpaFollowUp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.btn_kpaFollowUp.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_kpaFollowUp.FlatAppearance.BorderSize = 0;
+            this.btn_kpaFollowUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_kpaFollowUp.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_kpaFollowUp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.btn_kpaFollowUp.Location = new System.Drawing.Point(0, 138);
+            this.btn_kpaFollowUp.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_kpaFollowUp.Name = "btn_kpaFollowUp";
+            this.btn_kpaFollowUp.Size = new System.Drawing.Size(228, 23);
+            this.btn_kpaFollowUp.TabIndex = 31;
+            this.btn_kpaFollowUp.Tag = "6";
+            this.btn_kpaFollowUp.Text = "       Follow Up";
+            this.btn_kpaFollowUp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_kpaFollowUp.UseVisualStyleBackColor = false;
+            this.btn_kpaFollowUp.Click += new System.EventHandler(this.sectionBtn_Click);
+            // 
+            // btn_kpaPurchPlanTotal
+            // 
+            this.btn_kpaPurchPlanTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.btn_kpaPurchPlanTotal.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_kpaPurchPlanTotal.FlatAppearance.BorderSize = 0;
+            this.btn_kpaPurchPlanTotal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_kpaPurchPlanTotal.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_kpaPurchPlanTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.btn_kpaPurchPlanTotal.Location = new System.Drawing.Point(0, 115);
+            this.btn_kpaPurchPlanTotal.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_kpaPurchPlanTotal.Name = "btn_kpaPurchPlanTotal";
+            this.btn_kpaPurchPlanTotal.Size = new System.Drawing.Size(228, 23);
+            this.btn_kpaPurchPlanTotal.TabIndex = 29;
+            this.btn_kpaPurchPlanTotal.Tag = "5";
+            this.btn_kpaPurchPlanTotal.Text = "       Purch/Plan Total";
+            this.btn_kpaPurchPlanTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_kpaPurchPlanTotal.UseVisualStyleBackColor = false;
+            this.btn_kpaPurchPlanTotal.Click += new System.EventHandler(this.sectionBtn_Click);
+            // 
+            // btn_kpaPurchTotal
+            // 
+            this.btn_kpaPurchTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.btn_kpaPurchTotal.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_kpaPurchTotal.FlatAppearance.BorderSize = 0;
+            this.btn_kpaPurchTotal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_kpaPurchTotal.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_kpaPurchTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.btn_kpaPurchTotal.Location = new System.Drawing.Point(0, 92);
+            this.btn_kpaPurchTotal.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_kpaPurchTotal.Name = "btn_kpaPurchTotal";
+            this.btn_kpaPurchTotal.Size = new System.Drawing.Size(228, 23);
+            this.btn_kpaPurchTotal.TabIndex = 27;
+            this.btn_kpaPurchTotal.Tag = "4";
+            this.btn_kpaPurchTotal.Text = "       Purch Total";
+            this.btn_kpaPurchTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_kpaPurchTotal.UseVisualStyleBackColor = false;
+            this.btn_kpaPurchTotal.Click += new System.EventHandler(this.sectionBtn_Click);
+            // 
+            // btn_kpaPurchSub
+            // 
+            this.btn_kpaPurchSub.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.btn_kpaPurchSub.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_kpaPurchSub.FlatAppearance.BorderSize = 0;
+            this.btn_kpaPurchSub.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_kpaPurchSub.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_kpaPurchSub.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.btn_kpaPurchSub.Location = new System.Drawing.Point(0, 69);
+            this.btn_kpaPurchSub.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_kpaPurchSub.Name = "btn_kpaPurchSub";
+            this.btn_kpaPurchSub.Size = new System.Drawing.Size(228, 23);
+            this.btn_kpaPurchSub.TabIndex = 25;
+            this.btn_kpaPurchSub.Tag = "3";
+            this.btn_kpaPurchSub.Text = "       Purch Sub";
+            this.btn_kpaPurchSub.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_kpaPurchSub.UseVisualStyleBackColor = false;
+            this.btn_kpaPurchSub.Click += new System.EventHandler(this.sectionBtn_Click);
+            // 
+            // btn_kpaPurch
+            // 
+            this.btn_kpaPurch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.btn_kpaPurch.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_kpaPurch.FlatAppearance.BorderSize = 0;
+            this.btn_kpaPurch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_kpaPurch.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_kpaPurch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.btn_kpaPurch.Location = new System.Drawing.Point(0, 46);
+            this.btn_kpaPurch.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_kpaPurch.Name = "btn_kpaPurch";
+            this.btn_kpaPurch.Size = new System.Drawing.Size(228, 23);
+            this.btn_kpaPurch.TabIndex = 23;
+            this.btn_kpaPurch.Tag = "2";
+            this.btn_kpaPurch.Text = "       Purch";
+            this.btn_kpaPurch.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_kpaPurch.UseVisualStyleBackColor = false;
+            this.btn_kpaPurch.Click += new System.EventHandler(this.sectionBtn_Click);
+            // 
+            // btn_kpaPlan
+            // 
+            this.btn_kpaPlan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.btn_kpaPlan.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_kpaPlan.FlatAppearance.BorderSize = 0;
+            this.btn_kpaPlan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_kpaPlan.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_kpaPlan.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.btn_kpaPlan.Location = new System.Drawing.Point(0, 23);
+            this.btn_kpaPlan.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_kpaPlan.Name = "btn_kpaPlan";
+            this.btn_kpaPlan.Size = new System.Drawing.Size(228, 23);
+            this.btn_kpaPlan.TabIndex = 1;
+            this.btn_kpaPlan.Tag = "1";
+            this.btn_kpaPlan.Text = "       Plan";
+            this.btn_kpaPlan.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_kpaPlan.UseVisualStyleBackColor = false;
+            this.btn_kpaPlan.Click += new System.EventHandler(this.sectionBtn_Click);
+            // 
+            // btn_kpaOverall
+            // 
+            this.btn_kpaOverall.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.btn_kpaOverall.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_kpaOverall.FlatAppearance.BorderSize = 0;
+            this.btn_kpaOverall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_kpaOverall.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_kpaOverall.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.btn_kpaOverall.Location = new System.Drawing.Point(0, 0);
+            this.btn_kpaOverall.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_kpaOverall.Name = "btn_kpaOverall";
+            this.btn_kpaOverall.Size = new System.Drawing.Size(228, 23);
+            this.btn_kpaOverall.TabIndex = 0;
+            this.btn_kpaOverall.Tag = "0";
+            this.btn_kpaOverall.Text = "       Overall";
+            this.btn_kpaOverall.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_kpaOverall.UseVisualStyleBackColor = false;
+            this.btn_kpaOverall.Click += new System.EventHandler(this.sectionBtn_Click);
+            // 
+            // btn_KPA
+            // 
+            this.btn_KPA.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(188)))), ((int)(((byte)(155)))));
+            this.btn_KPA.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(188)))), ((int)(((byte)(155)))));
+            this.btn_KPA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_KPA.BorderRadius = 0;
+            this.btn_KPA.ButtonText = "  KPAs";
+            this.btn_KPA.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_KPA.DisabledColor = System.Drawing.Color.Gray;
+            this.btn_KPA.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_KPA.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_KPA.Iconcolor = System.Drawing.Color.Transparent;
+            this.btn_KPA.Iconimage = global::KPA_KPI_Analyzer.Properties.Resources.kpaLogo;
+            this.btn_KPA.Iconimage_right = null;
+            this.btn_KPA.Iconimage_right_Selected = null;
+            this.btn_KPA.Iconimage_Selected = null;
+            this.btn_KPA.IconMarginLeft = 0;
+            this.btn_KPA.IconMarginRight = 0;
+            this.btn_KPA.IconRightVisible = true;
+            this.btn_KPA.IconRightZoom = 0D;
+            this.btn_KPA.IconVisible = true;
+            this.btn_KPA.IconZoom = 75D;
+            this.btn_KPA.IsTab = false;
+            this.btn_KPA.Location = new System.Drawing.Point(0, 76);
+            this.btn_KPA.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_KPA.Name = "btn_KPA";
+            this.btn_KPA.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(188)))), ((int)(((byte)(155)))));
+            this.btn_KPA.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(208)))), ((int)(((byte)(175)))));
+            this.btn_KPA.OnHoverTextColor = System.Drawing.Color.White;
+            this.btn_KPA.selected = false;
+            this.btn_KPA.Size = new System.Drawing.Size(228, 48);
+            this.btn_KPA.TabIndex = 3;
+            this.btn_KPA.Tag = "1";
+            this.btn_KPA.Text = "  KPAs";
+            this.btn_KPA.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_KPA.Textcolor = System.Drawing.Color.White;
+            this.btn_KPA.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_KPA.Click += new System.EventHandler(this.mainNavButton_Click);
             // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.btn_Dashboard);
             this.flowLayoutPanel1.Controls.Add(this.btn_Charts);
             this.flowLayoutPanel1.Controls.Add(this.btn_Filters);
-            this.flowLayoutPanel1.Controls.Add(this.btn_KPA);
-            this.flowLayoutPanel1.Controls.Add(this.pnl_KPASectionsPanel);
-            this.flowLayoutPanel1.Controls.Add(this.btn_KPI);
-            this.flowLayoutPanel1.Controls.Add(this.pnl_KPISectionsPanel);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(228, 700);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(228, 76);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
             // btn_Dashboard
@@ -1170,585 +1752,13 @@
             this.btn_Filters.Zoom = 0;
             this.btn_Filters.Click += new System.EventHandler(this.mainNavButton_Click);
             // 
-            // btn_KPA
-            // 
-            this.btn_KPA.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.btn_KPA.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(188)))), ((int)(((byte)(155)))));
-            this.btn_KPA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_KPA.BorderRadius = 0;
-            this.btn_KPA.ButtonText = "  KPAs";
-            this.btn_KPA.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_KPA.DisabledColor = System.Drawing.Color.Gray;
-            this.btn_KPA.Iconcolor = System.Drawing.Color.Transparent;
-            this.btn_KPA.Iconimage = global::KPA_KPI_Analyzer.Properties.Resources.kpaLogo;
-            this.btn_KPA.Iconimage_right = null;
-            this.btn_KPA.Iconimage_right_Selected = null;
-            this.btn_KPA.Iconimage_Selected = null;
-            this.btn_KPA.IconMarginLeft = 0;
-            this.btn_KPA.IconMarginRight = 0;
-            this.btn_KPA.IconRightVisible = true;
-            this.btn_KPA.IconRightZoom = 0D;
-            this.btn_KPA.IconVisible = true;
-            this.btn_KPA.IconZoom = 75D;
-            this.btn_KPA.IsTab = false;
-            this.btn_KPA.Location = new System.Drawing.Point(0, 76);
-            this.btn_KPA.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_KPA.Name = "btn_KPA";
-            this.btn_KPA.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.btn_KPA.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
-            this.btn_KPA.OnHoverTextColor = System.Drawing.Color.White;
-            this.btn_KPA.selected = false;
-            this.btn_KPA.Size = new System.Drawing.Size(228, 48);
-            this.btn_KPA.TabIndex = 3;
-            this.btn_KPA.Tag = "1";
-            this.btn_KPA.Text = "  KPAs";
-            this.btn_KPA.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_KPA.Textcolor = System.Drawing.Color.White;
-            this.btn_KPA.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_KPA.Click += new System.EventHandler(this.mainNavButton_Click);
-            // 
-            // pnl_KPASectionsPanel
-            // 
-            this.pnl_KPASectionsPanel.AutoSize = true;
-            this.pnl_KPASectionsPanel.Controls.Add(this.btn_kpaMTC);
-            this.pnl_KPASectionsPanel.Controls.Add(this.btn_kpaCurrentPlanActual);
-            this.pnl_KPASectionsPanel.Controls.Add(this.btn_kpaExcessStock_OpenOrder);
-            this.pnl_KPASectionsPanel.Controls.Add(this.btn_kpaExcessStock_Stock);
-            this.pnl_KPASectionsPanel.Controls.Add(this.btn_kpaHotJobs);
-            this.pnl_KPASectionsPanel.Controls.Add(this.btn_kpaNCR);
-            this.pnl_KPASectionsPanel.Controls.Add(this.btn_kpaCancellations);
-            this.pnl_KPASectionsPanel.Controls.Add(this.btn_kpaFollowUp);
-            this.pnl_KPASectionsPanel.Controls.Add(this.btn_kpaPurchPlanTotal);
-            this.pnl_KPASectionsPanel.Controls.Add(this.btn_kpaPurchTotal);
-            this.pnl_KPASectionsPanel.Controls.Add(this.btn_kpaPurchSub);
-            this.pnl_KPASectionsPanel.Controls.Add(this.btn_kpaPurch);
-            this.pnl_KPASectionsPanel.Controls.Add(this.btn_kpaPlan);
-            this.pnl_KPASectionsPanel.Controls.Add(this.btn_kpaOverall);
-            this.pnl_KPASectionsPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnl_KPASectionsPanel.Location = new System.Drawing.Point(228, 76);
-            this.pnl_KPASectionsPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.pnl_KPASectionsPanel.Name = "pnl_KPASectionsPanel";
-            this.pnl_KPASectionsPanel.Size = new System.Drawing.Size(0, 322);
-            this.pnl_KPASectionsPanel.TabIndex = 17;
-            this.pnl_KPASectionsPanel.Visible = false;
-            // 
-            // btn_kpaMTC
-            // 
-            this.btn_kpaMTC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
-            this.btn_kpaMTC.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_kpaMTC.FlatAppearance.BorderSize = 0;
-            this.btn_kpaMTC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_kpaMTC.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_kpaMTC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.btn_kpaMTC.Location = new System.Drawing.Point(0, 299);
-            this.btn_kpaMTC.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_kpaMTC.Name = "btn_kpaMTC";
-            this.btn_kpaMTC.Size = new System.Drawing.Size(0, 23);
-            this.btn_kpaMTC.TabIndex = 44;
-            this.btn_kpaMTC.Tag = "13";
-            this.btn_kpaMTC.Text = "       MTC";
-            this.btn_kpaMTC.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_kpaMTC.UseVisualStyleBackColor = false;
-            // 
-            // btn_kpaCurrentPlanActual
-            // 
-            this.btn_kpaCurrentPlanActual.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(226)))), ((int)(((byte)(213)))));
-            this.btn_kpaCurrentPlanActual.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_kpaCurrentPlanActual.FlatAppearance.BorderSize = 0;
-            this.btn_kpaCurrentPlanActual.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_kpaCurrentPlanActual.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_kpaCurrentPlanActual.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.btn_kpaCurrentPlanActual.Location = new System.Drawing.Point(0, 276);
-            this.btn_kpaCurrentPlanActual.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_kpaCurrentPlanActual.Name = "btn_kpaCurrentPlanActual";
-            this.btn_kpaCurrentPlanActual.Size = new System.Drawing.Size(0, 23);
-            this.btn_kpaCurrentPlanActual.TabIndex = 43;
-            this.btn_kpaCurrentPlanActual.Tag = "12";
-            this.btn_kpaCurrentPlanActual.Text = "       Current Plan vs Actual";
-            this.btn_kpaCurrentPlanActual.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_kpaCurrentPlanActual.UseVisualStyleBackColor = false;
-            // 
-            // btn_kpaExcessStock_OpenOrder
-            // 
-            this.btn_kpaExcessStock_OpenOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(215)))), ((int)(((byte)(183)))));
-            this.btn_kpaExcessStock_OpenOrder.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_kpaExcessStock_OpenOrder.FlatAppearance.BorderSize = 0;
-            this.btn_kpaExcessStock_OpenOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_kpaExcessStock_OpenOrder.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_kpaExcessStock_OpenOrder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.btn_kpaExcessStock_OpenOrder.Location = new System.Drawing.Point(0, 253);
-            this.btn_kpaExcessStock_OpenOrder.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_kpaExcessStock_OpenOrder.Name = "btn_kpaExcessStock_OpenOrder";
-            this.btn_kpaExcessStock_OpenOrder.Size = new System.Drawing.Size(0, 23);
-            this.btn_kpaExcessStock_OpenOrder.TabIndex = 42;
-            this.btn_kpaExcessStock_OpenOrder.Tag = "11";
-            this.btn_kpaExcessStock_OpenOrder.Text = "       Excess Stock  - Open Orders";
-            this.btn_kpaExcessStock_OpenOrder.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_kpaExcessStock_OpenOrder.UseVisualStyleBackColor = false;
-            // 
-            // btn_kpaExcessStock_Stock
-            // 
-            this.btn_kpaExcessStock_Stock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(204)))), ((int)(((byte)(153)))));
-            this.btn_kpaExcessStock_Stock.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_kpaExcessStock_Stock.FlatAppearance.BorderSize = 0;
-            this.btn_kpaExcessStock_Stock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_kpaExcessStock_Stock.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_kpaExcessStock_Stock.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.btn_kpaExcessStock_Stock.Location = new System.Drawing.Point(0, 230);
-            this.btn_kpaExcessStock_Stock.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_kpaExcessStock_Stock.Name = "btn_kpaExcessStock_Stock";
-            this.btn_kpaExcessStock_Stock.Size = new System.Drawing.Size(0, 23);
-            this.btn_kpaExcessStock_Stock.TabIndex = 41;
-            this.btn_kpaExcessStock_Stock.Tag = "10";
-            this.btn_kpaExcessStock_Stock.Text = "       Exces Stock - Stock";
-            this.btn_kpaExcessStock_Stock.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_kpaExcessStock_Stock.UseVisualStyleBackColor = false;
-            // 
-            // btn_kpaHotJobs
-            // 
-            this.btn_kpaHotJobs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(163)))), ((int)(((byte)(156)))));
-            this.btn_kpaHotJobs.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_kpaHotJobs.FlatAppearance.BorderSize = 0;
-            this.btn_kpaHotJobs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_kpaHotJobs.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_kpaHotJobs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.btn_kpaHotJobs.Location = new System.Drawing.Point(0, 207);
-            this.btn_kpaHotJobs.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_kpaHotJobs.Name = "btn_kpaHotJobs";
-            this.btn_kpaHotJobs.Size = new System.Drawing.Size(0, 23);
-            this.btn_kpaHotJobs.TabIndex = 37;
-            this.btn_kpaHotJobs.Tag = "9";
-            this.btn_kpaHotJobs.Text = "       Hot Jobs";
-            this.btn_kpaHotJobs.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_kpaHotJobs.UseVisualStyleBackColor = false;
-            // 
-            // btn_kpaNCR
-            // 
-            this.btn_kpaNCR.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(188)))), ((int)(((byte)(155)))));
-            this.btn_kpaNCR.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_kpaNCR.FlatAppearance.BorderSize = 0;
-            this.btn_kpaNCR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_kpaNCR.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_kpaNCR.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.btn_kpaNCR.Location = new System.Drawing.Point(0, 184);
-            this.btn_kpaNCR.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_kpaNCR.Name = "btn_kpaNCR";
-            this.btn_kpaNCR.Size = new System.Drawing.Size(0, 23);
-            this.btn_kpaNCR.TabIndex = 35;
-            this.btn_kpaNCR.Tag = "8";
-            this.btn_kpaNCR.Text = "       NCRs";
-            this.btn_kpaNCR.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_kpaNCR.UseVisualStyleBackColor = false;
-            // 
-            // btn_kpaCancellations
-            // 
-            this.btn_kpaCancellations.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
-            this.btn_kpaCancellations.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_kpaCancellations.FlatAppearance.BorderSize = 0;
-            this.btn_kpaCancellations.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_kpaCancellations.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_kpaCancellations.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.btn_kpaCancellations.Location = new System.Drawing.Point(0, 161);
-            this.btn_kpaCancellations.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_kpaCancellations.Name = "btn_kpaCancellations";
-            this.btn_kpaCancellations.Size = new System.Drawing.Size(0, 23);
-            this.btn_kpaCancellations.TabIndex = 33;
-            this.btn_kpaCancellations.Tag = "7";
-            this.btn_kpaCancellations.Text = "       Cancellations";
-            this.btn_kpaCancellations.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_kpaCancellations.UseVisualStyleBackColor = false;
-            // 
-            // btn_kpaFollowUp
-            // 
-            this.btn_kpaFollowUp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(195)))), ((int)(((byte)(163)))));
-            this.btn_kpaFollowUp.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_kpaFollowUp.FlatAppearance.BorderSize = 0;
-            this.btn_kpaFollowUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_kpaFollowUp.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_kpaFollowUp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.btn_kpaFollowUp.Location = new System.Drawing.Point(0, 138);
-            this.btn_kpaFollowUp.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_kpaFollowUp.Name = "btn_kpaFollowUp";
-            this.btn_kpaFollowUp.Size = new System.Drawing.Size(0, 23);
-            this.btn_kpaFollowUp.TabIndex = 31;
-            this.btn_kpaFollowUp.Tag = "6";
-            this.btn_kpaFollowUp.Text = "       Follow Up";
-            this.btn_kpaFollowUp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_kpaFollowUp.UseVisualStyleBackColor = false;
-            // 
-            // btn_kpaPurchPlanTotal
-            // 
-            this.btn_kpaPurchPlanTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(201)))), ((int)(((byte)(169)))));
-            this.btn_kpaPurchPlanTotal.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_kpaPurchPlanTotal.FlatAppearance.BorderSize = 0;
-            this.btn_kpaPurchPlanTotal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_kpaPurchPlanTotal.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_kpaPurchPlanTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.btn_kpaPurchPlanTotal.Location = new System.Drawing.Point(0, 115);
-            this.btn_kpaPurchPlanTotal.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_kpaPurchPlanTotal.Name = "btn_kpaPurchPlanTotal";
-            this.btn_kpaPurchPlanTotal.Size = new System.Drawing.Size(0, 23);
-            this.btn_kpaPurchPlanTotal.TabIndex = 29;
-            this.btn_kpaPurchPlanTotal.Tag = "5";
-            this.btn_kpaPurchPlanTotal.Text = "       Purch/Plan Total";
-            this.btn_kpaPurchPlanTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_kpaPurchPlanTotal.UseVisualStyleBackColor = false;
-            // 
-            // btn_kpaPurchTotal
-            // 
-            this.btn_kpaPurchTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(166)))), ((int)(((byte)(91)))));
-            this.btn_kpaPurchTotal.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_kpaPurchTotal.FlatAppearance.BorderSize = 0;
-            this.btn_kpaPurchTotal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_kpaPurchTotal.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_kpaPurchTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.btn_kpaPurchTotal.Location = new System.Drawing.Point(0, 92);
-            this.btn_kpaPurchTotal.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_kpaPurchTotal.Name = "btn_kpaPurchTotal";
-            this.btn_kpaPurchTotal.Size = new System.Drawing.Size(0, 23);
-            this.btn_kpaPurchTotal.TabIndex = 27;
-            this.btn_kpaPurchTotal.Tag = "4";
-            this.btn_kpaPurchTotal.Text = "       Purch Total";
-            this.btn_kpaPurchTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_kpaPurchTotal.UseVisualStyleBackColor = false;
-            // 
-            // btn_kpaPurchSub
-            // 
-            this.btn_kpaPurchSub.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(198)))), ((int)(((byte)(149)))));
-            this.btn_kpaPurchSub.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_kpaPurchSub.FlatAppearance.BorderSize = 0;
-            this.btn_kpaPurchSub.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_kpaPurchSub.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_kpaPurchSub.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.btn_kpaPurchSub.Location = new System.Drawing.Point(0, 69);
-            this.btn_kpaPurchSub.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_kpaPurchSub.Name = "btn_kpaPurchSub";
-            this.btn_kpaPurchSub.Size = new System.Drawing.Size(0, 23);
-            this.btn_kpaPurchSub.TabIndex = 25;
-            this.btn_kpaPurchSub.Tag = "3";
-            this.btn_kpaPurchSub.Text = "       Purch Sub";
-            this.btn_kpaPurchSub.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_kpaPurchSub.UseVisualStyleBackColor = false;
-            // 
-            // btn_kpaPurch
-            // 
-            this.btn_kpaPurch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(211)))), ((int)(((byte)(124)))));
-            this.btn_kpaPurch.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_kpaPurch.FlatAppearance.BorderSize = 0;
-            this.btn_kpaPurch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_kpaPurch.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_kpaPurch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.btn_kpaPurch.Location = new System.Drawing.Point(0, 46);
-            this.btn_kpaPurch.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_kpaPurch.Name = "btn_kpaPurch";
-            this.btn_kpaPurch.Size = new System.Drawing.Size(0, 23);
-            this.btn_kpaPurch.TabIndex = 23;
-            this.btn_kpaPurch.Tag = "2";
-            this.btn_kpaPurch.Text = "       Purch";
-            this.btn_kpaPurch.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_kpaPurch.UseVisualStyleBackColor = false;
-            // 
-            // btn_kpaPlan
-            // 
-            this.btn_kpaPlan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(222)))), ((int)(((byte)(208)))));
-            this.btn_kpaPlan.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_kpaPlan.FlatAppearance.BorderSize = 0;
-            this.btn_kpaPlan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_kpaPlan.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_kpaPlan.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.btn_kpaPlan.Location = new System.Drawing.Point(0, 23);
-            this.btn_kpaPlan.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_kpaPlan.Name = "btn_kpaPlan";
-            this.btn_kpaPlan.Size = new System.Drawing.Size(0, 23);
-            this.btn_kpaPlan.TabIndex = 1;
-            this.btn_kpaPlan.Tag = "1";
-            this.btn_kpaPlan.Text = "       Plan";
-            this.btn_kpaPlan.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_kpaPlan.UseVisualStyleBackColor = false;
-            // 
-            // btn_kpaOverall
-            // 
-            this.btn_kpaOverall.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(205)))), ((int)(((byte)(196)))));
-            this.btn_kpaOverall.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_kpaOverall.FlatAppearance.BorderSize = 0;
-            this.btn_kpaOverall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_kpaOverall.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_kpaOverall.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.btn_kpaOverall.Location = new System.Drawing.Point(0, 0);
-            this.btn_kpaOverall.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_kpaOverall.Name = "btn_kpaOverall";
-            this.btn_kpaOverall.Size = new System.Drawing.Size(0, 23);
-            this.btn_kpaOverall.TabIndex = 0;
-            this.btn_kpaOverall.Tag = "0";
-            this.btn_kpaOverall.Text = "       Overall";
-            this.btn_kpaOverall.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_kpaOverall.UseVisualStyleBackColor = false;
-            // 
-            // btn_KPI
-            // 
-            this.btn_KPI.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.btn_KPI.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(163)))), ((int)(((byte)(156)))));
-            this.btn_KPI.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_KPI.BorderRadius = 0;
-            this.btn_KPI.ButtonText = "  KPIs";
-            this.btn_KPI.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_KPI.DisabledColor = System.Drawing.Color.Gray;
-            this.btn_KPI.Iconcolor = System.Drawing.Color.Transparent;
-            this.btn_KPI.Iconimage = global::KPA_KPI_Analyzer.Properties.Resources.kpiLogo;
-            this.btn_KPI.Iconimage_right = null;
-            this.btn_KPI.Iconimage_right_Selected = null;
-            this.btn_KPI.Iconimage_Selected = null;
-            this.btn_KPI.IconMarginLeft = 0;
-            this.btn_KPI.IconMarginRight = 0;
-            this.btn_KPI.IconRightVisible = true;
-            this.btn_KPI.IconRightZoom = 0D;
-            this.btn_KPI.IconVisible = true;
-            this.btn_KPI.IconZoom = 90D;
-            this.btn_KPI.IsTab = false;
-            this.btn_KPI.Location = new System.Drawing.Point(0, 398);
-            this.btn_KPI.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_KPI.Name = "btn_KPI";
-            this.btn_KPI.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.btn_KPI.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
-            this.btn_KPI.OnHoverTextColor = System.Drawing.Color.White;
-            this.btn_KPI.selected = false;
-            this.btn_KPI.Size = new System.Drawing.Size(228, 48);
-            this.btn_KPI.TabIndex = 2;
-            this.btn_KPI.Tag = "2";
-            this.btn_KPI.Text = "  KPIs";
-            this.btn_KPI.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_KPI.Textcolor = System.Drawing.Color.White;
-            this.btn_KPI.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_KPI.Click += new System.EventHandler(this.mainNavButton_Click);
-            // 
-            // pnl_KPISectionsPanel
-            // 
-            this.pnl_KPISectionsPanel.AutoSize = true;
-            this.pnl_KPISectionsPanel.BackColor = System.Drawing.Color.Transparent;
-            this.pnl_KPISectionsPanel.Controls.Add(this.btn_kpiOther);
-            this.pnl_KPISectionsPanel.Controls.Add(this.btn_kpiPurchPlanTotal);
-            this.pnl_KPISectionsPanel.Controls.Add(this.btn_kpiPurchPlan);
-            this.pnl_KPISectionsPanel.Controls.Add(this.btn_kpiPurchTotal);
-            this.pnl_KPISectionsPanel.Controls.Add(this.btn_kpiPurchSub);
-            this.pnl_KPISectionsPanel.Controls.Add(this.btn_kpiPurchTwo);
-            this.pnl_KPISectionsPanel.Controls.Add(this.btn_kpiPlanTwo);
-            this.pnl_KPISectionsPanel.Controls.Add(this.btn_kpiFollowUp);
-            this.pnl_KPISectionsPanel.Controls.Add(this.btn_kpiPurchOne);
-            this.pnl_KPISectionsPanel.Controls.Add(this.btn_kpiPlanOne);
-            this.pnl_KPISectionsPanel.Controls.Add(this.btn_kpiOverall);
-            this.pnl_KPISectionsPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnl_KPISectionsPanel.Location = new System.Drawing.Point(228, 398);
-            this.pnl_KPISectionsPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.pnl_KPISectionsPanel.Name = "pnl_KPISectionsPanel";
-            this.pnl_KPISectionsPanel.Size = new System.Drawing.Size(0, 253);
-            this.pnl_KPISectionsPanel.TabIndex = 20;
-            this.pnl_KPISectionsPanel.Visible = false;
-            // 
-            // btn_kpiOther
-            // 
-            this.btn_kpiOther.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(181)))), ((int)(((byte)(254)))));
-            this.btn_kpiOther.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_kpiOther.FlatAppearance.BorderSize = 0;
-            this.btn_kpiOther.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_kpiOther.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_kpiOther.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.btn_kpiOther.Location = new System.Drawing.Point(0, 230);
-            this.btn_kpiOther.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_kpiOther.Name = "btn_kpiOther";
-            this.btn_kpiOther.Size = new System.Drawing.Size(0, 23);
-            this.btn_kpiOther.TabIndex = 46;
-            this.btn_kpiOther.Tag = "24";
-            this.btn_kpiOther.Text = "       Other";
-            this.btn_kpiOther.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_kpiOther.UseVisualStyleBackColor = false;
-            // 
-            // btn_kpiPurchPlanTotal
-            // 
-            this.btn_kpiPurchPlanTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(139)))), ((int)(((byte)(195)))));
-            this.btn_kpiPurchPlanTotal.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_kpiPurchPlanTotal.FlatAppearance.BorderSize = 0;
-            this.btn_kpiPurchPlanTotal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_kpiPurchPlanTotal.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_kpiPurchPlanTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.btn_kpiPurchPlanTotal.Location = new System.Drawing.Point(0, 207);
-            this.btn_kpiPurchPlanTotal.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_kpiPurchPlanTotal.Name = "btn_kpiPurchPlanTotal";
-            this.btn_kpiPurchPlanTotal.Size = new System.Drawing.Size(0, 23);
-            this.btn_kpiPurchPlanTotal.TabIndex = 40;
-            this.btn_kpiPurchPlanTotal.Tag = "23";
-            this.btn_kpiPurchPlanTotal.Text = "       Purch/Plan Total";
-            this.btn_kpiPurchPlanTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_kpiPurchPlanTotal.UseVisualStyleBackColor = false;
-            // 
-            // btn_kpiPurchPlan
-            // 
-            this.btn_kpiPurchPlan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
-            this.btn_kpiPurchPlan.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_kpiPurchPlan.FlatAppearance.BorderSize = 0;
-            this.btn_kpiPurchPlan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_kpiPurchPlan.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_kpiPurchPlan.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.btn_kpiPurchPlan.Location = new System.Drawing.Point(0, 184);
-            this.btn_kpiPurchPlan.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_kpiPurchPlan.Name = "btn_kpiPurchPlan";
-            this.btn_kpiPurchPlan.Size = new System.Drawing.Size(0, 23);
-            this.btn_kpiPurchPlan.TabIndex = 38;
-            this.btn_kpiPurchPlan.Tag = "22";
-            this.btn_kpiPurchPlan.Text = "       Purch/Plan";
-            this.btn_kpiPurchPlan.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_kpiPurchPlan.UseVisualStyleBackColor = false;
-            // 
-            // btn_kpiPurchTotal
-            // 
-            this.btn_kpiPurchTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(167)))), ((int)(((byte)(240)))));
-            this.btn_kpiPurchTotal.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_kpiPurchTotal.FlatAppearance.BorderSize = 0;
-            this.btn_kpiPurchTotal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_kpiPurchTotal.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_kpiPurchTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.btn_kpiPurchTotal.Location = new System.Drawing.Point(0, 161);
-            this.btn_kpiPurchTotal.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_kpiPurchTotal.Name = "btn_kpiPurchTotal";
-            this.btn_kpiPurchTotal.Size = new System.Drawing.Size(0, 23);
-            this.btn_kpiPurchTotal.TabIndex = 36;
-            this.btn_kpiPurchTotal.Tag = "21";
-            this.btn_kpiPurchTotal.Text = "       Purch Total";
-            this.btn_kpiPurchTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_kpiPurchTotal.UseVisualStyleBackColor = false;
-            // 
-            // btn_kpiPurchSub
-            // 
-            this.btn_kpiPurchSub.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(207)))), ((int)(((byte)(224)))));
-            this.btn_kpiPurchSub.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_kpiPurchSub.FlatAppearance.BorderSize = 0;
-            this.btn_kpiPurchSub.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_kpiPurchSub.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_kpiPurchSub.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.btn_kpiPurchSub.Location = new System.Drawing.Point(0, 138);
-            this.btn_kpiPurchSub.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_kpiPurchSub.Name = "btn_kpiPurchSub";
-            this.btn_kpiPurchSub.Size = new System.Drawing.Size(0, 23);
-            this.btn_kpiPurchSub.TabIndex = 34;
-            this.btn_kpiPurchSub.Tag = "20";
-            this.btn_kpiPurchSub.Text = "       Purch Sub";
-            this.btn_kpiPurchSub.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_kpiPurchSub.UseVisualStyleBackColor = false;
-            // 
-            // btn_kpiPurchTwo
-            // 
-            this.btn_kpiPurchTwo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(179)))), ((int)(((byte)(217)))));
-            this.btn_kpiPurchTwo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_kpiPurchTwo.FlatAppearance.BorderSize = 0;
-            this.btn_kpiPurchTwo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_kpiPurchTwo.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_kpiPurchTwo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.btn_kpiPurchTwo.Location = new System.Drawing.Point(0, 115);
-            this.btn_kpiPurchTwo.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_kpiPurchTwo.Name = "btn_kpiPurchTwo";
-            this.btn_kpiPurchTwo.Size = new System.Drawing.Size(0, 23);
-            this.btn_kpiPurchTwo.TabIndex = 32;
-            this.btn_kpiPurchTwo.Tag = "19";
-            this.btn_kpiPurchTwo.Text = "       Purch";
-            this.btn_kpiPurchTwo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_kpiPurchTwo.UseVisualStyleBackColor = false;
-            // 
-            // btn_kpiPlanTwo
-            // 
-            this.btn_kpiPlanTwo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(207)))), ((int)(((byte)(224)))));
-            this.btn_kpiPlanTwo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_kpiPlanTwo.FlatAppearance.BorderSize = 0;
-            this.btn_kpiPlanTwo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_kpiPlanTwo.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_kpiPlanTwo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.btn_kpiPlanTwo.Location = new System.Drawing.Point(0, 92);
-            this.btn_kpiPlanTwo.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_kpiPlanTwo.Name = "btn_kpiPlanTwo";
-            this.btn_kpiPlanTwo.Size = new System.Drawing.Size(0, 23);
-            this.btn_kpiPlanTwo.TabIndex = 28;
-            this.btn_kpiPlanTwo.Tag = "18";
-            this.btn_kpiPlanTwo.Text = "       Plan";
-            this.btn_kpiPlanTwo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_kpiPlanTwo.UseVisualStyleBackColor = false;
-            // 
-            // btn_kpiFollowUp
-            // 
-            this.btn_kpiFollowUp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(171)))), ((int)(((byte)(227)))));
-            this.btn_kpiFollowUp.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_kpiFollowUp.FlatAppearance.BorderSize = 0;
-            this.btn_kpiFollowUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_kpiFollowUp.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_kpiFollowUp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.btn_kpiFollowUp.Location = new System.Drawing.Point(0, 69);
-            this.btn_kpiFollowUp.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_kpiFollowUp.Name = "btn_kpiFollowUp";
-            this.btn_kpiFollowUp.Size = new System.Drawing.Size(0, 23);
-            this.btn_kpiFollowUp.TabIndex = 26;
-            this.btn_kpiFollowUp.Tag = "17";
-            this.btn_kpiFollowUp.Text = "       Follow Up";
-            this.btn_kpiFollowUp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_kpiFollowUp.UseVisualStyleBackColor = false;
-            // 
-            // btn_kpiPurchOne
-            // 
-            this.btn_kpiPurchOne.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(131)))), ((int)(((byte)(215)))));
-            this.btn_kpiPurchOne.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_kpiPurchOne.FlatAppearance.BorderSize = 0;
-            this.btn_kpiPurchOne.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_kpiPurchOne.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_kpiPurchOne.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.btn_kpiPurchOne.Location = new System.Drawing.Point(0, 46);
-            this.btn_kpiPurchOne.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_kpiPurchOne.Name = "btn_kpiPurchOne";
-            this.btn_kpiPurchOne.Size = new System.Drawing.Size(0, 23);
-            this.btn_kpiPurchOne.TabIndex = 24;
-            this.btn_kpiPurchOne.Tag = "16";
-            this.btn_kpiPurchOne.Text = "       Purch";
-            this.btn_kpiPurchOne.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_kpiPurchOne.UseVisualStyleBackColor = false;
-            // 
-            // btn_kpiPlanOne
-            // 
-            this.btn_kpiPlanOne.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(171)))), ((int)(((byte)(227)))));
-            this.btn_kpiPlanOne.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_kpiPlanOne.FlatAppearance.BorderSize = 0;
-            this.btn_kpiPlanOne.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_kpiPlanOne.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_kpiPlanOne.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.btn_kpiPlanOne.Location = new System.Drawing.Point(0, 23);
-            this.btn_kpiPlanOne.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_kpiPlanOne.Name = "btn_kpiPlanOne";
-            this.btn_kpiPlanOne.Size = new System.Drawing.Size(0, 23);
-            this.btn_kpiPlanOne.TabIndex = 2;
-            this.btn_kpiPlanOne.Tag = "15";
-            this.btn_kpiPlanOne.Text = "       Plan";
-            this.btn_kpiPlanOne.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_kpiPlanOne.UseVisualStyleBackColor = false;
-            // 
-            // btn_kpiOverall
-            // 
-            this.btn_kpiOverall.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(108)))), ((int)(((byte)(179)))));
-            this.btn_kpiOverall.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_kpiOverall.FlatAppearance.BorderSize = 0;
-            this.btn_kpiOverall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_kpiOverall.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_kpiOverall.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.btn_kpiOverall.Location = new System.Drawing.Point(0, 0);
-            this.btn_kpiOverall.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_kpiOverall.Name = "btn_kpiOverall";
-            this.btn_kpiOverall.Size = new System.Drawing.Size(0, 23);
-            this.btn_kpiOverall.TabIndex = 1;
-            this.btn_kpiOverall.Tag = "14";
-            this.btn_kpiOverall.Text = "       Overall";
-            this.btn_kpiOverall.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_kpiOverall.UseVisualStyleBackColor = false;
-            // 
             // pnl_loadingScreen
             // 
             this.pnl_loadingScreen.Controls.Add(this.tableLayoutPanel9);
             this.pnl_loadingScreen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_loadingScreen.Location = new System.Drawing.Point(0, 0);
             this.pnl_loadingScreen.Name = "pnl_loadingScreen";
-            this.pnl_loadingScreen.Size = new System.Drawing.Size(1200, 624);
+            this.pnl_loadingScreen.Size = new System.Drawing.Size(1200, 623);
             this.pnl_loadingScreen.TabIndex = 0;
             // 
             // tableLayoutPanel9
@@ -1767,14 +1777,14 @@
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 234F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(1200, 624);
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(1200, 623);
             this.tableLayoutPanel9.TabIndex = 1;
             // 
             // panel9
             // 
             this.panel9.Controls.Add(this.bunifuCircleProgressbar2);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel9.Location = new System.Drawing.Point(483, 178);
+            this.panel9.Location = new System.Drawing.Point(483, 177);
             this.panel9.Margin = new System.Windows.Forms.Padding(0);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(234, 234);
@@ -1797,7 +1807,7 @@
             this.bunifuCircleProgressbar2.MaxValue = 100;
             this.bunifuCircleProgressbar2.Name = "bunifuCircleProgressbar2";
             this.bunifuCircleProgressbar2.ProgressBackColor = System.Drawing.Color.Gainsboro;
-            this.bunifuCircleProgressbar2.ProgressColor = System.Drawing.Color.Teal;
+            this.bunifuCircleProgressbar2.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
             this.bunifuCircleProgressbar2.Size = new System.Drawing.Size(216, 216);
             this.bunifuCircleProgressbar2.TabIndex = 2;
             this.bunifuCircleProgressbar2.Value = 25;
@@ -1806,7 +1816,7 @@
             // 
             this.panel10.Controls.Add(this.lbl_loadingStatus);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel10.Location = new System.Drawing.Point(483, 412);
+            this.panel10.Location = new System.Drawing.Point(483, 411);
             this.panel10.Margin = new System.Windows.Forms.Padding(0);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(234, 34);
@@ -1829,7 +1839,7 @@
             this.pnl_CountrySelector.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_CountrySelector.Location = new System.Drawing.Point(0, 0);
             this.pnl_CountrySelector.Name = "pnl_CountrySelector";
-            this.pnl_CountrySelector.Size = new System.Drawing.Size(1200, 624);
+            this.pnl_CountrySelector.Size = new System.Drawing.Size(1200, 623);
             this.pnl_CountrySelector.TabIndex = 55;
             // 
             // tableLayoutPanel8
@@ -1854,7 +1864,7 @@
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(1200, 624);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(1200, 623);
             this.tableLayoutPanel8.TabIndex = 4;
             // 
             // panel4
@@ -2056,7 +2066,7 @@
             this.tblpnl_DragDrop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tblpnl_DragDrop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tblpnl_DragDrop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tblpnl_DragDrop.Size = new System.Drawing.Size(1200, 624);
+            this.tblpnl_DragDrop.Size = new System.Drawing.Size(1200, 623);
             this.tblpnl_DragDrop.TabIndex = 54;
             // 
             // panel1
@@ -2071,7 +2081,7 @@
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
             this.tblpnl_DragDrop.SetRowSpan(this.panel1, 2);
-            this.panel1.Size = new System.Drawing.Size(1180, 584);
+            this.panel1.Size = new System.Drawing.Size(1180, 582);
             this.panel1.TabIndex = 0;
             this.panel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.pnl_DragDropArea_DragDrop);
             this.panel1.DragEnter += new System.Windows.Forms.DragEventHandler(this.pnl_DragDropArea_DragEnter);
@@ -2092,7 +2102,7 @@
             this.tblpnl_DashbaordPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 250F));
             this.tblpnl_DashbaordPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tblpnl_DashbaordPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 104F));
-            this.tblpnl_DashbaordPage.Size = new System.Drawing.Size(1200, 624);
+            this.tblpnl_DashbaordPage.Size = new System.Drawing.Size(1200, 623);
             this.tblpnl_DashbaordPage.TabIndex = 52;
             // 
             // pnl_ViewPrintReports
@@ -2165,60 +2175,43 @@
             this.pnl_MainNavigation.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl_MainNavigation.Location = new System.Drawing.Point(0, 26);
             this.pnl_MainNavigation.Name = "pnl_MainNavigation";
-            this.pnl_MainNavigation.Size = new System.Drawing.Size(1200, 50);
+            this.pnl_MainNavigation.Size = new System.Drawing.Size(1200, 51);
             this.pnl_MainNavigation.TabIndex = 57;
             // 
             // tableLayoutPanel14
             // 
-            this.tableLayoutPanel14.ColumnCount = 11;
+            this.tableLayoutPanel14.ColumnCount = 9;
             this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1F));
-            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 175F));
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1F));
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 175F));
             this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1F));
             this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 275F));
-            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1F));
-            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 275F));
-            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1F));
-            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 300F));
             this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1F));
             this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel14.Controls.Add(this.btn_NavExpander, 0, 0);
             this.tableLayoutPanel14.Controls.Add(this.pnl_CountrySelectorButton, 2, 0);
             this.tableLayoutPanel14.Controls.Add(this.pnl_SectionSelectorButton, 6, 0);
             this.tableLayoutPanel14.Controls.Add(this.pnl_PerformanceSelectorButton, 4, 0);
             this.tableLayoutPanel14.Controls.Add(this.pnl_CategorySelectorButton, 8, 0);
-            this.tableLayoutPanel14.Controls.Add(this.panel19, 10, 0);
+            this.tableLayoutPanel14.Controls.Add(this.btn_NavExpander, 0, 0);
             this.tableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel14.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel14.Name = "tableLayoutPanel14";
             this.tableLayoutPanel14.RowCount = 1;
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel14.Size = new System.Drawing.Size(1200, 50);
+            this.tableLayoutPanel14.Size = new System.Drawing.Size(1200, 51);
             this.tableLayoutPanel14.TabIndex = 0;
-            // 
-            // btn_NavExpander
-            // 
-            this.btn_NavExpander.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.btn_NavExpander.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_NavExpander.BackgroundImage")));
-            this.btn_NavExpander.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_NavExpander.Location = new System.Drawing.Point(0, 0);
-            this.btn_NavExpander.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_NavExpander.Name = "btn_NavExpander";
-            this.btn_NavExpander.Size = new System.Drawing.Size(50, 50);
-            this.btn_NavExpander.TabIndex = 5;
-            this.btn_NavExpander.Tag = "0";
-            this.btn_NavExpander.Click += new System.EventHandler(this.btn_NavExpander_Click);
             // 
             // pnl_CountrySelectorButton
             // 
             this.pnl_CountrySelectorButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
             this.pnl_CountrySelectorButton.Controls.Add(this.lbl_Country);
             this.pnl_CountrySelectorButton.Controls.Add(this.bunifuCustomLabel3);
-            this.pnl_CountrySelectorButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_CountrySelectorButton.Location = new System.Drawing.Point(51, 0);
             this.pnl_CountrySelectorButton.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_CountrySelectorButton.Name = "pnl_CountrySelectorButton";
-            this.pnl_CountrySelectorButton.Size = new System.Drawing.Size(150, 50);
+            this.pnl_CountrySelectorButton.Size = new System.Drawing.Size(175, 50);
             this.pnl_CountrySelectorButton.TabIndex = 0;
             this.pnl_CountrySelectorButton.Tag = "1";
             // 
@@ -2248,8 +2241,7 @@
             this.pnl_SectionSelectorButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
             this.pnl_SectionSelectorButton.Controls.Add(this.lbl_Section);
             this.pnl_SectionSelectorButton.Controls.Add(this.bunifuCustomLabel27);
-            this.pnl_SectionSelectorButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_SectionSelectorButton.Location = new System.Drawing.Point(478, 0);
+            this.pnl_SectionSelectorButton.Location = new System.Drawing.Point(403, 0);
             this.pnl_SectionSelectorButton.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_SectionSelectorButton.Name = "pnl_SectionSelectorButton";
             this.pnl_SectionSelectorButton.Size = new System.Drawing.Size(275, 50);
@@ -2282,11 +2274,10 @@
             this.pnl_PerformanceSelectorButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
             this.pnl_PerformanceSelectorButton.Controls.Add(this.lbl_Performance);
             this.pnl_PerformanceSelectorButton.Controls.Add(this.bunifuCustomLabel17);
-            this.pnl_PerformanceSelectorButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_PerformanceSelectorButton.Location = new System.Drawing.Point(202, 0);
+            this.pnl_PerformanceSelectorButton.Location = new System.Drawing.Point(227, 0);
             this.pnl_PerformanceSelectorButton.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_PerformanceSelectorButton.Name = "pnl_PerformanceSelectorButton";
-            this.pnl_PerformanceSelectorButton.Size = new System.Drawing.Size(275, 50);
+            this.pnl_PerformanceSelectorButton.Size = new System.Drawing.Size(175, 50);
             this.pnl_PerformanceSelectorButton.TabIndex = 0;
             this.pnl_PerformanceSelectorButton.Tag = "2";
             // 
@@ -2313,14 +2304,15 @@
             // 
             // pnl_CategorySelectorButton
             // 
+            this.pnl_CategorySelectorButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnl_CategorySelectorButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
             this.pnl_CategorySelectorButton.Controls.Add(this.lbl_Category);
             this.pnl_CategorySelectorButton.Controls.Add(this.bunifuCustomLabel29);
-            this.pnl_CategorySelectorButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_CategorySelectorButton.Location = new System.Drawing.Point(754, 0);
+            this.pnl_CategorySelectorButton.Location = new System.Drawing.Point(679, 0);
             this.pnl_CategorySelectorButton.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_CategorySelectorButton.Name = "pnl_CategorySelectorButton";
-            this.pnl_CategorySelectorButton.Size = new System.Drawing.Size(300, 50);
+            this.pnl_CategorySelectorButton.Size = new System.Drawing.Size(521, 50);
             this.pnl_CategorySelectorButton.TabIndex = 0;
             this.pnl_CategorySelectorButton.Tag = "4";
             // 
@@ -2345,15 +2337,21 @@
             this.bunifuCustomLabel29.TabIndex = 0;
             this.bunifuCustomLabel29.Text = "Current Category";
             // 
-            // panel19
+            // btn_NavExpander
             // 
-            this.panel19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.panel19.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel19.Location = new System.Drawing.Point(1055, 0);
-            this.panel19.Margin = new System.Windows.Forms.Padding(0);
-            this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(145, 50);
-            this.panel19.TabIndex = 1;
+            this.btn_NavExpander.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.btn_NavExpander.Image = global::KPA_KPI_Analyzer.Properties.Resources.Menu;
+            this.btn_NavExpander.ImageActive = null;
+            this.btn_NavExpander.InitialImage = global::KPA_KPI_Analyzer.Properties.Resources.Menu;
+            this.btn_NavExpander.Location = new System.Drawing.Point(0, 0);
+            this.btn_NavExpander.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_NavExpander.Name = "btn_NavExpander";
+            this.btn_NavExpander.Size = new System.Drawing.Size(50, 50);
+            this.btn_NavExpander.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btn_NavExpander.TabIndex = 2;
+            this.btn_NavExpander.TabStop = false;
+            this.btn_NavExpander.Zoom = 10;
+            this.btn_NavExpander.Click += new System.EventHandler(this.btn_NavExpander_Click);
             // 
             // FiltersTimer
             // 
@@ -2454,14 +2452,15 @@
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
             this.pnl_activePage.ResumeLayout(false);
+            this.pnl_activePage.PerformLayout();
             this.pnl_NavigationPanelMax.ResumeLayout(false);
+            this.pnl_NavigationPanelMax.PerformLayout();
+            this.pnl_KPISectionsPanel.ResumeLayout(false);
+            this.pnl_KPASectionsPanel.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Dashboard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Charts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Filters)).EndInit();
-            this.pnl_KPASectionsPanel.ResumeLayout(false);
-            this.pnl_KPISectionsPanel.ResumeLayout(false);
             this.pnl_loadingScreen.ResumeLayout(false);
             this.tableLayoutPanel9.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
@@ -2491,6 +2490,7 @@
             this.pnl_PerformanceSelectorButton.PerformLayout();
             this.pnl_CategorySelectorButton.ResumeLayout(false);
             this.pnl_CategorySelectorButton.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_NavExpander)).EndInit();
             this.pnl_TopUIPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -2609,11 +2609,7 @@
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel27;
         private Bunifu.Framework.UI.BunifuCustomLabel lbl_Category;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel29;
-        private System.Windows.Forms.Panel panel19;
-        private System.Windows.Forms.Panel btn_NavExpander;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Panel pnl_KPASectionsPanel;
-        private System.Windows.Forms.Button btn_kpaMTC;
         private System.Windows.Forms.Button btn_kpaCurrentPlanActual;
         private System.Windows.Forms.Button btn_kpaExcessStock_OpenOrder;
         private System.Windows.Forms.Button btn_kpaExcessStock_Stock;
@@ -2644,6 +2640,8 @@
         private Bunifu.Framework.UI.BunifuImageButton btn_Filters;
         private Bunifu.Framework.UI.BunifuFlatButton btn_KPA;
         private Bunifu.Framework.UI.BunifuFlatButton btn_KPI;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private Bunifu.Framework.UI.BunifuImageButton btn_NavExpander;
     }
 }
 

@@ -4,6 +4,31 @@ namespace KPA_KPI_Analyzer
 {
     public partial class KPA_KPI_UI : Form
     {
+
+        /// <summary>
+        /// Instantiates a template object and adds the control to the active page panel for loading/viewing
+        /// </summary>
+        private void CreateKpaOverallTemplate()
+        {
+            activeSectionBtn = btn_kpaOverall;
+            lbl_Performance.Text = "KPA";
+            lbl_Section.Text = "All";
+            lbl_Category.Text = "All";
+            MenuInFront = true;
+            KPAOverall kpaOverall = new KPAOverall()
+            {
+                Name = "Overall",
+                Dock = DockStyle.Fill,
+            };
+            kpaOverall.LoadTemplate(overallData);
+            pnl_activePage.Controls.Add(kpaOverall);
+            kpaOverall.BringToFront();
+            pnl_NavigationPanelMax.BringToFront();
+        }
+
+
+
+
         /// <summary>
         /// Instantiates a template object and adds the control to the active page panel for loading/viewing
         /// </summary>
@@ -13,13 +38,17 @@ namespace KPA_KPI_Analyzer
             KPAPlanTemplate kpaPlanTemp = new KPAPlanTemplate()
             {
                 Name = "Plan",
-                Dock = DockStyle.Fill
+                Dock = DockStyle.Fill,
+                CurrCountry = lbl_Country.Text,
+                CurrPerformance = lbl_Performance.Text,
+                CurrSection = lbl_Section.Text
             };
 
             KPAPlanTemplate.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpaPlanTemp);
             kpaPlanTemp.BringToFront();
-            MenuInFront = false;
+            MenuInFront = true;
+            pnl_NavigationPanelMax.BringToFront();
         }
 
 
@@ -35,12 +64,16 @@ namespace KPA_KPI_Analyzer
             KPAPurchTemplate kpaPurchTemp = new KPAPurchTemplate()
             {
                 Name = "Purch",
-                Dock = DockStyle.Fill
+                Dock = DockStyle.Fill,
+                CurrCountry = lbl_Country.Text,
+                CurrPerformance = lbl_Performance.Text,
+                CurrSection = lbl_Section.Text
             };
             KPAPurchTemplate.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpaPurchTemp);
             kpaPurchTemp.BringToFront();
-            MenuInFront = false;
+            MenuInFront = true;
+            pnl_NavigationPanelMax.BringToFront();
         }
 
 
@@ -57,13 +90,17 @@ namespace KPA_KPI_Analyzer
             KPAPurchSubTemplate kpaPurchSubTemp = new KPAPurchSubTemplate()
             {
                 Name = "PurchSub",
-                Dock = DockStyle.Fill
+                Dock = DockStyle.Fill,
+                CurrCountry = lbl_Country.Text,
+                CurrPerformance = lbl_Performance.Text,
+                CurrSection = lbl_Section.Text
             };
 
             KPAPurchSubTemplate.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpaPurchSubTemp);
             kpaPurchSubTemp.BringToFront();
-            MenuInFront = false;
+            MenuInFront = true;
+            pnl_NavigationPanelMax.BringToFront();
         }
 
 
@@ -79,13 +116,17 @@ namespace KPA_KPI_Analyzer
             KPAPurchTotalTemplate kpaPurchTotalTemp = new KPAPurchTotalTemplate()
             {
                 Name = "PurchTotal",
-                Dock = DockStyle.Fill
+                Dock = DockStyle.Fill,
+                CurrCountry = lbl_Country.Text,
+                CurrPerformance = lbl_Performance.Text,
+                CurrSection = lbl_Section.Text
             };
 
             KPAPurchTotalTemplate.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpaPurchTotalTemp);
             kpaPurchTotalTemp.BringToFront();
-            MenuInFront = false;
+            MenuInFront = true;
+            pnl_NavigationPanelMax.BringToFront();
         }
 
 
@@ -100,12 +141,16 @@ namespace KPA_KPI_Analyzer
             KPAFollowUpTemplate kpaFollowUpTemp = new KPAFollowUpTemplate()
             {
                 Name = "FollowUp",
-                Dock = DockStyle.Fill
+                Dock = DockStyle.Fill,
+                CurrCountry = lbl_Country.Text,
+                CurrPerformance = lbl_Performance.Text,
+                CurrSection = lbl_Section.Text
             };
             KPAFollowUpTemplate.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpaFollowUpTemp);
             kpaFollowUpTemp.BringToFront();
-            MenuInFront = false;
+            MenuInFront = true;
+            pnl_NavigationPanelMax.BringToFront();
         }
 
 
@@ -120,13 +165,17 @@ namespace KPA_KPI_Analyzer
             KPAHotJobsTemplate kpaHotJobs = new KPAHotJobsTemplate()
             {
                 Name = "HotJobs",
-                Dock = DockStyle.Fill
+                Dock = DockStyle.Fill,
+                CurrCountry = lbl_Country.Text,
+                CurrPerformance = lbl_Performance.Text,
+                CurrSection = lbl_Section.Text
             };
 
             KPAHotJobsTemplate.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpaHotJobs);
             kpaHotJobs.BringToFront();
-            MenuInFront = false;
+            MenuInFront = true;
+            pnl_NavigationPanelMax.BringToFront();
         }
 
 
@@ -143,12 +192,43 @@ namespace KPA_KPI_Analyzer
             KPACurrentPlanActualTemplate kpaCurrPlanActual = new KPACurrentPlanActualTemplate()
             {
                 Name = "CurrPlanActual",
-                Dock = DockStyle.Fill
+                Dock = DockStyle.Fill,
+                CurrCountry = lbl_Country.Text,
+                CurrPerformance = lbl_Performance.Text,
+                CurrSection = lbl_Section.Text
             };
             KPACurrentPlanActualTemplate.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpaCurrPlanActual);
             kpaCurrPlanActual.BringToFront();
-            MenuInFront = false;
+            MenuInFront = true;
+            pnl_NavigationPanelMax.BringToFront();
+        }
+
+
+
+
+
+
+        /// <summary>
+        /// Instantiates a template object and adds the control to the active page panel for loading/viewing
+        /// </summary>
+        private void CreateKpiOverallTemplate()
+        {
+            activeSectionBtn = btn_kpiOverall;
+            lbl_Performance.Text = "KPI";
+            lbl_Section.Text = "All";
+            lbl_Category.Text = "All";
+            KPIOverall kpiOverall = new KPIOverall()
+            {
+                Name = "Overall",
+                Dock = DockStyle.Fill
+            };
+
+            kpiOverall.LoadTemplate(overallData);
+            pnl_activePage.Controls.Add(kpiOverall);
+            kpiOverall.BringToFront();
+            MenuInFront = true;
+            pnl_NavigationPanelMax.BringToFront();
         }
 
 
@@ -165,13 +245,17 @@ namespace KPA_KPI_Analyzer
             KPIPlanTemplate kpiPlanTemplate = new KPIPlanTemplate()
             {
                 Name = "Plan",
-                Dock = DockStyle.Fill
+                Dock = DockStyle.Fill,
+                CurrCountry = lbl_Country.Text,
+                CurrPerformance = lbl_Performance.Text,
+                CurrSection = lbl_Section.Text
             };
 
             KPIPlanTemplate.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpiPlanTemplate);
             kpiPlanTemplate.BringToFront();
-            MenuInFront = false;
+            MenuInFront = true;
+            pnl_NavigationPanelMax.BringToFront();
         }
 
 
@@ -189,12 +273,16 @@ namespace KPA_KPI_Analyzer
             KPIPurchTemplate kpiPurchTemplate = new KPIPurchTemplate()
             {
                 Name = "Purch",
-                Dock = DockStyle.Fill
+                Dock = DockStyle.Fill,
+                CurrCountry = lbl_Country.Text,
+                CurrPerformance = lbl_Performance.Text,
+                CurrSection = lbl_Section.Text
             };
             KPIPurchTemplate.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpiPurchTemplate);
             kpiPurchTemplate.BringToFront();
-            MenuInFront = false;
+            MenuInFront = true;
+            pnl_NavigationPanelMax.BringToFront();
         }
 
 
@@ -209,12 +297,16 @@ namespace KPA_KPI_Analyzer
             KPIFollowUpTemplate kpiFollowUpTemplate = new KPIFollowUpTemplate()
             {
                 Name = "FollowUp",
-                Dock = DockStyle.Fill
+                Dock = DockStyle.Fill,
+                CurrCountry = lbl_Country.Text,
+                CurrPerformance = lbl_Performance.Text,
+                CurrSection = lbl_Section.Text
             };
             KPIFollowUpTemplate.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpiFollowUpTemplate);
             kpiFollowUpTemplate.BringToFront();
-            MenuInFront = false;
+            MenuInFront = true;
+            pnl_NavigationPanelMax.BringToFront();
         }
 
 
@@ -232,12 +324,16 @@ namespace KPA_KPI_Analyzer
             KPIPurchTwoTemplate kpiPurchTwoTemplate = new KPIPurchTwoTemplate()
             {
                 Name = "Purch",
-                Dock = DockStyle.Fill
+                Dock = DockStyle.Fill,
+                CurrCountry = lbl_Country.Text,
+                CurrPerformance = lbl_Performance.Text,
+                CurrSection = lbl_Section.Text
             };
             KPIPurchTwoTemplate.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpiPurchTwoTemplate);
             kpiPurchTwoTemplate.BringToFront();
-            MenuInFront = false;
+            MenuInFront = true;
+            pnl_NavigationPanelMax.BringToFront();
         }
 
 
@@ -252,12 +348,16 @@ namespace KPA_KPI_Analyzer
             KPIPurchSubTemplate kpiPurchSubTemplate = new KPIPurchSubTemplate()
             {
                 Name = "PurchSub",
-                Dock = DockStyle.Fill
+                Dock = DockStyle.Fill,
+                CurrCountry = lbl_Country.Text,
+                CurrPerformance = lbl_Performance.Text,
+                CurrSection = lbl_Section.Text
             };
             KPIPurchSubTemplate.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpiPurchSubTemplate);
             kpiPurchSubTemplate.BringToFront();
-            MenuInFront = false;
+            MenuInFront = true;
+            pnl_NavigationPanelMax.BringToFront();
         }
 
 
@@ -274,13 +374,17 @@ namespace KPA_KPI_Analyzer
             KPIPurchTotalTemplate kpiPurchTotalTemplate = new KPIPurchTotalTemplate()
             {
                 Name = "PurchTotal",
-                Dock = DockStyle.Fill
+                Dock = DockStyle.Fill,
+                CurrCountry = lbl_Country.Text,
+                CurrPerformance = lbl_Performance.Text,
+                CurrSection = lbl_Section.Text
             };
 
             KPIPurchTotalTemplate.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpiPurchTotalTemplate);
             kpiPurchTotalTemplate.BringToFront();
-            MenuInFront = false;
+            MenuInFront = true;
+            pnl_NavigationPanelMax.BringToFront();
         }
 
 
@@ -295,13 +399,17 @@ namespace KPA_KPI_Analyzer
             KPIPurchPlanTemplate kpiPurchPlanTemplate = new KPIPurchPlanTemplate()
             {
                 Name = "PurchPlan",
-                Dock = DockStyle.Fill
+                Dock = DockStyle.Fill,
+                CurrCountry = lbl_Country.Text,
+                CurrPerformance = lbl_Performance.Text,
+                CurrSection = lbl_Section.Text
             };
 
             KPIPurchPlanTemplate.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpiPurchPlanTemplate);
             kpiPurchPlanTemplate.BringToFront();
-            MenuInFront = false;
+            MenuInFront = true;
+            pnl_NavigationPanelMax.BringToFront();
         }
 
 
@@ -317,12 +425,16 @@ namespace KPA_KPI_Analyzer
             KPIOtherTemplate kpiOtherTemplate = new KPIOtherTemplate()
             {
                 Name = "Other",
-                Dock = DockStyle.Fill
+                Dock = DockStyle.Fill,
+                CurrCountry = lbl_Country.Text,
+                CurrPerformance = lbl_Performance.Text,
+                CurrSection = lbl_Section.Text
             };
             KPIOtherTemplate.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpiOtherTemplate);
             kpiOtherTemplate.BringToFront();
-            MenuInFront = false;
+            MenuInFront = true;
+            pnl_NavigationPanelMax.BringToFront();
         }
 
 
@@ -551,14 +663,16 @@ namespace KPA_KPI_Analyzer
         /// <summary>
         /// Loads either the KPA or KPI overall data template depending on what navigation button was pressed.
         /// </summary>
-        private void LoadOverallTemplate()
+        private void LoadOverallTemplate(int tag)
         {
-            if (int.Parse(mainNavActiveBtn.Tag.ToString()) == 1)
+            if (tag == 1)
             {
+                activeSectionBtn = btn_kpaOverall;
+                SetActiveSectionBtn(activeSectionBtn);
                 lbl_Performance.Text = "KPA";
                 lbl_Section.Text = "All";
                 lbl_Category.Text = "All";
-                MenuInFront = false;
+                MenuInFront = true;
                 KPAOverall kpaOverall = new KPAOverall()
                 {
                     Name = "Overall",
@@ -569,12 +683,15 @@ namespace KPA_KPI_Analyzer
                 kpaOverall.BringToFront();
                 pnl_NavigationPanelMax.BringToFront();
             }
-            else
+
+            if (tag == 2)
             {
+                activeSectionBtn = btn_kpiOverall;
+                SetActiveSectionBtn(activeSectionBtn);
                 lbl_Performance.Text = "KPI";
                 lbl_Section.Text = "All";
                 lbl_Category.Text = "All";
-                MenuInFront = false;
+                MenuInFront = true;
                 KPIOverall kpiOverall = new KPIOverall()
                 {
                     Name = "Overall",
@@ -606,6 +723,7 @@ namespace KPA_KPI_Analyzer
                 Name = "DataComingSoon",
                 Dock = DockStyle.Fill
             };
+
             pnl_activePage.Controls.Add(comingSoon);
             comingSoon.BringToFront();
             pnl_NavigationPanelMax.BringToFront();

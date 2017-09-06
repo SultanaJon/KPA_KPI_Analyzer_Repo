@@ -25,6 +25,32 @@ namespace KPA_KPI_Analyzer
 
 
 
+        /// <summary>
+        /// Current selected country to display in the data viewer
+        /// </summary>
+        public string CurrCountry { get; set; }
+
+
+        /// <summary>
+        /// Current selected performance to display in the data viewer
+        /// </summary>
+        public string CurrPerformance { get; set; }
+
+
+        /// <summary>
+        /// Current selected section to display in the data viewer
+        /// </summary>
+        public string CurrSection { get; set; }
+
+
+
+        /// <summary>
+        /// Current selected category to display in the data viewer
+        /// </summary>
+        public string CurrCategory { get; set; }
+
+
+
 
         /// <summary>
         /// The tag (property for the control) indicating what category is loaded
@@ -96,6 +122,8 @@ namespace KPA_KPI_Analyzer
             DatavizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
+            CurrCategory = "Initial Confirmation vs PR Planned Date";
+            ChangeCategory(CurrCategory);
         }
 
 
@@ -189,6 +217,8 @@ namespace KPA_KPI_Analyzer
 
             Title = "Initial Confirmation vs PR Planned Date";
             ChangeCategory(Title);
+            CurrCategory = Title;
+
             TimeBucketOne = overallData.kpi.purch.initConfVsPRPlanDate.data.Minus_TwentyTwo.ToString();
             TimeBucketTwo = overallData.kpi.purch.initConfVsPRPlanDate.data.Minus_Fifteen_TwentyOne.ToString();
             TimeBucketThree = overallData.kpi.purch.initConfVsPRPlanDate.data.Minus_Eight_Fourteen.ToString();
@@ -381,7 +411,7 @@ namespace KPA_KPI_Analyzer
 
                 if (tag != 10)
                 {
-                    using (DataViewer dv = new DataViewer() { Data = initConfVsPrPlanDateDt })
+                    using (DataViewer dv = new DataViewer() { Data = initConfVsPrPlanDateDt, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                     {
                         dv.LoadData();
                         dv.ShowDialog();
@@ -389,7 +419,7 @@ namespace KPA_KPI_Analyzer
                 }
                 else
                 {
-                    using (DataViewer dv = new DataViewer() { Data = unconfirmed })
+                    using (DataViewer dv = new DataViewer() { Data = unconfirmed, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                     {
                         dv.LoadData();
                         dv.ShowDialog();

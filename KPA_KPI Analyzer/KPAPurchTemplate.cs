@@ -34,6 +34,31 @@ namespace KPA_KPI_Analyzer
 
 
 
+        /// <summary>
+        /// Current selected country to display in the data viewer
+        /// </summary>
+        public string CurrCountry { get; set; }
+
+
+        /// <summary>
+        /// Current selected performance to display in the data viewer
+        /// </summary>
+        public string CurrPerformance { get; set; }
+
+
+        /// <summary>
+        /// Current selected section to display in the data viewer
+        /// </summary>
+        public string CurrSection { get; set; }
+
+
+
+        /// <summary>
+        /// Current selected category to display in the data viewer
+        /// </summary>
+        public string CurrCategory { get; set; }
+
+
 
         /// <summary>
         /// The tag (property for the control) indicating what category is loaded
@@ -106,6 +131,8 @@ namespace KPA_KPI_Analyzer
             btn_One.Textcolor = System.Drawing.Color.Coral;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
+            CurrCategory = "PR Aging (Released)";
+            ChangeCategory(CurrCategory);
         }
 
 
@@ -202,6 +229,8 @@ namespace KPA_KPI_Analyzer
 
             Title = "PR Aging (Released)";
             ChangeCategory(Title);
+            CurrCategory = Title;
+            
             TimeBucketOne = overallData.kpa.purch.prsAgingRel.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpa.purch.prsAgingRel.data.One_Three.ToString();
             TimeBucketThree = overallData.kpa.purch.prsAgingRel.data.Four_Seven.ToString();
@@ -253,6 +282,8 @@ namespace KPA_KPI_Analyzer
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = "PO First Release";
             ChangeCategory(Title);
+            CurrCategory = Title;
+
             TimeBucketOne = overallData.kpa.purch.poFirstRel.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpa.purch.poFirstRel.data.One_Three.ToString();
             TimeBucketThree = overallData.kpa.purch.poFirstRel.data.Four_Seven.ToString();
@@ -303,6 +334,7 @@ namespace KPA_KPI_Analyzer
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = "PO Previous Release";
             ChangeCategory(Title);
+            CurrCategory = Title;
 
             TimeBucketOne = overallData.kpa.purch.poPrevRel.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpa.purch.poPrevRel.data.One_Three.ToString();
@@ -355,6 +387,7 @@ namespace KPA_KPI_Analyzer
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = "No Confirmations";
             ChangeCategory(Title);
+            CurrCategory = Title;
 
             TimeBucketOne = overallData.kpa.purch.noConfirmation.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpa.purch.noConfirmation.data.One_Three.ToString();
@@ -518,7 +551,7 @@ namespace KPA_KPI_Analyzer
                             }
                         }
 
-                        using (DataViewer dv = new DataViewer() { Data = prsAgingRelDt })
+                        using (DataViewer dv = new DataViewer() { Data = prsAgingRelDt, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                         {
                             dv.LoadData();
                             dv.ShowDialog();
@@ -607,7 +640,7 @@ namespace KPA_KPI_Analyzer
                             }
                         }
 
-                        using (DataViewer dv = new DataViewer() { Data = poFirstRelDt })
+                        using (DataViewer dv = new DataViewer() { Data = poFirstRelDt, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                         {
                             dv.LoadData();
                             dv.ShowDialog();
@@ -696,7 +729,7 @@ namespace KPA_KPI_Analyzer
                             }
                         }
 
-                        using (DataViewer dv = new DataViewer() { Data = poPrevRelDt })
+                        using (DataViewer dv = new DataViewer() { Data = poPrevRelDt, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                         {
                             dv.LoadData();
                             dv.ShowDialog();
@@ -785,7 +818,7 @@ namespace KPA_KPI_Analyzer
                             }
                         }
 
-                        using (DataViewer dv = new DataViewer() { Data = noConfirmationsDt })
+                        using (DataViewer dv = new DataViewer() { Data = noConfirmationsDt, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                         {
                             dv.LoadData();
                             dv.ShowDialog();

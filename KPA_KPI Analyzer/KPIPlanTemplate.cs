@@ -23,6 +23,31 @@ namespace KPA_KPI_Analyzer
 
 
 
+        /// <summary>
+        /// Current selected country to display in the data viewer
+        /// </summary>
+        public string CurrCountry { get; set; }
+
+
+        /// <summary>
+        /// Current selected performance to display in the data viewer
+        /// </summary>
+        public string CurrPerformance { get; set; }
+
+
+        /// <summary>
+        /// Current selected section to display in the data viewer
+        /// </summary>
+        public string CurrSection { get; set; }
+
+
+
+        /// <summary>
+        /// Current selected category to display in the data viewer
+        /// </summary>
+        public string CurrCategory { get; set; }
+
+
 
         /// <summary>
         /// The tag (property for the control) indicating what category is loaded
@@ -93,6 +118,8 @@ namespace KPA_KPI_Analyzer
             DatavizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
+            CurrCategory = "PR Planned Date vs Current Planned";
+            ChangeCategory(CurrCategory);
         }
 
 
@@ -188,6 +215,8 @@ namespace KPA_KPI_Analyzer
 
             Title = "PR Planned Date vs Current Planned";
             ChangeCategory(Title);
+            CurrCategory = Title;
+
             Average = overallData.kpi.plan.prPlanDateVsCurrPlan.data.Average.ToString();
             TotalOrders = overallData.kpi.plan.prPlanDateVsCurrPlan.data.Total.ToString();
             TimeBucketOne = overallData.kpi.plan.prPlanDateVsCurrPlan.data.Minus_TwentyTwo.ToString();
@@ -248,6 +277,8 @@ namespace KPA_KPI_Analyzer
 
             Title = "(Orig Plan Date - 2nd Lvl Rel Date vs Coded Lead-time";
             ChangeCategory(Title);
+            CurrCategory = Title;
+
             Average = overallData.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Average.ToString();
             TotalOrders = overallData.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Total.ToString();
             TimeBucketOne = overallData.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Minus_TwentyTwo.ToString();
@@ -308,6 +339,8 @@ namespace KPA_KPI_Analyzer
 
             Title = "(Curr Plan Date - 2nd Lvl Rel Date) vs Coded Lead-time";
             ChangeCategory(Title);
+            CurrCategory = Title;
+
             Average = overallData.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Average.ToString();
             TotalOrders = overallData.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Total.ToString();
             TimeBucketOne = overallData.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Minus_TwentyTwo.ToString();
@@ -512,7 +545,7 @@ namespace KPA_KPI_Analyzer
                             }
                         }
 
-                        using (DataViewer dv = new DataViewer() { Data = prPlanDateVsCurrPlanDt })
+                        using (DataViewer dv = new DataViewer() { Data = prPlanDateVsCurrPlanDt, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                         {
                             dv.LoadData();
                             dv.ShowDialog();

@@ -33,6 +33,31 @@ namespace KPA_KPI_Analyzer
 
 
 
+        /// <summary>
+        /// Current selected country to display in the data viewer
+        /// </summary>
+        public string CurrCountry { get; set; }
+
+
+        /// <summary>
+        /// Current selected performance to display in the data viewer
+        /// </summary>
+        public string CurrPerformance { get; set; }
+
+
+        /// <summary>
+        /// Current selected section to display in the data viewer
+        /// </summary>
+        public string CurrSection { get; set; }
+
+
+
+        /// <summary>
+        /// Current selected category to display in the data viewer
+        /// </summary>
+        public string CurrCategory { get; set; }
+
+
 
         /// <summary>
         /// The tag (property for the control) indicating what category is loaded
@@ -100,6 +125,8 @@ namespace KPA_KPI_Analyzer
             btn_One.Textcolor = System.Drawing.Color.Coral;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
+            CurrCategory = "Confirmed vs Plan Date";
+            ChangeCategory(CurrCategory);
         }
 
 
@@ -176,6 +203,7 @@ namespace KPA_KPI_Analyzer
 
             Title = "Confirmed vs Plan Date";
             ChangeCategory(Title);
+            CurrCategory = Title;
             TimeBucketOne = overallData.kpa.followUp.confDateVsPlanDate.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpa.followUp.confDateVsPlanDate.data.One_Three.ToString();
             TimeBucketThree = overallData.kpa.followUp.confDateVsPlanDate.data.Four_Seven.ToString();
@@ -230,6 +258,7 @@ namespace KPA_KPI_Analyzer
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = "Confirmed Date for Upcoming Deliveres";
             ChangeCategory(Title);
+            CurrCategory = Title;
 
             TimeBucketOne = overallData.kpa.followUp.ConfDateForUpcomingDel.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpa.followUp.ConfDateForUpcomingDel.data.One_Three.ToString();
@@ -281,6 +310,7 @@ namespace KPA_KPI_Analyzer
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = "Late to Confirmed Date";
             ChangeCategory(Title);
+            CurrCategory = Title;
 
             TimeBucketOne = overallData.kpa.followUp.LateToConfDate.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpa.followUp.LateToConfDate.data.One_Three.ToString();
@@ -476,7 +506,7 @@ namespace KPA_KPI_Analyzer
                             }
                         }
 
-                        using (DataViewer dv = new DataViewer() { Data = confVsPlanDateDt })
+                        using (DataViewer dv = new DataViewer() { Data = confVsPlanDateDt, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                         {
                             dv.LoadData();
                             dv.ShowDialog();
@@ -564,7 +594,7 @@ namespace KPA_KPI_Analyzer
                             }
                         }
 
-                        using (DataViewer dv = new DataViewer() { Data = poFirsconfDateUpDelDt })
+                        using (DataViewer dv = new DataViewer() { Data = poFirsconfDateUpDelDt, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                         {
                             dv.LoadData();
                             dv.ShowDialog();
@@ -658,7 +688,7 @@ namespace KPA_KPI_Analyzer
                             }
                         }
 
-                        using (DataViewer dv = new DataViewer() { Data = LateConfDateDt })
+                        using (DataViewer dv = new DataViewer() { Data = LateConfDateDt, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                         {
                             dv.LoadData();
                             dv.ShowDialog();

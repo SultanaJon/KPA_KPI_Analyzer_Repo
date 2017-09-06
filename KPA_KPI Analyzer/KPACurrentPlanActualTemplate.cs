@@ -29,6 +29,29 @@ namespace KPA_KPI_Analyzer
 
 
 
+        /// <summary>
+        /// Current selected country to display in the data viewer
+        /// </summary>
+        public string CurrCountry { get; set; }
+
+
+        /// <summary>
+        /// Current selected performance to display in the data viewer
+        /// </summary>
+        public string CurrPerformance { get; set; }
+
+
+        /// <summary>
+        /// Current selected section to display in the data viewer
+        /// </summary>
+        public string CurrSection { get; set; }
+
+
+
+        /// <summary>
+        /// Current selected category to display in the data viewer
+        /// </summary>
+        public string CurrCategory { get; set; }
 
 
 
@@ -98,7 +121,8 @@ namespace KPA_KPI_Analyzer
             DatavizLoaded = false;
             datavizLoadTimer.Start();
             ActiveCategory = 0;
-            ChangeCategory("Current Planned Date vs Current Confirmed Date (Open POs)");
+            CurrCategory = "Current Planned Date vs Current Confirmed Date (Open POs)";
+            ChangeCategory(CurrCategory);
         }
 
 
@@ -191,6 +215,7 @@ namespace KPA_KPI_Analyzer
 
             Title = "Current planned date vs current confirmation date (Open POs)";
             ChangeCategory(Title);
+            CurrCategory = Title;
 
             TimeBucketOne = overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.LessThanMinusThree.ToString();
             TimeBucketTwo = overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.GreaterThanEqualMinusThree.ToString();
@@ -249,6 +274,7 @@ namespace KPA_KPI_Analyzer
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = "Current planned date vs current confirmation date (Open POs) - Hot Job Only";
             ChangeCategory(Title);
+            CurrCategory = Title;
 
             TimeBucketOne = overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.LessThanMinusThree.ToString();
             TimeBucketTwo = overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.GreaterThanEqualMinusThree.ToString();
@@ -461,7 +487,7 @@ namespace KPA_KPI_Analyzer
                             }
                         }
 
-                        using (DataViewer dv = new DataViewer() { Data = currPlanDateVsCurrConfDateDt })
+                        using (DataViewer dv = new DataViewer() { Data = currPlanDateVsCurrConfDateDt, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                         {
                             dv.LoadData();
                             dv.ShowDialog();
@@ -594,7 +620,7 @@ namespace KPA_KPI_Analyzer
                             }
                         }
 
-                        using (DataViewer dv = new DataViewer() { Data = currPlanDateVsCurrConfDateDtHotJobs })
+                        using (DataViewer dv = new DataViewer() { Data = currPlanDateVsCurrConfDateDtHotJobs, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                         {
                             dv.LoadData();
                             dv.ShowDialog();

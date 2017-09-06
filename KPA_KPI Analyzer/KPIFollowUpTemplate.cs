@@ -28,6 +28,32 @@ namespace KPA_KPI_Analyzer
 
 
 
+        /// <summary>
+        /// Current selected country to display in the data viewer
+        /// </summary>
+        public string CurrCountry { get; set; }
+
+
+        /// <summary>
+        /// Current selected performance to display in the data viewer
+        /// </summary>
+        public string CurrPerformance { get; set; }
+
+
+        /// <summary>
+        /// Current selected section to display in the data viewer
+        /// </summary>
+        public string CurrSection { get; set; }
+
+
+
+        /// <summary>
+        /// Current selected category to display in the data viewer
+        /// </summary>
+        public string CurrCategory { get; set; }
+
+
+
 
         /// <summary>
         /// The tag (property for the control) indicating what category is loaded
@@ -104,6 +130,8 @@ namespace KPA_KPI_Analyzer
             DatavizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
+            CurrCategory = "Initial Confirmation vs Current Confirmation";
+            ChangeCategory(CurrCategory);
         }
 
 
@@ -219,6 +247,8 @@ namespace KPA_KPI_Analyzer
 
             Title = "Initial Confirmation vs Current Confirmation";
             ChangeCategory(Title);
+            CurrCategory = Title;
+
             TotalOrders = overallData.kpi.followUp.initConfVsCurrConf.data.Total.ToString();
             Average = overallData.kpi.followUp.initConfVsCurrConf.data.Average.ToString();
             PercNoConf = overallData.kpi.followUp.initConfVsCurrConf.data.PercentUnconf.ToString();
@@ -279,6 +309,8 @@ namespace KPA_KPI_Analyzer
 
             Title = "Final Confirmation Date vs Final Planned Date";
             ChangeCategory(Title);
+            CurrCategory = Title;
+
             TotalOrders = overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Total.ToString();
             Average = overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Average.ToString();
             PercNoConf = overallData.kpi.followUp.finalConfDateVsFinalPlan.data.PercentUnconf.ToString();
@@ -339,6 +371,8 @@ namespace KPA_KPI_Analyzer
 
             Title = "Receipt Date vs Current Planed Date";
             ChangeCategory(Title);
+            CurrCategory = Title;
+
             TotalOrders = overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Total.ToString();
             Average = overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Average.ToString();
             TimeBucketOne = overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Minus_TwentyTwo.ToString();
@@ -395,6 +429,8 @@ namespace KPA_KPI_Analyzer
 
             Title = "Receipt Date vs Original Confirmed Date";
             ChangeCategory(Title);
+            CurrCategory = Title;
+
             TotalOrders = overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Total.ToString();
             Average = overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Average.ToString();
             PercNoConf = overallData.kpi.followUp.receiptDateVsOrigConfDate.data.PercentUnconf.ToString();
@@ -455,6 +491,8 @@ namespace KPA_KPI_Analyzer
 
             Title = "Receipt Date vs Current Confirmed Date";
             ChangeCategory(Title);
+            CurrCategory = Title;
+
             TotalOrders = overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Total.ToString();
             Average = overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Average.ToString();
             PercNoConf = overallData.kpi.followUp.receiptDateVsCurrConfDate.data.PercentUnconf.ToString();
@@ -660,7 +698,7 @@ namespace KPA_KPI_Analyzer
 
                         if(tag != 10)
                         {
-                            using (DataViewer dv = new DataViewer() { Data = initConfVsCurrConf })
+                            using (DataViewer dv = new DataViewer() { Data = initConfVsCurrConf, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                             {
                                 dv.LoadData();
                                 dv.ShowDialog();
@@ -668,7 +706,7 @@ namespace KPA_KPI_Analyzer
                         }
                         else
                         {
-                            using (DataViewer dv = new DataViewer() { Data = unconfirmed })
+                            using (DataViewer dv = new DataViewer() { Data = unconfirmed, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                             {
                                 dv.LoadData();
                                 dv.ShowDialog();
@@ -794,7 +832,7 @@ namespace KPA_KPI_Analyzer
 
                         if (tag != 10)
                         {
-                            using (DataViewer dv = new DataViewer() { Data = finalConfDateVsFinalPlanDateDt })
+                            using (DataViewer dv = new DataViewer() { Data = finalConfDateVsFinalPlanDateDt, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                             {
                                 dv.LoadData();
                                 dv.ShowDialog();
@@ -802,7 +840,7 @@ namespace KPA_KPI_Analyzer
                         }
                         else
                         {
-                            using (DataViewer dv = new DataViewer() { Data = unconfirmed })
+                            using (DataViewer dv = new DataViewer() { Data = unconfirmed, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                             {
                                 dv.LoadData();
                                 dv.ShowDialog();
@@ -920,7 +958,7 @@ namespace KPA_KPI_Analyzer
                             }
                         }
 
-                        using (DataViewer dv = new DataViewer() { Data = recDateVsCurrPlanDateDt })
+                        using (DataViewer dv = new DataViewer() { Data = recDateVsCurrPlanDateDt, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                         {
                             dv.LoadData();
                             dv.ShowDialog();
@@ -1044,7 +1082,7 @@ namespace KPA_KPI_Analyzer
 
                         if(tag != 10)
                         {
-                            using (DataViewer dv = new DataViewer() { Data = recDateVsOrigConfDateDt })
+                            using (DataViewer dv = new DataViewer() { Data = recDateVsOrigConfDateDt, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                             {
                                 dv.LoadData();
                                 dv.ShowDialog();
@@ -1052,7 +1090,7 @@ namespace KPA_KPI_Analyzer
                         }
                         else
                         {
-                            using (DataViewer dv = new DataViewer() { Data = unconfirmed })
+                            using (DataViewer dv = new DataViewer() { Data = unconfirmed, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                             {
                                 dv.LoadData();
                                 dv.ShowDialog();
@@ -1175,7 +1213,7 @@ namespace KPA_KPI_Analyzer
 
                         if (tag != 10)
                         {
-                            using (DataViewer dv = new DataViewer() { Data = recDateVsCurrConfDateDt })
+                            using (DataViewer dv = new DataViewer() { Data = recDateVsCurrConfDateDt, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                             {
                                 dv.LoadData();
                                 dv.ShowDialog();
@@ -1183,7 +1221,7 @@ namespace KPA_KPI_Analyzer
                         }
                         else
                         {
-                            using (DataViewer dv = new DataViewer() { Data = unconfirmed })
+                            using (DataViewer dv = new DataViewer() { Data = unconfirmed, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                             {
                                 dv.LoadData();
                                 dv.ShowDialog();

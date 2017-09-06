@@ -27,6 +27,32 @@ namespace KPA_KPI_Analyzer
 
 
 
+        /// <summary>
+        /// Current selected country to display in the data viewer
+        /// </summary>
+        public string CurrCountry { get; set; }
+
+
+        /// <summary>
+        /// Current selected performance to display in the data viewer
+        /// </summary>
+        public string CurrPerformance { get; set; }
+
+
+        /// <summary>
+        /// Current selected section to display in the data viewer
+        /// </summary>
+        public string CurrSection { get; set; }
+
+
+
+        /// <summary>
+        /// Current selected category to display in the data viewer
+        /// </summary>
+        public string CurrCategory { get; set; }
+
+
+
 
         /// <summary>
         /// The tag (property for the control) indicating what category is loaded
@@ -101,6 +127,8 @@ namespace KPA_KPI_Analyzer
             DatavizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
+            CurrCategory = "PR 2nd Level Release vs Po Creation";
+            ChangeCategory(CurrCategory);
         }
 
 
@@ -209,6 +237,8 @@ namespace KPA_KPI_Analyzer
 
             Title = "PR 2nd Level Release vs Po Creation";
             ChangeCategory(Title);
+            CurrCategory = Title;
+
             TimeBucketOne = overallData.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.One_Three.ToString();
             TimeBucketThree = overallData.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.Four_Seven.ToString();
@@ -269,6 +299,7 @@ namespace KPA_KPI_Analyzer
 
             Title = "PO Creation vs PO Release";
             ChangeCategory(Title);
+            CurrCategory = Title;
 
             TimeBucketOne = overallData.kpi.purchTwo.poCreationVsPORel.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpi.purchTwo.poCreationVsPORel.data.One_Three.ToString();
@@ -335,6 +366,8 @@ namespace KPA_KPI_Analyzer
 
             Title = "PO Release vs PO Confirm";
             ChangeCategory(Title);
+            CurrCategory = Title;
+
             TimeBucketOne = overallData.kpi.purchTwo.poRelVsPOConf.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpi.purchTwo.poRelVsPOConf.data.One_Three.ToString();
             TimeBucketThree = overallData.kpi.purchTwo.poRelVsPOConf.data.Four_Seven.ToString();
@@ -361,7 +394,6 @@ namespace KPA_KPI_Analyzer
             dp.addLabely(lbl_xLabelNine.Text, TimeBucketNine);
             dp.addLabely(lbl_xLabelTen.Text, TimeBucketTen);
             dp.addLabely(lbl_xLabelEleven.Text, TimeBucketEleven);
-
 
 
             TotalOrders = String.Format("{0:n0}", overallData.kpi.purchTwo.poRelVsPOConf.data.Total);
@@ -532,7 +564,7 @@ namespace KPA_KPI_Analyzer
                             }
                         }
 
-                        using (DataViewer dv = new DataViewer() { Data = pr2ndLvlRelVsPoCreate })
+                        using (DataViewer dv = new DataViewer() { Data = pr2ndLvlRelVsPoCreate, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                         {
                             dv.LoadData();
                             dv.ShowDialog();
@@ -653,7 +685,7 @@ namespace KPA_KPI_Analyzer
                             }
                         }
 
-                        using (DataViewer dv = new DataViewer() { Data = poCreateVsPORel })
+                        using (DataViewer dv = new DataViewer() { Data = poCreateVsPORel, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                         {
                             dv.LoadData();
                             dv.ShowDialog();
@@ -791,7 +823,7 @@ namespace KPA_KPI_Analyzer
 
                         if (tag != 11)
                         {
-                            using (DataViewer dv = new DataViewer() { Data = poRelVsPoConf })
+                            using (DataViewer dv = new DataViewer() { Data = poRelVsPoConf, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                             {
                                 dv.LoadData();
                                 dv.ShowDialog();
@@ -799,7 +831,7 @@ namespace KPA_KPI_Analyzer
                         }
                         else
                         {
-                            using (DataViewer dv = new DataViewer() { Data = unconfirmed })
+                            using (DataViewer dv = new DataViewer() { Data = unconfirmed, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                             {
                                 dv.LoadData();
                                 dv.ShowDialog();

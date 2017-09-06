@@ -34,6 +34,33 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
+        /// Current selected country to display in the data viewer
+        /// </summary>
+        public string CurrCountry { get; set; }
+
+
+        /// <summary>
+        /// Current selected performance to display in the data viewer
+        /// </summary>
+        public string CurrPerformance { get; set; }
+
+
+        /// <summary>
+        /// Current selected section to display in the data viewer
+        /// </summary>
+        public string CurrSection { get; set; }
+
+
+
+        /// <summary>
+        /// Current selected category to display in the data viewer
+        /// </summary>
+        public string CurrCategory { get; set; }
+
+
+
+
+        /// <summary>
         /// The tag (property for the control) indicating what category is loaded
         /// </summary>
         int ActiveCategory { get; set; }
@@ -99,6 +126,8 @@ namespace KPA_KPI_Analyzer
             DatavizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
+            CurrCategory = "PRs (Not on PO) - Hot Job Only";
+            ChangeCategory(CurrCategory);
         }
 
 
@@ -184,6 +213,8 @@ namespace KPA_KPI_Analyzer
 
             Title = "PRs (Not on PO) - Hot Job Only";
             ChangeCategory(Title);
+            CurrCategory = Title;
+
             TimeBucketOne = overallData.kpa.hotJobs.prsNotOnPO.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpa.hotJobs.prsNotOnPO.data.One_Three.ToString();
             TimeBucketThree = overallData.kpa.hotJobs.prsNotOnPO.data.Four_Seven.ToString();
@@ -235,6 +266,7 @@ namespace KPA_KPI_Analyzer
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = "No Confirmation - Hot Job Only";
             ChangeCategory(Title);
+            CurrCategory = Title;
 
             TimeBucketOne = overallData.kpa.hotJobs.noConfirmation.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpa.hotJobs.noConfirmation.data.One_Three.ToString();
@@ -396,7 +428,7 @@ namespace KPA_KPI_Analyzer
                             }
                         }
 
-                        using (DataViewer dv = new DataViewer() { Data = prsNotonPOHotJob })
+                        using (DataViewer dv = new DataViewer() { Data = prsNotonPOHotJob, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                         {
                             dv.LoadData();
                             dv.ShowDialog();
@@ -484,7 +516,7 @@ namespace KPA_KPI_Analyzer
                             }
                         }
 
-                        using (DataViewer dv = new DataViewer() { Data = noConfirmations })
+                        using (DataViewer dv = new DataViewer() { Data = noConfirmations, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                         {
                             dv.LoadData();
                             dv.ShowDialog();

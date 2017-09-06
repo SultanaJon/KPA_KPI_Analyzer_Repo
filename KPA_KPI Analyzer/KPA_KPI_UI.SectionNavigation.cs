@@ -9,16 +9,6 @@ namespace KPA_KPI_Analyzer
         System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
 
 
-        /// <summary>
-        /// When the user hovers over a button, change the forecolor to coral.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void MainNavSection_MouseHover(object sender, EventArgs e)
-        {
-
-        }
-
 
 
 
@@ -53,8 +43,10 @@ namespace KPA_KPI_Analyzer
         private void sectionBtn_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
-            activateSectionBtn(btn);
+
             RemoveActivePanelControls();
+            SetActiveSectionBtnToDefault();
+            SetActiveSectionBtn(btn);
 
             int actSecTag = int.Parse(btn.Tag.ToString());
 
@@ -67,7 +59,7 @@ namespace KPA_KPI_Analyzer
             switch (actSecTag)
             {
                 case 0: // KPA --> Overall
-                    LoadOverallTemplate();
+                    LoadOverallTemplate(actSecTag);
                     break;
                 case 1: // KPA --> Plan
                     CreateKpaPlanTemplate();
@@ -105,11 +97,9 @@ namespace KPA_KPI_Analyzer
                 case 12: // KPA --> Current Plan vs Actual
                     CreateKpaCurrPlanActualTemplate();
                     break;
-                case 13: // KPA --> MTC
-                    LoadDataComingSoonTemplate();
-                    break;
+                // REMOVED CASE 13: KPA -> MTC. THIS FEATURE IS NOT POSSIBLE
                 case 14: // KPI --> Overall
-                    LoadOverallTemplate();
+                    LoadOverallTemplate(actSecTag);
                     break;
                 case 15: // KPI --> Plan
                     CreateKpiPlanTemplate();
@@ -150,32 +140,27 @@ namespace KPA_KPI_Analyzer
 
 
 
-
         /// <summary>
-        /// This function will activate the new section active button and set back the current active button to defaul.
+        /// 
         /// </summary>
-        /// <param name="btn">The button that will be the new active button</param>
-        private void activateSectionBtn(Button btn)
+        private void SetActiveSectionBtn(Button btn)
         {
-            int tag = int.Parse(btn.Tag.ToString());
-            setCurrentActiveSectionBtnToDefault();
-            btn.ForeColor = System.Drawing.Color.Coral;
             activeSectionBtn = btn;
+            activeSectionBtn.BackColor = System.Drawing.Color.FromArgb(101, 198, 187);
+            activeSectionBtn.ForeColor = System.Drawing.Color.FromArgb(255, 255, 255);
         }
-
 
 
 
 
         /// <summary>
-        /// This function will set the current active section button back to its default state.
+        /// 
         /// </summary>
-        private void setCurrentActiveSectionBtnToDefault()
+        private void SetActiveSectionBtnToDefault()
         {
-            activeSectionBtn.ForeColor = System.Drawing.Color.White;
+            activeSectionBtn.BackColor = System.Drawing.Color.FromArgb(36, 41, 46);
+            activeSectionBtn.ForeColor = System.Drawing.Color.FromArgb(103, 110, 117);
         }
-
-
 
 
 
@@ -186,16 +171,13 @@ namespace KPA_KPI_Analyzer
         /// <param name="tag">The tag of either the KPA or KPI button</param>
         private void loadDefaultSectionState(int tag)
         {
-            setCurrentActiveSectionBtnToDefault();
             if (tag == 1) // Load the default KPA Overall section state
             {
                 activeSectionBtn = btn_kpaOverall;
-                activeSectionBtn.ForeColor = System.Drawing.Color.Coral;
             }
             else // load the default KPI section state
             {
                 activeSectionBtn = btn_kpiOverall;
-                activeSectionBtn.ForeColor = System.Drawing.Color.Coral;
             }
         }
 

@@ -34,6 +34,32 @@ namespace KPA_KPI_Analyzer
 
 
 
+        /// <summary>
+        /// Current selected country to display in the data viewer
+        /// </summary>
+        public string CurrCountry { get; set; }
+
+
+        /// <summary>
+        /// Current selected performance to display in the data viewer
+        /// </summary>
+        public string CurrPerformance { get; set; }
+
+
+        /// <summary>
+        /// Current selected section to display in the data viewer
+        /// </summary>
+        public string CurrSection { get; set; }
+
+
+
+        /// <summary>
+        /// Current selected category to display in the data viewer
+        /// </summary>
+        public string CurrCategory { get; set; }
+
+
+
 
         /// <summary>
         /// The tag (property for the control) indicating what category is loaded
@@ -100,6 +126,8 @@ namespace KPA_KPI_Analyzer
             RenderPRRelToConfEntry();
             ActiveCategory = 0;
             datavizLoadTimer.Start();
+            CurrCategory = "PR Release to Confirmation Entry";
+            ChangeCategory(CurrCategory);
         }
 
 
@@ -182,6 +210,8 @@ namespace KPA_KPI_Analyzer
 
             Title = "PR Release to Confirmation Entry";
             ChangeCategory(Title);
+            CurrCategory = Title;
+
             TimeBucketOne = overallData.kpa.purchTotal.prRelConfEntry.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpa.purchTotal.prRelConfEntry.data.One_Three.ToString();
             TimeBucketThree = overallData.kpa.purchTotal.prRelConfEntry.data.Four_Seven.ToString();
@@ -339,7 +369,7 @@ namespace KPA_KPI_Analyzer
                     }
                 }
 
-                using (DataViewer dv = new DataViewer() { Data = prRelConfEntry })
+                using (DataViewer dv = new DataViewer() { Data = prRelConfEntry, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                 {
                     dv.LoadData();
                     dv.ShowDialog();

@@ -9,6 +9,32 @@ namespace KPA_KPI_Analyzer
         private FormData frmData = new FormData();
 
 
+        /// <summary>
+        /// Current selected country to display in the data viewer
+        /// </summary>
+        public string Country { set { lbl_Country.Text = value; } }
+        
+
+        /// <summary>
+        /// Current selected performance to display in the data viewer
+        /// </summary>
+        public string Performance { set { lbl_Performance.Text = value; } }
+
+
+        /// <summary>
+        /// Current selected section to display in the data viewer
+        /// </summary>
+        public string Section { set { lbl_Section.Text = value; } }
+
+
+
+        /// <summary>
+        /// Current selected category to display in the data viewer
+        /// </summary>
+        public string Category { set { lbl_Category.Text = value; } }
+
+
+
 
 
         /// <summary>
@@ -73,7 +99,7 @@ namespace KPA_KPI_Analyzer
         /// <param name="e">The Mouse Hover Event</param>
         private void btn_Expand_MouseHover(object sender, EventArgs e)
         {
-            btn_Expand.Image = Properties.Resources.Maximize_Hover_icon;
+            pnl_Maximize.BackgroundImage = Properties.Resources.Maximize_Hover_icon;
         }
 
 
@@ -88,7 +114,7 @@ namespace KPA_KPI_Analyzer
         /// <param name="e">the Mouse Leave Event</param>
         private void btn_Expand_MouseLeave(object sender, EventArgs e)
         {
-            btn_Expand.Image = Properties.Resources.Maximize;
+            pnl_Maximize.BackgroundImage = Properties.Resources.Maximize;
         }
 
 
@@ -118,7 +144,7 @@ namespace KPA_KPI_Analyzer
         /// <param name="e">The Mouse Enter Event</param>
         private void btn_Minimize_MouseEnter(object sender, EventArgs e)
         {
-            btn_Minimize.Image = Properties.Resources.Minimize_Hover_Icon;
+            pnl_Minimize.BackgroundImage = Properties.Resources.Minimize_Hover_Icon;
         }
 
 
@@ -133,7 +159,7 @@ namespace KPA_KPI_Analyzer
         /// <param name="e">the Mouse Leave event</param>
         private void btn_Minimize_MouseLeave(object sender, EventArgs e)
         {
-            btn_Minimize.Image = Properties.Resources.Minimize;
+            pnl_Minimize.BackgroundImage = Properties.Resources.Minimize;
         }
 
 
@@ -160,7 +186,7 @@ namespace KPA_KPI_Analyzer
         /// <param name="e">The Mouse Over event</param>
         private void btn_Close_MouseHover(object sender, EventArgs e)
         {
-            btn_Close.Image = Properties.Resources.Close_Hover_icon;
+            pnl_Close.BackgroundImage = Properties.Resources.Close_Hover_icon;
         }
 
 
@@ -175,7 +201,7 @@ namespace KPA_KPI_Analyzer
         /// <param name="e">The MouseLeave event</param>
         private void btn_Close_MouseLeave(object sender, EventArgs e)
         {
-            btn_Close.Image = Properties.Resources.Close;
+            pnl_Close.BackgroundImage = Properties.Resources.Close;
         }
 
 

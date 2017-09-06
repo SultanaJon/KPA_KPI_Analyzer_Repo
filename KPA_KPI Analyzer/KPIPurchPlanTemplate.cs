@@ -24,6 +24,30 @@ namespace KPA_KPI_Analyzer
 
 
 
+        /// <summary>
+        /// Current selected country to display in the data viewer
+        /// </summary>
+        public string CurrCountry { get; set; }
+
+
+        /// <summary>
+        /// Current selected performance to display in the data viewer
+        /// </summary>
+        public string CurrPerformance { get; set; }
+
+
+        /// <summary>
+        /// Current selected section to display in the data viewer
+        /// </summary>
+        public string CurrSection { get; set; }
+
+
+
+        /// <summary>
+        /// Current selected category to display in the data viewer
+        /// </summary>
+        public string CurrCategory { get; set; }
+
 
 
         /// <summary>
@@ -97,6 +121,8 @@ namespace KPA_KPI_Analyzer
             DatavizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
+            CurrCategory = "PO Release vs PR Delivery Date";
+            ChangeCategory(CurrCategory);
         }
 
 
@@ -189,6 +215,8 @@ namespace KPA_KPI_Analyzer
 
             Title = "PO Release vs PR Delivery Date";
             ChangeCategory(Title);
+            CurrCategory = Title;
+            
             TimeBucketOne = overallData.kpi.purchPlan.poRelVsPRDelDate.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpi.purchPlan.poRelVsPRDelDate.data.One_Three.ToString();
             TimeBucketThree = overallData.kpi.purchPlan.poRelVsPRDelDate.data.Four_Seven.ToString();
@@ -252,6 +280,8 @@ namespace KPA_KPI_Analyzer
 
             Title = "PR 2nd Level Release to Original Planned Delivery Date";
             ChangeCategory(Title);
+            CurrCategory = Title;
+
             TimeBucketOne = overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.One_Three.ToString();
             TimeBucketThree = overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Four_Seven.ToString();
@@ -455,7 +485,7 @@ namespace KPA_KPI_Analyzer
                             }
                         }
 
-                        using (DataViewer dv = new DataViewer() { Data = poRelVsPRDelDateDt })
+                        using (DataViewer dv = new DataViewer() { Data = poRelVsPRDelDateDt, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                         {
                             dv.LoadData();
                             dv.ShowDialog();
@@ -575,7 +605,7 @@ namespace KPA_KPI_Analyzer
                             }
                         }
 
-                        using (DataViewer dv = new DataViewer() { Data = pr2ndLvlRelOrigPlanDelDateDt })
+                        using (DataViewer dv = new DataViewer() { Data = pr2ndLvlRelOrigPlanDelDateDt, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                         {
                             dv.LoadData();
                             dv.ShowDialog();

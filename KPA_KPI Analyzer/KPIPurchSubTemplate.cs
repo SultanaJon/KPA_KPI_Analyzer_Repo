@@ -26,6 +26,32 @@ namespace KPA_KPI_Analyzer
 
 
 
+        /// <summary>
+        /// Current selected country to display in the data viewer
+        /// </summary>
+        public string CurrCountry { get; set; }
+
+
+        /// <summary>
+        /// Current selected performance to display in the data viewer
+        /// </summary>
+        public string CurrPerformance { get; set; }
+
+
+        /// <summary>
+        /// Current selected section to display in the data viewer
+        /// </summary>
+        public string CurrSection { get; set; }
+
+
+
+        /// <summary>
+        /// Current selected category to display in the data viewer
+        /// </summary>
+        public string CurrCategory { get; set; }
+
+
+
 
         /// <summary>
         /// The tag (property for the control) indicating what category is loaded
@@ -100,6 +126,8 @@ namespace KPA_KPI_Analyzer
             DatavizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
+            CurrCategory = "PR Release vs PO Release";
+            ChangeCategory(CurrCategory);
         }
 
 
@@ -200,6 +228,8 @@ namespace KPA_KPI_Analyzer
 
             Title = "PR Release vs PO Release";
             ChangeCategory(Title);
+            CurrCategory = Title;
+
             TimeBucketOne = overallData.kpi.purchSub.prRelVsPORel.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpi.purchSub.prRelVsPORel.data.One_Three.ToString();
             TimeBucketThree = overallData.kpi.purchSub.prRelVsPORel.data.Four_Seven.ToString();
@@ -261,6 +291,8 @@ namespace KPA_KPI_Analyzer
 
             Title = "PO Creation vs Confirmation Entry";
             ChangeCategory(Title);
+            CurrCategory = Title;
+
             TimeBucketOne = overallData.kpi.purchSub.poCreateVsConfEntry.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpi.purchSub.poCreateVsConfEntry.data.One_Three.ToString();
             TimeBucketThree = overallData.kpi.purchSub.poCreateVsConfEntry.data.Four_Seven.ToString();
@@ -466,7 +498,7 @@ namespace KPA_KPI_Analyzer
                             }
                         }
 
-                        using (DataViewer dv = new DataViewer() { Data = prRelVsPORel })
+                        using (DataViewer dv = new DataViewer() { Data = prRelVsPORel, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                         {
                             dv.LoadData();
                             dv.ShowDialog();
@@ -596,7 +628,7 @@ namespace KPA_KPI_Analyzer
 
                         if (tag != 11)
                         {
-                            using (DataViewer dv = new DataViewer() { Data = poCreateVsConfEntry })
+                            using (DataViewer dv = new DataViewer() { Data = poCreateVsConfEntry, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                             {
                                 dv.LoadData();
                                 dv.ShowDialog();
@@ -604,7 +636,7 @@ namespace KPA_KPI_Analyzer
                         }
                         else
                         {
-                            using (DataViewer dv = new DataViewer() { Data = unconfirmed })
+                            using (DataViewer dv = new DataViewer() { Data = unconfirmed, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                             {
                                 dv.LoadData();
                                 dv.ShowDialog();

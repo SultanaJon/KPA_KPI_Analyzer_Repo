@@ -29,6 +29,31 @@ namespace KPA_KPI_Analyzer
 
 
 
+        /// <summary>
+        /// Current selected country to display in the data viewer
+        /// </summary>
+        public string CurrCountry { get; set; }
+
+
+        /// <summary>
+        /// Current selected performance to display in the data viewer
+        /// </summary>
+        public string CurrPerformance { get; set; }
+
+
+        /// <summary>
+        /// Current selected section to display in the data viewer
+        /// </summary>
+        public string CurrSection { get; set; }
+
+
+
+        /// <summary>
+        /// Current selected category to display in the data viewer
+        /// </summary>
+        public string CurrCategory { get; set; }
+
+
 
         /// <summary>
         /// The tag (property for the control) indicating what category is loaded
@@ -105,6 +130,8 @@ namespace KPA_KPI_Analyzer
             DatavizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
+            CurrCategory = "PRs Created";
+            ChangeCategory(CurrCategory);
         }
 
 
@@ -209,6 +236,8 @@ namespace KPA_KPI_Analyzer
 
             Title = "PRs Created";
             ChangeCategory(Title);
+            CurrCategory = Title;
+
             TimeBucketOne = overallData.kpi.other.prsCreated.data.Zero.ToString();
             TimeBucketTwo = overallData.kpi.other.prsCreated.data.LessOneWeek.ToString();
             TimeBucketThree = overallData.kpi.other.prsCreated.data.LessTwoWeeks.ToString();
@@ -270,6 +299,8 @@ namespace KPA_KPI_Analyzer
 
             Title = "PRs Released";
             ChangeCategory(Title);
+            CurrCategory = Title;
+
             TimeBucketOne = overallData.kpi.other.prsReleased.data.Zero.ToString();
             TimeBucketTwo = overallData.kpi.other.prsReleased.data.LessOneWeek.ToString();
             TimeBucketThree = overallData.kpi.other.prsReleased.data.LessTwoWeeks.ToString();
@@ -331,6 +362,8 @@ namespace KPA_KPI_Analyzer
 
             Title = "Total Spend";
             ChangeCategory(Title);
+            CurrCategory = Title;
+
             TimeBucketOne = overallData.kpi.other.totalSpend.data.Zero.ToString();
             TimeBucketTwo = overallData.kpi.other.totalSpend.data.LessOneWeek.ToString();
             TimeBucketThree = overallData.kpi.other.totalSpend.data.LessTwoWeeks.ToString();
@@ -391,6 +424,8 @@ namespace KPA_KPI_Analyzer
 
             Title = "PR vs PO Value";
             ChangeCategory(Title);
+            CurrCategory = Title;
+
             TimeBucketOne = overallData.kpi.other.prVsPOValue.data.Zero.ToString();
             TimeBucketTwo = overallData.kpi.other.prVsPOValue.data.LessOneWeek.ToString();
             TimeBucketThree = overallData.kpi.other.prVsPOValue.data.LessTwoWeeks.ToString();
@@ -451,6 +486,8 @@ namespace KPA_KPI_Analyzer
 
             Title = "Hot Job PRs";
             ChangeCategory(Title);
+            CurrCategory = Title;
+
             TimeBucketOne = overallData.kpi.other.hotJobPrs.data.Zero.ToString();
             TimeBucketTwo = overallData.kpi.other.hotJobPrs.data.LessOneWeek.ToString();
             TimeBucketThree = overallData.kpi.other.hotJobPrs.data.LessTwoWeeks.ToString();
@@ -630,7 +667,7 @@ namespace KPA_KPI_Analyzer
                             }
                         }
 
-                        using (DataViewer dv = new DataViewer() { Data = prsCreated })
+                        using (DataViewer dv = new DataViewer() { Data = prsCreated, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                         {
                             dv.LoadData();
                             dv.ShowDialog();
@@ -729,7 +766,7 @@ namespace KPA_KPI_Analyzer
                             }
                         }
 
-                        using (DataViewer dv = new DataViewer() { Data = prReleased })
+                        using (DataViewer dv = new DataViewer() { Data = prReleased, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                         {
                             dv.LoadData();
                             dv.ShowDialog();
@@ -828,7 +865,7 @@ namespace KPA_KPI_Analyzer
                             }
                         }
 
-                        using (DataViewer dv = new DataViewer() { Data = totalSpend })
+                        using (DataViewer dv = new DataViewer() { Data = totalSpend, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                         {
                             dv.LoadData();
                             dv.ShowDialog();
@@ -928,7 +965,7 @@ namespace KPA_KPI_Analyzer
                             }
                         }
 
-                        using (DataViewer dv = new DataViewer() { Data = prVsPOValue })
+                        using (DataViewer dv = new DataViewer() { Data = prVsPOValue, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                         {
                             dv.LoadData();
                             dv.ShowDialog();
@@ -1030,7 +1067,7 @@ namespace KPA_KPI_Analyzer
                             }
                         }
 
-                        using (DataViewer dv = new DataViewer() { Data = hotJobPRs })
+                        using (DataViewer dv = new DataViewer() { Data = hotJobPRs, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                         {
                             dv.LoadData();
                             dv.ShowDialog();

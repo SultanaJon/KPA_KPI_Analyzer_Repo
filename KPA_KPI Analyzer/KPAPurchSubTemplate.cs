@@ -34,6 +34,31 @@ namespace KPA_KPI_Analyzer
 
 
 
+        /// <summary>
+        /// Current selected country to display in the data viewer
+        /// </summary>
+        public string CurrCountry { get; set; }
+
+
+        /// <summary>
+        /// Current selected performance to display in the data viewer
+        /// </summary>
+        public string CurrPerformance { get; set; }
+
+
+        /// <summary>
+        /// Current selected section to display in the data viewer
+        /// </summary>
+        public string CurrSection { get; set; }
+
+
+
+        /// <summary>
+        /// Current selected category to display in the data viewer
+        /// </summary>
+        public string CurrCategory { get; set; }
+
+
 
         /// <summary>
         /// The tag (property for the control) indicating what category is loaded
@@ -103,6 +128,8 @@ namespace KPA_KPI_Analyzer
             btn_One.Textcolor = System.Drawing.Color.Coral;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
+            CurrCategory = "PR Release to PO Release";
+            ChangeCategory(CurrCategory);
         }
 
 
@@ -190,6 +217,7 @@ namespace KPA_KPI_Analyzer
 
             Title = "PR Release to PO Release";
             ChangeCategory(Title);
+            CurrCategory = Title;
 
             TimeBucketOne = overallData.kpa.purchSub.prRelToPORel.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpa.purchSub.prRelToPORel.data.One_Three.ToString();
@@ -244,6 +272,7 @@ namespace KPA_KPI_Analyzer
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = "PO Creation to Confirmation Entry";
             ChangeCategory(Title);
+            CurrCategory = Title;
 
             TimeBucketOne = overallData.kpa.purchSub.POCreatToConfEntry.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpa.purchSub.POCreatToConfEntry.data.One_Three.ToString();
@@ -411,7 +440,7 @@ namespace KPA_KPI_Analyzer
                             }
                         }
 
-                        using (DataViewer dv = new DataViewer() { Data = prRelPoRelDt })
+                        using (DataViewer dv = new DataViewer() { Data = prRelPoRelDt, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                         {
                             dv.LoadData();
                             dv.ShowDialog();
@@ -501,7 +530,7 @@ namespace KPA_KPI_Analyzer
                             }
                         }
 
-                        using (DataViewer dv = new DataViewer() { Data = poCreatConfEntryDt })
+                        using (DataViewer dv = new DataViewer() { Data = poCreatConfEntryDt, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                         {
                             dv.LoadData();
                             dv.ShowDialog();
