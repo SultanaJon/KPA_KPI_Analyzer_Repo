@@ -6,13 +6,16 @@ namespace KPA_KPI_Analyzer
     public partial class KPA_KPI_UI
     {
         Bunifu.Framework.UI.BunifuImageButton mainNavActiveBtn = new Bunifu.Framework.UI.BunifuImageButton();
-
         Bunifu.Framework.UI.BunifuImageButton imgBtn = new Bunifu.Framework.UI.BunifuImageButton();
         Bunifu.Framework.UI.BunifuFlatButton flatBtn = new Bunifu.Framework.UI.BunifuFlatButton();
 
         Panel mainNavActivePanel = new Panel() { Visible = false };
         bool NavigationLocked = false;
         bool MenuInFront = false;
+
+
+
+
 
 
 
@@ -27,6 +30,11 @@ namespace KPA_KPI_Analyzer
         {
             pnl_NavigationPanelMax.SendToBack();
         }
+
+
+
+
+
 
 
 
@@ -49,6 +57,8 @@ namespace KPA_KPI_Analyzer
                 pnl_NavigationPanelMax.BringToFront();
             }
         }
+
+
 
 
 

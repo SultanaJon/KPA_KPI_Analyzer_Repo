@@ -11,7 +11,6 @@ namespace KPA_KPI_Analyzer
     {
         private static string filters = string.Empty;
 
-
         /// <summary>
         /// boolean value stating whether or not the user has checked filters TO apply
         /// </summary>
@@ -354,12 +353,27 @@ namespace KPA_KPI_Analyzer
                 {
                     temp.Add(item.ToString());
                 }
-                Filters.ClbDictionaryValues.material.Add(key, temp);
+
+                try
+                {
+                    Filters.ClbDictionaryValues.material.Add(key, temp);
+                }
+                catch(ArgumentException)
+                {
+
+                }
             }
             else
             {
                 temp = new List<string>();
-                Filters.ClbDictionaryValues.material.Add(key, temp);
+                try
+                {
+                    Filters.ClbDictionaryValues.material.Add(key, temp);
+                }
+                catch (ArgumentException)
+                {
+
+                }
             }
 
 
@@ -370,12 +384,28 @@ namespace KPA_KPI_Analyzer
                 {
                     temp.Add(item.ToString());
                 }
-                Filters.ClbDictionaryValues.materialGroup.Add(key, temp);
+
+                try
+                {
+                    Filters.ClbDictionaryValues.materialGroup.Add(key, temp);
+                }
+                catch (ArgumentException)
+                {
+
+                }
             }
             else
             {
                 temp = new List<string>();
-                Filters.ClbDictionaryValues.materialGroup.Add(key, temp);
+
+                try
+                {
+                    Filters.ClbDictionaryValues.materialGroup.Add(key, temp);
+                }
+                catch (ArgumentException)
+                {
+
+                }
             }
 
 
@@ -387,12 +417,28 @@ namespace KPA_KPI_Analyzer
                 {
                     temp.Add(item.ToString());
                 }
-                Filters.ClbDictionaryValues.vendor.Add(key, temp);
+
+                try
+                {
+                    Filters.ClbDictionaryValues.vendor.Add(key, temp);
+                }
+                catch (ArgumentException)
+                {
+
+                }
             }
             else
             {
                 temp = new List<string>();
-                Filters.ClbDictionaryValues.vendor.Add(key, temp);
+
+                try
+                {
+                    Filters.ClbDictionaryValues.vendor.Add(key, temp);
+                }
+                catch (ArgumentException)
+                {
+
+                }
             }
 
 
@@ -404,12 +450,28 @@ namespace KPA_KPI_Analyzer
                 {
                     temp.Add(item.ToString());
                 }
-                Filters.ClbDictionaryValues.vendorDesc.Add(key, temp);
+
+                try
+                {
+                    Filters.ClbDictionaryValues.vendorDesc.Add(key, temp);
+                }
+                catch (ArgumentException)
+                {
+
+                }
             }
             else
             {
                 temp = new List<string>();
-                Filters.ClbDictionaryValues.vendorDesc.Add(key, temp);
+
+                try
+                {
+                    Filters.ClbDictionaryValues.vendorDesc.Add(key, temp);
+                }
+                catch (ArgumentException)
+                {
+
+                }
             }
 
 
@@ -421,12 +483,27 @@ namespace KPA_KPI_Analyzer
                 {
                     temp.Add(item.ToString());
                 }
-                Filters.ClbDictionaryValues.purchGroup.Add(key, temp);
+
+                try
+                {
+                    Filters.ClbDictionaryValues.purchGroup.Add(key, temp);
+                }
+                catch (ArgumentException)
+                {
+
+                }
             }
             else
             {
                 temp = new List<string>();
-                Filters.ClbDictionaryValues.purchGroup.Add(key, temp);
+                try
+                {
+                    Filters.ClbDictionaryValues.purchGroup.Add(key, temp);
+                }
+                catch (ArgumentException)
+                {
+
+                }
             }
 
 
@@ -438,12 +515,29 @@ namespace KPA_KPI_Analyzer
                 {
                     temp.Add(item.ToString());
                 }
-                Filters.ClbDictionaryValues.irSuppName.Add(key, temp);
+
+
+                try
+                {
+                    Filters.ClbDictionaryValues.irSuppName.Add(key, temp);
+                }
+                catch (ArgumentException)
+                {
+
+                }
             }
             else
             {
                 temp = new List<string>();
-                Filters.ClbDictionaryValues.irSuppName.Add(key, temp);
+
+                try
+                {
+                    Filters.ClbDictionaryValues.irSuppName.Add(key, temp);
+                }
+                catch (ArgumentException)
+                {
+
+                }
             }
 
 
@@ -455,12 +549,29 @@ namespace KPA_KPI_Analyzer
                 {
                     temp.Add(item.ToString());
                 }
-                Filters.ClbDictionaryValues.fxdSuppName.Add(key, temp);
+
+
+                try
+                {
+                    Filters.ClbDictionaryValues.fxdSuppName.Add(key, temp);
+                }
+                catch (ArgumentException)
+                {
+
+                }
             }
             else
             {
                 temp = new List<string>();
-                Filters.ClbDictionaryValues.fxdSuppName.Add(key, temp);
+
+                try
+                {
+                    Filters.ClbDictionaryValues.fxdSuppName.Add(key, temp);
+                }
+                catch (ArgumentException)
+                {
+
+                }
             }
 
 
@@ -472,12 +583,28 @@ namespace KPA_KPI_Analyzer
                 {
                     temp.Add(item.ToString());
                 }
-                Filters.ClbDictionaryValues.dsrdSuppName.Add(key, temp);
+
+                try
+                {
+                    Filters.ClbDictionaryValues.dsrdSuppName.Add(key, temp);
+                }
+                catch (ArgumentException)
+                {
+
+                }
             }
             else
             {
                 temp = new List<string>();
-                Filters.ClbDictionaryValues.dsrdSuppName.Add(key, temp);
+
+                try
+                {
+                    Filters.ClbDictionaryValues.dsrdSuppName.Add(key, temp);
+                }
+                catch (ArgumentException)
+                {
+
+                }
             }
 
 
@@ -488,12 +615,28 @@ namespace KPA_KPI_Analyzer
                 {
                     temp.Add(item.ToString());
                 }
-                Filters.ClbDictionaryValues.commCategory.Add(key, temp);
+
+                try
+                {
+                    Filters.ClbDictionaryValues.commCategory.Add(key, temp);
+                }
+                catch (ArgumentException)
+                {
+
+                }
             }
             else
             {
                 temp = new List<string>();
-                Filters.ClbDictionaryValues.commCategory.Add(key, temp);
+
+                try
+                {
+                    Filters.ClbDictionaryValues.commCategory.Add(key, temp);
+                }
+                catch (ArgumentException)
+                {
+
+                }
             }
         }
 
@@ -1028,6 +1171,7 @@ namespace KPA_KPI_Analyzer
 
             Filters.FitlerValues.Clear();
             Filters.ClbDictionaryValues.Clear();
+            valueCounts.Clear();
             filters = string.Empty;
             FilterUtils.LoadFilters(filters);
         }
@@ -1159,6 +1303,7 @@ namespace KPA_KPI_Analyzer
             Filters.SecondaryFilterQuery = string.Empty;
             Filters.PrDateRangeFilterAdded = false;
             Filters.PoDateRangeFilterAdded = false;
+            valueCounts.Clear();
 
             HasFiltersAdded();
             if(!FiltersAdded)

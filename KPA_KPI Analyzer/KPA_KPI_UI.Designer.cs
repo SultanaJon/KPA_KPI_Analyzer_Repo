@@ -1082,8 +1082,8 @@
             // 
             // pnl_activePage
             // 
-            this.pnl_activePage.Controls.Add(this.pnl_NavigationPanelMax);
             this.pnl_activePage.Controls.Add(this.pnl_loadingScreen);
+            this.pnl_activePage.Controls.Add(this.pnl_NavigationPanelMax);
             this.pnl_activePage.Controls.Add(this.pnl_CountrySelector);
             this.pnl_activePage.Controls.Add(this.tblpnl_Filters);
             this.pnl_activePage.Controls.Add(this.tblpnl_DragDrop);
