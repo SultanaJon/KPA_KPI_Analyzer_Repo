@@ -232,7 +232,7 @@ namespace KPA_KPI_Analyzer
             Average = String.Format("{0:n}", overallData.kpa.purchSub.prRelToPORel.data.Average);
 
 
-            AnalysisOne = "- Will only show in this field if PR is fully released and the PO has never been released.";
+            AnalysisOne = "- Will only show in this field if the PR is fully released AND (it is not on a PO OR it is on a PO but has never been released).";
             AnalysisTwo = "- Difference between todays date and the date the PR was released to the 2nd level.";
 
             dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
@@ -483,7 +483,6 @@ namespace KPA_KPI_Analyzer
                                     poCreatConfEntryDt.ImportRow(dr);
                                     break;
                                 case 1:
-                                    poCreatConfEntryDt.ImportRow(dr);
                                     if (elapsedDays <= 0)
                                     {
                                         poCreatConfEntryDt.ImportRow(dr);

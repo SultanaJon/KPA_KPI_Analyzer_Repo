@@ -272,7 +272,7 @@ namespace KPA_KPI_Analyzer
             Average = String.Format("{0:n}", overallData.kpa.followUp.ConfDateForUpcomingDel.data.Average);
 
 
-            AnalysisOne = "- Will only show for PO line items with a confirmation date and have been received complete.";
+            AnalysisOne = "- Will only show for PO line items with a confirmation date and have not been received complete.";
             AnalysisTwo = "- Difference between the confirmation date and todays date.";
 
             dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
@@ -308,7 +308,7 @@ namespace KPA_KPI_Analyzer
         {
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
-            Title = "Late to Confirmed Date";
+            Title = "Due Today or Late to Confirmed Date";
             ChangeCategory(Title);
             CurrCategory = Title;
 
@@ -641,7 +641,6 @@ namespace KPA_KPI_Analyzer
                                     LateConfDateDt.ImportRow(dr);
                                     break;
                                 case 1:
-                                    LateConfDateDt.ImportRow(dr);
                                     if (elapsedDays <= 0)
                                     {
                                         LateConfDateDt.ImportRow(dr);

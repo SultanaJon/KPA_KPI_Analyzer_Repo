@@ -1171,7 +1171,6 @@ namespace KPA_KPI_Analyzer
 
             Filters.FitlerValues.Clear();
             Filters.ClbDictionaryValues.Clear();
-            valueCounts.Clear();
             filters = string.Empty;
             FilterUtils.LoadFilters(filters);
         }
@@ -1303,7 +1302,6 @@ namespace KPA_KPI_Analyzer
             Filters.SecondaryFilterQuery = string.Empty;
             Filters.PrDateRangeFilterAdded = false;
             Filters.PoDateRangeFilterAdded = false;
-            valueCounts.Clear();
 
             HasFiltersAdded();
             if(!FiltersAdded)
