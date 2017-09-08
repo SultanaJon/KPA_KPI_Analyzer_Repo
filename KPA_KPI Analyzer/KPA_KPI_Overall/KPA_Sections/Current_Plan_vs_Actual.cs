@@ -16,7 +16,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
         public Curr_Plan_Date_vs_Curr_Conf_Date_OpenPOs_HotJobs currPlanDateCurrConfDateHotJobs;
         private double totalDays = 0;
 
-        // Default Constructor
+
         public Current_Plan_vs_Actual()
         {
             currPlanDateCurrConfDate = new Curr_Plan_Date_vs_Curr_Conf_Date_OpenPOs();
@@ -83,7 +83,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                     }
 
                     DateTime currPlanDate = new DateTime(currConfYear, currConfMonth, currConfDay);
-                    double elapsedDays = (confDate - currPlanDate).TotalDays; // keep this a double so we can calculate an accurate average
+                    double elapsedDays = (confDate - currPlanDate).TotalDays;
 
                     // Our time spans are in weeks but we want to catch the average amount of days.
                     totalDays += elapsedDays;
@@ -165,7 +165,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                 da.Fill(dt);
 
                 currPlanDateCurrConfDateHotJobs.data.Total = dt.Rows.Count;
-                double totalWeeks = 0;
 
                 foreach (DataRow dr in dt.Rows)
                 {
@@ -200,7 +199,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
 
 
                     // Our time spans are in weeks but we want to catch the average amount of days.
-                    totalWeeks += elapsedDays / 7;
+                    totalDays += elapsedDays;
                     elapsedDays = (int)elapsedDays;
 
                     int weeks = 0;
@@ -252,7 +251,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
 
                 try
                 {
-                    currPlanDateCurrConfDateHotJobs.data.Average = Math.Round(totalWeeks / currPlanDateCurrConfDateHotJobs.data.Total, 2);
+                    currPlanDateCurrConfDateHotJobs.data.Average = Math.Round(totalDays / currPlanDateCurrConfDateHotJobs.data.Total, 2);
                 }
                 catch (DivideByZeroException)
                 {
@@ -268,7 +267,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "KPA -> Follow Up Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "KPA -> Current Plan vs Actual Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

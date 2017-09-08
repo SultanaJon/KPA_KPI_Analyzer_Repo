@@ -12,7 +12,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
         public PR_Rel_Vs_PO_Rel prRelVsPORel;
         public PO_Create_Vs_Conf_Entry poCreateVsConfEntry;
         private double totalDays = 0;
-        private double totalUnconf = 0;
 
         // Default Constructor
         public PurchSub()
@@ -132,29 +131,30 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 // PO Creation vs Confirmation Entry
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                poCreateVsConfEntry.data.Total = Overall.prsOnPOsDt.Rows.Count;
+                int tempTotal = 0;
 
                 foreach (DataRow dr in Overall.prsOnPOsDt.Rows)
                 {
-                    string[] strFirstConfCreationDt = (dr["1st Conf Creation Da"].ToString()).Split('/');
-                    int poLineFirstConfYear = int.Parse(strFirstConfCreationDt[2]);
-                    int poLineFirstConfMonth = int.Parse(strFirstConfCreationDt[0]);
-                    int poLineFirstConfDay = int.Parse(strFirstConfCreationDt[1]);
+                    tempTotal++;
+                    string[] strFirstConfCreateDate = (dr["1st Conf Creation Da"].ToString()).Split('/');
+                    int poLineFirstConfCreateYear = int.Parse(strFirstConfCreateDate[2]);
+                    int poLineFirstConfCreateMonth = int.Parse(strFirstConfCreateDate[0]);
+                    int poLineFirstConfCreateDay = int.Parse(strFirstConfCreateDate[1]);
 
-                    if(poLineFirstConfYear == 0 && poLineFirstConfMonth == 0 && poLineFirstConfDay == 0)
+                    if(poLineFirstConfCreateYear == 0 && poLineFirstConfCreateMonth == 0 && poLineFirstConfCreateDay == 0)
                     {
                         poCreateVsConfEntry.data.PercentUnconfTotal++;
                         continue;
                     }
                     else
                     {
-                        poLineFirstConfYear = int.Parse(strFirstConfCreationDt[2]);
-                        poLineFirstConfMonth = int.Parse(strFirstConfCreationDt[0]);
-                        poLineFirstConfDay = int.Parse(strFirstConfCreationDt[1]);
+                        poLineFirstConfCreateYear = int.Parse(strFirstConfCreateDate[2]);
+                        poLineFirstConfCreateMonth = int.Parse(strFirstConfCreateDate[0]);
+                        poLineFirstConfCreateDay = int.Parse(strFirstConfCreateDate[1]);
                     }
                     
 
-                    DateTime initialConfCreateDate = new DateTime(poLineFirstConfYear, poLineFirstConfMonth, poLineFirstConfDay);
+                    DateTime initialConfCreateDate = new DateTime(poLineFirstConfCreateYear, poLineFirstConfCreateMonth, poLineFirstConfCreateDay);
 
                     string[] strPOLineCreateDt = (dr["PO Line Creat#DT"].ToString()).Split('/');
                     int poLineCreateYear = int.Parse(strPOLineCreateDt[2]);
@@ -166,6 +166,10 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                     double elapsedDays = (initialConfCreateDate - poLineItemCreateDate).TotalDays;
                     totalDays += elapsedDays;
                     elapsedDays = (int)elapsedDays;
+
+
+                    poCreateVsConfEntry.data.Total++;
+
 
                     if (elapsedDays <= 0)
                     {
@@ -226,7 +230,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                 try
                 {
-                    poCreateVsConfEntry.data.PercentUnconf = Math.Round(((double)poCreateVsConfEntry.data.PercentUnconfTotal / poCreateVsConfEntry.data.Total) * 100, 2);
+                    poCreateVsConfEntry.data.PercentUnconf = Math.Round(((double)poCreateVsConfEntry.data.PercentUnconfTotal / tempTotal) * 100, 2);
                 }
                 catch (DivideByZeroException)
                 {

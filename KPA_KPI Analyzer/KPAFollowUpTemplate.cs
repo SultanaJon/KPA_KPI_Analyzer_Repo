@@ -214,8 +214,8 @@ namespace KPA_KPI_Analyzer
 
 
 
-            TotalOrders = String.Format("{0:n0}", overallData.kpa.followUp.confDateVsPlanDate.data.Total);
-            Average = String.Format("{0:n}", overallData.kpa.followUp.confDateVsPlanDate.data.Average);
+            TotalOrders = string.Format("{0:n0}", overallData.kpa.followUp.confDateVsPlanDate.data.Total);
+            Average = string.Format("{0:n}", overallData.kpa.followUp.confDateVsPlanDate.data.Average);
 
 
             AnalysisOne = "- Will only show for PO line items with confimration date and have not been received complete.";
@@ -231,13 +231,13 @@ namespace KPA_KPI_Analyzer
             dp.addLabely(lbl_xLabelSeven.Text, TimeBucketSeven);
 
 
-            TimeBucketOne = String.Format("{0:n0}", overallData.kpa.followUp.confDateVsPlanDate.data.LessThanZero);
-            TimeBucketTwo = String.Format("{0:n0}", overallData.kpa.followUp.confDateVsPlanDate.data.One_Three);
-            TimeBucketThree = String.Format("{0:n0}", overallData.kpa.followUp.confDateVsPlanDate.data.Four_Seven);
-            TimeBucketFour = String.Format("{0:n0}", overallData.kpa.followUp.confDateVsPlanDate.data.Eight_Fourteen);
-            TimeBucketFive = String.Format("{0:n0}", overallData.kpa.followUp.confDateVsPlanDate.data.Fifteen_TwentyOne);
-            TimeBucketSix = String.Format("{0:n0}", overallData.kpa.followUp.confDateVsPlanDate.data.TwentyTwo_TwentyEight);
-            TimeBucketSeven = String.Format("{0:n0}", overallData.kpa.followUp.confDateVsPlanDate.data.TwentyNinePlus);
+            TimeBucketOne = string.Format("{0:n0}", overallData.kpa.followUp.confDateVsPlanDate.data.LessThanZero);
+            TimeBucketTwo = string.Format("{0:n0}", overallData.kpa.followUp.confDateVsPlanDate.data.One_Three);
+            TimeBucketThree = string.Format("{0:n0}", overallData.kpa.followUp.confDateVsPlanDate.data.Four_Seven);
+            TimeBucketFour = string.Format("{0:n0}", overallData.kpa.followUp.confDateVsPlanDate.data.Eight_Fourteen);
+            TimeBucketFive = string.Format("{0:n0}", overallData.kpa.followUp.confDateVsPlanDate.data.Fifteen_TwentyOne);
+            TimeBucketSix = string.Format("{0:n0}", overallData.kpa.followUp.confDateVsPlanDate.data.TwentyTwo_TwentyEight);
+            TimeBucketSeven = string.Format("{0:n0}", overallData.kpa.followUp.confDateVsPlanDate.data.TwentyNinePlus);
 
 
             canvas.addData(dp);
@@ -268,8 +268,8 @@ namespace KPA_KPI_Analyzer
             TimeBucketSix = overallData.kpa.followUp.ConfDateForUpcomingDel.data.TwentyTwo_TwentyEight.ToString();
             TimeBucketSeven = overallData.kpa.followUp.ConfDateForUpcomingDel.data.TwentyNinePlus.ToString();
 
-            TotalOrders = String.Format("{0:n0}", overallData.kpa.followUp.ConfDateForUpcomingDel.data.Total);
-            Average = String.Format("{0:n}", overallData.kpa.followUp.ConfDateForUpcomingDel.data.Average);
+            TotalOrders = string.Format("{0:n0}", overallData.kpa.followUp.ConfDateForUpcomingDel.data.Total);
+            Average = string.Format("{0:n}", overallData.kpa.followUp.ConfDateForUpcomingDel.data.Average);
 
 
             AnalysisOne = "- Will only show for PO line items with a confirmation date and have not been received complete.";
@@ -284,13 +284,13 @@ namespace KPA_KPI_Analyzer
             dp.addLabely(lbl_xLabelSeven.Text, TimeBucketSeven);
 
 
-            TimeBucketOne = String.Format("{0:n0}", overallData.kpa.followUp.ConfDateForUpcomingDel.data.LessThanZero);
-            TimeBucketTwo = String.Format("{0:n0}", overallData.kpa.followUp.ConfDateForUpcomingDel.data.One_Three);
-            TimeBucketThree = String.Format("{0:n0}", overallData.kpa.followUp.ConfDateForUpcomingDel.data.Four_Seven);
-            TimeBucketFour = String.Format("{0:n0}", overallData.kpa.followUp.ConfDateForUpcomingDel.data.Eight_Fourteen);
-            TimeBucketFive = String.Format("{0:n0}", overallData.kpa.followUp.ConfDateForUpcomingDel.data.Fifteen_TwentyOne);
-            TimeBucketSix = String.Format("{0:n0}", overallData.kpa.followUp.ConfDateForUpcomingDel.data.TwentyTwo_TwentyEight);
-            TimeBucketSeven = String.Format("{0:n0}", overallData.kpa.followUp.ConfDateForUpcomingDel.data.TwentyNinePlus);
+            TimeBucketOne = string.Format("{0:n0}", overallData.kpa.followUp.ConfDateForUpcomingDel.data.LessThanZero);
+            TimeBucketTwo = string.Format("{0:n0}", overallData.kpa.followUp.ConfDateForUpcomingDel.data.One_Three);
+            TimeBucketThree = string.Format("{0:n0}", overallData.kpa.followUp.ConfDateForUpcomingDel.data.Four_Seven);
+            TimeBucketFour = string.Format("{0:n0}", overallData.kpa.followUp.ConfDateForUpcomingDel.data.Eight_Fourteen);
+            TimeBucketFive = string.Format("{0:n0}", overallData.kpa.followUp.ConfDateForUpcomingDel.data.Fifteen_TwentyOne);
+            TimeBucketSix = string.Format("{0:n0}", overallData.kpa.followUp.ConfDateForUpcomingDel.data.TwentyTwo_TwentyEight);
+            TimeBucketSeven = string.Format("{0:n0}", overallData.kpa.followUp.ConfDateForUpcomingDel.data.TwentyNinePlus);
 
 
             canvas.addData(dp);
@@ -321,8 +321,8 @@ namespace KPA_KPI_Analyzer
             TimeBucketSeven = overallData.kpa.followUp.LateToConfDate.data.TwentyNinePlus.ToString();
 
 
-            TotalOrders = String.Format("{0:n0}", overallData.kpa.followUp.LateToConfDate.data.Total);
-            Average = String.Format("{0:n}", overallData.kpa.followUp.LateToConfDate.data.Average);
+            TotalOrders = string.Format("{0:n0}", overallData.kpa.followUp.LateToConfDate.data.Total);
+            Average = string.Format("{0:n}", overallData.kpa.followUp.LateToConfDate.data.Average);
 
 
             AnalysisOne = "- Open PO line which is confirmed for today or in the past.";
@@ -336,13 +336,13 @@ namespace KPA_KPI_Analyzer
             dp.addLabely(lbl_xLabelSix.Text, TimeBucketSix);
             dp.addLabely(lbl_xLabelSeven.Text, TimeBucketSeven);
 
-            TimeBucketOne = String.Format("{0:n0}", overallData.kpa.followUp.LateToConfDate.data.LessThanZero);
-            TimeBucketTwo = String.Format("{0:n0}", overallData.kpa.followUp.LateToConfDate.data.One_Three);
-            TimeBucketThree = String.Format("{0:n0}", overallData.kpa.followUp.LateToConfDate.data.Four_Seven);
-            TimeBucketFour = String.Format("{0:n0}", overallData.kpa.followUp.LateToConfDate.data.Eight_Fourteen);
-            TimeBucketFive = String.Format("{0:n0}", overallData.kpa.followUp.LateToConfDate.data.Fifteen_TwentyOne);
-            TimeBucketSix = String.Format("{0:n0}", overallData.kpa.followUp.LateToConfDate.data.TwentyTwo_TwentyEight);
-            TimeBucketSeven = String.Format("{0:n0}", overallData.kpa.followUp.LateToConfDate.data.TwentyNinePlus);
+            TimeBucketOne = string.Format("{0:n0}", overallData.kpa.followUp.LateToConfDate.data.LessThanZero);
+            TimeBucketTwo = string.Format("{0:n0}", overallData.kpa.followUp.LateToConfDate.data.One_Three);
+            TimeBucketThree = string.Format("{0:n0}", overallData.kpa.followUp.LateToConfDate.data.Four_Seven);
+            TimeBucketFour = string.Format("{0:n0}", overallData.kpa.followUp.LateToConfDate.data.Eight_Fourteen);
+            TimeBucketFive = string.Format("{0:n0}", overallData.kpa.followUp.LateToConfDate.data.Fifteen_TwentyOne);
+            TimeBucketSix = string.Format("{0:n0}", overallData.kpa.followUp.LateToConfDate.data.TwentyTwo_TwentyEight);
+            TimeBucketSeven = string.Format("{0:n0}", overallData.kpa.followUp.LateToConfDate.data.TwentyNinePlus);
 
             canvas.addData(dp);
             dataviz.Render(canvas);

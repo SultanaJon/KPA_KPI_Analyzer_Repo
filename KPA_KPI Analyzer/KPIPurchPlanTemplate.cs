@@ -246,19 +246,19 @@ namespace KPA_KPI_Analyzer
             dp.addLabely(lbl_xLabelTen.Text, TimeBucketTen);
             dp.addLabely(lbl_xLabelEleven.Text, TimeBucketEleven);
 
-            TotalOrders = String.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.Total);
-            Average = String.Format("{0:n}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.Average);
-            TimeBucketOne = String.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.LessThanZero);
-            TimeBucketTwo = String.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.One_Three);
-            TimeBucketThree = String.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.Four_Seven);
-            TimeBucketFour = String.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.Eight_Fourteen);
-            TimeBucketFive = String.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.Fifteen_TwentyOne);
-            TimeBucketSix = String.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.TwentyTwo_TwentyEight);
-            TimeBucketSeven = String.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.TwentyNine_ThirtyFive);
-            TimeBucketEight = String.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.ThirtySix_FourtyTwo);
-            TimeBucketNine = String.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.FourtyThree_FourtyNine);
-            TimeBucketTen = String.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.Fifty_FiftySix);
-            TimeBucketEleven = String.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.greaterThanEqualFiftySeven);
+            TotalOrders = string.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.Total);
+            Average = string.Format("{0:n}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.Average);
+            TimeBucketOne = string.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.LessThanZero);
+            TimeBucketTwo = string.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.One_Three);
+            TimeBucketThree = string.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.Four_Seven);
+            TimeBucketFour = string.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.Eight_Fourteen);
+            TimeBucketFive = string.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.Fifteen_TwentyOne);
+            TimeBucketSix = string.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.TwentyTwo_TwentyEight);
+            TimeBucketSeven = string.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.TwentyNine_ThirtyFive);
+            TimeBucketEight = string.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.ThirtySix_FourtyTwo);
+            TimeBucketNine = string.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.FourtyThree_FourtyNine);
+            TimeBucketTen = string.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.Fifty_FiftySix);
+            TimeBucketEleven = string.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.greaterThanEqualFiftySeven);
 
 
             canvas.addData(dp);
@@ -295,7 +295,7 @@ namespace KPA_KPI_Analyzer
             TimeBucketEleven = overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.greaterThanEqualFiftySeven.ToString();
 
 
-            AnalysisOne = "- Will show if PR is released to 2nd or 3rd level.";
+            AnalysisOne = "- Will show if PR is fully released.";
             AnalysisTwo = "- Difference between PR delivery date and PR 2nd level release Date.";
 
 
@@ -311,19 +311,19 @@ namespace KPA_KPI_Analyzer
             dp.addLabely(lbl_xLabelTen.Text, TimeBucketTen);
             dp.addLabely(lbl_xLabelEleven.Text, TimeBucketEleven);
 
-            TotalOrders = String.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Total);
-            Average = String.Format("{0:n}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Average);
-            TimeBucketOne = String.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.LessThanZero);
-            TimeBucketTwo = String.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.One_Three);
-            TimeBucketThree = String.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Four_Seven);
-            TimeBucketFour = String.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Eight_Fourteen);
-            TimeBucketFive = String.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Fifteen_TwentyOne);
-            TimeBucketSix = String.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.TwentyTwo_TwentyEight);
-            TimeBucketSeven = String.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.TwentyNine_ThirtyFive);
-            TimeBucketEight = String.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.ThirtySix_FourtyTwo);
-            TimeBucketNine = String.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.FourtyThree_FourtyNine);
-            TimeBucketTen = String.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Fifty_FiftySix);
-            TimeBucketEleven = String.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.greaterThanEqualFiftySeven);
+            TotalOrders = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Total);
+            Average = string.Format("{0:n}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Average);
+            TimeBucketOne = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.LessThanZero);
+            TimeBucketTwo = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.One_Three);
+            TimeBucketThree = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Four_Seven);
+            TimeBucketFour = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Eight_Fourteen);
+            TimeBucketFive = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Fifteen_TwentyOne);
+            TimeBucketSix = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.TwentyTwo_TwentyEight);
+            TimeBucketSeven = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.TwentyNine_ThirtyFive);
+            TimeBucketEight = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.ThirtySix_FourtyTwo);
+            TimeBucketNine = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.FourtyThree_FourtyNine);
+            TimeBucketTen = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Fifty_FiftySix);
+            TimeBucketEleven = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.greaterThanEqualFiftySeven);
 
 
             canvas.addData(dp);

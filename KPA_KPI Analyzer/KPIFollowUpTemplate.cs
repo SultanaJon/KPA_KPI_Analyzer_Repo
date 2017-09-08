@@ -218,13 +218,13 @@ namespace KPA_KPI_Analyzer
                 case 3:
                     pnl_PercentagePanel.Visible = true;
                     btn_unconfIncludedStatusButton.Visible = true;
-                    btn_unconfIncludedStatusButton.Text = "Including Unconfirmed!";
+                    btn_unconfIncludedStatusButton.Text = "Not including Unconfirmed!";
                     RenderFour();
                     break;
                 case 4:
                     pnl_PercentagePanel.Visible = true;
                     btn_unconfIncludedStatusButton.Visible = true;
-                    btn_unconfIncludedStatusButton.Text = "Including Unconfirmed!";
+                    btn_unconfIncludedStatusButton.Text = "Not including Unconfirmed!";
                     RenderFive();
                     break;
                 default:
@@ -276,19 +276,19 @@ namespace KPA_KPI_Analyzer
             dp.addLabely(lbl_xLabelEight.Text, TimeBucketEight);
             dp.addLabely(lbl_xLabelNine.Text, TimeBucketNine);
 
-            TotalOrders = String.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.Total);
-            Average = String.Format("{0:n}", overallData.kpi.followUp.initConfVsCurrConf.data.Average);
-            PercNoConf = String.Format("{0:n}", overallData.kpi.followUp.initConfVsCurrConf.data.PercentUnconf);
-            PercNoConfTotal = String.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.PercentUnconfTotal);
-            TimeBucketOne = String.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.Minus_TwentyTwo);
-            TimeBucketTwo = String.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.Minus_Fifteen_TwentyOne);
-            TimeBucketThree = String.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.Minus_Eight_Fourteen);
-            TimeBucketFour = String.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.Minus_One_Seven);
-            TimeBucketFive = String.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.Zero);
-            TimeBucketSix = String.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.One_Seven);
-            TimeBucketSeven = String.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.Eight_Fourteen);
-            TimeBucketEight = String.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.Fifteen_TwentyOne);
-            TimeBucketNine = String.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.TwentyTwo);
+            TotalOrders = string.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.Total);
+            Average = string.Format("{0:n}", overallData.kpi.followUp.initConfVsCurrConf.data.Average);
+            PercNoConf = string.Format("{0:n}", overallData.kpi.followUp.initConfVsCurrConf.data.PercentUnconf);
+            PercNoConfTotal = string.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.PercentUnconfTotal);
+            TimeBucketOne = string.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.Minus_TwentyTwo);
+            TimeBucketTwo = string.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.Minus_Fifteen_TwentyOne);
+            TimeBucketThree = string.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.Minus_Eight_Fourteen);
+            TimeBucketFour = string.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.Minus_One_Seven);
+            TimeBucketFive = string.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.Zero);
+            TimeBucketSix = string.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.One_Seven);
+            TimeBucketSeven = string.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.Eight_Fourteen);
+            TimeBucketEight = string.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.Fifteen_TwentyOne);
+            TimeBucketNine = string.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.TwentyTwo);
 
             canvas.addData(dp);
             dataviz.Render(canvas);
@@ -337,19 +337,19 @@ namespace KPA_KPI_Analyzer
             dp.addLabely(lbl_xLabelEight.Text, TimeBucketEight);
             dp.addLabely(lbl_xLabelNine.Text, TimeBucketNine);
 
-            TotalOrders = String.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Total);
-            Average = String.Format("{0:n}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Average);
-            PercNoConf = String.Format("{0:n}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.PercentUnconf);
-            PercNoConfTotal = String.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.PercentUnconfTotal);
-            TimeBucketOne = String.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Minus_TwentyTwo);
-            TimeBucketTwo = String.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Minus_Fifteen_TwentyOne);
-            TimeBucketThree = String.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Minus_Eight_Fourteen);
-            TimeBucketFour = String.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Minus_One_Seven);
-            TimeBucketFive = String.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Zero);
-            TimeBucketSix = String.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.One_Seven);
-            TimeBucketSeven = String.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Eight_Fourteen);
-            TimeBucketEight = String.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Fifteen_TwentyOne);
-            TimeBucketNine = String.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.TwentyTwo);
+            TotalOrders = string.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Total);
+            Average = string.Format("{0:n}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Average);
+            PercNoConf = string.Format("{0:n}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.PercentUnconf);
+            PercNoConfTotal = string.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.PercentUnconfTotal);
+            TimeBucketOne = string.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Minus_TwentyTwo);
+            TimeBucketTwo = string.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Minus_Fifteen_TwentyOne);
+            TimeBucketThree = string.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Minus_Eight_Fourteen);
+            TimeBucketFour = string.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Minus_One_Seven);
+            TimeBucketFive = string.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Zero);
+            TimeBucketSix = string.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.One_Seven);
+            TimeBucketSeven = string.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Eight_Fourteen);
+            TimeBucketEight = string.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Fifteen_TwentyOne);
+            TimeBucketNine = string.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.TwentyTwo);
 
             canvas.addData(dp);
             dataviz.Render(canvas);
@@ -398,17 +398,17 @@ namespace KPA_KPI_Analyzer
             dp.addLabely(lbl_xLabelEight.Text, TimeBucketEight);
             dp.addLabely(lbl_xLabelNine.Text, TimeBucketNine);
 
-            TotalOrders = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Total);
-            Average = String.Format("{0:n}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Average);
-            TimeBucketOne = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Minus_TwentyTwo);
-            TimeBucketTwo = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Minus_Fifteen_TwentyOne);
-            TimeBucketThree = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Minus_Eight_Fourteen);
-            TimeBucketFour = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Minus_One_Seven);
-            TimeBucketFive = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Zero);
-            TimeBucketSix = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.One_Seven);
-            TimeBucketSeven = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Eight_Fourteen);
-            TimeBucketEight = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Fifteen_TwentyOne);
-            TimeBucketNine = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.TwentyTwo);
+            TotalOrders = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Total);
+            Average = string.Format("{0:n}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Average);
+            TimeBucketOne = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Minus_TwentyTwo);
+            TimeBucketTwo = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Minus_Fifteen_TwentyOne);
+            TimeBucketThree = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Minus_Eight_Fourteen);
+            TimeBucketFour = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Minus_One_Seven);
+            TimeBucketFive = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Zero);
+            TimeBucketSix = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.One_Seven);
+            TimeBucketSeven = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Eight_Fourteen);
+            TimeBucketEight = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Fifteen_TwentyOne);
+            TimeBucketNine = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.TwentyTwo);
 
             canvas.addData(dp);
             dataviz.Render(canvas);
@@ -457,19 +457,19 @@ namespace KPA_KPI_Analyzer
             dp.addLabely(lbl_xLabelEight.Text, TimeBucketEight);
             dp.addLabely(lbl_xLabelNine.Text, TimeBucketNine);
 
-            TotalOrders = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Total);
-            Average = String.Format("{0:n}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Average);
-            PercNoConf = String.Format("{0:n}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.PercentUnconf);
-            PercNoConfTotal = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.PercentUnconfTotal);
-            TimeBucketOne = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Minus_TwentyTwo);
-            TimeBucketTwo = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Minus_Fifteen_TwentyOne);
-            TimeBucketThree = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Minus_Eight_Fourteen);
-            TimeBucketFour = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Minus_One_Seven);
-            TimeBucketFive = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Zero);
-            TimeBucketSix = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.One_Seven);
-            TimeBucketSeven = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Eight_Fourteen);
-            TimeBucketEight = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Fifteen_TwentyOne);
-            TimeBucketNine = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.TwentyTwo);
+            TotalOrders = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Total);
+            Average = string.Format("{0:n}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Average);
+            PercNoConf = string.Format("{0:n}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.PercentUnconf);
+            PercNoConfTotal = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.PercentUnconfTotal);
+            TimeBucketOne = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Minus_TwentyTwo);
+            TimeBucketTwo = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Minus_Fifteen_TwentyOne);
+            TimeBucketThree = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Minus_Eight_Fourteen);
+            TimeBucketFour = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Minus_One_Seven);
+            TimeBucketFive = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Zero);
+            TimeBucketSix = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.One_Seven);
+            TimeBucketSeven = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Eight_Fourteen);
+            TimeBucketEight = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Fifteen_TwentyOne);
+            TimeBucketNine = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.TwentyTwo);
 
             canvas.addData(dp);
             dataviz.Render(canvas);
@@ -519,19 +519,19 @@ namespace KPA_KPI_Analyzer
             dp.addLabely(lbl_xLabelEight.Text, TimeBucketEight);
             dp.addLabely(lbl_xLabelNine.Text, TimeBucketNine);
 
-            TotalOrders = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Total);
-            Average = String.Format("{0:n}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Average);
-            PercNoConf = String.Format("{0:n}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.PercentUnconf);
-            PercNoConfTotal = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.PercentUnconfTotal);
-            TimeBucketOne = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Minus_TwentyTwo);
-            TimeBucketTwo = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Minus_Fifteen_TwentyOne);
-            TimeBucketThree = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Minus_Eight_Fourteen);
-            TimeBucketFour = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Minus_One_Seven);
-            TimeBucketFive = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Zero);
-            TimeBucketSix = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.One_Seven);
-            TimeBucketSeven = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Eight_Fourteen);
-            TimeBucketEight = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Fifteen_TwentyOne);
-            TimeBucketNine = String.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.TwentyTwo);
+            TotalOrders = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Total);
+            Average = string.Format("{0:n}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Average);
+            PercNoConf = string.Format("{0:n}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.PercentUnconf);
+            PercNoConfTotal = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.PercentUnconfTotal);
+            TimeBucketOne = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Minus_TwentyTwo);
+            TimeBucketTwo = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Minus_Fifteen_TwentyOne);
+            TimeBucketThree = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Minus_Eight_Fourteen);
+            TimeBucketFour = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Minus_One_Seven);
+            TimeBucketFive = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Zero);
+            TimeBucketSix = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.One_Seven);
+            TimeBucketSeven = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Eight_Fourteen);
+            TimeBucketEight = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Fifteen_TwentyOne);
+            TimeBucketNine = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.TwentyTwo);
 
             canvas.addData(dp);
             dataviz.Render(canvas);
@@ -616,13 +616,13 @@ namespace KPA_KPI_Analyzer
 
                             DateTime firstConfDate = new DateTime(firstConfYear, firstConfMonth, firstConfDay);
 
-                            string[] delConfDate = (dr["Del#Conf#Date"].ToString()).Split('/');
-                            int delConfYear = int.Parse(delConfDate[2]);
-                            int delConfMonth = int.Parse(delConfDate[0].TrimStart('0'));
-                            int delConfDay = int.Parse(delConfDate[1].TrimStart('0'));
+                            string[] strDdelConfDate = (dr["Del#Conf#Date"].ToString()).Split('/');
+                            int delConfYear = int.Parse(strDdelConfDate[2]);
+                            int delConfMonth = int.Parse(strDdelConfDate[0].TrimStart('0'));
+                            int delConfDay = int.Parse(strDdelConfDate[1].TrimStart('0'));
 
-                            DateTime prPlanDate = new DateTime(delConfYear, delConfMonth, delConfDay);
-                            double elapsedDays = (firstConfDate - prPlanDate).TotalDays;
+                            DateTime delConfDate = new DateTime(delConfYear, delConfMonth, delConfDay);
+                            double elapsedDays = (delConfDate - firstConfDate).TotalDays;
 
                             if (elapsedDays < 0)
                                 elapsedDays = Math.Floor(elapsedDays);
@@ -732,32 +732,32 @@ namespace KPA_KPI_Analyzer
                         foreach (DataRow dr in Overall.posRecCompDt.Rows)
                         {
                             string[] strDelConfDate = (dr["Del#Conf#Date"].ToString()).Split('/');
-                            int finalConfYear = int.Parse(strDelConfDate[2]);
-                            int finalConfMonth = int.Parse(strDelConfDate[0]);
-                            int finalConfDay = int.Parse(strDelConfDate[1]);
+                            int delConfYear = int.Parse(strDelConfDate[2]);
+                            int delConfMonth = int.Parse(strDelConfDate[0]);
+                            int delConfDay = int.Parse(strDelConfDate[1]);
 
-                            if (finalConfYear == 0 && finalConfMonth == 0 && finalConfDay == 0)
+                            if (delConfYear == 0 && delConfMonth == 0 && delConfDay == 0)
                             {
                                 unconfirmed.ImportRow(dr);
                                 continue;
                             }
                             else
                             {
-                                finalConfYear = int.Parse(strDelConfDate[2]);
-                                finalConfMonth = int.Parse(strDelConfDate[0].TrimStart('0'));
-                                finalConfDay = int.Parse(strDelConfDate[1].TrimStart('0'));
+                                delConfYear = int.Parse(strDelConfDate[2]);
+                                delConfMonth = int.Parse(strDelConfDate[0].TrimStart('0'));
+                                delConfDay = int.Parse(strDelConfDate[1].TrimStart('0'));
                             }
 
-                            DateTime finalConfDate = new DateTime(finalConfYear, finalConfMonth, finalConfDay);
+                            DateTime delConfDate = new DateTime(delConfYear, delConfMonth, delConfDay);
 
 
-                            string[] strPrDelDate = (dr["PR Delivery Date"].ToString()).Split('/');
-                            int delConfYear = int.Parse(strPrDelDate[2]);
-                            int delConfMonth = int.Parse(strPrDelDate[0].TrimStart('0'));
-                            int delConfDay = int.Parse(strPrDelDate[1].TrimStart('0'));
+                            string[] strDelDate = (dr["Delivery Date"].ToString()).Split('/');
+                            int delYear = int.Parse(strDelDate[2]);
+                            int delMonth = int.Parse(strDelDate[0].TrimStart('0'));
+                            int delDay = int.Parse(strDelDate[1].TrimStart('0'));
 
-                            DateTime prPlanDate = new DateTime(delConfYear, delConfMonth, delConfDay);
-                            double elapsedDays = (finalConfDate - prPlanDate).TotalDays;
+                            DateTime delDate = new DateTime(delYear, delMonth, delDay);
+                            double elapsedDays = (delConfDate - delDate).TotalDays;
 
                             if (elapsedDays < 0)
                                 elapsedDays = Math.Floor(elapsedDays);

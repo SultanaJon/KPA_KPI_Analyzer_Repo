@@ -243,19 +243,19 @@ namespace KPA_KPI_Analyzer
             dp.addLabely(lbl_xLabelEight.Text, TimeBucketEight);
             dp.addLabely(lbl_xLabelNine.Text, TimeBucketNine);
 
-            TotalOrders = String.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.Total);
-            Average = String.Format("{0:n}", overallData.kpi.purch.initConfVsPRPlanDate.data.Average);
-            PercNoConf = String.Format("{0:n}", overallData.kpi.purch.initConfVsPRPlanDate.data.PercentUnconf);
-            PercNoConfTotal = String.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.PercentUnconfTotal);
-            TimeBucketOne = String.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.Minus_TwentyTwo);
-            TimeBucketTwo = String.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.Minus_Fifteen_TwentyOne);
-            TimeBucketThree = String.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.Minus_Eight_Fourteen);
-            TimeBucketFour = String.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.Minus_One_Seven);
-            TimeBucketFive = String.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.Zero);
-            TimeBucketSix = String.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.One_Seven);
-            TimeBucketSeven = String.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.Eight_Fourteen);
-            TimeBucketEight = String.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.Fifteen_TwentyOne);
-            TimeBucketNine = String.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.TwentyTwo);
+            TotalOrders = string.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.Total);
+            Average = string.Format("{0:n}", overallData.kpi.purch.initConfVsPRPlanDate.data.Average);
+            PercNoConf = string.Format("{0:n}", overallData.kpi.purch.initConfVsPRPlanDate.data.PercentUnconf);
+            PercNoConfTotal = string.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.PercentUnconfTotal);
+            TimeBucketOne = string.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.Minus_TwentyTwo);
+            TimeBucketTwo = string.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.Minus_Fifteen_TwentyOne);
+            TimeBucketThree = string.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.Minus_Eight_Fourteen);
+            TimeBucketFour = string.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.Minus_One_Seven);
+            TimeBucketFive = string.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.Zero);
+            TimeBucketSix = string.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.One_Seven);
+            TimeBucketSeven = string.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.Eight_Fourteen);
+            TimeBucketEight = string.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.Fifteen_TwentyOne);
+            TimeBucketNine = string.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.TwentyTwo);
 
 
             canvas.addData(dp);

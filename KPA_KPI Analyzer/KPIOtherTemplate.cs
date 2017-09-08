@@ -265,18 +265,18 @@ namespace KPA_KPI_Analyzer
             dp.addLabely(lbl_xLabelNine.Text, TimeBucketNine);
             dp.addLabely(lbl_xLabelTen.Text, TimeBucketTen);
 
-            TotalOrders = String.Format("{0:n0}", overallData.kpi.other.prsCreated.data.Total);
-            TotalValue = String.Format("{0:n}", overallData.kpi.other.prsCreated.data.TotalValue);
-            TimeBucketOne = String.Format("{0:n0}", overallData.kpi.other.prsCreated.data.Zero);
-            TimeBucketTwo = String.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessOneWeek);
-            TimeBucketThree = String.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessTwoWeeks);
-            TimeBucketFour = String.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessThreeWeeks);
-            TimeBucketFive = String.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessFourWeeks);
-            TimeBucketSix = String.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessFiveWeeks);
-            TimeBucketSeven = String.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessSixWeeks);
-            TimeBucketEight = String.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessSevenWeeks);
-            TimeBucketNine = String.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessEightWeeks);
-            TimeBucketTen = String.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessNinePlusWeeks);
+            TotalOrders = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.Total);
+            TotalValue = string.Format("{0:n}", overallData.kpi.other.prsCreated.data.TotalValue);
+            TimeBucketOne = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.Zero);
+            TimeBucketTwo = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessOneWeek);
+            TimeBucketThree = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessTwoWeeks);
+            TimeBucketFour = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessThreeWeeks);
+            TimeBucketFive = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessFourWeeks);
+            TimeBucketSix = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessFiveWeeks);
+            TimeBucketSeven = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessSixWeeks);
+            TimeBucketEight = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessSevenWeeks);
+            TimeBucketNine = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessEightWeeks);
+            TimeBucketTen = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessNinePlusWeeks);
 
 
 
@@ -330,18 +330,18 @@ namespace KPA_KPI_Analyzer
             dp.addLabely(lbl_xLabelTen.Text, TimeBucketTen);
 
 
-            TotalOrders = String.Format("{0:n0}", overallData.kpi.other.prsReleased.data.Total);
-            TotalValue = String.Format("{0:n}", overallData.kpi.other.prsReleased.data.TotalValue);
-            TimeBucketOne = String.Format("{0:n0}", overallData.kpi.other.prsReleased.data.Zero);
-            TimeBucketTwo = String.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessOneWeek);
-            TimeBucketThree = String.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessTwoWeeks);
-            TimeBucketFour = String.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessThreeWeeks);
-            TimeBucketFive = String.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessFourWeeks);
-            TimeBucketSix = String.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessFiveWeeks);
-            TimeBucketSeven = String.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessSixWeeks);
-            TimeBucketEight = String.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessSevenWeeks);
-            TimeBucketNine = String.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessEightWeeks);
-            TimeBucketTen = String.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessNinePlusWeeks);
+            TotalOrders = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.Total);
+            TotalValue = string.Format("{0:n}", overallData.kpi.other.prsReleased.data.TotalValue);
+            TimeBucketOne = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.Zero);
+            TimeBucketTwo = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessOneWeek);
+            TimeBucketThree = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessTwoWeeks);
+            TimeBucketFour = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessThreeWeeks);
+            TimeBucketFive = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessFourWeeks);
+            TimeBucketSix = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessFiveWeeks);
+            TimeBucketSeven = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessSixWeeks);
+            TimeBucketEight = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessSevenWeeks);
+            TimeBucketNine = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessEightWeeks);
+            TimeBucketTen = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessNinePlusWeeks);
 
             canvas.addData(dp);
             dataviz.Render(canvas);
@@ -391,18 +391,18 @@ namespace KPA_KPI_Analyzer
             dp.addLabely(lbl_xLabelNine.Text, TimeBucketNine);
             dp.addLabely(lbl_xLabelTen.Text, TimeBucketTen);
 
-            TotalOrders = String.Format("{0:n0}", overallData.kpi.other.totalSpend.data.Total);
-            TotalValue = String.Format("{0:n}", overallData.kpi.other.totalSpend.data.TotalValue);
-            TimeBucketOne = String.Format("{0:n0}", overallData.kpi.other.totalSpend.data.Zero);
-            TimeBucketTwo = String.Format("{0:n0}", overallData.kpi.other.totalSpend.data.LessOneWeek);
-            TimeBucketThree = String.Format("{0:n0}", overallData.kpi.other.totalSpend.data.LessTwoWeeks);
-            TimeBucketFour = String.Format("{0:n0}", overallData.kpi.other.totalSpend.data.LessThreeWeeks);
-            TimeBucketFive = String.Format("{0:n0}", overallData.kpi.other.totalSpend.data.LessFourWeeks);
-            TimeBucketSix = String.Format("{0:n0}", overallData.kpi.other.totalSpend.data.LessFiveWeeks);
-            TimeBucketSeven = String.Format("{0:n0}", overallData.kpi.other.totalSpend.data.LessSixWeeks);
-            TimeBucketEight = String.Format("{0:n0}", overallData.kpi.other.totalSpend.data.LessSevenWeeks);
-            TimeBucketNine = String.Format("{0:n0}", overallData.kpi.other.totalSpend.data.LessEightWeeks);
-            TimeBucketTen = String.Format("{0:n0}", overallData.kpi.other.totalSpend.data.LessNinePlusWeeks);
+            TotalOrders = string.Format("{0:n0}", overallData.kpi.other.totalSpend.data.Total);
+            TotalValue = string.Format("{0:n}", overallData.kpi.other.totalSpend.data.TotalValue);
+            TimeBucketOne = string.Format("{0:n0}", overallData.kpi.other.totalSpend.data.Zero);
+            TimeBucketTwo = string.Format("{0:n0}", overallData.kpi.other.totalSpend.data.LessOneWeek);
+            TimeBucketThree = string.Format("{0:n0}", overallData.kpi.other.totalSpend.data.LessTwoWeeks);
+            TimeBucketFour = string.Format("{0:n0}", overallData.kpi.other.totalSpend.data.LessThreeWeeks);
+            TimeBucketFive = string.Format("{0:n0}", overallData.kpi.other.totalSpend.data.LessFourWeeks);
+            TimeBucketSix = string.Format("{0:n0}", overallData.kpi.other.totalSpend.data.LessFiveWeeks);
+            TimeBucketSeven = string.Format("{0:n0}", overallData.kpi.other.totalSpend.data.LessSixWeeks);
+            TimeBucketEight = string.Format("{0:n0}", overallData.kpi.other.totalSpend.data.LessSevenWeeks);
+            TimeBucketNine = string.Format("{0:n0}", overallData.kpi.other.totalSpend.data.LessEightWeeks);
+            TimeBucketTen = string.Format("{0:n0}", overallData.kpi.other.totalSpend.data.LessNinePlusWeeks);
 
 
             canvas.addData(dp);
@@ -453,18 +453,18 @@ namespace KPA_KPI_Analyzer
             dp.addLabely(lbl_xLabelNine.Text, TimeBucketNine);
             dp.addLabely(lbl_xLabelTen.Text, TimeBucketTen);
 
-            TotalOrders = String.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.Total);
-            TotalValue = String.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.TotalValue);
-            TimeBucketOne = String.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.Zero);
-            TimeBucketTwo = String.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.LessOneWeek);
-            TimeBucketThree = String.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.LessTwoWeeks);
-            TimeBucketFour = String.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.LessThreeWeeks);
-            TimeBucketFive = String.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.LessFourWeeks);
-            TimeBucketSix = String.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.LessFiveWeeks);
-            TimeBucketSeven = String.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.LessSixWeeks);
-            TimeBucketEight = String.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.LessSevenWeeks);
-            TimeBucketNine = String.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.LessEightWeeks);
-            TimeBucketTen = String.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.LessNinePlusWeeks);
+            TotalOrders = string.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.Total);
+            TotalValue = string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.TotalValue);
+            TimeBucketOne = string.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.Zero);
+            TimeBucketTwo = string.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.LessOneWeek);
+            TimeBucketThree = string.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.LessTwoWeeks);
+            TimeBucketFour = string.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.LessThreeWeeks);
+            TimeBucketFive = string.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.LessFourWeeks);
+            TimeBucketSix = string.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.LessFiveWeeks);
+            TimeBucketSeven = string.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.LessSixWeeks);
+            TimeBucketEight = string.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.LessSevenWeeks);
+            TimeBucketNine = string.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.LessEightWeeks);
+            TimeBucketTen = string.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.LessNinePlusWeeks);
 
 
             canvas.addData(dp);
@@ -514,18 +514,18 @@ namespace KPA_KPI_Analyzer
             dp.addLabely(lbl_xLabelNine.Text, TimeBucketNine);
             dp.addLabely(lbl_xLabelTen.Text, TimeBucketTen);
 
-            TotalOrders = String.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.Total);
-            TotalValue = String.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.TotalValue);
-            TimeBucketOne = String.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.Zero);
-            TimeBucketTwo = String.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessOneWeek);
-            TimeBucketThree = String.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessTwoWeeks);
-            TimeBucketFour = String.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessThreeWeeks);
-            TimeBucketFive = String.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessFourWeeks);
-            TimeBucketSix = String.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessFiveWeeks);
-            TimeBucketSeven = String.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessSixWeeks);
-            TimeBucketEight = String.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessSevenWeeks);
-            TimeBucketNine = String.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessEightWeeks);
-            TimeBucketTen = String.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessNinePlusWeeks);
+            TotalOrders = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.Total);
+            TotalValue = string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.TotalValue);
+            TimeBucketOne = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.Zero);
+            TimeBucketTwo = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessOneWeek);
+            TimeBucketThree = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessTwoWeeks);
+            TimeBucketFour = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessThreeWeeks);
+            TimeBucketFive = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessFourWeeks);
+            TimeBucketSix = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessFiveWeeks);
+            TimeBucketSeven = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessSixWeeks);
+            TimeBucketEight = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessSevenWeeks);
+            TimeBucketNine = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessEightWeeks);
+            TimeBucketTen = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessNinePlusWeeks);
 
 
             canvas.addData(dp);

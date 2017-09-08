@@ -129,7 +129,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
 
                 foreach (DataRow dr in dt.Rows)
                 {
-                    string[] strDate = (dr["PO Line 1st Rel Dt"].ToString()).Split('/');
+                    string[] strDate = (dr["PO Line Creat#DT"].ToString()).Split('/');
                     int year = int.Parse(strDate[2]);
                     int month = int.Parse(strDate[0].TrimStart('0'));
                     int day = int.Parse(strDate[1].TrimStart('0'));

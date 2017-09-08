@@ -67,13 +67,13 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                     DateTime firstConfDate = new DateTime(firstConfYear, firstConfMonth, firstConfDay);
 
-                    string[] delConfDate = (dr["Del#Conf#Date"].ToString()).Split('/');
-                    int delConfYear = int.Parse(delConfDate[2]);
-                    int delConfMonth = int.Parse(delConfDate[0].TrimStart('0'));
-                    int delConfDay = int.Parse(delConfDate[1].TrimStart('0'));
+                    string[] strDelConfDate = (dr["Del#Conf#Date"].ToString()).Split('/');
+                    int delConfYear = int.Parse(strDelConfDate[2]);
+                    int delConfMonth = int.Parse(strDelConfDate[0].TrimStart('0'));
+                    int delConfDay = int.Parse(strDelConfDate[1].TrimStart('0'));
 
-                    DateTime prPlanDate = new DateTime(delConfYear, delConfMonth, delConfDay);
-                    double elapsedDays = (firstConfDate - prPlanDate).TotalDays;
+                    DateTime delConfDate = new DateTime(delConfYear, delConfMonth, delConfDay);
+                    double elapsedDays = (delConfDate - firstConfDate).TotalDays;
                     totalDays += elapsedDays;
 
                     if (elapsedDays < 0)
@@ -160,32 +160,32 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                     finalConfDateVsFinalPlan.data.Total = Overall.posRecCompDt.Rows.Count;
 
                     string[] strDelConfDate = (dr["Del#Conf#Date"].ToString()).Split('/');
-                    int firstConfYear = int.Parse(strDelConfDate[2]);
-                    int firstConfMonth = int.Parse(strDelConfDate[0]);
-                    int firstConfDay = int.Parse(strDelConfDate[1]);
+                    int delConfYear = int.Parse(strDelConfDate[2]);
+                    int delConfMonth = int.Parse(strDelConfDate[0]);
+                    int delConfDay = int.Parse(strDelConfDate[1]);
 
-                    if(firstConfYear == 0 && firstConfMonth == 0 && firstConfDay == 0)
+                    if(delConfYear == 0 && delConfMonth == 0 && delConfDay == 0)
                     {
                         finalConfDateVsFinalPlan.data.PercentUnconfTotal++;
                         continue;
                     }
                     else
                     {
-                        firstConfYear = int.Parse(strDelConfDate[2]);
-                        firstConfMonth = int.Parse(strDelConfDate[0].TrimStart('0'));
-                        firstConfDay = int.Parse(strDelConfDate[1].TrimStart('0'));
+                        delConfYear = int.Parse(strDelConfDate[2]);
+                        delConfMonth = int.Parse(strDelConfDate[0].TrimStart('0'));
+                        delConfDay = int.Parse(strDelConfDate[1].TrimStart('0'));
                     }
 
-                    DateTime firstConfDate = new DateTime(firstConfYear, firstConfMonth, firstConfDay);
+                    DateTime delConfDate = new DateTime(delConfYear, delConfMonth, delConfDay);
 
 
-                    string[] strPrDelDate = (dr["PR Delivery Date"].ToString()).Split('/');
-                    int delConfYear = int.Parse(strPrDelDate[2]);
-                    int delConfMonth = int.Parse(strPrDelDate[0].TrimStart('0'));
-                    int delConfDay = int.Parse(strPrDelDate[1].TrimStart('0'));
+                    string[] strDelDate = (dr["Delivery Date"].ToString()).Split('/');
+                    int delYear = int.Parse(strDelDate[2]);
+                    int delMonth = int.Parse(strDelDate[0].TrimStart('0'));
+                    int delDay = int.Parse(strDelDate[1].TrimStart('0'));
 
-                    DateTime prPlanDate = new DateTime(delConfYear, delConfMonth, delConfDay);
-                    double elapsedDays = (firstConfDate - prPlanDate).TotalDays;
+                    DateTime delDate = new DateTime(delYear, delMonth, delDay);
+                    double elapsedDays = (delConfDate - delDate).TotalDays;
                     totalDays += elapsedDays;
 
                     if (elapsedDays < 0)
@@ -365,8 +365,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                 foreach (DataRow dr in Overall.posRecCompDt.Rows)
                 {
-                    receiptDateVsOrigConfDate.data.Total = Overall.posRecCompDt.Rows.Count;
-
                     string[] strLastPORecDate = (dr["Last PO Rec#Date"].ToString()).Split('/');
                     int lastPORecDtYear = int.Parse(strLastPORecDate[2]);
                     int lastPORecDtMonth = int.Parse(strLastPORecDate[0]);
@@ -440,6 +438,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                     }
                 }
 
+                receiptDateVsOrigConfDate.data.Total = Overall.posRecCompDt.Rows.Count - receiptDateVsOrigConfDate.data.PercentUnconfTotal;
 
                 try
                 {
@@ -473,8 +472,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 foreach (DataRow dr in Overall.posRecCompDt.Rows)
                 {
-                    receiptDateVsCurrConfDate.data.Total = Overall.posRecCompDt.Rows.Count;
-
                     string[] strLastPORecDate = (dr["Last PO Rec#Date"].ToString()).Split('/');
                     int lastPORecDtYear = int.Parse(strLastPORecDate[2]);
                     int lastPORecDtMonth = int.Parse(strLastPORecDate[0]);
@@ -550,7 +547,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 }
 
 
-
+                receiptDateVsCurrConfDate.data.Total = Overall.posRecCompDt.Rows.Count - receiptDateVsCurrConfDate.data.PercentUnconfTotal;
 
                 try
                 {

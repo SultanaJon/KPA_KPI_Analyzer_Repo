@@ -246,27 +246,29 @@ namespace KPA_KPI_Analyzer
             dp.addLabely(lbl_xLabelThree.Text, TimeBucketThree);
             dp.addLabely(lbl_xLabelFour.Text, TimeBucketFour);
             dp.addLabely(lbl_xLabelFive.Text, TimeBucketFive);
-            dp.addLabely(lbl_xLabelEleven.Text, TimeBucketSix);
+            dp.addLabely(lbl_xLabelSix.Text, TimeBucketSix);
             dp.addLabely(lbl_xLabelSeven.Text, TimeBucketSeven);
             dp.addLabely(lbl_xLabelEight.Text, TimeBucketEight);
             dp.addLabely(lbl_xLabelNine.Text, TimeBucketNine);
             dp.addLabely(lbl_xLabelTen.Text, TimeBucketTen);
+            dp.addLabely(lbl_xLabelEleven.Text, TimeBucketEleven);
 
-            TotalOrders = String.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.Total);
-            Average = String.Format("{0:n}", overallData.kpi.purchTotal.prRelConfEntry.data.Average);
-            PercNoConf = String.Format("{0:n}", overallData.kpi.purchTotal.prRelConfEntry.data.PercentUnconf);
-            PercNoConfTotal = String.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.PercentUnconfTotal);
-            TimeBucketOne = String.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.LessThanZero);
-            TimeBucketTwo = String.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.One_Three);
-            TimeBucketThree = String.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.Four_Seven);
-            TimeBucketFour = String.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.Eight_Fourteen);
-            TimeBucketFive = String.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.Fifteen_TwentyOne);
-            TimeBucketSix = String.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.TwentyTwo_TwentyEight);
-            TimeBucketSeven = String.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.TwentyNine_ThirtyFive);
-            TimeBucketEight = String.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.ThirtySix_FourtyTwo);
-            TimeBucketNine = String.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.FourtyThree_FourtyNine);
-            TimeBucketTen = String.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.Fifty_FiftySix);
-            TimeBucketEleven = String.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.greaterThanEqualFiftySeven);
+
+            TotalOrders = string.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.Total);
+            Average = string.Format("{0:n}", overallData.kpi.purchTotal.prRelConfEntry.data.Average);
+            PercNoConf = string.Format("{0:n}", overallData.kpi.purchTotal.prRelConfEntry.data.PercentUnconf);
+            PercNoConfTotal = string.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.PercentUnconfTotal);
+            TimeBucketOne = string.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.LessThanZero);
+            TimeBucketTwo = string.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.One_Three);
+            TimeBucketThree = string.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.Four_Seven);
+            TimeBucketFour = string.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.Eight_Fourteen);
+            TimeBucketFive = string.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.Fifteen_TwentyOne);
+            TimeBucketSix = string.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.TwentyTwo_TwentyEight);
+            TimeBucketSeven = string.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.TwentyNine_ThirtyFive);
+            TimeBucketEight = string.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.ThirtySix_FourtyTwo);
+            TimeBucketNine = string.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.FourtyThree_FourtyNine);
+            TimeBucketTen = string.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.Fifty_FiftySix);
+            TimeBucketEleven = string.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.greaterThanEqualFiftySeven);
 
 
             canvas.addData(dp);
@@ -436,7 +438,7 @@ namespace KPA_KPI_Analyzer
                     }
                 }
 
-                if(tag != 11)
+                if(tag != 12)
                 {
                     using (DataViewer dv = new DataViewer() { Data = prReleaseConfEntry, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
                     {

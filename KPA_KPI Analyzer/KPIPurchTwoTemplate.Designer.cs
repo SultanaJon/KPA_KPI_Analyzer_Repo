@@ -646,7 +646,7 @@
             this.bunifuFlatButton16.selected = false;
             this.bunifuFlatButton16.Size = new System.Drawing.Size(47, 19);
             this.bunifuFlatButton16.TabIndex = 15;
-            this.bunifuFlatButton16.Tag = "11";
+            this.bunifuFlatButton16.Tag = "12";
             this.bunifuFlatButton16.Text = "View";
             this.bunifuFlatButton16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton16.Textcolor = System.Drawing.Color.White;

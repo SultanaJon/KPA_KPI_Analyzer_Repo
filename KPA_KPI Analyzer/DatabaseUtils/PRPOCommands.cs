@@ -91,7 +91,7 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
             "SELECT * FROM " + Overall.SelectedCountry + " WHERE " + "(" + Overall.SelectedCountry + ".[Qty Ordered] > 0 AND " + Overall.SelectedCountry + ".[Del#Conf#Date] = '00/00/0000')", // total pos with no confirmation
             "SELECT * FROM " + Overall.SelectedCountry + " WHERE " + "(" + Overall.SelectedCountry + ".[Escaped] IS NOT NULL)",
             "SELECT * FROM " + Overall.SelectedCountry + " WHERE " + "(" + Overall.SelectedCountry + ".[Escaped] IS NOT NULL AND " + Overall.SelectedCountry + ".[Del#Conf#Date] = '00/00/0000')",
-            "SELECT * FROM " + Overall.SelectedCountry + " WHERE " + "(" + Overall.SelectedCountry + ".[PR 2° Rel# Date] <> '00/00/0000')",
+            "SELECT * FROM " + Overall.SelectedCountry + " WHERE " + "(" + Overall.SelectedCountry + ".[Release ind#] = 2)",
             "SELECT * FROM " + Overall.SelectedCountry,
             
             // KPA -> Plan
@@ -124,7 +124,7 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
 
             // KPA -> Hot Jobs
             "SELECT * FROM " + Overall.SelectedCountry + " WHERE " + "(" + Overall.SelectedCountry + ".[PO Date] = '00/00/0000' AND " + Overall.SelectedCountry + ".[PR 2° Rel# Date] <> '00/00/0000' AND " + Overall.SelectedCountry + ".[Purch# Group] = 'UHJ')" + Filters.FilterQuery,
-            "SELECT * FROM " + Overall.SelectedCountry + " WHERE " + "(" + Overall.SelectedCountry + ".[Qty Ordered] > 0 AND " + Overall.SelectedCountry + ".[PO Line 1st Rel Dt] <> '00/00/0000' AND "  + Overall.SelectedCountry + ".[Del#Conf#Date] = '00/00/0000' AND " + Overall.SelectedCountry + ".[Purch# Group] = 'UHJ' AND " + Overall.SelectedCountry + ".[Escaped] IS NULL)" + Filters.FilterQuery,
+            "SELECT * FROM " + Overall.SelectedCountry + " WHERE " + "(" + Overall.SelectedCountry + ".[Qty Ordered] > 0 AND " + Overall.SelectedCountry + ".[Del#Conf#Date] = '00/00/0000' AND " + Overall.SelectedCountry + ".[PO Line Creat#DT] <> '00/00/0000' AND " + Overall.SelectedCountry + ".[Purch# Group] = 'UHJ' AND " + Overall.SelectedCountry + ".[Escaped] IS NULL)" + Filters.FilterQuery,
 
             // KPA -> Excess Stock - Stock
 

@@ -264,6 +264,8 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                         poLineFirstConfCreateDay = int.Parse(strPOLineFirstConfCreateDate[1].TrimStart('0'));
                     }
 
+                    poRelVsPOConf.data.Total++;
+
                     DateTime poLineFirstConfCreateDt = new DateTime(poLineFirstConfCreateYear, poLineFirstConfCreateMonth, poLineFirstConfCreateDay);
 
                     double elapsedDays = (poLineFirstConfCreateDt - poLineFirstRelDate).TotalDays;
@@ -316,7 +318,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                     }
                 }
 
-                poRelVsPOConf.data.Total = Overall.prsOnPOsDt.Rows.Count - poRelVsPOConf.data.PercentUnconfTotal;
 
                 try
                 {

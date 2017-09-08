@@ -240,8 +240,8 @@ namespace KPA_KPI_Analyzer
             TimeBucketSeven = overallData.kpa.purch.prsAgingRel.data.TwentyNinePlus.ToString();
 
 
-            TotalOrders = String.Format("{0:n0}", overallData.kpa.purch.prsAgingRel.data.Total);
-            Average = String.Format("{0:n}", overallData.kpa.purch.prsAgingRel.data.Average);
+            TotalOrders = string.Format("{0:n0}", overallData.kpa.purch.prsAgingRel.data.Total);
+            Average = string.Format("{0:n}", overallData.kpa.purch.prsAgingRel.data.Average);
 
             AnalysisOne = "- Will only show in this field if the PR is fully released and the PR open Qty > 0.";
             AnalysisTwo = "- Difference between todays date and the date the PR was fully released.";
@@ -254,13 +254,13 @@ namespace KPA_KPI_Analyzer
             dp.addLabely(lbl_xLabelFive.Text, TimeBucketFive);
             dp.addLabely(lbl_xLabelSix.Text, TimeBucketSix);
 
-            TimeBucketOne = String.Format("{0:n0}", overallData.kpa.purch.prsAgingRel.data.LessThanZero);
-            TimeBucketTwo = String.Format("{0:n0}", overallData.kpa.purch.prsAgingRel.data.One_Three);
-            TimeBucketThree = String.Format("{0:n0}", overallData.kpa.purch.prsAgingRel.data.Four_Seven);
-            TimeBucketFour = String.Format("{0:n0}", overallData.kpa.purch.prsAgingRel.data.Eight_Fourteen);
-            TimeBucketFive = String.Format("{0:n0}", overallData.kpa.purch.prsAgingRel.data.Fifteen_TwentyOne);
-            TimeBucketSix = String.Format("{0:n0}", overallData.kpa.purch.prsAgingRel.data.TwentyTwo_TwentyEight);
-            TimeBucketSeven = String.Format("{0:n0}", overallData.kpa.purch.prsAgingRel.data.TwentyNinePlus);
+            TimeBucketOne = string.Format("{0:n0}", overallData.kpa.purch.prsAgingRel.data.LessThanZero);
+            TimeBucketTwo = string.Format("{0:n0}", overallData.kpa.purch.prsAgingRel.data.One_Three);
+            TimeBucketThree = string.Format("{0:n0}", overallData.kpa.purch.prsAgingRel.data.Four_Seven);
+            TimeBucketFour = string.Format("{0:n0}", overallData.kpa.purch.prsAgingRel.data.Eight_Fourteen);
+            TimeBucketFive = string.Format("{0:n0}", overallData.kpa.purch.prsAgingRel.data.Fifteen_TwentyOne);
+            TimeBucketSix = string.Format("{0:n0}", overallData.kpa.purch.prsAgingRel.data.TwentyTwo_TwentyEight);
+            TimeBucketSeven = string.Format("{0:n0}", overallData.kpa.purch.prsAgingRel.data.TwentyNinePlus);
 
             dp.addLabely(lbl_xLabelSeven.Text, TimeBucketSeven);
 
@@ -293,8 +293,8 @@ namespace KPA_KPI_Analyzer
             TimeBucketSeven = overallData.kpa.purch.poFirstRel.data.TwentyNinePlus.ToString();
 
 
-            TotalOrders = String.Format("{0:n0}", overallData.kpa.purch.poFirstRel.data.Total);
-            Average = String.Format("{0:n}", overallData.kpa.purch.poFirstRel.data.Average);
+            TotalOrders = string.Format("{0:n0}", overallData.kpa.purch.poFirstRel.data.Total);
+            Average = string.Format("{0:n}", overallData.kpa.purch.poFirstRel.data.Average);
 
 
             AnalysisOne = "- Will only show in this field if PR is on the PO and the PO line item has never been released (approved).";
@@ -308,13 +308,13 @@ namespace KPA_KPI_Analyzer
             dp.addLabely(lbl_xLabelSix.Text, TimeBucketSix);
             dp.addLabely(lbl_xLabelSeven.Text, TimeBucketSeven);
 
-            TimeBucketOne = String.Format("{0:n0}", overallData.kpa.purch.poFirstRel.data.LessThanZero);
-            TimeBucketTwo = String.Format("{0:n0}", overallData.kpa.purch.poFirstRel.data.One_Three);
-            TimeBucketThree = String.Format("{0:n0}", overallData.kpa.purch.poFirstRel.data.Four_Seven);
-            TimeBucketFour = String.Format("{0:n0}", overallData.kpa.purch.poFirstRel.data.Eight_Fourteen);
-            TimeBucketFive = String.Format("{0:n0}", overallData.kpa.purch.poFirstRel.data.Fifteen_TwentyOne);
-            TimeBucketSix = String.Format("{0:n0}", overallData.kpa.purch.poFirstRel.data.TwentyTwo_TwentyEight);
-            TimeBucketSeven = String.Format("{0:n0}", overallData.kpa.purch.poFirstRel.data.TwentyNinePlus);
+            TimeBucketOne = string.Format("{0:n0}", overallData.kpa.purch.poFirstRel.data.LessThanZero);
+            TimeBucketTwo = string.Format("{0:n0}", overallData.kpa.purch.poFirstRel.data.One_Three);
+            TimeBucketThree = string.Format("{0:n0}", overallData.kpa.purch.poFirstRel.data.Four_Seven);
+            TimeBucketFour = string.Format("{0:n0}", overallData.kpa.purch.poFirstRel.data.Eight_Fourteen);
+            TimeBucketFive = string.Format("{0:n0}", overallData.kpa.purch.poFirstRel.data.Fifteen_TwentyOne);
+            TimeBucketSix = string.Format("{0:n0}", overallData.kpa.purch.poFirstRel.data.TwentyTwo_TwentyEight);
+            TimeBucketSeven = string.Format("{0:n0}", overallData.kpa.purch.poFirstRel.data.TwentyNinePlus);
 
 
             canvas.addData(dp);
@@ -345,8 +345,8 @@ namespace KPA_KPI_Analyzer
             TimeBucketSeven = overallData.kpa.purch.poPrevRel.data.TwentyNinePlus.ToString();
 
 
-            TotalOrders = String.Format("{0:n0}", overallData.kpa.purch.poPrevRel.data.Total);
-            Average = String.Format("{0:n}", overallData.kpa.purch.poPrevRel.data.Average);
+            TotalOrders = string.Format("{0:n0}", overallData.kpa.purch.poPrevRel.data.Total);
+            Average = string.Format("{0:n}", overallData.kpa.purch.poPrevRel.data.Average);
 
             AnalysisOne = "- PR is on the PO, PO line items was previously released, PO currently not released (approved), and line item is not received.";
             AnalysisTwo = "- Difference between todays date and the date the PR was added to the PO.";
@@ -360,13 +360,13 @@ namespace KPA_KPI_Analyzer
             dp.addLabely(lbl_xLabelSeven.Text, TimeBucketSeven);
 
 
-            TimeBucketOne = String.Format("{0:n0}", overallData.kpa.purch.poPrevRel.data.LessThanZero);
-            TimeBucketTwo = String.Format("{0:n0}", overallData.kpa.purch.poPrevRel.data.One_Three);
-            TimeBucketThree = String.Format("{0:n0}", overallData.kpa.purch.poPrevRel.data.Four_Seven);
-            TimeBucketFour = String.Format("{0:n0}", overallData.kpa.purch.poPrevRel.data.Eight_Fourteen);
-            TimeBucketFive = String.Format("{0:n0}", overallData.kpa.purch.poPrevRel.data.Fifteen_TwentyOne);
-            TimeBucketSix = String.Format("{0:n0}", overallData.kpa.purch.poPrevRel.data.TwentyTwo_TwentyEight);
-            TimeBucketSeven = String.Format("{0:n0}", overallData.kpa.purch.poPrevRel.data.TwentyNinePlus);
+            TimeBucketOne = string.Format("{0:n0}", overallData.kpa.purch.poPrevRel.data.LessThanZero);
+            TimeBucketTwo = string.Format("{0:n0}", overallData.kpa.purch.poPrevRel.data.One_Three);
+            TimeBucketThree = string.Format("{0:n0}", overallData.kpa.purch.poPrevRel.data.Four_Seven);
+            TimeBucketFour = string.Format("{0:n0}", overallData.kpa.purch.poPrevRel.data.Eight_Fourteen);
+            TimeBucketFive = string.Format("{0:n0}", overallData.kpa.purch.poPrevRel.data.Fifteen_TwentyOne);
+            TimeBucketSix = string.Format("{0:n0}", overallData.kpa.purch.poPrevRel.data.TwentyTwo_TwentyEight);
+            TimeBucketSeven = string.Format("{0:n0}", overallData.kpa.purch.poPrevRel.data.TwentyNinePlus);
 
 
 
@@ -398,8 +398,8 @@ namespace KPA_KPI_Analyzer
             TimeBucketSeven = overallData.kpa.purch.noConfirmation.data.TwentyNinePlus.ToString();
 
 
-            TotalOrders = String.Format("{0:n0}", overallData.kpa.purch.noConfirmation.data.Total);
-            Average = String.Format("{0:n}", overallData.kpa.purch.noConfirmation.data.Average);
+            TotalOrders = string.Format("{0:n0}", overallData.kpa.purch.noConfirmation.data.Total);
+            Average = string.Format("{0:n}", overallData.kpa.purch.noConfirmation.data.Average);
 
 
             AnalysisOne = "- PR is on PO, PO previously released, no confirmation, and line not received complete.";
@@ -414,13 +414,13 @@ namespace KPA_KPI_Analyzer
             dp.addLabely(lbl_xLabelSeven.Text, TimeBucketSeven);
 
 
-            TimeBucketOne = String.Format("{0:n0}", overallData.kpa.purch.noConfirmation.data.LessThanZero);
-            TimeBucketTwo = String.Format("{0:n0}", overallData.kpa.purch.noConfirmation.data.One_Three);
-            TimeBucketThree = String.Format("{0:n0}", overallData.kpa.purch.noConfirmation.data.Four_Seven);
-            TimeBucketFour = String.Format("{0:n0}", overallData.kpa.purch.noConfirmation.data.Eight_Fourteen);
-            TimeBucketFive = String.Format("{0:n0}", overallData.kpa.purch.noConfirmation.data.Fifteen_TwentyOne);
-            TimeBucketSix = String.Format("{0:n0}", overallData.kpa.purch.noConfirmation.data.TwentyTwo_TwentyEight);
-            TimeBucketSeven = String.Format("{0:n0}", overallData.kpa.purch.noConfirmation.data.TwentyNinePlus);
+            TimeBucketOne = string.Format("{0:n0}", overallData.kpa.purch.noConfirmation.data.LessThanZero);
+            TimeBucketTwo = string.Format("{0:n0}", overallData.kpa.purch.noConfirmation.data.One_Three);
+            TimeBucketThree = string.Format("{0:n0}", overallData.kpa.purch.noConfirmation.data.Four_Seven);
+            TimeBucketFour = string.Format("{0:n0}", overallData.kpa.purch.noConfirmation.data.Eight_Fourteen);
+            TimeBucketFive = string.Format("{0:n0}", overallData.kpa.purch.noConfirmation.data.Fifteen_TwentyOne);
+            TimeBucketSix = string.Format("{0:n0}", overallData.kpa.purch.noConfirmation.data.TwentyTwo_TwentyEight);
+            TimeBucketSeven = string.Format("{0:n0}", overallData.kpa.purch.noConfirmation.data.TwentyNinePlus);
 
 
 

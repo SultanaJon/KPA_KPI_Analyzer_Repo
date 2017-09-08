@@ -83,7 +83,7 @@ namespace KPA_KPI_Analyzer
         private string Title { get { return lbl_title.Text; } set { lbl_title.Text = value;  } }
         private string AnalysisOne { get { return lbl_analysisOne.Text; } set { lbl_analysisOne.Text = value;  } }
         private string AnalysisTwo { get { return lbl_analysisTwo.Text; } set { lbl_analysisTwo.Text = value;  } }
-        private string Average { get { return lbl_average.Text; } set { lbl_average.Text = value + " Week(s)"; } }
+        private string Average { get { return lbl_average.Text; } set { lbl_average.Text = value + " Day(s)"; } }
         private string TimeBucketOne { get { return lbl_timebuckOne.Text; } set { lbl_timebuckOne.Text = value;  } }
         private string TimeBucketTwo { get { return lbl_timebuckTwo.Text; } set { lbl_timebuckTwo.Text = value;  } }
         private string TimeBucketThree { get { return lbl_timebuckThree.Text; } set { lbl_timebuckThree.Text = value;  } }
@@ -227,8 +227,8 @@ namespace KPA_KPI_Analyzer
             TimeBucketEight = overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.LessThanEqualThreeWeeks.ToString();
             TimeBucketNine = overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.GreaterThanThreeWeeks.ToString();
 
-            TotalOrders = String.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.Total);
-            Average = String.Format("{0:n}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.Average);
+            TotalOrders = string.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.Total);
+            Average = string.Format("{0:n}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.Average);
 
             AnalysisOne = "- Will only show if the PO line has a confirmed date AND is not received complete.";
             AnalysisTwo = "- Difference between the confirmation date and the current planned date.";
@@ -245,15 +245,15 @@ namespace KPA_KPI_Analyzer
             dp.addLabely(lbl_xLabelNine.Text, TimeBucketNine);
 
 
-            TimeBucketOne = String.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.LessThanMinusThree);
-            TimeBucketTwo = String.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.GreaterThanEqualMinusThree);
-            TimeBucketThree = String.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.GreaterThanEqualMinusTwo);
-            TimeBucketFour = String.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.GreaterThanEqualMinusOne);
-            TimeBucketFive = String.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.ZeroWeeks);
-            TimeBucketSix = String.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.LessThanEqualOneWeek);
-            TimeBucketSeven = String.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.LessThanEqualTwoWeeks);
-            TimeBucketEight = String.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.LessThanEqualThreeWeeks);
-            TimeBucketNine = String.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.GreaterThanThreeWeeks);
+            TimeBucketOne = string.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.LessThanMinusThree);
+            TimeBucketTwo = string.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.GreaterThanEqualMinusThree);
+            TimeBucketThree = string.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.GreaterThanEqualMinusTwo);
+            TimeBucketFour = string.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.GreaterThanEqualMinusOne);
+            TimeBucketFive = string.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.ZeroWeeks);
+            TimeBucketSix = string.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.LessThanEqualOneWeek);
+            TimeBucketSeven = string.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.LessThanEqualTwoWeeks);
+            TimeBucketEight = string.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.LessThanEqualThreeWeeks);
+            TimeBucketNine = string.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.GreaterThanThreeWeeks);
 
 
             canvas.addData(dp);
@@ -287,8 +287,8 @@ namespace KPA_KPI_Analyzer
             TimeBucketNine = overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.GreaterThanThreeWeeks.ToString();
 
 
-            TotalOrders = String.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.Total);
-            Average = String.Format("{0:n}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.Average);
+            TotalOrders = string.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.Total);
+            Average = string.Format("{0:n}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.Average);
 
             AnalysisOne = "- Will only show if the PO line has a confirmed date, the PO line is not received complete and the purchase group is UHJ.";
             AnalysisTwo = "- Difference between confirmation date and the current planned date.";
@@ -306,15 +306,15 @@ namespace KPA_KPI_Analyzer
 
 
 
-            TimeBucketOne = String.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.LessThanMinusThree);
-            TimeBucketTwo = String.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.GreaterThanEqualMinusThree);
-            TimeBucketThree = String.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.GreaterThanEqualMinusTwo);
-            TimeBucketFour = String.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.GreaterThanEqualMinusOne);
-            TimeBucketFive = String.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.ZeroWeeks);
-            TimeBucketSix = String.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.LessThanEqualOneWeek);
-            TimeBucketSeven = String.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.LessThanEqualTwoWeeks);
-            TimeBucketEight = String.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.LessThanEqualThreeWeeks);
-            TimeBucketNine = String.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.GreaterThanThreeWeeks);
+            TimeBucketOne = string.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.LessThanMinusThree);
+            TimeBucketTwo = string.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.GreaterThanEqualMinusThree);
+            TimeBucketThree = string.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.GreaterThanEqualMinusTwo);
+            TimeBucketFour = string.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.GreaterThanEqualMinusOne);
+            TimeBucketFive = string.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.ZeroWeeks);
+            TimeBucketSix = string.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.LessThanEqualOneWeek);
+            TimeBucketSeven = string.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.LessThanEqualTwoWeeks);
+            TimeBucketEight = string.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.LessThanEqualThreeWeeks);
+            TimeBucketNine = string.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.GreaterThanThreeWeeks);
 
             canvas.addData(dp);
             dataviz.Render(canvas);

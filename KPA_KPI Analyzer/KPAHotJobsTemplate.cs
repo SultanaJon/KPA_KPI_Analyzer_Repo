@@ -59,13 +59,10 @@ namespace KPA_KPI_Analyzer
 
 
 
-
         /// <summary>
         /// The tag (property for the control) indicating what category is loaded
         /// </summary>
         int ActiveCategory { get; set; }
-
-
 
 
 
@@ -76,8 +73,6 @@ namespace KPA_KPI_Analyzer
         {
             InitializeComponent();
         }
-
-
 
 
 
@@ -106,8 +101,6 @@ namespace KPA_KPI_Analyzer
             }
         }
         #endregion
-
-
 
 
 
@@ -226,7 +219,7 @@ namespace KPA_KPI_Analyzer
             TotalOrders = string.Format("{0:n0}", overallData.kpa.hotJobs.prsNotOnPO.data.Total);
             Average = string.Format("{0:n}", overallData.kpa.hotJobs.prsNotOnPO.data.Average);
 
-            AnalysisOne = "- Will only show if PR is assigned to purchase group UHJ, is fully released and the PR has no tbe placed on a PO.";
+            AnalysisOne = "- Will only show if PR is assigned to purchase group UHJ, is fully released and the PR has not been placed on a PO.";
             AnalysisTwo = "- Difference between todays date and the date the PR was released to the second level.";
 
 
@@ -276,11 +269,11 @@ namespace KPA_KPI_Analyzer
             TimeBucketSix = overallData.kpa.hotJobs.noConfirmation.data.TwentyTwo_TwentyEight.ToString();
             TimeBucketSeven = overallData.kpa.hotJobs.noConfirmation.data.TwentyNinePlus.ToString();
 
-            TotalOrders = String.Format("{0:n0}", overallData.kpa.hotJobs.noConfirmation.data.Total);
-            Average = String.Format("{0:n}", overallData.kpa.hotJobs.noConfirmation.data.Average);
+            TotalOrders = string.Format("{0:n0}", overallData.kpa.hotJobs.noConfirmation.data.Total);
+            Average = string.Format("{0:n}", overallData.kpa.hotJobs.noConfirmation.data.Average);
 
             AnalysisOne = "- Will only show for PO line items with purchase group UHJ that do not have a confirmation date and are not received complete.";
-            AnalysisTwo = "- Difference between todays date and the date that PO line item first approved.";
+            AnalysisTwo = "- Difference between todays date and the date the PO line was created.";
 
 
             dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
@@ -292,13 +285,13 @@ namespace KPA_KPI_Analyzer
             dp.addLabely(lbl_xLabelSeven.Text, TimeBucketSeven);
 
 
-            TimeBucketOne = String.Format("{0:n0}", overallData.kpa.hotJobs.noConfirmation.data.LessThanZero);
-            TimeBucketTwo = String.Format("{0:n0}", overallData.kpa.hotJobs.noConfirmation.data.One_Three);
-            TimeBucketThree = String.Format("{0:n0}", overallData.kpa.hotJobs.noConfirmation.data.Four_Seven);
-            TimeBucketFour = String.Format("{0:n0}", overallData.kpa.hotJobs.noConfirmation.data.Eight_Fourteen);
-            TimeBucketFive = String.Format("{0:n0}", overallData.kpa.hotJobs.noConfirmation.data.Fifteen_TwentyOne);
-            TimeBucketSix = String.Format("{0:n0}", overallData.kpa.hotJobs.noConfirmation.data.TwentyTwo_TwentyEight);
-            TimeBucketSeven = String.Format("{0:n0}", overallData.kpa.hotJobs.noConfirmation.data.TwentyNinePlus);
+            TimeBucketOne = string.Format("{0:n0}", overallData.kpa.hotJobs.noConfirmation.data.LessThanZero);
+            TimeBucketTwo = string.Format("{0:n0}", overallData.kpa.hotJobs.noConfirmation.data.One_Three);
+            TimeBucketThree = string.Format("{0:n0}", overallData.kpa.hotJobs.noConfirmation.data.Four_Seven);
+            TimeBucketFour = string.Format("{0:n0}", overallData.kpa.hotJobs.noConfirmation.data.Eight_Fourteen);
+            TimeBucketFive = string.Format("{0:n0}", overallData.kpa.hotJobs.noConfirmation.data.Fifteen_TwentyOne);
+            TimeBucketSix = string.Format("{0:n0}", overallData.kpa.hotJobs.noConfirmation.data.TwentyTwo_TwentyEight);
+            TimeBucketSeven = string.Format("{0:n0}", overallData.kpa.hotJobs.noConfirmation.data.TwentyNinePlus);
 
             canvas.addData(dp);
             dataviz.Render(canvas);
@@ -374,7 +367,8 @@ namespace KPA_KPI_Analyzer
                             int day = int.Parse(strDate[1].TrimStart('0'));
 
                             DateTime secLvlRelDt = new DateTime(year, month, day);
-                            double elapsedDays = (int)(DateTime.Now - secLvlRelDt).TotalDays;
+                            DateTime today = DateTime.Now.Date;
+                            double elapsedDays = (int)(today - secLvlRelDt).TotalDays;
 
                             switch (tag)
                             {
@@ -456,13 +450,14 @@ namespace KPA_KPI_Analyzer
 
                         foreach (DataRow dr in dt.Rows)
                         {
-                            string[] strDate = (dr["PO Line 1st Rel Dt"].ToString()).Split('/');
+                            string[] strDate = (dr["PO Line Creat#DT"].ToString()).Split('/');
                             int year = int.Parse(strDate[2]);
                             int month = int.Parse(strDate[0].TrimStart('0'));
                             int day = int.Parse(strDate[1].TrimStart('0'));
 
                             DateTime date = new DateTime(year, month, day);
-                            double elapsedDays = (int)(DateTime.Now - date).TotalDays;
+                            DateTime today = DateTime.Now.Date;
+                            double elapsedDays = (int)(today - date).TotalDays;
 
                             switch (tag)
                             {

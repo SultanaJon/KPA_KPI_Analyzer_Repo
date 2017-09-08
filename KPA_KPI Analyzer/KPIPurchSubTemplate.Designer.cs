@@ -57,6 +57,8 @@
             this.bunifuCards2 = new Bunifu.Framework.UI.BunifuCards();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.panel59 = new System.Windows.Forms.Panel();
+            this.btn_unconfIncludedStatusButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.lbl_totalOrders = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.bunifuSeparator1 = new Bunifu.Framework.UI.BunifuSeparator();
@@ -184,8 +186,6 @@
             this.lbl_analysisTwo = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.lbl_analysisOne = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.datavizLoadTimer = new System.Windows.Forms.Timer(this.components);
-            this.panel59 = new System.Windows.Forms.Panel();
-            this.btn_unconfIncludedStatusButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.tblPnl_template.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -203,6 +203,7 @@
             this.bunifuCards2.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.panel59.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -277,7 +278,6 @@
             this.tableLayoutPanel14.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel41.SuspendLayout();
-            this.panel59.SuspendLayout();
             this.SuspendLayout();
             // 
             // tblPnl_template
@@ -491,7 +491,7 @@
             this.bunifuFlatButton16.selected = false;
             this.bunifuFlatButton16.Size = new System.Drawing.Size(47, 19);
             this.bunifuFlatButton16.TabIndex = 15;
-            this.bunifuFlatButton16.Tag = "11";
+            this.bunifuFlatButton16.Tag = "12";
             this.bunifuFlatButton16.Text = "View";
             this.bunifuFlatButton16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton16.Textcolor = System.Drawing.Color.White;
@@ -748,6 +748,54 @@
             this.panel6.Size = new System.Drawing.Size(308, 37);
             this.panel6.TabIndex = 2;
             // 
+            // panel59
+            // 
+            this.panel59.Controls.Add(this.btn_unconfIncludedStatusButton);
+            this.panel59.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel59.Location = new System.Drawing.Point(146, 0);
+            this.panel59.Name = "panel59";
+            this.panel59.Size = new System.Drawing.Size(162, 37);
+            this.panel59.TabIndex = 11;
+            // 
+            // btn_unconfIncludedStatusButton
+            // 
+            this.btn_unconfIncludedStatusButton.Activecolor = System.Drawing.Color.IndianRed;
+            this.btn_unconfIncludedStatusButton.BackColor = System.Drawing.Color.IndianRed;
+            this.btn_unconfIncludedStatusButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_unconfIncludedStatusButton.BorderRadius = 5;
+            this.btn_unconfIncludedStatusButton.ButtonText = "Not including Unconfirmed!";
+            this.btn_unconfIncludedStatusButton.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.btn_unconfIncludedStatusButton.DisabledColor = System.Drawing.Color.IndianRed;
+            this.btn_unconfIncludedStatusButton.Enabled = false;
+            this.btn_unconfIncludedStatusButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_unconfIncludedStatusButton.ForeColor = System.Drawing.Color.White;
+            this.btn_unconfIncludedStatusButton.Iconcolor = System.Drawing.Color.Transparent;
+            this.btn_unconfIncludedStatusButton.Iconimage = null;
+            this.btn_unconfIncludedStatusButton.Iconimage_right = null;
+            this.btn_unconfIncludedStatusButton.Iconimage_right_Selected = null;
+            this.btn_unconfIncludedStatusButton.Iconimage_Selected = null;
+            this.btn_unconfIncludedStatusButton.IconMarginLeft = 0;
+            this.btn_unconfIncludedStatusButton.IconMarginRight = 0;
+            this.btn_unconfIncludedStatusButton.IconRightVisible = true;
+            this.btn_unconfIncludedStatusButton.IconRightZoom = 0D;
+            this.btn_unconfIncludedStatusButton.IconVisible = true;
+            this.btn_unconfIncludedStatusButton.IconZoom = 90D;
+            this.btn_unconfIncludedStatusButton.IsTab = false;
+            this.btn_unconfIncludedStatusButton.Location = new System.Drawing.Point(5, 7);
+            this.btn_unconfIncludedStatusButton.Name = "btn_unconfIncludedStatusButton";
+            this.btn_unconfIncludedStatusButton.Normalcolor = System.Drawing.Color.IndianRed;
+            this.btn_unconfIncludedStatusButton.OnHovercolor = System.Drawing.Color.IndianRed;
+            this.btn_unconfIncludedStatusButton.OnHoverTextColor = System.Drawing.Color.White;
+            this.btn_unconfIncludedStatusButton.selected = false;
+            this.btn_unconfIncludedStatusButton.Size = new System.Drawing.Size(151, 19);
+            this.btn_unconfIncludedStatusButton.TabIndex = 15;
+            this.btn_unconfIncludedStatusButton.Tag = "0";
+            this.btn_unconfIncludedStatusButton.Text = "Not including Unconfirmed!";
+            this.btn_unconfIncludedStatusButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_unconfIncludedStatusButton.Textcolor = System.Drawing.Color.White;
+            this.btn_unconfIncludedStatusButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_unconfIncludedStatusButton.Visible = false;
+            // 
             // lbl_totalOrders
             // 
             this.lbl_totalOrders.AutoSize = true;
@@ -988,7 +1036,7 @@
             this.lbl_xLabelSeven.Name = "lbl_xLabelSeven";
             this.lbl_xLabelSeven.Size = new System.Drawing.Size(112, 24);
             this.lbl_xLabelSeven.TabIndex = 13;
-            this.lbl_xLabelSeven.Text = "29 - 25 Days";
+            this.lbl_xLabelSeven.Text = "29 - 35 Days";
             // 
             // panel39
             // 
@@ -2696,54 +2744,6 @@
             // 
             this.datavizLoadTimer.Tick += new System.EventHandler(this.datavizLoadTimer_Tick);
             // 
-            // panel59
-            // 
-            this.panel59.Controls.Add(this.btn_unconfIncludedStatusButton);
-            this.panel59.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel59.Location = new System.Drawing.Point(146, 0);
-            this.panel59.Name = "panel59";
-            this.panel59.Size = new System.Drawing.Size(162, 37);
-            this.panel59.TabIndex = 11;
-            // 
-            // btn_unconfIncludedStatusButton
-            // 
-            this.btn_unconfIncludedStatusButton.Activecolor = System.Drawing.Color.IndianRed;
-            this.btn_unconfIncludedStatusButton.BackColor = System.Drawing.Color.IndianRed;
-            this.btn_unconfIncludedStatusButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_unconfIncludedStatusButton.BorderRadius = 5;
-            this.btn_unconfIncludedStatusButton.ButtonText = "Not including Unconfirmed!";
-            this.btn_unconfIncludedStatusButton.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.btn_unconfIncludedStatusButton.DisabledColor = System.Drawing.Color.IndianRed;
-            this.btn_unconfIncludedStatusButton.Enabled = false;
-            this.btn_unconfIncludedStatusButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_unconfIncludedStatusButton.ForeColor = System.Drawing.Color.White;
-            this.btn_unconfIncludedStatusButton.Iconcolor = System.Drawing.Color.Transparent;
-            this.btn_unconfIncludedStatusButton.Iconimage = null;
-            this.btn_unconfIncludedStatusButton.Iconimage_right = null;
-            this.btn_unconfIncludedStatusButton.Iconimage_right_Selected = null;
-            this.btn_unconfIncludedStatusButton.Iconimage_Selected = null;
-            this.btn_unconfIncludedStatusButton.IconMarginLeft = 0;
-            this.btn_unconfIncludedStatusButton.IconMarginRight = 0;
-            this.btn_unconfIncludedStatusButton.IconRightVisible = true;
-            this.btn_unconfIncludedStatusButton.IconRightZoom = 0D;
-            this.btn_unconfIncludedStatusButton.IconVisible = true;
-            this.btn_unconfIncludedStatusButton.IconZoom = 90D;
-            this.btn_unconfIncludedStatusButton.IsTab = false;
-            this.btn_unconfIncludedStatusButton.Location = new System.Drawing.Point(5, 7);
-            this.btn_unconfIncludedStatusButton.Name = "btn_unconfIncludedStatusButton";
-            this.btn_unconfIncludedStatusButton.Normalcolor = System.Drawing.Color.IndianRed;
-            this.btn_unconfIncludedStatusButton.OnHovercolor = System.Drawing.Color.IndianRed;
-            this.btn_unconfIncludedStatusButton.OnHoverTextColor = System.Drawing.Color.White;
-            this.btn_unconfIncludedStatusButton.selected = false;
-            this.btn_unconfIncludedStatusButton.Size = new System.Drawing.Size(151, 19);
-            this.btn_unconfIncludedStatusButton.TabIndex = 15;
-            this.btn_unconfIncludedStatusButton.Tag = "0";
-            this.btn_unconfIncludedStatusButton.Text = "Not including Unconfirmed!";
-            this.btn_unconfIncludedStatusButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btn_unconfIncludedStatusButton.Textcolor = System.Drawing.Color.White;
-            this.btn_unconfIncludedStatusButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_unconfIncludedStatusButton.Visible = false;
-            // 
             // KPIPurchSubTemplate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2773,6 +2773,7 @@
             this.tableLayoutPanel5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
+            this.panel59.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
@@ -2873,7 +2874,6 @@
             this.panel1.PerformLayout();
             this.panel41.ResumeLayout(false);
             this.panel41.PerformLayout();
-            this.panel59.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

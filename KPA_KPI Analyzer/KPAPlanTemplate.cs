@@ -231,8 +231,8 @@ namespace KPA_KPI_Analyzer
             TimeBucketSix = overallData.kpa.plan.prsAgingNotRel.data.TwentyTwo_TwentyEight.ToString();
             TimeBucketSeven = overallData.kpa.plan.prsAgingNotRel.data.TwentyNinePlus.ToString();
 
-            Average = String.Format("{0:n}", overallData.kpa.plan.prsAgingNotRel.data.Average);
-            TotalOrders = String.Format("{0:n0}", overallData.kpa.plan.prsAgingNotRel.data.Total);
+            Average = string.Format("{0:n}", overallData.kpa.plan.prsAgingNotRel.data.Average);
+            TotalOrders = string.Format("{0:n0}", overallData.kpa.plan.prsAgingNotRel.data.Total);
 
             AnalysisOne = "- Will only show in this field if the PR is not fully released and the PR Open Qty > 0.";
             AnalysisTwo = "- Difference between todays date and the date the PR was created.";
@@ -248,13 +248,13 @@ namespace KPA_KPI_Analyzer
             canvas.addData(dp);
             dataviz.Render(canvas);
 
-            TimeBucketOne = String.Format("{0:n0}", overallData.kpa.plan.prsAgingNotRel.data.LessThanZero);
-            TimeBucketTwo = String.Format("{0:n0}", overallData.kpa.plan.prsAgingNotRel.data.One_Three);
-            TimeBucketThree = String.Format("{0:n0}", overallData.kpa.plan.prsAgingNotRel.data.Four_Seven);
-            TimeBucketFour = String.Format("{0:n0}", overallData.kpa.plan.prsAgingNotRel.data.Eight_Fourteen);
-            TimeBucketFive = String.Format("{0:n0}", overallData.kpa.plan.prsAgingNotRel.data.Fifteen_TwentyOne);
-            TimeBucketSix = String.Format("{0:n0}", overallData.kpa.plan.prsAgingNotRel.data.TwentyTwo_TwentyEight);
-            TimeBucketSeven = String.Format("{0:n0}", overallData.kpa.plan.prsAgingNotRel.data.TwentyNinePlus);
+            TimeBucketOne = string.Format("{0:n0}", overallData.kpa.plan.prsAgingNotRel.data.LessThanZero);
+            TimeBucketTwo = string.Format("{0:n0}", overallData.kpa.plan.prsAgingNotRel.data.One_Three);
+            TimeBucketThree = string.Format("{0:n0}", overallData.kpa.plan.prsAgingNotRel.data.Four_Seven);
+            TimeBucketFour = string.Format("{0:n0}", overallData.kpa.plan.prsAgingNotRel.data.Eight_Fourteen);
+            TimeBucketFive = string.Format("{0:n0}", overallData.kpa.plan.prsAgingNotRel.data.Fifteen_TwentyOne);
+            TimeBucketSix = string.Format("{0:n0}", overallData.kpa.plan.prsAgingNotRel.data.TwentyTwo_TwentyEight);
+            TimeBucketSeven = string.Format("{0:n0}", overallData.kpa.plan.prsAgingNotRel.data.TwentyNinePlus);
 
         }
 
@@ -283,8 +283,8 @@ namespace KPA_KPI_Analyzer
             TimeBucketSix = overallData.kpa.plan.matDueDate.data.TwentyTwo_TwentyEight.ToString();
             TimeBucketSeven = overallData.kpa.plan.matDueDate.data.TwentyNinePlus.ToString();
 
-            Average = String.Format("{0:n}", overallData.kpa.plan.matDueDate.data.Average);
-            TotalOrders = String.Format("{0:n0}", overallData.kpa.plan.matDueDate.data.Total);
+            Average = string.Format("{0:n}", overallData.kpa.plan.matDueDate.data.Average);
+            TotalOrders = string.Format("{0:n0}", overallData.kpa.plan.matDueDate.data.Total);
 
             AnalysisOne = "- Will only show in this field if PR is fully released and the PR Open Qty > 0.";
             AnalysisTwo = "- Difference between the current requirement date and todays date.";
@@ -300,13 +300,13 @@ namespace KPA_KPI_Analyzer
             canvas.addData(dp);
             dataviz.Render(canvas);
 
-            TimeBucketOne = String.Format("{0:n0}", overallData.kpa.plan.matDueDate.data.LessThanZero);
-            TimeBucketTwo = String.Format("{0:n0}", overallData.kpa.plan.matDueDate.data.One_Three);
-            TimeBucketThree = String.Format("{0:n0}", overallData.kpa.plan.matDueDate.data.Four_Seven);
-            TimeBucketFour = String.Format("{0:n0}", overallData.kpa.plan.matDueDate.data.Eight_Fourteen);
-            TimeBucketFive = String.Format("{0:n0}", overallData.kpa.plan.matDueDate.data.Fifteen_TwentyOne);
-            TimeBucketSix = String.Format("{0:n0}", overallData.kpa.plan.matDueDate.data.TwentyTwo_TwentyEight);
-            TimeBucketSeven = String.Format("{0:n0}", overallData.kpa.plan.matDueDate.data.TwentyNinePlus);
+            TimeBucketOne = string.Format("{0:n0}", overallData.kpa.plan.matDueDate.data.LessThanZero);
+            TimeBucketTwo = string.Format("{0:n0}", overallData.kpa.plan.matDueDate.data.One_Three);
+            TimeBucketThree = string.Format("{0:n0}", overallData.kpa.plan.matDueDate.data.Four_Seven);
+            TimeBucketFour = string.Format("{0:n0}", overallData.kpa.plan.matDueDate.data.Eight_Fourteen);
+            TimeBucketFive = string.Format("{0:n0}", overallData.kpa.plan.matDueDate.data.Fifteen_TwentyOne);
+            TimeBucketSix = string.Format("{0:n0}", overallData.kpa.plan.matDueDate.data.TwentyTwo_TwentyEight);
+            TimeBucketSeven = string.Format("{0:n0}", overallData.kpa.plan.matDueDate.data.TwentyNinePlus);
 
         }
 
