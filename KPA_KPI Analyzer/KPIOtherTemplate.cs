@@ -315,7 +315,7 @@ namespace KPA_KPI_Analyzer
 
 
             AnalysisOne = "- Count of PRs by 2nd level release date.";
-            AnalysisTwo = "- Difference between the date the PR was released to the 2nd level and todays date.";
+            AnalysisTwo = "- Count of PRs by final release date.";
 
 
             dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
@@ -376,8 +376,8 @@ namespace KPA_KPI_Analyzer
             TimeBucketTen = overallData.kpi.other.totalSpend.data.LessNinePlusWeeks.ToString();
 
 
-            AnalysisOne = "- Total PO Value over time.";
-            AnalysisTwo = "- Difference between the PO line creation date and todays date.";
+            AnalysisOne = "- Value of PO Lines based on PO line Creation Date.";
+            AnalysisTwo = "";
 
 
             dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
@@ -438,8 +438,8 @@ namespace KPA_KPI_Analyzer
             TimeBucketTen = overallData.kpi.other.prVsPOValue.data.LessNinePlusWeeks.ToString();
 
 
-            AnalysisOne = "- PR vs PO Variance.";
-            AnalysisTwo = "- Difference between the PO line creation date and todays date.";
+            AnalysisOne = "- Based on PO line Creation Date.";
+            AnalysisTwo = "- Variance of PO line value vs PR line value over time.";
 
 
             dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
@@ -500,8 +500,9 @@ namespace KPA_KPI_Analyzer
             TimeBucketTen = overallData.kpi.other.hotJobPrs.data.LessNinePlusWeeks.ToString();
 
 
-            AnalysisOne = "- Will show all PRs over time.";
+            AnalysisOne = "- Will show fo rPRs which have Purchase Group of 'UHJ'.";
             AnalysisTwo = "- Difference between the date the PR was created and todays date.";
+
 
             dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
             dp.addLabely(lbl_xLabelTwo.Text, TimeBucketTwo);
