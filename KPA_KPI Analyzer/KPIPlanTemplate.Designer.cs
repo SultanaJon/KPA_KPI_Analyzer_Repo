@@ -274,7 +274,6 @@
             this.btn_Three.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Three.DisabledColor = System.Drawing.SystemColors.Control;
             this.btn_Three.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn_Three.Enabled = false;
             this.btn_Three.ForeColor = System.Drawing.Color.DimGray;
             this.btn_Three.Iconcolor = System.Drawing.Color.Transparent;
             this.btn_Three.Iconimage = null;
@@ -314,7 +313,6 @@
             this.btn_Two.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Two.DisabledColor = System.Drawing.SystemColors.Control;
             this.btn_Two.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn_Two.Enabled = false;
             this.btn_Two.ForeColor = System.Drawing.Color.DimGray;
             this.btn_Two.Iconcolor = System.Drawing.Color.Transparent;
             this.btn_Two.Iconimage = null;

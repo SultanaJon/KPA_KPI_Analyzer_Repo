@@ -447,6 +447,28 @@
             this.lbl_kpiOtherTotalSpend_Twelve = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.lbl_kpiOtherPRsVsPOValue_Twelve = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.lbl_kpiOtherHotJobPrs_Twelve = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_One = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Two = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Three = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Four = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Five = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Six = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Seven = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Eight = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Nine = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Ten = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Eleven = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_One = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Two = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Three = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Four = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Five = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Six = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Seven = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Eight = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Nine = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Ten = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Eleven = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel39.SuspendLayout();
             this.panel38.SuspendLayout();
@@ -897,6 +919,28 @@
             this.tableLayoutPanel1.Controls.Add(this.lbl_kpiOtherTotalSpend_Twelve, 13, 25);
             this.tableLayoutPanel1.Controls.Add(this.lbl_kpiOtherPRsVsPOValue_Twelve, 13, 26);
             this.tableLayoutPanel1.Controls.Add(this.lbl_kpiOtherHotJobPrs_Twelve, 13, 27);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_One, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Two, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Three, 4, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Four, 5, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Five, 6, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Six, 7, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Seven, 8, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Eight, 9, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Nine, 10, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Ten, 11, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Eleven, 12, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_One, 2, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Two, 3, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Three, 4, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Four, 5, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Five, 6, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Six, 7, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Seven, 8, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Eight, 9, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Nine, 10, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Ten, 11, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Eleven, 12, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(10);
@@ -5286,6 +5330,204 @@
             this.lbl_kpiOtherHotJobPrs_Twelve.TabIndex = 3;
             this.lbl_kpiOtherHotJobPrs_Twelve.Text = "data";
             // 
+            // lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_One
+            // 
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_One.AutoSize = true;
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_One.Location = new System.Drawing.Point(276, 55);
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_One.Name = "lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_One";
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_One.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_One.TabIndex = 3;
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_One.Text = "data";
+            // 
+            // lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Two
+            // 
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Two.AutoSize = true;
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Two.Location = new System.Drawing.Point(337, 55);
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Two.Name = "lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Two";
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Two.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Two.TabIndex = 3;
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Two.Text = "data";
+            // 
+            // lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Three
+            // 
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Three.AutoSize = true;
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Three.Location = new System.Drawing.Point(398, 55);
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Three.Name = "lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Three";
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Three.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Three.TabIndex = 3;
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Three.Text = "data";
+            // 
+            // lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Four
+            // 
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Four.AutoSize = true;
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Four.Location = new System.Drawing.Point(459, 55);
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Four.Name = "lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Four";
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Four.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Four.TabIndex = 3;
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Four.Text = "data";
+            // 
+            // lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Five
+            // 
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Five.AutoSize = true;
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Five.Location = new System.Drawing.Point(520, 55);
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Five.Name = "lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Five";
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Five.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Five.TabIndex = 3;
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Five.Text = "data";
+            // 
+            // lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Six
+            // 
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Six.AutoSize = true;
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Six.Location = new System.Drawing.Point(581, 55);
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Six.Name = "lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Six";
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Six.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Six.TabIndex = 3;
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Six.Text = "data";
+            // 
+            // lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Seven
+            // 
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Seven.AutoSize = true;
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Seven.Location = new System.Drawing.Point(642, 55);
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Seven.Name = "lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Seven";
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Seven.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Seven.TabIndex = 3;
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Seven.Text = "data";
+            // 
+            // lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Eight
+            // 
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Eight.AutoSize = true;
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Eight.Location = new System.Drawing.Point(703, 55);
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Eight.Name = "lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Eight";
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Eight.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Eight.TabIndex = 3;
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Eight.Text = "data";
+            // 
+            // lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Nine
+            // 
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Nine.AutoSize = true;
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Nine.Location = new System.Drawing.Point(764, 55);
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Nine.Name = "lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Nine";
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Nine.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Nine.TabIndex = 3;
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Nine.Text = "data";
+            // 
+            // lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Ten
+            // 
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Ten.AutoSize = true;
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Ten.Location = new System.Drawing.Point(825, 55);
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Ten.Name = "lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Ten";
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Ten.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Ten.TabIndex = 3;
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Ten.Text = "data";
+            // 
+            // lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Eleven
+            // 
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Eleven.AutoSize = true;
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Eleven.Location = new System.Drawing.Point(886, 55);
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Eleven.Name = "lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Eleven";
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Eleven.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Eleven.TabIndex = 3;
+            this.lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Eleven.Text = "data";
+            // 
+            // lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_One
+            // 
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_One.AutoSize = true;
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_One.Location = new System.Drawing.Point(276, 77);
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_One.Name = "lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_One";
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_One.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_One.TabIndex = 3;
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_One.Text = "data";
+            // 
+            // lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Two
+            // 
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Two.AutoSize = true;
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Two.Location = new System.Drawing.Point(337, 77);
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Two.Name = "lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Two";
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Two.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Two.TabIndex = 3;
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Two.Text = "data";
+            // 
+            // lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Three
+            // 
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Three.AutoSize = true;
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Three.Location = new System.Drawing.Point(398, 77);
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Three.Name = "lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Three";
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Three.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Three.TabIndex = 3;
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Three.Text = "data";
+            // 
+            // lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Four
+            // 
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Four.AutoSize = true;
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Four.Location = new System.Drawing.Point(459, 77);
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Four.Name = "lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Four";
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Four.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Four.TabIndex = 3;
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Four.Text = "data";
+            // 
+            // lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Five
+            // 
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Five.AutoSize = true;
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Five.Location = new System.Drawing.Point(520, 77);
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Five.Name = "lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Five";
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Five.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Five.TabIndex = 3;
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Five.Text = "data";
+            // 
+            // lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Six
+            // 
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Six.AutoSize = true;
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Six.Location = new System.Drawing.Point(581, 77);
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Six.Name = "lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Six";
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Six.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Six.TabIndex = 3;
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Six.Text = "data";
+            // 
+            // lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Seven
+            // 
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Seven.AutoSize = true;
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Seven.Location = new System.Drawing.Point(642, 77);
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Seven.Name = "lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Seven";
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Seven.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Seven.TabIndex = 3;
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Seven.Text = "data";
+            // 
+            // lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Eight
+            // 
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Eight.AutoSize = true;
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Eight.Location = new System.Drawing.Point(703, 77);
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Eight.Name = "lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Eight";
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Eight.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Eight.TabIndex = 3;
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Eight.Text = "data";
+            // 
+            // lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Nine
+            // 
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Nine.AutoSize = true;
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Nine.Location = new System.Drawing.Point(764, 77);
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Nine.Name = "lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Nine";
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Nine.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Nine.TabIndex = 3;
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Nine.Text = "data";
+            // 
+            // lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Ten
+            // 
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Ten.AutoSize = true;
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Ten.Location = new System.Drawing.Point(825, 77);
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Ten.Name = "lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Ten";
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Ten.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Ten.TabIndex = 3;
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Ten.Text = "data";
+            // 
+            // lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Eleven
+            // 
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Eleven.AutoSize = true;
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Eleven.Location = new System.Drawing.Point(886, 77);
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Eleven.Name = "lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Eleven";
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Eleven.Size = new System.Drawing.Size(28, 13);
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Eleven.TabIndex = 3;
+            this.lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Eleven.Text = "data";
+            // 
             // KPIOverall
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5864,5 +6106,27 @@
         private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiOtherTotalSpend_Twelve;
         private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiOtherPRsVsPOValue_Twelve;
         private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiOtherHotJobPrs_Twelve;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_One;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Two;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Three;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Four;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Five;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Six;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Seven;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Eight;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Nine;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Ten;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Eleven;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_One;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Two;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Three;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Four;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Five;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Six;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Seven;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Eight;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Nine;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Ten;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Eleven;
     }
 }

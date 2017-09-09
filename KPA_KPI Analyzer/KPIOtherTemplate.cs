@@ -895,7 +895,7 @@ namespace KPA_KPI_Analyzer
                             DateTime poCreateDate = new DateTime(poCreateDtYear, poCreateDtMonth, poCreateDtDay);
 
                             DateTime today = DateTime.Now.Date;
-                            double elapsedDays = (poCreateDate - today).TotalDays;
+                            double elapsedDays = (today - poCreateDate).TotalDays;
                             double weeks = Math.Floor(elapsedDays / 7);
 
                             switch (tag)

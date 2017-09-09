@@ -35,6 +35,34 @@ namespace KPA_KPI_Analyzer
             lbl_kpiPlanPRPlannedDateVsCurrPlan_Eleven.Text = string.Format("{0:n0}", overallData.kpi.plan.prPlanDateVsCurrPlan.data.Total);
 
 
+            // KPI -> Plan -> (Original Planned Date - 2nd Lvl Release Date) - Coded Lead-time
+            lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_One.Text = string.Format("{0:n}", overallData.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Average);
+            lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Two.Text = string.Format("{0:n0}", overallData.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Minus_TwentyTwo);
+            lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Three.Text = string.Format("{0:n0}", overallData.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Minus_Fifteen_TwentyOne);
+            lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Four.Text = string.Format("{0:n0}", overallData.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Minus_Eight_Fourteen);
+            lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Five.Text = string.Format("{0:n0}", overallData.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Minus_One_Seven);
+            lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Six.Text = string.Format("{0:n0}", overallData.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Zero);
+            lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Seven.Text = string.Format("{0:n0}", overallData.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.One_Seven);
+            lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Eight.Text = string.Format("{0:n0}", overallData.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Eight_Fourteen);
+            lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Nine.Text = string.Format("{0:n0}", overallData.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Fifteen_TwentyOne);
+            lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Ten.Text = string.Format("{0:n0}", overallData.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.TwentyTwo);
+            lbl_kpiPlanOrigPnDt_2ndLvlRelDt_codeLeadTime_Eleven.Text = string.Format("{0:n0}", overallData.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Total);
+
+
+            // KPI -> Plan -> (Current Planned Date - 2nd Lvl Release Date) - Coded Lead-time
+            lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_One.Text = string.Format("{0:n}", overallData.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Average);
+            lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Two.Text = string.Format("{0:n0}", overallData.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Minus_TwentyTwo);
+            lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Three.Text = string.Format("{0:n0}", overallData.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Minus_Fifteen_TwentyOne);
+            lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Four.Text = string.Format("{0:n0}", overallData.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Minus_Eight_Fourteen);
+            lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Five.Text = string.Format("{0:n0}", overallData.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Minus_One_Seven);
+            lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Six.Text = string.Format("{0:n0}", overallData.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Zero);
+            lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Seven.Text = string.Format("{0:n0}", overallData.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.One_Seven);
+            lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Eight.Text = string.Format("{0:n0}", overallData.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Eight_Fourteen);
+            lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Nine.Text = string.Format("{0:n0}", overallData.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Fifteen_TwentyOne);
+            lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Ten.Text = string.Format("{0:n0}", overallData.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.TwentyTwo);
+            lbl_kpiPlanCurrPnDt_2ndLvlRelDt_codeLeadTime_Eleven.Text = string.Format("{0:n0}", overallData.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Total);
+
+
             // KPI -> Purch -> Initial Confirmation vs PR Planned Date
             lbl_kpiPurchInitConfVsPrPlanDate_One.Text = string.Format("{0:n}", overallData.kpi.purch.initConfVsPRPlanDate.data.Average);
             lbl_kpiPurchInitConfVsPrPlanDate_Two.Text = string.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.Minus_TwentyTwo);

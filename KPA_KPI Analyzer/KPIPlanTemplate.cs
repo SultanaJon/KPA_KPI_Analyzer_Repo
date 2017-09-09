@@ -10,6 +10,8 @@ namespace KPA_KPI_Analyzer
     {
         Overall overallData;
         DataTable prPlanDateVsCurrPlanDt;
+        DataTable OrigPlan2ndLvlRel_CodedLeadTime;
+        DataTable CurrPlan2ndLvlRel_CodedLeadTime;
 
 
         public delegate void UpdateCategoryHandler(string categoryName);
@@ -451,25 +453,25 @@ namespace KPA_KPI_Analyzer
                             DateTime prPlanDate = new DateTime(delConfYear, delConfMonth, delConfDay);
 
                             string[] strCurrPlanDate = (dr["Rescheduling date"].ToString()).Split('/');
-                            int currConfYear = int.Parse(strCurrPlanDate[2]);
-                            int currConfMonth = int.Parse(strCurrPlanDate[0]);
-                            int currConfDay = int.Parse(strCurrPlanDate[1]);
+                            int currPlanYear = int.Parse(strCurrPlanDate[2]);
+                            int currPlanMonth = int.Parse(strCurrPlanDate[0]);
+                            int currPlanDay = int.Parse(strCurrPlanDate[1]);
 
-                            if (currConfYear == 0 && currConfMonth == 0 && currConfDay == 0)
+                            if (currPlanYear == 0 && currPlanMonth == 0 && currPlanDay == 0)
                             {
                                 string[] strNewCurrConfDate = (dr["Delivery Date"].ToString()).Split('/');
-                                currConfYear = int.Parse(strNewCurrConfDate[2]);
-                                currConfMonth = int.Parse(strNewCurrConfDate[0].TrimStart('0'));
-                                currConfDay = int.Parse(strNewCurrConfDate[1].TrimStart('0'));
+                                currPlanYear = int.Parse(strNewCurrConfDate[2]);
+                                currPlanMonth = int.Parse(strNewCurrConfDate[0].TrimStart('0'));
+                                currPlanDay = int.Parse(strNewCurrConfDate[1].TrimStart('0'));
                             }
                             else
                             {
-                                currConfYear = int.Parse(strCurrPlanDate[2]);
-                                currConfMonth = int.Parse(strCurrPlanDate[0].TrimStart('0'));
-                                currConfDay = int.Parse(strCurrPlanDate[1].TrimStart('0'));
+                                currPlanYear = int.Parse(strCurrPlanDate[2]);
+                                currPlanMonth = int.Parse(strCurrPlanDate[0].TrimStart('0'));
+                                currPlanDay = int.Parse(strCurrPlanDate[1].TrimStart('0'));
                             }
 
-                            DateTime reqDate = new DateTime(currConfYear, currConfMonth, currConfDay);
+                            DateTime reqDate = new DateTime(currPlanYear, currPlanMonth, currPlanDay);
                             double elapsedDays = (reqDate - prPlanDate).TotalDays;
 
                             if (elapsedDays < 0)
@@ -552,10 +554,253 @@ namespace KPA_KPI_Analyzer
                         }
                         break;
                     case 1:
+                        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                        //
+                        // (Original Planned Date - 2nd Lvl Release Date) vs Coded lead-time
+                        //
+                        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                        OrigPlan2ndLvlRel_CodedLeadTime = new DataTable();
+                        OrigPlan2ndLvlRel_CodedLeadTime = Overall.pr2ndLvlRelDateDt.Clone();
 
+
+
+                        foreach (DataRow dr in Overall.pr2ndLvlRelDateDt.Rows)
+                        {
+                            string[] strPrPlanDate = (dr["PR Delivery Date"].ToString()).Split('/');
+                            int delConfYear = int.Parse(strPrPlanDate[2]);
+                            int delConfMonth = int.Parse(strPrPlanDate[0].TrimStart('0'));
+                            int delConfDay = int.Parse(strPrPlanDate[1].TrimStart('0'));
+
+
+                            string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
+                            int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
+                            int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
+                            int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+
+
+                            DateTime prPlanDate = new DateTime(delConfYear, delConfMonth, delConfDay);
+                            DateTime pr2ndRelDate = new DateTime(pr2ndLvlRelYear, pr2ndLvlRelMonth, pr2ndLvlRelDay);
+                            int commCodeLeadTime = int.Parse(dr["Pl# Deliv# Time"].ToString());
+
+                            double elapsedDays = (prPlanDate - pr2ndRelDate).TotalDays;
+                            elapsedDays -= commCodeLeadTime;
+
+                            if (elapsedDays < 0)
+                                elapsedDays = Math.Floor(elapsedDays);
+                            else if (elapsedDays == 0)
+                                ;
+                            else // elapsed days > 0
+                                elapsedDays = Math.Ceiling(elapsedDays);
+
+                            elapsedDays = (int)elapsedDays;
+
+                            switch (tag)
+                            {
+                                case 0:
+                                    OrigPlan2ndLvlRel_CodedLeadTime.ImportRow(dr);
+                                    break;
+                                case 1:
+                                    if (elapsedDays <= (-22))
+                                    {
+                                        OrigPlan2ndLvlRel_CodedLeadTime.ImportRow(dr);
+                                    }
+                                    continue;
+                                case 2:
+                                    if (elapsedDays > (-22) && elapsedDays <= (-15))
+                                    {
+                                        OrigPlan2ndLvlRel_CodedLeadTime.ImportRow(dr);
+                                    }
+                                    continue;
+                                case 3:
+                                    if (elapsedDays > (-15) && elapsedDays <= (-8))
+                                    {
+                                        OrigPlan2ndLvlRel_CodedLeadTime.ImportRow(dr);
+                                    }
+                                    continue;
+                                case 4:
+                                    if (elapsedDays > (-8) && elapsedDays <= (-1))
+                                    {
+                                        OrigPlan2ndLvlRel_CodedLeadTime.ImportRow(dr);
+                                    }
+                                    continue;
+                                case 5:
+                                    if (elapsedDays == 0)
+                                    {
+                                        OrigPlan2ndLvlRel_CodedLeadTime.ImportRow(dr);
+                                    }
+                                    continue;
+                                case 6:
+                                    if (elapsedDays >= 1 && elapsedDays <= 7)
+                                    {
+                                        OrigPlan2ndLvlRel_CodedLeadTime.ImportRow(dr);
+                                    }
+                                    continue;
+                                case 7:
+                                    if (elapsedDays >= 8 && elapsedDays <= 14)
+                                    {
+                                        OrigPlan2ndLvlRel_CodedLeadTime.ImportRow(dr);
+                                    }
+                                    continue;
+                                case 8:
+                                    if (elapsedDays >= 15 && elapsedDays <= 21)
+                                    {
+                                        OrigPlan2ndLvlRel_CodedLeadTime.ImportRow(dr);
+                                    }
+                                    continue;
+                                case 9:
+                                    if (elapsedDays >= 22)
+                                    {
+                                        OrigPlan2ndLvlRel_CodedLeadTime.ImportRow(dr);
+                                    }
+                                    continue;
+                                default:
+                                    continue;
+                            }
+                        }
+
+                        using (DataViewer dv = new DataViewer() { Data = OrigPlan2ndLvlRel_CodedLeadTime, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
+                        {
+                            dv.LoadData();
+                            dv.ShowDialog();
+                        }
                         break;
                     case 2:
+                        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                        //
+                        // (Current Planned Date - 2nd Lvl Release Date) vs Coded lead-time
+                        //
+                        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                        CurrPlan2ndLvlRel_CodedLeadTime = new DataTable();
+                        CurrPlan2ndLvlRel_CodedLeadTime = Overall.pr2ndLvlRelDateDt.Clone();
 
+
+
+                        foreach (DataRow dr in Overall.pr2ndLvlRelDateDt.Rows)
+                        {
+                            string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
+                            int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
+                            int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
+                            int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+
+
+                            string[] strCurrPlanDate = (dr["Rescheduling date"].ToString()).Split('/');
+                            int currPlanYear = int.Parse(strCurrPlanDate[2]);
+                            int currPlanMonth = int.Parse(strCurrPlanDate[0]);
+                            int currPlanDay = int.Parse(strCurrPlanDate[1]);
+
+                            if (currPlanYear == 0 && currPlanMonth == 0 && currPlanDay == 0)
+                            {
+                                string[] strNewCurrPlanDelDate = (dr["Delivery Date"].ToString()).Split('/');
+                                currPlanYear = int.Parse(strNewCurrPlanDelDate[2]);
+                                currPlanMonth = int.Parse(strNewCurrPlanDelDate[0]);
+                                currPlanDay = int.Parse(strNewCurrPlanDelDate[1]);
+
+                                if (currPlanYear == 0 && currPlanMonth == 0 && currPlanDay == 0)
+                                {
+                                    string[] strNewCurrPlanPrDelDate = (dr["PR Delivery Date"].ToString()).Split('/');
+                                    currPlanYear = int.Parse(strNewCurrPlanPrDelDate[2]);
+                                    currPlanMonth = int.Parse(strNewCurrPlanPrDelDate[0].TrimStart('0'));
+                                    currPlanDay = int.Parse(strNewCurrPlanPrDelDate[1].TrimStart('0'));
+                                }
+                                else
+                                {
+                                    currPlanYear = int.Parse(strNewCurrPlanDelDate[2]);
+                                    currPlanMonth = int.Parse(strNewCurrPlanDelDate[0].TrimStart('0'));
+                                    currPlanDay = int.Parse(strNewCurrPlanDelDate[1].TrimStart('0'));
+                                }
+                            }
+                            else
+                            {
+                                currPlanYear = int.Parse(strCurrPlanDate[2]);
+                                currPlanMonth = int.Parse(strCurrPlanDate[0].TrimStart('0'));
+                                currPlanDay = int.Parse(strCurrPlanDate[1].TrimStart('0'));
+                            }
+
+                            DateTime pr2ndRelDate = new DateTime(pr2ndLvlRelYear, pr2ndLvlRelMonth, pr2ndLvlRelDay);
+                            DateTime currPlanDate = new DateTime(currPlanYear, currPlanMonth, currPlanDay);
+                            int commCodedLeadTime = int.Parse(dr["Pl# Deliv# Time"].ToString());
+
+                            double elapsedDays = (currPlanDate - pr2ndRelDate).TotalDays;
+                            elapsedDays -= commCodedLeadTime;
+
+                            if (elapsedDays < 0)
+                                elapsedDays = Math.Floor(elapsedDays);
+                            else if (elapsedDays == 0)
+                                ;
+                            else // elapsed days > 0
+                                elapsedDays = Math.Ceiling(elapsedDays);
+
+                            elapsedDays = (int)elapsedDays;
+
+                            switch (tag)
+                            {
+                                case 0:
+                                    CurrPlan2ndLvlRel_CodedLeadTime.ImportRow(dr);
+                                    break;
+                                case 1:
+                                    if (elapsedDays <= (-22))
+                                    {
+                                        CurrPlan2ndLvlRel_CodedLeadTime.ImportRow(dr);
+                                    }
+                                    continue;
+                                case 2:
+                                    if (elapsedDays > (-22) && elapsedDays <= (-15))
+                                    {
+                                        CurrPlan2ndLvlRel_CodedLeadTime.ImportRow(dr);
+                                    }
+                                    continue;
+                                case 3:
+                                    if (elapsedDays > (-15) && elapsedDays <= (-8))
+                                    {
+                                        CurrPlan2ndLvlRel_CodedLeadTime.ImportRow(dr);
+                                    }
+                                    continue;
+                                case 4:
+                                    if (elapsedDays > (-8) && elapsedDays <= (-1))
+                                    {
+                                        CurrPlan2ndLvlRel_CodedLeadTime.ImportRow(dr);
+                                    }
+                                    continue;
+                                case 5:
+                                    if (elapsedDays == 0)
+                                    {
+                                        CurrPlan2ndLvlRel_CodedLeadTime.ImportRow(dr);
+                                    }
+                                    continue;
+                                case 6:
+                                    if (elapsedDays >= 1 && elapsedDays <= 7)
+                                    {
+                                        CurrPlan2ndLvlRel_CodedLeadTime.ImportRow(dr);
+                                    }
+                                    continue;
+                                case 7:
+                                    if (elapsedDays >= 8 && elapsedDays <= 14)
+                                    {
+                                        CurrPlan2ndLvlRel_CodedLeadTime.ImportRow(dr);
+                                    }
+                                    continue;
+                                case 8:
+                                    if (elapsedDays >= 15 && elapsedDays <= 21)
+                                    {
+                                        CurrPlan2ndLvlRel_CodedLeadTime.ImportRow(dr);
+                                    }
+                                    continue;
+                                case 9:
+                                    if (elapsedDays >= 22)
+                                    {
+                                        CurrPlan2ndLvlRel_CodedLeadTime.ImportRow(dr);
+                                    }
+                                    continue;
+                                default:
+                                    continue;
+                            }
+                        }
+
+                        using (DataViewer dv = new DataViewer() { Data = CurrPlan2ndLvlRel_CodedLeadTime, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
+                        {
+                            dv.LoadData();
+                            dv.ShowDialog();
+                        }
                         break;
                     default:
                         break;
