@@ -252,79 +252,79 @@ namespace KPA_KPI_Analyzer
 
             // KPI -> Other - PRs Created
             lbl_kpiOtherPrsCreated_One.Text = "$" + string.Format("{0:n}", overallData.kpi.other.prsCreated.data.TotalValue);
-            lbl_kpiOtherPrsCreated_Two.Text = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.Zero);
-            lbl_kpiOtherPrsCreated_Three.Text = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessOneWeek);
-            lbl_kpiOtherPrsCreated_Four.Text = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessTwoWeeks);
-            lbl_kpiOtherPrsCreated_Five.Text = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessThreeWeeks);
-            lbl_kpiOtherPrsCreated_Six.Text = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessFourWeeks);
-            lbl_kpiOtherPrsCreated_Seven.Text = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessFiveWeeks);
-            lbl_kpiOtherPrsCreated_Eight.Text = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessSixWeeks);
-            lbl_kpiOtherPrsCreated_Nine.Text = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessSevenWeeks);
-            lbl_kpiOtherPrsCreated_Ten.Text = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessEightWeeks);
-            lbl_kpiOtherPrsCreated_Eleven.Text = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessNinePlusWeeks);
+            lbl_kpiOtherPrsCreated_Two.Text = "$" + string.Format("{0:n}", overallData.kpi.other.prsCreated.data.ZeroWeeks);
+            lbl_kpiOtherPrsCreated_Three.Text = "$" + string.Format("{0:n}", overallData.kpi.other.prsCreated.data.GreaterThanMinusOneWeeks);
+            lbl_kpiOtherPrsCreated_Four.Text = "$" + string.Format("{0:n}", overallData.kpi.other.prsCreated.data.GreaterThanMinusTwoWeeks);
+            lbl_kpiOtherPrsCreated_Five.Text = "$" + string.Format("{0:n}", overallData.kpi.other.prsCreated.data.GreaterThanMinusThreeWeeks);
+            lbl_kpiOtherPrsCreated_Six.Text = "$" + string.Format("{0:n}", overallData.kpi.other.prsCreated.data.GreaterThanMinusFourWeeks);
+            lbl_kpiOtherPrsCreated_Seven.Text = "$" + string.Format("{0:n}", overallData.kpi.other.prsCreated.data.GreaterThanMinusFiveWeeks);
+            lbl_kpiOtherPrsCreated_Eight.Text = "$" + string.Format("{0:n}", overallData.kpi.other.prsCreated.data.GreaterThanMinusSixWeeks);
+            lbl_kpiOtherPrsCreated_Nine.Text = "$" + string.Format("{0:n}", overallData.kpi.other.prsCreated.data.GreaterThanMinusSevenWeeks);
+            lbl_kpiOtherPrsCreated_Ten.Text = "$" + string.Format("{0:n}", overallData.kpi.other.prsCreated.data.GreaterThanMinusEightWeeks);
+            lbl_kpiOtherPrsCreated_Eleven.Text = "$" + string.Format("{0:n}", overallData.kpi.other.prsCreated.data.LessThanEightWeeks);
             lbl_kpiOtherPrsCreated_Twelve.Text = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.Total);
 
             // KPI -> Other - PRs Released
             lbl_kpiOtherPRsReleased_One.Text = "$" + string.Format("{0:n}", overallData.kpi.other.prsReleased.data.TotalValue);
-            lbl_kpiOtherPRsReleased_Two.Text = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.Zero);
-            lbl_kpiOtherPRsReleased_Three.Text = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessOneWeek);
-            lbl_kpiOtherPRsReleased_Four.Text = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessTwoWeeks);
-            lbl_kpiOtherPRsReleased_Five.Text = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessThreeWeeks);
-            lbl_kpiOtherPRsReleased_Six.Text = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessFourWeeks);
-            lbl_kpiOtherPRsReleased_Seven.Text = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessFiveWeeks);
-            lbl_kpiOtherPRsReleased_Eight.Text = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessSixWeeks);
-            lbl_kpiOtherPRsReleased_Nine.Text = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessSevenWeeks);
-            lbl_kpiOtherPRsReleased_Ten.Text = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessEightWeeks);
-            lbl_kpiOtherPRsReleased_Eleven.Text = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessNinePlusWeeks);
+            lbl_kpiOtherPRsReleased_Two.Text = "$" + string.Format("{0:n}", overallData.kpi.other.prsReleased.data.ZeroWeeks);
+            lbl_kpiOtherPRsReleased_Three.Text = "$" + string.Format("{0:n}", overallData.kpi.other.prsReleased.data.GreaterThanMinusOneWeeks);
+            lbl_kpiOtherPRsReleased_Four.Text = "$" + string.Format("{0:n}", overallData.kpi.other.prsReleased.data.GreaterThanMinusTwoWeeks);
+            lbl_kpiOtherPRsReleased_Five.Text = "$" + string.Format("{0:n}", overallData.kpi.other.prsReleased.data.GreaterThanMinusThreeWeeks);
+            lbl_kpiOtherPRsReleased_Six.Text = "$" + string.Format("{0:n}", overallData.kpi.other.prsReleased.data.GreaterThanMinusFourWeeks);
+            lbl_kpiOtherPRsReleased_Seven.Text = "$" + string.Format("{0:n}", overallData.kpi.other.prsReleased.data.GreaterThanMinusFiveWeeks);
+            lbl_kpiOtherPRsReleased_Eight.Text = "$" + string.Format("{0:n}", overallData.kpi.other.prsReleased.data.GreaterThanMinusSixWeeks);
+            lbl_kpiOtherPRsReleased_Nine.Text = "$" + string.Format("{0:n}", overallData.kpi.other.prsReleased.data.GreaterThanMinusSevenWeeks);
+            lbl_kpiOtherPRsReleased_Ten.Text = "$" + string.Format("{0:n}", overallData.kpi.other.prsReleased.data.GreaterThanMinusEightWeeks);
+            lbl_kpiOtherPRsReleased_Eleven.Text = "$" + string.Format("{0:n}", overallData.kpi.other.prsReleased.data.LessThanEightWeeks);
             lbl_kpiOtherPRsReleased_Twelve.Text = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.Total);
 
 
             // KPI -> Other - Total Spend
             lbl_kpiOtherTotalSpend_One.Text = "$" + string.Format("{0:n}", overallData.kpi.other.totalSpend.data.TotalValue);
-            lbl_kpiOtherTotalSpend_Two.Text = string.Format("{0:n0}", overallData.kpi.other.totalSpend.data.Zero);
-            lbl_kpiOtherTotalSpend_Three.Text = string.Format("{0:n0}", overallData.kpi.other.totalSpend.data.LessOneWeek);
-            lbl_kpiOtherTotalSpend_Four.Text = string.Format("{0:n0}", overallData.kpi.other.totalSpend.data.LessTwoWeeks);
-            lbl_kpiOtherTotalSpend_Five.Text = string.Format("{0:n0}", overallData.kpi.other.totalSpend.data.LessThreeWeeks);
-            lbl_kpiOtherTotalSpend_Six.Text = string.Format("{0:n0}", overallData.kpi.other.totalSpend.data.LessFourWeeks);
-            lbl_kpiOtherTotalSpend_Seven.Text = string.Format("{0:n0}", overallData.kpi.other.totalSpend.data.LessFiveWeeks);
-            lbl_kpiOtherTotalSpend_Eight.Text = string.Format("{0:n0}", overallData.kpi.other.totalSpend.data.LessSixWeeks);
-            lbl_kpiOtherTotalSpend_Nine.Text = string.Format("{0:n0}", overallData.kpi.other.totalSpend.data.LessSevenWeeks);
-            lbl_kpiOtherTotalSpend_Ten.Text = string.Format("{0:n0}", overallData.kpi.other.totalSpend.data.LessEightWeeks);
-            lbl_kpiOtherTotalSpend_Eleven.Text = string.Format("{0:n0}", overallData.kpi.other.totalSpend.data.LessNinePlusWeeks);
+            lbl_kpiOtherTotalSpend_Two.Text = "$" + string.Format("{0:n}", overallData.kpi.other.totalSpend.data.ZeroWeeks);
+            lbl_kpiOtherTotalSpend_Three.Text = "$" + string.Format("{0:n}", overallData.kpi.other.totalSpend.data.GreaterThanMinusOneWeeks);
+            lbl_kpiOtherTotalSpend_Four.Text = "$" + string.Format("{0:n}", overallData.kpi.other.totalSpend.data.GreaterThanMinusTwoWeeks);
+            lbl_kpiOtherTotalSpend_Five.Text = "$" + string.Format("{0:n}", overallData.kpi.other.totalSpend.data.GreaterThanMinusThreeWeeks);
+            lbl_kpiOtherTotalSpend_Six.Text = "$" + string.Format("{0:n}", overallData.kpi.other.totalSpend.data.GreaterThanMinusFourWeeks);
+            lbl_kpiOtherTotalSpend_Seven.Text = "$" + string.Format("{0:n}", overallData.kpi.other.totalSpend.data.GreaterThanMinusFiveWeeks);
+            lbl_kpiOtherTotalSpend_Eight.Text = "$" + string.Format("{0:n}", overallData.kpi.other.totalSpend.data.GreaterThanMinusSixWeeks);
+            lbl_kpiOtherTotalSpend_Nine.Text = "$" + string.Format("{0:n}", overallData.kpi.other.totalSpend.data.GreaterThanMinusSevenWeeks);
+            lbl_kpiOtherTotalSpend_Ten.Text = "$" + string.Format("{0:n}", overallData.kpi.other.totalSpend.data.GreaterThanMinusEightWeeks);
+            lbl_kpiOtherTotalSpend_Eleven.Text = "$" + string.Format("{0:n}", overallData.kpi.other.totalSpend.data.LessThanEightWeeks);
             lbl_kpiOtherTotalSpend_Twelve.Text = string.Format("{0:n0}", overallData.kpi.other.totalSpend.data.Total);
 
 
 
             // KPI -> Other - PR vs PO Value
             lbl_kpiOtherPRsVsPOValue_One.Text = "$" + string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.TotalValue);
-            lbl_kpiOtherPRsVsPOValue_Two.Text = string.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.Zero);
-            lbl_kpiOtherPRsVsPOValue_Three.Text = string.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.LessOneWeek);
-            lbl_kpiOtherPRsVsPOValue_Four.Text = string.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.LessTwoWeeks);
-            lbl_kpiOtherPRsVsPOValue_Five.Text = string.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.LessThreeWeeks);
-            lbl_kpiOtherPRsVsPOValue_Six.Text = string.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.LessFourWeeks);
-            lbl_kpiOtherPRsVsPOValue_Seven.Text = string.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.LessFiveWeeks);
-            lbl_kpiOtherPRsVsPOValue_Eight.Text = string.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.LessSixWeeks);
-            lbl_kpiOtherPRsVsPOValue_Nine.Text = string.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.LessSevenWeeks);
-            lbl_kpiOtherPRsVsPOValue_Ten.Text = string.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.LessEightWeeks);
-            lbl_kpiOtherPRsVsPOValue_Eleven.Text = string.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.LessNinePlusWeeks);
+            lbl_kpiOtherPRsVsPOValue_Two.Text = "$" + string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.ZeroWeeks);
+            lbl_kpiOtherPRsVsPOValue_Three.Text = "$" + string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.GreaterThanMinusOneWeeks);
+            lbl_kpiOtherPRsVsPOValue_Four.Text = "$" + string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.GreaterThanMinusTwoWeeks);
+            lbl_kpiOtherPRsVsPOValue_Five.Text = "$" + string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.GreaterThanMinusThreeWeeks);
+            lbl_kpiOtherPRsVsPOValue_Six.Text = "$" + string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.GreaterThanMinusFourWeeks);
+            lbl_kpiOtherPRsVsPOValue_Seven.Text = "$" + string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.GreaterThanMinusFiveWeeks);
+            lbl_kpiOtherPRsVsPOValue_Eight.Text = "$" + string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.GreaterThanMinusSixWeeks);
+            lbl_kpiOtherPRsVsPOValue_Nine.Text = "$" + string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.GreaterThanMinusSevenWeeks);
+            lbl_kpiOtherPRsVsPOValue_Ten.Text = "$" + string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.GreaterThanMinusEightWeeks);
+            lbl_kpiOtherPRsVsPOValue_Eleven.Text = "$" + string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.LessThanEightWeeks);
             lbl_kpiOtherPRsVsPOValue_Twelve.Text = string.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.Total);
 
 
 
 
 
-            // KPI -> Other - Hot Jon PRs
+            // KPI -> Other - Hot Job PRs
             lbl_kpiOtherHotJobPrs_One.Text = "$" + string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.TotalValue);
-            lbl_kpiOtherHotJobPrs_Two.Text = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.Zero);
-            lbl_kpiOtherHotJobPrs_Three.Text = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessOneWeek);
-            lbl_kpiOtherHotJobPrs_Four.Text = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessTwoWeeks);
-            lbl_kpiOtherHotJobPrs_Five.Text = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessThreeWeeks);
-            lbl_kpiOtherHotJobPrs_Six.Text = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessFourWeeks);
-            lbl_kpiOtherHotJobPrs_Seven.Text = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessFiveWeeks);
-            lbl_kpiOtherHotJobPrs_Eight.Text = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessSixWeeks);
-            lbl_kpiOtherHotJobPrs_Nine.Text = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessSevenWeeks);
-            lbl_kpiOtherHotJobPrs_Ten.Text = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessEightWeeks);
-            lbl_kpiOtherHotJobPrs_Eleven.Text = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessNinePlusWeeks);
+            lbl_kpiOtherHotJobPrs_Two.Text = "$" + string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.ZeroWeeks);
+            lbl_kpiOtherHotJobPrs_Three.Text = "$" + string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusOneWeeks);
+            lbl_kpiOtherHotJobPrs_Four.Text = "$" + string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusTwoWeeks);
+            lbl_kpiOtherHotJobPrs_Five.Text = "$" + string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusThreeWeeks);
+            lbl_kpiOtherHotJobPrs_Six.Text = "$" + string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusFourWeeks);
+            lbl_kpiOtherHotJobPrs_Seven.Text = "$" + string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusFiveWeeks);
+            lbl_kpiOtherHotJobPrs_Eight.Text = "$" + string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusSixWeeks);
+            lbl_kpiOtherHotJobPrs_Nine.Text = "$" + string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusSevenWeeks);
+            lbl_kpiOtherHotJobPrs_Ten.Text = "$" + string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusEightWeeks);
+            lbl_kpiOtherHotJobPrs_Eleven.Text = "$" + string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.LessThanEightWeeks);
             lbl_kpiOtherHotJobPrs_Twelve.Text = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.Total);
         }
     }

@@ -81,10 +81,10 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         #region Template Properties
         public string TotalOrders { get { return lbl_totalOrders.Text; } set { lbl_totalOrders.Text = value; } }
+        private string TotalValue { get { return lbl_totalValue.Text; } set { lbl_totalValue.Text = "$" + value; } }
         private string Title { get { return lbl_title.Text; } set { lbl_title.Text = value; } }
         private string AnalysisOne { get { return lbl_analysisOne.Text; } set { lbl_analysisOne.Text = value;  } }
         private string AnalysisTwo { get { return lbl_analysisTwo.Text; } set { lbl_analysisTwo.Text = value;  } }
-        private string TotalValue { get { return lbl_totalValue.Text; } set { lbl_totalValue.Text = "$" + value; } }
         private string TimeBucketOne { get { return lbl_timebuckOne.Text; } set { lbl_timebuckOne.Text = value;  } }
         private string TimeBucketTwo { get { return lbl_timebuckTwo.Text; } set { lbl_timebuckTwo.Text = value;  } }
         private string TimeBucketThree { get { return lbl_timebuckThree.Text; } set { lbl_timebuckThree.Text = value; } }
@@ -238,16 +238,16 @@ namespace KPA_KPI_Analyzer
             ChangeCategory(Title);
             CurrCategory = Title;
 
-            TimeBucketOne = overallData.kpi.other.prsCreated.data.Zero.ToString();
-            TimeBucketTwo = overallData.kpi.other.prsCreated.data.LessOneWeek.ToString();
-            TimeBucketThree = overallData.kpi.other.prsCreated.data.LessTwoWeeks.ToString();
-            TimeBucketFour = overallData.kpi.other.prsCreated.data.LessThreeWeeks.ToString();
-            TimeBucketFive = overallData.kpi.other.prsCreated.data.LessFourWeeks.ToString();
-            TimeBucketSix = overallData.kpi.other.prsCreated.data.LessFiveWeeks.ToString();
-            TimeBucketSeven = overallData.kpi.other.prsCreated.data.LessSixWeeks.ToString();
-            TimeBucketEight = overallData.kpi.other.prsCreated.data.LessSevenWeeks.ToString();
-            TimeBucketNine = overallData.kpi.other.prsCreated.data.LessEightWeeks.ToString();
-            TimeBucketTen = overallData.kpi.other.prsCreated.data.LessNinePlusWeeks.ToString();
+            TimeBucketOne = ((int)overallData.kpi.other.prsCreated.data.ZeroWeeks).ToString();
+            TimeBucketTwo = ((int)overallData.kpi.other.prsCreated.data.GreaterThanMinusOneWeeks).ToString();
+            TimeBucketThree = ((int)overallData.kpi.other.prsCreated.data.GreaterThanMinusTwoWeeks).ToString();
+            TimeBucketFour = ((int)overallData.kpi.other.prsCreated.data.GreaterThanMinusThreeWeeks).ToString();
+            TimeBucketFive = ((int)overallData.kpi.other.prsCreated.data.GreaterThanMinusFourWeeks).ToString();
+            TimeBucketSix = ((int)overallData.kpi.other.prsCreated.data.GreaterThanMinusFiveWeeks).ToString();
+            TimeBucketSeven = ((int)overallData.kpi.other.prsCreated.data.GreaterThanMinusSixWeeks).ToString();
+            TimeBucketEight = ((int)overallData.kpi.other.prsCreated.data.GreaterThanMinusSevenWeeks).ToString();
+            TimeBucketNine = ((int)overallData.kpi.other.prsCreated.data.GreaterThanMinusEightWeeks).ToString();
+            TimeBucketTen = ((int)overallData.kpi.other.prsCreated.data.LessThanEightWeeks).ToString();
 
 
             AnalysisOne = "- Count of PRs by creation date.";
@@ -264,19 +264,19 @@ namespace KPA_KPI_Analyzer
             dp.addLabely(lbl_xLabelEight.Text, TimeBucketEight);
             dp.addLabely(lbl_xLabelNine.Text, TimeBucketNine);
             dp.addLabely(lbl_xLabelTen.Text, TimeBucketTen);
-
+            
             TotalOrders = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.Total);
             TotalValue = string.Format("{0:n}", overallData.kpi.other.prsCreated.data.TotalValue);
-            TimeBucketOne = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.Zero);
-            TimeBucketTwo = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessOneWeek);
-            TimeBucketThree = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessTwoWeeks);
-            TimeBucketFour = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessThreeWeeks);
-            TimeBucketFive = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessFourWeeks);
-            TimeBucketSix = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessFiveWeeks);
-            TimeBucketSeven = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessSixWeeks);
-            TimeBucketEight = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessSevenWeeks);
-            TimeBucketNine = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessEightWeeks);
-            TimeBucketTen = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessNinePlusWeeks);
+            TimeBucketOne = "$" + string.Format("{0:n}", overallData.kpi.other.prsCreated.data.ZeroWeeks);
+            TimeBucketTwo = "$" + string.Format("{0:n}", overallData.kpi.other.prsCreated.data.GreaterThanMinusOneWeeks);
+            TimeBucketThree = "$" + string.Format("{0:n}", overallData.kpi.other.prsCreated.data.GreaterThanMinusTwoWeeks);
+            TimeBucketFour = "$" + string.Format("{0:n}", overallData.kpi.other.prsCreated.data.GreaterThanMinusThreeWeeks);
+            TimeBucketFive = "$" + string.Format("{0:n}", overallData.kpi.other.prsCreated.data.GreaterThanMinusFourWeeks);
+            TimeBucketSix = "$" + string.Format("{0:n}", overallData.kpi.other.prsCreated.data.GreaterThanMinusFiveWeeks);
+            TimeBucketSeven = "$" + string.Format("{0:n}", overallData.kpi.other.prsCreated.data.GreaterThanMinusSixWeeks);
+            TimeBucketEight = "$" + string.Format("{0:n}", overallData.kpi.other.prsCreated.data.GreaterThanMinusSevenWeeks);
+            TimeBucketNine = "$" + string.Format("{0:n}", overallData.kpi.other.prsCreated.data.GreaterThanMinusEightWeeks);
+            TimeBucketTen = "$" + string.Format("{0:n}", overallData.kpi.other.prsCreated.data.LessThanEightWeeks);
 
 
 
@@ -301,16 +301,16 @@ namespace KPA_KPI_Analyzer
             ChangeCategory(Title);
             CurrCategory = Title;
 
-            TimeBucketOne = overallData.kpi.other.prsReleased.data.Zero.ToString();
-            TimeBucketTwo = overallData.kpi.other.prsReleased.data.LessOneWeek.ToString();
-            TimeBucketThree = overallData.kpi.other.prsReleased.data.LessTwoWeeks.ToString();
-            TimeBucketFour = overallData.kpi.other.prsReleased.data.LessThreeWeeks.ToString();
-            TimeBucketFive = overallData.kpi.other.prsReleased.data.LessFourWeeks.ToString();
-            TimeBucketSix = overallData.kpi.other.prsReleased.data.LessFiveWeeks.ToString();
-            TimeBucketSeven = overallData.kpi.other.prsReleased.data.LessSixWeeks.ToString();
-            TimeBucketEight = overallData.kpi.other.prsReleased.data.LessSevenWeeks.ToString();
-            TimeBucketNine = overallData.kpi.other.prsReleased.data.LessEightWeeks.ToString();
-            TimeBucketTen = overallData.kpi.other.prsReleased.data.LessNinePlusWeeks.ToString();
+            TimeBucketOne = ((int)overallData.kpi.other.prsReleased.data.ZeroWeeks).ToString();
+            TimeBucketTwo = ((int)overallData.kpi.other.prsReleased.data.GreaterThanMinusOneWeeks).ToString();
+            TimeBucketThree = ((int)overallData.kpi.other.prsReleased.data.GreaterThanMinusTwoWeeks).ToString();
+            TimeBucketFour = ((int)overallData.kpi.other.prsReleased.data.GreaterThanMinusThreeWeeks).ToString();
+            TimeBucketFive = ((int)overallData.kpi.other.prsReleased.data.GreaterThanMinusFourWeeks).ToString();
+            TimeBucketSix = ((int)overallData.kpi.other.prsReleased.data.GreaterThanMinusFiveWeeks).ToString();
+            TimeBucketSeven = ((int)overallData.kpi.other.prsReleased.data.GreaterThanMinusSixWeeks).ToString();
+            TimeBucketEight = ((int)overallData.kpi.other.prsReleased.data.GreaterThanMinusSevenWeeks).ToString();
+            TimeBucketNine = ((int)overallData.kpi.other.prsReleased.data.GreaterThanMinusEightWeeks).ToString();
+            TimeBucketTen = ((int)overallData.kpi.other.prsReleased.data.LessThanEightWeeks).ToString();
 
 
 
@@ -332,16 +332,16 @@ namespace KPA_KPI_Analyzer
 
             TotalOrders = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.Total);
             TotalValue = string.Format("{0:n}", overallData.kpi.other.prsReleased.data.TotalValue);
-            TimeBucketOne = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.Zero);
-            TimeBucketTwo = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessOneWeek);
-            TimeBucketThree = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessTwoWeeks);
-            TimeBucketFour = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessThreeWeeks);
-            TimeBucketFive = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessFourWeeks);
-            TimeBucketSix = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessFiveWeeks);
-            TimeBucketSeven = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessSixWeeks);
-            TimeBucketEight = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessSevenWeeks);
-            TimeBucketNine = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessEightWeeks);
-            TimeBucketTen = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessNinePlusWeeks);
+            TimeBucketOne = "$" + string.Format("{0:n}", overallData.kpi.other.prsReleased.data.ZeroWeeks);
+            TimeBucketTwo = "$" + string.Format("{0:n}", overallData.kpi.other.prsReleased.data.GreaterThanMinusOneWeeks);
+            TimeBucketThree = "$" + string.Format("{0:n}", overallData.kpi.other.prsReleased.data.GreaterThanMinusTwoWeeks);
+            TimeBucketFour = "$" + string.Format("{0:n}", overallData.kpi.other.prsReleased.data.GreaterThanMinusThreeWeeks);
+            TimeBucketFive = "$" + string.Format("{0:n}", overallData.kpi.other.prsReleased.data.GreaterThanMinusFourWeeks);
+            TimeBucketSix = "$" + string.Format("{0:n}", overallData.kpi.other.prsReleased.data.GreaterThanMinusFiveWeeks);
+            TimeBucketSeven = "$" + string.Format("{0:n}", overallData.kpi.other.prsReleased.data.GreaterThanMinusSixWeeks);
+            TimeBucketEight = "$" + string.Format("{0:n}", overallData.kpi.other.prsReleased.data.GreaterThanMinusSevenWeeks);
+            TimeBucketNine = "$" + string.Format("{0:n}", overallData.kpi.other.prsReleased.data.GreaterThanMinusEightWeeks);
+            TimeBucketTen = "$" + string.Format("{0:n}", overallData.kpi.other.prsReleased.data.LessThanEightWeeks);
 
             canvas.addData(dp);
             dataviz.Render(canvas);
@@ -364,16 +364,16 @@ namespace KPA_KPI_Analyzer
             ChangeCategory(Title);
             CurrCategory = Title;
 
-            TimeBucketOne = overallData.kpi.other.totalSpend.data.Zero.ToString();
-            TimeBucketTwo = overallData.kpi.other.totalSpend.data.LessOneWeek.ToString();
-            TimeBucketThree = overallData.kpi.other.totalSpend.data.LessTwoWeeks.ToString();
-            TimeBucketFour = overallData.kpi.other.totalSpend.data.LessThreeWeeks.ToString();
-            TimeBucketFive = overallData.kpi.other.totalSpend.data.LessFourWeeks.ToString();
-            TimeBucketSix = overallData.kpi.other.totalSpend.data.LessFiveWeeks.ToString();
-            TimeBucketSeven = overallData.kpi.other.totalSpend.data.LessSixWeeks.ToString();
-            TimeBucketEight = overallData.kpi.other.totalSpend.data.LessSevenWeeks.ToString();
-            TimeBucketNine = overallData.kpi.other.totalSpend.data.LessEightWeeks.ToString();
-            TimeBucketTen = overallData.kpi.other.totalSpend.data.LessNinePlusWeeks.ToString();
+            TimeBucketOne = ((int)overallData.kpi.other.totalSpend.data.ZeroWeeks).ToString();
+            TimeBucketTwo = ((int)overallData.kpi.other.totalSpend.data.GreaterThanMinusOneWeeks).ToString();
+            TimeBucketThree = ((int)overallData.kpi.other.totalSpend.data.GreaterThanMinusTwoWeeks).ToString();
+            TimeBucketFour = ((int)overallData.kpi.other.totalSpend.data.GreaterThanMinusThreeWeeks).ToString();
+            TimeBucketFive = ((int)overallData.kpi.other.totalSpend.data.GreaterThanMinusFourWeeks).ToString();
+            TimeBucketSix = ((int)overallData.kpi.other.totalSpend.data.GreaterThanMinusFiveWeeks).ToString();
+            TimeBucketSeven = ((int)overallData.kpi.other.totalSpend.data.GreaterThanMinusSixWeeks).ToString();
+            TimeBucketEight = ((int)overallData.kpi.other.totalSpend.data.GreaterThanMinusSevenWeeks).ToString();
+            TimeBucketNine = ((int)overallData.kpi.other.totalSpend.data.GreaterThanMinusEightWeeks).ToString();
+            TimeBucketTen = ((int)overallData.kpi.other.totalSpend.data.LessThanEightWeeks).ToString();
 
 
             AnalysisOne = "- Value of PO Lines based on PO line Creation Date.";
@@ -393,16 +393,16 @@ namespace KPA_KPI_Analyzer
 
             TotalOrders = string.Format("{0:n0}", overallData.kpi.other.totalSpend.data.Total);
             TotalValue = string.Format("{0:n}", overallData.kpi.other.totalSpend.data.TotalValue);
-            TimeBucketOne = string.Format("{0:n0}", overallData.kpi.other.totalSpend.data.Zero);
-            TimeBucketTwo = string.Format("{0:n0}", overallData.kpi.other.totalSpend.data.LessOneWeek);
-            TimeBucketThree = string.Format("{0:n0}", overallData.kpi.other.totalSpend.data.LessTwoWeeks);
-            TimeBucketFour = string.Format("{0:n0}", overallData.kpi.other.totalSpend.data.LessThreeWeeks);
-            TimeBucketFive = string.Format("{0:n0}", overallData.kpi.other.totalSpend.data.LessFourWeeks);
-            TimeBucketSix = string.Format("{0:n0}", overallData.kpi.other.totalSpend.data.LessFiveWeeks);
-            TimeBucketSeven = string.Format("{0:n0}", overallData.kpi.other.totalSpend.data.LessSixWeeks);
-            TimeBucketEight = string.Format("{0:n0}", overallData.kpi.other.totalSpend.data.LessSevenWeeks);
-            TimeBucketNine = string.Format("{0:n0}", overallData.kpi.other.totalSpend.data.LessEightWeeks);
-            TimeBucketTen = string.Format("{0:n0}", overallData.kpi.other.totalSpend.data.LessNinePlusWeeks);
+            TimeBucketOne = "$" + string.Format("{0:n}", overallData.kpi.other.totalSpend.data.ZeroWeeks);
+            TimeBucketTwo = "$" + string.Format("{0:n}", overallData.kpi.other.totalSpend.data.GreaterThanMinusOneWeeks);
+            TimeBucketThree = "$" + string.Format("{0:n}", overallData.kpi.other.totalSpend.data.GreaterThanMinusTwoWeeks);
+            TimeBucketFour = "$" + string.Format("{0:n}", overallData.kpi.other.totalSpend.data.GreaterThanMinusThreeWeeks);
+            TimeBucketFive = "$" + string.Format("{0:n}", overallData.kpi.other.totalSpend.data.GreaterThanMinusFourWeeks);
+            TimeBucketSix = "$" + string.Format("{0:n}", overallData.kpi.other.totalSpend.data.GreaterThanMinusFiveWeeks);
+            TimeBucketSeven = "$" + string.Format("{0:n}", overallData.kpi.other.totalSpend.data.GreaterThanMinusSixWeeks);
+            TimeBucketEight = "$" + string.Format("{0:n}", overallData.kpi.other.totalSpend.data.GreaterThanMinusSevenWeeks);
+            TimeBucketNine = "$" + string.Format("{0:n}", overallData.kpi.other.totalSpend.data.GreaterThanMinusEightWeeks);
+            TimeBucketTen = "$" + string.Format("{0:n}", overallData.kpi.other.totalSpend.data.LessThanEightWeeks);
 
 
             canvas.addData(dp);
@@ -426,16 +426,16 @@ namespace KPA_KPI_Analyzer
             ChangeCategory(Title);
             CurrCategory = Title;
 
-            TimeBucketOne = overallData.kpi.other.prVsPOValue.data.Zero.ToString();
-            TimeBucketTwo = overallData.kpi.other.prVsPOValue.data.LessOneWeek.ToString();
-            TimeBucketThree = overallData.kpi.other.prVsPOValue.data.LessTwoWeeks.ToString();
-            TimeBucketFour = overallData.kpi.other.prVsPOValue.data.LessThreeWeeks.ToString();
-            TimeBucketFive = overallData.kpi.other.prVsPOValue.data.LessFourWeeks.ToString();
-            TimeBucketSix = overallData.kpi.other.prVsPOValue.data.LessFiveWeeks.ToString();
-            TimeBucketSeven = overallData.kpi.other.prVsPOValue.data.LessSixWeeks.ToString();
-            TimeBucketEight = overallData.kpi.other.prVsPOValue.data.LessSevenWeeks.ToString();
-            TimeBucketNine = overallData.kpi.other.prVsPOValue.data.LessEightWeeks.ToString();
-            TimeBucketTen = overallData.kpi.other.prVsPOValue.data.LessNinePlusWeeks.ToString();
+            TimeBucketOne = ((int)overallData.kpi.other.prVsPOValue.data.ZeroWeeks).ToString();
+            TimeBucketTwo = ((int)overallData.kpi.other.prVsPOValue.data.GreaterThanMinusOneWeeks).ToString();
+            TimeBucketThree = ((int)overallData.kpi.other.prVsPOValue.data.GreaterThanMinusTwoWeeks).ToString();
+            TimeBucketFour = ((int)overallData.kpi.other.prVsPOValue.data.GreaterThanMinusThreeWeeks).ToString();
+            TimeBucketFive = ((int)overallData.kpi.other.prVsPOValue.data.GreaterThanMinusFourWeeks).ToString();
+            TimeBucketSix = ((int)overallData.kpi.other.prVsPOValue.data.GreaterThanMinusFiveWeeks).ToString();
+            TimeBucketSeven = ((int)overallData.kpi.other.prVsPOValue.data.GreaterThanMinusSixWeeks).ToString();
+            TimeBucketEight = ((int)overallData.kpi.other.prVsPOValue.data.GreaterThanMinusSevenWeeks).ToString();
+            TimeBucketNine = ((int)overallData.kpi.other.prVsPOValue.data.GreaterThanMinusSevenWeeks).ToString();
+            TimeBucketTen = ((int)overallData.kpi.other.prVsPOValue.data.LessThanEightWeeks).ToString();
 
 
             AnalysisOne = "- Based on PO line Creation Date.";
@@ -453,18 +453,19 @@ namespace KPA_KPI_Analyzer
             dp.addLabely(lbl_xLabelNine.Text, TimeBucketNine);
             dp.addLabely(lbl_xLabelTen.Text, TimeBucketTen);
 
+
             TotalOrders = string.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.Total);
             TotalValue = string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.TotalValue);
-            TimeBucketOne = string.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.Zero);
-            TimeBucketTwo = string.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.LessOneWeek);
-            TimeBucketThree = string.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.LessTwoWeeks);
-            TimeBucketFour = string.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.LessThreeWeeks);
-            TimeBucketFive = string.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.LessFourWeeks);
-            TimeBucketSix = string.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.LessFiveWeeks);
-            TimeBucketSeven = string.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.LessSixWeeks);
-            TimeBucketEight = string.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.LessSevenWeeks);
-            TimeBucketNine = string.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.LessEightWeeks);
-            TimeBucketTen = string.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.LessNinePlusWeeks);
+            TimeBucketOne = "$" + string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.ZeroWeeks);
+            TimeBucketTwo = "$" + string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.GreaterThanMinusOneWeeks);
+            TimeBucketThree = "$" + string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.GreaterThanMinusTwoWeeks);
+            TimeBucketFour = "$" + string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.GreaterThanMinusThreeWeeks);
+            TimeBucketFive = "$" + string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.GreaterThanMinusFourWeeks);
+            TimeBucketSix = "$" + string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.GreaterThanMinusFiveWeeks);
+            TimeBucketSeven = "$" + string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.GreaterThanMinusSixWeeks);
+            TimeBucketEight = "$" + string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.GreaterThanMinusSevenWeeks);
+            TimeBucketNine = "$" + string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.GreaterThanMinusEightWeeks);
+            TimeBucketTen = "$" + string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.LessThanEightWeeks);
 
 
             canvas.addData(dp);
@@ -488,16 +489,16 @@ namespace KPA_KPI_Analyzer
             ChangeCategory(Title);
             CurrCategory = Title;
 
-            TimeBucketOne = overallData.kpi.other.hotJobPrs.data.Zero.ToString();
-            TimeBucketTwo = overallData.kpi.other.hotJobPrs.data.LessOneWeek.ToString();
-            TimeBucketThree = overallData.kpi.other.hotJobPrs.data.LessTwoWeeks.ToString();
-            TimeBucketFour = overallData.kpi.other.hotJobPrs.data.LessThreeWeeks.ToString();
-            TimeBucketFive = overallData.kpi.other.hotJobPrs.data.LessFourWeeks.ToString();
-            TimeBucketSix = overallData.kpi.other.hotJobPrs.data.LessFiveWeeks.ToString();
-            TimeBucketSeven = overallData.kpi.other.hotJobPrs.data.LessSixWeeks.ToString();
-            TimeBucketEight = overallData.kpi.other.hotJobPrs.data.LessSevenWeeks.ToString();
-            TimeBucketNine = overallData.kpi.other.hotJobPrs.data.LessEightWeeks.ToString();
-            TimeBucketTen = overallData.kpi.other.hotJobPrs.data.LessNinePlusWeeks.ToString();
+            TimeBucketOne = ((int)overallData.kpi.other.hotJobPrs.data.ZeroWeeks).ToString();
+            TimeBucketTwo = ((int)overallData.kpi.other.hotJobPrs.data.GreaterThanMinusOneWeeks).ToString();
+            TimeBucketThree = ((int)overallData.kpi.other.hotJobPrs.data.GreaterThanMinusTwoWeeks).ToString();
+            TimeBucketFour = ((int)overallData.kpi.other.hotJobPrs.data.GreaterThanMinusThreeWeeks).ToString();
+            TimeBucketFive = ((int)overallData.kpi.other.hotJobPrs.data.GreaterThanMinusFourWeeks).ToString();
+            TimeBucketSix = ((int)overallData.kpi.other.hotJobPrs.data.GreaterThanMinusFiveWeeks).ToString();
+            TimeBucketSeven = ((int)overallData.kpi.other.hotJobPrs.data.GreaterThanMinusSixWeeks).ToString();
+            TimeBucketEight = ((int)overallData.kpi.other.hotJobPrs.data.GreaterThanMinusSevenWeeks).ToString();
+            TimeBucketNine = ((int)overallData.kpi.other.hotJobPrs.data.GreaterThanMinusEightWeeks).ToString();
+            TimeBucketTen = ((int)overallData.kpi.other.hotJobPrs.data.LessThanEightWeeks).ToString();
 
 
             AnalysisOne = "- Will show fo rPRs which have Purchase Group of 'UHJ'.";
@@ -515,18 +516,19 @@ namespace KPA_KPI_Analyzer
             dp.addLabely(lbl_xLabelNine.Text, TimeBucketNine);
             dp.addLabely(lbl_xLabelTen.Text, TimeBucketTen);
 
-            TotalOrders = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.Total);
-            TotalValue = string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.TotalValue);
-            TimeBucketOne = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.Zero);
-            TimeBucketTwo = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessOneWeek);
-            TimeBucketThree = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessTwoWeeks);
-            TimeBucketFour = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessThreeWeeks);
-            TimeBucketFive = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessFourWeeks);
-            TimeBucketSix = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessFiveWeeks);
-            TimeBucketSeven = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessSixWeeks);
-            TimeBucketEight = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessSevenWeeks);
-            TimeBucketNine = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessEightWeeks);
-            TimeBucketTen = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessNinePlusWeeks);
+
+            TotalOrders = "$" + string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.Total);
+            TotalValue = "$" + string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.TotalValue);
+            TimeBucketOne = "$" + string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.ZeroWeeks);
+            TimeBucketTwo = "$" + string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusOneWeeks);
+            TimeBucketThree = "$" + string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusTwoWeeks);
+            TimeBucketFour = "$" + string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusThreeWeeks);
+            TimeBucketFive = "$" + string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusFourWeeks);
+            TimeBucketSix = "$" + string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusFiveWeeks);
+            TimeBucketSeven = "$" + string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusSixWeeks);
+            TimeBucketEight = "$" + string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusSevenWeeks);
+            TimeBucketNine = "$" + string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusEightWeeks);
+            TimeBucketTen = "$" + string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.LessThanEightWeeks);
 
 
             canvas.addData(dp);
@@ -610,55 +612,55 @@ namespace KPA_KPI_Analyzer
                                     }
                                     continue;
                                 case 2:
-                                    if (weeks < 0 && weeks >= (-1))
+                                    if (weeks >= (-1) && weeks < 0)
                                     {
                                         prsCreated.ImportRow(dr);
                                     }
                                     continue;
                                 case 3:
-                                    if (weeks < (-1) && weeks >= (-2))
+                                    if (weeks >= (-2) && weeks < (-1))
                                     {
                                         prsCreated.ImportRow(dr);
                                     }
                                     continue;
                                 case 4:
-                                    if (weeks < (-2) && weeks >= (-3))
+                                    if (weeks >= (-3) && weeks < (-2))
                                     {
                                         prsCreated.ImportRow(dr);
                                     }
                                     continue;
                                 case 5:
-                                    if (weeks < (-3) && weeks >= (-4))
+                                    if (weeks >= (-4) && weeks < (-3))
                                     {
                                         prsCreated.ImportRow(dr);
                                     }
                                     continue;
                                 case 6:
-                                    if (weeks < (-4) && weeks >= (-5))
+                                    if (weeks >= (-5) && weeks < (-4))
                                     {
                                         prsCreated.ImportRow(dr);
                                     }
                                     continue;
                                 case 7:
-                                    if (weeks < (-5) && weeks >= (-6))
+                                    if (weeks >= (-6) && weeks < (-5))
                                     {
                                         prsCreated.ImportRow(dr);
                                     }
                                     continue;
                                 case 8:
-                                    if (weeks < (-6) && weeks >= (-7))
+                                    if (weeks >= (-7) && weeks < (-6))
                                     {
                                         prsCreated.ImportRow(dr);
                                     }
                                     continue;
                                 case 9:
-                                    if (weeks < (-7) && weeks >= (-8))
+                                    if (weeks >= (-8) && weeks < (-7))
                                     {
                                         prsCreated.ImportRow(dr);
                                     }
                                     continue;
                                 case 10:
-                                    if (weeks <= (-9))
+                                    if (weeks < (-8))
                                     {
                                         prsCreated.ImportRow(dr);
                                     }
@@ -709,55 +711,55 @@ namespace KPA_KPI_Analyzer
                                     }
                                     continue;
                                 case 2:
-                                    if (weeks < 0 && weeks >= (-1))
+                                    if (weeks >= (-1) && weeks < 0)
                                     {
                                         prReleased.ImportRow(dr);
                                     }
                                     continue;
                                 case 3:
-                                    if (weeks < (-1) && weeks >= (-2))
+                                    if (weeks >= (-2) && weeks < (-1))
                                     {
                                         prReleased.ImportRow(dr);
                                     }
                                     continue;
                                 case 4:
-                                    if (weeks < (-2) && weeks >= (-3))
+                                    if (weeks >= (-3) && weeks < (-2))
                                     {
                                         prReleased.ImportRow(dr);
                                     }
                                     continue;
                                 case 5:
-                                    if (weeks < (-3) && weeks >= (-4))
+                                    if (weeks >= (-4) && weeks < (-3))
                                     {
                                         prReleased.ImportRow(dr);
                                     }
                                     continue;
                                 case 6:
-                                    if (weeks < (-4) && weeks >= (-5))
+                                    if (weeks >= (-5) && weeks < (-4))
                                     {
                                         prReleased.ImportRow(dr);
                                     }
                                     continue;
                                 case 7:
-                                    if (weeks < (-5) && weeks >= (-6))
+                                    if (weeks >= (-6) && weeks < (-5))
                                     {
                                         prReleased.ImportRow(dr);
                                     }
                                     continue;
                                 case 8:
-                                    if (weeks < (-6) && weeks >= (-7))
+                                    if (weeks >= (-7) && weeks < (-6))
                                     {
                                         prReleased.ImportRow(dr);
                                     }
                                     continue;
                                 case 9:
-                                    if (weeks < (-7) && weeks >= (-8))
+                                    if (weeks >= (-8) && weeks < (-7))
                                     {
                                         prReleased.ImportRow(dr);
                                     }
                                     continue;
                                 case 10:
-                                    if (weeks <= (-9))
+                                    if (weeks < (-8))
                                     {
                                         prReleased.ImportRow(dr);
                                     }
@@ -808,55 +810,55 @@ namespace KPA_KPI_Analyzer
                                     }
                                     continue;
                                 case 2:
-                                    if (weeks < 0 && weeks >= (-1))
+                                    if (weeks >= (-1) && weeks < 0)
                                     {
                                         totalSpend.ImportRow(dr);
                                     }
                                     continue;
                                 case 3:
-                                    if (weeks < (-1) && weeks >= (-2))
+                                    if (weeks >= (-2) && weeks < (-1))
                                     {
                                         totalSpend.ImportRow(dr);
                                     }
                                     continue;
                                 case 4:
-                                    if (weeks < (-2) && weeks >= (-3))
+                                    if (weeks >= (-3) && weeks < (-2))
                                     {
                                         totalSpend.ImportRow(dr);
                                     }
                                     continue;
                                 case 5:
-                                    if (weeks < (-3) && weeks >= (-4))
+                                    if (weeks >= (-4) && weeks < (-3))
                                     {
                                         totalSpend.ImportRow(dr);
                                     }
                                     continue;
                                 case 6:
-                                    if (weeks < (-4) && weeks >= (-5))
+                                    if (weeks >= (-5) && weeks < (-4))
                                     {
                                         totalSpend.ImportRow(dr);
                                     }
                                     continue;
                                 case 7:
-                                    if (weeks < (-5) && weeks >= (-6))
+                                    if (weeks >= (-6) && weeks < (-5))
                                     {
                                         totalSpend.ImportRow(dr);
                                     }
                                     continue;
                                 case 8:
-                                    if (weeks < (-6) && weeks >= (-7))
+                                    if (weeks >= (-7) && weeks < (-6))
                                     {
                                         totalSpend.ImportRow(dr);
                                     }
                                     continue;
                                 case 9:
-                                    if (weeks < (-7) && weeks >= (-8))
+                                    if (weeks >= (-8) && weeks < (-7))
                                     {
                                         totalSpend.ImportRow(dr);
                                     }
                                     continue;
                                 case 10:
-                                    if (weeks <= (-9))
+                                    if (weeks < (-8))
                                     {
                                         totalSpend.ImportRow(dr);
                                     }
@@ -908,55 +910,55 @@ namespace KPA_KPI_Analyzer
                                     }
                                     continue;
                                 case 2:
-                                    if (weeks < 0 && weeks >= (-1))
+                                    if (weeks >= (-1) && weeks < 0)
                                     {
                                         prVsPOValue.ImportRow(dr);
                                     }
                                     continue;
                                 case 3:
-                                    if (weeks < (-1) && weeks >= (-2))
+                                    if (weeks >= (-2) && weeks < (-1))
                                     {
                                         prVsPOValue.ImportRow(dr);
                                     }
                                     continue;
                                 case 4:
-                                    if (weeks < (-2) && weeks >= (-3))
+                                    if (weeks >= (-3) && weeks < (-2))
                                     {
                                         prVsPOValue.ImportRow(dr);
                                     }
                                     continue;
                                 case 5:
-                                    if (weeks < (-3) && weeks >= (-4))
+                                    if (weeks >= (-4) && weeks < (-3))
                                     {
                                         prVsPOValue.ImportRow(dr);
                                     }
                                     continue;
                                 case 6:
-                                    if (weeks < (-4) && weeks >= (-5))
+                                    if (weeks >= (-5) && weeks < (-4))
                                     {
                                         prVsPOValue.ImportRow(dr);
                                     }
                                     continue;
                                 case 7:
-                                    if (weeks < (-5) && weeks >= (-6))
+                                    if (weeks >= (-6) && weeks < (-5))
                                     {
                                         prVsPOValue.ImportRow(dr);
                                     }
                                     continue;
                                 case 8:
-                                    if (weeks < (-6) && weeks >= (-7))
+                                    if (weeks >= (-7) && weeks < (-6))
                                     {
                                         prVsPOValue.ImportRow(dr);
                                     }
                                     continue;
                                 case 9:
-                                    if (weeks < (-7) && weeks >= (-8))
+                                    if (weeks >= (-8) && weeks < (-7))
                                     {
                                         prVsPOValue.ImportRow(dr);
                                     }
                                     continue;
                                 case 10:
-                                    if (weeks <= (-9))
+                                    if (weeks < (-8))
                                     {
                                         prVsPOValue.ImportRow(dr);
                                     }
@@ -1010,55 +1012,55 @@ namespace KPA_KPI_Analyzer
                                     }
                                     continue;
                                 case 2:
-                                    if (weeks < 0 && weeks >= (-1))
+                                    if (weeks >= (-1) && weeks < 0)
                                     {
                                         hotJobPRs.ImportRow(dr);
                                     }
                                     continue;
                                 case 3:
-                                    if (weeks < (-1) && weeks >= (-2))
+                                    if (weeks >= (-2) && weeks < (-1))
                                     {
                                         hotJobPRs.ImportRow(dr);
                                     }
                                     continue;
                                 case 4:
-                                    if (weeks < (-2) && weeks >= (-3))
+                                    if (weeks >= (-3) && weeks < (-2))
                                     {
                                         hotJobPRs.ImportRow(dr);
                                     }
                                     continue;
                                 case 5:
-                                    if (weeks < (-3) && weeks >= (-4))
+                                    if (weeks >= (-4) && weeks < (-3))
                                     {
                                         hotJobPRs.ImportRow(dr);
                                     }
                                     continue;
                                 case 6:
-                                    if (weeks < (-4) && weeks >= (-5))
+                                    if (weeks >= (-5) && weeks < (-4))
                                     {
                                         hotJobPRs.ImportRow(dr);
                                     }
                                     continue;
                                 case 7:
-                                    if (weeks < (-5) && weeks >= (-6))
+                                    if (weeks >= (-6) && weeks < (-5))
                                     {
                                         hotJobPRs.ImportRow(dr);
                                     }
                                     continue;
                                 case 8:
-                                    if (weeks < (-6) && weeks >= (-7))
+                                    if (weeks >= (-7) && weeks < (-6))
                                     {
                                         hotJobPRs.ImportRow(dr);
                                     }
                                     continue;
                                 case 9:
-                                    if (weeks < (-7) && weeks >= (-8))
+                                    if (weeks >= (-8) && weeks < (-7))
                                     {
                                         hotJobPRs.ImportRow(dr);
                                     }
                                     continue;
                                 case 10:
-                                    if (weeks <= (-9))
+                                    if (weeks < (-8))
                                     {
                                         hotJobPRs.ImportRow(dr);
                                     }

@@ -3,16 +3,16 @@
     public class TempFive
     {
         public decimal TotalValue { get; set; }
-        public int Zero { get; set; }
-        public int LessOneWeek { get; set; }
-        public int LessTwoWeeks { get; set; }
-        public int LessThreeWeeks { get; set; }
-        public int LessFourWeeks { get; set; }
-        public int LessFiveWeeks { get; set; }
-        public int LessSixWeeks { get; set; }
-        public int LessSevenWeeks { get; set; }
-        public int LessEightWeeks { get; set; }
-        public int LessNinePlusWeeks { get; set; }
+        public decimal ZeroWeeks { get; set; }
+        public decimal GreaterThanMinusOneWeeks { get; set; }
+        public decimal GreaterThanMinusTwoWeeks { get; set; }
+        public decimal GreaterThanMinusThreeWeeks { get; set; }
+        public decimal GreaterThanMinusFourWeeks { get; set; }
+        public decimal GreaterThanMinusFiveWeeks { get; set; }
+        public decimal GreaterThanMinusSixWeeks { get; set; }
+        public decimal GreaterThanMinusSevenWeeks { get; set; }
+        public decimal GreaterThanMinusEightWeeks { get; set; }
+        public decimal LessThanEightWeeks { get; set; }
         public int Total { get; set; }
 
 
@@ -23,16 +23,16 @@
         public void ClearData()
         {
             TotalValue = 0;
-            Zero = 0;
-            LessOneWeek = 0;
-            LessTwoWeeks = 0;
-            LessThreeWeeks = 0;
-            LessFourWeeks = 0;
-            LessFiveWeeks = 0;
-            LessSixWeeks = 0;
-            LessSevenWeeks = 0;
-            LessEightWeeks = 0;
-            LessNinePlusWeeks = 0;
+            ZeroWeeks = 0;
+            GreaterThanMinusOneWeeks = 0;
+            GreaterThanMinusTwoWeeks = 0;
+            GreaterThanMinusThreeWeeks = 0;
+            GreaterThanMinusFourWeeks = 0;
+            GreaterThanMinusFiveWeeks = 0;
+            GreaterThanMinusSixWeeks = 0;
+            GreaterThanMinusSevenWeeks = 0;
+            GreaterThanMinusEightWeeks = 0;
+            LessThanEightWeeks = 0;
             Total = 0;
         }
     }
