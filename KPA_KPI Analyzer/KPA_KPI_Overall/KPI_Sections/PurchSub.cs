@@ -3,6 +3,7 @@ using KPA_KPI_Analyzer.Templates;
 using System;
 using System.Data;
 using System.Windows.Forms;
+using KPA_KPI_Analyzer.FilterFeeature;
 
 
 namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
@@ -39,6 +40,53 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                 foreach (DataRow dr in Overall.prsOnPOsDt.Rows)
                 {
+                    if (Filters.FilterByPrDateRange)
+                    {
+                        // The user wants to filter by PR date range
+                        string[] requisnDate = (dr["Requisn Date"].ToString()).Split('/');
+                        int reqYear = int.Parse(requisnDate[2]);
+                        int reqMonth = int.Parse(requisnDate[0].TrimStart('0'));
+                        int reqDay = int.Parse(requisnDate[1].TrimStart('0'));
+                        DateTime reqTestDate = new DateTime(reqYear, reqMonth, reqDay);
+
+                        if (reqTestDate < Filters.PrFromDate || reqTestDate > Filters.PrToDate)
+                        {
+                            // The PR date is not within the PR date range.
+                            continue;
+                        }
+                    }
+
+                    if (Filters.FilterByPoDateRange)
+                    {
+                        // The user wnats to filter by PO date range
+                        string[] strPODate = (dr["PO Date"].ToString()).Split('/');
+                        int poYear = int.Parse(strPODate[2]);
+                        int poMonth = int.Parse(strPODate[0]);
+                        int poDay = int.Parse(strPODate[1]);
+
+                        if (poYear == 0 && poMonth == 0 && poDay == 0)
+                        {
+                            // This record is not a PO so we dont care about it
+                            continue;
+                        }
+                        else
+                        {
+                            poYear = int.Parse(strPODate[2]);
+                            poMonth = int.Parse(strPODate[0].TrimStart('0'));
+                            poDay = int.Parse(strPODate[1].TrimStart('0'));
+                        }
+
+                        DateTime poTestDate = new DateTime(poYear, poMonth, poDay);
+
+                        if (poTestDate < Filters.PoFromDate || poTestDate > Filters.PoToDate)
+                        {
+                            // The PO date is not within the PO date range.
+                            continue;
+                        }
+                    }
+
+
+
                     string[] strPOLineFirstRelDate = (dr["PO Line 1st Rel Dt"].ToString()).Split('/');
                     int poLineFirstRelYear = int.Parse(strPOLineFirstRelDate[2]);
                     int poLineFirstRelMonth = int.Parse(strPOLineFirstRelDate[0]);
@@ -117,6 +165,8 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 try
                 {
                     prRelVsPORel.data.Average = Math.Round(totalDays / prRelVsPORel.data.Total, 2);
+                    if (double.IsNaN(prRelVsPORel.data.Average))
+                        prRelVsPORel.data.Average = 0;
                 }
                 catch (DivideByZeroException)
                 {
@@ -135,6 +185,53 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                 foreach (DataRow dr in Overall.prsOnPOsDt.Rows)
                 {
+                    if (Filters.FilterByPrDateRange)
+                    {
+                        // The user wants to filter by PR date range
+                        string[] requisnDate = (dr["Requisn Date"].ToString()).Split('/');
+                        int reqYear = int.Parse(requisnDate[2]);
+                        int reqMonth = int.Parse(requisnDate[0].TrimStart('0'));
+                        int reqDay = int.Parse(requisnDate[1].TrimStart('0'));
+                        DateTime reqTestDate = new DateTime(reqYear, reqMonth, reqDay);
+
+                        if (reqTestDate < Filters.PrFromDate || reqTestDate > Filters.PrToDate)
+                        {
+                            // The PR date is not within the PR date range.
+                            continue;
+                        }
+                    }
+
+                    if (Filters.FilterByPoDateRange)
+                    {
+                        // The user wnats to filter by PO date range
+                        string[] strPODate = (dr["PO Date"].ToString()).Split('/');
+                        int poYear = int.Parse(strPODate[2]);
+                        int poMonth = int.Parse(strPODate[0]);
+                        int poDay = int.Parse(strPODate[1]);
+
+                        if (poYear == 0 && poMonth == 0 && poDay == 0)
+                        {
+                            // This record is not a PO so we dont care about it
+                            continue;
+                        }
+                        else
+                        {
+                            poYear = int.Parse(strPODate[2]);
+                            poMonth = int.Parse(strPODate[0].TrimStart('0'));
+                            poDay = int.Parse(strPODate[1].TrimStart('0'));
+                        }
+
+                        DateTime poTestDate = new DateTime(poYear, poMonth, poDay);
+
+                        if (poTestDate < Filters.PoFromDate || poTestDate > Filters.PoToDate)
+                        {
+                            // The PO date is not within the PO date range.
+                            continue;
+                        }
+                    }
+
+
+
                     tempTotal++;
                     string[] strFirstConfCreateDate = (dr["1st Conf Creation Da"].ToString()).Split('/');
                     int poLineFirstConfCreateYear = int.Parse(strFirstConfCreateDate[2]);
@@ -221,6 +318,8 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 try
                 {
                     poCreateVsConfEntry.data.Average = Math.Round(totalDays / poCreateVsConfEntry.data.Total, 2);
+                    if (double.IsNaN(poCreateVsConfEntry.data.Average))
+                        poCreateVsConfEntry.data.Average = 0;
                 }
                 catch (DivideByZeroException)
                 {

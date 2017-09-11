@@ -43,8 +43,8 @@
             this.bunifuCustomLabel14 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.ChkdListBx_PurchGroup = new System.Windows.Forms.CheckedListBox();
             this.panel27 = new System.Windows.Forms.Panel();
-            this.poDateSwitch = new Bunifu.Framework.UI.BunifuSwitch();
-            this.prDateSwitch = new Bunifu.Framework.UI.BunifuSwitch();
+            this.chkBox_PoDateRange = new Bunifu.Framework.UI.BunifuCheckbox();
+            this.chkBox_PrDateRange = new Bunifu.Framework.UI.BunifuCheckbox();
             this.bunifuCustomLabel7 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel5 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.dp_POToDate = new Bunifu.Framework.UI.BunifuDatepicker();
@@ -91,6 +91,12 @@
             this.DataRemovalTimer = new System.Windows.Forms.Timer(this.components);
             this.DataLoaderTimer = new System.Windows.Forms.Timer(this.components);
             this.pnl_activePage = new System.Windows.Forms.Panel();
+            this.pnl_loadingScreen = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.bunifuCircleProgressbar2 = new Bunifu.Framework.UI.BunifuCircleProgressbar();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.lbl_loadingStatus = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.pnl_NavigationPanelMax = new System.Windows.Forms.Panel();
             this.pnl_KPISectionsPanel = new System.Windows.Forms.Panel();
             this.btn_kpiOther = new System.Windows.Forms.Button();
@@ -124,12 +130,6 @@
             this.btn_Dashboard = new Bunifu.Framework.UI.BunifuImageButton();
             this.btn_Charts = new Bunifu.Framework.UI.BunifuImageButton();
             this.btn_Filters = new Bunifu.Framework.UI.BunifuImageButton();
-            this.pnl_loadingScreen = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.bunifuCircleProgressbar2 = new Bunifu.Framework.UI.BunifuCircleProgressbar();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.lbl_loadingStatus = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.pnl_CountrySelector = new System.Windows.Forms.Panel();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -190,6 +190,10 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.pnl_activePage.SuspendLayout();
+            this.pnl_loadingScreen.SuspendLayout();
+            this.tableLayoutPanel9.SuspendLayout();
+            this.panel9.SuspendLayout();
+            this.panel10.SuspendLayout();
             this.pnl_NavigationPanelMax.SuspendLayout();
             this.pnl_KPISectionsPanel.SuspendLayout();
             this.pnl_KPASectionsPanel.SuspendLayout();
@@ -197,10 +201,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btn_Dashboard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Charts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Filters)).BeginInit();
-            this.pnl_loadingScreen.SuspendLayout();
-            this.tableLayoutPanel9.SuspendLayout();
-            this.panel9.SuspendLayout();
-            this.panel10.SuspendLayout();
             this.pnl_CountrySelector.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -372,7 +372,7 @@
             this.bunifuCustomLabel14.AutoSize = true;
             this.bunifuCustomLabel14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bunifuCustomLabel14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel14.ForeColor = System.Drawing.Color.Teal;
+            this.bunifuCustomLabel14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
             this.bunifuCustomLabel14.Location = new System.Drawing.Point(3, 0);
             this.bunifuCustomLabel14.Name = "bunifuCustomLabel14";
             this.bunifuCustomLabel14.Size = new System.Drawing.Size(184, 15);
@@ -395,8 +395,8 @@
             // panel27
             // 
             this.tblpnl_Filters.SetColumnSpan(this.panel27, 6);
-            this.panel27.Controls.Add(this.poDateSwitch);
-            this.panel27.Controls.Add(this.prDateSwitch);
+            this.panel27.Controls.Add(this.chkBox_PoDateRange);
+            this.panel27.Controls.Add(this.chkBox_PrDateRange);
             this.panel27.Controls.Add(this.bunifuCustomLabel7);
             this.panel27.Controls.Add(this.bunifuCustomLabel5);
             this.panel27.Controls.Add(this.dp_POToDate);
@@ -411,39 +411,31 @@
             this.panel27.Size = new System.Drawing.Size(1174, 149);
             this.panel27.TabIndex = 3;
             // 
-            // poDateSwitch
+            // chkBox_PoDateRange
             // 
-            this.poDateSwitch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.poDateSwitch.BorderRadius = 0;
-            this.poDateSwitch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.poDateSwitch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.poDateSwitch.Location = new System.Drawing.Point(105, 79);
-            this.poDateSwitch.Name = "poDateSwitch";
-            this.poDateSwitch.Oncolor = System.Drawing.Color.Teal;
-            this.poDateSwitch.Onoffcolor = System.Drawing.Color.DarkGray;
-            this.poDateSwitch.Size = new System.Drawing.Size(51, 19);
-            this.poDateSwitch.TabIndex = 3;
-            this.poDateSwitch.Tag = "1";
-            this.poDateSwitch.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.poDateSwitch.Value = false;
-            this.poDateSwitch.Click += new System.EventHandler(this.switch_ValueChange);
+            this.chkBox_PoDateRange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
+            this.chkBox_PoDateRange.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
+            this.chkBox_PoDateRange.Checked = false;
+            this.chkBox_PoDateRange.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
+            this.chkBox_PoDateRange.ForeColor = System.Drawing.Color.White;
+            this.chkBox_PoDateRange.Location = new System.Drawing.Point(7, 73);
+            this.chkBox_PoDateRange.Name = "chkBox_PoDateRange";
+            this.chkBox_PoDateRange.Size = new System.Drawing.Size(20, 20);
+            this.chkBox_PoDateRange.TabIndex = 3;
+            this.chkBox_PoDateRange.OnChange += new System.EventHandler(this.poDateRangeCheckBox_OnChange);
             // 
-            // prDateSwitch
+            // chkBox_PrDateRange
             // 
-            this.prDateSwitch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.prDateSwitch.BorderRadius = 0;
-            this.prDateSwitch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.prDateSwitch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.prDateSwitch.Location = new System.Drawing.Point(105, 4);
-            this.prDateSwitch.Name = "prDateSwitch";
-            this.prDateSwitch.Oncolor = System.Drawing.Color.Teal;
-            this.prDateSwitch.Onoffcolor = System.Drawing.Color.DarkGray;
-            this.prDateSwitch.Size = new System.Drawing.Size(51, 19);
-            this.prDateSwitch.TabIndex = 3;
-            this.prDateSwitch.Tag = "0";
-            this.prDateSwitch.Textcolor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.prDateSwitch.Value = false;
-            this.prDateSwitch.Click += new System.EventHandler(this.switch_ValueChange);
+            this.chkBox_PrDateRange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
+            this.chkBox_PrDateRange.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
+            this.chkBox_PrDateRange.Checked = false;
+            this.chkBox_PrDateRange.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
+            this.chkBox_PrDateRange.ForeColor = System.Drawing.Color.White;
+            this.chkBox_PrDateRange.Location = new System.Drawing.Point(7, 6);
+            this.chkBox_PrDateRange.Name = "chkBox_PrDateRange";
+            this.chkBox_PrDateRange.Size = new System.Drawing.Size(20, 20);
+            this.chkBox_PrDateRange.TabIndex = 3;
+            this.chkBox_PrDateRange.OnChange += new System.EventHandler(this.prDateRangeCheckBox_OnChange);
             // 
             // bunifuCustomLabel7
             // 
@@ -457,7 +449,7 @@
             // bunifuCustomLabel5
             // 
             this.bunifuCustomLabel5.AutoSize = true;
-            this.bunifuCustomLabel5.Location = new System.Drawing.Point(237, 31);
+            this.bunifuCustomLabel5.Location = new System.Drawing.Point(237, 39);
             this.bunifuCustomLabel5.Name = "bunifuCustomLabel5";
             this.bunifuCustomLabel5.Size = new System.Drawing.Size(16, 13);
             this.bunifuCustomLabel5.TabIndex = 2;
@@ -485,7 +477,7 @@
             this.dp_PRToDate.ForeColor = System.Drawing.Color.DimGray;
             this.dp_PRToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dp_PRToDate.FormatCustom = "MMMM dd, yyyy";
-            this.dp_PRToDate.Location = new System.Drawing.Point(259, 25);
+            this.dp_PRToDate.Location = new System.Drawing.Point(259, 33);
             this.dp_PRToDate.Name = "dp_PRToDate";
             this.dp_PRToDate.Size = new System.Drawing.Size(224, 29);
             this.dp_PRToDate.TabIndex = 1;
@@ -513,11 +505,12 @@
             this.bunifuCustomLabel6.AutoSize = true;
             this.bunifuCustomLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel6.ForeColor = System.Drawing.Color.DimGray;
-            this.bunifuCustomLabel6.Location = new System.Drawing.Point(4, 80);
+            this.bunifuCustomLabel6.Location = new System.Drawing.Point(39, 77);
             this.bunifuCustomLabel6.Name = "bunifuCustomLabel6";
             this.bunifuCustomLabel6.Size = new System.Drawing.Size(100, 13);
             this.bunifuCustomLabel6.TabIndex = 0;
             this.bunifuCustomLabel6.Text = "PO Date Range:";
+            this.bunifuCustomLabel6.Click += new System.EventHandler(this.poDateRangeLabel_Click);
             // 
             // dp_PRFromDate
             // 
@@ -526,7 +519,7 @@
             this.dp_PRFromDate.ForeColor = System.Drawing.Color.DimGray;
             this.dp_PRFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dp_PRFromDate.FormatCustom = "MMMM dd, yyyy";
-            this.dp_PRFromDate.Location = new System.Drawing.Point(7, 25);
+            this.dp_PRFromDate.Location = new System.Drawing.Point(7, 33);
             this.dp_PRFromDate.Name = "dp_PRFromDate";
             this.dp_PRFromDate.Size = new System.Drawing.Size(224, 29);
             this.dp_PRFromDate.TabIndex = 1;
@@ -539,11 +532,12 @@
             this.bunifuCustomLabel4.AutoSize = true;
             this.bunifuCustomLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel4.ForeColor = System.Drawing.Color.DimGray;
-            this.bunifuCustomLabel4.Location = new System.Drawing.Point(4, 6);
+            this.bunifuCustomLabel4.Location = new System.Drawing.Point(38, 9);
             this.bunifuCustomLabel4.Name = "bunifuCustomLabel4";
             this.bunifuCustomLabel4.Size = new System.Drawing.Size(100, 13);
             this.bunifuCustomLabel4.TabIndex = 0;
             this.bunifuCustomLabel4.Text = "PR Date Range:";
+            this.bunifuCustomLabel4.Click += new System.EventHandler(this.prDateRangeLabel_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -566,7 +560,7 @@
             this.bunifuCustomLabel8.AutoSize = true;
             this.bunifuCustomLabel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bunifuCustomLabel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel8.ForeColor = System.Drawing.Color.Teal;
+            this.bunifuCustomLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
             this.bunifuCustomLabel8.Location = new System.Drawing.Point(3, 0);
             this.bunifuCustomLabel8.Name = "bunifuCustomLabel8";
             this.bunifuCustomLabel8.Size = new System.Drawing.Size(184, 15);
@@ -606,7 +600,7 @@
             this.bunifuCustomLabel19.AutoSize = true;
             this.bunifuCustomLabel19.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bunifuCustomLabel19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel19.ForeColor = System.Drawing.Color.Teal;
+            this.bunifuCustomLabel19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
             this.bunifuCustomLabel19.Location = new System.Drawing.Point(3, 0);
             this.bunifuCustomLabel19.Name = "bunifuCustomLabel19";
             this.bunifuCustomLabel19.Size = new System.Drawing.Size(184, 15);
@@ -647,7 +641,7 @@
             this.bunifuCustomLabel20.AutoSize = true;
             this.bunifuCustomLabel20.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bunifuCustomLabel20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel20.ForeColor = System.Drawing.Color.Teal;
+            this.bunifuCustomLabel20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
             this.bunifuCustomLabel20.Location = new System.Drawing.Point(3, 0);
             this.bunifuCustomLabel20.Name = "bunifuCustomLabel20";
             this.bunifuCustomLabel20.Size = new System.Drawing.Size(184, 15);
@@ -688,7 +682,7 @@
             this.bunifuCustomLabel22.AutoSize = true;
             this.bunifuCustomLabel22.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bunifuCustomLabel22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel22.ForeColor = System.Drawing.Color.Teal;
+            this.bunifuCustomLabel22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
             this.bunifuCustomLabel22.Location = new System.Drawing.Point(3, 0);
             this.bunifuCustomLabel22.Name = "bunifuCustomLabel22";
             this.bunifuCustomLabel22.Size = new System.Drawing.Size(184, 15);
@@ -729,7 +723,7 @@
             this.bunifuCustomLabel24.AutoSize = true;
             this.bunifuCustomLabel24.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bunifuCustomLabel24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel24.ForeColor = System.Drawing.Color.Teal;
+            this.bunifuCustomLabel24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
             this.bunifuCustomLabel24.Location = new System.Drawing.Point(3, 0);
             this.bunifuCustomLabel24.Name = "bunifuCustomLabel24";
             this.bunifuCustomLabel24.Size = new System.Drawing.Size(184, 15);
@@ -781,7 +775,7 @@
             this.bunifuCustomLabel13.AutoSize = true;
             this.bunifuCustomLabel13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bunifuCustomLabel13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel13.ForeColor = System.Drawing.Color.Teal;
+            this.bunifuCustomLabel13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
             this.bunifuCustomLabel13.Location = new System.Drawing.Point(3, 0);
             this.bunifuCustomLabel13.Name = "bunifuCustomLabel13";
             this.bunifuCustomLabel13.Size = new System.Drawing.Size(188, 15);
@@ -821,7 +815,7 @@
             this.bunifuCustomLabel12.AutoSize = true;
             this.bunifuCustomLabel12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bunifuCustomLabel12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel12.ForeColor = System.Drawing.Color.Teal;
+            this.bunifuCustomLabel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
             this.bunifuCustomLabel12.Location = new System.Drawing.Point(3, 0);
             this.bunifuCustomLabel12.Name = "bunifuCustomLabel12";
             this.bunifuCustomLabel12.Size = new System.Drawing.Size(184, 15);
@@ -861,7 +855,7 @@
             this.bunifuCustomLabel10.AutoSize = true;
             this.bunifuCustomLabel10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bunifuCustomLabel10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel10.ForeColor = System.Drawing.Color.Teal;
+            this.bunifuCustomLabel10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
             this.bunifuCustomLabel10.Location = new System.Drawing.Point(3, 0);
             this.bunifuCustomLabel10.Name = "bunifuCustomLabel10";
             this.bunifuCustomLabel10.Size = new System.Drawing.Size(184, 15);
@@ -901,7 +895,7 @@
             this.bunifuCustomLabel9.AutoSize = true;
             this.bunifuCustomLabel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bunifuCustomLabel9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel9.ForeColor = System.Drawing.Color.Teal;
+            this.bunifuCustomLabel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
             this.bunifuCustomLabel9.Location = new System.Drawing.Point(3, 0);
             this.bunifuCustomLabel9.Name = "bunifuCustomLabel9";
             this.bunifuCustomLabel9.Size = new System.Drawing.Size(184, 15);
@@ -941,7 +935,7 @@
             this.bunifuCustomLabel18.AutoSize = true;
             this.bunifuCustomLabel18.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bunifuCustomLabel18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel18.ForeColor = System.Drawing.Color.Teal;
+            this.bunifuCustomLabel18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
             this.bunifuCustomLabel18.Location = new System.Drawing.Point(3, 0);
             this.bunifuCustomLabel18.Name = "bunifuCustomLabel18";
             this.bunifuCustomLabel18.Size = new System.Drawing.Size(184, 15);
@@ -1082,10 +1076,10 @@
             // 
             // pnl_activePage
             // 
+            this.pnl_activePage.Controls.Add(this.tblpnl_Filters);
             this.pnl_activePage.Controls.Add(this.pnl_loadingScreen);
             this.pnl_activePage.Controls.Add(this.pnl_NavigationPanelMax);
             this.pnl_activePage.Controls.Add(this.pnl_CountrySelector);
-            this.pnl_activePage.Controls.Add(this.tblpnl_Filters);
             this.pnl_activePage.Controls.Add(this.tblpnl_DragDrop);
             this.pnl_activePage.Controls.Add(this.tblpnl_DashbaordPage);
             this.pnl_activePage.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1094,6 +1088,87 @@
             this.pnl_activePage.Size = new System.Drawing.Size(1200, 623);
             this.pnl_activePage.TabIndex = 44;
             this.pnl_activePage.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.pnl_activePage_ControlAdded);
+            // 
+            // pnl_loadingScreen
+            // 
+            this.pnl_loadingScreen.Controls.Add(this.tableLayoutPanel9);
+            this.pnl_loadingScreen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_loadingScreen.Location = new System.Drawing.Point(0, 0);
+            this.pnl_loadingScreen.Name = "pnl_loadingScreen";
+            this.pnl_loadingScreen.Size = new System.Drawing.Size(1200, 623);
+            this.pnl_loadingScreen.TabIndex = 0;
+            // 
+            // tableLayoutPanel9
+            // 
+            this.tableLayoutPanel9.ColumnCount = 3;
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 234F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel9.Controls.Add(this.panel9, 1, 1);
+            this.tableLayoutPanel9.Controls.Add(this.panel10, 1, 2);
+            this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
+            this.tableLayoutPanel9.RowCount = 4;
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 234F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(1200, 623);
+            this.tableLayoutPanel9.TabIndex = 1;
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.bunifuCircleProgressbar2);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel9.Location = new System.Drawing.Point(483, 177);
+            this.panel9.Margin = new System.Windows.Forms.Padding(0);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(234, 234);
+            this.panel9.TabIndex = 0;
+            // 
+            // bunifuCircleProgressbar2
+            // 
+            this.bunifuCircleProgressbar2.animated = true;
+            this.bunifuCircleProgressbar2.animationIterval = 5;
+            this.bunifuCircleProgressbar2.animationSpeed = 300;
+            this.bunifuCircleProgressbar2.BackColor = System.Drawing.SystemColors.Control;
+            this.bunifuCircleProgressbar2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuCircleProgressbar2.BackgroundImage")));
+            this.bunifuCircleProgressbar2.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F);
+            this.bunifuCircleProgressbar2.ForeColor = System.Drawing.Color.SeaGreen;
+            this.bunifuCircleProgressbar2.LabelVisible = false;
+            this.bunifuCircleProgressbar2.LineProgressThickness = 8;
+            this.bunifuCircleProgressbar2.LineThickness = 5;
+            this.bunifuCircleProgressbar2.Location = new System.Drawing.Point(10, 9);
+            this.bunifuCircleProgressbar2.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.bunifuCircleProgressbar2.MaxValue = 100;
+            this.bunifuCircleProgressbar2.Name = "bunifuCircleProgressbar2";
+            this.bunifuCircleProgressbar2.ProgressBackColor = System.Drawing.Color.Gainsboro;
+            this.bunifuCircleProgressbar2.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
+            this.bunifuCircleProgressbar2.Size = new System.Drawing.Size(216, 216);
+            this.bunifuCircleProgressbar2.TabIndex = 2;
+            this.bunifuCircleProgressbar2.Value = 25;
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.lbl_loadingStatus);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel10.Location = new System.Drawing.Point(483, 411);
+            this.panel10.Margin = new System.Windows.Forms.Padding(0);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(234, 34);
+            this.panel10.TabIndex = 1;
+            // 
+            // lbl_loadingStatus
+            // 
+            this.lbl_loadingStatus.AutoSize = true;
+            this.lbl_loadingStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_loadingStatus.ForeColor = System.Drawing.Color.DimGray;
+            this.lbl_loadingStatus.Location = new System.Drawing.Point(64, 7);
+            this.lbl_loadingStatus.Name = "lbl_loadingStatus";
+            this.lbl_loadingStatus.Size = new System.Drawing.Size(105, 20);
+            this.lbl_loadingStatus.TabIndex = 0;
+            this.lbl_loadingStatus.Text = "Loading Data";
             // 
             // pnl_NavigationPanelMax
             // 
@@ -1752,87 +1827,6 @@
             this.btn_Filters.Zoom = 0;
             this.btn_Filters.Click += new System.EventHandler(this.mainNavButton_Click);
             // 
-            // pnl_loadingScreen
-            // 
-            this.pnl_loadingScreen.Controls.Add(this.tableLayoutPanel9);
-            this.pnl_loadingScreen.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_loadingScreen.Location = new System.Drawing.Point(0, 0);
-            this.pnl_loadingScreen.Name = "pnl_loadingScreen";
-            this.pnl_loadingScreen.Size = new System.Drawing.Size(1200, 623);
-            this.pnl_loadingScreen.TabIndex = 0;
-            // 
-            // tableLayoutPanel9
-            // 
-            this.tableLayoutPanel9.ColumnCount = 3;
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 234F));
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.Controls.Add(this.panel9, 1, 1);
-            this.tableLayoutPanel9.Controls.Add(this.panel10, 1, 2);
-            this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
-            this.tableLayoutPanel9.RowCount = 4;
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 234F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(1200, 623);
-            this.tableLayoutPanel9.TabIndex = 1;
-            // 
-            // panel9
-            // 
-            this.panel9.Controls.Add(this.bunifuCircleProgressbar2);
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel9.Location = new System.Drawing.Point(483, 177);
-            this.panel9.Margin = new System.Windows.Forms.Padding(0);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(234, 234);
-            this.panel9.TabIndex = 0;
-            // 
-            // bunifuCircleProgressbar2
-            // 
-            this.bunifuCircleProgressbar2.animated = true;
-            this.bunifuCircleProgressbar2.animationIterval = 5;
-            this.bunifuCircleProgressbar2.animationSpeed = 300;
-            this.bunifuCircleProgressbar2.BackColor = System.Drawing.SystemColors.Control;
-            this.bunifuCircleProgressbar2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuCircleProgressbar2.BackgroundImage")));
-            this.bunifuCircleProgressbar2.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F);
-            this.bunifuCircleProgressbar2.ForeColor = System.Drawing.Color.SeaGreen;
-            this.bunifuCircleProgressbar2.LabelVisible = false;
-            this.bunifuCircleProgressbar2.LineProgressThickness = 8;
-            this.bunifuCircleProgressbar2.LineThickness = 5;
-            this.bunifuCircleProgressbar2.Location = new System.Drawing.Point(10, 9);
-            this.bunifuCircleProgressbar2.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
-            this.bunifuCircleProgressbar2.MaxValue = 100;
-            this.bunifuCircleProgressbar2.Name = "bunifuCircleProgressbar2";
-            this.bunifuCircleProgressbar2.ProgressBackColor = System.Drawing.Color.Gainsboro;
-            this.bunifuCircleProgressbar2.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
-            this.bunifuCircleProgressbar2.Size = new System.Drawing.Size(216, 216);
-            this.bunifuCircleProgressbar2.TabIndex = 2;
-            this.bunifuCircleProgressbar2.Value = 25;
-            // 
-            // panel10
-            // 
-            this.panel10.Controls.Add(this.lbl_loadingStatus);
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel10.Location = new System.Drawing.Point(483, 411);
-            this.panel10.Margin = new System.Windows.Forms.Padding(0);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(234, 34);
-            this.panel10.TabIndex = 1;
-            // 
-            // lbl_loadingStatus
-            // 
-            this.lbl_loadingStatus.AutoSize = true;
-            this.lbl_loadingStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_loadingStatus.ForeColor = System.Drawing.Color.DimGray;
-            this.lbl_loadingStatus.Location = new System.Drawing.Point(64, 7);
-            this.lbl_loadingStatus.Name = "lbl_loadingStatus";
-            this.lbl_loadingStatus.Size = new System.Drawing.Size(105, 20);
-            this.lbl_loadingStatus.TabIndex = 0;
-            this.lbl_loadingStatus.Text = "Loading Data";
-            // 
             // pnl_CountrySelector
             // 
             this.pnl_CountrySelector.Controls.Add(this.tableLayoutPanel8);
@@ -2453,6 +2447,11 @@
             this.tableLayoutPanel7.PerformLayout();
             this.pnl_activePage.ResumeLayout(false);
             this.pnl_activePage.PerformLayout();
+            this.pnl_loadingScreen.ResumeLayout(false);
+            this.tableLayoutPanel9.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
             this.pnl_NavigationPanelMax.ResumeLayout(false);
             this.pnl_NavigationPanelMax.PerformLayout();
             this.pnl_KPISectionsPanel.ResumeLayout(false);
@@ -2461,11 +2460,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btn_Dashboard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Charts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Filters)).EndInit();
-            this.pnl_loadingScreen.ResumeLayout(false);
-            this.tableLayoutPanel9.ResumeLayout(false);
-            this.panel9.ResumeLayout(false);
-            this.panel10.ResumeLayout(false);
-            this.panel10.PerformLayout();
             this.pnl_CountrySelector.ResumeLayout(false);
             this.tableLayoutPanel8.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
@@ -2580,8 +2574,6 @@
         private System.Windows.Forms.Panel panel10;
         private Bunifu.Framework.UI.BunifuCustomLabel lbl_loadingStatus;
         private System.Windows.Forms.CheckedListBox ChkdListBx_WBSElement;
-        private Bunifu.Framework.UI.BunifuSwitch poDateSwitch;
-        private Bunifu.Framework.UI.BunifuSwitch prDateSwitch;
         private Bunifu.Framework.UI.BunifuDragControl dc_appTitle;
         private Bunifu.Framework.UI.BunifuDragControl dc_countryLbl;
         private Bunifu.Framework.UI.BunifuDragControl lbl_selectedCountry;
@@ -2642,6 +2634,8 @@
         private Bunifu.Framework.UI.BunifuFlatButton btn_KPI;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private Bunifu.Framework.UI.BunifuImageButton btn_NavExpander;
+        private Bunifu.Framework.UI.BunifuCheckbox chkBox_PoDateRange;
+        private Bunifu.Framework.UI.BunifuCheckbox chkBox_PrDateRange;
     }
 }
 

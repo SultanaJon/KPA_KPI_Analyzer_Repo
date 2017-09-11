@@ -78,7 +78,11 @@ namespace KPA_KPI_Analyzer
         {
             mainNavActiveBtn = btn_Dashboard; // set the active button as the first button (Dashboard)
             FilterUtils.UpdateFilter += UpdateFilters;
-
+            DateTime today = DateTime.Now.Date;
+            dp_PRFromDate.Value = today;
+            dp_PRToDate.Value = today;
+            dp_POFromDate.Value = today;
+            dp_POToDate.Value = today;
 
             if (PRPO_DB_Utils.DatabaseConnection != null)
             {

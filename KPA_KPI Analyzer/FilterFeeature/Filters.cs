@@ -6,8 +6,48 @@ namespace KPA_KPI_Analyzer.FilterFeeature
     {
         private static string filters = string.Empty;
         private static string secFilters = string.Empty;
-        private static DateTime prFromDate = new DateTime();
-        private static DateTime poFromDate = new DateTime();
+
+
+
+        /// <summary>
+        /// Boolean value indicating whether or not the user wants to filter by PR date range
+        /// </summary>
+        public static bool FilterByPrDateRange { get; set; }
+
+
+
+        /// <summary>
+        /// Boolean value indicating whether or not the user wants to filter by PO date range
+        /// </summary>
+        public static bool FilterByPoDateRange { get; set; }
+
+
+
+        /// <summary>
+        /// When PR Date range filter is applied this will be the PR from date.
+        /// </summary>
+        public static DateTime PrFromDate { get; set; }
+
+
+
+        /// <summary>
+        /// When PR Date range filter is applied this will be the PR to date.
+        /// </summary>
+        public static DateTime PrToDate { get; set; }
+
+
+
+        /// <summary>
+        /// When the PO date range filter is applied this will be the PO from date
+        /// </summary>
+        public static DateTime PoFromDate { get; set; }
+
+
+
+        /// <summary>
+        /// When the PO date range filter is applied this will be the PO to date.
+        /// </summary>
+        public static DateTime PoToDate { get; set; }
 
 
 
@@ -15,63 +55,11 @@ namespace KPA_KPI_Analyzer.FilterFeeature
         /// <summary>
         /// The filters that will be applied to the database when loading the data.
         /// </summary>
-        public static string FilterQuery { get { return filters; } set { if (value == null) filters = ""; else filters = value; } }
-
-
-
-        /// <summary>
-        /// Boolean value indicating whether or not the user has applied a PR date range filter
-        /// </summary>
-        public static bool PrDateRangeFilterAdded { get; set; }
-
-
-
-
-
-        /// <summary>
-        /// Boolean value indicating whether or not the user has applied a PO date range filter
-        /// </summary>
-        public static bool PoDateRangeFilterAdded { get; set; }
-
-
-
-
-
-        /// <summary>
-        /// The PR from date to be applied to the fitlers.
-        /// </summary>
-        public static DateTime PrFromDate { get; set; }
-
-
-
-
-
-
-        /// <summary>
-        /// The PR to date to be applied to the filters.
-        /// </summary>
-        public static DateTime PrToDate { get; set; }
-
-
-
-
-
-
-        /// <summary>
-        /// The PO from date to be applied to the filters.
-        /// </summary>
-        public static DateTime PoFromDate { get; set; }
-
-
-
-
-
-
-        /// <summary>
-        /// The PO to date to be applied to the filters.
-        /// </summary>
-        public static DateTime PoToDate { get; set; }
-
+        public static string FilterQuery
+        {
+            get { return filters; }
+            set { if (value == null) filters = ""; else filters = value; }
+        }
 
 
 
@@ -79,7 +67,11 @@ namespace KPA_KPI_Analyzer.FilterFeeature
         /// <summary>
         /// 
         /// </summary>
-        public static string SecondaryFilterQuery { get { return secFilters; } set { if (value == null) secFilters = ""; else secFilters = value; } }
+        public static string SecondaryFilterQuery
+        {
+            get { return secFilters; }
+            set { if (value == null) secFilters = ""; else secFilters = value; }
+        }
 
 
 

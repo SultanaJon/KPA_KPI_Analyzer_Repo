@@ -31,23 +31,19 @@ namespace KPA_KPI_Analyzer
 
 
 
-
-
         /// <summary>
-        /// Boolean valid indicating whether or not the PR date range is valid or not.
+        /// Boolean value indicating whether the program should filter by the PR date range.
         /// </summary>
-        public static bool ValidPrDateRange { get; set; }
-
-
+        public static bool FilterByPrDate { get; set; }
 
 
 
 
 
         /// <summary>
-        /// Boolean vlid indicating whether or not the PO date range is valid
+        /// Boolean vaule indicating whether the program should filter by the PO date range.
         /// </summary>
-        public static bool ValidPoDateRange { get; set; }
+        public static bool FilterByPoDate { get; set; }
 
 
 
@@ -65,14 +61,20 @@ namespace KPA_KPI_Analyzer
             
             if(!FiltersAdded)
             {
-                btn_applyFilters.Enabled = false;
-                btn_clearFilters.Enabled = false;
-                btn_clearSelected.Enabled = false;
+                if(!chkBox_PrDateRange.Checked && !chkBox_PoDateRange.Checked)
+                {
+                    btn_applyFilters.Enabled = false;
+                    btn_clearSelected.Enabled = false;
+                }
+                else
+                {
+                    btn_clearFilters.Enabled = false;
+                    btn_clearSelected.Enabled = false;
+                }
             }
             else
             {
                 btn_applyFilters.Enabled = true;
-                btn_clearFilters.Enabled = true;
                 btn_clearSelected.Enabled = true;
             }
 
@@ -1169,6 +1171,19 @@ namespace KPA_KPI_Analyzer
             }
 
 
+            if(FilterByPrDate)
+            {
+                FilterByPrDate = false;
+                chkBox_PrDateRange.Checked = false;
+            }
+
+            if(FilterByPoDate)
+            {
+                FilterByPoDate = false;
+                chkBox_PoDateRange.Checked = false;
+            }
+
+
             Filters.FitlerValues.Clear();
             Filters.ClbDictionaryValues.Clear();
             filters = string.Empty;
@@ -1235,6 +1250,39 @@ namespace KPA_KPI_Analyzer
             }
 
 
+            Filters.FilterByPrDateRange = false;
+            Filters.FilterByPoDateRange = false;
+
+            if (FilterByPrDate)
+            {
+                if (CheckDateRange(0))
+                {
+                    return;
+                }
+                else
+                {
+                    Filters.PrFromDate = dp_PRFromDate.Value;
+                    Filters.PrToDate = dp_PRToDate.Value;
+                    Filters.FilterByPrDateRange = true;
+                }
+            }
+
+
+            if(FilterByPoDate)
+            {
+                if (CheckDateRange(2))
+                {
+                    return;
+                }
+                else
+                {
+                    Filters.PoFromDate = dp_POFromDate.Value;
+                    Filters.PoToDate = dp_POToDate.Value;
+                    Filters.FilterByPoDateRange = true;
+                }
+            }
+
+
             BuildQueryFilters();
             HasFiltersAdded();
             if(FiltersAdded)
@@ -1250,27 +1298,6 @@ namespace KPA_KPI_Analyzer
                 Filters.FilterQuery = filters;
                 Filters.SecondaryFilterQuery = filters;
                 FiltersApplied = false;
-            }
-
-
-
-
-            // Check if the user added a PR date range
-            if(Filters.PrDateRangeFilterAdded)
-            {
-                Filters.PrFromDate = dp_PRFromDate.Value;
-                Filters.PrToDate = dp_PRToDate.Value;
-                FiltersApplied = true;
-            }
-
-
-
-            // Check if the user added a PO date range
-            if(Filters.PoDateRangeFilterAdded)
-            {
-                Filters.PoFromDate = dp_POFromDate.Value;
-                Filters.PoToDate = dp_POToDate.Value;
-                FiltersApplied = true;
             }
 
 
@@ -1300,8 +1327,13 @@ namespace KPA_KPI_Analyzer
             Filters.FitlerValues.Clear();
             Filters.FilterQuery = string.Empty;
             Filters.SecondaryFilterQuery = string.Empty;
-            Filters.PrDateRangeFilterAdded = false;
-            Filters.PoDateRangeFilterAdded = false;
+
+            Filters.FilterByPrDateRange = false;
+            Filters.FilterByPoDateRange = false;
+            FilterByPrDate = false;
+            FilterByPoDate = false;
+            chkBox_PrDateRange.Checked = false;
+            chkBox_PoDateRange.Checked = false;
 
             HasFiltersAdded();
             if(!FiltersAdded)
@@ -1316,7 +1348,8 @@ namespace KPA_KPI_Analyzer
             }
             else
             {
-                MessageBox.Show("Loading data with no filters but filters has filters applied.");
+                MessageBox.Show("Loading data with no filters but filters has filters applied.", "Clear Filters Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
             }
         }
 
@@ -1328,10 +1361,15 @@ namespace KPA_KPI_Analyzer
         /// <summary>
         /// If the user has applied filters against the data, this function will assign FiltersAdded to true.
         /// </summary>
-        /// <returns></returns>
         public void HasFiltersAdded()
         {
             FiltersAdded = false;
+
+            // Check if the user enable the option to filter by PR or PO date range.
+            if (FilterByPrDate || FilterByPoDate)
+                FiltersApplied = true;
+
+            // Check if the user selected any filters from the following check list boxes.
             if (Filters.FitlerValues.material.Count > 0) FiltersAdded = true;
             if (Filters.FitlerValues.materialGroup.Count > 0) FiltersAdded = true;
             if (Filters.FitlerValues.vendor.Count > 0) FiltersAdded = true;
@@ -1354,56 +1392,11 @@ namespace KPA_KPI_Analyzer
         /// <param name="e"></param>
         private void dp_DateRangeChange(object sender, EventArgs e)
         {
-
-            Bunifu.Framework.UI.BunifuDatepicker dp = (Bunifu.Framework.UI.BunifuDatepicker)sender;
-            DateTime prFromDt = new DateTime();
-            DateTime prToDt = new DateTime();
-            DateTime poFromDt = new DateTime();
-            DateTime poToDt = new DateTime();
-
-            int tag = int.Parse(dp.Tag.ToString());
-
-            switch (tag)
+            if(FilterByPrDate || FilterByPoDate)
             {
-                case 0:
-                case 1:
-                    if (prDateSwitch.Value == false) return;
-
-                    prFromDt = dp_PRFromDate.Value;
-                    prToDt = dp_PRToDate.Value;
-
-                    if (DateTime.Compare(prFromDt, prToDt) == 1)
-                    {
-                        ValidPrDateRange = false;
-                        MessageBox.Show("The PR date range is invalid. Please update before applying filters.", "Invalid PR Date Range", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Filters.PrDateRangeFilterAdded = false;
-                    }
-                    else
-                    {
-                        ValidPrDateRange = true;
-                        Filters.PrDateRangeFilterAdded = true;
-                    }
-                    break;
-                case 2:
-                case 3:
-                    if (poDateSwitch.Value == false) return;
-                    poFromDt = dp_POFromDate.Value;
-                    poToDt = dp_POToDate.Value;
-
-                    if(DateTime.Compare(prFromDt, prToDt) == 1)
-                    {
-                        ValidPoDateRange = false;
-                        MessageBox.Show("The PO date range is invalid. Please update before applying filters.", "Invalid PO Date Range", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Filters.PoDateRangeFilterAdded = false;
-                    }
-                    else
-                    {
-                        ValidPoDateRange = true;
-                        Filters.PoDateRangeFilterAdded = true;
-                    }
-                    break;
-                default:
-                    break;
+                Bunifu.Framework.UI.BunifuDatepicker dp = (Bunifu.Framework.UI.BunifuDatepicker)sender;
+                int tag = int.Parse(dp.Tag.ToString());
+                CheckDateRange(tag);
             }
         }
 
@@ -1412,43 +1405,167 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// Toggles on or off whether or not the user will like to apply a date range filters
-        /// to both the PR date and the PO date.
+        /// Depending on if the PR or PO date range filter is checked. The from date and to date will be compared and
+        /// a message box will be prompted to the user if the selected dates are incorrect.
         /// </summary>
-        /// <param name="sender">The bunifu switch</param>
-        /// <param name="e">The click event</param>
-        private void switch_ValueChange(object sender, EventArgs e)
+        /// <returns>Returns whether or not the the date range of either the PR or PO date range is value. True if the date range is not valid and false if the date range is valid.</returns>
+        /// <param name="datePickerTag"></param>
+        private bool CheckDateRange(int datePickerTag)
         {
-            Bunifu.Framework.UI.BunifuSwitch dateSwitch = (Bunifu.Framework.UI.BunifuSwitch)sender;
-            int tag = int.Parse(dateSwitch.Tag.ToString());
+            DateTime prFrom;
+            DateTime prTo;
+            DateTime poFrom;
+            DateTime poTo;
 
-            switch (tag)
+            switch (datePickerTag)
             {
-                case 0:
-                    if(dateSwitch.Value == true)
+                case 0: // pr from date tag number
+                case 1: // pr to date tag number
+                    prFrom = dp_PRFromDate.Value;
+                    prTo = dp_PRToDate.Value;
+                    if (prFrom > prTo)
                     {
-                        Filters.PrDateRangeFilterAdded = true;
-                        btn_applyFilters.Enabled = true;
-                    }
-                    else
-                    {
-                        Filters.PrDateRangeFilterAdded = false;
+                        MessageBox.Show("The PR from date cannot greater than the PR to date!", "PR Date Range Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return true;
                     }
                     break;
-                case 1:
-                    if (dateSwitch.Value == true)
+                case 2: // po from date tag number
+                case 3: // po to date tag number
+                    poFrom = dp_POFromDate.Value;
+                    poTo = dp_POToDate.Value;
+                    if (poFrom > poTo)
                     {
-                        Filters.PoDateRangeFilterAdded = true;
-                        btn_applyFilters.Enabled = true;
-
-                    }
-                    else
-                    {
-                        Filters.PoDateRangeFilterAdded = false;
+                        MessageBox.Show("The PO from date cannot greater than the PO to date!", "PO Date Range Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return true;
                     }
                     break;
                 default:
                     break;
+            }
+            return false;
+        }
+
+
+
+
+        /// <summary>
+        /// this event will toggle the PR date range check box and enable the
+        /// program to check for a PR date range.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void prDateRangeCheckBox_OnChange(object sender, EventArgs e)
+        {
+            if (chkBox_PrDateRange.Checked)
+            {
+                // if this checkbox is checked then we will want to enable the ability to filter by PR date range.
+                FilterByPrDate = true;
+                btn_applyFilters.Enabled = true;
+                CheckDateRange(0);
+            }
+            else
+            {
+                // we want to turn off the ability to filter by PR date range.
+                FilterByPrDate = false;
+
+                if (!FilterByPoDate && !FiltersAdded)
+                {
+                    btn_applyFilters.Enabled = false;
+                }
+            }
+        }
+
+
+
+
+
+        /// <summary>
+        /// this event will toggle the PO date range check box and enable the
+        /// program to check for a PO date range.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void poDateRangeCheckBox_OnChange(object sender, EventArgs e)
+        {
+            if (chkBox_PoDateRange.Checked)
+            {
+                // if this checkbox is checked then we will want to enable the ability to filter by PO date range.
+                FilterByPoDate = true;
+                btn_applyFilters.Enabled = true;
+                CheckDateRange(2);
+            }
+            else
+            {
+                // we want to turn off the ability to filter by PO date range
+                FilterByPoDate = false;
+
+                if (!FilterByPrDate && !FiltersAdded)
+                {
+                    btn_applyFilters.Enabled = false;
+                }
+            }
+        }
+
+
+
+
+
+
+        /// <summary>
+        /// When the user clicks the label "PR Date Range: " label, this event will toggle the PR date range check box and enable the
+        /// program to check for a PR date range.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void prDateRangeLabel_Click(object sender, EventArgs e)
+        {
+            if (chkBox_PrDateRange.Checked)
+            {
+                chkBox_PrDateRange.Checked = false;
+                FilterByPrDate = false;
+                CheckDateRange(0);
+
+                if (!FilterByPoDate && !FiltersAdded)
+                {
+                    btn_applyFilters.Enabled = false;
+                }
+            }
+            else
+            {
+                chkBox_PrDateRange.Checked = true;
+                FilterByPrDate = true;
+                btn_applyFilters.Enabled = true;
+            }
+        }
+
+
+
+
+
+        /// <summary>
+        /// When the user clicks the label "PO Date Range: " label, this event will toggle the PO date range check box and enable the
+        /// program to check for a PO date range.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void poDateRangeLabel_Click(object sender, EventArgs e)
+        {
+            if (chkBox_PoDateRange.Checked)
+            {
+                chkBox_PoDateRange.Checked = false;
+                FilterByPoDate = false;
+                CheckDateRange(2);
+
+                if (!FilterByPrDate && !FiltersAdded)
+                {
+                    btn_applyFilters.Enabled = false;
+                }
+            }
+            else
+            {
+                chkBox_PoDateRange.Checked = true;
+                FilterByPoDate = true;
+                btn_applyFilters.Enabled = true;
             }
         }
     }

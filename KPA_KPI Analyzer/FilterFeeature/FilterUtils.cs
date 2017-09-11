@@ -15,6 +15,16 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
 
 
+        /// <summary>
+        /// Callback function used to update the checklist boxes on the filter page.
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="filter"></param>
+        public delegate void UpdateFilterHandler(List<string> data, Filters filter);
+        public static event UpdateFilterHandler UpdateFilter;
+
+
+
 
 
         /// <summary>
@@ -24,19 +34,6 @@ namespace KPA_KPI_Analyzer.FilterFeeature
         public static bool FiltersLoaded { get; set; }
         public static int NumThreadsStarted { get; set; }
         public static int NumThreadCompleted { get; set; }
-
-
-
-
-
-
-        /// <summary>
-        /// Callback function used to update the checklist boxes on the filter page.
-        /// </summary>
-        /// <param name="data"></param>
-        /// <param name="filter"></param>
-        public delegate void UpdateFilterHandler(List<string> data, Filters filter);
-        public static event UpdateFilterHandler UpdateFilter;
 
 
 
@@ -197,7 +194,9 @@ namespace KPA_KPI_Analyzer.FilterFeeature
                                 continue;
                             }
                             else
+                            {
                                 strData.Add(reader[filterCols[(int)col]].ToString());
+                            }
                         }
                         UpdateFilter(strData, col);
                         strData.Clear();

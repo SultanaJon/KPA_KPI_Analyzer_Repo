@@ -3,6 +3,7 @@ using KPA_KPI_Analyzer.Templates;
 using System;
 using System.Data;
 using System.Windows.Forms;
+using KPA_KPI_Analyzer.FilterFeeature;
 
 namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 {
@@ -38,9 +39,55 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 // PO Release vs PR Delivery Date
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
                 foreach (DataRow dr in Overall.prsOnPOsDt.Rows)
                 {
+                    if (Filters.FilterByPrDateRange)
+                    {
+                        // The user wants to filter by PR date range
+                        string[] requisnDate = (dr["Requisn Date"].ToString()).Split('/');
+                        int reqYear = int.Parse(requisnDate[2]);
+                        int reqMonth = int.Parse(requisnDate[0].TrimStart('0'));
+                        int reqDay = int.Parse(requisnDate[1].TrimStart('0'));
+                        DateTime reqTestDate = new DateTime(reqYear, reqMonth, reqDay);
+
+                        if (reqTestDate < Filters.PrFromDate || reqTestDate > Filters.PrToDate)
+                        {
+                            // The PR date is not within the PR date range.
+                            continue;
+                        }
+                    }
+
+                    if (Filters.FilterByPoDateRange)
+                    {
+                        // The user wnats to filter by PO date range
+                        string[] strPODate = (dr["PO Date"].ToString()).Split('/');
+                        int poYear = int.Parse(strPODate[2]);
+                        int poMonth = int.Parse(strPODate[0]);
+                        int poDay = int.Parse(strPODate[1]);
+
+                        if (poYear == 0 && poMonth == 0 && poDay == 0)
+                        {
+                            // This record is not a PO so we dont care about it
+                            continue;
+                        }
+                        else
+                        {
+                            poYear = int.Parse(strPODate[2]);
+                            poMonth = int.Parse(strPODate[0].TrimStart('0'));
+                            poDay = int.Parse(strPODate[1].TrimStart('0'));
+                        }
+
+                        DateTime poTestDate = new DateTime(poYear, poMonth, poDay);
+
+                        if (poTestDate < Filters.PoFromDate || poTestDate > Filters.PoToDate)
+                        {
+                            // The PO date is not within the PO date range.
+                            continue;
+                        }
+                    }
+
+
+
                     strPoLineFirstRelDate = (dr["PO Line 1st Rel Dt"].ToString()).Split('/');
                     int poLineFirstRelYear = int.Parse(strPoLineFirstRelDate[2]);
                     int poLineFirstRelMonth = int.Parse(strPoLineFirstRelDate[0]);
@@ -120,6 +167,8 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 try
                 {
                     poRelVsPRDelDate.data.Average = Math.Round(totalDays / poRelVsPRDelDate.data.Total, 2);
+                    if (double.IsNaN(poRelVsPRDelDate.data.Average))
+                        poRelVsPRDelDate.data.Average = 0;
                 }
                 catch (DivideByZeroException)
                 {
@@ -137,6 +186,54 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 foreach (DataRow dr in Overall.pr2ndLvlRelDateDt.Rows)
                 {
+                    if (Filters.FilterByPrDateRange)
+                    {
+                        // The user wants to filter by PR date range
+                        string[] requisnDate = (dr["Requisn Date"].ToString()).Split('/');
+                        int reqYear = int.Parse(requisnDate[2]);
+                        int reqMonth = int.Parse(requisnDate[0].TrimStart('0'));
+                        int reqDay = int.Parse(requisnDate[1].TrimStart('0'));
+                        DateTime reqTestDate = new DateTime(reqYear, reqMonth, reqDay);
+
+                        if (reqTestDate < Filters.PrFromDate || reqTestDate > Filters.PrToDate)
+                        {
+                            // The PR date is not within the PR date range.
+                            continue;
+                        }
+                    }
+
+                    if (Filters.FilterByPoDateRange)
+                    {
+                        // The user wnats to filter by PO date range
+                        string[] strPODate = (dr["PO Date"].ToString()).Split('/');
+                        int poYear = int.Parse(strPODate[2]);
+                        int poMonth = int.Parse(strPODate[0]);
+                        int poDay = int.Parse(strPODate[1]);
+
+                        if (poYear == 0 && poMonth == 0 && poDay == 0)
+                        {
+                            // This record is not a PO so we dont care about it
+                            continue;
+                        }
+                        else
+                        {
+                            poYear = int.Parse(strPODate[2]);
+                            poMonth = int.Parse(strPODate[0].TrimStart('0'));
+                            poDay = int.Parse(strPODate[1].TrimStart('0'));
+                        }
+
+                        DateTime poTestDate = new DateTime(poYear, poMonth, poDay);
+
+                        if (poTestDate < Filters.PoFromDate || poTestDate > Filters.PoToDate)
+                        {
+                            // The PO date is not within the PO date range.
+                            continue;
+                        }
+                    }
+
+
+
+
                     string[] strPR2ndLvlRelDate = (dr["PR 2° Rel# Date"].ToString()).Split('/');
                     int pr2ndLvlRelYear = int.Parse(strPR2ndLvlRelDate[2]);
                     int pr2ndLvlRelMonth = int.Parse(strPR2ndLvlRelDate[0]);
@@ -214,6 +311,8 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 try
                 {
                     pr2ndLvlRelOrigPlanDelDate.data.Average = Math.Round(totalDays / pr2ndLvlRelOrigPlanDelDate.data.Total, 2);
+                    if (double.IsNaN(pr2ndLvlRelOrigPlanDelDate.data.Average))
+                        pr2ndLvlRelOrigPlanDelDate.data.Average = 0;
                 }
                 catch (DivideByZeroException)
                 {

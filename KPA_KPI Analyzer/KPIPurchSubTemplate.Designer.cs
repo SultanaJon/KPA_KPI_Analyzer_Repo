@@ -763,7 +763,7 @@
             this.btn_unconfIncludedStatusButton.BackColor = System.Drawing.Color.IndianRed;
             this.btn_unconfIncludedStatusButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_unconfIncludedStatusButton.BorderRadius = 5;
-            this.btn_unconfIncludedStatusButton.ButtonText = "Not including Unconfirmed!";
+            this.btn_unconfIncludedStatusButton.ButtonText = "Not Including Unconfirmed!";
             this.btn_unconfIncludedStatusButton.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.btn_unconfIncludedStatusButton.DisabledColor = System.Drawing.Color.IndianRed;
             this.btn_unconfIncludedStatusButton.Enabled = false;
@@ -790,7 +790,7 @@
             this.btn_unconfIncludedStatusButton.Size = new System.Drawing.Size(151, 19);
             this.btn_unconfIncludedStatusButton.TabIndex = 15;
             this.btn_unconfIncludedStatusButton.Tag = "0";
-            this.btn_unconfIncludedStatusButton.Text = "Not including Unconfirmed!";
+            this.btn_unconfIncludedStatusButton.Text = "Not Including Unconfirmed!";
             this.btn_unconfIncludedStatusButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btn_unconfIncludedStatusButton.Textcolor = System.Drawing.Color.White;
             this.btn_unconfIncludedStatusButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
