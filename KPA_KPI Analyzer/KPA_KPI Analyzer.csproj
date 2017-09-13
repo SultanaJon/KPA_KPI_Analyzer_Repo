@@ -12,9 +12,24 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -79,14 +94,14 @@
     <Compile Include="DragDropFeature\DragDropUtils.cs" />
     <Compile Include="FilterFeeature\Filters.cs" />
     <Compile Include="FilterFeeature\FilterUtils.cs" />
-    <Compile Include="IOUtils\AppDirectoryUtils.cs" />
-    <Compile Include="IOUtils\ErrorMessageBox.cs">
+    <Compile Include="Diagnostics\AppDirectoryUtils.cs" />
+    <Compile Include="Diagnostics\ErrorMessageBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="IOUtils\ErrorMessageBox.Designer.cs">
+    <Compile Include="Diagnostics\ErrorMessageBox.Designer.cs">
       <DependentUpon>ErrorMessageBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="IOUtils\Logger.cs" />
+    <Compile Include="Diagnostics\Logger.cs" />
     <Compile Include="KPACurrentPlanActualTemplate.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -274,6 +289,7 @@
     <Compile Include="Templates\TemplateOne.cs" />
     <Compile Include="Templates\TemplateThree.cs" />
     <Compile Include="Templates\TemplateTwo.cs" />
+    <Compile Include="Values\Constants.cs" />
     <EmbeddedResource Include="DataComingSoon.resx">
       <DependentUpon>DataComingSoon.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -282,7 +298,7 @@
       <DependentUpon>DataViewer.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="IOUtils\ErrorMessageBox.resx">
+    <EmbeddedResource Include="Diagnostics\ErrorMessageBox.resx">
       <DependentUpon>ErrorMessageBox.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -666,6 +682,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="lgo.ico" />
+    <None Include="Resources\Icon1.ico" />
     <None Include="Resources\kpiLogo.png" />
     <None Include="Resources\kpaLogo.png" />
     <None Include="Resources\test2.png" />
@@ -693,6 +710,18 @@
     <None Include="Resources\Logo-Comau-ok.png" />
     <None Include="Resources\logo.jpg" />
     <None Include="Resources\splashscreen.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -14,7 +14,7 @@
 using Excel_Access_Tools.Access;
 using KPA_KPI_Analyzer.DatabaseUtils;
 using KPA_KPI_Analyzer.FilterFeeature;
-using KPA_KPI_Analyzer.IOUtils;
+using KPA_KPI_Analyzer.Diagnostics;
 using KPA_KPI_Analyzer.KPA_KPI_Overall;
 using System;
 using System.Collections.Generic;
@@ -95,7 +95,7 @@ namespace KPA_KPI_Analyzer
                     if (AccessUtils.US_PRPO_TableExists && AccessUtils.MX_PRPO_TableExists)
                     {
                         NavigationLocked = true;
-                        pnl_CountrySelector.BringToFront();
+                        ShowPage(Pages.CountrySelector);
                     }
                     else if (AccessUtils.US_PRPO_TableExists)
                     {
@@ -126,8 +126,7 @@ namespace KPA_KPI_Analyzer
             }
             else
             {
-                pnl_loadingScreen.Visible = false;
-                tblpnl_DragDrop.BringToFront();
+                ShowPage(Pages.DragDropDash);
             }
 
         }
@@ -351,5 +350,94 @@ namespace KPA_KPI_Analyzer
             RefreshTemplate();
         }
         #endregion
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public enum Pages
+        {
+            Dashboard,
+            DragDropDash,
+            Filters,
+            LoadingScreen,
+            CountrySelector
+        }
+
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="page"></param>
+        private void ShowPage(Pages page)
+        {
+            HidePages();
+            switch((int)page)
+            {
+                case 0:
+                    tblpnl_DashbaordPage.Visible = true;
+                    tblpnl_DashbaordPage.BringToFront();
+                    break;
+                case 1:
+                    tblpnl_DragDrop.Visible = true;
+                    tblpnl_DragDrop.BringToFront();
+                    break;
+                case 2:
+                    tblpnl_Filters.Visible = true;
+                    tblpnl_Filters.BringToFront();
+                    break;
+                case 3:
+                    pnl_loadingScreen.Visible = true;
+                    pnl_loadingScreen.BringToFront();
+                    break;
+                case 4:
+                    pnl_CountrySelector.Visible = true;
+                    pnl_CountrySelector.BringToFront();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void HidePages()
+        {
+            tblpnl_DashbaordPage.Visible = false;
+            tblpnl_DragDrop.Visible = false;
+            tblpnl_Filters.Visible = false;
+            pnl_loadingScreen.Visible = false;
+            pnl_CountrySelector.Visible = false;
+        }
+
+
+
+
+
+
+        private void panel27_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

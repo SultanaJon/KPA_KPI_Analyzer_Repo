@@ -330,6 +330,8 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 try
                 {
                     poCreateVsConfEntry.data.PercentUnconf = Math.Round(((double)poCreateVsConfEntry.data.PercentUnconfTotal / tempTotal) * 100, 2);
+                    if (double.IsNaN(poCreateVsConfEntry.data.PercentUnconf))
+                        poCreateVsConfEntry.data.PercentUnconf = 0;
                 }
                 catch (DivideByZeroException)
                 {

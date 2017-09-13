@@ -14,8 +14,15 @@ namespace KPA_KPI_Analyzer
         /// <summary>
         /// boolean value stating whether or not the user has checked filters TO apply
         /// </summary>
-        public static bool FiltersAdded { get; set; }
+        public static bool ColumnFiltersAdded { get; set; }
 
+
+
+
+        /// <summary>
+        /// Boolean value stating whether or not the user has added a date range filters to either the PR or PO Creation date.
+        /// </summary>
+        public static bool DateFiltersAdded { get; set; }
 
 
 
@@ -24,10 +31,16 @@ namespace KPA_KPI_Analyzer
         /// <summary>
         /// boolean value indicating whether or not the user has applied the filters to the data.
         /// </summary>
-        public static bool FiltersApplied { get; set; }
+        public static bool ColumnFiltersApplied { get; set; }
 
 
 
+
+
+        /// <summary>
+        /// boolean value indicating whether or not the user has applied date filters to the data
+        /// </summary>
+        public static bool DateFiltersApplied { get; set; }
 
 
 
@@ -58,33 +71,8 @@ namespace KPA_KPI_Analyzer
         public void UpdateFilters(List<string> data, FilterUtils.Filters filter)
         {
             HasFiltersAdded();
-            
-            if(!FiltersAdded)
-            {
-                if(!chkBox_PrDateRange.Checked && !chkBox_PoDateRange.Checked)
-                {
-                    btn_applyFilters.Enabled = false;
-                    btn_clearSelected.Enabled = false;
-                }
-                else
-                {
-                    btn_clearFilters.Enabled = false;
-                    btn_clearSelected.Enabled = false;
-                }
-            }
-            else
-            {
-                btn_applyFilters.Enabled = true;
-                btn_clearSelected.Enabled = true;
-            }
 
-
-            if(!FiltersApplied)
-                btn_clearFilters.Enabled = false;
-            else
-                btn_clearFilters.Enabled = true;
-
-
+            UpdateFilterButtons();
 
 
             switch ((int)filter)
@@ -1105,102 +1093,104 @@ namespace KPA_KPI_Analyzer
         /// <param name="e"></param>
         private void btn_clearSelected_Click(object sender, EventArgs e)
         {
-            foreach(int i in ChkdListBx_Material.CheckedIndices)
+            HasFiltersAdded();
+
+            if (DateFiltersAdded)
             {
-                ChkdListBx_Material.ItemCheck -= ckdListBox_ItemCheck;
-                ChkdListBx_Material.SetItemCheckState(i, CheckState.Unchecked);
-                ChkdListBx_Material.ItemCheck += ckdListBox_ItemCheck;
+                if (FilterByPrDate)
+                {
+                    FilterByPrDate = false;
+                    chkBox_PrDateRange.Checked = false;
+                }
 
-            }
-
-            foreach (int i in ChkdListBx_MaterialGroup.CheckedIndices)
-            {
-                ChkdListBx_MaterialGroup.ItemCheck -= ckdListBox_ItemCheck;
-                ChkdListBx_MaterialGroup.SetItemCheckState(i, CheckState.Unchecked);
-                ChkdListBx_MaterialGroup.ItemCheck += ckdListBox_ItemCheck;
-
-            }
-
-            foreach (int i in ChkdListBx_Vendor.CheckedIndices)
-            {
-                ChkdListBx_Vendor.ItemCheck -= ckdListBox_ItemCheck;
-                ChkdListBx_Vendor.SetItemCheckState(i, CheckState.Unchecked);
-                ChkdListBx_Vendor.ItemCheck += ckdListBox_ItemCheck;
-            }
-
-            foreach (int i in ChkdListBx_VendorDesc.CheckedIndices)
-            {
-                ChkdListBx_VendorDesc.ItemCheck -= ckdListBox_ItemCheck;
-                ChkdListBx_VendorDesc.SetItemCheckState(i, CheckState.Unchecked);
-                ChkdListBx_VendorDesc.ItemCheck += ckdListBox_ItemCheck;
-            }
-
-            foreach (int i in ChkdListBx_PurchGroup.CheckedIndices)
-            {
-                ChkdListBx_PurchGroup.ItemCheck -= ckdListBox_ItemCheck;
-                ChkdListBx_PurchGroup.SetItemCheckState(i, CheckState.Unchecked);
-                ChkdListBx_PurchGroup.ItemCheck += ckdListBox_ItemCheck;
-            }
-
-            foreach (int i in ChkdListBx_IRSuppName.CheckedIndices)
-            {
-                ChkdListBx_IRSuppName.ItemCheck -= ckdListBox_ItemCheck;
-                ChkdListBx_IRSuppName.SetItemCheckState(i, CheckState.Unchecked);
-                ChkdListBx_IRSuppName.ItemCheck += ckdListBox_ItemCheck;
-            }
-
-            foreach (int i in ChkdListBx_FxdSuppName.CheckedIndices)
-            {
-                ChkdListBx_FxdSuppName.ItemCheck -= ckdListBox_ItemCheck;
-                ChkdListBx_FxdSuppName.SetItemCheckState(i, CheckState.Unchecked);
-                ChkdListBx_FxdSuppName.ItemCheck += ckdListBox_ItemCheck;
-            }
-
-            foreach (int i in ChkdListBx_DsrdSuppName.CheckedIndices)
-            {
-                ChkdListBx_DsrdSuppName.ItemCheck -= ckdListBox_ItemCheck;
-                ChkdListBx_DsrdSuppName.SetItemCheckState(i, CheckState.Unchecked);
-                ChkdListBx_DsrdSuppName.ItemCheck += ckdListBox_ItemCheck;
-            }
-
-            foreach (int i in ChkdListBx_CommodityCat.CheckedIndices)
-            {
-                ChkdListBx_CommodityCat.ItemCheck -= ckdListBox_ItemCheck;
-                ChkdListBx_CommodityCat.SetItemCheckState(i, CheckState.Unchecked);
-                ChkdListBx_CommodityCat.ItemCheck += ckdListBox_ItemCheck;
+                if (FilterByPoDate)
+                {
+                    FilterByPoDate = false;
+                    chkBox_PoDateRange.Checked = false;
+                }
             }
 
 
-            if(FilterByPrDate)
+            if (ColumnFiltersAdded)
             {
-                FilterByPrDate = false;
-                chkBox_PrDateRange.Checked = false;
+                foreach (int i in ChkdListBx_Material.CheckedIndices)
+                {
+                    ChkdListBx_Material.ItemCheck -= ckdListBox_ItemCheck;
+                    ChkdListBx_Material.SetItemCheckState(i, CheckState.Unchecked);
+                    ChkdListBx_Material.ItemCheck += ckdListBox_ItemCheck;
+
+                }
+
+                foreach (int i in ChkdListBx_MaterialGroup.CheckedIndices)
+                {
+                    ChkdListBx_MaterialGroup.ItemCheck -= ckdListBox_ItemCheck;
+                    ChkdListBx_MaterialGroup.SetItemCheckState(i, CheckState.Unchecked);
+                    ChkdListBx_MaterialGroup.ItemCheck += ckdListBox_ItemCheck;
+
+                }
+
+                foreach (int i in ChkdListBx_Vendor.CheckedIndices)
+                {
+                    ChkdListBx_Vendor.ItemCheck -= ckdListBox_ItemCheck;
+                    ChkdListBx_Vendor.SetItemCheckState(i, CheckState.Unchecked);
+                    ChkdListBx_Vendor.ItemCheck += ckdListBox_ItemCheck;
+                }
+
+                foreach (int i in ChkdListBx_VendorDesc.CheckedIndices)
+                {
+                    ChkdListBx_VendorDesc.ItemCheck -= ckdListBox_ItemCheck;
+                    ChkdListBx_VendorDesc.SetItemCheckState(i, CheckState.Unchecked);
+                    ChkdListBx_VendorDesc.ItemCheck += ckdListBox_ItemCheck;
+                }
+
+                foreach (int i in ChkdListBx_PurchGroup.CheckedIndices)
+                {
+                    ChkdListBx_PurchGroup.ItemCheck -= ckdListBox_ItemCheck;
+                    ChkdListBx_PurchGroup.SetItemCheckState(i, CheckState.Unchecked);
+                    ChkdListBx_PurchGroup.ItemCheck += ckdListBox_ItemCheck;
+                }
+
+                foreach (int i in ChkdListBx_IRSuppName.CheckedIndices)
+                {
+                    ChkdListBx_IRSuppName.ItemCheck -= ckdListBox_ItemCheck;
+                    ChkdListBx_IRSuppName.SetItemCheckState(i, CheckState.Unchecked);
+                    ChkdListBx_IRSuppName.ItemCheck += ckdListBox_ItemCheck;
+                }
+
+                foreach (int i in ChkdListBx_FxdSuppName.CheckedIndices)
+                {
+                    ChkdListBx_FxdSuppName.ItemCheck -= ckdListBox_ItemCheck;
+                    ChkdListBx_FxdSuppName.SetItemCheckState(i, CheckState.Unchecked);
+                    ChkdListBx_FxdSuppName.ItemCheck += ckdListBox_ItemCheck;
+                }
+
+                foreach (int i in ChkdListBx_DsrdSuppName.CheckedIndices)
+                {
+                    ChkdListBx_DsrdSuppName.ItemCheck -= ckdListBox_ItemCheck;
+                    ChkdListBx_DsrdSuppName.SetItemCheckState(i, CheckState.Unchecked);
+                    ChkdListBx_DsrdSuppName.ItemCheck += ckdListBox_ItemCheck;
+                }
+
+                foreach (int i in ChkdListBx_CommodityCat.CheckedIndices)
+                {
+                    ChkdListBx_CommodityCat.ItemCheck -= ckdListBox_ItemCheck;
+                    ChkdListBx_CommodityCat.SetItemCheckState(i, CheckState.Unchecked);
+                    ChkdListBx_CommodityCat.ItemCheck += ckdListBox_ItemCheck;
+                }
+
+                Filters.FitlerValues.Clear();
+                Filters.ClbDictionaryValues.Clear();
+                filters = string.Empty;
+                FilterUtils.LoadFilters(filters);
             }
 
-            if(FilterByPoDate)
-            {
-                FilterByPoDate = false;
-                chkBox_PoDateRange.Checked = false;
-            }
-
-
-            Filters.FitlerValues.Clear();
-            Filters.ClbDictionaryValues.Clear();
-            filters = string.Empty;
-            FilterUtils.LoadFilters(filters);
+            UpdateFilterButtons();
         }
 
 
 
 
-
-
-        /// <summary>
-        /// Apply the filters and load the data again with the filters applied.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btn_applyFilters_Click(object sender, EventArgs e)
+        private void GetCheckedColumnFilters()
         {
             Filters.FitlerValues.Clear();
 
@@ -1248,7 +1238,20 @@ namespace KPA_KPI_Analyzer
             {
                 Filters.FitlerValues.commCategory.Add(ChkdListBx_CommodityCat.Items[i].ToString());
             }
+        }
 
+
+
+
+
+        /// <summary>
+        /// Apply the filters and load the data again with the filters applied.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_applyFilters_Click(object sender, EventArgs e)
+        {
+            GetCheckedColumnFilters();
 
             Filters.FilterByPrDateRange = false;
             Filters.FilterByPoDateRange = false;
@@ -1285,19 +1288,29 @@ namespace KPA_KPI_Analyzer
 
             BuildQueryFilters();
             HasFiltersAdded();
-            if(FiltersAdded)
+            if(ColumnFiltersAdded)
             {
                 Filters.SecondaryFilterQuery = filters;
                 filters = " AND " + filters;
                 Filters.FilterQuery = filters;
-                FiltersApplied = true;
+                ColumnFiltersApplied = true;
             }
             else
             {
                 filters = string.Empty;
                 Filters.FilterQuery = filters;
                 Filters.SecondaryFilterQuery = filters;
-                FiltersApplied = false;
+                ColumnFiltersApplied = false;
+            }
+
+
+            if(DateFiltersAdded)
+            {
+                DateFiltersApplied = true;
+            }
+            else
+            {
+                DateFiltersApplied = false;
             }
 
 
@@ -1335,22 +1348,15 @@ namespace KPA_KPI_Analyzer
             chkBox_PrDateRange.Checked = false;
             chkBox_PoDateRange.Checked = false;
 
-            HasFiltersAdded();
-            if(!FiltersAdded)
-            {
-                FiltersApplied = false;
-                overallData = new Overall();
-                PRPO_DB_Utils.DataLoadProcessStarted = false;
-                PRPO_DB_Utils.DataLoaded = false;
-                PRPO_DB_Utils.CompletedDataLoads = 0;
-                PRPO_DB_Utils.ScheduledDataLoads = 0;
-                DataLoaderTimer.Start();
-            }
-            else
-            {
-                MessageBox.Show("Loading data with no filters but filters has filters applied.", "Clear Filters Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Application.Exit();
-            }
+            ColumnFiltersApplied = false;
+            DateFiltersApplied = false;
+            overallData = new Overall();
+            PRPO_DB_Utils.DataLoadProcessStarted = false;
+            PRPO_DB_Utils.DataLoaded = false;
+            PRPO_DB_Utils.CompletedDataLoads = 0;
+            PRPO_DB_Utils.ScheduledDataLoads = 0;
+            DataLoaderTimer.Start();
+            UpdateFilterButtons();
         }
 
 
@@ -1363,24 +1369,58 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         public void HasFiltersAdded()
         {
-            FiltersAdded = false;
+            ColumnFiltersAdded = false;
+            DateFiltersAdded = false;
 
             // Check if the user enable the option to filter by PR or PO date range.
             if (FilterByPrDate || FilterByPoDate)
-                FiltersApplied = true;
+                DateFiltersAdded = true;
 
             // Check if the user selected any filters from the following check list boxes.
-            if (Filters.FitlerValues.material.Count > 0) FiltersAdded = true;
-            if (Filters.FitlerValues.materialGroup.Count > 0) FiltersAdded = true;
-            if (Filters.FitlerValues.vendor.Count > 0) FiltersAdded = true;
-            if (Filters.FitlerValues.vendorDesc.Count > 0) FiltersAdded = true;
-            if (Filters.FitlerValues.purchGroup.Count > 0) FiltersAdded = true;
-            if (Filters.FitlerValues.irSuppName.Count > 0) FiltersAdded = true;
-            if (Filters.FitlerValues.fxdSuppName.Count > 0) FiltersAdded = true;
-            if (Filters.FitlerValues.dsrdSuppName.Count > 0) FiltersAdded = true;
-            if (Filters.FitlerValues.commCategory.Count > 0) FiltersAdded = true;
+            if (Filters.FitlerValues.material.Count > 0) ColumnFiltersAdded = true;
+            if (Filters.FitlerValues.materialGroup.Count > 0) ColumnFiltersAdded = true;
+            if (Filters.FitlerValues.vendor.Count > 0) ColumnFiltersAdded = true;
+            if (Filters.FitlerValues.vendorDesc.Count > 0) ColumnFiltersAdded = true;
+            if (Filters.FitlerValues.purchGroup.Count > 0) ColumnFiltersAdded = true;
+            if (Filters.FitlerValues.irSuppName.Count > 0) ColumnFiltersAdded = true;
+            if (Filters.FitlerValues.fxdSuppName.Count > 0) ColumnFiltersAdded = true;
+            if (Filters.FitlerValues.dsrdSuppName.Count > 0) ColumnFiltersAdded = true;
+            if (Filters.FitlerValues.commCategory.Count > 0) ColumnFiltersAdded = true;
         }
 
+
+
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void UpdateFilterButtons()
+        {
+            HasFiltersAdded();
+            if(ColumnFiltersAdded || DateFiltersAdded)
+            {
+                btn_applyFilters.Enabled = true;
+                btn_clearSelected.Enabled = true;
+            }
+            else
+            {
+                btn_applyFilters.Enabled = false;
+                btn_clearSelected.Enabled = false;
+            }
+
+
+            if(ColumnFiltersApplied || DateFiltersApplied)
+            {
+                btn_clearFilters.Enabled = true;
+            }
+            else
+            {
+                btn_clearFilters.Enabled = false;
+            }
+        }
 
 
 
@@ -1425,8 +1465,13 @@ namespace KPA_KPI_Analyzer
                     prTo = dp_PRToDate.Value;
                     if (prFrom > prTo)
                     {
+                        btn_applyFilters.Enabled = false;
                         MessageBox.Show("The PR from date cannot greater than the PR to date!", "PR Date Range Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return true;
+                    }
+                    else
+                    {
+                        btn_applyFilters.Enabled = true;
                     }
                     break;
                 case 2: // po from date tag number
@@ -1435,8 +1480,13 @@ namespace KPA_KPI_Analyzer
                     poTo = dp_POToDate.Value;
                     if (poFrom > poTo)
                     {
+                        btn_applyFilters.Enabled = false;
                         MessageBox.Show("The PO from date cannot greater than the PO to date!", "PO Date Range Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return true;
+                    }
+                    else
+                    {
+                        btn_applyFilters.Enabled = true;
                     }
                     break;
                 default:
@@ -1460,18 +1510,14 @@ namespace KPA_KPI_Analyzer
             {
                 // if this checkbox is checked then we will want to enable the ability to filter by PR date range.
                 FilterByPrDate = true;
-                btn_applyFilters.Enabled = true;
                 CheckDateRange(0);
+                UpdateFilterButtons();
             }
             else
             {
                 // we want to turn off the ability to filter by PR date range.
                 FilterByPrDate = false;
-
-                if (!FilterByPoDate && !FiltersAdded)
-                {
-                    btn_applyFilters.Enabled = false;
-                }
+                UpdateFilterButtons();
             }
         }
 
@@ -1491,18 +1537,14 @@ namespace KPA_KPI_Analyzer
             {
                 // if this checkbox is checked then we will want to enable the ability to filter by PO date range.
                 FilterByPoDate = true;
-                btn_applyFilters.Enabled = true;
                 CheckDateRange(2);
+                UpdateFilterButtons();
             }
             else
             {
                 // we want to turn off the ability to filter by PO date range
                 FilterByPoDate = false;
-
-                if (!FilterByPrDate && !FiltersAdded)
-                {
-                    btn_applyFilters.Enabled = false;
-                }
+                UpdateFilterButtons();
             }
         }
 
@@ -1524,17 +1566,13 @@ namespace KPA_KPI_Analyzer
                 chkBox_PrDateRange.Checked = false;
                 FilterByPrDate = false;
                 CheckDateRange(0);
-
-                if (!FilterByPoDate && !FiltersAdded)
-                {
-                    btn_applyFilters.Enabled = false;
-                }
+                UpdateFilterButtons();
             }
             else
             {
                 chkBox_PrDateRange.Checked = true;
                 FilterByPrDate = true;
-                btn_applyFilters.Enabled = true;
+                UpdateFilterButtons();
             }
         }
 
@@ -1555,17 +1593,13 @@ namespace KPA_KPI_Analyzer
                 chkBox_PoDateRange.Checked = false;
                 FilterByPoDate = false;
                 CheckDateRange(2);
-
-                if (!FilterByPrDate && !FiltersAdded)
-                {
-                    btn_applyFilters.Enabled = false;
-                }
+                UpdateFilterButtons();
             }
             else
             {
                 chkBox_PoDateRange.Checked = true;
                 FilterByPoDate = true;
-                btn_applyFilters.Enabled = true;
+                UpdateFilterButtons();
             }
         }
     }

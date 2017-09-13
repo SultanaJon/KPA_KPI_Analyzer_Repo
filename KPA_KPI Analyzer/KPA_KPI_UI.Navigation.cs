@@ -101,17 +101,17 @@ namespace KPA_KPI_Analyzer
                     lbl_Section.Text = "Not Selected";
                     lbl_Category.Text = "Not Selected";
                     toggleMainNavSection(tag);
-                    tblpnl_DashbaordPage.BringToFront();
+                    ShowPage(Pages.Dashboard);
                     break;
                 case 1: // KPA btn clicked
                     toggleMainNavSection(tag);
                     SetActiveSectionBtnToDefault();
-                    LoadOverallTemplate(tag);
+                    LoadOverallTemplate(Performance.KPA);
                     break;
                 case 2: // KPI btn clicked
                     toggleMainNavSection(tag);
                     SetActiveSectionBtnToDefault();
-                    LoadOverallTemplate(tag);
+                    LoadOverallTemplate(Performance.KPI);
                     break;
                 case 3: // Charts btn clicked
                     toggleMainNavSection(tag);
@@ -121,7 +121,7 @@ namespace KPA_KPI_Analyzer
                     lbl_Section.Text = "Not Selected";
                     lbl_Category.Text = "Not Selected";
                     toggleMainNavSection(tag);
-                    tblpnl_Filters.BringToFront();
+                    ShowPage(Pages.Filters);
                     break;
                 default:
                     break;
@@ -134,7 +134,7 @@ namespace KPA_KPI_Analyzer
 
 
 
-
+        
 
 
 

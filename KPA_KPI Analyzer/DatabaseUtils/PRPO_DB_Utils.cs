@@ -1,5 +1,5 @@
 ﻿using Excel_Access_Tools.Access;
-using KPA_KPI_Analyzer.IOUtils;
+using KPA_KPI_Analyzer.Diagnostics;
 using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
@@ -94,6 +94,7 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
             if(ScheduledDataLoads == CompletedDataLoads)
             {
                 DataLoaded = true;
+                MessageBox.Show("Data successfully loaded!");
             }
         }
 

@@ -80,7 +80,7 @@ namespace KPA_KPI_Analyzer
                     // An attempt of more than two files were dropped on the form.
                     errorList.Clear();
                     errorList.Add(ex.Message);
-                    using (IOUtils.ErrorMessageBox errmsgbox = new IOUtils.ErrorMessageBox())
+                    using (Diagnostics.ErrorMessageBox errmsgbox = new Diagnostics.ErrorMessageBox())
                     {
                         if (errmsgbox.ShowDialog() == DialogResult.OK)
                         {
@@ -93,7 +93,7 @@ namespace KPA_KPI_Analyzer
                     // Files were dropped that had an invalid file extention
                     errorList.Clear();
                     errorList.Add(ex.Message);
-                    using (IOUtils.ErrorMessageBox errmsgbox = new IOUtils.ErrorMessageBox())
+                    using (Diagnostics.ErrorMessageBox errmsgbox = new Diagnostics.ErrorMessageBox())
                     {
                         if (errmsgbox.ShowDialog() == DialogResult.OK)
                         {
@@ -106,7 +106,7 @@ namespace KPA_KPI_Analyzer
                     // Files were dropped that were not PRPO files
                     errorList.Clear();
                     errorList.Add(ex.Message);
-                    using (IOUtils.ErrorMessageBox errmsgbox = new IOUtils.ErrorMessageBox())
+                    using (Diagnostics.ErrorMessageBox errmsgbox = new Diagnostics.ErrorMessageBox())
                     {
                         if (errmsgbox.ShowDialog() == DialogResult.OK)
                         {
@@ -118,7 +118,7 @@ namespace KPA_KPI_Analyzer
                 {
                     errorList.Clear();
                     errorList.Add(ex.Message);
-                    using (IOUtils.ErrorMessageBox errmsgbox = new IOUtils.ErrorMessageBox())
+                    using (Diagnostics.ErrorMessageBox errmsgbox = new Diagnostics.ErrorMessageBox())
                     {
                         if (errmsgbox.ShowDialog() == DialogResult.OK)
                         {
@@ -145,8 +145,7 @@ namespace KPA_KPI_Analyzer
                     else
                         AccessUtils.CreateAccessDB();
 
-                    pnl_loadingScreen.Visible = true;
-                    pnl_loadingScreen.BringToFront();
+                    ShowPage(Pages.LoadingScreen);
                     lbl_loadingStatus.Text = "Importing Data...";
                     ImportTimer.Start();
                 }

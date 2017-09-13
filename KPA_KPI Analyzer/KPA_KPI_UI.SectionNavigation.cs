@@ -42,7 +42,7 @@ namespace KPA_KPI_Analyzer
         /// <param name="e">The click event</param>
         private void sectionBtn_Click(object sender, EventArgs e)
         {
-            Button btn = sender as Button;
+            Button btn = (Button)sender;
 
             RemoveActivePanelControls();
             SetActiveSectionBtnToDefault();
@@ -59,7 +59,7 @@ namespace KPA_KPI_Analyzer
             switch (actSecTag)
             {
                 case 0: // KPA --> Overall
-                    LoadOverallTemplate(actSecTag);
+                    LoadOverallTemplate(Performance.KPA);
                     break;
                 case 1: // KPA --> Plan
                     CreateKpaPlanTemplate();
@@ -99,7 +99,7 @@ namespace KPA_KPI_Analyzer
                     break;
                 // REMOVED CASE 13: KPA -> MTC. THIS FEATURE IS NOT POSSIBLE
                 case 14: // KPI --> Overall
-                    LoadOverallTemplate(actSecTag);
+                    LoadOverallTemplate(Performance.KPI);
                     break;
                 case 15: // KPI --> Plan
                     CreateKpiPlanTemplate();
@@ -141,7 +141,7 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// 
+        /// Set the back color of the active section button to an active state.
         /// </summary>
         private void SetActiveSectionBtn(Button btn)
         {
@@ -154,7 +154,7 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// 
+        /// Returns the active section buttons back color back to its original color.
         /// </summary>
         private void SetActiveSectionBtnToDefault()
         {

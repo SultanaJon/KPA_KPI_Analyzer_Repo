@@ -89,7 +89,7 @@ namespace KPA_KPI_Analyzer
         private void btn_dashboardCancel_Click(object sender, EventArgs e)
         {
             NavigationLocked = true;
-            tblpnl_DragDrop.BringToFront();
+            ShowPage(Pages.DragDropDash);
         }
     }
 }

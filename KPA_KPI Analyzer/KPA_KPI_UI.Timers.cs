@@ -4,7 +4,7 @@ using Excel_Access_Tools.Excel;
 using KPA_KPI_Analyzer.DatabaseUtils;
 using KPA_KPI_Analyzer.DragDropFeatures;
 using KPA_KPI_Analyzer.FilterFeeature;
-using KPA_KPI_Analyzer.IOUtils;
+using KPA_KPI_Analyzer.Diagnostics;
 using KPA_KPI_Analyzer.KPA_KPI_Overall;
 using System;
 using System.IO;
@@ -15,12 +15,6 @@ namespace KPA_KPI_Analyzer
 {
     public partial class KPA_KPI_UI : Form
     {
-
-
-
-
-
-
         /// <summary>
         /// When the user has successfully dropped PRPO files into the application, this timer will initiate.
         /// The import process will then begin, importing all the data contained within the PRPO report into the
@@ -191,7 +185,7 @@ namespace KPA_KPI_Analyzer
 
                 if (AccessUtils.US_PRPO_TableExists && AccessUtils.MX_PRPO_TableExists)
                 {
-                    pnl_CountrySelector.BringToFront();
+                    ShowPage(Pages.CountrySelector);
                 }
                 else if (AccessUtils.US_PRPO_TableExists)
                 {
@@ -232,8 +226,7 @@ namespace KPA_KPI_Analyzer
                 PRPO_DB_Utils.DataLoadProcessStarted = true;
                 PRPO_DB_Utils.KPITablesLoaded = false;
 
-                pnl_loadingScreen.Visible = true;
-                pnl_loadingScreen.BringToFront();
+                ShowPage(Pages.LoadingScreen);
                 lbl_loadingStatus.Text = "Loading Data...";
 
 
@@ -281,11 +274,14 @@ namespace KPA_KPI_Analyzer
 
 
 
-                PRPO_DB_Utils.ScheduledDataLoads = 16;
 
                 Thread tableLoadThread = new Thread(() => {
                     overallData.LoadKPITables(Overall.SelectedCountry);
                 });
+
+
+
+                PRPO_DB_Utils.ScheduledDataLoads = 16;
 
 
 
@@ -368,7 +364,7 @@ namespace KPA_KPI_Analyzer
                 DataLoaderTimer.Stop();
                 PRPO_DB_Utils.DataLoaded = false;
 
-                if (!FiltersApplied)
+                if (!ColumnFiltersApplied && !DateFiltersApplied)
                 {
                     FilterUtils.FiltersLoaded = false;
                     FilterUtils.FilterLoadProcessStarted = false;
@@ -376,8 +372,7 @@ namespace KPA_KPI_Analyzer
                 }
                 else
                 {
-                    pnl_loadingScreen.Visible = false;
-                    tblpnl_Filters.BringToFront();
+                    ShowPage(Pages.Filters);
                     btn_clearFilters.Enabled = true;
                     NavigationLocked = false;
                 }
@@ -412,6 +407,8 @@ namespace KPA_KPI_Analyzer
         /// <param name="e"></param>
         private void FiltersTimer_Tick(object sender, EventArgs e)
         {
+            lbl_loadingStatus.Text = "Loading Filters...";
+
             if (!FilterUtils.FilterLoadProcessStarted)
             {
                 FilterUtils.FilterLoadProcessStarted = true;
@@ -426,8 +423,7 @@ namespace KPA_KPI_Analyzer
             {
                 FilterUtils.FiltersLoaded = false;
                 FiltersTimer.Stop();
-                pnl_loadingScreen.Visible = false;
-                tblpnl_DashbaordPage.BringToFront();
+                ShowPage(Pages.Dashboard);
                 NavigationLocked = false;
             }
         }
