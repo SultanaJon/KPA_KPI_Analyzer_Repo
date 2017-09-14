@@ -4,7 +4,7 @@ using System;
 using System.Data;
 using System.Windows.Forms;
 using KPA_KPI_Analyzer.FilterFeeature;
-
+using KPA_KPI_Analyzer.Diagnostics;
 
 namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 {
@@ -16,6 +16,14 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
         public PR_vs_PO_Value prVsPOValue;
         public Hot_Job_PRs hotJobPrs;
         private decimal totalValue = 0;
+
+
+
+        public delegate void ReportProgressHandler(string mesage);
+        public event ReportProgressHandler ReportPogress;
+
+
+
 
         // Default Constructor
         public Other()
@@ -644,10 +652,11 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                     PRPO_DB_Utils.UpdateDataLoadProgress();
                 };
                 del.Invoke();
+                ReportPogress("KPI - Other Completed " + PRPO_DB_Utils.CompletedDataLoads);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.StackTrace, "KPI -> Other Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "KPI -> Other Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

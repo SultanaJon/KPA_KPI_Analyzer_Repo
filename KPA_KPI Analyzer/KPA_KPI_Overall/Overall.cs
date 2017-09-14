@@ -16,7 +16,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
         public static DataTable posRecCompDt;
         public static DataTable pr2ndLvlRelDateDt;
         public static DataTable AllDt;
-        public static DataTable filteredData;
         
 
 
@@ -80,7 +79,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
 
 
                         PRPO_DB_Utils.CompletedDataLoads++;
-
                         MethodInvoker del = delegate
                         {
                             PRPO_DB_Utils.UpdateDataLoadProgress();

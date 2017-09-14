@@ -6,6 +6,7 @@ using System;
 using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
+using KPA_KPI_Analyzer.Diagnostics;
 
 namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
 {
@@ -16,6 +17,15 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
         public PO_Prev_Rel poPrevRel;
         public No_Confirmation noConfirmation;
         private double totalDays = 0;
+
+
+
+
+        public delegate void ReportProgressHandler(string mesage);
+        public event ReportProgressHandler ReportPogress;
+
+
+
 
         // Default Constructor
         public Purch()
@@ -610,10 +620,11 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                     PRPO_DB_Utils.UpdateDataLoadProgress();
                 };
                 del.Invoke();
+                ReportPogress("KPA - Purch Completed");
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.StackTrace, "KPA -> Purch Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "KPA -> Purch Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

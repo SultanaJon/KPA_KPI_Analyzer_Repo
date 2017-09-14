@@ -154,6 +154,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.pnl_MainNavigation = new System.Windows.Forms.Panel();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
             this.pnl_CountrySelectorButton = new System.Windows.Forms.Panel();
             this.lbl_Country = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel3 = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -166,7 +167,6 @@
             this.pnl_CategorySelectorButton = new System.Windows.Forms.Panel();
             this.lbl_Category = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel29 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.btn_NavExpander = new Bunifu.Framework.UI.BunifuImageButton();
             this.FiltersTimer = new System.Windows.Forms.Timer(this.components);
             this.dc_appTitle = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.dc_countryLbl = new Bunifu.Framework.UI.BunifuDragControl(this.components);
@@ -217,7 +217,6 @@
             this.pnl_SectionSelectorButton.SuspendLayout();
             this.pnl_PerformanceSelectorButton.SuspendLayout();
             this.pnl_CategorySelectorButton.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btn_NavExpander)).BeginInit();
             this.pnl_TopUIPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -1065,20 +1064,23 @@
             // 
             // ImportTimer
             // 
+            this.ImportTimer.Interval = 1000;
             this.ImportTimer.Tick += new System.EventHandler(this.ImportTimer_Tick);
             // 
             // DataRemovalTimer
             // 
+            this.DataRemovalTimer.Interval = 1000;
             this.DataRemovalTimer.Tick += new System.EventHandler(this.DataRemovalTimer_Tick);
             // 
             // DataLoaderTimer
             // 
+            this.DataLoaderTimer.Interval = 1000;
             this.DataLoaderTimer.Tick += new System.EventHandler(this.DataLoaderTimer_Tick);
             // 
             // pnl_activePage
             // 
-            this.pnl_activePage.Controls.Add(this.tblpnl_Filters);
             this.pnl_activePage.Controls.Add(this.pnl_loadingScreen);
+            this.pnl_activePage.Controls.Add(this.tblpnl_Filters);
             this.pnl_activePage.Controls.Add(this.pnl_NavigationPanelMax);
             this.pnl_activePage.Controls.Add(this.pnl_CountrySelector);
             this.pnl_activePage.Controls.Add(this.tblpnl_DragDrop);
@@ -2185,11 +2187,11 @@
             this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 275F));
             this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1F));
             this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel14.Controls.Add(this.button1, 0, 0);
             this.tableLayoutPanel14.Controls.Add(this.pnl_CountrySelectorButton, 2, 0);
             this.tableLayoutPanel14.Controls.Add(this.pnl_SectionSelectorButton, 6, 0);
             this.tableLayoutPanel14.Controls.Add(this.pnl_PerformanceSelectorButton, 4, 0);
             this.tableLayoutPanel14.Controls.Add(this.pnl_CategorySelectorButton, 8, 0);
-            this.tableLayoutPanel14.Controls.Add(this.btn_NavExpander, 0, 0);
             this.tableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel14.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel14.Name = "tableLayoutPanel14";
@@ -2197,6 +2199,20 @@
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel14.Size = new System.Drawing.Size(1200, 51);
             this.tableLayoutPanel14.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.Menu;
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Margin = new System.Windows.Forms.Padding(0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(50, 51);
+            this.button1.TabIndex = 4;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.btn_NavExpander_Click);
             // 
             // pnl_CountrySelectorButton
             // 
@@ -2332,24 +2348,9 @@
             this.bunifuCustomLabel29.TabIndex = 0;
             this.bunifuCustomLabel29.Text = "Current Category";
             // 
-            // btn_NavExpander
-            // 
-            this.btn_NavExpander.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.btn_NavExpander.Image = global::KPA_KPI_Analyzer.Properties.Resources.Menu;
-            this.btn_NavExpander.ImageActive = null;
-            this.btn_NavExpander.InitialImage = global::KPA_KPI_Analyzer.Properties.Resources.Menu;
-            this.btn_NavExpander.Location = new System.Drawing.Point(0, 0);
-            this.btn_NavExpander.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_NavExpander.Name = "btn_NavExpander";
-            this.btn_NavExpander.Size = new System.Drawing.Size(50, 50);
-            this.btn_NavExpander.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btn_NavExpander.TabIndex = 2;
-            this.btn_NavExpander.TabStop = false;
-            this.btn_NavExpander.Zoom = 10;
-            this.btn_NavExpander.Click += new System.EventHandler(this.btn_NavExpander_Click);
-            // 
             // FiltersTimer
             // 
+            this.FiltersTimer.Interval = 1000;
             this.FiltersTimer.Tick += new System.EventHandler(this.FiltersTimer_Tick);
             // 
             // dc_appTitle
@@ -2485,7 +2486,6 @@
             this.pnl_PerformanceSelectorButton.PerformLayout();
             this.pnl_CategorySelectorButton.ResumeLayout(false);
             this.pnl_CategorySelectorButton.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btn_NavExpander)).EndInit();
             this.pnl_TopUIPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -2634,9 +2634,9 @@
         private Bunifu.Framework.UI.BunifuFlatButton btn_KPA;
         private Bunifu.Framework.UI.BunifuFlatButton btn_KPI;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private Bunifu.Framework.UI.BunifuImageButton btn_NavExpander;
         private Bunifu.Framework.UI.BunifuCheckbox chkBox_PoDateRange;
         private Bunifu.Framework.UI.BunifuCheckbox chkBox_PrDateRange;
+        private System.Windows.Forms.Button button1;
     }
 }
 

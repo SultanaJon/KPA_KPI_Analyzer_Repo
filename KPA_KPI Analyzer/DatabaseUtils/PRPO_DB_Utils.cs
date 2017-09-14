@@ -93,8 +93,10 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
         {
             if(ScheduledDataLoads == CompletedDataLoads)
             {
+
+
+
                 DataLoaded = true;
-                MessageBox.Show("Data successfully loaded!");
             }
         }
 

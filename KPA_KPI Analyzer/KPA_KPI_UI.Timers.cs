@@ -180,8 +180,8 @@ namespace KPA_KPI_Analyzer
 
             if (PRPO_DB_Utils.DataRemoved)
             {
-                DataRemovalTimer.Stop();
                 PRPO_DB_Utils.DataRemoved = false;
+                DataRemovalTimer.Stop();
 
                 if (AccessUtils.US_PRPO_TableExists && AccessUtils.MX_PRPO_TableExists)
                 {
@@ -284,7 +284,6 @@ namespace KPA_KPI_Analyzer
                 PRPO_DB_Utils.ScheduledDataLoads = 16;
 
 
-
                 KPA_PlanThread.Start();
                 KPA_PurchThread.Start();
                 KPA_PurchSubThread.Start();
@@ -361,8 +360,8 @@ namespace KPA_KPI_Analyzer
 
             if (PRPO_DB_Utils.DataLoaded)
             {
-                DataLoaderTimer.Stop();
                 PRPO_DB_Utils.DataLoaded = false;
+                DataLoaderTimer.Stop();
 
                 if (!ColumnFiltersApplied && !DateFiltersApplied)
                 {

@@ -4,7 +4,7 @@ using System;
 using System.Data;
 using System.Windows.Forms;
 using KPA_KPI_Analyzer.FilterFeeature;
-
+using KPA_KPI_Analyzer.Diagnostics;
 
 namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 {
@@ -13,6 +13,15 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
         public PR_Rel_Vs_PO_Rel prRelVsPORel;
         public PO_Create_Vs_Conf_Entry poCreateVsConfEntry;
         private double totalDays = 0;
+
+
+
+        public delegate void ReportProgressHandler(string mesage);
+        public event ReportProgressHandler ReportPogress;
+
+
+
+
 
         // Default Constructor
         public PurchSub()
@@ -347,7 +356,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                     PRPO_DB_Utils.UpdateDataLoadProgress();
                 };
                 del.Invoke();
-
+                ReportPogress("KPI - Purch Sub Completed " + PRPO_DB_Utils.CompletedDataLoads);
             }
             catch (Exception ex)
             {

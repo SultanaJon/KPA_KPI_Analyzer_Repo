@@ -4,7 +4,7 @@ using System;
 using System.Data;
 using System.Windows.Forms;
 using KPA_KPI_Analyzer.FilterFeeature;
-
+using KPA_KPI_Analyzer.Diagnostics;
 
 namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 {
@@ -14,6 +14,14 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
         public Orig_Plan_Date_Minus_2nd_Lvl_Rel_Date_vs_CodedLead origPlanDateMinus2ndLvlRelDateVsCodedLead;
         public Curr_Plan_Date_Minus_2nd_Lvl_Rel_Date_vs_CodedLead currPlanDateMinus2ndLvlRelDateVsCodedLead;
         private double totalDays = 0;
+
+
+
+        public delegate void ReportProgressHandler(string mesage);
+        public event ReportProgressHandler ReportPogress;
+
+
+
 
         // Default Constructor
         public Plan()
@@ -510,10 +518,11 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                     PRPO_DB_Utils.UpdateDataLoadProgress();
                 };
                 del.Invoke();
+                ReportPogress("KPI - Plan Completed " + PRPO_DB_Utils.CompletedDataLoads);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.StackTrace, "KPI -> Plan Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "KPI -> Plan Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

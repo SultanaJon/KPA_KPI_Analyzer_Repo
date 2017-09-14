@@ -4,6 +4,7 @@ using System;
 using System.Data;
 using System.Windows.Forms;
 using KPA_KPI_Analyzer.FilterFeeature;
+using KPA_KPI_Analyzer.Diagnostics;
 
 namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 {
@@ -15,6 +16,14 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
         public Receipt_Date_vs_Orig_Conf_Date receiptDateVsOrigConfDate;
         public Receipt_Date_vs_Curr_Conf_Date receiptDateVsCurrConfDate;
         private double totalDays = 0;
+
+
+
+        public delegate void ReportProgressHandler(string mesage);
+        public event ReportProgressHandler ReportPogress;
+
+
+
 
         // Default Constructor
         public FollowUp()
@@ -836,9 +845,9 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 MethodInvoker del = delegate
                 {
                     PRPO_DB_Utils.UpdateDataLoadProgress();
-                    
                 };
                 del.Invoke();
+                ReportPogress("KPI - Follow Up Completed " + PRPO_DB_Utils.CompletedDataLoads);
             }
             catch (Exception ex)
             {

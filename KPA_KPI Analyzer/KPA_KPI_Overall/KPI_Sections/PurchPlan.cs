@@ -4,6 +4,7 @@ using System;
 using System.Data;
 using System.Windows.Forms;
 using KPA_KPI_Analyzer.FilterFeeature;
+using KPA_KPI_Analyzer.Diagnostics;
 
 namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 {
@@ -13,6 +14,15 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
         public PR_2nd_Lvl_Rel_Orig_Plan_Del_Date pr2ndLvlRelOrigPlanDelDate;
         private double totalDays = 0;
         string[] strPoLineFirstRelDate;
+
+
+
+        public delegate void ReportProgressHandler(string mesage);
+        public event ReportProgressHandler ReportPogress;
+
+
+
+
 
         // Default Constructor
         public PurchPlan()
@@ -326,6 +336,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                     PRPO_DB_Utils.UpdateDataLoadProgress();
                 };
                 del.Invoke();
+                ReportPogress("KPI - Purch Plan Completed " + PRPO_DB_Utils.CompletedDataLoads);
             }
             catch (Exception ex)
             {

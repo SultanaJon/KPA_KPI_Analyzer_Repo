@@ -1253,13 +1253,11 @@ namespace KPA_KPI_Analyzer
         {
             GetCheckedColumnFilters();
 
-            Filters.FilterByPrDateRange = false;
-            Filters.FilterByPoDateRange = false;
-
             if (FilterByPrDate)
             {
                 if (CheckDateRange(0))
                 {
+                    Filters.FilterByPrDateRange = false;
                     return;
                 }
                 else
@@ -1269,12 +1267,17 @@ namespace KPA_KPI_Analyzer
                     Filters.FilterByPrDateRange = true;
                 }
             }
+            else
+            {
+                Filters.FilterByPrDateRange = false;
+            }
 
 
             if(FilterByPoDate)
             {
                 if (CheckDateRange(2))
                 {
+                    Filters.FilterByPoDateRange = false;
                     return;
                 }
                 else
@@ -1283,6 +1286,10 @@ namespace KPA_KPI_Analyzer
                     Filters.PoToDate = dp_POToDate.Value;
                     Filters.FilterByPoDateRange = true;
                 }
+            }
+            else
+            {
+                Filters.FilterByPoDateRange = false;
             }
 
 
@@ -1348,8 +1355,11 @@ namespace KPA_KPI_Analyzer
             chkBox_PrDateRange.Checked = false;
             chkBox_PoDateRange.Checked = false;
 
+            ColumnFiltersAdded = false;
             ColumnFiltersApplied = false;
+            DateFiltersAdded = false;
             DateFiltersApplied = false;
+            
             overallData = new Overall();
             PRPO_DB_Utils.DataLoadProcessStarted = false;
             PRPO_DB_Utils.DataLoaded = false;
@@ -1370,11 +1380,13 @@ namespace KPA_KPI_Analyzer
         public void HasFiltersAdded()
         {
             ColumnFiltersAdded = false;
-            DateFiltersAdded = false;
 
             // Check if the user enable the option to filter by PR or PO date range.
             if (FilterByPrDate || FilterByPoDate)
                 DateFiltersAdded = true;
+             else
+                DateFiltersAdded = false;
+
 
             // Check if the user selected any filters from the following check list boxes.
             if (Filters.FitlerValues.material.Count > 0) ColumnFiltersAdded = true;

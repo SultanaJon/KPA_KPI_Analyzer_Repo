@@ -89,7 +89,6 @@ namespace KPA_KPI_Analyzer
                 try
                 {
                     PRPO_DB_Utils.ConnectToDatabase();
-                    //btn_DatabaseConnectionStatus.Image = Properties.Resources.databaseConn_Connected_Icon;
                     Logger.Log(AppDirectoryUtils.LogFiles.DbConnectionEvents, "Successfully Connected to MS Access Database");
 
                     if (AccessUtils.US_PRPO_TableExists && AccessUtils.MX_PRPO_TableExists)
@@ -378,7 +377,6 @@ namespace KPA_KPI_Analyzer
 
 
 
-
         /// <summary>
         /// 
         /// </summary>
@@ -401,7 +399,7 @@ namespace KPA_KPI_Analyzer
                     tblpnl_Filters.BringToFront();
                     break;
                 case 3:
-                    pnl_loadingScreen.Visible = true;
+                    // Buinifu is new an the circular progress bar will throw invalid paramter exception if visibility is toggled.
                     pnl_loadingScreen.BringToFront();
                     break;
                 case 4:
@@ -409,7 +407,7 @@ namespace KPA_KPI_Analyzer
                     pnl_CountrySelector.BringToFront();
                     break;
                 default:
-                    break;
+                    break;  
             }
         }
 
@@ -426,13 +424,8 @@ namespace KPA_KPI_Analyzer
             tblpnl_DashbaordPage.Visible = false;
             tblpnl_DragDrop.Visible = false;
             tblpnl_Filters.Visible = false;
-            pnl_loadingScreen.Visible = false;
             pnl_CountrySelector.Visible = false;
         }
-
-
-
-
 
 
         private void panel27_Paint(object sender, PaintEventArgs e)

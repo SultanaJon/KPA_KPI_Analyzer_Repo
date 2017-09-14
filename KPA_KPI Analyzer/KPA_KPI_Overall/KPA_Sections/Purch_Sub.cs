@@ -1,5 +1,6 @@
 ﻿using Excel_Access_Tools.Access;
 using KPA_KPI_Analyzer.DatabaseUtils;
+using KPA_KPI_Analyzer.Diagnostics;
 using KPA_KPI_Analyzer.FilterFeeature;
 using KPA_KPI_Analyzer.Templates;
 using System;
@@ -16,6 +17,15 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
         public PR_Rel_PO_Rel prRelToPORel;
         public PO_Create_Conf_Entry POCreatToConfEntry;
         private double totalDays = 0;
+
+
+
+
+        public delegate void ReportProgressHandler(string mesage);
+        public event ReportProgressHandler ReportPogress;
+
+
+
 
         // Default Constructor
         public Purch_Sub()
@@ -287,10 +297,11 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                     PRPO_DB_Utils.UpdateDataLoadProgress();
                 };
                 del.Invoke();
+                ReportPogress("KPA - Purch Sub Completed");
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.StackTrace, "KPA -> Purch Sub Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "KPA -> Purch Sub Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
