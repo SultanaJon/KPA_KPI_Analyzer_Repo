@@ -1,6 +1,6 @@
 ﻿using System.Data.OleDb;
 
-namespace Excel_Access_Tools.Access
+namespace DataImporter.Access
 {
     public class AccessInfo
     {

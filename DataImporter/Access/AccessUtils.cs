@@ -1,4 +1,4 @@
-﻿using Excel_Access_Tools.Access.ExceptionClasses;
+﻿using DataImporter.Access.ExceptionClasses;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -6,7 +6,7 @@ using System.Data.OleDb;
 using System.IO;
 using System.Windows.Forms;
 
-namespace Excel_Access_Tools.Access
+namespace DataImporter.Access
 {
     public static class AccessUtils
     {

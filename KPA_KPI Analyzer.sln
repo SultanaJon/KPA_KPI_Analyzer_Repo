@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KPA_KPI Analyzer", "KPA_KPI Analyzer\KPA_KPI Analyzer.csproj", "{7E6D695C-BC2A-4A07-B78F-35E750342A48}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Excel_Access_Tools", "DataImporter\Excel_Access_Tools.csproj", "{BE102B8A-42D8-48D2-A37E-B1D83AD9FF12}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataImporter", "DataImporter\DataImporter.csproj", "{BE102B8A-42D8-48D2-A37E-B1D83AD9FF12}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

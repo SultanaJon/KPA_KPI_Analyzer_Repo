@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Excel_Access_Tools.Access.ExceptionClasses
+namespace DataImporter.Access.ExceptionClasses
 {
     public class PRPODatabaseNotFoundException : Exception
     {

@@ -1,6 +1,6 @@
 ﻿using DataImporter.Classes;
-using Excel_Access_Tools.Access;
-using Excel_Access_Tools.Excel;
+using DataImporter.Access;
+using DataImporter.Excel;
 using KPA_KPI_Analyzer.DatabaseUtils;
 using KPA_KPI_Analyzer.DragDropFeatures;
 using KPA_KPI_Analyzer.FilterFeeature;
@@ -221,11 +221,12 @@ namespace KPA_KPI_Analyzer
         private void DataLoaderTimer_Tick(object sender, EventArgs e)
         {
             NavigationLocked = true;
+            DataLoaderTimer.Stop();
+
             if (!PRPO_DB_Utils.DataLoadProcessStarted)
             {
                 PRPO_DB_Utils.DataLoadProcessStarted = true;
                 PRPO_DB_Utils.KPITablesLoaded = false;
-
                 ShowPage(Pages.LoadingScreen);
                 lbl_loadingStatus.Text = "Loading Data...";
 

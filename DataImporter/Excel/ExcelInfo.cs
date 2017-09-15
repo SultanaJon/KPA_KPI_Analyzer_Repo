@@ -1,7 +1,7 @@
 ﻿using System.Data.OleDb;
 using System.IO;
 
-namespace Excel_Access_Tools.Excel
+namespace DataImporter.Excel
 {
     public class ExcelInfo
     {

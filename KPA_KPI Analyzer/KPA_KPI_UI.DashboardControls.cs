@@ -1,6 +1,6 @@
 ﻿using DataImporter.Classes;
-using Excel_Access_Tools.Access;
-using Excel_Access_Tools.Excel;
+using DataImporter.Access;
+using DataImporter.Excel;
 using KPA_KPI_Analyzer.DatabaseUtils;
 using KPA_KPI_Analyzer.DragDropFeatures;
 using KPA_KPI_Analyzer.DragDropFeatures.Exceptions;

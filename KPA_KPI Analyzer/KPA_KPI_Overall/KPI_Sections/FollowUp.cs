@@ -19,12 +19,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
 
 
-        public delegate void ReportProgressHandler(string mesage);
-        public event ReportProgressHandler ReportPogress;
-
-
-
-
         // Default Constructor
         public FollowUp()
         {
@@ -847,7 +841,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                     PRPO_DB_Utils.UpdateDataLoadProgress();
                 };
                 del.Invoke();
-                ReportPogress("KPI - Follow Up Completed " + PRPO_DB_Utils.CompletedDataLoads);
             }
             catch (Exception ex)
             {

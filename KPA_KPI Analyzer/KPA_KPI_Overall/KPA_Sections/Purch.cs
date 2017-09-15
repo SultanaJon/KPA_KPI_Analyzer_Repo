@@ -1,4 +1,4 @@
-﻿using Excel_Access_Tools.Access;
+﻿using DataImporter.Access;
 using KPA_KPI_Analyzer.DatabaseUtils;
 using KPA_KPI_Analyzer.FilterFeeature;
 using KPA_KPI_Analyzer.Templates;
@@ -18,11 +18,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
         public No_Confirmation noConfirmation;
         private double totalDays = 0;
 
-
-
-
-        public delegate void ReportProgressHandler(string mesage);
-        public event ReportProgressHandler ReportPogress;
 
 
 
@@ -620,7 +615,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                     PRPO_DB_Utils.UpdateDataLoadProgress();
                 };
                 del.Invoke();
-                ReportPogress("KPA - Purch Completed");
             }
             catch (Exception ex)
             {

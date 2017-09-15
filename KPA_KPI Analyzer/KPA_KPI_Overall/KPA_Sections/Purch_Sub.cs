@@ -1,4 +1,4 @@
-﻿using Excel_Access_Tools.Access;
+﻿using DataImporter.Access;
 using KPA_KPI_Analyzer.DatabaseUtils;
 using KPA_KPI_Analyzer.Diagnostics;
 using KPA_KPI_Analyzer.FilterFeeature;
@@ -21,12 +21,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
 
 
 
-        public delegate void ReportProgressHandler(string mesage);
-        public event ReportProgressHandler ReportPogress;
-
-
-
-
+  
         // Default Constructor
         public Purch_Sub()
         {
@@ -297,7 +292,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                     PRPO_DB_Utils.UpdateDataLoadProgress();
                 };
                 del.Invoke();
-                ReportPogress("KPA - Purch Sub Completed");
             }
             catch (Exception ex)
             {
