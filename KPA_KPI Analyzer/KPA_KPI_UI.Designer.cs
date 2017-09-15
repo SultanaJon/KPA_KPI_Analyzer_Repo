@@ -409,7 +409,6 @@
             this.panel27.Name = "panel27";
             this.panel27.Size = new System.Drawing.Size(1174, 149);
             this.panel27.TabIndex = 3;
-            this.panel27.Paint += new System.Windows.Forms.PaintEventHandler(this.panel27_Paint);
             // 
             // chkBox_PoDateRange
             // 

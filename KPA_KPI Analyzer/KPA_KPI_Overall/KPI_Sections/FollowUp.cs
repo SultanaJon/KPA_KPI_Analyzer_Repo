@@ -176,8 +176,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 try
                 {
                     initConfVsCurrConf.data.PercentUnconf = Math.Round(((double)initConfVsCurrConf.data.PercentUnconfTotal / Overall.posRecCompDt.Rows.Count) * 100, 2);
-                    if (double.IsNaN(initConfVsCurrConf.data.PercentUnconf))
-                        initConfVsCurrConf.data.PercentUnconf = 0;
                 }
                 catch (DivideByZeroException)
                 {
@@ -351,8 +349,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 try
                 {
                     finalConfDateVsFinalPlan.data.PercentUnconf = Math.Round(((double)finalConfDateVsFinalPlan.data.PercentUnconfTotal / Overall.posRecCompDt.Rows.Count) * 100, 2);
-                    if (double.IsNaN(finalConfDateVsFinalPlan.data.PercentUnconf))
-                        finalConfDateVsFinalPlan.data.PercentUnconf = 0;
                 }
                 catch (DivideByZeroException)
                 {
@@ -662,8 +658,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 try
                 {
                     receiptDateVsOrigConfDate.data.PercentUnconf = Math.Round(((double)receiptDateVsOrigConfDate.data.PercentUnconfTotal / Overall.posRecCompDt.Rows.Count) * 100, 2);
-                    if (double.IsNaN(receiptDateVsOrigConfDate.data.PercentUnconf))
-                        receiptDateVsOrigConfDate.data.PercentUnconf = 0;
                 }
                 catch (DivideByZeroException)
                 {
@@ -825,8 +819,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 try
                 {
                     receiptDateVsCurrConfDate.data.PercentUnconf = Math.Round(((double)receiptDateVsCurrConfDate.data.PercentUnconfTotal / Overall.posRecCompDt.Rows.Count) * 100, 2);
-                    if (double.IsNaN(receiptDateVsCurrConfDate.data.PercentUnconf))
-                        receiptDateVsCurrConfDate.data.PercentUnconf = 0;
                 }
                 catch (DivideByZeroException)
                 {

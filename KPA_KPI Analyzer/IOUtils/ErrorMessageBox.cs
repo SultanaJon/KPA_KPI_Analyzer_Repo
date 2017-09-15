@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 
 
-namespace KPA_KPI_Analyzer.Diagnostics
+namespace KPA_KPI_Analyzer.IOUtils
 {
     public partial class ErrorMessageBox : Form
     {

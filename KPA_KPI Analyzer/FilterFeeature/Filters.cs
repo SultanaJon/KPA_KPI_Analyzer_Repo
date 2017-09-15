@@ -65,7 +65,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
 
         /// <summary>
-        /// This string is used when no filters have been added so the queries will not have an "AND" appended to the end.
+        /// 
         /// </summary>
         public static string SecondaryFilterQuery
         {

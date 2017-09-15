@@ -168,8 +168,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 try
                 {
                     prRelConfEntry.data.PercentUnconf = Math.Round(((double)prRelConfEntry.data.PercentUnconfTotal / prRelConfEntry.data.Total) * 100, 2);
-                    if (double.IsNaN(prRelConfEntry.data.PercentUnconf))
-                        prRelConfEntry.data.PercentUnconf = 0;
                 }
                 catch (DivideByZeroException)
                 {
