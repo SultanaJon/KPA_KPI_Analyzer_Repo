@@ -81,10 +81,10 @@ namespace KPA_KPI_Analyzer.FilterFeeature
         /// <summary> 
         /// Structure & Lists that hold the values of the currently selected filters.
         /// </summary>
-        public struct FitlerValues
+        public struct FilterValues
         {
-            public static List<string> wbsElmntPrdOrd = new List<string>();
-            public static List<string> wbsProject = new List<string>();
+            public static List<string> projectNumber = new List<string>();
+            public static List<string> wbsElement = new List<string>();
             public static List<string> material = new List<string>();
             public static List<string> materialGroup = new List<string>();
             public static List<string> vendor = new List<string>();
@@ -105,8 +105,8 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             /// </summary>
             public static void Clear()
             {
-                wbsElmntPrdOrd.Clear();
-                wbsProject.Clear();
+                projectNumber.Clear();
+                wbsElement.Clear();
                 material.Clear();
                 materialGroup.Clear();
                 vendor.Clear();
@@ -134,8 +134,8 @@ namespace KPA_KPI_Analyzer.FilterFeeature
         {
             // The dictionaries that will contain the value check in the checkbox and the 
             // current database values based on those check values.
-            public static Dictionary<string, List<string>> wbsElmnt_PrdOrdWbs = new Dictionary<string, List<string>>();
-            public static Dictionary<string, List<string>> wbsProject = new Dictionary<string, List<string>>();
+            public static Dictionary<string, List<string>> projectNumebr = new Dictionary<string, List<string>>();
+            public static Dictionary<string, List<string>> wbsElement = new Dictionary<string, List<string>>();
             public static Dictionary<string, List<string>> material = new Dictionary<string, List<string>>();
             public static Dictionary<string, List<string>> materialGroup = new Dictionary<string, List<string>>();
             public static Dictionary<string, List<string>> vendor = new Dictionary<string, List<string>>();
@@ -156,8 +156,8 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             /// </summary>
             public static void Clear()
             {
-                wbsElmnt_PrdOrdWbs.Clear();
-                wbsProject.Clear();
+                projectNumebr.Clear();
+                wbsElement.Clear();
                 material.Clear();
                 materialGroup.Clear();
                 vendor.Clear();

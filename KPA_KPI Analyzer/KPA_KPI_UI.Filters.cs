@@ -64,14 +64,13 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// This function will populate the checklist boxes with the new data after a load.
+        /// Updates the contents of the of the checked list boxes on the filters page.
         /// </summary>
         /// <param name="data"></param>
         /// <param name="filter"></param>
         public void UpdateFilters(List<string> data, FilterUtils.Filters filter)
         {
             HasFiltersAdded();
-
             UpdateFilterButtons();
 
 
@@ -80,10 +79,10 @@ namespace KPA_KPI_Analyzer
                 case 0:
                 case 1:
                     break;
-                case 2: // WBS Project
-                    ChkdListBx_WBSProject.Invoke((MethodInvoker)delegate {
-                        ChkdListBx_WBSProject.Items.Clear();
-                        ChkdListBx_WBSProject.Items.AddRange(data.ToArray());
+                case 2: // WBS Element
+                    ChkdListBx_WBSElement.Invoke((MethodInvoker)delegate {
+                        ChkdListBx_WBSElement.Items.Clear();
+                        ChkdListBx_WBSElement.Items.AddRange(data.ToArray());
                     });
                     break;
                 case 3: // Material
@@ -165,18 +164,33 @@ namespace KPA_KPI_Analyzer
                 case 0:
                     break;
                 case 1:
+                    if (e.NewValue == CheckState.Checked)
+                    {
+                        Filters.FilterValues.wbsElement.Add(clb.Items[e.Index].ToString());
+                        AddFilterSnapShot(clb.Items[e.Index].ToString());
+                        BuildQueryFilters();
+                        FilterUtils.LoadFilters(filters, FilterUtils.Filters.WBS_Element);
+                    }
+                    else
+                    {
+                        Filters.FilterValues.wbsElement.Remove(clb.Items[e.Index].ToString());
+                        BuildQueryFilters();
+                        FilterUtils.LoadFilters(filters, FilterUtils.Filters.WBS_Element);
+                        RevertFilterData(clb.Items[e.Index].ToString());
+                    }
+                    UpdateCheckedItems();
                     break;
                 case 2: // Material
                     if (e.NewValue == CheckState.Checked)
                     {
-                        Filters.FitlerValues.material.Add(clb.Items[e.Index].ToString());
+                        Filters.FilterValues.material.Add(clb.Items[e.Index].ToString());
                         AddFilterSnapShot(clb.Items[e.Index].ToString());
                         BuildQueryFilters();
                         FilterUtils.LoadFilters(filters, FilterUtils.Filters.Material);
                     }
                     else
                     {
-                        Filters.FitlerValues.material.Remove(clb.Items[e.Index].ToString());
+                        Filters.FilterValues.material.Remove(clb.Items[e.Index].ToString());
                         BuildQueryFilters();
                         FilterUtils.LoadFilters(filters, FilterUtils.Filters.Material);
                         RevertFilterData(clb.Items[e.Index].ToString());
@@ -186,14 +200,14 @@ namespace KPA_KPI_Analyzer
                 case 3: // Material Group
                     if (e.NewValue == CheckState.Checked)
                     {
-                        Filters.FitlerValues.materialGroup.Add(clb.Items[e.Index].ToString());
+                        Filters.FilterValues.materialGroup.Add(clb.Items[e.Index].ToString());
                         AddFilterSnapShot(clb.Items[e.Index].ToString());
                         BuildQueryFilters();
                         FilterUtils.LoadFilters(filters, FilterUtils.Filters.MaterialGroup);
                     }
                     else
                     {
-                        Filters.FitlerValues.materialGroup.Remove(clb.Items[e.Index].ToString());
+                        Filters.FilterValues.materialGroup.Remove(clb.Items[e.Index].ToString());
                         BuildQueryFilters();
                         FilterUtils.LoadFilters(filters, FilterUtils.Filters.MaterialGroup);
                         RevertFilterData(clb.Items[e.Index].ToString());
@@ -203,14 +217,14 @@ namespace KPA_KPI_Analyzer
                 case 4: // Vendor
                     if (e.NewValue == CheckState.Checked)
                     {
-                        Filters.FitlerValues.vendor.Add(clb.Items[e.Index].ToString());
+                        Filters.FilterValues.vendor.Add(clb.Items[e.Index].ToString());
                         AddFilterSnapShot(clb.Items[e.Index].ToString());
                         BuildQueryFilters();
                         FilterUtils.LoadFilters(filters, FilterUtils.Filters.Vendor);
                     }
                     else
                     {
-                        Filters.FitlerValues.vendor.Remove(clb.Items[e.Index].ToString());
+                        Filters.FilterValues.vendor.Remove(clb.Items[e.Index].ToString());
                         BuildQueryFilters();
                         FilterUtils.LoadFilters(filters, FilterUtils.Filters.Vendor);
                         RevertFilterData(clb.Items[e.Index].ToString());
@@ -220,14 +234,14 @@ namespace KPA_KPI_Analyzer
                 case 5: // Vendor Desc
                     if (e.NewValue == CheckState.Checked)
                     {
-                        Filters.FitlerValues.vendorDesc.Add(clb.Items[e.Index].ToString());
+                        Filters.FilterValues.vendorDesc.Add(clb.Items[e.Index].ToString());
                         AddFilterSnapShot(clb.Items[e.Index].ToString());
                         BuildQueryFilters();
                         FilterUtils.LoadFilters(filters, FilterUtils.Filters.VendorDescription);
                     }
                     else
                     {
-                        Filters.FitlerValues.vendorDesc.Remove(clb.Items[e.Index].ToString());
+                        Filters.FilterValues.vendorDesc.Remove(clb.Items[e.Index].ToString());
                         BuildQueryFilters();
                         FilterUtils.LoadFilters(filters, FilterUtils.Filters.VendorDescription);
                         RevertFilterData(clb.Items[e.Index].ToString());
@@ -237,14 +251,14 @@ namespace KPA_KPI_Analyzer
                 case 6: // Purch Group
                     if (e.NewValue == CheckState.Checked)
                     {
-                        Filters.FitlerValues.purchGroup.Add(clb.Items[e.Index].ToString());
+                        Filters.FilterValues.purchGroup.Add(clb.Items[e.Index].ToString());
                         AddFilterSnapShot(clb.Items[e.Index].ToString());
                         BuildQueryFilters();
                         FilterUtils.LoadFilters(filters, FilterUtils.Filters.PurchGroup);
                     }
                     else
                     {
-                        Filters.FitlerValues.purchGroup.Remove(clb.Items[e.Index].ToString());
+                        Filters.FilterValues.purchGroup.Remove(clb.Items[e.Index].ToString());
                         BuildQueryFilters();
                         FilterUtils.LoadFilters(filters, FilterUtils.Filters.PurchGroup);
                         RevertFilterData(clb.Items[e.Index].ToString());
@@ -254,14 +268,14 @@ namespace KPA_KPI_Analyzer
                 case 7: // IR Supp Name
                     if (e.NewValue == CheckState.Checked)
                     {
-                        Filters.FitlerValues.irSuppName.Add(clb.Items[e.Index].ToString());
+                        Filters.FilterValues.irSuppName.Add(clb.Items[e.Index].ToString());
                         AddFilterSnapShot(clb.Items[e.Index].ToString());
                         BuildQueryFilters();
                         FilterUtils.LoadFilters(filters, FilterUtils.Filters.IRSuppName);
                     }
                     else
                     {
-                        Filters.FitlerValues.irSuppName.Remove(clb.Items[e.Index].ToString());
+                        Filters.FilterValues.irSuppName.Remove(clb.Items[e.Index].ToString());
                         BuildQueryFilters();
                         FilterUtils.LoadFilters(filters, FilterUtils.Filters.IRSuppName);
                         RevertFilterData(clb.Items[e.Index].ToString());
@@ -271,14 +285,14 @@ namespace KPA_KPI_Analyzer
                 case 8: // Fxd Supp Name
                     if (e.NewValue == CheckState.Checked)
                     {
-                        Filters.FitlerValues.fxdSuppName.Add(clb.Items[e.Index].ToString());
+                        Filters.FilterValues.fxdSuppName.Add(clb.Items[e.Index].ToString());
                         AddFilterSnapShot(clb.Items[e.Index].ToString());
                         BuildQueryFilters();
                         FilterUtils.LoadFilters(filters, FilterUtils.Filters.FxdSuppName);
                     }
                     else
                     {
-                        Filters.FitlerValues.fxdSuppName.Remove(clb.Items[e.Index].ToString());
+                        Filters.FilterValues.fxdSuppName.Remove(clb.Items[e.Index].ToString());
                         BuildQueryFilters();
                         FilterUtils.LoadFilters(filters, FilterUtils.Filters.FxdSuppName);
                         RevertFilterData(clb.Items[e.Index].ToString());
@@ -288,14 +302,14 @@ namespace KPA_KPI_Analyzer
                 case 9: // Dsrd Supp Name
                     if (e.NewValue == CheckState.Checked)
                     {
-                        Filters.FitlerValues.dsrdSuppName.Add(clb.Items[e.Index].ToString());
+                        Filters.FilterValues.dsrdSuppName.Add(clb.Items[e.Index].ToString());
                         AddFilterSnapShot(clb.Items[e.Index].ToString());
                         BuildQueryFilters();
                         FilterUtils.LoadFilters(filters, FilterUtils.Filters.DsrdSuppName);
                     }
                     else
                     {
-                        Filters.FitlerValues.dsrdSuppName.Remove(clb.Items[e.Index].ToString());
+                        Filters.FilterValues.dsrdSuppName.Remove(clb.Items[e.Index].ToString());
                         BuildQueryFilters();
                         FilterUtils.LoadFilters(filters, FilterUtils.Filters.DsrdSuppName);
                         RevertFilterData(clb.Items[e.Index].ToString());
@@ -305,14 +319,14 @@ namespace KPA_KPI_Analyzer
                 case 10: // Commodity Category
                     if (e.NewValue == CheckState.Checked)
                     {
-                        Filters.FitlerValues.commCategory.Add(clb.Items[e.Index].ToString());
+                        Filters.FilterValues.commCategory.Add(clb.Items[e.Index].ToString());
                         AddFilterSnapShot(clb.Items[e.Index].ToString());
                         BuildQueryFilters();
                         FilterUtils.LoadFilters(filters, FilterUtils.Filters.CommCat);
                     }
                     else
                     {
-                        Filters.FitlerValues.commCategory.Remove(clb.Items[e.Index].ToString());
+                        Filters.FilterValues.commCategory.Remove(clb.Items[e.Index].ToString());
                         BuildQueryFilters();
                         FilterUtils.LoadFilters(filters, FilterUtils.Filters.CommCat);
                         RevertFilterData(clb.Items[e.Index].ToString());
@@ -336,6 +350,40 @@ namespace KPA_KPI_Analyzer
         private void AddFilterSnapShot(string key)
         {
             List<string> temp;
+
+            if (ChkdListBx_WBSElement.Items.Count > 0)
+            {
+                temp = new List<string>();
+                foreach (var item in ChkdListBx_WBSElement.Items)
+                {
+                    temp.Add(item.ToString());
+                }
+
+                try
+                {
+                    Filters.ClbDictionaryValues.wbsElement.Add(key, temp);
+                }
+                catch (ArgumentException)
+                {
+
+                }
+            }
+            else
+            {
+                temp = new List<string>();
+                try
+                {
+                    Filters.ClbDictionaryValues.wbsElement.Add(key, temp);
+                }
+                catch (ArgumentException)
+                {
+
+                }
+            }
+
+
+
+
             if (ChkdListBx_Material.Items.Count > 0)
             {
                 temp = new List<string>();
@@ -643,7 +691,15 @@ namespace KPA_KPI_Analyzer
         {
             List<string> temp;
 
-            if(Filters.ClbDictionaryValues.material.Count > 0)
+            if (Filters.ClbDictionaryValues.wbsElement.Count > 0)
+            {
+                temp = Filters.ClbDictionaryValues.wbsElement[key];
+                ChkdListBx_WBSElement.Items.Clear();
+                ChkdListBx_WBSElement.Items.AddRange(temp.ToArray());
+                Filters.ClbDictionaryValues.wbsElement.Remove(key);
+            }
+
+            if (Filters.ClbDictionaryValues.material.Count > 0)
             {
                 temp = Filters.ClbDictionaryValues.material[key];
                 ChkdListBx_Material.Items.Clear();
@@ -735,14 +791,28 @@ namespace KPA_KPI_Analyzer
         private void BuildQueryFilters()
         {
             filters = string.Empty;
-            if(Filters.FitlerValues.material.Count > 0)
+            if (Filters.FilterValues.wbsElement.Count > 0)
             {
-                for (int i = 0; i < Filters.FitlerValues.material.Count; ++i)
+                for (int i = 0; i < Filters.FilterValues.wbsElement.Count; ++i)
                 {
                     if (i == 0)
                         filters += "(";
-                    filters += Overall.SelectedCountry + ".[" + FilterFeeature.FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Material] + "] = " + "'" + Filters.FitlerValues.material[i] + "'";
-                    if (i != (Filters.FitlerValues.material.Count - 1))
+                    filters += Overall.SelectedCountry + ".[" + FilterFeeature.FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.WBS_Element] + "] = " + "'" + Filters.FilterValues.wbsElement[i] + "'";
+                    if (i != (Filters.FilterValues.wbsElement.Count - 1))
+                        filters += " OR ";
+                    else
+                        filters += ")";
+                }
+            }
+
+            if (Filters.FilterValues.material.Count > 0)
+            {
+                for (int i = 0; i < Filters.FilterValues.material.Count; ++i)
+                {
+                    if (i == 0)
+                        filters += "(";
+                    filters += Overall.SelectedCountry + ".[" + FilterFeeature.FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Material] + "] = " + "'" + Filters.FilterValues.material[i] + "'";
+                    if (i != (Filters.FilterValues.material.Count - 1))
                         filters += " OR ";
                     else
                         filters += ")";
@@ -750,9 +820,9 @@ namespace KPA_KPI_Analyzer
             }
             
 
-            if(Filters.FitlerValues.materialGroup.Count > 0)
+            if(Filters.FilterValues.materialGroup.Count > 0)
             {
-                for (int i = 0; i < Filters.FitlerValues.materialGroup.Count; ++i)
+                for (int i = 0; i < Filters.FilterValues.materialGroup.Count; ++i)
                 {
                     if (i == 0 && filters != string.Empty)
                         filters += " AND (";
@@ -762,8 +832,8 @@ namespace KPA_KPI_Analyzer
                         filters += "(";
 
 
-                    filters += Overall.SelectedCountry + ".[" + FilterFeeature.FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.MaterialGroup] + "] = " + "'" + Filters.FitlerValues.materialGroup[i] + "'";
-                    if (i != (Filters.FitlerValues.materialGroup.Count - 1))
+                    filters += Overall.SelectedCountry + ".[" + FilterFeeature.FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.MaterialGroup] + "] = " + "'" + Filters.FilterValues.materialGroup[i] + "'";
+                    if (i != (Filters.FilterValues.materialGroup.Count - 1))
                         filters += " OR ";
                     else
                         filters += ")";
@@ -771,9 +841,9 @@ namespace KPA_KPI_Analyzer
             }
             
 
-            if(Filters.FitlerValues.vendor.Count > 0)
+            if(Filters.FilterValues.vendor.Count > 0)
             {
-                for (int i = 0; i < Filters.FitlerValues.vendor.Count; ++i)
+                for (int i = 0; i < Filters.FilterValues.vendor.Count; ++i)
                 {
                     if (i == 0 && filters != string.Empty)
                         filters += " AND (";
@@ -782,8 +852,8 @@ namespace KPA_KPI_Analyzer
                     if (i == 0 && filters == string.Empty)
                         filters += "(";
 
-                    filters += Overall.SelectedCountry + ".[" + FilterFeeature.FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Vendor] + "] = " + Filters.FitlerValues.vendor[i];
-                    if (i != (Filters.FitlerValues.vendor.Count - 1))
+                    filters += Overall.SelectedCountry + ".[" + FilterFeeature.FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Vendor] + "] = " + Filters.FilterValues.vendor[i];
+                    if (i != (Filters.FilterValues.vendor.Count - 1))
                         filters += " OR ";
                     else
                         filters += ")";
@@ -791,9 +861,9 @@ namespace KPA_KPI_Analyzer
             }
             
 
-            if(Filters.FitlerValues.vendorDesc.Count > 0)
+            if(Filters.FilterValues.vendorDesc.Count > 0)
             {
-                for (int i = 0; i < Filters.FitlerValues.vendorDesc.Count; ++i)
+                for (int i = 0; i < Filters.FilterValues.vendorDesc.Count; ++i)
                 {
                     if (i == 0 && filters != string.Empty)
                         filters += " AND (";
@@ -802,8 +872,8 @@ namespace KPA_KPI_Analyzer
                     if (i == 0 && filters == string.Empty)
                         filters += "(";
 
-                    filters += Overall.SelectedCountry + ".[" + FilterFeeature.FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.VendorDescription] + "] = " + "'" + Filters.FitlerValues.vendorDesc[i] + "'";
-                    if (i != (Filters.FitlerValues.vendorDesc.Count - 1))
+                    filters += Overall.SelectedCountry + ".[" + FilterFeeature.FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.VendorDescription] + "] = " + "'" + Filters.FilterValues.vendorDesc[i] + "'";
+                    if (i != (Filters.FilterValues.vendorDesc.Count - 1))
                         filters += " OR ";
                     else
                         filters += ")";
@@ -811,9 +881,9 @@ namespace KPA_KPI_Analyzer
             }
             
 
-            if(Filters.FitlerValues.purchGroup.Count > 0)
+            if(Filters.FilterValues.purchGroup.Count > 0)
             {
-                for (int i = 0; i < Filters.FitlerValues.purchGroup.Count; ++i)
+                for (int i = 0; i < Filters.FilterValues.purchGroup.Count; ++i)
                 {
                     if (i == 0 && filters != string.Empty)
                         filters += " AND (";
@@ -822,8 +892,8 @@ namespace KPA_KPI_Analyzer
                     if (i == 0 && filters == string.Empty)
                         filters += "(";
 
-                    filters += Overall.SelectedCountry + ".[" + FilterFeeature.FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.PurchGroup] + "] = " + "'" + Filters.FitlerValues.purchGroup[i] + "'";
-                    if (i != (Filters.FitlerValues.purchGroup.Count - 1))
+                    filters += Overall.SelectedCountry + ".[" + FilterFeeature.FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.PurchGroup] + "] = " + "'" + Filters.FilterValues.purchGroup[i] + "'";
+                    if (i != (Filters.FilterValues.purchGroup.Count - 1))
                         filters += " OR ";
                     else
                         filters += ")";
@@ -832,9 +902,9 @@ namespace KPA_KPI_Analyzer
             
 
 
-            if(Filters.FitlerValues.irSuppName.Count > 0)
+            if(Filters.FilterValues.irSuppName.Count > 0)
             {
-                for (int i = 0; i < Filters.FitlerValues.irSuppName.Count; ++i)
+                for (int i = 0; i < Filters.FilterValues.irSuppName.Count; ++i)
                 {
                     if (i == 0 && filters != string.Empty)
                         filters += " AND (";
@@ -843,8 +913,8 @@ namespace KPA_KPI_Analyzer
                     if (i == 0 && filters == string.Empty)
                         filters += "(";
 
-                    filters += Overall.SelectedCountry + ".[" + FilterFeeature.FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.IRSuppName] + "] = " + "'" + Filters.FitlerValues.irSuppName[i] + "'";
-                    if (i != (Filters.FitlerValues.irSuppName.Count - 1))
+                    filters += Overall.SelectedCountry + ".[" + FilterFeeature.FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.IRSuppName] + "] = " + "'" + Filters.FilterValues.irSuppName[i] + "'";
+                    if (i != (Filters.FilterValues.irSuppName.Count - 1))
                         filters += " OR ";
                     else
                         filters += ")";
@@ -853,9 +923,9 @@ namespace KPA_KPI_Analyzer
             
 
 
-            if(Filters.FitlerValues.fxdSuppName.Count > 0)
+            if(Filters.FilterValues.fxdSuppName.Count > 0)
             {
-                for (int i = 0; i < Filters.FitlerValues.fxdSuppName.Count; ++i)
+                for (int i = 0; i < Filters.FilterValues.fxdSuppName.Count; ++i)
                 {
                     if (i == 0 && filters != string.Empty)
                         filters += " AND (";
@@ -864,8 +934,8 @@ namespace KPA_KPI_Analyzer
                     if (i == 0 && filters == string.Empty)
                         filters += "(";
 
-                    filters += Overall.SelectedCountry + ".[" + FilterFeeature.FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.FxdSuppName] + "] = " + "'" + Filters.FitlerValues.fxdSuppName[i] + "'";
-                    if (i != (Filters.FitlerValues.fxdSuppName.Count - 1))
+                    filters += Overall.SelectedCountry + ".[" + FilterFeeature.FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.FxdSuppName] + "] = " + "'" + Filters.FilterValues.fxdSuppName[i] + "'";
+                    if (i != (Filters.FilterValues.fxdSuppName.Count - 1))
                         filters += " OR ";
                     else
                         filters += ")";
@@ -874,9 +944,9 @@ namespace KPA_KPI_Analyzer
             
 
 
-            if(Filters.FitlerValues.dsrdSuppName.Count > 0)
+            if(Filters.FilterValues.dsrdSuppName.Count > 0)
             {
-                for (int i = 0; i < Filters.FitlerValues.dsrdSuppName.Count; ++i)
+                for (int i = 0; i < Filters.FilterValues.dsrdSuppName.Count; ++i)
                 {
                     if (i == 0 && filters != string.Empty)
                         filters += " AND (";
@@ -885,8 +955,8 @@ namespace KPA_KPI_Analyzer
                     if (i == 0 && filters == string.Empty)
                         filters += "(";
 
-                    filters += Overall.SelectedCountry + ".[" + FilterFeeature.FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.DsrdSuppName] + "] = " + "'" + Filters.FitlerValues.dsrdSuppName[i] + "'";
-                    if (i != (Filters.FitlerValues.dsrdSuppName.Count - 1))
+                    filters += Overall.SelectedCountry + ".[" + FilterFeeature.FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.DsrdSuppName] + "] = " + "'" + Filters.FilterValues.dsrdSuppName[i] + "'";
+                    if (i != (Filters.FilterValues.dsrdSuppName.Count - 1))
                         filters += " OR ";
                     else
                         filters += ")";
@@ -894,9 +964,9 @@ namespace KPA_KPI_Analyzer
             }
             
 
-            if(Filters.FitlerValues.commCategory.Count > 0)
+            if(Filters.FilterValues.commCategory.Count > 0)
             {
-                for (int i = 0; i < Filters.FitlerValues.commCategory.Count; ++i)
+                for (int i = 0; i < Filters.FilterValues.commCategory.Count; ++i)
                 {
                     if (i == 0 && filters != string.Empty)
                         filters += " AND (";
@@ -904,8 +974,8 @@ namespace KPA_KPI_Analyzer
                     if (i == 0 && filters == string.Empty)
                         filters += "(";
 
-                    filters += Overall.SelectedCountry + ".[" + FilterFeeature.FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.CommCat] + "] = " + "'" + Filters.FitlerValues.commCategory[i] + "'";
-                    if (i != (Filters.FitlerValues.commCategory.Count - 1))
+                    filters += Overall.SelectedCountry + ".[" + FilterFeeature.FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.CommCat] + "] = " + "'" + Filters.FilterValues.commCategory[i] + "'";
+                    if (i != (Filters.FilterValues.commCategory.Count - 1))
                         filters += " OR ";
                     else
                         filters += ")";
@@ -926,11 +996,27 @@ namespace KPA_KPI_Analyzer
         {
             int index;
 
+            // WBS Element
+            if (Filters.FilterValues.wbsElement.Count > 0)
+            {
+                ChkdListBx_WBSElement.ItemCheck -= ckdListBox_ItemCheck;
+                foreach (string str in Filters.FilterValues.wbsElement)
+                {
+                    index = ChkdListBx_WBSElement.Items.IndexOf(str);
+                    if (index >= 0)
+                    {
+                        if (!ChkdListBx_WBSElement.GetItemChecked(index))
+                            ChkdListBx_WBSElement.SetItemChecked(index, true);
+                    }
+                }
+                ChkdListBx_WBSElement.ItemCheck += ckdListBox_ItemCheck;
+            }
+
             // Material
-            if(Filters.FitlerValues.material.Count > 0)
+            if (Filters.FilterValues.material.Count > 0)
             {
                 ChkdListBx_Material.ItemCheck -= ckdListBox_ItemCheck;
-                foreach (string str in Filters.FitlerValues.material)
+                foreach (string str in Filters.FilterValues.material)
                 {
                     index = ChkdListBx_Material.Items.IndexOf(str);
                     if(index >= 0)
@@ -944,10 +1030,10 @@ namespace KPA_KPI_Analyzer
 
 
             // Material Group
-            if (Filters.FitlerValues.materialGroup.Count > 0)
+            if (Filters.FilterValues.materialGroup.Count > 0)
             {
                 ChkdListBx_MaterialGroup.ItemCheck -= ckdListBox_ItemCheck;
-                foreach (string str in Filters.FitlerValues.materialGroup)
+                foreach (string str in Filters.FilterValues.materialGroup)
                 {
                     index = ChkdListBx_MaterialGroup.Items.IndexOf(str);
                     if (index >= 0)
@@ -961,10 +1047,10 @@ namespace KPA_KPI_Analyzer
 
 
             // Vendor
-            if (Filters.FitlerValues.vendor.Count > 0)
+            if (Filters.FilterValues.vendor.Count > 0)
             {
                 ChkdListBx_Vendor.ItemCheck -= ckdListBox_ItemCheck;
-                foreach (string str in Filters.FitlerValues.vendor)
+                foreach (string str in Filters.FilterValues.vendor)
                 {
                     index = ChkdListBx_Vendor.Items.IndexOf(str);
                     if (index >= 0)
@@ -978,10 +1064,10 @@ namespace KPA_KPI_Analyzer
 
 
             // Vendor Description
-            if (Filters.FitlerValues.vendorDesc.Count > 0)
+            if (Filters.FilterValues.vendorDesc.Count > 0)
             {
                 ChkdListBx_VendorDesc.ItemCheck -= ckdListBox_ItemCheck;
-                foreach (string str in Filters.FitlerValues.vendorDesc)
+                foreach (string str in Filters.FilterValues.vendorDesc)
                 {
                     index = ChkdListBx_VendorDesc.Items.IndexOf(str);
                     if (index >= 0)
@@ -995,10 +1081,10 @@ namespace KPA_KPI_Analyzer
 
 
             // Purch Group
-            if (Filters.FitlerValues.purchGroup.Count > 0)
+            if (Filters.FilterValues.purchGroup.Count > 0)
             {
                 ChkdListBx_PurchGroup.ItemCheck -= ckdListBox_ItemCheck;
-                foreach (string str in Filters.FitlerValues.purchGroup)
+                foreach (string str in Filters.FilterValues.purchGroup)
                 {
                     index = ChkdListBx_PurchGroup.Items.IndexOf(str);
                     if (index >= 0)
@@ -1012,10 +1098,10 @@ namespace KPA_KPI_Analyzer
 
 
             // IR Supp Name
-            if (Filters.FitlerValues.irSuppName.Count > 0)
+            if (Filters.FilterValues.irSuppName.Count > 0)
             {
                 ChkdListBx_IRSuppName.ItemCheck -= ckdListBox_ItemCheck;
-                foreach (string str in Filters.FitlerValues.irSuppName)
+                foreach (string str in Filters.FilterValues.irSuppName)
                 {
                     index = ChkdListBx_IRSuppName.Items.IndexOf(str);
                     if (index >= 0)
@@ -1030,10 +1116,10 @@ namespace KPA_KPI_Analyzer
 
 
             // Fxd Supp Name
-            if (Filters.FitlerValues.fxdSuppName.Count > 0)
+            if (Filters.FilterValues.fxdSuppName.Count > 0)
             {
                 ChkdListBx_FxdSuppName.ItemCheck -= ckdListBox_ItemCheck;
-                foreach (string str in Filters.FitlerValues.fxdSuppName)
+                foreach (string str in Filters.FilterValues.fxdSuppName)
                 {
                     index = ChkdListBx_FxdSuppName.Items.IndexOf(str);
                     if (index >= 0)
@@ -1047,10 +1133,10 @@ namespace KPA_KPI_Analyzer
 
 
             // Dsrd Supp Name
-            if (Filters.FitlerValues.dsrdSuppName.Count > 0)
+            if (Filters.FilterValues.dsrdSuppName.Count > 0)
             {
                 ChkdListBx_DsrdSuppName.ItemCheck -= ckdListBox_ItemCheck;
-                foreach (string str in Filters.FitlerValues.dsrdSuppName)
+                foreach (string str in Filters.FilterValues.dsrdSuppName)
                 {
                     index = ChkdListBx_DsrdSuppName.Items.IndexOf(str);
                     if (index >= 0)
@@ -1064,10 +1150,10 @@ namespace KPA_KPI_Analyzer
 
 
             // Dsrd Supp Name
-            if (Filters.FitlerValues.commCategory.Count > 0)
+            if (Filters.FilterValues.commCategory.Count > 0)
             {
                 ChkdListBx_CommodityCat.ItemCheck -= ckdListBox_ItemCheck;
-                foreach (string str in Filters.FitlerValues.commCategory)
+                foreach (string str in Filters.FilterValues.commCategory)
                 {
                     index = ChkdListBx_CommodityCat.Items.IndexOf(str);
                     if (index >= 0)
@@ -1113,6 +1199,14 @@ namespace KPA_KPI_Analyzer
 
             if (ColumnFiltersAdded)
             {
+                foreach (int i in ChkdListBx_WBSElement.CheckedIndices)
+                {
+                    ChkdListBx_WBSElement.ItemCheck -= ckdListBox_ItemCheck;
+                    ChkdListBx_WBSElement.SetItemCheckState(i, CheckState.Unchecked);
+                    ChkdListBx_WBSElement.ItemCheck += ckdListBox_ItemCheck;
+
+                }
+
                 foreach (int i in ChkdListBx_Material.CheckedIndices)
                 {
                     ChkdListBx_Material.ItemCheck -= ckdListBox_ItemCheck;
@@ -1178,7 +1272,7 @@ namespace KPA_KPI_Analyzer
                     ChkdListBx_CommodityCat.ItemCheck += ckdListBox_ItemCheck;
                 }
 
-                Filters.FitlerValues.Clear();
+                Filters.FilterValues.Clear();
                 Filters.ClbDictionaryValues.Clear();
                 filters = string.Empty;
                 FilterUtils.LoadFilters(filters);
@@ -1192,51 +1286,56 @@ namespace KPA_KPI_Analyzer
 
         private void GetCheckedColumnFilters()
         {
-            Filters.FitlerValues.Clear();
+            Filters.FilterValues.Clear();
+
+            foreach (int i in ChkdListBx_WBSElement.CheckedIndices)
+            {
+                Filters.FilterValues.wbsElement.Add(ChkdListBx_WBSElement.Items[i].ToString());
+            }
 
             foreach (int i in ChkdListBx_Material.CheckedIndices)
             {
-                Filters.FitlerValues.material.Add(ChkdListBx_Material.Items[i].ToString());
+                Filters.FilterValues.material.Add(ChkdListBx_Material.Items[i].ToString());
             }
 
             foreach (int i in ChkdListBx_MaterialGroup.CheckedIndices)
             {
-                Filters.FitlerValues.materialGroup.Add(ChkdListBx_MaterialGroup.Items[i].ToString());
+                Filters.FilterValues.materialGroup.Add(ChkdListBx_MaterialGroup.Items[i].ToString());
             }
 
             foreach (int i in ChkdListBx_Vendor.CheckedIndices)
             {
-                Filters.FitlerValues.vendor.Add(ChkdListBx_Vendor.Items[i].ToString());
+                Filters.FilterValues.vendor.Add(ChkdListBx_Vendor.Items[i].ToString());
             }
 
             foreach (int i in ChkdListBx_VendorDesc.CheckedIndices)
             {
-                Filters.FitlerValues.vendorDesc.Add(ChkdListBx_VendorDesc.Items[i].ToString());
+                Filters.FilterValues.vendorDesc.Add(ChkdListBx_VendorDesc.Items[i].ToString());
             }
 
             foreach (int i in ChkdListBx_PurchGroup.CheckedIndices)
             {
-                Filters.FitlerValues.purchGroup.Add(ChkdListBx_PurchGroup.Items[i].ToString());
+                Filters.FilterValues.purchGroup.Add(ChkdListBx_PurchGroup.Items[i].ToString());
             }
 
             foreach (int i in ChkdListBx_IRSuppName.CheckedIndices)
             {
-                Filters.FitlerValues.irSuppName.Add(ChkdListBx_IRSuppName.Items[i].ToString());
+                Filters.FilterValues.irSuppName.Add(ChkdListBx_IRSuppName.Items[i].ToString());
             }
 
             foreach (int i in ChkdListBx_FxdSuppName.CheckedIndices)
             {
-                Filters.FitlerValues.fxdSuppName.Add(ChkdListBx_FxdSuppName.Items[i].ToString());
+                Filters.FilterValues.fxdSuppName.Add(ChkdListBx_FxdSuppName.Items[i].ToString());
             }
 
             foreach (int i in ChkdListBx_DsrdSuppName.CheckedIndices)
             {
-                Filters.FitlerValues.dsrdSuppName.Add(ChkdListBx_DsrdSuppName.Items[i].ToString());
+                Filters.FilterValues.dsrdSuppName.Add(ChkdListBx_DsrdSuppName.Items[i].ToString());
             }
 
             foreach (int i in ChkdListBx_CommodityCat.CheckedIndices)
             {
-                Filters.FitlerValues.commCategory.Add(ChkdListBx_CommodityCat.Items[i].ToString());
+                Filters.FilterValues.commCategory.Add(ChkdListBx_CommodityCat.Items[i].ToString());
             }
         }
 
@@ -1360,7 +1459,7 @@ namespace KPA_KPI_Analyzer
         internal void ResetFilters()
         {
             Filters.ClbDictionaryValues.Clear();
-            Filters.FitlerValues.Clear();
+            Filters.FilterValues.Clear();
             Filters.FilterQuery = string.Empty;
             Filters.SecondaryFilterQuery = string.Empty;
 
@@ -1397,15 +1496,17 @@ namespace KPA_KPI_Analyzer
 
 
             // Check if the user selected any filters from the following check list boxes.
-            if (Filters.FitlerValues.material.Count > 0) ColumnFiltersAdded = true;
-            if (Filters.FitlerValues.materialGroup.Count > 0) ColumnFiltersAdded = true;
-            if (Filters.FitlerValues.vendor.Count > 0) ColumnFiltersAdded = true;
-            if (Filters.FitlerValues.vendorDesc.Count > 0) ColumnFiltersAdded = true;
-            if (Filters.FitlerValues.purchGroup.Count > 0) ColumnFiltersAdded = true;
-            if (Filters.FitlerValues.irSuppName.Count > 0) ColumnFiltersAdded = true;
-            if (Filters.FitlerValues.fxdSuppName.Count > 0) ColumnFiltersAdded = true;
-            if (Filters.FitlerValues.dsrdSuppName.Count > 0) ColumnFiltersAdded = true;
-            if (Filters.FitlerValues.commCategory.Count > 0) ColumnFiltersAdded = true;
+            if (Filters.FilterValues.wbsElement.Count > 0) ColumnFiltersAdded = true;
+            if (Filters.FilterValues.material.Count > 0) ColumnFiltersAdded = true;
+            if (Filters.FilterValues.material.Count > 0) ColumnFiltersAdded = true;
+            if (Filters.FilterValues.materialGroup.Count > 0) ColumnFiltersAdded = true;
+            if (Filters.FilterValues.vendor.Count > 0) ColumnFiltersAdded = true;
+            if (Filters.FilterValues.vendorDesc.Count > 0) ColumnFiltersAdded = true;
+            if (Filters.FilterValues.purchGroup.Count > 0) ColumnFiltersAdded = true;
+            if (Filters.FilterValues.irSuppName.Count > 0) ColumnFiltersAdded = true;
+            if (Filters.FilterValues.fxdSuppName.Count > 0) ColumnFiltersAdded = true;
+            if (Filters.FilterValues.dsrdSuppName.Count > 0) ColumnFiltersAdded = true;
+            if (Filters.FilterValues.commCategory.Count > 0) ColumnFiltersAdded = true;
         }
 
 

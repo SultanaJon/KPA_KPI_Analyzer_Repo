@@ -39,15 +39,14 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
 
 
-
         /// <summary>
-        /// 
+        /// The names of the columns that will be included in the category filters.
         /// </summary>
-        public enum Filters
+        public enum Filters : byte
         {
-            WBSElement,
-            PrdOrd,
-            WBSProject,
+            WBS_Element_ProdOrderWbs,
+            ProductionOrdWbs,
+            WBS_Element,
             Material,
             MaterialGroup,
             Vendor,
@@ -65,7 +64,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
 
         /// <summary>
-        /// Table names contained within the database.
+        /// The names of the columns that store the data that will be used in the filters.
         /// </summary>
         public static string[] filterCols =
         {
@@ -89,7 +88,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
 
         /// <summary>
-        /// 
+        /// Returns the query that will be used to get the unique data contained within the columns of the PRPO report
         /// </summary>
         /// <param name="Overall.SelectedCountry"></param>
         /// <param name="filter"></param>
@@ -137,6 +136,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
                         {
                             if (reader[filterCols[(int)col]] == DBNull.Value)
                             {
+                                strData.Add("[Blanks]");
                                 continue;
                             }
                             else
@@ -191,6 +191,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
                         {
                             if (reader[filterCols[(int)col]] == DBNull.Value)
                             {
+                                strData.Add("[Blanks]");
                                 continue;
                             }
                             else
