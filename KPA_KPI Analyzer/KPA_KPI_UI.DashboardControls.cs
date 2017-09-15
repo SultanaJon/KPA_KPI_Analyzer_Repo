@@ -34,7 +34,7 @@ namespace KPA_KPI_Analyzer
 
 
 
-        
+
 
 
         /// <summary>
@@ -140,13 +140,12 @@ namespace KPA_KPI_Analyzer
                 if (ExcelInfo.USUpdated || ExcelInfo.MXUpdated)
                 {
                     overallData = new KPA_KPI_Overall.Overall();
-                    if(AccessUtils.US_PRPO_TableExists || AccessUtils.MX_PRPO_TableExists)
+                    if (AccessUtils.US_PRPO_TableExists || AccessUtils.MX_PRPO_TableExists)
                         PRPO_DB_Utils.DropCreateDb();
                     else
                         AccessUtils.CreateAccessDB();
 
-                    pnl_loadingScreen.Visible = true;
-                    pnl_loadingScreen.BringToFront();
+                    ShowPage(Pages.LoadingScreen);
                     lbl_loadingStatus.Text = "Importing Data...";
                     ImportTimer.Start();
                 }

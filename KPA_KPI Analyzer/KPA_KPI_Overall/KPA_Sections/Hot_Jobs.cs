@@ -284,12 +284,9 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                     noConfirmation.data.Average = 0;
                 }
 
-                PRPO_DB_Utils.CompletedDataLoads++;
-                MethodInvoker del = delegate
-                {
-                    PRPO_DB_Utils.UpdateDataLoadProgress();
-                };
-                del.Invoke();
+                PRPO_DB_Utils.CompletedKpaDataLoads++;
+                Overall.UpdateLoadProgress();
+
             }
             catch (Exception ex)
             {
