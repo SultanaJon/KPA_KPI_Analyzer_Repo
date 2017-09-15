@@ -1,4 +1,4 @@
-﻿namespace KPA_KPI_Analyzer.IOUtils
+﻿namespace KPA_KPI_Analyzer.Diagnostics
 {
     partial class ErrorMessageBox
     {

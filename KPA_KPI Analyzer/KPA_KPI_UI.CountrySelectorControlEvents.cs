@@ -56,12 +56,10 @@ namespace KPA_KPI_Analyzer
             if (btn_usSwitch.Value)
             {
                 Overall.SelectedCountry = AccessInfo.MainTables.US_PRPO;
-                //lbl_country.Text = "United States";
             }
             else
             {
                 Overall.SelectedCountry = AccessInfo.MainTables.MX_PRPO;
-                //lbl_country.Text = "Mexico";
             }
 
 
@@ -69,8 +67,14 @@ namespace KPA_KPI_Analyzer
             overallData = new Overall();
             PRPO_DB_Utils.DataLoadProcessStarted = false;
             PRPO_DB_Utils.DataLoaded = false;
+            PRPO_DB_Utils.KPITablesLoaded = false;
             PRPO_DB_Utils.CompletedDataLoads = 0;
             PRPO_DB_Utils.ScheduledDataLoads = 0;
+            PRPO_DB_Utils.CompletedKpaDataLoads = 0;
+            PRPO_DB_Utils.CompletedKpiDataLoads = 0;
+            CreateThreads();
+            DataLoaderTimer.Tick -= DataLoaderTimer_Tick;
+            DataLoaderTimer.Tick += DataLoaderTimer_Tick;
             DataLoaderTimer.Start();
         }
 
@@ -89,7 +93,7 @@ namespace KPA_KPI_Analyzer
         private void btn_dashboardCancel_Click(object sender, EventArgs e)
         {
             NavigationLocked = true;
-            tblpnl_DragDrop.BringToFront();
+            ShowPage(Pages.DragDropDash);
         }
     }
 }
