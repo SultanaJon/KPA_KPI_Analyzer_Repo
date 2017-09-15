@@ -827,7 +827,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
 
 
-                PRPO_DB_Utils.CompletedKpiDataLoads++;
                 Overall.UpdateLoadProgress();
             }
             catch (Exception ex)

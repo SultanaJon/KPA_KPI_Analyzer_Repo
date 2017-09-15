@@ -1323,11 +1323,7 @@ namespace KPA_KPI_Analyzer
 
 
 
-            overallData = new Overall();
-            PRPO_DB_Utils.DataLoadProcessStarted = false;
-            PRPO_DB_Utils.DataLoaded = false;
-            PRPO_DB_Utils.CompletedDataLoads = 0;
-            PRPO_DB_Utils.ScheduledDataLoads = 0;
+            InitializeDataLoadProcess();
             RenewDataLoadTimer();
             DataLoaderTimer.Start();
         }
@@ -1343,6 +1339,25 @@ namespace KPA_KPI_Analyzer
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btn_clearFilters_Click(object sender, EventArgs e)
+        {
+
+            ResetFilters();
+            InitializeDataLoadProcess();
+            RenewDataLoadTimer();
+            DataLoaderTimer.Start();
+            UpdateFilterButtons();
+        }
+
+
+
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        internal void ResetFilters()
         {
             Filters.ClbDictionaryValues.Clear();
             Filters.FitlerValues.Clear();
@@ -1360,15 +1375,6 @@ namespace KPA_KPI_Analyzer
             ColumnFiltersApplied = false;
             DateFiltersAdded = false;
             DateFiltersApplied = false;
-            
-            overallData = new Overall();
-            PRPO_DB_Utils.DataLoadProcessStarted = false;
-            PRPO_DB_Utils.DataLoaded = false;
-            PRPO_DB_Utils.CompletedDataLoads = 0;
-            PRPO_DB_Utils.ScheduledDataLoads = 0;
-            RenewDataLoadTimer();
-            DataLoaderTimer.Start();
-            UpdateFilterButtons();
         }
 
 

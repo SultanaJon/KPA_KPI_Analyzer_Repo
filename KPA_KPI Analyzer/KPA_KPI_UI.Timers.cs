@@ -15,6 +15,24 @@ namespace KPA_KPI_Analyzer
 {
     public partial class KPA_KPI_UI : Form
     {
+        Thread KPA_PlanThread;
+        Thread KPA_PurchThread;
+        Thread KPA_PurchSubThread;
+        Thread KPA_PurchTotalThread;
+        Thread KPA_FollowUpThread;
+        Thread KPA_HotJobs;
+        Thread KPA_CurrPlanVsActualThread;
+        Thread tableLoadThread;
+        Thread KPI_PlanThread;
+        Thread KPI_PurchThread;
+        Thread KPI_FollowUpThread;
+        Thread KPI_PurchTwoThread;
+        Thread KPI_PurchSubThread;
+        Thread KPI_PurchTotalThread;
+        Thread KPI_PurchPlanThread;
+        Thread KPI_OtherThread;
+
+
         /// <summary>
         /// When the user has successfully dropped PRPO files into the application, this timer will initiate.
         /// The import process will then begin, importing all the data contained within the PRPO report into the
@@ -190,26 +208,79 @@ namespace KPA_KPI_Analyzer
                 else if (AccessUtils.US_PRPO_TableExists)
                 {
                     Overall.SelectedCountry = AccessInfo.MainTables.US_PRPO;
-                    PRPO_DB_Utils.DataLoadProcessStarted = false;
-                    PRPO_DB_Utils.DataLoaded = false;
-                    PRPO_DB_Utils.CompletedDataLoads = 0;
-                    PRPO_DB_Utils.ScheduledDataLoads = 0;
+                    InitializeDataLoadProcess();
                     RenewDataLoadTimer();
                     DataLoaderTimer.Start();
                 }
                 else // only the mexico file exists.
                 {
                     Overall.SelectedCountry = AccessInfo.MainTables.MX_PRPO;
-                    PRPO_DB_Utils.DataLoadProcessStarted = false;
-                    PRPO_DB_Utils.DataLoaded = false;
-                    PRPO_DB_Utils.CompletedDataLoads = 0;
-                    PRPO_DB_Utils.ScheduledDataLoads = 0;
+                    InitializeDataLoadProcess();
                     RenewDataLoadTimer();
                     DataLoaderTimer.Start();
                 }
             }
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void CreateThreads()
+        {
+            KPA_PlanThread = new Thread(() => { overallData.kpa.plan.LoadData(); });
+            KPA_PurchThread = new Thread(() =>  { overallData.kpa.purch.LoadData(); });
+            KPA_PurchSubThread = new Thread(() => { overallData.kpa.purchSub.LoadData(); });
+            KPA_PurchTotalThread = new Thread(() => { overallData.kpa.purchTotal.LoadData(); });
+            KPA_FollowUpThread = new Thread(() => { overallData.kpa.followUp.LoadData(); });
+            KPA_HotJobs = new Thread(() => { overallData.kpa.hotJobs.LoadData(); });
+            KPA_CurrPlanVsActualThread = new Thread(() => { overallData.kpa.currPlanVsActual.LoadData(); });
+            tableLoadThread = new Thread(() => { overallData.LoadKPITables(); });
+            KPI_PlanThread = new Thread(() =>{ overallData.kpi.plan.LoadData(); });
+            KPI_PurchThread = new Thread(() =>{ overallData.kpi.purch.LoadData(); });
+            KPI_FollowUpThread = new Thread(() => { overallData.kpi.followUp.LoadData(); });
+            KPI_PurchTwoThread = new Thread(() => { overallData.kpi.purchTwo.LoadData(); });
+            KPI_PurchSubThread = new Thread(() => { overallData.kpi.purchSub.LoadData(); });
+            KPI_PurchTotalThread = new Thread(() => { overallData.kpi.purchTotal.LoadData(); });
+            KPI_PurchPlanThread = new Thread(() => { overallData.kpi.purchPlan.LoadData(); });
+            KPI_OtherThread = new Thread(() => { overallData.kpi.other.LoadData(); });
+
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="_startKpaThreads"></param>
+        /// <param name="_startKpiThreads"></param>
+        private void StartThreads(bool _startKpaThreads, bool _startKpiThreads)
+        {
+            if(_startKpaThreads)
+            {
+                KPA_PlanThread.Start();
+                KPA_PurchThread.Start();
+                KPA_PurchSubThread.Start();
+                KPA_PurchTotalThread.Start();
+                KPA_FollowUpThread.Start();
+                KPA_HotJobs.Start();
+                KPA_CurrPlanVsActualThread.Start();
+                tableLoadThread.Start();
+            }
+
+
+            if(_startKpiThreads)
+            {
+                KPI_PlanThread.Start();
+                KPI_PurchThread.Start();
+                KPI_FollowUpThread.Start();
+                KPI_PurchTwoThread.Start();
+                KPI_PurchSubThread.Start();
+                KPI_PurchTotalThread.Start();
+                KPI_PurchPlanThread.Start();
+                KPI_OtherThread.Start();
+            }
+        }
 
 
 
@@ -223,7 +294,7 @@ namespace KPA_KPI_Analyzer
         private void DataLoaderTimer_Tick(object sender, EventArgs e)
         {
             NavigationLocked = true;
-            DataLoaderTimer.Stop();
+
 
             if (!PRPO_DB_Utils.DataLoadProcessStarted)
             {
@@ -231,132 +302,15 @@ namespace KPA_KPI_Analyzer
                 PRPO_DB_Utils.KPITablesLoaded = false;
                 ShowPage(Pages.LoadingScreen);
                 lbl_loadingStatus.Text = "Loading Data...";
-
-
-                Thread KPA_PlanThread = new Thread(() =>
-                {
-                    overallData.kpa.plan.LoadData();
-                });
-
-
-                Thread KPA_PurchThread = new Thread(() =>
-                {
-                    overallData.kpa.purch.LoadData();
-                });
-
-
-                Thread KPA_PurchSubThread = new Thread(() =>
-                {
-                    overallData.kpa.purchSub.LoadData();
-                });
-
-
-                Thread KPA_PurchTotalThread = new Thread(() =>
-                {
-                    overallData.kpa.purchTotal.LoadData();
-                });
-
-
-                Thread KPA_FollowUpThread = new Thread(() =>
-                {
-                    overallData.kpa.followUp.LoadData();
-                });
-
-
-                Thread KPA_HotJobs = new Thread(() =>
-                {
-                    overallData.kpa.hotJobs.LoadData();
-                });
-
-
-
-                Thread KPA_CurrPlanVsActualThread = new Thread(() =>
-                {
-                    overallData.kpa.currPlanVsActual.LoadData();
-                });
-
-
-
-
-                Thread tableLoadThread = new Thread(() => {
-                    overallData.LoadKPITables(Overall.SelectedCountry);
-                });
-
-
-
                 PRPO_DB_Utils.ScheduledDataLoads = 16;
-
-
-                KPA_PlanThread.Start();
-                KPA_PurchThread.Start();
-                KPA_PurchSubThread.Start();
-                KPA_PurchTotalThread.Start();
-                KPA_FollowUpThread.Start();
-                KPA_HotJobs.Start();
-                KPA_CurrPlanVsActualThread.Start();
-                tableLoadThread.Start();
+                StartThreads(true, false);
             }
 
 
             if (PRPO_DB_Utils.KPITablesLoaded)
             {
                 PRPO_DB_Utils.KPITablesLoaded = false;
-
-                // KPI
-                Thread KPI_PlanThread = new Thread(() =>
-                {
-                    overallData.kpi.plan.LoadData();
-                });
-
-                Thread KPI_PurchThread = new Thread(() =>
-                {
-                    overallData.kpi.purch.LoadData();
-                });
-
-
-                Thread KPI_FollowUpThread = new Thread(() =>
-                {
-                    overallData.kpi.followUp.LoadData();
-                });
-
-
-                Thread KPI_PurchTwoThread = new Thread(() =>
-                {
-                    overallData.kpi.purchTwo.LoadData();
-                });
-
-
-                Thread KPI_PurchSubThread = new Thread(() =>
-                {
-                    overallData.kpi.purchSub.LoadData();
-                });
-
-
-                Thread KPI_PurchTotalThread = new Thread(() =>
-                {
-                    overallData.kpi.purchTotal.LoadData();
-                });
-
-
-                Thread KPI_PurchPlanThread = new Thread(() =>
-                {
-                    overallData.kpi.purchPlan.LoadData();
-                });
-
-                Thread KPI_OtherThread = new Thread(() =>
-                {
-                    overallData.kpi.other.LoadData();
-                });
-
-
-                KPI_PlanThread.Start();
-                KPI_PurchThread.Start();
-                KPI_FollowUpThread.Start();
-                KPI_PurchTwoThread.Start();
-                KPI_PurchSubThread.Start();
-                KPI_PurchTotalThread.Start();
-                KPI_PurchPlanThread.Start();
-                KPI_OtherThread.Start();
+                StartThreads(false, true);
             }
 
 

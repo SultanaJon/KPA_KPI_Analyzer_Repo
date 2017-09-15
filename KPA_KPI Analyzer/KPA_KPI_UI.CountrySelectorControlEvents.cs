@@ -64,17 +64,8 @@ namespace KPA_KPI_Analyzer
 
 
 
-            overallData = new Overall();
-            PRPO_DB_Utils.DataLoadProcessStarted = false;
-            PRPO_DB_Utils.DataLoaded = false;
-            PRPO_DB_Utils.KPITablesLoaded = false;
-            PRPO_DB_Utils.CompletedDataLoads = 0;
-            PRPO_DB_Utils.ScheduledDataLoads = 0;
-            PRPO_DB_Utils.CompletedKpaDataLoads = 0;
-            PRPO_DB_Utils.CompletedKpiDataLoads = 0;
-            CreateThreads();
-            DataLoaderTimer.Tick -= DataLoaderTimer_Tick;
-            DataLoaderTimer.Tick += DataLoaderTimer_Tick;
+            InitializeDataLoadProcess();
+            RenewDataLoadTimer();
             DataLoaderTimer.Start();
         }
 

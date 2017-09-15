@@ -41,8 +41,6 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
         public static int ScheduledDataLoads { get; set; }
 
 
-
-
         /// <summary>
         /// Boolean used to indicate whether or not the KPI tables are loaded.
         /// </summary>

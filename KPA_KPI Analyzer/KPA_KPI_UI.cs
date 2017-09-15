@@ -101,10 +101,7 @@ namespace KPA_KPI_Analyzer
                     {
                         lbl_Country.Text = "United States";
                         Overall.SelectedCountry = AccessInfo.MainTables.US_PRPO;
-                        PRPO_DB_Utils.DataLoadProcessStarted = false;
-                        PRPO_DB_Utils.DataLoaded = false;
-                        PRPO_DB_Utils.CompletedDataLoads = 0;
-                        PRPO_DB_Utils.ScheduledDataLoads = 0;
+                        InitializeDataLoadProcess();
                         RenewDataLoadTimer();
                         DataLoaderTimer.Start();
                     }
@@ -112,10 +109,8 @@ namespace KPA_KPI_Analyzer
                     {
                         lbl_Country.Text = "Mexico";
                         Overall.SelectedCountry = AccessInfo.MainTables.MX_PRPO;
-                        PRPO_DB_Utils.DataLoadProcessStarted = false;
-                        PRPO_DB_Utils.DataLoaded = false;
-                        PRPO_DB_Utils.CompletedDataLoads = 0;
-                        PRPO_DB_Utils.ScheduledDataLoads = 0;
+                        InitializeDataLoadProcess();
+                        CreateThreads();
                         RenewDataLoadTimer();
                         DataLoaderTimer.Start();
                     }
@@ -366,7 +361,7 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// 
+        /// The pages that can be displayed in the active page panel.
         /// </summary>
         public enum Pages
         {
@@ -381,9 +376,9 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// 
+        /// This event will display the request page in the active page panel.
         /// </summary>
-        /// <param name="page"></param>
+        /// <param name="page">The page to be displayed</param>
         private void ShowPage(Pages page)
         {
             HidePages();
@@ -428,6 +423,28 @@ namespace KPA_KPI_Analyzer
             tblpnl_DragDrop.Visible = false;
             tblpnl_Filters.Visible = false;
             pnl_CountrySelector.Visible = false;
+            pnl_loadingScreen.SendToBack();
+        }
+
+
+
+
+
+
+
+
+        /// <summary>
+        /// This function sets up variables to their default state before begining the data load process.
+        /// </summary>
+        internal void InitializeDataLoadProcess()
+        {
+            overallData = new Overall();
+            PRPO_DB_Utils.DataLoadProcessStarted = false;
+            PRPO_DB_Utils.DataLoaded = false;
+            PRPO_DB_Utils.KPITablesLoaded = false;
+            PRPO_DB_Utils.CompletedDataLoads = 0;
+            PRPO_DB_Utils.ScheduledDataLoads = 0;
+            CreateThreads();
         }
 
 
@@ -436,8 +453,11 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// 
+        /// This event will resubscribe the DataLoaderTimer.Tick event.
         /// </summary>
+        /// <remarks>
+        /// This had to be done because after the DataLoaderTimer would run a couple of times its event would no longer fire as if it was unsubscribed somehow.
+        /// </remarks>
         internal void RenewDataLoadTimer()
         {
             DataLoaderTimer.Tick -= DataLoaderTimer_Tick;

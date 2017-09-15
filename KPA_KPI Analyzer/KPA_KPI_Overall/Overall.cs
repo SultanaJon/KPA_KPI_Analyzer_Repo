@@ -83,7 +83,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
 
 
 
-                        PRPO_DB_Utils.CompletedKpaDataLoads++;
                         PRPO_DB_Utils.KPITablesLoaded = true;
                         UpdateLoadProgress();
                     }

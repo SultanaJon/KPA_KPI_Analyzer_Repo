@@ -506,9 +506,9 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 }
 
                 totalDays = 0;
-                PRPO_DB_Utils.CompletedKpiDataLoads++;
-                Overall.UpdateLoadProgress();
 
+
+                Overall.UpdateLoadProgress();
             }
             catch (Exception ex)
             {
