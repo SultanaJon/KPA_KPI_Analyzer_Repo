@@ -397,7 +397,7 @@ namespace KPA_KPI_Analyzer
                     tblpnl_Filters.BringToFront();
                     break;
                 case 3:
-                    // Buinifu is new an the circular progress bar will throw invalid paramter exception if visibility is toggled.
+                    pnl_loadingScreen.Visible = true;
                     pnl_loadingScreen.BringToFront();
                     break;
                 case 4:
@@ -423,7 +423,7 @@ namespace KPA_KPI_Analyzer
             tblpnl_DragDrop.Visible = false;
             tblpnl_Filters.Visible = false;
             pnl_CountrySelector.Visible = false;
-            pnl_loadingScreen.SendToBack();
+            pnl_loadingScreen.Visible = false;
         }
 
 
