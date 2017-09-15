@@ -78,6 +78,7 @@ namespace KPA_KPI_Analyzer
         {
             mainNavActiveBtn = btn_Dashboard; // set the active button as the first button (Dashboard)
             FilterUtils.UpdateFilter += UpdateFilters;
+            PRPO_DB_Utils.RenewDataLoadTimer += RenewDataLoadTimer;
             DateTime today = DateTime.Now.Date;
             dp_PRFromDate.Value = today;
             dp_PRToDate.Value = today;
@@ -89,7 +90,7 @@ namespace KPA_KPI_Analyzer
                 try
                 {
                     PRPO_DB_Utils.ConnectToDatabase();
-                    Logger.Log(AppDirectoryUtils.LogFiles.DbConnectionEvents, "Successfully Connected to MS Access Database");
+                    Logger.Log(Diagnostics.AppDirectoryUtils.LogFiles.DbConnectionEvents, "Successfully Connected to MS Access Database");
 
                     if (AccessUtils.US_PRPO_TableExists && AccessUtils.MX_PRPO_TableExists)
                     {
@@ -104,6 +105,7 @@ namespace KPA_KPI_Analyzer
                         PRPO_DB_Utils.DataLoaded = false;
                         PRPO_DB_Utils.CompletedDataLoads = 0;
                         PRPO_DB_Utils.ScheduledDataLoads = 0;
+                        RenewDataLoadTimer();
                         DataLoaderTimer.Start();
                     }
                     else // There is a Mexico table within the database.
@@ -114,6 +116,7 @@ namespace KPA_KPI_Analyzer
                         PRPO_DB_Utils.DataLoaded = false;
                         PRPO_DB_Utils.CompletedDataLoads = 0;
                         PRPO_DB_Utils.ScheduledDataLoads = 0;
+                        RenewDataLoadTimer();
                         DataLoaderTimer.Start();
                     }
                 }
@@ -428,9 +431,17 @@ namespace KPA_KPI_Analyzer
         }
 
 
-        private void panel27_Paint(object sender, PaintEventArgs e)
-        {
 
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        internal void RenewDataLoadTimer()
+        {
+            DataLoaderTimer.Tick -= DataLoaderTimer_Tick;
+            DataLoaderTimer.Tick += DataLoaderTimer_Tick;
         }
     }
 }

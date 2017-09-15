@@ -109,7 +109,7 @@ namespace KPA_KPI_Analyzer
 
                         DateTime dt = new DateTime(year, month, day);
                         lbl_dashboardDate.Text = dt.ToString("MMMM dd, yyyy");
-                        Logger.Log(AppDirectoryUtils.LogFiles.LoadedUSDate, lbl_dashboardDate.Text);
+                        Logger.Log(Diagnostics.AppDirectoryUtils.LogFiles.LoadedUSDate, lbl_dashboardDate.Text);
                     }
 
                     if (AccessUtils.MX_PRPO_TableExists)
@@ -125,7 +125,7 @@ namespace KPA_KPI_Analyzer
 
                         DateTime dt = new DateTime(year, month, day);
                         lbl_dashboardDate.Text = dt.ToString("MMMM dd, yyyy");
-                        Logger.Log(AppDirectoryUtils.LogFiles.LoadedMXDate, lbl_dashboardDate.Text);
+                        Logger.Log(Diagnostics.AppDirectoryUtils.LogFiles.LoadedMXDate, lbl_dashboardDate.Text);
                     }
 
                     DataRemovalTimer.Start();
@@ -194,6 +194,7 @@ namespace KPA_KPI_Analyzer
                     PRPO_DB_Utils.DataLoaded = false;
                     PRPO_DB_Utils.CompletedDataLoads = 0;
                     PRPO_DB_Utils.ScheduledDataLoads = 0;
+                    RenewDataLoadTimer();
                     DataLoaderTimer.Start();
                 }
                 else // only the mexico file exists.
@@ -203,6 +204,7 @@ namespace KPA_KPI_Analyzer
                     PRPO_DB_Utils.DataLoaded = false;
                     PRPO_DB_Utils.CompletedDataLoads = 0;
                     PRPO_DB_Utils.ScheduledDataLoads = 0;
+                    RenewDataLoadTimer();
                     DataLoaderTimer.Start();
                 }
             }
@@ -379,14 +381,14 @@ namespace KPA_KPI_Analyzer
 
                 if (Overall.SelectedCountry == AccessInfo.MainTables.US_PRPO)
                 {
-                    using (StreamReader sr = new StreamReader(AppDirectoryUtils.logFiles[(int)AppDirectoryUtils.LogFiles.LoadedUSDate]))
+                    using (StreamReader sr = new StreamReader(Diagnostics.AppDirectoryUtils.logFiles[(int)Diagnostics.AppDirectoryUtils.LogFiles.LoadedUSDate]))
                     {
                         lbl_dashboardDate.Text = sr.ReadLine();
                     }
                 }
                 else
                 {
-                    using (StreamReader sr = new StreamReader(AppDirectoryUtils.logFiles[(int)AppDirectoryUtils.LogFiles.LoadedMXDate]))
+                    using (StreamReader sr = new StreamReader(Diagnostics.AppDirectoryUtils.logFiles[(int)Diagnostics.AppDirectoryUtils.LogFiles.LoadedMXDate]))
                     {
                         lbl_dashboardDate.Text = sr.ReadLine();
                     }

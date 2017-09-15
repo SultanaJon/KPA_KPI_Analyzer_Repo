@@ -71,6 +71,7 @@ namespace KPA_KPI_Analyzer
             PRPO_DB_Utils.DataLoaded = false;
             PRPO_DB_Utils.CompletedDataLoads = 0;
             PRPO_DB_Utils.ScheduledDataLoads = 0;
+            RenewDataLoadTimer();
             DataLoaderTimer.Start();
         }
 

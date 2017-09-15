@@ -10,6 +10,11 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
 {
     public static class PRPO_DB_Utils
     {
+        internal static volatile object _updateDataLoadLock = new object();
+
+        public delegate void RenewDataLoadTimerHandler();
+        public static event RenewDataLoadTimerHandler RenewDataLoadTimer;
+
         private static readonly List<string> errorList = new List<string>();
 
 
@@ -34,8 +39,6 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
         public static bool DataLoaded { get; set; }
         public static int CompletedDataLoads { get; set; }
         public static int ScheduledDataLoads { get; set; }
-
-
 
 
 
@@ -75,6 +78,7 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
         /// </summary>
         public static void UpdateDataRemovalProgress()
         {
+
             if(ScheduledDataRemovals == CompletedDataRemovals)
             {
                 DataRemoved = true;
@@ -91,12 +95,13 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
         /// </summary>
         public static void UpdateDataLoadProgress()
         {
-            if(ScheduledDataLoads == CompletedDataLoads)
+            lock(_updateDataLoadLock)
             {
-
-
-
-                DataLoaded = true;
+                if (ScheduledDataLoads == CompletedDataLoads)
+                {
+                    RenewDataLoadTimer();
+                    DataLoaded = true;
+                }
             }
         }
 

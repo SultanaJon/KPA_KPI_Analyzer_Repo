@@ -16,10 +16,10 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
         public static DataTable posRecCompDt;
         public static DataTable pr2ndLvlRelDateDt;
         public static DataTable AllDt;
-        
 
 
 
+        internal volatile object locker = new object();
 
         /// <summary>
         /// The Overall.SelectedCountry that the user selected to load into the application.

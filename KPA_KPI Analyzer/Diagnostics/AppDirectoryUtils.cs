@@ -2,7 +2,7 @@
 using System.IO;
 using System.Windows.Forms;
 
-namespace KPA_KPI_Analyzer.IOUtils
+namespace KPA_KPI_Analyzer.Diagnostics
 {
     public static class AppDirectoryUtils
     {

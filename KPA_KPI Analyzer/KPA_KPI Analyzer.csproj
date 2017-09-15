@@ -83,14 +83,14 @@
     <Compile Include="DragDropFeature\DragDropUtils.cs" />
     <Compile Include="FilterFeeature\Filters.cs" />
     <Compile Include="FilterFeeature\FilterUtils.cs" />
-    <Compile Include="IOUtils\AppDirectoryUtils.cs" />
-    <Compile Include="IOUtils\ErrorMessageBox.cs">
+    <Compile Include="Diagnostics\AppDirectoryUtils.cs" />
+    <Compile Include="Diagnostics\ErrorMessageBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="IOUtils\ErrorMessageBox.Designer.cs">
+    <Compile Include="Diagnostics\ErrorMessageBox.Designer.cs">
       <DependentUpon>ErrorMessageBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="IOUtils\Logger.cs" />
+    <Compile Include="Diagnostics\Logger.cs" />
     <Compile Include="KPACurrentPlanActualTemplate.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -286,7 +286,7 @@
       <DependentUpon>DataViewer.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="IOUtils\ErrorMessageBox.resx">
+    <EmbeddedResource Include="Diagnostics\ErrorMessageBox.resx">
       <DependentUpon>ErrorMessageBox.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>

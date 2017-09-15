@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace KPA_KPI_Analyzer.IOUtils
+namespace KPA_KPI_Analyzer.Diagnostics
 {
     public static class Logger
     {
