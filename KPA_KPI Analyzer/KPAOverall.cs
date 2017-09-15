@@ -54,7 +54,7 @@ namespace KPA_KPI_Analyzer
             lbl_kpaPurchPRsAgingRel_Five.Text = string.Format("{0:n0}", overallData.kpa.purch.prsAgingRel.data.Fifteen_TwentyOne);
             lbl_kpaPurchPRsAgingRel_Six.Text = string.Format("{0:n0}", overallData.kpa.purch.prsAgingRel.data.TwentyTwo_TwentyEight);
             lbl_kpaPurchPRsAgingRel_Seven.Text = string.Format("{0:n0}", overallData.kpa.purch.prsAgingRel.data.TwentyNinePlus);
-            lbl_kpaPurchPRsAgingRel_Eight.Text = string.Format("{0:n0}", overallData.kpa.purch.prsAgingRel.data.Average);
+            lbl_kpaPurchPRsAgingRel_Eight.Text = string.Format("{0:n}", overallData.kpa.purch.prsAgingRel.data.Average);
             lbl_kpaPurchPRsAgingRel_Nine.Text = string.Format("{0:n0}", overallData.kpa.purch.prsAgingRel.data.Total);
 
             // KPA -> Purch -> PO First Rel
