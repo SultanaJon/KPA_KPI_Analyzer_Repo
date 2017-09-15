@@ -188,8 +188,12 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                 totalDays = 0;
 
-                PRPO_DB_Utils.CompletedKpiDataLoads++;
-                Overall.UpdateLoadProgress();
+                PRPO_DB_Utils.CompletedDataLoads++;
+                MethodInvoker del = delegate
+                {
+                    PRPO_DB_Utils.UpdateDataLoadProgress();
+                };
+                del.Invoke();
             }
             catch (Exception ex)
             {

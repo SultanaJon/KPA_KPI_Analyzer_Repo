@@ -214,12 +214,12 @@ namespace KPA_KPI_Analyzer
 
             try
             {
-                foreach (var directory in Enum.GetValues(typeof(Diagnostics.AppDirectoryUtils.Directories)))
+                foreach (var directory in Enum.GetValues(typeof(IOUtils.AppDirectoryUtils.Directories)))
                 {
-                    if (!Directory.Exists(Path.Combine(Configuration.AppDir, Diagnostics.AppDirectoryUtils.DirectoryStructures[(int)directory])))
+                    if (!Directory.Exists(Path.Combine(Configuration.AppDir, IOUtils.AppDirectoryUtils.DirectoryStructures[(int)directory])))
                     {
-                        lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Creating Directory - " + Diagnostics.AppDirectoryUtils.DirectoryStructures[(int)directory]; });
-                        Directory.CreateDirectory(Path.Combine(Configuration.AppDir, Diagnostics.AppDirectoryUtils.DirectoryStructures[(int)directory]));
+                        lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Creating Directory - " + IOUtils.AppDirectoryUtils.DirectoryStructures[(int)directory]; });
+                        Directory.CreateDirectory(Path.Combine(Configuration.AppDir, IOUtils.AppDirectoryUtils.DirectoryStructures[(int)directory]));
                     }
                 }
             }
@@ -227,7 +227,7 @@ namespace KPA_KPI_Analyzer
             {
                 errorList.Add(ex.Message);
                 errorList.Add("There was an error generated while trying to create an application directory.");
-                using (Diagnostics.ErrorMessageBox errmsgbx = new Diagnostics.ErrorMessageBox() { Errors = errorList })
+                using (IOUtils.ErrorMessageBox errmsgbx = new IOUtils.ErrorMessageBox() { Errors = errorList })
                 {
                     if (errmsgbx.ShowDialog() == DialogResult.OK)
                     {
@@ -254,11 +254,11 @@ namespace KPA_KPI_Analyzer
             lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Checking Application Files..."; });
             try
             {
-                foreach (var file in Enum.GetValues(typeof(Diagnostics.AppDirectoryUtils.ResourceFiles)))
+                foreach (var file in Enum.GetValues(typeof(IOUtils.AppDirectoryUtils.ResourceFiles)))
                 {
-                    if (!File.Exists(Path.Combine(Configuration.AppDir, Diagnostics.AppDirectoryUtils.resourceFiles[(int)file])))
+                    if (!File.Exists(Path.Combine(Configuration.AppDir, IOUtils.AppDirectoryUtils.resourceFiles[(int)file])))
                     {
-                        lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Creating File - " + Diagnostics.AppDirectoryUtils.resourceFiles[(int)file]; });
+                        lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Creating File - " + IOUtils.AppDirectoryUtils.resourceFiles[(int)file]; });
                         try
                         {
                             AccessUtils.CreateAccessDB();
@@ -271,22 +271,22 @@ namespace KPA_KPI_Analyzer
                     }
                 }
 
-                foreach (var file in Enum.GetValues(typeof(Diagnostics.AppDirectoryUtils.ReportFiles)))
+                foreach (var file in Enum.GetValues(typeof(IOUtils.AppDirectoryUtils.ReportFiles)))
                 {
-                    if (!File.Exists(Path.Combine(Configuration.AppDir, Diagnostics.AppDirectoryUtils.reportFiles[(int)file])))
+                    if (!File.Exists(Path.Combine(Configuration.AppDir, IOUtils.AppDirectoryUtils.reportFiles[(int)file])))
                     {
-                        lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Creating File - " + Diagnostics.AppDirectoryUtils.reportFiles[(int)file]; });
-                        File.Create(Diagnostics.AppDirectoryUtils.reportFiles[(int)file]);
+                        lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Creating File - " + IOUtils.AppDirectoryUtils.reportFiles[(int)file]; });
+                        File.Create(IOUtils.AppDirectoryUtils.reportFiles[(int)file]);
                         Thread.Sleep(2000);
                     }
                 }
 
-                foreach (var file in Enum.GetValues(typeof(Diagnostics.AppDirectoryUtils.LogFiles)))
+                foreach (var file in Enum.GetValues(typeof(IOUtils.AppDirectoryUtils.LogFiles)))
                 {
-                    if (!File.Exists(Path.Combine(Configuration.AppDir, Diagnostics.AppDirectoryUtils.logFiles[(int)file])))
+                    if (!File.Exists(Path.Combine(Configuration.AppDir, IOUtils.AppDirectoryUtils.logFiles[(int)file])))
                     {
-                        lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Creating File - " + Diagnostics.AppDirectoryUtils.logFiles[(int)file]; });
-                        File.Create(Path.Combine(Configuration.AppDir, Diagnostics.AppDirectoryUtils.logFiles[(int)file]));
+                        lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Creating File - " + IOUtils.AppDirectoryUtils.logFiles[(int)file]; });
+                        File.Create(Path.Combine(Configuration.AppDir, IOUtils.AppDirectoryUtils.logFiles[(int)file]));
                         Thread.Sleep(2000);
                     }
                 }
@@ -294,7 +294,7 @@ namespace KPA_KPI_Analyzer
             catch(DatabaseCreationFailureException ex)
             {
                 errorList.Add(ex.Message);
-                using (Diagnostics.ErrorMessageBox errmsgbx = new Diagnostics.ErrorMessageBox() { Errors = errorList })
+                using (IOUtils.ErrorMessageBox errmsgbx = new IOUtils.ErrorMessageBox() { Errors = errorList })
                 {
                     if(errmsgbx.ShowDialog() == DialogResult.OK)
                     {
@@ -306,7 +306,7 @@ namespace KPA_KPI_Analyzer
             catch(Exception ex)
             {
                 errorList.Add(ex.Message);
-                using (Diagnostics.ErrorMessageBox errmsgbx = new Diagnostics.ErrorMessageBox() { Errors = errorList })
+                using (IOUtils.ErrorMessageBox errmsgbx = new IOUtils.ErrorMessageBox() { Errors = errorList })
                 {
                     if (errmsgbx.ShowDialog() == DialogResult.OK)
                     {
@@ -358,7 +358,7 @@ namespace KPA_KPI_Analyzer
                 catch(DatabaseCreationFailureException ex)
                 {
                     errorList.Add(ex.Message);
-                    using (Diagnostics.ErrorMessageBox errmsgbx = new Diagnostics.ErrorMessageBox() { Errors = errorList })
+                    using (IOUtils.ErrorMessageBox errmsgbx = new IOUtils.ErrorMessageBox() { Errors = errorList })
                     {
                         if (errmsgbx.ShowDialog() == DialogResult.OK)
                         {
@@ -386,7 +386,7 @@ namespace KPA_KPI_Analyzer
                 catch (DatabaseCreationFailureException ex)
                 {
                     errorList.Add(ex.Message);
-                    using (Diagnostics.ErrorMessageBox errmsgbx = new Diagnostics.ErrorMessageBox() { Errors = errorList })
+                    using (IOUtils.ErrorMessageBox errmsgbx = new IOUtils.ErrorMessageBox() { Errors = errorList })
                     {
                         if (errmsgbx.ShowDialog() == DialogResult.OK)
                         {
@@ -400,7 +400,7 @@ namespace KPA_KPI_Analyzer
                     // Something happened while deleting the file
                     errorList.Add(ex.Message);
                     errorList.Add("There was an error while attempting to delete the MS Access Database");
-                    using (Diagnostics.ErrorMessageBox errmsgbx = new Diagnostics.ErrorMessageBox() { Errors = errorList })
+                    using (IOUtils.ErrorMessageBox errmsgbx = new IOUtils.ErrorMessageBox() { Errors = errorList })
                     {
                         if (errmsgbx.ShowDialog() == DialogResult.OK)
                         {
@@ -414,7 +414,7 @@ namespace KPA_KPI_Analyzer
             {
                 // Some other type of run-time error occured.
                 errorList.Add(ex.Message);
-                using (Diagnostics.ErrorMessageBox errmsgbx = new Diagnostics.ErrorMessageBox() { Errors = errorList })
+                using (IOUtils.ErrorMessageBox errmsgbx = new IOUtils.ErrorMessageBox() { Errors = errorList })
                 {
                     if (errmsgbx.ShowDialog() == DialogResult.OK)
                     {

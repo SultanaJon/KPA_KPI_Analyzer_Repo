@@ -16,11 +16,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
         public static DataTable posRecCompDt;
         public static DataTable pr2ndLvlRelDateDt;
         public static DataTable AllDt;
-
-
-
-
-        public static volatile object locker = new object();
+        
 
 
 
@@ -47,7 +43,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
         /// <summary>
         /// Loads the data that will be used in the KPI sections for data calculations
         /// </summary>
-        public void LoadKPITables()
+        public void LoadKPITables(AccessInfo.MainTables country)
         {
             prsOnPOsDt = new DataTable();
             posRecCompDt = new DataTable();
@@ -82,10 +78,12 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
                         da.Fill(AllDt);
 
 
-
-                        PRPO_DB_Utils.CompletedKpaDataLoads++;
+                        PRPO_DB_Utils.CompletedDataLoads++;
+                        MethodInvoker del = delegate
+                        {
+                            PRPO_DB_Utils.UpdateDataLoadProgress();
+                        };
                         PRPO_DB_Utils.KPITablesLoaded = true;
-                        UpdateLoadProgress();
                     }
                 }
             }
@@ -93,23 +91,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
             {
                 MessageBox.Show(ex.Message, "KPI Data Load");
             }           
-        }
-
-
-
-
-
-        internal static void UpdateLoadProgress()
-        {
-            lock(locker)
-            {
-                PRPO_DB_Utils.CompletedDataLoads++;
-                MethodInvoker del = delegate
-                {
-                    PRPO_DB_Utils.UpdateDataLoadProgress();
-                };
-                del.Invoke();
-            }
         }
     }
 }

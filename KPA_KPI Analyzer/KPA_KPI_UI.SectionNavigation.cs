@@ -59,7 +59,7 @@ namespace KPA_KPI_Analyzer
             switch (actSecTag)
             {
                 case 0: // KPA --> Overall
-                    LoadOverallTemplate(Performance.KPA);
+                    LoadOverallTemplate(actSecTag);
                     break;
                 case 1: // KPA --> Plan
                     CreateKpaPlanTemplate();
@@ -99,7 +99,7 @@ namespace KPA_KPI_Analyzer
                     break;
                 // REMOVED CASE 13: KPA -> MTC. THIS FEATURE IS NOT POSSIBLE
                 case 14: // KPI --> Overall
-                    LoadOverallTemplate(Performance.KPI);
+                    LoadOverallTemplate(actSecTag);
                     break;
                 case 15: // KPI --> Plan
                     CreateKpiPlanTemplate();

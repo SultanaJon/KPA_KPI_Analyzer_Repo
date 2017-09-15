@@ -660,22 +660,12 @@ namespace KPA_KPI_Analyzer
 
 
 
-
-        public enum Performance
-        {
-            KPA,
-            KPI
-        }
-
-
-
-
         /// <summary>
         /// Loads either the KPA or KPI overall data template depending on what navigation button was pressed.
         /// </summary>
-        private void LoadOverallTemplate(Performance page)
+        private void LoadOverallTemplate(int tag)
         {
-            if (page == Performance.KPA)
+            if (tag == 1)
             {
                 activeSectionBtn = btn_kpaOverall;
                 SetActiveSectionBtn(activeSectionBtn);
@@ -694,7 +684,7 @@ namespace KPA_KPI_Analyzer
                 pnl_NavigationPanelMax.BringToFront();
             }
 
-            if (page == Performance.KPI)
+            if (tag == 2)
             {
                 activeSectionBtn = btn_kpiOverall;
                 SetActiveSectionBtn(activeSectionBtn);
