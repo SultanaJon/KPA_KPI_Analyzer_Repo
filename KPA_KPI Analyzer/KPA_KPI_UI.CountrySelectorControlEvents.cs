@@ -70,15 +70,11 @@ namespace KPA_KPI_Analyzer
             PRPO_DB_Utils.KPITablesLoaded = false;
             PRPO_DB_Utils.CompletedDataLoads = 0;
             PRPO_DB_Utils.ScheduledDataLoads = 0;
-<<<<<<< HEAD
-            RenewDataLoadTimer();
-=======
             PRPO_DB_Utils.CompletedKpaDataLoads = 0;
             PRPO_DB_Utils.CompletedKpiDataLoads = 0;
             CreateThreads();
             DataLoaderTimer.Tick -= DataLoaderTimer_Tick;
             DataLoaderTimer.Tick += DataLoaderTimer_Tick;
->>>>>>> parent of bee2fda... Revert "- This was a revert"
             DataLoaderTimer.Start();
         }
 
