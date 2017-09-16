@@ -9,7 +9,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 {
     public static class FilterUtils
     {
-        private static List<string> strData;
+        private static HashSet<string> strData;
         public static string query = string.Empty;
 
 
@@ -20,7 +20,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
         /// </summary>
         /// <param name="data"></param>
         /// <param name="filter"></param>
-        public delegate void UpdateFilterHandler(List<string> data, Filters filter);
+        public delegate void UpdateFilterHandler(HashSet<string> data, Filters filter);
         public static event UpdateFilterHandler UpdateFilter;
 
 
@@ -44,8 +44,8 @@ namespace KPA_KPI_Analyzer.FilterFeeature
         /// </summary>
         public enum Filters : byte
         {
-            WBS_Element_ProdOrderWbs,
-            ProductionOrdWbs,
+            ProjectNum_WBS_Element,
+            ProjectNUm_ProdOrdWbs,
             WBS_Element,
             Material,
             MaterialGroup,
@@ -93,7 +93,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
         /// <param name="Overall.SelectedCountry"></param>
         /// <param name="filter"></param>
         /// <returns></returns>
-        public static void getQuery(Filters col, string filters)
+        private static void getQuery(Filters col, string filters)
         {
             string temp;
             string column = filterCols[(int)col];
@@ -114,15 +114,52 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
 
 
+
+
+        /// <summary>
+        /// When the Loading Filters for the "Project Number" Checked List Box, both the WBS Element and Prod Ord. WBS fields need to be
+        /// combined which is performed in the LoadFilters function. The peropose of this function is to take loop through each record,
+        /// remove any value that contains an underscore and talk the first part of any remaining value within the hashtable
+        /// and get the first part of that value before the first occurence of '-'. This will leave us with the project number where we
+        /// then store it into the hashtable where duplicates are not created.
+        /// </summary>
+        private static void CleanUpProjectNumbers()
+        {
+            HashSet<string> tempHash = new HashSet<string>();
+            foreach(var str in strData)
+            {
+                if (str.Contains("_"))
+                {
+                    continue;
+                }
+                else
+                {
+                    string[] tempStrArray = str.Split('-');
+
+                    // Get the project number only
+                    tempHash.Add(tempStrArray[0]);
+                }
+            }
+            strData = tempHash; 
+        }
+
+
+
+
+
+
+
+
+
         /// <summary>
         /// Loads the unique filtesr into the application.
         /// </summary>
         /// <param name="filters">the current filters loaded.</param>
-        public static void LoadFilters(string filters)
+        internal static void LoadFilters(string filters)
         {
             filters = string.Empty;
             OleDbCommand cmd = new OleDbCommand();
-            strData = new List<string>();
+            strData = new HashSet<string>();
             try
             {
                 foreach (Filters col in Enum.GetValues(typeof(Filters)))
@@ -144,6 +181,16 @@ namespace KPA_KPI_Analyzer.FilterFeeature
                                 strData.Add(reader[filterCols[(int)col]].ToString());
                             }
                         }
+
+                        // We want to continue to add Prod Ord WBS element to the already added WBS elements to create the project numbers
+                        if (col == Filters.ProjectNum_WBS_Element) continue;
+
+
+                        // Now that we have combined all unique values from WBS Element and Prod Ord. WBS fields, we want to clean them up before storing them
+                        // in the Checked list views.
+                        if (col == Filters.ProjectNUm_ProdOrdWbs)
+                            CleanUpProjectNumbers();
+
 
                         MethodInvoker del = delegate
                         {
@@ -171,15 +218,15 @@ namespace KPA_KPI_Analyzer.FilterFeeature
         /// </summary>
         /// <param name="filters">The current filters</param>
         /// <param name="ignoredCol">The column that we want to ignore</param>
-        public static void LoadFilters(string filters, Filters ignoredCol)
+        internal static void LoadFilters(string filters, Filters ignoredCol)
         {
             OleDbCommand cmd = new OleDbCommand();
-            strData = new List<string>();
+            strData = new HashSet<string>();
             try
             {
                 foreach (Filters col in Enum.GetValues(typeof(Filters)))
                 {
-                    if (ignoredCol == col)
+                    if (ignoredCol == Filters.ProjectNum_WBS_Element || ignoredCol == Filters.ProjectNUm_ProdOrdWbs)
                         continue;
 
                     getQuery(col, filters);
@@ -199,6 +246,18 @@ namespace KPA_KPI_Analyzer.FilterFeeature
                                 strData.Add(reader[filterCols[(int)col]].ToString());
                             }
                         }
+
+
+                        // We want to continue to add Prod Ord WBS element to the already added WBS elements to create the project numbers
+                        if (col == Filters.ProjectNum_WBS_Element) continue;
+
+
+                        // Now that we have combined all unique values from WBS Element and Prod Ord. WBS fields, we want to clean them up before storing them
+                        // in the Checked list views.
+                        if (col == Filters.ProjectNUm_ProdOrdWbs)
+                            CleanUpProjectNumbers();
+
+
                         UpdateFilter(strData, col);
                         strData.Clear();
                     }

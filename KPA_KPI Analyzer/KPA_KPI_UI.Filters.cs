@@ -68,75 +68,90 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         /// <param name="data"></param>
         /// <param name="filter"></param>
-        public void UpdateFilters(List<string> data, FilterUtils.Filters filter)
+        public void UpdateFilters(HashSet<string> data, FilterUtils.Filters filter)
         {
             HasFiltersAdded();
             UpdateFilterButtons();
-
+            List<string> lst = new List<string>();
 
             switch ((int)filter)
             {
-                case 0:
                 case 1:
+                    ChkdListBx_ProjectNumber.Invoke((MethodInvoker)delegate {
+                        ChkdListBx_ProjectNumber.Items.Clear();
+                        lst = new List<string>(data);
+                        ChkdListBx_ProjectNumber.Items.AddRange(lst.ToArray());
+                    });
                     break;
                 case 2: // WBS Element
                     ChkdListBx_WBSElement.Invoke((MethodInvoker)delegate {
                         ChkdListBx_WBSElement.Items.Clear();
-                        ChkdListBx_WBSElement.Items.AddRange(data.ToArray());
+                        lst = new List<string>(data);
+                        ChkdListBx_WBSElement.Items.AddRange(lst.ToArray());
                     });
+                    
                     break;
                 case 3: // Material
                     ChkdListBx_Material.Invoke((MethodInvoker)delegate {
                         ChkdListBx_Material.Items.Clear();
-                        ChkdListBx_Material.Items.AddRange(data.ToArray());
+                        lst = new List<string>(data);
+                        ChkdListBx_Material.Items.AddRange(lst.ToArray());
                     });
                     break;
                 case 4: // Material Group
                     ChkdListBx_MaterialGroup.Invoke((MethodInvoker)delegate {
                         ChkdListBx_MaterialGroup.Items.Clear();
-                        ChkdListBx_MaterialGroup.Items.AddRange(data.ToArray());
+                        lst = new List<string>(data);
+                        ChkdListBx_MaterialGroup.Items.AddRange(lst.ToArray());
                     });
                     break;
                 case 5:// Vendor
                     ChkdListBx_Vendor.Invoke((MethodInvoker)delegate {
                         ChkdListBx_Vendor.Items.Clear();
-                        ChkdListBx_Vendor.Items.AddRange(data.ToArray());
+                        lst = new List<string>(data);
+                        ChkdListBx_Vendor.Items.AddRange(lst.ToArray());
                     });
                     break;
                 case 6: // Vendor Description
                     ChkdListBx_VendorDesc.Invoke((MethodInvoker)delegate {
                         ChkdListBx_VendorDesc.Items.Clear();
-                        ChkdListBx_VendorDesc.Items.AddRange(data.ToArray());
+                        lst = new List<string>(data);
+                        ChkdListBx_VendorDesc.Items.AddRange(lst.ToArray());
                     });
                     break;
                 case 7: // Purch Group
                     ChkdListBx_PurchGroup.Invoke((MethodInvoker)delegate {
                         ChkdListBx_PurchGroup.Items.Clear();
-                        ChkdListBx_PurchGroup.Items.AddRange(data.ToArray());
+                        lst = new List<string>(data);
+                        ChkdListBx_PurchGroup.Items.AddRange(lst.ToArray());
                     });
                     break;
                 case 8: // IR Supp Name
                     ChkdListBx_IRSuppName.Invoke((MethodInvoker)delegate {
                         ChkdListBx_IRSuppName.Items.Clear();
-                        ChkdListBx_IRSuppName.Items.AddRange(data.ToArray());
+                        lst = new List<string>(data);
+                        ChkdListBx_IRSuppName.Items.AddRange(lst.ToArray());
                     });
                     break;
                 case 9: // Fxd Supp Name
                     ChkdListBx_FxdSuppName.Invoke((MethodInvoker)delegate {
                         ChkdListBx_FxdSuppName.Items.Clear();
-                        ChkdListBx_FxdSuppName.Items.AddRange(data.ToArray());
+                        lst = new List<string>(data);
+                        ChkdListBx_FxdSuppName.Items.AddRange(lst.ToArray());
                     });
                     break;
                 case 10: // Dsrd Supp Name
                     ChkdListBx_DsrdSuppName.Invoke((MethodInvoker)delegate {
                         ChkdListBx_DsrdSuppName.Items.Clear();
-                        ChkdListBx_DsrdSuppName.Items.AddRange(data.ToArray());
+                        lst = new List<string>(data);
+                        ChkdListBx_DsrdSuppName.Items.AddRange(lst.ToArray());
                     });
                     break;
                 case 11: // Commodity Category
                     ChkdListBx_CommodityCat.Invoke((MethodInvoker)delegate {
                         ChkdListBx_CommodityCat.Items.Clear();
-                        ChkdListBx_CommodityCat.Items.AddRange(data.ToArray());
+                        lst = new List<string>(data);
+                        ChkdListBx_CommodityCat.Items.AddRange(lst.ToArray());
                     });
                     break;
                 default:
@@ -162,6 +177,21 @@ namespace KPA_KPI_Analyzer
             switch (tag)
             {
                 case 0:
+                    if(e.NewValue == CheckState.Checked)
+                    {
+                        Filters.FilterValues.projectNumber.Add(clb.Items[e.Index].ToString());
+                        AddFilterSnapShot(clb.Items[e.Index].ToString());
+                        BuildQueryFilters();
+                        FilterUtils.LoadFilters(filters, FilterUtils.Filters.ProjectNum_WBS_Element);
+                    }
+                    else
+                    {
+                        Filters.FilterValues.projectNumber.Remove(clb.Items[e.Index].ToString());
+                        BuildQueryFilters();
+                        FilterUtils.LoadFilters(filters, FilterUtils.Filters.ProjectNum_WBS_Element);
+                        RevertFilterData(clb.Items[e.Index].ToString());
+                    }
+                    UpdateCheckedItems();
                     break;
                 case 1:
                     if (e.NewValue == CheckState.Checked)
@@ -350,6 +380,38 @@ namespace KPA_KPI_Analyzer
         private void AddFilterSnapShot(string key)
         {
             List<string> temp;
+
+            if (ChkdListBx_ProjectNumber.Items.Count > 0)
+            {
+                temp = new List<string>();
+                foreach (var item in ChkdListBx_ProjectNumber.Items)
+                {
+                    temp.Add(item.ToString());
+                }
+
+                try
+                {
+                    Filters.ClbDictionaryValues.projectNumebr.Add(key, temp);
+                }
+                catch (ArgumentException)
+                {
+
+                }
+            }
+            else
+            {
+                temp = new List<string>();
+                try
+                {
+                    Filters.ClbDictionaryValues.projectNumebr.Add(key, temp);
+                }
+                catch (ArgumentException)
+                {
+
+                }
+            }
+
+
 
             if (ChkdListBx_WBSElement.Items.Count > 0)
             {
@@ -691,6 +753,14 @@ namespace KPA_KPI_Analyzer
         {
             List<string> temp;
 
+            if (Filters.ClbDictionaryValues.projectNumebr.Count > 0)
+            {
+                temp = Filters.ClbDictionaryValues.projectNumebr[key];
+                ChkdListBx_ProjectNumber.Items.Clear();
+                ChkdListBx_ProjectNumber.Items.AddRange(temp.ToArray());
+                Filters.ClbDictionaryValues.projectNumebr.Remove(key);
+            }
+
             if (Filters.ClbDictionaryValues.wbsElement.Count > 0)
             {
                 temp = Filters.ClbDictionaryValues.wbsElement[key];
@@ -791,6 +861,30 @@ namespace KPA_KPI_Analyzer
         private void BuildQueryFilters()
         {
             filters = string.Empty;
+
+
+
+
+            // TODO: Need to figure out how we will search for records that contain this project number
+
+            //if (Filters.FilterValues.projectNumber.Count > 0)
+            //{
+            //    for (int i = 0; i < Filters.FilterValues.wbsElement.Count; ++i)
+            //    {
+            //        if (i == 0)
+            //            filters += "(";
+            //        filters += Overall.SelectedCountry + ".[" + FilterFeeature.FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.WBS_Element] + "] = " + "'" + Filters.FilterValues.wbsElement[i] + "'";
+            //        if (i != (Filters.FilterValues.wbsElement.Count - 1))
+            //            filters += " OR ";
+            //        else
+            //            filters += ")";
+            //    }
+            //}
+
+
+
+
+
             if (Filters.FilterValues.wbsElement.Count > 0)
             {
                 for (int i = 0; i < Filters.FilterValues.wbsElement.Count; ++i)
@@ -995,6 +1089,23 @@ namespace KPA_KPI_Analyzer
         private void UpdateCheckedItems()
         {
             int index;
+            // WBS Element
+            if (Filters.FilterValues.projectNumber.Count > 0)
+            {
+                ChkdListBx_ProjectNumber.ItemCheck -= ckdListBox_ItemCheck;
+                foreach (string str in Filters.FilterValues.projectNumber)
+                {
+                    index = ChkdListBx_ProjectNumber.Items.IndexOf(str);
+                    if (index >= 0)
+                    {
+                        if (!ChkdListBx_ProjectNumber.GetItemChecked(index))
+                            ChkdListBx_ProjectNumber.SetItemChecked(index, true);
+                    }
+                }
+                ChkdListBx_ProjectNumber.ItemCheck += ckdListBox_ItemCheck;
+            }
+
+
 
             // WBS Element
             if (Filters.FilterValues.wbsElement.Count > 0)
@@ -1199,6 +1310,15 @@ namespace KPA_KPI_Analyzer
 
             if (ColumnFiltersAdded)
             {
+                foreach (int i in ChkdListBx_ProjectNumber.CheckedIndices)
+                {
+                    ChkdListBx_ProjectNumber.ItemCheck -= ckdListBox_ItemCheck;
+                    ChkdListBx_ProjectNumber.SetItemCheckState(i, CheckState.Unchecked);
+                    ChkdListBx_ProjectNumber.ItemCheck += ckdListBox_ItemCheck;
+
+                }
+
+
                 foreach (int i in ChkdListBx_WBSElement.CheckedIndices)
                 {
                     ChkdListBx_WBSElement.ItemCheck -= ckdListBox_ItemCheck;
@@ -1287,6 +1407,11 @@ namespace KPA_KPI_Analyzer
         private void GetCheckedColumnFilters()
         {
             Filters.FilterValues.Clear();
+
+            foreach (int i in ChkdListBx_ProjectNumber.CheckedIndices)
+            {
+                Filters.FilterValues.projectNumber.Add(ChkdListBx_ProjectNumber.Items[i].ToString());
+            }
 
             foreach (int i in ChkdListBx_WBSElement.CheckedIndices)
             {
