@@ -329,8 +329,8 @@ namespace KPA_KPI_Analyzer
 
             if (Width == screen.WorkingArea.Width && Height == screen.WorkingArea.Height) // the form is maxed
             {
-                Width = Constants.minFormWidth;
-                Height = Constants.minFormHeight;
+                Width = Values.Constants.minFormWidth;
+                Height = Values.Constants.minFormHeight;
                 Left = frmData.FrmX;
                 Top = frmData.FrmY;
             }

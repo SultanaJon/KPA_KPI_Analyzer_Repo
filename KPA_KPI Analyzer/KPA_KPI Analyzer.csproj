@@ -14,7 +14,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -64,7 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration.cs" />
-    <Compile Include="Constants.cs" />
+    <Compile Include="Values\Constants.cs" />
     <Compile Include="DatabaseUtils\PRPOCommands.cs" />
     <Compile Include="DatabaseUtils\PRPO_DB_Utils.cs" />
     <Compile Include="DataComingSoon.cs">
@@ -91,52 +91,52 @@
       <DependentUpon>ErrorMessageBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Diagnostics\Logger.cs" />
-    <Compile Include="KPACurrentPlanActualTemplate.cs">
+    <Compile Include="Templates\Template_Controls\KPA_Controls\KPACurrentPlanActualTemplate.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="KPACurrentPlanActualTemplate.Designer.cs">
+    <Compile Include="Templates\Template_Controls\KPA_Controls\KPACurrentPlanActualTemplate.Designer.cs">
       <DependentUpon>KPACurrentPlanActualTemplate.cs</DependentUpon>
     </Compile>
-    <Compile Include="KPAFollowUpTemplate.cs">
+    <Compile Include="Templates\Template_Controls\KPA_Controls\KPAFollowUpTemplate.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="KPAFollowUpTemplate.Designer.cs">
+    <Compile Include="Templates\Template_Controls\KPA_Controls\KPAFollowUpTemplate.Designer.cs">
       <DependentUpon>KPAFollowUpTemplate.cs</DependentUpon>
     </Compile>
-    <Compile Include="KPAHotJobsTemplate.cs">
+    <Compile Include="Templates\Template_Controls\KPA_Controls\KPAHotJobsTemplate.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="KPAHotJobsTemplate.Designer.cs">
+    <Compile Include="Templates\Template_Controls\KPA_Controls\KPAHotJobsTemplate.Designer.cs">
       <DependentUpon>KPAHotJobsTemplate.cs</DependentUpon>
     </Compile>
-    <Compile Include="KPAOverall.cs">
+    <Compile Include="Templates\Template_Controls\KPA_Controls\KPAOverall.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="KPAOverall.Designer.cs">
+    <Compile Include="Templates\Template_Controls\KPA_Controls\KPAOverall.Designer.cs">
       <DependentUpon>KPAOverall.cs</DependentUpon>
     </Compile>
-    <Compile Include="KPAPlanTemplate.cs">
+    <Compile Include="Templates\Template_Controls\KPA_Controls\KPAPlanTemplate.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="KPAPlanTemplate.Designer.cs">
+    <Compile Include="Templates\Template_Controls\KPA_Controls\KPAPlanTemplate.Designer.cs">
       <DependentUpon>KPAPlanTemplate.cs</DependentUpon>
     </Compile>
-    <Compile Include="KPAPurchSubTemplate.cs">
+    <Compile Include="Templates\Template_Controls\KPA_Controls\KPAPurchSubTemplate.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="KPAPurchSubTemplate.Designer.cs">
+    <Compile Include="Templates\Template_Controls\KPA_Controls\KPAPurchSubTemplate.Designer.cs">
       <DependentUpon>KPAPurchSubTemplate.cs</DependentUpon>
     </Compile>
-    <Compile Include="KPAPurchTemplate.cs">
+    <Compile Include="Templates\Template_Controls\KPA_Controls\KPAPurchTemplate.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="KPAPurchTemplate.Designer.cs">
+    <Compile Include="Templates\Template_Controls\KPA_Controls\KPAPurchTemplate.Designer.cs">
       <DependentUpon>KPAPurchTemplate.cs</DependentUpon>
     </Compile>
-    <Compile Include="KPAPurchTotalTemplate.cs">
+    <Compile Include="Templates\Template_Controls\KPA_Controls\KPAPurchTotalTemplate.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="KPAPurchTotalTemplate.Designer.cs">
+    <Compile Include="Templates\Template_Controls\KPA_Controls\KPAPurchTotalTemplate.Designer.cs">
       <DependentUpon>KPAPurchTotalTemplate.cs</DependentUpon>
     </Compile>
     <Compile Include="KPA_KPI_Overall\KPA_Sections\Cancellations.cs" />
@@ -200,58 +200,58 @@
       <DependentUpon>KPA_KPI_UI.cs</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="KPIFollowUpTemplate.cs">
+    <Compile Include="Templates\Template_Controls\KPI_Controls\KPIFollowUpTemplate.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="KPIFollowUpTemplate.Designer.cs">
+    <Compile Include="Templates\Template_Controls\KPI_Controls\KPIFollowUpTemplate.Designer.cs">
       <DependentUpon>KPIFollowUpTemplate.cs</DependentUpon>
     </Compile>
-    <Compile Include="KPIOtherTemplate.cs">
+    <Compile Include="Templates\Template_Controls\KPI_Controls\KPIOtherTemplate.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="KPIOtherTemplate.Designer.cs">
+    <Compile Include="Templates\Template_Controls\KPI_Controls\KPIOtherTemplate.Designer.cs">
       <DependentUpon>KPIOtherTemplate.cs</DependentUpon>
     </Compile>
-    <Compile Include="KPIOverall.cs">
+    <Compile Include="Templates\Template_Controls\KPI_Controls\KPIOverall.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="KPIOverall.Designer.cs">
+    <Compile Include="Templates\Template_Controls\KPI_Controls\KPIOverall.Designer.cs">
       <DependentUpon>KPIOverall.cs</DependentUpon>
     </Compile>
-    <Compile Include="KPIPlanTemplate.cs">
+    <Compile Include="Templates\Template_Controls\KPI_Controls\KPIPlanTemplate.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="KPIPlanTemplate.Designer.cs">
+    <Compile Include="Templates\Template_Controls\KPI_Controls\KPIPlanTemplate.Designer.cs">
       <DependentUpon>KPIPlanTemplate.cs</DependentUpon>
     </Compile>
-    <Compile Include="KPIPurchPlanTemplate.cs">
+    <Compile Include="Templates\Template_Controls\KPI_Controls\KPIPurchPlanTemplate.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="KPIPurchPlanTemplate.Designer.cs">
+    <Compile Include="Templates\Template_Controls\KPI_Controls\KPIPurchPlanTemplate.Designer.cs">
       <DependentUpon>KPIPurchPlanTemplate.cs</DependentUpon>
     </Compile>
-    <Compile Include="KPIPurchSubTemplate.cs">
+    <Compile Include="Templates\Template_Controls\KPI_Controls\KPIPurchSubTemplate.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="KPIPurchSubTemplate.Designer.cs">
+    <Compile Include="Templates\Template_Controls\KPI_Controls\KPIPurchSubTemplate.Designer.cs">
       <DependentUpon>KPIPurchSubTemplate.cs</DependentUpon>
     </Compile>
-    <Compile Include="KPIPurchTemplate.cs">
+    <Compile Include="Templates\Template_Controls\KPI_Controls\KPIPurchTemplate.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="KPIPurchTemplate.Designer.cs">
+    <Compile Include="Templates\Template_Controls\KPI_Controls\KPIPurchTemplate.Designer.cs">
       <DependentUpon>KPIPurchTemplate.cs</DependentUpon>
     </Compile>
-    <Compile Include="KPIPurchTotalTemplate.cs">
+    <Compile Include="Templates\Template_Controls\KPI_Controls\KPIPurchTotalTemplate.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="KPIPurchTotalTemplate.Designer.cs">
+    <Compile Include="Templates\Template_Controls\KPI_Controls\KPIPurchTotalTemplate.Designer.cs">
       <DependentUpon>KPIPurchTotalTemplate.cs</DependentUpon>
     </Compile>
-    <Compile Include="KPIPurchTwoTemplate.cs">
+    <Compile Include="Templates\Template_Controls\KPI_Controls\KPIPurchTwoTemplate.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="KPIPurchTwoTemplate.Designer.cs">
+    <Compile Include="Templates\Template_Controls\KPI_Controls\KPIPurchTwoTemplate.Designer.cs">
       <DependentUpon>KPIPurchTwoTemplate.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -267,11 +267,11 @@
     <Compile Include="SplashScreen.Designer.cs">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Templates\TemplateFive.cs" />
-    <Compile Include="Templates\TemplateFour.cs" />
-    <Compile Include="Templates\TemplateOne.cs" />
-    <Compile Include="Templates\TemplateThree.cs" />
-    <Compile Include="Templates\TemplateTwo.cs" />
+    <Compile Include="Templates\TemplateFiveStructure.cs" />
+    <Compile Include="Templates\TemplateFourStructure.cs" />
+    <Compile Include="Templates\TemplateOneStructure.cs" />
+    <Compile Include="Templates\TemplateThreeStructure.cs" />
+    <Compile Include="Templates\TemplateTwoStructure.cs" />
     <EmbeddedResource Include="DataComingSoon.resx">
       <DependentUpon>DataComingSoon.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -284,34 +284,34 @@
       <DependentUpon>ErrorMessageBox.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="KPACurrentPlanActualTemplate.resx">
+    <EmbeddedResource Include="Templates\Template_Controls\KPA_Controls\KPACurrentPlanActualTemplate.resx">
       <DependentUpon>KPACurrentPlanActualTemplate.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="KPAFollowUpTemplate.resx">
+    <EmbeddedResource Include="Templates\Template_Controls\KPA_Controls\KPAFollowUpTemplate.resx">
       <DependentUpon>KPAFollowUpTemplate.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="KPAHotJobsTemplate.resx">
+    <EmbeddedResource Include="Templates\Template_Controls\KPA_Controls\KPAHotJobsTemplate.resx">
       <DependentUpon>KPAHotJobsTemplate.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="KPAOverall.resx">
+    <EmbeddedResource Include="Templates\Template_Controls\KPA_Controls\KPAOverall.resx">
       <DependentUpon>KPAOverall.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="KPAPlanTemplate.resx">
+    <EmbeddedResource Include="Templates\Template_Controls\KPA_Controls\KPAPlanTemplate.resx">
       <DependentUpon>KPAPlanTemplate.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="KPAPurchSubTemplate.resx">
+    <EmbeddedResource Include="Templates\Template_Controls\KPA_Controls\KPAPurchSubTemplate.resx">
       <DependentUpon>KPAPurchSubTemplate.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="KPAPurchTemplate.resx">
+    <EmbeddedResource Include="Templates\Template_Controls\KPA_Controls\KPAPurchTemplate.resx">
       <DependentUpon>KPAPurchTemplate.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="KPAPurchTotalTemplate.resx">
+    <EmbeddedResource Include="Templates\Template_Controls\KPA_Controls\KPAPurchTotalTemplate.resx">
       <DependentUpon>KPAPurchTotalTemplate.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -319,38 +319,38 @@
       <DependentUpon>KPA_KPI_UI.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="KPIFollowUpTemplate.resx">
+    <EmbeddedResource Include="Templates\Template_Controls\KPI_Controls\KPIFollowUpTemplate.resx">
       <DependentUpon>KPIFollowUpTemplate.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="KPIOtherTemplate.resx">
+    <EmbeddedResource Include="Templates\Template_Controls\KPI_Controls\KPIOtherTemplate.resx">
       <DependentUpon>KPIOtherTemplate.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="KPIOverall.resx">
+    <EmbeddedResource Include="Templates\Template_Controls\KPI_Controls\KPIOverall.resx">
       <DependentUpon>KPIOverall.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="KPIPlanTemplate.resx">
+    <EmbeddedResource Include="Templates\Template_Controls\KPI_Controls\KPIPlanTemplate.resx">
       <DependentUpon>KPIPlanTemplate.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="KPIPurchPlanTemplate.resx">
+    <EmbeddedResource Include="Templates\Template_Controls\KPI_Controls\KPIPurchPlanTemplate.resx">
       <DependentUpon>KPIPurchPlanTemplate.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="KPIPurchSubTemplate.resx">
+    <EmbeddedResource Include="Templates\Template_Controls\KPI_Controls\KPIPurchSubTemplate.resx">
       <DependentUpon>KPIPurchSubTemplate.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="KPIPurchTemplate.resx">
+    <EmbeddedResource Include="Templates\Template_Controls\KPI_Controls\KPIPurchTemplate.resx">
       <DependentUpon>KPIPurchTemplate.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="KPIPurchTotalTemplate.resx">
+    <EmbeddedResource Include="Templates\Template_Controls\KPI_Controls\KPIPurchTotalTemplate.resx">
       <DependentUpon>KPIPurchTotalTemplate.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="KPIPurchTwoTemplate.resx">
+    <EmbeddedResource Include="Templates\Template_Controls\KPI_Controls\KPIPurchTwoTemplate.resx">
       <DependentUpon>KPIPurchTwoTemplate.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>

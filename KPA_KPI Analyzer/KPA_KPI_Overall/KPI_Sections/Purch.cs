@@ -117,7 +117,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                     totalDays += elapsedDays;
                     elapsedDays = (int)elapsedDays;
 
-                    initConfVsPRPlanDate.data.Total++;
 
 
                     if (elapsedDays <= (-22))
