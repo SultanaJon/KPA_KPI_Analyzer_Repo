@@ -51,12 +51,6 @@ namespace KPA_KPI_Analyzer.DragDropFeatures
         /// <param name="filePaths">The file paths of the PRPO files that were dropped by the user.</param>
         private static void PopulateExcelFilePaths(string[] filePaths)
         {
-            //if (!AccessUtils.US_PRPO_TableExists && !AccessUtils.MX_PRPO_TableExists)
-            //{
-            //    ExcelInfo.USUpdated = false;
-            //    ExcelInfo.MXUpdated = false;
-            //}
-
             ExcelInfo.USUpdated = false;
             ExcelInfo.MXUpdated = false;
             US_PRPO_FilePath = string.Empty;
@@ -73,7 +67,7 @@ namespace KPA_KPI_Analyzer.DragDropFeatures
 
                     if (!file.Contains(DateTime.Now.ToString("MMddyyyy")))
                     {
-                        if (MessageBox.Show("This file does not have a time stamp of " + DateTime.Now.ToString("MMMM dd, yyyy") + ". Do you still want to import this data?", "Time Stamp Detection", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        if (MessageBox.Show("This file looks to be outdated. Would you still like to import the data?", "Outdated Time Stamp Detection", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
                             US_PRPO_FilePath = file;
                             ExcelInfo.USUpdated = true;
@@ -106,7 +100,7 @@ namespace KPA_KPI_Analyzer.DragDropFeatures
                 else
                 {
                     // Cannot determine the Overall.SelectedCountry based on the file name.
-                    // errorList.Add(DateTime.Now.ToString() + " - The file you have dropped may be the PRPO file but make sure it has the following nameing convention : \'PRPO_US{DATE HERE}\' or \'PRPO_MX{DATE HERE}' & the following Extenstion types: \'.xlsx\' or \'.xls\'");
+                    MessageBox.Show("Cannot determine the country of origin based on the file(s) name.");
                 }
             }
         }

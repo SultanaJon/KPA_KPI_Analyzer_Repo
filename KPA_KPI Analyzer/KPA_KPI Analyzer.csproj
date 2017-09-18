@@ -84,12 +84,6 @@
     <Compile Include="FilterFeeature\Filters.cs" />
     <Compile Include="FilterFeeature\FilterUtils.cs" />
     <Compile Include="Diagnostics\AppDirectoryUtils.cs" />
-    <Compile Include="Diagnostics\ErrorMessageBox.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Diagnostics\ErrorMessageBox.Designer.cs">
-      <DependentUpon>ErrorMessageBox.cs</DependentUpon>
-    </Compile>
     <Compile Include="Diagnostics\Logger.cs" />
     <Compile Include="Templates\Template_Controls\KPA_Controls\KPACurrentPlanActualTemplate.cs">
       <SubType>UserControl</SubType>
@@ -278,10 +272,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DataViewer.resx">
       <DependentUpon>DataViewer.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Diagnostics\ErrorMessageBox.resx">
-      <DependentUpon>ErrorMessageBox.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Templates\Template_Controls\KPA_Controls\KPACurrentPlanActualTemplate.resx">

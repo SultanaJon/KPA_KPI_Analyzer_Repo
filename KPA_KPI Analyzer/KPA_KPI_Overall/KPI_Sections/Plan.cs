@@ -123,9 +123,8 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                     if (elapsedDays < 0)
                         elapsedDays = Math.Floor(elapsedDays);
-                    else if (elapsedDays == 0)
-                        ;
-                    else // elapsed days > 0
+
+                    if (elapsedDays > 0)
                         elapsedDays = Math.Ceiling(elapsedDays);
 
                     elapsedDays = (int)elapsedDays;
@@ -268,9 +267,8 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                     if (elapsedDays < 0)
                         elapsedDays = Math.Floor(elapsedDays);
-                    else if (elapsedDays == 0)
-                        ;
-                    else // elapsed days > 0
+
+                    if (elapsedDays > 0)
                         elapsedDays = Math.Ceiling(elapsedDays);
 
                     elapsedDays = (int)elapsedDays;
@@ -440,9 +438,8 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                     if (elapsedDays < 0)
                         elapsedDays = Math.Floor(elapsedDays);
-                    else if (elapsedDays == 0)
-                        ;
-                    else // elapsed days > 0
+
+                    if (elapsedDays > 0)
                         elapsedDays = Math.Ceiling(elapsedDays);
 
                     elapsedDays = (int)elapsedDays;

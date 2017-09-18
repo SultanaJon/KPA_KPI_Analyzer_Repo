@@ -14,8 +14,15 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
         public delegate void RenewDataLoadTimerHandler();
         public static event RenewDataLoadTimerHandler RenewDataLoadTimer;
 
+
+        public delegate void DisplayDragDropPageHandler();
+        public static event DisplayDragDropPageHandler DisplayDragDropPage;
+
         internal static volatile object _updateDataLoadLock = new object();
         private static readonly List<string> errorList = new List<string>();
+
+
+
 
 
 
@@ -182,41 +189,35 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
         public static bool RemoveData(PRPOCommands.DatabaseTables.MainTables country)
         {
             bool result = false;
-            if (country == PRPOCommands.DatabaseTables.MainTables.US_PRPO)
-            {
-                OleDbCommand cmd;
-                try
-                {
-                    cmd = new OleDbCommand(PRPOCommands.removableData, DatabaseConnection);
-                    cmd.ExecuteNonQuery();
-                    result = true;
-                    CompletedDataRemovals++;
-                    UpdateDataRemovalProgress();                   
-                }
-                catch(Exception ex)
-                {
-                    result = false;
-                    MessageBox.Show(ex.ToString(), "US Data Deletion Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else
-            {
-                OleDbCommand cmd;
 
-                try
+            try
+            {
+                if (country == PRPOCommands.DatabaseTables.MainTables.US_PRPO)
                 {
+                    OleDbCommand cmd;
                     cmd = new OleDbCommand(PRPOCommands.removableData, DatabaseConnection);
                     cmd.ExecuteNonQuery();
                     result = true;
                     CompletedDataRemovals++;
                     UpdateDataRemovalProgress();
                 }
-                catch (Exception ex)
+                else
                 {
-                    result = false;
-                    MessageBox.Show(ex.ToString(), "MX Data Deletion Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    OleDbCommand cmd;
+                    cmd = new OleDbCommand(PRPOCommands.removableData, DatabaseConnection);
+                    cmd.ExecuteNonQuery();
+                    result = true;
+                    CompletedDataRemovals++;
+                    UpdateDataRemovalProgress();
                 }
             }
+            catch(Exception)
+            {
+                MessageBox.Show("The data being imported seems to contain incorrect or no data. Please check to see if the data is corrupted. If the report contains corrupted data, please contact your SAP Administrator.", "Corrupted Data Detection", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DropCreateDb();
+                DisplayDragDropPage();
+            }
+
             return result;
         }
     }

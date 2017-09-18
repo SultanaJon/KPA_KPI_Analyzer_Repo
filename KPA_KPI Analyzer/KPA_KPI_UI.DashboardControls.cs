@@ -78,54 +78,21 @@ namespace KPA_KPI_Analyzer
                 catch (DragDropExceptions.DragDropFileOverloadException ex)
                 {
                     // An attempt of more than two files were dropped on the form.
-                    errorList.Clear();
-                    errorList.Add(ex.Message);
-                    using (Diagnostics.ErrorMessageBox errmsgbox = new Diagnostics.ErrorMessageBox())
-                    {
-                        if (errmsgbox.ShowDialog() == DialogResult.OK)
-                        {
-                            errmsgbox.Close();
-                        }
-                    }
+                    MessageBox.Show(ex.Message);
                 }
                 catch (DragDropExceptions.DragDropInvalidExtensionException ex)
                 {
                     // Files were dropped that had an invalid file extention
-                    errorList.Clear();
-                    errorList.Add(ex.Message);
-                    using (Diagnostics.ErrorMessageBox errmsgbox = new Diagnostics.ErrorMessageBox())
-                    {
-                        if (errmsgbox.ShowDialog() == DialogResult.OK)
-                        {
-                            errmsgbox.Close();
-                        }
-                    }
+                    MessageBox.Show(ex.Message);
                 }
                 catch (DragDropExceptions.DragDropInvalidExcelFileException ex)
                 {
                     // Files were dropped that were not PRPO files
-                    errorList.Clear();
-                    errorList.Add(ex.Message);
-                    using (Diagnostics.ErrorMessageBox errmsgbox = new Diagnostics.ErrorMessageBox())
-                    {
-                        if (errmsgbox.ShowDialog() == DialogResult.OK)
-                        {
-                            errmsgbox.Close();
-                        }
-                    }
+                    MessageBox.Show(ex.Message);
                 }
                 catch (Exception ex)
                 {
-                    errorList.Clear();
-                    errorList.Add(ex.Message);
-                    using (Diagnostics.ErrorMessageBox errmsgbox = new Diagnostics.ErrorMessageBox())
-                    {
-                        if (errmsgbox.ShowDialog() == DialogResult.OK)
-                        {
-                            errmsgbox.Close();
-                            Application.Exit();
-                        }
-                    }
+                    MessageBox.Show(ex.Message);
                 }
 
 

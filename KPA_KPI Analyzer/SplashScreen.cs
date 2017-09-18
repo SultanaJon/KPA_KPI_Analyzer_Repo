@@ -236,17 +236,9 @@ namespace KPA_KPI_Analyzer
             }
             catch(Exception ex)
             {
-                errorList.Add(ex.Message);
-                errorList.Add("There was an error generated while trying to create an application directory.");
-                using (Diagnostics.ErrorMessageBox errmsgbx = new Diagnostics.ErrorMessageBox() { Errors = errorList })
-                {
-                    if (errmsgbx.ShowDialog() == DialogResult.OK)
-                    {
-                        errmsgbx.Close();
-                    }
-                }
+                MessageBox.Show(ex.Message);
             }
-            
+
 
             Thread.Sleep(2000);
             CurrentStatus = CheckStatus.Complete;
@@ -304,28 +296,13 @@ namespace KPA_KPI_Analyzer
             }
             catch(DatabaseCreationFailureException ex)
             {
-                errorList.Add(ex.Message);
-                using (Diagnostics.ErrorMessageBox errmsgbx = new Diagnostics.ErrorMessageBox() { Errors = errorList })
-                {
-                    if(errmsgbx.ShowDialog() == DialogResult.OK)
-                    {
-                        errmsgbx.Close();
-                        Application.Exit();
-                    }
-                }
+                MessageBox.Show(ex.Message);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                errorList.Add(ex.Message);
-                using (Diagnostics.ErrorMessageBox errmsgbx = new Diagnostics.ErrorMessageBox() { Errors = errorList })
-                {
-                    if (errmsgbx.ShowDialog() == DialogResult.OK)
-                    {
-                        errmsgbx.Close();
-                    }
-                }
+                MessageBox.Show(ex.Message);
             }
-            
+
             Thread.Sleep(2000);
             CurrentStatus = CheckStatus.Complete;
         }
@@ -368,15 +345,7 @@ namespace KPA_KPI_Analyzer
                 }
                 catch(DatabaseCreationFailureException ex)
                 {
-                    errorList.Add(ex.Message);
-                    using (Diagnostics.ErrorMessageBox errmsgbx = new Diagnostics.ErrorMessageBox() { Errors = errorList })
-                    {
-                        if (errmsgbx.ShowDialog() == DialogResult.OK)
-                        {
-                            errmsgbx.Close();
-                            Application.Exit();
-                        }
-                    }
+                    MessageBox.Show(ex.Message);
                 }
                 Thread.Sleep(2000);
                 CurrentStatus = CheckStatus.Complete;
@@ -396,43 +365,18 @@ namespace KPA_KPI_Analyzer
                 }
                 catch (DatabaseCreationFailureException ex)
                 {
-                    errorList.Add(ex.Message);
-                    using (Diagnostics.ErrorMessageBox errmsgbx = new Diagnostics.ErrorMessageBox() { Errors = errorList })
-                    {
-                        if (errmsgbx.ShowDialog() == DialogResult.OK)
-                        {
-                            errmsgbx.Close();
-                            Application.Exit();
-                        }
-                    }
+                    MessageBox.Show(ex.Message);
                 }
                 catch (Exception ex)
                 {
                     // Something happened while deleting the file
-                    errorList.Add(ex.Message);
-                    errorList.Add("There was an error while attempting to delete the MS Access Database");
-                    using (Diagnostics.ErrorMessageBox errmsgbx = new Diagnostics.ErrorMessageBox() { Errors = errorList })
-                    {
-                        if (errmsgbx.ShowDialog() == DialogResult.OK)
-                        {
-                            errmsgbx.Close();
-                            Application.Exit();
-                        }
-                    }
+                    MessageBox.Show(ex.Message);
                 }
             }
             catch (Exception ex)
             {
                 // Some other type of run-time error occured.
-                errorList.Add(ex.Message);
-                using (Diagnostics.ErrorMessageBox errmsgbx = new Diagnostics.ErrorMessageBox() { Errors = errorList })
-                {
-                    if (errmsgbx.ShowDialog() == DialogResult.OK)
-                    {
-                        errmsgbx.Close();
-                        Application.Exit();
-                    }
-                }
+                MessageBox.Show(ex.Message);
             }
         }
     }

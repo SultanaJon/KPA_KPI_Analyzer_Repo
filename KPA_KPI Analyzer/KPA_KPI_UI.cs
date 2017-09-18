@@ -79,6 +79,8 @@ namespace KPA_KPI_Analyzer
             mainNavActiveBtn = btn_Dashboard; // set the active button as the first button (Dashboard)
             FilterUtils.UpdateFilter += UpdateFilters;
             PRPO_DB_Utils.RenewDataLoadTimer += RenewDataLoadTimer;
+            PRPO_DB_Utils.DisplayDragDropPage += ShowDragDropPage;
+
             DateTime today = DateTime.Now.Date;
             dp_PRFromDate.Value = today;
             dp_PRToDate.Value = today;
@@ -407,6 +409,23 @@ namespace KPA_KPI_Analyzer
                 default:
                     break;  
             }
+        }
+
+
+
+
+
+
+
+
+
+
+        /// <summary>
+        /// Used when data is being improted. This callback function will be used to display the drag drop page when an error occurs while improting or loading.
+        /// </summary>
+        private void ShowDragDropPage()
+        {
+            ShowPage(Pages.DragDropDash);
         }
 
 
