@@ -577,6 +577,7 @@
             this.ChkdListBx_ProjectNumber.Size = new System.Drawing.Size(184, 174);
             this.ChkdListBx_ProjectNumber.TabIndex = 1;
             this.ChkdListBx_ProjectNumber.Tag = "0";
+            this.ChkdListBx_ProjectNumber.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.ckdListBox_ItemCheck);
             // 
             // tableLayoutPanel10
             // 

@@ -1,6 +1,7 @@
 ﻿using KPA_KPI_Analyzer.KPA_KPI_Overall;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
 
@@ -226,7 +227,15 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             {
                 foreach (Filters col in Enum.GetValues(typeof(Filters)))
                 {
-                    if (ignoredCol == Filters.ProjectNum_WBS_Element || ignoredCol == Filters.ProjectNUm_ProdOrdWbs)
+                    if (ignoredCol == col)
+                    {
+                            continue;
+                    }
+
+                    if (col == Filters.ProjectNUm_ProdOrdWbs && ignoredCol == Filters.ProjectNum_WBS_Element)
+                        continue;
+
+                    if (col == Filters.ProjectNum_WBS_Element && ignoredCol == Filters.ProjectNUm_ProdOrdWbs)
                         continue;
 
                     getQuery(col, filters);

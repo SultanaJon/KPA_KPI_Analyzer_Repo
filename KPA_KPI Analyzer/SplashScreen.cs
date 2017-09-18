@@ -178,7 +178,18 @@ namespace KPA_KPI_Analyzer
             {
 
                 if (conn != null)
-                    Application.Run(new KPA_KPI_UI(conn));
+                {
+                    try
+                    {
+                        Application.Run(new KPA_KPI_UI(conn));
+                    }
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show(ex.StackTrace);
+                    }
+
+
+                }
                 else
                     Application.Run(new KPA_KPI_UI());
             }

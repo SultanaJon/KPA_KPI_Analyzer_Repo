@@ -10,11 +10,11 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
 {
     public static class PRPO_DB_Utils
     {
-        internal static volatile object _updateDataLoadLock = new object();
 
         public delegate void RenewDataLoadTimerHandler();
         public static event RenewDataLoadTimerHandler RenewDataLoadTimer;
 
+        internal static volatile object _updateDataLoadLock = new object();
         private static readonly List<string> errorList = new List<string>();
 
 
