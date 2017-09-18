@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using KPA_KPI_Analyzer.FilterFeeature;
+
 namespace KPA_KPI_Analyzer.FilterFeeature
 {
     public static class Filters
@@ -48,6 +50,9 @@ namespace KPA_KPI_Analyzer.FilterFeeature
         /// When the PO date range filter is applied this will be the PO to date.
         /// </summary>
         public static DateTime PoToDate { get; set; }
+
+
+
 
 
 
@@ -134,7 +139,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
         {
             // The dictionaries that will contain the value check in the checkbox and the 
             // current database values based on those check values.
-            public static Dictionary<string, List<string>> projectNumebr = new Dictionary<string, List<string>>();
+            public static Dictionary<string, List<string>> projectNumber = new Dictionary<string, List<string>>();
             public static Dictionary<string, List<string>> wbsElement = new Dictionary<string, List<string>>();
             public static Dictionary<string, List<string>> material = new Dictionary<string, List<string>>();
             public static Dictionary<string, List<string>> materialGroup = new Dictionary<string, List<string>>();
@@ -156,7 +161,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             /// </summary>
             public static void Clear()
             {
-                projectNumebr.Clear();
+                projectNumber.Clear();
                 wbsElement.Clear();
                 material.Clear();
                 materialGroup.Clear();

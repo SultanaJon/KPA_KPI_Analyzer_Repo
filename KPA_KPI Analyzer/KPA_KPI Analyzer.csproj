@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration.cs" />
+    <Compile Include="FilterFeeature\FilterDictionary.cs" />
     <Compile Include="Values\Constants.cs" />
     <Compile Include="DatabaseUtils\PRPOCommands.cs" />
     <Compile Include="DatabaseUtils\PRPO_DB_Utils.cs" />

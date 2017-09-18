@@ -3,6 +3,7 @@ using KPA_KPI_Analyzer.FilterFeeature;
 using KPA_KPI_Analyzer.KPA_KPI_Overall;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace KPA_KPI_Analyzer
@@ -391,7 +392,7 @@ namespace KPA_KPI_Analyzer
 
                 try
                 {
-                    Filters.ClbDictionaryValues.projectNumebr.Add(key, temp);
+                    Filters.ClbDictionaryValues.projectNumber.Add(key, temp);
                 }
                 catch (ArgumentException)
                 {
@@ -401,14 +402,7 @@ namespace KPA_KPI_Analyzer
             else
             {
                 temp = new List<string>();
-                try
-                {
-                    Filters.ClbDictionaryValues.projectNumebr.Add(key, temp);
-                }
-                catch (ArgumentException)
-                {
-
-                }
+                Filters.ClbDictionaryValues.projectNumber.Add(key, temp);
             }
 
 
@@ -433,14 +427,7 @@ namespace KPA_KPI_Analyzer
             else
             {
                 temp = new List<string>();
-                try
-                {
-                    Filters.ClbDictionaryValues.wbsElement.Add(key, temp);
-                }
-                catch (ArgumentException)
-                {
-
-                }
+                Filters.ClbDictionaryValues.wbsElement.Add(key, temp);
             }
 
 
@@ -466,14 +453,7 @@ namespace KPA_KPI_Analyzer
             else
             {
                 temp = new List<string>();
-                try
-                {
-                    Filters.ClbDictionaryValues.material.Add(key, temp);
-                }
-                catch (ArgumentException)
-                {
-
-                }
+                Filters.ClbDictionaryValues.material.Add(key, temp);
             }
 
 
@@ -497,15 +477,7 @@ namespace KPA_KPI_Analyzer
             else
             {
                 temp = new List<string>();
-
-                try
-                {
-                    Filters.ClbDictionaryValues.materialGroup.Add(key, temp);
-                }
-                catch (ArgumentException)
-                {
-
-                }
+                Filters.ClbDictionaryValues.materialGroup.Add(key, temp);
             }
 
 
@@ -530,15 +502,7 @@ namespace KPA_KPI_Analyzer
             else
             {
                 temp = new List<string>();
-
-                try
-                {
-                    Filters.ClbDictionaryValues.vendor.Add(key, temp);
-                }
-                catch (ArgumentException)
-                {
-
-                }
+                Filters.ClbDictionaryValues.vendor.Add(key, temp);
             }
 
 
@@ -563,15 +527,7 @@ namespace KPA_KPI_Analyzer
             else
             {
                 temp = new List<string>();
-
-                try
-                {
-                    Filters.ClbDictionaryValues.vendorDesc.Add(key, temp);
-                }
-                catch (ArgumentException)
-                {
-
-                }
+                Filters.ClbDictionaryValues.vendorDesc.Add(key, temp);
             }
 
 
@@ -596,14 +552,7 @@ namespace KPA_KPI_Analyzer
             else
             {
                 temp = new List<string>();
-                try
-                {
-                    Filters.ClbDictionaryValues.purchGroup.Add(key, temp);
-                }
-                catch (ArgumentException)
-                {
-
-                }
+                Filters.ClbDictionaryValues.purchGroup.Add(key, temp);
             }
 
 
@@ -629,15 +578,7 @@ namespace KPA_KPI_Analyzer
             else
             {
                 temp = new List<string>();
-
-                try
-                {
-                    Filters.ClbDictionaryValues.irSuppName.Add(key, temp);
-                }
-                catch (ArgumentException)
-                {
-
-                }
+                Filters.ClbDictionaryValues.irSuppName.Add(key, temp);
             }
 
 
@@ -663,15 +604,7 @@ namespace KPA_KPI_Analyzer
             else
             {
                 temp = new List<string>();
-
-                try
-                {
-                    Filters.ClbDictionaryValues.fxdSuppName.Add(key, temp);
-                }
-                catch (ArgumentException)
-                {
-
-                }
+                Filters.ClbDictionaryValues.fxdSuppName.Add(key, temp);
             }
 
 
@@ -696,15 +629,7 @@ namespace KPA_KPI_Analyzer
             else
             {
                 temp = new List<string>();
-
-                try
-                {
-                    Filters.ClbDictionaryValues.dsrdSuppName.Add(key, temp);
-                }
-                catch (ArgumentException)
-                {
-
-                }
+                Filters.ClbDictionaryValues.dsrdSuppName.Add(key, temp);
             }
 
 
@@ -728,15 +653,7 @@ namespace KPA_KPI_Analyzer
             else
             {
                 temp = new List<string>();
-
-                try
-                {
-                    Filters.ClbDictionaryValues.commCategory.Add(key, temp);
-                }
-                catch (ArgumentException)
-                {
-
-                }
+                Filters.ClbDictionaryValues.commCategory.Add(key, temp);
             }
         }
 
@@ -753,12 +670,12 @@ namespace KPA_KPI_Analyzer
         {
             List<string> temp;
 
-            if (Filters.ClbDictionaryValues.projectNumebr.Count > 0)
+            if (Filters.ClbDictionaryValues.projectNumber.Count > 0)
             {
-                temp = Filters.ClbDictionaryValues.projectNumebr[key];
+                temp = Filters.ClbDictionaryValues.projectNumber[key];
                 ChkdListBx_ProjectNumber.Items.Clear();
                 ChkdListBx_ProjectNumber.Items.AddRange(temp.ToArray());
-                Filters.ClbDictionaryValues.projectNumebr.Remove(key);
+                Filters.ClbDictionaryValues.projectNumber.Remove(key);
             }
 
             if (Filters.ClbDictionaryValues.wbsElement.Count > 0)
