@@ -12,6 +12,12 @@ namespace KPA_KPI_Analyzer.FilterFeeature
         private List<List<string>> values;
         private List<int> checkBoxTags;
 
+
+        /// <summary>
+        /// Returns the amount of items contained within the fitlers.
+        /// </summary>
+        public int Count { get { return keys.Count; } }
+
         public FilterDictionary()
         {
             keys = new List<string>();
@@ -38,8 +44,10 @@ namespace KPA_KPI_Analyzer.FilterFeeature
         /// </summary>
         /// <param name="_key">The unselected key from the check list box</param>
         /// <param name="_tag">The tag number of the check list box.</param>
-        internal void Remove(string _key, int _tag)
+        internal List<string> Remove(string _key, int _tag)
         {
+            List<string> tempList = new List<string>();
+
             foreach(var key in keys)
             {
                 if(key == _key)
@@ -48,11 +56,13 @@ namespace KPA_KPI_Analyzer.FilterFeeature
                     if (checkBoxTags[index] == _tag)
                     {
                         keys.RemoveAt(index);
+                        tempList = values[index];
                         values.RemoveAt(index);
                         checkBoxTags.RemoveAt(index);
                     }
                 }
             }
+            return tempList;
         }
 
 

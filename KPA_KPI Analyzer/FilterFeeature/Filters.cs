@@ -139,17 +139,17 @@ namespace KPA_KPI_Analyzer.FilterFeeature
         {
             // The dictionaries that will contain the value check in the checkbox and the 
             // current database values based on those check values.
-            public static Dictionary<string, List<string>> projectNumber = new Dictionary<string, List<string>>();
-            public static Dictionary<string, List<string>> wbsElement = new Dictionary<string, List<string>>();
-            public static Dictionary<string, List<string>> material = new Dictionary<string, List<string>>();
-            public static Dictionary<string, List<string>> materialGroup = new Dictionary<string, List<string>>();
-            public static Dictionary<string, List<string>> vendor = new Dictionary<string, List<string>>();
-            public static Dictionary<string, List<string>> vendorDesc = new Dictionary<string, List<string>>();
-            public static Dictionary<string, List<string>> purchGroup = new Dictionary<string, List<string>>();
-            public static Dictionary<string, List<string>> irSuppName = new Dictionary<string, List<string>>();
-            public static Dictionary<string, List<string>> fxdSuppName = new Dictionary<string, List<string>>();
-            public static Dictionary<string, List<string>> dsrdSuppName = new Dictionary<string, List<string>>();
-            public static Dictionary<string, List<string>> commCategory = new Dictionary<string, List<string>>();
+            public static FilterDictionary projectNumber = new FilterDictionary();
+            public static FilterDictionary wbsElement = new FilterDictionary();
+            public static FilterDictionary material = new FilterDictionary();
+            public static FilterDictionary materialGroup = new FilterDictionary();
+            public static FilterDictionary vendor = new FilterDictionary();
+            public static FilterDictionary vendorDesc = new FilterDictionary();
+            public static FilterDictionary purchGroup = new FilterDictionary();
+            public static FilterDictionary irSuppName = new FilterDictionary();
+            public static FilterDictionary fxdSuppName = new FilterDictionary();
+            public static FilterDictionary dsrdSuppName = new FilterDictionary();
+            public static FilterDictionary commCategory = new FilterDictionary();
 
 
 
