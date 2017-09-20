@@ -203,11 +203,6 @@ namespace DataImporter.Access
             {
                 MessageBox.Show(ex.Message, "Drop Table Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            finally
-            {
-                if (conn != null)
-                    conn.Close();
-            }
 
             return result;
         }

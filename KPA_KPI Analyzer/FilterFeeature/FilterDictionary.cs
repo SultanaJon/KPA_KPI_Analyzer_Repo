@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace KPA_KPI_Analyzer.FilterFeeature
 {
@@ -13,10 +9,16 @@ namespace KPA_KPI_Analyzer.FilterFeeature
         private List<int> checkBoxTags;
 
 
+
+
         /// <summary>
         /// Returns the amount of items contained within the fitlers.
         /// </summary>
         public int Count { get { return keys.Count; } }
+
+
+
+
 
         public FilterDictionary()
         {
@@ -24,6 +26,9 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             values = new List<List<string>>();
             checkBoxTags = new List<int>();
         }
+
+
+
 
         /// <summary>
         /// Adds fitlers to the list of filters with their unique key and tag.
@@ -37,6 +42,9 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             values.Add(_value);
             checkBoxTags.Add(_tag);
         }
+
+
+
 
 
         /// <summary>
