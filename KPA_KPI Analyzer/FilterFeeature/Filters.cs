@@ -123,56 +123,5 @@ namespace KPA_KPI_Analyzer.FilterFeeature
                 commCategory.Clear();
             }
         }
-
-
-
-
-
-
-        /// <summary>
-        /// structure to contain all the dictionary values of the filters.
-        /// 
-        /// Every dictionary will contain a value(string of the value checked in the check box) 
-        /// and a list of distinct database column values.
-        /// </summary>
-        public struct ClbDictionaryValues
-        {
-            // The dictionaries that will contain the value check in the checkbox and the 
-            // current database values based on those check values.
-            public static FilterDictionary projectNumber = new FilterDictionary();
-            public static FilterDictionary wbsElement = new FilterDictionary();
-            public static FilterDictionary material = new FilterDictionary();
-            public static FilterDictionary materialGroup = new FilterDictionary();
-            public static FilterDictionary vendor = new FilterDictionary();
-            public static FilterDictionary vendorDesc = new FilterDictionary();
-            public static FilterDictionary purchGroup = new FilterDictionary();
-            public static FilterDictionary irSuppName = new FilterDictionary();
-            public static FilterDictionary fxdSuppName = new FilterDictionary();
-            public static FilterDictionary dsrdSuppName = new FilterDictionary();
-            public static FilterDictionary commCategory = new FilterDictionary();
-
-
-
-
-
-
-            /// <summary>
-            /// Clear the contents of all the dictionary values back to their default value.
-            /// </summary>
-            public static void Clear()
-            {
-                projectNumber.Clear();
-                wbsElement.Clear();
-                material.Clear();
-                materialGroup.Clear();
-                vendor.Clear();
-                vendorDesc.Clear();
-                purchGroup.Clear();
-                irSuppName.Clear();
-                fxdSuppName.Clear();
-                dsrdSuppName.Clear();
-                commCategory.Clear();
-            }
-        }
     }
 }

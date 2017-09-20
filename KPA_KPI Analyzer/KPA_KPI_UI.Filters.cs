@@ -9,6 +9,8 @@ namespace KPA_KPI_Analyzer
     public partial class KPA_KPI_UI : Form
     {
         private static string filters = string.Empty;
+        private List<int> activeCLBs = new List<int>();
+
 
         /// <summary>
         /// boolean value stating whether or not the user has checked filters TO apply
@@ -161,6 +163,37 @@ namespace KPA_KPI_Analyzer
 
 
 
+        internal FilterUtils.Filters GetActiveCLBFitler(int tag)
+        {
+            switch (tag)
+            {
+                case 0: // Project number
+                    return FilterUtils.Filters.ProjectNum_WBS_Element;
+                case 1: // WBS Element
+                    return FilterUtils.Filters.WBS_Element;
+                case 2: // Material
+                    return FilterUtils.Filters.Material;
+                case 3: // Material Group
+                    return FilterUtils.Filters.MaterialGroup;
+                case 4: // Vendor
+                    return FilterUtils.Filters.Vendor;
+                case 5: // Vendor Desc
+                    return FilterUtils.Filters.VendorDescription;
+                case 6: // Purch Group
+                    return FilterUtils.Filters.PurchGroup;
+                case 7: // IR Supp Name
+                    return FilterUtils.Filters.IRSuppName;
+                case 8: // Fxd Supp Name
+                    return FilterUtils.Filters.FxdSuppName;
+                case 9: // Dsrd Supp Name
+                    return FilterUtils.Filters.DsrdSuppName;
+                default: // Commodity Cat
+                    return FilterUtils.Filters.CommCat;
+            }
+        }
+
+
+
 
 
         /// <summary>
@@ -179,16 +212,25 @@ namespace KPA_KPI_Analyzer
                     if(e.NewValue == CheckState.Checked)
                     {
                         Filters.FilterValues.projectNumber.Add(clb.Items[e.Index].ToString());
-                        AddFilterSnapShot(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_ProjectNumber.Tag.ToString()));
+                        //AddFilterSnapShot(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_ProjectNumber.Tag.ToString()));
+                        activeCLBs.Add(int.Parse(ChkdListBx_ProjectNumber.Tag.ToString()));
                         BuildQueryFilters();
-                        FilterUtils.LoadFilters(filters, FilterUtils.Filters.ProjectNum_WBS_Element);
+                        FilterUtils.LoadFiltersExcluded(filters, FilterUtils.Filters.ProjectNum_WBS_Element);
                     }
                     else
                     {
                         Filters.FilterValues.projectNumber.Remove(clb.Items[e.Index].ToString());
+                        int position = activeCLBs.LastIndexOf(int.Parse(ChkdListBx_ProjectNumber.Tag.ToString()));
+                        activeCLBs.RemoveAt(position);
                         BuildQueryFilters();
-                        FilterUtils.LoadFilters(filters, FilterUtils.Filters.ProjectNum_WBS_Element);
-                        RevertFilterData(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_ProjectNumber.Tag.ToString()));
+                        if (activeCLBs.Count == 0)
+                            FilterUtils.LoadFilters(filters);
+                        else
+                        {
+                            FilterUtils.LoadFiltersExcluded(filters, GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
+                            FilterUtils.LoadFilter(GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
+                        }
+                        //RevertFilterData(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_ProjectNumber.Tag.ToString()));
                     }
                     UpdateCheckedItems();
                     break;
@@ -196,16 +238,25 @@ namespace KPA_KPI_Analyzer
                     if (e.NewValue == CheckState.Checked)
                     {
                         Filters.FilterValues.wbsElement.Add(clb.Items[e.Index].ToString());
-                        AddFilterSnapShot(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_WBSElement.Tag.ToString()));
+                        //AddFilterSnapShot(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_WBSElement.Tag.ToString()));
+                        activeCLBs.Add(int.Parse(ChkdListBx_WBSElement.Tag.ToString()));
                         BuildQueryFilters();
-                        FilterUtils.LoadFilters(filters, FilterUtils.Filters.WBS_Element);
+                        FilterUtils.LoadFiltersExcluded(filters, FilterUtils.Filters.WBS_Element);
                     }
                     else
                     {
                         Filters.FilterValues.wbsElement.Remove(clb.Items[e.Index].ToString());
+                        int position = activeCLBs.LastIndexOf(int.Parse(ChkdListBx_WBSElement.Tag.ToString()));
+                        activeCLBs.RemoveAt(position);
                         BuildQueryFilters();
-                        FilterUtils.LoadFilters(filters, FilterUtils.Filters.WBS_Element);
-                        RevertFilterData(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_WBSElement.Tag.ToString()));
+                        if (activeCLBs.Count == 0)
+                            FilterUtils.LoadFilters(filters);
+                        else
+                        {
+                            FilterUtils.LoadFiltersExcluded(filters, GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
+                            FilterUtils.LoadFilter(GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
+                        }
+                        //RevertFilterData(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_WBSElement.Tag.ToString()));
                     }
                     UpdateCheckedItems();
                     break;
@@ -213,16 +264,25 @@ namespace KPA_KPI_Analyzer
                     if (e.NewValue == CheckState.Checked)
                     {
                         Filters.FilterValues.material.Add(clb.Items[e.Index].ToString());
-                        AddFilterSnapShot(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_Material.Tag.ToString()));
+                        //AddFilterSnapShot(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_Material.Tag.ToString()));
+                        activeCLBs.Add(int.Parse(ChkdListBx_Material.Tag.ToString()));
                         BuildQueryFilters();
-                        FilterUtils.LoadFilters(filters, FilterUtils.Filters.Material);
+                        FilterUtils.LoadFiltersExcluded(filters, FilterUtils.Filters.Material);
                     }
                     else
                     {
                         Filters.FilterValues.material.Remove(clb.Items[e.Index].ToString());
+                        int position = activeCLBs.LastIndexOf(int.Parse(ChkdListBx_Material.Tag.ToString()));
+                        activeCLBs.RemoveAt(position);
                         BuildQueryFilters();
-                        FilterUtils.LoadFilters(filters, FilterUtils.Filters.Material);
-                        RevertFilterData(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_Material.Tag.ToString()));
+                        if (activeCLBs.Count == 0)
+                            FilterUtils.LoadFilters(filters);
+                        else
+                        {
+                            FilterUtils.LoadFiltersExcluded(filters, GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
+                            FilterUtils.LoadFilter(GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
+                        }
+                        //RevertFilterData(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_Material.Tag.ToString()));
                     }
                     UpdateCheckedItems();
                     break;
@@ -230,16 +290,25 @@ namespace KPA_KPI_Analyzer
                     if (e.NewValue == CheckState.Checked)
                     {
                         Filters.FilterValues.materialGroup.Add(clb.Items[e.Index].ToString());
-                        AddFilterSnapShot(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_MaterialGroup.Tag.ToString()));
+                        //AddFilterSnapShot(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_MaterialGroup.Tag.ToString()));
+                        activeCLBs.Add(int.Parse(ChkdListBx_MaterialGroup.Tag.ToString()));
                         BuildQueryFilters();
-                        FilterUtils.LoadFilters(filters, FilterUtils.Filters.MaterialGroup);
+                        FilterUtils.LoadFiltersExcluded(filters, FilterUtils.Filters.MaterialGroup);
                     }
                     else
                     {
                         Filters.FilterValues.materialGroup.Remove(clb.Items[e.Index].ToString());
+                        int position = activeCLBs.LastIndexOf(int.Parse(ChkdListBx_MaterialGroup.Tag.ToString()));
+                        activeCLBs.RemoveAt(position);
                         BuildQueryFilters();
-                        FilterUtils.LoadFilters(filters, FilterUtils.Filters.MaterialGroup);
-                        RevertFilterData(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_MaterialGroup.Tag.ToString()));
+                        if (activeCLBs.Count == 0)
+                            FilterUtils.LoadFilters(filters);
+                        else
+                        {
+                            FilterUtils.LoadFiltersExcluded(filters, GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
+                            FilterUtils.LoadFilter(GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
+                        }
+                        //RevertFilterData(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_MaterialGroup.Tag.ToString()));
                     }
                     UpdateCheckedItems();
                     break;
@@ -247,16 +316,25 @@ namespace KPA_KPI_Analyzer
                     if (e.NewValue == CheckState.Checked)
                     {
                         Filters.FilterValues.vendor.Add(clb.Items[e.Index].ToString());
-                        AddFilterSnapShot(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_Vendor.Tag.ToString()));
+                        //AddFilterSnapShot(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_Vendor.Tag.ToString()));
+                        activeCLBs.Add(int.Parse(ChkdListBx_Vendor.Tag.ToString()));
                         BuildQueryFilters();
-                        FilterUtils.LoadFilters(filters, FilterUtils.Filters.Vendor);
+                        FilterUtils.LoadFiltersExcluded(filters, FilterUtils.Filters.Vendor);
                     }
                     else
                     {
                         Filters.FilterValues.vendor.Remove(clb.Items[e.Index].ToString());
+                        int position = activeCLBs.LastIndexOf(int.Parse(ChkdListBx_Vendor.Tag.ToString()));
+                        activeCLBs.RemoveAt(position);
                         BuildQueryFilters();
-                        FilterUtils.LoadFilters(filters, FilterUtils.Filters.Vendor);
-                        RevertFilterData(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_Vendor.Tag.ToString()));
+                        if (activeCLBs.Count == 0)
+                            FilterUtils.LoadFilters(filters);
+                        else
+                        {
+                            FilterUtils.LoadFiltersExcluded(filters, GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
+                            FilterUtils.LoadFilter(GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
+                        }
+                        //RevertFilterData(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_Vendor.Tag.ToString()));
                     }
                     UpdateCheckedItems();
                     break;
@@ -264,16 +342,25 @@ namespace KPA_KPI_Analyzer
                     if (e.NewValue == CheckState.Checked)
                     {
                         Filters.FilterValues.vendorDesc.Add(clb.Items[e.Index].ToString());
-                        AddFilterSnapShot(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_VendorDesc.Tag.ToString()));
+                        //AddFilterSnapShot(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_VendorDesc.Tag.ToString()));
+                        activeCLBs.Add(int.Parse(ChkdListBx_VendorDesc.Tag.ToString()));
                         BuildQueryFilters();
-                        FilterUtils.LoadFilters(filters, FilterUtils.Filters.VendorDescription);
+                        FilterUtils.LoadFiltersExcluded(filters, FilterUtils.Filters.VendorDescription);
                     }
                     else
                     {
                         Filters.FilterValues.vendorDesc.Remove(clb.Items[e.Index].ToString());
+                        int position = activeCLBs.LastIndexOf(int.Parse(ChkdListBx_VendorDesc.Tag.ToString()));
+                        activeCLBs.RemoveAt(position);
                         BuildQueryFilters();
-                        FilterUtils.LoadFilters(filters, FilterUtils.Filters.VendorDescription);
-                        RevertFilterData(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_VendorDesc.Tag.ToString()));
+                        if (activeCLBs.Count == 0)
+                            FilterUtils.LoadFilters(filters);
+                        else
+                        {
+                            FilterUtils.LoadFiltersExcluded(filters, GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
+                            FilterUtils.LoadFilter(GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
+                        }
+                        //RevertFilterData(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_VendorDesc.Tag.ToString()));
                     }
                     UpdateCheckedItems();
                     break;
@@ -281,16 +368,25 @@ namespace KPA_KPI_Analyzer
                     if (e.NewValue == CheckState.Checked)
                     {
                         Filters.FilterValues.purchGroup.Add(clb.Items[e.Index].ToString());
-                        AddFilterSnapShot(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_PurchGroup.Tag.ToString()));
+                        //AddFilterSnapShot(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_PurchGroup.Tag.ToString()));
+                        activeCLBs.Add(int.Parse(ChkdListBx_PurchGroup.Tag.ToString()));
                         BuildQueryFilters();
-                        FilterUtils.LoadFilters(filters, FilterUtils.Filters.PurchGroup);
+                        FilterUtils.LoadFiltersExcluded(filters, FilterUtils.Filters.PurchGroup);
                     }
                     else
                     {
                         Filters.FilterValues.purchGroup.Remove(clb.Items[e.Index].ToString());
+                        int position = activeCLBs.LastIndexOf(int.Parse(ChkdListBx_PurchGroup.Tag.ToString()));
+                        activeCLBs.RemoveAt(position);
                         BuildQueryFilters();
-                        FilterUtils.LoadFilters(filters, FilterUtils.Filters.PurchGroup);
-                        RevertFilterData(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_PurchGroup.Tag.ToString()));
+                        if (activeCLBs.Count == 0)
+                            FilterUtils.LoadFilters(filters);
+                        else
+                        {
+                            FilterUtils.LoadFiltersExcluded(filters, GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
+                            FilterUtils.LoadFilter(GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
+                        }
+                        //RevertFilterData(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_PurchGroup.Tag.ToString()));
                     }
                     UpdateCheckedItems();
                     break;
@@ -298,16 +394,25 @@ namespace KPA_KPI_Analyzer
                     if (e.NewValue == CheckState.Checked)
                     {
                         Filters.FilterValues.irSuppName.Add(clb.Items[e.Index].ToString());
-                        AddFilterSnapShot(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_IRSuppName.Tag.ToString()));
+                        //AddFilterSnapShot(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_IRSuppName.Tag.ToString()));
+                        activeCLBs.Add(int.Parse(ChkdListBx_IRSuppName.Tag.ToString()));
                         BuildQueryFilters();
-                        FilterUtils.LoadFilters(filters, FilterUtils.Filters.IRSuppName);
+                        FilterUtils.LoadFiltersExcluded(filters, FilterUtils.Filters.IRSuppName);
                     }
                     else
                     {
                         Filters.FilterValues.irSuppName.Remove(clb.Items[e.Index].ToString());
+                        int position = activeCLBs.LastIndexOf(int.Parse(ChkdListBx_IRSuppName.Tag.ToString()));
+                        activeCLBs.RemoveAt(position);
                         BuildQueryFilters();
-                        FilterUtils.LoadFilters(filters, FilterUtils.Filters.IRSuppName);
-                        RevertFilterData(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_IRSuppName.Tag.ToString()));
+                        if (activeCLBs.Count == 0)
+                            FilterUtils.LoadFilters(filters);
+                        else
+                        {
+                            FilterUtils.LoadFiltersExcluded(filters, GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
+                            FilterUtils.LoadFilter(GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
+                        }
+                        //RevertFilterData(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_IRSuppName.Tag.ToString()));
                     }
                     UpdateCheckedItems();
                     break;
@@ -315,16 +420,25 @@ namespace KPA_KPI_Analyzer
                     if (e.NewValue == CheckState.Checked)
                     {
                         Filters.FilterValues.fxdSuppName.Add(clb.Items[e.Index].ToString());
-                        AddFilterSnapShot(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_FxdSuppName.Tag.ToString()));
+                        //AddFilterSnapShot(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_FxdSuppName.Tag.ToString()));
+                        activeCLBs.Add(int.Parse(ChkdListBx_FxdSuppName.Tag.ToString()));
                         BuildQueryFilters();
-                        FilterUtils.LoadFilters(filters, FilterUtils.Filters.FxdSuppName);
+                        FilterUtils.LoadFiltersExcluded(filters, FilterUtils.Filters.FxdSuppName);
                     }
                     else
                     {
                         Filters.FilterValues.fxdSuppName.Remove(clb.Items[e.Index].ToString());
+                        int position = activeCLBs.LastIndexOf(int.Parse(ChkdListBx_FxdSuppName.Tag.ToString()));
+                        activeCLBs.RemoveAt(position);
                         BuildQueryFilters();
-                        FilterUtils.LoadFilters(filters, FilterUtils.Filters.FxdSuppName);
-                        RevertFilterData(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_FxdSuppName.Tag.ToString()));
+                        if (activeCLBs.Count == 0)
+                            FilterUtils.LoadFilters(filters);
+                        else
+                        {
+                            FilterUtils.LoadFiltersExcluded(filters, GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
+                            FilterUtils.LoadFilter(GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
+                        }
+                        //RevertFilterData(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_FxdSuppName.Tag.ToString()));
                     }
                     UpdateCheckedItems();
                     break;
@@ -332,16 +446,25 @@ namespace KPA_KPI_Analyzer
                     if (e.NewValue == CheckState.Checked)
                     {
                         Filters.FilterValues.dsrdSuppName.Add(clb.Items[e.Index].ToString());
-                        AddFilterSnapShot(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_DsrdSuppName.Tag.ToString()));
+                        //AddFilterSnapShot(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_DsrdSuppName.Tag.ToString()));
+                        activeCLBs.Add(int.Parse(ChkdListBx_DsrdSuppName.Tag.ToString()));
                         BuildQueryFilters();
-                        FilterUtils.LoadFilters(filters, FilterUtils.Filters.DsrdSuppName);
+                        FilterUtils.LoadFiltersExcluded(filters, FilterUtils.Filters.DsrdSuppName);
                     }
                     else
                     {
                         Filters.FilterValues.dsrdSuppName.Remove(clb.Items[e.Index].ToString());
+                        int position = activeCLBs.LastIndexOf(int.Parse(ChkdListBx_DsrdSuppName.Tag.ToString()));
+                        activeCLBs.RemoveAt(position);
                         BuildQueryFilters();
-                        FilterUtils.LoadFilters(filters, FilterUtils.Filters.DsrdSuppName);
-                        RevertFilterData(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_DsrdSuppName.Tag.ToString()));
+                        if (activeCLBs.Count == 0)
+                            FilterUtils.LoadFilters(filters);
+                        else
+                        {
+                            FilterUtils.LoadFiltersExcluded(filters, GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
+                            FilterUtils.LoadFilter(GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
+                        }
+                        //RevertFilterData(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_DsrdSuppName.Tag.ToString()));
                     }
                     UpdateCheckedItems();
                     break;
@@ -349,331 +472,28 @@ namespace KPA_KPI_Analyzer
                     if (e.NewValue == CheckState.Checked)
                     {
                         Filters.FilterValues.commCategory.Add(clb.Items[e.Index].ToString());
-                        AddFilterSnapShot(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_CommodityCat.Tag.ToString()));
+                        //AddFilterSnapShot(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_CommodityCat.Tag.ToString()));
+                        activeCLBs.Add(int.Parse(ChkdListBx_CommodityCat.Tag.ToString()));
                         BuildQueryFilters();
-                        FilterUtils.LoadFilters(filters, FilterUtils.Filters.CommCat);
+                        FilterUtils.LoadFiltersExcluded(filters, FilterUtils.Filters.CommCat);
                     }
                     else
                     {
                         Filters.FilterValues.commCategory.Remove(clb.Items[e.Index].ToString());
+                        int position = activeCLBs.LastIndexOf(int.Parse(ChkdListBx_CommodityCat.Tag.ToString()));
+                        activeCLBs.RemoveAt(position);
                         BuildQueryFilters();
-                        FilterUtils.LoadFilters(filters, FilterUtils.Filters.CommCat);
-                        RevertFilterData(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_CommodityCat.Tag.ToString()));
+                        if (activeCLBs.Count == 0)
+                            FilterUtils.LoadFilters(filters);
+                        else
+                        {
+                            FilterUtils.LoadFiltersExcluded(filters, GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
+                            FilterUtils.LoadFilter(GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
+                        }
+                        //RevertFilterData(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_CommodityCat.Tag.ToString()));
                     }
                     UpdateCheckedItems();
                     break;
-            }
-        }
-
-
-
-
-
-
-        /// <summary>
-        /// This will take a snapshot of all the data in the all of the check list boxes
-        /// so when the user unchecks a checkbox, they can be repopulated with the data 
-        /// they had.
-        /// </summary>
-        /// <param name="key"></param>
-        private void AddFilterSnapShot(string key, int tag)
-        {
-            List<string> temp;
-
-            if (ChkdListBx_ProjectNumber.Items.Count > 0)
-            {
-                temp = new List<string>();
-                foreach (var item in ChkdListBx_ProjectNumber.Items)
-                {
-                    temp.Add(item.ToString());
-                }
-
-                Filters.ClbDictionaryValues.projectNumber.Add(key, temp, tag);
-            }
-            else
-            {
-                temp = new List<string>();
-                Filters.ClbDictionaryValues.projectNumber.Add(key, temp, tag);
-            }
-
-
-
-            if (ChkdListBx_WBSElement.Items.Count > 0)
-            {
-                temp = new List<string>();
-                foreach (var item in ChkdListBx_WBSElement.Items)
-                {
-                    temp.Add(item.ToString());
-                }
-
-                Filters.ClbDictionaryValues.wbsElement.Add(key, temp, tag);
-
-            }
-            else
-            {
-                temp = new List<string>();
-                Filters.ClbDictionaryValues.wbsElement.Add(key, temp, tag);
-            }
-
-
-
-
-            if (ChkdListBx_Material.Items.Count > 0)
-            {
-                temp = new List<string>();
-                foreach (var item in ChkdListBx_Material.Items)
-                {
-                    temp.Add(item.ToString());
-                }
-
-                Filters.ClbDictionaryValues.material.Add(key, temp, tag);
-            }
-            else
-            {
-                temp = new List<string>();
-                Filters.ClbDictionaryValues.material.Add(key, temp, tag);
-            }
-
-
-            if (ChkdListBx_MaterialGroup.Items.Count > 0)
-            {
-                temp = new List<string>();
-                foreach (var item in ChkdListBx_MaterialGroup.Items)
-                {
-                    temp.Add(item.ToString());
-                }
-
-                Filters.ClbDictionaryValues.materialGroup.Add(key, temp, tag);
-            }
-            else
-            {
-                temp = new List<string>();
-                Filters.ClbDictionaryValues.materialGroup.Add(key, temp, tag);
-            }
-
-
-
-            if (ChkdListBx_Vendor.Items.Count > 0)
-            {
-                temp = new List<string>();
-                foreach (var item in ChkdListBx_Vendor.Items)
-                {
-                    temp.Add(item.ToString());
-                }
-
-                Filters.ClbDictionaryValues.vendor.Add(key, temp, tag);
-            }
-            else
-            {
-                temp = new List<string>();
-                Filters.ClbDictionaryValues.vendor.Add(key, temp, tag);
-            }
-
-
-
-            if (ChkdListBx_VendorDesc.Items.Count > 0)
-            {
-                temp = new List<string>();
-                foreach (var item in ChkdListBx_VendorDesc.Items)
-                {
-                    temp.Add(item.ToString());
-                }
-
-                Filters.ClbDictionaryValues.vendorDesc.Add(key, temp, tag);
-            }
-            else
-            {
-                temp = new List<string>();
-                Filters.ClbDictionaryValues.vendorDesc.Add(key, temp, tag);
-            }
-
-
-
-            if (ChkdListBx_PurchGroup.Items.Count > 0)
-            {
-                temp = new List<string>();
-                foreach (var item in ChkdListBx_PurchGroup.Items)
-                {
-                    temp.Add(item.ToString());
-                }
-
-                Filters.ClbDictionaryValues.purchGroup.Add(key, temp, tag);
-            }
-            else
-            {
-                temp = new List<string>();
-                Filters.ClbDictionaryValues.purchGroup.Add(key, temp, tag);
-            }
-
-
-
-            if (ChkdListBx_IRSuppName.Items.Count > 0)
-            {
-                temp = new List<string>();
-                foreach (var item in ChkdListBx_IRSuppName.Items)
-                {
-                    temp.Add(item.ToString());
-                }
-
-
-                Filters.ClbDictionaryValues.irSuppName.Add(key, temp, tag);
-            }
-            else
-            {
-                temp = new List<string>();
-                Filters.ClbDictionaryValues.irSuppName.Add(key, temp, tag);
-            }
-
-
-
-            if (ChkdListBx_FxdSuppName.Items.Count > 0)
-            {
-                temp = new List<string>();
-                foreach (var item in ChkdListBx_FxdSuppName.Items)
-                {
-                    temp.Add(item.ToString());
-                }
-
-                Filters.ClbDictionaryValues.fxdSuppName.Add(key, temp, tag);
-            }
-            else
-            {
-                temp = new List<string>();
-                Filters.ClbDictionaryValues.fxdSuppName.Add(key, temp, tag);
-            }
-
-
-
-            if (ChkdListBx_DsrdSuppName.Items.Count > 0)
-            {
-                temp = new List<string>();
-                foreach (var item in ChkdListBx_DsrdSuppName.Items)
-                {
-                    temp.Add(item.ToString());
-                }
-
-                Filters.ClbDictionaryValues.dsrdSuppName.Add(key, temp, tag);
-            }
-            else
-            {
-                temp = new List<string>();
-                Filters.ClbDictionaryValues.dsrdSuppName.Add(key, temp, tag);
-            }
-
-
-            if (ChkdListBx_CommodityCat.Items.Count > 0)
-            {
-                temp = new List<string>();
-                foreach (var item in ChkdListBx_CommodityCat.Items)
-                {
-                    temp.Add(item.ToString());
-                }
-
-                Filters.ClbDictionaryValues.commCategory.Add(key, temp, tag);
-            }
-            else
-            {
-                temp = new List<string>();
-                Filters.ClbDictionaryValues.commCategory.Add(key, temp, tag);
-            }
-        }
-
-
-
-
-
-
-        /// <summary>
-        /// Reverts the states of the check list boxes back to what they were based
-        /// on the checkbox that was clicked.
-        /// </summary>
-        private void RevertFilterData(string key, int tag)
-        {
-            List<string> temp;
-
-            if (Filters.ClbDictionaryValues.projectNumber.Count > 0)
-            {
-                temp = Filters.ClbDictionaryValues.projectNumber.Remove(key, tag);
-                ChkdListBx_ProjectNumber.Items.Clear();
-                ChkdListBx_ProjectNumber.Items.AddRange(temp.ToArray());
-            }
-
-            if (Filters.ClbDictionaryValues.wbsElement.Count > 0)
-            {
-                temp = Filters.ClbDictionaryValues.wbsElement.Remove(key, tag);
-                ChkdListBx_WBSElement.Items.Clear();
-                ChkdListBx_WBSElement.Items.AddRange(temp.ToArray());
-            }
-
-            if (Filters.ClbDictionaryValues.material.Count > 0)
-            {
-                temp = Filters.ClbDictionaryValues.material.Remove(key, tag);
-                ChkdListBx_Material.Items.Clear();
-                ChkdListBx_Material.Items.AddRange(temp.ToArray());
-            }
-
-
-            if(Filters.ClbDictionaryValues.materialGroup.Count > 0)
-            {
-                temp = Filters.ClbDictionaryValues.materialGroup.Remove(key, tag);
-                ChkdListBx_MaterialGroup.Items.Clear();
-                ChkdListBx_MaterialGroup.Items.AddRange(temp.ToArray());
-            }
-
-
-            if(Filters.ClbDictionaryValues.vendor.Count > 0)
-            {
-                temp = Filters.ClbDictionaryValues.vendor.Remove(key, tag);
-                ChkdListBx_Vendor.Items.Clear();
-                ChkdListBx_Vendor.Items.AddRange(temp.ToArray());
-            }
-
-
-            if(Filters.ClbDictionaryValues.vendorDesc.Count > 0)
-            {
-                temp = Filters.ClbDictionaryValues.vendorDesc.Remove(key, tag);
-                ChkdListBx_VendorDesc.Items.Clear();
-                ChkdListBx_VendorDesc.Items.AddRange(temp.ToArray());
-            }
-
-
-            if(Filters.ClbDictionaryValues.purchGroup.Count > 0)
-            {
-                temp = Filters.ClbDictionaryValues.purchGroup.Remove(key, tag);
-                ChkdListBx_PurchGroup.Items.Clear();
-                ChkdListBx_PurchGroup.Items.AddRange(temp.ToArray());
-            }
-
-
-            if(Filters.ClbDictionaryValues.irSuppName.Count > 0)
-            {
-                temp = Filters.ClbDictionaryValues.irSuppName.Remove(key, tag);
-                ChkdListBx_IRSuppName.Items.Clear();
-                ChkdListBx_IRSuppName.Items.AddRange(temp.ToArray());
-            }
-
-
-            if(Filters.ClbDictionaryValues.fxdSuppName.Count > 0)
-            {
-                temp = Filters.ClbDictionaryValues.fxdSuppName.Remove(key, tag);
-                ChkdListBx_FxdSuppName.Items.Clear();
-                ChkdListBx_FxdSuppName.Items.AddRange(temp.ToArray());
-            }
-
-
-            if(Filters.ClbDictionaryValues.dsrdSuppName.Count > 0)
-            {
-                temp = Filters.ClbDictionaryValues.dsrdSuppName.Remove(key, tag);
-                ChkdListBx_DsrdSuppName.Items.Clear();
-                ChkdListBx_DsrdSuppName.Items.AddRange(temp.ToArray());
-            }
-
-
-            if(Filters.ClbDictionaryValues.commCategory.Count > 0)
-            {
-                temp = Filters.ClbDictionaryValues.commCategory.Remove(key, tag);
-                ChkdListBx_CommodityCat.Items.Clear();
-                ChkdListBx_CommodityCat.Items.AddRange(temp.ToArray());
             }
         }
 
@@ -1279,7 +1099,6 @@ namespace KPA_KPI_Analyzer
                 }
 
                 Filters.FilterValues.Clear();
-                Filters.ClbDictionaryValues.Clear();
                 filters = string.Empty;
                 FilterUtils.LoadFilters(filters);
             }
@@ -1469,7 +1288,6 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         internal void ResetFilters()
         {
-            Filters.ClbDictionaryValues.Clear();
             Filters.FilterValues.Clear();
             Filters.FilterQuery = string.Empty;
             Filters.SecondaryFilterQuery = string.Empty;

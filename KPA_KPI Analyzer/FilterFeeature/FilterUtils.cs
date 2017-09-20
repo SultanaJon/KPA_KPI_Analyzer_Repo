@@ -113,6 +113,25 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
 
 
+        private static void getQuery(Filters col)
+        {
+            string filters = string.Empty;
+            string temp;
+            string column = filterCols[(int)col];
+
+            if (filters == string.Empty)
+            {
+                temp = "SELECT DISTINCT " + Overall.SelectedCountry + ".[" + column + "] FROM " + Overall.SelectedCountry;
+            }
+            else
+            {
+                temp = "SELECT DISTINCT " + Overall.SelectedCountry + ".[" + column + "] FROM " + Overall.SelectedCountry + " WHERE " + filters;
+            }
+            query = temp;
+        }
+
+
+
 
 
 
@@ -153,7 +172,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
 
         /// <summary>
-        /// Loads the unique filtesr into the application.
+        /// Loads the unique filters into the application.
         /// </summary>
         /// <param name="filters">the current filters loaded.</param>
         internal static void LoadFilters(string filters)
@@ -215,11 +234,11 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
 
         /// <summary>
-        /// Loads the filters for each unique filter column.
+        /// Loads the filters for each unique filter column excluding the ignored filter
         /// </summary>
         /// <param name="filters">The current filters</param>
         /// <param name="ignoredCol">The column that we want to ignore</param>
-        internal static void LoadFilters(string filters, Filters ignoredCol)
+        internal static void LoadFiltersExcluded(string filters, Filters ignoredCol)
         {
             OleDbCommand cmd = new OleDbCommand();
             strData = new HashSet<string>();
@@ -229,7 +248,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
                 {
                     if (ignoredCol == col)
                     {
-                            continue;
+                        continue;
                     }
 
                     if (col == Filters.ProjectNUm_ProdOrdWbs && ignoredCol == Filters.ProjectNum_WBS_Element)
@@ -239,6 +258,76 @@ namespace KPA_KPI_Analyzer.FilterFeeature
                         continue;
 
                     getQuery(col, filters);
+                    cmd = new OleDbCommand(query, DatabaseUtils.PRPO_DB_Utils.DatabaseConnection);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            if (reader[filterCols[(int)col]] == DBNull.Value)
+                            {
+                                strData.Add("[Blanks]");
+                                continue;
+                            }
+                            else
+                            {
+                                strData.Add(reader[filterCols[(int)col]].ToString());
+                            }
+                        }
+
+
+                        // We want to continue to add Prod Ord WBS element to the already added WBS elements to create the project numbers
+                        if (col == Filters.ProjectNum_WBS_Element) continue;
+
+
+                        // Now that we have combined all unique values from WBS Element and Prod Ord. WBS fields, we want to clean them up before storing them
+                        // in the Checked list views.
+                        if (col == Filters.ProjectNUm_ProdOrdWbs)
+                            CleanUpProjectNumbers();
+
+
+                        UpdateFilter(strData, col);
+                        strData.Clear();
+                    }
+                }
+                FiltersLoaded = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Filter Utils - Load Filters Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+
+        /// <summary>
+        /// Loads the fitler of the supplied filter name excluding the rest.
+        /// </summary>
+        /// <param name="filters">The filters used to query the data.</param>
+        /// <param name="filtersToLoad">The filter column that needs to be loaded into the application</param>
+        internal static void LoadFilter(Filters filtersToLoad)
+        {
+            OleDbCommand cmd = new OleDbCommand();
+            strData = new HashSet<string>();
+            try
+            {
+                foreach (Filters col in Enum.GetValues(typeof(Filters)))
+                {
+                    if (filtersToLoad != col)
+                    {
+                        if (filtersToLoad == Filters.ProjectNum_WBS_Element && col == Filters.ProjectNUm_ProdOrdWbs)
+                            ;
+                        else if (filtersToLoad == Filters.ProjectNUm_ProdOrdWbs && col == Filters.ProjectNum_WBS_Element)
+                            ;
+                        else
+                            continue;
+                    }
+
+
+                    
+
+                    getQuery(col);
                     cmd = new OleDbCommand(query, DatabaseUtils.PRPO_DB_Utils.DatabaseConnection);
 
                     using (var reader = cmd.ExecuteReader())
