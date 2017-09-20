@@ -264,7 +264,7 @@ namespace KPA_KPI_Analyzer
                     if (e.NewValue == CheckState.Checked)
                     {
                         Filters.FilterValues.vendorDesc.Add(clb.Items[e.Index].ToString());
-                        AddFilterSnapShot(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_Vendor.Tag.ToString()));
+                        AddFilterSnapShot(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_VendorDesc.Tag.ToString()));
                         BuildQueryFilters();
                         FilterUtils.LoadFilters(filters, FilterUtils.Filters.VendorDescription);
                     }
@@ -273,7 +273,7 @@ namespace KPA_KPI_Analyzer
                         Filters.FilterValues.vendorDesc.Remove(clb.Items[e.Index].ToString());
                         BuildQueryFilters();
                         FilterUtils.LoadFilters(filters, FilterUtils.Filters.VendorDescription);
-                        RevertFilterData(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_Vendor.Tag.ToString()));
+                        RevertFilterData(clb.Items[e.Index].ToString(), int.Parse(ChkdListBx_VendorDesc.Tag.ToString()));
                     }
                     UpdateCheckedItems();
                     break;

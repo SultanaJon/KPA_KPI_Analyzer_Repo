@@ -47,18 +47,28 @@ namespace KPA_KPI_Analyzer.FilterFeeature
         internal List<string> Remove(string _key, int _tag)
         {
             List<string> tempList = new List<string>();
-
-            foreach(var key in keys)
+            int index = -1;
+            bool notFound = false;
+            foreach (var key in keys)
             {
                 if(key == _key)
                 {
-                    int index = keys.IndexOf(key);
+                    if(!notFound)
+                    {
+                        index = checkBoxTags.IndexOf(_tag);
+                    }
+                    else
+                    {
+                        index = checkBoxTags.IndexOf(_tag, index); // search from the last picked index.
+                    }
+
                     if (checkBoxTags[index] == _tag)
                     {
                         keys.RemoveAt(index);
-                        tempList = values[index];
+                        tempList = new List<string>(values[index]);
                         values.RemoveAt(index);
                         checkBoxTags.RemoveAt(index);
+                        break;
                     }
                 }
             }
@@ -68,7 +78,8 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
 
         /// <summary>
-        /// Clears the FitlerDictionary object of all values contained within its keys, values, and tag numbers.
+        /// Clears the FitlerDictionary object of all values contained within its keys, 
+        /// values, and tag numbers.
         /// </summary>
         internal void Clear()
         {
