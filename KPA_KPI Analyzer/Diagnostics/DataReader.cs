@@ -1,0 +1,72 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Web.Script.Serialization;
+using System.Windows.Forms;
+using DataImporter.Access;
+
+namespace KPA_KPI_Analyzer.Diagnostics
+{
+    internal static class DataReader
+    {
+        private static readonly JavaScriptSerializer ser = new JavaScriptSerializer();
+        private static string dataJSONString = string.Empty;
+
+
+
+        /// <summary>
+        /// Load the inventory from the JSON file
+        /// </summary>
+        /// <exception cref="Exception">Any exception thrown will be caught</exception>
+        public static void LoadOverallData(ref KPA_KPI_Overall.Overall data)
+        {
+            try
+            {
+                if(Values.Globals.SelectedCountry == AccessInfo.MainTables.US_PRPO)
+                {
+                    dataJSONString = File.ReadAllText(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFiles.US_Overall]);
+                }
+                else
+                {
+                    dataJSONString = File.ReadAllText(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFiles.MX_Overall]);
+                }
+                data = ser.Deserialize<KPA_KPI_Overall.Overall>(dataJSONString);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString(), "Inventory Reader Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
+
+        }
+
+
+
+
+
+        /// <summary>
+        /// save the inventory's current state to the JSON file
+        /// </summary>
+        /// <exception cref="Exceptions">Any exception thrown will be caught</exception>
+        public static void SaveOverallData(KPA_KPI_Overall.Overall data)
+        {
+            try
+            {
+                dataJSONString = ser.Serialize(data);
+                if(Values.Globals.SelectedCountry == AccessInfo.MainTables.US_PRPO)
+                {
+                    File.WriteAllText(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFiles.US_Overall], dataJSONString);
+                }
+                else
+                {
+                    File.WriteAllText(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFiles.MX_Overall], dataJSONString);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Inventory Reader Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+    }
+}

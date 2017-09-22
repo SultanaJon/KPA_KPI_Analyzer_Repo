@@ -2861,9 +2861,9 @@
             this.bunifuCustomLabel14.AutoSize = true;
             this.bunifuCustomLabel14.Location = new System.Drawing.Point(1, 3);
             this.bunifuCustomLabel14.Name = "bunifuCustomLabel14";
-            this.bunifuCustomLabel14.Size = new System.Drawing.Size(50, 13);
+            this.bunifuCustomLabel14.Size = new System.Drawing.Size(62, 13);
             this.bunifuCustomLabel14.TabIndex = 0;
-            this.bunifuCustomLabel14.Text = "0 Weeks";
+            this.bunifuCustomLabel14.Text = ">=0 Weeks";
             // 
             // tableLayoutPanel26
             // 

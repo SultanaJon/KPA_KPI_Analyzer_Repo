@@ -26,7 +26,8 @@ namespace KPA_KPI_Analyzer.Diagnostics
         {
             ResourceFolder,
             ReportsFolder,
-            LogFolder
+            LogFolder,
+            Overall
         }
 
 
@@ -42,6 +43,7 @@ namespace KPA_KPI_Analyzer.Diagnostics
             "Resources",
             @"Resources\Reports",
             @"Resources\Logs",
+            @"Resources\Overall"
         };
 
 
@@ -63,7 +65,7 @@ namespace KPA_KPI_Analyzer.Diagnostics
 
 
         /// <summary>
-        /// The file paths of where the application files are located.
+        /// The file paths of where the resource files are located.
         /// </summary>
         public static string[] resourceFiles =
         {
@@ -97,7 +99,7 @@ namespace KPA_KPI_Analyzer.Diagnostics
 
 
         /// <summary>
-        /// The file paths of where the application files are located.
+        /// The file paths of where the log files are located.
         /// </summary>
         public static string[] logFiles =
         {
@@ -115,14 +117,13 @@ namespace KPA_KPI_Analyzer.Diagnostics
 
 
 
-
-
         /// <summary>
-        /// integer indexer values of where the report files are located.
+        /// a indexer that gives the positions within overallFiles meaning
         /// </summary>
-        public enum ReportFiles
+        public enum OverallFiles
         {
-
+            US_Overall,
+            MX_Overall
         }
 
 
@@ -131,13 +132,13 @@ namespace KPA_KPI_Analyzer.Diagnostics
 
 
         /// <summary>
-        /// The file paths of where the application files are located.
+        /// The file path of where the overall data files are located.
         /// </summary>
-        public static string[] reportFiles =
+        public static string[] overallFiles =
         {
-
+            @"Resources\Overall\US_Overall.json",
+            @"Resources\Overall\MX_Overall.json"
         };
-
 
 
 
@@ -152,6 +153,16 @@ namespace KPA_KPI_Analyzer.Diagnostics
         /// </returns>
         public static string GetFullPath(Directories dir) => AppDirectory + DirectoryStructures[(int)dir];
 
+
+
+
+
+        /// <summary>
+        /// Returns whether or not the overall data file exists.
+        /// </summary>
+        /// <param name="file"></param>
+        /// <returns></returns>
+        public static bool DataFileExists(OverallFiles file) => File.Exists(overallFiles[(int)file]);
 
 
 
@@ -187,6 +198,8 @@ namespace KPA_KPI_Analyzer.Diagnostics
                     foreach (Directories directory in Enum.GetValues(typeof(Directories)))
                         Directory.CreateDirectory(DirectoryStructures[(int)directory]);
                 }
+                else if (dir == Directories.Overall)
+                    Directory.CreateDirectory(DirectoryStructures[(int)dir]);
                 else if (dir == Directories.ResourceFolder)
                     Directory.CreateDirectory(DirectoryStructures[(int)dir]);
                 else if (dir == Directories.LogFolder)
@@ -196,6 +209,32 @@ namespace KPA_KPI_Analyzer.Diagnostics
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+
+
+
+
+        /// <summary>
+        /// Create the supplied type of log file
+        /// </summary>
+        /// <param name="file">The log file indexer that needs to be created.</param>
+        internal static void CreateFile(LogFiles file)
+        {
+            File.Create(Path.Combine(Configuration.AppDir, logFiles[(int)file]));
+        }
+
+
+
+
+
+        /// <summary>
+        /// Create the supplied type of overall data storage file (JSON file)
+        /// </summary>
+        /// <param name="file">The overall file indexer that needs to be created.</param>
+        internal static void CreateFile(OverallFiles file)
+        {
+            File.Create(Path.Combine(Configuration.AppDir, overallFiles[(int)file]));
         }
     }
 }

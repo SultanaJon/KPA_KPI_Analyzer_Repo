@@ -1,7 +1,9 @@
 ﻿using DataImporter.Access;
 using KPA_KPI_Analyzer.Diagnostics;
+using KPA_KPI_Analyzer.FilterFeeature;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.OleDb;
 using System.IO;
 using System.Windows.Forms;
@@ -10,6 +12,11 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
 {
     public static class PRPO_DB_Utils
     {
+        public static DataTable prsOnPOsDt;
+        public static DataTable posRecCompDt;
+        public static DataTable pr2ndLvlRelDateDt;
+        public static DataTable AllDt;
+
 
         public delegate void RenewDataLoadTimerHandler();
         public static event RenewDataLoadTimerHandler RenewDataLoadTimer;
@@ -22,11 +29,11 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
         private static readonly List<string> errorList = new List<string>();
 
 
+        public static volatile object locker = new object();
 
 
 
-
-        /// <summary>
+        /// <summary>s
         /// data used to check the state of a data removal process.
         /// </summary>
         public static bool DataRemovalProcessStarted { get; set; }
@@ -219,6 +226,79 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
             }
 
             return result;
+        }
+
+
+
+        /// <summary>
+        /// Loads the data that will be used in the KPI sections for data calculations
+        /// </summary>
+        public static void LoadKPITables()
+        {
+            prsOnPOsDt = new DataTable();
+            posRecCompDt = new DataTable();
+            pr2ndLvlRelDateDt = new DataTable();
+            AllDt = new DataTable();
+
+            try
+            {
+                using (OleDbCommand cmd = new OleDbCommand() { Connection = PRPO_DB_Utils.DatabaseConnection })
+                {
+                    using (OleDbDataAdapter da = new OleDbDataAdapter())
+                    {
+                        cmd.CommandText = PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.AllPOs] + Filters.FilterQuery;
+                        da.SelectCommand = cmd;
+                        da.Fill(prsOnPOsDt);
+
+                        cmd.CommandText = PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.POLinesRecComplete] + Filters.FilterQuery;
+                        da.SelectCommand = cmd;
+                        da.Fill(posRecCompDt);
+
+                        cmd.CommandText = PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.PR_2ndLvlRel] + Filters.FilterQuery;
+                        da.SelectCommand = cmd;
+                        da.Fill(pr2ndLvlRelDateDt);
+
+
+                        if (Filters.FilterQuery == string.Empty)
+                            cmd.CommandText = PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.AllData];
+                        else
+                            cmd.CommandText = PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.AllData] + " WHERE " + Filters.SecondaryFilterQuery;
+
+                        da.SelectCommand = cmd;
+                        da.Fill(AllDt);
+
+
+
+                        PRPO_DB_Utils.KPITablesLoaded = true;
+                        UpdateLoadProgress();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "KPI Data Load");
+            }
+        }
+
+
+
+
+
+
+        /// <summary>
+        /// Checks the status of the data loading.
+        /// </summary>
+        internal static void UpdateLoadProgress()
+        {
+            lock (locker)
+            {
+                PRPO_DB_Utils.CompletedDataLoads++;
+                MethodInvoker del = delegate
+                {
+                    PRPO_DB_Utils.UpdateDataLoadProgress();
+                };
+                del.Invoke();
+            }
         }
     }
 }

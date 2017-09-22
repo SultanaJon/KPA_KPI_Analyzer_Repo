@@ -4,6 +4,7 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using KPA_KPI_Analyzer.FilterFeeature;
+using KPA_KPI_Analyzer.DatabaseUtils;
 
 namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 {
@@ -393,11 +394,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         //
                         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                         prRelVsPORel = new DataTable();
-                        prRelVsPORel = Overall.prsOnPOsDt.Clone();
+                        prRelVsPORel = PRPO_DB_Utils.prsOnPOsDt.Clone();
 
 
 
-                        foreach (DataRow dr in Overall.prsOnPOsDt.Rows)
+                        foreach (DataRow dr in PRPO_DB_Utils.prsOnPOsDt.Rows)
                         {
                             if (Filters.FilterByPrDateRange)
                             {
@@ -564,12 +565,12 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         unconfirmed = new DataTable();
 
 
-                        poCreateVsConfEntry = Overall.prsOnPOsDt.Clone();
-                        unconfirmed = Overall.prsOnPOsDt.Clone();
+                        poCreateVsConfEntry = PRPO_DB_Utils.prsOnPOsDt.Clone();
+                        unconfirmed = PRPO_DB_Utils.prsOnPOsDt.Clone();
 
 
 
-                        foreach (DataRow dr in Overall.prsOnPOsDt.Rows)
+                        foreach (DataRow dr in PRPO_DB_Utils.prsOnPOsDt.Rows)
                         {
                             if (Filters.FilterByPrDateRange)
                             {

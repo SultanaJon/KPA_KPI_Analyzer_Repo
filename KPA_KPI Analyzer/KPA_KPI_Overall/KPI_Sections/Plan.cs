@@ -32,7 +32,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
         /// <summary>
         /// Loads the data of a specific KPI
         /// </summary>
-        /// <param name="Overall.SelectedCountry"></param>
+        /// <param name="SelectedCountry"></param>
         public void LoadData()
         {
             try
@@ -42,7 +42,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 // PR Plan Date vs Current Plan Date
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                foreach (DataRow dr in Overall.prsOnPOsDt.Rows)
+                foreach (DataRow dr in PRPO_DB_Utils.prsOnPOsDt.Rows)
                 {
                     if (Filters.FilterByPrDateRange)
                     {
@@ -195,7 +195,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 // (Original Planned Date - 2nd Lvl Release Date) vs Coded Lead-time
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                foreach (DataRow dr in Overall.pr2ndLvlRelDateDt.Rows)
+                foreach (DataRow dr in PRPO_DB_Utils.pr2ndLvlRelDateDt.Rows)
                 {
                     if (Filters.FilterByPrDateRange)
                     {
@@ -340,7 +340,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 // (Current Planned Date - 2nd Lvl Release Date) vs Coded Lead-Time
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                foreach (DataRow dr in Overall.pr2ndLvlRelDateDt.Rows)
+                foreach (DataRow dr in PRPO_DB_Utils.pr2ndLvlRelDateDt.Rows)
                 {
                     if (Filters.FilterByPrDateRange)
                     {
@@ -505,7 +505,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 totalDays = 0;
 
 
-                Overall.UpdateLoadProgress();
+                PRPO_DB_Utils.UpdateLoadProgress();
             }
             catch (Exception ex)
             {

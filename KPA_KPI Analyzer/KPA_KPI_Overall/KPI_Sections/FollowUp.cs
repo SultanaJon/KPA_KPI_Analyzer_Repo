@@ -37,7 +37,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
         /// <summary>
         /// Loads the data of a specific KPI
         /// </summary>
-        /// <param name="Overall.SelectedCountry"></param>
+        /// <param name="SelectedCountry"></param>
         public void LoadData()
         {
             try
@@ -48,7 +48,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                foreach (DataRow dr in Overall.posRecCompDt.Rows)
+                foreach (DataRow dr in PRPO_DB_Utils.posRecCompDt.Rows)
                 {
                     if (Filters.FilterByPrDateRange)
                     {
@@ -174,8 +174,8 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                 try
                 {
-                    initConfVsCurrConf.data.PercentUnconf = Math.Round(((double)initConfVsCurrConf.data.PercentUnconfTotal / Overall.posRecCompDt.Rows.Count) * 100, 2);
-                    if (double.IsNaN(initConfVsCurrConf.data.PercentUnconf))
+                    initConfVsCurrConf.data.PercentUnconf = Math.Round(((double)initConfVsCurrConf.data.PercentUnconfTotal / PRPO_DB_Utils.posRecCompDt.Rows.Count) * 100, 2);
+                    if (double.IsNaN(initConfVsCurrConf.data.PercentUnconf) || double.IsInfinity(initConfVsCurrConf.data.PercentUnconf))
                         initConfVsCurrConf.data.PercentUnconf = 0;
                 }
                 catch (DivideByZeroException)
@@ -207,7 +207,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-                foreach (DataRow dr in Overall.posRecCompDt.Rows)
+                foreach (DataRow dr in PRPO_DB_Utils.posRecCompDt.Rows)
                 {
                     if (Filters.FilterByPrDateRange)
                     {
@@ -348,8 +348,8 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                 try
                 {
-                    finalConfDateVsFinalPlan.data.PercentUnconf = Math.Round(((double)finalConfDateVsFinalPlan.data.PercentUnconfTotal / Overall.posRecCompDt.Rows.Count) * 100, 2);
-                    if (double.IsNaN(finalConfDateVsFinalPlan.data.PercentUnconf))
+                    finalConfDateVsFinalPlan.data.PercentUnconf = Math.Round(((double)finalConfDateVsFinalPlan.data.PercentUnconfTotal / PRPO_DB_Utils.posRecCompDt.Rows.Count) * 100, 2);
+                    if (double.IsNaN(finalConfDateVsFinalPlan.data.PercentUnconf) || double.IsInfinity(finalConfDateVsFinalPlan.data.PercentUnconf))
                         finalConfDateVsFinalPlan.data.PercentUnconf = 0;
                 }
                 catch (DivideByZeroException)
@@ -365,7 +365,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 // Receipt Date vs Current Planned Date
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                foreach (DataRow dr in Overall.posRecCompDt.Rows)
+                foreach (DataRow dr in PRPO_DB_Utils.posRecCompDt.Rows)
                 {
                     if (Filters.FilterByPrDateRange)
                     {
@@ -516,7 +516,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                foreach (DataRow dr in Overall.posRecCompDt.Rows)
+                foreach (DataRow dr in PRPO_DB_Utils.posRecCompDt.Rows)
                 {
                     if (Filters.FilterByPrDateRange)
                     {
@@ -657,8 +657,8 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                 try
                 {
-                    receiptDateVsOrigConfDate.data.PercentUnconf = Math.Round(((double)receiptDateVsOrigConfDate.data.PercentUnconfTotal / Overall.posRecCompDt.Rows.Count) * 100, 2);
-                    if (double.IsNaN(receiptDateVsOrigConfDate.data.PercentUnconf))
+                    receiptDateVsOrigConfDate.data.PercentUnconf = Math.Round(((double)receiptDateVsOrigConfDate.data.PercentUnconfTotal / PRPO_DB_Utils.posRecCompDt.Rows.Count) * 100, 2);
+                    if (double.IsNaN(receiptDateVsOrigConfDate.data.PercentUnconf) || double.IsInfinity(receiptDateVsOrigConfDate.data.PercentUnconf))
                         receiptDateVsOrigConfDate.data.PercentUnconf = 0;
                 }
                 catch (DivideByZeroException)
@@ -675,7 +675,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 // Receipt Date vs Current Confirmed Date
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                foreach (DataRow dr in Overall.posRecCompDt.Rows)
+                foreach (DataRow dr in PRPO_DB_Utils.posRecCompDt.Rows)
                 {
                     if (Filters.FilterByPrDateRange)
                     {
@@ -819,8 +819,8 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                 try
                 {
-                    receiptDateVsCurrConfDate.data.PercentUnconf = Math.Round(((double)receiptDateVsCurrConfDate.data.PercentUnconfTotal / Overall.posRecCompDt.Rows.Count) * 100, 2);
-                    if (double.IsNaN(receiptDateVsCurrConfDate.data.PercentUnconf))
+                    receiptDateVsCurrConfDate.data.PercentUnconf = Math.Round(((double)receiptDateVsCurrConfDate.data.PercentUnconfTotal / PRPO_DB_Utils.posRecCompDt.Rows.Count) * 100, 2);
+                    if (double.IsNaN(receiptDateVsCurrConfDate.data.PercentUnconf) || double.IsInfinity(receiptDateVsCurrConfDate.data.PercentUnconf))
                         receiptDateVsCurrConfDate.data.PercentUnconf = 0;
                 }
                 catch (DivideByZeroException)
@@ -830,7 +830,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
 
 
-                Overall.UpdateLoadProgress();
+                PRPO_DB_Utils.UpdateLoadProgress();
             }
             catch (Exception ex)
             {

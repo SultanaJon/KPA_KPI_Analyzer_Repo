@@ -34,7 +34,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
         /// <summary>
         /// Loads the data for the specifc KPI
         /// </summary>
-        /// <param name="Overall.SelectedCountry"></param>
+        /// <param name="SelectedCountry"></param>
         public void LoadData()
         {
             try
@@ -44,7 +44,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 // PO Release vs PR Delivery Date
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                foreach (DataRow dr in Overall.prsOnPOsDt.Rows)
+                foreach (DataRow dr in PRPO_DB_Utils.prsOnPOsDt.Rows)
                 {
                     if (Filters.FilterByPrDateRange)
                     {
@@ -189,7 +189,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 // PR 2nd Lvl Release to Original Planned Delivery Date
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                foreach (DataRow dr in Overall.pr2ndLvlRelDateDt.Rows)
+                foreach (DataRow dr in PRPO_DB_Utils.pr2ndLvlRelDateDt.Rows)
                 {
                     if (Filters.FilterByPrDateRange)
                     {
@@ -325,7 +325,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 }
                 totalDays = 0;
 
-                Overall.UpdateLoadProgress();
+                PRPO_DB_Utils.UpdateLoadProgress();
             }
             catch (Exception ex)
             {

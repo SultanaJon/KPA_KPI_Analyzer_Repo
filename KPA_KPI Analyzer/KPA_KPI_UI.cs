@@ -20,6 +20,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
 using System.Windows.Forms;
+using System.IO;
 
 namespace KPA_KPI_Analyzer
 {
@@ -29,8 +30,6 @@ namespace KPA_KPI_Analyzer
         private static readonly List<string> errorList = new List<string>();
         private Overall overallData = new Overall();
         private UserControl activeTemplate = new UserControl();
-
-
 
 
 
@@ -101,20 +100,68 @@ namespace KPA_KPI_Analyzer
                     }
                     else if (AccessUtils.US_PRPO_TableExists)
                     {
-                        lbl_Country.Text = "United States";
-                        Overall.SelectedCountry = AccessInfo.MainTables.US_PRPO;
-                        InitializeDataLoadProcess();
-                        RenewDataLoadTimer();
-                        DataLoaderTimer.Start();
+                        if(AppDirectoryUtils.DataFileExists(AppDirectoryUtils.OverallFiles.US_Overall))
+                        {
+                            // the file exists
+                            if(new FileInfo(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFiles.US_Overall]).Length > 0)
+                            {
+                                DataReader.LoadOverallData(ref overallData);
+                                FilterUtils.FiltersLoaded = false;
+                                FilterUtils.FilterLoadProcessStarted = false;
+                                FiltersTimer.Start();
+                            }
+                            else
+                            {
+                                lbl_Country.Text = "United States";
+                                Values.Globals.SelectedCountry = AccessInfo.MainTables.US_PRPO;
+                                InitializeDataLoadProcess();
+                                RenewDataLoadTimer();
+                                DataLoaderTimer.Start();
+                            }
+                        }
+                        else // the file does not exist
+                        {
+                            AppDirectoryUtils.CreateFile(AppDirectoryUtils.OverallFiles.US_Overall);
+                            lbl_Country.Text = "United States";
+                            Values.Globals.SelectedCountry = AccessInfo.MainTables.US_PRPO;
+                            InitializeDataLoadProcess();
+                            RenewDataLoadTimer();
+                            DataLoaderTimer.Start();
+                        }
                     }
                     else // There is a Mexico table within the database.
                     {
-                        lbl_Country.Text = "Mexico";
-                        Overall.SelectedCountry = AccessInfo.MainTables.MX_PRPO;
-                        InitializeDataLoadProcess();
-                        CreateThreads();
-                        RenewDataLoadTimer();
-                        DataLoaderTimer.Start();
+                        if (AppDirectoryUtils.DataFileExists(AppDirectoryUtils.OverallFiles.MX_Overall))
+                        {
+                            // the file exists
+                            if(new FileInfo(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFiles.MX_Overall]).Length > 0)
+                            {
+                                DataReader.LoadOverallData(ref overallData);
+                                FilterUtils.FiltersLoaded = false;
+                                FilterUtils.FilterLoadProcessStarted = false;
+                                FiltersTimer.Start();
+                            }
+                            else
+                            {
+                                AppDirectoryUtils.CreateFile(AppDirectoryUtils.OverallFiles.MX_Overall);
+                                lbl_Country.Text = "Mexico";
+                                Values.Globals.SelectedCountry = AccessInfo.MainTables.MX_PRPO;
+                                InitializeDataLoadProcess();
+                                CreateThreads();
+                                RenewDataLoadTimer();
+                                DataLoaderTimer.Start();
+                            }
+                        }
+                        else // the file does not exist
+                        {
+                            AppDirectoryUtils.CreateFile(AppDirectoryUtils.OverallFiles.MX_Overall);
+                            lbl_Country.Text = "Mexico";
+                            Values.Globals.SelectedCountry = AccessInfo.MainTables.MX_PRPO;
+                            InitializeDataLoadProcess();
+                            CreateThreads();
+                            RenewDataLoadTimer();
+                            DataLoaderTimer.Start();
+                        }
                     }
                 }
                 catch (Exception ex)

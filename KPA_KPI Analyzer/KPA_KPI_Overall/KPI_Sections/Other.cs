@@ -37,7 +37,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
         /// <summary>
         /// Loads the data of a specific KPI
         /// </summary>
-        /// <param name="Overall.SelectedCountry"></param>
+        /// <param name="SelectedCountry"></param>
         public void LoadData()
         {
             try
@@ -47,7 +47,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 // PR Created
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////                
-                foreach (DataRow dr in Overall.AllDt.Rows)
+                foreach (DataRow dr in PRPO_DB_Utils.AllDt.Rows)
                 {
                     if (Filters.FilterByPrDateRange)
                     {
@@ -112,9 +112,9 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                     prsCreated.data.Total++;
 
 
-                    if (weeks == 0)
+                    if (weeks >= 0)
                     {
-                        prsCreated.data.ZeroWeeks += decimal.Parse(dr["PR Pos#Value"].ToString());
+                        prsCreated.data.GreaterThanZeroWeeks += decimal.Parse(dr["PR Pos#Value"].ToString());
                     }
                     else if (weeks >= (-1) && weeks < 0)
                     {
@@ -164,7 +164,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////                
 
-                foreach (DataRow dr in Overall.pr2ndLvlRelDateDt.Rows)
+                foreach (DataRow dr in PRPO_DB_Utils.pr2ndLvlRelDateDt.Rows)
                 {
                     if (Filters.FilterByPrDateRange)
                     {
@@ -230,9 +230,9 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                     prsReleased.data.Total++;
 
 
-                    if (weeks == 0)
+                    if (weeks >= 0)
                     {
-                        prsReleased.data.ZeroWeeks += decimal.Parse(dr["PR Pos#Value"].ToString());
+                        prsReleased.data.GreaterThanZeroWeeks += decimal.Parse(dr["PR Pos#Value"].ToString());
                     }
                     else if (weeks >= (-1) && weeks < 0)
                     {
@@ -283,7 +283,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////                
 
-                foreach (DataRow dr in Overall.prsOnPOsDt.Rows)
+                foreach (DataRow dr in PRPO_DB_Utils.prsOnPOsDt.Rows)
                 {
                     if (Filters.FilterByPrDateRange)
                     {
@@ -348,9 +348,9 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                     totalSpend.data.Total++;
 
 
-                    if (weeks == 0)
+                    if (weeks >= 0)
                     {
-                        totalSpend.data.ZeroWeeks += decimal.Parse(dr["PO Value"].ToString());
+                        totalSpend.data.GreaterThanZeroWeeks += decimal.Parse(dr["PO Value"].ToString());
                     }
                     else if (weeks >= (-1) && weeks < 0)
                     {
@@ -402,7 +402,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////                
 
-                foreach (DataRow dr in Overall.prsOnPOsDt.Rows)
+                foreach (DataRow dr in PRPO_DB_Utils.prsOnPOsDt.Rows)
                 {
                     if (Filters.FilterByPrDateRange)
                     {
@@ -469,9 +469,9 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
 
 
-                    if (weeks == 0)
+                    if (weeks >= 0)
                     {
-                        prVsPOValue.data.ZeroWeeks += (decimal.Parse(dr["PO Value"].ToString()) - decimal.Parse(dr["PR Pos#Value"].ToString()));
+                        prVsPOValue.data.GreaterThanZeroWeeks += (decimal.Parse(dr["PO Value"].ToString()) - decimal.Parse(dr["PR Pos#Value"].ToString()));
                     }
                     else if (weeks >= (-1) && weeks < 0)
                     {
@@ -524,7 +524,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////                
 
-                foreach (DataRow dr in Overall.AllDt.Rows)
+                foreach (DataRow dr in PRPO_DB_Utils.AllDt.Rows)
                 {
                     if (Filters.FilterByPrDateRange)
                     {
@@ -592,9 +592,9 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                     double elapsedDays = (prReqDate - today).TotalDays;
                     double weeks = Math.Floor(elapsedDays / 7);
 
-                    if (weeks == 0)
+                    if (weeks >= 0)
                     {
-                        hotJobPrs.data.ZeroWeeks += decimal.Parse(dr["PR Pos#Value"].ToString());
+                        hotJobPrs.data.GreaterThanZeroWeeks += decimal.Parse(dr["PR Pos#Value"].ToString());
                     }
                     else if (weeks >= (-1) && weeks < 0)
                     {
@@ -640,7 +640,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
 
 
-                Overall.UpdateLoadProgress();
+                PRPO_DB_Utils.UpdateLoadProgress();
             }
             catch (Exception ex)
             {

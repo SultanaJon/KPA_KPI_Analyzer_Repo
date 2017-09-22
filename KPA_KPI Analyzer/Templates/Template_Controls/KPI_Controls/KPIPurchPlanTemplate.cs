@@ -378,11 +378,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         //
                         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                         poRelVsPRDelDateDt = new DataTable();
-                        poRelVsPRDelDateDt = Overall.prsOnPOsDt.Clone();
+                        poRelVsPRDelDateDt = DatabaseUtils.PRPO_DB_Utils.prsOnPOsDt.Clone();
 
 
 
-                        foreach (DataRow dr in Overall.prsOnPOsDt.Rows)
+                        foreach (DataRow dr in DatabaseUtils.PRPO_DB_Utils.prsOnPOsDt.Rows)
                         {
                             if (Filters.FilterByPrDateRange)
                             {
@@ -546,11 +546,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         //
                         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                         pr2ndLvlRelOrigPlanDelDateDt = new DataTable();
-                        pr2ndLvlRelOrigPlanDelDateDt = Overall.pr2ndLvlRelDateDt.Clone();
+                        pr2ndLvlRelOrigPlanDelDateDt = DatabaseUtils.PRPO_DB_Utils.pr2ndLvlRelDateDt.Clone();
 
 
 
-                        foreach (DataRow dr in Overall.pr2ndLvlRelDateDt.Rows)
+                        foreach (DataRow dr in DatabaseUtils.PRPO_DB_Utils.pr2ndLvlRelDateDt.Rows)
                         {
                             if (Filters.FilterByPrDateRange)
                             {

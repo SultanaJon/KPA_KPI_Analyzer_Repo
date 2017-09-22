@@ -29,7 +29,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
         /// <summary>
         /// Loads the data for the specific KPI
         /// </summary>
-        /// <param name="Overall.SelectedCountry"></param>
+        /// <param name="SelectedCountry"></param>
         public void LoadData()
         {
             try
@@ -40,7 +40,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                foreach (DataRow dr in Overall.prsOnPOsDt.Rows)
+                foreach (DataRow dr in PRPO_DB_Utils.prsOnPOsDt.Rows)
                 {
                     if (Filters.FilterByPrDateRange)
                     {
@@ -168,7 +168,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 try
                 {
                     prRelConfEntry.data.PercentUnconf = Math.Round(((double)prRelConfEntry.data.PercentUnconfTotal / prRelConfEntry.data.Total) * 100, 2);
-                    if (double.IsNaN(prRelConfEntry.data.PercentUnconf))
+                    if (double.IsNaN(prRelConfEntry.data.PercentUnconf) || double.IsInfinity(prRelConfEntry.data.PercentUnconf))
                         prRelConfEntry.data.PercentUnconf = 0;
                 }
                 catch (DivideByZeroException)
@@ -192,7 +192,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                 totalDays = 0;
 
-                Overall.UpdateLoadProgress();
+                PRPO_DB_Utils.UpdateLoadProgress();
             }
             catch (Exception ex)
             {

@@ -74,7 +74,7 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
 
 
         // This query will remove the data that we do not want to fall under our calculations.
-        public static string removableData = "DELETE * FROM " + Overall.SelectedCountry + " WHERE " + "(" + Overall.SelectedCountry + ".[Open PR Qty] = 0 AND " + Overall.SelectedCountry + ".[Qty Ordered] = 0)";
+        public static string removableData = "DELETE * FROM " + Values.Globals.SelectedCountry + " WHERE " + "(" + Values.Globals.SelectedCountry + ".[Open PR Qty] = 0 AND " + Values.Globals.SelectedCountry + ".[Qty Ordered] = 0)";
 
 
 
@@ -87,52 +87,52 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
         public static string[] Queries =
         {
             // KPIs
-            "SELECT * FROM " + Overall.SelectedCountry + " WHERE " + "(" + Overall.SelectedCountry + ".[Qty Ordered] > 0)", // All POs
-            "SELECT * FROM " + Overall.SelectedCountry + " WHERE " + "(" + Overall.SelectedCountry + ".[Qty Ordered] > 0 AND " + Overall.SelectedCountry + ".[Del#Conf#Date] = '00/00/0000')", // total pos with no confirmation
-            "SELECT * FROM " + Overall.SelectedCountry + " WHERE " + "(" + Overall.SelectedCountry + ".[Escaped] IS NOT NULL)",
-            "SELECT * FROM " + Overall.SelectedCountry + " WHERE " + "(" + Overall.SelectedCountry + ".[Escaped] IS NOT NULL AND " + Overall.SelectedCountry + ".[Del#Conf#Date] = '00/00/0000')",
-            "SELECT * FROM " + Overall.SelectedCountry + " WHERE " + "(" + Overall.SelectedCountry + ".[Release ind#] = 2)",
-            "SELECT * FROM " + Overall.SelectedCountry,
+            "SELECT * FROM " + Values.Globals.SelectedCountry + " WHERE " + "(" + Values.Globals.SelectedCountry + ".[Qty Ordered] > 0)", // All POs
+            "SELECT * FROM " + Values.Globals.SelectedCountry + " WHERE " + "(" + Values.Globals.SelectedCountry + ".[Qty Ordered] > 0 AND " + Values.Globals.SelectedCountry + ".[Del#Conf#Date] = '00/00/0000')", // total pos with no confirmation
+            "SELECT * FROM " + Values.Globals.SelectedCountry + " WHERE " + "(" + Values.Globals.SelectedCountry + ".[Escaped] IS NOT NULL)",
+            "SELECT * FROM " + Values.Globals.SelectedCountry + " WHERE " + "(" + Values.Globals.SelectedCountry + ".[Escaped] IS NOT NULL AND " + Values.Globals.SelectedCountry + ".[Del#Conf#Date] = '00/00/0000')",
+            "SELECT * FROM " + Values.Globals.SelectedCountry + " WHERE " + "(" + Values.Globals.SelectedCountry + ".[Release ind#] = 2)",
+            "SELECT * FROM " + Values.Globals.SelectedCountry,
             
             // KPA -> Plan
-            "SELECT * FROM " + Overall.SelectedCountry + " WHERE " + "(" + Overall.SelectedCountry + ".[Open PR Qty] > 0 AND " + Overall.SelectedCountry + ".[Release Ind#] <> 2)" + Filters.FilterQuery,
-            "SELECT * FROM " + Overall.SelectedCountry + " WHERE " + "(" + Overall.SelectedCountry + ".[Open PR Qty] > 0 AND " + Overall.SelectedCountry + ".[Release Ind#] = 2)" + Filters.FilterQuery, 
+            "SELECT * FROM " + Values.Globals.SelectedCountry + " WHERE " + "(" + Values.Globals.SelectedCountry + ".[Open PR Qty] > 0 AND " + Values.Globals.SelectedCountry + ".[Release Ind#] <> 2)" + Filters.FilterQuery,
+            "SELECT * FROM " + Values.Globals.SelectedCountry + " WHERE " + "(" + Values.Globals.SelectedCountry + ".[Open PR Qty] > 0 AND " + Values.Globals.SelectedCountry + ".[Release Ind#] = 2)" + Filters.FilterQuery, 
                  
             // KPA -> Purch
-            "SELECT * FROM " + Overall.SelectedCountry + " WHERE " + "(" + Overall.SelectedCountry + ".[Open PR Qty] > 0 AND " + Overall.SelectedCountry + ".[Release Ind#] = 2)" + Filters.FilterQuery,
-            "SELECT * FROM " + Overall.SelectedCountry + " WHERE " + "(" + Overall.SelectedCountry + ".[Qty Ordered] > 0 AND " + Overall.SelectedCountry + ".[PO Line 1st Rel Dt] = '00/00/0000')" + Filters.FilterQuery,
-            "SELECT * FROM " + Overall.SelectedCountry + " WHERE " + "(" + Overall.SelectedCountry + ".[Qty Ordered] > 0 AND " + Overall.SelectedCountry + ".[PO Line 1st Rel Dt] <> '00/00/0000' AND " + Overall.SelectedCountry + ".[PO Sign Date] = '00/00/0000' AND "+ Overall.SelectedCountry +".[Escaped] IS NULL)" + Filters.FilterQuery, // KPA -> Purch -> PO Prev Release
-            "SELECT * FROM " + Overall.SelectedCountry + " WHERE " + "(" + Overall.SelectedCountry + ".[Qty Ordered] > 0 AND " + Overall.SelectedCountry + ".[PO Line 1st Rel Dt] <> '00/00/0000' AND " + Overall.SelectedCountry + ".[Del#Conf#Date] = '00/00/0000' AND "+ Overall.SelectedCountry +".[Escaped] IS NULL)" + Filters.FilterQuery,
+            "SELECT * FROM " + Values.Globals.SelectedCountry + " WHERE " + "(" + Values.Globals.SelectedCountry + ".[Open PR Qty] > 0 AND " + Values.Globals.SelectedCountry + ".[Release Ind#] = 2)" + Filters.FilterQuery,
+            "SELECT * FROM " + Values.Globals.SelectedCountry + " WHERE " + "(" + Values.Globals.SelectedCountry + ".[Qty Ordered] > 0 AND " + Values.Globals.SelectedCountry + ".[PO Line 1st Rel Dt] = '00/00/0000')" + Filters.FilterQuery,
+            "SELECT * FROM " + Values.Globals.SelectedCountry + " WHERE " + "(" + Values.Globals.SelectedCountry + ".[Qty Ordered] > 0 AND " + Values.Globals.SelectedCountry + ".[PO Line 1st Rel Dt] <> '00/00/0000' AND " + Values.Globals.SelectedCountry + ".[PO Sign Date] = '00/00/0000' AND "+ Values.Globals.SelectedCountry +".[Escaped] IS NULL)" + Filters.FilterQuery, // KPA -> Purch -> PO Prev Release
+            "SELECT * FROM " + Values.Globals.SelectedCountry + " WHERE " + "(" + Values.Globals.SelectedCountry + ".[Qty Ordered] > 0 AND " + Values.Globals.SelectedCountry + ".[PO Line 1st Rel Dt] <> '00/00/0000' AND " + Values.Globals.SelectedCountry + ".[Del#Conf#Date] = '00/00/0000' AND "+ Values.Globals.SelectedCountry +".[Escaped] IS NULL)" + Filters.FilterQuery,
 
             // KPA -> Purch Sub
-            "SELECT * FROM " + Overall.SelectedCountry + " WHERE " + "(" + Overall.SelectedCountry + ".[PO Line 1st Rel Dt] = '00/00/0000' AND " + Overall.SelectedCountry + ".[Release Ind#] = 2)" + Filters.FilterQuery,
-            "SELECT * FROM " + Overall.SelectedCountry + " WHERE " + "(" + Overall.SelectedCountry + ".[Qty Ordered] > 0 AND " + Overall.SelectedCountry + ".[Del#Conf#Date] = '00/00/0000' AND " + Overall.SelectedCountry + ".[Escaped] IS NULL)" + Filters.FilterQuery,
+            "SELECT * FROM " + Values.Globals.SelectedCountry + " WHERE " + "(" + Values.Globals.SelectedCountry + ".[PO Line 1st Rel Dt] = '00/00/0000' AND " + Values.Globals.SelectedCountry + ".[Release Ind#] = 2)" + Filters.FilterQuery,
+            "SELECT * FROM " + Values.Globals.SelectedCountry + " WHERE " + "(" + Values.Globals.SelectedCountry + ".[Qty Ordered] > 0 AND " + Values.Globals.SelectedCountry + ".[Del#Conf#Date] = '00/00/0000' AND " + Values.Globals.SelectedCountry + ".[Escaped] IS NULL)" + Filters.FilterQuery,
                 
             // KPA -> Purch Total
-            "SELECT * FROM " + Overall.SelectedCountry + " WHERE " + "(" + Overall.SelectedCountry + ".[Release Ind#] = 2 AND " + Overall.SelectedCountry + ".[Del#Conf#Date] = '00/00/0000' AND " + Overall.SelectedCountry + ".[Escaped] IS NULL)" + Filters.FilterQuery,
+            "SELECT * FROM " + Values.Globals.SelectedCountry + " WHERE " + "(" + Values.Globals.SelectedCountry + ".[Release Ind#] = 2 AND " + Values.Globals.SelectedCountry + ".[Del#Conf#Date] = '00/00/0000' AND " + Values.Globals.SelectedCountry + ".[Escaped] IS NULL)" + Filters.FilterQuery,
                 
             // KPA -> Purch/Plan Total
 
             // KPA -> Follow Up
-            "SELECT * FROM " + Overall.SelectedCountry + " WHERE " + "(" + Overall.SelectedCountry + ".[Qty Ordered] > 0 AND " + Overall.SelectedCountry + ".[Del#Conf#Date] <> '00/00/0000' AND " + Overall.SelectedCountry + ".[Escaped] IS NULL)" + Filters.FilterQuery,
-            "SELECT * FROM " + Overall.SelectedCountry + " WHERE " + "(" + Overall.SelectedCountry + ".[Qty Ordered] > 0 AND " + Overall.SelectedCountry + ".[Del#Conf#Date] <> '00/00/0000' AND " + Overall.SelectedCountry + ".[Escaped] IS NULL)" + Filters.FilterQuery,
-            "SELECT * FROM " + Overall.SelectedCountry + " WHERE " + "(" + Overall.SelectedCountry + ".[Qty Ordered] > 0 AND " + Overall.SelectedCountry + ".[Del#Conf#Date] <> '00/00/0000' AND " + Overall.SelectedCountry + ".[Escaped] IS NULL)" + Filters.FilterQuery,
+            "SELECT * FROM " + Values.Globals.SelectedCountry + " WHERE " + "(" + Values.Globals.SelectedCountry + ".[Qty Ordered] > 0 AND " + Values.Globals.SelectedCountry + ".[Del#Conf#Date] <> '00/00/0000' AND " + Values.Globals.SelectedCountry + ".[Escaped] IS NULL)" + Filters.FilterQuery,
+            "SELECT * FROM " + Values.Globals.SelectedCountry + " WHERE " + "(" + Values.Globals.SelectedCountry + ".[Qty Ordered] > 0 AND " + Values.Globals.SelectedCountry + ".[Del#Conf#Date] <> '00/00/0000' AND " + Values.Globals.SelectedCountry + ".[Escaped] IS NULL)" + Filters.FilterQuery,
+            "SELECT * FROM " + Values.Globals.SelectedCountry + " WHERE " + "(" + Values.Globals.SelectedCountry + ".[Qty Ordered] > 0 AND " + Values.Globals.SelectedCountry + ".[Del#Conf#Date] <> '00/00/0000' AND " + Values.Globals.SelectedCountry + ".[Escaped] IS NULL)" + Filters.FilterQuery,
 
             // KPA -> Cancellations
 
             // KPA -> NCRs
 
             // KPA -> Hot Jobs
-            "SELECT * FROM " + Overall.SelectedCountry + " WHERE " + "(" + Overall.SelectedCountry + ".[PO Date] = '00/00/0000' AND " + Overall.SelectedCountry + ".[PR 2° Rel# Date] <> '00/00/0000' AND " + Overall.SelectedCountry + ".[Purch# Group] = 'UHJ')" + Filters.FilterQuery,
-            "SELECT * FROM " + Overall.SelectedCountry + " WHERE " + "(" + Overall.SelectedCountry + ".[Qty Ordered] > 0 AND " + Overall.SelectedCountry + ".[Del#Conf#Date] = '00/00/0000' AND " + Overall.SelectedCountry + ".[PO Line Creat#DT] <> '00/00/0000' AND " + Overall.SelectedCountry + ".[Purch# Group] = 'UHJ' AND " + Overall.SelectedCountry + ".[Escaped] IS NULL)" + Filters.FilterQuery,
+            "SELECT * FROM " + Values.Globals.SelectedCountry + " WHERE " + "(" + Values.Globals.SelectedCountry + ".[PO Date] = '00/00/0000' AND " + Values.Globals.SelectedCountry + ".[PR 2° Rel# Date] <> '00/00/0000' AND " + Values.Globals.SelectedCountry + ".[Purch# Group] = 'UHJ')" + Filters.FilterQuery,
+            "SELECT * FROM " + Values.Globals.SelectedCountry + " WHERE " + "(" + Values.Globals.SelectedCountry + ".[Qty Ordered] > 0 AND " + Values.Globals.SelectedCountry + ".[Del#Conf#Date] = '00/00/0000' AND " + Values.Globals.SelectedCountry + ".[PO Line Creat#DT] <> '00/00/0000' AND " + Values.Globals.SelectedCountry + ".[Purch# Group] = 'UHJ' AND " + Values.Globals.SelectedCountry + ".[Escaped] IS NULL)" + Filters.FilterQuery,
 
             // KPA -> Excess Stock - Stock
 
             // KPA -> Excess Stock - Open Order
 
             // KPA -> Current Plan vs Actual
-            "SELECT * FROM " + Overall.SelectedCountry + " WHERE " + "(" + Overall.SelectedCountry + ".[Qty Ordered] > 0 AND " + Overall.SelectedCountry + ".[Del#Conf#Date] <> '00/00/0000' AND " + Overall.SelectedCountry + ".[Escaped] IS NULL)" + Filters.FilterQuery,
-            "SELECT * FROM " + Overall.SelectedCountry + " WHERE " + "(" + Overall.SelectedCountry + ".[Qty Ordered] > 0 AND " + Overall.SelectedCountry + ".[Del#Conf#Date] <> '00/00/0000' AND " + Overall.SelectedCountry + ".[Purch# Group]  = 'UHJ' AND " + Overall.SelectedCountry + ".[Escaped] IS NULL)" + Filters.FilterQuery,
+            "SELECT * FROM " + Values.Globals.SelectedCountry + " WHERE " + "(" + Values.Globals.SelectedCountry + ".[Qty Ordered] > 0 AND " + Values.Globals.SelectedCountry + ".[Del#Conf#Date] <> '00/00/0000' AND " + Values.Globals.SelectedCountry + ".[Escaped] IS NULL)" + Filters.FilterQuery,
+            "SELECT * FROM " + Values.Globals.SelectedCountry + " WHERE " + "(" + Values.Globals.SelectedCountry + ".[Qty Ordered] > 0 AND " + Values.Globals.SelectedCountry + ".[Del#Conf#Date] <> '00/00/0000' AND " + Values.Globals.SelectedCountry + ".[Purch# Group]  = 'UHJ' AND " + Values.Globals.SelectedCountry + ".[Escaped] IS NULL)" + Filters.FilterQuery,
 
         };
     }

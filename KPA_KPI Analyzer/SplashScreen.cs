@@ -274,22 +274,26 @@ namespace KPA_KPI_Analyzer
                     }
                 }
 
-                foreach (var file in Enum.GetValues(typeof(Diagnostics.AppDirectoryUtils.ReportFiles)))
-                {
-                    if (!File.Exists(Path.Combine(Configuration.AppDir, Diagnostics.AppDirectoryUtils.reportFiles[(int)file])))
-                    {
-                        lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Creating File - " + Diagnostics.AppDirectoryUtils.reportFiles[(int)file]; });
-                        File.Create(Diagnostics.AppDirectoryUtils.reportFiles[(int)file]);
-                        Thread.Sleep(2000);
-                    }
-                }
 
-                foreach (var file in Enum.GetValues(typeof(Diagnostics.AppDirectoryUtils.LogFiles)))
+                foreach (Diagnostics.AppDirectoryUtils.LogFiles file in Enum.GetValues(typeof(Diagnostics.AppDirectoryUtils.LogFiles)))
                 {
                     if (!File.Exists(Path.Combine(Configuration.AppDir, Diagnostics.AppDirectoryUtils.logFiles[(int)file])))
                     {
                         lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Creating File - " + Diagnostics.AppDirectoryUtils.logFiles[(int)file]; });
-                        File.Create(Path.Combine(Configuration.AppDir, Diagnostics.AppDirectoryUtils.logFiles[(int)file]));
+                        Diagnostics.AppDirectoryUtils.CreateFile(file);
+                        Thread.Sleep(2000);
+                    }
+                }
+
+
+
+
+                foreach(Diagnostics.AppDirectoryUtils.OverallFiles file in Enum.GetValues(typeof(Diagnostics.AppDirectoryUtils.OverallFiles)))
+                {
+                    if (!File.Exists(Path.Combine(Configuration.AppDir, Diagnostics.AppDirectoryUtils.overallFiles[(int)file])))
+                    {
+                        lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Creating File - " + Diagnostics.AppDirectoryUtils.overallFiles[(int)file]; });
+                        Diagnostics.AppDirectoryUtils.CreateFile(file);
                         Thread.Sleep(2000);
                     }
                 }

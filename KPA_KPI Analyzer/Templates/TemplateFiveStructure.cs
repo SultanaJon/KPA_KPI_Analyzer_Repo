@@ -3,7 +3,7 @@
     public class TempFive
     {
         public decimal TotalValue { get; set; }
-        public decimal ZeroWeeks { get; set; }
+        public decimal GreaterThanZeroWeeks { get; set; }
         public decimal GreaterThanMinusOneWeeks { get; set; }
         public decimal GreaterThanMinusTwoWeeks { get; set; }
         public decimal GreaterThanMinusThreeWeeks { get; set; }
@@ -23,7 +23,7 @@
         public void ClearData()
         {
             TotalValue = 0;
-            ZeroWeeks = 0;
+            GreaterThanZeroWeeks = 0;
             GreaterThanMinusOneWeeks = 0;
             GreaterThanMinusTwoWeeks = 0;
             GreaterThanMinusThreeWeeks = 0;

@@ -3,6 +3,9 @@ using KPA_KPI_Analyzer.DatabaseUtils;
 using KPA_KPI_Analyzer.KPA_KPI_Overall;
 using System;
 using System.Windows.Forms;
+using KPA_KPI_Analyzer.Diagnostics;
+using System.IO;
+using KPA_KPI_Analyzer.FilterFeeature;
 
 namespace KPA_KPI_Analyzer
 {
@@ -10,7 +13,7 @@ namespace KPA_KPI_Analyzer
     {
         /// <summary>
         /// Triggered when the user clicks the US switch button. These controls are located
-        /// on the Overall.SelectedCountry selector page.
+        /// on the SelectedCountry selector page.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -29,7 +32,7 @@ namespace KPA_KPI_Analyzer
 
         /// <summary>
         /// Triggered when the user clicks the MX switch button. These controls are located
-        /// on the Overall.SelectedCountry selector page.
+        /// on the SelectedCountry selector page.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -55,18 +58,62 @@ namespace KPA_KPI_Analyzer
         {
             if (btn_usSwitch.Value)
             {
-                Overall.SelectedCountry = AccessInfo.MainTables.US_PRPO;
+                lbl_Country.Text = "United States";
+                Values.Globals.SelectedCountry = AccessInfo.MainTables.US_PRPO;
+
+                if (AppDirectoryUtils.DataFileExists(AppDirectoryUtils.OverallFiles.US_Overall))
+                {
+                    // the file exists
+                    if (new FileInfo(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFiles.US_Overall]).Length > 0)
+                    {
+                        DataReader.LoadOverallData(ref overallData);
+                        FilterUtils.FiltersLoaded = false;
+                        FilterUtils.FilterLoadProcessStarted = false;
+                        FiltersTimer.Start();
+                    }
+                    else // the file might be empty
+                    {
+                        InitializeDataLoadProcess();
+                        RenewDataLoadTimer();
+                        DataLoaderTimer.Start();
+                    }
+                }
+                else
+                {
+                    InitializeDataLoadProcess();
+                    RenewDataLoadTimer();
+                    DataLoaderTimer.Start();
+                }
             }
             else
             {
-                Overall.SelectedCountry = AccessInfo.MainTables.MX_PRPO;
+                lbl_Country.Text = "Mexico";
+                Values.Globals.SelectedCountry = AccessInfo.MainTables.MX_PRPO;
+
+                if (AppDirectoryUtils.DataFileExists(AppDirectoryUtils.OverallFiles.MX_Overall))
+                {
+                    // the file exists
+                    if (new FileInfo(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFiles.MX_Overall]).Length > 0)
+                    {
+                        DataReader.LoadOverallData(ref overallData);
+                        FilterUtils.FiltersLoaded = false;
+                        FilterUtils.FilterLoadProcessStarted = false;
+                        FiltersTimer.Start();
+                    }
+                    else // the file might be empty
+                    {
+                        InitializeDataLoadProcess();
+                        RenewDataLoadTimer();
+                        DataLoaderTimer.Start();
+                    }
+                }
+                else
+                {
+                    InitializeDataLoadProcess();
+                    RenewDataLoadTimer();
+                    DataLoaderTimer.Start();
+                }
             }
-
-
-
-            InitializeDataLoadProcess();
-            RenewDataLoadTimer();
-            DataLoaderTimer.Start();
         }
 
 
@@ -75,7 +122,7 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// Triggered when the user clicks the cancel button located on the Overall.SelectedCountry selector panel.
+        /// Triggered when the user clicks the cancel button located on the SelectedCountry selector panel.
         /// The application will then be put in a cold start state waiting for the user to 
         /// drop some PRPO file(s).
         /// </summary>

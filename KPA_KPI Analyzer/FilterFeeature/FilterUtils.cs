@@ -91,7 +91,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
         /// <summary>
         /// Returns the query that will be used to get the unique data contained within the columns of the PRPO report
         /// </summary>
-        /// <param name="Overall.SelectedCountry"></param>
+        /// <param name="col"></param>
         /// <param name="filter"></param>
         /// <returns></returns>
         private static void getQuery(Filters col, string filters)
@@ -101,11 +101,11 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
             if (filters == string.Empty)
             {
-                temp = "SELECT DISTINCT " + Overall.SelectedCountry + ".[" + column + "] FROM " + Overall.SelectedCountry;
+                temp = "SELECT DISTINCT " + Values.Globals.SelectedCountry + ".[" + column + "] FROM " + Values.Globals.SelectedCountry;
             }
             else
             {
-                temp = "SELECT DISTINCT " + Overall.SelectedCountry + ".[" + column + "] FROM " + Overall.SelectedCountry + " WHERE " + filters;
+                temp = "SELECT DISTINCT " + Values.Globals.SelectedCountry + ".[" + column + "] FROM " + Values.Globals.SelectedCountry + " WHERE " + filters;
             }
             query = temp;
         }
@@ -121,11 +121,11 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
             if (filters == string.Empty)
             {
-                temp = "SELECT DISTINCT " + Overall.SelectedCountry + ".[" + column + "] FROM " + Overall.SelectedCountry;
+                temp = "SELECT DISTINCT " + Values.Globals.SelectedCountry + ".[" + column + "] FROM " + Values.Globals.SelectedCountry;
             }
             else
             {
-                temp = "SELECT DISTINCT " + Overall.SelectedCountry + ".[" + column + "] FROM " + Overall.SelectedCountry + " WHERE " + filters;
+                temp = "SELECT DISTINCT " + Values.Globals.SelectedCountry + ".[" + column + "] FROM " + Values.Globals.SelectedCountry + " WHERE " + filters;
             }
             query = temp;
         }

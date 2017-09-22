@@ -28,7 +28,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
         /// <summary>
         /// Loads the data for the specific KPI
         /// </summary>
-        /// <param name="Overall.SelectedCountry"></param>
+        /// <param name="SelectedCountry"></param>
         public void LoadData()
         {
             try
@@ -38,7 +38,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 // Initial Confirmation vs PR Planned Date
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////                
-                foreach (DataRow dr in Overall.prsOnPOsDt.Rows)
+                foreach (DataRow dr in PRPO_DB_Utils.prsOnPOsDt.Rows)
                 {
                     if (Filters.FilterByPrDateRange)
                     {
@@ -176,7 +176,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 try
                 {
                     initConfVsPRPlanDate.data.PercentUnconf = Math.Round(((double)initConfVsPRPlanDate.data.PercentUnconfTotal / initConfVsPRPlanDate.data.Total) * 100, 2);
-                    if (double.IsNaN(initConfVsPRPlanDate.data.PercentUnconf))
+                    if (double.IsNaN(initConfVsPRPlanDate.data.PercentUnconf) || double.IsInfinity(initConfVsPRPlanDate.data.PercentUnconf))
                         initConfVsPRPlanDate.data.PercentUnconf = 0;
                 }
                 catch (DivideByZeroException)
@@ -185,7 +185,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 }
                 totalDays = 0;
 
-                Overall.UpdateLoadProgress();
+                PRPO_DB_Utils.UpdateLoadProgress();
             }
             catch (Exception ex)
             {

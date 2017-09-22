@@ -440,11 +440,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         //
                         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                         prPlanDateVsCurrPlanDt = new DataTable();
-                        prPlanDateVsCurrPlanDt = Overall.prsOnPOsDt.Clone();
+                        prPlanDateVsCurrPlanDt = DatabaseUtils.PRPO_DB_Utils.prsOnPOsDt.Clone();
 
 
 
-                        foreach (DataRow dr in Overall.prsOnPOsDt.Rows)
+                        foreach (DataRow dr in DatabaseUtils.PRPO_DB_Utils.prsOnPOsDt.Rows)
                         {
                             if (Filters.FilterByPrDateRange)
                             {
@@ -607,11 +607,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         //
                         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                         OrigPlan2ndLvlRel_CodedLeadTime = new DataTable();
-                        OrigPlan2ndLvlRel_CodedLeadTime = Overall.pr2ndLvlRelDateDt.Clone();
+                        OrigPlan2ndLvlRel_CodedLeadTime = DatabaseUtils.PRPO_DB_Utils.pr2ndLvlRelDateDt.Clone();
 
 
 
-                        foreach (DataRow dr in Overall.pr2ndLvlRelDateDt.Rows)
+                        foreach (DataRow dr in DatabaseUtils.PRPO_DB_Utils.pr2ndLvlRelDateDt.Rows)
                         {
                             if (Filters.FilterByPrDateRange)
                             {
@@ -764,11 +764,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         //
                         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                         CurrPlan2ndLvlRel_CodedLeadTime = new DataTable();
-                        CurrPlan2ndLvlRel_CodedLeadTime = Overall.pr2ndLvlRelDateDt.Clone();
+                        CurrPlan2ndLvlRel_CodedLeadTime = DatabaseUtils.PRPO_DB_Utils.pr2ndLvlRelDateDt.Clone();
 
 
 
-                        foreach (DataRow dr in Overall.pr2ndLvlRelDateDt.Rows)
+                        foreach (DataRow dr in DatabaseUtils.PRPO_DB_Utils.pr2ndLvlRelDateDt.Rows)
                         {
                             if (Filters.FilterByPrDateRange)
                             {

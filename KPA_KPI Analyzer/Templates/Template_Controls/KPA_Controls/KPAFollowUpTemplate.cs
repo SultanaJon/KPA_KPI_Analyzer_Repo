@@ -411,7 +411,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                         dt = new DataTable();
                         confVsPlanDateDt = new DataTable();
 
-                        if (Overall.SelectedCountry == AccessInfo.MainTables.US_PRPO)
+                        if (Values.Globals.SelectedCountry == AccessInfo.MainTables.US_PRPO)
                             cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_FollowUp_ConfPlanDate] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                         else
                             cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_FollowUp_ConfPlanDate] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
@@ -567,7 +567,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                         dt = new DataTable();
                         poFirsconfDateUpDelDt = new DataTable();
-                        if (Overall.SelectedCountry == AccessInfo.MainTables.US_PRPO)
+                        if (Values.Globals.SelectedCountry == AccessInfo.MainTables.US_PRPO)
                             cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_FollowUp_ConfDateUpcomingDel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                         else
                             cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_FollowUp_ConfDateUpcomingDel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
@@ -702,7 +702,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                         dt = new DataTable();
                         LateConfDateDt = new DataTable();
-                        if (Overall.SelectedCountry == AccessInfo.MainTables.US_PRPO)
+                        if (Values.Globals.SelectedCountry == AccessInfo.MainTables.US_PRPO)
                             cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_FollowUp_LateToConfirmedDate] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                         else
                             cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_FollowUp_LateToConfirmedDate] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);

@@ -207,14 +207,16 @@ namespace KPA_KPI_Analyzer
                 }
                 else if (AccessUtils.US_PRPO_TableExists)
                 {
-                    Overall.SelectedCountry = AccessInfo.MainTables.US_PRPO;
+                    lbl_Country.Text = "United States";
+                    Values.Globals.SelectedCountry = AccessInfo.MainTables.US_PRPO;
                     InitializeDataLoadProcess();
                     RenewDataLoadTimer();
                     DataLoaderTimer.Start();
                 }
                 else // only the mexico file exists.
                 {
-                    Overall.SelectedCountry = AccessInfo.MainTables.MX_PRPO;
+                    lbl_Country.Text = "Mexico";
+                    Values.Globals.SelectedCountry = AccessInfo.MainTables.MX_PRPO;
                     InitializeDataLoadProcess();
                     RenewDataLoadTimer();
                     DataLoaderTimer.Start();
@@ -235,7 +237,7 @@ namespace KPA_KPI_Analyzer
             KPA_FollowUpThread = new Thread(() => { overallData.kpa.followUp.LoadData(); });
             KPA_HotJobs = new Thread(() => { overallData.kpa.hotJobs.LoadData(); });
             KPA_CurrPlanVsActualThread = new Thread(() => { overallData.kpa.currPlanVsActual.LoadData(); });
-            tableLoadThread = new Thread(() => { overallData.LoadKPITables(); });
+            tableLoadThread = new Thread(() => { PRPO_DB_Utils.LoadKPITables(); });
             KPI_PlanThread = new Thread(() =>{ overallData.kpi.plan.LoadData(); });
             KPI_PurchThread = new Thread(() =>{ overallData.kpi.purch.LoadData(); });
             KPI_FollowUpThread = new Thread(() => { overallData.kpi.followUp.LoadData(); });
@@ -244,7 +246,6 @@ namespace KPA_KPI_Analyzer
             KPI_PurchTotalThread = new Thread(() => { overallData.kpi.purchTotal.LoadData(); });
             KPI_PurchPlanThread = new Thread(() => { overallData.kpi.purchPlan.LoadData(); });
             KPI_OtherThread = new Thread(() => { overallData.kpi.other.LoadData(); });
-
         }
 
 
@@ -295,7 +296,6 @@ namespace KPA_KPI_Analyzer
         {
             NavigationLocked = true;
 
-
             if (!PRPO_DB_Utils.DataLoadProcessStarted)
             {
                 PRPO_DB_Utils.DataLoadProcessStarted = true;
@@ -313,8 +313,6 @@ namespace KPA_KPI_Analyzer
                 StartThreads(false, true);
             }
 
-
-
             if (PRPO_DB_Utils.DataLoaded)
             {
                 PRPO_DB_Utils.DataLoaded = false;
@@ -322,6 +320,7 @@ namespace KPA_KPI_Analyzer
 
                 if (!ColumnFiltersApplied && !DateFiltersApplied)
                 {
+                    DataReader.SaveOverallData(overallData);
                     FilterUtils.FiltersLoaded = false;
                     FilterUtils.FilterLoadProcessStarted = false;
                     FiltersTimer.Start();
@@ -333,7 +332,7 @@ namespace KPA_KPI_Analyzer
                     NavigationLocked = false;
                 }
 
-                if (Overall.SelectedCountry == AccessInfo.MainTables.US_PRPO)
+                if (Values.Globals.SelectedCountry == AccessInfo.MainTables.US_PRPO)
                 {
                     using (StreamReader sr = new StreamReader(Diagnostics.AppDirectoryUtils.logFiles[(int)Diagnostics.AppDirectoryUtils.LogFiles.LoadedUSDate]))
                     {
@@ -363,6 +362,7 @@ namespace KPA_KPI_Analyzer
         /// <param name="e"></param>
         private void FiltersTimer_Tick(object sender, EventArgs e)
         {
+            ShowPage(Pages.LoadingScreen);
             lbl_loadingStatus.Text = "Loading Filters...";
 
             if (!FilterUtils.FilterLoadProcessStarted)

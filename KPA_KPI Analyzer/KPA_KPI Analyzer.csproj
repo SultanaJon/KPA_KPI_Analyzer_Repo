@@ -14,7 +14,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -48,6 +48,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration.cs" />
+    <Compile Include="Diagnostics\DataReader.cs" />
     <Compile Include="Values\Constants.cs" />
     <Compile Include="DatabaseUtils\PRPOCommands.cs" />
     <Compile Include="DatabaseUtils\PRPO_DB_Utils.cs" />
@@ -262,6 +264,7 @@
     <Compile Include="Templates\TemplateOneStructure.cs" />
     <Compile Include="Templates\TemplateThreeStructure.cs" />
     <Compile Include="Templates\TemplateTwoStructure.cs" />
+    <Compile Include="Values\Globals.cs" />
     <EmbeddedResource Include="DataComingSoon.resx">
       <DependentUpon>DataComingSoon.cs</DependentUpon>
       <SubType>Designer</SubType>

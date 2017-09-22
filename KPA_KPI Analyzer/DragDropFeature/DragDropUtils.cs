@@ -99,7 +99,7 @@ namespace KPA_KPI_Analyzer.DragDropFeatures
                 }
                 else
                 {
-                    // Cannot determine the Overall.SelectedCountry based on the file name.
+                    // Cannot determine the SelectedCountry based on the file name.
                     MessageBox.Show("Cannot determine the country of origin based on the file(s) name.");
                 }
             }

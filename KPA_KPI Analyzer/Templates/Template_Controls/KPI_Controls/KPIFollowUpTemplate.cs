@@ -590,12 +590,12 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         unconfirmed = new DataTable();
 
 
-                        initConfVsCurrConf = Overall.posRecCompDt.Clone();
-                        unconfirmed = Overall.posRecCompDt.Clone();
+                        initConfVsCurrConf = DatabaseUtils.PRPO_DB_Utils.posRecCompDt.Clone();
+                        unconfirmed = DatabaseUtils.PRPO_DB_Utils.posRecCompDt.Clone();
 
 
 
-                        foreach (DataRow dr in Overall.posRecCompDt.Rows)
+                        foreach (DataRow dr in DatabaseUtils.PRPO_DB_Utils.posRecCompDt.Rows)
                         {
                             if (Filters.FilterByPrDateRange)
                             {
@@ -771,12 +771,12 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         unconfirmed = new DataTable();
 
 
-                        finalConfDateVsFinalPlanDateDt = Overall.posRecCompDt.Clone();
-                        unconfirmed = Overall.posRecCompDt.Clone();
+                        finalConfDateVsFinalPlanDateDt = DatabaseUtils.PRPO_DB_Utils.posRecCompDt.Clone();
+                        unconfirmed = DatabaseUtils.PRPO_DB_Utils.posRecCompDt.Clone();
 
 
 
-                        foreach (DataRow dr in Overall.posRecCompDt.Rows)
+                        foreach (DataRow dr in DatabaseUtils.PRPO_DB_Utils.posRecCompDt.Rows)
                         {
                             if (Filters.FilterByPrDateRange)
                             {
@@ -947,9 +947,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         //
                         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                         recDateVsCurrPlanDateDt = new DataTable();
-                        recDateVsCurrPlanDateDt = Overall.posRecCompDt.Clone();
+                        recDateVsCurrPlanDateDt = DatabaseUtils.PRPO_DB_Utils.posRecCompDt.Clone();
 
-                        foreach (DataRow dr in Overall.posRecCompDt.Rows)
+                        foreach (DataRow dr in DatabaseUtils.PRPO_DB_Utils.posRecCompDt.Rows)
                         {
                             if (Filters.FilterByPrDateRange)
                             {
@@ -1114,12 +1114,12 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         unconfirmed = new DataTable();
 
 
-                        recDateVsOrigConfDateDt = Overall.posRecCompDt.Clone();
-                        unconfirmed = Overall.posRecCompDt.Clone();
+                        recDateVsOrigConfDateDt = DatabaseUtils.PRPO_DB_Utils.posRecCompDt.Clone();
+                        unconfirmed = DatabaseUtils.PRPO_DB_Utils.posRecCompDt.Clone();
 
 
 
-                        foreach (DataRow dr in Overall.posRecCompDt.Rows)
+                        foreach (DataRow dr in DatabaseUtils.PRPO_DB_Utils.posRecCompDt.Rows)
                         {
                             if (Filters.FilterByPrDateRange)
                             {
@@ -1292,12 +1292,12 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         unconfirmed = new DataTable();
 
 
-                        recDateVsCurrConfDateDt = Overall.posRecCompDt.Clone();
-                        unconfirmed = Overall.posRecCompDt.Clone();
+                        recDateVsCurrConfDateDt = DatabaseUtils.PRPO_DB_Utils.posRecCompDt.Clone();
+                        unconfirmed = DatabaseUtils.PRPO_DB_Utils.posRecCompDt.Clone();
 
 
 
-                        foreach (DataRow dr in Overall.posRecCompDt.Rows)
+                        foreach (DataRow dr in DatabaseUtils.PRPO_DB_Utils.posRecCompDt.Rows)
                         {
                             if (Filters.FilterByPrDateRange)
                             {

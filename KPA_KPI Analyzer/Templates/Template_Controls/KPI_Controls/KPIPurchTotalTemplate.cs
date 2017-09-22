@@ -329,12 +329,12 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                 prReleaseConfEntry = new DataTable();
                 unconfirmed = new DataTable();
 
-                prReleaseConfEntry = Overall.prsOnPOsDt.Clone();
-                unconfirmed = Overall.prsOnPOsDt.Clone();
+                prReleaseConfEntry = DatabaseUtils.PRPO_DB_Utils.prsOnPOsDt.Clone();
+                unconfirmed = DatabaseUtils.PRPO_DB_Utils.prsOnPOsDt.Clone();
 
 
 
-                foreach (DataRow dr in Overall.prsOnPOsDt.Rows)
+                foreach (DataRow dr in DatabaseUtils.PRPO_DB_Utils.prsOnPOsDt.Rows)
                 {
                     if (Filters.FilterByPrDateRange)
                     {

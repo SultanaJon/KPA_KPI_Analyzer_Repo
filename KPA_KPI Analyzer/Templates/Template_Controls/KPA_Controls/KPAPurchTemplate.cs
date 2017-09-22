@@ -478,7 +478,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                         dt = new DataTable();
                         prsAgingRelDt = new DataTable();
                         
-                        if (Overall.SelectedCountry == AccessInfo.MainTables.US_PRPO)
+                        if (Values.Globals.SelectedCountry == AccessInfo.MainTables.US_PRPO)
                             cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Purch_PRsAgingRel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                         else
                             cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Purch_PRsAgingRel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
@@ -565,7 +565,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                         dt = new DataTable();
                         poFirstRelDt = new DataTable();
-                        if (Overall.SelectedCountry == AccessInfo.MainTables.US_PRPO)
+                        if (Values.Globals.SelectedCountry == AccessInfo.MainTables.US_PRPO)
                             cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Purch_POFirstRelease] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                         else
                             cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Purch_POFirstRelease] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
@@ -654,7 +654,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                         dt = new DataTable();
                         poPrevRelDt = new DataTable();
-                        if (Overall.SelectedCountry == AccessInfo.MainTables.US_PRPO)
+                        if (Values.Globals.SelectedCountry == AccessInfo.MainTables.US_PRPO)
                             cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Purch_POPrevRelease] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                         else
                             cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Purch_POPrevRelease] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
@@ -743,7 +743,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                         dt = new DataTable();
                         noConfirmationsDt = new DataTable();
-                        if (Overall.SelectedCountry == AccessInfo.MainTables.US_PRPO)
+                        if (Values.Globals.SelectedCountry == AccessInfo.MainTables.US_PRPO)
                             cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Purch_NoConfirmation] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                         else
                             cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Purch_NoConfirmation] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);

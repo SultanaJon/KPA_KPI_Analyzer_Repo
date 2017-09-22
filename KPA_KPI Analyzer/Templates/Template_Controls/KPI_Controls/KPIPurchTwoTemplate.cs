@@ -468,11 +468,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         //
                         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                         pr2ndLvlRelVsPoCreate = new DataTable();
-                        pr2ndLvlRelVsPoCreate = Overall.prsOnPOsDt.Clone();
+                        pr2ndLvlRelVsPoCreate = DatabaseUtils.PRPO_DB_Utils.prsOnPOsDt.Clone();
 
 
 
-                        foreach (DataRow dr in Overall.prsOnPOsDt.Rows)
+                        foreach (DataRow dr in DatabaseUtils.PRPO_DB_Utils.prsOnPOsDt.Rows)
                         {
                             if (Filters.FilterByPrDateRange)
                             {
@@ -625,11 +625,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         //
                         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                         poCreateVsPORel = new DataTable();
-                        poCreateVsPORel = Overall.prsOnPOsDt.Clone();
+                        poCreateVsPORel = DatabaseUtils.PRPO_DB_Utils.prsOnPOsDt.Clone();
 
 
 
-                        foreach (DataRow dr in Overall.prsOnPOsDt.Rows)
+                        foreach (DataRow dr in DatabaseUtils.PRPO_DB_Utils.prsOnPOsDt.Rows)
                         {
                             if (Filters.FilterByPrDateRange)
                             {
@@ -795,10 +795,10 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         poRelVsPoConf = new DataTable();
                         unconfirmed = new DataTable();
 
-                        poRelVsPoConf = Overall.prsOnPOsDt.Clone();
-                        unconfirmed = Overall.prsOnPOsDt.Clone();
+                        poRelVsPoConf = DatabaseUtils.PRPO_DB_Utils.prsOnPOsDt.Clone();
+                        unconfirmed = DatabaseUtils.PRPO_DB_Utils.prsOnPOsDt.Clone();
 
-                        foreach (DataRow dr in Overall.prsOnPOsDt.Rows)
+                        foreach (DataRow dr in DatabaseUtils.PRPO_DB_Utils.prsOnPOsDt.Rows)
                         {
                             if (Filters.FilterByPrDateRange)
                             {

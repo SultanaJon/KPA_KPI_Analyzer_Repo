@@ -1813,7 +1813,8 @@
             this.lbl_xLabelOne.Name = "lbl_xLabelOne";
             this.lbl_xLabelOne.Size = new System.Drawing.Size(105, 24);
             this.lbl_xLabelOne.TabIndex = 13;
-            this.lbl_xLabelOne.Text = "<=0 Weeks";
+            this.lbl_xLabelOne.Text = ">=0 Weeks";
+            this.lbl_xLabelOne.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel17
             // 

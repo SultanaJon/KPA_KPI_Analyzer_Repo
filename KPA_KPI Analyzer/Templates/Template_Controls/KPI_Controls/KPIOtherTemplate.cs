@@ -4,6 +4,7 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using KPA_KPI_Analyzer.FilterFeeature;
+using KPA_KPI_Analyzer.DatabaseUtils;
 
 namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 {
@@ -239,7 +240,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             ChangeCategory(Title);
             CurrCategory = Title;
 
-            TimeBucketOne = ((int)overallData.kpi.other.prsCreated.data.ZeroWeeks).ToString();
+            TimeBucketOne = ((int)overallData.kpi.other.prsCreated.data.GreaterThanZeroWeeks).ToString();
             TimeBucketTwo = ((int)overallData.kpi.other.prsCreated.data.GreaterThanMinusOneWeeks).ToString();
             TimeBucketThree = ((int)overallData.kpi.other.prsCreated.data.GreaterThanMinusTwoWeeks).ToString();
             TimeBucketFour = ((int)overallData.kpi.other.prsCreated.data.GreaterThanMinusThreeWeeks).ToString();
@@ -268,7 +269,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             
             TotalOrders = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.Total);
             TotalValue = string.Format("{0:n}", overallData.kpi.other.prsCreated.data.TotalValue);
-            TimeBucketOne = "$" + string.Format("{0:n}", overallData.kpi.other.prsCreated.data.ZeroWeeks);
+            TimeBucketOne = "$" + string.Format("{0:n}", overallData.kpi.other.prsCreated.data.GreaterThanZeroWeeks);
             TimeBucketTwo = "$" + string.Format("{0:n}", overallData.kpi.other.prsCreated.data.GreaterThanMinusOneWeeks);
             TimeBucketThree = "$" + string.Format("{0:n}", overallData.kpi.other.prsCreated.data.GreaterThanMinusTwoWeeks);
             TimeBucketFour = "$" + string.Format("{0:n}", overallData.kpi.other.prsCreated.data.GreaterThanMinusThreeWeeks);
@@ -302,7 +303,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             ChangeCategory(Title);
             CurrCategory = Title;
 
-            TimeBucketOne = ((int)overallData.kpi.other.prsReleased.data.ZeroWeeks).ToString();
+            TimeBucketOne = ((int)overallData.kpi.other.prsReleased.data.GreaterThanZeroWeeks).ToString();
             TimeBucketTwo = ((int)overallData.kpi.other.prsReleased.data.GreaterThanMinusOneWeeks).ToString();
             TimeBucketThree = ((int)overallData.kpi.other.prsReleased.data.GreaterThanMinusTwoWeeks).ToString();
             TimeBucketFour = ((int)overallData.kpi.other.prsReleased.data.GreaterThanMinusThreeWeeks).ToString();
@@ -333,7 +334,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
             TotalOrders = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.Total);
             TotalValue = string.Format("{0:n}", overallData.kpi.other.prsReleased.data.TotalValue);
-            TimeBucketOne = "$" + string.Format("{0:n}", overallData.kpi.other.prsReleased.data.ZeroWeeks);
+            TimeBucketOne = "$" + string.Format("{0:n}", overallData.kpi.other.prsReleased.data.GreaterThanZeroWeeks);
             TimeBucketTwo = "$" + string.Format("{0:n}", overallData.kpi.other.prsReleased.data.GreaterThanMinusOneWeeks);
             TimeBucketThree = "$" + string.Format("{0:n}", overallData.kpi.other.prsReleased.data.GreaterThanMinusTwoWeeks);
             TimeBucketFour = "$" + string.Format("{0:n}", overallData.kpi.other.prsReleased.data.GreaterThanMinusThreeWeeks);
@@ -365,7 +366,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             ChangeCategory(Title);
             CurrCategory = Title;
 
-            TimeBucketOne = ((int)overallData.kpi.other.totalSpend.data.ZeroWeeks).ToString();
+            TimeBucketOne = ((int)overallData.kpi.other.totalSpend.data.GreaterThanZeroWeeks).ToString();
             TimeBucketTwo = ((int)overallData.kpi.other.totalSpend.data.GreaterThanMinusOneWeeks).ToString();
             TimeBucketThree = ((int)overallData.kpi.other.totalSpend.data.GreaterThanMinusTwoWeeks).ToString();
             TimeBucketFour = ((int)overallData.kpi.other.totalSpend.data.GreaterThanMinusThreeWeeks).ToString();
@@ -394,7 +395,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
             TotalOrders = string.Format("{0:n0}", overallData.kpi.other.totalSpend.data.Total);
             TotalValue = string.Format("{0:n}", overallData.kpi.other.totalSpend.data.TotalValue);
-            TimeBucketOne = "$" + string.Format("{0:n}", overallData.kpi.other.totalSpend.data.ZeroWeeks);
+            TimeBucketOne = "$" + string.Format("{0:n}", overallData.kpi.other.totalSpend.data.GreaterThanZeroWeeks);
             TimeBucketTwo = "$" + string.Format("{0:n}", overallData.kpi.other.totalSpend.data.GreaterThanMinusOneWeeks);
             TimeBucketThree = "$" + string.Format("{0:n}", overallData.kpi.other.totalSpend.data.GreaterThanMinusTwoWeeks);
             TimeBucketFour = "$" + string.Format("{0:n}", overallData.kpi.other.totalSpend.data.GreaterThanMinusThreeWeeks);
@@ -427,7 +428,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             ChangeCategory(Title);
             CurrCategory = Title;
 
-            TimeBucketOne = ((int)overallData.kpi.other.prVsPOValue.data.ZeroWeeks).ToString();
+            TimeBucketOne = ((int)overallData.kpi.other.prVsPOValue.data.GreaterThanZeroWeeks).ToString();
             TimeBucketTwo = ((int)overallData.kpi.other.prVsPOValue.data.GreaterThanMinusOneWeeks).ToString();
             TimeBucketThree = ((int)overallData.kpi.other.prVsPOValue.data.GreaterThanMinusTwoWeeks).ToString();
             TimeBucketFour = ((int)overallData.kpi.other.prVsPOValue.data.GreaterThanMinusThreeWeeks).ToString();
@@ -457,7 +458,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
             TotalOrders = string.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.Total);
             TotalValue = string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.TotalValue);
-            TimeBucketOne = "$" + string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.ZeroWeeks);
+            TimeBucketOne = "$" + string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.GreaterThanZeroWeeks);
             TimeBucketTwo = "$" + string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.GreaterThanMinusOneWeeks);
             TimeBucketThree = "$" + string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.GreaterThanMinusTwoWeeks);
             TimeBucketFour = "$" + string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.GreaterThanMinusThreeWeeks);
@@ -490,7 +491,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             ChangeCategory(Title);
             CurrCategory = Title;
 
-            TimeBucketOne = ((int)overallData.kpi.other.hotJobPrs.data.ZeroWeeks).ToString();
+            TimeBucketOne = ((int)overallData.kpi.other.hotJobPrs.data.GreaterThanZeroWeeks).ToString();
             TimeBucketTwo = ((int)overallData.kpi.other.hotJobPrs.data.GreaterThanMinusOneWeeks).ToString();
             TimeBucketThree = ((int)overallData.kpi.other.hotJobPrs.data.GreaterThanMinusTwoWeeks).ToString();
             TimeBucketFour = ((int)overallData.kpi.other.hotJobPrs.data.GreaterThanMinusThreeWeeks).ToString();
@@ -520,7 +521,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
             TotalOrders = "$" + string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.Total);
             TotalValue = "$" + string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.TotalValue);
-            TimeBucketOne = "$" + string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.ZeroWeeks);
+            TimeBucketOne = "$" + string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.GreaterThanZeroWeeks);
             TimeBucketTwo = "$" + string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusOneWeeks);
             TimeBucketThree = "$" + string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusTwoWeeks);
             TimeBucketFour = "$" + string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusThreeWeeks);
@@ -584,11 +585,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         //
                         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                         prsCreated = new DataTable();
-                        prsCreated = Overall.AllDt.Clone();
+                        prsCreated = PRPO_DB_Utils.AllDt.Clone();
 
 
 
-                        foreach (DataRow dr in Overall.AllDt.Rows)
+                        foreach (DataRow dr in PRPO_DB_Utils.AllDt.Rows)
                         {
                             if (Filters.FilterByPrDateRange)
                             {
@@ -731,11 +732,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         //
                         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                         prReleased = new DataTable();
-                        prReleased = Overall.pr2ndLvlRelDateDt.Clone();
+                        prReleased = PRPO_DB_Utils.pr2ndLvlRelDateDt.Clone();
 
 
 
-                        foreach (DataRow dr in Overall.pr2ndLvlRelDateDt.Rows)
+                        foreach (DataRow dr in PRPO_DB_Utils.pr2ndLvlRelDateDt.Rows)
                         {
                             if (Filters.FilterByPrDateRange)
                             {
@@ -877,11 +878,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         //
                         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                         totalSpend = new DataTable();
-                        totalSpend = Overall.prsOnPOsDt.Clone();
+                        totalSpend = PRPO_DB_Utils.prsOnPOsDt.Clone();
 
 
 
-                        foreach (DataRow dr in Overall.prsOnPOsDt.Rows)
+                        foreach (DataRow dr in PRPO_DB_Utils.prsOnPOsDt.Rows)
                         {
                             if (Filters.FilterByPrDateRange)
                             {
@@ -1023,11 +1024,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         //
                         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                         prVsPOValue = new DataTable();
-                        prVsPOValue = Overall.prsOnPOsDt.Clone();
+                        prVsPOValue = PRPO_DB_Utils.prsOnPOsDt.Clone();
 
 
 
-                        foreach (DataRow dr in Overall.prsOnPOsDt.Rows)
+                        foreach (DataRow dr in PRPO_DB_Utils.prsOnPOsDt.Rows)
                         {
                             if (Filters.FilterByPrDateRange)
                             {
@@ -1170,11 +1171,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         //
                         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                         hotJobPRs = new DataTable();
-                        hotJobPRs = Overall.AllDt.Clone();
+                        hotJobPRs = PRPO_DB_Utils.AllDt.Clone();
 
 
 
-                        foreach (DataRow dr in Overall.AllDt.Rows)
+                        foreach (DataRow dr in PRPO_DB_Utils.AllDt.Rows)
                         {
                             if (Filters.FilterByPrDateRange)
                             {
