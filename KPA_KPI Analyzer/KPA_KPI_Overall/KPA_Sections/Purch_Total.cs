@@ -26,6 +26,20 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
 
 
 
+        public string Name { get { return "Purch Total"; } }
+
+
+        public enum CategorNames
+        {
+            PrReleaseConfEntry,
+        }
+
+        public string[] categoryNames =
+        {
+            "PR Release to Confirmation Entry"
+        };
+
+
 
 
         /// <summary>

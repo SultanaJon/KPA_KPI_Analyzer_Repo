@@ -17,7 +17,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
         public Excess_Stock_Stock excessStockStock;
         public Excess_Stock_Open_Order excessStockOpenOrders;
         public Current_Plan_vs_Actual currPlanVsActual;
-        public MTC mtc;
 
 
 
@@ -39,7 +38,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
             excessStockStock = new Excess_Stock_Stock();
             excessStockOpenOrders = new Excess_Stock_Open_Order();
             currPlanVsActual = new Current_Plan_vs_Actual();
-            mtc = new MTC();
         }
     }
 }

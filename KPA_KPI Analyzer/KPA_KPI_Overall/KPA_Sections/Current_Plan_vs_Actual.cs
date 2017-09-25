@@ -32,6 +32,24 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
 
 
 
+        public string Name { get { return "Current Plan vs Actual"; } }
+
+
+        public enum CategorNames
+        {
+            CurrPlanDateVsCurrConfDate,
+            CurrPlanDateVsCurrConfDate_HJsOnly,
+        }
+
+        public string[] categoryNames =
+        {
+            "Current Plan Date vs Current Confirmation Date",
+            "Current Plan Date vs Current Confirmation Date - Hot Jobs Only",
+        };
+
+
+
+
         /// <summary>
         /// Loads the data of the specific KPA.
         /// </summary>

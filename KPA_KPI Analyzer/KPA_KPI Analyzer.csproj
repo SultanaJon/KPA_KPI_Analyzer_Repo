@@ -62,6 +62,12 @@
   <ItemGroup>
     <Compile Include="Configuration.cs" />
     <Compile Include="Diagnostics\DataReader.cs" />
+    <Compile Include="Templates\Template_Controls\KPA_Controls\NewKPAOverall.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Templates\Template_Controls\KPA_Controls\NewKPAOverall.Designer.cs">
+      <DependentUpon>NewKPAOverall.cs</DependentUpon>
+    </Compile>
     <Compile Include="Values\Constants.cs" />
     <Compile Include="DatabaseUtils\PRPOCommands.cs" />
     <Compile Include="DatabaseUtils\PRPO_DB_Utils.cs" />
@@ -138,7 +144,6 @@
     <Compile Include="KPA_KPI_Overall\KPA_Sections\Follow_Up.cs" />
     <Compile Include="KPA_KPI_Overall\KPA_Sections\Hot_Jobs.cs" />
     <Compile Include="KPA_KPI_Overall\KPA.cs" />
-    <Compile Include="KPA_KPI_Overall\KPA_Sections\MTC.cs" />
     <Compile Include="KPA_KPI_Overall\KPA_Sections\NCRs.cs" />
     <Compile Include="KPA_KPI_Overall\KPA_Sections\Plan.cs" />
     <Compile Include="KPA_KPI_Overall\KPA_Sections\Purch.cs" />
@@ -307,6 +312,9 @@
     <EmbeddedResource Include="KPA_KPI_UI.resx">
       <DependentUpon>KPA_KPI_UI.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Templates\Template_Controls\KPA_Controls\NewKPAOverall.resx">
+      <DependentUpon>NewKPAOverall.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Templates\Template_Controls\KPI_Controls\KPIFollowUpTemplate.resx">
       <DependentUpon>KPIFollowUpTemplate.cs</DependentUpon>

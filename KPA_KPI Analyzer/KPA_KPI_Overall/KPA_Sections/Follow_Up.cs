@@ -28,6 +28,25 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
 
 
 
+        public string Name { get { return "Follow Up"; } }
+
+
+        public enum CategorNames
+        {
+            ConfirmedDateVsPlanDate,
+            ConfirmedDateForUpcomingDel,
+            LateToConfirmed
+        }
+
+        public string[] categoryNames =
+        {
+            "Confirmed Date vs Plan Date",
+            "Confirmed Date for Upcoming Deliveries",
+            "Late to Confirmed"
+        };
+
+
+
         /// <summary>
         /// Loads the data for the specific KPA
         /// </summary>

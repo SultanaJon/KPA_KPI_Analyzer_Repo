@@ -32,6 +32,24 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
 
 
 
+        public string Name { get { return "Purch Sub"; } }
+
+
+        public enum CategorNames
+        {
+            PrReleasePoRelease,
+            PoCreationConfirmationEntry,
+        }
+
+        public string[] categoryNames =
+        {
+            "PR Release to PO Release",
+            "PO Creation to Confirmation Entry",
+        };
+
+
+
+
 
         /// <summary>
         /// Loads the data for the specific KPA

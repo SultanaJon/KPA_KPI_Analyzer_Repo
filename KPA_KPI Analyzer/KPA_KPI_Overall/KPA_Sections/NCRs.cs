@@ -14,6 +14,22 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
             openNCRs = new Open_NCRs();
             openNCRValues = new Open_NCR_Value();
         }
+
+
+        public string Name { get { return "NCRs"; } }
+
+
+        public enum CategorNames
+        {
+            OpenNCRs,
+            OpenNCRValues,
+        }
+
+        public string[] categoryNames =
+        {
+            "Open NCRs",
+            "Open NCR Values"
+        };
     }
 
 

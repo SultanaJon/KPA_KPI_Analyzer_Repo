@@ -98,28 +98,6 @@
             this.bunifuCircleProgressbar2 = new Bunifu.Framework.UI.BunifuCircleProgressbar();
             this.panel10 = new System.Windows.Forms.Panel();
             this.lbl_loadingStatus = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.tblpnl_DashbaordPage = new System.Windows.Forms.TableLayoutPanel();
-            this.pnl_ViewPrintReports = new System.Windows.Forms.Panel();
-            this.lbl_dashboardDate = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.bunifuCustomLabel16 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.bunifuCustomLabel15 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.tblpnl_DragDrop = new System.Windows.Forms.TableLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pnl_CountrySelector = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.bunifuCustomLabel25 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.btn_usSwitch = new Bunifu.Framework.UI.BunifuSwitch();
-            this.bunifuCustomLabel23 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.btn_mxSwitch = new Bunifu.Framework.UI.BunifuSwitch();
-            this.bunifuCustomLabel26 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.btn_LoadData = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.btn_dashboardCancel = new Bunifu.Framework.UI.BunifuFlatButton();
             this.pnl_NavigationPanelMax = new System.Windows.Forms.Panel();
             this.pnl_KPISectionsPanel = new System.Windows.Forms.Panel();
             this.btn_kpiOther = new System.Windows.Forms.Button();
@@ -153,6 +131,28 @@
             this.btn_Dashboard = new Bunifu.Framework.UI.BunifuImageButton();
             this.btn_Charts = new Bunifu.Framework.UI.BunifuImageButton();
             this.btn_Filters = new Bunifu.Framework.UI.BunifuImageButton();
+            this.tblpnl_DashbaordPage = new System.Windows.Forms.TableLayoutPanel();
+            this.pnl_ViewPrintReports = new System.Windows.Forms.Panel();
+            this.lbl_dashboardDate = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel16 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel15 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.tblpnl_DragDrop = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnl_CountrySelector = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.bunifuCustomLabel25 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.btn_usSwitch = new Bunifu.Framework.UI.BunifuSwitch();
+            this.bunifuCustomLabel23 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.btn_mxSwitch = new Bunifu.Framework.UI.BunifuSwitch();
+            this.bunifuCustomLabel26 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.btn_LoadData = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btn_dashboardCancel = new Bunifu.Framework.UI.BunifuFlatButton();
             this.pnl_MainNavigation = new System.Windows.Forms.Panel();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
@@ -166,6 +166,7 @@
             this.lbl_Performance = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel17 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.pnl_CategorySelectorButton = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.lbl_Category = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel29 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.FiltersTimer = new System.Windows.Forms.Timer(this.components);
@@ -196,6 +197,13 @@
             this.tableLayoutPanel9.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel10.SuspendLayout();
+            this.pnl_NavigationPanelMax.SuspendLayout();
+            this.pnl_KPISectionsPanel.SuspendLayout();
+            this.pnl_KPASectionsPanel.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_Dashboard)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_Charts)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_Filters)).BeginInit();
             this.tblpnl_DashbaordPage.SuspendLayout();
             this.pnl_ViewPrintReports.SuspendLayout();
             this.tblpnl_DragDrop.SuspendLayout();
@@ -206,13 +214,6 @@
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.pnl_NavigationPanelMax.SuspendLayout();
-            this.pnl_KPISectionsPanel.SuspendLayout();
-            this.pnl_KPASectionsPanel.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btn_Dashboard)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btn_Charts)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btn_Filters)).BeginInit();
             this.pnl_MainNavigation.SuspendLayout();
             this.tableLayoutPanel14.SuspendLayout();
             this.pnl_CountrySelectorButton.SuspendLayout();
@@ -1130,11 +1131,11 @@
             // pnl_activePage
             // 
             this.pnl_activePage.Controls.Add(this.pnl_loadingScreen);
+            this.pnl_activePage.Controls.Add(this.pnl_NavigationPanelMax);
             this.pnl_activePage.Controls.Add(this.tblpnl_Filters);
             this.pnl_activePage.Controls.Add(this.tblpnl_DashbaordPage);
             this.pnl_activePage.Controls.Add(this.tblpnl_DragDrop);
             this.pnl_activePage.Controls.Add(this.pnl_CountrySelector);
-            this.pnl_activePage.Controls.Add(this.pnl_NavigationPanelMax);
             this.pnl_activePage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_activePage.Location = new System.Drawing.Point(0, 77);
             this.pnl_activePage.Name = "pnl_activePage";
@@ -1222,346 +1223,6 @@
             this.lbl_loadingStatus.Size = new System.Drawing.Size(105, 20);
             this.lbl_loadingStatus.TabIndex = 0;
             this.lbl_loadingStatus.Text = "Loading Data";
-            // 
-            // tblpnl_DashbaordPage
-            // 
-            this.tblpnl_DashbaordPage.AllowDrop = true;
-            this.tblpnl_DashbaordPage.ColumnCount = 3;
-            this.tblpnl_DashbaordPage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tblpnl_DashbaordPage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54.3889F));
-            this.tblpnl_DashbaordPage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.6111F));
-            this.tblpnl_DashbaordPage.Controls.Add(this.pnl_ViewPrintReports, 2, 0);
-            this.tblpnl_DashbaordPage.Controls.Add(this.panel2, 0, 0);
-            this.tblpnl_DashbaordPage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tblpnl_DashbaordPage.Location = new System.Drawing.Point(0, 0);
-            this.tblpnl_DashbaordPage.Name = "tblpnl_DashbaordPage";
-            this.tblpnl_DashbaordPage.RowCount = 3;
-            this.tblpnl_DashbaordPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 250F));
-            this.tblpnl_DashbaordPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tblpnl_DashbaordPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 104F));
-            this.tblpnl_DashbaordPage.Size = new System.Drawing.Size(1200, 623);
-            this.tblpnl_DashbaordPage.TabIndex = 52;
-            // 
-            // pnl_ViewPrintReports
-            // 
-            this.pnl_ViewPrintReports.BackColor = System.Drawing.Color.White;
-            this.pnl_ViewPrintReports.Controls.Add(this.lbl_dashboardDate);
-            this.pnl_ViewPrintReports.Controls.Add(this.bunifuCustomLabel16);
-            this.pnl_ViewPrintReports.Controls.Add(this.bunifuCustomLabel15);
-            this.pnl_ViewPrintReports.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_ViewPrintReports.Enabled = false;
-            this.pnl_ViewPrintReports.Location = new System.Drawing.Point(748, 10);
-            this.pnl_ViewPrintReports.Margin = new System.Windows.Forms.Padding(5, 10, 10, 5);
-            this.pnl_ViewPrintReports.Name = "pnl_ViewPrintReports";
-            this.pnl_ViewPrintReports.Size = new System.Drawing.Size(442, 235);
-            this.pnl_ViewPrintReports.TabIndex = 9;
-            // 
-            // lbl_dashboardDate
-            // 
-            this.lbl_dashboardDate.AutoSize = true;
-            this.lbl_dashboardDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_dashboardDate.ForeColor = System.Drawing.Color.DarkGray;
-            this.lbl_dashboardDate.Location = new System.Drawing.Point(19, 154);
-            this.lbl_dashboardDate.Name = "lbl_dashboardDate";
-            this.lbl_dashboardDate.Size = new System.Drawing.Size(148, 29);
-            this.lbl_dashboardDate.TabIndex = 1;
-            this.lbl_dashboardDate.Text = "June 5, 2017";
-            // 
-            // bunifuCustomLabel16
-            // 
-            this.bunifuCustomLabel16.AutoSize = true;
-            this.bunifuCustomLabel16.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
-            this.bunifuCustomLabel16.Location = new System.Drawing.Point(16, 94);
-            this.bunifuCustomLabel16.Name = "bunifuCustomLabel16";
-            this.bunifuCustomLabel16.Size = new System.Drawing.Size(200, 44);
-            this.bunifuCustomLabel16.TabIndex = 0;
-            this.bunifuCustomLabel16.Text = "Data From";
-            // 
-            // bunifuCustomLabel15
-            // 
-            this.bunifuCustomLabel15.AutoSize = true;
-            this.bunifuCustomLabel15.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
-            this.bunifuCustomLabel15.Location = new System.Drawing.Point(13, 50);
-            this.bunifuCustomLabel15.Name = "bunifuCustomLabel15";
-            this.bunifuCustomLabel15.Size = new System.Drawing.Size(318, 44);
-            this.bunifuCustomLabel15.TabIndex = 0;
-            this.bunifuCustomLabel15.Text = "Currently Viewing";
-            // 
-            // panel2
-            // 
-            this.panel2.AllowDrop = true;
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.dragDropLargeCenter;
-            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.tblpnl_DashbaordPage.SetColumnSpan(this.panel2, 2);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(10, 10);
-            this.panel2.Margin = new System.Windows.Forms.Padding(10, 10, 5, 5);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(728, 235);
-            this.panel2.TabIndex = 9;
-            this.panel2.DragDrop += new System.Windows.Forms.DragEventHandler(this.pnl_DragDropArea_DragDrop);
-            this.panel2.DragEnter += new System.Windows.Forms.DragEventHandler(this.pnl_DragDropArea_DragEnter);
-            // 
-            // tblpnl_DragDrop
-            // 
-            this.tblpnl_DragDrop.ColumnCount = 2;
-            this.tblpnl_DragDrop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tblpnl_DragDrop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tblpnl_DragDrop.Controls.Add(this.panel1, 0, 0);
-            this.tblpnl_DragDrop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tblpnl_DragDrop.Location = new System.Drawing.Point(0, 0);
-            this.tblpnl_DragDrop.Margin = new System.Windows.Forms.Padding(10);
-            this.tblpnl_DragDrop.Name = "tblpnl_DragDrop";
-            this.tblpnl_DragDrop.Padding = new System.Windows.Forms.Padding(10);
-            this.tblpnl_DragDrop.RowCount = 2;
-            this.tblpnl_DragDrop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tblpnl_DragDrop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tblpnl_DragDrop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tblpnl_DragDrop.Size = new System.Drawing.Size(1200, 623);
-            this.tblpnl_DragDrop.TabIndex = 54;
-            // 
-            // panel1
-            // 
-            this.panel1.AllowDrop = true;
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.dragDropLargeCenter;
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.tblpnl_DragDrop.SetColumnSpan(this.panel1, 2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(10, 10);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0);
-            this.panel1.Name = "panel1";
-            this.tblpnl_DragDrop.SetRowSpan(this.panel1, 2);
-            this.panel1.Size = new System.Drawing.Size(1180, 603);
-            this.panel1.TabIndex = 0;
-            this.panel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.pnl_DragDropArea_DragDrop);
-            this.panel1.DragEnter += new System.Windows.Forms.DragEventHandler(this.pnl_DragDropArea_DragEnter);
-            // 
-            // pnl_CountrySelector
-            // 
-            this.pnl_CountrySelector.Controls.Add(this.tableLayoutPanel8);
-            this.pnl_CountrySelector.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_CountrySelector.Location = new System.Drawing.Point(0, 0);
-            this.pnl_CountrySelector.Name = "pnl_CountrySelector";
-            this.pnl_CountrySelector.Size = new System.Drawing.Size(1200, 623);
-            this.pnl_CountrySelector.TabIndex = 55;
-            // 
-            // tableLayoutPanel8
-            // 
-            this.tableLayoutPanel8.ColumnCount = 4;
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 156F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 153F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.Controls.Add(this.panel4, 1, 1);
-            this.tableLayoutPanel8.Controls.Add(this.panel5, 1, 2);
-            this.tableLayoutPanel8.Controls.Add(this.panel6, 2, 2);
-            this.tableLayoutPanel8.Controls.Add(this.panel7, 1, 3);
-            this.tableLayoutPanel8.Controls.Add(this.panel3, 1, 4);
-            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
-            this.tableLayoutPanel8.RowCount = 6;
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(1200, 623);
-            this.tableLayoutPanel8.TabIndex = 4;
-            // 
-            // panel4
-            // 
-            this.tableLayoutPanel8.SetColumnSpan(this.panel4, 2);
-            this.panel4.Controls.Add(this.bunifuCustomLabel25);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(445, 230);
-            this.panel4.Margin = new System.Windows.Forms.Padding(0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(309, 40);
-            this.panel4.TabIndex = 0;
-            // 
-            // bunifuCustomLabel25
-            // 
-            this.bunifuCustomLabel25.AutoSize = true;
-            this.bunifuCustomLabel25.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
-            this.bunifuCustomLabel25.Location = new System.Drawing.Point(8, 11);
-            this.bunifuCustomLabel25.Name = "bunifuCustomLabel25";
-            this.bunifuCustomLabel25.Size = new System.Drawing.Size(241, 20);
-            this.bunifuCustomLabel25.TabIndex = 0;
-            this.bunifuCustomLabel25.Text = "Select a SelectedCountry to load";
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.btn_usSwitch);
-            this.panel5.Controls.Add(this.bunifuCustomLabel23);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(445, 270);
-            this.panel5.Margin = new System.Windows.Forms.Padding(0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(156, 39);
-            this.panel5.TabIndex = 0;
-            // 
-            // btn_usSwitch
-            // 
-            this.btn_usSwitch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.btn_usSwitch.BorderRadius = 0;
-            this.btn_usSwitch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_usSwitch.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_usSwitch.Location = new System.Drawing.Point(90, 10);
-            this.btn_usSwitch.Name = "btn_usSwitch";
-            this.btn_usSwitch.Oncolor = System.Drawing.Color.Teal;
-            this.btn_usSwitch.Onoffcolor = System.Drawing.Color.DarkGray;
-            this.btn_usSwitch.Size = new System.Drawing.Size(51, 19);
-            this.btn_usSwitch.TabIndex = 1;
-            this.btn_usSwitch.Textcolor = System.Drawing.SystemColors.Control;
-            this.btn_usSwitch.Value = true;
-            this.btn_usSwitch.Click += new System.EventHandler(this.btn_usSwitch_Click);
-            // 
-            // bunifuCustomLabel23
-            // 
-            this.bunifuCustomLabel23.AutoSize = true;
-            this.bunifuCustomLabel23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
-            this.bunifuCustomLabel23.Location = new System.Drawing.Point(13, 13);
-            this.bunifuCustomLabel23.Name = "bunifuCustomLabel23";
-            this.bunifuCustomLabel23.Size = new System.Drawing.Size(71, 13);
-            this.bunifuCustomLabel23.TabIndex = 2;
-            this.bunifuCustomLabel23.Text = "United States";
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.btn_mxSwitch);
-            this.panel6.Controls.Add(this.bunifuCustomLabel26);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(601, 270);
-            this.panel6.Margin = new System.Windows.Forms.Padding(0);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(153, 39);
-            this.panel6.TabIndex = 0;
-            // 
-            // btn_mxSwitch
-            // 
-            this.btn_mxSwitch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.btn_mxSwitch.BorderRadius = 0;
-            this.btn_mxSwitch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_mxSwitch.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_mxSwitch.Location = new System.Drawing.Point(76, 10);
-            this.btn_mxSwitch.Name = "btn_mxSwitch";
-            this.btn_mxSwitch.Oncolor = System.Drawing.Color.Teal;
-            this.btn_mxSwitch.Onoffcolor = System.Drawing.Color.DarkGray;
-            this.btn_mxSwitch.Size = new System.Drawing.Size(51, 19);
-            this.btn_mxSwitch.TabIndex = 1;
-            this.btn_mxSwitch.Textcolor = System.Drawing.SystemColors.Control;
-            this.btn_mxSwitch.Value = false;
-            this.btn_mxSwitch.Click += new System.EventHandler(this.btn_mxSwitch_Click);
-            // 
-            // bunifuCustomLabel26
-            // 
-            this.bunifuCustomLabel26.AutoSize = true;
-            this.bunifuCustomLabel26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
-            this.bunifuCustomLabel26.Location = new System.Drawing.Point(29, 13);
-            this.bunifuCustomLabel26.Name = "bunifuCustomLabel26";
-            this.bunifuCustomLabel26.Size = new System.Drawing.Size(41, 13);
-            this.bunifuCustomLabel26.TabIndex = 2;
-            this.bunifuCustomLabel26.Text = "Mexico";
-            // 
-            // panel7
-            // 
-            this.tableLayoutPanel8.SetColumnSpan(this.panel7, 2);
-            this.panel7.Controls.Add(this.btn_LoadData);
-            this.panel7.Location = new System.Drawing.Point(445, 309);
-            this.panel7.Margin = new System.Windows.Forms.Padding(0);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(309, 41);
-            this.panel7.TabIndex = 0;
-            // 
-            // btn_LoadData
-            // 
-            this.btn_LoadData.Activecolor = System.Drawing.Color.DarkSlateGray;
-            this.btn_LoadData.BackColor = System.Drawing.Color.Teal;
-            this.btn_LoadData.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_LoadData.BorderRadius = 0;
-            this.btn_LoadData.ButtonText = "Load Data";
-            this.btn_LoadData.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_LoadData.DisabledColor = System.Drawing.Color.Gray;
-            this.btn_LoadData.Iconcolor = System.Drawing.Color.Transparent;
-            this.btn_LoadData.Iconimage = null;
-            this.btn_LoadData.Iconimage_right = null;
-            this.btn_LoadData.Iconimage_right_Selected = null;
-            this.btn_LoadData.Iconimage_Selected = null;
-            this.btn_LoadData.IconMarginLeft = 0;
-            this.btn_LoadData.IconMarginRight = 0;
-            this.btn_LoadData.IconRightVisible = true;
-            this.btn_LoadData.IconRightZoom = 0D;
-            this.btn_LoadData.IconVisible = true;
-            this.btn_LoadData.IconZoom = 90D;
-            this.btn_LoadData.IsTab = false;
-            this.btn_LoadData.Location = new System.Drawing.Point(77, 6);
-            this.btn_LoadData.Name = "btn_LoadData";
-            this.btn_LoadData.Normalcolor = System.Drawing.Color.Teal;
-            this.btn_LoadData.OnHovercolor = System.Drawing.Color.DarkSlateGray;
-            this.btn_LoadData.OnHoverTextColor = System.Drawing.Color.White;
-            this.btn_LoadData.selected = false;
-            this.btn_LoadData.Size = new System.Drawing.Size(159, 30);
-            this.btn_LoadData.TabIndex = 3;
-            this.btn_LoadData.Text = "Load Data";
-            this.btn_LoadData.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btn_LoadData.Textcolor = System.Drawing.Color.White;
-            this.btn_LoadData.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_LoadData.Click += new System.EventHandler(this.btn_LoadData_Click);
-            // 
-            // panel3
-            // 
-            this.tableLayoutPanel8.SetColumnSpan(this.panel3, 2);
-            this.panel3.Controls.Add(this.btn_dashboardCancel);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(445, 350);
-            this.panel3.Margin = new System.Windows.Forms.Padding(0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(309, 43);
-            this.panel3.TabIndex = 0;
-            // 
-            // btn_dashboardCancel
-            // 
-            this.btn_dashboardCancel.Activecolor = System.Drawing.Color.DarkSlateGray;
-            this.btn_dashboardCancel.BackColor = System.Drawing.Color.Teal;
-            this.btn_dashboardCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_dashboardCancel.BorderRadius = 0;
-            this.btn_dashboardCancel.ButtonText = "Cancel";
-            this.btn_dashboardCancel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_dashboardCancel.DisabledColor = System.Drawing.Color.Gray;
-            this.btn_dashboardCancel.Iconcolor = System.Drawing.Color.Transparent;
-            this.btn_dashboardCancel.Iconimage = null;
-            this.btn_dashboardCancel.Iconimage_right = null;
-            this.btn_dashboardCancel.Iconimage_right_Selected = null;
-            this.btn_dashboardCancel.Iconimage_Selected = null;
-            this.btn_dashboardCancel.IconMarginLeft = 0;
-            this.btn_dashboardCancel.IconMarginRight = 0;
-            this.btn_dashboardCancel.IconRightVisible = true;
-            this.btn_dashboardCancel.IconRightZoom = 0D;
-            this.btn_dashboardCancel.IconVisible = true;
-            this.btn_dashboardCancel.IconZoom = 90D;
-            this.btn_dashboardCancel.IsTab = false;
-            this.btn_dashboardCancel.Location = new System.Drawing.Point(77, 7);
-            this.btn_dashboardCancel.Name = "btn_dashboardCancel";
-            this.btn_dashboardCancel.Normalcolor = System.Drawing.Color.Teal;
-            this.btn_dashboardCancel.OnHovercolor = System.Drawing.Color.DarkSlateGray;
-            this.btn_dashboardCancel.OnHoverTextColor = System.Drawing.Color.White;
-            this.btn_dashboardCancel.selected = false;
-            this.btn_dashboardCancel.Size = new System.Drawing.Size(159, 30);
-            this.btn_dashboardCancel.TabIndex = 3;
-            this.btn_dashboardCancel.Text = "Cancel";
-            this.btn_dashboardCancel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btn_dashboardCancel.Textcolor = System.Drawing.Color.White;
-            this.btn_dashboardCancel.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_dashboardCancel.Click += new System.EventHandler(this.btn_dashboardCancel_Click);
             // 
             // pnl_NavigationPanelMax
             // 
@@ -2220,6 +1881,346 @@
             this.btn_Filters.Zoom = 0;
             this.btn_Filters.Click += new System.EventHandler(this.mainNavButton_Click);
             // 
+            // tblpnl_DashbaordPage
+            // 
+            this.tblpnl_DashbaordPage.AllowDrop = true;
+            this.tblpnl_DashbaordPage.ColumnCount = 3;
+            this.tblpnl_DashbaordPage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tblpnl_DashbaordPage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54.3889F));
+            this.tblpnl_DashbaordPage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.6111F));
+            this.tblpnl_DashbaordPage.Controls.Add(this.pnl_ViewPrintReports, 2, 0);
+            this.tblpnl_DashbaordPage.Controls.Add(this.panel2, 0, 0);
+            this.tblpnl_DashbaordPage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tblpnl_DashbaordPage.Location = new System.Drawing.Point(0, 0);
+            this.tblpnl_DashbaordPage.Name = "tblpnl_DashbaordPage";
+            this.tblpnl_DashbaordPage.RowCount = 3;
+            this.tblpnl_DashbaordPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 250F));
+            this.tblpnl_DashbaordPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tblpnl_DashbaordPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 104F));
+            this.tblpnl_DashbaordPage.Size = new System.Drawing.Size(1200, 623);
+            this.tblpnl_DashbaordPage.TabIndex = 52;
+            // 
+            // pnl_ViewPrintReports
+            // 
+            this.pnl_ViewPrintReports.BackColor = System.Drawing.Color.White;
+            this.pnl_ViewPrintReports.Controls.Add(this.lbl_dashboardDate);
+            this.pnl_ViewPrintReports.Controls.Add(this.bunifuCustomLabel16);
+            this.pnl_ViewPrintReports.Controls.Add(this.bunifuCustomLabel15);
+            this.pnl_ViewPrintReports.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_ViewPrintReports.Enabled = false;
+            this.pnl_ViewPrintReports.Location = new System.Drawing.Point(748, 10);
+            this.pnl_ViewPrintReports.Margin = new System.Windows.Forms.Padding(5, 10, 10, 5);
+            this.pnl_ViewPrintReports.Name = "pnl_ViewPrintReports";
+            this.pnl_ViewPrintReports.Size = new System.Drawing.Size(442, 235);
+            this.pnl_ViewPrintReports.TabIndex = 9;
+            // 
+            // lbl_dashboardDate
+            // 
+            this.lbl_dashboardDate.AutoSize = true;
+            this.lbl_dashboardDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_dashboardDate.ForeColor = System.Drawing.Color.DarkGray;
+            this.lbl_dashboardDate.Location = new System.Drawing.Point(19, 154);
+            this.lbl_dashboardDate.Name = "lbl_dashboardDate";
+            this.lbl_dashboardDate.Size = new System.Drawing.Size(148, 29);
+            this.lbl_dashboardDate.TabIndex = 1;
+            this.lbl_dashboardDate.Text = "June 5, 2017";
+            // 
+            // bunifuCustomLabel16
+            // 
+            this.bunifuCustomLabel16.AutoSize = true;
+            this.bunifuCustomLabel16.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.bunifuCustomLabel16.Location = new System.Drawing.Point(16, 94);
+            this.bunifuCustomLabel16.Name = "bunifuCustomLabel16";
+            this.bunifuCustomLabel16.Size = new System.Drawing.Size(200, 44);
+            this.bunifuCustomLabel16.TabIndex = 0;
+            this.bunifuCustomLabel16.Text = "Data From";
+            // 
+            // bunifuCustomLabel15
+            // 
+            this.bunifuCustomLabel15.AutoSize = true;
+            this.bunifuCustomLabel15.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.bunifuCustomLabel15.Location = new System.Drawing.Point(13, 50);
+            this.bunifuCustomLabel15.Name = "bunifuCustomLabel15";
+            this.bunifuCustomLabel15.Size = new System.Drawing.Size(318, 44);
+            this.bunifuCustomLabel15.TabIndex = 0;
+            this.bunifuCustomLabel15.Text = "Currently Viewing";
+            // 
+            // panel2
+            // 
+            this.panel2.AllowDrop = true;
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.dragDropLargeCenter;
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.tblpnl_DashbaordPage.SetColumnSpan(this.panel2, 2);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(10, 10);
+            this.panel2.Margin = new System.Windows.Forms.Padding(10, 10, 5, 5);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(728, 235);
+            this.panel2.TabIndex = 9;
+            this.panel2.DragDrop += new System.Windows.Forms.DragEventHandler(this.pnl_DragDropArea_DragDrop);
+            this.panel2.DragEnter += new System.Windows.Forms.DragEventHandler(this.pnl_DragDropArea_DragEnter);
+            // 
+            // tblpnl_DragDrop
+            // 
+            this.tblpnl_DragDrop.ColumnCount = 2;
+            this.tblpnl_DragDrop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tblpnl_DragDrop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tblpnl_DragDrop.Controls.Add(this.panel1, 0, 0);
+            this.tblpnl_DragDrop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tblpnl_DragDrop.Location = new System.Drawing.Point(0, 0);
+            this.tblpnl_DragDrop.Margin = new System.Windows.Forms.Padding(10);
+            this.tblpnl_DragDrop.Name = "tblpnl_DragDrop";
+            this.tblpnl_DragDrop.Padding = new System.Windows.Forms.Padding(10);
+            this.tblpnl_DragDrop.RowCount = 2;
+            this.tblpnl_DragDrop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tblpnl_DragDrop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tblpnl_DragDrop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tblpnl_DragDrop.Size = new System.Drawing.Size(1200, 623);
+            this.tblpnl_DragDrop.TabIndex = 54;
+            // 
+            // panel1
+            // 
+            this.panel1.AllowDrop = true;
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.dragDropLargeCenter;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.tblpnl_DragDrop.SetColumnSpan(this.panel1, 2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(10, 10);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
+            this.panel1.Name = "panel1";
+            this.tblpnl_DragDrop.SetRowSpan(this.panel1, 2);
+            this.panel1.Size = new System.Drawing.Size(1180, 603);
+            this.panel1.TabIndex = 0;
+            this.panel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.pnl_DragDropArea_DragDrop);
+            this.panel1.DragEnter += new System.Windows.Forms.DragEventHandler(this.pnl_DragDropArea_DragEnter);
+            // 
+            // pnl_CountrySelector
+            // 
+            this.pnl_CountrySelector.Controls.Add(this.tableLayoutPanel8);
+            this.pnl_CountrySelector.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_CountrySelector.Location = new System.Drawing.Point(0, 0);
+            this.pnl_CountrySelector.Name = "pnl_CountrySelector";
+            this.pnl_CountrySelector.Size = new System.Drawing.Size(1200, 623);
+            this.pnl_CountrySelector.TabIndex = 55;
+            // 
+            // tableLayoutPanel8
+            // 
+            this.tableLayoutPanel8.ColumnCount = 4;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 156F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 153F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.Controls.Add(this.panel4, 1, 1);
+            this.tableLayoutPanel8.Controls.Add(this.panel5, 1, 2);
+            this.tableLayoutPanel8.Controls.Add(this.panel6, 2, 2);
+            this.tableLayoutPanel8.Controls.Add(this.panel7, 1, 3);
+            this.tableLayoutPanel8.Controls.Add(this.panel3, 1, 4);
+            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.RowCount = 6;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(1200, 623);
+            this.tableLayoutPanel8.TabIndex = 4;
+            // 
+            // panel4
+            // 
+            this.tableLayoutPanel8.SetColumnSpan(this.panel4, 2);
+            this.panel4.Controls.Add(this.bunifuCustomLabel25);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(445, 230);
+            this.panel4.Margin = new System.Windows.Forms.Padding(0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(309, 40);
+            this.panel4.TabIndex = 0;
+            // 
+            // bunifuCustomLabel25
+            // 
+            this.bunifuCustomLabel25.AutoSize = true;
+            this.bunifuCustomLabel25.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.bunifuCustomLabel25.Location = new System.Drawing.Point(8, 11);
+            this.bunifuCustomLabel25.Name = "bunifuCustomLabel25";
+            this.bunifuCustomLabel25.Size = new System.Drawing.Size(241, 20);
+            this.bunifuCustomLabel25.TabIndex = 0;
+            this.bunifuCustomLabel25.Text = "Select a SelectedCountry to load";
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.btn_usSwitch);
+            this.panel5.Controls.Add(this.bunifuCustomLabel23);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(445, 270);
+            this.panel5.Margin = new System.Windows.Forms.Padding(0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(156, 39);
+            this.panel5.TabIndex = 0;
+            // 
+            // btn_usSwitch
+            // 
+            this.btn_usSwitch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.btn_usSwitch.BorderRadius = 0;
+            this.btn_usSwitch.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_usSwitch.ForeColor = System.Drawing.SystemColors.Control;
+            this.btn_usSwitch.Location = new System.Drawing.Point(90, 10);
+            this.btn_usSwitch.Name = "btn_usSwitch";
+            this.btn_usSwitch.Oncolor = System.Drawing.Color.Teal;
+            this.btn_usSwitch.Onoffcolor = System.Drawing.Color.DarkGray;
+            this.btn_usSwitch.Size = new System.Drawing.Size(51, 19);
+            this.btn_usSwitch.TabIndex = 1;
+            this.btn_usSwitch.Textcolor = System.Drawing.SystemColors.Control;
+            this.btn_usSwitch.Value = true;
+            this.btn_usSwitch.Click += new System.EventHandler(this.btn_usSwitch_Click);
+            // 
+            // bunifuCustomLabel23
+            // 
+            this.bunifuCustomLabel23.AutoSize = true;
+            this.bunifuCustomLabel23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.bunifuCustomLabel23.Location = new System.Drawing.Point(13, 13);
+            this.bunifuCustomLabel23.Name = "bunifuCustomLabel23";
+            this.bunifuCustomLabel23.Size = new System.Drawing.Size(71, 13);
+            this.bunifuCustomLabel23.TabIndex = 2;
+            this.bunifuCustomLabel23.Text = "United States";
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.btn_mxSwitch);
+            this.panel6.Controls.Add(this.bunifuCustomLabel26);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.Location = new System.Drawing.Point(601, 270);
+            this.panel6.Margin = new System.Windows.Forms.Padding(0);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(153, 39);
+            this.panel6.TabIndex = 0;
+            // 
+            // btn_mxSwitch
+            // 
+            this.btn_mxSwitch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.btn_mxSwitch.BorderRadius = 0;
+            this.btn_mxSwitch.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_mxSwitch.ForeColor = System.Drawing.SystemColors.Control;
+            this.btn_mxSwitch.Location = new System.Drawing.Point(76, 10);
+            this.btn_mxSwitch.Name = "btn_mxSwitch";
+            this.btn_mxSwitch.Oncolor = System.Drawing.Color.Teal;
+            this.btn_mxSwitch.Onoffcolor = System.Drawing.Color.DarkGray;
+            this.btn_mxSwitch.Size = new System.Drawing.Size(51, 19);
+            this.btn_mxSwitch.TabIndex = 1;
+            this.btn_mxSwitch.Textcolor = System.Drawing.SystemColors.Control;
+            this.btn_mxSwitch.Value = false;
+            this.btn_mxSwitch.Click += new System.EventHandler(this.btn_mxSwitch_Click);
+            // 
+            // bunifuCustomLabel26
+            // 
+            this.bunifuCustomLabel26.AutoSize = true;
+            this.bunifuCustomLabel26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.bunifuCustomLabel26.Location = new System.Drawing.Point(29, 13);
+            this.bunifuCustomLabel26.Name = "bunifuCustomLabel26";
+            this.bunifuCustomLabel26.Size = new System.Drawing.Size(41, 13);
+            this.bunifuCustomLabel26.TabIndex = 2;
+            this.bunifuCustomLabel26.Text = "Mexico";
+            // 
+            // panel7
+            // 
+            this.tableLayoutPanel8.SetColumnSpan(this.panel7, 2);
+            this.panel7.Controls.Add(this.btn_LoadData);
+            this.panel7.Location = new System.Drawing.Point(445, 309);
+            this.panel7.Margin = new System.Windows.Forms.Padding(0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(309, 41);
+            this.panel7.TabIndex = 0;
+            // 
+            // btn_LoadData
+            // 
+            this.btn_LoadData.Activecolor = System.Drawing.Color.DarkSlateGray;
+            this.btn_LoadData.BackColor = System.Drawing.Color.Teal;
+            this.btn_LoadData.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_LoadData.BorderRadius = 0;
+            this.btn_LoadData.ButtonText = "Load Data";
+            this.btn_LoadData.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_LoadData.DisabledColor = System.Drawing.Color.Gray;
+            this.btn_LoadData.Iconcolor = System.Drawing.Color.Transparent;
+            this.btn_LoadData.Iconimage = null;
+            this.btn_LoadData.Iconimage_right = null;
+            this.btn_LoadData.Iconimage_right_Selected = null;
+            this.btn_LoadData.Iconimage_Selected = null;
+            this.btn_LoadData.IconMarginLeft = 0;
+            this.btn_LoadData.IconMarginRight = 0;
+            this.btn_LoadData.IconRightVisible = true;
+            this.btn_LoadData.IconRightZoom = 0D;
+            this.btn_LoadData.IconVisible = true;
+            this.btn_LoadData.IconZoom = 90D;
+            this.btn_LoadData.IsTab = false;
+            this.btn_LoadData.Location = new System.Drawing.Point(77, 6);
+            this.btn_LoadData.Name = "btn_LoadData";
+            this.btn_LoadData.Normalcolor = System.Drawing.Color.Teal;
+            this.btn_LoadData.OnHovercolor = System.Drawing.Color.DarkSlateGray;
+            this.btn_LoadData.OnHoverTextColor = System.Drawing.Color.White;
+            this.btn_LoadData.selected = false;
+            this.btn_LoadData.Size = new System.Drawing.Size(159, 30);
+            this.btn_LoadData.TabIndex = 3;
+            this.btn_LoadData.Text = "Load Data";
+            this.btn_LoadData.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_LoadData.Textcolor = System.Drawing.Color.White;
+            this.btn_LoadData.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_LoadData.Click += new System.EventHandler(this.btn_LoadData_Click);
+            // 
+            // panel3
+            // 
+            this.tableLayoutPanel8.SetColumnSpan(this.panel3, 2);
+            this.panel3.Controls.Add(this.btn_dashboardCancel);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(445, 350);
+            this.panel3.Margin = new System.Windows.Forms.Padding(0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(309, 43);
+            this.panel3.TabIndex = 0;
+            // 
+            // btn_dashboardCancel
+            // 
+            this.btn_dashboardCancel.Activecolor = System.Drawing.Color.DarkSlateGray;
+            this.btn_dashboardCancel.BackColor = System.Drawing.Color.Teal;
+            this.btn_dashboardCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_dashboardCancel.BorderRadius = 0;
+            this.btn_dashboardCancel.ButtonText = "Cancel";
+            this.btn_dashboardCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_dashboardCancel.DisabledColor = System.Drawing.Color.Gray;
+            this.btn_dashboardCancel.Iconcolor = System.Drawing.Color.Transparent;
+            this.btn_dashboardCancel.Iconimage = null;
+            this.btn_dashboardCancel.Iconimage_right = null;
+            this.btn_dashboardCancel.Iconimage_right_Selected = null;
+            this.btn_dashboardCancel.Iconimage_Selected = null;
+            this.btn_dashboardCancel.IconMarginLeft = 0;
+            this.btn_dashboardCancel.IconMarginRight = 0;
+            this.btn_dashboardCancel.IconRightVisible = true;
+            this.btn_dashboardCancel.IconRightZoom = 0D;
+            this.btn_dashboardCancel.IconVisible = true;
+            this.btn_dashboardCancel.IconZoom = 90D;
+            this.btn_dashboardCancel.IsTab = false;
+            this.btn_dashboardCancel.Location = new System.Drawing.Point(77, 7);
+            this.btn_dashboardCancel.Name = "btn_dashboardCancel";
+            this.btn_dashboardCancel.Normalcolor = System.Drawing.Color.Teal;
+            this.btn_dashboardCancel.OnHovercolor = System.Drawing.Color.DarkSlateGray;
+            this.btn_dashboardCancel.OnHoverTextColor = System.Drawing.Color.White;
+            this.btn_dashboardCancel.selected = false;
+            this.btn_dashboardCancel.Size = new System.Drawing.Size(159, 30);
+            this.btn_dashboardCancel.TabIndex = 3;
+            this.btn_dashboardCancel.Text = "Cancel";
+            this.btn_dashboardCancel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_dashboardCancel.Textcolor = System.Drawing.Color.White;
+            this.btn_dashboardCancel.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_dashboardCancel.Click += new System.EventHandler(this.btn_dashboardCancel_Click);
+            // 
             // pnl_MainNavigation
             // 
             this.pnl_MainNavigation.BackColor = System.Drawing.Color.Black;
@@ -2373,6 +2374,7 @@
             this.pnl_CategorySelectorButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnl_CategorySelectorButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.pnl_CategorySelectorButton.Controls.Add(this.button2);
             this.pnl_CategorySelectorButton.Controls.Add(this.lbl_Category);
             this.pnl_CategorySelectorButton.Controls.Add(this.bunifuCustomLabel29);
             this.pnl_CategorySelectorButton.Location = new System.Drawing.Point(679, 0);
@@ -2381,6 +2383,16 @@
             this.pnl_CategorySelectorButton.Size = new System.Drawing.Size(521, 50);
             this.pnl_CategorySelectorButton.TabIndex = 0;
             this.pnl_CategorySelectorButton.Tag = "4";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(202, 13);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(169, 24);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "Click Me!";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // lbl_Category
             // 
@@ -2512,6 +2524,14 @@
             this.panel9.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
+            this.pnl_NavigationPanelMax.ResumeLayout(false);
+            this.pnl_NavigationPanelMax.PerformLayout();
+            this.pnl_KPISectionsPanel.ResumeLayout(false);
+            this.pnl_KPASectionsPanel.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btn_Dashboard)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_Charts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_Filters)).EndInit();
             this.tblpnl_DashbaordPage.ResumeLayout(false);
             this.pnl_ViewPrintReports.ResumeLayout(false);
             this.pnl_ViewPrintReports.PerformLayout();
@@ -2526,14 +2546,6 @@
             this.panel6.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            this.pnl_NavigationPanelMax.ResumeLayout(false);
-            this.pnl_NavigationPanelMax.PerformLayout();
-            this.pnl_KPISectionsPanel.ResumeLayout(false);
-            this.pnl_KPASectionsPanel.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.btn_Dashboard)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btn_Charts)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btn_Filters)).EndInit();
             this.pnl_MainNavigation.ResumeLayout(false);
             this.tableLayoutPanel14.ResumeLayout(false);
             this.pnl_CountrySelectorButton.ResumeLayout(false);
@@ -2697,6 +2709,7 @@
         private System.Windows.Forms.Timer DataLoaderTimer;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button2;
     }
 }
 

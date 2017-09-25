@@ -24,6 +24,30 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
 
 
 
+        public string Name { get { return "Excess Stock - Stock"; } }
+
+
+        public enum CategorNames
+        {
+            PrsAgingNotReleased,
+            PrsAgingReleased,
+            PoCreationToConfirmationEntry,
+            ConfirmedVsPlanDate,
+            ConfirmedDateForUpcomingDeliveries
+        }
+
+        public string[] categoryNames =
+        {
+            "Prs Aging (Not Released)",
+            "PRs Aging (Released)",
+            "PO Creation Date to Confirmation Entry Date",
+            "Confirmed Date vs Plan Date",
+            "Confirmed Date for Upcoming Deliveries"
+        };
+
+
+
+
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //
         //

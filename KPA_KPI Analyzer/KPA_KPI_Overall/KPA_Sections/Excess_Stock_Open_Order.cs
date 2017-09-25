@@ -19,6 +19,28 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
             confVsPlanDate = new Conf_vs_Plan_Date();
             ConfDateUpcomingDel = new Conf_Date_Upcoming_Del();
         }
+
+
+        public string Name { get { return "Excess Stock - Open Orders"; } }
+
+
+        public enum CategorNames
+        {
+            PrsAgingNotReleased,
+            PrsAgingReleased,
+            PoCreationToConfirmationEntry,
+            ConfirmedVsPlanDate,
+            ConfirmedDateForUpcomingDeliveries
+        }
+
+        public string[] categoryNames =
+        {
+            "Prs Aging (Not Released)",
+            "PRs Aging (Released)",
+            "PO Creation Date to Confirmation Entry Date",
+            "Confirmed Date vs Plan Date",
+            "Confirmed Date for Upcoming Deliveries"
+        };
     }
 
 

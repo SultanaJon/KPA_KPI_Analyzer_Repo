@@ -34,6 +34,26 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
 
 
 
+        public string Name { get { return "Hot Jobs"; } }
+
+
+        public enum CategorNames
+        {
+            PrsNotOnPo,
+            NoConfirmation,
+            LateToConfirmed
+        }
+
+        public string[] categoryNames =
+        {
+            "PRs (Not on PO) - Hot Jobs Only",
+            "No Confirmations - Hot Jobs Only",
+            "Late to Confirmed - Hot Jobs Only"
+        };
+
+
+
+
 
         /// <summary>
         /// Loads the data for the specific KPA

@@ -13,6 +13,21 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
         {
             PlanOrderConfEntry = new Plan_Order_Conf_Entry();
         }
+
+
+
+        public string Name { get { return "Purch Plan Total"; } }
+
+
+        public enum CategorNames
+        {
+            PurchPlanTotalAging,
+        }
+
+        public string[] categoryNames =
+        {
+            "Purchasing/Planning Total Aging",
+        };
     }
 
 

@@ -30,6 +30,27 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
 
 
 
+        public string Name { get { return "Plan"; } }
+
+
+
+        public enum CategorNames
+        {
+            PlannedOrderAging,
+            PrsAgingNotReleased,
+            MaterialDue
+        }
+
+
+        public string[] categoryNames =
+        {
+            "Planned Order Aging",
+            "PRs Aging (Not Released)",
+            "Material Due"
+        };
+
+
+
 
 
         /// <summary>

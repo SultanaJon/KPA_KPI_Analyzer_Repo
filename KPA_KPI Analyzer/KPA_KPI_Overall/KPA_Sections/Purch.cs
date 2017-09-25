@@ -35,6 +35,29 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
 
 
 
+        public string Name { get { return "Purch"; } }
+
+
+        public enum CategorNames
+        {
+            PRsAgingReleased,
+            POFirstRelease,
+            POPrevRelease,
+            NoConfirmation
+        }
+
+        public string[] categoryNames =
+        {
+            "PRs Aging (Released)",
+            "PO First Release",
+            "PO Prev Release",
+            "No Confirmation"
+        };
+
+
+
+
+
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //

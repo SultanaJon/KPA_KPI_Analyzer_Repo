@@ -14,6 +14,25 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
             cancellationCount = new Cancellation_Count();
             cancellationValue = new Cancellation_Value();
         }
+
+
+
+
+
+        public string Name { get { return "Cancellations"; } }
+
+
+        public enum CategorNames
+        {
+            CancellationCount,
+            CancellationValue,
+        }
+
+        public string[] categoryNames =
+        {
+            "Cancellation Count",
+            "Cancellation Value",
+        };
     }
 
 
