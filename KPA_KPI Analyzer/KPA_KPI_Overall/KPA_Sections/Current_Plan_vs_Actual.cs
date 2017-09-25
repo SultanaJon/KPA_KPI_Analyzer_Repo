@@ -55,7 +55,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                 OleDbDataAdapter da = new OleDbDataAdapter(cmd);
                 da.Fill(dt);
 
-
                 foreach (DataRow dr in dt.Rows)
                 {
                     if (Filters.FilterByPrDateRange)

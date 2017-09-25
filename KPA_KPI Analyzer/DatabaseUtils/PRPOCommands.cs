@@ -52,6 +52,7 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
                 KPA_FollowUp_LateToConfirmedDate,
                 KPA_HotJobs_PrsNotonPO,
                 KPA_HotJobs_NoConfirmations,
+                KPA_HotJobs_LateToConfirmed,
                 KPA_CurrPlanActual_CurrPlanDateCurrConfDateOpenPO,
                 KPA_CurrPlanActual_CurrPlanDateCurrConfDateOpenPOHotJobs
             }
@@ -125,6 +126,7 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
             // KPA -> Hot Jobs
             "SELECT * FROM " + Values.Globals.SelectedCountry + " WHERE " + "(" + Values.Globals.SelectedCountry + ".[PO Date] = '00/00/0000' AND " + Values.Globals.SelectedCountry + ".[PR 2° Rel# Date] <> '00/00/0000' AND " + Values.Globals.SelectedCountry + ".[Purch# Group] = 'UHJ')" + Filters.FilterQuery,
             "SELECT * FROM " + Values.Globals.SelectedCountry + " WHERE " + "(" + Values.Globals.SelectedCountry + ".[Qty Ordered] > 0 AND " + Values.Globals.SelectedCountry + ".[Del#Conf#Date] = '00/00/0000' AND " + Values.Globals.SelectedCountry + ".[PO Line Creat#DT] <> '00/00/0000' AND " + Values.Globals.SelectedCountry + ".[Purch# Group] = 'UHJ' AND " + Values.Globals.SelectedCountry + ".[Escaped] IS NULL)" + Filters.FilterQuery,
+            "SELECT * FROM " + Values.Globals.SelectedCountry + " WHERE " + "(" + Values.Globals.SelectedCountry + ".[Qty Ordered] > 0 AND " + Values.Globals.SelectedCountry + ".[Del#Conf#Date] <> '00/00/0000' AND " + Values.Globals.SelectedCountry + ".[Purch# Group] = 'UHJ' AND " + Values.Globals.SelectedCountry + ".[Escaped] IS NULL)" + Filters.FilterQuery,
 
             // KPA -> Excess Stock - Stock
 

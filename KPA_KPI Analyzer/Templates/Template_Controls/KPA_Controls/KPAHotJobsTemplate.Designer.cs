@@ -132,6 +132,7 @@
             this.lbl_analysisTwo = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.lbl_analysisOne = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.datavizLoadTimer = new System.Windows.Forms.Timer(this.components);
+            this.btn_Three = new Bunifu.Framework.UI.BunifuFlatButton();
             this.tblPnl_template.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -221,6 +222,7 @@
             // panel2
             // 
             this.tblPnl_template.SetColumnSpan(this.panel2, 2);
+            this.panel2.Controls.Add(this.btn_Three);
             this.panel2.Controls.Add(this.btn_Two);
             this.panel2.Controls.Add(this.btn_One);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1809,6 +1811,45 @@
             // 
             this.datavizLoadTimer.Tick += new System.EventHandler(this.datavizLoadTimer_Tick);
             // 
+            // btn_Three
+            // 
+            this.btn_Three.Activecolor = System.Drawing.SystemColors.Control;
+            this.btn_Three.BackColor = System.Drawing.SystemColors.Control;
+            this.btn_Three.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_Three.BorderRadius = 0;
+            this.btn_Three.ButtonText = "Late to Confirmed - Hot Jobs Only";
+            this.btn_Three.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Three.DisabledColor = System.Drawing.Color.Gray;
+            this.btn_Three.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_Three.ForeColor = System.Drawing.Color.DimGray;
+            this.btn_Three.Iconcolor = System.Drawing.Color.Transparent;
+            this.btn_Three.Iconimage = null;
+            this.btn_Three.Iconimage_right = null;
+            this.btn_Three.Iconimage_right_Selected = null;
+            this.btn_Three.Iconimage_Selected = null;
+            this.btn_Three.IconMarginLeft = 0;
+            this.btn_Three.IconMarginRight = 0;
+            this.btn_Three.IconRightVisible = true;
+            this.btn_Three.IconRightZoom = 0D;
+            this.btn_Three.IconVisible = true;
+            this.btn_Three.IconZoom = 90D;
+            this.btn_Three.IsTab = false;
+            this.btn_Three.Location = new System.Drawing.Point(350, 0);
+            this.btn_Three.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_Three.Name = "btn_Three";
+            this.btn_Three.Normalcolor = System.Drawing.SystemColors.Control;
+            this.btn_Three.OnHovercolor = System.Drawing.SystemColors.Control;
+            this.btn_Three.OnHoverTextColor = System.Drawing.Color.Coral;
+            this.btn_Three.selected = false;
+            this.btn_Three.Size = new System.Drawing.Size(175, 50);
+            this.btn_Three.TabIndex = 2;
+            this.btn_Three.Tag = "2";
+            this.btn_Three.Text = "Late to Confirmed - Hot Jobs Only";
+            this.btn_Three.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_Three.Textcolor = System.Drawing.Color.DimGray;
+            this.btn_Three.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Three.Click += new System.EventHandler(this.CategoryButton_Click);
+            // 
             // KPAHotJobsTemplate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2007,5 +2048,6 @@
         private Bunifu.Framework.UI.BunifuCustomLabel lbl_analysisTwo;
         private Bunifu.Framework.UI.BunifuCustomLabel lbl_analysisOne;
         private System.Windows.Forms.Timer datavizLoadTimer;
+        private Bunifu.Framework.UI.BunifuFlatButton btn_Three;
     }
 }

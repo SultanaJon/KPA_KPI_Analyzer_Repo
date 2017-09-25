@@ -184,6 +184,17 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
 
 
+            // KPA -> Hot Jobs -> Late to Confirmed - Hot Jobs Only
+            lbl_kpaHotJobsLateToConfirmed_One.Text = string.Format("{0:n0}", overallData.kpa.hotJobs.lateToConfirmed.data.LessThanZero);
+            lbl_kpaHotJobsLateToConfirmed_Two.Text = string.Format("{0:n0}", overallData.kpa.hotJobs.lateToConfirmed.data.One_Three);
+            lbl_kpaHotJobsLateToConfirmed_Three.Text = string.Format("{0:n0}", overallData.kpa.hotJobs.lateToConfirmed.data.Four_Seven);
+            lbl_kpaHotJobsLateToConfirmed_Four.Text = string.Format("{0:n0}", overallData.kpa.hotJobs.lateToConfirmed.data.Eight_Fourteen);
+            lbl_kpaHotJobsLateToConfirmed_Five.Text = string.Format("{0:n0}", overallData.kpa.hotJobs.lateToConfirmed.data.Fifteen_TwentyOne);
+            lbl_kpaHotJobsLateToConfirmed_Six.Text = string.Format("{0:n0}", overallData.kpa.hotJobs.lateToConfirmed.data.TwentyTwo_TwentyEight);
+            lbl_kpaHotJobsLateToConfirmed_Seven.Text = string.Format("{0:n0}", overallData.kpa.hotJobs.lateToConfirmed.data.TwentyNinePlus);
+            lbl_kpaHotJobsLateToConfirmed_Eight.Text = string.Format("{0:n}", overallData.kpa.hotJobs.lateToConfirmed.data.Average);
+            lbl_kpaHotJobsLateToConfirmed_Nine.Text = string.Format("{0:n0}", overallData.kpa.hotJobs.lateToConfirmed.data.Total);
+
 
 
 
@@ -214,9 +225,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Nine.Text = string.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.LessThanEqualThreeWeeks);
             lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Ten.Text = string.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.GreaterThanThreeWeeks);
             lbl_kpaCurrPlanVsActualCurrPlanDateVsCurrConfHotJobs_Eleven.Text = string.Format("{0:n0}", overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.Total);
-
-
-
         }
     }
 }
