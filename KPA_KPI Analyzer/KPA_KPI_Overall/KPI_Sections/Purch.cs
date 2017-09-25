@@ -176,8 +176,11 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 try
                 {
                     initConfVsPRPlanDate.data.PercentUnconf = Math.Round(((double)initConfVsPRPlanDate.data.PercentUnconfTotal / initConfVsPRPlanDate.data.Total) * 100, 2);
-                    if (double.IsNaN(initConfVsPRPlanDate.data.PercentUnconf) || double.IsInfinity(initConfVsPRPlanDate.data.PercentUnconf))
+                    if (double.IsNaN(initConfVsPRPlanDate.data.PercentUnconf))
                         initConfVsPRPlanDate.data.PercentUnconf = 0;
+
+                    if (double.IsInfinity(initConfVsPRPlanDate.data.PercentUnconf))
+                        initConfVsPRPlanDate.data.PercentUnconf = 100;
                 }
                 catch (DivideByZeroException)
                 {

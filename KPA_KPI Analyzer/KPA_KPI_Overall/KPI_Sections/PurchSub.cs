@@ -186,8 +186,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 // PO Creation vs Confirmation Entry
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                int tempTotal = 0;
-
+                //int tempTotal = 0;
                 foreach (DataRow dr in PRPO_DB_Utils.prsOnPOsDt.Rows)
                 {
                     if (Filters.FilterByPrDateRange)
@@ -236,8 +235,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                     }
 
 
-
-                    tempTotal++;
+                    //tempTotal = 0;
                     string[] strFirstConfCreateDate = (dr["1st Conf Creation Da"].ToString()).Split('/');
                     int poLineFirstConfCreateYear = int.Parse(strFirstConfCreateDate[2]);
                     int poLineFirstConfCreateMonth = int.Parse(strFirstConfCreateDate[0]);
@@ -334,9 +332,12 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                 try
                 {
-                    poCreateVsConfEntry.data.PercentUnconf = Math.Round(((double)poCreateVsConfEntry.data.PercentUnconfTotal / tempTotal) * 100, 2);
-                    if (double.IsNaN(poCreateVsConfEntry.data.PercentUnconf) || double.IsInfinity(poCreateVsConfEntry.data.PercentUnconf))
+                    poCreateVsConfEntry.data.PercentUnconf = Math.Round(((double)poCreateVsConfEntry.data.PercentUnconfTotal / poCreateVsConfEntry.data.Total) * 100, 2);
+                    if (double.IsNaN(poCreateVsConfEntry.data.PercentUnconf))
                         poCreateVsConfEntry.data.PercentUnconf = 0;
+
+                    if (double.IsInfinity(poCreateVsConfEntry.data.PercentUnconf))
+                        poCreateVsConfEntry.data.PercentUnconf = 100;
                 }
                 catch (DivideByZeroException)
                 {
