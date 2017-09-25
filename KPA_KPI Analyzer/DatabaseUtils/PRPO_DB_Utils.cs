@@ -17,6 +17,7 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
         public static DataTable pr2ndLvlRelDateDt;
         public static DataTable AllDt;
 
+        private static readonly List<string> errorList = new List<string>();
 
         public delegate void RenewDataLoadTimerHandler();
         public static event RenewDataLoadTimerHandler RenewDataLoadTimer;
@@ -25,10 +26,8 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
         public delegate void DisplayDragDropPageHandler();
         public static event DisplayDragDropPageHandler DisplayDragDropPage;
 
+
         internal static volatile object _updateDataLoadLock = new object();
-        private static readonly List<string> errorList = new List<string>();
-
-
         public static volatile object locker = new object();
 
 
@@ -53,6 +52,9 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
         public static bool DataLoaded { get; set; }
         public static int CompletedDataLoads { get; set; }
         public static int ScheduledDataLoads { get; set; }
+
+
+
 
 
         /// <summary>
@@ -114,6 +116,26 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
                     RenewDataLoadTimer();
                     DataLoaded = true;
                 }
+            }
+        }
+
+
+
+
+
+        /// <summary>
+        /// Checks the status of the data loading.
+        /// </summary>
+        internal static void UpdateLoadProgress()
+        {
+            lock (locker)
+            {
+                PRPO_DB_Utils.CompletedDataLoads++;
+                MethodInvoker del = delegate
+                {
+                    PRPO_DB_Utils.UpdateDataLoadProgress();
+                };
+                del.Invoke();
             }
         }
 
@@ -269,7 +291,7 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
 
 
 
-                        PRPO_DB_Utils.KPITablesLoaded = true;
+                        KPITablesLoaded = true;
                         UpdateLoadProgress();
                     }
                 }
@@ -277,27 +299,6 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "KPI Data Load");
-            }
-        }
-
-
-
-
-
-
-        /// <summary>
-        /// Checks the status of the data loading.
-        /// </summary>
-        internal static void UpdateLoadProgress()
-        {
-            lock (locker)
-            {
-                PRPO_DB_Utils.CompletedDataLoads++;
-                MethodInvoker del = delegate
-                {
-                    PRPO_DB_Utils.UpdateDataLoadProgress();
-                };
-                del.Invoke();
             }
         }
     }

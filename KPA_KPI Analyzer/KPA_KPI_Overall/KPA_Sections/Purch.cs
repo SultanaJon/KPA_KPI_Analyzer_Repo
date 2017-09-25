@@ -117,12 +117,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 DataTable dt = new DataTable();
-                OleDbCommand cmd;
-                if (Values.Globals.SelectedCountry == AccessInfo.MainTables.US_PRPO)
-                    cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Purch_PRsAgingRel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
-                else
-                    cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Purch_PRsAgingRel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
-
+                OleDbCommand cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Purch_PRsAgingRel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                 OleDbDataAdapter da = new OleDbDataAdapter(cmd);
                 da.Fill(dt);
 
@@ -243,11 +238,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 dt = new DataTable();
-                if (Values.Globals.SelectedCountry == AccessInfo.MainTables.US_PRPO)
-                    cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Purch_POFirstRelease] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
-                else
-                    cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Purch_POFirstRelease] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
-
+                cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Purch_POFirstRelease] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                 da = new OleDbDataAdapter(cmd);
                 da.Fill(dt);
 
@@ -368,11 +359,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 dt = new DataTable();
-                if (Values.Globals.SelectedCountry == AccessInfo.MainTables.US_PRPO)
-                    cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Purch_POPrevRelease] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
-                else
-                    cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Purch_POPrevRelease] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
-                
+                cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Purch_POPrevRelease] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                 da = new OleDbDataAdapter(cmd);
                 da.Fill(dt);
 
@@ -494,11 +481,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 dt = new DataTable();
-                if (Values.Globals.SelectedCountry == AccessInfo.MainTables.US_PRPO)
-                    cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Purch_NoConfirmation] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
-                else
-                    cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Purch_NoConfirmation] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
-
+                cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Purch_NoConfirmation] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                 da = new OleDbDataAdapter(cmd);
                 da.Fill(dt);
 
