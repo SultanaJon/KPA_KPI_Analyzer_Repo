@@ -2,26 +2,23 @@
 using KPA_KPI_Analyzer.DatabaseUtils;
 using KPA_KPI_Analyzer.FilterFeeature;
 using KPA_KPI_Analyzer.KPA_KPI_Overall;
+using KPA_KPI_Analyzer.Values;
 using System;
 using System.Data;
 using System.Data.OleDb;
 using System.Drawing;
 using System.Windows.Forms;
+using KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader;
 
 namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 {
     public partial class KPAHotJobsTemplate : UserControl
     {
         Overall overallData = new Overall();
-        DataTable dt;
-        DataTable prsNotonPOHotJob;
-        DataTable noConfirmations;
-        DataTable lateToConfirmed;
-        OleDbDataAdapter da;
-        OleDbCommand cmd;
 
 
-        public delegate void UpdateCategoryHandler(string categoryName);
+
+        public delegate void UpdateCategoryHandler();
         public static event UpdateCategoryHandler ChangeCategory;
 
 
@@ -30,33 +27,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// </summary>
         bool DatavizLoaded { get; set; }
 
-
-
-
-
-        /// <summary>
-        /// Current selected country to display in the data viewer
-        /// </summary>
-        public string CurrCountry { get; set; }
-
-
-        /// <summary>
-        /// Current selected performance to display in the data viewer
-        /// </summary>
-        public string CurrPerformance { get; set; }
-
-
-        /// <summary>
-        /// Current selected section to display in the data viewer
-        /// </summary>
-        public string CurrSection { get; set; }
-
-
-
-        /// <summary>
-        /// Current selected category to display in the data viewer
-        /// </summary>
-        public string CurrCategory { get; set; }
 
 
 
@@ -121,8 +91,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             DatavizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            CurrCategory = "PRs (Not on PO) - Hot Job Only";
-            ChangeCategory(CurrCategory);
+            Globals.CurrCategory = "PRs (Not on PO) - Hot Job Only";
+            ChangeCategory();
         }
 
 
@@ -211,8 +181,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = "PRs (Not on PO) - Hot Job Only";
-            ChangeCategory(Title);
-            CurrCategory = Title;
+            Globals.CurrCategory = Title;
+            ChangeCategory();
 
             TimeBucketOne = overallData.kpa.hotJobs.prsNotOnPO.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpa.hotJobs.prsNotOnPO.data.One_Three.ToString();
@@ -264,8 +234,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = "No Confirmation - Hot Job Only";
-            ChangeCategory(Title);
-            CurrCategory = Title;
+            Globals.CurrCategory = Title;
+            ChangeCategory();
 
             TimeBucketOne = overallData.kpa.hotJobs.noConfirmation.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpa.hotJobs.noConfirmation.data.One_Three.ToString();
@@ -316,8 +286,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = "Late to Confirmed - Hot Jobs Only";
-            ChangeCategory(Title);
-            CurrCategory = Title;
+            Globals.CurrCategory = Title;
+            ChangeCategory();
 
             TimeBucketOne = overallData.kpa.hotJobs.lateToConfirmed.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpa.hotJobs.lateToConfirmed.data.One_Three.ToString();
@@ -396,421 +366,14 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
                 switch (ActiveCategory)
                 {
-                    case 0:
-                        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                        //
-                        // PR Release to PO Release
-                        //
-                        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                        dt = new DataTable();
-                        prsNotonPOHotJob = new DataTable();
-
-                        if (Values.Globals.SelectedCountry == AccessInfo.MainTables.US_PRPO)
-                            cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_HotJobs_PrsNotonPO] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
-                        else
-                            cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_HotJobs_PrsNotonPO] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
-
-                        da = new OleDbDataAdapter(cmd);
-                        da.Fill(dt);
-
-                        prsNotonPOHotJob = dt.Clone();
-
-
-
-                        foreach (DataRow dr in dt.Rows)
-                        {
-                            if (Filters.FilterByPrDateRange)
-                            {
-                                // The user wants to filter by PR date range
-                                string[] requisnDate = (dr["Requisn Date"].ToString()).Split('/');
-                                int reqYear = int.Parse(requisnDate[2]);
-                                int reqMonth = int.Parse(requisnDate[0].TrimStart('0'));
-                                int reqDay = int.Parse(requisnDate[1].TrimStart('0'));
-                                DateTime reqTestDate = new DateTime(reqYear, reqMonth, reqDay);
-
-                                if (reqTestDate < Filters.PrFromDate || reqTestDate > Filters.PrToDate)
-                                {
-                                    // The PR date is not within the PR date range.
-                                    continue;
-                                }
-                            }
-
-                            if (Filters.FilterByPoDateRange)
-                            {
-                                // The user wnats to filter by PO date range
-                                string[] strPODate = (dr["PO Date"].ToString()).Split('/');
-                                int poYear = int.Parse(strPODate[2]);
-                                int poMonth = int.Parse(strPODate[0]);
-                                int poDay = int.Parse(strPODate[1]);
-
-                                if (poYear == 0 && poMonth == 0 && poDay == 0)
-                                {
-                                    // This record is not a PO so we dont care about it
-                                    continue;
-                                }
-                                else
-                                {
-                                    poYear = int.Parse(strPODate[2]);
-                                    poMonth = int.Parse(strPODate[0].TrimStart('0'));
-                                    poDay = int.Parse(strPODate[1].TrimStart('0'));
-                                }
-
-                                DateTime poTestDate = new DateTime(poYear, poMonth, poDay);
-
-                                if (poTestDate < Filters.PoFromDate || poTestDate > Filters.PoToDate)
-                                {
-                                    // The PO date is not within the PO date range.
-                                    continue;
-                                }
-                            }
-
-
-                            string[] strDate = (dr["PR 2° Rel# Date"].ToString()).Split('/');
-                            int year = int.Parse(strDate[2]);
-                            int month = int.Parse(strDate[0].TrimStart('0'));
-                            int day = int.Parse(strDate[1].TrimStart('0'));
-
-                            DateTime secLvlRelDt = new DateTime(year, month, day);
-                            DateTime today = DateTime.Now.Date;
-                            double elapsedDays = (int)(today - secLvlRelDt).TotalDays;
-
-                            switch (tag)
-                            {
-                                case 0:
-                                    prsNotonPOHotJob.ImportRow(dr);
-                                    break;
-                                case 1:
-                                    if (elapsedDays <= 0)
-                                    {
-                                        prsNotonPOHotJob.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 2:
-                                    if (elapsedDays >= 1 && elapsedDays <= 3)
-                                    {
-                                        prsNotonPOHotJob.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 3:
-                                    if (elapsedDays >= 4 && elapsedDays <= 7)
-                                    {
-                                        prsNotonPOHotJob.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 4:
-                                    if (elapsedDays >= 8 && elapsedDays <= 14)
-                                    {
-                                        prsNotonPOHotJob.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 5:
-                                    if (elapsedDays >= 15 && elapsedDays <= 21)
-                                    {
-                                        prsNotonPOHotJob.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 6:
-                                    if (elapsedDays >= 22 && elapsedDays <= 28)
-                                    {
-                                        prsNotonPOHotJob.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 7:
-                                    if (elapsedDays >= 29)
-                                    {
-                                        prsNotonPOHotJob.ImportRow(dr);
-                                    }
-                                    continue;
-                                default:
-                                    continue;
-                            }
-                        }
-
-                        using (DataViewer dv = new DataViewer() { Data = prsNotonPOHotJob, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
-                        {
-                            dv.LoadData();
-                            dv.ShowDialog();
-                        }
+                    case 0: // PRs (Not on PO) - Hot Jobs Only
+                        KpaDataTableLoader.HotJobs.LoadPRsNotOnPODataTable(tag);
                         break;
-                    case 1:
-                        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                        //
-                        // PO Creation to Confirmation Entry
-                        //
-                        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                        dt = new DataTable();
-                        noConfirmations = new DataTable();
-                        if (Values.Globals.SelectedCountry == AccessInfo.MainTables.US_PRPO)
-                            cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_HotJobs_NoConfirmations] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
-                        else
-                            cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_HotJobs_NoConfirmations] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
-
-                        da = new OleDbDataAdapter(cmd);
-                        da.Fill(dt);
-
-
-                        noConfirmations = dt.Clone();
-
-
-                        foreach (DataRow dr in dt.Rows)
-                        {
-                            if (Filters.FilterByPrDateRange)
-                            {
-                                // The user wants to filter by PR date range
-                                string[] requisnDate = (dr["Requisn Date"].ToString()).Split('/');
-                                int reqYear = int.Parse(requisnDate[2]);
-                                int reqMonth = int.Parse(requisnDate[0].TrimStart('0'));
-                                int reqDay = int.Parse(requisnDate[1].TrimStart('0'));
-                                DateTime reqTestDate = new DateTime(reqYear, reqMonth, reqDay);
-
-                                if (reqTestDate < Filters.PrFromDate || reqTestDate > Filters.PrToDate)
-                                {
-                                    // The PR date is not within the PR date range.
-                                    continue;
-                                }
-                            }
-
-                            if (Filters.FilterByPoDateRange)
-                            {
-                                // The user wnats to filter by PO date range
-                                string[] strPODate = (dr["PO Date"].ToString()).Split('/');
-                                int poYear = int.Parse(strPODate[2]);
-                                int poMonth = int.Parse(strPODate[0]);
-                                int poDay = int.Parse(strPODate[1]);
-
-                                if (poYear == 0 && poMonth == 0 && poDay == 0)
-                                {
-                                    // This record is not a PO so we dont care about it
-                                    continue;
-                                }
-                                else
-                                {
-                                    poYear = int.Parse(strPODate[2]);
-                                    poMonth = int.Parse(strPODate[0].TrimStart('0'));
-                                    poDay = int.Parse(strPODate[1].TrimStart('0'));
-                                }
-
-                                DateTime poTestDate = new DateTime(poYear, poMonth, poDay);
-
-                                if (poTestDate < Filters.PoFromDate || poTestDate > Filters.PoToDate)
-                                {
-                                    // The PO date is not within the PO date range.
-                                    continue;
-                                }
-                            }
-
-
-
-                            string[] strDate = (dr["PO Line Creat#DT"].ToString()).Split('/');
-                            int year = int.Parse(strDate[2]);
-                            int month = int.Parse(strDate[0].TrimStart('0'));
-                            int day = int.Parse(strDate[1].TrimStart('0'));
-
-                            DateTime date = new DateTime(year, month, day);
-                            DateTime today = DateTime.Now.Date;
-                            double elapsedDays = (int)(today - date).TotalDays;
-
-                            switch (tag)
-                            {
-                                case 0:
-                                    noConfirmations.ImportRow(dr);
-                                    break;
-                                case 1:
-                                    if (elapsedDays <= 0)
-                                    {
-                                        noConfirmations.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 2:
-                                    if (elapsedDays >= 1 && elapsedDays <= 3)
-                                    {
-                                        noConfirmations.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 3:
-                                    if (elapsedDays >= 4 && elapsedDays <= 7)
-                                    {
-                                        noConfirmations.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 4:
-                                    if (elapsedDays >= 8 && elapsedDays <= 14)
-                                    {
-                                        noConfirmations.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 5:
-                                    if (elapsedDays >= 15 && elapsedDays <= 21)
-                                    {
-                                        noConfirmations.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 6:
-                                    if (elapsedDays >= 22 && elapsedDays <= 28)
-                                    {
-                                        noConfirmations.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 7:
-                                    if (elapsedDays >= 29)
-                                    {
-                                        noConfirmations.ImportRow(dr);
-                                    }
-                                    continue;
-                                default:
-                                    continue;
-                            }
-                        }
-
-                        using (DataViewer dv = new DataViewer() { Data = noConfirmations, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
-                        {
-                            dv.LoadData();
-                            dv.ShowDialog();
-                        }
+                    case 1: // No Confirmations - Hot Jobs Only
+                        KpaDataTableLoader.HotJobs.LoadNoConfirmationDataTable(tag);
                         break;
-
-                    case 2:
-                        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                        //
-                        // Late to Confirmed
-                        //
-                        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                        dt = new DataTable();
-                        lateToConfirmed = new DataTable();
-                        if (Values.Globals.SelectedCountry == AccessInfo.MainTables.US_PRPO)
-                            cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_HotJobs_LateToConfirmed] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
-                        else
-                            cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_HotJobs_LateToConfirmed] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
-
-                        da = new OleDbDataAdapter(cmd);
-                        da.Fill(dt);
-
-
-                        lateToConfirmed = dt.Clone();
-
-
-                        foreach (DataRow dr in dt.Rows)
-                        {
-                            if (Filters.FilterByPrDateRange)
-                            {
-                                // The user wants to filter by PR date range
-                                string[] requisnDate = (dr["Requisn Date"].ToString()).Split('/');
-                                int reqYear = int.Parse(requisnDate[2]);
-                                int reqMonth = int.Parse(requisnDate[0].TrimStart('0'));
-                                int reqDay = int.Parse(requisnDate[1].TrimStart('0'));
-                                DateTime reqTestDate = new DateTime(reqYear, reqMonth, reqDay);
-
-                                if (reqTestDate < Filters.PrFromDate || reqTestDate > Filters.PrToDate)
-                                {
-                                    // The PR date is not within the PR date range.
-                                    continue;
-                                }
-                            }
-
-                            if (Filters.FilterByPoDateRange)
-                            {
-                                // The user wnats to filter by PO date range
-                                string[] strPODate = (dr["PO Date"].ToString()).Split('/');
-                                int poYear = int.Parse(strPODate[2]);
-                                int poMonth = int.Parse(strPODate[0]);
-                                int poDay = int.Parse(strPODate[1]);
-
-                                if (poYear == 0 && poMonth == 0 && poDay == 0)
-                                {
-                                    // This record is not a PO so we dont care about it
-                                    continue;
-                                }
-                                else
-                                {
-                                    poYear = int.Parse(strPODate[2]);
-                                    poMonth = int.Parse(strPODate[0].TrimStart('0'));
-                                    poDay = int.Parse(strPODate[1].TrimStart('0'));
-                                }
-
-                                DateTime poTestDate = new DateTime(poYear, poMonth, poDay);
-
-                                if (poTestDate < Filters.PoFromDate || poTestDate > Filters.PoToDate)
-                                {
-                                    // The PO date is not within the PO date range.
-                                    continue;
-                                }
-                            }
-
-
-
-                            string[] strDate = (dr["Del#Conf#Date"].ToString()).Split('/');
-                            int year = int.Parse(strDate[2]);
-                            int month = int.Parse(strDate[0].TrimStart('0'));
-                            int day = int.Parse(strDate[1].TrimStart('0'));
-
-                            DateTime delConfDate = new DateTime(year, month, day);
-                            DateTime today = DateTime.Now.Date;
-
-                            if (!(delConfDate < today))
-                                continue;
-
-                            double elapsedDays = (today - delConfDate).TotalDays;
-                            elapsedDays = (int)elapsedDays;
-
-
-
-                            switch (tag)
-                            {
-                                case 0:
-                                    lateToConfirmed.ImportRow(dr);
-                                    break;
-                                case 1:
-                                    if (elapsedDays <= 0)
-                                    {
-                                        lateToConfirmed.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 2:
-                                    if (elapsedDays >= 1 && elapsedDays <= 3)
-                                    {
-                                        lateToConfirmed.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 3:
-                                    if (elapsedDays >= 4 && elapsedDays <= 7)
-                                    {
-                                        lateToConfirmed.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 4:
-                                    if (elapsedDays >= 8 && elapsedDays <= 14)
-                                    {
-                                        lateToConfirmed.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 5:
-                                    if (elapsedDays >= 15 && elapsedDays <= 21)
-                                    {
-                                        lateToConfirmed.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 6:
-                                    if (elapsedDays >= 22 && elapsedDays <= 28)
-                                    {
-                                        lateToConfirmed.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 7:
-                                    if (elapsedDays >= 29)
-                                    {
-                                        lateToConfirmed.ImportRow(dr);
-                                    }
-                                    continue;
-                                default:
-                                    continue;
-                            }
-                        }
-
-                        using (DataViewer dv = new DataViewer() { Data = lateToConfirmed, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
-                        {
-                            dv.LoadData();
-                            dv.ShowDialog();
-                        }
+                    case 2: // Late to Confirmed - Hot Jobs Only
+                        KpaDataTableLoader.HotJobs.LoadLateToConfirmedDataTable(tag);
                         break;
                 }
             }

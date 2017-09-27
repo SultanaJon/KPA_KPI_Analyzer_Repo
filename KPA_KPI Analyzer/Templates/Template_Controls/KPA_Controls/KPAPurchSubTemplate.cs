@@ -2,27 +2,23 @@
 using KPA_KPI_Analyzer.DatabaseUtils;
 using KPA_KPI_Analyzer.FilterFeeature;
 using KPA_KPI_Analyzer.KPA_KPI_Overall;
+using KPA_KPI_Analyzer.Values;
 using System;
 using System.Data;
 using System.Data.OleDb;
 using System.Drawing;
 using System.Windows.Forms;
-
+using KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader;
 
 namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 {
     public partial class KPAPurchSubTemplate : UserControl
     {
         Overall overallData = new Overall();
-        DataTable dt;
-        DataTable prRelPoRelDt;
-        DataTable poCreatConfEntryDt;
-
-        OleDbDataAdapter da;
-        OleDbCommand cmd;
 
 
-        public delegate void UpdateCategoryHandler(string categoryName);
+
+        public delegate void UpdateCategoryHandler();
         public static event UpdateCategoryHandler ChangeCategory;
 
 
@@ -32,31 +28,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         bool DatavizLoaded { get; set; }
 
 
-
-
-        /// <summary>
-        /// Current selected country to display in the data viewer
-        /// </summary>
-        public string CurrCountry { get; set; }
-
-
-        /// <summary>
-        /// Current selected performance to display in the data viewer
-        /// </summary>
-        public string CurrPerformance { get; set; }
-
-
-        /// <summary>
-        /// Current selected section to display in the data viewer
-        /// </summary>
-        public string CurrSection { get; set; }
-
-
-
-        /// <summary>
-        /// Current selected category to display in the data viewer
-        /// </summary>
-        public string CurrCategory { get; set; }
 
 
 
@@ -128,8 +99,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             btn_One.Textcolor = System.Drawing.Color.Coral;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            CurrCategory = "PR Release to PO Release";
-            ChangeCategory(CurrCategory);
+            Globals.CurrCategory = "PR Release to PO Release";
+            ChangeCategory();
         }
 
 
@@ -216,8 +187,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = "PR Release to PO Release";
-            ChangeCategory(Title);
-            CurrCategory = Title;
+            Globals.CurrCategory = Title;
+            ChangeCategory();
 
             TimeBucketOne = overallData.kpa.purchSub.prRelToPORel.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpa.purchSub.prRelToPORel.data.One_Three.ToString();
@@ -271,8 +242,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = "PO Creation to Confirmation Entry";
-            ChangeCategory(Title);
-            CurrCategory = Title;
+            Globals.CurrCategory = Title;
+            ChangeCategory();
 
             TimeBucketOne = overallData.kpa.purchSub.POCreatToConfEntry.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpa.purchSub.POCreatToConfEntry.data.One_Three.ToString();
@@ -356,184 +327,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
                 switch (ActiveCategory)
                 {
-                    case 0:
-                        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                        //
-                        // PR Release to PO Release
-                        //
-                        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                        dt = new DataTable();
-                        prRelPoRelDt = new DataTable();
-
-                        if (Values.Globals.SelectedCountry == AccessInfo.MainTables.US_PRPO)
-                            cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_PurchSub_PRReleasePORelease] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
-                        else
-                            cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_PurchSub_PRReleasePORelease] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
-
-                        da = new OleDbDataAdapter(cmd);
-                        da.Fill(dt);
-
-                        prRelPoRelDt = dt.Clone();
-
-
-
-                        foreach (DataRow dr in dt.Rows)
-                        {
-                            string[] strDate = (dr["PR 2° Rel# Date"].ToString()).Split('/');
-                            int year = int.Parse(strDate[2]);
-                            int month = int.Parse(strDate[0].TrimStart('0'));
-                            int day = int.Parse(strDate[1].TrimStart('0'));
-
-                            DateTime date = new DateTime(year, month, day);
-                            DateTime today = DateTime.Now.Date;
-                            double elapsedDays = (int)(today - date).TotalDays;
-
-                            switch (tag)
-                            {
-                                case 0:
-                                    prRelPoRelDt.ImportRow(dr);
-                                    break;
-                                case 1:
-                                    if (elapsedDays <= 0)
-                                    {
-                                        prRelPoRelDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 2:
-                                    if (elapsedDays >= 1 && elapsedDays <= 3)
-                                    {
-                                        prRelPoRelDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 3:
-                                    if (elapsedDays >= 4 && elapsedDays <= 7)
-                                    {
-                                        prRelPoRelDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 4:
-                                    if (elapsedDays >= 8 && elapsedDays <= 14)
-                                    {
-                                        prRelPoRelDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 5:
-                                    if (elapsedDays >= 15 && elapsedDays <= 21)
-                                    {
-                                        prRelPoRelDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 6:
-                                    if (elapsedDays >= 22 && elapsedDays <= 28)
-                                    {
-                                        prRelPoRelDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 7:
-                                    if (elapsedDays >= 29)
-                                    {
-                                        prRelPoRelDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                default:
-                                    continue;
-                            }
-                        }
-
-                        using (DataViewer dv = new DataViewer() { Data = prRelPoRelDt, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
-                        {
-                            dv.LoadData();
-                            dv.ShowDialog();
-                        }
+                    case 0: // PR Release to PO Release
+                        KpaDataTableLoader.PurchSub.LoadPrReleaseToPoReleaseDataTable(tag);
                         break;
-                    case 1:
-                        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                        //
-                        // PO Creation to Confirmation Entry
-                        //
-                        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                        dt = new DataTable();
-                        poCreatConfEntryDt = new DataTable();
-                        if (Values.Globals.SelectedCountry == AccessInfo.MainTables.US_PRPO)
-                            cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_PurchSub_POCreationCOnfEntry] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
-                        else
-                            cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_PurchSub_POCreationCOnfEntry] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
-
-                        da = new OleDbDataAdapter(cmd);
-                        da.Fill(dt);
-
-
-                        poCreatConfEntryDt = dt.Clone();
-
-
-                        foreach (DataRow dr in dt.Rows)
-                        {
-                            string[] strDate = (dr["PO Line Creat#DT"].ToString()).Split('/');
-                            int year = int.Parse(strDate[2]);
-                            int month = int.Parse(strDate[0].TrimStart('0'));
-                            int day = int.Parse(strDate[1].TrimStart('0'));
-
-                            DateTime date = new DateTime(year, month, day);
-                            DateTime today = DateTime.Now.Date;
-                            double elapsedDays = (int)(today - date).TotalDays;
-
-                            switch (tag)
-                            {
-                                case 0:
-                                    poCreatConfEntryDt.ImportRow(dr);
-                                    break;
-                                case 1:
-                                    if (elapsedDays <= 0)
-                                    {
-                                        poCreatConfEntryDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 2:
-                                    if (elapsedDays >= 1 && elapsedDays <= 3)
-                                    {
-                                        poCreatConfEntryDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 3:
-                                    if (elapsedDays >= 4 && elapsedDays <= 7)
-                                    {
-                                        poCreatConfEntryDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 4:
-                                    if (elapsedDays >= 8 && elapsedDays <= 14)
-                                    {
-                                        poCreatConfEntryDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 5:
-                                    if (elapsedDays >= 15 && elapsedDays <= 21)
-                                    {
-                                        poCreatConfEntryDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 6:
-                                    if (elapsedDays >= 22 && elapsedDays <= 28)
-                                    {
-                                        poCreatConfEntryDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 7:
-                                    if (elapsedDays >= 29)
-                                    {
-                                        poCreatConfEntryDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                default:
-                                    continue;
-                            }
-                        }
-
-                        using (DataViewer dv = new DataViewer() { Data = poCreatConfEntryDt, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
-                        {
-                            dv.LoadData();
-                            dv.ShowDialog();
-                        }
+                    case 1: // PO Creation to Confirmation Entry
+                        KpaDataTableLoader.PurchSub.LoadPoCreationToConfirmationEntryDataTable(tag);
                         break;
                 }
             }

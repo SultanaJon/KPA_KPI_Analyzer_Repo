@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KPA_KPI_Analyzer.Values;
+using System;
 using System.Windows.Forms;
 
 namespace KPA_KPI_Analyzer
@@ -190,9 +191,9 @@ namespace KPA_KPI_Analyzer
         /// the templates are clicked, the label showing the current category is updated.
         /// </summary>
         /// <param name="currentCategory"></param>
-        private void UpdateCategoryStatus(string currentCategory)
+        private void UpdateCategoryStatus()
         {
-            lbl_Category.Text = currentCategory;
+            lbl_Category.Text = Globals.CurrCategory;
         }
     }
 }

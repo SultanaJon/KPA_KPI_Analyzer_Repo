@@ -1,6 +1,7 @@
 ﻿using System.Windows.Forms;
 using KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls;
 using KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls;
+using KPA_KPI_Analyzer.Values;
 
 namespace KPA_KPI_Analyzer
 {
@@ -40,9 +41,6 @@ namespace KPA_KPI_Analyzer
             {
                 Name = "Plan",
                 Dock = DockStyle.Fill,
-                CurrCountry = lbl_Country.Text,
-                CurrPerformance = lbl_Performance.Text,
-                CurrSection = lbl_Section.Text
             };
 
             KPAPlanTemplate.ChangeCategory += UpdateCategoryStatus;
@@ -66,9 +64,7 @@ namespace KPA_KPI_Analyzer
             {
                 Name = "Purch",
                 Dock = DockStyle.Fill,
-                CurrCountry = lbl_Country.Text,
-                CurrPerformance = lbl_Performance.Text,
-                CurrSection = lbl_Section.Text
+
             };
             KPAPurchTemplate.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpaPurchTemp);
@@ -92,9 +88,6 @@ namespace KPA_KPI_Analyzer
             {
                 Name = "PurchSub",
                 Dock = DockStyle.Fill,
-                CurrCountry = lbl_Country.Text,
-                CurrPerformance = lbl_Performance.Text,
-                CurrSection = lbl_Section.Text
             };
 
             KPAPurchSubTemplate.ChangeCategory += UpdateCategoryStatus;
@@ -118,9 +111,6 @@ namespace KPA_KPI_Analyzer
             {
                 Name = "PurchTotal",
                 Dock = DockStyle.Fill,
-                CurrCountry = lbl_Country.Text,
-                CurrPerformance = lbl_Performance.Text,
-                CurrSection = lbl_Section.Text
             };
 
             KPAPurchTotalTemplate.ChangeCategory += UpdateCategoryStatus;
@@ -143,9 +133,6 @@ namespace KPA_KPI_Analyzer
             {
                 Name = "FollowUp",
                 Dock = DockStyle.Fill,
-                CurrCountry = lbl_Country.Text,
-                CurrPerformance = lbl_Performance.Text,
-                CurrSection = lbl_Section.Text
             };
             KPAFollowUpTemplate.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpaFollowUpTemp);
@@ -167,9 +154,6 @@ namespace KPA_KPI_Analyzer
             {
                 Name = "HotJobs",
                 Dock = DockStyle.Fill,
-                CurrCountry = lbl_Country.Text,
-                CurrPerformance = lbl_Performance.Text,
-                CurrSection = lbl_Section.Text
             };
 
             KPAHotJobsTemplate.ChangeCategory += UpdateCategoryStatus;
@@ -194,9 +178,6 @@ namespace KPA_KPI_Analyzer
             {
                 Name = "CurrPlanActual",
                 Dock = DockStyle.Fill,
-                CurrCountry = lbl_Country.Text,
-                CurrPerformance = lbl_Performance.Text,
-                CurrSection = lbl_Section.Text
             };
             KPACurrentPlanActualTemplate.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpaCurrPlanActual);
@@ -244,10 +225,7 @@ namespace KPA_KPI_Analyzer
             KPIPlanTemplate kpiPlanTemplate = new KPIPlanTemplate()
             {
                 Name = "Plan",
-                Dock = DockStyle.Fill,
-                CurrCountry = lbl_Country.Text,
-                CurrPerformance = lbl_Performance.Text,
-                CurrSection = lbl_Section.Text
+                Dock = DockStyle.Fill
             };
 
             KPIPlanTemplate.ChangeCategory += UpdateCategoryStatus;
@@ -272,10 +250,7 @@ namespace KPA_KPI_Analyzer
             KPIPurchTemplate kpiPurchTemplate = new KPIPurchTemplate()
             {
                 Name = "Purch",
-                Dock = DockStyle.Fill,
-                CurrCountry = lbl_Country.Text,
-                CurrPerformance = lbl_Performance.Text,
-                CurrSection = lbl_Section.Text
+                Dock = DockStyle.Fill
             };
             KPIPurchTemplate.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpiPurchTemplate);
@@ -296,10 +271,7 @@ namespace KPA_KPI_Analyzer
             KPIFollowUpTemplate kpiFollowUpTemplate = new KPIFollowUpTemplate()
             {
                 Name = "FollowUp",
-                Dock = DockStyle.Fill,
-                CurrCountry = lbl_Country.Text,
-                CurrPerformance = lbl_Performance.Text,
-                CurrSection = lbl_Section.Text
+                Dock = DockStyle.Fill
             };
             KPIFollowUpTemplate.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpiFollowUpTemplate);
@@ -323,10 +295,7 @@ namespace KPA_KPI_Analyzer
             KPIPurchTwoTemplate kpiPurchTwoTemplate = new KPIPurchTwoTemplate()
             {
                 Name = "Purch",
-                Dock = DockStyle.Fill,
-                CurrCountry = lbl_Country.Text,
-                CurrPerformance = lbl_Performance.Text,
-                CurrSection = lbl_Section.Text
+                Dock = DockStyle.Fill
             };
             KPIPurchTwoTemplate.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpiPurchTwoTemplate);
@@ -347,10 +316,7 @@ namespace KPA_KPI_Analyzer
             KPIPurchSubTemplate kpiPurchSubTemplate = new KPIPurchSubTemplate()
             {
                 Name = "PurchSub",
-                Dock = DockStyle.Fill,
-                CurrCountry = lbl_Country.Text,
-                CurrPerformance = lbl_Performance.Text,
-                CurrSection = lbl_Section.Text
+                Dock = DockStyle.Fill
             };
             KPIPurchSubTemplate.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpiPurchSubTemplate);
@@ -373,10 +339,7 @@ namespace KPA_KPI_Analyzer
             KPIPurchTotalTemplate kpiPurchTotalTemplate = new KPIPurchTotalTemplate()
             {
                 Name = "PurchTotal",
-                Dock = DockStyle.Fill,
-                CurrCountry = lbl_Country.Text,
-                CurrPerformance = lbl_Performance.Text,
-                CurrSection = lbl_Section.Text
+                Dock = DockStyle.Fill
             };
 
             KPIPurchTotalTemplate.ChangeCategory += UpdateCategoryStatus;
@@ -398,10 +361,7 @@ namespace KPA_KPI_Analyzer
             KPIPurchPlanTemplate kpiPurchPlanTemplate = new KPIPurchPlanTemplate()
             {
                 Name = "PurchPlan",
-                Dock = DockStyle.Fill,
-                CurrCountry = lbl_Country.Text,
-                CurrPerformance = lbl_Performance.Text,
-                CurrSection = lbl_Section.Text
+                Dock = DockStyle.Fill
             };
 
             KPIPurchPlanTemplate.ChangeCategory += UpdateCategoryStatus;
@@ -424,10 +384,7 @@ namespace KPA_KPI_Analyzer
             KPIOtherTemplate kpiOtherTemplate = new KPIOtherTemplate()
             {
                 Name = "Other",
-                Dock = DockStyle.Fill,
-                CurrCountry = lbl_Country.Text,
-                CurrPerformance = lbl_Performance.Text,
-                CurrSection = lbl_Section.Text
+                Dock = DockStyle.Fill
             };
             KPIOtherTemplate.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpiOtherTemplate);

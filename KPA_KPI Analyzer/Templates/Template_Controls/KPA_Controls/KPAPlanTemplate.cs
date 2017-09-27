@@ -2,11 +2,13 @@
 using KPA_KPI_Analyzer.DatabaseUtils;
 using KPA_KPI_Analyzer.FilterFeeature;
 using KPA_KPI_Analyzer.KPA_KPI_Overall;
+using KPA_KPI_Analyzer.Values;
 using System;
 using System.Data;
 using System.Data.OleDb;
 using System.Drawing;
 using System.Windows.Forms;
+using KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader;
 
 namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 {
@@ -14,15 +16,12 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
     {
         Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
         Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
+
         Overall overallData = new Overall();
-        DataTable dt;
-        DataTable prsAgingNotRelDt;
-        DataTable MaterialDueDt;
-        OleDbDataAdapter da;
-        OleDbCommand cmd;
 
 
-        public delegate void UpdateCategoryHandler(string categoryName);
+
+        public delegate void UpdateCategoryHandler();
         public static event UpdateCategoryHandler ChangeCategory;
 
 
@@ -32,31 +31,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// </summary>
         bool DatavizLoaded { get; set; }
 
-
-
-        /// <summary>
-        /// Current selected country to display in the data viewer
-        /// </summary>
-        public string CurrCountry { get; set; }
-
-
-        /// <summary>
-        /// Current selected performance to display in the data viewer
-        /// </summary>
-        public string CurrPerformance { get; set; }
-
-
-        /// <summary>
-        /// Current selected section to display in the data viewer
-        /// </summary>
-        public string CurrSection { get; set; }
-
-
-
-        /// <summary>
-        /// Current selected category to display in the data viewer
-        /// </summary>
-        public string CurrCategory { get; set; }
 
 
 
@@ -130,8 +104,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             DatavizLoaded = false;
             ActiveCategory = 1;
             datavizLoadTimer.Start();
-            CurrCategory = "PRs Aging (Not Released)";
-            ChangeCategory(CurrCategory);
+            Globals.CurrCategory = "PRs Aging (Not Released)";
+            ChangeCategory();
         }
 
 
@@ -220,8 +194,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = "PRs Aging (Not Released)";
-            ChangeCategory(Title);
-            CurrCategory = Title;
+            Globals.CurrCategory = Title;
+            ChangeCategory();
 
             TimeBucketOne = overallData.kpa.plan.prsAgingNotRel.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpa.plan.prsAgingNotRel.data.One_Three.ToString();
@@ -272,8 +246,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             canvas = new Bunifu.DataViz.Canvas();
             dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = "Material Due";
-            ChangeCategory(Title);
-            CurrCategory = Title;
+            Globals.CurrCategory = Title;
+            ChangeCategory();
 
             TimeBucketOne = overallData.kpa.plan.matDueDate.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpa.plan.matDueDate.data.One_Three.ToString();
@@ -353,280 +327,13 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
                 switch (ActiveCategory)
                 {
-                    case 0:
+                    case 0: // Planned Order Aging
                         break;
-                    case 1:
-
-                        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                        //
-                        // PRs Aging (Not Released)
-                        //
-                        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                        dt = new DataTable();
-                        prsAgingNotRelDt = new DataTable();
-
-                        if (Values.Globals.SelectedCountry == AccessInfo.MainTables.US_PRPO)
-                            cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Plan_PRsAgingNotRel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
-                        else
-                            cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Plan_PRsAgingNotRel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
-
-                        da = new OleDbDataAdapter(cmd);
-                        da.Fill(dt);
-
-                        prsAgingNotRelDt = dt.Clone();
-
-
-
-                        foreach (DataRow dr in dt.Rows)
-                        {
-                            if (Filters.FilterByPrDateRange)
-                            {
-                                // The user wants to filter by PR date range
-                                string[] requisnDate = (dr["Requisn Date"].ToString()).Split('/');
-                                int reqYear = int.Parse(requisnDate[2]);
-                                int reqMonth = int.Parse(requisnDate[0].TrimStart('0'));
-                                int reqDay = int.Parse(requisnDate[1].TrimStart('0'));
-                                DateTime reqTestDate = new DateTime(reqYear, reqMonth, reqDay);
-
-                                if (reqTestDate < Filters.PrFromDate || reqTestDate > Filters.PrToDate)
-                                {
-                                    // The PR date is not within the PR date range.
-                                    continue;
-                                }
-                            }
-
-                            if (Filters.FilterByPoDateRange)
-                            {
-                                // The user wnats to filter by PO date range
-                                string[] strPODate = (dr["PO Date"].ToString()).Split('/');
-                                int poYear = int.Parse(strPODate[2]);
-                                int poMonth = int.Parse(strPODate[0]);
-                                int poDay = int.Parse(strPODate[1]);
-
-                                if (poYear == 0 && poMonth == 0 && poDay == 0)
-                                {
-                                    // This record is not a PO so we dont care about it
-                                    continue;
-                                }
-                                else
-                                {
-                                    poYear = int.Parse(strPODate[2]);
-                                    poMonth = int.Parse(strPODate[0].TrimStart('0'));
-                                    poDay = int.Parse(strPODate[1].TrimStart('0'));
-                                }
-
-                                DateTime poTestDate = new DateTime(poYear, poMonth, poDay);
-
-                                if (poTestDate < Filters.PoFromDate || poTestDate > Filters.PoToDate)
-                                {
-                                    // The PO date is not within the PO date range.
-                                    continue;
-                                }
-                            }
-
-
-
-                            string[] reqCreationDate = (dr["Requisn Date"].ToString()).Split('/');
-                            int year = int.Parse(reqCreationDate[2]);
-                            int month = int.Parse(reqCreationDate[0].TrimStart('0'));
-                            int day = int.Parse(reqCreationDate[1].TrimStart('0'));
-
-                            DateTime reqDate = new DateTime(year, month, day);
-                            double elapsedDays = (int)(DateTime.Now - reqDate).TotalDays;
-
-                            switch (tag)
-                            {
-                                case 0:
-                                    prsAgingNotRelDt.ImportRow(dr);
-                                    break;
-                                case 1:
-                                    if (elapsedDays <= 0)
-                                    {
-                                        prsAgingNotRelDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 2:
-                                    if (elapsedDays >= 1 && elapsedDays <= 3)
-                                    {
-                                        prsAgingNotRelDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 3:
-                                    if (elapsedDays >= 4 && elapsedDays <= 7)
-                                    {
-                                        prsAgingNotRelDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 4:
-                                    if (elapsedDays >= 8 && elapsedDays <= 14)
-                                    {
-                                        prsAgingNotRelDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 5:
-                                    if (elapsedDays >= 15 && elapsedDays <= 21)
-                                    {
-                                        prsAgingNotRelDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 6:
-                                    if (elapsedDays >= 22 && elapsedDays <= 28)
-                                    {
-                                        prsAgingNotRelDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 7:
-                                    if (elapsedDays >= 29)
-                                    {
-                                        prsAgingNotRelDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                default:
-                                    continue;
-                            }
-                        }
-
-                        using (DataViewer dv = new DataViewer() { Data = prsAgingNotRelDt, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
-                        {
-                            dv.LoadData();
-                            dv.ShowDialog();
-                        }
-
+                    case 1: // PRs Aging (Not Released)
+                        KpaDataTableLoader.Plan.LoadPRsAgingNotRelDataTable(tag);
                         break;
-                    case 2:
-                        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                        //
-                        // Material Due
-                        //
-                        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                        dt = new DataTable();
-                        MaterialDueDt = new DataTable();
-
-                        if (Values.Globals.SelectedCountry == AccessInfo.MainTables.US_PRPO)
-                            cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Plan_MaterialDue] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
-                        else
-                            cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Plan_MaterialDue] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
-
-                        da = new OleDbDataAdapter(cmd);
-                        da.Fill(dt);
-
-                        MaterialDueDt = dt.Clone();
-
-                        foreach (DataRow dr in dt.Rows)
-                        {
-                            if (Filters.FilterByPrDateRange)
-                            {
-                                // The user wants to filter by PR date range
-                                string[] requisnDate = (dr["Requisn Date"].ToString()).Split('/');
-                                int reqYear = int.Parse(requisnDate[2]);
-                                int reqMonth = int.Parse(requisnDate[0].TrimStart('0'));
-                                int reqDay = int.Parse(requisnDate[1].TrimStart('0'));
-                                DateTime reqTestDate = new DateTime(reqYear, reqMonth, reqDay);
-
-                                if (reqTestDate < Filters.PrFromDate || reqTestDate > Filters.PrToDate)
-                                {
-                                    // The PR date is not within the PR date range.
-                                    continue;
-                                }
-                            }
-
-                            if (Filters.FilterByPoDateRange)
-                            {
-                                // The user wnats to filter by PO date range
-                                string[] strPODate = (dr["PO Date"].ToString()).Split('/');
-                                int poYear = int.Parse(strPODate[2]);
-                                int poMonth = int.Parse(strPODate[0]);
-                                int poDay = int.Parse(strPODate[1]);
-
-                                if (poYear == 0 && poMonth == 0 && poDay == 0)
-                                {
-                                    // This record is not a PO so we dont care about it
-                                    continue;
-                                }
-                                else
-                                {
-                                    poYear = int.Parse(strPODate[2]);
-                                    poMonth = int.Parse(strPODate[0].TrimStart('0'));
-                                    poDay = int.Parse(strPODate[1].TrimStart('0'));
-                                }
-
-                                DateTime poTestDate = new DateTime(poYear, poMonth, poDay);
-
-                                if (poTestDate < Filters.PoFromDate || poTestDate > Filters.PoToDate)
-                                {
-                                    // The PO date is not within the PO date range.
-                                    continue;
-                                }
-                            }
-
-
-                            string[] strCurrReqDate = (dr["PR Delivery Date"].ToString()).Split('/');
-                            int year = int.Parse(strCurrReqDate[2]);
-                            int month = int.Parse(strCurrReqDate[0].TrimStart('0'));
-                            int day = int.Parse(strCurrReqDate[1].TrimStart('0'));
-
-                            DateTime currReqDate = new DateTime(year, month, day);
-                            DateTime today = DateTime.Now.Date;
-                            double elapsedDays = (int)(currReqDate - today).TotalDays;
-
-
-                            switch (int.Parse(btn.Tag.ToString()))
-                            {
-                                case 0:
-                                    MaterialDueDt.ImportRow(dr);
-                                    break;
-                                case 1:
-                                    if (elapsedDays <= 0)
-                                    {
-                                        MaterialDueDt.ImportRow(dr);
-                                    }
-                                    break;
-                                case 2:
-                                    if (elapsedDays >= 1 && elapsedDays <= 3)
-                                    {
-                                        MaterialDueDt.ImportRow(dr);
-                                    }
-                                    break;
-                                case 3:
-                                    if (elapsedDays >= 4 && elapsedDays <= 7)
-                                    {
-                                        MaterialDueDt.ImportRow(dr);
-                                    }
-                                    break;
-                                case 4:
-                                    if (elapsedDays >= 8 && elapsedDays <= 14)
-                                    {
-                                        MaterialDueDt.ImportRow(dr);
-                                    }
-                                    break;
-                                case 5:
-                                    if (elapsedDays >= 15 && elapsedDays <= 21)
-                                    {
-                                        MaterialDueDt.ImportRow(dr);
-                                    }
-                                    break;
-                                case 6:
-                                    if (elapsedDays >= 22 && elapsedDays <= 28)
-                                    {
-                                        MaterialDueDt.ImportRow(dr);
-                                    }
-                                    break;
-                                case 7:
-                                    if (elapsedDays >= 29)
-                                    {
-                                        MaterialDueDt.ImportRow(dr);
-                                    }
-                                    break;
-                                default:
-                                    break;
-                            }
-                        }
-
-                        using (DataViewer dv = new DataViewer() { Data = MaterialDueDt, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
-                        {
-                            dv.LoadData();
-                            dv.ShowDialog();
-                        }
+                    case 2: // Material Due
+                        KpaDataTableLoader.Plan.LoadMaterialDueDataTable(tag);
                         break;
                     default:
                         break;
@@ -636,7 +343,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             {
                 MessageBox.Show(ex.Message, "KPA -> Plan Data Viewer Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-           
         }
     }
 }

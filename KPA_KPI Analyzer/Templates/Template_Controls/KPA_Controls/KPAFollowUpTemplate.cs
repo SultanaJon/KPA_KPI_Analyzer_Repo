@@ -1,27 +1,19 @@
-﻿using DataImporter.Access;
-using KPA_KPI_Analyzer.DatabaseUtils;
-using KPA_KPI_Analyzer.FilterFeeature;
-using KPA_KPI_Analyzer.KPA_KPI_Overall;
+﻿using KPA_KPI_Analyzer.KPA_KPI_Overall;
+using KPA_KPI_Analyzer.Values;
 using System;
-using System.Data;
-using System.Data.OleDb;
 using System.Drawing;
 using System.Windows.Forms;
+using KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader;
 
 namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 {
     public partial class KPAFollowUpTemplate : UserControl
     {
         Overall overallData = new Overall();
-        DataTable confVsPlanDateDt;
-        DataTable poFirsconfDateUpDelDt;
-        DataTable LateConfDateDt;
-        DataTable dt;
-        OleDbCommand cmd;
-        OleDbDataAdapter da;
 
 
-        public delegate void UpdateCategoryHandler(string categoryName);
+
+        public delegate void UpdateCategoryHandler();
         public static event UpdateCategoryHandler ChangeCategory;
 
 
@@ -31,31 +23,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         bool DatavizLoaded { get; set; }
 
 
-
-
-        /// <summary>
-        /// Current selected country to display in the data viewer
-        /// </summary>
-        public string CurrCountry { get; set; }
-
-
-        /// <summary>
-        /// Current selected performance to display in the data viewer
-        /// </summary>
-        public string CurrPerformance { get; set; }
-
-
-        /// <summary>
-        /// Current selected section to display in the data viewer
-        /// </summary>
-        public string CurrSection { get; set; }
-
-
-
-        /// <summary>
-        /// Current selected category to display in the data viewer
-        /// </summary>
-        public string CurrCategory { get; set; }
 
 
 
@@ -125,8 +92,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             btn_One.Textcolor = System.Drawing.Color.Coral;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            CurrCategory = "Confirmed vs Plan Date";
-            ChangeCategory(CurrCategory);
+            Globals.CurrCategory = "Confirmed vs Plan Date";
+            ChangeCategory();
         }
 
 
@@ -202,8 +169,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = "Confirmed vs Plan Date";
-            ChangeCategory(Title);
-            CurrCategory = Title;
+            Globals.CurrCategory = Title;
+            ChangeCategory();
             TimeBucketOne = overallData.kpa.followUp.confDateVsPlanDate.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpa.followUp.confDateVsPlanDate.data.One_Three.ToString();
             TimeBucketThree = overallData.kpa.followUp.confDateVsPlanDate.data.Four_Seven.ToString();
@@ -257,8 +224,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = "Confirmed Date for Upcoming Deliveres";
-            ChangeCategory(Title);
-            CurrCategory = Title;
+            Globals.CurrCategory = Title;
+            ChangeCategory();
 
             TimeBucketOne = overallData.kpa.followUp.ConfDateForUpcomingDel.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpa.followUp.ConfDateForUpcomingDel.data.One_Three.ToString();
@@ -309,8 +276,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = "Due Today or Late to Confirmed Date";
-            ChangeCategory(Title);
-            CurrCategory = Title;
+            Globals.CurrCategory = Title;
+            ChangeCategory();
 
             TimeBucketOne = overallData.kpa.followUp.LateToConfDate.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpa.followUp.LateToConfDate.data.One_Three.ToString();
@@ -402,437 +369,14 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
                 switch (ActiveCategory)
                 {
-                    case 0:
-                        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                        //
-                        // Confirmed Vs Plan Date
-                        //
-                        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                        dt = new DataTable();
-                        confVsPlanDateDt = new DataTable();
-
-                        if (Values.Globals.SelectedCountry == AccessInfo.MainTables.US_PRPO)
-                            cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_FollowUp_ConfPlanDate] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
-                        else
-                            cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_FollowUp_ConfPlanDate] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
-
-                        da = new OleDbDataAdapter(cmd);
-                        da.Fill(dt);
-
-                        confVsPlanDateDt = dt.Clone();
-
-
-
-                        foreach (DataRow dr in dt.Rows)
-                        {
-                            if (Filters.FilterByPrDateRange)
-                            {
-                                // The user wants to filter by PR date range
-                                string[] requisnDate = (dr["Requisn Date"].ToString()).Split('/');
-                                int reqYear = int.Parse(requisnDate[2]);
-                                int reqMonth = int.Parse(requisnDate[0].TrimStart('0'));
-                                int reqDay = int.Parse(requisnDate[1].TrimStart('0'));
-                                DateTime reqTestDate = new DateTime(reqYear, reqMonth, reqDay);
-
-                                if (reqTestDate < Filters.PrFromDate || reqTestDate > Filters.PrToDate)
-                                {
-                                    // The PR date is not within the PR date range.
-                                    continue;
-                                }
-                            }
-
-                            if (Filters.FilterByPoDateRange)
-                            {
-                                // The user wnats to filter by PO date range
-                                string[] strPODate = (dr["PO Date"].ToString()).Split('/');
-                                int poYear = int.Parse(strPODate[2]);
-                                int poMonth = int.Parse(strPODate[0]);
-                                int poDay = int.Parse(strPODate[1]);
-
-                                if (poYear == 0 && poMonth == 0 && poDay == 0)
-                                {
-                                    // This record is not a PO so we dont care about it
-                                    continue;
-                                }
-                                else
-                                {
-                                    poYear = int.Parse(strPODate[2]);
-                                    poMonth = int.Parse(strPODate[0].TrimStart('0'));
-                                    poDay = int.Parse(strPODate[1].TrimStart('0'));
-                                }
-
-                                DateTime poTestDate = new DateTime(poYear, poMonth, poDay);
-
-                                if (poTestDate < Filters.PoFromDate || poTestDate > Filters.PoToDate)
-                                {
-                                    // The PO date is not within the PO date range.
-                                    continue;
-                                }
-                            }
-
-
-
-                            string[] strCurrConfDate = (dr["Del#Conf#Date"].ToString()).Split('/');
-                            int delConfYear = int.Parse(strCurrConfDate[2]);
-                            int delConfMonth = int.Parse(strCurrConfDate[0].TrimStart('0'));
-                            int delConfDay = int.Parse(strCurrConfDate[1].TrimStart('0'));
-
-                            DateTime delConfDate = new DateTime(delConfYear, delConfMonth, delConfDay);
-
-                            string[] strCurrPlanDate = (dr["Rescheduling date"].ToString()).Split('/');
-                            int currConfYear = int.Parse(strCurrPlanDate[2]);
-                            int currConfMonth = int.Parse(strCurrPlanDate[0]);
-                            int currConfDay = int.Parse(strCurrPlanDate[1]);
-
-                            if (currConfYear == 0 && currConfMonth == 0 && currConfDay == 0)
-                            {
-                                string[] strNewCurrConfDate = (dr["Delivery Date"].ToString()).Split('/');
-                                currConfYear = int.Parse(strNewCurrConfDate[2]);
-                                currConfMonth = int.Parse(strNewCurrConfDate[0].TrimStart('0'));
-                                currConfDay = int.Parse(strNewCurrConfDate[1].TrimStart('0'));
-                            }
-                            else
-                            {
-                                currConfYear = int.Parse(strCurrPlanDate[2]);
-                                currConfMonth = int.Parse(strCurrPlanDate[0].TrimStart('0'));
-                                currConfDay = int.Parse(strCurrPlanDate[1].TrimStart('0'));
-                            }
-
-                            DateTime currPlanDate = new DateTime(currConfYear, currConfMonth, currConfDay);
-                            double elapsedDays = (int)(delConfDate - currPlanDate).TotalDays;
-
-                            switch (tag)
-                            {
-                                case 0:
-                                    confVsPlanDateDt.ImportRow(dr);
-                                    break;
-                                case 1:
-                                    if (elapsedDays <= 0)
-                                    {
-                                        confVsPlanDateDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 2:
-                                    if (elapsedDays >= 1 && elapsedDays <= 3)
-                                    {
-                                        confVsPlanDateDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 3:
-                                    if (elapsedDays >= 4 && elapsedDays <= 7)
-                                    {
-                                        confVsPlanDateDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 4:
-                                    if (elapsedDays >= 8 && elapsedDays <= 14)
-                                    {
-                                        confVsPlanDateDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 5:
-                                    if (elapsedDays >= 15 && elapsedDays <= 21)
-                                    {
-                                        confVsPlanDateDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 6:
-                                    if (elapsedDays >= 22 && elapsedDays <= 28)
-                                    {
-                                        confVsPlanDateDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 7:
-                                    if (elapsedDays >= 29)
-                                    {
-                                        confVsPlanDateDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                default:
-                                    continue;
-                            }
-                        }
-
-                        using (DataViewer dv = new DataViewer() { Data = confVsPlanDateDt, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
-                        {
-                            dv.LoadData();
-                            dv.ShowDialog();
-                        }
+                    case 0: // Confirmed Vs Plan Date
+                        KpaDataTableLoader.FollowUp.LoadConfirmedVsPlanDateDataTable(tag);
                         break;
-                    case 1:
-                        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                        //
-                        // Confirmed Date for Upcoming Deliveries
-                        //
-                        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                        dt = new DataTable();
-                        poFirsconfDateUpDelDt = new DataTable();
-                        if (Values.Globals.SelectedCountry == AccessInfo.MainTables.US_PRPO)
-                            cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_FollowUp_ConfDateUpcomingDel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
-                        else
-                            cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_FollowUp_ConfDateUpcomingDel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
-
-                        da = new OleDbDataAdapter(cmd);
-                        da.Fill(dt);
-
-
-                        poFirsconfDateUpDelDt = dt.Clone();
-
-                        foreach (DataRow dr in dt.Rows)
-                        {
-                            if (Filters.FilterByPrDateRange)
-                            {
-                                // The user wants to filter by PR date range
-                                string[] requisnDate = (dr["Requisn Date"].ToString()).Split('/');
-                                int reqYear = int.Parse(requisnDate[2]);
-                                int reqMonth = int.Parse(requisnDate[0].TrimStart('0'));
-                                int reqDay = int.Parse(requisnDate[1].TrimStart('0'));
-                                DateTime reqTestDate = new DateTime(reqYear, reqMonth, reqDay);
-
-                                if (reqTestDate < Filters.PrFromDate || reqTestDate > Filters.PrToDate)
-                                {
-                                    // The PR date is not within the PR date range.
-                                    continue;
-                                }
-                            }
-
-                            if (Filters.FilterByPoDateRange)
-                            {
-                                // The user wnats to filter by PO date range
-                                string[] strPODate = (dr["PO Date"].ToString()).Split('/');
-                                int poYear = int.Parse(strPODate[2]);
-                                int poMonth = int.Parse(strPODate[0]);
-                                int poDay = int.Parse(strPODate[1]);
-
-                                if (poYear == 0 && poMonth == 0 && poDay == 0)
-                                {
-                                    // This record is not a PO so we dont care about it
-                                    continue;
-                                }
-                                else
-                                {
-                                    poYear = int.Parse(strPODate[2]);
-                                    poMonth = int.Parse(strPODate[0].TrimStart('0'));
-                                    poDay = int.Parse(strPODate[1].TrimStart('0'));
-                                }
-
-                                DateTime poTestDate = new DateTime(poYear, poMonth, poDay);
-
-                                if (poTestDate < Filters.PoFromDate || poTestDate > Filters.PoToDate)
-                                {
-                                    // The PO date is not within the PO date range.
-                                    continue;
-                                }
-                            }
-
-
-
-                            string[] strDate = (dr["Del#Conf#Date"].ToString()).Split('/');
-                            int year = int.Parse(strDate[2]);
-                            int month = int.Parse(strDate[0].TrimStart('0'));
-                            int day = int.Parse(strDate[1].TrimStart('0'));
-
-                            DateTime date = new DateTime(year, month, day);
-                            DateTime today = DateTime.Now.Date;
-                            double elapsedDays = (int)(date - today).TotalDays;
-
-                            switch (tag)
-                            {
-                                case 0:
-                                    poFirsconfDateUpDelDt.ImportRow(dr);
-                                    break;
-                                case 1:
-                                    if (elapsedDays <= 0)
-                                    {
-                                        poFirsconfDateUpDelDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 2:
-                                    if (elapsedDays >= 1 && elapsedDays <= 3)
-                                    {
-                                        poFirsconfDateUpDelDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 3:
-                                    if (elapsedDays >= 4 && elapsedDays <= 7)
-                                    {
-                                        poFirsconfDateUpDelDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 4:
-                                    if (elapsedDays >= 8 && elapsedDays <= 14)
-                                    {
-                                        poFirsconfDateUpDelDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 5:
-                                    if (elapsedDays >= 15 && elapsedDays <= 21)
-                                    {
-                                        poFirsconfDateUpDelDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 6:
-                                    if (elapsedDays >= 22 && elapsedDays <= 28)
-                                    {
-                                        poFirsconfDateUpDelDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 7:
-                                    if (elapsedDays >= 29)
-                                    {
-                                        poFirsconfDateUpDelDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                default:
-                                    continue;
-                            }
-                        }
-
-                        using (DataViewer dv = new DataViewer() { Data = poFirsconfDateUpDelDt, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
-                        {
-                            dv.LoadData();
-                            dv.ShowDialog();
-                        }
+                    case 1: // Confirmed Date for Upcoming Deliveries
+                        KpaDataTableLoader.FollowUp.LoadConfirmedDateForUpcomingDeliveriesDataTable(tag);
                         break;
-                    case 2:
-                        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                        //
-                        // PO Creation to Confirmation Entry
-                        //
-                        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                        dt = new DataTable();
-                        LateConfDateDt = new DataTable();
-                        if (Values.Globals.SelectedCountry == AccessInfo.MainTables.US_PRPO)
-                            cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_FollowUp_LateToConfirmedDate] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
-                        else
-                            cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_FollowUp_LateToConfirmedDate] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
-
-                        da = new OleDbDataAdapter(cmd);
-                        da.Fill(dt);
-
-
-                        LateConfDateDt = dt.Clone();
-
-
-                        foreach (DataRow dr in dt.Rows)
-                        {
-                            if (Filters.FilterByPrDateRange)
-                            {
-                                // The user wants to filter by PR date range
-                                string[] requisnDate = (dr["Requisn Date"].ToString()).Split('/');
-                                int reqYear = int.Parse(requisnDate[2]);
-                                int reqMonth = int.Parse(requisnDate[0].TrimStart('0'));
-                                int reqDay = int.Parse(requisnDate[1].TrimStart('0'));
-                                DateTime reqTestDate = new DateTime(reqYear, reqMonth, reqDay);
-
-                                if (reqTestDate < Filters.PrFromDate || reqTestDate > Filters.PrToDate)
-                                {
-                                    // The PR date is not within the PR date range.
-                                    continue;
-                                }
-                            }
-
-                            if (Filters.FilterByPoDateRange)
-                            {
-                                // The user wnats to filter by PO date range
-                                string[] strPODate = (dr["PO Date"].ToString()).Split('/');
-                                int poYear = int.Parse(strPODate[2]);
-                                int poMonth = int.Parse(strPODate[0]);
-                                int poDay = int.Parse(strPODate[1]);
-
-                                if (poYear == 0 && poMonth == 0 && poDay == 0)
-                                {
-                                    // This record is not a PO so we dont care about it
-                                    continue;
-                                }
-                                else
-                                {
-                                    poYear = int.Parse(strPODate[2]);
-                                    poMonth = int.Parse(strPODate[0].TrimStart('0'));
-                                    poDay = int.Parse(strPODate[1].TrimStart('0'));
-                                }
-
-                                DateTime poTestDate = new DateTime(poYear, poMonth, poDay);
-
-                                if (poTestDate < Filters.PoFromDate || poTestDate > Filters.PoToDate)
-                                {
-                                    // The PO date is not within the PO date range.
-                                    continue;
-                                }
-                            }
-
-
-
-                            string[] strDate = (dr["Del#Conf#Date"].ToString()).Split('/');
-                            int year = int.Parse(strDate[2]);
-                            int month = int.Parse(strDate[0].TrimStart('0'));
-                            int day = int.Parse(strDate[1].TrimStart('0'));
-
-                            DateTime date = new DateTime(year, month, day);
-                            DateTime today = DateTime.Now.Date;
-
-                            if (date > today)
-                                continue;
-
-                            double elapsedDays = (int)(today - date).TotalDays;
-
-                            switch (tag)
-                            {
-                                case 0:
-                                    LateConfDateDt.ImportRow(dr);
-                                    break;
-                                case 1:
-                                    if (elapsedDays <= 0)
-                                    {
-                                        LateConfDateDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 2:
-                                    if (elapsedDays >= 1 && elapsedDays <= 3)
-                                    {
-                                        LateConfDateDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 3:
-                                    if (elapsedDays >= 4 && elapsedDays <= 7)
-                                    {
-                                        LateConfDateDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 4:
-                                    if (elapsedDays >= 8 && elapsedDays <= 14)
-                                    {
-                                        LateConfDateDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 5:
-                                    if (elapsedDays >= 15 && elapsedDays <= 21)
-                                    {
-                                        LateConfDateDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 6:
-                                    if (elapsedDays >= 22 && elapsedDays <= 28)
-                                    {
-                                        LateConfDateDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 7:
-                                    if (elapsedDays >= 29)
-                                    {
-                                        LateConfDateDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                default:
-                                    continue;
-                            }
-                        }
-
-                        using (DataViewer dv = new DataViewer() { Data = LateConfDateDt, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
-                        {
-                            dv.LoadData();
-                            dv.ShowDialog();
-                        }
+                    case 2: // PO Creation to Confirmation Entry
+                        KpaDataTableLoader.FollowUp.LoadPOCreationToConfirmationEntryDataTable(tag);
                         break;
                     default:
                         break;

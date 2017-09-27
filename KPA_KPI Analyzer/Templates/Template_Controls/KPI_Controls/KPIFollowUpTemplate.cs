@@ -4,6 +4,7 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using KPA_KPI_Analyzer.FilterFeeature;
+using KPA_KPI_Analyzer.Values;
 
 namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 {
@@ -18,40 +19,13 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         DataTable unconfirmed;
 
 
-        public delegate void UpdateCategoryHandler(string categoryName);
+        public delegate void UpdateCategoryHandler();
         public static event UpdateCategoryHandler ChangeCategory;
 
         /// <summary>
         /// Boolean value indicating whether the data was loaded into the dataviz control
         /// </summary>
         bool DatavizLoaded { get; set; }
-
-
-
-
-        /// <summary>
-        /// Current selected country to display in the data viewer
-        /// </summary>
-        public string CurrCountry { get; set; }
-
-
-        /// <summary>
-        /// Current selected performance to display in the data viewer
-        /// </summary>
-        public string CurrPerformance { get; set; }
-
-
-        /// <summary>
-        /// Current selected section to display in the data viewer
-        /// </summary>
-        public string CurrSection { get; set; }
-
-
-
-        /// <summary>
-        /// Current selected category to display in the data viewer
-        /// </summary>
-        public string CurrCategory { get; set; }
 
 
 
@@ -131,8 +105,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             DatavizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            CurrCategory = "Initial Confirmation vs Current Confirmation";
-            ChangeCategory(CurrCategory);
+            Globals.CurrCategory = "Initial Confirmation vs Current Confirmation";
+            ChangeCategory();
         }
 
 
@@ -247,8 +221,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = "Initial Confirmation vs Current Confirmation";
-            ChangeCategory(Title);
-            CurrCategory = Title;
+            Globals.CurrCategory = Title;
+            ChangeCategory();
 
             TotalOrders = overallData.kpi.followUp.initConfVsCurrConf.data.Total.ToString();
             Average = overallData.kpi.followUp.initConfVsCurrConf.data.Average.ToString();
@@ -309,8 +283,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = "Final Confirmation Date vs Final Planned Date";
-            ChangeCategory(Title);
-            CurrCategory = Title;
+            Globals.CurrCategory = Title;
+            ChangeCategory();
 
             TotalOrders = overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Total.ToString();
             Average = overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Average.ToString();
@@ -371,8 +345,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = "Receipt Date vs Current Planed Date";
-            ChangeCategory(Title);
-            CurrCategory = Title;
+            Globals.CurrCategory = Title;
+            ChangeCategory();
 
             TotalOrders = overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Total.ToString();
             Average = overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Average.ToString();
@@ -429,8 +403,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = "Receipt Date vs Original Confirmed Date";
-            ChangeCategory(Title);
-            CurrCategory = Title;
+            Globals.CurrCategory = Title;
+            ChangeCategory();
 
             TotalOrders = overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Total.ToString();
             Average = overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Average.ToString();
@@ -491,8 +465,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = "Receipt Date vs Current Confirmed Date";
-            ChangeCategory(Title);
-            CurrCategory = Title;
+            Globals.CurrCategory = Title;
+            ChangeCategory();
 
             TotalOrders = overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Total.ToString();
             Average = overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Average.ToString();
@@ -745,7 +719,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
                         if(tag != 10)
                         {
-                            using (DataViewer dv = new DataViewer() { Data = initConfVsCurrConf, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
+                            using (DataViewer dv = new DataViewer() { Data = initConfVsCurrConf, Country = Globals.CurrCountry, Performance = Globals.CurrPerformance, Section = Globals.CurrSection, Category = Globals.CurrCategory })
                             {
                                 dv.LoadData();
                                 dv.ShowDialog();
@@ -753,7 +727,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         }
                         else
                         {
-                            using (DataViewer dv = new DataViewer() { Data = unconfirmed, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
+                            using (DataViewer dv = new DataViewer() { Data = unconfirmed, Country = Globals.CurrCountry, Performance = Globals.CurrPerformance, Section = Globals.CurrSection, Category = Globals.CurrCategory })
                             {
                                 dv.LoadData();
                                 dv.ShowDialog();
@@ -925,7 +899,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
                         if (tag != 10)
                         {
-                            using (DataViewer dv = new DataViewer() { Data = finalConfDateVsFinalPlanDateDt, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
+                            using (DataViewer dv = new DataViewer() { Data = finalConfDateVsFinalPlanDateDt, Country = Globals.CurrCountry, Performance = Globals.CurrPerformance, Section = Globals.CurrSection, Category = Globals.CurrCategory })
                             {
                                 dv.LoadData();
                                 dv.ShowDialog();
@@ -933,7 +907,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         }
                         else
                         {
-                            using (DataViewer dv = new DataViewer() { Data = unconfirmed, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
+                            using (DataViewer dv = new DataViewer() { Data = unconfirmed, Country = Globals.CurrCountry, Performance = Globals.CurrPerformance, Section = Globals.CurrSection, Category = Globals.CurrCategory })
                             {
                                 dv.LoadData();
                                 dv.ShowDialog();
@@ -1097,7 +1071,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                             }
                         }
 
-                        using (DataViewer dv = new DataViewer() { Data = recDateVsCurrPlanDateDt, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
+                        using (DataViewer dv = new DataViewer() { Data = recDateVsCurrPlanDateDt, Country = Globals.CurrCountry, Performance = Globals.CurrPerformance, Section = Globals.CurrSection, Category = Globals.CurrCategory })
                         {
                             dv.LoadData();
                             dv.ShowDialog();
@@ -1267,7 +1241,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
                         if(tag != 10)
                         {
-                            using (DataViewer dv = new DataViewer() { Data = recDateVsOrigConfDateDt, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
+                            using (DataViewer dv = new DataViewer() { Data = recDateVsOrigConfDateDt, Country = Globals.CurrCountry, Performance = Globals.CurrPerformance, Section = Globals.CurrSection, Category = Globals.CurrCategory })
                             {
                                 dv.LoadData();
                                 dv.ShowDialog();
@@ -1275,7 +1249,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         }
                         else
                         {
-                            using (DataViewer dv = new DataViewer() { Data = unconfirmed, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
+                            using (DataViewer dv = new DataViewer() { Data = unconfirmed, Country = Globals.CurrCountry, Performance = Globals.CurrPerformance, Section = Globals.CurrSection, Category = Globals.CurrCategory })
                             {
                                 dv.LoadData();
                                 dv.ShowDialog();
@@ -1444,7 +1418,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
                         if (tag != 10)
                         {
-                            using (DataViewer dv = new DataViewer() { Data = recDateVsCurrConfDateDt, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
+                            using (DataViewer dv = new DataViewer() { Data = recDateVsCurrConfDateDt, Country = Globals.CurrCountry, Performance = Globals.CurrPerformance, Section = Globals.CurrSection, Category = Globals.CurrCategory })
                             {
                                 dv.LoadData();
                                 dv.ShowDialog();
@@ -1452,7 +1426,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         }
                         else
                         {
-                            using (DataViewer dv = new DataViewer() { Data = unconfirmed, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
+                            using (DataViewer dv = new DataViewer() { Data = unconfirmed, Country = Globals.CurrCountry, Performance = Globals.CurrPerformance, Section = Globals.CurrSection, Category = Globals.CurrCategory })
                             {
                                 dv.LoadData();
                                 dv.ShowDialog();

@@ -4,6 +4,7 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using KPA_KPI_Analyzer.FilterFeeature;
+using KPA_KPI_Analyzer.Values;
 
 namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 {
@@ -14,7 +15,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         DataTable unconfirmed;
 
 
-        public delegate void UpdateCategoryHandler(string categoryName);
+        public delegate void UpdateCategoryHandler();
         public static event UpdateCategoryHandler ChangeCategory;
 
 
@@ -22,33 +23,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// Boolean value indicating whether the data was loaded into the dataviz control
         /// </summary>
         bool DatavizLoaded { get; set; }
-
-
-
-
-        /// <summary>
-        /// Current selected country to display in the data viewer
-        /// </summary>
-        public string CurrCountry { get; set; }
-
-
-        /// <summary>
-        /// Current selected performance to display in the data viewer
-        /// </summary>
-        public string CurrPerformance { get; set; }
-
-
-        /// <summary>
-        /// Current selected section to display in the data viewer
-        /// </summary>
-        public string CurrSection { get; set; }
-
-
-
-        /// <summary>
-        /// Current selected category to display in the data viewer
-        /// </summary>
-        public string CurrCategory { get; set; }
 
 
 
@@ -123,8 +97,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             DatavizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            CurrCategory = "Initial Confirmation vs PR Planned Date";
-            ChangeCategory(CurrCategory);
+            Globals.CurrCategory = "Initial Confirmation vs PR Planned Date";
+            ChangeCategory();
         }
 
 
@@ -217,8 +191,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = "Initial Confirmation vs PR Planned Date";
-            ChangeCategory(Title);
-            CurrCategory = Title;
+            Globals.CurrCategory = Title;
+            ChangeCategory();
 
             TimeBucketOne = overallData.kpi.purch.initConfVsPRPlanDate.data.Minus_TwentyTwo.ToString();
             TimeBucketTwo = overallData.kpi.purch.initConfVsPRPlanDate.data.Minus_Fifteen_TwentyOne.ToString();
@@ -459,7 +433,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
                 if (tag != 10)
                 {
-                    using (DataViewer dv = new DataViewer() { Data = initConfVsPrPlanDateDt, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
+                    using (DataViewer dv = new DataViewer() { Data = initConfVsPrPlanDateDt, Country = Globals.CurrCountry, Performance = Globals.CurrPerformance, Section = Globals.CurrSection, Category = Globals.CurrCategory })
                     {
                         dv.LoadData();
                         dv.ShowDialog();
@@ -467,7 +441,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                 }
                 else
                 {
-                    using (DataViewer dv = new DataViewer() { Data = unconfirmed, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
+                    using (DataViewer dv = new DataViewer() { Data = unconfirmed, Country = Globals.CurrCountry, Performance = Globals.CurrPerformance, Section = Globals.CurrSection, Category = Globals.CurrCategory })
                     {
                         dv.LoadData();
                         dv.ShowDialog();

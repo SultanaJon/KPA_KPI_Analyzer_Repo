@@ -6,52 +6,22 @@ using System;
 using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
+using KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader;
+using KPA_KPI_Analyzer.Values;
 
 namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 {
     public partial class KPACurrentPlanActualTemplate : UserControl
     {
         Overall overallData = new Overall();
-        DataTable dt;
-        DataTable currPlanDateVsCurrConfDateDt;
-        DataTable currPlanDateVsCurrConfDateDtHotJobs;
-        OleDbDataAdapter da;
-        OleDbCommand cmd;
 
-
-        public delegate void UpdateCategoryHandler(string categoryName);
+        public delegate void UpdateCategoryHandler();
         public static event UpdateCategoryHandler ChangeCategory;
 
         /// <summary>
         /// Boolean determining whether or not the dataviz graph was loaded.
         /// </summary>
         bool DatavizLoaded { get; set; }
-
-
-
-        /// <summary>
-        /// Current selected country to display in the data viewer
-        /// </summary>
-        public string CurrCountry { get; set; }
-
-
-        /// <summary>
-        /// Current selected performance to display in the data viewer
-        /// </summary>
-        public string CurrPerformance { get; set; }
-
-
-        /// <summary>
-        /// Current selected section to display in the data viewer
-        /// </summary>
-        public string CurrSection { get; set; }
-
-
-
-        /// <summary>
-        /// Current selected category to display in the data viewer
-        /// </summary>
-        public string CurrCategory { get; set; }
 
 
 
@@ -121,8 +91,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             DatavizLoaded = false;
             datavizLoadTimer.Start();
             ActiveCategory = 0;
-            CurrCategory = "Current Planned Date vs Current Confirmed Date (Open POs)";
-            ChangeCategory(CurrCategory);
+            Globals.CurrCategory = "Current Planned Date vs Current Confirmed Date (Open POs)";
+            ChangeCategory();
         }
 
 
@@ -214,8 +184,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = "Current planned date vs current confirmation date (Open POs)";
-            ChangeCategory(Title);
-            CurrCategory = Title;
+            Globals.CurrCategory = Title;
+            ChangeCategory();
 
             TimeBucketOne = overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.LessThanMinusThree.ToString();
             TimeBucketTwo = overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.GreaterThanEqualMinusThree.ToString();
@@ -273,8 +243,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = "Current planned date vs current confirmation date (Open POs) - Hot Job Only";
-            ChangeCategory(Title);
-            CurrCategory = Title;
+            Globals.CurrCategory = Title;
+            ChangeCategory();
 
             TimeBucketOne = overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.LessThanMinusThree.ToString();
             TimeBucketTwo = overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.GreaterThanEqualMinusThree.ToString();
@@ -361,363 +331,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
                 switch (ActiveCategory)
                 {
-                    case 0:
-
-                        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                        //
-                        // Current Planned Date vs Current Confirmation Date (Open Pos)
-                        //
-                        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                        dt = new DataTable();
-                        currPlanDateVsCurrConfDateDt = new DataTable();
-
-                        if (Values.Globals.SelectedCountry == AccessInfo.MainTables.US_PRPO)
-                            cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_CurrPlanActual_CurrPlanDateCurrConfDateOpenPO] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
-                        else
-                            cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_CurrPlanActual_CurrPlanDateCurrConfDateOpenPO] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
-
-                        da = new OleDbDataAdapter(cmd);
-                        da.Fill(dt);
-
-                        currPlanDateVsCurrConfDateDt = dt.Clone();
-
-
-
-                        foreach (DataRow dr in dt.Rows)
-                        {
-                            if (Filters.FilterByPrDateRange)
-                            {
-                                // The user wants to filter by PR date range
-                                string[] requisnDate = (dr["Requisn Date"].ToString()).Split('/');
-                                int reqYear = int.Parse(requisnDate[2]);
-                                int reqMonth = int.Parse(requisnDate[0].TrimStart('0'));
-                                int reqDay = int.Parse(requisnDate[1].TrimStart('0'));
-                                DateTime reqTestDate = new DateTime(reqYear, reqMonth, reqDay);
-
-                                if (reqTestDate < Filters.PrFromDate || reqTestDate > Filters.PrToDate)
-                                {
-                                    // The PR date is not within the PR date range.
-                                    continue;
-                                }
-                            }
-
-                            if (Filters.FilterByPoDateRange)
-                            {
-                                // The user wnats to filter by PO date range
-                                string[] strPODate = (dr["PO Date"].ToString()).Split('/');
-                                int poYear = int.Parse(strPODate[2]);
-                                int poMonth = int.Parse(strPODate[0]);
-                                int poDay = int.Parse(strPODate[1]);
-
-                                if (poYear == 0 && poMonth == 0 && poDay == 0)
-                                {
-                                    // This record is not a PO so we dont care about it
-                                    continue;
-                                }
-                                else
-                                {
-                                    poYear = int.Parse(strPODate[2]);
-                                    poMonth = int.Parse(strPODate[0].TrimStart('0'));
-                                    poDay = int.Parse(strPODate[1].TrimStart('0'));
-                                }
-
-                                DateTime poTestDate = new DateTime(poYear, poMonth, poDay);
-
-                                if (poTestDate < Filters.PoFromDate || poTestDate > Filters.PoToDate)
-                                {
-                                    // The PO date is not within the PO date range.
-                                    continue;
-                                }
-                            }
-
-                            
-                            string[] strDate = (dr["Del#Conf#Date"].ToString()).Split('/');
-                            int year = int.Parse(strDate[2]);
-                            int month = int.Parse(strDate[0].TrimStart('0'));
-                            int day = int.Parse(strDate[1].TrimStart('0'));
-
-                            DateTime confDate = new DateTime(year, month, day);
-
-
-                            string[] strCurrPlanDate = (dr["Rescheduling date"].ToString()).Split('/');
-                            int currConfYear = int.Parse(strCurrPlanDate[2]);
-                            int currConfMonth = int.Parse(strCurrPlanDate[0]);
-                            int currConfDay = int.Parse(strCurrPlanDate[1]);
-
-                            if (currConfYear == 0 && currConfMonth == 0 && currConfDay == 0)
-                            {
-                                string[] strNewCurrConfDate = (dr["Delivery Date"].ToString()).Split('/');
-                                currConfYear = int.Parse(strNewCurrConfDate[2]);
-                                currConfMonth = int.Parse(strNewCurrConfDate[0].TrimStart('0'));
-                                currConfDay = int.Parse(strNewCurrConfDate[1].TrimStart('0'));
-                            }
-                            else
-                            {
-                                currConfYear = int.Parse(strCurrPlanDate[2]);
-                                currConfMonth = int.Parse(strCurrPlanDate[0].TrimStart('0'));
-                                currConfDay = int.Parse(strCurrPlanDate[1].TrimStart('0'));
-                            }
-
-                            DateTime currPlanDate = new DateTime(currConfYear, currConfMonth, currConfDay);
-                            double elapsedDays = (int)(confDate - currPlanDate).TotalDays;
-
-                            int weeks = 0;
-                            if (elapsedDays < 0)
-                                weeks = (int)Math.Floor(elapsedDays / 7);
-                            else if (elapsedDays == 0)
-                                weeks = 0;
-                            else
-                                weeks = (int)Math.Ceiling(elapsedDays / 7);
-
-                            switch (tag)
-                            {
-                                case 0:
-                                    currPlanDateVsCurrConfDateDt.ImportRow(dr);
-                                    break;
-                                case 1:
-                                    if (weeks < (-3))
-                                    {
-                                        currPlanDateVsCurrConfDateDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 2:
-                                    if (weeks >= (-3) && weeks < (-2))
-                                    {
-                                        currPlanDateVsCurrConfDateDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 3:
-                                    if (weeks >= (-2) && weeks < (-1))
-                                    {
-                                        currPlanDateVsCurrConfDateDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 4:
-                                    if (weeks >= (-1) && weeks < 0)
-                                    {
-                                        currPlanDateVsCurrConfDateDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 5:
-                                    if (weeks == 0)
-                                    {
-                                        currPlanDateVsCurrConfDateDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 6:
-                                    if (weeks > 0 && weeks <= 1)
-                                    {
-                                        currPlanDateVsCurrConfDateDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 7:
-                                    if (weeks > 1 && weeks <= 2)
-                                    {
-                                        currPlanDateVsCurrConfDateDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 8:
-                                    if (weeks > 2 && weeks <= 3)
-                                    {
-                                        currPlanDateVsCurrConfDateDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 9:
-                                    if (weeks > 3)
-                                    {
-                                        currPlanDateVsCurrConfDateDt.ImportRow(dr);
-                                    }
-                                    continue;
-                                default:
-                                    continue;
-                            }
-                        }
-
-                        using (DataViewer dv = new DataViewer() { Data = currPlanDateVsCurrConfDateDt, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
-                        {
-                            dv.LoadData();
-                            dv.ShowDialog();
-                        }
+                    case 0: // Current Plan Date vs Current Confirmation Date (Open POs)
+                        KpaDataTableLoader.CurrentPlanVsActual.LoadCurrentPlanVsCurrentConfDateDataTable(tag);
                         break;
-                    case 1:
-
-                        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                        //
-                        // Current Planned Date vs Current Confirmation Date (Open POs) - Hot Jobs Only
-                        //
-                        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                        dt = new DataTable();
-                        currPlanDateVsCurrConfDateDtHotJobs = new DataTable();
-
-                        if (Values.Globals.SelectedCountry == AccessInfo.MainTables.US_PRPO)
-                            cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_CurrPlanActual_CurrPlanDateCurrConfDateOpenPOHotJobs] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
-                        else
-                            cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_CurrPlanActual_CurrPlanDateCurrConfDateOpenPOHotJobs] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
-
-                        da = new OleDbDataAdapter(cmd);
-                        da.Fill(dt);
-
-                        currPlanDateVsCurrConfDateDtHotJobs = dt.Clone();
-
-
-
-                        foreach (DataRow dr in dt.Rows)
-                        {
-                            if (Filters.FilterByPrDateRange)
-                            {
-                                // The user wants to filter by PR date range
-                                string[] requisnDate = (dr["Requisn Date"].ToString()).Split('/');
-                                int reqYear = int.Parse(requisnDate[2]);
-                                int reqMonth = int.Parse(requisnDate[0].TrimStart('0'));
-                                int reqDay = int.Parse(requisnDate[1].TrimStart('0'));
-                                DateTime reqTestDate = new DateTime(reqYear, reqMonth, reqDay);
-
-                                if (reqTestDate < Filters.PrFromDate || reqTestDate > Filters.PrToDate)
-                                {
-                                    // The PR date is not within the PR date range.
-                                    continue;
-                                }
-                            }
-
-                            if (Filters.FilterByPoDateRange)
-                            {
-                                // The user wnats to filter by PO date range
-                                string[] strPODate = (dr["PO Date"].ToString()).Split('/');
-                                int poYear = int.Parse(strPODate[2]);
-                                int poMonth = int.Parse(strPODate[0]);
-                                int poDay = int.Parse(strPODate[1]);
-
-                                if (poYear == 0 && poMonth == 0 && poDay == 0)
-                                {
-                                    // This record is not a PO so we dont care about it
-                                    continue;
-                                }
-                                else
-                                {
-                                    poYear = int.Parse(strPODate[2]);
-                                    poMonth = int.Parse(strPODate[0].TrimStart('0'));
-                                    poDay = int.Parse(strPODate[1].TrimStart('0'));
-                                }
-
-                                DateTime poTestDate = new DateTime(poYear, poMonth, poDay);
-
-                                if (poTestDate < Filters.PoFromDate || poTestDate > Filters.PoToDate)
-                                {
-                                    // The PO date is not within the PO date range.
-                                    continue;
-                                }
-                            }
-
-
-
-                            string[] strDate = (dr["Del#Conf#Date"].ToString()).Split('/');
-                            int year = int.Parse(strDate[2]);
-                            int month = int.Parse(strDate[0].TrimStart('0'));
-                            int day = int.Parse(strDate[1].TrimStart('0'));
-
-                            DateTime confDate = new DateTime(year, month, day);
-
-
-                            string[] strCurrPlanDate = (dr["Rescheduling date"].ToString()).Split('/');
-                            int currConfYear = int.Parse(strCurrPlanDate[2]);
-                            int currConfMonth = int.Parse(strCurrPlanDate[0]);
-                            int currConfDay = int.Parse(strCurrPlanDate[1]);
-
-                            if (currConfYear == 0 && currConfMonth == 0 && currConfDay == 0)
-                            {
-                                string[] strNewCurrConfDate = (dr["Delivery Date"].ToString()).Split('/');
-                                currConfYear = int.Parse(strNewCurrConfDate[2]);
-                                currConfMonth = int.Parse(strNewCurrConfDate[0].TrimStart('0'));
-                                currConfDay = int.Parse(strNewCurrConfDate[1].TrimStart('0'));
-                            }
-                            else
-                            {
-                                currConfYear = int.Parse(strCurrPlanDate[2]);
-                                currConfMonth = int.Parse(strCurrPlanDate[0].TrimStart('0'));
-                                currConfDay = int.Parse(strCurrPlanDate[1].TrimStart('0'));
-                            }
-
-                            DateTime currPlanDate = new DateTime(currConfYear, currConfMonth, currConfDay);
-                            double elapsedDays = (int)(confDate - currPlanDate).TotalDays;
-
-
-                            int weeks = 0;
-                            if (elapsedDays < 0)
-                                weeks = (int)Math.Floor(elapsedDays / 7);
-                            else if (elapsedDays == 0)
-                                weeks = 0;
-                            else
-                                weeks = (int)Math.Ceiling(elapsedDays / 7);
-
-                            switch (tag)
-                            {
-                                case 0:
-                                    currPlanDateVsCurrConfDateDtHotJobs.ImportRow(dr);
-                                    break;
-                                case 1:
-                                    if (weeks < (-3))
-                                    {
-                                        currPlanDateVsCurrConfDateDtHotJobs.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 2:
-                                    if (weeks >= (-3) && weeks < (-2))
-                                    {
-                                        currPlanDateVsCurrConfDateDtHotJobs.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 3:
-                                    if (weeks >= (-2) && weeks < (-1))
-                                    {
-                                        currPlanDateVsCurrConfDateDtHotJobs.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 4:
-                                    if (weeks >= (-1) && weeks < 0)
-                                    {
-                                        currPlanDateVsCurrConfDateDtHotJobs.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 5:
-                                    if (weeks == 0)
-                                    {
-                                        currPlanDateVsCurrConfDateDtHotJobs.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 6:
-                                    if (weeks > 0 && weeks <= 1)
-                                    {
-                                        currPlanDateVsCurrConfDateDtHotJobs.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 7:
-                                    if (weeks > 1 && weeks <= 2)
-                                    {
-                                        currPlanDateVsCurrConfDateDtHotJobs.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 8:
-                                    if (weeks > 2 && weeks <= 3)
-                                    {
-                                        currPlanDateVsCurrConfDateDtHotJobs.ImportRow(dr);
-                                    }
-                                    continue;
-                                case 9:
-                                    if (weeks > 3)
-                                    {
-                                        currPlanDateVsCurrConfDateDtHotJobs.ImportRow(dr);
-                                    }
-                                    continue;
-                                default:
-                                    continue;
-                            }
-                        }
-
-                        using (DataViewer dv = new DataViewer() { Data = currPlanDateVsCurrConfDateDtHotJobs, Country = CurrCountry, Performance = CurrPerformance, Section = CurrSection, Category = CurrCategory })
-                        {
-                            dv.LoadData();
-                            dv.ShowDialog();
-                        }
+                    case 1: // Current Planned Date vs Current Confirmation Date (Open POs) - Hot Jobs Only
+                        KpaDataTableLoader.CurrentPlanVsActual.LoadCurrPlandDateVsCurrConfDateOpenPOs_HotJobsDataTable(tag);
                         break;
                     default:
                         break;
