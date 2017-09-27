@@ -27,6 +27,25 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
 
 
+        public string Name { get { return "Plan"; } }
+
+
+        public enum CategorNames
+        {
+            prPlanDateVsCurrPlan,
+            origPlanDateMinus2ndLvlRelDateVsCodedLead,
+            currPlanDateMinus2ndLvlRelDateVsCodedLead,
+        }
+
+        public string[] categoryNames =
+        {
+            "PR Plan Date vs Current Plan Date",
+            "(Original Plan Date - 2nd Lvl Release Date) vs Coded Lead-Time",
+            "(Current Plan Date - 2nd Lvl Release Date) vs Coded Lead-Time",
+        };
+
+
+
 
 
         /// <summary>

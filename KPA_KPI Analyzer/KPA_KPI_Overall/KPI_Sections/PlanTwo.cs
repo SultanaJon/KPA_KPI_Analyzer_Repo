@@ -15,7 +15,28 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
             prPlanDateVsPR2ndLvlRel = new PR_Plan_Date_vs_PR_2nd_Lvl_Rel();
             planOrderCreatVs2ndLvlRel = new Plan_Order_Creation_vs_2nd_Lvl_Rel();
         }
+
+
+        public string Name { get { return "Plan"; } }
+
+
+        public enum CategorNames
+        {
+            prPlanDateVsPR2ndLvlRel,
+            planOrderCreatVs2ndLvlRel
+        }
+
+        public string[] categoryNames =
+        {
+            "PR Plan Date vs PR 2nd Lvl Release Date",
+            "Plan Order Creation Date vs 2nd Lvl Release Date",
+        };
     }
+
+
+
+
+
 
 
 

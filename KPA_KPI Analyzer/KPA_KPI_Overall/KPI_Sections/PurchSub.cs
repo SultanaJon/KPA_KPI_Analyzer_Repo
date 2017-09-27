@@ -29,6 +29,24 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
 
 
+
+        public string Name { get { return "Purch Sub"; } }
+
+
+        public enum CategorNames
+        {
+            prRelVsPORel,
+            poCreateVsConfEntry
+        }
+
+        public string[] categoryNames =
+        {
+            "PR Release Date vs PO Release Date",
+            "PO Creation Date vs Confirmation Entry Date",
+        };
+
+
+
         /// <summary>
         /// Loads the data for the specific KPI
         /// </summary>

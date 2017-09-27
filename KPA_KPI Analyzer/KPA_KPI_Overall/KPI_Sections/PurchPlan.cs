@@ -29,6 +29,23 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
 
 
+        public string Name { get { return "Purch Plan"; } }
+
+
+        public enum CategorNames
+        {
+            poRelVsPRDelDate,
+            pr2ndLvlRelOrigPlanDelDate
+        }
+
+        public string[] categoryNames =
+        {
+            "PO Release vs PR Delivery Date",
+            "PR 2nd Lvl Release Date to Original Planned Delivery Date",
+        };
+
+
+
 
 
         /// <summary>

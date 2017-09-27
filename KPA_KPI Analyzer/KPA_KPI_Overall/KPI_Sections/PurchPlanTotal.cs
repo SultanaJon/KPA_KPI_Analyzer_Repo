@@ -12,6 +12,21 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
         {
             planOrderCreationVsConfEntry = new Plan_Order_Creation_vs_Conf_Entry();
         }
+
+
+
+        public string Name { get { return "Purch Plan Total"; } }
+
+
+        public enum CategorNames
+        {
+            planOrderCreationVsConfEntry
+        }
+
+        public string[] categoryNames =
+        {
+            "Planned Order Creation Date vs Confirmation Entry Date",
+        };
     }
 
 

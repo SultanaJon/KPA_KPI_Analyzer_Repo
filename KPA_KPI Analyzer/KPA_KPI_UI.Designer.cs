@@ -166,7 +166,6 @@
             this.lbl_Performance = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel17 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.pnl_CategorySelectorButton = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
             this.lbl_Category = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel29 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.FiltersTimer = new System.Windows.Forms.Timer(this.components);
@@ -2374,7 +2373,6 @@
             this.pnl_CategorySelectorButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnl_CategorySelectorButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.pnl_CategorySelectorButton.Controls.Add(this.button2);
             this.pnl_CategorySelectorButton.Controls.Add(this.lbl_Category);
             this.pnl_CategorySelectorButton.Controls.Add(this.bunifuCustomLabel29);
             this.pnl_CategorySelectorButton.Location = new System.Drawing.Point(679, 0);
@@ -2383,16 +2381,6 @@
             this.pnl_CategorySelectorButton.Size = new System.Drawing.Size(521, 50);
             this.pnl_CategorySelectorButton.TabIndex = 0;
             this.pnl_CategorySelectorButton.Tag = "4";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(202, 13);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(169, 24);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Click Me!";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // lbl_Category
             // 
@@ -2709,7 +2697,6 @@
         private System.Windows.Forms.Timer DataLoaderTimer;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button2;
     }
 }
 

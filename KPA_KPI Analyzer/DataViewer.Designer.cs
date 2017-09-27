@@ -167,6 +167,7 @@
             this.dgv_dataViewerDgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_dataViewerDgv.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.dgv_dataViewerDgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgv_dataViewerDgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgv_dataViewerDgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
@@ -186,6 +187,7 @@
             this.dgv_dataViewerDgv.Name = "dgv_dataViewerDgv";
             this.dgv_dataViewerDgv.ReadOnly = true;
             this.dgv_dataViewerDgv.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgv_dataViewerDgv.RowTemplate.Height = 18;
             this.dgv_dataViewerDgv.Size = new System.Drawing.Size(1200, 623);
             this.dgv_dataViewerDgv.TabIndex = 5;
             // 

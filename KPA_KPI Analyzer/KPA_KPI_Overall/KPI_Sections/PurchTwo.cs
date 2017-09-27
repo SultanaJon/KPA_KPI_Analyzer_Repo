@@ -27,6 +27,24 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
         }
 
 
+        public string Name { get { return "Purch"; } }
+
+
+        public enum CategorNames
+        {
+            pr2ndLvlRelVsPOCreation,
+            poCreationVsPORel,
+            poRelVsPOConf,
+        }
+
+        public string[] categoryNames =
+        {
+            "PR 2nd Lvl Release Date vs PO Creation Date",
+            "PO Creation Date vs PO Release Date",
+            "PO Release Date vs PO Confirmation Date",
+        };
+
+
 
 
 

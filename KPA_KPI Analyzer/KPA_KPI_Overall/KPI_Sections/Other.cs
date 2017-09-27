@@ -34,6 +34,31 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
 
 
+        public string Name { get { return "Other"; } }
+
+
+        public enum CategorNames
+        {
+            prsCreated,
+            prsReleased,
+            totalSpend,
+            prVsPOValue,
+            hotJobPrs
+        }
+
+        public string[] categoryNames =
+        {
+            "PRs Created",
+            "PRs Released",
+            "Total Spend",
+            "PR Value vs PO Value",
+            "Hot Job PRs"
+        };
+
+
+
+
+
         /// <summary>
         /// Loads the data of a specific KPI
         /// </summary>

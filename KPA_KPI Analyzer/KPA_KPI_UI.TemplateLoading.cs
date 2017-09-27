@@ -17,12 +17,11 @@ namespace KPA_KPI_Analyzer
             lbl_Section.Text = "All";
             lbl_Category.Text = "All";
             MenuInFront = true;
-            KPAOverall kpaOverall = new KPAOverall()
+            NewKPAOverall kpaOverall = new NewKPAOverall(overallData)
             {
                 Name = "Overall",
-                Dock = DockStyle.Fill,
+                Dock = DockStyle.Fill
             };
-            kpaOverall.LoadTemplate(overallData);
             pnl_activePage.Controls.Add(kpaOverall);
             kpaOverall.BringToFront();
             pnl_NavigationPanelMax.BringToFront();
@@ -220,13 +219,11 @@ namespace KPA_KPI_Analyzer
             lbl_Performance.Text = "KPI";
             lbl_Section.Text = "All";
             lbl_Category.Text = "All";
-            KPIOverall kpiOverall = new KPIOverall()
+            NewKPIOverall kpiOverall = new NewKPIOverall(overallData)
             {
                 Name = "Overall",
                 Dock = DockStyle.Fill
             };
-
-            kpiOverall.LoadTemplate(overallData);
             pnl_activePage.Controls.Add(kpiOverall);
             kpiOverall.BringToFront();
             MenuInFront = true;
@@ -685,12 +682,11 @@ namespace KPA_KPI_Analyzer
                 lbl_Section.Text = "All";
                 lbl_Category.Text = "All";
                 MenuInFront = true;
-                KPAOverall kpaOverall = new KPAOverall()
+                NewKPAOverall kpaOverall = new NewKPAOverall(overallData)
                 {
                     Name = "Overall",
-                    Dock = DockStyle.Fill,
+                    Dock = DockStyle.Fill
                 };
-                kpaOverall.LoadTemplate(overallData);
                 pnl_activePage.Controls.Add(kpaOverall);
                 kpaOverall.BringToFront();
                 pnl_NavigationPanelMax.BringToFront();
@@ -704,13 +700,11 @@ namespace KPA_KPI_Analyzer
                 lbl_Section.Text = "All";
                 lbl_Category.Text = "All";
                 MenuInFront = true;
-                KPIOverall kpiOverall = new KPIOverall()
+                NewKPIOverall kpiOverall = new NewKPIOverall(overallData)
                 {
                     Name = "Overall",
                     Dock = DockStyle.Fill
                 };
-
-                kpiOverall.LoadTemplate(overallData);
                 pnl_activePage.Controls.Add(kpiOverall);
                 kpiOverall.BringToFront();
                 pnl_NavigationPanelMax.BringToFront();

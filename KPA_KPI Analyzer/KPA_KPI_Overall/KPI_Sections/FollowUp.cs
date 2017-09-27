@@ -33,6 +33,31 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
 
 
+        public string Name { get { return "Follow Up"; } }
+
+
+        public enum CategorNames
+        {
+            initConfVsCurrConf,
+            finalConfDateVsFinalPlan,
+            receiptDateVsCurrPlanDate,
+            receiptDateVsOrigConfDate,
+            receiptDateVsCurrConfDate
+        }
+
+        public string[] categoryNames =
+        {
+            "Initial Confirmation Date vs Current Confirmation Date",
+            "Final Confirmation Date vs Final Plan Date",
+            "Receipt Date vs Current Plan Date",
+            "Receipt Date vs Original Confirmation Date",
+            "Receipt Date vs Current Confirmation Date"
+        };
+
+
+
+
+
 
         /// <summary>
         /// Loads the data of a specific KPI

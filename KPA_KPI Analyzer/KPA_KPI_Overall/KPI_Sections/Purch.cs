@@ -23,6 +23,21 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
         }
 
 
+        public string Name { get { return "Purch"; } }
+
+
+        public enum CategorNames
+        {
+            initConfVsPRPlanDate
+
+        }
+
+        public string[] categoryNames =
+        {
+            "Initial Confirmation Date vs PR Plan Date",
+        };
+
+
 
 
         /// <summary>

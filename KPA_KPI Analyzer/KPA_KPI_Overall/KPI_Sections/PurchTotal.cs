@@ -26,6 +26,23 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
         }
 
 
+
+        public string Name { get { return "Purch Total"; } }
+
+
+        public enum CategorNames
+        {
+            prRelConfEntry,
+        }
+
+        public string[] categoryNames =
+        {
+            "PR Release Date to Confirmation Entry Date",
+        };
+
+
+
+
         /// <summary>
         /// Loads the data for the specific KPI
         /// </summary>

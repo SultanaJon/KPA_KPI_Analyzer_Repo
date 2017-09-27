@@ -22,6 +22,7 @@ using System.Data.OleDb;
 using System.Windows.Forms;
 using System.IO;
 using KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls;
+using KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls;
 
 
 namespace KPA_KPI_Analyzer
@@ -530,16 +531,6 @@ namespace KPA_KPI_Analyzer
         {
             DataLoaderTimer.Tick -= DataLoaderTimer_Tick;
             DataLoaderTimer.Tick += DataLoaderTimer_Tick;
-        }
-
-
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            NewKPAOverall temp = new NewKPAOverall(overallData);
-            temp.Dock = DockStyle.Fill;
-            this.Controls.Add(temp);
-            temp.BringToFront();
         }
     }
 }
