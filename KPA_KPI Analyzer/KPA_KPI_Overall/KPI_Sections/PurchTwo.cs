@@ -171,7 +171,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                     }
                     else // elapsed days is >= 57
                     {
-                        pr2ndLvlRelVsPOCreation.data.greaterThanEqualFiftySeven++;
+                        pr2ndLvlRelVsPOCreation.data.GreaterThanEqualFiftySeven++;
                     }
                 }
 
@@ -317,7 +317,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                     }
                     else // elapsed days is >= 57
                     {
-                        poCreationVsPORel.data.greaterThanEqualFiftySeven++;
+                        poCreationVsPORel.data.GreaterThanEqualFiftySeven++;
                     }
                 }
 
@@ -481,7 +481,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                     }
                     else // elapsed days is >= 57
                     {
-                        poRelVsPOConf.data.greaterThanEqualFiftySeven++;
+                        poRelVsPOConf.data.GreaterThanEqualFiftySeven++;
                     }
                 }
 

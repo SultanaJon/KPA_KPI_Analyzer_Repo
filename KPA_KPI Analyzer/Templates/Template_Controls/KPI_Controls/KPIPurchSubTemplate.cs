@@ -215,7 +215,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TimeBucketEight = overallData.kpi.purchSub.prRelVsPORel.data.ThirtySix_FourtyTwo.ToString();
             TimeBucketNine = overallData.kpi.purchSub.prRelVsPORel.data.FourtyThree_FourtyNine.ToString();
             TimeBucketTen = overallData.kpi.purchSub.prRelVsPORel.data.Fifty_FiftySix.ToString();
-            TimeBucketEleven = overallData.kpi.purchSub.prRelVsPORel.data.greaterThanEqualFiftySeven.ToString();
+            TimeBucketEleven = overallData.kpi.purchSub.prRelVsPORel.data.GreaterThanEqualFiftySeven.ToString();
 
             AnalysisOne = "- Will show if PR is on a PO that has previously been released.";
             AnalysisTwo = "- Difference between PO line initial release date and PR second level release.";
@@ -246,7 +246,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TimeBucketEight = string.Format("{0:n0}", overallData.kpi.purchSub.prRelVsPORel.data.ThirtySix_FourtyTwo);
             TimeBucketNine = string.Format("{0:n0}", overallData.kpi.purchSub.prRelVsPORel.data.FourtyThree_FourtyNine);
             TimeBucketTen = string.Format("{0:n0}", overallData.kpi.purchSub.prRelVsPORel.data.Fifty_FiftySix);
-            TimeBucketEleven = string.Format("{0:n0}", overallData.kpi.purchSub.prRelVsPORel.data.greaterThanEqualFiftySeven);
+            TimeBucketEleven = string.Format("{0:n0}", overallData.kpi.purchSub.prRelVsPORel.data.GreaterThanEqualFiftySeven);
 
 
             canvas.addData(dp);
@@ -280,7 +280,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TimeBucketEight = overallData.kpi.purchSub.poCreateVsConfEntry.data.ThirtySix_FourtyTwo.ToString();
             TimeBucketNine = overallData.kpi.purchSub.poCreateVsConfEntry.data.FourtyThree_FourtyNine.ToString();
             TimeBucketTen = overallData.kpi.purchSub.poCreateVsConfEntry.data.Fifty_FiftySix.ToString();
-            TimeBucketEleven = overallData.kpi.purchSub.poCreateVsConfEntry.data.greaterThanEqualFiftySeven.ToString();
+            TimeBucketEleven = overallData.kpi.purchSub.poCreateVsConfEntry.data.GreaterThanEqualFiftySeven.ToString();
 
 
             AnalysisOne = "- Will show if PO line has a confirmation date.";
@@ -313,7 +313,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TimeBucketEight = string.Format("{0:n0}", overallData.kpi.purchSub.poCreateVsConfEntry.data.ThirtySix_FourtyTwo);
             TimeBucketNine = string.Format("{0:n0}", overallData.kpi.purchSub.poCreateVsConfEntry.data.FourtyThree_FourtyNine);
             TimeBucketTen = string.Format("{0:n0}", overallData.kpi.purchSub.poCreateVsConfEntry.data.Fifty_FiftySix);
-            TimeBucketEleven = string.Format("{0:n0}", overallData.kpi.purchSub.poCreateVsConfEntry.data.greaterThanEqualFiftySeven);
+            TimeBucketEleven = string.Format("{0:n0}", overallData.kpi.purchSub.poCreateVsConfEntry.data.GreaterThanEqualFiftySeven);
 
 
             canvas.addData(dp);

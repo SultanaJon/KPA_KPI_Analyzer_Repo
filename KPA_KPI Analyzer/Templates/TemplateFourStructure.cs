@@ -13,10 +13,35 @@
         public int ThirtySix_FourtyTwo { get; set; }
         public int FourtyThree_FourtyNine { get; set; }
         public int Fifty_FiftySix { get; set; }
-        public int greaterThanEqualFiftySeven { get; set; }
+        public int GreaterThanEqualFiftySeven { get; set; }
         public int Total { get; set; }
         public double PercentUnconf { get; set; }
         public int PercentUnconfTotal { get; set; }
+
+
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public enum DataViews
+        {
+             Total,
+             PercentUnconf,
+             LessThanZero,
+             One_Three,
+             Four_Seven,
+             Eight_Fourteen,
+             Fifteen_TwentyOne,
+             TwentyTwo_TwentyEight,
+             TwentyNine_ThirtyFive,
+             ThirtySix_FourtyTwo,
+             FourtyThree_FourtyNine,
+             Fifty_FiftySix,
+             GreaterThanEqualFiftySeven
+         }
 
 
 
@@ -39,7 +64,7 @@
              ThirtySix_FourtyTwo  = 0;
              FourtyThree_FourtyNine  = 0;
              Fifty_FiftySix = 0;
-             greaterThanEqualFiftySeven = 0;
+            GreaterThanEqualFiftySeven = 0;
              Total = 0;
              PercentUnconf = 0;
             PercentUnconfTotal = 0;

@@ -20,6 +20,31 @@
 
 
 
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public enum DataViews
+        {
+            Total,
+            PercentUnconf,
+            Minus_TwentyTwo,
+            Minus_Fifteen_TwentyOne,
+            Minus_Eight_Fourteen,
+            Minus_One_Seven,
+            Zero,
+            One_Seven,
+            Eight_Fourteen,
+            Fifteen_TwentyOne,
+            TwentyTwo
+        }
+
+
+
+
+
+
         /// <summary>
         /// Clears the data stored in the template object.
         /// </summary>

@@ -154,7 +154,7 @@
             this.TemplateTwoDataGrid.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.TemplateTwoDataGrid.Size = new System.Drawing.Size(1130, 96);
             this.TemplateTwoDataGrid.TabIndex = 2;
-            this.TemplateTwoDataGrid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TemplateTwoDataGrid_CellContentDoubleClick);
+            this.TemplateTwoDataGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TemplateTwoDataGrid_CellDoubleClick);
             this.TemplateTwoDataGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.bunifuCustomDataGrid2_CellFormatting);
             // 
             // one

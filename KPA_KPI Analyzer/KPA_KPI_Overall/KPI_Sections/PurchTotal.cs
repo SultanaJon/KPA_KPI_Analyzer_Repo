@@ -177,7 +177,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                     }
                     else // elapsed days >= 57
                     {
-                        prRelConfEntry.data.greaterThanEqualFiftySeven++;
+                        prRelConfEntry.data.GreaterThanEqualFiftySeven++;
                     }
                 }
 

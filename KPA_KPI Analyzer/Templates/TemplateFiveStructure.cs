@@ -17,6 +17,26 @@
 
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public enum DataViews
+        {
+            Total,
+            GreaterThanZeroWeeks,
+            GreaterThanMinusOneWeeks,
+            GreaterThanMinusTwoWeeks,
+            GreaterThanMinusThreeWeeks,
+            GreaterThanMinusFourWeeks,
+            GreaterThanMinusFiveWeeks,
+            GreaterThanMinusSixWeeks,
+            GreaterThanMinusSevenWeeks,
+            GreaterThanMinusEightWeeks,
+            LessThanEightWeeks,
+        }
+
+
         /// <summary>
         /// Clears the data stored in the template object.
         /// </summary>

@@ -219,7 +219,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TimeBucketEight = overallData.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.ThirtySix_FourtyTwo.ToString();
             TimeBucketNine = overallData.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.FourtyThree_FourtyNine.ToString();
             TimeBucketTen = overallData.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.Fifty_FiftySix.ToString();
-            TimeBucketEleven = overallData.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.greaterThanEqualFiftySeven.ToString();
+            TimeBucketEleven = overallData.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.GreaterThanEqualFiftySeven.ToString();
 
             AnalysisOne = "- Will show if PR is on PO.";
             AnalysisTwo = "- Difference between PO line items initial creation date and PRs 2nd level release date.";
@@ -248,7 +248,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TimeBucketEight = string.Format("{0:n0}", overallData.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.ThirtySix_FourtyTwo);
             TimeBucketNine = string.Format("{0:n0}", overallData.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.FourtyThree_FourtyNine);
             TimeBucketTen = string.Format("{0:n0}", overallData.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.Fifty_FiftySix);
-            TimeBucketEleven = string.Format("{0:n0}", overallData.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.greaterThanEqualFiftySeven);
+            TimeBucketEleven = string.Format("{0:n0}", overallData.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.GreaterThanEqualFiftySeven);
 
             canvas.addData(dp);
             dataviz.Render(canvas);
@@ -281,7 +281,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TimeBucketEight = overallData.kpi.purchTwo.poCreationVsPORel.data.ThirtySix_FourtyTwo.ToString();
             TimeBucketNine = overallData.kpi.purchTwo.poCreationVsPORel.data.FourtyThree_FourtyNine.ToString();
             TimeBucketTen = overallData.kpi.purchTwo.poCreationVsPORel.data.Fifty_FiftySix.ToString();
-            TimeBucketEleven = overallData.kpi.purchTwo.poCreationVsPORel.data.greaterThanEqualFiftySeven.ToString();
+            TimeBucketEleven = overallData.kpi.purchTwo.poCreationVsPORel.data.GreaterThanEqualFiftySeven.ToString();
 
             AnalysisOne = "- Will show if PO line item has an initial release date.";
             AnalysisTwo = "- Difference between PO line initial release date and PO line creation date.";
@@ -311,7 +311,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TimeBucketEight = string.Format("{0:n0}", overallData.kpi.purchTwo.poCreationVsPORel.data.ThirtySix_FourtyTwo);
             TimeBucketNine = string.Format("{0:n0}", overallData.kpi.purchTwo.poCreationVsPORel.data.FourtyThree_FourtyNine);
             TimeBucketTen = string.Format("{0:n0}", overallData.kpi.purchTwo.poCreationVsPORel.data.Fifty_FiftySix);
-            TimeBucketEleven = string.Format("{0:n0}", overallData.kpi.purchTwo.poCreationVsPORel.data.greaterThanEqualFiftySeven);
+            TimeBucketEleven = string.Format("{0:n0}", overallData.kpi.purchTwo.poCreationVsPORel.data.GreaterThanEqualFiftySeven);
 
 
             canvas.addData(dp);
@@ -348,7 +348,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TimeBucketEight = overallData.kpi.purchTwo.poRelVsPOConf.data.ThirtySix_FourtyTwo.ToString();
             TimeBucketNine = overallData.kpi.purchTwo.poRelVsPOConf.data.FourtyThree_FourtyNine.ToString();
             TimeBucketTen = overallData.kpi.purchTwo.poRelVsPOConf.data.Fifty_FiftySix.ToString();
-            TimeBucketEleven = overallData.kpi.purchTwo.poRelVsPOConf.data.greaterThanEqualFiftySeven.ToString();
+            TimeBucketEleven = overallData.kpi.purchTwo.poRelVsPOConf.data.GreaterThanEqualFiftySeven.ToString();
 
             AnalysisOne = "- Will show if PO line item is confirmed and has been previously released.";
             AnalysisTwo = "- Difference between date the initial confirmation was created and the PO line items first release date.";
@@ -380,7 +380,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TimeBucketEight = string.Format("{0:n0}", overallData.kpi.purchTwo.poRelVsPOConf.data.ThirtySix_FourtyTwo);
             TimeBucketNine = string.Format("{0:n0}", overallData.kpi.purchTwo.poRelVsPOConf.data.FourtyThree_FourtyNine);
             TimeBucketTen = string.Format("{0:n0}", overallData.kpi.purchTwo.poRelVsPOConf.data.Fifty_FiftySix);
-            TimeBucketEleven = string.Format("{0:n0}", overallData.kpi.purchTwo.poRelVsPOConf.data.greaterThanEqualFiftySeven);
+            TimeBucketEleven = string.Format("{0:n0}", overallData.kpi.purchTwo.poRelVsPOConf.data.GreaterThanEqualFiftySeven);
 
 
             canvas.addData(dp);

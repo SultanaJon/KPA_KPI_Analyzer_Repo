@@ -210,7 +210,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TimeBucketEight = overallData.kpi.purchTotal.prRelConfEntry.data.ThirtySix_FourtyTwo.ToString();
             TimeBucketNine = overallData.kpi.purchTotal.prRelConfEntry.data.FourtyThree_FourtyNine.ToString();
             TimeBucketTen = overallData.kpi.purchTotal.prRelConfEntry.data.Fifty_FiftySix.ToString();
-            TimeBucketEleven = overallData.kpi.purchTotal.prRelConfEntry.data.greaterThanEqualFiftySeven.ToString();
+            TimeBucketEleven = overallData.kpi.purchTotal.prRelConfEntry.data.GreaterThanEqualFiftySeven.ToString();
 
 
             AnalysisOne = "- Will show if PO line item has a confirmation date.";
@@ -244,7 +244,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TimeBucketEight = string.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.ThirtySix_FourtyTwo);
             TimeBucketNine = string.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.FourtyThree_FourtyNine);
             TimeBucketTen = string.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.Fifty_FiftySix);
-            TimeBucketEleven = string.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.greaterThanEqualFiftySeven);
+            TimeBucketEleven = string.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.GreaterThanEqualFiftySeven);
 
 
             canvas.addData(dp);

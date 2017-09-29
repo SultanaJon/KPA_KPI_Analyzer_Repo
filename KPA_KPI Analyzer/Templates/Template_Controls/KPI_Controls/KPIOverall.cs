@@ -162,7 +162,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Nine.Text = string.Format("{0:n0}", overallData.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.ThirtySix_FourtyTwo);
             lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Ten.Text = string.Format("{0:n0}", overallData.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.FourtyThree_FourtyNine);
             lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Eleven.Text = string.Format("{0:n0}", overallData.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.Fifty_FiftySix);
-            lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Twelve.Text = string.Format("{0:n0}", overallData.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.greaterThanEqualFiftySeven);
+            lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Twelve.Text = string.Format("{0:n0}", overallData.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.GreaterThanEqualFiftySeven);
             lbl_kpiPurchTwoPr2ndLvlRelVsPoCreation_Thirteen.Text = string.Format("{0:n0}", overallData.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.Total);
 
             // KPI -> PurchTwo -> PO Creation vs PO Release
@@ -177,7 +177,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             lbl_kpiPurchTwoPOCreateVsPORel_Nine.Text = string.Format("{0:n0}", overallData.kpi.purchTwo.poCreationVsPORel.data.ThirtySix_FourtyTwo);
             lbl_kpiPurchTwoPOCreateVsPORel_Ten.Text = string.Format("{0:n0}", overallData.kpi.purchTwo.poCreationVsPORel.data.FourtyThree_FourtyNine);
             lbl_kpiPurchTwoPOCreateVsPORel_Eleven.Text = string.Format("{0:n0}", overallData.kpi.purchTwo.poCreationVsPORel.data.Fifty_FiftySix);
-            lbl_kpiPurchTwoPOCreateVsPORel_Twelve.Text = string.Format("{0:n0}", overallData.kpi.purchTwo.poCreationVsPORel.data.greaterThanEqualFiftySeven);
+            lbl_kpiPurchTwoPOCreateVsPORel_Twelve.Text = string.Format("{0:n0}", overallData.kpi.purchTwo.poCreationVsPORel.data.GreaterThanEqualFiftySeven);
             lbl_kpiPurchTwoPOCreateVsPORel_Thirteen.Text = string.Format("{0:n0}", overallData.kpi.purchTwo.poCreationVsPORel.data.Total);
 
             // KPI -> Purch Two - PO Release vs Po Confirm
@@ -192,7 +192,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             lbl_kpiPurchTwoPORelVsPOConf_Nine.Text = string.Format("{0:n0}", overallData.kpi.purchTwo.poRelVsPOConf.data.ThirtySix_FourtyTwo);
             lbl_kpiPurchTwoPORelVsPOConf_Ten.Text = string.Format("{0:n0}", overallData.kpi.purchTwo.poRelVsPOConf.data.FourtyThree_FourtyNine);
             lbl_kpiPurchTwoPORelVsPOConf_Eleven.Text = string.Format("{0:n0}", overallData.kpi.purchTwo.poRelVsPOConf.data.Fifty_FiftySix);
-            lbl_kpiPurchTwoPORelVsPOConf_Twelve.Text = string.Format("{0:n0}", overallData.kpi.purchTwo.poRelVsPOConf.data.greaterThanEqualFiftySeven);
+            lbl_kpiPurchTwoPORelVsPOConf_Twelve.Text = string.Format("{0:n0}", overallData.kpi.purchTwo.poRelVsPOConf.data.GreaterThanEqualFiftySeven);
             lbl_kpiPurchTwoPORelVsPOConf_Thirteen.Text = string.Format("{0:n0}", overallData.kpi.purchTwo.poRelVsPOConf.data.Total);
             lbl_kpiPurchTwoPORelVsPOConf_Fourteen.Text = string.Format("{0:n}", overallData.kpi.purchTwo.poRelVsPOConf.data.PercentUnconf + "%");
 
@@ -208,7 +208,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             lbl_kpiPurchSubPRRelVsPORel_Nine.Text = string.Format("{0:n0}", overallData.kpi.purchSub.prRelVsPORel.data.ThirtySix_FourtyTwo);
             lbl_kpiPurchSubPRRelVsPORel_Ten.Text = string.Format("{0:n0}", overallData.kpi.purchSub.prRelVsPORel.data.FourtyThree_FourtyNine);
             lbl_kpiPurchSubPRRelVsPORel_Eleven.Text = string.Format("{0:n0}", overallData.kpi.purchSub.prRelVsPORel.data.Fifty_FiftySix);
-            lbl_kpiPurchSubPRRelVsPORel_Twelve.Text = string.Format("{0:n0}", overallData.kpi.purchSub.prRelVsPORel.data.greaterThanEqualFiftySeven);
+            lbl_kpiPurchSubPRRelVsPORel_Twelve.Text = string.Format("{0:n0}", overallData.kpi.purchSub.prRelVsPORel.data.GreaterThanEqualFiftySeven);
             lbl_kpiPurchSubPRRelVsPORel_Thirteen.Text = string.Format("{0:n0}", overallData.kpi.purchSub.prRelVsPORel.data.Total);
 
             // KPI -> Purch Sub - PO Creation vs Confirmation Entry
@@ -223,7 +223,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             lbl_kpiPurchSubPOCreateVsConfEntry_Nine.Text = string.Format("{0:n0}", overallData.kpi.purchSub.poCreateVsConfEntry.data.ThirtySix_FourtyTwo);
             lbl_kpiPurchSubPOCreateVsConfEntry_Ten.Text = string.Format("{0:n0}", overallData.kpi.purchSub.poCreateVsConfEntry.data.FourtyThree_FourtyNine);
             lbl_kpiPurchSubPOCreateVsConfEntry_Eleven.Text = string.Format("{0:n0}", overallData.kpi.purchSub.poCreateVsConfEntry.data.Fifty_FiftySix);
-            lbl_kpiPurchSubPOCreateVsConfEntry_Twelve.Text = string.Format("{0:n0}", overallData.kpi.purchSub.poCreateVsConfEntry.data.greaterThanEqualFiftySeven);
+            lbl_kpiPurchSubPOCreateVsConfEntry_Twelve.Text = string.Format("{0:n0}", overallData.kpi.purchSub.poCreateVsConfEntry.data.GreaterThanEqualFiftySeven);
             lbl_kpiPurchSubPOCreateVsConfEntry_Thirteen.Text = string.Format("{0:n0}", overallData.kpi.purchSub.poCreateVsConfEntry.data.Total);
             lbl_kpiPurchSubPOCreateVsConfEntry_Fourteen.Text = string.Format("{0:n}", overallData.kpi.purchSub.poCreateVsConfEntry.data.PercentUnconf + "%");
 
@@ -239,7 +239,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             lbl_kpiPurchTotalPRRelConfEntry_Nine.Text = string.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.ThirtySix_FourtyTwo);
             lbl_kpiPurchTotalPRRelConfEntry_Ten.Text = string.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.FourtyThree_FourtyNine);
             lbl_kpiPurchTotalPRRelConfEntry_Eleven.Text = string.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.Fifty_FiftySix);
-            lbl_kpiPurchTotalPRRelConfEntry_Twelve.Text = string.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.greaterThanEqualFiftySeven);
+            lbl_kpiPurchTotalPRRelConfEntry_Twelve.Text = string.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.GreaterThanEqualFiftySeven);
             lbl_kpiPurchTotalPRRelConfEntry_Thirteen.Text = string.Format("{0:n0}", overallData.kpi.purchTotal.prRelConfEntry.data.Total);
             lbl_kpiPurchTotalPRRelConfEntry_Fourteen.Text = string.Format("{0:n}", overallData.kpi.purchTotal.prRelConfEntry.data.PercentUnconf + "%");
 
@@ -258,7 +258,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             lbl_kpiPurchPlanPORelVsPRDelDate_Nine.Text = string.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.ThirtySix_FourtyTwo);
             lbl_kpiPurchPlanPORelVsPRDelDate_Ten.Text = string.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.FourtyThree_FourtyNine);
             lbl_kpiPurchPlanPORelVsPRDelDate_Eleven.Text = string.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.Fifty_FiftySix);
-            lbl_kpiPurchPlanPORelVsPRDelDate_Twelve.Text = string.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.greaterThanEqualFiftySeven);
+            lbl_kpiPurchPlanPORelVsPRDelDate_Twelve.Text = string.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.GreaterThanEqualFiftySeven);
             lbl_kpiPurchPlanPORelVsPRDelDate_Thirteen.Text = string.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.Total);
 
             // KPI -> Purch/Plan - PR 2nd Lvl Rel to Orig Del Date
@@ -273,7 +273,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Nine.Text = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.ThirtySix_FourtyTwo);
             lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Ten.Text = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.FourtyThree_FourtyNine);
             lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Eleven.Text = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Fifty_FiftySix);
-            lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Twelve.Text = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.greaterThanEqualFiftySeven);
+            lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Twelve.Text = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.GreaterThanEqualFiftySeven);
             lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Thirteen.Text = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Total);
 
 

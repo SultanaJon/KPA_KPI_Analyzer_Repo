@@ -657,7 +657,30 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             }
         }
 
-        
+
+
+
+
+        /// <summary>
+        /// Handles the event of when a cell in the Template One DataGridView is double clicked. The corresponding data will be loaded
+        /// into the data viewer object.
+        /// </summary>
+        /// <param name="sender">the cell</param>
+        /// <param name="e">the cell double click event</param>
+        private void TemplateTwoDataGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            switch (e.RowIndex)
+            {
+                case 0:
+                case 1:
+                    HandleCurrentPlanVsActualDataTableLoading(e.RowIndex, e.ColumnIndex);
+                    break;
+            }
+        }
+
+
+
+
 
 
         /// <summary>
@@ -1228,26 +1251,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
 
 
-        /// <summary>
-        /// Handles the event of when a cell in the Template two DataGridView is double clicked. The corresponding data will be loaded
-        /// into the data viewer object for the corresponding KPA   
-        /// /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void TemplateTwoDataGrid_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            switch (e.RowIndex)
-            {
-                case 0:
-                case 1:
-                    HandleCurrentPlanVsActualDataTableLoading(e.RowIndex, e.ColumnIndex);
-                    break;
-            }
-        }
-
-
-
-
 
 
         /// <summary>
@@ -1335,5 +1338,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                     break;
             }
         }
+
     }
 }

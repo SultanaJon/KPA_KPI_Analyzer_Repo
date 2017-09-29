@@ -203,7 +203,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TimeBucketEight = overallData.kpi.purchPlan.poRelVsPRDelDate.data.ThirtySix_FourtyTwo.ToString();
             TimeBucketNine = overallData.kpi.purchPlan.poRelVsPRDelDate.data.FourtyThree_FourtyNine.ToString();
             TimeBucketTen = overallData.kpi.purchPlan.poRelVsPRDelDate.data.Fifty_FiftySix.ToString();
-            TimeBucketEleven = overallData.kpi.purchPlan.poRelVsPRDelDate.data.greaterThanEqualFiftySeven.ToString();
+            TimeBucketEleven = overallData.kpi.purchPlan.poRelVsPRDelDate.data.GreaterThanEqualFiftySeven.ToString();
 
 
             AnalysisOne = "- Will show if PO line item has an initial release.";
@@ -234,7 +234,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TimeBucketEight = string.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.ThirtySix_FourtyTwo);
             TimeBucketNine = string.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.FourtyThree_FourtyNine);
             TimeBucketTen = string.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.Fifty_FiftySix);
-            TimeBucketEleven = string.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.greaterThanEqualFiftySeven);
+            TimeBucketEleven = string.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.GreaterThanEqualFiftySeven);
 
 
             canvas.addData(dp);
@@ -268,7 +268,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TimeBucketEight = overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.ThirtySix_FourtyTwo.ToString();
             TimeBucketNine = overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.FourtyThree_FourtyNine.ToString();
             TimeBucketTen = overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Fifty_FiftySix.ToString();
-            TimeBucketEleven = overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.greaterThanEqualFiftySeven.ToString();
+            TimeBucketEleven = overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.GreaterThanEqualFiftySeven.ToString();
 
 
             AnalysisOne = "- Will show if PR is fully released.";
@@ -299,7 +299,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TimeBucketEight = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.ThirtySix_FourtyTwo);
             TimeBucketNine = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.FourtyThree_FourtyNine);
             TimeBucketTen = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Fifty_FiftySix);
-            TimeBucketEleven = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.greaterThanEqualFiftySeven);
+            TimeBucketEleven = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.GreaterThanEqualFiftySeven);
 
 
             canvas.addData(dp);
