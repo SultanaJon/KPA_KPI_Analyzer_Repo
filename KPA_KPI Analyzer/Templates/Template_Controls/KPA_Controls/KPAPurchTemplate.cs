@@ -1,14 +1,9 @@
-﻿using DataImporter.Access;
-using KPA_KPI_Analyzer.DatabaseUtils;
-using KPA_KPI_Analyzer.FilterFeeature;
+﻿using KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader;
 using KPA_KPI_Analyzer.KPA_KPI_Overall;
 using KPA_KPI_Analyzer.Values;
 using System;
-using System.Data;
-using System.Data.OleDb;
 using System.Drawing;
 using System.Windows.Forms;
-using KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader;
 
 namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 {

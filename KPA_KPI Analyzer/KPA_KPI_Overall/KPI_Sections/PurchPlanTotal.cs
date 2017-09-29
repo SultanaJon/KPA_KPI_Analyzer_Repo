@@ -1,5 +1,4 @@
 ﻿using KPA_KPI_Analyzer.Templates;
-using KPA_KPI_Analyzer.FilterFeeature;
 
 namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 {

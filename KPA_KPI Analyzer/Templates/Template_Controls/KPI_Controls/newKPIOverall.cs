@@ -1,8 +1,8 @@
-﻿using System;
+﻿using KPA_KPI_Analyzer.KPA_KPI_Overall;
+using KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
-using KPA_KPI_Analyzer.KPA_KPI_Overall;
-using KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections;
 
 namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 {

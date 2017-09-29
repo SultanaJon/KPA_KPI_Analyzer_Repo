@@ -1,7 +1,5 @@
-﻿using KPA_KPI_Analyzer.KPA_KPI_Overall;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
 

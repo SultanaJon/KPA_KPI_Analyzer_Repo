@@ -1,5 +1,4 @@
-﻿using DataImporter.Access;
-using KPA_KPI_Analyzer.DatabaseUtils;
+﻿using KPA_KPI_Analyzer.DatabaseUtils;
 using KPA_KPI_Analyzer.FilterFeeature;
 using KPA_KPI_Analyzer.Templates;
 using System;

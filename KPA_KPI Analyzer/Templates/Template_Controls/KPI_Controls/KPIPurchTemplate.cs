@@ -1,18 +1,17 @@
-﻿using KPA_KPI_Analyzer.KPA_KPI_Overall;
+﻿using KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader;
+using KPA_KPI_Analyzer.KPA_KPI_Overall;
+using KPA_KPI_Analyzer.Values;
 using System;
-using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
-using KPA_KPI_Analyzer.FilterFeeature;
-using KPA_KPI_Analyzer.Values;
+
 
 namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 {
     public partial class KPIPurchTemplate : UserControl
     {
         Overall overallData;
-        DataTable initConfVsPrPlanDateDt;
-        DataTable unconfirmed;
+
 
 
         public delegate void UpdateCategoryHandler();
@@ -276,177 +275,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                 Bunifu.Framework.UI.BunifuFlatButton btn = (Bunifu.Framework.UI.BunifuFlatButton)sender;
                 int tag = int.Parse(btn.Tag.ToString());
 
-
-                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                //
                 // Initial Confirmation vs PR Planned Date
-                //
-                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                initConfVsPrPlanDateDt = new DataTable();
-                unconfirmed = new DataTable();
-                DataTable posConf = new DataTable();
-
-                initConfVsPrPlanDateDt = DatabaseUtils.PRPO_DB_Utils.prsOnPOsDt.Clone();
-                unconfirmed = DatabaseUtils.PRPO_DB_Utils.prsOnPOsDt.Clone();
-
-
-                foreach (DataRow dr in DatabaseUtils.PRPO_DB_Utils.prsOnPOsDt.Rows)
-                {
-                    if (Filters.FilterByPrDateRange)
-                    {
-                        // The user wants to filter by PR date range
-                        string[] requisnDate = (dr["Requisn Date"].ToString()).Split('/');
-                        int reqYear = int.Parse(requisnDate[2]);
-                        int reqMonth = int.Parse(requisnDate[0].TrimStart('0'));
-                        int reqDay = int.Parse(requisnDate[1].TrimStart('0'));
-                        DateTime reqTestDate = new DateTime(reqYear, reqMonth, reqDay);
-
-                        if (reqTestDate < Filters.PrFromDate || reqTestDate > Filters.PrToDate)
-                        {
-                            // The PR date is not within the PR date range.
-                            continue;
-                        }
-                    }
-
-                    if (Filters.FilterByPoDateRange)
-                    {
-                        // The user wnats to filter by PO date range
-                        string[] strPODate = (dr["PO Date"].ToString()).Split('/');
-                        int poYear = int.Parse(strPODate[2]);
-                        int poMonth = int.Parse(strPODate[0]);
-                        int poDay = int.Parse(strPODate[1]);
-
-                        if (poYear == 0 && poMonth == 0 && poDay == 0)
-                        {
-                            // This record is not a PO so we dont care about it
-                            continue;
-                        }
-                        else
-                        {
-                            poYear = int.Parse(strPODate[2]);
-                            poMonth = int.Parse(strPODate[0].TrimStart('0'));
-                            poDay = int.Parse(strPODate[1].TrimStart('0'));
-                        }
-
-                        DateTime poTestDate = new DateTime(poYear, poMonth, poDay);
-
-                        if (poTestDate < Filters.PoFromDate || poTestDate > Filters.PoToDate)
-                        {
-                            // The PO date is not within the PO date range.
-                            continue;
-                        }
-                    }
-
-
-
-                    string[] strFirstConfDate = (dr["1st Conf Date"].ToString()).Split('/');
-                    int firstConfYear = int.Parse(strFirstConfDate[2]);
-                    int firstConfMonth = int.Parse(strFirstConfDate[0]);
-                    int firstConfDay = int.Parse(strFirstConfDate[1]);
-
-                    if (firstConfYear == 0 && firstConfMonth == 0 && firstConfDay == 0)
-                    {
-                        unconfirmed.ImportRow(dr);
-                        continue;
-                    }
-                    else
-                    {
-                        posConf.ImportRow(dr);
-                        firstConfYear = int.Parse(strFirstConfDate[2]);
-                        firstConfMonth = int.Parse(strFirstConfDate[0].TrimStart('0'));
-                        firstConfDay = int.Parse(strFirstConfDate[1].TrimStart('0'));
-                    }
-
-                    DateTime firstConfDate = new DateTime(firstConfYear, firstConfMonth, firstConfDay);
-
-                    string[] strPRPlanDate = (dr["PR Delivery Date"].ToString()).Split('/');
-                    int prDelYear = int.Parse(strPRPlanDate[2]);
-                    int prDelMonth = int.Parse(strPRPlanDate[0].TrimStart('0'));
-                    int prDelDay = int.Parse(strPRPlanDate[1].TrimStart('0'));
-
-                    DateTime prPlanDate = new DateTime(prDelYear, prDelMonth, prDelDay);
-                    double elapsedDays = (int)(firstConfDate - prPlanDate).TotalDays;
-
-                    switch (tag)
-                    {
-                        case 0:
-                            initConfVsPrPlanDateDt.ImportRow(dr);
-                            break;
-                        case 1:
-                            if (elapsedDays <= (-22))
-                            {
-                                initConfVsPrPlanDateDt.ImportRow(dr);
-                            }
-                            continue;
-                        case 2:
-                            if (elapsedDays > (-22) && elapsedDays <= (-15))
-                            {
-                                initConfVsPrPlanDateDt.ImportRow(dr);
-                            }
-                            continue;
-                        case 3:
-                            if (elapsedDays > (-15) && elapsedDays <= (-8))
-                            {
-                                initConfVsPrPlanDateDt.ImportRow(dr);
-                            }
-                            continue;
-                        case 4:
-                            if (elapsedDays > (-8) && elapsedDays <= (-1))
-                            {
-                                initConfVsPrPlanDateDt.ImportRow(dr);
-                            }
-                            continue;
-                        case 5:
-                            if (elapsedDays == 0)
-                            {
-                                initConfVsPrPlanDateDt.ImportRow(dr);
-                            }
-                            continue;
-                        case 6:
-                            if (elapsedDays >= 1 && elapsedDays <= 7)
-                            {
-                                initConfVsPrPlanDateDt.ImportRow(dr);
-                            }
-                            continue;
-                        case 7:
-                            if (elapsedDays >= 8 && elapsedDays <= 14)
-                            {
-                                initConfVsPrPlanDateDt.ImportRow(dr);
-                            }
-                            continue;
-                        case 8:
-                            if (elapsedDays >= 15 && elapsedDays <= 21)
-                            {
-                                initConfVsPrPlanDateDt.ImportRow(dr);
-                            }
-                            continue;
-                        case 9:
-                            if (elapsedDays >= 22)
-                            {
-                                initConfVsPrPlanDateDt.ImportRow(dr);
-                            }
-                            continue;
-                        default:
-                            continue;
-                    }
-                }
-
-                if (tag != 10)
-                {
-                    using (DataViewer dv = new DataViewer() { Data = initConfVsPrPlanDateDt, Country = Globals.CurrCountry, Performance = Globals.CurrPerformance, Section = Globals.CurrSection, Category = Globals.CurrCategory })
-                    {
-                        dv.LoadData();
-                        dv.ShowDialog();
-                    }
-                }
-                else
-                {
-                    using (DataViewer dv = new DataViewer() { Data = unconfirmed, Country = Globals.CurrCountry, Performance = Globals.CurrPerformance, Section = Globals.CurrSection, Category = Globals.CurrCategory })
-                    {
-                        dv.LoadData();
-                        dv.ShowDialog();
-                    }
-                }
+                KpiDataTableLoader.Purch.LoadInitialConfVsPrPlanDateDataTable(tag);
             }
             catch (Exception ex)
             {

@@ -1,10 +1,9 @@
 ﻿using KPA_KPI_Analyzer.DatabaseUtils;
+using KPA_KPI_Analyzer.FilterFeeature;
 using KPA_KPI_Analyzer.Templates;
 using System;
 using System.Data;
 using System.Windows.Forms;
-using KPA_KPI_Analyzer.FilterFeeature;
-using KPA_KPI_Analyzer.Diagnostics;
 
 namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 {

@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DataImporter.Access;
+using System;
 using System.IO;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
-using DataImporter.Access;
 
 namespace KPA_KPI_Analyzer.Diagnostics
 {

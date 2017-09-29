@@ -1,11 +1,9 @@
 ﻿using DataImporter.Access;
-using KPA_KPI_Analyzer.DatabaseUtils;
-using KPA_KPI_Analyzer.KPA_KPI_Overall;
-using System;
-using System.Windows.Forms;
 using KPA_KPI_Analyzer.Diagnostics;
-using System.IO;
 using KPA_KPI_Analyzer.FilterFeeature;
+using System;
+using System.IO;
+using System.Windows.Forms;
 
 namespace KPA_KPI_Analyzer
 {

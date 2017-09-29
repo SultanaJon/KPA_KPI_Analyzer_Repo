@@ -13,16 +13,14 @@
 
 using DataImporter.Access;
 using KPA_KPI_Analyzer.DatabaseUtils;
-using KPA_KPI_Analyzer.FilterFeeature;
 using KPA_KPI_Analyzer.Diagnostics;
+using KPA_KPI_Analyzer.FilterFeeature;
 using KPA_KPI_Analyzer.KPA_KPI_Overall;
 using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
-using System.Windows.Forms;
 using System.IO;
-using KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls;
-using KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls;
+using System.Windows.Forms;
 
 
 namespace KPA_KPI_Analyzer

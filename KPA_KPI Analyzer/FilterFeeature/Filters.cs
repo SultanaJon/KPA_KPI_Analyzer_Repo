@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using KPA_KPI_Analyzer.FilterFeeature;
 
 namespace KPA_KPI_Analyzer.FilterFeeature
 {
