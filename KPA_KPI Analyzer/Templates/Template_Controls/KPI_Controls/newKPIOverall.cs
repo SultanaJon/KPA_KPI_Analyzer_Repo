@@ -839,6 +839,12 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// <param name="e">the cell double click event</param>
         private void TemplateThreeDataGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if(TemplateThreeDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == "0" || TemplateThreeDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == "$0.00")
+            {
+                MessageBox.Show("There is no data in this cell", "Data Timespan", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             switch (e.RowIndex)
             {
                 case 0: // 0 - 2 = Plan
@@ -874,6 +880,12 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// <param name="e">the cell double click event</param>
         private void TemplateFourDataGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (TemplateFourDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == "0" || TemplateFourDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == "$0.00")
+            {
+                MessageBox.Show("There is no data in this cell", "Data Timespan", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             switch (e.RowIndex)
             {
                 case 0: // 0 - 1 = Plan Two
@@ -915,6 +927,12 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// <param name="e">the cell double click event</param>
         private void TemplateFiveDataGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (TemplateFiveDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == "0" || TemplateFiveDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == "$0.00")
+            {
+                MessageBox.Show("There is no data in this cell", "Data Timespan", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             HandleOtherDataTableLoading(e.RowIndex, e.ColumnIndex);
         }
 

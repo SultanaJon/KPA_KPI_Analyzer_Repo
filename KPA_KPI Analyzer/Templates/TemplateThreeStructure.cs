@@ -28,7 +28,6 @@
         public enum DataViews
         {
             Total,
-            PercentUnconf,
             Minus_TwentyTwo,
             Minus_Fifteen_TwentyOne,
             Minus_Eight_Fourteen,
@@ -37,7 +36,8 @@
             One_Seven,
             Eight_Fourteen,
             Fifteen_TwentyOne,
-            TwentyTwo
+            TwentyTwo,
+            PercentUnconf
         }
 
 

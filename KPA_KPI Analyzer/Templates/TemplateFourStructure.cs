@@ -29,7 +29,6 @@
         public enum DataViews
         {
              Total,
-             PercentUnconf,
              LessThanZero,
              One_Three,
              Four_Seven,
@@ -40,8 +39,9 @@
              ThirtySix_FourtyTwo,
              FourtyThree_FourtyNine,
              Fifty_FiftySix,
-             GreaterThanEqualFiftySeven
-         }
+             GreaterThanEqualFiftySeven,
+             PercentUnconf
+        }
 
 
 

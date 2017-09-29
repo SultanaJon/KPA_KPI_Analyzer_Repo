@@ -603,6 +603,13 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// <param name="e">the cell double click event</param>
         private void TemplateOneDataGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if(TemplateOneDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == "0")
+            {
+                MessageBox.Show("There is no data in this cell.", "Data Timespan", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+
             switch(e.RowIndex)
             {
                 case 0: // 0 - 3 = Plan
@@ -669,6 +676,13 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// <param name="e">the cell double click event</param>
         private void TemplateTwoDataGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (TemplateOneDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == "0")
+            {
+                MessageBox.Show("There is no data in this cell.", "Data Timespan", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            
+
             switch (e.RowIndex)
             {
                 case 0:
