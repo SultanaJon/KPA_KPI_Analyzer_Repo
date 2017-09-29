@@ -375,8 +375,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                     case 1: // Confirmed Date for Upcoming Deliveries
                         KpaDataTableLoader.FollowUp.LoadConfirmedDateForUpcomingDeliveriesDataTable(tag);
                         break;
-                    case 2: // PO Creation to Confirmation Entry
-                        KpaDataTableLoader.FollowUp.LoadPOCreationToConfirmationEntryDataTable(tag);
+                    case 2: // Late to Confirmed Date
+                        KpaDataTableLoader.FollowUp.LoadLateToConfirmedDateDataTable(tag);
                         break;
                     default:
                         break;

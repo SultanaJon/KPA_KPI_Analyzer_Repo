@@ -30,8 +30,6 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -43,6 +41,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -54,7 +54,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.TemplateTwoDataGrid = new Bunifu.Framework.UI.BunifuCustomDataGrid();
-            this.TemplateOneDataGrid = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.one = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.two = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.three = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,6 +67,7 @@
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TemplateOneDataGrid = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.Section = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KPA_Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TimeSpanOne = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -154,59 +154,8 @@
             this.TemplateTwoDataGrid.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.TemplateTwoDataGrid.Size = new System.Drawing.Size(1130, 96);
             this.TemplateTwoDataGrid.TabIndex = 2;
+            this.TemplateTwoDataGrid.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TemplateTwoDataGrid_CellContentDoubleClick);
             this.TemplateTwoDataGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.bunifuCustomDataGrid2_CellFormatting);
-            // 
-            // TemplateOneDataGrid
-            // 
-            this.TemplateOneDataGrid.AllowUserToAddRows = false;
-            this.TemplateOneDataGrid.AllowUserToDeleteRows = false;
-            this.TemplateOneDataGrid.AllowUserToResizeRows = false;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.TemplateOneDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle14;
-            this.TemplateOneDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.TemplateOneDataGrid.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.TemplateOneDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TemplateOneDataGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.TemplateOneDataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TemplateOneDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
-            this.TemplateOneDataGrid.ColumnHeadersHeight = 18;
-            this.TemplateOneDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.TemplateOneDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Section,
-            this.KPA_Category,
-            this.TimeSpanOne,
-            this.TimeSpanTwo,
-            this.TimeSpanThree,
-            this.TimeSpanFour,
-            this.TimeSpanFive,
-            this.TimeSpanSix,
-            this.TimeSpanSeven,
-            this.Average,
-            this.Totals});
-            this.tableLayoutPanel1.SetColumnSpan(this.TemplateOneDataGrid, 2);
-            this.TemplateOneDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TemplateOneDataGrid.DoubleBuffered = true;
-            this.TemplateOneDataGrid.EnableHeadersVisualStyles = false;
-            this.TemplateOneDataGrid.HeaderBgColor = System.Drawing.SystemColors.Control;
-            this.TemplateOneDataGrid.HeaderForeColor = System.Drawing.Color.White;
-            this.TemplateOneDataGrid.Location = new System.Drawing.Point(10, 10);
-            this.TemplateOneDataGrid.Margin = new System.Windows.Forms.Padding(0);
-            this.TemplateOneDataGrid.Name = "TemplateOneDataGrid";
-            this.TemplateOneDataGrid.ReadOnly = true;
-            this.TemplateOneDataGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.TemplateOneDataGrid.RowHeadersVisible = false;
-            this.TemplateOneDataGrid.RowTemplate.Height = 16;
-            this.TemplateOneDataGrid.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.TemplateOneDataGrid.Size = new System.Drawing.Size(1130, 514);
-            this.TemplateOneDataGrid.TabIndex = 1;
-            this.TemplateOneDataGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.bunifuCustomDataGrid1_CellFormatting);
             // 
             // one
             // 
@@ -320,6 +269,59 @@
             this.Column9.Name = "Column9";
             this.Column9.ReadOnly = true;
             this.Column9.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // TemplateOneDataGrid
+            // 
+            this.TemplateOneDataGrid.AllowUserToAddRows = false;
+            this.TemplateOneDataGrid.AllowUserToDeleteRows = false;
+            this.TemplateOneDataGrid.AllowUserToResizeRows = false;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.TemplateOneDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle14;
+            this.TemplateOneDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.TemplateOneDataGrid.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.TemplateOneDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TemplateOneDataGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.TemplateOneDataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TemplateOneDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            this.TemplateOneDataGrid.ColumnHeadersHeight = 18;
+            this.TemplateOneDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.TemplateOneDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Section,
+            this.KPA_Category,
+            this.TimeSpanOne,
+            this.TimeSpanTwo,
+            this.TimeSpanThree,
+            this.TimeSpanFour,
+            this.TimeSpanFive,
+            this.TimeSpanSix,
+            this.TimeSpanSeven,
+            this.Average,
+            this.Totals});
+            this.tableLayoutPanel1.SetColumnSpan(this.TemplateOneDataGrid, 2);
+            this.TemplateOneDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TemplateOneDataGrid.DoubleBuffered = true;
+            this.TemplateOneDataGrid.EnableHeadersVisualStyles = false;
+            this.TemplateOneDataGrid.HeaderBgColor = System.Drawing.SystemColors.Control;
+            this.TemplateOneDataGrid.HeaderForeColor = System.Drawing.Color.White;
+            this.TemplateOneDataGrid.Location = new System.Drawing.Point(10, 10);
+            this.TemplateOneDataGrid.Margin = new System.Windows.Forms.Padding(0);
+            this.TemplateOneDataGrid.Name = "TemplateOneDataGrid";
+            this.TemplateOneDataGrid.ReadOnly = true;
+            this.TemplateOneDataGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.TemplateOneDataGrid.RowHeadersVisible = false;
+            this.TemplateOneDataGrid.RowTemplate.Height = 16;
+            this.TemplateOneDataGrid.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.TemplateOneDataGrid.Size = new System.Drawing.Size(1130, 514);
+            this.TemplateOneDataGrid.TabIndex = 1;
+            this.TemplateOneDataGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TemplateOneDataGrid_CellDoubleClick);
+            this.TemplateOneDataGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.bunifuCustomDataGrid1_CellFormatting);
             // 
             // Section
             // 

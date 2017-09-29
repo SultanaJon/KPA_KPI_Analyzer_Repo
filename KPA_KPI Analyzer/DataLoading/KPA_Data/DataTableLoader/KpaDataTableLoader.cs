@@ -27,7 +27,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                 dt = new DataTable();
                 prsAgingNotRelDt = new DataTable();
 
-                if (Values.Globals.SelectedCountry == AccessInfo.MainTables.US_PRPO)
+                if (Globals.SelectedCountry == AccessInfo.MainTables.US_PRPO)
                     cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Plan_PRsAgingNotRel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                 else
                     cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Plan_PRsAgingNotRel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
@@ -492,6 +492,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                 }
 
                 using (DataViewer dv = new DataViewer() {
+                    Data = poFirstRelDt,
                     Country = Globals.CurrCountry,
                     Performance = Globals.CurrPerformance,
                     Section = Globals.CurrSection,
@@ -586,6 +587,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                 }
 
                 using (DataViewer dv = new DataViewer() {
+                    Data = poPrevRelDt,
                     Country = Globals.CurrCountry,
                     Performance = Globals.CurrPerformance,
                     Section = Globals.CurrSection,
@@ -680,6 +682,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                 }
 
                 using (DataViewer dv = new DataViewer() {
+                    Data = noConfirmationsDt,
                     Country = Globals.CurrCountry,
                     Performance = Globals.CurrPerformance,
                     Section = Globals.CurrSection,
@@ -880,6 +883,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                 }
 
                 using (DataViewer dv = new DataViewer() {
+                    Data = poCreatConfEntryDt,
                     Country = Globals.CurrCountry,
                     Performance = Globals.CurrPerformance,
                     Section = Globals.CurrSection,
@@ -1319,7 +1323,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
             /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
-            internal static void LoadPOCreationToConfirmationEntryDataTable(int tag)
+            internal static void LoadLateToConfirmedDateDataTable(int tag)
             {
                 dt = new DataTable();
                 LateConfDateDt = new DataTable();

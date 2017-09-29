@@ -19,6 +19,28 @@
 
 
 
+
+        /// <summary>
+        /// Indexer to correspond with the tag number of the buttons in Template two templates
+        /// </summary>
+        public enum DataViews
+        {
+            Total,
+            LessThanMinusThree,
+            GreaterThanEqualMinusThree,
+            GreaterThanEqualMinusTwo,
+            GreaterThanEqualMinusOne,
+            ZeroWeeks,
+            LessThanEqualOneWeek,
+            LessThanEqualTwoWeeks,
+            LessThanEqualThreeWeeks,
+            GreaterThanThreeWeeks
+        }
+
+
+
+
+
         /// <summary>
         /// Clears the data stored in the template object
         /// </summary>
