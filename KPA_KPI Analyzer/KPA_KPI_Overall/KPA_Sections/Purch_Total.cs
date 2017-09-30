@@ -12,8 +12,9 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
     {
         public PR_Rel_Conf_Entry prRelConfEntry;
         private double totalDays = 0;
-
-
+        private DataTable dt;
+        private OleDbCommand cmd;
+        private OleDbDataAdapter da;
 
 
         // Default Constructor
@@ -48,16 +49,15 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
         {
             try
             {
-
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 //
                 // PR Release to Confirmation Entry
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                DataTable dt = new DataTable();
-                OleDbCommand cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_PurchTotal_PRRelConfEntry] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                dt = new DataTable();
+                cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_PurchTotal_PRRelConfEntry] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
 
-                OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+                da = new OleDbDataAdapter(cmd);
                 da.Fill(dt);
 
 
@@ -174,6 +174,12 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "KPA -> Purch Total Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                dt.Rows.Clear();
+                dt = null;
+                GC.Collect();
             }
         }
     }

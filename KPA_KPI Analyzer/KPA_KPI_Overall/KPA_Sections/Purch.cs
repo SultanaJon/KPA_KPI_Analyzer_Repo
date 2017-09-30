@@ -15,7 +15,9 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
         public PO_Prev_Rel poPrevRel;
         public No_Confirmation noConfirmation;
         private double totalDays = 0;
-
+        private DataTable dt;
+        private OleDbCommand cmd;
+        private OleDbDataAdapter da;
 
 
 
@@ -57,71 +59,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
 
 
 
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        //
-        //
-        //  The below classes act as a specific KPA category that fall under a specific KPA section.
-        //
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        public class PRs_Aging_Released
-        {
-            public TempOne data;
-
-            public PRs_Aging_Released()
-            {
-                data = new TempOne();
-            }
-        }
-
-
-
-
-
-
-        public class PO_First_Rel
-        {
-            public TempOne data;
-
-            public PO_First_Rel()
-            {
-                data = new TempOne();
-            }
-        }
-
-
-
-
-
-        public class PO_Prev_Rel
-        {
-            public TempOne data;
-
-            public PO_Prev_Rel()
-            {
-                data = new TempOne();
-            }
-        }
-
-
-
-
-
-
-        public class No_Confirmation
-        {
-            public TempOne data;
-
-            public No_Confirmation()
-            {
-                data = new TempOne();
-            }
-        }
-
-
-
-
-
-
 
         /// <summary>
         /// Loads the specific KPA Data
@@ -137,9 +74,9 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                 // PRs Aging Released
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                DataTable dt = new DataTable();
-                OleDbCommand cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Purch_PRsAgingRel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
-                OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+                dt = new DataTable();
+                cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Purch_PRsAgingRel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                da = new OleDbDataAdapter(cmd);
                 da.Fill(dt);
 
 
@@ -247,9 +184,8 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                 {
                     prsAgingRel.data.Average = 0;
                 }
+
                 totalDays = 0;
-
-
 
 
 
@@ -611,13 +547,79 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                     noConfirmation.data.Average = 0;
                 }
 
-                totalDays = 0;
 
                 PRPO_DB_Utils.UpdateLoadProgress();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "KPA -> Purch Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                totalDays = 0;
+                dt.Rows.Clear();
+                dt = null;
+                GC.Collect();
+            }
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //
+        //
+        //  The below classes act as a specific KPA category that fall under a specific KPA section.
+        //
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        public class PRs_Aging_Released
+        {
+            public TempOne data;
+
+            public PRs_Aging_Released()
+            {
+                data = new TempOne();
+            }
+        }
+
+
+
+
+
+
+        public class PO_First_Rel
+        {
+            public TempOne data;
+
+            public PO_First_Rel()
+            {
+                data = new TempOne();
+            }
+        }
+
+
+
+
+
+        public class PO_Prev_Rel
+        {
+            public TempOne data;
+
+            public PO_Prev_Rel()
+            {
+                data = new TempOne();
+            }
+        }
+
+
+
+
+
+
+        public class No_Confirmation
+        {
+            public TempOne data;
+
+            public No_Confirmation()
+            {
+                data = new TempOne();
             }
         }
     }

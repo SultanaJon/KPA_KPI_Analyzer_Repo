@@ -216,6 +216,10 @@ namespace KPA_KPI_Analyzer
         /// <param name="e">The click event</param>
         private void btn_Close_Click(object sender, EventArgs e)
         {
+            dgv_dataViewerDgv.DataSource = null;
+            Data.Rows.Clear();
+            Data = null;
+            dgv_dataViewerDgv.Rows.Clear();
             Close();
         }
         #endregion

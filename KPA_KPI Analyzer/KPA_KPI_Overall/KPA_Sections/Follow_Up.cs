@@ -14,7 +14,9 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
         public Conf_Date_Upcoming_Del ConfDateForUpcomingDel;
         public Late_Conf_Date LateToConfDate;
         private double totalDays = 0;
-
+        private DataTable dt;
+        private OleDbCommand cmd;
+        private OleDbDataAdapter da;
 
 
         // Default Constructor
@@ -60,9 +62,9 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                 // Confirmed vs Plan Date
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                DataTable dt = new DataTable();
-                OleDbCommand cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_FollowUp_ConfPlanDate] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
-                OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+                dt = new DataTable();
+                cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_FollowUp_ConfPlanDate] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                da = new OleDbDataAdapter(cmd);
                 da.Fill(dt);
 
 
@@ -436,6 +438,13 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "KPA -> Follow Up Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                totalDays = 0;
+                dt.Rows.Clear();
+                dt = null;
+                GC.Collect();
             }
         }
 

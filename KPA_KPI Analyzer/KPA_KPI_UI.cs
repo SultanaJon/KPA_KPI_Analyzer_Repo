@@ -91,8 +91,8 @@ namespace KPA_KPI_Analyzer
             {
                 try
                 {
-                    PRPO_DB_Utils.ConnectToDatabase();
-                    Logger.Log(Diagnostics.AppDirectoryUtils.LogFiles.DbConnectionEvents, "Successfully Connected to MS Access Database");
+                    //PRPO_DB_Utils.ConnectToDatabase();
+                    //Logger.Log(Diagnostics.AppDirectoryUtils.LogFiles.DbConnectionEvents, "Successfully Connected to MS Access Database");
 
                     if (AccessUtils.US_PRPO_TableExists && AccessUtils.MX_PRPO_TableExists)
                     {
@@ -508,7 +508,7 @@ namespace KPA_KPI_Analyzer
             overallData = new Overall();
             PRPO_DB_Utils.DataLoadProcessStarted = false;
             PRPO_DB_Utils.DataLoaded = false;
-            PRPO_DB_Utils.KPITablesLoaded = false;
+            //PRPO_DB_Utils.KPITablesLoaded = false;
             PRPO_DB_Utils.CompletedDataLoads = 0;
             PRPO_DB_Utils.ScheduledDataLoads = 0;
             CreateThreads();

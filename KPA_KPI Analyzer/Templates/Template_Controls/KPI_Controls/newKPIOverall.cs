@@ -839,29 +839,36 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// <param name="e">the cell double click event</param>
         private void TemplateThreeDataGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(TemplateThreeDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == "0" || TemplateThreeDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == "$0.00")
+            try
             {
-                MessageBox.Show("There is no data in this cell", "Data Timespan", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
+                if (TemplateThreeDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == "0" || TemplateThreeDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == "$0.00" || TemplateThreeDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == string.Empty)
+                {
+                    MessageBox.Show("There is no data in this cell", "Data Timespan", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
 
-            switch (e.RowIndex)
+                switch (e.RowIndex)
+                {
+                    case 0: // 0 - 2 = Plan
+                    case 1:
+                    case 2:
+                        HandlePlanDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 3: // Purch
+                        HandlePurchDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 4: // 4 - 8 = Follow Up
+                    case 5:
+                    case 6:
+                    case 7:
+                    case 8:
+                        HandleFollowUpDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
+                }
+            }
+            catch(Exception)
             {
-                case 0: // 0 - 2 = Plan
-                case 1:
-                case 2:
-                    HandlePlanDataTableLoading(e.RowIndex, e.ColumnIndex);
-                    break;
-                case 3: // Purch
-                    HandlePurchDataTableLoading(e.RowIndex, e.ColumnIndex);
-                    break;
-                case 4: // 4 - 8 = Follow Up
-                case 5:
-                case 6:
-                case 7:
-                case 8:
-                    HandleFollowUpDataTableLoading(e.RowIndex, e.ColumnIndex);
-                    break;
+                // if the user clicks on the header dividers an index out of range excepion will be thrown. I am ignoring it.
             }
         }
 
@@ -880,35 +887,42 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// <param name="e">the cell double click event</param>
         private void TemplateFourDataGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (TemplateFourDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == "0" || TemplateFourDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == "$0.00")
+            try
             {
-                MessageBox.Show("There is no data in this cell", "Data Timespan", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
+                if (TemplateFourDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == "0" || TemplateFourDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == "$0.00" || TemplateFourDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == string.Empty)
+                {
+                    MessageBox.Show("There is no data in this cell", "Data Timespan", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
 
-            switch (e.RowIndex)
+                switch (e.RowIndex)
+                {
+                    case 0: // 0 - 1 = Plan Two
+                    case 1:
+                        break;
+                    case 2: // 2 - 4 = Purch Two
+                    case 3:
+                    case 4:
+                        HandlePurchTwoDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 5: // 5 - 6 Purch Sub
+                    case 6:
+                        HandlePurchSubDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 7: // Purch Total
+                        HandlePurchTotalDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 8: // 8 - 9 = Purch Plan
+                    case 9:
+                        HandlePurchPlanDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 10: // Purch Plan Total
+                        break;
+                }
+            }
+            catch(Exception)
             {
-                case 0: // 0 - 1 = Plan Two
-                case 1:
-                    break;
-                case 2: // 2 - 4 = Purch Two
-                case 3:
-                case 4:
-                    HandlePurchTwoDataTableLoading(e.RowIndex, e.ColumnIndex);
-                    break;
-                case 5: // 5 - 6 Purch Sub
-                case 6:
-                    HandlePurchSubDataTableLoading(e.RowIndex, e.ColumnIndex);
-                    break;
-                case 7: // Purch Total
-                    HandlePurchTotalDataTableLoading(e.RowIndex, e.ColumnIndex);
-                    break;
-                case 8: // 8 - 9 = Purch Plan
-                case 9:
-                    HandlePurchPlanDataTableLoading(e.RowIndex, e.ColumnIndex);
-                    break;
-                case 10: // Purch Plan Total
-                    break;
+                // if the user clicks on the header dividers an index out of range excepion will be thrown. I am ignoring it.
             }
         }
 
@@ -927,13 +941,20 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// <param name="e">the cell double click event</param>
         private void TemplateFiveDataGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (TemplateFiveDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == "0" || TemplateFiveDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == "$0.00")
+            try
             {
-                MessageBox.Show("There is no data in this cell", "Data Timespan", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
+                if (TemplateFiveDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == "0" || TemplateFiveDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == "$0.00" || TemplateFiveDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == String.Empty)
+                {
+                    MessageBox.Show("There is no data in this cell", "Data Timespan", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
 
-            HandleOtherDataTableLoading(e.RowIndex, e.ColumnIndex);
+                HandleOtherDataTableLoading(e.RowIndex, e.ColumnIndex);
+            }
+            catch(Exception)
+            {
+                // if the user clicks on the header dividers an index out of range excepion will be thrown. I am ignoring it.
+            }
         }
 
 

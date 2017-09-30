@@ -158,7 +158,9 @@ namespace KPA_KPI_Analyzer.FilterFeeature
                     tempHash.Add(tempStrArray[0]);
                 }
             }
-            strData = tempHash; 
+            strData = tempHash;
+            tempHash = null;
+            GC.Collect(); 
         }
 
 
@@ -183,8 +185,8 @@ namespace KPA_KPI_Analyzer.FilterFeeature
                 foreach (Filters col in Enum.GetValues(typeof(Filters)))
                 {
                     getQuery(col, filters);
+                    DatabaseUtils.PRPO_DB_Utils.ConnectToDatabase();
                     cmd = new OleDbCommand(query, DatabaseUtils.PRPO_DB_Utils.DatabaseConnection);
-
                     using (var reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
@@ -215,7 +217,6 @@ namespace KPA_KPI_Analyzer.FilterFeeature
                             UpdateFilter(strData, col);
                         };
                         del.Invoke();
-                        strData.Clear();
                     }
                 }
                 FiltersLoaded = true;
@@ -223,6 +224,13 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Filter Utils - Load Filters Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                strData.Clear();
+                strData = null;
+                DatabaseUtils.PRPO_DB_Utils.DatabaseConnection.Close();
+                GC.Collect();
             }
         }
 
@@ -256,6 +264,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
                         continue;
 
                     getQuery(col, filters);
+                    DatabaseUtils.PRPO_DB_Utils.ConnectToDatabase();
                     cmd = new OleDbCommand(query, DatabaseUtils.PRPO_DB_Utils.DatabaseConnection);
 
                     using (var reader = cmd.ExecuteReader())
@@ -285,7 +294,6 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
 
                         UpdateFilter(strData, col);
-                        strData.Clear();
                     }
                 }
                 FiltersLoaded = true;
@@ -293,6 +301,13 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Filter Utils - Load Filters Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                strData.Clear();
+                strData = null;
+                DatabaseUtils.PRPO_DB_Utils.DatabaseConnection.Close();
+                GC.Collect();
             }
         }
 
@@ -326,6 +341,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
                     
 
                     getQuery(col);
+                    DatabaseUtils.PRPO_DB_Utils.ConnectToDatabase();
                     cmd = new OleDbCommand(query, DatabaseUtils.PRPO_DB_Utils.DatabaseConnection);
 
                     using (var reader = cmd.ExecuteReader())
@@ -355,7 +371,6 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
 
                         UpdateFilter(strData, col);
-                        strData.Clear();
                     }
                 }
                 FiltersLoaded = true;
@@ -363,6 +378,13 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Filter Utils - Load Filters Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                strData.Clear();
+                strData = null;
+                DatabaseUtils.PRPO_DB_Utils.DatabaseConnection.Close();
+                GC.Collect();
             }
         }
     }

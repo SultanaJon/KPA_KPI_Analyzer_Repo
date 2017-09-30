@@ -221,6 +221,7 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
 
             try
             {
+                ConnectToDatabase();
                 if (country == PRPOCommands.DatabaseTables.MainTables.US_PRPO)
                 {
                     OleDbCommand cmd;
@@ -246,7 +247,10 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
                 DropCreateDb();
                 DisplayDragDropPage();
             }
-
+            finally
+            {
+                DatabaseConnection.Close();
+            }
             return result;
         }
 

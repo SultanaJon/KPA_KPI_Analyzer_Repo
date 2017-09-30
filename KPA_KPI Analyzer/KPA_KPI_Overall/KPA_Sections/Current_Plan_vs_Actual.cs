@@ -14,7 +14,9 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
         public Curr_Plan_Date_vs_Curr_Conf_Date_OpenPOs currPlanDateCurrConfDate;
         public Curr_Plan_Date_vs_Curr_Conf_Date_OpenPOs_HotJobs currPlanDateCurrConfDateHotJobs;
         private double totalDays = 0;
-
+        private DataTable dt;
+        private OleDbCommand cmd;
+        private OleDbDataAdapter da;
 
 
 
@@ -61,9 +63,9 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                 // Current Planned Date vs Current Confirmation Date (Open POs)
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                DataTable dt = new DataTable();
-                OleDbCommand cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_CurrPlanActual_CurrPlanDateCurrConfDateOpenPO] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
-                OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+                dt = new DataTable();
+                cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_CurrPlanActual_CurrPlanDateCurrConfDateOpenPO] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                da = new OleDbDataAdapter(cmd);
                 da.Fill(dt);
 
                 foreach (DataRow dr in dt.Rows)
@@ -372,6 +374,13 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "KPA -> Current Plan vs Actual Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                totalDays = 0;
+                dt.Rows.Clear();
+                dt = null;
+                GC.Collect();
             }
         }
     }

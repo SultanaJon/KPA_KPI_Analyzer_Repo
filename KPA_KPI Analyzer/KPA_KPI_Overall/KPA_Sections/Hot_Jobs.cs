@@ -15,6 +15,9 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
         public No_Confirmation noConfirmation;
         public LateToConfirmed lateToConfirmed;
         private double totalDays = 0;
+        private DataTable dt;
+        private OleDbCommand cmd;
+        private OleDbDataAdapter da;
 
 
 
@@ -66,9 +69,9 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                 // PRs (Not on PO) - Hot Jobs Only
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                DataTable dt = new DataTable();
-                OleDbCommand cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_HotJobs_PrsNotonPO] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
-                OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+                dt = new DataTable();
+                cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_HotJobs_PrsNotonPO] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                da = new OleDbDataAdapter(cmd);
                 da.Fill(dt);
 
 
@@ -421,6 +424,13 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "KPA -> Hot Jobs Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                totalDays = 0;
+                dt.Rows.Clear();
+                dt = null;
+                GC.Collect();
             }
         }
     }

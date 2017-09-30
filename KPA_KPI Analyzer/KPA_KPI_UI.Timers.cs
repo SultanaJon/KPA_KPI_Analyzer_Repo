@@ -298,6 +298,7 @@ namespace KPA_KPI_Analyzer
             if (!PRPO_DB_Utils.DataLoadProcessStarted)
             {
                 PRPO_DB_Utils.DataLoadProcessStarted = true;
+                PRPO_DB_Utils.ConnectToDatabase();
                 PRPO_DB_Utils.KPITablesLoaded = false;
                 ShowPage(Pages.LoadingScreen);
                 lbl_loadingStatus.Text = "Loading Data...";
@@ -316,6 +317,7 @@ namespace KPA_KPI_Analyzer
             {
                 PRPO_DB_Utils.DataLoaded = false;
                 DataLoaderTimer.Stop();
+                PRPO_DB_Utils.DatabaseConnection.Close();
 
                 if (!ColumnFiltersApplied && !DateFiltersApplied)
                 {

@@ -13,7 +13,9 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
         public PRs_Aging_NotRel prsAgingNotRel;
         public MaterialDueDate matDueDate;
         private double totalDays = 0;
-
+        private DataTable dt;
+        private OleDbCommand cmd;
+        private OleDbDataAdapter da;
 
 
 
@@ -64,9 +66,9 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                 // PRs Aging (Not Released)
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                DataTable dt = new DataTable();
-                OleDbCommand cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Plan_PRsAgingNotRel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
-                OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+                dt = new DataTable();
+                cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Plan_PRsAgingNotRel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                da = new OleDbDataAdapter(cmd);
                 da.Fill(dt);
 
 
@@ -294,6 +296,13 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "KPA -> Plan Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                totalDays = 0;
+                dt.Rows.Clear();
+                dt = null;
+                GC.Collect();
             }
         }
     }

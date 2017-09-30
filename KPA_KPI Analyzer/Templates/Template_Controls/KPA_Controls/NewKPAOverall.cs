@@ -603,64 +603,71 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// <param name="e">the cell double click event</param>
         private void TemplateOneDataGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(TemplateOneDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == "0")
+            try
             {
-                MessageBox.Show("There is no data in this cell.", "Data Timespan", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                if (TemplateOneDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == "0" || TemplateOneDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == string.Empty)
+                {
+                    MessageBox.Show("There is no data in this cell.", "Data Timespan", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+
+                switch (e.RowIndex)
+                {
+                    case 0: // 0 - 3 = Plan
+                        break; // not yet created
+                    case 1:
+                    case 2:
+                        HandlePlanDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 3: // 4 - 7 = Purch
+                    case 4:
+                    case 5:
+                    case 6:
+                        HandlePurchDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 7: // 8 - 9 = PurchSub
+                    case 8:
+                        HandlePurchSubDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 9: // Purch Total
+                        HandlePurchTotalDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 10: // Purch Plan Total
+                        break;
+                    case 11: // 12 - 14 = Follow Up
+                    case 12:
+                    case 13:
+                        HandleFollowUpDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 14: // 15 - 16 Cancellations
+                    case 15:
+                        break;
+                    case 16: // 17 - 18 = NCRs
+                    case 17:
+                        break;
+                    case 18: // 19 - 21 = Hot Jobs
+                    case 19:
+                    case 20:
+                        HandleHotJobsDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 21: // 22 - 26 = Excess Stock - Stock
+                    case 22:
+                    case 23:
+                    case 24:
+                    case 25:
+                        break;
+                    case 26: // 27 - 31 = Excess Stock - Open Orders
+                    case 27:
+                    case 28:
+                    case 29:
+                    case 30:
+                        break;
+                }
             }
-
-
-            switch(e.RowIndex)
+            catch(Exception)
             {
-                case 0: // 0 - 3 = Plan
-                    break; // not yet created
-                case 1:
-                case 2:
-                    HandlePlanDataTableLoading(e.RowIndex, e.ColumnIndex);
-                    break;
-                case 3: // 4 - 7 = Purch
-                case 4:
-                case 5:
-                case 6:
-                    HandlePurchDataTableLoading(e.RowIndex, e.ColumnIndex);
-                    break;
-                case 7: // 8 - 9 = PurchSub
-                case 8:
-                    HandlePurchSubDataTableLoading(e.RowIndex, e.ColumnIndex);
-                    break;
-                case 9: // Purch Total
-                    HandlePurchTotalDataTableLoading(e.RowIndex, e.ColumnIndex);
-                    break;
-                case 10: // Purch Plan Total
-                    break;
-                case 11: // 12 - 14 = Follow Up
-                case 12:
-                case 13:
-                    HandleFollowUpDataTableLoading(e.RowIndex, e.ColumnIndex);
-                    break;
-                case 14: // 15 - 16 Cancellations
-                case 15:
-                    break;
-                case 16: // 17 - 18 = NCRs
-                case 17:
-                    break;
-                case 18: // 19 - 21 = Hot Jobs
-                case 19:
-                case 20:
-                    HandleHotJobsDataTableLoading(e.RowIndex, e.ColumnIndex);
-                    break;
-                case 21: // 22 - 26 = Excess Stock - Stock
-                case 22:
-                case 23:
-                case 24:
-                case 25:
-                    break;
-                case 26: // 27 - 31 = Excess Stock - Open Orders
-                case 27:
-                case 28:
-                case 29:
-                case 30:
-                    break;
+                // if the user clicks on the header dividers an index out of range excepion will be thrown. I am ignoring it.
             }
         }
 
@@ -676,20 +683,26 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// <param name="e">the cell double click event</param>
         private void TemplateTwoDataGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (TemplateOneDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == "0")
+            try
             {
-                MessageBox.Show("There is no data in this cell.", "Data Timespan", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            
+                if (TemplateTwoDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == "0" || TemplateTwoDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == string.Empty)
+                {
+                    MessageBox.Show("There is no data in this cell.", "Data Timespan", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
 
-            switch (e.RowIndex)
-            {
-                case 0:
-                case 1:
-                    HandleCurrentPlanVsActualDataTableLoading(e.RowIndex, e.ColumnIndex);
-                    break;
+                switch (e.RowIndex)
+                {
+                    case 0:
+                    case 1:
+                        HandleCurrentPlanVsActualDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
+                }
             }
+            catch(Exception)
+            {
+                // if the user clicks on the header dividers an index out of range excepion will be thrown. I am ignoring it.
+            }            
         }
 
 
