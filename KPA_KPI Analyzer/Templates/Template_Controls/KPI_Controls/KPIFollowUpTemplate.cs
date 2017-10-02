@@ -175,7 +175,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                 case 1:
                     pnl_PercentagePanel.Visible = true;
                     btn_unconfIncludedStatusButton.Visible = true;
-                    btn_unconfIncludedStatusButton.Text = "Including Unconfirmed!";
+                    btn_unconfIncludedStatusButton.Text = "Not Including Unconfirmed!";
                     RenderTwo();
                     break;
                 case 2:
@@ -231,7 +231,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TimeBucketNine = overallData.kpi.followUp.initConfVsCurrConf.data.TwentyTwo.ToString();
 
             AnalysisOne = "- Will show if PO line item is received complete and the line has a confirmation date.";
-            AnalysisTwo = "- Difference between first confirmed date and final confirmation date.";
+            AnalysisTwo = "- Difference between final confirmation date and first confirmation date.";
 
 
             dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
@@ -292,7 +292,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TimeBucketEight = overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Fifteen_TwentyOne.ToString();
             TimeBucketNine = overallData.kpi.followUp.finalConfDateVsFinalPlan.data.TwentyTwo.ToString();
 
-            AnalysisOne = "- Will show if PO line item has been received complete.";
+            AnalysisOne = "- Will show if PO line item has been received complete and has confirmation date";
             AnalysisTwo = "- Difference between current confirmation date and current planned date.";
 
             dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);

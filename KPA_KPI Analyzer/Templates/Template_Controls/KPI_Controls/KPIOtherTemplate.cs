@@ -287,8 +287,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
 
-            AnalysisOne = "- Count of PRs by 2nd level release date.";
-            AnalysisTwo = "- Count of PRs by final release date.";
+            AnalysisOne = "- Count of PRs by release date.";
+            AnalysisTwo = "- Difference between todays date and the PR final release date.";
 
 
             dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);

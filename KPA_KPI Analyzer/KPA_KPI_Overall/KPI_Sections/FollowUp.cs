@@ -76,45 +76,18 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 {
                     if (Filters.FilterByPrDateRange)
                     {
-                        // The user wants to filter by PR date range
-                        string[] requisnDate = (dr["Requisn Date"].ToString()).Split('/');
-                        int reqYear = int.Parse(requisnDate[2]);
-                        int reqMonth = int.Parse(requisnDate[0].TrimStart('0'));
-                        int reqDay = int.Parse(requisnDate[1].TrimStart('0'));
-                        DateTime reqTestDate = new DateTime(reqYear, reqMonth, reqDay);
-
-                        if (reqTestDate < Filters.PrFromDate || reqTestDate > Filters.PrToDate)
+                        if (!FilterUtils.PrDateInRange(dr))
                         {
-                            // The PR date is not within the PR date range.
+                            // The PR Date was not in range of the filter the user applied.
                             continue;
                         }
                     }
 
                     if (Filters.FilterByPoDateRange)
                     {
-                        // The user wnats to filter by PO date range
-                        string[] strPODate = (dr["PO Date"].ToString()).Split('/');
-                        int poYear = int.Parse(strPODate[2]);
-                        int poMonth = int.Parse(strPODate[0]);
-                        int poDay = int.Parse(strPODate[1]);
-
-                        if (poYear == 0 && poMonth == 0 && poDay == 0)
+                        if (!FilterUtils.PoCreateDateInRange(dr))
                         {
-                            // This record is not a PO so we dont care about it
-                            continue;
-                        }
-                        else
-                        {
-                            poYear = int.Parse(strPODate[2]);
-                            poMonth = int.Parse(strPODate[0].TrimStart('0'));
-                            poDay = int.Parse(strPODate[1].TrimStart('0'));
-                        }
-
-                        DateTime poTestDate = new DateTime(poYear, poMonth, poDay);
-
-                        if (poTestDate < Filters.PoFromDate || poTestDate > Filters.PoToDate)
-                        {
-                            // The PO date is not within the PO date range.
+                            // The PO Date was not in range of the filter the user applied.
                             continue;
                         }
                     }
@@ -198,7 +171,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                 try
                 {
-                    initConfVsCurrConf.data.PercentUnconf = Math.Round(((double)initConfVsCurrConf.data.PercentUnconfTotal / initConfVsCurrConf.data.Total) * 100, 2);
+                    initConfVsCurrConf.data.PercentUnconf = Math.Round(((double)initConfVsCurrConf.data.PercentUnconfTotal / (initConfVsCurrConf.data.Total + initConfVsCurrConf.data.PercentUnconfTotal)) * 100, 2);
                     if (double.IsNaN(initConfVsCurrConf.data.PercentUnconf))
                         initConfVsCurrConf.data.PercentUnconf = 0;
 
@@ -238,45 +211,18 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 {
                     if (Filters.FilterByPrDateRange)
                     {
-                        // The user wants to filter by PR date range
-                        string[] requisnDate = (dr["Requisn Date"].ToString()).Split('/');
-                        int reqYear = int.Parse(requisnDate[2]);
-                        int reqMonth = int.Parse(requisnDate[0].TrimStart('0'));
-                        int reqDay = int.Parse(requisnDate[1].TrimStart('0'));
-                        DateTime reqTestDate = new DateTime(reqYear, reqMonth, reqDay);
-
-                        if (reqTestDate < Filters.PrFromDate || reqTestDate > Filters.PrToDate)
+                        if (!FilterUtils.PrDateInRange(dr))
                         {
-                            // The PR date is not within the PR date range.
+                            // The PR Date was not in range of the filter the user applied.
                             continue;
                         }
                     }
 
                     if (Filters.FilterByPoDateRange)
                     {
-                        // The user wnats to filter by PO date range
-                        string[] strPODate = (dr["PO Date"].ToString()).Split('/');
-                        int poYear = int.Parse(strPODate[2]);
-                        int poMonth = int.Parse(strPODate[0]);
-                        int poDay = int.Parse(strPODate[1]);
-
-                        if (poYear == 0 && poMonth == 0 && poDay == 0)
+                        if (!FilterUtils.PoCreateDateInRange(dr))
                         {
-                            // This record is not a PO so we dont care about it
-                            continue;
-                        }
-                        else
-                        {
-                            poYear = int.Parse(strPODate[2]);
-                            poMonth = int.Parse(strPODate[0].TrimStart('0'));
-                            poDay = int.Parse(strPODate[1].TrimStart('0'));
-                        }
-
-                        DateTime poTestDate = new DateTime(poYear, poMonth, poDay);
-
-                        if (poTestDate < Filters.PoFromDate || poTestDate > Filters.PoToDate)
-                        {
-                            // The PO date is not within the PO date range.
+                            // The PO Date was not in range of the filter the user applied.
                             continue;
                         }
                     }
@@ -362,7 +308,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                 try
                 {
-                    finalConfDateVsFinalPlan.data.Average = Math.Round(totalDays / (finalConfDateVsFinalPlan.data.Total - finalConfDateVsFinalPlan.data.PercentUnconfTotal), 2);
+                    finalConfDateVsFinalPlan.data.Average = Math.Round(totalDays / finalConfDateVsFinalPlan.data.Total, 2);
                     if (double.IsNaN(finalConfDateVsFinalPlan.data.Average))
                         finalConfDateVsFinalPlan.data.Average = 0;
                 }
@@ -375,7 +321,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                 try
                 {
-                    finalConfDateVsFinalPlan.data.PercentUnconf = Math.Round(((double)finalConfDateVsFinalPlan.data.PercentUnconfTotal / finalConfDateVsFinalPlan.data.Total) * 100, 2);
+                    finalConfDateVsFinalPlan.data.PercentUnconf = Math.Round(((double)finalConfDateVsFinalPlan.data.PercentUnconfTotal / (finalConfDateVsFinalPlan.data.Total + finalConfDateVsFinalPlan.data.PercentUnconfTotal)) * 100, 2);
                     if (double.IsNaN(finalConfDateVsFinalPlan.data.PercentUnconf))
                         finalConfDateVsFinalPlan.data.PercentUnconf = 0;
 
@@ -399,45 +345,18 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 {
                     if (Filters.FilterByPrDateRange)
                     {
-                        // The user wants to filter by PR date range
-                        string[] requisnDate = (dr["Requisn Date"].ToString()).Split('/');
-                        int reqYear = int.Parse(requisnDate[2]);
-                        int reqMonth = int.Parse(requisnDate[0].TrimStart('0'));
-                        int reqDay = int.Parse(requisnDate[1].TrimStart('0'));
-                        DateTime reqTestDate = new DateTime(reqYear, reqMonth, reqDay);
-
-                        if (reqTestDate < Filters.PrFromDate || reqTestDate > Filters.PrToDate)
+                        if (!FilterUtils.PrDateInRange(dr))
                         {
-                            // The PR date is not within the PR date range.
+                            // The PR Date was not in range of the filter the user applied.
                             continue;
                         }
                     }
 
                     if (Filters.FilterByPoDateRange)
                     {
-                        // The user wnats to filter by PO date range
-                        string[] strPODate = (dr["PO Date"].ToString()).Split('/');
-                        int poYear = int.Parse(strPODate[2]);
-                        int poMonth = int.Parse(strPODate[0]);
-                        int poDay = int.Parse(strPODate[1]);
-
-                        if (poYear == 0 && poMonth == 0 && poDay == 0)
+                        if (!FilterUtils.PoCreateDateInRange(dr))
                         {
-                            // This record is not a PO so we dont care about it
-                            continue;
-                        }
-                        else
-                        {
-                            poYear = int.Parse(strPODate[2]);
-                            poMonth = int.Parse(strPODate[0].TrimStart('0'));
-                            poDay = int.Parse(strPODate[1].TrimStart('0'));
-                        }
-
-                        DateTime poTestDate = new DateTime(poYear, poMonth, poDay);
-
-                        if (poTestDate < Filters.PoFromDate || poTestDate > Filters.PoToDate)
-                        {
-                            // The PO date is not within the PO date range.
+                            // The PO Date was not in range of the filter the user applied.
                             continue;
                         }
                     }
@@ -550,45 +469,18 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 {
                     if (Filters.FilterByPrDateRange)
                     {
-                        // The user wants to filter by PR date range
-                        string[] requisnDate = (dr["Requisn Date"].ToString()).Split('/');
-                        int reqYear = int.Parse(requisnDate[2]);
-                        int reqMonth = int.Parse(requisnDate[0].TrimStart('0'));
-                        int reqDay = int.Parse(requisnDate[1].TrimStart('0'));
-                        DateTime reqTestDate = new DateTime(reqYear, reqMonth, reqDay);
-
-                        if (reqTestDate < Filters.PrFromDate || reqTestDate > Filters.PrToDate)
+                        if (!FilterUtils.PrDateInRange(dr))
                         {
-                            // The PR date is not within the PR date range.
+                            // The PR Date was not in range of the filter the user applied.
                             continue;
                         }
                     }
 
                     if (Filters.FilterByPoDateRange)
                     {
-                        // The user wnats to filter by PO date range
-                        string[] strPODate = (dr["PO Date"].ToString()).Split('/');
-                        int poYear = int.Parse(strPODate[2]);
-                        int poMonth = int.Parse(strPODate[0]);
-                        int poDay = int.Parse(strPODate[1]);
-
-                        if (poYear == 0 && poMonth == 0 && poDay == 0)
+                        if (!FilterUtils.PoCreateDateInRange(dr))
                         {
-                            // This record is not a PO so we dont care about it
-                            continue;
-                        }
-                        else
-                        {
-                            poYear = int.Parse(strPODate[2]);
-                            poMonth = int.Parse(strPODate[0].TrimStart('0'));
-                            poDay = int.Parse(strPODate[1].TrimStart('0'));
-                        }
-
-                        DateTime poTestDate = new DateTime(poYear, poMonth, poDay);
-
-                        if (poTestDate < Filters.PoFromDate || poTestDate > Filters.PoToDate)
-                        {
-                            // The PO date is not within the PO date range.
+                            // The PO Date was not in range of the filter the user applied.
                             continue;
                         }
                     }
@@ -674,7 +566,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                 try
                 {
-                    receiptDateVsOrigConfDate.data.Average = Math.Round(totalDays / (receiptDateVsOrigConfDate.data.Total - receiptDateVsOrigConfDate.data.PercentUnconfTotal), 2);
+                    receiptDateVsOrigConfDate.data.Average = Math.Round(totalDays / receiptDateVsOrigConfDate.data.Total, 2);
                     if (double.IsNaN(receiptDateVsOrigConfDate.data.Average))
                         receiptDateVsOrigConfDate.data.Average = 0;
                 }
@@ -687,7 +579,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                 try
                 {
-                    receiptDateVsOrigConfDate.data.PercentUnconf = Math.Round(((double)receiptDateVsOrigConfDate.data.PercentUnconfTotal / receiptDateVsOrigConfDate.data.Total) * 100, 2);
+                    receiptDateVsOrigConfDate.data.PercentUnconf = Math.Round(((double)receiptDateVsOrigConfDate.data.PercentUnconfTotal / (receiptDateVsOrigConfDate.data.Total + receiptDateVsOrigConfDate.data.PercentUnconfTotal)) * 100, 2);
                     if (double.IsNaN(receiptDateVsOrigConfDate.data.PercentUnconf))
                         receiptDateVsOrigConfDate.data.PercentUnconf = 0;
 
@@ -712,45 +604,18 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 {
                     if (Filters.FilterByPrDateRange)
                     {
-                        // The user wants to filter by PR date range
-                        string[] requisnDate = (dr["Requisn Date"].ToString()).Split('/');
-                        int reqYear = int.Parse(requisnDate[2]);
-                        int reqMonth = int.Parse(requisnDate[0].TrimStart('0'));
-                        int reqDay = int.Parse(requisnDate[1].TrimStart('0'));
-                        DateTime reqTestDate = new DateTime(reqYear, reqMonth, reqDay);
-
-                        if (reqTestDate < Filters.PrFromDate || reqTestDate > Filters.PrToDate)
+                        if (!FilterUtils.PrDateInRange(dr))
                         {
-                            // The PR date is not within the PR date range.
+                            // The PR Date was not in range of the filter the user applied.
                             continue;
                         }
                     }
 
                     if (Filters.FilterByPoDateRange)
                     {
-                        // The user wnats to filter by PO date range
-                        string[] strPODate = (dr["PO Date"].ToString()).Split('/');
-                        int poYear = int.Parse(strPODate[2]);
-                        int poMonth = int.Parse(strPODate[0]);
-                        int poDay = int.Parse(strPODate[1]);
-
-                        if (poYear == 0 && poMonth == 0 && poDay == 0)
+                        if (!FilterUtils.PoCreateDateInRange(dr))
                         {
-                            // This record is not a PO so we dont care about it
-                            continue;
-                        }
-                        else
-                        {
-                            poYear = int.Parse(strPODate[2]);
-                            poMonth = int.Parse(strPODate[0].TrimStart('0'));
-                            poDay = int.Parse(strPODate[1].TrimStart('0'));
-                        }
-
-                        DateTime poTestDate = new DateTime(poYear, poMonth, poDay);
-
-                        if (poTestDate < Filters.PoFromDate || poTestDate > Filters.PoToDate)
-                        {
-                            // The PO date is not within the PO date range.
+                            // The PO Date was not in range of the filter the user applied.
                             continue;
                         }
                     }
@@ -839,7 +704,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                 try
                 {
-                    receiptDateVsCurrConfDate.data.Average = Math.Round(totalDays / (receiptDateVsCurrConfDate.data.Total - receiptDateVsCurrConfDate.data.PercentUnconfTotal), 2);
+                    receiptDateVsCurrConfDate.data.Average = Math.Round(totalDays / receiptDateVsCurrConfDate.data.Total, 2);
                     if (double.IsNaN(receiptDateVsCurrConfDate.data.Average))
                         receiptDateVsCurrConfDate.data.Average = 0;
                 }
@@ -852,7 +717,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                 try
                 {
-                    receiptDateVsCurrConfDate.data.PercentUnconf = Math.Round(((double)receiptDateVsCurrConfDate.data.PercentUnconfTotal / receiptDateVsOrigConfDate.data.Total) * 100, 2);
+                    receiptDateVsCurrConfDate.data.PercentUnconf = Math.Round(((double)receiptDateVsCurrConfDate.data.PercentUnconfTotal / (receiptDateVsCurrConfDate.data.Total + receiptDateVsCurrConfDate.data.PercentUnconfTotal)) * 100, 2);
                     if (double.IsNaN(receiptDateVsCurrConfDate.data.PercentUnconf))
                         receiptDateVsCurrConfDate.data.PercentUnconf = 0;
 
