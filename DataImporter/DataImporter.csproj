@@ -49,6 +49,7 @@
     <Compile Include="Access\ExceptionClasses\TableNameMismatchException.cs" />
     <Compile Include="Access\ExceptionClasses\TablesDoNotExistException.cs" />
     <Compile Include="Excel\ExcelInfo.cs" />
+    <Compile Include="Importing\Exceptions\ImportExceptions.cs" />
     <Compile Include="Importing\Importer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

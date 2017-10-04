@@ -1,6 +1,4 @@
-﻿using DataImporter.Access;
-using KPA_KPI_Analyzer.Diagnostics;
-using KPA_KPI_Analyzer.FilterFeeature;
+﻿using KPA_KPI_Analyzer.Diagnostics;
 using System;
 using System.IO;
 using System.Windows.Forms;
@@ -56,60 +54,62 @@ namespace KPA_KPI_Analyzer
         {
             if (btn_usSwitch.Value)
             {
-                lbl_Country.Text = "United States";
-                Values.Globals.SelectedCountry = AccessInfo.MainTables.US_PRPO;
+                ConfigureToUnitedStates();
 
                 if (AppDirectoryUtils.DataFileExists(AppDirectoryUtils.OverallFiles.US_Overall))
                 {
                     // the file exists
                     if (new FileInfo(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFiles.US_Overall]).Length > 0)
                     {
-                        DataReader.LoadOverallData(ref overallData);
-                        FilterUtils.FiltersLoaded = false;
-                        FilterUtils.FilterLoadProcessStarted = false;
-                        FiltersTimer.Start();
+                        if (GetCurrentUsPrpoReportDate())
+                        {
+                            DataReader.LoadOverallData(ref overallData);
+                            InitializeFilterLoadProcess();
+                        }
+                        else
+                        {
+                            InitializeDataLoadProcess();
+                        }
                     }
                     else // the file might be empty
                     {
                         InitializeDataLoadProcess();
-                        RenewDataLoadTimer();
-                        DataLoaderTimer.Start();
                     }
                 }
                 else
                 {
+                    AppDirectoryUtils.CreateFile(AppDirectoryUtils.OverallFiles.US_Overall);
                     InitializeDataLoadProcess();
-                    RenewDataLoadTimer();
-                    DataLoaderTimer.Start();
                 }
             }
             else
             {
-                lbl_Country.Text = "Mexico";
-                Values.Globals.SelectedCountry = AccessInfo.MainTables.MX_PRPO;
+                ConfigureToMexico();
 
                 if (AppDirectoryUtils.DataFileExists(AppDirectoryUtils.OverallFiles.MX_Overall))
                 {
                     // the file exists
                     if (new FileInfo(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFiles.MX_Overall]).Length > 0)
                     {
-                        DataReader.LoadOverallData(ref overallData);
-                        FilterUtils.FiltersLoaded = false;
-                        FilterUtils.FilterLoadProcessStarted = false;
-                        FiltersTimer.Start();
+                        if (GetCurrentMxPrpoReportDate())
+                        {
+                            DataReader.LoadOverallData(ref overallData);
+                            InitializeFilterLoadProcess();
+                        }
+                        else
+                        {
+                            InitializeDataLoadProcess();
+                        }
                     }
                     else // the file might be empty
                     {
                         InitializeDataLoadProcess();
-                        RenewDataLoadTimer();
-                        DataLoaderTimer.Start();
                     }
                 }
                 else
                 {
+                    AppDirectoryUtils.CreateFile(AppDirectoryUtils.OverallFiles.MX_Overall);
                     InitializeDataLoadProcess();
-                    RenewDataLoadTimer();
-                    DataLoaderTimer.Start();
                 }
             }
         }

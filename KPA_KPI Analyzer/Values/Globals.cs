@@ -10,7 +10,6 @@ namespace KPA_KPI_Analyzer.Values
         public static AccessInfo.MainTables SelectedCountry { get; set; }
 
 
-
         /// <summary>
         /// Current selected country to display in the data viewer
         /// </summary>

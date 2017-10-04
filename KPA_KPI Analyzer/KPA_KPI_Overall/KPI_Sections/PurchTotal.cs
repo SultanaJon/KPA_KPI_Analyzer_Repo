@@ -11,10 +11,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
     {
         public PR_Rel_Conf_Entry prRelConfEntry;
         private double totalDays = 0;
-
-
-
-
   
 
 
@@ -29,10 +25,13 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
         public string Name { get { return "Purch Total"; } }
 
 
+
         public enum CategorNames
         {
             prRelConfEntry,
         }
+
+
 
         public string[] categoryNames =
         {
@@ -159,7 +158,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                 try
                 {
-                    prRelConfEntry.data.PercentUnconf = Math.Round(((double)prRelConfEntry.data.PercentUnconfTotal / (prRelConfEntry.data.Total + prRelConfEntry.data.PercentUnconf)) * 100, 2);
+                    prRelConfEntry.data.PercentUnconf = Math.Round(((double)prRelConfEntry.data.PercentUnconfTotal / (prRelConfEntry.data.Total + prRelConfEntry.data.PercentUnconfTotal)) * 100, 2);
                     if (double.IsNaN(prRelConfEntry.data.PercentUnconf))
                         prRelConfEntry.data.PercentUnconf = 0;
 

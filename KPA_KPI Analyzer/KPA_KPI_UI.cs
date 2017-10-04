@@ -14,6 +14,7 @@
 using DataImporter.Access;
 using KPA_KPI_Analyzer.DatabaseUtils;
 using KPA_KPI_Analyzer.Diagnostics;
+using KPA_KPI_Analyzer.DragDropFeatures;
 using KPA_KPI_Analyzer.FilterFeeature;
 using KPA_KPI_Analyzer.KPA_KPI_Overall;
 using System;
@@ -54,7 +55,7 @@ namespace KPA_KPI_Analyzer
         /// The custom constructor of the main user interface. This constructor takes a database conenection that will be used
         /// to connect to and read data from.
         /// </summary>
-        /// <param name="conn">The database connection that was established in the splash scree.</param>
+        /// <param name="conn">The database connection that was established in the splash screen.</param>
         public KPA_KPI_UI(OleDbConnection conn)
         {
             InitializeComponent();
@@ -68,9 +69,100 @@ namespace KPA_KPI_Analyzer
 
 
 
+        public void ConfigureToUnitedStates()
+        {
+            lbl_Country.Text = Values.Constants.unitedStates;
+            Values.Globals.SelectedCountry = AccessInfo.MainTables.US_PRPO;
+        }
+
+
+        public void ConfigureToMexico()
+        {
+            lbl_Country.Text = Values.Constants.mexico;
+            Values.Globals.SelectedCountry = AccessInfo.MainTables.MX_PRPO;
+        }
+
+        public void InitializeFilterLoadProcess()
+        {
+            FilterUtils.FiltersLoaded = false;
+            FilterUtils.FilterLoadProcessStarted = false;
+            FiltersTimer.Start();
+        }
+
+
+
 
         /// <summary>
-        /// This function will be called when the form loads.
+        /// 
+        /// </summary>
+        public bool GetCurrentUsPrpoReportDate()
+        {
+            bool result = false;
+            try
+            {
+                using (StreamReader sr = new StreamReader(AppDirectoryUtils.logFiles[(int)AppDirectoryUtils.LogFiles.LoadedUSDate]))
+                {
+                    string lastLoadedDate = sr.ReadLine();
+                    lbl_dashboardDate.Text = lastLoadedDate;
+                    if (DateTime.Now.ToString("MMMM dd, yyyy") == lastLoadedDate)
+                    {
+                        result = true;
+                    }
+                    else
+                    {
+                        result = false;
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            return result;
+        }
+
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool GetCurrentMxPrpoReportDate()
+        {
+            bool result = false;
+            try
+            {
+                using (StreamReader sr = new StreamReader(AppDirectoryUtils.logFiles[(int)AppDirectoryUtils.LogFiles.LoadedMXDate]))
+                {
+                    string lastLoadedDate = sr.ReadLine();
+                    lbl_dashboardDate.Text = lastLoadedDate;
+                    if (DateTime.Now.ToString("MMMM dd, yyyy") == lastLoadedDate)
+                    {
+                        result = true;
+                    }
+                    else
+                    {
+                        result = false;
+                    }
+
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return result;
+        }
+
+
+
+
+
+
+        /// <summary>
+        /// This functijon will be called when the form loads.
         /// </summary>
         /// <param name="sender">The form</param>
         /// <param name="e">The load event</param>
@@ -91,9 +183,7 @@ namespace KPA_KPI_Analyzer
             {
                 try
                 {
-                    //PRPO_DB_Utils.ConnectToDatabase();
-                    //Logger.Log(Diagnostics.AppDirectoryUtils.LogFiles.DbConnectionEvents, "Successfully Connected to MS Access Database");
-
+                    PRPO_DB_Utils.ConnectToDatabase();
                     if (AccessUtils.US_PRPO_TableExists && AccessUtils.MX_PRPO_TableExists)
                     {
                         NavigationLocked = true;
@@ -101,67 +191,65 @@ namespace KPA_KPI_Analyzer
                     }
                     else if (AccessUtils.US_PRPO_TableExists)
                     {
-                        if(AppDirectoryUtils.DataFileExists(AppDirectoryUtils.OverallFiles.US_Overall))
+                        ConfigureToUnitedStates();
+
+
+                        if (AppDirectoryUtils.DataFileExists(AppDirectoryUtils.OverallFiles.US_Overall))
                         {
                             // the file exists
                             if(new FileInfo(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFiles.US_Overall]).Length > 0)
                             {
-                                DataReader.LoadOverallData(ref overallData);
-                                FilterUtils.FiltersLoaded = false;
-                                FilterUtils.FilterLoadProcessStarted = false;
-                                FiltersTimer.Start();
+                                if(GetCurrentUsPrpoReportDate())
+                                {
+                                    DataReader.LoadOverallData(ref overallData);
+                                    InitializeFilterLoadProcess();
+                                }
+                                else
+                                {
+                                    InitializeDataLoadProcess();
+                                }
                             }
                             else
                             {
-                                lbl_Country.Text = "United States";
-                                Values.Globals.SelectedCountry = AccessInfo.MainTables.US_PRPO;
+                               // AppDirectoryUtils.CreateFile(AppDirectoryUtils.OverallFiles.US_Overall);
                                 InitializeDataLoadProcess();
-                                RenewDataLoadTimer();
-                                DataLoaderTimer.Start();
                             }
                         }
                         else // the file does not exist
                         {
                             AppDirectoryUtils.CreateFile(AppDirectoryUtils.OverallFiles.US_Overall);
-                            lbl_Country.Text = "United States";
-                            Values.Globals.SelectedCountry = AccessInfo.MainTables.US_PRPO;
                             InitializeDataLoadProcess();
-                            RenewDataLoadTimer();
-                            DataLoaderTimer.Start();
                         }
                     }
                     else // There is a Mexico table within the database.
                     {
+                        ConfigureToMexico();
+
                         if (AppDirectoryUtils.DataFileExists(AppDirectoryUtils.OverallFiles.MX_Overall))
                         {
                             // the file exists
                             if(new FileInfo(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFiles.MX_Overall]).Length > 0)
                             {
-                                DataReader.LoadOverallData(ref overallData);
-                                FilterUtils.FiltersLoaded = false;
-                                FilterUtils.FilterLoadProcessStarted = false;
-                                FiltersTimer.Start();
+                                if(GetCurrentMxPrpoReportDate())
+                                {
+                                    DataReader.LoadOverallData(ref overallData);
+                                    InitializeFilterLoadProcess();
+                                }
+                                else
+                                {
+                                    InitializeDataLoadProcess();
+                                }
                             }
                             else
                             {
-                                AppDirectoryUtils.CreateFile(AppDirectoryUtils.OverallFiles.MX_Overall);
-                                lbl_Country.Text = "Mexico";
-                                Values.Globals.SelectedCountry = AccessInfo.MainTables.MX_PRPO;
+                               // AppDirectoryUtils.CreateFile(AppDirectoryUtils.OverallFiles.MX_Overall);
                                 InitializeDataLoadProcess();
-                                CreateThreads();
-                                RenewDataLoadTimer();
-                                DataLoaderTimer.Start();
                             }
                         }
                         else // the file does not exist
                         {
                             AppDirectoryUtils.CreateFile(AppDirectoryUtils.OverallFiles.MX_Overall);
-                            lbl_Country.Text = "Mexico";
-                            Values.Globals.SelectedCountry = AccessInfo.MainTables.MX_PRPO;
                             InitializeDataLoadProcess();
-                            CreateThreads();
-                            RenewDataLoadTimer();
-                            DataLoaderTimer.Start();
                         }
                     }
                 }
@@ -508,10 +596,12 @@ namespace KPA_KPI_Analyzer
             overallData = new Overall();
             PRPO_DB_Utils.DataLoadProcessStarted = false;
             PRPO_DB_Utils.DataLoaded = false;
-            //PRPO_DB_Utils.KPITablesLoaded = false;
+            PRPO_DB_Utils.KPITablesLoaded = false;
             PRPO_DB_Utils.CompletedDataLoads = 0;
             PRPO_DB_Utils.ScheduledDataLoads = 0;
             CreateThreads();
+            RenewDataLoadTimer();
+            DataLoaderTimer.Start();
         }
 
 

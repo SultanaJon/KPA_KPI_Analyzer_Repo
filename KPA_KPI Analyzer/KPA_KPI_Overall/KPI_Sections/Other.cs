@@ -111,43 +111,43 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                     if (weeks >= 0)
                     {
-                        prsCreated.data.GreaterThanZeroWeeks += decimal.Parse(dr["PR Pos#Value"].ToString());
+                        prsCreated.data.GreaterThanZeroWeeks++;
                     }
                     else if (weeks >= (-1) && weeks < 0)
                     {
-                        prsCreated.data.GreaterThanMinusOneWeeks += decimal.Parse(dr["PR Pos#Value"].ToString());
+                        prsCreated.data.GreaterThanMinusOneWeeks++;
                     }
                     else if (weeks >= (-2) && weeks < (-1))
                     {
-                        prsCreated.data.GreaterThanMinusTwoWeeks += decimal.Parse(dr["PR Pos#Value"].ToString());
+                        prsCreated.data.GreaterThanMinusTwoWeeks++;
                     }
                     else if (weeks >= (-3) && weeks < (-2))
                     {
-                        prsCreated.data.GreaterThanMinusThreeWeeks += decimal.Parse(dr["PR Pos#Value"].ToString());
+                        prsCreated.data.GreaterThanMinusThreeWeeks++;
                     }
                     else if (weeks >= (-4) && weeks < (-3))
                     {
-                        prsCreated.data.GreaterThanMinusFourWeeks += decimal.Parse(dr["PR Pos#Value"].ToString());
+                        prsCreated.data.GreaterThanMinusFourWeeks++;
                     }
                     else if (weeks >= (-5) && weeks < (-4))
                     {
-                        prsCreated.data.GreaterThanMinusFiveWeeks += decimal.Parse(dr["PR Pos#Value"].ToString());
+                        prsCreated.data.GreaterThanMinusFiveWeeks++;
                     }
                     else if (weeks >= (-6) && weeks < (-5))
                     {
-                        prsCreated.data.GreaterThanMinusSixWeeks += decimal.Parse(dr["PR Pos#Value"].ToString());
+                        prsCreated.data.GreaterThanMinusSixWeeks++;
                     }
                     else if (weeks >= (-7) && weeks < (-6))
                     {
-                        prsCreated.data.GreaterThanMinusSevenWeeks += decimal.Parse(dr["PR Pos#Value"].ToString());
+                        prsCreated.data.GreaterThanMinusSevenWeeks++;
                     }
                     else if (weeks >= (-8) && weeks < (-7))
                     {
-                        prsCreated.data.GreaterThanMinusEightWeeks += decimal.Parse(dr["PR Pos#Value"].ToString());
+                        prsCreated.data.GreaterThanMinusEightWeeks++;
                     }
                     else if (weeks < (-8))
                     {
-                        prsCreated.data.LessThanEightWeeks += decimal.Parse(dr["PR Pos#Value"].ToString());
+                        prsCreated.data.LessThanEightWeeks++;
                     }
                 }
 
@@ -202,43 +202,43 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                     if (weeks >= 0)
                     {
-                        prsReleased.data.GreaterThanZeroWeeks += decimal.Parse(dr["PR Pos#Value"].ToString());
+                        prsReleased.data.GreaterThanZeroWeeks++;
                     }
                     else if (weeks >= (-1) && weeks < 0)
                     {
-                        prsReleased.data.GreaterThanMinusOneWeeks += decimal.Parse(dr["PR Pos#Value"].ToString());
+                        prsReleased.data.GreaterThanMinusOneWeeks++;
                     }
                     else if (weeks >= (-2) && weeks < (-1))
                     {
-                        prsReleased.data.GreaterThanMinusTwoWeeks += decimal.Parse(dr["PR Pos#Value"].ToString());
+                        prsReleased.data.GreaterThanMinusTwoWeeks++;
                     }
                     else if (weeks >= (-3) && weeks < (-2))
                     {
-                        prsReleased.data.GreaterThanMinusThreeWeeks += decimal.Parse(dr["PR Pos#Value"].ToString());
+                        prsReleased.data.GreaterThanMinusThreeWeeks++;
                     }
                     else if (weeks >= (-4) && weeks < (-3))
                     {
-                        prsReleased.data.GreaterThanMinusFourWeeks += decimal.Parse(dr["PR Pos#Value"].ToString());
+                        prsReleased.data.GreaterThanMinusFourWeeks++;
                     }
                     else if (weeks >= (-5) && weeks < (-4))
                     {
-                        prsReleased.data.GreaterThanMinusFiveWeeks += decimal.Parse(dr["PR Pos#Value"].ToString());
+                        prsReleased.data.GreaterThanMinusFiveWeeks++;
                     }
                     else if (weeks >= (-6) && weeks < (-5))
                     {
-                        prsReleased.data.GreaterThanMinusSixWeeks += decimal.Parse(dr["PR Pos#Value"].ToString());
+                        prsReleased.data.GreaterThanMinusSixWeeks++;
                     }
                     else if (weeks >= (-7) && weeks < (-6))
                     {
-                        prsReleased.data.GreaterThanMinusSevenWeeks += decimal.Parse(dr["PR Pos#Value"].ToString());
+                        prsReleased.data.GreaterThanMinusSevenWeeks++;
                     }
                     else if (weeks >= (-8) && weeks < (-7))
                     {
-                        prsReleased.data.GreaterThanMinusEightWeeks += decimal.Parse(dr["PR Pos#Value"].ToString());
+                        prsReleased.data.GreaterThanMinusEightWeeks++;
                     }
                     else if (weeks < (-8))
                     {
-                        prsReleased.data.LessThanEightWeeks += decimal.Parse(dr["PR Pos#Value"].ToString());
+                        prsReleased.data.LessThanEightWeeks++;
                     }
                 }
 
@@ -376,12 +376,11 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                     totalValue += (decimal.Parse(dr["PO Value"].ToString()) - decimal.Parse(dr["PR Pos#Value"].ToString()));
 
                     DateTime today = DateTime.Now.Date;
-                    double elapsedDays = (today - poCreateDate).TotalDays;
+                    double elapsedDays = (poCreateDate - today).TotalDays;
                     double weeks = Math.Floor(elapsedDays / 7);
 
 
                     prVsPOValue.data.Total++;
-
 
 
                     if (weeks >= 0)
@@ -482,43 +481,43 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                     if (weeks >= 0)
                     {
-                        hotJobPrs.data.GreaterThanZeroWeeks += decimal.Parse(dr["PR Pos#Value"].ToString());
+                        hotJobPrs.data.GreaterThanZeroWeeks++;
                     }
                     else if (weeks >= (-1) && weeks < 0)
                     {
-                        hotJobPrs.data.GreaterThanMinusOneWeeks += decimal.Parse(dr["PR Pos#Value"].ToString());
+                        hotJobPrs.data.GreaterThanMinusOneWeeks++;
                     }
                     else if (weeks >= (-2) && weeks < (-1))
                     {
-                        hotJobPrs.data.GreaterThanMinusTwoWeeks += decimal.Parse(dr["PR Pos#Value"].ToString());
+                        hotJobPrs.data.GreaterThanMinusTwoWeeks++;
                     }
                     else if (weeks >= (-3) && weeks < (-2))
                     {
-                        hotJobPrs.data.GreaterThanMinusThreeWeeks += decimal.Parse(dr["PR Pos#Value"].ToString());
+                        hotJobPrs.data.GreaterThanMinusThreeWeeks++;
                     }
                     else if (weeks >= (-4) && weeks < (-3))
                     {
-                        hotJobPrs.data.GreaterThanMinusFourWeeks += decimal.Parse(dr["PR Pos#Value"].ToString());
+                        hotJobPrs.data.GreaterThanMinusFourWeeks++;
                     }
                     else if (weeks >= (-5) && weeks < (-4))
                     {
-                        hotJobPrs.data.GreaterThanMinusFiveWeeks += decimal.Parse(dr["PR Pos#Value"].ToString());
+                        hotJobPrs.data.GreaterThanMinusFiveWeeks++;
                     }
                     else if (weeks >= (-6) && weeks < (-5))
                     {
-                        hotJobPrs.data.GreaterThanMinusSixWeeks += decimal.Parse(dr["PR Pos#Value"].ToString());
+                        hotJobPrs.data.GreaterThanMinusSixWeeks++;
                     }
                     else if (weeks >= (-7) && weeks < (-6))
                     {
-                        hotJobPrs.data.GreaterThanMinusSevenWeeks += decimal.Parse(dr["PR Pos#Value"].ToString());
+                        hotJobPrs.data.GreaterThanMinusSevenWeeks++;
                     }
                     else if (weeks >= (-8) && weeks < (-7))
                     {
-                        hotJobPrs.data.GreaterThanMinusEightWeeks += decimal.Parse(dr["PR Pos#Value"].ToString());
+                        hotJobPrs.data.GreaterThanMinusEightWeeks++;
                     }
                     else if (weeks < (-8))
                     {
-                        hotJobPrs.data.LessThanEightWeeks += decimal.Parse(dr["PR Pos#Value"].ToString());
+                        hotJobPrs.data.LessThanEightWeeks++;
                     }
                 }
 

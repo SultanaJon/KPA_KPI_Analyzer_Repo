@@ -186,7 +186,6 @@ namespace KPA_KPI_Analyzer.FilterFeeature
                 foreach (Filters col in Enum.GetValues(typeof(Filters)))
                 {
                     getQuery(col, filters);
-                    DatabaseUtils.PRPO_DB_Utils.ConnectToDatabase();
                     cmd = new OleDbCommand(query, DatabaseUtils.PRPO_DB_Utils.DatabaseConnection);
                     using (var reader = cmd.ExecuteReader())
                     {
@@ -219,6 +218,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
                         };
                         del.Invoke();
                     }
+                    strData.Clear();
                 }
                 FiltersLoaded = true;
             }
@@ -230,7 +230,6 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             {
                 strData.Clear();
                 strData = null;
-                DatabaseUtils.PRPO_DB_Utils.DatabaseConnection.Close();
                 GC.Collect();
             }
         }
@@ -251,6 +250,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             strData = new HashSet<string>();
             try
             {
+
                 foreach (Filters col in Enum.GetValues(typeof(Filters)))
                 {
                     if (ignoredCol == col)
@@ -265,7 +265,6 @@ namespace KPA_KPI_Analyzer.FilterFeeature
                         continue;
 
                     getQuery(col, filters);
-                    DatabaseUtils.PRPO_DB_Utils.ConnectToDatabase();
                     cmd = new OleDbCommand(query, DatabaseUtils.PRPO_DB_Utils.DatabaseConnection);
 
                     using (var reader = cmd.ExecuteReader())
@@ -296,6 +295,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
                         UpdateFilter(strData, col);
                     }
+                    strData.Clear();
                 }
                 FiltersLoaded = true;
             }
@@ -307,7 +307,6 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             {
                 strData.Clear();
                 strData = null;
-                DatabaseUtils.PRPO_DB_Utils.DatabaseConnection.Close();
                 GC.Collect();
             }
         }
@@ -326,6 +325,8 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             strData = new HashSet<string>();
             try
             {
+
+
                 foreach (Filters col in Enum.GetValues(typeof(Filters)))
                 {
                     if (filtersToLoad != col)
@@ -342,7 +343,6 @@ namespace KPA_KPI_Analyzer.FilterFeeature
                     
 
                     getQuery(col);
-                    DatabaseUtils.PRPO_DB_Utils.ConnectToDatabase();
                     cmd = new OleDbCommand(query, DatabaseUtils.PRPO_DB_Utils.DatabaseConnection);
 
                     using (var reader = cmd.ExecuteReader())
@@ -373,6 +373,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
                         UpdateFilter(strData, col);
                     }
+                    strData.Clear();
                 }
                 FiltersLoaded = true;
             }
@@ -384,7 +385,6 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             {
                 strData.Clear();
                 strData = null;
-                DatabaseUtils.PRPO_DB_Utils.DatabaseConnection.Close();
                 GC.Collect();
             }
         }
@@ -392,9 +392,10 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
 
         /// <summary>
-        /// 
+        /// Returns whether or no the PO Line Creation date is within the data row is
         /// </summary>
-        /// <returns></returns>
+        /// <param name="dr">The data row we are usin to get the data for this specific PR or PO line.</param>
+        /// <returns>Returns a boolean indicating whether or no the PO line creation date is within the spcified filter dates</returns>
         public static bool PoCreateDateInRange(DataRow dr)
         {
             // The user wnats to filter by PO date range
@@ -430,9 +431,10 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
 
         /// <summary>
-        /// 
+        /// Returns whether or no the Requisition date within the data row is
         /// </summary>
-        /// <returns></returns>
+        /// <param name="dr">The data row we are usin to get the data for this specific PR or PO line.</param>
+        /// <returns>Returns a boolean indicating whether or no the Requisition date is within the specified filter dates.</returns>
         public static bool PrDateInRange(DataRow dr)
         {
             // The user wants to filter by PR date range
@@ -450,54 +452,5 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
             return true;
         }
-
-
-        //public void TestFunction()
-        //{
-        //    if (Filters.FilterByPrDateRange)
-        //    {
-        //        // The user wants to filter by PR date range
-        //        string[] requisnDate = (dr["Requisn Date"].ToString()).Split('/');
-        //        int reqYear = int.Parse(requisnDate[2]);
-        //        int reqMonth = int.Parse(requisnDate[0].TrimStart('0'));
-        //        int reqDay = int.Parse(requisnDate[1].TrimStart('0'));
-        //        DateTime reqTestDate = new DateTime(reqYear, reqMonth, reqDay);
-
-        //        if (reqTestDate < Filters.PrFromDate || reqTestDate > Filters.PrToDate)
-        //        {
-        //            // The PR date is not within the PR date range.
-        //            continue;
-        //        }
-        //    }
-
-        //    if (Filters.FilterByPoDateRange)
-        //    {
-        //        // The user wnats to filter by PO date range
-        //        string[] strPODate = (dr["PO Date"].ToString()).Split('/');
-        //        int poYear = int.Parse(strPODate[2]);
-        //        int poMonth = int.Parse(strPODate[0]);
-        //        int poDay = int.Parse(strPODate[1]);
-
-        //        if (poYear == 0 && poMonth == 0 && poDay == 0)
-        //        {
-        //            // This record is not a PO so we dont care about it
-        //            continue;
-        //        }
-        //        else
-        //        {
-        //            poYear = int.Parse(strPODate[2]);
-        //            poMonth = int.Parse(strPODate[0].TrimStart('0'));
-        //            poDay = int.Parse(strPODate[1].TrimStart('0'));
-        //        }
-
-        //        DateTime poTestDate = new DateTime(poYear, poMonth, poDay);
-
-        //        if (poTestDate < Filters.PoFromDate || poTestDate > Filters.PoToDate)
-        //        {
-        //            // The PO date is not within the PO date range.
-        //            continue;
-        //        }
-        //    }
-        //}
     }
 }

@@ -221,7 +221,6 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
 
             try
             {
-                ConnectToDatabase();
                 if (country == PRPOCommands.DatabaseTables.MainTables.US_PRPO)
                 {
                     OleDbCommand cmd;
@@ -246,10 +245,6 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
                 MessageBox.Show("The data being imported seems to contain incorrect or no data. Please check to see if the data is corrupted. If the report contains corrupted data, please contact your SAP Administrator.", "Corrupted Data Detection", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 DropCreateDb();
                 DisplayDragDropPage();
-            }
-            finally
-            {
-                DatabaseConnection.Close();
             }
             return result;
         }

@@ -33,7 +33,7 @@ namespace KPA_KPI_Analyzer.Diagnostics
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString(), "Inventory Reader Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message.ToString(), "Overall DataReader Loading Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
 
@@ -63,9 +63,8 @@ namespace KPA_KPI_Analyzer.Diagnostics
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Inventory Reader Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Overall DataReader Saving Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
     }
 }

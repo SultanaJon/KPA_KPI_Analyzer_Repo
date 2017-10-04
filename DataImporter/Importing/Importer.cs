@@ -133,9 +133,10 @@ namespace DataImporter.Classes
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.Message, "Import Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Andrew Davis, please stop trying to break my software. :) Dont worry I will change this error message", "Import Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw new ThreadInterruptedException();
             }
         }
     }
