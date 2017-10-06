@@ -179,6 +179,9 @@ namespace KPA_KPI_Analyzer
             dp_POFromDate.Value = today;
             dp_POToDate.Value = today;
 
+            if (Properties.Settings.Default.IncludeCorrelation)
+                btn_correlationTestBtn.Visible = true;
+
             if (PRPO_DB_Utils.DatabaseConnection != null)
             {
                 try
@@ -619,6 +622,14 @@ namespace KPA_KPI_Analyzer
         {
             DataLoaderTimer.Tick -= DataLoaderTimer_Tick;
             DataLoaderTimer.Tick += DataLoaderTimer_Tick;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            using (Correlation.CorrelationConfigurationWindow wind = new Correlation.CorrelationConfigurationWindow())
+            {
+                wind.ShowDialog();
+            }
         }
     }
 }

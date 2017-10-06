@@ -65,6 +65,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration.cs" />
+    <Compile Include="Correlation\CorrelationAnalysisWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Correlation\CorrelationAnalysisWindow.Designer.cs">
+      <DependentUpon>CorrelationAnalysisWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Correlation\CorrelationConfigurationWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Correlation\CorrelationConfigurationWindow.Designer.cs">
+      <DependentUpon>CorrelationConfigurationWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataLoading\KPA_Data\DataTableLoader\KpaDataTableLoader.cs" />
     <Compile Include="DataLoading\KPI_Data\DataTableLoader\KpiDataTableLoader.cs" />
     <Compile Include="Diagnostics\DataReader.cs" />
@@ -282,6 +294,12 @@
     <Compile Include="Templates\TemplateThreeStructure.cs" />
     <Compile Include="Templates\TemplateTwoStructure.cs" />
     <Compile Include="Values\Globals.cs" />
+    <EmbeddedResource Include="Correlation\CorrelationAnalysisWindow.resx">
+      <DependentUpon>CorrelationAnalysisWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Correlation\CorrelationConfigurationWindow.resx">
+      <DependentUpon>CorrelationConfigurationWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DataComingSoon.resx">
       <DependentUpon>DataComingSoon.cs</DependentUpon>
       <SubType>Designer</SubType>
