@@ -298,6 +298,7 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "KPI Data Load");
+                throw new ThreadInteruptedException();
             }
         }
     }

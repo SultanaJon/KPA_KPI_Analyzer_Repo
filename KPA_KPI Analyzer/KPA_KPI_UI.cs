@@ -68,7 +68,9 @@ namespace KPA_KPI_Analyzer
 
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         public void ConfigureToUnitedStates()
         {
             lbl_Country.Text = Values.Constants.unitedStates;
@@ -76,14 +78,27 @@ namespace KPA_KPI_Analyzer
         }
 
 
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         public void ConfigureToMexico()
         {
             lbl_Country.Text = Values.Constants.mexico;
             Values.Globals.SelectedCountry = AccessInfo.MainTables.MX_PRPO;
         }
 
+
+
+        /// <summary>
+        /// 
+        /// </summary>
         public void InitializeFilterLoadProcess()
         {
+            ShowPage(Pages.LoadingScreen);
+            lbl_loadingStatus.Text = "Loading Filters...";
             FilterUtils.FiltersLoaded = false;
             FilterUtils.FilterLoadProcessStarted = false;
             FiltersTimer.Start();
@@ -570,7 +585,7 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// 
+        /// Hides all of the pages incase they are visible.
         /// </summary>
         private void HidePages()
         {
@@ -593,6 +608,8 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         internal void InitializeDataLoadProcess()
         {
+            ShowPage(Pages.LoadingScreen);
+            lbl_loadingStatus.Text = "Loading Data...";
             overallData = new Overall();
             PRPO_DB_Utils.DataLoadProcessStarted = false;
             PRPO_DB_Utils.DataLoaded = false;

@@ -292,6 +292,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "KPI -> Purch Plan Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw new ThreadInteruptedException();
             }
         }
     }

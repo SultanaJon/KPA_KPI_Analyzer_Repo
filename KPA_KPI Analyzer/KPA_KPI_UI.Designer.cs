@@ -541,9 +541,9 @@
             this.bunifuCustomLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
             this.bunifuCustomLabel6.Location = new System.Drawing.Point(39, 77);
             this.bunifuCustomLabel6.Name = "bunifuCustomLabel6";
-            this.bunifuCustomLabel6.Size = new System.Drawing.Size(100, 13);
+            this.bunifuCustomLabel6.Size = new System.Drawing.Size(179, 13);
             this.bunifuCustomLabel6.TabIndex = 0;
-            this.bunifuCustomLabel6.Text = "PO Date Range:";
+            this.bunifuCustomLabel6.Text = "PO Line Creation Date Range:";
             this.bunifuCustomLabel6.Click += new System.EventHandler(this.poDateRangeLabel_Click);
             // 
             // dp_PRFromDate
@@ -1129,9 +1129,9 @@
             // 
             // pnl_activePage
             // 
+            this.pnl_activePage.Controls.Add(this.tblpnl_Filters);
             this.pnl_activePage.Controls.Add(this.pnl_loadingScreen);
             this.pnl_activePage.Controls.Add(this.pnl_NavigationPanelMax);
-            this.pnl_activePage.Controls.Add(this.tblpnl_Filters);
             this.pnl_activePage.Controls.Add(this.tblpnl_DashbaordPage);
             this.pnl_activePage.Controls.Add(this.tblpnl_DragDrop);
             this.pnl_activePage.Controls.Add(this.pnl_CountrySelector);

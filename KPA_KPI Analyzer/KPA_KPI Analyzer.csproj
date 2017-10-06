@@ -64,7 +64,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicatonConfiguration\ApplicationConfig.cs" />
     <Compile Include="Configuration.cs" />
+    <Compile Include="DatabaseUtils\ThreadInteruptedException.cs" />
     <Compile Include="DataLoading\KPA_Data\DataTableLoader\KpaDataTableLoader.cs" />
     <Compile Include="DataLoading\KPI_Data\DataTableLoader\KpiDataTableLoader.cs" />
     <Compile Include="Diagnostics\DataReader.cs" />

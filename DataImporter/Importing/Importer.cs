@@ -135,7 +135,7 @@ namespace DataImporter.Classes
             }
             catch (Exception)
             {
-                MessageBox.Show("Andrew Davis, please stop trying to break my software. :) Dont worry I will change this error message", "Import Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("There was an error while importing the data. Please contact a KPA-KPI Analyzer administrator for assistance", "Import Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw new ThreadInterruptedException();
             }
         }

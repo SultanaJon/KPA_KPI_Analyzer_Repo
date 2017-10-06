@@ -411,9 +411,15 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             }
             else
             {
-                poYear = int.Parse(strPoLineCreateDate[2]);
-                poMonth = int.Parse(strPoLineCreateDate[0].TrimStart('0'));
-                poDay = int.Parse(strPoLineCreateDate[1].TrimStart('0'));
+                // This record shows as a PO but was it removed from the PO?
+                if (dr["Qty Ordered"].ToString() == "0")
+                    return false;
+                else
+                {
+                    poYear = int.Parse(strPoLineCreateDate[2]);
+                    poMonth = int.Parse(strPoLineCreateDate[0].TrimStart('0'));
+                    poDay = int.Parse(strPoLineCreateDate[1].TrimStart('0'));
+                }
             }
 
             DateTime poTestDate = new DateTime(poYear, poMonth, poDay);

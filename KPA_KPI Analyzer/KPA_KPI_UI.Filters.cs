@@ -1249,12 +1249,7 @@ namespace KPA_KPI_Analyzer
                 DateFiltersApplied = false;
             }
 
-
-
-
             InitializeDataLoadProcess();
-            RenewDataLoadTimer();
-            DataLoaderTimer.Start();
         }
 
 
@@ -1276,9 +1271,6 @@ namespace KPA_KPI_Analyzer
             FilterUtils.FiltersLoaded = false;
             FilterUtils.FilterLoadProcessStarted = false;
             FiltersTimer.Start();
-            //InitializeDataLoadProcess();
-            //RenewDataLoadTimer();
-            //DataLoaderTimer.Start();
         }
 
 

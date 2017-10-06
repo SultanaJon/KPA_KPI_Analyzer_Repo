@@ -225,16 +225,12 @@ namespace KPA_KPI_Analyzer
                     lbl_Country.Text = Values.Constants.unitedStates;
                     Values.Globals.SelectedCountry = AccessInfo.MainTables.US_PRPO;
                     InitializeDataLoadProcess();
-                    RenewDataLoadTimer();
-                    DataLoaderTimer.Start();
                 }
                 else // only the mexico file exists.
                 {
                     lbl_Country.Text = Values.Constants.mexico;
                     Values.Globals.SelectedCountry = AccessInfo.MainTables.MX_PRPO;
                     InitializeDataLoadProcess();
-                    RenewDataLoadTimer();
-                    DataLoaderTimer.Start();
                 }
             }
         }
@@ -245,22 +241,22 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         private void CreateThreads()
         {
-            KPA_PlanThread = new Thread(() => { overallData.kpa.plan.LoadData(); });
-            KPA_PurchThread = new Thread(() =>  { overallData.kpa.purch.LoadData(); });
-            KPA_PurchSubThread = new Thread(() => { overallData.kpa.purchSub.LoadData(); });
-            KPA_PurchTotalThread = new Thread(() => { overallData.kpa.purchTotal.LoadData(); });
-            KPA_FollowUpThread = new Thread(() => { overallData.kpa.followUp.LoadData(); });
-            KPA_HotJobs = new Thread(() => { overallData.kpa.hotJobs.LoadData(); });
-            KPA_CurrPlanVsActualThread = new Thread(() => { overallData.kpa.currPlanVsActual.LoadData(); });
-            tableLoadThread = new Thread(() => { PRPO_DB_Utils.LoadKPITables(); });
-            KPI_PlanThread = new Thread(() =>{ overallData.kpi.plan.LoadData(); });
-            KPI_PurchThread = new Thread(() =>{ overallData.kpi.purch.LoadData(); });
-            KPI_FollowUpThread = new Thread(() => { overallData.kpi.followUp.LoadData(); });
-            KPI_PurchTwoThread = new Thread(() => { overallData.kpi.purchTwo.LoadData(); });
-            KPI_PurchSubThread = new Thread(() => { overallData.kpi.purchSub.LoadData(); });
-            KPI_PurchTotalThread = new Thread(() => { overallData.kpi.purchTotal.LoadData(); });
-            KPI_PurchPlanThread = new Thread(() => { overallData.kpi.purchPlan.LoadData(); });
-            KPI_OtherThread = new Thread(() => { overallData.kpi.other.LoadData(); });
+            KPA_PlanThread = new Thread(() => { try { overallData.kpa.plan.LoadData(); } catch (ThreadInterruptedException) { ShowPage(Pages.DragDropDash); } });
+            KPA_PurchThread = new Thread(() => { try { overallData.kpa.purch.LoadData(); } catch (ThreadInterruptedException) { ShowPage(Pages.DragDropDash); } });
+            KPA_PurchSubThread = new Thread(() => { try { overallData.kpa.purchSub.LoadData(); } catch (ThreadInterruptedException) { ShowPage(Pages.DragDropDash); } });
+            KPA_PurchTotalThread = new Thread(() => { try { overallData.kpa.purchTotal.LoadData(); } catch (ThreadInterruptedException) { ShowPage(Pages.DragDropDash); } });
+            KPA_FollowUpThread = new Thread(() => { try { overallData.kpa.followUp.LoadData(); } catch (ThreadInterruptedException) { ShowPage(Pages.DragDropDash); } });
+            KPA_HotJobs = new Thread(() => { try { overallData.kpa.hotJobs.LoadData(); } catch (ThreadInterruptedException) { ShowPage(Pages.DragDropDash); } });
+            KPA_CurrPlanVsActualThread = new Thread(() => { try { overallData.kpa.currPlanVsActual.LoadData(); } catch (ThreadInterruptedException) { ShowPage(Pages.DragDropDash); } });
+            tableLoadThread = new Thread(() => { try { PRPO_DB_Utils.LoadKPITables(); } catch (ThreadInterruptedException) { ShowPage(Pages.DragDropDash); } });
+            KPI_PlanThread = new Thread(() => { try { overallData.kpi.plan.LoadData(); } catch (ThreadInterruptedException) { ShowPage(Pages.DragDropDash); } });
+            KPI_PurchThread = new Thread(() => { try { overallData.kpi.purch.LoadData(); } catch (ThreadInterruptedException) { ShowPage(Pages.DragDropDash); } });
+            KPI_FollowUpThread = new Thread(() => { try { overallData.kpi.followUp.LoadData(); } catch (ThreadInterruptedException) { ShowPage(Pages.DragDropDash); } });
+            KPI_PurchTwoThread = new Thread(() => { try { overallData.kpi.purchTwo.LoadData(); } catch (ThreadInterruptedException) { ShowPage(Pages.DragDropDash); } });
+            KPI_PurchSubThread = new Thread(() => { try { overallData.kpi.purchSub.LoadData(); } catch (ThreadInterruptedException) { ShowPage(Pages.DragDropDash); } });
+            KPI_PurchTotalThread = new Thread(() => { try { overallData.kpi.purchTotal.LoadData(); } catch (ThreadInterruptedException) { ShowPage(Pages.DragDropDash); } });
+            KPI_PurchPlanThread = new Thread(() => { try { overallData.kpi.purchPlan.LoadData(); } catch (ThreadInterruptedException) { ShowPage(Pages.DragDropDash); } });
+            KPI_OtherThread = new Thread(() => { try { overallData.kpi.other.LoadData(); } catch (ThreadInterruptedException) { ShowPage(Pages.DragDropDash); } });
         }
 
 
@@ -315,8 +311,6 @@ namespace KPA_KPI_Analyzer
             {
                 PRPO_DB_Utils.DataLoadProcessStarted = true;
                 PRPO_DB_Utils.KPITablesLoaded = false;
-                ShowPage(Pages.LoadingScreen);
-                lbl_loadingStatus.Text = "Loading Data...";
                 PRPO_DB_Utils.ScheduledDataLoads = 16;
                 StartThreads(true, false);
             }
@@ -373,9 +367,6 @@ namespace KPA_KPI_Analyzer
         /// <param name="e"></param>
         private void FiltersTimer_Tick(object sender, EventArgs e)
         {
-            ShowPage(Pages.LoadingScreen);
-            lbl_loadingStatus.Text = "Loading Filters...";
-
             if (!FilterUtils.FilterLoadProcessStarted)
             {
                 FilterUtils.FilterLoadProcessStarted = true;

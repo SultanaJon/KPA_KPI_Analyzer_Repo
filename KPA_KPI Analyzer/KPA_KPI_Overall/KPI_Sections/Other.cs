@@ -193,7 +193,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                     totalValue += decimal.Parse(dr["PR Pos#Value"].ToString());
 
                     DateTime today = DateTime.Now.Date;
-                    double elapsedDays = (today - pr2ndLvlRelDt).TotalDays;
+                    double elapsedDays = (pr2ndLvlRelDt - today).TotalDays;
                     double weeks = Math.Floor(elapsedDays / 7);
 
 
@@ -532,6 +532,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "KPI -> Other Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw new ThreadInteruptedException();
             }
         }
     }

@@ -240,16 +240,16 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             
             TotalOrders = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.Total);
             TotalValue = string.Format("{0:n}", overallData.kpi.other.prsCreated.data.TotalValue);
-            TimeBucketOne = "$" + string.Format("{0:n}", overallData.kpi.other.prsCreated.data.GreaterThanZeroWeeks);
-            TimeBucketTwo = "$" + string.Format("{0:n}", overallData.kpi.other.prsCreated.data.GreaterThanMinusOneWeeks);
-            TimeBucketThree = "$" + string.Format("{0:n}", overallData.kpi.other.prsCreated.data.GreaterThanMinusTwoWeeks);
-            TimeBucketFour = "$" + string.Format("{0:n}", overallData.kpi.other.prsCreated.data.GreaterThanMinusThreeWeeks);
-            TimeBucketFive = "$" + string.Format("{0:n}", overallData.kpi.other.prsCreated.data.GreaterThanMinusFourWeeks);
-            TimeBucketSix = "$" + string.Format("{0:n}", overallData.kpi.other.prsCreated.data.GreaterThanMinusFiveWeeks);
-            TimeBucketSeven = "$" + string.Format("{0:n}", overallData.kpi.other.prsCreated.data.GreaterThanMinusSixWeeks);
-            TimeBucketEight = "$" + string.Format("{0:n}", overallData.kpi.other.prsCreated.data.GreaterThanMinusSevenWeeks);
-            TimeBucketNine = "$" + string.Format("{0:n}", overallData.kpi.other.prsCreated.data.GreaterThanMinusEightWeeks);
-            TimeBucketTen = "$" + string.Format("{0:n}", overallData.kpi.other.prsCreated.data.LessThanEightWeeks);
+            TimeBucketOne = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.GreaterThanZeroWeeks);
+            TimeBucketTwo = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.GreaterThanMinusOneWeeks);
+            TimeBucketThree =  string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.GreaterThanMinusTwoWeeks);
+            TimeBucketFour =  string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.GreaterThanMinusThreeWeeks);
+            TimeBucketFive =  string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.GreaterThanMinusFourWeeks);
+            TimeBucketSix =  string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.GreaterThanMinusFiveWeeks);
+            TimeBucketSeven =  string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.GreaterThanMinusSixWeeks);
+            TimeBucketEight =  string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.GreaterThanMinusSevenWeeks);
+            TimeBucketNine =  string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.GreaterThanMinusEightWeeks);
+            TimeBucketTen =  string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessThanEightWeeks);
 
 
 
@@ -288,7 +288,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
             AnalysisOne = "- Count of PRs by release date.";
-            AnalysisTwo = "- Difference between todays date and the PR final release date.";
+            AnalysisTwo = "- Difference between PR final release date and todays date.";
 
 
             dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
@@ -305,16 +305,16 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
             TotalOrders = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.Total);
             TotalValue = string.Format("{0:n}", overallData.kpi.other.prsReleased.data.TotalValue);
-            TimeBucketOne = "$" + string.Format("{0:n}", overallData.kpi.other.prsReleased.data.GreaterThanZeroWeeks);
-            TimeBucketTwo = "$" + string.Format("{0:n}", overallData.kpi.other.prsReleased.data.GreaterThanMinusOneWeeks);
-            TimeBucketThree = "$" + string.Format("{0:n}", overallData.kpi.other.prsReleased.data.GreaterThanMinusTwoWeeks);
-            TimeBucketFour = "$" + string.Format("{0:n}", overallData.kpi.other.prsReleased.data.GreaterThanMinusThreeWeeks);
-            TimeBucketFive = "$" + string.Format("{0:n}", overallData.kpi.other.prsReleased.data.GreaterThanMinusFourWeeks);
-            TimeBucketSix = "$" + string.Format("{0:n}", overallData.kpi.other.prsReleased.data.GreaterThanMinusFiveWeeks);
-            TimeBucketSeven = "$" + string.Format("{0:n}", overallData.kpi.other.prsReleased.data.GreaterThanMinusSixWeeks);
-            TimeBucketEight = "$" + string.Format("{0:n}", overallData.kpi.other.prsReleased.data.GreaterThanMinusSevenWeeks);
-            TimeBucketNine = "$" + string.Format("{0:n}", overallData.kpi.other.prsReleased.data.GreaterThanMinusEightWeeks);
-            TimeBucketTen = "$" + string.Format("{0:n}", overallData.kpi.other.prsReleased.data.LessThanEightWeeks);
+            TimeBucketOne = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.GreaterThanZeroWeeks);
+            TimeBucketTwo = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.GreaterThanMinusOneWeeks);
+            TimeBucketThree = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.GreaterThanMinusTwoWeeks);
+            TimeBucketFour = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.GreaterThanMinusThreeWeeks);
+            TimeBucketFive = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.GreaterThanMinusFourWeeks);
+            TimeBucketSix = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.GreaterThanMinusFiveWeeks);
+            TimeBucketSeven = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.GreaterThanMinusSixWeeks);
+            TimeBucketEight = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.GreaterThanMinusSevenWeeks);
+            TimeBucketNine = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.GreaterThanMinusEightWeeks);
+            TimeBucketTen = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessThanEightWeeks);
 
             canvas.addData(dp);
             dataviz.Render(canvas);
@@ -474,7 +474,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TimeBucketTen = ((int)overallData.kpi.other.hotJobPrs.data.LessThanEightWeeks).ToString();
 
 
-            AnalysisOne = "- Will show fo rPRs which have Purchase Group of 'UHJ'.";
+            AnalysisOne = "- Will show for PRs which have Purchase Group of 'UHJ'.";
             AnalysisTwo = "- Difference between the date the PR was created and todays date.";
 
 
@@ -490,18 +490,18 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             dp.addLabely(lbl_xLabelTen.Text, TimeBucketTen);
 
 
-            TotalOrders = "$" + string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.Total);
-            TotalValue = "$" + string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.TotalValue);
-            TimeBucketOne = "$" + string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.GreaterThanZeroWeeks);
-            TimeBucketTwo = "$" + string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusOneWeeks);
-            TimeBucketThree = "$" + string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusTwoWeeks);
-            TimeBucketFour = "$" + string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusThreeWeeks);
-            TimeBucketFive = "$" + string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusFourWeeks);
-            TimeBucketSix = "$" + string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusFiveWeeks);
-            TimeBucketSeven = "$" + string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusSixWeeks);
-            TimeBucketEight = "$" + string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusSevenWeeks);
-            TimeBucketNine = "$" + string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusEightWeeks);
-            TimeBucketTen = "$" + string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.LessThanEightWeeks);
+            TotalOrders = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.Total);
+            TotalValue = string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.TotalValue);
+            TimeBucketOne =string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.GreaterThanZeroWeeks);
+            TimeBucketTwo =string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusOneWeeks);
+            TimeBucketThree = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusTwoWeeks);
+            TimeBucketFour = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusThreeWeeks);
+            TimeBucketFive = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusFourWeeks);
+            TimeBucketSix = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusFiveWeeks);
+            TimeBucketSeven = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusSixWeeks);
+            TimeBucketEight = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusSevenWeeks);
+            TimeBucketNine = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusEightWeeks);
+            TimeBucketTen = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessThanEightWeeks);
 
 
             canvas.addData(dp);

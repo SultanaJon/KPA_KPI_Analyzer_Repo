@@ -133,10 +133,6 @@ namespace KPA_KPI_Analyzer
                         CheckDatabase();
                     }).Start();
                 }
-                else
-                {
-
-                }
             }
             else
             {
@@ -148,7 +144,7 @@ namespace KPA_KPI_Analyzer
                         CurrentAppStatus = LoadStatus.Complete;
                         Thread thrd = new Thread(() => { loadMainThread(); });
                         thrd.SetApartmentState(ApartmentState.STA);
-                        this.Hide();
+                        Hide();
                         timer1.Stop();
                         thrd.Start();
                         thrd.Join(); // Wait here on this thread until the application is closed.
@@ -240,7 +236,6 @@ namespace KPA_KPI_Analyzer
             }
 
 
-            Thread.Sleep(2000);
             CurrentStatus = CheckStatus.Complete;
         }
 
@@ -270,7 +265,6 @@ namespace KPA_KPI_Analyzer
                         {
                             throw ex; // throw the exception thrown by AccesUtils
                         }
-                        Thread.Sleep(2000);
                     }
                 }
 
@@ -281,7 +275,6 @@ namespace KPA_KPI_Analyzer
                     {
                         lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Creating File - " + Diagnostics.AppDirectoryUtils.logFiles[(int)file]; });
                         Diagnostics.AppDirectoryUtils.CreateFile(file);
-                        Thread.Sleep(2000);
                     }
                 }
 
@@ -294,7 +287,6 @@ namespace KPA_KPI_Analyzer
                     {
                         lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Creating File - " + Diagnostics.AppDirectoryUtils.overallFiles[(int)file]; });
                         Diagnostics.AppDirectoryUtils.CreateFile(file);
-                        Thread.Sleep(2000);
                     }
                 }
             }
@@ -307,7 +299,6 @@ namespace KPA_KPI_Analyzer
                 MessageBox.Show(ex.Message);
             }
 
-            Thread.Sleep(2000);
             CurrentStatus = CheckStatus.Complete;
         }
 
@@ -325,13 +316,9 @@ namespace KPA_KPI_Analyzer
             try
             {
                 lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Checking for a valid database..."; });
-                Thread.Sleep(2000);
                 AccessUtils.CheckDatabase();
                 lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Valid database found. Establishing a connection..."; });
-
                 conn = new OleDbConnection(AccessUtils.AI.connectionString());
-
-                    Thread.Sleep(5000);
                 CurrentStatus = CheckStatus.Complete;
             }
             catch(TablesDoNotExistException)
@@ -351,7 +338,6 @@ namespace KPA_KPI_Analyzer
                 {
                     MessageBox.Show(ex.Message);
                 }
-                Thread.Sleep(2000);
                 CurrentStatus = CheckStatus.Complete;
             }
             catch (TableNameMismatchException)
@@ -364,7 +350,6 @@ namespace KPA_KPI_Analyzer
                 {
                     File.Delete(Configuration.DbPath);
                     AccessUtils.CreateAccessDB();
-                    Thread.Sleep(2000);
                     CurrentStatus = CheckStatus.Complete;
                 }
                 catch (DatabaseCreationFailureException ex)
