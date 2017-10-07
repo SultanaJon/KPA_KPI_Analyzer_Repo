@@ -155,7 +155,9 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
             // delete the database because after so many imports, the database will continue to get larger and take up space.
             try
             {
-                DatabaseConnection.Close();
+                if(DatabaseConnection != null)
+                    DatabaseConnection.Close();
+
                 Logger.Log(AppDirectoryUtils.LogFiles.DbConnectionEvents, "Import Process Started. Database connection dropped.");
 
                 File.Delete(Configuration.DbPath);

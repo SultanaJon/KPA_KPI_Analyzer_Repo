@@ -69,7 +69,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicatonConfiguration\ApplicationConfig.cs" />
+    <Compile Include="ApplicationConfiguration\ApplicationConfig.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="DatabaseUtils\ThreadInteruptedException.cs" />
     <Compile Include="DataLoading\KPA_Data\DataTableLoader\KpaDataTableLoader.cs" />

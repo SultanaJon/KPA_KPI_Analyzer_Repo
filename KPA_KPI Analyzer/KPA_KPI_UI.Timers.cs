@@ -50,6 +50,8 @@ namespace KPA_KPI_Analyzer
                                              // load loading screen
                     if (ExcelInfo.USUpdated)
                     {
+                        settings.reportSettings.PrpoUsReportFileName = DragDropUtils.US_PRPO_FilePath;
+
                         // import only the US PRPO file
                         Importer usImport = new Importer(
                             new ExcelInfo()
@@ -83,6 +85,8 @@ namespace KPA_KPI_Analyzer
 
                     if (ExcelInfo.MXUpdated)
                     {
+                        settings.reportSettings.PrpoMxReportFileName = DragDropUtils.MX_PRPO_FilePath;
+
                         // Import only the MX PRPO file.
                         Importer mxImport = new Importer(
                             new ExcelInfo()
@@ -140,7 +144,8 @@ namespace KPA_KPI_Analyzer
 
                         DateTime dt = new DateTime(year, month, day);
                         lbl_dashboardDate.Text = dt.ToString("MMMM dd, yyyy");
-                        Logger.Log(AppDirectoryUtils.LogFiles.LoadedUSDate, lbl_dashboardDate.Text);
+                        settings.reportSettings.PrpoUsDate = month.ToString() + " " + day.ToString() + " " + year.ToString();
+                        settings.reportSettings.PrpoUsReportLoaded = true;
                     }
 
                     if (AccessUtils.MX_PRPO_TableExists)
@@ -156,7 +161,8 @@ namespace KPA_KPI_Analyzer
 
                         DateTime dt = new DateTime(year, month, day);
                         lbl_dashboardDate.Text = dt.ToString("MMMM dd, yyyy");
-                        Logger.Log(AppDirectoryUtils.LogFiles.LoadedMXDate, lbl_dashboardDate.Text);
+                        settings.reportSettings.PrpoMxDate = month.ToString() + " " + day.ToString() + " " + year.ToString();
+                        settings.reportSettings.PrpoMxReportLoaded = true;
                     }
 
 
@@ -330,9 +336,7 @@ namespace KPA_KPI_Analyzer
                 if (!ColumnFiltersApplied && !DateFiltersApplied)
                 {
                     DataReader.SaveOverallData(overallData);
-                    FilterUtils.FiltersLoaded = false;
-                    FilterUtils.FilterLoadProcessStarted = false;
-                    FiltersTimer.Start();
+                    InitializeFilterLoadProcess();
                 }
                 else
                 {
@@ -344,12 +348,16 @@ namespace KPA_KPI_Analyzer
                 if (Values.Globals.SelectedCountry == AccessInfo.MainTables.US_PRPO)
                 {
                     // Populate Dashboard with PRPO report date.
-                    GetCurrentUsPrpoReportDate();
+                    DateTime dt = GetLoadedUsPrpoReportDate();
+                    settings.reportSettings.PrpoUsLastLoadedDate = DateTime.Now.Month.ToString() + " " + DateTime.Now.Day.ToString() + " " + DateTime.Now.Year.ToString();
+                    lbl_dashboardDate.Text = dt.ToString("MMMM dd, yyyy");
                 }
                 else
                 {
                     // Populate Dashboard with PRPO report da.te
-                    GetCurrentMxPrpoReportDate();
+                    DateTime dt = GetLoadedMxPrpoReportDate();
+                    settings.reportSettings.PrpoMxLastLoadedDate = DateTime.Now.Month.ToString() + " " + DateTime.Now.Day.ToString() + " " + DateTime.Now.Year.ToString();
+                    lbl_dashboardDate.Text = dt.ToString("MMMM dd, yyyy");
                 }
             }
         }
@@ -381,6 +389,7 @@ namespace KPA_KPI_Analyzer
             {
                 FilterUtils.FiltersLoaded = false;
                 FiltersTimer.Stop();
+                settings.Save(settings);
                 ShowPage(Pages.Dashboard);
                 NavigationLocked = false;
             }

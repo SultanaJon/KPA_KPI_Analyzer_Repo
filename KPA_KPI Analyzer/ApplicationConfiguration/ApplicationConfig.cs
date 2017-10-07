@@ -4,26 +4,60 @@ using System.Web.Script.Serialization;
 using System.IO;
 using KPA_KPI_Analyzer.Diagnostics;
 
-namespace KPA_KPI_Analyzer.ApplicatonConfiguration
+namespace KPA_KPI_Analyzer.ApplicationConfiguration
 {
     /// <summary>
     /// This interface allows objects to save ther instance to a JSON file for storage.
     /// </summary>
-    internal interface IStorable
+    internal interface IStorable<T>
     {
-        bool Save();
-        bool Load();
+        bool Save(T obj);
+        bool Load(ref T obj);
     }
 
 
-    public class ApplicationConfig : IStorable
+    public class ApplicationConfig : IStorable<ApplicationConfig>
     {
-        private static readonly JavaScriptSerializer ser = new JavaScriptSerializer();
-        private static string dataJSONString = string.Empty;
+        public ReportSettings reportSettings;
+        public CorrelationSettings correlationSettings;
+
+        private JavaScriptSerializer ser;
+        private string dataJSONString;
+
+
+
+
+
+
+        public ApplicationConfig()
+        {
+            reportSettings = new ReportSettings();
+            correlationSettings = new CorrelationSettings();
+
+            ser = new JavaScriptSerializer();
+            dataJSONString = string.Empty;
+        }
+
+
 
 
         public class ReportSettings
         {
+            public ReportSettings()
+            {
+                PrpoUsReportLoaded = false;
+                PrpoMxReportLoaded = false;
+                PrpoUsDate = "00/00/0000";
+                PrpoMxDate = "00/00/0000";
+                PrpoUsLastLoadedDate = "00/00/0000";
+                PrpoMxLastLoadedDate = "00/00/0000";
+                PrpoUsReportFileName = "N/A";
+                PrpoMxReportFileName = "N/A";
+            }
+
+
+
+
             /// <summary>
             /// Returns whether or no the US PRPO report has been loaded.
             /// </summary>s
@@ -76,8 +110,16 @@ namespace KPA_KPI_Analyzer.ApplicatonConfiguration
         }
 
 
+
+
         public class CorrelationSettings
         {
+            public CorrelationSettings()
+            {
+                CorrelationOn = false;
+            }
+
+
             /// <summary>
             /// Determines whether the correlation feature is turned on.
             /// </summary>
@@ -91,11 +133,11 @@ namespace KPA_KPI_Analyzer.ApplicatonConfiguration
         /// </summary>
         /// <param name="settings">the application settings to be saved.</param>
         /// <returns></returns>
-        public bool Save()
+        public bool Save(ApplicationConfig settingsToSave)
         {
             try
             {
-                dataJSONString = ser.Serialize(Values.Globals.settings);
+                dataJSONString = ser.Serialize(settingsToSave);
                 File.WriteAllText(AppDirectoryUtils.resourceFiles[(int)AppDirectoryUtils.ResourceFiles.Settings], dataJSONString);
                 return true;
             }
@@ -113,12 +155,12 @@ namespace KPA_KPI_Analyzer.ApplicatonConfiguration
         /// </summary>
         /// <param name="settings">the application settings used to stored the settigns loaded.</param>
         /// <returns></returns>
-        public bool Load()
+        public bool Load(ref ApplicationConfig settingsToLoad)
         {
             try
             {
                 dataJSONString = File.ReadAllText(AppDirectoryUtils.resourceFiles[(int)AppDirectoryUtils.ResourceFiles.Settings]);
-                Values.Globals.settings = ser.Deserialize<ApplicationConfig>(dataJSONString);
+                settingsToLoad = ser.Deserialize<ApplicationConfig>(dataJSONString);
                 return true;
             }
             catch (Exception ex)

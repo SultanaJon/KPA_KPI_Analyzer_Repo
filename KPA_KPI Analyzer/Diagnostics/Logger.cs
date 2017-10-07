@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Windows.Forms;
 
 namespace KPA_KPI_Analyzer.Diagnostics
 {
@@ -12,21 +13,17 @@ namespace KPA_KPI_Analyzer.Diagnostics
         /// <param name="message"></param>
         public static void Log(AppDirectoryUtils.LogFiles logFile, string message)
         {
-            if (logFile != AppDirectoryUtils.LogFiles.LoadedUSDate && logFile != AppDirectoryUtils.LogFiles.LoadedMXDate)
+            try
             {
                 using (StreamWriter sw = new StreamWriter(AppDirectoryUtils.logFiles[(int)logFile], true))
                 {
                     sw.WriteLine("[" + DateTime.Now.ToString() + "] - " + message);
                 }
             }
-            else
+            catch(Exception ex)
             {
-                using (StreamWriter sw = new StreamWriter(AppDirectoryUtils.logFiles[(int)logFile], false))
-                {
-                    sw.Write(message);
-                }
+                MessageBox.Show(ex.Message, "Logger Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
         }
     }
 }

@@ -14,7 +14,6 @@
 using DataImporter.Access;
 using KPA_KPI_Analyzer.DatabaseUtils;
 using KPA_KPI_Analyzer.Diagnostics;
-using KPA_KPI_Analyzer.DragDropFeatures;
 using KPA_KPI_Analyzer.FilterFeeature;
 using KPA_KPI_Analyzer.KPA_KPI_Overall;
 using System;
@@ -32,7 +31,7 @@ namespace KPA_KPI_Analyzer
         private static readonly List<string> errorList = new List<string>();
         private Overall overallData = new Overall();
         private UserControl activeTemplate = new UserControl();
-
+        ApplicationConfiguration.ApplicationConfig settings = new ApplicationConfiguration.ApplicationConfig();
 
 
 
@@ -56,13 +55,13 @@ namespace KPA_KPI_Analyzer
         /// to connect to and read data from.
         /// </summary>
         /// <param name="conn">The database connection that was established in the splash screen.</param>
-        public KPA_KPI_UI(OleDbConnection conn)
+        public KPA_KPI_UI(OleDbConnection conn, ApplicationConfiguration.ApplicationConfig settingsData)
         {
             InitializeComponent();
-
             // Configure the database Utilities class.
             PRPO_DB_Utils.AI = AccessUtils.AI;
             PRPO_DB_Utils.DatabaseConnection = new OleDbConnection(conn.ConnectionString);
+            settings = settingsData;
         }
 
 
@@ -113,72 +112,6 @@ namespace KPA_KPI_Analyzer
 
 
 
-        /// <summary>
-        /// Get the current United States Report date based on the data saved in the database.
-        /// </summary>
-        public bool GetCurrentUsPrpoReportDate()
-        {
-            bool result = false;
-            try
-            {
-                using (StreamReader sr = new StreamReader(AppDirectoryUtils.logFiles[(int)AppDirectoryUtils.LogFiles.LoadedUSDate]))
-                {
-                    string lastLoadedDate = sr.ReadLine();
-                    lbl_dashboardDate.Text = lastLoadedDate;
-                    if (DateTime.Now.ToString("MMMM dd, yyyy") == lastLoadedDate)
-                    {
-                        result = true;
-                    }
-                    else
-                    {
-                        result = false;
-                    }
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-            return result;
-        }
-
-
-
-
-
-        /// <summary>
-        /// Get the current Mexico PRPO Report date based on teh data saved in the database
-        /// </summary>
-        public bool GetCurrentMxPrpoReportDate()
-        {
-            bool result = false;
-            try
-            {
-                using (StreamReader sr = new StreamReader(AppDirectoryUtils.logFiles[(int)AppDirectoryUtils.LogFiles.LoadedMXDate]))
-                {
-                    string lastLoadedDate = sr.ReadLine();
-                    lbl_dashboardDate.Text = lastLoadedDate;
-                    if (DateTime.Now.ToString("MMMM dd, yyyy") == lastLoadedDate)
-                    {
-                        result = true;
-                    }
-                    else
-                    {
-                        result = false;
-                    }
-
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            return result;
-        }
-
-
-
 
         /// <summary>
         /// 
@@ -203,12 +136,86 @@ namespace KPA_KPI_Analyzer
         private void KPA_KPI_UI_Load(object sender, EventArgs e)
         {
             mainNavActiveBtn = btn_Dashboard; // set the active button as the first button (Dashboard)
+            InitializeProgramEvents();
 
-            // Start the program base on the resource we have.
             InitializeProgram();
         }
 
 
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public DateTime GetLastLoadedUsPrpoReportDate()
+        {
+            string[] date = settings.reportSettings.PrpoUsLastLoadedDate.Split(' ');
+            int month = int.Parse(date[0].ToString());
+            int day = int.Parse(date[1].ToString());
+            int year = int.Parse(date[2].ToString());
+
+            DateTime dt = new DateTime(year, month, day);
+            return dt;
+        }
+
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public DateTime GetLastLoadedMxPrpoReportDate()
+        {
+
+            string[] date = settings.reportSettings.PrpoMxLastLoadedDate.Split(' ');
+            int month = int.Parse(date[0].ToString());
+            int day = int.Parse(date[1].ToString());
+            int year = int.Parse(date[2].ToString());
+
+            DateTime dt = new DateTime(year, month, day);
+            return dt;
+        }
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public DateTime GetLoadedUsPrpoReportDate()
+        {
+            string[] date = settings.reportSettings.PrpoUsDate.Split(' ');
+            int month = int.Parse(date[0].ToString());
+            int day = int.Parse(date[1].ToString());
+            int year = int.Parse(date[2].ToString());
+
+            DateTime dt = new DateTime(year, month, day);
+            return dt;
+        }
+
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public DateTime GetLoadedMxPrpoReportDate()
+        {
+            string[] date = settings.reportSettings.PrpoMxDate.Split(' ');
+            int month = int.Parse(date[0].ToString());
+            int day = int.Parse(date[1].ToString());
+            int year = int.Parse(date[2].ToString());
+
+            DateTime dt = new DateTime(year, month, day);
+            return dt;
+        }
 
 
 
@@ -219,29 +226,31 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         private void InitializeProgram()
         {
-            if (PRPO_DB_Utils.DatabaseConnection != null)
+            if (PRPO_DB_Utils.DatabaseConnection != null && new FileInfo(AppDirectoryUtils.resourceFiles[(int)AppDirectoryUtils.ResourceFiles.Settings]).Length != 0)
             {
                 try
                 {
                     PRPO_DB_Utils.ConnectToDatabase();
-                    if (AccessUtils.US_PRPO_TableExists && AccessUtils.MX_PRPO_TableExists)
+                    if (settings.reportSettings.PrpoUsReportLoaded && settings.reportSettings.PrpoMxReportLoaded)
                     {
                         NavigationLocked = true;
                         ShowPage(Pages.CountrySelector);
                     }
-                    else if (AccessUtils.US_PRPO_TableExists)
+                    else if (settings.reportSettings.PrpoUsReportLoaded)
                     {
                         ConfigureToUnitedStates();
-
 
                         if (AppDirectoryUtils.DataFileExists(AppDirectoryUtils.OverallFiles.US_Overall))
                         {
                             // the file exists
                             if (new FileInfo(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFiles.US_Overall]).Length > 0)
                             {
-                                if (GetCurrentUsPrpoReportDate())
+                                DateTime dt = GetLastLoadedUsPrpoReportDate();
+                                if (dt == DateTime.Today.Date)
                                 {
                                     DataReader.LoadOverallData(ref overallData);
+                                    dt = GetLoadedUsPrpoReportDate();
+                                    lbl_dashboardDate.Text = dt.ToString("MMMM dd, yyyy");
                                     InitializeFilterLoadProcess();
                                 }
                                 else
@@ -251,7 +260,6 @@ namespace KPA_KPI_Analyzer
                             }
                             else
                             {
-                                // AppDirectoryUtils.CreateFile(AppDirectoryUtils.OverallFiles.US_Overall);
                                 InitializeDataLoadProcess();
                             }
                         }
@@ -261,7 +269,7 @@ namespace KPA_KPI_Analyzer
                             InitializeDataLoadProcess();
                         }
                     }
-                    else // There is a Mexico table within the database.
+                    else if(settings.reportSettings.PrpoMxReportLoaded)
                     {
                         ConfigureToMexico();
 
@@ -270,10 +278,12 @@ namespace KPA_KPI_Analyzer
                             // the file exists
                             if (new FileInfo(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFiles.MX_Overall]).Length > 0)
                             {
-                                if (GetCurrentMxPrpoReportDate())
+                                DateTime dt = GetLastLoadedMxPrpoReportDate();
+                                if (dt == DateTime.Today.Date)
                                 {
                                     DataReader.LoadOverallData(ref overallData);
-                                    InitializeFilterLoadProcess();
+                                    dt = GetLoadedMxPrpoReportDate();
+                                    lbl_dashboardDate.Text = dt.ToString("MMMM dd, yyyy"); InitializeFilterLoadProcess();
                                 }
                                 else
                                 {
@@ -282,7 +292,6 @@ namespace KPA_KPI_Analyzer
                             }
                             else
                             {
-                                // AppDirectoryUtils.CreateFile(AppDirectoryUtils.OverallFiles.MX_Overall);
                                 InitializeDataLoadProcess();
                             }
                         }
@@ -301,6 +310,8 @@ namespace KPA_KPI_Analyzer
             }
             else
             {
+                if (settings == null)
+                    settings = new ApplicationConfiguration.ApplicationConfig();
                 ShowPage(Pages.DragDropDash);
             }
         }
@@ -317,10 +328,9 @@ namespace KPA_KPI_Analyzer
         {
             get
             {
-                CreateParams handleParam = base.CreateParams;
-                handleParam.ExStyle |= 0x02000000;   // WS_EX_COMPOSITED
-                handleParam.Style &= ~0x2000000; // Turn off WS_CLIPCHILDREN
-                return handleParam;
+                var ccp = base.CreateParams;
+                ccp.ExStyle |= 0x02000000;
+                return ccp;
             }
         }
 

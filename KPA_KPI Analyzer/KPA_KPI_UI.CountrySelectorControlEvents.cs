@@ -56,12 +56,14 @@ namespace KPA_KPI_Analyzer
             {
                 ConfigureToUnitedStates();
 
+
                 if (AppDirectoryUtils.DataFileExists(AppDirectoryUtils.OverallFiles.US_Overall))
                 {
                     // the file exists
                     if (new FileInfo(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFiles.US_Overall]).Length > 0)
                     {
-                        if (GetCurrentUsPrpoReportDate())
+                        DateTime dt = GetLastLoadedUsPrpoReportDate();
+                        if (dt == DateTime.Today.Date)
                         {
                             DataReader.LoadOverallData(ref overallData);
                             InitializeFilterLoadProcess();
@@ -71,12 +73,12 @@ namespace KPA_KPI_Analyzer
                             InitializeDataLoadProcess();
                         }
                     }
-                    else // the file might be empty
+                    else
                     {
                         InitializeDataLoadProcess();
                     }
                 }
-                else
+                else // the file does not exist
                 {
                     AppDirectoryUtils.CreateFile(AppDirectoryUtils.OverallFiles.US_Overall);
                     InitializeDataLoadProcess();
@@ -91,7 +93,8 @@ namespace KPA_KPI_Analyzer
                     // the file exists
                     if (new FileInfo(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFiles.MX_Overall]).Length > 0)
                     {
-                        if (GetCurrentMxPrpoReportDate())
+                        DateTime dt = GetLastLoadedMxPrpoReportDate();
+                        if (dt == DateTime.Today.Date)
                         {
                             DataReader.LoadOverallData(ref overallData);
                             InitializeFilterLoadProcess();
@@ -101,12 +104,12 @@ namespace KPA_KPI_Analyzer
                             InitializeDataLoadProcess();
                         }
                     }
-                    else // the file might be empty
+                    else
                     {
                         InitializeDataLoadProcess();
                     }
                 }
-                else
+                else // the file does not exist
                 {
                     AppDirectoryUtils.CreateFile(AppDirectoryUtils.OverallFiles.MX_Overall);
                     InitializeDataLoadProcess();

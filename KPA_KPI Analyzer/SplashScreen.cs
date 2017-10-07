@@ -13,6 +13,8 @@ namespace KPA_KPI_Analyzer
     {
         private bool runningThread = false;
         private OleDbConnection conn = null;
+        ApplicationConfiguration.ApplicationConfig settings = new ApplicationConfiguration.ApplicationConfig();
+        bool newSettings = false;
         List<string> errorList;
 
 
@@ -173,11 +175,13 @@ namespace KPA_KPI_Analyzer
             if (CurrentAppStatus == LoadStatus.Complete)
             {
 
-                if (conn != null)
+                if (conn != null && !newSettings)
                 {
+                    settings.Load(ref settings);
+
                     try
                     {
-                        Application.Run(new KPA_KPI_UI(conn));
+                        Application.Run(new KPA_KPI_UI(conn, settings));
                     }
                     catch(Exception ex)
                     {
@@ -274,9 +278,7 @@ namespace KPA_KPI_Analyzer
                             if(file == Diagnostics.AppDirectoryUtils.ResourceFiles.Settings)
                             {
                                 Diagnostics.AppDirectoryUtils.CreateFile(file);
-
-                                // Save the settings
-                                Values.Globals.settings = new ApplicatonConfiguration.ApplicationConfig();
+                                newSettings = true;
                             }
                         }
                     }
@@ -356,7 +358,7 @@ namespace KPA_KPI_Analyzer
             }
             catch (TableNameMismatchException)
             {
-                // The names of the table are not correct so lets delete the database and create a new one and
+                // The names of the table are not correct so leta delete the database and create a new one and
                 // wait for the user to drop new files to load.
                 lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Database error! Creating new database..."; });
 

@@ -91,8 +91,6 @@ namespace KPA_KPI_Analyzer.Diagnostics
             ReportEvents,
             ReportEventErrors,
             AppEvents,
-            LoadedUSDate,
-            LoadedMXDate
         }
 
 
@@ -111,9 +109,7 @@ namespace KPA_KPI_Analyzer.Diagnostics
             @"Resources\Logs\dbConnectionEventErrors.txt",
             @"Resources\Logs\ReportEvents.txt",
             @"Resources\Logs\ReportEventErrors.txt",
-            @"Resources\Logs\ApplicationEvents.txt",
-            @"Resources\Logs\LoadedUSDate.txt",
-            @"Resources\Logs\LoadedMXDate.txt"
+            @"Resources\Logs\ApplicationEvents.txt"
         };
 
 
@@ -230,12 +226,12 @@ namespace KPA_KPI_Analyzer.Diagnostics
         /// <summary>
         /// Create the supplied type of resource data storage file (JSON)
         /// </summary>
-        /// <param name="file"></param>
-        internal static void CreateFile(ResourceFiles file)
+        /// <param name="file">The settings file indexer</param>
+        internal static void CreateFile(ResourceFiles settingsFile)
         {
             try
             {
-                File.Create(Path.Combine(Configuration.AppDir, resourceFiles[(int)file]));
+                File.Create(Path.Combine(Configuration.AppDir, resourceFiles[(int)settingsFile]));
             }
             catch(Exception ex)
             {

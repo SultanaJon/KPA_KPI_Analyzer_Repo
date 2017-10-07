@@ -33,8 +33,5 @@ namespace KPA_KPI_Analyzer.Values
         /// Current selected category to display in the data viewer
         /// </summary>
         public static string CurrCategory { get; set; }
-
-
-        public static ApplicatonConfiguration.ApplicationConfig settings { get; set; }
     }
 }
