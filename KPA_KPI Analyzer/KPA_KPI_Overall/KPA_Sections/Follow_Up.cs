@@ -43,7 +43,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
         {
             "Confirmed Date vs Plan Date",
             "Confirmed Date for Upcoming Deliveries",
-            "Late to Confirmed"
+            "Due Today or Late to Confirmed"
         };
 
 

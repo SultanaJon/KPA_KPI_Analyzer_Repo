@@ -97,7 +97,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             DatavizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            Globals.CurrCategory = "PR 2nd Level Release vs Po Creation";
+            Globals.CurrCategory = Globals.kpiCategories[(int)Globals.KPI_Sections.PurchTwo][(int)Globals.KPI_Categories.PurchTwo.PR2ndLvlReleaseDatevsPOCreationDate];
             ChangeCategory();
         }
 
@@ -205,7 +205,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = "PR 2nd Level Release vs Po Creation";
+            Title = Globals.kpiCategories[(int)Globals.KPI_Sections.PurchTwo][(int)Globals.KPI_Categories.PurchTwo.PR2ndLvlReleaseDatevsPOCreationDate];
             Globals.CurrCategory = Title;
             ChangeCategory();
 
@@ -267,7 +267,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = "PO Creation vs PO Release";
+            Title = Globals.kpiCategories[(int)Globals.KPI_Sections.PurchTwo][(int)Globals.KPI_Categories.PurchTwo.POCreationDatevsPOReleaseDate];
             Globals.CurrCategory = Title;
             ChangeCategory();
 
@@ -334,7 +334,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = "PO Release vs PO Confirm";
+            Title = Globals.kpiCategories[(int)Globals.KPI_Sections.PurchTwo][(int)Globals.KPI_Categories.PurchTwo.POReleaseDatevsPOConfirmationDate];
             Globals.CurrCategory = Title;
             ChangeCategory();
 

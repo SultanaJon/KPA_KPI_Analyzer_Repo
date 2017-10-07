@@ -14,7 +14,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
         private static DataTable dt;
         private static OleDbCommand cmd;
         private static OleDbDataAdapter da;
-
+        private static string sectionDesc = "KPA";
 
         internal static class Plan
         {

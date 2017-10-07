@@ -101,7 +101,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             DatavizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            Globals.CurrCategory = "PR Release vs PO Release";
+            Globals.CurrCategory = Globals.kpiCategories[(int)Globals.KPI_Sections.PurchSub][(int)Globals.KPI_Categories.PurchSub.PRReleaseDatevsPOReleaseDate];
             ChangeCategory();
         }
 
@@ -201,7 +201,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = "PR Release vs PO Release";
+            Title = Globals.kpiCategories[(int)Globals.KPI_Sections.PurchSub][(int)Globals.KPI_Categories.PurchSub.PRReleaseDatevsPOReleaseDate];
             Globals.CurrCategory = Title;
             ChangeCategory();
 
@@ -266,7 +266,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = "PO Creation vs Confirmation Entry";
+            Title = Globals.kpiCategories[(int)Globals.KPI_Sections.PurchSub][(int)Globals.KPI_Categories.PurchSub.POCreationDatevsConfirmationEntryDate];
             Globals.CurrCategory = Title;
             ChangeCategory();
 

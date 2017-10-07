@@ -92,7 +92,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             btn_One.Textcolor = System.Drawing.Color.Coral;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            Globals.CurrCategory = "Confirmed vs Plan Date";
+            Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.FollowUp][(int)Globals.KPA_Categories.FollowUp.ConfPlanDate];
             ChangeCategory();
         }
 
@@ -168,7 +168,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = "Confirmed vs Plan Date";
+            Title = Globals.kpaCategories[(int)Globals.KPA_Sections.FollowUp][(int)Globals.KPA_Categories.FollowUp.ConfPlanDate];
             Globals.CurrCategory = Title;
             ChangeCategory();
             TimeBucketOne = overallData.kpa.followUp.confDateVsPlanDate.data.LessThanZero.ToString();
@@ -223,7 +223,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         {
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
-            Title = "Confirmed Date for Upcoming Deliveres";
+            Title = Globals.kpaCategories[(int)Globals.KPA_Sections.FollowUp][(int)Globals.KPA_Categories.FollowUp.ConfDateUpcomingDel];
             Globals.CurrCategory = Title;
             ChangeCategory();
 
@@ -275,7 +275,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         {
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
-            Title = "Due Today or Late to Confirmed Date";
+            Title = Globals.kpaCategories[(int)Globals.KPA_Sections.FollowUp][(int)Globals.KPA_Categories.FollowUp.DueTodayLateConf];
             Globals.CurrCategory = Title;
             ChangeCategory();
 

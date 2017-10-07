@@ -144,6 +144,7 @@ namespace KPA_KPI_Analyzer
 
                         DateTime dt = new DateTime(year, month, day);
                         lbl_dashboardDate.Text = dt.ToString("MMMM dd, yyyy");
+                        lbl_topPanelNavPrpoDate.Text = dt.ToString("MMMM dd, yyyy");
                         settings.reportSettings.PrpoUsDate = month.ToString() + " " + day.ToString() + " " + year.ToString();
                         settings.reportSettings.PrpoUsReportLoaded = true;
                     }
@@ -161,6 +162,7 @@ namespace KPA_KPI_Analyzer
 
                         DateTime dt = new DateTime(year, month, day);
                         lbl_dashboardDate.Text = dt.ToString("MMMM dd, yyyy");
+                        lbl_topPanelNavPrpoDate.Text = dt.ToString("MMMM dd, yyyy");
                         settings.reportSettings.PrpoMxDate = month.ToString() + " " + day.ToString() + " " + year.ToString();
                         settings.reportSettings.PrpoMxReportLoaded = true;
                     }
@@ -228,13 +230,13 @@ namespace KPA_KPI_Analyzer
                 }
                 else if (AccessUtils.US_PRPO_TableExists)
                 {
-                    lbl_Country.Text = Values.Constants.unitedStates;
+                    lbl_Country.Text = Values.Globals.countries[(int)Values.Globals.Countries.UnitedStates];
                     Values.Globals.SelectedCountry = AccessInfo.MainTables.US_PRPO;
                     InitializeDataLoadProcess();
                 }
                 else // only the mexico file exists.
                 {
-                    lbl_Country.Text = Values.Constants.mexico;
+                    lbl_Country.Text = Values.Globals.countries[(int)Values.Globals.Countries.Mexico];
                     Values.Globals.SelectedCountry = AccessInfo.MainTables.MX_PRPO;
                     InitializeDataLoadProcess();
                 }
@@ -268,10 +270,10 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// 
+        /// Starts the threads that will load perform the calculations on the data.
         /// </summary>
-        /// <param name="_startKpaThreads"></param>
-        /// <param name="_startKpiThreads"></param>
+        /// <param name="_startKpaThreads">Indicates whether or not the KPA threads should be started.</param>
+        /// <param name="_startKpiThreads">Indicates whether or not the KPI threads should be started.</param>
         private void StartThreads(bool _startKpaThreads, bool _startKpiThreads)
         {
             if(_startKpaThreads)
@@ -351,6 +353,8 @@ namespace KPA_KPI_Analyzer
                     DateTime dt = GetLoadedUsPrpoReportDate();
                     settings.reportSettings.PrpoUsLastLoadedDate = DateTime.Now.Month.ToString() + " " + DateTime.Now.Day.ToString() + " " + DateTime.Now.Year.ToString();
                     lbl_dashboardDate.Text = dt.ToString("MMMM dd, yyyy");
+                    lbl_topPanelNavPrpoDate.Text = dt.ToString("MMMM dd, yyyy");
+                    Values.Globals.PrpoGenerationDate = lbl_topPanelNavPrpoDate.Text;
                 }
                 else
                 {
@@ -358,6 +362,8 @@ namespace KPA_KPI_Analyzer
                     DateTime dt = GetLoadedMxPrpoReportDate();
                     settings.reportSettings.PrpoMxLastLoadedDate = DateTime.Now.Month.ToString() + " " + DateTime.Now.Day.ToString() + " " + DateTime.Now.Year.ToString();
                     lbl_dashboardDate.Text = dt.ToString("MMMM dd, yyyy");
+                    lbl_topPanelNavPrpoDate.Text = dt.ToString("MMMM dd, yyyy");
+                    Values.Globals.PrpoGenerationDate = lbl_topPanelNavPrpoDate.Text;
                 }
             }
         }

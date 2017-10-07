@@ -97,7 +97,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             btn_One.Textcolor = System.Drawing.Color.Coral;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            Globals.CurrCategory = "PR Aging (Released)";
+            Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.Purch][(int)Globals.KPA_Categories.Purch.PRsAgingRel];
             ChangeCategory();
         }
 
@@ -193,7 +193,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = "PR Aging (Released)";
+            Title = Globals.kpaCategories[(int)Globals.KPA_Sections.Purch][(int)Globals.KPA_Categories.Purch.PRsAgingRel];
             Globals.CurrCategory = Title;
             ChangeCategory();
             
@@ -246,7 +246,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         {
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
-            Title = "PO First Release";
+            Title = Globals.kpaCategories[(int)Globals.KPA_Sections.Purch][(int)Globals.KPA_Categories.Purch.POFirstRelease];
             Globals.CurrCategory = Title;
             ChangeCategory();
 
@@ -298,7 +298,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         {
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
-            Title = "PO Previous Release";
+            Title = Globals.kpaCategories[(int)Globals.KPA_Sections.Purch][(int)Globals.KPA_Categories.Purch.POPrevRelease];
             Globals.CurrCategory = Title;
             ChangeCategory();
 
@@ -351,7 +351,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         {
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
-            Title = "No Confirmations";
+            Title = Globals.kpaCategories[(int)Globals.KPA_Sections.Purch][(int)Globals.KPA_Categories.Purch.NoConfirmation];
             Globals.CurrCategory = Title;
             ChangeCategory();
 

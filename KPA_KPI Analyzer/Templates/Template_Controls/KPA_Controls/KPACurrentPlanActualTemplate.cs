@@ -86,7 +86,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             DatavizLoaded = false;
             datavizLoadTimer.Start();
             ActiveCategory = 0;
-            Globals.CurrCategory = "Current Planned Date vs Current Confirmed Date (Open POs)";
+            Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.CurrPlanActual][(int)Globals.KPA_Categories.CurrPlanVsActual.CurrPlanDateCurrConfDateOpenPO];
             ChangeCategory();
         }
 
@@ -178,7 +178,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = "Current planned date vs current confirmation date (Open POs)";
+            Title = Globals.kpaCategories[(int)Globals.KPA_Sections.CurrPlanActual][(int)Globals.KPA_Categories.CurrPlanVsActual.CurrPlanDateCurrConfDateOpenPO];
             Globals.CurrCategory = Title;
             ChangeCategory();
 
@@ -237,7 +237,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         {
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
-            Title = "Current planned date vs current confirmation date (Open POs) - Hot Job Only";
+            Title = Globals.kpaCategories[(int)Globals.KPA_Sections.CurrPlanActual][(int)Globals.KPA_Categories.CurrPlanVsActual.CurrPlanDateCurrConfDateOpenPOHotJobs];
             Globals.CurrCategory = Title;
             ChangeCategory();
 

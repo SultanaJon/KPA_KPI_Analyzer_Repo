@@ -99,7 +99,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             DatavizLoaded = false;
             ActiveCategory = 1;
             datavizLoadTimer.Start();
-            Globals.CurrCategory = "PRs Aging (Not Released)";
+            Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.Plan][(int)Globals.KPA_Categories.Plan.PRsAgingNotRel];
             ChangeCategory();
         }
 
@@ -188,7 +188,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             canvas = new Bunifu.DataViz.Canvas();
             dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = "PRs Aging (Not Released)";
+            Title = Globals.kpaCategories[(int)Globals.KPA_Sections.Plan][(int)Globals.KPA_Categories.Plan.PRsAgingNotRel];
             Globals.CurrCategory = Title;
             ChangeCategory();
 
@@ -240,7 +240,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         {
             canvas = new Bunifu.DataViz.Canvas();
             dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
-            Title = "Material Due";
+            Title = Globals.kpaCategories[(int)Globals.KPA_Sections.Plan][(int)Globals.KPA_Categories.Plan.MaterialDue];
             Globals.CurrCategory = Title;
             ChangeCategory();
 

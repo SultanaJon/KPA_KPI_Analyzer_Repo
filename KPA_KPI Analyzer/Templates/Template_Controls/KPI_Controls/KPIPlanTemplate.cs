@@ -94,7 +94,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             DatavizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            Globals.CurrCategory = "PR Planned Date vs Current Planned";
+            Globals.CurrCategory = Globals.kpiCategories[(int)Globals.KPI_Sections.Plan][(int)Globals.KPI_Categories.Plan.PRPlanDatevsCurrentPlanDate];
             ChangeCategory();
         }
 
@@ -189,7 +189,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = "PR Planned Date vs Current Planned";
+            Title = Globals.kpiCategories[(int)Globals.KPI_Sections.Plan][(int)Globals.KPI_Categories.Plan.PRPlanDatevsCurrentPlanDate];
             Globals.CurrCategory = Title;
             ChangeCategory();
 
@@ -251,7 +251,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = "(Orig Plan Date - 2nd Lvl Rel Date vs Coded Lead-time";
+            Title = Globals.kpiCategories[(int)Globals.KPI_Sections.Plan][(int)Globals.KPI_Categories.Plan.OriginalPlanDate2ndLvlReleaseDatevsCodedLeadTime];
             Globals.CurrCategory = Title;
             ChangeCategory();
 
@@ -313,7 +313,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = "(Curr Plan Date - 2nd Lvl Rel Date) vs Coded Lead-time";
+            Title = Globals.kpiCategories[(int)Globals.KPI_Sections.Plan][(int)Globals.KPI_Categories.Plan.CurrentPlanDate2ndLvlReleaseDatevsCodedLeadTime];
             Globals.CurrCategory = Title;
             ChangeCategory();
 

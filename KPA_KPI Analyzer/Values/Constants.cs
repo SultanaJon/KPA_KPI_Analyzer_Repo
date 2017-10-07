@@ -34,11 +34,5 @@
 
         // KPI Constants
         public const int KPI_SectionHeight = 275;
-
-
-
-        // country text
-        public const string unitedStates = "United States";
-        public const string mexico = "Mexico";
     }
 }

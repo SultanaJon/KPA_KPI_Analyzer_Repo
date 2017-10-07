@@ -92,7 +92,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             RenderPRRelToConfEntry();
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            Globals.CurrCategory = "PR Release to Confirmation Entry";
+            Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.PurchTotal][(int)Globals.KPA_Categories.PurchTotal.PRRelConfEntry];
             ChangeCategory();
         }
 
@@ -174,7 +174,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = "PR Release to Confirmation Entry";
+            Title = Globals.kpaCategories[(int)Globals.KPA_Sections.PurchTotal][(int)Globals.KPA_Categories.PurchTotal.PRRelConfEntry];
             Globals.CurrCategory = Title;
             ChangeCategory();
 

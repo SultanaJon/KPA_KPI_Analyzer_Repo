@@ -86,7 +86,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             DatavizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            Globals.CurrCategory = "PRs (Not on PO) - Hot Job Only";
+            Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.HotJobs][(int)Globals.KPA_Categories.HotJobs.PrsNotonPO];
             ChangeCategory();
         }
 
@@ -175,7 +175,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = "PRs (Not on PO) - Hot Job Only";
+            Title = Globals.kpaCategories[(int)Globals.KPA_Sections.HotJobs][(int)Globals.KPA_Categories.HotJobs.PrsNotonPO];
             Globals.CurrCategory = Title;
             ChangeCategory();
 
@@ -228,7 +228,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         {
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
-            Title = "No Confirmation - Hot Job Only";
+            Title = Globals.kpaCategories[(int)Globals.KPA_Sections.HotJobs][(int)Globals.KPA_Categories.HotJobs.NoConfirmations];
             Globals.CurrCategory = Title;
             ChangeCategory();
 
@@ -280,7 +280,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         {
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
-            Title = "Late to Confirmed - Hot Jobs Only";
+            Title = Globals.kpaCategories[(int)Globals.KPA_Sections.HotJobs][(int)Globals.KPA_Categories.HotJobs.LateToConfirmed];
             Globals.CurrCategory = Title;
             ChangeCategory();
 

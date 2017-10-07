@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KPA_KPI_Analyzer.Values;
+using System;
 using System.Data;
 using System.Windows.Forms;
 
@@ -51,6 +52,8 @@ namespace KPA_KPI_Analyzer
         public DataViewer()
         {
             InitializeComponent();
+            lbl_Country.Text = Globals.CurrCountry;
+            lbl_date.Text = Globals.PrpoGenerationDate;
             dgv_dataViewerDgv.DoubleBuffered = true;
         }
 

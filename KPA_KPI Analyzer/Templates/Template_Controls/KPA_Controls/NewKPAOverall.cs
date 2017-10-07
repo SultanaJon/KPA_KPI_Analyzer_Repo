@@ -4,6 +4,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader;
+using KPA_KPI_Analyzer.Values;
 
 namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 {
@@ -16,6 +17,12 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             InitializeComponent();
             ApplyDataGridStyles();
             data = _data;
+            Globals.CurrPerformance = "KPA";
+
+            if (Globals.SelectedCountry == DataImporter.Access.AccessInfo.MainTables.US_PRPO)
+                Globals.CurrCountry = Globals.countries[(int)Globals.Countries.UnitedStates];
+            else
+                Globals.CurrCountry = Globals.countries[(int)Globals.Countries.Mexico];
         }
 
 
@@ -617,27 +624,65 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                     case 0: // 0 - 3 = Plan
                         break; // not yet created
                     case 1:
-                    case 2:
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.Plan];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.Plan][(int)Globals.KPA_Categories.Plan.PRsAgingNotRel];
                         HandlePlanDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
-                    case 3: // 4 - 7 = Purch
-                    case 4:
-                    case 5:
-                    case 6:
+                    case 2:
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.Plan];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.Plan][(int)Globals.KPA_Categories.Plan.MaterialDue];
+                        HandlePlanDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 3: // 3 - 6 = Purch
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.Purch];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.Purch][(int)Globals.KPA_Categories.Purch.PRsAgingRel];
                         HandlePurchDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
-                    case 7: // 8 - 9 = PurchSub
+                    case 4:
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.Purch];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.Purch][(int)Globals.KPA_Categories.Purch.POFirstRelease];
+                        HandlePurchDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 5:
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.Purch];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.Purch][(int)Globals.KPA_Categories.Purch.POPrevRelease];
+                        HandlePurchDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 6:
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.Purch];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.Purch][(int)Globals.KPA_Categories.Purch.NoConfirmation];
+                        HandlePurchDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 7: // 7 - 8 = PurchSub
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.PurchSub];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.PurchSub][(int)Globals.KPA_Categories.PurchSub.PRReleasePORelease];
+                        HandlePurchSubDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
                     case 8:
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.PurchSub];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.PurchSub][(int)Globals.KPA_Categories.PurchSub.POCreationCOnfEntry];
                         HandlePurchSubDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 9: // Purch Total
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.PurchTotal];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.PurchTotal][(int)Globals.KPA_Categories.PurchTotal.PRRelConfEntry];
                         HandlePurchTotalDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 10: // Purch Plan Total
-                        break;
+                        break; // Not yet created
                     case 11: // 12 - 14 = Follow Up
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.FollowUp];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.FollowUp][(int)Globals.KPA_Categories.FollowUp.ConfPlanDate];
+                        HandleFollowUpDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
                     case 12:
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.FollowUp];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.FollowUp][(int)Globals.KPA_Categories.FollowUp.ConfDateUpcomingDel];
+                        HandleFollowUpDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
                     case 13:
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.FollowUp];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.FollowUp][(int)Globals.KPA_Categories.FollowUp.DueTodayLateConf];
                         HandleFollowUpDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 14: // 15 - 16 Cancellations
@@ -645,10 +690,20 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                         break;
                     case 16: // 17 - 18 = NCRs
                     case 17:
-                        break;
+                        break; // not yet created
                     case 18: // 19 - 21 = Hot Jobs
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.HotJobs];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.HotJobs][(int)Globals.KPA_Categories.HotJobs.PrsNotonPO];
+                        HandleHotJobsDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
                     case 19:
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.HotJobs];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.HotJobs][(int)Globals.KPA_Categories.HotJobs.NoConfirmations];
+                        HandleHotJobsDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
                     case 20:
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.HotJobs];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.HotJobs][(int)Globals.KPA_Categories.HotJobs.LateToConfirmed];
                         HandleHotJobsDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 21: // 22 - 26 = Excess Stock - Stock
@@ -656,13 +711,13 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                     case 23:
                     case 24:
                     case 25:
-                        break;
+                        break; // not yet created
                     case 26: // 27 - 31 = Excess Stock - Open Orders
                     case 27:
                     case 28:
                     case 29:
                     case 30:
-                        break;
+                        break; // not yet created
                 }
             }
             catch(Exception)
@@ -694,7 +749,13 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                 switch (e.RowIndex)
                 {
                     case 0:
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.CurrPlanActual];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.CurrPlanActual][(int)Globals.KPA_Categories.CurrPlanVsActual.CurrPlanDateCurrConfDateOpenPO];
+                        HandleCurrentPlanVsActualDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
                     case 1:
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.CurrPlanActual];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.CurrPlanActual][(int)Globals.KPA_Categories.CurrPlanVsActual.CurrPlanDateCurrConfDateOpenPOHotJobs];
                         HandleCurrentPlanVsActualDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                 }

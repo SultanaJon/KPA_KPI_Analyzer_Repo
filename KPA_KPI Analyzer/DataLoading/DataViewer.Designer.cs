@@ -43,9 +43,6 @@
             this.pnl_TopUIPanel = new System.Windows.Forms.Panel();
             this.pnl_MainNavigation = new System.Windows.Forms.Panel();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
-            this.pnl_CountrySelectorButton = new System.Windows.Forms.Panel();
-            this.lbl_Country = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.bunifuCustomLabel3 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.pnl_SectionSelectorButton = new System.Windows.Forms.Panel();
             this.lbl_Section = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel27 = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -55,6 +52,12 @@
             this.pnl_CategorySelectorButton = new System.Windows.Forms.Panel();
             this.lbl_Category = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel29 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.pnl_CountrySelectorButton = new System.Windows.Forms.Panel();
+            this.lbl_Country = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel3 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lbl_date = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel2 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.dc_logoDragControl = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.dc_titlePanelDragControl = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.dc_titleDragControl = new Bunifu.Framework.UI.BunifuDragControl(this.components);
@@ -64,10 +67,11 @@
             this.pnl_TopUIPanel.SuspendLayout();
             this.pnl_MainNavigation.SuspendLayout();
             this.tableLayoutPanel14.SuspendLayout();
-            this.pnl_CountrySelectorButton.SuspendLayout();
             this.pnl_SectionSelectorButton.SuspendLayout();
             this.pnl_PerformanceSelectorButton.SuspendLayout();
             this.pnl_CategorySelectorButton.SuspendLayout();
+            this.pnl_CountrySelectorButton.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // topPanelDragCntl
@@ -214,20 +218,21 @@
             // 
             // tableLayoutPanel14
             // 
-            this.tableLayoutPanel14.ColumnCount = 7;
-            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 175F));
+            this.tableLayoutPanel14.ColumnCount = 9;
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1F));
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1F));
             this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 175F));
             this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1F));
             this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 275F));
             this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1F));
             this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel14.Controls.Add(this.pnl_SectionSelectorButton, 6, 0);
+            this.tableLayoutPanel14.Controls.Add(this.pnl_PerformanceSelectorButton, 4, 0);
+            this.tableLayoutPanel14.Controls.Add(this.pnl_CategorySelectorButton, 8, 0);
             this.tableLayoutPanel14.Controls.Add(this.pnl_CountrySelectorButton, 0, 0);
-            this.tableLayoutPanel14.Controls.Add(this.pnl_SectionSelectorButton, 4, 0);
-            this.tableLayoutPanel14.Controls.Add(this.pnl_PerformanceSelectorButton, 2, 0);
-            this.tableLayoutPanel14.Controls.Add(this.pnl_CategorySelectorButton, 6, 0);
+            this.tableLayoutPanel14.Controls.Add(this.panel1, 2, 0);
             this.tableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel14.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel14.Name = "tableLayoutPanel14";
@@ -236,45 +241,12 @@
             this.tableLayoutPanel14.Size = new System.Drawing.Size(1200, 51);
             this.tableLayoutPanel14.TabIndex = 0;
             // 
-            // pnl_CountrySelectorButton
-            // 
-            this.pnl_CountrySelectorButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.pnl_CountrySelectorButton.Controls.Add(this.lbl_Country);
-            this.pnl_CountrySelectorButton.Controls.Add(this.bunifuCustomLabel3);
-            this.pnl_CountrySelectorButton.Location = new System.Drawing.Point(0, 0);
-            this.pnl_CountrySelectorButton.Margin = new System.Windows.Forms.Padding(0);
-            this.pnl_CountrySelectorButton.Name = "pnl_CountrySelectorButton";
-            this.pnl_CountrySelectorButton.Size = new System.Drawing.Size(175, 50);
-            this.pnl_CountrySelectorButton.TabIndex = 0;
-            this.pnl_CountrySelectorButton.Tag = "1";
-            // 
-            // lbl_Country
-            // 
-            this.lbl_Country.AutoSize = true;
-            this.lbl_Country.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Country.ForeColor = System.Drawing.Color.White;
-            this.lbl_Country.Location = new System.Drawing.Point(10, 25);
-            this.lbl_Country.Name = "lbl_Country";
-            this.lbl_Country.Size = new System.Drawing.Size(77, 13);
-            this.lbl_Country.TabIndex = 0;
-            this.lbl_Country.Text = "No Selected";
-            // 
-            // bunifuCustomLabel3
-            // 
-            this.bunifuCustomLabel3.AutoSize = true;
-            this.bunifuCustomLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
-            this.bunifuCustomLabel3.Location = new System.Drawing.Point(10, 9);
-            this.bunifuCustomLabel3.Name = "bunifuCustomLabel3";
-            this.bunifuCustomLabel3.Size = new System.Drawing.Size(80, 13);
-            this.bunifuCustomLabel3.TabIndex = 0;
-            this.bunifuCustomLabel3.Text = "Current Country";
-            // 
             // pnl_SectionSelectorButton
             // 
             this.pnl_SectionSelectorButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
             this.pnl_SectionSelectorButton.Controls.Add(this.lbl_Section);
             this.pnl_SectionSelectorButton.Controls.Add(this.bunifuCustomLabel27);
-            this.pnl_SectionSelectorButton.Location = new System.Drawing.Point(352, 0);
+            this.pnl_SectionSelectorButton.Location = new System.Drawing.Point(428, 0);
             this.pnl_SectionSelectorButton.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_SectionSelectorButton.Name = "pnl_SectionSelectorButton";
             this.pnl_SectionSelectorButton.Size = new System.Drawing.Size(275, 50);
@@ -307,7 +279,7 @@
             this.pnl_PerformanceSelectorButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
             this.pnl_PerformanceSelectorButton.Controls.Add(this.lbl_Performance);
             this.pnl_PerformanceSelectorButton.Controls.Add(this.bunifuCustomLabel17);
-            this.pnl_PerformanceSelectorButton.Location = new System.Drawing.Point(176, 0);
+            this.pnl_PerformanceSelectorButton.Location = new System.Drawing.Point(252, 0);
             this.pnl_PerformanceSelectorButton.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_PerformanceSelectorButton.Name = "pnl_PerformanceSelectorButton";
             this.pnl_PerformanceSelectorButton.Size = new System.Drawing.Size(175, 50);
@@ -342,10 +314,10 @@
             this.pnl_CategorySelectorButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
             this.pnl_CategorySelectorButton.Controls.Add(this.lbl_Category);
             this.pnl_CategorySelectorButton.Controls.Add(this.bunifuCustomLabel29);
-            this.pnl_CategorySelectorButton.Location = new System.Drawing.Point(628, 0);
+            this.pnl_CategorySelectorButton.Location = new System.Drawing.Point(704, 0);
             this.pnl_CategorySelectorButton.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_CategorySelectorButton.Name = "pnl_CategorySelectorButton";
-            this.pnl_CategorySelectorButton.Size = new System.Drawing.Size(572, 50);
+            this.pnl_CategorySelectorButton.Size = new System.Drawing.Size(496, 50);
             this.pnl_CategorySelectorButton.TabIndex = 0;
             this.pnl_CategorySelectorButton.Tag = "4";
             // 
@@ -369,6 +341,72 @@
             this.bunifuCustomLabel29.Size = new System.Drawing.Size(86, 13);
             this.bunifuCustomLabel29.TabIndex = 0;
             this.bunifuCustomLabel29.Text = "Current Category";
+            // 
+            // pnl_CountrySelectorButton
+            // 
+            this.pnl_CountrySelectorButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.pnl_CountrySelectorButton.Controls.Add(this.lbl_Country);
+            this.pnl_CountrySelectorButton.Controls.Add(this.bunifuCustomLabel3);
+            this.pnl_CountrySelectorButton.Location = new System.Drawing.Point(0, 0);
+            this.pnl_CountrySelectorButton.Margin = new System.Windows.Forms.Padding(0);
+            this.pnl_CountrySelectorButton.Name = "pnl_CountrySelectorButton";
+            this.pnl_CountrySelectorButton.Size = new System.Drawing.Size(100, 50);
+            this.pnl_CountrySelectorButton.TabIndex = 0;
+            this.pnl_CountrySelectorButton.Tag = "1";
+            // 
+            // lbl_Country
+            // 
+            this.lbl_Country.AutoSize = true;
+            this.lbl_Country.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Country.ForeColor = System.Drawing.Color.White;
+            this.lbl_Country.Location = new System.Drawing.Point(10, 25);
+            this.lbl_Country.Name = "lbl_Country";
+            this.lbl_Country.Size = new System.Drawing.Size(72, 13);
+            this.lbl_Country.TabIndex = 0;
+            this.lbl_Country.Text = "Checking...";
+            // 
+            // bunifuCustomLabel3
+            // 
+            this.bunifuCustomLabel3.AutoSize = true;
+            this.bunifuCustomLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.bunifuCustomLabel3.Location = new System.Drawing.Point(10, 9);
+            this.bunifuCustomLabel3.Name = "bunifuCustomLabel3";
+            this.bunifuCustomLabel3.Size = new System.Drawing.Size(80, 13);
+            this.bunifuCustomLabel3.TabIndex = 0;
+            this.bunifuCustomLabel3.Text = "Current Country";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.panel1.Controls.Add(this.lbl_date);
+            this.panel1.Controls.Add(this.bunifuCustomLabel2);
+            this.panel1.Location = new System.Drawing.Point(101, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(150, 50);
+            this.panel1.TabIndex = 1;
+            this.panel1.Tag = "2";
+            // 
+            // lbl_date
+            // 
+            this.lbl_date.AutoSize = true;
+            this.lbl_date.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_date.ForeColor = System.Drawing.Color.White;
+            this.lbl_date.Location = new System.Drawing.Point(9, 25);
+            this.lbl_date.Name = "lbl_date";
+            this.lbl_date.Size = new System.Drawing.Size(72, 13);
+            this.lbl_date.TabIndex = 0;
+            this.lbl_date.Text = "Checking...";
+            // 
+            // bunifuCustomLabel2
+            // 
+            this.bunifuCustomLabel2.AutoSize = true;
+            this.bunifuCustomLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.bunifuCustomLabel2.Location = new System.Drawing.Point(9, 9);
+            this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
+            this.bunifuCustomLabel2.Size = new System.Drawing.Size(121, 13);
+            this.bunifuCustomLabel2.TabIndex = 0;
+            this.bunifuCustomLabel2.Text = "PRPO Generation Date:";
             // 
             // dc_logoDragControl
             // 
@@ -411,14 +449,16 @@
             this.pnl_TopUIPanel.ResumeLayout(false);
             this.pnl_MainNavigation.ResumeLayout(false);
             this.tableLayoutPanel14.ResumeLayout(false);
-            this.pnl_CountrySelectorButton.ResumeLayout(false);
-            this.pnl_CountrySelectorButton.PerformLayout();
             this.pnl_SectionSelectorButton.ResumeLayout(false);
             this.pnl_SectionSelectorButton.PerformLayout();
             this.pnl_PerformanceSelectorButton.ResumeLayout(false);
             this.pnl_PerformanceSelectorButton.PerformLayout();
             this.pnl_CategorySelectorButton.ResumeLayout(false);
             this.pnl_CategorySelectorButton.PerformLayout();
+            this.pnl_CountrySelectorButton.ResumeLayout(false);
+            this.pnl_CountrySelectorButton.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -451,5 +491,8 @@
         private Bunifu.Framework.UI.BunifuDragControl dc_logoDragControl;
         private Bunifu.Framework.UI.BunifuDragControl dc_titlePanelDragControl;
         private Bunifu.Framework.UI.BunifuDragControl dc_titleDragControl;
+        private System.Windows.Forms.Panel panel1;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_date;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel2;
     }
 }

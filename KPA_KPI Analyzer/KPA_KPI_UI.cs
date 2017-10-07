@@ -72,7 +72,7 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         public void ConfigureToUnitedStates()
         {
-            lbl_Country.Text = Values.Constants.unitedStates;
+            lbl_Country.Text = Values.Globals.countries[(int)Values.Globals.Countries.UnitedStates];
             Values.Globals.SelectedCountry = AccessInfo.MainTables.US_PRPO;
         }
 
@@ -85,7 +85,7 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         public void ConfigureToMexico()
         {
-            lbl_Country.Text = Values.Constants.mexico;
+            lbl_Country.Text = Values.Globals.countries[(int)Values.Globals.Countries.Mexico];
             Values.Globals.SelectedCountry = AccessInfo.MainTables.MX_PRPO;
         }
 
@@ -251,6 +251,8 @@ namespace KPA_KPI_Analyzer
                                     DataReader.LoadOverallData(ref overallData);
                                     dt = GetLoadedUsPrpoReportDate();
                                     lbl_dashboardDate.Text = dt.ToString("MMMM dd, yyyy");
+                                    lbl_topPanelNavPrpoDate.Text = dt.ToString("MMMM dd, yyyy");
+                                    Values.Globals.PrpoGenerationDate = lbl_topPanelNavPrpoDate.Text;
                                     InitializeFilterLoadProcess();
                                 }
                                 else
@@ -283,7 +285,10 @@ namespace KPA_KPI_Analyzer
                                 {
                                     DataReader.LoadOverallData(ref overallData);
                                     dt = GetLoadedMxPrpoReportDate();
-                                    lbl_dashboardDate.Text = dt.ToString("MMMM dd, yyyy"); InitializeFilterLoadProcess();
+                                    lbl_dashboardDate.Text = dt.ToString("MMMM dd, yyyy");
+                                    lbl_topPanelNavPrpoDate.Text = dt.ToString("MMMM dd, yyyy");
+                                    Values.Globals.PrpoGenerationDate = lbl_topPanelNavPrpoDate.Text;
+                                    InitializeFilterLoadProcess();
                                 }
                                 else
                                 {
@@ -312,6 +317,9 @@ namespace KPA_KPI_Analyzer
             {
                 if (settings == null)
                     settings = new ApplicationConfiguration.ApplicationConfig();
+
+                lbl_Country.Text = "Waiting...";
+                lbl_topPanelNavPrpoDate.Text = "Waiting...";
                 ShowPage(Pages.DragDropDash);
             }
         }

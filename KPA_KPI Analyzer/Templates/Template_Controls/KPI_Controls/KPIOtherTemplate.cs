@@ -103,7 +103,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             DatavizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            Globals.CurrCategory = "PRs Created";
+            Globals.CurrCategory = Globals.kpiCategories[(int)Globals.KPI_Sections.Other][(int)Globals.KPI_Categories.Other.PRsCreated];
             ChangeCategory();
         }
 
@@ -207,7 +207,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = "PRs Created";
+            Title = Globals.kpiCategories[(int)Globals.KPI_Sections.Other][(int)Globals.KPI_Categories.Other.PRsCreated];
             Globals.CurrCategory = Title;
             ChangeCategory();
 
@@ -270,7 +270,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = "PRs Released";
+            Title = Globals.kpiCategories[(int)Globals.KPI_Sections.Other][(int)Globals.KPI_Categories.Other.PRsReleased];
             Globals.CurrCategory = Title;
             ChangeCategory();
 
@@ -333,7 +333,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = "Total Spend";
+            Title = Globals.kpiCategories[(int)Globals.KPI_Sections.Other][(int)Globals.KPI_Categories.Other.TotalSpend];
             Globals.CurrCategory = Title;
             ChangeCategory();
 
@@ -395,7 +395,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = "PR vs PO Value";
+            Title = Globals.kpiCategories[(int)Globals.KPI_Sections.Other][(int)Globals.KPI_Categories.Other.PRValuevsPOValue];
             Globals.CurrCategory = Title;
             ChangeCategory();
 
@@ -458,7 +458,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = "Hot Job PRs";
+            Title = Globals.kpiCategories[(int)Globals.KPI_Sections.Other][(int)Globals.KPI_Categories.Other.HotJobPRs];
             Globals.CurrCategory = Title;
             ChangeCategory();
 

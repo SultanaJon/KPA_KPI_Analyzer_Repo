@@ -97,7 +97,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             DatavizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            Globals.CurrCategory = "PO Release vs PR Delivery Date";
+            Globals.CurrCategory = Globals.kpiCategories[(int)Globals.KPI_Sections.PurchPlan][(int)Globals.KPI_Categories.PurchPlan.POReleasevsPRDeliveryDate];
             ChangeCategory();
         }
 
@@ -189,7 +189,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = "PO Release vs PR Delivery Date";
+            Title = Globals.kpiCategories[(int)Globals.KPI_Sections.PurchPlan][(int)Globals.KPI_Categories.PurchPlan.POReleasevsPRDeliveryDate];
             Globals.CurrCategory = Title;
             ChangeCategory();
             
@@ -254,7 +254,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = "PR 2nd Level Release to Original Planned Delivery Date";
+            Title = Globals.kpiCategories[(int)Globals.KPI_Sections.PurchPlan][(int)Globals.KPI_Categories.PurchPlan.PR2ndLvlReleaseDatetoOriginalPlannedDeliveryDate];
             Globals.CurrCategory = Title;
             ChangeCategory();
 
