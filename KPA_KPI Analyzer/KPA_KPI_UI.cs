@@ -69,7 +69,7 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// 
+        /// Configure the application to the United States
         /// </summary>
         public void ConfigureToUnitedStates()
         {
@@ -82,7 +82,7 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// 
+        /// Configure the application to Mexico
         /// </summary>
         public void ConfigureToMexico()
         {
@@ -93,12 +93,18 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// 
+        /// Start the loading of the filters.
         /// </summary>
         public void InitializeFilterLoadProcess()
         {
+            DateTime today = DateTime.Now.Date;
+            dp_PRFromDate.Value = today;
+            dp_PRToDate.Value = today;
+            dp_POFromDate.Value = today;
+            dp_POToDate.Value = today;
+
             ShowPage(Pages.LoadingScreen);
-            lbl_loadingStatus.Text = "Loading Filters...";
+            cpb_loadingScreenCircProgBar.Text = "Loading Filters...";
             FilterUtils.FiltersLoaded = false;
             FilterUtils.FilterLoadProcessStarted = false;
             FiltersTimer.Start();
@@ -108,7 +114,7 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// 
+        /// Get the current United States Report date based on the data saved in the database.
         /// </summary>
         public bool GetCurrentUsPrpoReportDate()
         {
@@ -142,7 +148,7 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// 
+        /// Get the current Mexico PRPO Report date based on teh data saved in the database
         /// </summary>
         public bool GetCurrentMxPrpoReportDate()
         {
@@ -174,6 +180,19 @@ namespace KPA_KPI_Analyzer
 
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        private void InitializeProgramEvents()
+        {
+            FilterUtils.UpdateFilter += UpdateFilters;
+            PRPO_DB_Utils.RenewDataLoadTimer += RenewDataLoadTimer;
+            PRPO_DB_Utils.DisplayDragDropPage += ShowDragDropPage;
+        }
+
+
+
+
 
 
         /// <summary>
@@ -184,16 +203,22 @@ namespace KPA_KPI_Analyzer
         private void KPA_KPI_UI_Load(object sender, EventArgs e)
         {
             mainNavActiveBtn = btn_Dashboard; // set the active button as the first button (Dashboard)
-            FilterUtils.UpdateFilter += UpdateFilters;
-            PRPO_DB_Utils.RenewDataLoadTimer += RenewDataLoadTimer;
-            PRPO_DB_Utils.DisplayDragDropPage += ShowDragDropPage;
 
-            DateTime today = DateTime.Now.Date;
-            dp_PRFromDate.Value = today;
-            dp_PRToDate.Value = today;
-            dp_POFromDate.Value = today;
-            dp_POToDate.Value = today;
+            // Start the program base on the resource we have.
+            InitializeProgram();
+        }
 
+
+
+
+
+
+
+        /// <summary>
+        /// Configure the application based on the resources available to it.
+        /// </summary>
+        private void InitializeProgram()
+        {
             if (PRPO_DB_Utils.DatabaseConnection != null)
             {
                 try
@@ -212,9 +237,9 @@ namespace KPA_KPI_Analyzer
                         if (AppDirectoryUtils.DataFileExists(AppDirectoryUtils.OverallFiles.US_Overall))
                         {
                             // the file exists
-                            if(new FileInfo(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFiles.US_Overall]).Length > 0)
+                            if (new FileInfo(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFiles.US_Overall]).Length > 0)
                             {
-                                if(GetCurrentUsPrpoReportDate())
+                                if (GetCurrentUsPrpoReportDate())
                                 {
                                     DataReader.LoadOverallData(ref overallData);
                                     InitializeFilterLoadProcess();
@@ -226,7 +251,7 @@ namespace KPA_KPI_Analyzer
                             }
                             else
                             {
-                               // AppDirectoryUtils.CreateFile(AppDirectoryUtils.OverallFiles.US_Overall);
+                                // AppDirectoryUtils.CreateFile(AppDirectoryUtils.OverallFiles.US_Overall);
                                 InitializeDataLoadProcess();
                             }
                         }
@@ -243,9 +268,9 @@ namespace KPA_KPI_Analyzer
                         if (AppDirectoryUtils.DataFileExists(AppDirectoryUtils.OverallFiles.MX_Overall))
                         {
                             // the file exists
-                            if(new FileInfo(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFiles.MX_Overall]).Length > 0)
+                            if (new FileInfo(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFiles.MX_Overall]).Length > 0)
                             {
-                                if(GetCurrentMxPrpoReportDate())
+                                if (GetCurrentMxPrpoReportDate())
                                 {
                                     DataReader.LoadOverallData(ref overallData);
                                     InitializeFilterLoadProcess();
@@ -257,7 +282,7 @@ namespace KPA_KPI_Analyzer
                             }
                             else
                             {
-                               // AppDirectoryUtils.CreateFile(AppDirectoryUtils.OverallFiles.MX_Overall);
+                                // AppDirectoryUtils.CreateFile(AppDirectoryUtils.OverallFiles.MX_Overall);
                                 InitializeDataLoadProcess();
                             }
                         }
@@ -278,7 +303,6 @@ namespace KPA_KPI_Analyzer
             {
                 ShowPage(Pages.DragDropDash);
             }
-
         }
 
 
@@ -568,9 +592,6 @@ namespace KPA_KPI_Analyzer
 
 
 
-
-
-
         /// <summary>
         /// Used when data is being improted. This callback function will be used to display the drag drop page when an error occurs while improting or loading.
         /// </summary>
@@ -609,7 +630,7 @@ namespace KPA_KPI_Analyzer
         internal void InitializeDataLoadProcess()
         {
             ShowPage(Pages.LoadingScreen);
-            lbl_loadingStatus.Text = "Loading Data...";
+            cpb_loadingScreenCircProgBar.Text = "Loading Data...";
             overallData = new Overall();
             PRPO_DB_Utils.DataLoadProcessStarted = false;
             PRPO_DB_Utils.DataLoaded = false;

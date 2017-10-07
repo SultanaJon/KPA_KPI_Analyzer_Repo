@@ -56,7 +56,8 @@ namespace KPA_KPI_Analyzer.Diagnostics
         /// </summary>
         public enum ResourceFiles
         {
-            PRPO_Database
+            PRPO_Database,
+            Settings
         }
 
 
@@ -70,6 +71,7 @@ namespace KPA_KPI_Analyzer.Diagnostics
         public static string[] resourceFiles =
         {
             @"Resources\PRPODB.accdb",
+            @"Resources\Settings.json"
         };
 
 
@@ -184,44 +186,21 @@ namespace KPA_KPI_Analyzer.Diagnostics
 
 
 
-
-        /// <summary>
-        /// This function will build the Directory structure based on the directory that was supplied
-        /// </summary>
-        /// <param name="dir">The directory that needs to be built</param>
-        public static void BuildDirectoryStructure(Directories dir)
-        {
-            try
-            {
-                if (dir == Directories.ReportsFolder)
-                {
-                    foreach (Directories directory in Enum.GetValues(typeof(Directories)))
-                        Directory.CreateDirectory(DirectoryStructures[(int)directory]);
-                }
-                else if (dir == Directories.Overall)
-                    Directory.CreateDirectory(DirectoryStructures[(int)dir]);
-                else if (dir == Directories.ResourceFolder)
-                    Directory.CreateDirectory(DirectoryStructures[(int)dir]);
-                else if (dir == Directories.LogFolder)
-                    Directory.CreateDirectory(DirectoryStructures[(int)dir]);
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-
-
-
-
         /// <summary>
         /// Create the supplied type of log file
         /// </summary>
         /// <param name="file">The log file indexer that needs to be created.</param>
         internal static void CreateFile(LogFiles file)
         {
-            File.Create(Path.Combine(Configuration.AppDir, logFiles[(int)file]));
+            try
+            {
+                File.Create(Path.Combine(Configuration.AppDir, logFiles[(int)file]));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Log File(s) Creation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
         }
 
 
@@ -234,7 +213,35 @@ namespace KPA_KPI_Analyzer.Diagnostics
         /// <param name="file">The overall file indexer that needs to be created.</param>
         internal static void CreateFile(OverallFiles file)
         {
-            File.Create(Path.Combine(Configuration.AppDir, overallFiles[(int)file]));
+            try
+            {
+                File.Create(Path.Combine(Configuration.AppDir, overallFiles[(int)file]));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Overall Data Storage File Creation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
+        }
+
+
+
+
+        /// <summary>
+        /// Create the supplied type of resource data storage file (JSON)
+        /// </summary>
+        /// <param name="file"></param>
+        internal static void CreateFile(ResourceFiles file)
+        {
+            try
+            {
+                File.Create(Path.Combine(Configuration.AppDir, resourceFiles[(int)file]));
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Settings File Creation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
         }
     }
 }

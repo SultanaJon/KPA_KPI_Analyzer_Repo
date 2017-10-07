@@ -113,7 +113,7 @@ namespace KPA_KPI_Analyzer
                         AccessUtils.CreateAccessDB();
 
                     ShowPage(Pages.LoadingScreen);
-                    lbl_loadingStatus.Text = "Importing Data...";
+                    cpb_loadingScreenCircProgBar.Text = "Importing Data...";
                     ImportTimer.Start();
                 }
             }

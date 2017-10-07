@@ -1,73 +1,88 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Web.Script.Serialization;
+using System.IO;
+using KPA_KPI_Analyzer.Diagnostics;
 
 namespace KPA_KPI_Analyzer.ApplicatonConfiguration
 {
     /// <summary>
     /// This interface allows objects to save ther instance to a JSON file for storage.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    internal interface IStorable<T>
+    internal interface IStorable
     {
-        bool Save(T obj);
-        bool Load(T obj);
+        bool Save();
+        bool Load();
     }
 
 
-    public class ApplicationConfig : IStorable<ApplicationConfig>
+    public class ApplicationConfig : IStorable
     {
-        /// <summary>
-        /// Returns whether or no the US PRPO report has been loaded.
-        /// </summary>
-        public bool PrpoUsReportLoaded { get; set; }
-        
-
-        /// <summary>
-        /// Returns whether or not the MX PRPO report has been loaded.
-        /// </summary>
-        public bool PrpoMxReportLoaded { get; set; }
+        private static readonly JavaScriptSerializer ser = new JavaScriptSerializer();
+        private static string dataJSONString = string.Empty;
 
 
-        /// <summary>
-        /// The date of the current loaded US PRPO report
-        /// </summary>
-        public DateTime PrpoUsDate { get; set; }
+        public class ReportSettings
+        {
+            /// <summary>
+            /// Returns whether or no the US PRPO report has been loaded.
+            /// </summary>s
+            public bool PrpoUsReportLoaded { get; set; }
 
 
-        /// <summary>
-        /// The date of the current MX PRPO report loaded.
-        /// </summary>
-        public DateTime PrpoMxDate { get; set; }
+            /// <summary>
+            /// Returns whether or not the MX PRPO report has been loaded.
+            /// </summary>
+            public bool PrpoMxReportLoaded { get; set; }
 
 
-        /// <summary>
-        /// The last date the US PRPO report was loaded
-        /// </summary>
-        public DateTime PrpoUsLastLoadedDate { get; set; }
+            /// <summary>
+            /// The date of the current loaded US PRPO report
+            /// </summary>
+            public string PrpoUsDate { get; set; }
 
 
-
-        /// <summary>
-        /// The last date the MX PRPO report was loaded.
-        /// </summary>
-        public DateTime PrpoMxLastLoadedDate { get; set; }
-
+            /// <summary>
+            /// The date of the current MX PRPO report loaded.
+            /// </summary>
+            public string PrpoMxDate { get; set; }
 
 
-        /// <summary>
-        /// The name of the US PRPO report loaded into the application.
-        /// </summary>
-        public string PrpoUsReportFileName { get; set; }
+            /// <summary>
+            /// The last date the US PRPO report was loaded
+            /// </summary>
+            public string PrpoUsLastLoadedDate { get; set; }
 
 
 
-        /// <summary>
-        /// The name of the MX PRPO report loaded into the application.
-        /// </summary>
-        public string PrpoMxReportFileName { get; set; }
+            /// <summary>
+            /// The last date the MX PRPO report was loaded.
+            /// </summary>
+            public string PrpoMxLastLoadedDate { get; set; }
+
+
+
+            /// <summary>
+            /// The name of the US PRPO report loaded into the application.
+            /// </summary>
+            public string PrpoUsReportFileName { get; set; }
+
+
+
+            /// <summary>
+            /// The name of the MX PRPO report loaded into the application.
+            /// </summary>
+            public string PrpoMxReportFileName { get; set; }
+        }
+
+
+        public class CorrelationSettings
+        {
+            /// <summary>
+            /// Determines whether the correlation feature is turned on.
+            /// </summary>
+            public bool CorrelationOn { get; set; }
+        }
 
 
 
@@ -76,9 +91,19 @@ namespace KPA_KPI_Analyzer.ApplicatonConfiguration
         /// </summary>
         /// <param name="settings">the application settings to be saved.</param>
         /// <returns></returns>
-        public bool Save(ApplicationConfig settings)
+        public bool Save()
         {
-            return true;
+            try
+            {
+                dataJSONString = ser.Serialize(Values.Globals.settings);
+                File.WriteAllText(AppDirectoryUtils.resourceFiles[(int)AppDirectoryUtils.ResourceFiles.Settings], dataJSONString);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Settings File Saving Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
         }
 
 
@@ -88,9 +113,19 @@ namespace KPA_KPI_Analyzer.ApplicatonConfiguration
         /// </summary>
         /// <param name="settings">the application settings used to stored the settigns loaded.</param>
         /// <returns></returns>
-        public bool Load(ApplicationConfig settings)
+        public bool Load()
         {
-            return false;
+            try
+            {
+                dataJSONString = File.ReadAllText(AppDirectoryUtils.resourceFiles[(int)AppDirectoryUtils.ResourceFiles.Settings]);
+                Values.Globals.settings = ser.Deserialize<ApplicationConfig>(dataJSONString);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Settings File Loading Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
         }
     }
 }

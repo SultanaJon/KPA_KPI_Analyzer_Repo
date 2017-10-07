@@ -1268,9 +1268,7 @@ namespace KPA_KPI_Analyzer
             ResetFilters();
             UpdateFilterButtons();
             DataReader.LoadOverallData(ref overallData);
-            FilterUtils.FiltersLoaded = false;
-            FilterUtils.FilterLoadProcessStarted = false;
-            FiltersTimer.Start();
+            InitializeFilterLoadProcess();
         }
 
 

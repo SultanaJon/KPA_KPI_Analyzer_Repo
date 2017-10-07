@@ -252,18 +252,32 @@ namespace KPA_KPI_Analyzer
             lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Checking Application Files..."; });
             try
             {
-                foreach (var file in Enum.GetValues(typeof(Diagnostics.AppDirectoryUtils.ResourceFiles)))
+                foreach (Diagnostics.AppDirectoryUtils.ResourceFiles file in Enum.GetValues(typeof(Diagnostics.AppDirectoryUtils.ResourceFiles)))
                 {
                     if (!File.Exists(Path.Combine(Configuration.AppDir, Diagnostics.AppDirectoryUtils.resourceFiles[(int)file])))
                     {
                         lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Creating File - " + Diagnostics.AppDirectoryUtils.resourceFiles[(int)file]; });
-                        try
+
+                        if(file == Diagnostics.AppDirectoryUtils.ResourceFiles.PRPO_Database)
                         {
-                            AccessUtils.CreateAccessDB();
+                            try
+                            {
+                                AccessUtils.CreateAccessDB();
+                            }
+                            catch (Exception ex)
+                            {
+                                throw ex; // throw the exception thrown by AccesUtils
+                            }
                         }
-                        catch(Exception ex)
+                        else
                         {
-                            throw ex; // throw the exception thrown by AccesUtils
+                            if(file == Diagnostics.AppDirectoryUtils.ResourceFiles.Settings)
+                            {
+                                Diagnostics.AppDirectoryUtils.CreateFile(file);
+
+                                // Save the settings
+                                Values.Globals.settings = new ApplicatonConfiguration.ApplicationConfig();
+                            }
                         }
                     }
                 }
