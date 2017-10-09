@@ -177,6 +177,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
             Title = Globals.kpaCategories[(int)Globals.KPA_Sections.HotJobs][(int)Globals.KPA_Categories.HotJobs.PrsNotonPO];
             Globals.CurrCategory = Title;
+            Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.HotJobs];
             ChangeCategory();
 
             TimeBucketOne = overallData.kpa.hotJobs.prsNotOnPO.data.LessThanZero.ToString();
@@ -230,6 +231,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = Globals.kpaCategories[(int)Globals.KPA_Sections.HotJobs][(int)Globals.KPA_Categories.HotJobs.NoConfirmations];
             Globals.CurrCategory = Title;
+            Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.HotJobs];
             ChangeCategory();
 
             TimeBucketOne = overallData.kpa.hotJobs.noConfirmation.data.LessThanZero.ToString();
@@ -282,6 +284,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = Globals.kpaCategories[(int)Globals.KPA_Sections.HotJobs][(int)Globals.KPA_Categories.HotJobs.LateToConfirmed];
             Globals.CurrCategory = Title;
+            Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.HotJobs];
             ChangeCategory();
 
             TimeBucketOne = overallData.kpa.hotJobs.lateToConfirmed.data.LessThanZero.ToString();

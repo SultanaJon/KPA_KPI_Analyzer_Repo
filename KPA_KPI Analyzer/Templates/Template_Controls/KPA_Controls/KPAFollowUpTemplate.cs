@@ -170,6 +170,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
             Title = Globals.kpaCategories[(int)Globals.KPA_Sections.FollowUp][(int)Globals.KPA_Categories.FollowUp.ConfPlanDate];
             Globals.CurrCategory = Title;
+            Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.FollowUp];
             ChangeCategory();
             TimeBucketOne = overallData.kpa.followUp.confDateVsPlanDate.data.LessThanZero.ToString();
             TimeBucketTwo = overallData.kpa.followUp.confDateVsPlanDate.data.One_Three.ToString();
@@ -225,6 +226,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = Globals.kpaCategories[(int)Globals.KPA_Sections.FollowUp][(int)Globals.KPA_Categories.FollowUp.ConfDateUpcomingDel];
             Globals.CurrCategory = Title;
+            Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.FollowUp];
             ChangeCategory();
 
             TimeBucketOne = overallData.kpa.followUp.ConfDateForUpcomingDel.data.LessThanZero.ToString();
@@ -277,6 +279,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = Globals.kpaCategories[(int)Globals.KPA_Sections.FollowUp][(int)Globals.KPA_Categories.FollowUp.DueTodayLateConf];
             Globals.CurrCategory = Title;
+            Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.FollowUp];
             ChangeCategory();
 
             TimeBucketOne = overallData.kpa.followUp.LateToConfDate.data.LessThanZero.ToString();

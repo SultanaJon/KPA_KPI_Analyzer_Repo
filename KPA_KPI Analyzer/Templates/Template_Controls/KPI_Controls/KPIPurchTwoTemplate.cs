@@ -159,8 +159,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             btn_Three.selected = false;
 
             btn.selected = true;
-            DefaultButtonTextColor = System.Drawing.Color.DarkGray;
-            btn.Textcolor = System.Drawing.Color.Coral;
+            DefaultButtonTextColor = Color.DarkGray;
+            btn.Textcolor = Color.Coral;
 
 
             int tag = int.Parse(btn.Tag.ToString());
@@ -207,6 +207,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
             Title = Globals.kpiCategories[(int)Globals.KPI_Sections.PurchTwo][(int)Globals.KPI_Categories.PurchTwo.PR2ndLvlReleaseDatevsPOCreationDate];
             Globals.CurrCategory = Title;
+            Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.PurchTwo];
             ChangeCategory();
 
             TimeBucketOne = overallData.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.LessThanZero.ToString();
@@ -269,6 +270,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
             Title = Globals.kpiCategories[(int)Globals.KPI_Sections.PurchTwo][(int)Globals.KPI_Categories.PurchTwo.POCreationDatevsPOReleaseDate];
             Globals.CurrCategory = Title;
+            Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.PurchTwo];
             ChangeCategory();
 
             TimeBucketOne = overallData.kpi.purchTwo.poCreationVsPORel.data.LessThanZero.ToString();
@@ -336,6 +338,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
             Title = Globals.kpiCategories[(int)Globals.KPI_Sections.PurchTwo][(int)Globals.KPI_Categories.PurchTwo.POReleaseDatevsPOConfirmationDate];
             Globals.CurrCategory = Title;
+            Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.PurchTwo];
             ChangeCategory();
 
             TimeBucketOne = overallData.kpi.purchTwo.poRelVsPOConf.data.LessThanZero.ToString();

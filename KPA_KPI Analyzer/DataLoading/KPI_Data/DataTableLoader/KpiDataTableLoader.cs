@@ -3329,7 +3329,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                         DateTime pr2ndLvlRelDt = new DateTime(pr2ndLvlRelDtYear, pr2ndLvlRelDtMonth, pr2ndLvlRelDtDay);
                         DateTime today = DateTime.Now.Date;
-                        double elapsedDays = (today - pr2ndLvlRelDt).TotalDays;
+                        double elapsedDays = (pr2ndLvlRelDt - today).TotalDays;
                         double weeks = Math.Floor(elapsedDays / 7);
 
                         switch (tag)

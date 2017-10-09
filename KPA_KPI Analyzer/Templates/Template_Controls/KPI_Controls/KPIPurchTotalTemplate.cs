@@ -198,6 +198,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
             Title = Globals.kpiCategories[(int)Globals.KPI_Sections.PurchTotal][(int)Globals.KPI_Categories.PurchTotal.PRReleaseDatetoConfirmationEntryDate];
             Globals.CurrCategory = Title;
+            Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.PurchTotal];
             ChangeCategory();
 
             TimeBucketOne = overallData.kpi.purchTotal.prRelConfEntry.data.LessThanZero.ToString();

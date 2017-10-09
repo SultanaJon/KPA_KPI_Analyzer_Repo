@@ -191,6 +191,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
             Title = Globals.kpiCategories[(int)Globals.KPI_Sections.PurchPlan][(int)Globals.KPI_Categories.PurchPlan.POReleasevsPRDeliveryDate];
             Globals.CurrCategory = Title;
+            Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.PurchPlan];
             ChangeCategory();
             
             TimeBucketOne = overallData.kpi.purchPlan.poRelVsPRDelDate.data.LessThanZero.ToString();
@@ -256,6 +257,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
             Title = Globals.kpiCategories[(int)Globals.KPI_Sections.PurchPlan][(int)Globals.KPI_Categories.PurchPlan.PR2ndLvlReleaseDatetoOriginalPlannedDeliveryDate];
             Globals.CurrCategory = Title;
+            Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.PurchPlan];
             ChangeCategory();
 
             TimeBucketOne = overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.LessThanZero.ToString();

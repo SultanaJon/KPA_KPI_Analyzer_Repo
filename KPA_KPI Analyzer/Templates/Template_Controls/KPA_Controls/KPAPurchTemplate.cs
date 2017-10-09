@@ -195,6 +195,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
             Title = Globals.kpaCategories[(int)Globals.KPA_Sections.Purch][(int)Globals.KPA_Categories.Purch.PRsAgingRel];
             Globals.CurrCategory = Title;
+            Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.Purch];
             ChangeCategory();
             
             TimeBucketOne = overallData.kpa.purch.prsAgingRel.data.LessThanZero.ToString();
@@ -248,6 +249,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = Globals.kpaCategories[(int)Globals.KPA_Sections.Purch][(int)Globals.KPA_Categories.Purch.POFirstRelease];
             Globals.CurrCategory = Title;
+            Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.Purch];
             ChangeCategory();
 
             TimeBucketOne = overallData.kpa.purch.poFirstRel.data.LessThanZero.ToString();
@@ -300,6 +302,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = Globals.kpaCategories[(int)Globals.KPA_Sections.Purch][(int)Globals.KPA_Categories.Purch.POPrevRelease];
             Globals.CurrCategory = Title;
+            Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.PurchTotal];
             ChangeCategory();
 
             TimeBucketOne = overallData.kpa.purch.poPrevRel.data.LessThanZero.ToString();
@@ -353,6 +356,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = Globals.kpaCategories[(int)Globals.KPA_Sections.Purch][(int)Globals.KPA_Categories.Purch.NoConfirmation];
             Globals.CurrCategory = Title;
+            Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.PurchTotal];
             ChangeCategory();
 
             TimeBucketOne = overallData.kpa.purch.noConfirmation.data.LessThanZero.ToString();

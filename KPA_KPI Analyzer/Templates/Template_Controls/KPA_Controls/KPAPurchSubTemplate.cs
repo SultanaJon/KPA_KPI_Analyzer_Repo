@@ -183,6 +183,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
             Title = Globals.kpaCategories[(int)Globals.KPA_Sections.PurchSub][(int)Globals.KPA_Categories.PurchSub.PRReleasePORelease];
             Globals.CurrCategory = Title;
+            Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.PurchSub];
             ChangeCategory();
 
             TimeBucketOne = overallData.kpa.purchSub.prRelToPORel.data.LessThanZero.ToString();
@@ -238,6 +239,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = Globals.kpaCategories[(int)Globals.KPA_Sections.PurchSub][(int)Globals.KPA_Categories.PurchSub.POCreationCOnfEntry];
             Globals.CurrCategory = Title;
+            Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.PurchSub];
             ChangeCategory();
 
             TimeBucketOne = overallData.kpa.purchSub.POCreatToConfEntry.data.LessThanZero.ToString();

@@ -215,6 +215,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
             Title = "Initial Confirmation vs Current Confirmation";
             Globals.CurrCategory = Title;
+            Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.FollowUp];
             ChangeCategory();
 
             TotalOrders = overallData.kpi.followUp.initConfVsCurrConf.data.Total.ToString();
@@ -277,6 +278,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
             Title = "Final Confirmation Date vs Final Planned Date";
             Globals.CurrCategory = Title;
+            Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.FollowUp];
             ChangeCategory();
 
             TotalOrders = overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Total.ToString();
@@ -339,6 +341,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
             Title = "Receipt Date vs Current Planed Date";
             Globals.CurrCategory = Title;
+            Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.FollowUp];
             ChangeCategory();
 
             TotalOrders = overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Total.ToString();
@@ -397,6 +400,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
             Title = "Receipt Date vs Original Confirmed Date";
             Globals.CurrCategory = Title;
+            Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.FollowUp];
             ChangeCategory();
 
             TotalOrders = overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Total.ToString();
@@ -459,6 +463,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
             Title = "Receipt Date vs Current Confirmed Date";
             Globals.CurrCategory = Title;
+            Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.FollowUp];
             ChangeCategory();
 
             TotalOrders = overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Total.ToString();

@@ -209,6 +209,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
             Title = Globals.kpiCategories[(int)Globals.KPI_Sections.Other][(int)Globals.KPI_Categories.Other.PRsCreated];
             Globals.CurrCategory = Title;
+            Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.Other];
             ChangeCategory();
 
             TimeBucketOne = ((int)overallData.kpi.other.prsCreated.data.GreaterThanZeroWeeks).ToString();
@@ -272,6 +273,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
             Title = Globals.kpiCategories[(int)Globals.KPI_Sections.Other][(int)Globals.KPI_Categories.Other.PRsReleased];
             Globals.CurrCategory = Title;
+            Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.Other];
             ChangeCategory();
 
             TimeBucketOne = ((int)overallData.kpi.other.prsReleased.data.GreaterThanZeroWeeks).ToString();
@@ -335,6 +337,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
             Title = Globals.kpiCategories[(int)Globals.KPI_Sections.Other][(int)Globals.KPI_Categories.Other.TotalSpend];
             Globals.CurrCategory = Title;
+            Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.Other];
             ChangeCategory();
 
             TimeBucketOne = ((int)overallData.kpi.other.totalSpend.data.GreaterThanZeroWeeks).ToString();
@@ -397,6 +400,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
             Title = Globals.kpiCategories[(int)Globals.KPI_Sections.Other][(int)Globals.KPI_Categories.Other.PRValuevsPOValue];
             Globals.CurrCategory = Title;
+            Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.Other];
             ChangeCategory();
 
             TimeBucketOne = ((int)overallData.kpi.other.prVsPOValue.data.GreaterThanZeroWeeks).ToString();
@@ -460,6 +464,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
             Title = Globals.kpiCategories[(int)Globals.KPI_Sections.Other][(int)Globals.KPI_Categories.Other.HotJobPRs];
             Globals.CurrCategory = Title;
+            Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.Other];
             ChangeCategory();
 
             TimeBucketOne = ((int)overallData.kpi.other.hotJobPrs.data.GreaterThanZeroWeeks).ToString();

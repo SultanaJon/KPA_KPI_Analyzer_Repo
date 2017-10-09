@@ -190,6 +190,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
             Title = Globals.kpaCategories[(int)Globals.KPA_Sections.Plan][(int)Globals.KPA_Categories.Plan.PRsAgingNotRel];
             Globals.CurrCategory = Title;
+            Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.Plan];
             ChangeCategory();
 
             TimeBucketOne = overallData.kpa.plan.prsAgingNotRel.data.LessThanZero.ToString();
@@ -242,6 +243,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = Globals.kpaCategories[(int)Globals.KPA_Sections.Plan][(int)Globals.KPA_Categories.Plan.MaterialDue];
             Globals.CurrCategory = Title;
+            Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.Plan];
             ChangeCategory();
 
             TimeBucketOne = overallData.kpa.plan.matDueDate.data.LessThanZero.ToString();

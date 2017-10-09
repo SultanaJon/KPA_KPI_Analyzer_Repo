@@ -34,7 +34,7 @@ namespace KPA_KPI_Analyzer.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool IncludeCorrelation {
             get {
                 return ((bool)(this["IncludeCorrelation"]));

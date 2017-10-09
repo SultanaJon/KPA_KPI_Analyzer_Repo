@@ -66,6 +66,15 @@ namespace KPA_KPI_Analyzer
 
 
 
+        private void ConfigureSettings()
+        {
+            if(Properties.Settings.Default.IncludeCorrelation)
+            {
+            }
+        }
+
+
+
 
         /// <summary>
         /// Configure the application to the United States

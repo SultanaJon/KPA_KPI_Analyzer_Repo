@@ -1,8 +1,8 @@
-﻿using System;
-using System.Windows.Forms;
-using System.Web.Script.Serialization;
+﻿using KPA_KPI_Analyzer.Diagnostics;
+using System;
 using System.IO;
-using KPA_KPI_Analyzer.Diagnostics;
+using System.Web.Script.Serialization;
+using System.Windows.Forms;
 
 namespace KPA_KPI_Analyzer.ApplicationConfiguration
 {

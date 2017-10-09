@@ -92,11 +92,8 @@
             this.ImportTimer = new System.Windows.Forms.Timer(this.components);
             this.DataRemovalTimer = new System.Windows.Forms.Timer(this.components);
             this.pnl_activePage = new System.Windows.Forms.Panel();
-            this.pnl_loadingScreen = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.cpb_loadingScreenCircProgBar = new CircularProgressBar.CircularProgressBar();
             this.pnl_NavigationPanelMax = new System.Windows.Forms.Panel();
+            this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.pnl_KPISectionsPanel = new System.Windows.Forms.Panel();
             this.btn_kpiOther = new System.Windows.Forms.Button();
             this.btn_kpiPurchPlanTotal = new System.Windows.Forms.Button();
@@ -129,6 +126,10 @@
             this.btn_Dashboard = new Bunifu.Framework.UI.BunifuImageButton();
             this.btn_Charts = new Bunifu.Framework.UI.BunifuImageButton();
             this.btn_Filters = new Bunifu.Framework.UI.BunifuImageButton();
+            this.pnl_loadingScreen = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.cpb_loadingScreenCircProgBar = new CircularProgressBar.CircularProgressBar();
             this.tblpnl_DashbaordPage = new System.Windows.Forms.TableLayoutPanel();
             this.pnl_ViewPrintReports = new System.Windows.Forms.Panel();
             this.lbl_dashboardDate = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -193,9 +194,6 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.pnl_activePage.SuspendLayout();
-            this.pnl_loadingScreen.SuspendLayout();
-            this.tableLayoutPanel9.SuspendLayout();
-            this.panel9.SuspendLayout();
             this.pnl_NavigationPanelMax.SuspendLayout();
             this.pnl_KPISectionsPanel.SuspendLayout();
             this.pnl_KPASectionsPanel.SuspendLayout();
@@ -203,6 +201,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.btn_Dashboard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Charts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Filters)).BeginInit();
+            this.pnl_loadingScreen.SuspendLayout();
+            this.tableLayoutPanel9.SuspendLayout();
+            this.panel9.SuspendLayout();
             this.tblpnl_DashbaordPage.SuspendLayout();
             this.pnl_ViewPrintReports.SuspendLayout();
             this.tblpnl_DragDrop.SuspendLayout();
@@ -1130,9 +1131,9 @@
             // 
             // pnl_activePage
             // 
+            this.pnl_activePage.Controls.Add(this.pnl_NavigationPanelMax);
             this.pnl_activePage.Controls.Add(this.pnl_loadingScreen);
             this.pnl_activePage.Controls.Add(this.tblpnl_Filters);
-            this.pnl_activePage.Controls.Add(this.pnl_NavigationPanelMax);
             this.pnl_activePage.Controls.Add(this.tblpnl_DashbaordPage);
             this.pnl_activePage.Controls.Add(this.tblpnl_DragDrop);
             this.pnl_activePage.Controls.Add(this.pnl_CountrySelector);
@@ -1143,82 +1144,13 @@
             this.pnl_activePage.TabIndex = 44;
             this.pnl_activePage.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.pnl_activePage_ControlAdded);
             // 
-            // pnl_loadingScreen
-            // 
-            this.pnl_loadingScreen.Controls.Add(this.tableLayoutPanel9);
-            this.pnl_loadingScreen.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_loadingScreen.Location = new System.Drawing.Point(0, 0);
-            this.pnl_loadingScreen.Name = "pnl_loadingScreen";
-            this.pnl_loadingScreen.Size = new System.Drawing.Size(1200, 623);
-            this.pnl_loadingScreen.TabIndex = 0;
-            // 
-            // tableLayoutPanel9
-            // 
-            this.tableLayoutPanel9.ColumnCount = 3;
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 234F));
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.Controls.Add(this.panel9, 1, 1);
-            this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
-            this.tableLayoutPanel9.RowCount = 3;
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 234F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(1200, 623);
-            this.tableLayoutPanel9.TabIndex = 1;
-            // 
-            // panel9
-            // 
-            this.panel9.Controls.Add(this.cpb_loadingScreenCircProgBar);
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel9.Location = new System.Drawing.Point(483, 194);
-            this.panel9.Margin = new System.Windows.Forms.Padding(0);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(234, 234);
-            this.panel9.TabIndex = 0;
-            // 
-            // cpb_loadingScreenCircProgBar
-            // 
-            this.cpb_loadingScreenCircProgBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
-            this.cpb_loadingScreenCircProgBar.AnimationSpeed = 500;
-            this.cpb_loadingScreenCircProgBar.BackColor = System.Drawing.Color.Transparent;
-            this.cpb_loadingScreenCircProgBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.cpb_loadingScreenCircProgBar.ForeColor = System.Drawing.Color.Silver;
-            this.cpb_loadingScreenCircProgBar.InnerColor = System.Drawing.SystemColors.Control;
-            this.cpb_loadingScreenCircProgBar.InnerMargin = 2;
-            this.cpb_loadingScreenCircProgBar.InnerWidth = -1;
-            this.cpb_loadingScreenCircProgBar.Location = new System.Drawing.Point(2, 0);
-            this.cpb_loadingScreenCircProgBar.MarqueeAnimationSpeed = 1000;
-            this.cpb_loadingScreenCircProgBar.Name = "cpb_loadingScreenCircProgBar";
-            this.cpb_loadingScreenCircProgBar.OuterColor = System.Drawing.Color.Gainsboro;
-            this.cpb_loadingScreenCircProgBar.OuterMargin = -25;
-            this.cpb_loadingScreenCircProgBar.OuterWidth = 26;
-            this.cpb_loadingScreenCircProgBar.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
-            this.cpb_loadingScreenCircProgBar.ProgressWidth = 5;
-            this.cpb_loadingScreenCircProgBar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 36F);
-            this.cpb_loadingScreenCircProgBar.Size = new System.Drawing.Size(231, 234);
-            this.cpb_loadingScreenCircProgBar.StartAngle = 270;
-            this.cpb_loadingScreenCircProgBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.cpb_loadingScreenCircProgBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.cpb_loadingScreenCircProgBar.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
-            this.cpb_loadingScreenCircProgBar.SubscriptText = "";
-            this.cpb_loadingScreenCircProgBar.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.cpb_loadingScreenCircProgBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
-            this.cpb_loadingScreenCircProgBar.SuperscriptText = "";
-            this.cpb_loadingScreenCircProgBar.TabIndex = 1;
-            this.cpb_loadingScreenCircProgBar.Text = "Loading Data...";
-            this.cpb_loadingScreenCircProgBar.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
-            this.cpb_loadingScreenCircProgBar.Value = 36;
-            // 
             // pnl_NavigationPanelMax
             // 
             this.pnl_NavigationPanelMax.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.pnl_NavigationPanelMax.AutoSize = true;
             this.pnl_NavigationPanelMax.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.pnl_NavigationPanelMax.Controls.Add(this.bunifuFlatButton1);
             this.pnl_NavigationPanelMax.Controls.Add(this.pnl_KPISectionsPanel);
             this.pnl_NavigationPanelMax.Controls.Add(this.btn_KPI);
             this.pnl_NavigationPanelMax.Controls.Add(this.pnl_KPASectionsPanel);
@@ -1226,13 +1158,50 @@
             this.pnl_NavigationPanelMax.Controls.Add(this.flowLayoutPanel1);
             this.pnl_NavigationPanelMax.Location = new System.Drawing.Point(0, 0);
             this.pnl_NavigationPanelMax.Name = "pnl_NavigationPanelMax";
-            this.pnl_NavigationPanelMax.Size = new System.Drawing.Size(228, 724);
+            this.pnl_NavigationPanelMax.Size = new System.Drawing.Size(228, 772);
             this.pnl_NavigationPanelMax.TabIndex = 0;
             this.pnl_NavigationPanelMax.Leave += new System.EventHandler(this.pnl_NavigationPanelMax_Leave);
             // 
+            // bunifuFlatButton1
+            // 
+            this.bunifuFlatButton1.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(163)))), ((int)(((byte)(156)))));
+            this.bunifuFlatButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(204)))), ((int)(((byte)(153)))));
+            this.bunifuFlatButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuFlatButton1.BorderRadius = 0;
+            this.bunifuFlatButton1.ButtonText = "  Correlation";
+            this.bunifuFlatButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bunifuFlatButton1.DisabledColor = System.Drawing.Color.Gray;
+            this.bunifuFlatButton1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.bunifuFlatButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuFlatButton1.Iconcolor = System.Drawing.Color.Transparent;
+            this.bunifuFlatButton1.Iconimage = global::KPA_KPI_Analyzer.Properties.Resources.kpiLogo;
+            this.bunifuFlatButton1.Iconimage_right = null;
+            this.bunifuFlatButton1.Iconimage_right_Selected = null;
+            this.bunifuFlatButton1.Iconimage_Selected = null;
+            this.bunifuFlatButton1.IconMarginLeft = 0;
+            this.bunifuFlatButton1.IconMarginRight = 0;
+            this.bunifuFlatButton1.IconRightVisible = true;
+            this.bunifuFlatButton1.IconRightZoom = 0D;
+            this.bunifuFlatButton1.IconVisible = true;
+            this.bunifuFlatButton1.IconZoom = 90D;
+            this.bunifuFlatButton1.IsTab = false;
+            this.bunifuFlatButton1.Location = new System.Drawing.Point(0, 172);
+            this.bunifuFlatButton1.Margin = new System.Windows.Forms.Padding(0);
+            this.bunifuFlatButton1.Name = "bunifuFlatButton1";
+            this.bunifuFlatButton1.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(163)))), ((int)(((byte)(156)))));
+            this.bunifuFlatButton1.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(183)))), ((int)(((byte)(176)))));
+            this.bunifuFlatButton1.OnHoverTextColor = System.Drawing.Color.White;
+            this.bunifuFlatButton1.selected = false;
+            this.bunifuFlatButton1.Size = new System.Drawing.Size(228, 48);
+            this.bunifuFlatButton1.TabIndex = 21;
+            this.bunifuFlatButton1.Tag = "2";
+            this.bunifuFlatButton1.Text = "  Correlation";
+            this.bunifuFlatButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bunifuFlatButton1.Textcolor = System.Drawing.Color.White;
+            this.bunifuFlatButton1.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            // 
             // pnl_KPISectionsPanel
             // 
-            this.pnl_KPISectionsPanel.AutoSize = true;
             this.pnl_KPISectionsPanel.BackColor = System.Drawing.Color.Transparent;
             this.pnl_KPISectionsPanel.Controls.Add(this.btn_kpiOther);
             this.pnl_KPISectionsPanel.Controls.Add(this.btn_kpiPurchPlanTotal);
@@ -1246,10 +1215,10 @@
             this.pnl_KPISectionsPanel.Controls.Add(this.btn_kpiPlanOne);
             this.pnl_KPISectionsPanel.Controls.Add(this.btn_kpiOverall);
             this.pnl_KPISectionsPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnl_KPISectionsPanel.Location = new System.Drawing.Point(0, 471);
+            this.pnl_KPISectionsPanel.Location = new System.Drawing.Point(0, 172);
             this.pnl_KPISectionsPanel.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_KPISectionsPanel.Name = "pnl_KPISectionsPanel";
-            this.pnl_KPISectionsPanel.Size = new System.Drawing.Size(228, 253);
+            this.pnl_KPISectionsPanel.Size = new System.Drawing.Size(228, 0);
             this.pnl_KPISectionsPanel.TabIndex = 20;
             this.pnl_KPISectionsPanel.Visible = false;
             // 
@@ -1485,7 +1454,7 @@
             this.btn_KPI.IconVisible = true;
             this.btn_KPI.IconZoom = 90D;
             this.btn_KPI.IsTab = false;
-            this.btn_KPI.Location = new System.Drawing.Point(0, 423);
+            this.btn_KPI.Location = new System.Drawing.Point(0, 124);
             this.btn_KPI.Margin = new System.Windows.Forms.Padding(0);
             this.btn_KPI.Name = "btn_KPI";
             this.btn_KPI.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(163)))), ((int)(((byte)(156)))));
@@ -1503,7 +1472,6 @@
             // 
             // pnl_KPASectionsPanel
             // 
-            this.pnl_KPASectionsPanel.AutoSize = true;
             this.pnl_KPASectionsPanel.Controls.Add(this.btn_kpaCurrentPlanActual);
             this.pnl_KPASectionsPanel.Controls.Add(this.btn_kpaExcessStock_OpenOrder);
             this.pnl_KPASectionsPanel.Controls.Add(this.btn_kpaExcessStock_Stock);
@@ -1521,7 +1489,7 @@
             this.pnl_KPASectionsPanel.Location = new System.Drawing.Point(0, 124);
             this.pnl_KPASectionsPanel.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_KPASectionsPanel.Name = "pnl_KPASectionsPanel";
-            this.pnl_KPASectionsPanel.Size = new System.Drawing.Size(228, 299);
+            this.pnl_KPASectionsPanel.Size = new System.Drawing.Size(228, 0);
             this.pnl_KPASectionsPanel.TabIndex = 17;
             this.pnl_KPASectionsPanel.Visible = false;
             // 
@@ -1869,6 +1837,76 @@
             this.btn_Filters.Tag = "4";
             this.btn_Filters.Zoom = 0;
             this.btn_Filters.Click += new System.EventHandler(this.mainNavButton_Click);
+            // 
+            // pnl_loadingScreen
+            // 
+            this.pnl_loadingScreen.Controls.Add(this.tableLayoutPanel9);
+            this.pnl_loadingScreen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_loadingScreen.Location = new System.Drawing.Point(0, 0);
+            this.pnl_loadingScreen.Name = "pnl_loadingScreen";
+            this.pnl_loadingScreen.Size = new System.Drawing.Size(1200, 623);
+            this.pnl_loadingScreen.TabIndex = 0;
+            // 
+            // tableLayoutPanel9
+            // 
+            this.tableLayoutPanel9.ColumnCount = 3;
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 234F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel9.Controls.Add(this.panel9, 1, 1);
+            this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
+            this.tableLayoutPanel9.RowCount = 3;
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 234F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(1200, 623);
+            this.tableLayoutPanel9.TabIndex = 1;
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.cpb_loadingScreenCircProgBar);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel9.Location = new System.Drawing.Point(483, 194);
+            this.panel9.Margin = new System.Windows.Forms.Padding(0);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(234, 234);
+            this.panel9.TabIndex = 0;
+            // 
+            // cpb_loadingScreenCircProgBar
+            // 
+            this.cpb_loadingScreenCircProgBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.cpb_loadingScreenCircProgBar.AnimationSpeed = 500;
+            this.cpb_loadingScreenCircProgBar.BackColor = System.Drawing.Color.Transparent;
+            this.cpb_loadingScreenCircProgBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.cpb_loadingScreenCircProgBar.ForeColor = System.Drawing.Color.Silver;
+            this.cpb_loadingScreenCircProgBar.InnerColor = System.Drawing.SystemColors.Control;
+            this.cpb_loadingScreenCircProgBar.InnerMargin = 2;
+            this.cpb_loadingScreenCircProgBar.InnerWidth = -1;
+            this.cpb_loadingScreenCircProgBar.Location = new System.Drawing.Point(2, 0);
+            this.cpb_loadingScreenCircProgBar.MarqueeAnimationSpeed = 1000;
+            this.cpb_loadingScreenCircProgBar.Name = "cpb_loadingScreenCircProgBar";
+            this.cpb_loadingScreenCircProgBar.OuterColor = System.Drawing.Color.Gainsboro;
+            this.cpb_loadingScreenCircProgBar.OuterMargin = -25;
+            this.cpb_loadingScreenCircProgBar.OuterWidth = 26;
+            this.cpb_loadingScreenCircProgBar.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
+            this.cpb_loadingScreenCircProgBar.ProgressWidth = 5;
+            this.cpb_loadingScreenCircProgBar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 36F);
+            this.cpb_loadingScreenCircProgBar.Size = new System.Drawing.Size(231, 234);
+            this.cpb_loadingScreenCircProgBar.StartAngle = 270;
+            this.cpb_loadingScreenCircProgBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.cpb_loadingScreenCircProgBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.cpb_loadingScreenCircProgBar.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
+            this.cpb_loadingScreenCircProgBar.SubscriptText = "";
+            this.cpb_loadingScreenCircProgBar.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.cpb_loadingScreenCircProgBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
+            this.cpb_loadingScreenCircProgBar.SuperscriptText = "";
+            this.cpb_loadingScreenCircProgBar.TabIndex = 1;
+            this.cpb_loadingScreenCircProgBar.Text = "Loading Data...";
+            this.cpb_loadingScreenCircProgBar.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
+            this.cpb_loadingScreenCircProgBar.Value = 36;
             // 
             // tblpnl_DashbaordPage
             // 
@@ -2533,17 +2571,16 @@
             this.tableLayoutPanel7.PerformLayout();
             this.pnl_activePage.ResumeLayout(false);
             this.pnl_activePage.PerformLayout();
-            this.pnl_loadingScreen.ResumeLayout(false);
-            this.tableLayoutPanel9.ResumeLayout(false);
-            this.panel9.ResumeLayout(false);
             this.pnl_NavigationPanelMax.ResumeLayout(false);
-            this.pnl_NavigationPanelMax.PerformLayout();
             this.pnl_KPISectionsPanel.ResumeLayout(false);
             this.pnl_KPASectionsPanel.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btn_Dashboard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Charts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Filters)).EndInit();
+            this.pnl_loadingScreen.ResumeLayout(false);
+            this.tableLayoutPanel9.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
             this.tblpnl_DashbaordPage.ResumeLayout(false);
             this.pnl_ViewPrintReports.ResumeLayout(false);
             this.pnl_ViewPrintReports.PerformLayout();
@@ -2724,6 +2761,7 @@
         private System.Windows.Forms.Panel panel8;
         private Bunifu.Framework.UI.BunifuCustomLabel lbl_topPanelNavPrpoDate;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel21;
+        private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton1;
     }
 }
 
