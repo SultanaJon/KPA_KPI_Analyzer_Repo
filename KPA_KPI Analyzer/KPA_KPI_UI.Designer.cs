@@ -93,7 +93,7 @@
             this.DataRemovalTimer = new System.Windows.Forms.Timer(this.components);
             this.pnl_activePage = new System.Windows.Forms.Panel();
             this.pnl_NavigationPanelMax = new System.Windows.Forms.Panel();
-            this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btn_Correlation = new Bunifu.Framework.UI.BunifuFlatButton();
             this.pnl_KPISectionsPanel = new System.Windows.Forms.Panel();
             this.btn_kpiOther = new System.Windows.Forms.Button();
             this.btn_kpiPurchPlanTotal = new System.Windows.Forms.Button();
@@ -1150,7 +1150,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.pnl_NavigationPanelMax.AutoSize = true;
             this.pnl_NavigationPanelMax.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.pnl_NavigationPanelMax.Controls.Add(this.bunifuFlatButton1);
+            this.pnl_NavigationPanelMax.Controls.Add(this.btn_Correlation);
             this.pnl_NavigationPanelMax.Controls.Add(this.pnl_KPISectionsPanel);
             this.pnl_NavigationPanelMax.Controls.Add(this.btn_KPI);
             this.pnl_NavigationPanelMax.Controls.Add(this.pnl_KPASectionsPanel);
@@ -1162,43 +1162,43 @@
             this.pnl_NavigationPanelMax.TabIndex = 0;
             this.pnl_NavigationPanelMax.Leave += new System.EventHandler(this.pnl_NavigationPanelMax_Leave);
             // 
-            // bunifuFlatButton1
+            // btn_Correlation
             // 
-            this.bunifuFlatButton1.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(163)))), ((int)(((byte)(156)))));
-            this.bunifuFlatButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(204)))), ((int)(((byte)(153)))));
-            this.bunifuFlatButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bunifuFlatButton1.BorderRadius = 0;
-            this.bunifuFlatButton1.ButtonText = "  Correlation";
-            this.bunifuFlatButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuFlatButton1.DisabledColor = System.Drawing.Color.Gray;
-            this.bunifuFlatButton1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.bunifuFlatButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuFlatButton1.Iconcolor = System.Drawing.Color.Transparent;
-            this.bunifuFlatButton1.Iconimage = global::KPA_KPI_Analyzer.Properties.Resources.kpiLogo;
-            this.bunifuFlatButton1.Iconimage_right = null;
-            this.bunifuFlatButton1.Iconimage_right_Selected = null;
-            this.bunifuFlatButton1.Iconimage_Selected = null;
-            this.bunifuFlatButton1.IconMarginLeft = 0;
-            this.bunifuFlatButton1.IconMarginRight = 0;
-            this.bunifuFlatButton1.IconRightVisible = true;
-            this.bunifuFlatButton1.IconRightZoom = 0D;
-            this.bunifuFlatButton1.IconVisible = true;
-            this.bunifuFlatButton1.IconZoom = 90D;
-            this.bunifuFlatButton1.IsTab = false;
-            this.bunifuFlatButton1.Location = new System.Drawing.Point(0, 172);
-            this.bunifuFlatButton1.Margin = new System.Windows.Forms.Padding(0);
-            this.bunifuFlatButton1.Name = "bunifuFlatButton1";
-            this.bunifuFlatButton1.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(163)))), ((int)(((byte)(156)))));
-            this.bunifuFlatButton1.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(183)))), ((int)(((byte)(176)))));
-            this.bunifuFlatButton1.OnHoverTextColor = System.Drawing.Color.White;
-            this.bunifuFlatButton1.selected = false;
-            this.bunifuFlatButton1.Size = new System.Drawing.Size(228, 48);
-            this.bunifuFlatButton1.TabIndex = 21;
-            this.bunifuFlatButton1.Tag = "2";
-            this.bunifuFlatButton1.Text = "  Correlation";
-            this.bunifuFlatButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bunifuFlatButton1.Textcolor = System.Drawing.Color.White;
-            this.bunifuFlatButton1.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Correlation.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(163)))), ((int)(((byte)(156)))));
+            this.btn_Correlation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(204)))), ((int)(((byte)(153)))));
+            this.btn_Correlation.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_Correlation.BorderRadius = 0;
+            this.btn_Correlation.ButtonText = "  Correlation";
+            this.btn_Correlation.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Correlation.DisabledColor = System.Drawing.Color.Gray;
+            this.btn_Correlation.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_Correlation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Correlation.Iconcolor = System.Drawing.Color.Transparent;
+            this.btn_Correlation.Iconimage = global::KPA_KPI_Analyzer.Properties.Resources.kpiLogo;
+            this.btn_Correlation.Iconimage_right = null;
+            this.btn_Correlation.Iconimage_right_Selected = null;
+            this.btn_Correlation.Iconimage_Selected = null;
+            this.btn_Correlation.IconMarginLeft = 0;
+            this.btn_Correlation.IconMarginRight = 0;
+            this.btn_Correlation.IconRightVisible = true;
+            this.btn_Correlation.IconRightZoom = 0D;
+            this.btn_Correlation.IconVisible = true;
+            this.btn_Correlation.IconZoom = 90D;
+            this.btn_Correlation.IsTab = false;
+            this.btn_Correlation.Location = new System.Drawing.Point(0, 172);
+            this.btn_Correlation.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_Correlation.Name = "btn_Correlation";
+            this.btn_Correlation.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(163)))), ((int)(((byte)(156)))));
+            this.btn_Correlation.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(183)))), ((int)(((byte)(176)))));
+            this.btn_Correlation.OnHoverTextColor = System.Drawing.Color.White;
+            this.btn_Correlation.selected = false;
+            this.btn_Correlation.Size = new System.Drawing.Size(228, 48);
+            this.btn_Correlation.TabIndex = 21;
+            this.btn_Correlation.Tag = "2";
+            this.btn_Correlation.Text = "  Correlation";
+            this.btn_Correlation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Correlation.Textcolor = System.Drawing.Color.White;
+            this.btn_Correlation.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // pnl_KPISectionsPanel
             // 
@@ -2761,7 +2761,7 @@
         private System.Windows.Forms.Panel panel8;
         private Bunifu.Framework.UI.BunifuCustomLabel lbl_topPanelNavPrpoDate;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel21;
-        private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton1;
+        private Bunifu.Framework.UI.BunifuFlatButton btn_Correlation;
     }
 }
 

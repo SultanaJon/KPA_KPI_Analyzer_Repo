@@ -22,7 +22,6 @@ using System.Data.OleDb;
 using System.IO;
 using System.Windows.Forms;
 
-
 namespace KPA_KPI_Analyzer
 {
     public partial class KPA_KPI_UI : Form
@@ -684,6 +683,14 @@ namespace KPA_KPI_Analyzer
         {
             DataLoaderTimer.Tick -= DataLoaderTimer_Tick;
             DataLoaderTimer.Tick += DataLoaderTimer_Tick;
+        }
+
+
+
+
+
+        private void btn_Correlation_Click(object sender, EventArgs e)
+        {
         }
     }
 }
