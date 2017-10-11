@@ -123,6 +123,17 @@ namespace KPA_KPI_Analyzer
                     toggleMainNavSection(tag);
                     ShowPage(Pages.Filters);
                     break;
+                case 5:
+                    using (Correlation.CorrelationConfiguration corrWind = new Correlation.CorrelationConfiguration())
+                    {
+                        Hide();
+                        if (corrWind.ShowDialog() == DialogResult.Cancel)
+                        {
+                            corrWind.Close();
+                            Show();
+                        }
+                    }
+                        break;
                 default:
                     break;
             }

@@ -396,10 +396,10 @@ namespace KPA_KPI_Analyzer.FilterFeeature
         /// </summary>
         /// <param name="dr">The data row we are usin to get the data for this specific PR or PO line.</param>
         /// <returns>Returns a boolean indicating whether or no the PO line creation date is within the spcified filter dates</returns>
-        public static bool PoCreateDateInRange(DataRow dr)
+        public static bool PoCreateDateInRange(string createDate, string qtyOrdered)
         {
             // The user wnats to filter by PO date range
-            string[] strPoLineCreateDate = (dr["PO Line Creat#DT"].ToString()).Split('/');
+            string[] strPoLineCreateDate = createDate.Split('/');
             int poYear = int.Parse(strPoLineCreateDate[2]);
             int poMonth = int.Parse(strPoLineCreateDate[0]);
             int poDay = int.Parse(strPoLineCreateDate[1]);
@@ -412,7 +412,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             else
             {
                 // This record shows as a PO but was it removed from the PO?
-                if (dr["Qty Ordered"].ToString() == "0")
+                if (qtyOrdered == "0")
                     return false;
                 else
                 {
@@ -441,10 +441,10 @@ namespace KPA_KPI_Analyzer.FilterFeeature
         /// </summary>
         /// <param name="dr">The data row we are usin to get the data for this specific PR or PO line.</param>
         /// <returns>Returns a boolean indicating whether or no the Requisition date is within the specified filter dates.</returns>
-        public static bool PrDateInRange(DataRow dr)
+        public static bool PrDateInRange(string date)
         {
             // The user wants to filter by PR date range
-            string[] requisnDate = (dr["Requisn Date"].ToString()).Split('/');
+            string[] requisnDate = date.Split('/');
             int reqYear = int.Parse(requisnDate[2]);
             int reqMonth = int.Parse(requisnDate[0].TrimStart('0'));
             int reqDay = int.Parse(requisnDate[1].TrimStart('0'));

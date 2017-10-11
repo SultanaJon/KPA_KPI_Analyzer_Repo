@@ -310,5 +310,97 @@ namespace KPA_KPI_Analyzer.Values
             new string[] { "PRs Created", "PRs Released", "Total Spend", "PR Value vs PO Value", "Hot Job PRs"},
         };
 
+
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public enum CorrelationMatrixIndexer
+        {
+            PoQty,
+            PrQty,
+            PrPrice,
+            PrPosValue,
+            PoNetPrice,
+            PoValue,
+            PriceUnit,
+            PlDelivTime,
+            QtyOrdered,
+            Delivered,
+            QtyConf,
+            PoSourceTime,
+            OpenPrQty
+        }
+
+
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static string[] correlationHeaders =
+        {
+            "PO Qty",
+            "PR Qty",
+            "PR Price",
+            "PR Pos Val",
+            "PO Net Price",
+            "PO Val",
+            "Price Unit",
+            "Plan Del Time",
+            "Qty Ordered",
+            "Delivered",
+            "Qty Conf",
+            "PO Src Time",
+            "Open PR Qty"
+        };
+
+
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static string[] correlationQueryHeaders =
+        {
+            "PO Qty",
+            "PR Qty",
+            "PR Price",
+            "PR Pos#Value",
+            "PO Net Price",
+            "PO Value",
+            "Price Unit",
+            "Pl# Deliv# Time",
+            "Qty Ordered",
+            "Delivered",
+            "Qty Conf#",
+            "PO Source Time",
+            "Open PR Qty"
+        };
+
+
+
+
+        public enum CorrelationDateRangeFilters
+        {
+            RequisitionDate,
+            PoLineCreateDate,
+            QtyOrdered
+        }
+
+
+        public static string[] correlationDateRangeFilters =
+        {
+            "Requisn Date",
+            "PO Line Creat#DT",
+            "Qty Ordered"
+        };
     }
 }

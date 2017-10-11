@@ -65,7 +65,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                 {
                     if (Filters.FilterByPrDateRange)
                     {
-                        if (!FilterUtils.PrDateInRange(dr))
+                        if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
                         {
                             // The PR Date was not in range of the filter the user applied.
                             continue;
@@ -74,7 +74,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
 
                     if (Filters.FilterByPoDateRange)
                     {
-                        if (!FilterUtils.PoCreateDateInRange(dr))
+                        if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
                         {
                             // The PO Date was not in range of the filter the user applied.
                             continue;

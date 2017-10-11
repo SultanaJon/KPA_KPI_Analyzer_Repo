@@ -17,6 +17,8 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
         public static DataTable pr2ndLvlRelDateDt;
         public static DataTable AllDt;
 
+        public static DataSet ds;
+
         private static readonly List<string> errorList = new List<string>();
 
         public delegate void RenewDataLoadTimerHandler();
@@ -61,8 +63,6 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
         /// Boolean used to indicate whether or not the KPI tables are loaded.
         /// </summary>
         public static bool KPITablesLoaded { get; set; }
-
-
 
 
 
@@ -302,6 +302,37 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
                 MessageBox.Show(ex.Message, "KPI Data Load");
                 throw new ThreadInteruptedException();
             }
+        }
+
+
+
+
+        public static void LoadCorrelationFields()
+        {
+            DataTable tempDt = new DataTable();
+            ds = new DataSet();
+
+
+            using (OleDbCommand cmd = new OleDbCommand() { Connection = PRPO_DB_Utils.DatabaseConnection })
+            {
+                using (OleDbDataAdapter da = new OleDbDataAdapter())
+                {
+                    foreach (Values.Globals.CorrelationMatrixIndexer index in Enum.GetValues(typeof(Values.Globals.CorrelationMatrixIndexer)))
+                    {
+                        tempDt = new DataTable();
+                        cmd.CommandText = "SELECT " + Values.Globals.SelectedCountry + ".[" + Values.Globals.correlationQueryHeaders[(int)index] + "], " + Values.Globals.SelectedCountry + ".[" + Values.Globals.correlationDateRangeFilters[(int)Values.Globals.CorrelationDateRangeFilters.RequisitionDate] + "]," + Values.Globals.SelectedCountry + ".[" + Values.Globals.correlationDateRangeFilters[(int)Values.Globals.CorrelationDateRangeFilters.PoLineCreateDate] + "], " + Values.Globals.SelectedCountry + ".[" + Values.Globals.correlationDateRangeFilters[(int)Values.Globals.CorrelationDateRangeFilters.QtyOrdered] + "] FROM " + Values.Globals.SelectedCountry;
+                        da.SelectCommand = cmd;
+                        da.Fill(tempDt);
+                        tempDt.TableName = Values.Globals.correlationHeaders[(int)index];
+                        if (!ds.Tables.Contains(Values.Globals.correlationHeaders[(int)index]))
+                        {
+                            ds.Tables.Add(tempDt);
+                        }
+                    }
+                }
+            }
+
+            Correlation.CorrelationLoaderUtils.TablesLoaded = true;
         }
     }
 }
