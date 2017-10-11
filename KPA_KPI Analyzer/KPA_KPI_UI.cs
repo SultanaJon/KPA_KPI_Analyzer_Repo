@@ -122,7 +122,7 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// 
+        /// Initializes callback functions used while in seperate threads of execution.
         /// </summary>
         private void InitializeProgramEvents()
         {
@@ -154,7 +154,7 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// 
+        /// Returns the last time (in a DateTime format) of when the data was reloaded for the US PRPO report
         /// </summary>
         /// <returns></returns>
         public DateTime GetLastLoadedUsPrpoReportDate()
@@ -173,7 +173,7 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// 
+        /// Returns the last time (in a DateTime format) of when the data was reloaded for the MX PRPO report
         /// </summary>
         /// <returns></returns>
         public DateTime GetLastLoadedMxPrpoReportDate()
@@ -192,7 +192,7 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// 
+        /// Returns the date (in a DateTime format) of the loaded US PRPO report.
         /// </summary>
         /// <returns></returns>
         public DateTime GetLoadedUsPrpoReportDate()
@@ -211,7 +211,7 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// 
+        /// Returns the date (in a DateTime format) of the loaded US PRPO report.
         /// </summary>
         /// <returns></returns>
         public DateTime GetLoadedMxPrpoReportDate()
@@ -592,6 +592,7 @@ namespace KPA_KPI_Analyzer
                     tblpnl_DashbaordPage.BringToFront();
                     break;
                 case 1:
+                    NavigationLocked = true;
                     tblpnl_DragDrop.Visible = true;
                     tblpnl_DragDrop.BringToFront();
                     break;
@@ -689,8 +690,65 @@ namespace KPA_KPI_Analyzer
 
 
 
+
+
         private void btn_Correlation_Click(object sender, EventArgs e)
         {
+        }
+
+
+
+
+
+
+
+        /// <summary>
+        /// Closes the running process.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Close the application
+            Application.Exit();
+        }
+
+
+
+        
+
+        /// <summary>
+        /// Shows the drag drop screen.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void analysisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowPage(Pages.DragDropDash);
+        }
+
+
+
+
+
+
+        /// <summary>
+        /// Shows the drag drop screen.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void importToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowPage(Pages.DragDropDash);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            using(DataLoading.LoadingWindow wind = new DataLoading.LoadingWindow())
+            {
+                wind.StartPosition = FormStartPosition.CenterScreen;
+                wind.ShowDialog();
+            }
         }
     }
 }

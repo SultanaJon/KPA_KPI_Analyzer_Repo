@@ -31,6 +31,17 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KPA_KPI_UI));
             this.dc_MainUI = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.pnl_menuStrip = new System.Windows.Forms.Panel();
+            this.ms_applicaitonMenuStrip = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newAnalysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.analysisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripSeparator();
+            this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnl_topPanel = new System.Windows.Forms.Panel();
             this.pnl_Minimize = new System.Windows.Forms.Panel();
             this.pnl_Maximize = new System.Windows.Forms.Panel();
@@ -92,6 +103,10 @@
             this.ImportTimer = new System.Windows.Forms.Timer(this.components);
             this.DataRemovalTimer = new System.Windows.Forms.Timer(this.components);
             this.pnl_activePage = new System.Windows.Forms.Panel();
+            this.pnl_loadingScreen = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.cpb_loadingScreenCircProgBar = new CircularProgressBar.CircularProgressBar();
             this.pnl_NavigationPanelMax = new System.Windows.Forms.Panel();
             this.btn_Correlation = new Bunifu.Framework.UI.BunifuFlatButton();
             this.pnl_KPISectionsPanel = new System.Windows.Forms.Panel();
@@ -126,10 +141,6 @@
             this.btn_Dashboard = new Bunifu.Framework.UI.BunifuImageButton();
             this.btn_Charts = new Bunifu.Framework.UI.BunifuImageButton();
             this.btn_Filters = new Bunifu.Framework.UI.BunifuImageButton();
-            this.pnl_loadingScreen = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.cpb_loadingScreenCircProgBar = new CircularProgressBar.CircularProgressBar();
             this.tblpnl_DashbaordPage = new System.Windows.Forms.TableLayoutPanel();
             this.pnl_ViewPrintReports = new System.Windows.Forms.Panel();
             this.lbl_dashboardDate = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -176,6 +187,10 @@
             this.dc_logo = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.dc_title = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.dc_titlePanel = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.pnl_menuStrip.SuspendLayout();
+            this.ms_applicaitonMenuStrip.SuspendLayout();
             this.pnl_topPanel.SuspendLayout();
             this.pnl_titlePanel.SuspendLayout();
             this.tblpnl_Filters.SuspendLayout();
@@ -192,6 +207,9 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.pnl_activePage.SuspendLayout();
+            this.pnl_loadingScreen.SuspendLayout();
+            this.tableLayoutPanel9.SuspendLayout();
+            this.panel9.SuspendLayout();
             this.pnl_NavigationPanelMax.SuspendLayout();
             this.pnl_KPISectionsPanel.SuspendLayout();
             this.pnl_KPASectionsPanel.SuspendLayout();
@@ -199,9 +217,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btn_Dashboard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Charts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Filters)).BeginInit();
-            this.pnl_loadingScreen.SuspendLayout();
-            this.tableLayoutPanel9.SuspendLayout();
-            this.panel9.SuspendLayout();
             this.tblpnl_DashbaordPage.SuspendLayout();
             this.pnl_ViewPrintReports.SuspendLayout();
             this.tblpnl_DragDrop.SuspendLayout();
@@ -226,12 +241,107 @@
             // 
             this.dc_MainUI.Fixed = true;
             this.dc_MainUI.Horizontal = true;
-            this.dc_MainUI.TargetControl = this.pnl_topPanel;
+            this.dc_MainUI.TargetControl = this.pnl_menuStrip;
             this.dc_MainUI.Vertical = true;
+            // 
+            // pnl_menuStrip
+            // 
+            this.pnl_menuStrip.Controls.Add(this.ms_applicaitonMenuStrip);
+            this.pnl_menuStrip.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_menuStrip.Location = new System.Drawing.Point(160, 0);
+            this.pnl_menuStrip.Name = "pnl_menuStrip";
+            this.pnl_menuStrip.Size = new System.Drawing.Size(890, 25);
+            this.pnl_menuStrip.TabIndex = 5;
+            this.pnl_menuStrip.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pnl_TopPanel_MouseDoubleClick);
+            // 
+            // ms_applicaitonMenuStrip
+            // 
+            this.ms_applicaitonMenuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.ms_applicaitonMenuStrip.Dock = System.Windows.Forms.DockStyle.None;
+            this.ms_applicaitonMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.toolsToolStripMenuItem,
+            this.helpToolStripMenuItem});
+            this.ms_applicaitonMenuStrip.Location = new System.Drawing.Point(0, 0);
+            this.ms_applicaitonMenuStrip.Name = "ms_applicaitonMenuStrip";
+            this.ms_applicaitonMenuStrip.Size = new System.Drawing.Size(136, 24);
+            this.ms_applicaitonMenuStrip.TabIndex = 0;
+            this.ms_applicaitonMenuStrip.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newAnalysisToolStripMenuItem,
+            this.exitToolStripMenuItem,
+            this.exitToolStripMenuItem1});
+            this.fileToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // newAnalysisToolStripMenuItem
+            // 
+            this.newAnalysisToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.analysisToolStripMenuItem});
+            this.newAnalysisToolStripMenuItem.Name = "newAnalysisToolStripMenuItem";
+            this.newAnalysisToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.newAnalysisToolStripMenuItem.Text = "New";
+            // 
+            // analysisToolStripMenuItem
+            // 
+            this.analysisToolStripMenuItem.Name = "analysisToolStripMenuItem";
+            this.analysisToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.analysisToolStripMenuItem.Text = "Analysis";
+            this.analysisToolStripMenuItem.Click += new System.EventHandler(this.analysisToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(95, 6);
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem1
+            // 
+            this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(98, 22);
+            this.exitToolStripMenuItem1.Text = "Exit";
+            this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // toolsToolStripMenuItem
+            // 
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.importToolStripMenuItem});
+            this.toolsToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.toolsToolStripMenuItem.Text = "Tools";
+            // 
+            // importToolStripMenuItem
+            // 
+            this.importToolStripMenuItem.Name = "importToolStripMenuItem";
+            this.importToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.importToolStripMenuItem.Text = "Import";
+            this.importToolStripMenuItem.Click += new System.EventHandler(this.importToolStripMenuItem_Click);
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem});
+            this.helpToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem.Text = "About";
             // 
             // pnl_topPanel
             // 
             this.pnl_topPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.pnl_topPanel.Controls.Add(this.pnl_menuStrip);
             this.pnl_topPanel.Controls.Add(this.pnl_Minimize);
             this.pnl_topPanel.Controls.Add(this.pnl_Maximize);
             this.pnl_topPanel.Controls.Add(this.pnl_Close);
@@ -1129,9 +1239,9 @@
             // 
             // pnl_activePage
             // 
+            this.pnl_activePage.Controls.Add(this.pnl_loadingScreen);
             this.pnl_activePage.Controls.Add(this.pnl_NavigationPanelMax);
             this.pnl_activePage.Controls.Add(this.tblpnl_Filters);
-            this.pnl_activePage.Controls.Add(this.pnl_loadingScreen);
             this.pnl_activePage.Controls.Add(this.tblpnl_DashbaordPage);
             this.pnl_activePage.Controls.Add(this.tblpnl_DragDrop);
             this.pnl_activePage.Controls.Add(this.pnl_CountrySelector);
@@ -1141,6 +1251,76 @@
             this.pnl_activePage.Size = new System.Drawing.Size(1200, 623);
             this.pnl_activePage.TabIndex = 44;
             this.pnl_activePage.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.pnl_activePage_ControlAdded);
+            // 
+            // pnl_loadingScreen
+            // 
+            this.pnl_loadingScreen.Controls.Add(this.tableLayoutPanel9);
+            this.pnl_loadingScreen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_loadingScreen.Location = new System.Drawing.Point(0, 0);
+            this.pnl_loadingScreen.Name = "pnl_loadingScreen";
+            this.pnl_loadingScreen.Size = new System.Drawing.Size(1200, 623);
+            this.pnl_loadingScreen.TabIndex = 0;
+            // 
+            // tableLayoutPanel9
+            // 
+            this.tableLayoutPanel9.ColumnCount = 3;
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 234F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel9.Controls.Add(this.panel9, 1, 1);
+            this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
+            this.tableLayoutPanel9.RowCount = 3;
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 234F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(1200, 623);
+            this.tableLayoutPanel9.TabIndex = 1;
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.cpb_loadingScreenCircProgBar);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel9.Location = new System.Drawing.Point(483, 194);
+            this.panel9.Margin = new System.Windows.Forms.Padding(0);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(234, 234);
+            this.panel9.TabIndex = 0;
+            // 
+            // cpb_loadingScreenCircProgBar
+            // 
+            this.cpb_loadingScreenCircProgBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.cpb_loadingScreenCircProgBar.AnimationSpeed = 500;
+            this.cpb_loadingScreenCircProgBar.BackColor = System.Drawing.Color.Transparent;
+            this.cpb_loadingScreenCircProgBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.cpb_loadingScreenCircProgBar.ForeColor = System.Drawing.Color.Silver;
+            this.cpb_loadingScreenCircProgBar.InnerColor = System.Drawing.SystemColors.Control;
+            this.cpb_loadingScreenCircProgBar.InnerMargin = 2;
+            this.cpb_loadingScreenCircProgBar.InnerWidth = -1;
+            this.cpb_loadingScreenCircProgBar.Location = new System.Drawing.Point(2, 0);
+            this.cpb_loadingScreenCircProgBar.MarqueeAnimationSpeed = 1000;
+            this.cpb_loadingScreenCircProgBar.Name = "cpb_loadingScreenCircProgBar";
+            this.cpb_loadingScreenCircProgBar.OuterColor = System.Drawing.Color.Gainsboro;
+            this.cpb_loadingScreenCircProgBar.OuterMargin = -25;
+            this.cpb_loadingScreenCircProgBar.OuterWidth = 26;
+            this.cpb_loadingScreenCircProgBar.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
+            this.cpb_loadingScreenCircProgBar.ProgressWidth = 5;
+            this.cpb_loadingScreenCircProgBar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 36F);
+            this.cpb_loadingScreenCircProgBar.Size = new System.Drawing.Size(231, 234);
+            this.cpb_loadingScreenCircProgBar.StartAngle = 270;
+            this.cpb_loadingScreenCircProgBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.cpb_loadingScreenCircProgBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.cpb_loadingScreenCircProgBar.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
+            this.cpb_loadingScreenCircProgBar.SubscriptText = "";
+            this.cpb_loadingScreenCircProgBar.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.cpb_loadingScreenCircProgBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
+            this.cpb_loadingScreenCircProgBar.SuperscriptText = "";
+            this.cpb_loadingScreenCircProgBar.TabIndex = 1;
+            this.cpb_loadingScreenCircProgBar.Text = "Loading Data...";
+            this.cpb_loadingScreenCircProgBar.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
+            this.cpb_loadingScreenCircProgBar.Value = 36;
             // 
             // pnl_NavigationPanelMax
             // 
@@ -1197,6 +1377,7 @@
             this.btn_Correlation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_Correlation.Textcolor = System.Drawing.Color.White;
             this.btn_Correlation.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Correlation.Visible = false;
             this.btn_Correlation.Click += new System.EventHandler(this.mainNavButton_Click);
             // 
             // pnl_KPISectionsPanel
@@ -1839,76 +2020,6 @@
             this.btn_Filters.Zoom = 0;
             this.btn_Filters.Click += new System.EventHandler(this.mainNavButton_Click);
             // 
-            // pnl_loadingScreen
-            // 
-            this.pnl_loadingScreen.Controls.Add(this.tableLayoutPanel9);
-            this.pnl_loadingScreen.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_loadingScreen.Location = new System.Drawing.Point(0, 0);
-            this.pnl_loadingScreen.Name = "pnl_loadingScreen";
-            this.pnl_loadingScreen.Size = new System.Drawing.Size(1200, 623);
-            this.pnl_loadingScreen.TabIndex = 0;
-            // 
-            // tableLayoutPanel9
-            // 
-            this.tableLayoutPanel9.ColumnCount = 3;
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 234F));
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.Controls.Add(this.panel9, 1, 1);
-            this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
-            this.tableLayoutPanel9.RowCount = 3;
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 234F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(1200, 623);
-            this.tableLayoutPanel9.TabIndex = 1;
-            // 
-            // panel9
-            // 
-            this.panel9.Controls.Add(this.cpb_loadingScreenCircProgBar);
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel9.Location = new System.Drawing.Point(483, 194);
-            this.panel9.Margin = new System.Windows.Forms.Padding(0);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(234, 234);
-            this.panel9.TabIndex = 0;
-            // 
-            // cpb_loadingScreenCircProgBar
-            // 
-            this.cpb_loadingScreenCircProgBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
-            this.cpb_loadingScreenCircProgBar.AnimationSpeed = 500;
-            this.cpb_loadingScreenCircProgBar.BackColor = System.Drawing.Color.Transparent;
-            this.cpb_loadingScreenCircProgBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.cpb_loadingScreenCircProgBar.ForeColor = System.Drawing.Color.Silver;
-            this.cpb_loadingScreenCircProgBar.InnerColor = System.Drawing.SystemColors.Control;
-            this.cpb_loadingScreenCircProgBar.InnerMargin = 2;
-            this.cpb_loadingScreenCircProgBar.InnerWidth = -1;
-            this.cpb_loadingScreenCircProgBar.Location = new System.Drawing.Point(2, 0);
-            this.cpb_loadingScreenCircProgBar.MarqueeAnimationSpeed = 1000;
-            this.cpb_loadingScreenCircProgBar.Name = "cpb_loadingScreenCircProgBar";
-            this.cpb_loadingScreenCircProgBar.OuterColor = System.Drawing.Color.Gainsboro;
-            this.cpb_loadingScreenCircProgBar.OuterMargin = -25;
-            this.cpb_loadingScreenCircProgBar.OuterWidth = 26;
-            this.cpb_loadingScreenCircProgBar.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
-            this.cpb_loadingScreenCircProgBar.ProgressWidth = 5;
-            this.cpb_loadingScreenCircProgBar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 36F);
-            this.cpb_loadingScreenCircProgBar.Size = new System.Drawing.Size(231, 234);
-            this.cpb_loadingScreenCircProgBar.StartAngle = 270;
-            this.cpb_loadingScreenCircProgBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.cpb_loadingScreenCircProgBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.cpb_loadingScreenCircProgBar.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
-            this.cpb_loadingScreenCircProgBar.SubscriptText = "";
-            this.cpb_loadingScreenCircProgBar.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.cpb_loadingScreenCircProgBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
-            this.cpb_loadingScreenCircProgBar.SuperscriptText = "";
-            this.cpb_loadingScreenCircProgBar.TabIndex = 1;
-            this.cpb_loadingScreenCircProgBar.Text = "Loading Data...";
-            this.cpb_loadingScreenCircProgBar.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
-            this.cpb_loadingScreenCircProgBar.Value = 36;
-            // 
             // tblpnl_DashbaordPage
             // 
             this.tblpnl_DashbaordPage.AllowDrop = true;
@@ -2405,6 +2516,8 @@
             this.pnl_CategorySelectorButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnl_CategorySelectorButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.pnl_CategorySelectorButton.Controls.Add(this.button3);
+            this.pnl_CategorySelectorButton.Controls.Add(this.button2);
             this.pnl_CategorySelectorButton.Controls.Add(this.lbl_Category);
             this.pnl_CategorySelectorButton.Controls.Add(this.bunifuCustomLabel29);
             this.pnl_CategorySelectorButton.Location = new System.Drawing.Point(755, 0);
@@ -2507,6 +2620,25 @@
             this.dc_titlePanel.TargetControl = this.pnl_titlePanel;
             this.dc_titlePanel.Vertical = true;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(126, 14);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(83, 23);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "Open";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(215, 14);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(83, 23);
+            this.button3.TabIndex = 1;
+            this.button3.Text = "Close";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
             // KPA_KPI_UI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2521,12 +2653,17 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
+            this.MainMenuStrip = this.ms_applicaitonMenuStrip;
             this.MinimumSize = new System.Drawing.Size(1200, 700);
             this.Name = "KPA_KPI_UI";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Tag = "";
             this.Load += new System.EventHandler(this.KPA_KPI_UI_Load);
+            this.pnl_menuStrip.ResumeLayout(false);
+            this.pnl_menuStrip.PerformLayout();
+            this.ms_applicaitonMenuStrip.ResumeLayout(false);
+            this.ms_applicaitonMenuStrip.PerformLayout();
             this.pnl_topPanel.ResumeLayout(false);
             this.pnl_titlePanel.ResumeLayout(false);
             this.pnl_titlePanel.PerformLayout();
@@ -2558,6 +2695,9 @@
             this.tableLayoutPanel7.PerformLayout();
             this.pnl_activePage.ResumeLayout(false);
             this.pnl_activePage.PerformLayout();
+            this.pnl_loadingScreen.ResumeLayout(false);
+            this.tableLayoutPanel9.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
             this.pnl_NavigationPanelMax.ResumeLayout(false);
             this.pnl_NavigationPanelMax.PerformLayout();
             this.pnl_KPISectionsPanel.ResumeLayout(false);
@@ -2566,9 +2706,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btn_Dashboard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Charts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Filters)).EndInit();
-            this.pnl_loadingScreen.ResumeLayout(false);
-            this.tableLayoutPanel9.ResumeLayout(false);
-            this.panel9.ResumeLayout(false);
             this.tblpnl_DashbaordPage.ResumeLayout(false);
             this.pnl_ViewPrintReports.ResumeLayout(false);
             this.pnl_ViewPrintReports.PerformLayout();
@@ -2748,6 +2885,19 @@
         private Bunifu.Framework.UI.BunifuDragControl dc_logo;
         private Bunifu.Framework.UI.BunifuDragControl dc_title;
         private Bunifu.Framework.UI.BunifuDragControl dc_titlePanel;
+        private System.Windows.Forms.Panel pnl_menuStrip;
+        private System.Windows.Forms.MenuStrip ms_applicaitonMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newAnalysisToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem analysisToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
     }
 }
 

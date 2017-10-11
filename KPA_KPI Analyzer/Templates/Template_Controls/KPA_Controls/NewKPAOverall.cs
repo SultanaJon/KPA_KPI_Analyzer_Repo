@@ -720,7 +720,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                         break; // not yet created
                 }
             }
-            catch(Exception)
+            catch (Exception)
             {
                 // if the user clicks on the header dividers an index out of range excepion will be thrown. I am ignoring it.
             }

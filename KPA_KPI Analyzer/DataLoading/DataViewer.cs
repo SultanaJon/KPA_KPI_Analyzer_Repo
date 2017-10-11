@@ -2,6 +2,10 @@
 using System;
 using System.Data;
 using System.Windows.Forms;
+using ClosedXML;
+using ClosedXML.Excel.Drawings;
+using ClosedXML.Excel;
+using System.Diagnostics;
 
 namespace KPA_KPI_Analyzer
 {
@@ -297,6 +301,61 @@ namespace KPA_KPI_Analyzer
         {
             dgv_dataViewerDgv.DataSource = Data;
             dgv_dataViewerDgv.Refresh();
+        }
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void exportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+
+            try
+            {
+                foreach (DataGridViewColumn col in dgv_dataViewerDgv.Columns)
+                {
+                    dt.Columns.Add(col.HeaderText);
+                }
+
+
+                foreach (DataGridViewRow row in dgv_dataViewerDgv.Rows)
+                {
+                    dt.Rows.Add();
+                    foreach (DataGridViewCell cell in row.Cells)
+                    {
+                        //Debug.WriteLine("Row Index: " + row.Index.ToString() + " Column Index: " + cell.ColumnIndex);
+                        dt.Rows[row.Index][cell.ColumnIndex] = cell.Value.ToString();
+                    }
+                }
+
+                // Exporting to excel
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Filter = "Excel | *.xlsx";
+                
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    using (XLWorkbook wb = new XLWorkbook())
+                    {
+                        wb.Worksheets.Add(dt, "Sheet1");
+                        wb.SaveAs(sfd.FileName);
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                dt.Rows.Clear();
+                dt = null;
+                GC.Collect();
+            }
         }
     }
 }

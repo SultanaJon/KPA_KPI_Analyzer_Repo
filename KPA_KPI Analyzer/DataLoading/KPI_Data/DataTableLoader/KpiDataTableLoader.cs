@@ -163,6 +163,8 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                         }
                     }
 
+
+
                     using (DataViewer dv = new DataViewer()
                     {
                         Data = prPlanDateVsCurrPlanDt,
