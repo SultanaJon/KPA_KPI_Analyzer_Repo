@@ -307,6 +307,25 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
 
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public static void ReleaseKPITables()
+        {
+            prsOnPOsDt.Clear();
+            prsOnPOsDt = null;
+            posRecCompDt.Clear();
+            posRecCompDt = null;
+            pr2ndLvlRelDateDt.Clear();
+            pr2ndLvlRelDateDt = null;
+            AllDt.Clear();
+            AllDt = null;
+            GC.Collect();
+    }
+
+
+
+
         public static void LoadCorrelationFields()
         {
             DataTable tempDt = new DataTable();

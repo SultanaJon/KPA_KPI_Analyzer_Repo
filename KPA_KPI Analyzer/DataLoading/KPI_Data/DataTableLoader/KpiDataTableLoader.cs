@@ -162,31 +162,23 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                                 continue;
                         }
                     }
-
-
-
-                    using (DataViewer dv = new DataViewer()
-                    {
-                        Data = prPlanDateVsCurrPlanDt,
-                        Country = Globals.CurrCountry,
-                        Performance = Globals.CurrPerformance,
-                        Section = Globals.CurrSection,
-                        Category = Globals.CurrCategory
-                    })
-                    {
-                        dv.LoadData();
-                        dv.ShowDialog();
-                        dt.Rows.Clear();
-                        dt = null;
-                        prPlanDateVsCurrPlanDt.Rows.Clear();
-                        prPlanDateVsCurrPlanDt = null;
-                        GC.Collect();
-                    }
+                    DataViewerUtils.Data = prPlanDateVsCurrPlanDt.Copy();
+                    DataViewerUtils.DataLoaded = true;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
+                finally
+                {
+                    prPlanDateVsCurrPlanDt.Rows.Clear();
+                    prPlanDateVsCurrPlanDt = null;
+                    dt.Rows.Clear();
+                    dt = null;
+                    GC.Collect();
+                }
+
+
             }
 
 
@@ -321,29 +313,23 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                                 continue;
                         }
                     }
-
-                    using (DataViewer dv = new DataViewer()
-                    {
-                        Data = OrigPlan2ndLvlRel_CodedLeadTime,
-                        Country = Globals.CurrCountry,
-                        Performance = Globals.CurrPerformance,
-                        Section = Globals.CurrSection,
-                        Category = Globals.CurrCategory
-                    })
-                    {
-                        dv.LoadData();
-                        dv.ShowDialog();
-                        dt.Rows.Clear();
-                        dt = null;
-                        OrigPlan2ndLvlRel_CodedLeadTime.Rows.Clear();
-                        OrigPlan2ndLvlRel_CodedLeadTime = null;
-                        GC.Collect();
-                    }
+                    DataViewerUtils.Data = OrigPlan2ndLvlRel_CodedLeadTime.Copy();
+                    DataViewerUtils.DataLoaded = true;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
+                finally
+                {
+                    OrigPlan2ndLvlRel_CodedLeadTime.Rows.Clear();
+                    OrigPlan2ndLvlRel_CodedLeadTime = null;
+                    dt.Rows.Clear();
+                    dt = null;
+                    GC.Collect();
+                }
+
+
             }
 
 
@@ -507,29 +493,23 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                                 continue;
                         }
                     }
-
-                    using (DataViewer dv = new DataViewer()
-                    {
-                        Data = CurrPlan2ndLvlRel_CodedLeadTime,
-                        Country = Globals.CurrCountry,
-                        Performance = Globals.CurrPerformance,
-                        Section = Globals.CurrSection,
-                        Category = Globals.CurrCategory
-                    })
-                    {
-                        dv.LoadData();
-                        dv.ShowDialog();
-                        dt.Rows.Clear();
-                        dt = null;
-                        CurrPlan2ndLvlRel_CodedLeadTime.Rows.Clear();
-                        CurrPlan2ndLvlRel_CodedLeadTime = null;
-                        GC.Collect();
-                    }
+                    DataViewerUtils.Data = CurrPlan2ndLvlRel_CodedLeadTime.Copy();
+                    DataViewerUtils.DataLoaded = true;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
+                finally
+                {
+                    CurrPlan2ndLvlRel_CodedLeadTime.Rows.Clear();
+                    CurrPlan2ndLvlRel_CodedLeadTime = null;
+                    dt.Rows.Clear();
+                    dt = null;
+                    GC.Collect();
+                }
+
+
             }
         }
 
@@ -672,49 +652,40 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                     if (tag != 10)
                     {
-                        using (DataViewer dv = new DataViewer()
-                        {
-                            Data = initConfVsPrPlanDateDt,
-                            Country = Globals.CurrCountry,
-                            Performance = Globals.CurrPerformance,
-                            Section = Globals.CurrSection,
-                            Category = Globals.CurrCategory
-                        })
-                        {
-                            dv.LoadData();
-                            dv.ShowDialog();
-                            dt.Rows.Clear();
-                            dt = null;
-                            initConfVsPrPlanDateDt.Rows.Clear();
-                            initConfVsPrPlanDateDt = null;
-                            GC.Collect();
-                        }
+                        DataViewerUtils.Data = initConfVsPrPlanDateDt.Copy();
+                        DataViewerUtils.DataLoaded = true;
                     }
                     else
                     {
-                        using (DataViewer dv = new DataViewer()
-                        {
-                            Data = unconfirmed,
-                            Country = Globals.CurrCountry,
-                            Performance = Globals.CurrPerformance,
-                            Section = Globals.CurrSection,
-                            Category = Globals.CurrCategory
-                        })
-                        {
-                            dv.LoadData();
-                            dv.ShowDialog();
-                            dt.Rows.Clear();
-                            dt = null;
-                            unconfirmed.Rows.Clear();
-                            unconfirmed = null;
-                            GC.Collect();
-                        }
+                        DataViewerUtils.Data = unconfirmed.Copy();
+                        DataViewerUtils.DataLoaded = true;
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
+                finally
+                {
+                    if(initConfVsPrPlanDateDt != null)
+                    {
+                        initConfVsPrPlanDateDt.Rows.Clear();
+                        initConfVsPrPlanDateDt = null;
+                    }
+
+                    if(unconfirmed != null)
+                    {
+                        unconfirmed.Rows.Clear();
+                        unconfirmed = null;
+                    }
+
+
+                    dt.Rows.Clear();
+                    dt = null;
+                    GC.Collect();
+                }
+
+                
             }
         }
 
@@ -871,51 +842,39 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                         }
                     }
 
-
                     if (tag != 10)
                     {
-                        using (DataViewer dv = new DataViewer()
-                        {
-                            Data = initConfVsCurrConf,
-                            Country = Globals.CurrCountry,
-                            Performance = Globals.CurrPerformance,
-                            Section = Globals.CurrSection,
-                            Category = Globals.CurrCategory
-                        })
-                        {
-                            dv.LoadData();
-                            dv.ShowDialog();
-                            dt.Rows.Clear();
-                            dt = null;
-                            initConfVsCurrConf.Rows.Clear();
-                            initConfVsCurrConf = null;
-                            GC.Collect();
-                        }
+                        DataViewerUtils.Data = initConfVsCurrConf.Copy();
+                        DataViewerUtils.DataLoaded = true;
                     }
                     else
                     {
-                        using (DataViewer dv = new DataViewer()
-                        {
-                            Data = unconfirmed,
-                            Country = Globals.CurrCountry,
-                            Performance = Globals.CurrPerformance,
-                            Section = Globals.CurrSection,
-                            Category = Globals.CurrCategory
-                        })
-                        {
-                            dv.LoadData();
-                            dv.ShowDialog();
-                            dt.Rows.Clear();
-                            dt = null;
-                            unconfirmed.Rows.Clear();
-                            unconfirmed = null;
-                            GC.Collect();
-                        }
+                        DataViewerUtils.Data = unconfirmed.Copy();
+                        DataViewerUtils.DataLoaded = true;
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    if(initConfVsCurrConf != null)
+                    {
+                        initConfVsCurrConf.Rows.Clear();
+                        initConfVsCurrConf = null;
+                    }
+
+                    if(unconfirmed != null)
+                    {
+                        unconfirmed.Rows.Clear();
+                        unconfirmed = null;
+                    }
+
+
+                    dt.Rows.Clear();
+                    dt = null;
+                    GC.Collect();
                 }
             }
 
@@ -1065,48 +1024,37 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                     if (tag != 10)
                     {
-                        using (DataViewer dv = new DataViewer()
-                        {
-                            Data = finalConfDateVsFinalPlanDateDt,
-                            Country = Globals.CurrCountry,
-                            Performance = Globals.CurrPerformance,
-                            Section = Globals.CurrSection,
-                            Category = Globals.CurrCategory
-                        })
-                        {
-                            dv.LoadData();
-                            dv.ShowDialog();
-                            dt.Rows.Clear();
-                            dt = null;
-                            finalConfDateVsFinalPlanDateDt.Rows.Clear();
-                            finalConfDateVsFinalPlanDateDt = null;
-                            GC.Collect();
-                        }
+                        DataViewerUtils.Data = finalConfDateVsFinalPlanDateDt.Copy();
+                        DataViewerUtils.DataLoaded = true;
                     }
                     else
                     {
-                        using (DataViewer dv = new DataViewer()
-                        {
-                            Data = unconfirmed,
-                            Country = Globals.CurrCountry,
-                            Performance = Globals.CurrPerformance,
-                            Section = Globals.CurrSection,
-                            Category = Globals.CurrCategory
-                        })
-                        {
-                            dv.LoadData();
-                            dv.ShowDialog();
-                            dt.Rows.Clear();
-                            dt = null;
-                            unconfirmed.Rows.Clear();
-                            unconfirmed = null;
-                            GC.Collect();
-                        }
+                        DataViewerUtils.Data = unconfirmed.Copy();
+                        DataViewerUtils.DataLoaded = true;
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    if(finalConfDateVsFinalPlanDateDt != null)
+                    {
+                        finalConfDateVsFinalPlanDateDt.Rows.Clear();
+                        finalConfDateVsFinalPlanDateDt = null;
+                    }
+
+                    if(unconfirmed != null)
+                    {
+                        unconfirmed.Rows.Clear();
+                        unconfirmed = null;
+                    }
+
+
+                    dt.Rows.Clear();
+                    dt = null;
+                    GC.Collect();
                 }
             }
 
@@ -1122,7 +1070,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     dt = new DataTable();
                     recDateVsCurrPlanDateDt = new DataTable();
 
-                    cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.AllPOs] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.POLinesRecComplete] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -1249,28 +1197,23 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                         }
                     }
 
-                    using (DataViewer dv = new DataViewer()
-                    {
-                        Data = recDateVsCurrPlanDateDt,
-                        Country = Globals.CurrCountry,
-                        Performance = Globals.CurrPerformance,
-                        Section = Globals.CurrSection,
-                        Category = Globals.CurrCategory
-                    })
-                    {
-                        dv.LoadData();
-                        dv.ShowDialog();
-                        dt.Rows.Clear();
-                        dt = null;
-                        recDateVsCurrPlanDateDt.Rows.Clear();
-                        recDateVsCurrPlanDateDt = null;
-                        GC.Collect();
-                    }
+                    DataViewerUtils.Data = recDateVsCurrPlanDateDt.Copy();
+                    DataViewerUtils.DataLoaded = true;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
+                finally
+                {
+                    recDateVsCurrPlanDateDt.Rows.Clear();
+                    recDateVsCurrPlanDateDt = null;
+                    dt.Rows.Clear();
+                    dt = null;
+                    GC.Collect();
+                }
+
+
             }
 
 
@@ -1416,48 +1359,36 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                     if (tag != 10)
                     {
-                        using (DataViewer dv = new DataViewer()
-                        {
-                            Data = recDateVsOrigConfDateDt,
-                            Country = Globals.CurrCountry,
-                            Performance = Globals.CurrPerformance,
-                            Section = Globals.CurrSection,
-                            Category = Globals.CurrCategory
-                        })
-                        {
-                            dv.LoadData();
-                            dv.ShowDialog();
-                            dt.Rows.Clear();
-                            dt = null;
-                            recDateVsOrigConfDateDt.Rows.Clear();
-                            recDateVsOrigConfDateDt = null;
-                            GC.Collect();
-                        }
+                        DataViewerUtils.Data = recDateVsOrigConfDateDt.Copy();
+                        DataViewerUtils.DataLoaded = true;
                     }
                     else
                     {
-                        using (DataViewer dv = new DataViewer()
-                        {
-                            Data = unconfirmed,
-                            Country = Globals.CurrCountry,
-                            Performance = Globals.CurrPerformance,
-                            Section = Globals.CurrSection,
-                            Category = Globals.CurrCategory
-                        })
-                        {
-                            dv.LoadData();
-                            dv.ShowDialog();
-                            dt.Rows.Clear();
-                            dt = null;
-                            unconfirmed.Rows.Clear();
-                            unconfirmed = null;
-                            GC.Collect();
-                        }
+                        DataViewerUtils.Data = unconfirmed.Copy();
+                        DataViewerUtils.DataLoaded = true;
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    if(recDateVsOrigConfDateDt != null)
+                    {
+                        recDateVsOrigConfDateDt.Rows.Clear();
+                        recDateVsOrigConfDateDt = null;
+                    }
+
+                    if (unconfirmed != null)
+                    {
+                        unconfirmed.Rows.Clear();
+                        unconfirmed = null;
+                    }
+
+                    dt.Rows.Clear();
+                    dt = null;
+                    GC.Collect();
                 }
             }
 
@@ -1604,48 +1535,36 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                     if (tag != 10)
                     {
-                        using (DataViewer dv = new DataViewer()
-                        {
-                            Data = recDateVsCurrConfDateDt,
-                            Country = Globals.CurrCountry,
-                            Performance = Globals.CurrPerformance,
-                            Section = Globals.CurrSection,
-                            Category = Globals.CurrCategory
-                        })
-                        {
-                            dv.LoadData();
-                            dv.ShowDialog();
-                            dt.Rows.Clear();
-                            dt = null;
-                            recDateVsCurrConfDateDt.Rows.Clear();
-                            recDateVsCurrConfDateDt = null;
-                            GC.Collect();
-                        }
+                        DataViewerUtils.Data = recDateVsCurrConfDateDt.Copy();
+                        DataViewerUtils.DataLoaded = true;
                     }
                     else
                     {
-                        using (DataViewer dv = new DataViewer()
-                        {
-                            Data = unconfirmed,
-                            Country = Globals.CurrCountry,
-                            Performance = Globals.CurrPerformance,
-                            Section = Globals.CurrSection,
-                            Category = Globals.CurrCategory
-                        })
-                        {
-                            dv.LoadData();
-                            dv.ShowDialog();
-                            dt.Rows.Clear();
-                            dt = null;
-                            unconfirmed.Rows.Clear();
-                            unconfirmed = null;
-                            GC.Collect();
-                        }
+                        DataViewerUtils.Data = unconfirmed.Copy();
+                        DataViewerUtils.DataLoaded = true;
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    if(recDateVsCurrConfDateDt != null)
+                    {
+                        recDateVsCurrConfDateDt.Rows.Clear();
+                        recDateVsCurrConfDateDt = null;
+                    }
+
+                    if(unconfirmed != null)
+                    {
+                        unconfirmed.Rows.Clear();
+                        unconfirmed = null;
+                    }
+
+                    dt.Rows.Clear();
+                    dt = null;
+                    GC.Collect();
                 }
             }
         }
@@ -1796,29 +1715,23 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                                 continue;
                         }
                     }
-
-                    using (DataViewer dv = new DataViewer()
-                    {
-                        Data = pr2ndLvlRelVsPoCreate,
-                        Country = Globals.CurrCountry,
-                        Performance = Globals.CurrPerformance,
-                        Section = Globals.CurrSection,
-                        Category = Globals.CurrCategory
-                    })
-                    {
-                        dv.LoadData();
-                        dv.ShowDialog();
-                        dt.Rows.Clear();
-                        dt = null;
-                        pr2ndLvlRelVsPoCreate.Rows.Clear();
-                        pr2ndLvlRelVsPoCreate = null;
-                        GC.Collect();
-                    }
+                    DataViewerUtils.Data = pr2ndLvlRelVsPoCreate.Copy();
+                    DataViewerUtils.DataLoaded = true;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
+                finally
+                {
+                    pr2ndLvlRelVsPoCreate.Rows.Clear();
+                    pr2ndLvlRelVsPoCreate = null;
+                    dt.Rows.Clear();
+                    dt = null;
+                    GC.Collect();
+                }
+
+
             }
 
 
@@ -1965,29 +1878,23 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                                 continue;
                         }
                     }
-
-                    using (DataViewer dv = new DataViewer()
-                    {
-                        Data = poCreateVsPORel,
-                        Country = Globals.CurrCountry,
-                        Performance = Globals.CurrPerformance,
-                        Section = Globals.CurrSection,
-                        Category = Globals.CurrCategory
-                    })
-                    {
-                        dv.LoadData();
-                        dv.ShowDialog();
-                        dt.Rows.Clear();
-                        dt = null;
-                        poCreateVsPORel.Rows.Clear();
-                        poCreateVsPORel = null;
-                        GC.Collect();
-                    }
+                    DataViewerUtils.Data = poCreateVsPORel.Copy();
+                    DataViewerUtils.DataLoaded = true;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
+                finally
+                {
+                    poCreateVsPORel.Rows.Clear();
+                    poCreateVsPORel = null;
+                    dt.Rows.Clear();
+                    dt = null;
+                    GC.Collect();
+                }
+
+
             }
 
 
@@ -2151,48 +2058,36 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                     if (tag != 12)
                     {
-                        using (DataViewer dv = new DataViewer()
-                        {
-                            Data = poRelVsPoConf,
-                            Country = Globals.CurrCountry,
-                            Performance = Globals.CurrPerformance,
-                            Section = Globals.CurrSection,
-                            Category = Globals.CurrCategory
-                        })
-                        {
-                            dv.LoadData();
-                            dv.ShowDialog();
-                            dt.Rows.Clear();
-                            dt = null;
-                            poRelVsPoConf.Rows.Clear();
-                            poRelVsPoConf = null;
-                            GC.Collect();
-                        }
+                        DataViewerUtils.Data = poRelVsPoConf.Copy();
+                        DataViewerUtils.DataLoaded = true;
                     }
                     else
                     {
-                        using (DataViewer dv = new DataViewer()
-                        {
-                            Data = unconfirmed,
-                            Country = Globals.CurrCountry,
-                            Performance = Globals.CurrPerformance,
-                            Section = Globals.CurrSection,
-                            Category = Globals.CurrCategory
-                        })
-                        {
-                            dv.LoadData();
-                            dv.ShowDialog();
-                            dt.Rows.Clear();
-                            dt = null;
-                            unconfirmed.Rows.Clear();
-                            unconfirmed = null;
-                            GC.Collect();
-                        }
+                        DataViewerUtils.Data = unconfirmed.Copy();
+                        DataViewerUtils.DataLoaded = true;
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    if(poRelVsPoConf != null)
+                    {
+                        poRelVsPoConf.Rows.Clear();
+                        poRelVsPoConf = null;
+                    }
+
+                    if(unconfirmed != null)
+                    {
+                        unconfirmed.Rows.Clear();
+                        unconfirmed = null;
+                    }
+
+                    dt.Rows.Clear();
+                    dt = null;
+                    GC.Collect();
                 }
             }
         }
@@ -2347,29 +2242,23 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                                 continue;
                         }
                     }
-
-                    using (DataViewer dv = new DataViewer()
-                    {
-                        Data = prRelVsPORel,
-                        Country = Globals.CurrCountry,
-                        Performance = Globals.CurrPerformance,
-                        Section = Globals.CurrSection,
-                        Category = Globals.CurrCategory
-                    })
-                    {
-                        dv.LoadData();
-                        dv.ShowDialog();
-                        dt.Rows.Clear();
-                        dt = null;
-                        prRelVsPORel.Rows.Clear();
-                        prRelVsPORel = null;
-                        GC.Collect();
-                    }
+                    DataViewerUtils.Data = prRelVsPORel.Copy();
+                    DataViewerUtils.DataLoaded = true;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
+                finally
+                {
+                    prRelVsPORel.Rows.Clear();
+                    prRelVsPORel = null;
+                    dt.Rows.Clear();
+                    dt = null;
+                    GC.Collect();
+                }
+
+
             }
 
 
@@ -2521,51 +2410,38 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                                 continue;
                         }
                     }
-
                     if (tag != 12)
                     {
-                        using (DataViewer dv = new DataViewer()
-                        {
-                            Data = poCreateVsConfEntry,
-                            Country = Globals.CurrCountry,
-                            Performance = Globals.CurrPerformance,
-                            Section = Globals.CurrSection,
-                            Category = Globals.CurrCategory
-                        })
-                        {
-                            dv.LoadData();
-                            dv.ShowDialog();
-                            dt.Rows.Clear();
-                            dt = null;
-                            poCreateVsConfEntry.Rows.Clear();
-                            poCreateVsConfEntry = null;
-                            GC.Collect();
-                        }
+                        DataViewerUtils.Data = poCreateVsConfEntry.Copy();
+                        DataViewerUtils.DataLoaded = true;
                     }
                     else
                     {
-                        using (DataViewer dv = new DataViewer()
-                        {
-                            Data = unconfirmed,
-                            Country = Globals.CurrCountry,
-                            Performance = Globals.CurrPerformance,
-                            Section = Globals.CurrSection,
-                            Category = Globals.CurrCategory
-                        })
-                        {
-                            dv.LoadData();
-                            dv.ShowDialog();
-                            dt.Rows.Clear();
-                            dt = null;
-                            unconfirmed.Rows.Clear();
-                            unconfirmed = null;
-                            GC.Collect();
-                        }
+                        DataViewerUtils.Data = unconfirmed.Copy();
+                        DataViewerUtils.DataLoaded = true;
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    if(poCreateVsConfEntry != null)
+                    {
+                        poCreateVsConfEntry.Rows.Clear();
+                        poCreateVsConfEntry = null;
+                    }
+
+                    if(unconfirmed != null)
+                    {
+                        unconfirmed.Rows.Clear();
+                        unconfirmed = null;
+                    }
+
+                    dt.Rows.Clear();
+                    dt = null;
+                    GC.Collect();
                 }
             }
         }
@@ -2722,48 +2598,36 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                     if (tag != 12)
                     {
-                        using (DataViewer dv = new DataViewer()
-                        {
-                            Data = prReleaseConfEntry,
-                            Country = Globals.CurrCountry,
-                            Performance = Globals.CurrPerformance,
-                            Section = Globals.CurrSection,
-                            Category = Globals.CurrCategory
-                        })
-                        {
-                            dv.LoadData();
-                            dv.ShowDialog();
-                            dt.Rows.Clear();
-                            dt = null;
-                            prReleaseConfEntry.Rows.Clear();
-                            prReleaseConfEntry = null;
-                            GC.Collect();
-                        }
+                        DataViewerUtils.Data = prReleaseConfEntry.Copy();
+                        DataViewerUtils.DataLoaded = true;
                     }
                     else
                     {
-                        using (DataViewer dv = new DataViewer()
-                        {
-                            Data = unconfirmed,
-                            Country = Globals.CurrCountry,
-                            Performance = Globals.CurrPerformance,
-                            Section = Globals.CurrSection,
-                            Category = Globals.CurrCategory
-                        })
-                        {
-                            dv.LoadData();
-                            dv.ShowDialog();
-                            dt.Rows.Clear();
-                            dt = null;
-                            unconfirmed.Rows.Clear();
-                            unconfirmed = null;
-                            GC.Collect();
-                        }
+                        DataViewerUtils.Data = unconfirmed.Copy();
+                        DataViewerUtils.DataLoaded = true;
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    if(prReleaseConfEntry != null)
+                    {
+                        prReleaseConfEntry.Rows.Clear();
+                        prReleaseConfEntry = null;
+                    }
+
+                    if(unconfirmed != null)
+                    {
+                        unconfirmed.Rows.Clear();
+                        unconfirmed = null;
+                    }
+
+                    dt.Rows.Clear();
+                    dt = null;
+                    GC.Collect();
                 }
             }
         }
@@ -2918,29 +2782,23 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                                 continue;
                         }
                     }
-
-                    using (DataViewer dv = new DataViewer()
-                    {
-                        Data = poRelVsPRDelDateDt,
-                        Country = Globals.CurrCountry,
-                        Performance = Globals.CurrPerformance,
-                        Section = Globals.CurrSection,
-                        Category = Globals.CurrCategory
-                    })
-                    {
-                        dv.LoadData();
-                        dv.ShowDialog();
-                        dt.Rows.Clear();
-                        dt = null;
-                        poRelVsPRDelDateDt.Rows.Clear();
-                        poRelVsPRDelDateDt = null;
-                        GC.Collect();
-                    }
+                    DataViewerUtils.Data = poRelVsPRDelDateDt.Copy();
+                    DataViewerUtils.DataLoaded = true;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
+                finally
+                {
+                    poRelVsPRDelDateDt.Rows.Clear();
+                    poRelVsPRDelDateDt = null;
+                    dt.Rows.Clear();
+                    dt = null;
+                    GC.Collect();
+                }
+
+
             }
 
 
@@ -3086,28 +2944,20 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                                 continue;
                         }
                     }
-
-                    using (DataViewer dv = new DataViewer()
-                    {
-                        Data = pr2ndLvlRelOrigPlanDelDateDt,
-                        Country = Globals.CurrCountry,
-                        Performance = Globals.CurrPerformance,
-                        Section = Globals.CurrSection,
-                        Category = Globals.CurrCategory
-                    })
-                    {
-                        dv.LoadData();
-                        dv.ShowDialog();
-                        dt.Rows.Clear();
-                        dt = null;
-                        pr2ndLvlRelOrigPlanDelDateDt.Rows.Clear();
-                        pr2ndLvlRelOrigPlanDelDateDt = null;
-                        GC.Collect();
-                    }
+                    DataViewerUtils.Data = pr2ndLvlRelOrigPlanDelDateDt.Copy();
+                    DataViewerUtils.DataLoaded = true;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    pr2ndLvlRelOrigPlanDelDateDt.Rows.Clear();
+                    pr2ndLvlRelOrigPlanDelDateDt = null;
+                    dt.Rows.Clear();
+                    dt = null;
+                    GC.Collect();
                 }
             }
         }
@@ -3254,28 +3104,20 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                                 continue;
                         }
                     }
-
-                    using (DataViewer dv = new DataViewer()
-                    {
-                        Data = prsCreated,
-                        Country = Globals.CurrCountry,
-                        Performance = Globals.CurrPerformance,
-                        Section = Globals.CurrSection,
-                        Category = Globals.CurrCategory
-                    })
-                    {
-                        dv.LoadData();
-                        dv.ShowDialog();
-                        dt.Rows.Clear();
-                        dt = null;
-                        prsCreated.Rows.Clear();
-                        prsCreated = null;
-                        GC.Collect();
-                    }
+                    DataViewerUtils.Data = prsCreated.Copy();
+                    DataViewerUtils.DataLoaded = true;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    prsCreated.Rows.Clear();
+                    prsCreated = null;
+                    dt.Rows.Clear();
+                    dt = null;
+                    GC.Collect();
                 }
             }
 
@@ -3403,29 +3245,23 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                                 continue;
                         }
                     }
-
-                    using (DataViewer dv = new DataViewer()
-                    {
-                        Data = prReleased,
-                        Country = Globals.CurrCountry,
-                        Performance = Globals.CurrPerformance,
-                        Section = Globals.CurrSection,
-                        Category = Globals.CurrCategory
-                    })
-                    {
-                        dv.LoadData();
-                        dv.ShowDialog();
-                        dt.Rows.Clear();
-                        dt = null;
-                        prReleased.Rows.Clear();
-                        prReleased = null;
-                        GC.Collect();
-                    }
+                    DataViewerUtils.Data = prReleased.Copy();
+                    DataViewerUtils.DataLoaded = true;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
+                finally
+                {
+                    prReleased.Rows.Clear();
+                    prReleased = null;
+                    dt.Rows.Clear();
+                    dt = null;
+                    GC.Collect();
+                }
+
+
             }
 
 
@@ -3550,29 +3386,23 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                                 continue;
                         }
                     }
-
-                    using (DataViewer dv = new DataViewer()
-                    {
-                        Data = totalSpend,
-                        Country = Globals.CurrCountry,
-                        Performance = Globals.CurrPerformance,
-                        Section = Globals.CurrSection,
-                        Category = Globals.CurrCategory
-                    })
-                    {
-                        dv.LoadData();
-                        dv.ShowDialog();
-                        dt.Rows.Clear();
-                        dt = null;
-                        totalSpend.Rows.Clear();
-                        totalSpend = null;
-                        GC.Collect();
-                    }
+                    DataViewerUtils.Data = totalSpend.Copy();
+                    DataViewerUtils.DataLoaded = true;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
+                finally
+                {
+                    totalSpend.Rows.Clear();
+                    totalSpend = null;
+                    dt.Rows.Clear();
+                    dt = null;
+                    GC.Collect();
+                }
+
+
             }
 
 
@@ -3698,29 +3528,23 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                                 continue;
                         }
                     }
-
-                    using (DataViewer dv = new DataViewer()
-                    {
-                        Data = prVsPOValue,
-                        Country = Globals.CurrCountry,
-                        Performance = Globals.CurrPerformance,
-                        Section = Globals.CurrSection,
-                        Category = Globals.CurrCategory
-                    })
-                    {
-                        dv.LoadData();
-                        dv.ShowDialog();
-                        dt.Rows.Clear();
-                        dt = null;
-                        prVsPOValue.Rows.Clear();
-                        prVsPOValue = null;
-                        GC.Collect();
-                    }
+                    DataViewerUtils.Data = prVsPOValue.Copy();
+                    DataViewerUtils.DataLoaded = true;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
+                finally
+                {
+                    prVsPOValue.Rows.Clear();
+                    prVsPOValue = null;
+                    dt.Rows.Clear();
+                    dt = null;
+                    GC.Collect();
+                }
+
+
             }
 
 
@@ -3853,28 +3677,20 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                                 continue;
                         }
                     }
-
-                    using (DataViewer dv = new DataViewer()
-                    {
-                        Data = hotJobPRs,
-                        Country = Globals.CurrCountry,
-                        Performance = Globals.CurrPerformance,
-                        Section = Globals.CurrSection,
-                        Category = Globals.CurrCategory
-                    })
-                    {
-                        dv.LoadData();
-                        dv.ShowDialog();
-                        dt.Rows.Clear();
-                        dt = null;
-                        hotJobPRs.Rows.Clear();
-                        hotJobPRs = null;
-                        GC.Collect();
-                    }
+                    DataViewerUtils.Data = hotJobPRs.Copy();
+                    DataViewerUtils.DataLoaded = true;
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    hotJobPRs.Rows.Clear();
+                    hotJobPRs = null;
+                    dt.Rows.Clear();
+                    dt = null;
+                    GC.Collect();
                 }
             }
         }

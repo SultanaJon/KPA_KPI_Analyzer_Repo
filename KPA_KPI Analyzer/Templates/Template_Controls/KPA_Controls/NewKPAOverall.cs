@@ -778,74 +778,94 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// <param name="columnIndex">The column index of the clicked cell</param>
         private void HandlePlanDataTableLoading(int rowIndex, int columnIndex)
         {
-            switch(rowIndex)
-            {
-                case 0:
-                    break;
-                case 1: // PRs Aging (Not Released)
-                    switch (columnIndex)
-                    {
-                        case 2: // <= 0 Days
-                            KpaDataTableLoader.Plan.LoadPRsAgingNotRelDataTable((int)TempOne.DataViews.LessThanZero);
-                            break;
-                        case 3: // 1 - 3 Days
-                            KpaDataTableLoader.Plan.LoadPRsAgingNotRelDataTable((int)TempOne.DataViews.One_Three);
-                            break;
-                        case 4: // 4 - 7 Days
-                            KpaDataTableLoader.Plan.LoadPRsAgingNotRelDataTable((int)TempOne.DataViews.Four_Seven);
-                            break;
-                        case 5: // 8 - 14 Days
-                            KpaDataTableLoader.Plan.LoadPRsAgingNotRelDataTable((int)TempOne.DataViews.Eight_Fourteen);
-                            break;
-                        case 6: // 15 - 21 Days
-                            KpaDataTableLoader.Plan.LoadPRsAgingNotRelDataTable((int)TempOne.DataViews.Fifteen_TwentyOne);
-                            break;
-                        case 7: // 22 - 28 Days
-                            KpaDataTableLoader.Plan.LoadPRsAgingNotRelDataTable((int)TempOne.DataViews.TwentyTwo_TwentyEight);
-                            break;
-                        case 8: // 29+ Days
-                            KpaDataTableLoader.Plan.LoadPRsAgingNotRelDataTable((int)TempOne.DataViews.TwentyNinePlus);
-                            break;
-                        case 9: // Average
-                            break;
-                        case 10: // Totals
-                            KpaDataTableLoader.Plan.LoadPRsAgingNotRelDataTable((int)TempOne.DataViews.Total);
-                            break;
-                    }
-                    break;
-                case 2: // Material Due
-                    switch (columnIndex)
-                    {
-                        case 2: // <= 0 Days
-                            KpaDataTableLoader.Plan.LoadMaterialDueDataTable((int)TempOne.DataViews.LessThanZero);;
-                            break;
-                        case 3: // 1 - 3 Days
-                            KpaDataTableLoader.Plan.LoadMaterialDueDataTable((int)TempOne.DataViews.One_Three);;
-                            break;
-                        case 4: // 4 - 7 Days
-                            KpaDataTableLoader.Plan.LoadMaterialDueDataTable((int)TempOne.DataViews.Four_Seven);;
-                            break;
-                        case 5: // 8 - 14 Days
-                            KpaDataTableLoader.Plan.LoadMaterialDueDataTable((int)TempOne.DataViews.Eight_Fourteen);;
-                            break;
-                        case 6: // 15 - 21 Days
-                            KpaDataTableLoader.Plan.LoadMaterialDueDataTable((int)TempOne.DataViews.Fifteen_TwentyOne);;
-                            break;
-                        case 7: // 22 - 28 Days
-                            KpaDataTableLoader.Plan.LoadMaterialDueDataTable((int)TempOne.DataViews.TwentyTwo_TwentyEight);;
-                            break;
-                        case 8: // 29+ Days
-                            KpaDataTableLoader.Plan.LoadMaterialDueDataTable((int)TempOne.DataViews.TwentyNinePlus);;
-                            break;
-                        case 9: // Average
-                            break;
-                        case 10: // Totals
-                            KpaDataTableLoader.Plan.LoadMaterialDueDataTable((int)TempOne.DataViews.Total);;
-                            break;
-                    }
-                    break;
-            }
+            using (DataViewer dv = new DataViewer())
+            { 
+                switch (rowIndex)
+                {
+                    case 0:
+                        break;
+                    case 1: // PRs Aging (Not Released)
+                        switch (columnIndex)
+                        {
+                            case 2: // <= 0 Days
+                                dv.DataLoader += KpaDataTableLoader.Plan.LoadPRsAgingNotRelDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
+                                break;
+                            case 3: // 1 - 3 Days
+                                dv.DataLoader += KpaDataTableLoader.Plan.LoadPRsAgingNotRelDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.One_Three;
+                                break;
+                            case 4: // 4 - 7 Days
+                                dv.DataLoader += KpaDataTableLoader.Plan.LoadPRsAgingNotRelDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Four_Seven;
+                                break;
+                            case 5: // 8 - 14 Days
+                                dv.DataLoader += KpaDataTableLoader.Plan.LoadPRsAgingNotRelDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Eight_Fourteen;
+                                break;
+                            case 6: // 15 - 21 Days
+                                dv.DataLoader += KpaDataTableLoader.Plan.LoadPRsAgingNotRelDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Fifteen_TwentyOne;
+                                break;
+                            case 7: // 22 - 28 Days
+                                dv.DataLoader += KpaDataTableLoader.Plan.LoadPRsAgingNotRelDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyTwo_TwentyEight;
+                                break;
+                            case 8: // 29+ Days
+                                dv.DataLoader += KpaDataTableLoader.Plan.LoadPRsAgingNotRelDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyNinePlus;
+                                break;
+                            case 9: // Average
+                                return;
+                            case 10: // Totals
+                                dv.DataLoader += KpaDataTableLoader.Plan.LoadPRsAgingNotRelDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Total;
+                                break;
+                        }
+                        break;
+                    case 2: // Material Due
+                        switch (columnIndex)
+                        {
+                            case 2: // <= 0 Days
+                                dv.DataLoader += KpaDataTableLoader.Plan.LoadMaterialDueDataTable;
+                               dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
+                                break;
+                            case 3: // 1 - 3 Days
+                                dv.DataLoader += KpaDataTableLoader.Plan.LoadMaterialDueDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.One_Three;
+                                break;
+                            case 4: // 4 - 7 Days
+                                dv.DataLoader += KpaDataTableLoader.Plan.LoadMaterialDueDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Four_Seven;
+                                break;
+                            case 5: // 8 - 14 Days
+                                dv.DataLoader += KpaDataTableLoader.Plan.LoadMaterialDueDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Eight_Fourteen;
+                                break;
+                            case 6: // 15 - 21 Days
+                                dv.DataLoader += KpaDataTableLoader.Plan.LoadMaterialDueDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Fifteen_TwentyOne;
+                                break;
+                            case 7: // 22 - 28 Days
+                                dv.DataLoader += KpaDataTableLoader.Plan.LoadMaterialDueDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyTwo_TwentyEight;
+                                break;
+                            case 8: // 29+ Days
+                                dv.DataLoader += KpaDataTableLoader.Plan.LoadMaterialDueDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyNinePlus;
+                                break;
+                            case 9: // Average
+                                return;
+                            case 10: // Totals
+                                dv.DataLoader += KpaDataTableLoader.Plan.LoadMaterialDueDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Total;
+                                break;
+                        }
+                        break;
+                }
 
+                dv.ShowDialog();
+            }
         }
 
 
@@ -860,133 +880,170 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// <param name="columnIndex">The column index of the clicked cell</param>
         private void HandlePurchDataTableLoading(int rowIndex, int columnIndex)
         {
-            switch (rowIndex)
+            using (DataViewer dv = new DataViewer())
             {
-                case 3: // PRs Aging (Released)
-                    switch (columnIndex)
-                    {
-                        case 2: // <= 0 Days
-                            KpaDataTableLoader.Purch.LoadPrsAgingReleasedDataTable((int)TempOne.DataViews.LessThanZero);;
-                            break;
-                        case 3: // 1 - 3 Days
-                            KpaDataTableLoader.Purch.LoadPrsAgingReleasedDataTable((int)TempOne.DataViews.One_Three);;
-                            break;             
-                        case 4: // 4 - 7 Days  
-                            KpaDataTableLoader.Purch.LoadPrsAgingReleasedDataTable((int)TempOne.DataViews.Four_Seven);;
-                            break;             
-                        case 5: // 8 - 14 Days 
-                            KpaDataTableLoader.Purch.LoadPrsAgingReleasedDataTable((int)TempOne.DataViews.Eight_Fourteen);;
-                            break;             
-                        case 6: // 15 - 21 
-                            KpaDataTableLoader.Purch.LoadPrsAgingReleasedDataTable((int)TempOne.DataViews.Fifteen_TwentyOne);;
-                            break;             
-                        case 7: // 22 - 28 Days
-                            KpaDataTableLoader.Purch.LoadPrsAgingReleasedDataTable((int)TempOne.DataViews.TwentyTwo_TwentyEight);;
-                            break;             
-                        case 8: // 29+ Days    
-                            KpaDataTableLoader.Purch.LoadPrsAgingReleasedDataTable((int)TempOne.DataViews.TwentyNinePlus);;
-                            break;             
-                        case 9: // Average     
-                            break;             
-                        case 10: // Totals     
-                            KpaDataTableLoader.Purch.LoadPrsAgingReleasedDataTable((int)TempOne.DataViews.Total);;
-                            break;
-                    }
-                    break;
-                case 4: // PO First Release
-                    switch (columnIndex)
-                    {
-                        case 2: // <= 0 Days
-                            KpaDataTableLoader.Purch.LoadPoFirstReleaseDataTable((int)TempOne.DataViews.LessThanZero);;
-                            break;
-                        case 3: // 1 - 3 Days
-                            KpaDataTableLoader.Purch.LoadPoFirstReleaseDataTable((int)TempOne.DataViews.One_Three);;
-                            break;
-                        case 4: // 4 - 7 Days
-                            KpaDataTableLoader.Purch.LoadPoFirstReleaseDataTable((int)TempOne.DataViews.Four_Seven);;
-                            break;
-                        case 5: // 8 - 14 Days
-                            KpaDataTableLoader.Purch.LoadPoFirstReleaseDataTable((int)TempOne.DataViews.Eight_Fourteen);;
-                            break;
-                        case 6: // 15 - 21 Days
-                            KpaDataTableLoader.Purch.LoadPoFirstReleaseDataTable((int)TempOne.DataViews.Fifteen_TwentyOne);;
-                            break;
-                        case 7: // 22 - 28 Days
-                            KpaDataTableLoader.Purch.LoadPoFirstReleaseDataTable((int)TempOne.DataViews.TwentyTwo_TwentyEight);;
-                            break;
-                        case 8: // 29+ Days
-                            KpaDataTableLoader.Purch.LoadPoFirstReleaseDataTable((int)TempOne.DataViews.TwentyNinePlus);;
-                            break;
-                        case 9: // Average
-                            break;
-                        case 10: // Totals
-                            KpaDataTableLoader.Purch.LoadPoFirstReleaseDataTable((int)TempOne.DataViews.Total);;
-                            break;
-                    }
-                    break;
-                case 5: // PO Prev Release
-                    switch (columnIndex)
-                    {
-                        case 2: // <= 0 Days
-                            KpaDataTableLoader.Purch.LoadPoPrevReleaseDataTable((int)TempOne.DataViews.LessThanZero);;
-                            break;
-                        case 3: // 1 - 3 Days
-                            KpaDataTableLoader.Purch.LoadPoPrevReleaseDataTable((int)TempOne.DataViews.One_Three);;
-                            break;
-                        case 4: // 4 - 7 Days
-                            KpaDataTableLoader.Purch.LoadPoPrevReleaseDataTable((int)TempOne.DataViews.Four_Seven);;
-                            break;
-                        case 5: // 8 - 14 Days
-                            KpaDataTableLoader.Purch.LoadPoPrevReleaseDataTable((int)TempOne.DataViews.Eight_Fourteen);;
-                            break;
-                        case 6: // 15 - 21 Days
-                            KpaDataTableLoader.Purch.LoadPoPrevReleaseDataTable((int)TempOne.DataViews.Fifteen_TwentyOne);;
-                            break;
-                        case 7: // 22 - 28 Days
-                            KpaDataTableLoader.Purch.LoadPoPrevReleaseDataTable((int)TempOne.DataViews.TwentyTwo_TwentyEight);;
-                            break;
-                        case 8: // 29+ Days
-                            KpaDataTableLoader.Purch.LoadPoPrevReleaseDataTable((int)TempOne.DataViews.TwentyNinePlus);;
-                            break;
-                        case 9: // Average
-                            break;
-                        case 10: // Totals
-                            KpaDataTableLoader.Purch.LoadPoPrevReleaseDataTable((int)TempOne.DataViews.Total);;
-                            break;
-                    }
-                    break;
-                case 6: // No Confirmation
-                    switch (columnIndex)
-                    {
-                        case 2: // <= 0 Days
-                            KpaDataTableLoader.Purch.LoadNoConfirmationsDataTable((int)TempOne.DataViews.LessThanZero);;
-                            break;
-                        case 3: // 1 - 3 Days
-                            KpaDataTableLoader.Purch.LoadNoConfirmationsDataTable((int)TempOne.DataViews.One_Three);;
-                            break;
-                        case 4: // 4 - 7 Days
-                            KpaDataTableLoader.Purch.LoadNoConfirmationsDataTable((int)TempOne.DataViews.Four_Seven);;
-                            break;
-                        case 5: // 8 - 14 Days
-                            KpaDataTableLoader.Purch.LoadNoConfirmationsDataTable((int)TempOne.DataViews.Eight_Fourteen);;
-                            break;
-                        case 6: // 15 - 21 Days
-                            KpaDataTableLoader.Purch.LoadNoConfirmationsDataTable((int)TempOne.DataViews.Fifteen_TwentyOne);;
-                            break;
-                        case 7: // 22 - 28 Days
-                            KpaDataTableLoader.Purch.LoadNoConfirmationsDataTable((int)TempOne.DataViews.TwentyTwo_TwentyEight);;
-                            break;
-                        case 8: // 29+ Days
-                            KpaDataTableLoader.Purch.LoadNoConfirmationsDataTable((int)TempOne.DataViews.TwentyNinePlus);;
-                            break;
-                        case 9: // Average
-                            break;
-                        case 10: // Totals
-                            KpaDataTableLoader.Purch.LoadNoConfirmationsDataTable((int)TempOne.DataViews.Total);;
-                            break;
-                    }
-                    break;
+                switch (rowIndex)
+                {
+                    case 3: // PRs Aging (Released)
+                        switch (columnIndex)
+                        {
+                            case 2: // <= 0 Days
+                                dv.DataLoader += KpaDataTableLoader.Purch.LoadPrsAgingReleasedDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
+                                break;
+                            case 3: // 1 - 3 Days
+                                dv.DataLoader += KpaDataTableLoader.Purch.LoadPrsAgingReleasedDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.One_Three;
+                                break;
+                            case 4: // 4 - 7 Days  
+                                dv.DataLoader += KpaDataTableLoader.Purch.LoadPrsAgingReleasedDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Four_Seven;
+                                break;
+                            case 5: // 8 - 14 Days 
+                                dv.DataLoader += KpaDataTableLoader.Purch.LoadPrsAgingReleasedDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Eight_Fourteen;
+                                break;
+                            case 6: // 15 - 21 
+                                dv.DataLoader += KpaDataTableLoader.Purch.LoadPrsAgingReleasedDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Fifteen_TwentyOne;
+                                break;
+                            case 7: // 22 - 28 Days
+                                dv.DataLoader += KpaDataTableLoader.Purch.LoadPrsAgingReleasedDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyTwo_TwentyEight;
+                                break;
+                            case 8: // 29+ Days    
+                                dv.DataLoader += KpaDataTableLoader.Purch.LoadPrsAgingReleasedDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyNinePlus;
+                                break;
+                            case 9: // Average
+                                return;
+                            case 10: // Totals     
+                                dv.DataLoader += KpaDataTableLoader.Purch.LoadPrsAgingReleasedDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Total;
+                                break;
+                        }
+                        break;
+                    case 4: // PO First Release
+                        switch (columnIndex)
+                        {
+                            case 2: // <= 0 Days
+                                dv.DataLoader += KpaDataTableLoader.Purch.LoadPoFirstReleaseDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
+                                break;
+                            case 3: // 1 - 3 Days
+                                dv.DataLoader += KpaDataTableLoader.Purch.LoadPoFirstReleaseDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.One_Three;
+                                break;
+                            case 4: // 4 - 7 Days
+                                dv.DataLoader += KpaDataTableLoader.Purch.LoadPoFirstReleaseDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Four_Seven;
+                                break;
+                            case 5: // 8 - 14 Days
+                                dv.DataLoader += KpaDataTableLoader.Purch.LoadPoFirstReleaseDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Eight_Fourteen;
+                                break;
+                            case 6: // 15 - 21 Days
+                                dv.DataLoader += KpaDataTableLoader.Purch.LoadPoFirstReleaseDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Fifteen_TwentyOne;
+                                break;
+                            case 7: // 22 - 28 Days
+                                dv.DataLoader += KpaDataTableLoader.Purch.LoadPoFirstReleaseDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyTwo_TwentyEight;
+                                break;
+                            case 8: // 29+ Days
+                                dv.DataLoader += KpaDataTableLoader.Purch.LoadPoFirstReleaseDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyNinePlus;
+                                break;
+                            case 9: // Average
+                                return;
+                            case 10: // Totals
+                                dv.DataLoader += KpaDataTableLoader.Purch.LoadPoFirstReleaseDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Total;
+                                break;
+                        }
+                        break;
+                    case 5: // PO Prev Release
+                        switch (columnIndex)
+                        {
+                            case 2: // <= 0 Days
+                                dv.DataLoader += KpaDataTableLoader.Purch.LoadPoPrevReleaseDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
+                                break;
+                            case 3: // 1 - 3 Days
+                                dv.DataLoader += KpaDataTableLoader.Purch.LoadPoPrevReleaseDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.One_Three;
+                                break;
+                            case 4: // 4 - 7 Days
+                                dv.DataLoader += KpaDataTableLoader.Purch.LoadPoPrevReleaseDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Four_Seven;
+                                break;
+                            case 5: // 8 - 14 Days
+                                dv.DataLoader += KpaDataTableLoader.Purch.LoadPoPrevReleaseDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Eight_Fourteen;
+                                break;
+                            case 6: // 15 - 21 Days
+                                dv.DataLoader += KpaDataTableLoader.Purch.LoadPoPrevReleaseDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Fifteen_TwentyOne;
+                                break;
+                            case 7: // 22 - 28 Days
+                                dv.DataLoader += KpaDataTableLoader.Purch.LoadPoPrevReleaseDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyTwo_TwentyEight;
+                                break;
+                            case 8: // 29+ Days
+                                dv.DataLoader += KpaDataTableLoader.Purch.LoadPoPrevReleaseDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyNinePlus;
+                                break;
+                            case 9: // Average
+                                return;
+                            case 10: // Totals
+                                dv.DataLoader += KpaDataTableLoader.Purch.LoadPoPrevReleaseDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Total;
+                                break;
+                        }
+                        break;
+                    case 6: // No Confirmation
+                        switch (columnIndex)
+                        {
+                            case 2: // <= 0 Days
+                                dv.DataLoader += KpaDataTableLoader.Purch.LoadNoConfirmationsDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
+                                break;
+                            case 3: // 1 - 3 Days
+                                dv.DataLoader += KpaDataTableLoader.Purch.LoadNoConfirmationsDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.One_Three;
+                                break;
+                            case 4: // 4 - 7 Days
+                                dv.DataLoader += KpaDataTableLoader.Purch.LoadNoConfirmationsDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Four_Seven;
+                                break;
+                            case 5: // 8 - 14 Days
+                                dv.DataLoader += KpaDataTableLoader.Purch.LoadNoConfirmationsDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Eight_Fourteen;
+                                break;
+                            case 6: // 15 - 21 Days
+                                dv.DataLoader += KpaDataTableLoader.Purch.LoadNoConfirmationsDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Fifteen_TwentyOne;
+                                break;
+                            case 7: // 22 - 28 Days
+                                dv.DataLoader += KpaDataTableLoader.Purch.LoadNoConfirmationsDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyTwo_TwentyEight;
+                                break;
+                            case 8: // 29+ Days
+                                dv.DataLoader += KpaDataTableLoader.Purch.LoadNoConfirmationsDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyNinePlus;
+                                break;
+                            case 9: // Average
+                                return;
+                            case 10: // Totals
+                                dv.DataLoader += KpaDataTableLoader.Purch.LoadNoConfirmationsDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Total;
+                                break;
+                        }
+                        break;
+                }
+                dv.ShowDialog();
             }
+
         }
 
 
@@ -1000,70 +1057,90 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// <param name="columnIndex">The column index of the clicked cell</param>
         private void HandlePurchSubDataTableLoading(int rowIndex, int columnIndex)
         {
-            switch (rowIndex)
-            {
-                case 7: // PR Release to Po Release
-                    switch (columnIndex)
-                    {
-                        case 2: // <= 0 Days
-                            KpaDataTableLoader.PurchSub.LoadPrReleaseToPoReleaseDataTable((int)TempOne.DataViews.LessThanZero);;
-                            break;
-                        case 3: // 1 - 3 Days
-                            KpaDataTableLoader.PurchSub.LoadPrReleaseToPoReleaseDataTable((int)TempOne.DataViews.One_Three);;
-                            break;
-                        case 4: // 4 - 7 Days  
-                            KpaDataTableLoader.PurchSub.LoadPrReleaseToPoReleaseDataTable((int)TempOne.DataViews.Four_Seven);;
-                            break;
-                        case 5: // 8 - 14 Days 
-                            KpaDataTableLoader.PurchSub.LoadPrReleaseToPoReleaseDataTable((int)TempOne.DataViews.Eight_Fourteen);;
-                            break;
-                        case 6: // 15 - 21 
-                            KpaDataTableLoader.PurchSub.LoadPrReleaseToPoReleaseDataTable((int)TempOne.DataViews.Fifteen_TwentyOne);;
-                            break;
-                        case 7: // 22 - 28 Days
-                            KpaDataTableLoader.PurchSub.LoadPrReleaseToPoReleaseDataTable((int)TempOne.DataViews.TwentyTwo_TwentyEight);;
-                            break;
-                        case 8: // 29+ Days    
-                            KpaDataTableLoader.PurchSub.LoadPrReleaseToPoReleaseDataTable((int)TempOne.DataViews.TwentyNinePlus);;
-                            break;
-                        case 9: // Average     
-                            break;
-                        case 10: // Totals     
-                            KpaDataTableLoader.PurchSub.LoadPrReleaseToPoReleaseDataTable((int)TempOne.DataViews.Total);;
-                            break;
-                    }
-                    break;
-                case 8: // PO Creation to Confirmation Entry
-                    switch (columnIndex)
-                    {
-                        case 2: // <= 0 Days
-                            KpaDataTableLoader.PurchSub.LoadPoCreationToConfirmationEntryDataTable((int)TempOne.DataViews.LessThanZero);;
-                            break;
-                        case 3: // 1 - 3 Days
-                            KpaDataTableLoader.PurchSub.LoadPoCreationToConfirmationEntryDataTable((int)TempOne.DataViews.One_Three);;
-                            break;
-                        case 4: // 4 - 7 Days
-                            KpaDataTableLoader.PurchSub.LoadPoCreationToConfirmationEntryDataTable((int)TempOne.DataViews.Four_Seven);;
-                            break;
-                        case 5: // 8 - 14 Days
-                            KpaDataTableLoader.PurchSub.LoadPoCreationToConfirmationEntryDataTable((int)TempOne.DataViews.Eight_Fourteen);;
-                            break;
-                        case 6: // 15 - 21 Days
-                            KpaDataTableLoader.PurchSub.LoadPoCreationToConfirmationEntryDataTable((int)TempOne.DataViews.Fifteen_TwentyOne);;
-                            break;
-                        case 7: // 22 - 28 Days
-                            KpaDataTableLoader.PurchSub.LoadPoCreationToConfirmationEntryDataTable((int)TempOne.DataViews.TwentyTwo_TwentyEight);;
-                            break;
-                        case 8: // 29+ Days
-                            KpaDataTableLoader.PurchSub.LoadPoCreationToConfirmationEntryDataTable((int)TempOne.DataViews.TwentyNinePlus);;
-                            break;
-                        case 9: // Average
-                            break;
-                        case 10: // Totals
-                            KpaDataTableLoader.PurchSub.LoadPoCreationToConfirmationEntryDataTable((int)TempOne.DataViews.Total);;
-                            break;
-                    }
-                    break;
+            using (DataViewer dv = new DataViewer())
+            { 
+                switch (rowIndex)
+                {
+                    case 7: // PR Release to Po Release
+                        switch (columnIndex)
+                        {
+                            case 2: // <= 0 Days
+                                dv.DataLoader += KpaDataTableLoader.PurchSub.LoadPrReleaseToPoReleaseDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
+                                break;
+                            case 3: // 1 - 3 Days
+                                dv.DataLoader += KpaDataTableLoader.PurchSub.LoadPrReleaseToPoReleaseDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.One_Three;
+                                break;
+                            case 4: // 4 - 7 Days  
+                                dv.DataLoader += KpaDataTableLoader.PurchSub.LoadPrReleaseToPoReleaseDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Four_Seven;
+                                break;
+                            case 5: // 8 - 14 Days 
+                                dv.DataLoader += KpaDataTableLoader.PurchSub.LoadPrReleaseToPoReleaseDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Eight_Fourteen;
+                                break;
+                            case 6: // 15 - 21 
+                                dv.DataLoader += KpaDataTableLoader.PurchSub.LoadPrReleaseToPoReleaseDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Fifteen_TwentyOne;
+                                break;
+                            case 7: // 22 - 28 Days
+                                dv.DataLoader += KpaDataTableLoader.PurchSub.LoadPrReleaseToPoReleaseDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyTwo_TwentyEight;
+                                break;
+                            case 8: // 29+ Days    
+                                dv.DataLoader += KpaDataTableLoader.PurchSub.LoadPrReleaseToPoReleaseDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyNinePlus;
+                                break;
+                            case 9: // Average     
+                                return;
+                            case 10: // Totals     
+                                dv.DataLoader += KpaDataTableLoader.PurchSub.LoadPrReleaseToPoReleaseDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Total;
+                                break;
+                        }
+                        break;
+                    case 8: // PO Creation to Confirmation Entry
+                        switch (columnIndex)
+                        {
+                            case 2: // <= 0 Days
+                                dv.DataLoader += KpaDataTableLoader.PurchSub.LoadPoCreationToConfirmationEntryDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
+                                break;
+                            case 3: // 1 - 3 Days
+                                dv.DataLoader += KpaDataTableLoader.PurchSub.LoadPoCreationToConfirmationEntryDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.One_Three;
+                                break;
+                            case 4: // 4 - 7 Days
+                                dv.DataLoader += KpaDataTableLoader.PurchSub.LoadPoCreationToConfirmationEntryDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Four_Seven;
+                                break;
+                            case 5: // 8 - 14 Days
+                                dv.DataLoader += KpaDataTableLoader.PurchSub.LoadPoCreationToConfirmationEntryDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Eight_Fourteen;
+                                break;
+                            case 6: // 15 - 21 Days
+                                dv.DataLoader += KpaDataTableLoader.PurchSub.LoadPoCreationToConfirmationEntryDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Fifteen_TwentyOne;
+                                break;
+                            case 7: // 22 - 28 Days
+                                dv.DataLoader += KpaDataTableLoader.PurchSub.LoadPoCreationToConfirmationEntryDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyTwo_TwentyEight;
+                                break;
+                            case 8: // 29+ Days
+                                dv.DataLoader += KpaDataTableLoader.PurchSub.LoadPoCreationToConfirmationEntryDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyNinePlus;
+                                break;
+                            case 9: // Average
+                                return;
+                            case 10: // Totals
+                                dv.DataLoader += KpaDataTableLoader.PurchSub.LoadPoCreationToConfirmationEntryDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Total;
+                                break;
+                        }
+                        break;
+                }
+                dv.ShowDialog();
             }
         }
 
@@ -1078,39 +1155,51 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// <param name="columnIndex">The column index of the clicked cell</param>
         private void HandlePurchTotalDataTableLoading(int rowIndex, int columnIndex)
         {
-            switch (rowIndex)
-            {
-                case 9: // PR Release to Confirmation Entry
-                    switch (columnIndex)
-                    {
-                        case 2: // <= 0 Days
-                            KpaDataTableLoader.PurchTotal.LoadPrReleaseToConfEntryDataTable((int)TempOne.DataViews.LessThanZero);;
-                            break;
-                        case 3: // 1 - 3 Days
-                            KpaDataTableLoader.PurchTotal.LoadPrReleaseToConfEntryDataTable((int)TempOne.DataViews.One_Three);;
-                            break;
-                        case 4: // 4 - 7 Days  
-                            KpaDataTableLoader.PurchTotal.LoadPrReleaseToConfEntryDataTable((int)TempOne.DataViews.Four_Seven);;
-                            break;
-                        case 5: // 8 - 14 Days 
-                            KpaDataTableLoader.PurchTotal.LoadPrReleaseToConfEntryDataTable((int)TempOne.DataViews.Eight_Fourteen);;
-                            break;
-                        case 6: // 15 - 21 
-                            KpaDataTableLoader.PurchTotal.LoadPrReleaseToConfEntryDataTable((int)TempOne.DataViews.Fifteen_TwentyOne);;
-                            break;
-                        case 7: // 22 - 28 Days
-                            KpaDataTableLoader.PurchTotal.LoadPrReleaseToConfEntryDataTable((int)TempOne.DataViews.TwentyTwo_TwentyEight);;
-                            break;
-                        case 8: // 29+ Days    
-                            KpaDataTableLoader.PurchTotal.LoadPrReleaseToConfEntryDataTable((int)TempOne.DataViews.TwentyNinePlus);;
-                            break;
-                        case 9: // Average     
-                            break;
-                        case 10: // Totals     
-                            KpaDataTableLoader.PurchTotal.LoadPrReleaseToConfEntryDataTable((int)TempOne.DataViews.Total);;
-                            break;
-                    }
-                    break;
+            using (DataViewer dv = new DataViewer())
+            { 
+                switch (rowIndex)
+                {
+                    case 9: // PR Release to Confirmation Entry
+                        switch (columnIndex)
+                        {
+                            case 2: // <= 0 Days
+                                dv.DataLoader += KpaDataTableLoader.PurchTotal.LoadPrReleaseToConfEntryDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
+                                break;
+                            case 3: // 1 - 3 Days
+                                dv.DataLoader += KpaDataTableLoader.PurchTotal.LoadPrReleaseToConfEntryDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.One_Three;
+                                break;
+                            case 4: // 4 - 7 Days  
+                                dv.DataLoader += KpaDataTableLoader.PurchTotal.LoadPrReleaseToConfEntryDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Four_Seven;
+                                break;
+                            case 5: // 8 - 14 Days 
+                                dv.DataLoader += KpaDataTableLoader.PurchTotal.LoadPrReleaseToConfEntryDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Eight_Fourteen;
+                                break;
+                            case 6: // 15 - 21 
+                                dv.DataLoader += KpaDataTableLoader.PurchTotal.LoadPrReleaseToConfEntryDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Fifteen_TwentyOne;
+                                break;
+                            case 7: // 22 - 28 Days
+                                dv.DataLoader += KpaDataTableLoader.PurchTotal.LoadPrReleaseToConfEntryDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyTwo_TwentyEight;
+                                break;
+                            case 8: // 29+ Days    
+                                dv.DataLoader += KpaDataTableLoader.PurchTotal.LoadPrReleaseToConfEntryDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyNinePlus;
+                                break;
+                            case 9: // Average     
+                                return;
+                            case 10: // Totals     
+                                dv.DataLoader += KpaDataTableLoader.PurchTotal.LoadPrReleaseToConfEntryDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Total;
+                                break;
+                        }
+                        break;
+                }
+                dv.ShowDialog();
             }
         }
 
@@ -1126,101 +1215,129 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// <param name="columnIndex">The column index of the clicked cell</param>
         private void HandleFollowUpDataTableLoading(int rowIndex, int columnIndex)
         {
-            switch (rowIndex)
+            using (DataViewer dv = new DataViewer())
             {
-                case 11: // Confirmed Date vs Plan Date
-                    switch (columnIndex)
-                    {
-                        case 2: // <= 0 Days
-                            KpaDataTableLoader.FollowUp.LoadConfirmedVsPlanDateDataTable((int)TempOne.DataViews.LessThanZero);;
-                            break;
-                        case 3: // 1 - 3 Days
-                            KpaDataTableLoader.FollowUp.LoadConfirmedVsPlanDateDataTable((int)TempOne.DataViews.One_Three);;
-                            break;
-                        case 4: // 4 - 7 Days  
-                            KpaDataTableLoader.FollowUp.LoadConfirmedVsPlanDateDataTable((int)TempOne.DataViews.Four_Seven);;
-                            break;
-                        case 5: // 8 - 14 Days 
-                            KpaDataTableLoader.FollowUp.LoadConfirmedVsPlanDateDataTable((int)TempOne.DataViews.Eight_Fourteen);;
-                            break;
-                        case 6: // 15 - 21 
-                            KpaDataTableLoader.FollowUp.LoadConfirmedVsPlanDateDataTable((int)TempOne.DataViews.Fifteen_TwentyOne);;
-                            break;
-                        case 7: // 22 - 28 Days
-                            KpaDataTableLoader.FollowUp.LoadConfirmedVsPlanDateDataTable((int)TempOne.DataViews.TwentyTwo_TwentyEight);;
-                            break;
-                        case 8: // 29+ Days    
-                            KpaDataTableLoader.FollowUp.LoadConfirmedVsPlanDateDataTable((int)TempOne.DataViews.TwentyNinePlus);;
-                            break;
-                        case 9: // Average     
-                            break;
-                        case 10: // Totals     
-                            KpaDataTableLoader.FollowUp.LoadConfirmedVsPlanDateDataTable((int)TempOne.DataViews.Total);;
-                            break;
-                    }
-                    break;
-                case 12: // Confirmed Date for Upcoming Deliveries
-                    switch (columnIndex)
-                    {
-                        case 2: // <= 0 Days
-                            KpaDataTableLoader.FollowUp.LoadConfirmedDateForUpcomingDeliveriesDataTable((int)TempOne.DataViews.LessThanZero);;
-                            break;
-                        case 3: // 1 - 3 Days
-                            KpaDataTableLoader.FollowUp.LoadConfirmedDateForUpcomingDeliveriesDataTable((int)TempOne.DataViews.One_Three);;
-                            break;
-                        case 4: // 4 - 7 Days
-                            KpaDataTableLoader.FollowUp.LoadConfirmedDateForUpcomingDeliveriesDataTable((int)TempOne.DataViews.Four_Seven);;
-                            break;
-                        case 5: // 8 - 14 Days
-                            KpaDataTableLoader.FollowUp.LoadConfirmedDateForUpcomingDeliveriesDataTable((int)TempOne.DataViews.Eight_Fourteen);;
-                            break;
-                        case 6: // 15 - 21 Days
-                            KpaDataTableLoader.FollowUp.LoadConfirmedDateForUpcomingDeliveriesDataTable((int)TempOne.DataViews.Fifteen_TwentyOne);;
-                            break;
-                        case 7: // 22 - 28 Days
-                            KpaDataTableLoader.FollowUp.LoadConfirmedDateForUpcomingDeliveriesDataTable((int)TempOne.DataViews.TwentyTwo_TwentyEight);;
-                            break;
-                        case 8: // 29+ Days
-                            KpaDataTableLoader.FollowUp.LoadConfirmedDateForUpcomingDeliveriesDataTable((int)TempOne.DataViews.TwentyNinePlus);;
-                            break;
-                        case 9: // Average
-                            break;
-                        case 10: // Totals
-                            KpaDataTableLoader.FollowUp.LoadConfirmedDateForUpcomingDeliveriesDataTable((int)TempOne.DataViews.Total);;
-                            break;
-                    }
-                    break;
-                case 13: // Late to Confirmed
-                    switch (columnIndex)
-                    {
-                        case 2: // <= 0 Days
-                            KpaDataTableLoader.FollowUp.LoadLateToConfirmedDateDataTable((int)TempOne.DataViews.LessThanZero);;
-                            break;
-                        case 3: // 1 - 3 Days
-                            KpaDataTableLoader.FollowUp.LoadLateToConfirmedDateDataTable((int)TempOne.DataViews.One_Three);;
-                            break;
-                        case 4: // 4 - 7 Days
-                            KpaDataTableLoader.FollowUp.LoadLateToConfirmedDateDataTable((int)TempOne.DataViews.Four_Seven);;
-                            break;
-                        case 5: // 8 - 14 Days
-                            KpaDataTableLoader.FollowUp.LoadLateToConfirmedDateDataTable((int)TempOne.DataViews.Eight_Fourteen);;
-                            break;
-                        case 6: // 15 - 21 Days
-                            KpaDataTableLoader.FollowUp.LoadLateToConfirmedDateDataTable((int)TempOne.DataViews.Fifteen_TwentyOne);;
-                            break;
-                        case 7: // 22 - 28 Days
-                            KpaDataTableLoader.FollowUp.LoadLateToConfirmedDateDataTable((int)TempOne.DataViews.TwentyTwo_TwentyEight);;
-                            break;
-                        case 8: // 29+ Days
-                            KpaDataTableLoader.FollowUp.LoadLateToConfirmedDateDataTable((int)TempOne.DataViews.TwentyNinePlus);;
-                            break;
-                        case 9: // Average
-                            break;
-                        case 10: // Totals
-                            KpaDataTableLoader.FollowUp.LoadLateToConfirmedDateDataTable((int)TempOne.DataViews.Total);;
-                            break;
-                    }
-                    break;
+                switch (rowIndex)
+                {
+                    case 11: // Confirmed Date vs Plan Date
+                        switch (columnIndex)
+                        {
+                            case 2: // <= 0 Days
+                                dv.DataLoader += KpaDataTableLoader.FollowUp.LoadConfirmedVsPlanDateDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
+                                break;
+                            case 3: // 1 - 3 Days
+                                dv.DataLoader += KpaDataTableLoader.FollowUp.LoadConfirmedVsPlanDateDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.One_Three;
+                                break;
+                            case 4: // 4 - 7 Days  
+                                dv.DataLoader += KpaDataTableLoader.FollowUp.LoadConfirmedVsPlanDateDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Four_Seven;
+                                break;
+                            case 5: // 8 - 14 Days 
+                                dv.DataLoader += KpaDataTableLoader.FollowUp.LoadConfirmedVsPlanDateDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Eight_Fourteen;
+                                break;
+                            case 6: // 15 - 21 
+                                dv.DataLoader += KpaDataTableLoader.FollowUp.LoadConfirmedVsPlanDateDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Fifteen_TwentyOne;
+                                break;
+                            case 7: // 22 - 28 Days
+                                dv.DataLoader += KpaDataTableLoader.FollowUp.LoadConfirmedVsPlanDateDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyTwo_TwentyEight;
+                                break;
+                            case 8: // 29+ Days    
+                                dv.DataLoader += KpaDataTableLoader.FollowUp.LoadConfirmedVsPlanDateDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyNinePlus;
+                                break;
+                            case 9: // Average     
+                                return;
+                            case 10: // Totals     
+                                dv.DataLoader += KpaDataTableLoader.FollowUp.LoadConfirmedVsPlanDateDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Total;
+                                break;
+                        }
+                        break;
+                    case 12: // Confirmed Date for Upcoming Deliveries
+                        switch (columnIndex)
+                        {
+                            case 2: // <= 0 Days
+                                dv.DataLoader += KpaDataTableLoader.FollowUp.LoadConfirmedDateForUpcomingDeliveriesDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
+                                break;
+                            case 3: // 1 - 3 Days
+                                dv.DataLoader += KpaDataTableLoader.FollowUp.LoadConfirmedDateForUpcomingDeliveriesDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.One_Three;
+                                break;
+                            case 4: // 4 - 7 Days
+                                dv.DataLoader += KpaDataTableLoader.FollowUp.LoadConfirmedDateForUpcomingDeliveriesDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Four_Seven;
+                                break;
+                            case 5: // 8 - 14 Days
+                                dv.DataLoader += KpaDataTableLoader.FollowUp.LoadConfirmedDateForUpcomingDeliveriesDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Eight_Fourteen;
+                                break;
+                            case 6: // 15 - 21 Days
+                                dv.DataLoader += KpaDataTableLoader.FollowUp.LoadConfirmedDateForUpcomingDeliveriesDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Fifteen_TwentyOne;
+                                break;
+                            case 7: // 22 - 28 Days
+                                dv.DataLoader += KpaDataTableLoader.FollowUp.LoadConfirmedDateForUpcomingDeliveriesDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyTwo_TwentyEight;
+                                break;
+                            case 8: // 29+ Days
+                                dv.DataLoader += KpaDataTableLoader.FollowUp.LoadConfirmedDateForUpcomingDeliveriesDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyNinePlus;
+                                break;
+                            case 9: // Average
+                                return;
+                            case 10: // Totals
+                                dv.DataLoader += KpaDataTableLoader.FollowUp.LoadConfirmedDateForUpcomingDeliveriesDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Total;
+                                break;
+                        }
+                        break;
+                    case 13: // Late to Confirmed
+                        switch (columnIndex)
+                        {
+                            case 2: // <= 0 Days
+                                dv.DataLoader += KpaDataTableLoader.FollowUp.LoadLateToConfirmedDateDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
+                                break;
+                            case 3: // 1 - 3 Days
+                                dv.DataLoader += KpaDataTableLoader.FollowUp.LoadLateToConfirmedDateDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.One_Three;
+                                break;
+                            case 4: // 4 - 7 Days
+                                dv.DataLoader += KpaDataTableLoader.FollowUp.LoadLateToConfirmedDateDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Four_Seven;
+                                break;
+                            case 5: // 8 - 14 Days
+                                dv.DataLoader += KpaDataTableLoader.FollowUp.LoadLateToConfirmedDateDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Eight_Fourteen;
+                                break;
+                            case 6: // 15 - 21 Days
+                                dv.DataLoader += KpaDataTableLoader.FollowUp.LoadLateToConfirmedDateDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Fifteen_TwentyOne;
+                                break;
+                            case 7: // 22 - 28 Days
+                                dv.DataLoader += KpaDataTableLoader.FollowUp.LoadLateToConfirmedDateDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyTwo_TwentyEight;
+                                break;
+                            case 8: // 29+ Days
+                                dv.DataLoader += KpaDataTableLoader.FollowUp.LoadLateToConfirmedDateDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyNinePlus;
+                                break;
+                            case 9: // Average
+                                return;
+                            case 10: // Totals
+                                dv.DataLoader += KpaDataTableLoader.FollowUp.LoadLateToConfirmedDateDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Total;
+                                break;
+                        }
+                        break;
+                }
+                dv.ShowDialog();
             }
         }
 
@@ -1235,101 +1352,129 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// <param name="columnIndex">The column index of the clicked cell</param>
         private void HandleHotJobsDataTableLoading(int rowIndex, int columnIndex)
         {
-            switch (rowIndex)
+            using (DataViewer dv = new DataViewer())
             {
-                case 18: // PRs (Not on PO) - Hot Jobs Only
-                    switch (columnIndex)
-                    {
-                        case 2: // <= 0 Days
-                            KpaDataTableLoader.HotJobs.LoadPRsNotOnPODataTable((int)TempOne.DataViews.LessThanZero);;
-                            break;
-                        case 3: // 1 - 3 Days
-                            KpaDataTableLoader.HotJobs.LoadPRsNotOnPODataTable((int)TempOne.DataViews.One_Three);;
-                            break;
-                        case 4: // 4 - 7 Days  
-                            KpaDataTableLoader.HotJobs.LoadPRsNotOnPODataTable((int)TempOne.DataViews.Four_Seven);;
-                            break;
-                        case 5: // 8 - 14 Days 
-                            KpaDataTableLoader.HotJobs.LoadPRsNotOnPODataTable((int)TempOne.DataViews.Eight_Fourteen);;
-                            break;
-                        case 6: // 15 - 21 
-                            KpaDataTableLoader.HotJobs.LoadPRsNotOnPODataTable((int)TempOne.DataViews.Fifteen_TwentyOne);;
-                            break;
-                        case 7: // 22 - 28 Days
-                            KpaDataTableLoader.HotJobs.LoadPRsNotOnPODataTable((int)TempOne.DataViews.TwentyTwo_TwentyEight);;
-                            break;
-                        case 8: // 29+ Days    
-                            KpaDataTableLoader.HotJobs.LoadPRsNotOnPODataTable((int)TempOne.DataViews.TwentyNinePlus);;
-                            break;
-                        case 9: // Average     
-                            break;
-                        case 10: // Totals     
-                            KpaDataTableLoader.HotJobs.LoadPRsNotOnPODataTable((int)TempOne.DataViews.Total);;
-                            break;
-                    }
-                    break;
-                case 19: // No Confirmations - Hot Jobs Only
-                    switch (columnIndex)
-                    {
-                        case 2: // <= 0 Days
-                            KpaDataTableLoader.HotJobs.LoadNoConfirmationDataTable((int)TempOne.DataViews.LessThanZero);;
-                            break;
-                        case 3: // 1 - 3 Days
-                            KpaDataTableLoader.HotJobs.LoadNoConfirmationDataTable((int)TempOne.DataViews.One_Three);;
-                            break;
-                        case 4: // 4 - 7 Days
-                            KpaDataTableLoader.HotJobs.LoadNoConfirmationDataTable((int)TempOne.DataViews.Four_Seven);;
-                            break;
-                        case 5: // 8 - 14 Days
-                            KpaDataTableLoader.HotJobs.LoadNoConfirmationDataTable((int)TempOne.DataViews.Eight_Fourteen);;
-                            break;
-                        case 6: // 15 - 21 Days
-                            KpaDataTableLoader.HotJobs.LoadNoConfirmationDataTable((int)TempOne.DataViews.Fifteen_TwentyOne);;
-                            break;
-                        case 7: // 22 - 28 Days
-                            KpaDataTableLoader.HotJobs.LoadNoConfirmationDataTable((int)TempOne.DataViews.TwentyTwo_TwentyEight);;
-                            break;
-                        case 8: // 29+ Days
-                            KpaDataTableLoader.HotJobs.LoadNoConfirmationDataTable((int)TempOne.DataViews.TwentyNinePlus);;
-                            break;
-                        case 9: // Average
-                            break;
-                        case 10: // Totals
-                            KpaDataTableLoader.HotJobs.LoadNoConfirmationDataTable((int)TempOne.DataViews.Total);;
-                            break;
-                    }
-                    break;
-                case 20: // Late to Confirmed - Hot Jobs Only
-                    switch (columnIndex)
-                    {
-                        case 2: // <= 0 Days
-                            KpaDataTableLoader.HotJobs.LoadLateToConfirmedDataTable((int)TempOne.DataViews.LessThanZero);;
-                            break;
-                        case 3: // 1 - 3 Days
-                            KpaDataTableLoader.HotJobs.LoadLateToConfirmedDataTable((int)TempOne.DataViews.One_Three);;
-                            break;
-                        case 4: // 4 - 7 Days
-                            KpaDataTableLoader.HotJobs.LoadLateToConfirmedDataTable((int)TempOne.DataViews.Four_Seven);;
-                            break;
-                        case 5: // 8 - 14 Days
-                            KpaDataTableLoader.HotJobs.LoadLateToConfirmedDataTable((int)TempOne.DataViews.Eight_Fourteen);;
-                            break;
-                        case 6: // 15 - 21 Days
-                            KpaDataTableLoader.HotJobs.LoadLateToConfirmedDataTable((int)TempOne.DataViews.Fifteen_TwentyOne);;
-                            break;
-                        case 7: // 22 - 28 Days
-                            KpaDataTableLoader.HotJobs.LoadLateToConfirmedDataTable((int)TempOne.DataViews.TwentyTwo_TwentyEight);;
-                            break;
-                        case 8: // 29+ Days
-                            KpaDataTableLoader.HotJobs.LoadLateToConfirmedDataTable((int)TempOne.DataViews.TwentyNinePlus);;
-                            break;
-                        case 9: // Average
-                            break;
-                        case 10: // Totals
-                            KpaDataTableLoader.HotJobs.LoadLateToConfirmedDataTable((int)TempOne.DataViews.Total);;
-                            break;
-                    }
-                    break;
+                switch (rowIndex)
+                {
+                    case 18: // PRs (Not on PO) - Hot Jobs Only
+                        switch (columnIndex)
+                        {
+                            case 2: // <= 0 Days
+                                dv.DataLoader += KpaDataTableLoader.HotJobs.LoadPRsNotOnPODataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
+                                break;
+                            case 3: // 1 - 3 Days
+                                dv.DataLoader += KpaDataTableLoader.HotJobs.LoadPRsNotOnPODataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.One_Three;
+                                break;
+                            case 4: // 4 - 7 Days  
+                                dv.DataLoader += KpaDataTableLoader.HotJobs.LoadPRsNotOnPODataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Four_Seven;
+                                break;
+                            case 5: // 8 - 14 Days 
+                                dv.DataLoader += KpaDataTableLoader.HotJobs.LoadPRsNotOnPODataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Eight_Fourteen;
+                                break;
+                            case 6: // 15 - 21 
+                                dv.DataLoader += KpaDataTableLoader.HotJobs.LoadPRsNotOnPODataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Fifteen_TwentyOne;
+                                break;
+                            case 7: // 22 - 28 Days
+                                dv.DataLoader += KpaDataTableLoader.HotJobs.LoadPRsNotOnPODataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyTwo_TwentyEight;
+                                break;
+                            case 8: // 29+ Days    
+                                dv.DataLoader += KpaDataTableLoader.HotJobs.LoadPRsNotOnPODataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyNinePlus;
+                                break;
+                            case 9: // Average     
+                                return;
+                            case 10: // Totals     
+                                dv.DataLoader += KpaDataTableLoader.HotJobs.LoadPRsNotOnPODataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Total;
+                                break;
+                        }
+                        break;
+                    case 19: // No Confirmations - Hot Jobs Only
+                        switch (columnIndex)
+                        {
+                            case 2: // <= 0 Days
+                                dv.DataLoader += KpaDataTableLoader.HotJobs.LoadNoConfirmationDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
+                                break;
+                            case 3: // 1 - 3 Days
+                                dv.DataLoader += KpaDataTableLoader.HotJobs.LoadNoConfirmationDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.One_Three;
+                                break;
+                            case 4: // 4 - 7 Days
+                                dv.DataLoader += KpaDataTableLoader.HotJobs.LoadNoConfirmationDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Four_Seven;
+                                break;
+                            case 5: // 8 - 14 Days
+                                dv.DataLoader += KpaDataTableLoader.HotJobs.LoadNoConfirmationDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Eight_Fourteen;
+                                break;
+                            case 6: // 15 - 21 Days
+                                dv.DataLoader += KpaDataTableLoader.HotJobs.LoadNoConfirmationDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Fifteen_TwentyOne;
+                                break;
+                            case 7: // 22 - 28 Days
+                                dv.DataLoader += KpaDataTableLoader.HotJobs.LoadNoConfirmationDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyTwo_TwentyEight;
+                                break;
+                            case 8: // 29+ Days
+                                dv.DataLoader += KpaDataTableLoader.HotJobs.LoadNoConfirmationDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyNinePlus;
+                                break;
+                            case 9: // Average
+                                return;
+                            case 10: // Totals
+                                dv.DataLoader += KpaDataTableLoader.HotJobs.LoadNoConfirmationDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Total;
+                                break;
+                        }
+                        break;
+                    case 20: // Late to Confirmed - Hot Jobs Only
+                        switch (columnIndex)
+                        {
+                            case 2: // <= 0 Days
+                                dv.DataLoader += KpaDataTableLoader.HotJobs.LoadLateToConfirmedDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
+                                break;
+                            case 3: // 1 - 3 Days
+                                dv.DataLoader += KpaDataTableLoader.HotJobs.LoadLateToConfirmedDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.One_Three;
+                                break;
+                            case 4: // 4 - 7 Days
+                                dv.DataLoader += KpaDataTableLoader.HotJobs.LoadLateToConfirmedDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Four_Seven;
+                                break;
+                            case 5: // 8 - 14 Days
+                                dv.DataLoader += KpaDataTableLoader.HotJobs.LoadLateToConfirmedDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Eight_Fourteen;
+                                break;
+                            case 6: // 15 - 21 Days
+                                dv.DataLoader += KpaDataTableLoader.HotJobs.LoadLateToConfirmedDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Fifteen_TwentyOne;
+                                break;
+                            case 7: // 22 - 28 Days
+                                dv.DataLoader += KpaDataTableLoader.HotJobs.LoadLateToConfirmedDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyTwo_TwentyEight;
+                                break;
+                            case 8: // 29+ Days
+                                dv.DataLoader += KpaDataTableLoader.HotJobs.LoadLateToConfirmedDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyNinePlus;
+                                break;
+                            case 9: // Average
+                                return;
+                            case 10: // Totals
+                                dv.DataLoader += KpaDataTableLoader.HotJobs.LoadLateToConfirmedDataTable;
+                                dv.ColumnTag = (int)TempOne.DataViews.Total;
+                                break;
+                        }
+                        break;
+                }
+                dv.ShowDialog();
             }
         }
 
@@ -1348,82 +1493,106 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// <param name="columnIndex">The column index of the clicked cell</param>
         private void HandleCurrentPlanVsActualDataTableLoading(int rowIndex, int columnIndex)
         {
-            switch(rowIndex)
-            {
-                case 0: // Current Plan Date vs Current Confirmation Date
-                    switch(columnIndex)
-                    {
-                        case 2: // Average
-                            break;
-                        case 3: // <-3 Weeks
-                            KpaDataTableLoader.CurrentPlanVsActual.LoadCurrentPlanVsCurrentConfDateDataTable((int)TempTwo.DataViews.LessThanMinusThree);
-                            break;
-                        case 4: // >= -3 weeks
-                            KpaDataTableLoader.CurrentPlanVsActual.LoadCurrentPlanVsCurrentConfDateDataTable((int)TempTwo.DataViews.GreaterThanEqualMinusThree);
-                            break;
-                        case 5: // >= -2 1weeks
-                            KpaDataTableLoader.CurrentPlanVsActual.LoadCurrentPlanVsCurrentConfDateDataTable((int)TempTwo.DataViews.GreaterThanEqualMinusTwo);
-                            break;
-                        case 6:// >= -1 3weeks
-                            KpaDataTableLoader.CurrentPlanVsActual.LoadCurrentPlanVsCurrentConfDateDataTable((int)TempTwo.DataViews.GreaterThanEqualMinusOne);
-                            break;
-                        case 7: // 0 Weeks
-                            KpaDataTableLoader.CurrentPlanVsActual.LoadCurrentPlanVsCurrentConfDateDataTable((int)TempTwo.DataViews.ZeroWeeks);
-                            break;
-                        case 8: // <= 1 Weeks
-                            KpaDataTableLoader.CurrentPlanVsActual.LoadCurrentPlanVsCurrentConfDateDataTable((int)TempTwo.DataViews.LessThanEqualOneWeek);
-                            break;
-                        case 9: // <= 2 Weeks
-                            KpaDataTableLoader.CurrentPlanVsActual.LoadCurrentPlanVsCurrentConfDateDataTable((int)TempTwo.DataViews.LessThanEqualTwoWeeks);
-                            break;
-                        case 10: // <= 3 Weeks
-                            KpaDataTableLoader.CurrentPlanVsActual.LoadCurrentPlanVsCurrentConfDateDataTable((int)TempTwo.DataViews.LessThanEqualThreeWeeks);
-                            break;
-                        case 11: // > 3 Weeks
-                            KpaDataTableLoader.CurrentPlanVsActual.LoadCurrentPlanVsCurrentConfDateDataTable((int)TempTwo.DataViews.GreaterThanThreeWeeks);
-                            break;
-                        case 12: // Total
-                            KpaDataTableLoader.CurrentPlanVsActual.LoadCurrentPlanVsCurrentConfDateDataTable((int)TempTwo.DataViews.Total);
-                            break;
-                    }
-                    break;
-                case 1: // Current Plan Date vs Current Confirmation Date - Hot Jobs Only
-                    switch (columnIndex)
-                    {
-                        case 2: // Average
-                            break;
-                        case 3: // <-3 Weeks
-                            KpaDataTableLoader.CurrentPlanVsActual.LoadCurrPlandDateVsCurrConfDateOpenPOs_HotJobsDataTable((int)TempTwo.DataViews.LessThanMinusThree);
-                            break;
-                        case 4: // >= -3 weeks
-                            KpaDataTableLoader.CurrentPlanVsActual.LoadCurrPlandDateVsCurrConfDateOpenPOs_HotJobsDataTable((int)TempTwo.DataViews.GreaterThanEqualMinusThree);
-                            break;
-                        case 5: // >= -2 1weeks
-                            KpaDataTableLoader.CurrentPlanVsActual.LoadCurrPlandDateVsCurrConfDateOpenPOs_HotJobsDataTable((int)TempTwo.DataViews.GreaterThanEqualMinusTwo);
-                            break;
-                        case 6:// >= -1 3weeks
-                            KpaDataTableLoader.CurrentPlanVsActual.LoadCurrPlandDateVsCurrConfDateOpenPOs_HotJobsDataTable((int)TempTwo.DataViews.GreaterThanEqualMinusOne);
-                            break;
-                        case 7: // 0 Weeks
-                            KpaDataTableLoader.CurrentPlanVsActual.LoadCurrPlandDateVsCurrConfDateOpenPOs_HotJobsDataTable((int)TempTwo.DataViews.ZeroWeeks);
-                            break;
-                        case 8: // <= 1 Weeks
-                            KpaDataTableLoader.CurrentPlanVsActual.LoadCurrPlandDateVsCurrConfDateOpenPOs_HotJobsDataTable((int)TempTwo.DataViews.LessThanEqualOneWeek);
-                            break;
-                        case 9: // <= 2 Weeks
-                            KpaDataTableLoader.CurrentPlanVsActual.LoadCurrPlandDateVsCurrConfDateOpenPOs_HotJobsDataTable((int)TempTwo.DataViews.LessThanEqualTwoWeeks);
-                            break;
-                        case 10: // <= 3 Weeks
-                            KpaDataTableLoader.CurrentPlanVsActual.LoadCurrPlandDateVsCurrConfDateOpenPOs_HotJobsDataTable((int)TempTwo.DataViews.LessThanEqualThreeWeeks);
-                            break;
-                        case 11: // > 3 Weeks
-                            KpaDataTableLoader.CurrentPlanVsActual.LoadCurrPlandDateVsCurrConfDateOpenPOs_HotJobsDataTable((int)TempTwo.DataViews.GreaterThanThreeWeeks);
-                            break;
-                        case 12: // Total
-                            KpaDataTableLoader.CurrentPlanVsActual.LoadCurrPlandDateVsCurrConfDateOpenPOs_HotJobsDataTable((int)TempTwo.DataViews.Total);
-                            break;
-                    }
-                    break;
+            using (DataViewer dv = new DataViewer())
+            { 
+                switch (rowIndex)
+                {
+                    case 0: // Current Plan Date vs Current Confirmation Date
+                        switch (columnIndex)
+                        {
+                            case 2: // Average
+                                return;
+                            case 3: // <-3 Weeks
+                                dv.DataLoader += KpaDataTableLoader.CurrentPlanVsActual.LoadCurrentPlanVsCurrentConfDateDataTable;
+                                dv.ColumnTag = (int)TempTwo.DataViews.LessThanMinusThree;
+                                break;
+                            case 4: // >= -3 weeks
+                                dv.DataLoader += KpaDataTableLoader.CurrentPlanVsActual.LoadCurrentPlanVsCurrentConfDateDataTable;
+                                dv.ColumnTag = (int)TempTwo.DataViews.GreaterThanEqualMinusThree;
+                                break;
+                            case 5: // >= -2 1weeks
+                                dv.DataLoader += KpaDataTableLoader.CurrentPlanVsActual.LoadCurrentPlanVsCurrentConfDateDataTable;
+                                dv.ColumnTag = (int)TempTwo.DataViews.GreaterThanEqualMinusTwo;
+                                break;
+                            case 6:// >= -1 3weeks
+                                dv.DataLoader += KpaDataTableLoader.CurrentPlanVsActual.LoadCurrentPlanVsCurrentConfDateDataTable;
+                                dv.ColumnTag = (int)TempTwo.DataViews.GreaterThanEqualMinusOne;
+                                break;
+                            case 7: // 0 Weeks
+                                dv.DataLoader += KpaDataTableLoader.CurrentPlanVsActual.LoadCurrentPlanVsCurrentConfDateDataTable;
+                                dv.ColumnTag = (int)TempTwo.DataViews.ZeroWeeks;
+                                break;
+                            case 8: // <= 1 Weeks
+                                dv.DataLoader += KpaDataTableLoader.CurrentPlanVsActual.LoadCurrentPlanVsCurrentConfDateDataTable;
+                                dv.ColumnTag = (int)TempTwo.DataViews.LessThanEqualOneWeek;
+                                break;
+                            case 9: // <= 2 Weeks
+                                dv.DataLoader += KpaDataTableLoader.CurrentPlanVsActual.LoadCurrentPlanVsCurrentConfDateDataTable;
+                                dv.ColumnTag = (int)TempTwo.DataViews.LessThanEqualTwoWeeks;
+                                break;
+                            case 10: // <= 3 Weeks
+                                dv.DataLoader += KpaDataTableLoader.CurrentPlanVsActual.LoadCurrentPlanVsCurrentConfDateDataTable;
+                                dv.ColumnTag = (int)TempTwo.DataViews.LessThanEqualThreeWeeks;
+                                break;
+                            case 11: // > 3 Weeks
+                                dv.DataLoader += KpaDataTableLoader.CurrentPlanVsActual.LoadCurrentPlanVsCurrentConfDateDataTable;
+                                dv.ColumnTag = (int)TempTwo.DataViews.GreaterThanThreeWeeks;
+                                break;
+                            case 12: // Total
+                                dv.DataLoader += KpaDataTableLoader.CurrentPlanVsActual.LoadCurrentPlanVsCurrentConfDateDataTable;
+                                dv.ColumnTag = (int)TempTwo.DataViews.Total;
+                                break;
+                        }
+                        break;
+                    case 1: // Current Plan Date vs Current Confirmation Date - Hot Jobs Only
+                        switch (columnIndex)
+                        {
+                            case 2: // Average
+                                return;
+                            case 3: // <-3 Weeks
+                                dv.DataLoader += KpaDataTableLoader.CurrentPlanVsActual.LoadCurrPlandDateVsCurrConfDateOpenPOs_HotJobsDataTable;
+                                dv.ColumnTag = (int)TempTwo.DataViews.LessThanMinusThree;
+                                break;
+                            case 4: // >= -3 weeks
+                                dv.DataLoader += KpaDataTableLoader.CurrentPlanVsActual.LoadCurrPlandDateVsCurrConfDateOpenPOs_HotJobsDataTable;
+                                dv.ColumnTag = (int)TempTwo.DataViews.GreaterThanEqualMinusThree;
+                                break;
+                            case 5: // >= -2 1weeks
+                                dv.DataLoader += KpaDataTableLoader.CurrentPlanVsActual.LoadCurrPlandDateVsCurrConfDateOpenPOs_HotJobsDataTable;
+                                dv.ColumnTag = (int)TempTwo.DataViews.GreaterThanEqualMinusTwo;
+                                break;
+                            case 6:// >= -1 3weeks
+                                dv.DataLoader += KpaDataTableLoader.CurrentPlanVsActual.LoadCurrPlandDateVsCurrConfDateOpenPOs_HotJobsDataTable;
+                                dv.ColumnTag = (int)TempTwo.DataViews.GreaterThanEqualMinusOne;
+                                break;
+                            case 7: // 0 Weeks
+                                dv.DataLoader += KpaDataTableLoader.CurrentPlanVsActual.LoadCurrPlandDateVsCurrConfDateOpenPOs_HotJobsDataTable;
+                                dv.ColumnTag = (int)TempTwo.DataViews.ZeroWeeks;
+                                break;
+                            case 8: // <= 1 Weeks
+                                dv.DataLoader += KpaDataTableLoader.CurrentPlanVsActual.LoadCurrPlandDateVsCurrConfDateOpenPOs_HotJobsDataTable;
+                                dv.ColumnTag = (int)TempTwo.DataViews.LessThanEqualOneWeek;
+                                break;
+                            case 9: // <= 2 Weeks
+                                dv.DataLoader += KpaDataTableLoader.CurrentPlanVsActual.LoadCurrPlandDateVsCurrConfDateOpenPOs_HotJobsDataTable;
+                                dv.ColumnTag = (int)TempTwo.DataViews.LessThanEqualTwoWeeks;
+                                break;
+                            case 10: // <= 3 Weeks
+                                dv.DataLoader += KpaDataTableLoader.CurrentPlanVsActual.LoadCurrPlandDateVsCurrConfDateOpenPOs_HotJobsDataTable;
+                                dv.ColumnTag = (int)TempTwo.DataViews.LessThanEqualThreeWeeks;
+                                break;
+                            case 11: // > 3 Weeks
+                                dv.DataLoader += KpaDataTableLoader.CurrentPlanVsActual.LoadCurrPlandDateVsCurrConfDateOpenPOs_HotJobsDataTable;
+                                dv.ColumnTag = (int)TempTwo.DataViews.GreaterThanThreeWeeks;
+                                break;
+                            case 12: // Total
+                                dv.DataLoader += KpaDataTableLoader.CurrentPlanVsActual.LoadCurrPlandDateVsCurrConfDateOpenPOs_HotJobsDataTable;
+                                dv.ColumnTag = (int)TempTwo.DataViews.Total;
+                                break;
+                        }
+                        break;
+                }
+                dv.ShowDialog();
             }
         }
 

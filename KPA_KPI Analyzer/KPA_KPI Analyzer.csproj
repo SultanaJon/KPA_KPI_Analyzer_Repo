@@ -47,12 +47,8 @@
       <HintPath>..\packages\CircularProgressBar.2.5.6403.13419\lib\net35-client\CircularProgressBar.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="ClosedXML, Version=0.89.0.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
-      <HintPath>..\packages\ClosedXML.0.89.0\lib\net452\ClosedXML.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="DocumentFormat.OpenXml, Version=2.7.2.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
-      <HintPath>..\packages\DocumentFormat.OpenXml.2.7.2\lib\net40\DocumentFormat.OpenXml.dll</HintPath>
+    <Reference Include="EPPlus, Version=4.1.1.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.1.1\lib\net40\EPPlus.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="FastMember.Signed, Version=1.0.0.9, Culture=neutral, PublicKeyToken=9e8f22703bef9a29, processorArchitecture=MSIL">
@@ -122,15 +118,12 @@
       <DependentUpon>CorrelationTool.cs</DependentUpon>
     </Compile>
     <Compile Include="DatabaseUtils\ThreadInteruptedException.cs" />
+    <Compile Include="DataLoading\DataViewerUtils.cs" />
+    <Compile Include="DataLoading\ExportUtils.cs" />
     <Compile Include="DataLoading\KPA_Data\DataTableLoader\KpaDataTableLoader.cs" />
     <Compile Include="DataLoading\KPI_Data\DataTableLoader\KpiDataTableLoader.cs" />
-    <Compile Include="DataLoading\LoadingWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DataLoading\LoadingWindow.Designer.cs">
-      <DependentUpon>LoadingWindow.cs</DependentUpon>
-    </Compile>
     <Compile Include="Diagnostics\DataReader.cs" />
+    <Compile Include="Export\CreateExcelFile.cs" />
     <Compile Include="Templates\Template_Controls\KPA_Controls\NewKPAOverall.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -359,9 +352,6 @@
       <DependentUpon>DataViewer.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="DataLoading\LoadingWindow.resx">
-      <DependentUpon>LoadingWindow.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Templates\Template_Controls\KPA_Controls\KPACurrentPlanActualTemplate.resx">
       <DependentUpon>KPACurrentPlanActualTemplate.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -447,6 +437,7 @@
     <EmbeddedResource Include="Templates\Template_Controls\KPI_Controls\newKPIOverall.resx">
       <DependentUpon>newKPIOverall.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -570,6 +561,10 @@
     <None Include="Resources\DragDrop_Inactive_BG.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataExporter\DataExporter.csproj">
+      <Project>{e3601d73-731a-46ee-8af0-b314580534a7}</Project>
+      <Name>DataExporter</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataImporter\DataImporter.csproj">
       <Project>{be102b8a-42d8-48d2-a37e-b1d83ad9ff12}</Project>
       <Name>DataImporter</Name>
@@ -773,6 +768,7 @@
     <None Include="Resources\logo.jpg" />
     <None Include="Resources\splashscreen.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

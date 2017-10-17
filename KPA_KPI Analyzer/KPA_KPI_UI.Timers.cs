@@ -334,6 +334,7 @@ namespace KPA_KPI_Analyzer
             {
                 PRPO_DB_Utils.DataLoaded = false;
                 DataLoaderTimer.Stop();
+                PRPO_DB_Utils.ReleaseKPITables();
 
                 if (!ColumnFiltersApplied && !DateFiltersApplied)
                 {

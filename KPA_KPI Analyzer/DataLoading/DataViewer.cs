@@ -2,16 +2,33 @@
 using System;
 using System.Data;
 using System.Windows.Forms;
-using ClosedXML;
-using ClosedXML.Excel.Drawings;
-using ClosedXML.Excel;
+using KPA_KPI_Analyzer.DataLoading;
+using System.Threading;
 using System.Diagnostics;
+using DataExporter;
 
 namespace KPA_KPI_Analyzer
 {
     public partial class DataViewer : Form
     {
+        #region MEMBERS
+
         private FormData frmData = new FormData();
+        Thread thrd;
+
+        // Call back used to load the data into the data viewer
+        public delegate void LoadDataGridHandler(int _tag);
+        public event LoadDataGridHandler DataLoader;
+        #endregion
+
+
+
+        #region PROPERTIES
+        /// <summary>
+        /// 
+        /// </summary>
+        public int ColumnTag { get; set; }
+
 
 
         /// <summary>
@@ -39,17 +56,11 @@ namespace KPA_KPI_Analyzer
         public string Category { set { lbl_Category.Text = value; } }
 
 
+        #endregion
 
 
 
-        /// <summary>
-        /// The data that was retrieved from the database
-        /// </summary>
-        public DataTable Data { get; set; }
-
-        
-
-
+        #region CONSTRUCTORS
         /// <summary>
         /// Default Constructor
         /// </summary>
@@ -60,28 +71,49 @@ namespace KPA_KPI_Analyzer
             lbl_date.Text = Globals.PrpoGenerationDate;
             dgv_dataViewerDgv.DoubleBuffered = true;
         }
+        #endregion
 
 
 
 
 
 
-        /// <summary>
-        /// This form prevents flickering of the UI when it repaints.
-        /// </summary>
-        /// <remarks>
-        ///     06/25/2017 - Created
-        /// </remarks>
-        protected override CreateParams CreateParams
+
+
+        private void DataViewer_Load(object sender, EventArgs e)
         {
-            get
-            {
-                CreateParams handleParam = base.CreateParams;
-                //handleParam.ExStyle |= 0x02000000;   // WS_EX_COMPOSITED
-                handleParam.Style &= ~0x2000000; // Turn off WS_CLIPCHILDREN
-                return handleParam;
-            }
+            DataViewerUtils.DataLoaded = false;
+            DataViewerUtils.DataLoadProcessStarted = false;
+            tmr_waitTimer.Start();
         }
+
+
+
+
+
+
+
+
+
+
+        ///// <summary>
+        ///// This form prevents flickering of the UI when it repaints.
+        ///// </summary>
+        ///// <remarks>
+        /////     06/25/2017 - Created
+        ///// </remarks>
+        //protected override CreateParams CreateParams
+        //{
+        //    get
+        //    {
+        //        CreateParams handleParam = base.CreateParams;
+        //        //handleParam.ExStyle |= 0x02000000;   // WS_EX_COMPOSITED
+        //        handleParam.Style &= ~0x2000000; // Turn off WS_CLIPCHILDREN
+        //        return handleParam;
+        //    }
+        //}
+
+
 
 
 
@@ -223,10 +255,12 @@ namespace KPA_KPI_Analyzer
         /// <param name="e">The click event</param>
         private void btn_Close_Click(object sender, EventArgs e)
         {
+            CleanUpData();
+
             dgv_dataViewerDgv.DataSource = null;
-            Data.Rows.Clear();
-            Data = null;
-            dgv_dataViewerDgv.Rows.Clear();
+
+
+            // Close this form
             Close();
         }
         #endregion
@@ -294,14 +328,45 @@ namespace KPA_KPI_Analyzer
 
 
 
+
         /// <summary>
         /// Loads the data into the datagridview for viewing
         /// </summary>
-        public void LoadData()
+        private void LoadData()
         {
-            dgv_dataViewerDgv.DataSource = Data;
-            dgv_dataViewerDgv.Refresh();
+            thrd = new System.Threading.Thread(() =>
+            {
+                DataLoader(ColumnTag);
+            });
+            //thrd.IsBackground = true;
+            thrd.Start();
         }
+
+
+
+
+
+
+
+
+
+        /// <summary>
+        /// Once the datagridviews source is changed, this event will hide the loading screen and present the 
+        /// datagridview.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgv_dataViewerDgv_DataSourceChanged(object sender, EventArgs e)
+        {
+            HideLoadingScreen();
+        }
+
+
+
+
+
+
+
 
 
 
@@ -313,49 +378,173 @@ namespace KPA_KPI_Analyzer
         /// <param name="e"></param>
         private void exportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DataTable dt = new DataTable();
+            try
+            {
+                ShowLoadingScreen("Exporting Data...");
+                CleanUpData();
+                ExportUtils.DataLoaded = false;
+                Exporter.ExportProcessCompleted = false;
+                tmr_ExportTimer.Start();
+
+                Thread exportThread = new Thread(() => {
+                    GatherDataTable();
+                });
+                exportThread.IsBackground = true;
+                exportThread.Start();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+
+
+
+        private void CleanUpData()
+        {
+            if(ExportUtils.Data != null)
+            {
+                ExportUtils.Data.Rows.Clear();
+                ExportUtils.Data = null;
+                GC.Collect();
+            }
+
+        }
+
+
+
+
+        private void OpenSaveAsDialog()
+        {
+            // Exporting to excel
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "Excel | *.xlsx";
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    thrd = new Thread(() => {
+                        Exporter.Export(ExportUtils.Data, new ExcelFile(sfd.FileName, true));
+                    });
+                    thrd.Start();
+                }
+                else
+                {
+                    tblpnl_loadingScreen.Visible = false;
+                    dgv_dataViewerDgv.BringToFront();
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+        private void GatherDataTable()
+        {
+            // DataTable dt = new DataTable();
 
             try
             {
-                foreach (DataGridViewColumn col in dgv_dataViewerDgv.Columns)
-                {
-                    dt.Columns.Add(col.HeaderText);
-                }
-
-
-                foreach (DataGridViewRow row in dgv_dataViewerDgv.Rows)
-                {
-                    dt.Rows.Add();
-                    foreach (DataGridViewCell cell in row.Cells)
-                    {
-                        //Debug.WriteLine("Row Index: " + row.Index.ToString() + " Column Index: " + cell.ColumnIndex);
-                        dt.Rows[row.Index][cell.ColumnIndex] = cell.Value.ToString();
-                    }
-                }
-
-                // Exporting to excel
-                SaveFileDialog sfd = new SaveFileDialog();
-                sfd.Filter = "Excel | *.xlsx";
-                
-                if (sfd.ShowDialog() == DialogResult.OK)
-                {
-                    using (XLWorkbook wb = new XLWorkbook())
-                    {
-                        wb.Worksheets.Add(dt, "Sheet1");
-                        wb.SaveAs(sfd.FileName);
-                    }
-                }
+                ExportUtils.Data = (DataTable)dgv_dataViewerDgv.DataSource;
+                ExportUtils.DataLoaded = true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
             finally
             {
-                dt.Rows.Clear();
-                dt = null;
+                //dt.Rows.Clear();
+                //dt = null;
                 GC.Collect();
             }
+        }
+
+
+
+
+
+
+
+        /// <summary>
+        /// Timer ticks until the handle is created. Once the handle is created, the data load
+        /// pricess will be started.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tmr_waitTimer_Tick(object sender, EventArgs e)
+        {
+            if (IsHandleCreated)
+            {
+                if(!DataViewerUtils.DataLoadProcessStarted)
+                {
+                    DataViewerUtils.DataLoadProcessStarted = true;
+                    LoadData();
+                }
+
+                if(DataViewerUtils.DataLoaded)
+                {
+                    DataViewerUtils.DataLoaded = false;
+                    tmr_waitTimer.Stop();
+                    dgv_dataViewerDgv.DataSource = DataViewerUtils.Data;
+                    CleanUpData();
+                }
+            }
+        }
+
+
+
+
+
+
+
+        private void tmr_ExportTimer_Tick(object sender, EventArgs e)
+        {
+            if(ExportUtils.DataLoaded)
+            {
+                ExportUtils.DataLoaded = false;
+                OpenSaveAsDialog();
+            }
+
+
+            if(Exporter.ExportProcessCompleted)
+            {
+                Exporter.ExportProcessCompleted = false;
+                tmr_ExportTimer.Stop();
+                HideLoadingScreen();
+            }
+        }
+
+
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void HideLoadingScreen()
+        {
+            tblpnl_loadingScreen.Visible = false;
+            pnl_datagridview.BringToFront();
+        }
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="message"></param>
+        private void ShowLoadingScreen(string message)
+        {
+            cpb_loadingScreenCircProgBar.Text = message;
+            tblpnl_loadingScreen.Visible = true;
+            pnl_datagridview.SendToBack();
         }
     }
 }

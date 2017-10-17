@@ -436,7 +436,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                     {
                         receiptDateVsCurrPlanDate.data.Fifteen_TwentyOne++;
                     }
-                    else // 22 Days or greater
+                    else if (elapsedDays >= 22)
                     {
                         receiptDateVsCurrPlanDate.data.TwentyTwo++;
                     }

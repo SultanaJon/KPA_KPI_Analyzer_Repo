@@ -29,9 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.topPanelDragCntl = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.pnl_menuStrip = new System.Windows.Forms.Panel();
+            this.ms_topPanelMenuStrip = new System.Windows.Forms.MenuStrip();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnl_topPanel = new System.Windows.Forms.Panel();
             this.pnl_Minimize = new System.Windows.Forms.Panel();
             this.pnl_Maximize = new System.Windows.Forms.Panel();
@@ -39,7 +45,6 @@
             this.pnl_title = new System.Windows.Forms.Panel();
             this.lbl_title = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.pnl_Logo = new System.Windows.Forms.Panel();
-            this.dgv_dataViewerDgv = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.pnl_TopUIPanel = new System.Windows.Forms.Panel();
             this.pnl_MainNavigation = new System.Windows.Forms.Panel();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
@@ -61,15 +66,18 @@
             this.dc_logoDragControl = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.dc_titlePanelDragControl = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.dc_titleDragControl = new Bunifu.Framework.UI.BunifuDragControl(this.components);
-            this.pnl_menuStrip = new System.Windows.Forms.Panel();
-            this.ms_topPanelMenuStrip = new System.Windows.Forms.MenuStrip();
-            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pnl_datagridview = new System.Windows.Forms.Panel();
+            this.dgv_dataViewerDgv = new Bunifu.Framework.UI.BunifuCustomDataGrid();
+            this.tblpnl_loadingScreen = new System.Windows.Forms.TableLayoutPanel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.cpb_loadingScreenCircProgBar = new CircularProgressBar.CircularProgressBar();
+            this.tmr_waitTimer = new System.Windows.Forms.Timer(this.components);
+            this.tmr_ExportTimer = new System.Windows.Forms.Timer(this.components);
+            this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
+            this.pnl_menuStrip.SuspendLayout();
+            this.ms_topPanelMenuStrip.SuspendLayout();
             this.pnl_topPanel.SuspendLayout();
             this.pnl_title.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_dataViewerDgv)).BeginInit();
             this.pnl_TopUIPanel.SuspendLayout();
             this.pnl_MainNavigation.SuspendLayout();
             this.tableLayoutPanel14.SuspendLayout();
@@ -78,8 +86,11 @@
             this.pnl_CategorySelectorButton.SuspendLayout();
             this.pnl_CountrySelectorButton.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.pnl_menuStrip.SuspendLayout();
-            this.ms_topPanelMenuStrip.SuspendLayout();
+            this.pnl_datagridview.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_dataViewerDgv)).BeginInit();
+            this.tblpnl_loadingScreen.SuspendLayout();
+            this.panel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.SuspendLayout();
             // 
             // topPanelDragCntl
@@ -88,6 +99,60 @@
             this.topPanelDragCntl.Horizontal = true;
             this.topPanelDragCntl.TargetControl = this.pnl_menuStrip;
             this.topPanelDragCntl.Vertical = true;
+            // 
+            // pnl_menuStrip
+            // 
+            this.pnl_menuStrip.Controls.Add(this.ms_topPanelMenuStrip);
+            this.pnl_menuStrip.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_menuStrip.Location = new System.Drawing.Point(251, 0);
+            this.pnl_menuStrip.Name = "pnl_menuStrip";
+            this.pnl_menuStrip.Size = new System.Drawing.Size(799, 25);
+            this.pnl_menuStrip.TabIndex = 5;
+            this.pnl_menuStrip.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pnl_TopPanel_MouseDoubleClick);
+            // 
+            // ms_topPanelMenuStrip
+            // 
+            this.ms_topPanelMenuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.ms_topPanelMenuStrip.Dock = System.Windows.Forms.DockStyle.None;
+            this.ms_topPanelMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolsToolStripMenuItem,
+            this.helpToolStripMenuItem});
+            this.ms_topPanelMenuStrip.Location = new System.Drawing.Point(3, 1);
+            this.ms_topPanelMenuStrip.Name = "ms_topPanelMenuStrip";
+            this.ms_topPanelMenuStrip.Size = new System.Drawing.Size(99, 24);
+            this.ms_topPanelMenuStrip.TabIndex = 0;
+            this.ms_topPanelMenuStrip.Text = "menuStrip1";
+            // 
+            // toolsToolStripMenuItem
+            // 
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exportToolStripMenuItem});
+            this.toolsToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.toolsToolStripMenuItem.Text = "Tools";
+            // 
+            // exportToolStripMenuItem
+            // 
+            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.exportToolStripMenuItem.Text = "Export to Excel";
+            this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem});
+            this.helpToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem.Text = "About";
             // 
             // pnl_topPanel
             // 
@@ -173,38 +238,6 @@
             this.pnl_Logo.Name = "pnl_Logo";
             this.pnl_Logo.Size = new System.Drawing.Size(50, 25);
             this.pnl_Logo.TabIndex = 0;
-            // 
-            // dgv_dataViewerDgv
-            // 
-            this.dgv_dataViewerDgv.AllowUserToAddRows = false;
-            this.dgv_dataViewerDgv.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgv_dataViewerDgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
-            this.dgv_dataViewerDgv.BackgroundColor = System.Drawing.Color.Gainsboro;
-            this.dgv_dataViewerDgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgv_dataViewerDgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dgv_dataViewerDgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_dataViewerDgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
-            this.dgv_dataViewerDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_dataViewerDgv.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgv_dataViewerDgv.DoubleBuffered = true;
-            this.dgv_dataViewerDgv.EnableHeadersVisualStyles = false;
-            this.dgv_dataViewerDgv.HeaderBgColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.dgv_dataViewerDgv.HeaderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
-            this.dgv_dataViewerDgv.Location = new System.Drawing.Point(0, 77);
-            this.dgv_dataViewerDgv.Name = "dgv_dataViewerDgv";
-            this.dgv_dataViewerDgv.ReadOnly = true;
-            this.dgv_dataViewerDgv.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgv_dataViewerDgv.RowTemplate.Height = 18;
-            this.dgv_dataViewerDgv.Size = new System.Drawing.Size(1200, 623);
-            this.dgv_dataViewerDgv.TabIndex = 5;
             // 
             // pnl_TopUIPanel
             // 
@@ -440,66 +473,131 @@
             this.dc_titleDragControl.TargetControl = this.lbl_title;
             this.dc_titleDragControl.Vertical = true;
             // 
-            // pnl_menuStrip
+            // pnl_datagridview
             // 
-            this.pnl_menuStrip.Controls.Add(this.ms_topPanelMenuStrip);
-            this.pnl_menuStrip.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_menuStrip.Location = new System.Drawing.Point(251, 0);
-            this.pnl_menuStrip.Name = "pnl_menuStrip";
-            this.pnl_menuStrip.Size = new System.Drawing.Size(799, 25);
-            this.pnl_menuStrip.TabIndex = 5;
-            this.pnl_menuStrip.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pnl_TopPanel_MouseDoubleClick);
+            this.pnl_datagridview.Controls.Add(this.dgv_dataViewerDgv);
+            this.pnl_datagridview.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_datagridview.Location = new System.Drawing.Point(0, 77);
+            this.pnl_datagridview.Name = "pnl_datagridview";
+            this.pnl_datagridview.Size = new System.Drawing.Size(1200, 623);
+            this.pnl_datagridview.TabIndex = 59;
             // 
-            // ms_topPanelMenuStrip
+            // dgv_dataViewerDgv
             // 
-            this.ms_topPanelMenuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.ms_topPanelMenuStrip.Dock = System.Windows.Forms.DockStyle.None;
-            this.ms_topPanelMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolsToolStripMenuItem,
-            this.helpToolStripMenuItem});
-            this.ms_topPanelMenuStrip.Location = new System.Drawing.Point(3, 1);
-            this.ms_topPanelMenuStrip.Name = "ms_topPanelMenuStrip";
-            this.ms_topPanelMenuStrip.Size = new System.Drawing.Size(99, 24);
-            this.ms_topPanelMenuStrip.TabIndex = 0;
-            this.ms_topPanelMenuStrip.Text = "menuStrip1";
+            this.dgv_dataViewerDgv.AllowUserToAddRows = false;
+            this.dgv_dataViewerDgv.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgv_dataViewerDgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgv_dataViewerDgv.BackgroundColor = System.Drawing.Color.Gainsboro;
+            this.dgv_dataViewerDgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgv_dataViewerDgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgv_dataViewerDgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_dataViewerDgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgv_dataViewerDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_dataViewerDgv.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_dataViewerDgv.DoubleBuffered = true;
+            this.dgv_dataViewerDgv.EnableHeadersVisualStyles = false;
+            this.dgv_dataViewerDgv.HeaderBgColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.dgv_dataViewerDgv.HeaderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.dgv_dataViewerDgv.Location = new System.Drawing.Point(0, 0);
+            this.dgv_dataViewerDgv.Name = "dgv_dataViewerDgv";
+            this.dgv_dataViewerDgv.ReadOnly = true;
+            this.dgv_dataViewerDgv.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgv_dataViewerDgv.RowTemplate.Height = 18;
+            this.dgv_dataViewerDgv.Size = new System.Drawing.Size(1200, 623);
+            this.dgv_dataViewerDgv.TabIndex = 6;
+            this.dgv_dataViewerDgv.DataSourceChanged += new System.EventHandler(this.dgv_dataViewerDgv_DataSourceChanged);
             // 
-            // toolsToolStripMenuItem
+            // tblpnl_loadingScreen
             // 
-            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exportToolStripMenuItem});
-            this.toolsToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
-            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
-            this.toolsToolStripMenuItem.Text = "Tools";
+            this.tblpnl_loadingScreen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.tblpnl_loadingScreen.ColumnCount = 3;
+            this.tblpnl_loadingScreen.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tblpnl_loadingScreen.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 234F));
+            this.tblpnl_loadingScreen.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tblpnl_loadingScreen.Controls.Add(this.panel9, 1, 1);
+            this.tblpnl_loadingScreen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tblpnl_loadingScreen.Location = new System.Drawing.Point(0, 77);
+            this.tblpnl_loadingScreen.Name = "tblpnl_loadingScreen";
+            this.tblpnl_loadingScreen.RowCount = 3;
+            this.tblpnl_loadingScreen.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tblpnl_loadingScreen.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 234F));
+            this.tblpnl_loadingScreen.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tblpnl_loadingScreen.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tblpnl_loadingScreen.Size = new System.Drawing.Size(1200, 623);
+            this.tblpnl_loadingScreen.TabIndex = 7;
             // 
-            // exportToolStripMenuItem
+            // panel9
             // 
-            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.exportToolStripMenuItem.Text = "Export to Excel";
-            this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
+            this.panel9.Controls.Add(this.cpb_loadingScreenCircProgBar);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel9.Location = new System.Drawing.Point(483, 194);
+            this.panel9.Margin = new System.Windows.Forms.Padding(0);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(234, 234);
+            this.panel9.TabIndex = 0;
             // 
-            // helpToolStripMenuItem
+            // cpb_loadingScreenCircProgBar
             // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem});
-            this.helpToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.helpToolStripMenuItem.Text = "Help";
+            this.cpb_loadingScreenCircProgBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.cpb_loadingScreenCircProgBar.AnimationSpeed = 500;
+            this.cpb_loadingScreenCircProgBar.BackColor = System.Drawing.Color.Transparent;
+            this.cpb_loadingScreenCircProgBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.cpb_loadingScreenCircProgBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.cpb_loadingScreenCircProgBar.InnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.cpb_loadingScreenCircProgBar.InnerMargin = 2;
+            this.cpb_loadingScreenCircProgBar.InnerWidth = -1;
+            this.cpb_loadingScreenCircProgBar.Location = new System.Drawing.Point(2, 0);
+            this.cpb_loadingScreenCircProgBar.MarqueeAnimationSpeed = 1000;
+            this.cpb_loadingScreenCircProgBar.Name = "cpb_loadingScreenCircProgBar";
+            this.cpb_loadingScreenCircProgBar.OuterColor = System.Drawing.Color.Gainsboro;
+            this.cpb_loadingScreenCircProgBar.OuterMargin = -25;
+            this.cpb_loadingScreenCircProgBar.OuterWidth = 26;
+            this.cpb_loadingScreenCircProgBar.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
+            this.cpb_loadingScreenCircProgBar.ProgressWidth = 5;
+            this.cpb_loadingScreenCircProgBar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 36F);
+            this.cpb_loadingScreenCircProgBar.Size = new System.Drawing.Size(231, 234);
+            this.cpb_loadingScreenCircProgBar.StartAngle = 270;
+            this.cpb_loadingScreenCircProgBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.cpb_loadingScreenCircProgBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.cpb_loadingScreenCircProgBar.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
+            this.cpb_loadingScreenCircProgBar.SubscriptText = "";
+            this.cpb_loadingScreenCircProgBar.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.cpb_loadingScreenCircProgBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
+            this.cpb_loadingScreenCircProgBar.SuperscriptText = "";
+            this.cpb_loadingScreenCircProgBar.TabIndex = 1;
+            this.cpb_loadingScreenCircProgBar.Text = "Loading Data...";
+            this.cpb_loadingScreenCircProgBar.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
+            this.cpb_loadingScreenCircProgBar.Value = 36;
             // 
-            // aboutToolStripMenuItem
+            // tmr_waitTimer
             // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.aboutToolStripMenuItem.Text = "About";
+            this.tmr_waitTimer.Enabled = true;
+            this.tmr_waitTimer.Tick += new System.EventHandler(this.tmr_waitTimer_Tick);
+            // 
+            // tmr_ExportTimer
+            // 
+            this.tmr_ExportTimer.Tick += new System.EventHandler(this.tmr_ExportTimer_Tick);
+            // 
+            // fileSystemWatcher1
+            // 
+            this.fileSystemWatcher1.EnableRaisingEvents = true;
+            this.fileSystemWatcher1.SynchronizingObject = this;
             // 
             // DataViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 700);
-            this.Controls.Add(this.dgv_dataViewerDgv);
+            this.Controls.Add(this.tblpnl_loadingScreen);
+            this.Controls.Add(this.pnl_datagridview);
             this.Controls.Add(this.pnl_MainNavigation);
             this.Controls.Add(this.pnl_TopUIPanel);
             this.DoubleBuffered = true;
@@ -508,10 +606,14 @@
             this.Name = "DataViewer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DataViewer";
+            this.Load += new System.EventHandler(this.DataViewer_Load);
+            this.pnl_menuStrip.ResumeLayout(false);
+            this.pnl_menuStrip.PerformLayout();
+            this.ms_topPanelMenuStrip.ResumeLayout(false);
+            this.ms_topPanelMenuStrip.PerformLayout();
             this.pnl_topPanel.ResumeLayout(false);
             this.pnl_title.ResumeLayout(false);
             this.pnl_title.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_dataViewerDgv)).EndInit();
             this.pnl_TopUIPanel.ResumeLayout(false);
             this.pnl_MainNavigation.ResumeLayout(false);
             this.tableLayoutPanel14.ResumeLayout(false);
@@ -525,17 +627,17 @@
             this.pnl_CountrySelectorButton.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.pnl_menuStrip.ResumeLayout(false);
-            this.pnl_menuStrip.PerformLayout();
-            this.ms_topPanelMenuStrip.ResumeLayout(false);
-            this.ms_topPanelMenuStrip.PerformLayout();
+            this.pnl_datagridview.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_dataViewerDgv)).EndInit();
+            this.tblpnl_loadingScreen.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private Bunifu.Framework.UI.BunifuDragControl topPanelDragCntl;
-        private Bunifu.Framework.UI.BunifuCustomDataGrid dgv_dataViewerDgv;
         private System.Windows.Forms.Panel pnl_TopUIPanel;
         private System.Windows.Forms.Panel pnl_topPanel;
         private System.Windows.Forms.Panel pnl_Minimize;
@@ -570,5 +672,13 @@
         private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.Panel pnl_datagridview;
+        private Bunifu.Framework.UI.BunifuCustomDataGrid dgv_dataViewerDgv;
+        private System.Windows.Forms.TableLayoutPanel tblpnl_loadingScreen;
+        private System.Windows.Forms.Panel panel9;
+        private CircularProgressBar.CircularProgressBar cpb_loadingScreenCircProgBar;
+        private System.Windows.Forms.Timer tmr_waitTimer;
+        private System.Windows.Forms.Timer tmr_ExportTimer;
+        private System.IO.FileSystemWatcher fileSystemWatcher1;
     }
 }

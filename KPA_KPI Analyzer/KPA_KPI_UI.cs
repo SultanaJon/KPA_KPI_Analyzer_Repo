@@ -744,10 +744,9 @@ namespace KPA_KPI_Analyzer
 
         private void button2_Click(object sender, EventArgs e)
         {
-            using(DataLoading.LoadingWindow wind = new DataLoading.LoadingWindow())
+            using (DataViewer dv = new DataViewer())
             {
-                wind.StartPosition = FormStartPosition.CenterScreen;
-                wind.ShowDialog();
+                dv.ShowDialog();
             }
         }
     }
