@@ -357,19 +357,25 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         {
             try
             {
-                Bunifu.Framework.UI.BunifuFlatButton btn = (Bunifu.Framework.UI.BunifuFlatButton)sender;
-                int tag = int.Parse(btn.Tag.ToString());
-
-                switch (ActiveCategory)
+                using (DataViewer dv = new DataViewer())
                 {
-                    case 0: // PR Release vs PO Release
-                        KpiDataTableLoader.PurchSub.LoadPrRelVsPoRelDataTable(tag);
-                        break;
-                    case 1: // PO Creation vs Confirmation Entry
-                        KpiDataTableLoader.PurchSub.LoadPoCreationVsConfEntryDateDataTable(tag);
-                        break;
-                    default:
-                        break;
+                    Bunifu.Framework.UI.BunifuFlatButton btn = (Bunifu.Framework.UI.BunifuFlatButton)sender;
+                    int tag = int.Parse(btn.Tag.ToString());
+
+                    switch (ActiveCategory)
+                    {
+                        case 0: // PR Release vs PO Release
+                            dv.DataLoader += KpiDataTableLoader.PurchSub.LoadPrRelVsPoRelDataTable;
+                            dv.ColumnTag = tag;
+                            break;
+                        case 1: // PO Creation vs Confirmation Entry
+                            dv.DataLoader += KpiDataTableLoader.PurchSub.LoadPoCreationVsConfEntryDateDataTable;
+                            dv.ColumnTag = tag;
+                            break;
+                        default:
+                            break;
+                    }
+                    dv.ShowDialog();
                 }
             }
             catch (Exception ex)

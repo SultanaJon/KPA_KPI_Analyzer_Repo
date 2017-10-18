@@ -428,22 +428,29 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         {
             try
             {
-                Bunifu.Framework.UI.BunifuFlatButton btn = (Bunifu.Framework.UI.BunifuFlatButton)sender;
-                int tag = int.Parse(btn.Tag.ToString());
-
-                switch (ActiveCategory)
+                using (DataViewer dv = new DataViewer())
                 {
-                    case 0: // PR 2nd Lvl Release Vs PO Creation
-                        KpiDataTableLoader.PurchTwo.LoadPr2ndLvlRelVsPOCreationDataTable(tag);
-                        break;
-                    case 1: // PO Creatoin vs PO Release
-                        KpiDataTableLoader.PurchTwo.LoadPoCreationVsPoReleaseDataTable(tag);
-                        break;
-                    case 2: // PO Release vs PO Confirmation
-                        KpiDataTableLoader.PurchTwo.LoadPoReleaseVsPoConfDataTable(tag);
-                        break;
-                    default:
-                        break;
+                    Bunifu.Framework.UI.BunifuFlatButton btn = (Bunifu.Framework.UI.BunifuFlatButton)sender;
+                    int tag = int.Parse(btn.Tag.ToString());
+
+                    switch (ActiveCategory)
+                    {
+                        case 0: // PR 2nd Lvl Release Vs PO Creation
+                            dv.DataLoader += KpiDataTableLoader.PurchTwo.LoadPr2ndLvlRelVsPOCreationDataTable;
+                            dv.ColumnTag = tag;
+                            break;
+                        case 1: // PO Creatoin vs PO Release
+                            dv.DataLoader += KpiDataTableLoader.PurchTwo.LoadPoCreationVsPoReleaseDataTable;
+                            dv.ColumnTag = tag;
+                            break;
+                        case 2: // PO Release vs PO Confirmation
+                            dv.DataLoader += KpiDataTableLoader.PurchTwo.LoadPoReleaseVsPoConfDataTable;
+                            dv.ColumnTag = tag;
+                            break;
+                        default:
+                            break;
+                    }
+                    dv.ShowDialog();
                 }
             }
             catch (Exception ex)

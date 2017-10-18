@@ -22,6 +22,15 @@ namespace DataExporter
             "DefaultFileName"
         };
 
+        public static string[] overallSheetNames =
+        {
+            "KPA Overall",
+            "KPI Overall"
+        };
+
+
+        private static string overallFilePath = @"Resources\Reports\Overall.xlsx";
+
         #endregion
 
 
@@ -55,35 +64,91 @@ namespace DataExporter
         public System.IO.FileInfo FileInfo { get; set; }
 
 
+        public static string OverallFilePath { get { return overallFilePath; } }
+
         #endregion
 
 
 
         #region ENUMERATION
         
-        public enum ColumnPosition : byte
+        /// <summary>
+        /// 
+        /// </summary>
+        public enum DataColumnPosition : byte
         {
             RowStartPosition = 1,
             ColumnStartPosition = 1
         }
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public enum OverallCellPositions : byte
+        {
+            KpaOverallTempOneRowStartPosition = 2,
+            KpaOverallTempOneColStartPosition = 4,
+            KpaOverallTempOneMaxRow= 33,
+            KpaOverallTempOneMaxCol = 12,
+
+            KpaOverallTempTwoRowStartPosition = 35,
+            KpaOverallTempTwoColStartPosition = 4,
+            KpaOverallTempTwoMaxRow = 36,
+            KpaOverallTempTwoMaxCol = 14,
+
+            KpiOverallTempThreeRowStartPosition = 2,
+            KpiOverallTempThreeColStartPosition = 4,
+            KpiOverallTempThreeMaxRow = 11,
+            KpiOverallTempThreeMaxCol = 15,
+
+            KpiOverallTempFourRowStartPosition = 13,
+            KpiOverallTempFourColStartPosition = 4,
+            KpiOverallTempFourMaxRow = 24,
+            KpiOverallTempFourMaxCol = 17,
+
+            KpiOverallTempFiveRowStartPosition = 26,
+            KpiOverallTempFiveColStartPosition = 4,
+            KpiOverallTempFiveMaxRow = 30,
+            KpiOverallTempFiveMaxCol = 16
+        }
+
+
+
+
+
         /// <summary>
         /// An indexer for default names of the excel file
         /// </summary>
-        private enum DefaultSheetName
+        private enum DefaultDataSheetName
         {
             Sheet1
         }
 
 
-
-        private enum DefaultFileName
+        /// <summary>
+        /// 
+        /// </summary>
+        private enum DefaultDataFileName
         {
             Default
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public enum OverallSheetNames
+        {
+            KPAOverall,
+            KPIOverall
+        }
+
+
+
         #endregion
+
+
 
 
         #region CONSTRUCTORS
@@ -96,8 +161,8 @@ namespace DataExporter
         }
 
         public ExcelFile(string fileName, string sheetName) : this(fileName, sheetName, false) { }
-        public ExcelFile(string fileName, bool headers) : this(fileName, defaultSheetName[(int)DefaultSheetName.Sheet1], headers) { }
-        public ExcelFile(string fileName) : this(fileName, defaultSheetName[(int)DefaultSheetName.Sheet1], false) { }
+        public ExcelFile(string fileName, bool headers) : this(fileName, defaultSheetName[(int)DefaultDataSheetName.Sheet1], headers) { }
+        public ExcelFile(string fileName) : this(fileName, defaultSheetName[(int)DefaultDataSheetName.Sheet1], false) { }
 
         #endregion
     }

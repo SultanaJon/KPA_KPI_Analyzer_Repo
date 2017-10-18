@@ -319,21 +319,27 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         {
             try
             {
-                Bunifu.Framework.UI.BunifuFlatButton btn = (Bunifu.Framework.UI.BunifuFlatButton)sender;
-                int tag = int.Parse(btn.Tag.ToString());
-
-                switch (ActiveCategory)
+                using (DataViewer dv = new DataViewer())
                 {
-                    case 0: // Planned Order Aging
-                        break;
-                    case 1: // PRs Aging (Not Released)
-                        KpaDataTableLoader.Plan.LoadPRsAgingNotRelDataTable(tag);
-                        break;
-                    case 2: // Material Due
-                        KpaDataTableLoader.Plan.LoadMaterialDueDataTable(tag);
-                        break;
-                    default:
-                        break;
+                    Bunifu.Framework.UI.BunifuFlatButton btn = (Bunifu.Framework.UI.BunifuFlatButton)sender;
+                    int tag = int.Parse(btn.Tag.ToString());
+
+                    switch (ActiveCategory)
+                    {
+                        case 0: // Planned Order Aging
+                            break;
+                        case 1: // PRs Aging (Not Released)
+                            dv.DataLoader += KpaDataTableLoader.Plan.LoadPRsAgingNotRelDataTable;
+                            dv.ColumnTag = tag;
+                            break;
+                        case 2: // Material Due
+                            dv.DataLoader += KpaDataTableLoader.Plan.LoadMaterialDueDataTable;
+                            dv.ColumnTag = tag;
+                            break;
+                        default:
+                            break;
+                    }
+                    dv.ShowDialog();
                 }
             }
             catch(Exception ex)

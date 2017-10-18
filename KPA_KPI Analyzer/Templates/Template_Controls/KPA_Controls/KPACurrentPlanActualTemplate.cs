@@ -322,22 +322,27 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         {
             try
             {
-                Bunifu.Framework.UI.BunifuFlatButton btn = (Bunifu.Framework.UI.BunifuFlatButton)sender;
-                int tag = int.Parse(btn.Tag.ToString());
-
-
-                switch (ActiveCategory)
+                using (DataViewer dv = new DataViewer())
                 {
-                    case 0: // Current Plan Date vs Current Confirmation Date (Open POs)
-                        KpaDataTableLoader.CurrentPlanVsActual.LoadCurrentPlanVsCurrentConfDateDataTable(tag);
-                        break;
-                    case 1: // Current Planned Date vs Current Confirmation Date (Open POs) - Hot Jobs Only
-                        KpaDataTableLoader.CurrentPlanVsActual.LoadCurrPlandDateVsCurrConfDateOpenPOs_HotJobsDataTable(tag);
-                        break;
-                    default:
-                        break;
-                }
+                    Bunifu.Framework.UI.BunifuFlatButton btn = (Bunifu.Framework.UI.BunifuFlatButton)sender;
+                    int tag = int.Parse(btn.Tag.ToString());
 
+
+                    switch (ActiveCategory)
+                    {
+                        case 0: // Current Plan Date vs Current Confirmation Date (Open POs)
+                            dv.DataLoader += KpaDataTableLoader.CurrentPlanVsActual.LoadCurrentPlanVsCurrentConfDateDataTable;
+                            dv.ColumnTag = tag;
+                            break;
+                        case 1: // Current Planned Date vs Current Confirmation Date (Open POs) - Hot Jobs Only
+                            dv.DataLoader += KpaDataTableLoader.CurrentPlanVsActual.LoadCurrPlandDateVsCurrConfDateOpenPOs_HotJobsDataTable;
+                            dv.ColumnTag = tag;
+                            break;
+                        default:
+                            break;
+                    }
+                    dv.ShowDialog();
+                }
             }
             catch (Exception ex)
             {

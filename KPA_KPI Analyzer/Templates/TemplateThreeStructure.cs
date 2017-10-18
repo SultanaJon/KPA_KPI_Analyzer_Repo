@@ -1,4 +1,8 @@
-﻿namespace KPA_KPI_Analyzer.Templates
+﻿using System;
+using System.Collections.Generic;
+using System.Windows;
+
+namespace KPA_KPI_Analyzer.Templates
 {
     public class TempThree
     {
@@ -17,6 +21,46 @@
         public int PercentUnconfTotal { get; set; }
 
 
+
+
+
+
+
+        /// <summary>
+        /// Returns a list of string element contained within the tempThree overall data.
+        /// </summary>
+        /// <returns>Returns the list of string values contained within tempThree of overall data. returns null if an error occured and must be handled.</returns>
+        public List<string> GetData()
+        {
+            List<string> results = null;
+            try
+            {
+                List<string> temp = new List<string>();
+                // Add the template elements to tempory storage and return it.
+                temp.Add(Average.ToString());
+                temp.Add(Minus_TwentyTwo.ToString());
+                temp.Add(Minus_Fifteen_TwentyOne.ToString());
+                temp.Add(Minus_Eight_Fourteen.ToString());
+                temp.Add(Minus_One_Seven.ToString());
+                temp.Add(Zero.ToString());
+                temp.Add(One_Seven.ToString());
+                temp.Add(Eight_Fourteen.ToString());
+                temp.Add(Fifteen_TwentyOne.ToString());
+                temp.Add(TwentyTwo.ToString());
+                temp.Add(Total.ToString());
+                temp.Add(PercentUnconf.ToString());
+
+                results = new List<string>(temp);
+                temp.Clear();
+                temp = null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            return results;
+        }
 
 
 

@@ -359,20 +359,28 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         {
             try
             {
-                Bunifu.Framework.UI.BunifuFlatButton btn = (Bunifu.Framework.UI.BunifuFlatButton)sender;
-                int tag = int.Parse(btn.Tag.ToString());
-
-                switch (ActiveCategory)
+                using (DataViewer dv = new DataViewer())
                 {
-                    case 0: // PRs (Not on PO) - Hot Jobs Only
-                        KpaDataTableLoader.HotJobs.LoadPRsNotOnPODataTable(tag);
-                        break;
-                    case 1: // No Confirmations - Hot Jobs Only
-                        KpaDataTableLoader.HotJobs.LoadNoConfirmationDataTable(tag);
-                        break;
-                    case 2: // Late to Confirmed - Hot Jobs Only
-                        KpaDataTableLoader.HotJobs.LoadLateToConfirmedDataTable(tag);
-                        break;
+
+                    Bunifu.Framework.UI.BunifuFlatButton btn = (Bunifu.Framework.UI.BunifuFlatButton)sender;
+                    int tag = int.Parse(btn.Tag.ToString());
+
+                    switch (ActiveCategory)
+                    {
+                        case 0: // PRs (Not on PO) - Hot Jobs Only
+                            dv.DataLoader += KpaDataTableLoader.HotJobs.LoadPRsNotOnPODataTable;
+                            dv.ColumnTag = tag;
+                            break;
+                        case 1: // No Confirmations - Hot Jobs Only
+                            dv.DataLoader += KpaDataTableLoader.HotJobs.LoadNoConfirmationDataTable;
+                            dv.ColumnTag = tag;
+                            break;
+                        case 2: // Late to Confirmed - Hot Jobs Only
+                            dv.DataLoader += KpaDataTableLoader.HotJobs.LoadLateToConfirmedDataTable;
+                            dv.ColumnTag = tag;
+                            break;
+                    }
+                    dv.ShowDialog();
                 }
             }
             catch (Exception ex)

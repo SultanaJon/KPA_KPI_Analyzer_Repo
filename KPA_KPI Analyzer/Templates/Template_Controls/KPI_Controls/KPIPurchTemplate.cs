@@ -273,11 +273,16 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         {
             try
             {
-                Bunifu.Framework.UI.BunifuFlatButton btn = (Bunifu.Framework.UI.BunifuFlatButton)sender;
-                int tag = int.Parse(btn.Tag.ToString());
+                using (DataViewer dv = new DataViewer())
+                {
+                    Bunifu.Framework.UI.BunifuFlatButton btn = (Bunifu.Framework.UI.BunifuFlatButton)sender;
+                    int tag = int.Parse(btn.Tag.ToString());
 
-                // Initial Confirmation vs PR Planned Date
-                KpiDataTableLoader.Purch.LoadInitialConfVsPrPlanDateDataTable(tag);
+                    // Initial Confirmation vs PR Planned Date
+                    dv.DataLoader += KpiDataTableLoader.Purch.LoadInitialConfVsPrPlanDateDataTable;
+                    dv.ColumnTag = tag;
+                    dv.ShowDialog();
+                }
             }
             catch (Exception ex)
             {

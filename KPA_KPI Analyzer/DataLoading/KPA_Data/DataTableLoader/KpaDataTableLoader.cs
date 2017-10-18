@@ -121,18 +121,16 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                     }
                     DataViewerUtils.Data = prsAgingNotRelDt.Copy();
                     DataViewerUtils.DataLoaded = true;
-                }
-                catch(Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
+
                     prsAgingNotRelDt.Rows.Clear();
                     prsAgingNotRelDt = null;
                     dt.Rows.Clear();
                     dt = null;
                     GC.Collect();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
                 }
             }
 
@@ -244,18 +242,16 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
 
                     DataViewerUtils.Data = MaterialDueDt.Copy();
                     DataViewerUtils.DataLoaded = true;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
+
                     MaterialDueDt.Rows.Clear();
                     MaterialDueDt = null;
                     dt.Rows.Clear();
                     dt = null;
                     GC.Collect();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
                 }
             }
         }
@@ -367,18 +363,16 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                     }
                     DataViewerUtils.Data = prsAgingRelDt.Copy();
                     DataViewerUtils.DataLoaded = true;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
+
                     prsAgingRelDt.Rows.Clear();
                     prsAgingRelDt = null;
                     dt.Rows.Clear();
                     dt = null;
                     GC.Collect();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
                 }
             }
 
@@ -485,18 +479,17 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                     }
                     DataViewerUtils.Data = poFirstRelDt.Copy();
                     DataViewerUtils.DataLoaded = true;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
+
+
                     poFirstRelDt.Rows.Clear();
                     poFirstRelDt = null;
                     dt.Rows.Clear();
                     dt = null;
                     GC.Collect();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
                 }
             }
 
@@ -602,18 +595,17 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                     }
                     DataViewerUtils.Data = poPrevRelDt.Copy();
                     DataViewerUtils.DataLoaded = true;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
+
+
                     poPrevRelDt.Rows.Clear();
                     poPrevRelDt = null;
                     dt.Rows.Clear();
                     dt = null;
                     GC.Collect();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
                 }
             }
 
@@ -720,18 +712,16 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                     }
                     DataViewerUtils.Data = noConfirmationsDt.Copy();
                     DataViewerUtils.DataLoaded = true;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
+
                     noConfirmationsDt.Rows.Clear();
                     noConfirmationsDt = null;
                     dt.Rows.Clear();
                     dt = null;
                     GC.Collect();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
                 }
             }
         }
@@ -843,18 +833,16 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                     }
                     DataViewerUtils.Data = prRelPoRelDt.Copy();
                     DataViewerUtils.DataLoaded = true;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
+
                     prRelPoRelDt.Rows.Clear();
                     prRelPoRelDt = null;
                     dt.Rows.Clear();
                     dt = null;
                     GC.Collect();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
                 }
             }
 
@@ -961,18 +949,16 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                     }
                     DataViewerUtils.Data = poCreatConfEntryDt.Copy();
                     DataViewerUtils.DataLoaded = true;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
+
                     poCreatConfEntryDt.Rows.Clear();
                     poCreatConfEntryDt = null;
                     dt.Rows.Clear();
                     dt = null;
                     GC.Collect();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
                 }
             }
         }
@@ -1083,20 +1069,17 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                     }
                     DataViewerUtils.Data = prRelConfEntry.Copy();
                     DataViewerUtils.DataLoaded = true;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
+
                     prRelConfEntry.Rows.Clear();
                     prRelConfEntry = null;
                     dt.Rows.Clear();
                     dt = null;
                     GC.Collect();
                 }
-
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
@@ -1235,18 +1218,16 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                     }
                     DataViewerUtils.Data = confVsPlanDateDt.Copy();
                     DataViewerUtils.DataLoaded = true;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
+
                     confVsPlanDateDt.Rows.Clear();
                     confVsPlanDateDt = null;
                     dt.Rows.Clear();
                     dt = null;
                     GC.Collect();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
                 }
             }
 
@@ -1353,20 +1334,17 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                     }
                     DataViewerUtils.Data = poFirsconfDateUpDelDt.Copy();
                     DataViewerUtils.DataLoaded = true;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
+
                     poFirsconfDateUpDelDt.Rows.Clear();
                     poFirsconfDateUpDelDt = null;
                     dt.Rows.Clear();
                     dt = null;
                     GC.Collect();
                 }
-
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
 
 
@@ -1477,20 +1455,17 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                     }
                     DataViewerUtils.Data = LateConfDateDt.Copy();
                     DataViewerUtils.DataLoaded = true;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
+
                     LateConfDateDt.Rows.Clear();
                     LateConfDateDt = null;
                     dt.Rows.Clear();
                     dt = null;
                     GC.Collect();
                 }
-
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
@@ -1614,21 +1589,17 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                     }
                     DataViewerUtils.Data = prsNotonPOHotJob.Copy();
                     DataViewerUtils.DataLoaded = true;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
+
                     prsNotonPOHotJob.Rows.Clear();
                     prsNotonPOHotJob = null;
                     dt.Rows.Clear();
                     dt = null;
                     GC.Collect();
                 }
-
-
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
 
 
@@ -1736,20 +1707,17 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                     }
                     DataViewerUtils.Data = noConfirmations.Copy();
                     DataViewerUtils.DataLoaded = true;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
+
                     noConfirmations.Rows.Clear();
                     noConfirmations = null;
                     dt.Rows.Clear();
                     dt = null;
                     GC.Collect();
                 }
-
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
 
 
@@ -1864,20 +1832,17 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                     }
                     DataViewerUtils.Data = lateToConfirmed.Copy();
                     DataViewerUtils.DataLoaded = true;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
+
                     lateToConfirmed.Rows.Clear();
                     lateToConfirmed = null;
                     dt.Rows.Clear();
                     dt = null;
                     GC.Collect();
                 }
-
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
@@ -2039,22 +2004,21 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                                 continue;
                         }
                     }
+
+
                     DataViewerUtils.Data = currPlanDateVsCurrConfDateDt.Copy();
                     DataViewerUtils.DataLoaded = true;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
+
                     currPlanDateVsCurrConfDateDt.Rows.Clear();
                     currPlanDateVsCurrConfDateDt = null;
                     dt.Rows.Clear();
                     dt = null;
                     GC.Collect();
                 }
-
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
 
 
@@ -2203,20 +2167,17 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                     }
                     DataViewerUtils.Data = currPlanDateVsCurrConfDateDtHotJobs.Copy();
                     DataViewerUtils.DataLoaded = true;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
+
                     currPlanDateVsCurrConfDateDtHotJobs.Rows.Clear();
                     currPlanDateVsCurrConfDateDtHotJobs = null;
                     dt.Rows.Clear();
                     dt = null;
                     GC.Collect();
                 }
-
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
     }

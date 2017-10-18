@@ -65,15 +65,6 @@ namespace KPA_KPI_Analyzer
 
 
 
-        private void ConfigureSettings()
-        {
-            if(Properties.Settings.Default.IncludeCorrelation)
-            {
-            }
-        }
-
-
-
 
         /// <summary>
         /// Configure the application to the United States
@@ -111,6 +102,7 @@ namespace KPA_KPI_Analyzer
             dp_POToDate.Value = today;
 
             ShowPage(Pages.LoadingScreen);
+            ms_applicaitonMenuStrip.Enabled = false;
             cpb_loadingScreenCircProgBar.Text = "Loading Filters...";
             FilterUtils.FiltersLoaded = false;
             FilterUtils.FilterLoadProcessStarted = false;
@@ -742,11 +734,64 @@ namespace KPA_KPI_Analyzer
             ShowPage(Pages.DragDropDash);
         }
 
-        private void button2_Click(object sender, EventArgs e)
+
+
+
+
+        /// <summary>
+        /// Begins the export overall data operation.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void overallDataToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (DataViewer dv = new DataViewer())
+            List<List<string>> tempKpaOneData;
+            List<List<string>> tempKpaTwoData;
+            List<List<string>> tempKpiThreeData;
+            List<List<string>> tempKpiFourData;
+            List<List<string>> tempKpiFiveData;
+
+            try
             {
-                dv.ShowDialog();
+                tempKpaOneData = overallData.GetKpaTempOneData();
+                tempKpaTwoData = overallData.GetKpaTempTwoData();
+                tempKpiThreeData = overallData.GetKpiTempThreeData();
+                tempKpiFourData = overallData.GetKpiTempFourData();
+                tempKpiFiveData = overallData.GetKpiTempFiveData();
+
+                if (tempKpaOneData == null || tempKpaTwoData == null || tempKpiThreeData == null || tempKpiFourData == null || tempKpiFiveData == null)
+                    throw new NullReferenceException();
+                else
+                {
+                    // export the templates to overall.xlsx located in resources -> reports
+                    DataExporter.Exporter.ExportOverall(
+                        tempKpaOneData,
+                        tempKpaTwoData,
+                        tempKpiThreeData,
+                        tempKpiFourData,
+                        tempKpiFiveData
+                    );
+
+                    tempKpaOneData.Clear();
+                    tempKpaTwoData.Clear();
+                    tempKpiThreeData.Clear();
+                    tempKpiFourData.Clear();
+                    tempKpiFiveData.Clear();
+
+                    tempKpaOneData = null;
+                    tempKpaTwoData = null;
+                    tempKpiThreeData = null;
+                    tempKpiFourData = null;
+                    tempKpiFiveData = null;
+                }
+            }
+            catch(NullReferenceException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

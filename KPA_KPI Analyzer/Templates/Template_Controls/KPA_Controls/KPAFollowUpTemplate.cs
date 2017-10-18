@@ -367,22 +367,29 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         {
             try
             {
-                Bunifu.Framework.UI.BunifuFlatButton btn = (Bunifu.Framework.UI.BunifuFlatButton)sender;
-                int tag = int.Parse(btn.Tag.ToString());
-
-                switch (ActiveCategory)
+                using (DataViewer dv = new DataViewer())
                 {
-                    case 0: // Confirmed Vs Plan Date
-                        KpaDataTableLoader.FollowUp.LoadConfirmedVsPlanDateDataTable(tag);
-                        break;
-                    case 1: // Confirmed Date for Upcoming Deliveries
-                        KpaDataTableLoader.FollowUp.LoadConfirmedDateForUpcomingDeliveriesDataTable(tag);
-                        break;
-                    case 2: // Late to Confirmed Date
-                        KpaDataTableLoader.FollowUp.LoadLateToConfirmedDateDataTable(tag);
-                        break;
-                    default:
-                        break;
+                    Bunifu.Framework.UI.BunifuFlatButton btn = (Bunifu.Framework.UI.BunifuFlatButton)sender;
+                    int tag = int.Parse(btn.Tag.ToString());
+
+                    switch (ActiveCategory)
+                    {
+                        case 0: // Confirmed Vs Plan Date
+                            dv.DataLoader += KpaDataTableLoader.FollowUp.LoadConfirmedVsPlanDateDataTable;
+                            dv.ColumnTag = tag;
+                            break;
+                        case 1: // Confirmed Date for Upcoming Deliveries
+                            dv.DataLoader += KpaDataTableLoader.FollowUp.LoadConfirmedDateForUpcomingDeliveriesDataTable;
+                            dv.ColumnTag = tag;
+                            break;
+                        case 2: // Late to Confirmed Date
+                            dv.DataLoader += KpaDataTableLoader.FollowUp.LoadLateToConfirmedDateDataTable;
+                            dv.ColumnTag = tag;
+                            break;
+                        default:
+                            break;
+                    }
+                    dv.ShowDialog();
                 }
             }
             catch (Exception ex)

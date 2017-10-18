@@ -549,29 +549,38 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         {
             try
             {
-                Bunifu.Framework.UI.BunifuFlatButton btn = (Bunifu.Framework.UI.BunifuFlatButton)sender;
-                int tag = int.Parse(btn.Tag.ToString());
-
-                switch (ActiveCategory)
+                using (DataViewer dv = new DataViewer())
                 {
-                    case 0: // PRs Created
-                        KpiDataTableLoader.Other.LoadPrsCreated(tag);
-                        break;
-                    case 1: // PRs Released
-                        KpiDataTableLoader.Other.LoadPrsReleased(tag);
-                        break;
-                    case 2: // Total Spend
-                        KpiDataTableLoader.Other.LoadTotalSpend(tag);
-                        break;
-                    case 3: // PR vs PO Value
-                        KpiDataTableLoader.Other.LoadPrVsPoValue(tag);
-                        break;
-                    case 4: // Hot Job PRs
-                        KpiDataTableLoader.Other.LoadHotJobPrs(tag);
-                        break;
-                    default:
-                        
-                        break;
+                    Bunifu.Framework.UI.BunifuFlatButton btn = (Bunifu.Framework.UI.BunifuFlatButton)sender;
+                    int tag = int.Parse(btn.Tag.ToString());
+
+                    switch (ActiveCategory)
+                    {
+                        case 0: // PRs Created
+                            dv.DataLoader += KpiDataTableLoader.Other.LoadPrsCreated;
+                            dv.ColumnTag = tag;
+                            break;
+                        case 1: // PRs Released
+                            dv.DataLoader += KpiDataTableLoader.Other.LoadPrsReleased;
+                            dv.ColumnTag = tag;
+                            break;
+                        case 2: // Total Spend
+                            dv.DataLoader += KpiDataTableLoader.Other.LoadTotalSpend;
+                            dv.ColumnTag = tag;
+                            break;
+                        case 3: // PR vs PO Value
+                            dv.DataLoader += KpiDataTableLoader.Other.LoadPrVsPoValue;
+                            dv.ColumnTag = tag;
+                            break;
+                        case 4: // Hot Job PRs
+                            dv.DataLoader += KpiDataTableLoader.Other.LoadHotJobPrs;
+                            dv.ColumnTag = tag;
+                            break;
+                        default:
+
+                            break;
+                    }
+                    dv.ShowDialog();
                 }
             }
             catch (Exception ex)

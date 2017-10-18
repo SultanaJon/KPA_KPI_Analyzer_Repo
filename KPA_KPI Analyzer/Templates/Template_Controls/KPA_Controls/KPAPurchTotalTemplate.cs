@@ -250,11 +250,16 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         {
             try
             {
-                Bunifu.Framework.UI.BunifuFlatButton btn = (Bunifu.Framework.UI.BunifuFlatButton)sender;
-                int tag = int.Parse(btn.Tag.ToString());
+                using (DataViewer dv = new DataViewer())
+                {
+                    Bunifu.Framework.UI.BunifuFlatButton btn = (Bunifu.Framework.UI.BunifuFlatButton)sender;
+                    int tag = int.Parse(btn.Tag.ToString());
 
-                // PR Release Date to Confrimation Entry Date
-                KpaDataTableLoader.PurchTotal.LoadPrReleaseToConfEntryDataTable(tag);
+                    // PR Release Date to Confrimation Entry Date
+                    dv.DataLoader += KpaDataTableLoader.PurchTotal.LoadPrReleaseToConfEntryDataTable;
+                    dv.ColumnTag = tag;
+                    dv.ShowDialog();
+                }
             }
             catch (Exception ex)
             {

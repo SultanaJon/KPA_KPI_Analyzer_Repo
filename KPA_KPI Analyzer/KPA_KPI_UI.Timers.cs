@@ -41,6 +41,7 @@ namespace KPA_KPI_Analyzer
         /// <param name="e"></param>
         private void ImportTimer_Tick(object sender, EventArgs e)
         {
+            ms_applicaitonMenuStrip.Enabled = false;
             try
             {
                 if (!Importer.importStarted)
@@ -398,6 +399,7 @@ namespace KPA_KPI_Analyzer
                 FiltersTimer.Stop();
                 settings.Save(settings);
                 ShowPage(Pages.Dashboard);
+                ms_applicaitonMenuStrip.Enabled = true;
                 NavigationLocked = false;
             }
         }

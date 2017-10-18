@@ -343,19 +343,25 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         {
             try
             {
-                Bunifu.Framework.UI.BunifuFlatButton btn = (Bunifu.Framework.UI.BunifuFlatButton)sender;
-                int tag = int.Parse(btn.Tag.ToString());
-
-                switch (ActiveCategory)
+                using (DataViewer dv = new DataViewer())
                 {
-                    case 0: // PO Release vs PR Deliver Date
-                        KpiDataTableLoader.PurchPlan.LoadPoRelVsPrDelDateDataTable(tag);
-                        break;
-                    case 1: // PR 2nd Level Release to Original Planned Delivery Date
-                        KpiDataTableLoader.PurchPlan.LoadPr2ndLvlRelOrigPlanDateDataTable(tag);
-                        break;
-                    default:
-                        break;
+                    Bunifu.Framework.UI.BunifuFlatButton btn = (Bunifu.Framework.UI.BunifuFlatButton)sender;
+                    int tag = int.Parse(btn.Tag.ToString());
+
+                    switch (ActiveCategory)
+                    {
+                        case 0: // PO Release vs PR Deliver Date
+                            dv.DataLoader += KpiDataTableLoader.PurchPlan.LoadPoRelVsPrDelDateDataTable;
+                            dv.ColumnTag = tag;
+                            break;
+                        case 1: // PR 2nd Level Release to Original Planned Delivery Date
+                            dv.DataLoader += KpiDataTableLoader.PurchPlan.LoadPr2ndLvlRelOrigPlanDateDataTable;
+                            dv.ColumnTag = tag;
+                            break;
+                        default:
+                            break;
+                    }
+                    dv.ShowDialog();
                 }
             }
             catch (Exception ex)

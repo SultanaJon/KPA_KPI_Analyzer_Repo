@@ -547,28 +547,37 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         {
             try
             {
-                Bunifu.Framework.UI.BunifuFlatButton btn = (Bunifu.Framework.UI.BunifuFlatButton)sender;
-                int tag = int.Parse(btn.Tag.ToString());
-
-                switch (ActiveCategory)
+                using (DataViewer dv = new DataViewer())
                 {
-                    case 0: // Initial Confirmation vs Current Confirmation
-                        KpiDataTableLoader.FollowUp.LoadInitConfVsCurrConfDataTable(tag);
-                        break;
-                    case 1: // Final Confirmation Date vs Final Planned Date
-                        KpiDataTableLoader.FollowUp.LoadFinalConfDateVsFinalPlanDateDataTable(tag);
-                        break;
-                    case 2: // Receipt Date vs Current Planned Date
-                        KpiDataTableLoader.FollowUp.LoadRecDateVsCurrPlanDateDataTable(tag);
-                        break;
-                    case 3: // Receipt Date vs Orig Conf Date
-                        KpiDataTableLoader.FollowUp.LoadRecDateVsOrigConfDateDataTable(tag);
-                        break;
-                    case 4: // Receipt Date vs Current Conf Date
-                        KpiDataTableLoader.FollowUp.LoadRecDateVsCurrConfDateDataTable(tag);
-                        break;
-                    default:
-                        break;
+                    Bunifu.Framework.UI.BunifuFlatButton btn = (Bunifu.Framework.UI.BunifuFlatButton)sender;
+                    int tag = int.Parse(btn.Tag.ToString());
+
+                    switch (ActiveCategory)
+                    {
+                        case 0: // Initial Confirmation vs Current Confirmation
+                            dv.DataLoader += KpiDataTableLoader.FollowUp.LoadInitConfVsCurrConfDataTable;
+                            dv.ColumnTag = tag;
+                            break;
+                        case 1: // Final Confirmation Date vs Final Planned Date
+                            dv.DataLoader += KpiDataTableLoader.FollowUp.LoadFinalConfDateVsFinalPlanDateDataTable;
+                            dv.ColumnTag = tag;
+                            break;
+                        case 2: // Receipt Date vs Current Planned Date
+                            dv.DataLoader += KpiDataTableLoader.FollowUp.LoadRecDateVsCurrPlanDateDataTable;
+                            dv.ColumnTag = tag;
+                            break;
+                        case 3: // Receipt Date vs Orig Conf Date
+                            dv.DataLoader += KpiDataTableLoader.FollowUp.LoadRecDateVsOrigConfDateDataTable;
+                            dv.ColumnTag = tag;
+                            break;
+                        case 4: // Receipt Date vs Current Conf Date
+                            dv.DataLoader += KpiDataTableLoader.FollowUp.LoadRecDateVsCurrConfDateDataTable;
+                            dv.ColumnTag = tag;
+                            break;
+                        default:
+                            break;
+                    }
+                    dv.ShowDialog();
                 }
             }
             catch (Exception ex)

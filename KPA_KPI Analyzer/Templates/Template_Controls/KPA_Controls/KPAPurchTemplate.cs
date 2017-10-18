@@ -434,23 +434,31 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         {
             try
             {
-                Bunifu.Framework.UI.BunifuFlatButton btn = (Bunifu.Framework.UI.BunifuFlatButton)sender;
-                int tag = int.Parse(btn.Tag.ToString());
-
-                switch (ActiveCategory)
+                using (DataViewer dv = new DataViewer())
                 {
-                    case 0: // PRs Aging Released
-                        KpaDataTableLoader.Purch.LoadPrsAgingReleasedDataTable(tag);
-                        break;
-                    case 1: // PO First Release
-                        KpaDataTableLoader.Purch.LoadPoFirstReleaseDataTable(tag);
-                        break;
-                    case 2: // PO Prev Release
-                        KpaDataTableLoader.Purch.LoadPoPrevReleaseDataTable(tag);
-                        break;
-                    case 3: // No Confirmations
-                        KpaDataTableLoader.Purch.LoadNoConfirmationsDataTable(tag);
-                        break;
+                    Bunifu.Framework.UI.BunifuFlatButton btn = (Bunifu.Framework.UI.BunifuFlatButton)sender;
+                    int tag = int.Parse(btn.Tag.ToString());
+
+                    switch (ActiveCategory)
+                    {
+                        case 0: // PRs Aging Released
+                            dv.DataLoader += KpaDataTableLoader.Purch.LoadPrsAgingReleasedDataTable;
+                            dv.ColumnTag = tag;
+                            break;
+                        case 1: // PO First Release
+                            dv.DataLoader += KpaDataTableLoader.Purch.LoadPoFirstReleaseDataTable;
+                            dv.ColumnTag = tag;
+                            break;
+                        case 2: // PO Prev Release
+                            dv.DataLoader += KpaDataTableLoader.Purch.LoadPoPrevReleaseDataTable;
+                            dv.ColumnTag = tag;
+                            break;
+                        case 3: // No Confirmations
+                            dv.DataLoader += KpaDataTableLoader.Purch.LoadNoConfirmationsDataTable;
+                            dv.ColumnTag = tag;
+                            break;
+                    }
+                    dv.ShowDialog();
                 }
             }
             catch (Exception ex)

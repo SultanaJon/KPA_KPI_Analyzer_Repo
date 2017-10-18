@@ -293,13 +293,17 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         {
             try
             {
-                Bunifu.Framework.UI.BunifuFlatButton btn = (Bunifu.Framework.UI.BunifuFlatButton)sender;
-                int tag = int.Parse(btn.Tag.ToString());
+                using (DataViewer dv = new DataViewer())
+                {
+                    Bunifu.Framework.UI.BunifuFlatButton btn = (Bunifu.Framework.UI.BunifuFlatButton)sender;
+                    int tag = int.Parse(btn.Tag.ToString());
 
 
-                // PR Release to COnfirmation Entry
-                KpiDataTableLoader.PurchTotal.LoadPrReleaseConfEntryDataTable(tag);
-
+                    // PR Release to COnfirmation Entry
+                    dv.DataLoader += KpiDataTableLoader.PurchTotal.LoadPrReleaseConfEntryDataTable;
+                    dv.ColumnTag = tag;
+                    dv.ShowDialog();
+                }
             }
             catch (Exception ex)
             {

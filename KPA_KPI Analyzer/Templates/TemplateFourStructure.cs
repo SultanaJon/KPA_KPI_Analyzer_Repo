@@ -1,4 +1,8 @@
-﻿namespace KPA_KPI_Analyzer.Templates
+﻿using System;
+using System.Collections.Generic;
+using System.Windows;
+
+namespace KPA_KPI_Analyzer.Templates
 {
     public class TempFour
     {
@@ -19,6 +23,46 @@
         public int PercentUnconfTotal { get; set; }
 
 
+
+
+
+        /// <summary>
+        /// Returns a list of string element contained within the tempFour overall data.
+        /// </summary>
+        /// <returns>Returns the list of string values contained within temptFour of overall data. returns null if an error occured and must be handled.</returns>
+        public List<string> GetData()
+        {
+            List<string> results = null;
+            try
+            {
+                List<string> temp = new List<string>();
+                // Add the template elements to tempory storage and return it.
+                temp.Add(Average.ToString());
+                temp.Add(LessThanZero.ToString());
+                temp.Add(One_Three.ToString());
+                temp.Add(Four_Seven.ToString());
+                temp.Add(Eight_Fourteen.ToString());
+                temp.Add(Fifteen_TwentyOne.ToString());
+                temp.Add(TwentyTwo_TwentyEight.ToString());
+                temp.Add(TwentyNine_ThirtyFive.ToString());
+                temp.Add(ThirtySix_FourtyTwo.ToString());
+                temp.Add(FourtyThree_FourtyNine.ToString());
+                temp.Add(Fifty_FiftySix.ToString());
+                temp.Add(GreaterThanEqualFiftySeven.ToString());
+                temp.Add(Total.ToString());
+                temp.Add(PercentUnconf.ToString());
+
+                results = new List<string>(temp);
+                temp.Clear();
+                temp = null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            return results;
+        }
 
 
 

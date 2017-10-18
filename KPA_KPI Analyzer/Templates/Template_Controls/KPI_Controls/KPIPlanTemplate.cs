@@ -404,22 +404,29 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         {
             try
             {
-                Bunifu.Framework.UI.BunifuFlatButton btn = (Bunifu.Framework.UI.BunifuFlatButton)sender;
-                int tag = int.Parse(btn.Tag.ToString());
-
-                switch (ActiveCategory)
+                using (DataViewer dv = new DataViewer())
                 {
-                    case 0: // PR Planned Date vs Current Planned
-                        KpiDataTableLoader.Plan.LoadPrPlanDateVsCurrentPlanDateDataTable(tag);
-                        break;
-                    case 1:  // (Original Planned Date - 2nd Lvl Release Date) vs Coded lead-time
-                        KpiDataTableLoader.Plan.LoadOrigPlanDate2ndLvlRelDate_CodedLeadDataTable(tag);
-                        break;
-                    case 2: // (Current Planned Date - 2nd Lvl Release Date) vs Coded lead-time
-                        KpiDataTableLoader.Plan.LoadCurrPlanDate2ndLvlRelDate_CodedLeadDataTable(tag);
-                        break;
-                    default:
-                        break;
+                    Bunifu.Framework.UI.BunifuFlatButton btn = (Bunifu.Framework.UI.BunifuFlatButton)sender;
+                    int tag = int.Parse(btn.Tag.ToString());
+
+                    switch (ActiveCategory)
+                    {
+                        case 0: // PR Planned Date vs Current Planned
+                            dv.DataLoader += KpiDataTableLoader.Plan.LoadPrPlanDateVsCurrentPlanDateDataTable;
+                            dv.ColumnTag = tag;
+                            break;
+                        case 1:  // (Original Planned Date - 2nd Lvl Release Date) vs Coded lead-time
+                            dv.DataLoader += KpiDataTableLoader.Plan.LoadOrigPlanDate2ndLvlRelDate_CodedLeadDataTable;
+                            dv.ColumnTag = tag;
+                            break;
+                        case 2: // (Current Planned Date - 2nd Lvl Release Date) vs Coded lead-time
+                            dv.DataLoader += KpiDataTableLoader.Plan.LoadCurrPlanDate2ndLvlRelDate_CodedLeadDataTable;
+                            dv.ColumnTag = tag;
+                            break;
+                        default:
+                            break;
+                    }
+                    dv.ShowDialog();
                 }
             }
             catch (Exception ex)

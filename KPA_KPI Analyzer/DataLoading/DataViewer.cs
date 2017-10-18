@@ -79,11 +79,20 @@ namespace KPA_KPI_Analyzer
 
 
 
-
+        /// <summary>
+        /// The load event is triggered once the form is created
+        /// </summary>
+        /// <param name="sender">The form</param>
+        /// <param name="e">The load event</param>
         private void DataViewer_Load(object sender, EventArgs e)
         {
             DataViewerUtils.DataLoaded = false;
             DataViewerUtils.DataLoadProcessStarted = false;
+
+            lbl_Performance.Text = Globals.CurrPerformance;
+            lbl_Section.Text = Globals.CurrSection;
+            lbl_Category.Text = Globals.CurrCategory;
+
             tmr_waitTimer.Start();
         }
 
@@ -372,7 +381,7 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// 
+        /// Event triggered when the user clicks the export evenet
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -401,6 +410,12 @@ namespace KPA_KPI_Analyzer
 
 
 
+
+
+
+        /// <summary>
+        /// Get rid of data stored in memory when not needed.
+        /// </summary>
         private void CleanUpData()
         {
             if(ExportUtils.Data != null)
@@ -415,6 +430,10 @@ namespace KPA_KPI_Analyzer
 
 
 
+
+        /// <summary>
+        /// Open teh save as dialog box and allow the user to save the data to excel to the location of their choosing.
+        /// </summary>
         private void OpenSaveAsDialog()
         {
             // Exporting to excel
@@ -424,7 +443,7 @@ namespace KPA_KPI_Analyzer
                 if (sfd.ShowDialog() == DialogResult.OK)
                 {
                     thrd = new Thread(() => {
-                        Exporter.Export(ExportUtils.Data, new ExcelFile(sfd.FileName, true));
+                        Exporter.ExportData(ExportUtils.Data, new ExcelFile(sfd.FileName, true));
                     });
                     thrd.Start();
                 }
@@ -442,7 +461,9 @@ namespace KPA_KPI_Analyzer
 
 
 
-
+        /// <summary>
+        /// Gather the data from the datagridview and store it in a datatable.
+        /// </summary>
         private void GatherDataTable()
         {
             // DataTable dt = new DataTable();
@@ -501,7 +522,12 @@ namespace KPA_KPI_Analyzer
 
 
 
-
+        /// <summary>
+        /// While the data is being exported to excel. This time will tick waiting for the data to be loaded into a datatable.
+        /// The timer will also check when the export process has completed and the data has been saved to the desired location.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tmr_ExportTimer_Tick(object sender, EventArgs e)
         {
             if(ExportUtils.DataLoaded)
@@ -525,19 +551,20 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// 
+        /// Hide the loading screen and present the datagridview
         /// </summary>
         private void HideLoadingScreen()
         {
             tblpnl_loadingScreen.Visible = false;
             pnl_datagridview.BringToFront();
+            ms_topPanelMenuStrip.Enabled = true;
         }
 
 
 
 
         /// <summary>
-        /// 
+        /// Show the loading screen while a load process is occuring.
         /// </summary>
         /// <param name="message"></param>
         private void ShowLoadingScreen(string message)
@@ -545,6 +572,7 @@ namespace KPA_KPI_Analyzer
             cpb_loadingScreenCircProgBar.Text = message;
             tblpnl_loadingScreen.Visible = true;
             pnl_datagridview.SendToBack();
+            ms_topPanelMenuStrip.Enabled = false;
         }
     }
 }
