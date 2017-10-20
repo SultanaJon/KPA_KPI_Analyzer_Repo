@@ -5,9 +5,7 @@ namespace KPA_KPI_Analyzer
 {
     public partial class KPA_KPI_UI
     {
-        Bunifu.Framework.UI.BunifuImageButton mainNavActiveBtn = new Bunifu.Framework.UI.BunifuImageButton();
-        Bunifu.Framework.UI.BunifuImageButton imgBtn = new Bunifu.Framework.UI.BunifuImageButton();
-        Bunifu.Framework.UI.BunifuFlatButton flatBtn = new Bunifu.Framework.UI.BunifuFlatButton();
+        Bunifu.Framework.UI.BunifuFlatButton mainNavActiveBtn = new Bunifu.Framework.UI.BunifuFlatButton();
 
         Panel mainNavActivePanel = new Panel() { Visible = false };
         bool NavigationLocked = false;
@@ -77,16 +75,8 @@ namespace KPA_KPI_Analyzer
             if (NavigationLocked)
                 return;
 
-            if (sender is Bunifu.Framework.UI.BunifuFlatButton)
-            {
-                flatBtn = (Bunifu.Framework.UI.BunifuFlatButton)sender;
-                tag = int.Parse(flatBtn.Tag.ToString());
-            }
-            else
-            {
-                imgBtn = (Bunifu.Framework.UI.BunifuImageButton)sender;
-                tag = int.Parse(imgBtn.Tag.ToString());
-            }
+            mainNavActiveBtn = (Bunifu.Framework.UI.BunifuFlatButton)sender;
+            tag = int.Parse(mainNavActiveBtn.Tag.ToString());
 
 
 

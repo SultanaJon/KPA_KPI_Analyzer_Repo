@@ -102,14 +102,14 @@
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.bunifuCustomLabel19 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.ChkdListBx_IRSuppName = new System.Windows.Forms.CheckedListBox();
+            this.btn_applyFilters = new System.Windows.Forms.Button();
+            this.btn_clearFilters = new System.Windows.Forms.Button();
+            this.btn_clearSelected = new System.Windows.Forms.Button();
             this.ImportTimer = new System.Windows.Forms.Timer(this.components);
             this.DataRemovalTimer = new System.Windows.Forms.Timer(this.components);
             this.pnl_activePage = new System.Windows.Forms.Panel();
-            this.pnl_loadingScreen = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.cpb_loadingScreenCircProgBar = new CircularProgressBar.CircularProgressBar();
             this.pnl_NavigationPanelMax = new System.Windows.Forms.Panel();
+            this.btn_Filters = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btn_Correlation = new Bunifu.Framework.UI.BunifuFlatButton();
             this.pnl_KPISectionsPanel = new System.Windows.Forms.Panel();
             this.btn_kpiOther = new System.Windows.Forms.Button();
@@ -139,10 +139,11 @@
             this.btn_kpaPlan = new System.Windows.Forms.Button();
             this.btn_kpaOverall = new System.Windows.Forms.Button();
             this.btn_KPA = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btn_Dashboard = new Bunifu.Framework.UI.BunifuImageButton();
-            this.btn_Charts = new Bunifu.Framework.UI.BunifuImageButton();
-            this.btn_Filters = new Bunifu.Framework.UI.BunifuImageButton();
+            this.btn_Dashboard = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.pnl_loadingScreen = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.cpb_loadingScreenCircProgBar = new CircularProgressBar.CircularProgressBar();
             this.tblpnl_DashbaordPage = new System.Windows.Forms.TableLayoutPanel();
             this.pnl_ViewPrintReports = new System.Windows.Forms.Panel();
             this.lbl_dashboardDate = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -189,9 +190,6 @@
             this.dc_logo = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.dc_title = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.dc_titlePanel = new Bunifu.Framework.UI.BunifuDragControl(this.components);
-            this.btn_applyFilters = new System.Windows.Forms.Button();
-            this.btn_clearFilters = new System.Windows.Forms.Button();
-            this.btn_clearSelected = new System.Windows.Forms.Button();
             this.pnl_menuStrip.SuspendLayout();
             this.ms_applicaitonMenuStrip.SuspendLayout();
             this.pnl_topPanel.SuspendLayout();
@@ -211,16 +209,12 @@
             this.tableLayoutPanel11.SuspendLayout();
             this.tableLayoutPanel10.SuspendLayout();
             this.pnl_activePage.SuspendLayout();
-            this.pnl_loadingScreen.SuspendLayout();
-            this.tableLayoutPanel9.SuspendLayout();
-            this.panel9.SuspendLayout();
             this.pnl_NavigationPanelMax.SuspendLayout();
             this.pnl_KPISectionsPanel.SuspendLayout();
             this.pnl_KPASectionsPanel.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btn_Dashboard)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btn_Charts)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btn_Filters)).BeginInit();
+            this.pnl_loadingScreen.SuspendLayout();
+            this.tableLayoutPanel9.SuspendLayout();
+            this.panel9.SuspendLayout();
             this.tblpnl_DashbaordPage.SuspendLayout();
             this.pnl_ViewPrintReports.SuspendLayout();
             this.tblpnl_DragDrop.SuspendLayout();
@@ -1185,6 +1179,54 @@
             this.ChkdListBx_IRSuppName.Tag = "8";
             this.ChkdListBx_IRSuppName.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.ckdListBox_ItemCheck);
             // 
+            // btn_applyFilters
+            // 
+            this.btn_applyFilters.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btn_applyFilters.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_applyFilters.Enabled = false;
+            this.btn_applyFilters.FlatAppearance.BorderSize = 0;
+            this.btn_applyFilters.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_applyFilters.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_applyFilters.Location = new System.Drawing.Point(601, 13);
+            this.btn_applyFilters.Name = "btn_applyFilters";
+            this.btn_applyFilters.Size = new System.Drawing.Size(190, 39);
+            this.btn_applyFilters.TabIndex = 10;
+            this.btn_applyFilters.Text = "Apply Filters";
+            this.btn_applyFilters.UseVisualStyleBackColor = false;
+            this.btn_applyFilters.Click += new System.EventHandler(this.btn_applyFilters_Click);
+            // 
+            // btn_clearFilters
+            // 
+            this.btn_clearFilters.BackColor = System.Drawing.Color.IndianRed;
+            this.btn_clearFilters.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_clearFilters.Enabled = false;
+            this.btn_clearFilters.FlatAppearance.BorderSize = 0;
+            this.btn_clearFilters.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_clearFilters.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_clearFilters.Location = new System.Drawing.Point(797, 13);
+            this.btn_clearFilters.Name = "btn_clearFilters";
+            this.btn_clearFilters.Size = new System.Drawing.Size(190, 39);
+            this.btn_clearFilters.TabIndex = 10;
+            this.btn_clearFilters.Text = "Clear Filters";
+            this.btn_clearFilters.UseVisualStyleBackColor = false;
+            this.btn_clearFilters.Click += new System.EventHandler(this.btn_clearFilters_Click);
+            // 
+            // btn_clearSelected
+            // 
+            this.btn_clearSelected.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.btn_clearSelected.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_clearSelected.Enabled = false;
+            this.btn_clearSelected.FlatAppearance.BorderSize = 0;
+            this.btn_clearSelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_clearSelected.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_clearSelected.Location = new System.Drawing.Point(993, 13);
+            this.btn_clearSelected.Name = "btn_clearSelected";
+            this.btn_clearSelected.Size = new System.Drawing.Size(194, 39);
+            this.btn_clearSelected.TabIndex = 10;
+            this.btn_clearSelected.Text = "Clear Selected";
+            this.btn_clearSelected.UseVisualStyleBackColor = false;
+            this.btn_clearSelected.Click += new System.EventHandler(this.btn_clearSelected_Click);
+            // 
             // ImportTimer
             // 
             this.ImportTimer.Tick += new System.EventHandler(this.ImportTimer_Tick);
@@ -1195,9 +1237,9 @@
             // 
             // pnl_activePage
             // 
-            this.pnl_activePage.Controls.Add(this.tblpnl_Filters);
-            this.pnl_activePage.Controls.Add(this.pnl_loadingScreen);
             this.pnl_activePage.Controls.Add(this.pnl_NavigationPanelMax);
+            this.pnl_activePage.Controls.Add(this.pnl_loadingScreen);
+            this.pnl_activePage.Controls.Add(this.tblpnl_Filters);
             this.pnl_activePage.Controls.Add(this.tblpnl_DashbaordPage);
             this.pnl_activePage.Controls.Add(this.tblpnl_DragDrop);
             this.pnl_activePage.Controls.Add(this.pnl_CountrySelector);
@@ -1208,93 +1250,63 @@
             this.pnl_activePage.TabIndex = 44;
             this.pnl_activePage.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.pnl_activePage_ControlAdded);
             // 
-            // pnl_loadingScreen
-            // 
-            this.pnl_loadingScreen.Controls.Add(this.tableLayoutPanel9);
-            this.pnl_loadingScreen.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_loadingScreen.Location = new System.Drawing.Point(0, 0);
-            this.pnl_loadingScreen.Name = "pnl_loadingScreen";
-            this.pnl_loadingScreen.Size = new System.Drawing.Size(1200, 623);
-            this.pnl_loadingScreen.TabIndex = 0;
-            // 
-            // tableLayoutPanel9
-            // 
-            this.tableLayoutPanel9.ColumnCount = 3;
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 234F));
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.Controls.Add(this.panel9, 1, 1);
-            this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
-            this.tableLayoutPanel9.RowCount = 3;
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 234F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(1200, 623);
-            this.tableLayoutPanel9.TabIndex = 1;
-            // 
-            // panel9
-            // 
-            this.panel9.Controls.Add(this.cpb_loadingScreenCircProgBar);
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel9.Location = new System.Drawing.Point(483, 194);
-            this.panel9.Margin = new System.Windows.Forms.Padding(0);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(234, 234);
-            this.panel9.TabIndex = 0;
-            // 
-            // cpb_loadingScreenCircProgBar
-            // 
-            this.cpb_loadingScreenCircProgBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
-            this.cpb_loadingScreenCircProgBar.AnimationSpeed = 500;
-            this.cpb_loadingScreenCircProgBar.BackColor = System.Drawing.Color.Transparent;
-            this.cpb_loadingScreenCircProgBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.cpb_loadingScreenCircProgBar.ForeColor = System.Drawing.Color.Silver;
-            this.cpb_loadingScreenCircProgBar.InnerColor = System.Drawing.SystemColors.Control;
-            this.cpb_loadingScreenCircProgBar.InnerMargin = 2;
-            this.cpb_loadingScreenCircProgBar.InnerWidth = -1;
-            this.cpb_loadingScreenCircProgBar.Location = new System.Drawing.Point(2, 0);
-            this.cpb_loadingScreenCircProgBar.MarqueeAnimationSpeed = 1000;
-            this.cpb_loadingScreenCircProgBar.Name = "cpb_loadingScreenCircProgBar";
-            this.cpb_loadingScreenCircProgBar.OuterColor = System.Drawing.Color.Gainsboro;
-            this.cpb_loadingScreenCircProgBar.OuterMargin = -25;
-            this.cpb_loadingScreenCircProgBar.OuterWidth = 26;
-            this.cpb_loadingScreenCircProgBar.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
-            this.cpb_loadingScreenCircProgBar.ProgressWidth = 5;
-            this.cpb_loadingScreenCircProgBar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 36F);
-            this.cpb_loadingScreenCircProgBar.Size = new System.Drawing.Size(231, 234);
-            this.cpb_loadingScreenCircProgBar.StartAngle = 270;
-            this.cpb_loadingScreenCircProgBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.cpb_loadingScreenCircProgBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.cpb_loadingScreenCircProgBar.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
-            this.cpb_loadingScreenCircProgBar.SubscriptText = "";
-            this.cpb_loadingScreenCircProgBar.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.cpb_loadingScreenCircProgBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
-            this.cpb_loadingScreenCircProgBar.SuperscriptText = "";
-            this.cpb_loadingScreenCircProgBar.TabIndex = 1;
-            this.cpb_loadingScreenCircProgBar.Text = "Loading Data...";
-            this.cpb_loadingScreenCircProgBar.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
-            this.cpb_loadingScreenCircProgBar.Value = 36;
-            // 
             // pnl_NavigationPanelMax
             // 
             this.pnl_NavigationPanelMax.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.pnl_NavigationPanelMax.AutoSize = true;
             this.pnl_NavigationPanelMax.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.pnl_NavigationPanelMax.Controls.Add(this.btn_Filters);
             this.pnl_NavigationPanelMax.Controls.Add(this.btn_Correlation);
             this.pnl_NavigationPanelMax.Controls.Add(this.pnl_KPISectionsPanel);
             this.pnl_NavigationPanelMax.Controls.Add(this.btn_KPI);
             this.pnl_NavigationPanelMax.Controls.Add(this.pnl_KPASectionsPanel);
             this.pnl_NavigationPanelMax.Controls.Add(this.btn_KPA);
-            this.pnl_NavigationPanelMax.Controls.Add(this.flowLayoutPanel1);
+            this.pnl_NavigationPanelMax.Controls.Add(this.btn_Dashboard);
             this.pnl_NavigationPanelMax.Location = new System.Drawing.Point(0, 0);
             this.pnl_NavigationPanelMax.Name = "pnl_NavigationPanelMax";
-            this.pnl_NavigationPanelMax.Size = new System.Drawing.Size(228, 772);
+            this.pnl_NavigationPanelMax.Size = new System.Drawing.Size(228, 792);
             this.pnl_NavigationPanelMax.TabIndex = 0;
             this.pnl_NavigationPanelMax.Leave += new System.EventHandler(this.pnl_NavigationPanelMax_Leave);
+            // 
+            // btn_Filters
+            // 
+            this.btn_Filters.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
+            this.btn_Filters.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
+            this.btn_Filters.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_Filters.BorderRadius = 0;
+            this.btn_Filters.ButtonText = "  Filters";
+            this.btn_Filters.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Filters.DisabledColor = System.Drawing.Color.Gray;
+            this.btn_Filters.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_Filters.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Filters.Iconcolor = System.Drawing.Color.Transparent;
+            this.btn_Filters.Iconimage = global::KPA_KPI_Analyzer.Properties.Resources.FiltersLogo;
+            this.btn_Filters.Iconimage_right = null;
+            this.btn_Filters.Iconimage_right_Selected = null;
+            this.btn_Filters.Iconimage_Selected = null;
+            this.btn_Filters.IconMarginLeft = 0;
+            this.btn_Filters.IconMarginRight = 0;
+            this.btn_Filters.IconRightVisible = true;
+            this.btn_Filters.IconRightZoom = 0D;
+            this.btn_Filters.IconVisible = true;
+            this.btn_Filters.IconZoom = 75D;
+            this.btn_Filters.IsTab = false;
+            this.btn_Filters.Location = new System.Drawing.Point(0, 744);
+            this.btn_Filters.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_Filters.Name = "btn_Filters";
+            this.btn_Filters.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
+            this.btn_Filters.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(218)))), ((int)(((byte)(207)))));
+            this.btn_Filters.OnHoverTextColor = System.Drawing.Color.White;
+            this.btn_Filters.selected = false;
+            this.btn_Filters.Size = new System.Drawing.Size(228, 48);
+            this.btn_Filters.TabIndex = 24;
+            this.btn_Filters.Tag = "4";
+            this.btn_Filters.Text = "  Filters";
+            this.btn_Filters.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Filters.Textcolor = System.Drawing.Color.White;
+            this.btn_Filters.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Filters.Click += new System.EventHandler(this.mainNavButton_Click);
             // 
             // btn_Correlation
             // 
@@ -1319,7 +1331,7 @@
             this.btn_Correlation.IconVisible = true;
             this.btn_Correlation.IconZoom = 90D;
             this.btn_Correlation.IsTab = false;
-            this.btn_Correlation.Location = new System.Drawing.Point(0, 724);
+            this.btn_Correlation.Location = new System.Drawing.Point(0, 696);
             this.btn_Correlation.Margin = new System.Windows.Forms.Padding(0);
             this.btn_Correlation.Name = "btn_Correlation";
             this.btn_Correlation.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(163)))), ((int)(((byte)(156)))));
@@ -1352,7 +1364,7 @@
             this.pnl_KPISectionsPanel.Controls.Add(this.btn_kpiPlanOne);
             this.pnl_KPISectionsPanel.Controls.Add(this.btn_kpiOverall);
             this.pnl_KPISectionsPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnl_KPISectionsPanel.Location = new System.Drawing.Point(0, 471);
+            this.pnl_KPISectionsPanel.Location = new System.Drawing.Point(0, 443);
             this.pnl_KPISectionsPanel.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_KPISectionsPanel.Name = "pnl_KPISectionsPanel";
             this.pnl_KPISectionsPanel.Size = new System.Drawing.Size(228, 253);
@@ -1591,7 +1603,7 @@
             this.btn_KPI.IconVisible = true;
             this.btn_KPI.IconZoom = 90D;
             this.btn_KPI.IsTab = false;
-            this.btn_KPI.Location = new System.Drawing.Point(0, 423);
+            this.btn_KPI.Location = new System.Drawing.Point(0, 395);
             this.btn_KPI.Margin = new System.Windows.Forms.Padding(0);
             this.btn_KPI.Name = "btn_KPI";
             this.btn_KPI.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(163)))), ((int)(((byte)(156)))));
@@ -1624,7 +1636,7 @@
             this.pnl_KPASectionsPanel.Controls.Add(this.btn_kpaPlan);
             this.pnl_KPASectionsPanel.Controls.Add(this.btn_kpaOverall);
             this.pnl_KPASectionsPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnl_KPASectionsPanel.Location = new System.Drawing.Point(0, 124);
+            this.pnl_KPASectionsPanel.Location = new System.Drawing.Point(0, 96);
             this.pnl_KPASectionsPanel.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_KPASectionsPanel.Name = "pnl_KPASectionsPanel";
             this.pnl_KPASectionsPanel.Size = new System.Drawing.Size(228, 299);
@@ -1901,7 +1913,7 @@
             this.btn_KPA.IconVisible = true;
             this.btn_KPA.IconZoom = 75D;
             this.btn_KPA.IsTab = false;
-            this.btn_KPA.Location = new System.Drawing.Point(0, 76);
+            this.btn_KPA.Location = new System.Drawing.Point(0, 48);
             this.btn_KPA.Margin = new System.Windows.Forms.Padding(0);
             this.btn_KPA.Name = "btn_KPA";
             this.btn_KPA.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(188)))), ((int)(((byte)(155)))));
@@ -1917,64 +1929,114 @@
             this.btn_KPA.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_KPA.Click += new System.EventHandler(this.mainNavButton_Click);
             // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.btn_Dashboard);
-            this.flowLayoutPanel1.Controls.Add(this.btn_Charts);
-            this.flowLayoutPanel1.Controls.Add(this.btn_Filters);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(228, 76);
-            this.flowLayoutPanel1.TabIndex = 2;
-            // 
             // btn_Dashboard
             // 
+            this.btn_Dashboard.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(201)))), ((int)(((byte)(169)))));
             this.btn_Dashboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(201)))), ((int)(((byte)(169)))));
-            this.btn_Dashboard.Image = ((System.Drawing.Image)(resources.GetObject("btn_Dashboard.Image")));
-            this.btn_Dashboard.ImageActive = null;
+            this.btn_Dashboard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_Dashboard.BorderRadius = 0;
+            this.btn_Dashboard.ButtonText = "Dashboard";
+            this.btn_Dashboard.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Dashboard.DisabledColor = System.Drawing.Color.Gray;
+            this.btn_Dashboard.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_Dashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Dashboard.Iconcolor = System.Drawing.Color.Transparent;
+            this.btn_Dashboard.Iconimage = global::KPA_KPI_Analyzer.Properties.Resources.DashboardLogo;
+            this.btn_Dashboard.Iconimage_right = null;
+            this.btn_Dashboard.Iconimage_right_Selected = null;
+            this.btn_Dashboard.Iconimage_Selected = null;
+            this.btn_Dashboard.IconMarginLeft = 0;
+            this.btn_Dashboard.IconMarginRight = 0;
+            this.btn_Dashboard.IconRightVisible = false;
+            this.btn_Dashboard.IconRightZoom = 0D;
+            this.btn_Dashboard.IconVisible = true;
+            this.btn_Dashboard.IconZoom = 100D;
+            this.btn_Dashboard.IsTab = false;
             this.btn_Dashboard.Location = new System.Drawing.Point(0, 0);
             this.btn_Dashboard.Margin = new System.Windows.Forms.Padding(0);
             this.btn_Dashboard.Name = "btn_Dashboard";
-            this.btn_Dashboard.Size = new System.Drawing.Size(76, 76);
-            this.btn_Dashboard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btn_Dashboard.TabIndex = 2;
-            this.btn_Dashboard.TabStop = false;
+            this.btn_Dashboard.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(201)))), ((int)(((byte)(169)))));
+            this.btn_Dashboard.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(221)))), ((int)(((byte)(189)))));
+            this.btn_Dashboard.OnHoverTextColor = System.Drawing.Color.White;
+            this.btn_Dashboard.selected = false;
+            this.btn_Dashboard.Size = new System.Drawing.Size(228, 48);
+            this.btn_Dashboard.TabIndex = 23;
             this.btn_Dashboard.Tag = "0";
-            this.btn_Dashboard.Zoom = 0;
+            this.btn_Dashboard.Text = "Dashboard";
+            this.btn_Dashboard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Dashboard.Textcolor = System.Drawing.Color.White;
+            this.btn_Dashboard.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Dashboard.Click += new System.EventHandler(this.mainNavButton_Click);
             // 
-            // btn_Charts
+            // pnl_loadingScreen
             // 
-            this.btn_Charts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(195)))), ((int)(((byte)(163)))));
-            this.btn_Charts.Image = ((System.Drawing.Image)(resources.GetObject("btn_Charts.Image")));
-            this.btn_Charts.ImageActive = null;
-            this.btn_Charts.Location = new System.Drawing.Point(76, 0);
-            this.btn_Charts.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_Charts.Name = "btn_Charts";
-            this.btn_Charts.Size = new System.Drawing.Size(76, 76);
-            this.btn_Charts.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btn_Charts.TabIndex = 21;
-            this.btn_Charts.TabStop = false;
-            this.btn_Charts.Tag = "3";
-            this.btn_Charts.Zoom = 0;
-            this.btn_Charts.Click += new System.EventHandler(this.mainNavButton_Click);
+            this.pnl_loadingScreen.Controls.Add(this.tableLayoutPanel9);
+            this.pnl_loadingScreen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_loadingScreen.Location = new System.Drawing.Point(0, 0);
+            this.pnl_loadingScreen.Name = "pnl_loadingScreen";
+            this.pnl_loadingScreen.Size = new System.Drawing.Size(1200, 623);
+            this.pnl_loadingScreen.TabIndex = 0;
             // 
-            // btn_Filters
+            // tableLayoutPanel9
             // 
-            this.btn_Filters.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
-            this.btn_Filters.Image = ((System.Drawing.Image)(resources.GetObject("btn_Filters.Image")));
-            this.btn_Filters.ImageActive = null;
-            this.btn_Filters.Location = new System.Drawing.Point(152, 0);
-            this.btn_Filters.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_Filters.Name = "btn_Filters";
-            this.btn_Filters.Size = new System.Drawing.Size(76, 76);
-            this.btn_Filters.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btn_Filters.TabIndex = 22;
-            this.btn_Filters.TabStop = false;
-            this.btn_Filters.Tag = "4";
-            this.btn_Filters.Zoom = 0;
-            this.btn_Filters.Click += new System.EventHandler(this.mainNavButton_Click);
+            this.tableLayoutPanel9.ColumnCount = 3;
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 234F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel9.Controls.Add(this.panel9, 1, 1);
+            this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
+            this.tableLayoutPanel9.RowCount = 3;
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 234F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(1200, 623);
+            this.tableLayoutPanel9.TabIndex = 1;
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.cpb_loadingScreenCircProgBar);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel9.Location = new System.Drawing.Point(483, 194);
+            this.panel9.Margin = new System.Windows.Forms.Padding(0);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(234, 234);
+            this.panel9.TabIndex = 0;
+            // 
+            // cpb_loadingScreenCircProgBar
+            // 
+            this.cpb_loadingScreenCircProgBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.cpb_loadingScreenCircProgBar.AnimationSpeed = 500;
+            this.cpb_loadingScreenCircProgBar.BackColor = System.Drawing.Color.Transparent;
+            this.cpb_loadingScreenCircProgBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.cpb_loadingScreenCircProgBar.ForeColor = System.Drawing.Color.Silver;
+            this.cpb_loadingScreenCircProgBar.InnerColor = System.Drawing.SystemColors.Control;
+            this.cpb_loadingScreenCircProgBar.InnerMargin = 2;
+            this.cpb_loadingScreenCircProgBar.InnerWidth = -1;
+            this.cpb_loadingScreenCircProgBar.Location = new System.Drawing.Point(2, 0);
+            this.cpb_loadingScreenCircProgBar.MarqueeAnimationSpeed = 1000;
+            this.cpb_loadingScreenCircProgBar.Name = "cpb_loadingScreenCircProgBar";
+            this.cpb_loadingScreenCircProgBar.OuterColor = System.Drawing.Color.Gainsboro;
+            this.cpb_loadingScreenCircProgBar.OuterMargin = -25;
+            this.cpb_loadingScreenCircProgBar.OuterWidth = 26;
+            this.cpb_loadingScreenCircProgBar.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
+            this.cpb_loadingScreenCircProgBar.ProgressWidth = 5;
+            this.cpb_loadingScreenCircProgBar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 36F);
+            this.cpb_loadingScreenCircProgBar.Size = new System.Drawing.Size(231, 234);
+            this.cpb_loadingScreenCircProgBar.StartAngle = 270;
+            this.cpb_loadingScreenCircProgBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.cpb_loadingScreenCircProgBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.cpb_loadingScreenCircProgBar.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
+            this.cpb_loadingScreenCircProgBar.SubscriptText = "";
+            this.cpb_loadingScreenCircProgBar.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.cpb_loadingScreenCircProgBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
+            this.cpb_loadingScreenCircProgBar.SuperscriptText = "";
+            this.cpb_loadingScreenCircProgBar.TabIndex = 1;
+            this.cpb_loadingScreenCircProgBar.Text = "Loading Data...";
+            this.cpb_loadingScreenCircProgBar.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
+            this.cpb_loadingScreenCircProgBar.Value = 36;
             // 
             // tblpnl_DashbaordPage
             // 
@@ -2574,54 +2636,6 @@
             this.dc_titlePanel.TargetControl = this.pnl_titlePanel;
             this.dc_titlePanel.Vertical = true;
             // 
-            // btn_applyFilters
-            // 
-            this.btn_applyFilters.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.btn_applyFilters.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_applyFilters.Enabled = false;
-            this.btn_applyFilters.FlatAppearance.BorderSize = 0;
-            this.btn_applyFilters.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_applyFilters.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_applyFilters.Location = new System.Drawing.Point(601, 13);
-            this.btn_applyFilters.Name = "btn_applyFilters";
-            this.btn_applyFilters.Size = new System.Drawing.Size(190, 39);
-            this.btn_applyFilters.TabIndex = 10;
-            this.btn_applyFilters.Text = "Apply Filters";
-            this.btn_applyFilters.UseVisualStyleBackColor = false;
-            this.btn_applyFilters.Click += new System.EventHandler(this.btn_applyFilters_Click);
-            // 
-            // btn_clearFilters
-            // 
-            this.btn_clearFilters.BackColor = System.Drawing.Color.IndianRed;
-            this.btn_clearFilters.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_clearFilters.Enabled = false;
-            this.btn_clearFilters.FlatAppearance.BorderSize = 0;
-            this.btn_clearFilters.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_clearFilters.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_clearFilters.Location = new System.Drawing.Point(797, 13);
-            this.btn_clearFilters.Name = "btn_clearFilters";
-            this.btn_clearFilters.Size = new System.Drawing.Size(190, 39);
-            this.btn_clearFilters.TabIndex = 10;
-            this.btn_clearFilters.Text = "Clear Filters";
-            this.btn_clearFilters.UseVisualStyleBackColor = false;
-            this.btn_clearFilters.Click += new System.EventHandler(this.btn_clearFilters_Click);
-            // 
-            // btn_clearSelected
-            // 
-            this.btn_clearSelected.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.btn_clearSelected.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn_clearSelected.Enabled = false;
-            this.btn_clearSelected.FlatAppearance.BorderSize = 0;
-            this.btn_clearSelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_clearSelected.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_clearSelected.Location = new System.Drawing.Point(993, 13);
-            this.btn_clearSelected.Name = "btn_clearSelected";
-            this.btn_clearSelected.Size = new System.Drawing.Size(194, 39);
-            this.btn_clearSelected.TabIndex = 10;
-            this.btn_clearSelected.Text = "Clear Selected";
-            this.btn_clearSelected.UseVisualStyleBackColor = false;
-            this.btn_clearSelected.Click += new System.EventHandler(this.btn_clearSelected_Click);
-            // 
             // KPA_KPI_UI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2680,17 +2694,13 @@
             this.tableLayoutPanel10.PerformLayout();
             this.pnl_activePage.ResumeLayout(false);
             this.pnl_activePage.PerformLayout();
-            this.pnl_loadingScreen.ResumeLayout(false);
-            this.tableLayoutPanel9.ResumeLayout(false);
-            this.panel9.ResumeLayout(false);
             this.pnl_NavigationPanelMax.ResumeLayout(false);
             this.pnl_NavigationPanelMax.PerformLayout();
             this.pnl_KPISectionsPanel.ResumeLayout(false);
             this.pnl_KPASectionsPanel.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.btn_Dashboard)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btn_Charts)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btn_Filters)).EndInit();
+            this.pnl_loadingScreen.ResumeLayout(false);
+            this.tableLayoutPanel9.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
             this.tblpnl_DashbaordPage.ResumeLayout(false);
             this.pnl_ViewPrintReports.ResumeLayout(false);
             this.pnl_ViewPrintReports.PerformLayout();
@@ -2847,12 +2857,8 @@
         private System.Windows.Forms.Button btn_kpiPurchOne;
         private System.Windows.Forms.Button btn_kpiPlanOne;
         private System.Windows.Forms.Button btn_kpiOverall;
-        private Bunifu.Framework.UI.BunifuImageButton btn_Dashboard;
-        private Bunifu.Framework.UI.BunifuImageButton btn_Charts;
-        private Bunifu.Framework.UI.BunifuImageButton btn_Filters;
         private Bunifu.Framework.UI.BunifuFlatButton btn_KPA;
         private Bunifu.Framework.UI.BunifuFlatButton btn_KPI;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private Bunifu.Framework.UI.BunifuCheckbox chkBox_PoDateRange;
         private Bunifu.Framework.UI.BunifuCheckbox chkBox_PrDateRange;
         private System.Windows.Forms.Button button1;
@@ -2886,6 +2892,8 @@
         private System.Windows.Forms.Button btn_applyFilters;
         private System.Windows.Forms.Button btn_clearFilters;
         private System.Windows.Forms.Button btn_clearSelected;
+        private Bunifu.Framework.UI.BunifuFlatButton btn_Dashboard;
+        private Bunifu.Framework.UI.BunifuFlatButton btn_Filters;
     }
 }
 

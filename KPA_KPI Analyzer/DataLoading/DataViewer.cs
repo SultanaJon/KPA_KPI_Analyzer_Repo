@@ -513,6 +513,7 @@ namespace KPA_KPI_Analyzer
                     tmr_waitTimer.Stop();
                     dgv_dataViewerDgv.DataSource = DataViewerUtils.Data;
                     CleanUpData();
+                    ms_topPanelMenuStrip.Enabled = true;
                 }
             }
         }
