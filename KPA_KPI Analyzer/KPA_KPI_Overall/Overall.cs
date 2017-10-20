@@ -199,14 +199,30 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
         {
             List<List<string>> results = null;
 
+            // Need to append dollar signs onto total spend and pr vs po value counts because they are values rather than counts.
+            List<string> totalSpendList = new List<string>(kpi.other.totalSpend.data.GetData());
+
+            for(int i = 0; i < totalSpendList.Count; ++i)
+            {
+                totalSpendList[i] = totalSpendList[i].Insert(0, "$");
+            }
+
+            List<string> prVsPoValueList = new List<string>(kpi.other.prVsPOValue.data.GetData());
+            for (int i = 0; i < prVsPoValueList.Count; ++i)
+            {
+                prVsPoValueList[i] = prVsPoValueList[i].Insert(0, "$");
+            }
+
+
+
             try
             {
                 List<List<string>> temp = new List<List<string>>
                 {
                     new List<string>(kpi.other.prsCreated.data.GetData()),
                     new List<string>(kpi.other.prsReleased.data.GetData()),
-                    new List<string>(kpi.other.totalSpend.data.GetData()),
-                    new List<string>(kpi.other.prVsPOValue.data.GetData()),
+                    totalSpendList,
+                    prVsPoValueList,
                     new List<string>(kpi.other.hotJobPrs.data.GetData()),
                 };
 

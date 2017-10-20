@@ -347,6 +347,7 @@ namespace KPA_KPI_Analyzer
                     ShowPage(Pages.Filters);
                     EnableClearFiltersButton();
                     NavigationLocked = false;
+                    ms_applicaitonMenuStrip.Enabled = true;
                 }
 
                 if (Values.Globals.SelectedCountry == AccessInfo.MainTables.US_PRPO)
