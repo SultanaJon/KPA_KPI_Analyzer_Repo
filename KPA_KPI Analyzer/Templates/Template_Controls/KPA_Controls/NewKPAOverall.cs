@@ -76,8 +76,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         private void ApplyDataGridStyles()
         {
             TemplateOneDataGrid.Columns[(int)TempOneDataGridHeaderNames.TimeSpanOne].HeaderCell.Style.BackColor = Color.FromArgb(123, 204, 242);
+            TemplateOneDataGrid.Columns[(int)TempOneDataGridHeaderNames.TimeSpanOne].HeaderCell.Style.ForeColor = Color.FromArgb(36, 41, 46);
             TemplateOneDataGrid.Columns[(int)TempOneDataGridHeaderNames.TimeSpanTwo].HeaderCell.Style.BackColor = Color.FromArgb(96, 189, 227);
+            TemplateOneDataGrid.Columns[(int)TempOneDataGridHeaderNames.TimeSpanTwo].HeaderCell.Style.ForeColor = Color.FromArgb(36, 41, 46);
             TemplateOneDataGrid.Columns[(int)TempOneDataGridHeaderNames.TimeSpanThree].HeaderCell.Style.BackColor = Color.FromArgb(79, 179, 208);
+            TemplateOneDataGrid.Columns[(int)TempOneDataGridHeaderNames.TimeSpanThree].HeaderCell.Style.ForeColor = Color.FromArgb(36, 41, 46);
             TemplateOneDataGrid.Columns[(int)TempOneDataGridHeaderNames.TimeSpanFour].HeaderCell.Style.BackColor = Color.FromArgb(62, 168, 186);
             TemplateOneDataGrid.Columns[(int)TempOneDataGridHeaderNames.TimeSpanFive].HeaderCell.Style.BackColor = Color.FromArgb(50, 150, 150);
             TemplateOneDataGrid.Columns[(int)TempOneDataGridHeaderNames.TimeSpanSix].HeaderCell.Style.BackColor = Color.FromArgb(41, 132, 137);
@@ -89,12 +92,19 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             TemplateTwoDataGrid.Columns[(int)TempTwoDataGridHeaderNames.Average].HeaderCell.Style.BackColor = Color.FromArgb(141, 180, 226);
             TemplateTwoDataGrid.Columns[(int)TempTwoDataGridHeaderNames.TimeSpanOne].HeaderCell.Style.BackColor = Color.FromArgb(155, 187, 89);
             TemplateTwoDataGrid.Columns[(int)TempTwoDataGridHeaderNames.TimeSpanTwo].HeaderCell.Style.BackColor = Color.FromArgb(196, 215, 155);
+            TemplateTwoDataGrid.Columns[(int)TempTwoDataGridHeaderNames.TimeSpanTwo].HeaderCell.Style.ForeColor = Color.FromArgb(36, 41, 46);
             TemplateTwoDataGrid.Columns[(int)TempTwoDataGridHeaderNames.TimeSpanThree].HeaderCell.Style.BackColor = Color.FromArgb(216, 228, 188);
+            TemplateTwoDataGrid.Columns[(int)TempTwoDataGridHeaderNames.TimeSpanThree].HeaderCell.Style.ForeColor = Color.FromArgb(36, 41, 46);
             TemplateTwoDataGrid.Columns[(int)TempTwoDataGridHeaderNames.TimeSpanFour].HeaderCell.Style.BackColor = Color.FromArgb(235, 241, 221);
+            TemplateTwoDataGrid.Columns[(int)TempTwoDataGridHeaderNames.TimeSpanFour].HeaderCell.Style.ForeColor = Color.FromArgb(36, 41, 46);
             TemplateTwoDataGrid.Columns[(int)TempTwoDataGridHeaderNames.TimeSpanFive].HeaderCell.Style.BackColor = Color.FromArgb(235, 241, 221);
+            TemplateTwoDataGrid.Columns[(int)TempTwoDataGridHeaderNames.TimeSpanFive].HeaderCell.Style.ForeColor = Color.FromArgb(36, 41, 46);
             TemplateTwoDataGrid.Columns[(int)TempTwoDataGridHeaderNames.TimeSpanSix].HeaderCell.Style.BackColor = Color.FromArgb(253, 233, 217);
+            TemplateTwoDataGrid.Columns[(int)TempTwoDataGridHeaderNames.TimeSpanSix].HeaderCell.Style.ForeColor = Color.FromArgb(36, 41, 46);
             TemplateTwoDataGrid.Columns[(int)TempTwoDataGridHeaderNames.TimeSpanSeven].HeaderCell.Style.BackColor = Color.FromArgb(252, 213, 180);
+            TemplateTwoDataGrid.Columns[(int)TempTwoDataGridHeaderNames.TimeSpanSeven].HeaderCell.Style.ForeColor = Color.FromArgb(36, 41, 46);
             TemplateTwoDataGrid.Columns[(int)TempTwoDataGridHeaderNames.TimeSpanEight].HeaderCell.Style.BackColor = Color.FromArgb(250, 191, 142);
+            TemplateTwoDataGrid.Columns[(int)TempTwoDataGridHeaderNames.TimeSpanEight].HeaderCell.Style.ForeColor = Color.FromArgb(36, 41, 46);
             TemplateTwoDataGrid.Columns[(int)TempTwoDataGridHeaderNames.TimeSpanNine].HeaderCell.Style.BackColor = Color.FromArgb(151, 71, 6);
             TemplateTwoDataGrid.Columns[(int)TempTwoDataGridHeaderNames.Totals].HeaderCell.Style.BackColor = Color.FromArgb(218, 150, 148);
         }
