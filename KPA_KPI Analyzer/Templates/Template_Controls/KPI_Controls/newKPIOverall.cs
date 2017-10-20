@@ -1794,55 +1794,55 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         switch (columnIndex)
                         {
                             case 3: // <= 0 Days
-                                dv.DataLoader += KpiDataTableLoader.PurchSub.LoadPrRelVsPoRelDataTable;
+                                dv.DataLoader += KpiDataTableLoader.PurchSub.LoadPoCreationVsConfEntryDateDataTable;
                                 dv.ColumnTag = (int)TempFour.DataViews.LessThanZero;
                                 break;
                             case 4: // 1 - 3 Days
-                                dv.DataLoader += KpiDataTableLoader.PurchSub.LoadPrRelVsPoRelDataTable;
+                                dv.DataLoader += KpiDataTableLoader.PurchSub.LoadPoCreationVsConfEntryDateDataTable;
                                 dv.ColumnTag = (int)TempFour.DataViews.One_Three;
                                 break;
                             case 5: // 4 - 7 Days
-                                dv.DataLoader += KpiDataTableLoader.PurchSub.LoadPrRelVsPoRelDataTable;
+                                dv.DataLoader += KpiDataTableLoader.PurchSub.LoadPoCreationVsConfEntryDateDataTable;
                                 dv.ColumnTag = (int)TempFour.DataViews.Four_Seven;
                                 break;
                             case 6: // 8 - 14 Days
-                                dv.DataLoader += KpiDataTableLoader.PurchSub.LoadPrRelVsPoRelDataTable;
+                                dv.DataLoader += KpiDataTableLoader.PurchSub.LoadPoCreationVsConfEntryDateDataTable;
                                 dv.ColumnTag = (int)TempFour.DataViews.Eight_Fourteen;
                                 break;
                             case 7: // 15 - 21 Days
-                                dv.DataLoader += KpiDataTableLoader.PurchSub.LoadPrRelVsPoRelDataTable;
+                                dv.DataLoader += KpiDataTableLoader.PurchSub.LoadPoCreationVsConfEntryDateDataTable;
                                 dv.ColumnTag = (int)TempFour.DataViews.Fifteen_TwentyOne;
                                 break;
                             case 8: // 22 - 28 Days
-                                dv.DataLoader += KpiDataTableLoader.PurchSub.LoadPrRelVsPoRelDataTable;
+                                dv.DataLoader += KpiDataTableLoader.PurchSub.LoadPoCreationVsConfEntryDateDataTable;
                                     dv.ColumnTag = (int)TempFour.DataViews.TwentyTwo_TwentyEight;
                                 break;
                             case 9: // 29 - 35 Days
-                                dv.DataLoader += KpiDataTableLoader.PurchSub.LoadPrRelVsPoRelDataTable;
+                                dv.DataLoader += KpiDataTableLoader.PurchSub.LoadPoCreationVsConfEntryDateDataTable;
                                 dv.ColumnTag = (int)TempFour.DataViews.TwentyNine_ThirtyFive;
                                 break;
                             case 10: // 36 - 42 Days
-                                dv.DataLoader += KpiDataTableLoader.PurchSub.LoadPrRelVsPoRelDataTable;
+                                dv.DataLoader += KpiDataTableLoader.PurchSub.LoadPoCreationVsConfEntryDateDataTable;
                                 dv.ColumnTag = (int)TempFour.DataViews.ThirtySix_FourtyTwo;
                                 break;
                             case 11: // 43 - 49 Days
-                                dv.DataLoader += KpiDataTableLoader.PurchSub.LoadPrRelVsPoRelDataTable;
+                                dv.DataLoader += KpiDataTableLoader.PurchSub.LoadPoCreationVsConfEntryDateDataTable;
                                 dv.ColumnTag = (int)TempFour.DataViews.FourtyThree_FourtyNine;
                                 break;
                             case 12: // 50 - 56 Days
-                                dv.DataLoader += KpiDataTableLoader.PurchSub.LoadPrRelVsPoRelDataTable;
+                                dv.DataLoader += KpiDataTableLoader.PurchSub.LoadPoCreationVsConfEntryDateDataTable;
                                 dv.ColumnTag = (int)TempFour.DataViews.Fifty_FiftySix;
                                 break;
                             case 13: // 57+ Days
-                                dv.DataLoader += KpiDataTableLoader.PurchSub.LoadPrRelVsPoRelDataTable;
+                                dv.DataLoader += KpiDataTableLoader.PurchSub.LoadPoCreationVsConfEntryDateDataTable;
                                 dv.ColumnTag = (int)TempFour.DataViews.GreaterThanEqualFiftySeven;
                                 break;
                             case 14: // Total
-                                dv.DataLoader += KpiDataTableLoader.PurchSub.LoadPrRelVsPoRelDataTable;
+                                dv.DataLoader += KpiDataTableLoader.PurchSub.LoadPoCreationVsConfEntryDateDataTable;
                                 dv.ColumnTag = (int)TempFour.DataViews.Total;
                                 break;
                             case 15: // Percent Unconfirmed
-                                dv.DataLoader += KpiDataTableLoader.PurchSub.LoadPrRelVsPoRelDataTable;
+                                dv.DataLoader += KpiDataTableLoader.PurchSub.LoadPoCreationVsConfEntryDateDataTable;
                                 dv.ColumnTag = (int)TempFour.DataViews.PercentUnconf;
                                 break;
                         }

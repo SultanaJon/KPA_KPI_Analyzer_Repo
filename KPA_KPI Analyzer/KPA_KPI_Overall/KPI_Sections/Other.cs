@@ -18,21 +18,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
 
 
-        // Default Constructor
-        public Other()
-        {
-            prsCreated = new PRs_Created();
-            prsReleased = new PRs_Released();
-            totalSpend = new Total_Spend();
-            prVsPOValue = new PR_vs_PO_Value();
-            hotJobPrs = new Hot_Job_PRs();
-        }
-
-
-
-
-
-
         public string Name { get { return "Other"; } }
 
 
@@ -53,6 +38,25 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
             "PR Value vs PO Value",
             "Hot Job PRs"
         };
+
+
+
+
+
+        // Default Constructor
+        public Other()
+        {
+            prsCreated = new PRs_Created();
+            prsReleased = new PRs_Released();
+            totalSpend = new Total_Spend();
+            prVsPOValue = new PR_vs_PO_Value();
+            hotJobPrs = new Hot_Job_PRs();
+        }
+
+
+
+
+
 
 
 

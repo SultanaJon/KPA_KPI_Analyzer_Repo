@@ -94,6 +94,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             public static List<string> vendor = new List<string>();
             public static List<string> vendorDesc = new List<string>();
             public static List<string> purchGroup = new List<string>();
+            public static List<string> poPurchGroup = new List<string>();
             public static List<string> irSuppName = new List<string>();
             public static List<string> fxdSuppName = new List<string>();
             public static List<string> dsrdSuppName = new List<string>();
@@ -116,6 +117,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
                 vendor.Clear();
                 vendorDesc.Clear();
                 purchGroup.Clear();
+                poPurchGroup.Clear();
                 irSuppName.Clear();
                 fxdSuppName.Clear();
                 dsrdSuppName.Clear();

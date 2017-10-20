@@ -120,35 +120,42 @@ namespace KPA_KPI_Analyzer
                         ChkdListBx_VendorDesc.Items.AddRange(lst.ToArray());
                     });
                     break;
-                case 7: // Purch Group
+                case 7: // PR Purch Group
                     ChkdListBx_PurchGroup.Invoke((MethodInvoker)delegate {
                         ChkdListBx_PurchGroup.Items.Clear();
                         lst = new List<string>(data);
                         ChkdListBx_PurchGroup.Items.AddRange(lst.ToArray());
                     });
                     break;
-                case 8: // IR Supp Name
+                case 8: // PO Purch Group
+                    ChkdListBx_PoPurchGroup.Invoke((MethodInvoker)delegate {
+                        ChkdListBx_PoPurchGroup.Items.Clear();
+                        lst = new List<string>(data);
+                        ChkdListBx_PoPurchGroup.Items.AddRange(lst.ToArray());
+                    });
+                    break;
+                case 9: // IR Supp Name
                     ChkdListBx_IRSuppName.Invoke((MethodInvoker)delegate {
                         ChkdListBx_IRSuppName.Items.Clear();
                         lst = new List<string>(data);
                         ChkdListBx_IRSuppName.Items.AddRange(lst.ToArray());
                     });
                     break;
-                case 9: // Fxd Supp Name
+                case 10: // Fxd Supp Name
                     ChkdListBx_FxdSuppName.Invoke((MethodInvoker)delegate {
                         ChkdListBx_FxdSuppName.Items.Clear();
                         lst = new List<string>(data);
                         ChkdListBx_FxdSuppName.Items.AddRange(lst.ToArray());
                     });
                     break;
-                case 10: // Dsrd Supp Name
+                case 11: // Dsrd Supp Name
                     ChkdListBx_DsrdSuppName.Invoke((MethodInvoker)delegate {
                         ChkdListBx_DsrdSuppName.Items.Clear();
                         lst = new List<string>(data);
                         ChkdListBx_DsrdSuppName.Items.AddRange(lst.ToArray());
                     });
                     break;
-                case 11: // Commodity Category
+                case 12: // Commodity Category
                     ChkdListBx_CommodityCat.Invoke((MethodInvoker)delegate {
                         ChkdListBx_CommodityCat.Items.Clear();
                         lst = new List<string>(data);
@@ -181,11 +188,13 @@ namespace KPA_KPI_Analyzer
                     return FilterUtils.Filters.VendorDescription;
                 case 6: // Purch Group
                     return FilterUtils.Filters.PurchGroup;
-                case 7: // IR Supp Name
+                case 7: // PO Purch Group
+                    return FilterUtils.Filters.PoPurchGroup;
+                case 8: // IR Supp Name
                     return FilterUtils.Filters.IRSuppName;
-                case 8: // Fxd Supp Name
+                case 9: // Fxd Supp Name
                     return FilterUtils.Filters.FxdSuppName;
-                case 9: // Dsrd Supp Name
+                case 10: // Dsrd Supp Name
                     return FilterUtils.Filters.DsrdSuppName;
                 default: // Commodity Cat
                     return FilterUtils.Filters.CommCat;
@@ -390,7 +399,31 @@ namespace KPA_KPI_Analyzer
                     }
                     UpdateCheckedItems();
                     break;
-                case 7: // IR Supp Name
+                case 7: // PO Purch Group
+                    if (e.NewValue == CheckState.Checked)
+                    {
+                        Filters.FilterValues.poPurchGroup.Add(clb.Items[e.Index].ToString());
+                        activeCLBs.Add(int.Parse(ChkdListBx_PoPurchGroup.Tag.ToString()));
+                        BuildQueryFilters();
+                        FilterUtils.LoadFiltersExcluded(filters, FilterUtils.Filters.PoPurchGroup);
+                    }
+                    else
+                    {
+                        Filters.FilterValues.poPurchGroup.Remove(clb.Items[e.Index].ToString());
+                        int position = activeCLBs.LastIndexOf(int.Parse(ChkdListBx_PoPurchGroup.Tag.ToString()));
+                        activeCLBs.RemoveAt(position);
+                        BuildQueryFilters();
+                        if (activeCLBs.Count == 0)
+                            FilterUtils.LoadFilters(filters);
+                        else
+                        {
+                            FilterUtils.LoadFiltersExcluded(filters, GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
+                            FilterUtils.LoadFilter(GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
+                        }
+                    }
+                    UpdateCheckedItems();
+                    break;
+                case 8: // IR Supp Name
                     if (e.NewValue == CheckState.Checked)
                     {
                         Filters.FilterValues.irSuppName.Add(clb.Items[e.Index].ToString());
@@ -416,7 +449,7 @@ namespace KPA_KPI_Analyzer
                     }
                     UpdateCheckedItems();
                     break;
-                case 8: // Fxd Supp Name
+                case 9: // Fxd Supp Name
                     if (e.NewValue == CheckState.Checked)
                     {
                         Filters.FilterValues.fxdSuppName.Add(clb.Items[e.Index].ToString());
@@ -442,7 +475,7 @@ namespace KPA_KPI_Analyzer
                     }
                     UpdateCheckedItems();
                     break;
-                case 9: // Dsrd Supp Name
+                case 10: // Dsrd Supp Name
                     if (e.NewValue == CheckState.Checked)
                     {
                         Filters.FilterValues.dsrdSuppName.Add(clb.Items[e.Index].ToString());
@@ -468,7 +501,7 @@ namespace KPA_KPI_Analyzer
                     }
                     UpdateCheckedItems();
                     break;
-                case 10: // Commodity Category
+                case 11: // Commodity Category
                     if (e.NewValue == CheckState.Checked)
                     {
                         Filters.FilterValues.commCategory.Add(clb.Items[e.Index].ToString());
@@ -678,10 +711,37 @@ namespace KPA_KPI_Analyzer
                         filters += ")";
                 }
             }
-            
 
 
-            if(Filters.FilterValues.irSuppName.Count > 0)
+
+
+            if (Filters.FilterValues.poPurchGroup.Count > 0)
+            {
+                for (int i = 0; i < Filters.FilterValues.poPurchGroup.Count; ++i)
+                {
+                    if (i == 0 && filters != string.Empty)
+                        filters += " AND (";
+
+
+                    if (i == 0 && filters == string.Empty)
+                        filters += "(";
+
+
+                    if (Filters.FilterValues.poPurchGroup[i] == "[Blanks]")
+                        filters += Values.Globals.SelectedCountry + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.PoPurchGroup] + "] IS NULL";
+                    else
+                        filters += Values.Globals.SelectedCountry + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.PoPurchGroup] + "] = " + "'" + Filters.FilterValues.poPurchGroup[i] + "'";
+
+                    if (i != (Filters.FilterValues.poPurchGroup.Count - 1))
+                        filters += " OR ";
+                    else
+                        filters += ")";
+                }
+            }
+
+
+
+            if (Filters.FilterValues.irSuppName.Count > 0)
             {
                 for (int i = 0; i < Filters.FilterValues.irSuppName.Count; ++i)
                 {
@@ -914,6 +974,26 @@ namespace KPA_KPI_Analyzer
             }
 
 
+
+            // PO Purch Group
+            if (Filters.FilterValues.poPurchGroup.Count > 0)
+            {
+                ChkdListBx_PoPurchGroup.ItemCheck -= ckdListBox_ItemCheck;
+                foreach (string str in Filters.FilterValues.poPurchGroup)
+                {
+                    index = ChkdListBx_PoPurchGroup.Items.IndexOf(str);
+                    if (index >= 0)
+                    {
+                        if (!ChkdListBx_PoPurchGroup.GetItemChecked(index))
+                            ChkdListBx_PoPurchGroup.SetItemChecked(index, true);
+                    }
+                }
+                ChkdListBx_PoPurchGroup.ItemCheck += ckdListBox_ItemCheck;
+            }
+
+
+
+
             // IR Supp Name
             if (Filters.FilterValues.irSuppName.Count > 0)
             {
@@ -1070,6 +1150,13 @@ namespace KPA_KPI_Analyzer
                     ChkdListBx_PurchGroup.ItemCheck += ckdListBox_ItemCheck;
                 }
 
+                foreach (int i in ChkdListBx_PoPurchGroup.CheckedIndices)
+                {
+                    ChkdListBx_PoPurchGroup.ItemCheck -= ckdListBox_ItemCheck;
+                    ChkdListBx_PoPurchGroup.SetItemCheckState(i, CheckState.Unchecked);
+                    ChkdListBx_PoPurchGroup.ItemCheck += ckdListBox_ItemCheck;
+                }
+
                 foreach (int i in ChkdListBx_IRSuppName.CheckedIndices)
                 {
                     ChkdListBx_IRSuppName.ItemCheck -= ckdListBox_ItemCheck;
@@ -1146,6 +1233,11 @@ namespace KPA_KPI_Analyzer
             foreach (int i in ChkdListBx_PurchGroup.CheckedIndices)
             {
                 Filters.FilterValues.purchGroup.Add(ChkdListBx_PurchGroup.Items[i].ToString());
+            }
+
+            foreach (int i in ChkdListBx_PoPurchGroup.CheckedIndices)
+            {
+                Filters.FilterValues.poPurchGroup.Add(ChkdListBx_PoPurchGroup.Items[i].ToString());
             }
 
             foreach (int i in ChkdListBx_IRSuppName.CheckedIndices)
@@ -1327,6 +1419,7 @@ namespace KPA_KPI_Analyzer
             if (Filters.FilterValues.vendor.Count > 0) ColumnFiltersAdded = true;
             if (Filters.FilterValues.vendorDesc.Count > 0) ColumnFiltersAdded = true;
             if (Filters.FilterValues.purchGroup.Count > 0) ColumnFiltersAdded = true;
+            if (Filters.FilterValues.poPurchGroup.Count > 0) ColumnFiltersAdded = true;
             if (Filters.FilterValues.irSuppName.Count > 0) ColumnFiltersAdded = true;
             if (Filters.FilterValues.fxdSuppName.Count > 0) ColumnFiltersAdded = true;
             if (Filters.FilterValues.dsrdSuppName.Count > 0) ColumnFiltersAdded = true;
@@ -1336,6 +1429,46 @@ namespace KPA_KPI_Analyzer
 
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        private void EnableApplyFiltersButton()
+        {
+            btn_applyFilters.Enabled = true;
+            btn_applyFilters.BackColor = System.Drawing.Color.MediumSeaGreen;
+            btn_applyFilters.ForeColor = System.Drawing.SystemColors.ButtonFace;
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void EnableClearSelectedButton()
+        {
+            btn_clearSelected.Enabled = true;
+            btn_clearSelected.BackColor = System.Drawing.Color.DarkSlateGray;
+            btn_clearSelected.ForeColor = System.Drawing.SystemColors.ButtonFace;
+        }
+
+
+
+        private void EnableClearFiltersButton()
+        {
+            btn_clearFilters.Enabled = true;
+            btn_clearFilters.BackColor = System.Drawing.Color.IndianRed;
+            btn_clearFilters.ForeColor = System.Drawing.SystemColors.ButtonFace;
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void DisableButton(Button btn)
+        {
+            btn.Enabled = false;
+            btn.BackColor = System.Drawing.Color.LightGray;
+            btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+        }
 
 
 
@@ -1347,23 +1480,23 @@ namespace KPA_KPI_Analyzer
             HasFiltersAdded();
             if(ColumnFiltersAdded || DateFiltersAdded)
             {
-                btn_applyFilters.Enabled = true;
-                btn_clearSelected.Enabled = true;
+                EnableApplyFiltersButton();
+                EnableClearSelectedButton();
             }
             else
             {
-                btn_applyFilters.Enabled = false;
-                btn_clearSelected.Enabled = false;
+                DisableButton(btn_applyFilters);
+                DisableButton(btn_clearSelected);
             }
 
 
             if(ColumnFiltersApplied || DateFiltersApplied)
             {
-                btn_clearFilters.Enabled = true;
+                EnableClearFiltersButton();
             }
             else
             {
-                btn_clearFilters.Enabled = false;
+                DisableButton(btn_clearFilters);
             }
         }
 

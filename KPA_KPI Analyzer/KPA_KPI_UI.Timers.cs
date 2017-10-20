@@ -345,7 +345,7 @@ namespace KPA_KPI_Analyzer
                 else
                 {
                     ShowPage(Pages.Filters);
-                    btn_clearFilters.Enabled = true;
+                    EnableClearFiltersButton();
                     NavigationLocked = false;
                 }
 
