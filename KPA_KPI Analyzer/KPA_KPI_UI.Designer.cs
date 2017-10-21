@@ -1290,7 +1290,7 @@
             this.btn_Filters.IconRightVisible = true;
             this.btn_Filters.IconRightZoom = 0D;
             this.btn_Filters.IconVisible = true;
-            this.btn_Filters.IconZoom = 75D;
+            this.btn_Filters.IconZoom = 100D;
             this.btn_Filters.IsTab = false;
             this.btn_Filters.Location = new System.Drawing.Point(0, 744);
             this.btn_Filters.Margin = new System.Windows.Forms.Padding(0);

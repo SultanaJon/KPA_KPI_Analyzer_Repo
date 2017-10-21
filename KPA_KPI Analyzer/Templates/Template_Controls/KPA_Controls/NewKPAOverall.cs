@@ -231,10 +231,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// </summary>
         private void LoadPlan()
         {
-            string[] row = { data.kpa.plan.Name, data.kpa.plan.categoryNames[(int)Plan.CategorNames.PlannedOrderAging], "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A" };
-            TemplateOneDataGrid.Rows.Add(row);
-
-            row = new string[]{
+            string[] row = new string[]{
                 data.kpa.plan.Name,
                 data.kpa.plan.categoryNames[(int)Plan.CategorNames.PrsAgingNotReleased],
                 string.Format("{0:n0}", data.kpa.plan.prsAgingNotRel.data.LessThanZero),
@@ -543,10 +540,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             TemplateOneDataGrid.Rows.Add(row);
             row = new string[] { data.kpa.excessStockStock.Name, data.kpa.excessStockStock.categoryNames[(int)Excess_Stock_Stock.CategorNames.PoCreationToConfirmationEntry], "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A" };
             TemplateOneDataGrid.Rows.Add(row);
-            row = new string[]{ data.kpa.excessStockStock.Name, data.kpa.excessStockStock.categoryNames[(int)Excess_Stock_Stock.CategorNames.ConfirmedVsPlanDate], "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A" };
-            TemplateOneDataGrid.Rows.Add(row);
-            row = new string[]{ data.kpa.excessStockStock.Name, data.kpa.excessStockStock.categoryNames[(int)Excess_Stock_Stock.CategorNames.ConfirmedDateForUpcomingDeliveries], "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A" };
-            TemplateOneDataGrid.Rows.Add(row);
         }
 
         /// <summary>
@@ -559,10 +552,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             row = new string[]{ data.kpa.excessStockOpenOrders.Name, data.kpa.excessStockOpenOrders.categoryNames[(int)Excess_Stock_Open_Order.CategorNames.PrsAgingReleased], "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A" };
             TemplateOneDataGrid.Rows.Add(row);
             row = new string[]{ data.kpa.excessStockOpenOrders.Name, data.kpa.excessStockOpenOrders.categoryNames[(int)Excess_Stock_Open_Order.CategorNames.PoCreationToConfirmationEntry], "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A" };
-            TemplateOneDataGrid.Rows.Add(row);
-            row = new string[]{ data.kpa.excessStockOpenOrders.Name, data.kpa.excessStockOpenOrders.categoryNames[(int)Excess_Stock_Open_Order.CategorNames.ConfirmedVsPlanDate], "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A" };
-            TemplateOneDataGrid.Rows.Add(row);
-            row = new string[]{ data.kpa.excessStockOpenOrders.Name, data.kpa.excessStockOpenOrders.categoryNames[(int)Excess_Stock_Open_Order.CategorNames.ConfirmedDateForUpcomingDeliveries], "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A" };
             TemplateOneDataGrid.Rows.Add(row);
         }
 

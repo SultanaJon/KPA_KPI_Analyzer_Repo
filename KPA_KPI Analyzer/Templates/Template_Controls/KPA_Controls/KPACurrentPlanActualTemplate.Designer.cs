@@ -144,7 +144,6 @@
             this.panel48 = new System.Windows.Forms.Panel();
             this.bunifuFlatButton12 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
-            this.dataviz = new Bunifu.DataViz.BunifuDataViz();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbl_title = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -152,6 +151,7 @@
             this.lbl_analysisTwo = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.lbl_analysisOne = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.datavizLoadTimer = new System.Windows.Forms.Timer(this.components);
+            this.dataviz = new Bunifu.DataViz.BunifuDataViz();
             this.tblPnl_template.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -2040,9 +2040,9 @@
             this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel13.Controls.Add(this.dataviz, 1, 1);
             this.tableLayoutPanel13.Controls.Add(this.tableLayoutPanel14, 1, 0);
             this.tableLayoutPanel13.Controls.Add(this.panel41, 1, 2);
+            this.tableLayoutPanel13.Controls.Add(this.dataviz, 1, 1);
             this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel13.Location = new System.Drawing.Point(10, 60);
             this.tableLayoutPanel13.Margin = new System.Windows.Forms.Padding(0, 0, 5, 5);
@@ -2053,36 +2053,6 @@
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
             this.tableLayoutPanel13.Size = new System.Drawing.Size(639, 288);
             this.tableLayoutPanel13.TabIndex = 4;
-            // 
-            // dataviz
-            // 
-            this.dataviz.animationEnabled = false;
-            this.dataviz.AutoSize = true;
-            this.dataviz.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.dataviz.AxisLineColor = System.Drawing.Color.LightGray;
-            this.dataviz.AxisXFontColor = System.Drawing.Color.Gray;
-            this.dataviz.AxisXGridColor = System.Drawing.Color.Gray;
-            this.dataviz.AxisXGridThickness = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.dataviz.AxisYFontColor = System.Drawing.Color.Gray;
-            this.dataviz.AxisYGridColor = System.Drawing.Color.Gray;
-            this.dataviz.AxisYGridThickness = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.dataviz.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.dataviz.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataviz.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.dataviz.Location = new System.Drawing.Point(23, 38);
-            this.dataviz.Name = "dataviz";
-            this.dataviz.Size = new System.Drawing.Size(593, 203);
-            this.dataviz.TabIndex = 0;
-            this.dataviz.Theme = Bunifu.DataViz.BunifuDataViz._theme.theme1;
-            this.dataviz.Title = "";
             // 
             // tableLayoutPanel14
             // 
@@ -2152,6 +2122,33 @@
             // datavizLoadTimer
             // 
             this.datavizLoadTimer.Tick += new System.EventHandler(this.datavizLoadTimer_Tick);
+            // 
+            // dataviz
+            // 
+            this.dataviz.animationEnabled = false;
+            this.dataviz.AxisLineColor = System.Drawing.Color.LightGray;
+            this.dataviz.AxisXFontColor = System.Drawing.Color.Gray;
+            this.dataviz.AxisXGridColor = System.Drawing.Color.Gray;
+            this.dataviz.AxisXGridThickness = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.dataviz.AxisYFontColor = System.Drawing.Color.Gray;
+            this.dataviz.AxisYGridColor = System.Drawing.Color.Gray;
+            this.dataviz.AxisYGridThickness = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.dataviz.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.dataviz.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataviz.Location = new System.Drawing.Point(23, 38);
+            this.dataviz.Name = "dataviz";
+            this.dataviz.Size = new System.Drawing.Size(593, 203);
+            this.dataviz.TabIndex = 3;
+            this.dataviz.Theme = Bunifu.DataViz.BunifuDataViz._theme.theme1;
+            this.dataviz.Title = "";
             // 
             // KPACurrentPlanActualTemplate
             // 
@@ -2252,7 +2249,6 @@
             this.panel47.PerformLayout();
             this.panel48.ResumeLayout(false);
             this.tableLayoutPanel13.ResumeLayout(false);
-            this.tableLayoutPanel13.PerformLayout();
             this.tableLayoutPanel14.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -2359,7 +2355,6 @@
         private System.Windows.Forms.Panel panel17;
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton6;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
-        private Bunifu.DataViz.BunifuDataViz dataviz;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
         private System.Windows.Forms.Panel panel1;
         private Bunifu.Framework.UI.BunifuCustomLabel lbl_title;
@@ -2387,5 +2382,6 @@
         private System.Windows.Forms.Panel panel48;
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton12;
         private System.Windows.Forms.Timer datavizLoadTimer;
+        private Bunifu.DataViz.BunifuDataViz dataviz;
     }
 }

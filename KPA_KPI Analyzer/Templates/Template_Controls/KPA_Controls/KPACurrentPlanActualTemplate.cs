@@ -1,6 +1,8 @@
 ﻿using KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader;
 using KPA_KPI_Analyzer.KPA_KPI_Overall;
 using KPA_KPI_Analyzer.Values;
+using LiveCharts;
+using LiveCharts.Wpf;
 using System;
 using System.Windows.Forms;
 

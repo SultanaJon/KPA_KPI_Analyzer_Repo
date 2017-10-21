@@ -36,7 +36,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
 
         public enum CategorNames
         {
-            PlannedOrderAging,
             PrsAgingNotReleased,
             MaterialDue
         }
@@ -44,7 +43,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
 
         public string[] categoryNames =
         {
-            "Planned Order Aging",
             "PRs Aging (Not Released)",
             "Material Due"
         };

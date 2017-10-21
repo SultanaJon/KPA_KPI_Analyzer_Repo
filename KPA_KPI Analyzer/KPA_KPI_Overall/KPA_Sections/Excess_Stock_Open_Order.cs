@@ -8,16 +8,14 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
     {
         public PRs_Aging_Not_Rel prsAgingNotRel;
         public PRs_Aging_Rel prsAgingRel;
-        public Conf_vs_Plan_Date confVsPlanDate;
-        public Conf_Date_Upcoming_Del ConfDateUpcomingDel;
+        public PoCreateToConfEntry poCreateConfEntry;
 
         // Default Constructor
         public Excess_Stock_Open_Order()
         {
             prsAgingNotRel = new PRs_Aging_Not_Rel();
             prsAgingRel = new PRs_Aging_Rel();
-            confVsPlanDate = new Conf_vs_Plan_Date();
-            ConfDateUpcomingDel = new Conf_Date_Upcoming_Del();
+            poCreateConfEntry = new PoCreateToConfEntry();
         }
 
 
@@ -28,18 +26,14 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
         {
             PrsAgingNotReleased,
             PrsAgingReleased,
-            PoCreationToConfirmationEntry,
-            ConfirmedVsPlanDate,
-            ConfirmedDateForUpcomingDeliveries
+            PoCreationToConfirmationEntry
         }
 
         public string[] categoryNames =
         {
             "Prs Aging (Not Released)",
             "PRs Aging (Released)",
-            "PO Creation Date to Confirmation Entry Date",
-            "Confirmed Date vs Plan Date",
-            "Confirmed Date for Upcoming Deliveries"
+            "PO Creation to Confirmation Entry"
         };
     }
 
@@ -79,30 +73,11 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
     }
 
 
-
-
-
-
-    public class Conf_vs_Plan_Date
+    public class PoCreateToConfEntry
     {
         public TempOne data;
 
-        public Conf_vs_Plan_Date()
-        {
-            data = new TempOne();
-        }
-    }
-
-
-
-
-
-
-    public class Conf_Date_Upcoming_Del
-    {
-        public TempOne data;
-
-        public Conf_Date_Upcoming_Del()
+        public PoCreateToConfEntry()
         {
             data = new TempOne();
         }
