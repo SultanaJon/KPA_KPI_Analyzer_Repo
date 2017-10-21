@@ -20,6 +20,8 @@ namespace KPA_KPI_Analyzer
         Thread KPA_PurchTotalThread;
         Thread KPA_FollowUpThread;
         Thread KPA_HotJobs;
+        Thread KPA_ExcessStock_Stock;
+        Thread KPA_ExcessStock_OpenOrders;
         Thread KPA_CurrPlanVsActualThread;
         Thread tableLoadThread;
         Thread KPI_PlanThread;
@@ -256,7 +258,10 @@ namespace KPA_KPI_Analyzer
             KPA_PurchTotalThread = new Thread(() => { try { overallData.kpa.purchTotal.LoadData(); } catch (ThreadInterruptedException) { ShowPage(Pages.DragDropDash); } });
             KPA_FollowUpThread = new Thread(() => { try { overallData.kpa.followUp.LoadData(); } catch (ThreadInterruptedException) { ShowPage(Pages.DragDropDash); } });
             KPA_HotJobs = new Thread(() => { try { overallData.kpa.hotJobs.LoadData(); } catch (ThreadInterruptedException) { ShowPage(Pages.DragDropDash); } });
+            KPA_ExcessStock_Stock = new Thread(() => { try { overallData.kpa.excessStockStock.LoadData(); } catch (ThreadInterruptedException) { ShowPage(Pages.DragDropDash); } });
+            KPA_ExcessStock_OpenOrders = new Thread(() => { try { overallData.kpa.excessStockOpenOrders.LoadData(); } catch (ThreadInterruptedException) { ShowPage(Pages.DragDropDash); } });
             KPA_CurrPlanVsActualThread = new Thread(() => { try { overallData.kpa.currPlanVsActual.LoadData(); } catch (ThreadInterruptedException) { ShowPage(Pages.DragDropDash); } });
+
             tableLoadThread = new Thread(() => { try { PRPO_DB_Utils.LoadKPITables(); } catch (ThreadInterruptedException) { ShowPage(Pages.DragDropDash); } });
             KPI_PlanThread = new Thread(() => { try { overallData.kpi.plan.LoadData(); } catch (ThreadInterruptedException) { ShowPage(Pages.DragDropDash); } });
             KPI_PurchThread = new Thread(() => { try { overallData.kpi.purch.LoadData(); } catch (ThreadInterruptedException) { ShowPage(Pages.DragDropDash); } });
@@ -285,6 +290,8 @@ namespace KPA_KPI_Analyzer
                 KPA_PurchTotalThread.Start();
                 KPA_FollowUpThread.Start();
                 KPA_HotJobs.Start();
+                KPA_ExcessStock_Stock.Start();
+                KPA_ExcessStock_OpenOrders.Start();
                 KPA_CurrPlanVsActualThread.Start();
                 tableLoadThread.Start();
             }
@@ -320,7 +327,7 @@ namespace KPA_KPI_Analyzer
             {
                 PRPO_DB_Utils.DataLoadProcessStarted = true;
                 PRPO_DB_Utils.KPITablesLoaded = false;
-                PRPO_DB_Utils.ScheduledDataLoads = 16;
+                PRPO_DB_Utils.ScheduledDataLoads = 18;
                 StartThreads(true, false);
             }
 

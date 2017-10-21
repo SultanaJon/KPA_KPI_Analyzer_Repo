@@ -534,11 +534,49 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// </summary>
         private void LoadExcessStockStock()
         {
-            string[] row = { data.kpa.excessStockStock.Name, data.kpa.excessStockStock.categoryNames[(int)Excess_Stock_Stock.CategorNames.PrsAgingNotReleased], "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A" };
+            string[] row = {
+                data.kpa.excessStockStock.Name,
+                data.kpa.excessStockStock.categoryNames[(int)Excess_Stock_Stock.CategorNames.PrsAgingNotReleased],
+                string.Format("{0:n0}", data.kpa.excessStockStock.prsAgingNotRel.data.LessThanZero),
+                string.Format("{0:n0}", data.kpa.excessStockStock.prsAgingNotRel.data.One_Three),
+                string.Format("{0:n0}", data.kpa.excessStockStock.prsAgingNotRel.data.Four_Seven),
+                string.Format("{0:n0}", data.kpa.excessStockStock.prsAgingNotRel.data.Eight_Fourteen),
+                string.Format("{0:n0}", data.kpa.excessStockStock.prsAgingNotRel.data.Fifteen_TwentyOne),
+                string.Format("{0:n0}", data.kpa.excessStockStock.prsAgingNotRel.data.TwentyTwo_TwentyEight),
+                string.Format("{0:n0}", data.kpa.excessStockStock.prsAgingNotRel.data.TwentyNinePlus),
+                string.Format("{0:n}", data.kpa.excessStockStock.prsAgingNotRel.data.Average),
+                string.Format("{0:n0}", data.kpa.excessStockStock.prsAgingNotRel.data.Total)
+            };
             TemplateOneDataGrid.Rows.Add(row);
-            row = new string[]{ data.kpa.excessStockStock.Name, data.kpa.excessStockStock.categoryNames[(int)Excess_Stock_Stock.CategorNames.PrsAgingReleased], "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A" };
+
+            row = new string[]{
+                data.kpa.excessStockStock.Name,
+                data.kpa.excessStockStock.categoryNames[(int)Excess_Stock_Stock.CategorNames.PrsAgingReleased],
+                string.Format("{0:n0}", data.kpa.excessStockStock.prsAgingRel.data.LessThanZero),
+                string.Format("{0:n0}", data.kpa.excessStockStock.prsAgingRel.data.One_Three),
+                string.Format("{0:n0}", data.kpa.excessStockStock.prsAgingRel.data.Four_Seven),
+                string.Format("{0:n0}", data.kpa.excessStockStock.prsAgingRel.data.Eight_Fourteen),
+                string.Format("{0:n0}", data.kpa.excessStockStock.prsAgingRel.data.Fifteen_TwentyOne),
+                string.Format("{0:n0}", data.kpa.excessStockStock.prsAgingRel.data.TwentyTwo_TwentyEight),
+                string.Format("{0:n0}", data.kpa.excessStockStock.prsAgingRel.data.TwentyNinePlus),
+                string.Format("{0:n}", data.kpa.excessStockStock.prsAgingRel.data.Average),
+                string.Format("{0:n0}", data.kpa.excessStockStock.prsAgingRel.data.Total)
+            };
             TemplateOneDataGrid.Rows.Add(row);
-            row = new string[] { data.kpa.excessStockStock.Name, data.kpa.excessStockStock.categoryNames[(int)Excess_Stock_Stock.CategorNames.PoCreationToConfirmationEntry], "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A" };
+
+            row = new string[]{
+                data.kpa.excessStockStock.Name,
+                data.kpa.excessStockStock.categoryNames[(int)Excess_Stock_Stock.CategorNames.PoCreationToConfirmationEntry],
+                string.Format("{0:n0}", data.kpa.excessStockStock.POCreatToConfEntry.data.LessThanZero),
+                string.Format("{0:n0}", data.kpa.excessStockStock.POCreatToConfEntry.data.One_Three),
+                string.Format("{0:n0}", data.kpa.excessStockStock.POCreatToConfEntry.data.Four_Seven),
+                string.Format("{0:n0}", data.kpa.excessStockStock.POCreatToConfEntry.data.Eight_Fourteen),
+                string.Format("{0:n0}", data.kpa.excessStockStock.POCreatToConfEntry.data.Fifteen_TwentyOne),
+                string.Format("{0:n0}", data.kpa.excessStockStock.POCreatToConfEntry.data.TwentyTwo_TwentyEight),
+                string.Format("{0:n0}", data.kpa.excessStockStock.POCreatToConfEntry.data.TwentyNinePlus),
+                string.Format("{0:n}", data.kpa.excessStockStock.POCreatToConfEntry.data.Average),
+                string.Format("{0:n0}", data.kpa.excessStockStock.POCreatToConfEntry.data.Total)
+            };
             TemplateOneDataGrid.Rows.Add(row);
         }
 
@@ -547,11 +585,49 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// </summary>
         private void LoadExcessStockOpenOrders()
         {
-            string[] row = { data.kpa.excessStockOpenOrders.Name, data.kpa.excessStockOpenOrders.categoryNames[(int)Excess_Stock_Open_Order.CategorNames.PrsAgingNotReleased], "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A" };
+            string[] row = {
+                data.kpa.excessStockOpenOrders.Name,
+                data.kpa.excessStockOpenOrders.categoryNames[(int)Excess_Stock_Stock.CategorNames.PrsAgingNotReleased],
+                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.prsAgingNotRel.data.LessThanZero),
+                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.prsAgingNotRel.data.One_Three),
+                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.prsAgingNotRel.data.Four_Seven),
+                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.prsAgingNotRel.data.Eight_Fourteen),
+                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.prsAgingNotRel.data.Fifteen_TwentyOne),
+                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.prsAgingNotRel.data.TwentyTwo_TwentyEight),
+                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.prsAgingNotRel.data.TwentyNinePlus),
+                string.Format("{0:n}", data.kpa.excessStockOpenOrders.prsAgingNotRel.data.Average),
+                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.prsAgingNotRel.data.Total)
+            };
             TemplateOneDataGrid.Rows.Add(row);
-            row = new string[]{ data.kpa.excessStockOpenOrders.Name, data.kpa.excessStockOpenOrders.categoryNames[(int)Excess_Stock_Open_Order.CategorNames.PrsAgingReleased], "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A" };
+
+            row = new string[]{
+                data.kpa.excessStockOpenOrders.Name,
+                data.kpa.excessStockOpenOrders.categoryNames[(int)Excess_Stock_Stock.CategorNames.PrsAgingReleased],
+                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.prsAgingRel.data.LessThanZero),
+                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.prsAgingRel.data.One_Three),
+                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.prsAgingRel.data.Four_Seven),
+                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.prsAgingRel.data.Eight_Fourteen),
+                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.prsAgingRel.data.Fifteen_TwentyOne),
+                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.prsAgingRel.data.TwentyTwo_TwentyEight),
+                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.prsAgingRel.data.TwentyNinePlus),
+                string.Format("{0:n}", data.kpa.excessStockOpenOrders.prsAgingRel.data.Average),
+                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.prsAgingRel.data.Total)
+            };
             TemplateOneDataGrid.Rows.Add(row);
-            row = new string[]{ data.kpa.excessStockOpenOrders.Name, data.kpa.excessStockOpenOrders.categoryNames[(int)Excess_Stock_Open_Order.CategorNames.PoCreationToConfirmationEntry], "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A" };
+
+            row = new string[]{
+                data.kpa.excessStockOpenOrders.Name,
+                data.kpa.excessStockOpenOrders.categoryNames[(int)Excess_Stock_Stock.CategorNames.PoCreationToConfirmationEntry],
+                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.POCreatToConfEntry.data.LessThanZero),
+                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.POCreatToConfEntry.data.One_Three),
+                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.POCreatToConfEntry.data.Four_Seven),
+                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.POCreatToConfEntry.data.Eight_Fourteen),
+                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.POCreatToConfEntry.data.Fifteen_TwentyOne),
+                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.POCreatToConfEntry.data.TwentyTwo_TwentyEight),
+                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.POCreatToConfEntry.data.TwentyNinePlus),
+                string.Format("{0:n}", data.kpa.excessStockOpenOrders.POCreatToConfEntry.data.Average),
+                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.POCreatToConfEntry.data.Total)
+            };
             TemplateOneDataGrid.Rows.Add(row);
         }
 
@@ -620,103 +696,120 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
                 switch (e.RowIndex)
                 {
-                    case 0: // 0 - 3 = Plan
-                        break; // not yet created
-                    case 1:
+                    case 0: // 0 - 1 = Plan
                         Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.Plan];
                         Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.Plan][(int)Globals.KPA_Categories.Plan.PRsAgingNotRel];
                         HandlePlanDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
-                    case 2:
+                    case 1:
                         Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.Plan];
                         Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.Plan][(int)Globals.KPA_Categories.Plan.MaterialDue];
                         HandlePlanDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
-                    case 3: // 3 - 6 = Purch
+                    case 2: // 2 - 5 = Purch
                         Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.Purch];
                         Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.Purch][(int)Globals.KPA_Categories.Purch.PRsAgingRel];
                         HandlePurchDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
-                    case 4:
+                    case 3:
                         Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.Purch];
                         Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.Purch][(int)Globals.KPA_Categories.Purch.POFirstRelease];
                         HandlePurchDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
-                    case 5:
+                    case 4:
                         Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.Purch];
                         Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.Purch][(int)Globals.KPA_Categories.Purch.POPrevRelease];
                         HandlePurchDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
-                    case 6:
+                    case 5:
                         Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.Purch];
                         Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.Purch][(int)Globals.KPA_Categories.Purch.NoConfirmation];
                         HandlePurchDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
-                    case 7: // 7 - 8 = PurchSub
+                    case 6: // 6 - 7 = PurchSub
                         Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.PurchSub];
                         Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.PurchSub][(int)Globals.KPA_Categories.PurchSub.PRReleasePORelease];
                         HandlePurchSubDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
-                    case 8:
+                    case 7:
                         Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.PurchSub];
                         Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.PurchSub][(int)Globals.KPA_Categories.PurchSub.POCreationCOnfEntry];
                         HandlePurchSubDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
-                    case 9: // Purch Total
+                    case 8: // Purch Total
                         Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.PurchTotal];
                         Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.PurchTotal][(int)Globals.KPA_Categories.PurchTotal.PRRelConfEntry];
                         HandlePurchTotalDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
-                    case 10: // Purch Plan Total
-                        break; // Not yet created
-                    case 11: // 12 - 14 = Follow Up
+                    case 9: // Purch Plan Total
+                        // Not yet created
+                        break; 
+                    case 10: // 10 - 12 = Follow Up
                         Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.FollowUp];
                         Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.FollowUp][(int)Globals.KPA_Categories.FollowUp.ConfPlanDate];
                         HandleFollowUpDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
-                    case 12:
+                    case 11:
                         Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.FollowUp];
                         Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.FollowUp][(int)Globals.KPA_Categories.FollowUp.ConfDateUpcomingDel];
                         HandleFollowUpDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
-                    case 13:
+                    case 12:
                         Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.FollowUp];
                         Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.FollowUp][(int)Globals.KPA_Categories.FollowUp.DueTodayLateConf];
                         HandleFollowUpDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
-                    case 14: // 15 - 16 Cancellations
-                    case 15:
+                    case 13: // 13 - 14 Cancellations
+                    case 14:
                         break;
-                    case 16: // 17 - 18 = NCRs
-                    case 17:
-                        break; // not yet created
-                    case 18: // 19 - 21 = Hot Jobs
+                    case 15: // 15 - 16 = NCRs
+                    case 16: // not yet created
+                        break;
+                    case 17: // 17 - 19 = Hot Jobs
                         Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.HotJobs];
                         Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.HotJobs][(int)Globals.KPA_Categories.HotJobs.PrsNotonPO];
                         HandleHotJobsDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
-                    case 19:
+                    case 18:
                         Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.HotJobs];
                         Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.HotJobs][(int)Globals.KPA_Categories.HotJobs.NoConfirmations];
                         HandleHotJobsDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
-                    case 20:
+                    case 19:
                         Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.HotJobs];
                         Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.HotJobs][(int)Globals.KPA_Categories.HotJobs.LateToConfirmed];
                         HandleHotJobsDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
-                    case 21: // 22 - 26 = Excess Stock - Stock
+                    case 20: // 20 - 22 = Excess Stock - Stock
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.ExcessStock_Stock];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.ExcessStock_Stock][(int)Globals.KPA_Categories.ExcessStockStock.PrsAgingNotRel];
+                        HandleExcessStockStock(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 21:
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.ExcessStock_Stock];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.ExcessStock_Stock][(int)Globals.KPA_Categories.ExcessStockStock.PRsAgingRel];
+                        HandleExcessStockStock(e.RowIndex, e.ColumnIndex);
+                        break;
                     case 22:
-                    case 23:
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.ExcessStock_Stock];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.ExcessStock_Stock][(int)Globals.KPA_Categories.ExcessStockStock.POCreationDateConfEntryDate];
+                        HandleExcessStockStock(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 23: // 23 - 25 = Excess Stock - Open Orders
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.ExcessStock_OpenOrders];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.ExcessStock_OpenOrders][(int)Globals.KPA_Categories.ExcessStockOpenOrders.PrsAgingNotRel];
+                        HandleExcessStockOpenOrders(e.RowIndex, e.ColumnIndex);
+                        break;
                     case 24:
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.ExcessStock_OpenOrders];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.ExcessStock_OpenOrders][(int)Globals.KPA_Categories.ExcessStockOpenOrders.PRsAgingRel];
+                        HandleExcessStockOpenOrders(e.RowIndex, e.ColumnIndex);
+                        break;
                     case 25:
-                        break; // not yet created
-                    case 26: // 27 - 31 = Excess Stock - Open Orders
-                    case 27:
-                    case 28:
-                    case 29:
-                    case 30:
-                        break; // not yet created
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.ExcessStock_OpenOrders];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.ExcessStock_OpenOrders][(int)Globals.KPA_Categories.ExcessStockOpenOrders.POCreationDateConfEntryDate];
+                        HandleExcessStockOpenOrders(e.RowIndex, e.ColumnIndex);
+                        break;
                 }
             }
             catch (Exception)
@@ -781,9 +874,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             { 
                 switch (rowIndex)
                 {
-                    case 0:
-                        break;
-                    case 1: // PRs Aging (Not Released)
+                    case 0: // PRs Aging (Not Released)
                         switch (columnIndex)
                         {
                             case 2: // <= 0 Days
@@ -822,7 +913,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                                 break;
                         }
                         break;
-                    case 2: // Material Due
+                    case 1: // Material Due
                         switch (columnIndex)
                         {
                             case 2: // <= 0 Days
@@ -883,7 +974,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             {
                 switch (rowIndex)
                 {
-                    case 3: // PRs Aging (Released)
+                    case 2: // PRs Aging (Released)
                         switch (columnIndex)
                         {
                             case 2: // <= 0 Days
@@ -922,7 +1013,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                                 break;
                         }
                         break;
-                    case 4: // PO First Release
+                    case 3: // PO First Release
                         switch (columnIndex)
                         {
                             case 2: // <= 0 Days
@@ -961,7 +1052,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                                 break;
                         }
                         break;
-                    case 5: // PO Prev Release
+                    case 4: // PO Prev Release
                         switch (columnIndex)
                         {
                             case 2: // <= 0 Days
@@ -1000,7 +1091,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                                 break;
                         }
                         break;
-                    case 6: // No Confirmation
+                    case 5: // No Confirmation
                         switch (columnIndex)
                         {
                             case 2: // <= 0 Days
@@ -1060,7 +1151,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             { 
                 switch (rowIndex)
                 {
-                    case 7: // PR Release to Po Release
+                    case 6: // PR Release to Po Release
                         switch (columnIndex)
                         {
                             case 2: // <= 0 Days
@@ -1099,7 +1190,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                                 break;
                         }
                         break;
-                    case 8: // PO Creation to Confirmation Entry
+                    case 7: // PO Creation to Confirmation Entry
                         switch (columnIndex)
                         {
                             case 2: // <= 0 Days
@@ -1158,7 +1249,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             { 
                 switch (rowIndex)
                 {
-                    case 9: // PR Release to Confirmation Entry
+                    case 8: // PR Release to Confirmation Entry
                         switch (columnIndex)
                         {
                             case 2: // <= 0 Days
@@ -1218,7 +1309,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             {
                 switch (rowIndex)
                 {
-                    case 11: // Confirmed Date vs Plan Date
+                    case 10: // Confirmed Date vs Plan Date
                         switch (columnIndex)
                         {
                             case 2: // <= 0 Days
@@ -1257,7 +1348,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                                 break;
                         }
                         break;
-                    case 12: // Confirmed Date for Upcoming Deliveries
+                    case 11: // Confirmed Date for Upcoming Deliveries
                         switch (columnIndex)
                         {
                             case 2: // <= 0 Days
@@ -1296,7 +1387,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                                 break;
                         }
                         break;
-                    case 13: // Late to Confirmed
+                    case 12: // Late to Confirmed
                         switch (columnIndex)
                         {
                             case 2: // <= 0 Days
@@ -1348,14 +1439,14 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// Loads calls the data table loading funciton depending on the particular cell click under a particular KPA
         /// </summary>
         /// <param name="rowIndex">The row index of the clicked cell</param>
-        /// <param name="columnIndex">The column index of the clicked cell</param>
+        /// <param name="lcoumnIndex">The column index of the clicked cell</param>
         private void HandleHotJobsDataTableLoading(int rowIndex, int columnIndex)
         {
             using (DataViewer dv = new DataViewer())
             {
                 switch (rowIndex)
                 {
-                    case 18: // PRs (Not on PO) - Hot Jobs Only
+                    case 17: // PRs (Not on PO) - Hot Jobs Only
                         switch (columnIndex)
                         {
                             case 2: // <= 0 Days
@@ -1394,7 +1485,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                                 break;
                         }
                         break;
-                    case 19: // No Confirmations - Hot Jobs Only
+                    case 18: // No Confirmations - Hot Jobs Only
                         switch (columnIndex)
                         {
                             case 2: // <= 0 Days
@@ -1433,7 +1524,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                                 break;
                         }
                         break;
-                    case 20: // Late to Confirmed - Hot Jobs Only
+                    case 19: // Late to Confirmed - Hot Jobs Only
                         switch (columnIndex)
                         {
                             case 2: // <= 0 Days
@@ -1478,6 +1569,236 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         }
 
 
+
+
+        /// <summary>
+        /// Loads calls the data table loading funciton depending on the particular cell click under a particular KPA
+        /// </summary>
+        /// <param name="rowIndex">The row index of the clicked cell</param>
+        /// <param name="columnIndex">The column index of the clicked cell</param>
+        private void HandleExcessStockStock(int rowIndex, int columnIndex)
+        {
+            using (DataViewer dv = new DataViewer())
+            {
+                switch (rowIndex)
+                {
+                    case 20: // PRs Aging (Not Released)
+                        switch (columnIndex)
+                        {
+                            case 2: // <= 0 Days
+                                dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
+                                break;
+                            case 3: // 1 - 3 Days
+                                dv.ColumnTag = (int)TempOne.DataViews.One_Three;
+                                break;
+                            case 4: // 4 - 7 Days
+                                dv.ColumnTag = (int)TempOne.DataViews.Four_Seven;
+                                break;
+                            case 5: // 8 - 14 Days
+                                dv.ColumnTag = (int)TempOne.DataViews.Eight_Fourteen;
+                                break;
+                            case 6: // 15 - 21 Days
+                                dv.ColumnTag = (int)TempOne.DataViews.Fifteen_TwentyOne;
+                                break;
+                            case 7: // 22 - 28 Days
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyTwo_TwentyEight;
+                                break;
+                            case 8: // 29+ Days
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyNinePlus;
+                                break;
+                            case 9: // Average
+                                return;
+                            case 10: // Totals
+                                dv.ColumnTag = (int)TempOne.DataViews.Total;
+                                break;
+                        }
+                        dv.DataLoader += KpaDataTableLoader.ExcessStock_Stock.LoadPrsAgingNotReleased;
+                        break;
+                    case 21: // PRs Aging (Released)
+                        switch (columnIndex)
+                        {
+                            case 2: // <= 0 Days
+                                dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
+                                break;
+                            case 3: // 1 - 3 Days
+                                dv.ColumnTag = (int)TempOne.DataViews.One_Three;
+                                break;
+                            case 4: // 4 - 7 Days  
+                                dv.ColumnTag = (int)TempOne.DataViews.Four_Seven;
+                                break;
+                            case 5: // 8 - 14 Days 
+                                dv.ColumnTag = (int)TempOne.DataViews.Eight_Fourteen;
+                                break;
+                            case 6: // 15 - 21 
+                                dv.ColumnTag = (int)TempOne.DataViews.Fifteen_TwentyOne;
+                                break;
+                            case 7: // 22 - 28 Days
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyTwo_TwentyEight;
+                                break;
+                            case 8: // 29+ Days    
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyNinePlus;
+                                break;
+                            case 9: // Average
+                                return;
+                            case 10: // Totals     
+                                dv.ColumnTag = (int)TempOne.DataViews.Total;
+                                break;
+                        }
+                        dv.DataLoader += KpaDataTableLoader.ExcessStock_Stock.LoadPrsAgingReleased;
+                        break;
+                    case 22: // PO Creation Date to Confirmation Entry Date
+                        switch (columnIndex)
+                        {
+                            case 2: // <= 0 Days
+                                dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
+                                break;
+                            case 3: // 1 - 3 Days
+                                dv.ColumnTag = (int)TempOne.DataViews.One_Three;
+                                break;
+                            case 4: // 4 - 7 Days
+                                dv.ColumnTag = (int)TempOne.DataViews.Four_Seven;
+                                break;
+                            case 5: // 8 - 14 Days
+                                dv.ColumnTag = (int)TempOne.DataViews.Eight_Fourteen;
+                                break;
+                            case 6: // 15 - 21 Days
+                                dv.ColumnTag = (int)TempOne.DataViews.Fifteen_TwentyOne;
+                                break;
+                            case 7: // 22 - 28 Days
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyTwo_TwentyEight;
+                                break;
+                            case 8: // 29+ Days
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyNinePlus;
+                                break;
+                            case 9: // Average
+                                return;
+                            case 10: // Totals
+                                dv.ColumnTag = (int)TempOne.DataViews.Total;
+                                break;
+                        }
+                        dv.DataLoader += KpaDataTableLoader.ExcessStock_Stock.LoadPoCreateToConfEntry;
+                        break;
+                }
+                dv.ShowDialog();
+            }
+        }
+
+
+
+
+
+
+        /// <summary>
+        /// Loads calls the data table loading funciton depending on the particular cell click under a particular KPA
+        /// </summary>
+        /// <param name="rowIndex">The row index of the clicked cell</param>
+        /// <param name="columnIndex">The column index of the clicked cell</param>
+        private void HandleExcessStockOpenOrders(int rowIndex, int columnIndex)
+        {
+            using (DataViewer dv = new DataViewer())
+            {
+                switch (rowIndex)
+                {
+                    case 23: // PRs Aging (Not Released)
+                        switch (columnIndex)
+                        {
+                            case 2: // <= 0 Days
+                                dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
+                                break;
+                            case 3: // 1 - 3 Days
+                                dv.ColumnTag = (int)TempOne.DataViews.One_Three;
+                                break;
+                            case 4: // 4 - 7 Days
+                                dv.ColumnTag = (int)TempOne.DataViews.Four_Seven;
+                                break;
+                            case 5: // 8 - 14 Days
+                                dv.ColumnTag = (int)TempOne.DataViews.Eight_Fourteen;
+                                break;
+                            case 6: // 15 - 21 Days
+                                dv.ColumnTag = (int)TempOne.DataViews.Fifteen_TwentyOne;
+                                break;
+                            case 7: // 22 - 28 Days
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyTwo_TwentyEight;
+                                break;
+                            case 8: // 29+ Days
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyNinePlus;
+                                break;
+                            case 9: // Average
+                                return;
+                            case 10: // Totals
+                                dv.ColumnTag = (int)TempOne.DataViews.Total;
+                                break;
+                        }
+                        dv.DataLoader += KpaDataTableLoader.ExcessStock_OpenOrders.LoadPrsAgingNotReleased;
+                        break;
+                    case 24: // PRs Aging (Released)
+                        switch (columnIndex)
+                        {
+                            case 2: // <= 0 Days
+                                dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
+                                break;
+                            case 3: // 1 - 3 Days
+                                dv.ColumnTag = (int)TempOne.DataViews.One_Three;
+                                break;
+                            case 4: // 4 - 7 Days  
+                                dv.ColumnTag = (int)TempOne.DataViews.Four_Seven;
+                                break;
+                            case 5: // 8 - 14 Days 
+                                dv.ColumnTag = (int)TempOne.DataViews.Eight_Fourteen;
+                                break;
+                            case 6: // 15 - 21 
+                                dv.ColumnTag = (int)TempOne.DataViews.Fifteen_TwentyOne;
+                                break;
+                            case 7: // 22 - 28 Days
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyTwo_TwentyEight;
+                                break;
+                            case 8: // 29+ Days    
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyNinePlus;
+                                break;
+                            case 9: // Average
+                                return;
+                            case 10: // Totals     
+                                dv.ColumnTag = (int)TempOne.DataViews.Total;
+                                break;
+                        }
+                        dv.DataLoader += KpaDataTableLoader.ExcessStock_OpenOrders.LoadPrsAgingReleased;
+                        break;
+                    case 25: // PO Creation Date to Confirmation Entry Date
+                        switch (columnIndex)
+                        {
+                            case 2: // <= 0 Days
+                                dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
+                                break;
+                            case 3: // 1 - 3 Days
+                                dv.ColumnTag = (int)TempOne.DataViews.One_Three;
+                                break;
+                            case 4: // 4 - 7 Days
+                                dv.ColumnTag = (int)TempOne.DataViews.Four_Seven;
+                                break;
+                            case 5: // 8 - 14 Days
+                                dv.ColumnTag = (int)TempOne.DataViews.Eight_Fourteen;
+                                break;
+                            case 6: // 15 - 21 Days
+                                dv.ColumnTag = (int)TempOne.DataViews.Fifteen_TwentyOne;
+                                break;
+                            case 7: // 22 - 28 Days
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyTwo_TwentyEight;
+                                break;
+                            case 8: // 29+ Days
+                                dv.ColumnTag = (int)TempOne.DataViews.TwentyNinePlus;
+                                break;
+                            case 9: // Average
+                                return;
+                            case 10: // Totals
+                                dv.ColumnTag = (int)TempOne.DataViews.Total;
+                                break;
+                        }
+                        dv.DataLoader += KpaDataTableLoader.ExcessStock_OpenOrders.LoadPoCreateToConfEntry;
+                        break;
+                }
+                dv.ShowDialog();
+            }
+        }
 
 
 

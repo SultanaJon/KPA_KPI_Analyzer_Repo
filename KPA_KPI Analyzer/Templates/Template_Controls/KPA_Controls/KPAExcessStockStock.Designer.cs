@@ -1,6 +1,6 @@
 ﻿namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 {
-    partial class KPAPlanTemplate
+    partial class KPAExcessStockStock
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,10 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.tblPnl_template = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btn_Three = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btn_Two = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btn_One = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.tblPnl_template = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.bunifuCards3 = new Bunifu.Framework.UI.BunifuCards();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -132,8 +133,8 @@
             this.lbl_analysisTwo = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.lbl_analysisOne = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.datavizLoadTimer = new System.Windows.Forms.Timer(this.components);
-            this.panel2.SuspendLayout();
             this.tblPnl_template.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.bunifuCards3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -195,9 +196,33 @@
             this.panel41.SuspendLayout();
             this.SuspendLayout();
             // 
+            // tblPnl_template
+            // 
+            this.tblPnl_template.ColumnCount = 2;
+            this.tblPnl_template.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.38683F));
+            this.tblPnl_template.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.61317F));
+            this.tblPnl_template.Controls.Add(this.panel2, 0, 0);
+            this.tblPnl_template.Controls.Add(this.tableLayoutPanel2, 1, 1);
+            this.tblPnl_template.Controls.Add(this.tableLayoutPanel3, 0, 2);
+            this.tblPnl_template.Controls.Add(this.tableLayoutPanel13, 0, 1);
+            this.tblPnl_template.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tblPnl_template.ForeColor = System.Drawing.Color.DimGray;
+            this.tblPnl_template.Location = new System.Drawing.Point(0, 0);
+            this.tblPnl_template.Margin = new System.Windows.Forms.Padding(0);
+            this.tblPnl_template.Name = "tblPnl_template";
+            this.tblPnl_template.Padding = new System.Windows.Forms.Padding(10, 10, 5, 10);
+            this.tblPnl_template.RowCount = 4;
+            this.tblPnl_template.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tblPnl_template.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52.33333F));
+            this.tblPnl_template.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.66667F));
+            this.tblPnl_template.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tblPnl_template.Size = new System.Drawing.Size(972, 650);
+            this.tblPnl_template.TabIndex = 1;
+            // 
             // panel2
             // 
             this.tblPnl_template.SetColumnSpan(this.panel2, 2);
+            this.panel2.Controls.Add(this.btn_Three);
             this.panel2.Controls.Add(this.btn_Two);
             this.panel2.Controls.Add(this.btn_One);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -207,13 +232,52 @@
             this.panel2.Size = new System.Drawing.Size(957, 50);
             this.panel2.TabIndex = 1;
             // 
+            // btn_Three
+            // 
+            this.btn_Three.Activecolor = System.Drawing.SystemColors.Control;
+            this.btn_Three.BackColor = System.Drawing.SystemColors.Control;
+            this.btn_Three.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_Three.BorderRadius = 0;
+            this.btn_Three.ButtonText = "PO Creation to Confrimation Entry";
+            this.btn_Three.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Three.DisabledColor = System.Drawing.Color.Gray;
+            this.btn_Three.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_Three.ForeColor = System.Drawing.Color.DimGray;
+            this.btn_Three.Iconcolor = System.Drawing.Color.Transparent;
+            this.btn_Three.Iconimage = null;
+            this.btn_Three.Iconimage_right = null;
+            this.btn_Three.Iconimage_right_Selected = null;
+            this.btn_Three.Iconimage_Selected = null;
+            this.btn_Three.IconMarginLeft = 0;
+            this.btn_Three.IconMarginRight = 0;
+            this.btn_Three.IconRightVisible = true;
+            this.btn_Three.IconRightZoom = 0D;
+            this.btn_Three.IconVisible = true;
+            this.btn_Three.IconZoom = 90D;
+            this.btn_Three.IsTab = false;
+            this.btn_Three.Location = new System.Drawing.Point(350, 0);
+            this.btn_Three.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_Three.Name = "btn_Three";
+            this.btn_Three.Normalcolor = System.Drawing.SystemColors.Control;
+            this.btn_Three.OnHovercolor = System.Drawing.SystemColors.Control;
+            this.btn_Three.OnHoverTextColor = System.Drawing.Color.Coral;
+            this.btn_Three.selected = false;
+            this.btn_Three.Size = new System.Drawing.Size(175, 50);
+            this.btn_Three.TabIndex = 2;
+            this.btn_Three.Tag = "2";
+            this.btn_Three.Text = "PO Creation to Confrimation Entry";
+            this.btn_Three.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_Three.Textcolor = System.Drawing.Color.DimGray;
+            this.btn_Three.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Three.Click += new System.EventHandler(this.CategoryButton_Click);
+            // 
             // btn_Two
             // 
             this.btn_Two.Activecolor = System.Drawing.SystemColors.Control;
             this.btn_Two.BackColor = System.Drawing.SystemColors.Control;
             this.btn_Two.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_Two.BorderRadius = 0;
-            this.btn_Two.ButtonText = "Material Due";
+            this.btn_Two.ButtonText = "PRs Aging (Released)";
             this.btn_Two.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Two.DisabledColor = System.Drawing.Color.Gray;
             this.btn_Two.Dock = System.Windows.Forms.DockStyle.Left;
@@ -238,9 +302,9 @@
             this.btn_Two.OnHoverTextColor = System.Drawing.Color.Coral;
             this.btn_Two.selected = false;
             this.btn_Two.Size = new System.Drawing.Size(175, 50);
-            this.btn_Two.TabIndex = 2;
+            this.btn_Two.TabIndex = 1;
             this.btn_Two.Tag = "1";
-            this.btn_Two.Text = "Material Due";
+            this.btn_Two.Text = "PRs Aging (Released)";
             this.btn_Two.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btn_Two.Textcolor = System.Drawing.Color.DimGray;
             this.btn_Two.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -254,7 +318,7 @@
             this.btn_One.BorderRadius = 0;
             this.btn_One.ButtonText = "PRs Aging (Not Released)";
             this.btn_One.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_One.DisabledColor = System.Drawing.Color.Gray;
+            this.btn_One.DisabledColor = System.Drawing.SystemColors.Control;
             this.btn_One.Dock = System.Windows.Forms.DockStyle.Left;
             this.btn_One.ForeColor = System.Drawing.Color.DimGray;
             this.btn_One.Iconcolor = System.Drawing.Color.Transparent;
@@ -277,36 +341,13 @@
             this.btn_One.OnHoverTextColor = System.Drawing.Color.Coral;
             this.btn_One.selected = false;
             this.btn_One.Size = new System.Drawing.Size(175, 50);
-            this.btn_One.TabIndex = 1;
+            this.btn_One.TabIndex = 0;
             this.btn_One.Tag = "0";
             this.btn_One.Text = "PRs Aging (Not Released)";
             this.btn_One.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btn_One.Textcolor = System.Drawing.Color.DimGray;
             this.btn_One.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_One.Click += new System.EventHandler(this.CategoryButton_Click);
-            // 
-            // tblPnl_template
-            // 
-            this.tblPnl_template.ColumnCount = 2;
-            this.tblPnl_template.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.38683F));
-            this.tblPnl_template.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.61317F));
-            this.tblPnl_template.Controls.Add(this.panel2, 0, 0);
-            this.tblPnl_template.Controls.Add(this.tableLayoutPanel2, 1, 1);
-            this.tblPnl_template.Controls.Add(this.tableLayoutPanel3, 0, 2);
-            this.tblPnl_template.Controls.Add(this.tableLayoutPanel13, 0, 1);
-            this.tblPnl_template.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tblPnl_template.ForeColor = System.Drawing.Color.DimGray;
-            this.tblPnl_template.Location = new System.Drawing.Point(0, 0);
-            this.tblPnl_template.Margin = new System.Windows.Forms.Padding(0);
-            this.tblPnl_template.Name = "tblPnl_template";
-            this.tblPnl_template.Padding = new System.Windows.Forms.Padding(10, 10, 5, 10);
-            this.tblPnl_template.RowCount = 4;
-            this.tblPnl_template.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tblPnl_template.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52.33333F));
-            this.tblPnl_template.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.66667F));
-            this.tblPnl_template.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tblPnl_template.Size = new System.Drawing.Size(972, 650);
-            this.tblPnl_template.TabIndex = 0;
             // 
             // tableLayoutPanel2
             // 
@@ -1811,15 +1852,15 @@
             // 
             this.datavizLoadTimer.Tick += new System.EventHandler(this.datavizLoadTimer_Tick);
             // 
-            // KPAPlanTemplate
+            // KPAExcessStockStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tblPnl_template);
-            this.Name = "KPAPlanTemplate";
+            this.Name = "KPAExcessStockStock";
             this.Size = new System.Drawing.Size(972, 650);
-            this.panel2.ResumeLayout(false);
             this.tblPnl_template.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.bunifuCards3.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
@@ -1906,40 +1947,31 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TableLayoutPanel tblPnl_template;
+        private System.Windows.Forms.Panel panel2;
+        private Bunifu.Framework.UI.BunifuFlatButton btn_Three;
         private Bunifu.Framework.UI.BunifuFlatButton btn_Two;
         private Bunifu.Framework.UI.BunifuFlatButton btn_One;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private Bunifu.Framework.UI.BunifuCards bunifuCards3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.Panel panel5;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_average;
         private System.Windows.Forms.Panel panel3;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel4;
         private System.Windows.Forms.Panel panel4;
         private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator2;
-        private System.Windows.Forms.Panel panel5;
-        private Bunifu.Framework.UI.BunifuCustomLabel lbl_average;
         private Bunifu.Framework.UI.BunifuCards bunifuCards2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Panel panel6;
         private Bunifu.Framework.UI.BunifuCustomLabel lbl_totalOrders;
         private System.Windows.Forms.Panel panel8;
+        private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator1;
         private System.Windows.Forms.Panel panel7;
-        private Bunifu.Framework.UI.BunifuFlatButton btn_viewAllData;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel3;
         private System.Windows.Forms.Panel panel9;
-        private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator1;
-        private Bunifu.Framework.UI.BunifuCards bunifuCards1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-        private System.Windows.Forms.Panel panel14;
-        private Bunifu.Framework.UI.BunifuCustomLabel lbl_timebuckOne;
-        private System.Windows.Forms.Panel panel15;
-        private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator3;
-        private System.Windows.Forms.Panel panel16;
-        private Bunifu.Framework.UI.BunifuCustomLabel lbl_xLabelOne;
-        private System.Windows.Forms.Panel panel17;
-        private Bunifu.Framework.UI.BunifuFlatButton btn_viewOne;
+        private Bunifu.Framework.UI.BunifuFlatButton btn_viewAllData;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private Bunifu.Framework.UI.BunifuCards bunifuCards9;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
         private System.Windows.Forms.Panel panel36;
@@ -2000,6 +2032,16 @@
         private Bunifu.Framework.UI.BunifuCustomLabel lbl_xLabelTwo;
         private System.Windows.Forms.Panel panel19;
         private Bunifu.Framework.UI.BunifuFlatButton btn_viewTwo;
+        private Bunifu.Framework.UI.BunifuCards bunifuCards1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
+        private System.Windows.Forms.Panel panel14;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_timebuckOne;
+        private System.Windows.Forms.Panel panel15;
+        private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator3;
+        private System.Windows.Forms.Panel panel16;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_xLabelOne;
+        private System.Windows.Forms.Panel panel17;
+        private Bunifu.Framework.UI.BunifuFlatButton btn_viewOne;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
         private Bunifu.DataViz.BunifuDataViz dataviz;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;

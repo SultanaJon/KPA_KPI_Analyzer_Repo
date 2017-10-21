@@ -96,7 +96,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(10);
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 514F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 440F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1150, 650);
@@ -144,7 +144,7 @@
             this.TemplateTwoDataGrid.EnableHeadersVisualStyles = false;
             this.TemplateTwoDataGrid.HeaderBgColor = System.Drawing.SystemColors.Control;
             this.TemplateTwoDataGrid.HeaderForeColor = System.Drawing.Color.White;
-            this.TemplateTwoDataGrid.Location = new System.Drawing.Point(10, 544);
+            this.TemplateTwoDataGrid.Location = new System.Drawing.Point(10, 470);
             this.TemplateTwoDataGrid.Margin = new System.Windows.Forms.Padding(0);
             this.TemplateTwoDataGrid.Name = "TemplateTwoDataGrid";
             this.TemplateTwoDataGrid.ReadOnly = true;
@@ -152,7 +152,7 @@
             this.TemplateTwoDataGrid.RowHeadersVisible = false;
             this.TemplateTwoDataGrid.RowTemplate.Height = 16;
             this.TemplateTwoDataGrid.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.TemplateTwoDataGrid.Size = new System.Drawing.Size(1130, 96);
+            this.TemplateTwoDataGrid.Size = new System.Drawing.Size(1130, 170);
             this.TemplateTwoDataGrid.TabIndex = 2;
             this.TemplateTwoDataGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TemplateTwoDataGrid_CellDoubleClick);
             this.TemplateTwoDataGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.bunifuCustomDataGrid2_CellFormatting);
@@ -318,7 +318,7 @@
             this.TemplateOneDataGrid.RowHeadersVisible = false;
             this.TemplateOneDataGrid.RowTemplate.Height = 16;
             this.TemplateOneDataGrid.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.TemplateOneDataGrid.Size = new System.Drawing.Size(1130, 514);
+            this.TemplateOneDataGrid.Size = new System.Drawing.Size(1130, 440);
             this.TemplateOneDataGrid.TabIndex = 1;
             this.TemplateOneDataGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TemplateOneDataGrid_CellDoubleClick);
             this.TemplateOneDataGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.bunifuCustomDataGrid1_CellFormatting);

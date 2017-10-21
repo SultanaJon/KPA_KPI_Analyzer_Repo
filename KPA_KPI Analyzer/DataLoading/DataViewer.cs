@@ -347,7 +347,6 @@ namespace KPA_KPI_Analyzer
             {
                 DataLoader(ColumnTag);
             });
-            //thrd.IsBackground = true;
             thrd.Start();
         }
 
@@ -466,8 +465,6 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         private void GatherDataTable()
         {
-            // DataTable dt = new DataTable();
-
             try
             {
                 ExportUtils.Data = (DataTable)dgv_dataViewerDgv.DataSource;

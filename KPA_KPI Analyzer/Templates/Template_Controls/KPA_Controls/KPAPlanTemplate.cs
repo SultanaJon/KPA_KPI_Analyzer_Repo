@@ -75,7 +75,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             {
                 btn_One.Textcolor = value;
                 btn_Two.Textcolor = value;
-                btn_Three.Textcolor = value;
             }
         }
         #endregion
@@ -93,8 +92,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             overallData = overall;
             SetGraphColor();
             DefaultButtonTextColor = System.Drawing.Color.DarkGray;
-            btn_Two.selected = true;
-            btn_Two.Textcolor = System.Drawing.Color.Coral;
+            btn_One.selected = true;
+            btn_One.Textcolor = System.Drawing.Color.Coral;
             RenderPRsAgingNotRel();
             DatavizLoaded = false;
             ActiveCategory = 1;
@@ -151,7 +150,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
             btn_One.selected = false;
             btn_Two.selected = false;
-            btn_Three.selected = false;
             btn.selected = true;
             DefaultButtonTextColor = System.Drawing.Color.DarkGray;
             btn.Textcolor = System.Drawing.Color.Coral;
@@ -164,12 +162,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             switch (tag)
             {
                 case 0:
-                    // There will need to be a data coming soon panel presented
-                    break;
-                case 1:
                     RenderPRsAgingNotRel();
                     break;
-                case 2:
+                case 1:
                     RenderMaterialDue();
                     break;
                 default:

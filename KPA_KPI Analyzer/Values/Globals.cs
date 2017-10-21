@@ -159,8 +159,6 @@ namespace KPA_KPI_Analyzer.Values
                 PrsAgingNotRel,
                 PRsAgingRel,
                 POCreationDateConfEntryDate,
-                ConfDateVsPlanDate,
-                ConfDateUpcomingDel,
             }
 
 
@@ -169,8 +167,6 @@ namespace KPA_KPI_Analyzer.Values
                 PrsAgingNotRel,
                 PRsAgingRel,
                 POCreationDateConfEntryDate,
-                ConfDateVsPlanDate,
-                ConfDateUpcomingDel,
             }
 
             public enum CurrPlanVsActual

@@ -166,6 +166,47 @@ namespace KPA_KPI_Analyzer
 
 
 
+        private void CreateKpaExcessStockStockTemplate()
+        {
+            lbl_Section.Text = "Excess Stock - Stock";
+            KPAExcessStockStock kpaExcessStockStock = new KPAExcessStockStock()
+            {
+                Name = "ExcessStockStock",
+                Dock = DockStyle.Fill,
+            };
+
+            KPAExcessStockStock.ChangeCategory += UpdateCategoryStatus;
+            pnl_activePage.Controls.Add(kpaExcessStockStock);
+            kpaExcessStockStock.BringToFront();
+            MenuInFront = true;
+            pnl_NavigationPanelMax.BringToFront();
+        }
+
+
+
+
+
+
+        private void CreateKpaExcessStockOpenOrdersTemplate()
+        {
+            lbl_Section.Text = "Excess Stock - Open Orders";
+            KPAExcessStockOpenOrders kpaExcessStockOpenOrders = new KPAExcessStockOpenOrders()
+            {
+                Name = "ExcessStockOpenOrders",
+                Dock = DockStyle.Fill,
+            };
+
+            KPAExcessStockOpenOrders.ChangeCategory += UpdateCategoryStatus;
+            pnl_activePage.Controls.Add(kpaExcessStockOpenOrders);
+            kpaExcessStockOpenOrders.BringToFront();
+            MenuInFront = true;
+            pnl_NavigationPanelMax.BringToFront();
+        }
+
+
+
+
+
 
         /// <summary>
         /// Instantiates a template object and adds the control to the active page panel for loading/viewing
@@ -414,6 +455,8 @@ namespace KPA_KPI_Analyzer
                     case "PurchTotal":
                     case "FollowUp":
                     case "HotJobs":
+                    case "ExcessStockStock":
+                    case "ExcessStockOpenOrders":
                     case "CurrPlanActual":
                     case "PurchPlan":
                     case "Other":
@@ -474,6 +517,16 @@ namespace KPA_KPI_Analyzer
                         KPAHotJobsTemplate kpaHotJobs = (KPAHotJobsTemplate)e.Control;
                         kpaHotJobs.LoadPanel(overallData);
                         activeTemplate = kpaHotJobs;
+                        break;
+                    case 10:
+                        KPAExcessStockStock kpaExcessStockStock = (KPAExcessStockStock)e.Control;
+                        kpaExcessStockStock.LoadPanel(overallData);
+                        activeTemplate = kpaExcessStockStock;
+                        break;
+                    case 11:
+                        KPAExcessStockOpenOrders kpaExcessStockOpenOrders = (KPAExcessStockOpenOrders)e.Control;
+                        kpaExcessStockOpenOrders.LoadPanel(overallData);
+                        activeTemplate = kpaExcessStockOpenOrders;
                         break;
                     case 12:
                         KPACurrentPlanActualTemplate kpaCurrPlanActual = (KPACurrentPlanActualTemplate)e.Control;
@@ -569,6 +622,14 @@ namespace KPA_KPI_Analyzer
                     case 9:
                         KPAHotJobsTemplate kpaHotJobs = (KPAHotJobsTemplate)activeTemplate;
                         kpaHotJobs.RefreshTemplate();
+                        break;
+                    case 10:
+                        KPAExcessStockStock kapExcessStockStock = (KPAExcessStockStock)activeTemplate;
+                        kapExcessStockStock.RefreshTemplate();
+                        break;
+                    case 11:
+                        KPAExcessStockOpenOrders kpaExcessStockOpenOrders = (KPAExcessStockOpenOrders)activeTemplate;
+                        kpaExcessStockOpenOrders.RefreshTemplate();
                         break;
                     case 12:
                         KPACurrentPlanActualTemplate kpaCurrPlanActual = (KPACurrentPlanActualTemplate)activeTemplate;

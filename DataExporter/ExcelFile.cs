@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using System.Data;
-
-namespace DataExporter
+﻿namespace DataExporter
 {
     public class ExcelFile
     {
@@ -90,12 +82,12 @@ namespace DataExporter
         {
             KpaOverallTempOneRowStartPosition = 2,
             KpaOverallTempOneColStartPosition = 4,
-            KpaOverallTempOneMaxRow= 33,
+            KpaOverallTempOneMaxRow= 28,
             KpaOverallTempOneMaxCol = 12,
 
-            KpaOverallTempTwoRowStartPosition = 35,
+            KpaOverallTempTwoRowStartPosition = 30,
             KpaOverallTempTwoColStartPosition = 4,
-            KpaOverallTempTwoMaxRow = 36,
+            KpaOverallTempTwoMaxRow = 31,
             KpaOverallTempTwoMaxCol = 14,
 
             KpiOverallTempThreeRowStartPosition = 2,

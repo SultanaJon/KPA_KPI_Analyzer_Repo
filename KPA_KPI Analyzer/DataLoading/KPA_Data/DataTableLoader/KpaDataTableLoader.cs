@@ -1848,16 +1848,695 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
 
         internal static class ExcessStock_Stock
         {
+            private static DataTable prsAgingNotRelDt;
+            private static DataTable prsAgingRelDt;
+            private static DataTable poCreatConfEntryDt;
 
+            internal static void LoadPrsAgingNotReleased(int tag)
+            {
+                try
+                {
+                    dt = new DataTable();
+                    prsAgingNotRelDt = new DataTable();
+                    cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_ExcessStock_Stock_PrsAgingNotRel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+
+                    da = new OleDbDataAdapter(cmd);
+                    da.Fill(dt);
+
+                    prsAgingNotRelDt = dt.Clone();
+
+
+
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        if (Filters.FilterByPrDateRange)
+                        {
+                            if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
+                            {
+                                // The PR Date was not in range of the filter the user applied.
+                                continue;
+                            }
+                        }
+
+                        if (Filters.FilterByPoDateRange)
+                        {
+                            if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
+                            {
+                                // The PO Date was not in range of the filter the user applied.
+                                continue;
+                            }
+                        }
+
+
+
+                        string[] strCurrReqDate = (dr["PR Delivery Date"].ToString()).Split('/');
+                        int year = int.Parse(strCurrReqDate[2]);
+                        int month = int.Parse(strCurrReqDate[0].TrimStart('0'));
+                        int day = int.Parse(strCurrReqDate[1].TrimStart('0'));
+
+                        DateTime currReqDate = new DateTime(year, month, day);
+                        DateTime today = DateTime.Now.Date;
+                        double elapsedDays = (currReqDate - today).TotalDays;
+                        elapsedDays = (int)elapsedDays;
+
+                        switch (tag)
+                        {
+                            case 0:
+                                prsAgingNotRelDt.ImportRow(dr);
+                                break;
+                            case 1:
+                                if (elapsedDays <= 0)
+                                {
+                                    prsAgingNotRelDt.ImportRow(dr);
+                                }
+                                continue;
+                            case 2:
+                                if (elapsedDays >= 1 && elapsedDays <= 3)
+                                {
+                                    prsAgingNotRelDt.ImportRow(dr);
+                                }
+                                continue;
+                            case 3:
+                                if (elapsedDays >= 4 && elapsedDays <= 7)
+                                {
+                                    prsAgingNotRelDt.ImportRow(dr);
+                                }
+                                continue;
+                            case 4:
+                                if (elapsedDays >= 8 && elapsedDays <= 14)
+                                {
+                                    prsAgingNotRelDt.ImportRow(dr);
+                                }
+                                continue;
+                            case 5:
+                                if (elapsedDays >= 15 && elapsedDays <= 21)
+                                {
+                                    prsAgingNotRelDt.ImportRow(dr);
+                                }
+                                continue;
+                            case 6:
+                                if (elapsedDays >= 22 && elapsedDays <= 28)
+                                {
+                                    prsAgingNotRelDt.ImportRow(dr);
+                                }
+                                continue;
+                            case 7:
+                                if (elapsedDays >= 29)
+                                {
+                                    prsAgingNotRelDt.ImportRow(dr);
+                                }
+                                continue;
+                            default:
+                                continue;
+                        }
+                    }
+
+                    DataViewerUtils.Data = prsAgingNotRelDt.Copy();
+                    DataViewerUtils.DataLoaded = true;
+
+                    prsAgingNotRelDt.Rows.Clear();
+                    prsAgingNotRelDt = null;
+                    dt.Rows.Clear();
+                    dt = null;
+                    GC.Collect();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+
+
+            internal static void LoadPrsAgingReleased(int tag)
+            {
+                try
+                {
+                    dt = new DataTable();
+                    prsAgingRelDt = new DataTable();
+                    cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_ExcessStock_Stock_PrsAgingRel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+
+                    da = new OleDbDataAdapter(cmd);
+                    da.Fill(dt);
+
+                    prsAgingRelDt = dt.Clone();
+
+
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        if (Filters.FilterByPrDateRange)
+                        {
+                            if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
+                            {
+                                // The PR Date was not in range of the filter the user applied.
+                                continue;
+                            }
+                        }
+
+                        if (Filters.FilterByPoDateRange)
+                        {
+                            if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
+                            {
+                                // The PO Date was not in range of the filter the user applied.
+                                continue;
+                            }
+                        }
+
+
+                        string[] strDate = (dr["PR 2° Rel# Date"].ToString()).Split('/');
+                        int year = int.Parse(strDate[2]);
+                        int month = int.Parse(strDate[0].TrimStart('0'));
+                        int day = int.Parse(strDate[1].TrimStart('0'));
+
+                        DateTime date = new DateTime(year, month, day);
+                        double elapsedDays = (int)(DateTime.Now - date).TotalDays;
+
+                        switch (tag)
+                        {
+                            case 0:
+                                prsAgingRelDt.ImportRow(dr);
+                                break;
+                            case 1:
+                                if (elapsedDays <= 0)
+                                {
+                                    prsAgingRelDt.ImportRow(dr);
+                                }
+                                continue;
+                            case 2:
+                                if (elapsedDays >= 1 && elapsedDays <= 3)
+                                {
+                                    prsAgingRelDt.ImportRow(dr);
+                                }
+                                continue;
+                            case 3:
+                                if (elapsedDays >= 4 && elapsedDays <= 7)
+                                {
+                                    prsAgingRelDt.ImportRow(dr);
+                                }
+                                continue;
+                            case 4:
+                                if (elapsedDays >= 8 && elapsedDays <= 14)
+                                {
+                                    prsAgingRelDt.ImportRow(dr);
+                                }
+                                continue;
+                            case 5:
+                                if (elapsedDays >= 15 && elapsedDays <= 21)
+                                {
+                                    prsAgingRelDt.ImportRow(dr);
+                                }
+                                continue;
+                            case 6:
+                                if (elapsedDays >= 22 && elapsedDays <= 28)
+                                {
+                                    prsAgingRelDt.ImportRow(dr);
+                                }
+                                continue;
+                            case 7:
+                                if (elapsedDays >= 29)
+                                {
+                                    prsAgingRelDt.ImportRow(dr);
+                                }
+                                continue;
+                            default:
+                                continue;
+                        }
+                    }
+                    DataViewerUtils.Data = prsAgingRelDt.Copy();
+                    DataViewerUtils.DataLoaded = true;
+
+                    prsAgingRelDt.Rows.Clear();
+                    prsAgingRelDt = null;
+                    dt.Rows.Clear();
+                    dt = null;
+                    GC.Collect();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+
+
+
+            internal static void LoadPoCreateToConfEntry(int tag)
+            {
+                try
+                {
+                    dt = new DataTable();
+                    poCreatConfEntryDt = new DataTable();
+                    cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_ExcessStock_Stock_PoCreateToConfEntry] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+
+                    da = new OleDbDataAdapter(cmd);
+                    da.Fill(dt);
+
+
+                    poCreatConfEntryDt = dt.Clone();
+
+
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        if (Filters.FilterByPrDateRange)
+                        {
+                            if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
+                            {
+                                // The PR Date was not in range of the filter the user applied.
+                                continue;
+                            }
+                        }
+
+                        if (Filters.FilterByPoDateRange)
+                        {
+                            if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
+                            {
+                                // The PO Date was not in range of the filter the user applied.
+                                continue;
+                            }
+                        }
+
+
+                        string[] strDate = (dr["PO Line Creat#DT"].ToString()).Split('/');
+                        int year = int.Parse(strDate[2]);
+                        int month = int.Parse(strDate[0].TrimStart('0'));
+                        int day = int.Parse(strDate[1].TrimStart('0'));
+
+                        DateTime date = new DateTime(year, month, day);
+                        DateTime today = DateTime.Now.Date;
+                        double elapsedDays = (int)(today - date).TotalDays;
+
+                        switch (tag)
+                        {
+                            case 0:
+                                poCreatConfEntryDt.ImportRow(dr);
+                                break;
+                            case 1:
+                                if (elapsedDays <= 0)
+                                {
+                                    poCreatConfEntryDt.ImportRow(dr);
+                                }
+                                continue;
+                            case 2:
+                                if (elapsedDays >= 1 && elapsedDays <= 3)
+                                {
+                                    poCreatConfEntryDt.ImportRow(dr);
+                                }
+                                continue;
+                            case 3:
+                                if (elapsedDays >= 4 && elapsedDays <= 7)
+                                {
+                                    poCreatConfEntryDt.ImportRow(dr);
+                                }
+                                continue;
+                            case 4:
+                                if (elapsedDays >= 8 && elapsedDays <= 14)
+                                {
+                                    poCreatConfEntryDt.ImportRow(dr);
+                                }
+                                continue;
+                            case 5:
+                                if (elapsedDays >= 15 && elapsedDays <= 21)
+                                {
+                                    poCreatConfEntryDt.ImportRow(dr);
+                                }
+                                continue;
+                            case 6:
+                                if (elapsedDays >= 22 && elapsedDays <= 28)
+                                {
+                                    poCreatConfEntryDt.ImportRow(dr);
+                                }
+                                continue;
+                            case 7:
+                                if (elapsedDays >= 29)
+                                {
+                                    poCreatConfEntryDt.ImportRow(dr);
+                                }
+                                continue;
+                            default:
+                                continue;
+                        }
+                    }
+                    DataViewerUtils.Data = poCreatConfEntryDt.Copy();
+                    DataViewerUtils.DataLoaded = true;
+
+                    poCreatConfEntryDt.Rows.Clear();
+                    poCreatConfEntryDt = null;
+                    dt.Rows.Clear();
+                    dt = null;
+                    GC.Collect();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
+
+
 
         internal static class ExcessStock_OpenOrders
         {
+            private static DataTable prsAgingNotRelDt;
+            private static DataTable prsAgingRelDt;
+            private static DataTable poCreatConfEntryDt;
 
+            internal static void LoadPrsAgingNotReleased(int tag)
+            {
+                try
+                {
+                    dt = new DataTable();
+                    prsAgingNotRelDt = new DataTable();
+                    cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_ExcessStock_OpenOrders_PrsAgingNotRel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+
+                    da = new OleDbDataAdapter(cmd);
+                    da.Fill(dt);
+
+                    prsAgingNotRelDt = dt.Clone();
+
+
+
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        if (Filters.FilterByPrDateRange)
+                        {
+                            if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
+                            {
+                                // The PR Date was not in range of the filter the user applied.
+                                continue;
+                            }
+                        }
+
+                        if (Filters.FilterByPoDateRange)
+                        {
+                            if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
+                            {
+                                // The PO Date was not in range of the filter the user applied.
+                                continue;
+                            }
+                        }
+
+
+
+                        string[] reqCreationDate = (dr["Requisn Date"].ToString()).Split('/');
+                        int year = int.Parse(reqCreationDate[2]);
+                        int month = int.Parse(reqCreationDate[0].TrimStart('0'));
+                        int day = int.Parse(reqCreationDate[1].TrimStart('0'));
+
+                        DateTime reqDate = new DateTime(year, month, day);
+                        double elapsedDays = (int)(DateTime.Now - reqDate).TotalDays;
+
+                        switch (tag)
+                        {
+                            case 0:
+                                prsAgingNotRelDt.ImportRow(dr);
+                                break;
+                            case 1:
+                                if (elapsedDays <= 0)
+                                {
+                                    prsAgingNotRelDt.ImportRow(dr);
+                                }
+                                continue;
+                            case 2:
+                                if (elapsedDays >= 1 && elapsedDays <= 3)
+                                {
+                                    prsAgingNotRelDt.ImportRow(dr);
+                                }
+                                continue;
+                            case 3:
+                                if (elapsedDays >= 4 && elapsedDays <= 7)
+                                {
+                                    prsAgingNotRelDt.ImportRow(dr);
+                                }
+                                continue;
+                            case 4:
+                                if (elapsedDays >= 8 && elapsedDays <= 14)
+                                {
+                                    prsAgingNotRelDt.ImportRow(dr);
+                                }
+                                continue;
+                            case 5:
+                                if (elapsedDays >= 15 && elapsedDays <= 21)
+                                {
+                                    prsAgingNotRelDt.ImportRow(dr);
+                                }
+                                continue;
+                            case 6:
+                                if (elapsedDays >= 22 && elapsedDays <= 28)
+                                {
+                                    prsAgingNotRelDt.ImportRow(dr);
+                                }
+                                continue;
+                            case 7:
+                                if (elapsedDays >= 29)
+                                {
+                                    prsAgingNotRelDt.ImportRow(dr);
+                                }
+                                continue;
+                            default:
+                                continue;
+                        }
+                    }
+                    DataViewerUtils.Data = prsAgingNotRelDt.Copy();
+                    DataViewerUtils.DataLoaded = true;
+
+                    prsAgingNotRelDt.Rows.Clear();
+                    prsAgingNotRelDt = null;
+                    dt.Rows.Clear();
+                    dt = null;
+                    GC.Collect();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+
+
+            internal static void LoadPrsAgingReleased(int tag)
+            {
+                try
+                {
+                    dt = new DataTable();
+                    prsAgingRelDt = new DataTable();
+                    cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_ExcessStock_OpenOrders_PrsAgingRel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+
+                    da = new OleDbDataAdapter(cmd);
+                    da.Fill(dt);
+
+                    prsAgingRelDt = dt.Clone();
+
+
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        if (Filters.FilterByPrDateRange)
+                        {
+                            if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
+                            {
+                                // The PR Date was not in range of the filter the user applied.
+                                continue;
+                            }
+                        }
+
+                        if (Filters.FilterByPoDateRange)
+                        {
+                            if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
+                            {
+                                // The PO Date was not in range of the filter the user applied.
+                                continue;
+                            }
+                        }
+
+
+                        string[] strDate = (dr["PR 2° Rel# Date"].ToString()).Split('/');
+                        int year = int.Parse(strDate[2]);
+                        int month = int.Parse(strDate[0].TrimStart('0'));
+                        int day = int.Parse(strDate[1].TrimStart('0'));
+
+                        DateTime date = new DateTime(year, month, day);
+                        double elapsedDays = (int)(DateTime.Now - date).TotalDays;
+
+                        switch (tag)
+                        {
+                            case 0:
+                                prsAgingRelDt.ImportRow(dr);
+                                break;
+                            case 1:
+                                if (elapsedDays <= 0)
+                                {
+                                    prsAgingRelDt.ImportRow(dr);
+                                }
+                                continue;
+                            case 2:
+                                if (elapsedDays >= 1 && elapsedDays <= 3)
+                                {
+                                    prsAgingRelDt.ImportRow(dr);
+                                }
+                                continue;
+                            case 3:
+                                if (elapsedDays >= 4 && elapsedDays <= 7)
+                                {
+                                    prsAgingRelDt.ImportRow(dr);
+                                }
+                                continue;
+                            case 4:
+                                if (elapsedDays >= 8 && elapsedDays <= 14)
+                                {
+                                    prsAgingRelDt.ImportRow(dr);
+                                }
+                                continue;
+                            case 5:
+                                if (elapsedDays >= 15 && elapsedDays <= 21)
+                                {
+                                    prsAgingRelDt.ImportRow(dr);
+                                }
+                                continue;
+                            case 6:
+                                if (elapsedDays >= 22 && elapsedDays <= 28)
+                                {
+                                    prsAgingRelDt.ImportRow(dr);
+                                }
+                                continue;
+                            case 7:
+                                if (elapsedDays >= 29)
+                                {
+                                    prsAgingRelDt.ImportRow(dr);
+                                }
+                                continue;
+                            default:
+                                continue;
+                        }
+                    }
+                    DataViewerUtils.Data = prsAgingRelDt.Copy();
+                    DataViewerUtils.DataLoaded = true;
+
+                    prsAgingRelDt.Rows.Clear();
+                    prsAgingRelDt = null;
+                    dt.Rows.Clear();
+                    dt = null;
+                    GC.Collect();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+
+
+
+            internal static void LoadPoCreateToConfEntry(int tag)
+            {
+                try
+                {
+                    dt = new DataTable();
+                    poCreatConfEntryDt = new DataTable();
+                    cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_ExcessStock_OpenOrders_PoCreateToConfEntry] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+
+                    da = new OleDbDataAdapter(cmd);
+                    da.Fill(dt);
+
+
+                    poCreatConfEntryDt = dt.Clone();
+
+
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        if (Filters.FilterByPrDateRange)
+                        {
+                            if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
+                            {
+                                // The PR Date was not in range of the filter the user applied.
+                                continue;
+                            }
+                        }
+
+                        if (Filters.FilterByPoDateRange)
+                        {
+                            if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
+                            {
+                                // The PO Date was not in range of the filter the user applied.
+                                continue;
+                            }
+                        }
+
+
+                        string[] strDate = (dr["PO Line Creat#DT"].ToString()).Split('/');
+                        int year = int.Parse(strDate[2]);
+                        int month = int.Parse(strDate[0].TrimStart('0'));
+                        int day = int.Parse(strDate[1].TrimStart('0'));
+
+                        DateTime date = new DateTime(year, month, day);
+                        DateTime today = DateTime.Now.Date;
+                        double elapsedDays = (int)(today - date).TotalDays;
+
+                        switch (tag)
+                        {
+                            case 0:
+                                poCreatConfEntryDt.ImportRow(dr);
+                                break;
+                            case 1:
+                                if (elapsedDays <= 0)
+                                {
+                                    poCreatConfEntryDt.ImportRow(dr);
+                                }
+                                continue;
+                            case 2:
+                                if (elapsedDays >= 1 && elapsedDays <= 3)
+                                {
+                                    poCreatConfEntryDt.ImportRow(dr);
+                                }
+                                continue;
+                            case 3:
+                                if (elapsedDays >= 4 && elapsedDays <= 7)
+                                {
+                                    poCreatConfEntryDt.ImportRow(dr);
+                                }
+                                continue;
+                            case 4:
+                                if (elapsedDays >= 8 && elapsedDays <= 14)
+                                {
+                                    poCreatConfEntryDt.ImportRow(dr);
+                                }
+                                continue;
+                            case 5:
+                                if (elapsedDays >= 15 && elapsedDays <= 21)
+                                {
+                                    poCreatConfEntryDt.ImportRow(dr);
+                                }
+                                continue;
+                            case 6:
+                                if (elapsedDays >= 22 && elapsedDays <= 28)
+                                {
+                                    poCreatConfEntryDt.ImportRow(dr);
+                                }
+                                continue;
+                            case 7:
+                                if (elapsedDays >= 29)
+                                {
+                                    poCreatConfEntryDt.ImportRow(dr);
+                                }
+                                continue;
+                            default:
+                                continue;
+                        }
+                    }
+                    DataViewerUtils.Data = poCreatConfEntryDt.Copy();
+                    DataViewerUtils.DataLoaded = true;
+
+                    poCreatConfEntryDt.Rows.Clear();
+                    poCreatConfEntryDt = null;
+                    dt.Rows.Clear();
+                    dt = null;
+                    GC.Collect();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
 
+
+
         internal static class CurrentPlanVsActual
-        {
+        {                                                       
             private static DataTable currPlanDateVsCurrConfDateDt;
             private static DataTable currPlanDateVsCurrConfDateDtHotJobs;
 

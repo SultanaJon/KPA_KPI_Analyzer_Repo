@@ -1,6 +1,11 @@
 ﻿
+using KPA_KPI_Analyzer.DatabaseUtils;
+using KPA_KPI_Analyzer.FilterFeeature;
 using KPA_KPI_Analyzer.Templates;
-
+using System;
+using System.Data;
+using System.Data.OleDb;
+using System.Windows.Forms;
 
 namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
 {
@@ -8,15 +13,18 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
     {
         public PRs_Aging_Not_Rel prsAgingNotRel;
         public PRs_Aging_Rel prsAgingRel;
-        public PoCreateDate_ConfirmationEntry poCreateToConfEntryDate;
-
+        public PoCreateDate_ConfirmationEntry POCreatToConfEntry;
+        private double totalDays = 0;
+        private DataTable dt;
+        private OleDbCommand cmd;
+        private OleDbDataAdapter da;
 
         // Default Constructor
         public Excess_Stock_Stock()
         {
             prsAgingNotRel = new PRs_Aging_Not_Rel();
             prsAgingRel = new PRs_Aging_Rel();
-            poCreateToConfEntryDate = new PoCreateDate_ConfirmationEntry();
+            POCreatToConfEntry = new PoCreateDate_ConfirmationEntry();
         }
 
 
@@ -39,6 +47,312 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
             "PRs Aging (Released)",
             "PO Creation to Confirmation Entry"
         };
+
+
+
+
+
+        /// <summary>
+        /// Loads the data of the specific KPA.
+        /// </summary>
+        public void LoadData()
+        {
+            try
+            {
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                //
+                // Prs Aging Not Released
+                //
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                dt = new DataTable();
+                cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_ExcessStock_Stock_PrsAgingNotRel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                da = new OleDbDataAdapter(cmd);
+                da.Fill(dt);
+
+                foreach (DataRow dr in dt.Rows)
+                {
+                    if (Filters.FilterByPrDateRange)
+                    {
+                        if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
+                        {
+                            // The PR Date was not in range of the filter the user applied.
+                            continue;
+                        }
+                    }
+
+                    if (Filters.FilterByPoDateRange)
+                    {
+                        if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
+                        {
+                            // The PO Date was not in range of the filter the user applied.
+                            continue;
+                        }
+                    }
+
+
+
+                    string[] strCurrReqDate = (dr["PR Delivery Date"].ToString()).Split('/');
+                    int year = int.Parse(strCurrReqDate[2]);
+                    int month = int.Parse(strCurrReqDate[0].TrimStart('0'));
+                    int day = int.Parse(strCurrReqDate[1].TrimStart('0'));
+
+                    DateTime currReqDate = new DateTime(year, month, day);
+                    DateTime today = DateTime.Now.Date;
+                    double elapsedDays = (currReqDate - today).TotalDays;
+                    totalDays += elapsedDays;
+                    elapsedDays = (int)elapsedDays;
+
+                    prsAgingNotRel.data.Total++;
+
+                    if (elapsedDays <= 0)
+                    {
+                        prsAgingNotRel.data.LessThanZero++;
+                    }
+                    else if (elapsedDays >= 1 && elapsedDays <= 3)
+                    {
+                        prsAgingNotRel.data.One_Three++;
+                    }
+                    else if (elapsedDays >= 4 && elapsedDays <= 7)
+                    {
+                        prsAgingNotRel.data.Four_Seven++;
+                    }
+                    else if (elapsedDays >= 8 && elapsedDays <= 14)
+                    {
+                        prsAgingNotRel.data.Eight_Fourteen++;
+                    }
+                    else if (elapsedDays >= 15 && elapsedDays <= 21)
+                    {
+                        prsAgingNotRel.data.Fifteen_TwentyOne++;
+                    }
+                    else if (elapsedDays >= 22 && elapsedDays <= 28)
+                    {
+                        prsAgingNotRel.data.TwentyTwo_TwentyEight++;
+                    }
+                    else // 29+
+                    {
+                        prsAgingNotRel.data.TwentyNinePlus++;
+                    }
+                }
+
+
+                try
+                {
+                    prsAgingNotRel.data.Average = Math.Round(totalDays / prsAgingNotRel.data.Total, 2);
+                    if (double.IsNaN(prsAgingNotRel.data.Average))
+                        prsAgingNotRel.data.Average = 0;
+                }
+                catch (DivideByZeroException)
+                {
+                    prsAgingNotRel.data.Average = 0;
+                }
+
+                totalDays = 0;
+
+
+
+
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                //
+                // Prs Aging Released
+                //
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                dt = new DataTable();
+                cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_ExcessStock_Stock_PrsAgingRel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                da = new OleDbDataAdapter(cmd);
+                da.Fill(dt);
+
+
+                foreach (DataRow dr in dt.Rows)
+                {
+                    if (Filters.FilterByPrDateRange)
+                    {
+                        if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
+                        {
+                            // The PR Date was not in range of the filter the user applied.
+                            continue;
+                        }
+                    }
+
+                    if (Filters.FilterByPoDateRange)
+                    {
+                        if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
+                        {
+                            // The PO Date was not in range of the filter the user applied.
+                            continue;
+                        }
+                    }
+
+
+
+
+                    string[] strDate = (dr["PR 2° Rel# Date"].ToString()).Split('/');
+                    int year = int.Parse(strDate[2]);
+                    int month = int.Parse(strDate[0].TrimStart('0'));
+                    int day = int.Parse(strDate[1].TrimStart('0'));
+
+                    DateTime date = new DateTime(year, month, day);
+                    DateTime today = DateTime.Now.Date;
+                    double elapsedDays = (today - date).TotalDays;
+                    totalDays += elapsedDays;
+                    elapsedDays = (int)elapsedDays;
+
+                    prsAgingRel.data.Total++;
+
+
+
+                    if (elapsedDays <= 0)
+                    {
+                        prsAgingRel.data.LessThanZero++;
+                    }
+                    else if (elapsedDays >= 1 && elapsedDays <= 3)
+                    {
+                        prsAgingRel.data.One_Three++;
+                    }
+                    else if (elapsedDays >= 4 && elapsedDays <= 7)
+                    {
+                        prsAgingRel.data.Four_Seven++;
+                    }
+                    else if (elapsedDays >= 8 && elapsedDays <= 14)
+                    {
+                        prsAgingRel.data.Eight_Fourteen++;
+                    }
+                    else if (elapsedDays >= 15 && elapsedDays <= 21)
+                    {
+                        prsAgingRel.data.Fifteen_TwentyOne++;
+                    }
+                    else if (elapsedDays >= 22 && elapsedDays <= 28)
+                    {
+                        prsAgingRel.data.TwentyTwo_TwentyEight++;
+                    }
+                    else // 29+
+                    {
+                        prsAgingRel.data.TwentyNinePlus++;
+                    }
+
+
+                    try
+                    {
+                        prsAgingRel.data.Average = Math.Round(totalDays / prsAgingRel.data.Total, 2);
+                        if (double.IsNaN(prsAgingRel.data.Average))
+                            prsAgingRel.data.Average = 0;
+                    }
+                    catch (DivideByZeroException)
+                    {
+                        prsAgingRel.data.Average = 0;
+                    }
+                }
+
+
+
+                totalDays = 0;
+
+
+
+
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                //
+                // Po Creation Date to Confirmation Entry
+                //
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                dt = new DataTable();
+                cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_ExcessStock_Stock_PoCreateToConfEntry] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                da = new OleDbDataAdapter(cmd);
+                da.Fill(dt);
+
+
+                foreach (DataRow dr in dt.Rows)
+                {
+                    if (Filters.FilterByPrDateRange)
+                    {
+                        if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
+                        {
+                            // The PR Date was not in range of the filter the user applied.
+                            continue;
+                        }
+                    }
+
+                    if (Filters.FilterByPoDateRange)
+                    {
+                        if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
+                        {
+                            // The PO Date was not in range of the filter the user applied.
+                            continue;
+                        }
+                    }
+
+
+
+
+                    string[] strDate = (dr["PO Line Creat#DT"].ToString()).Split('/');
+                    int year = int.Parse(strDate[2]);
+                    int month = int.Parse(strDate[0].TrimStart('0'));
+                    int day = int.Parse(strDate[1].TrimStart('0'));
+
+                    DateTime date = new DateTime(year, month, day);
+                    DateTime today = DateTime.Now.Date;
+                    double elapsedDays = (today - date).TotalDays;
+                    totalDays += elapsedDays;
+                    elapsedDays = (int)elapsedDays;
+
+                    POCreatToConfEntry.data.Total++;
+
+
+                    if (elapsedDays <= 0)
+                    {
+                        POCreatToConfEntry.data.LessThanZero++;
+                    }
+                    else if (elapsedDays >= 1 && elapsedDays <= 3)
+                    {
+                        POCreatToConfEntry.data.One_Three++;
+                    }
+                    else if (elapsedDays >= 4 && elapsedDays <= 7)
+                    {
+                        POCreatToConfEntry.data.Four_Seven++;
+                    }
+                    else if (elapsedDays >= 8 && elapsedDays <= 14)
+                    {
+                        POCreatToConfEntry.data.Eight_Fourteen++;
+                    }
+                    else if (elapsedDays >= 15 && elapsedDays <= 21)
+                    {
+                        POCreatToConfEntry.data.Fifteen_TwentyOne++;
+                    }
+                    else if (elapsedDays >= 22 && elapsedDays <= 28)
+                    {
+                        POCreatToConfEntry.data.TwentyTwo_TwentyEight++;
+                    }
+                    else // 29+
+                    {
+                        POCreatToConfEntry.data.TwentyNinePlus++;
+                    }
+                }
+
+                try
+                {
+                    POCreatToConfEntry.data.Average = Math.Round(totalDays / POCreatToConfEntry.data.Total, 2);
+                    if (double.IsNaN(POCreatToConfEntry.data.Average))
+                        POCreatToConfEntry.data.Average = 0;
+                }
+                catch (DivideByZeroException)
+                {
+                    POCreatToConfEntry.data.Average = 0;
+                }
+
+                PRPO_DB_Utils.UpdateLoadProgress();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "KPA -> Excess Stock - Stock Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw new ThreadInteruptedException();
+            }
+            finally
+            {
+                totalDays = 0;
+                dt.Rows.Clear();
+                dt = null;
+                GC.Collect();
+            }
+        }
 
 
 

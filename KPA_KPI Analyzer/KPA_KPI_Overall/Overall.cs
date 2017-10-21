@@ -33,7 +33,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
             {
                 List<List<string>> temp = new List<List<string>>
                 {
-                    null,
                     new List<string>(kpa.plan.prsAgingNotRel.data.GetData()),
                     new List<string>(kpa.plan.matDueDate.data.GetData()),
                     new List<string>(kpa.purch.prsAgingRel.data.GetData()),
@@ -54,16 +53,12 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
                     new List<string>(kpa.hotJobs.prsNotOnPO.data.GetData()),
                     new List<string>(kpa.hotJobs.noConfirmation.data.GetData()),
                     new List<string>(kpa.hotJobs.lateToConfirmed.data.GetData()),
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
+                    new List<string>(kpa.excessStockStock.prsAgingNotRel.data.GetData()),
+                    new List<string>(kpa.excessStockStock.prsAgingRel.data.GetData()),
+                    new List<string>(kpa.excessStockStock.POCreatToConfEntry.data.GetData()),
+                    new List<string>(kpa.excessStockOpenOrders.prsAgingNotRel.data.GetData()),
+                    new List<string>(kpa.excessStockOpenOrders.prsAgingRel.data.GetData()),
+                    new List<string>(kpa.excessStockOpenOrders.POCreatToConfEntry.data.GetData()),
                 };
 
                 results = new List<List<string>>(temp);

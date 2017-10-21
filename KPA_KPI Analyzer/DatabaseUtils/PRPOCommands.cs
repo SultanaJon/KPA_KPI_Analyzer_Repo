@@ -52,6 +52,12 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
                 KPA_HotJobs_PrsNotonPO,
                 KPA_HotJobs_NoConfirmations,
                 KPA_HotJobs_LateToConfirmed,
+                KPA_ExcessStock_Stock_PrsAgingNotRel,
+                KPA_ExcessStock_Stock_PrsAgingRel,
+                KPA_ExcessStock_Stock_PoCreateToConfEntry,
+                KPA_ExcessStock_OpenOrders_PrsAgingNotRel,
+                KPA_ExcessStock_OpenOrders_PrsAgingRel,
+                KPA_ExcessStock_OpenOrders_PoCreateToConfEntry,
                 KPA_CurrPlanActual_CurrPlanDateCurrConfDateOpenPO,
                 KPA_CurrPlanActual_CurrPlanDateCurrConfDateOpenPOHotJobs
             }
@@ -128,13 +134,18 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
             "SELECT * FROM " + Values.Globals.SelectedCountry + " WHERE " + "(" + Values.Globals.SelectedCountry + ".[Qty Ordered] > 0 AND " + Values.Globals.SelectedCountry + ".[Del#Conf#Date] <> '00/00/0000' AND " + Values.Globals.SelectedCountry + ".[Purch# Group] = 'UHJ' AND " + Values.Globals.SelectedCountry + ".[Escaped] IS NULL)" + Filters.FilterQuery,
 
             // KPA -> Excess Stock - Stock
+            "SELECT * FROM " + Values.Globals.SelectedCountry + " WHERE " + "(" + Values.Globals.SelectedCountry + ".[Open PR Qty] > 0 AND " + Values.Globals.SelectedCountry + ".[Release Ind#] = 2 AND " + Values.Globals.SelectedCountry + ".[Gen# Stock On Hand] > 0 AND " + Values.Globals.SelectedCountry + ".[Project Stk On Hand] > 0)" + Filters.FilterQuery,
+            "SELECT * FROM " + Values.Globals.SelectedCountry + " WHERE " + "(" + Values.Globals.SelectedCountry + ".[Open PR Qty] > 0 AND " + Values.Globals.SelectedCountry + ".[Release Ind#] = 2 AND " + Values.Globals.SelectedCountry + ".[Gen# Stock On Hand] > 0 AND " + Values.Globals.SelectedCountry + ".[Project Stk On Hand] > 0)" + Filters.FilterQuery,
+            "SELECT * FROM " + Values.Globals.SelectedCountry + " WHERE " + "(" + Values.Globals.SelectedCountry + ".[Qty Ordered] > 0 AND " + Values.Globals.SelectedCountry + ".[Del#Conf#Date] = '00/00/0000' AND " + Values.Globals.SelectedCountry + ".[Escaped] IS NULL AND " + Values.Globals.SelectedCountry + ".[Gen# Stock On Hand] > 0 AND " + Values.Globals.SelectedCountry + ".[Project Stk On Hand] > 0)" + Filters.FilterQuery,
 
             // KPA -> Excess Stock - Open Order
+            "SELECT * FROM " + Values.Globals.SelectedCountry + " WHERE " + "(" + Values.Globals.SelectedCountry + ".[Open PR Qty] > 0 AND " + Values.Globals.SelectedCountry + ".[Release Ind#] = 2 AND " + Values.Globals.SelectedCountry + ".[General Stock On Ord] > 0 AND " + Values.Globals.SelectedCountry + ".[Project Stock On Ord] > 0)" + Filters.FilterQuery,
+            "SELECT * FROM " + Values.Globals.SelectedCountry + " WHERE " + "(" + Values.Globals.SelectedCountry + ".[Open PR Qty] > 0 AND " + Values.Globals.SelectedCountry + ".[Release Ind#] = 2 AND " + Values.Globals.SelectedCountry + ".[General Stock On Ord] > 0 AND " + Values.Globals.SelectedCountry + ".[Project Stock On Ord] > 0)" + Filters.FilterQuery,
+            "SELECT * FROM " + Values.Globals.SelectedCountry + " WHERE " + "(" + Values.Globals.SelectedCountry + ".[Qty Ordered] > 0 AND " + Values.Globals.SelectedCountry + ".[Del#Conf#Date] = '00/00/0000' AND " + Values.Globals.SelectedCountry + ".[Escaped] IS NULL AND " + Values.Globals.SelectedCountry + ".[General Stock On Ord] > 0 AND " + Values.Globals.SelectedCountry + ".[Project Stock On Ord] > 0)" + Filters.FilterQuery,
 
             // KPA -> Current Plan vs Actual
             "SELECT * FROM " + Values.Globals.SelectedCountry + " WHERE " + "(" + Values.Globals.SelectedCountry + ".[Qty Ordered] > 0 AND " + Values.Globals.SelectedCountry + ".[Del#Conf#Date] <> '00/00/0000' AND " + Values.Globals.SelectedCountry + ".[Escaped] IS NULL)" + Filters.FilterQuery,
             "SELECT * FROM " + Values.Globals.SelectedCountry + " WHERE " + "(" + Values.Globals.SelectedCountry + ".[Qty Ordered] > 0 AND " + Values.Globals.SelectedCountry + ".[Del#Conf#Date] <> '00/00/0000' AND " + Values.Globals.SelectedCountry + ".[Purch# Group]  = 'UHJ' AND " + Values.Globals.SelectedCountry + ".[Escaped] IS NULL)" + Filters.FilterQuery,
-
         };
     }
 }

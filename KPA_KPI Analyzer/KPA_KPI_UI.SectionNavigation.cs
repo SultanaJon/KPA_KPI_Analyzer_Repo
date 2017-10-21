@@ -90,10 +90,10 @@ namespace KPA_KPI_Analyzer
                     CreateKpaHotJobsTemplate();
                     break;
                 case 10: // KPA --> Excess Stock - Stock
-                    LoadDataComingSoonTemplate();
+                    CreateKpaExcessStockStockTemplate();
                     break;
                 case 11: // KPA --> Excess Stock - Open Orders
-                    LoadDataComingSoonTemplate();
+                    CreateKpaExcessStockOpenOrdersTemplate();
                     break;
                 case 12: // KPA --> Current Plan vs Actual
                     CreateKpaCurrPlanActualTemplate();
