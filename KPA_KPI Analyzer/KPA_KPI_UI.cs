@@ -16,6 +16,7 @@ using KPA_KPI_Analyzer.DatabaseUtils;
 using KPA_KPI_Analyzer.Diagnostics;
 using KPA_KPI_Analyzer.FilterFeeature;
 using KPA_KPI_Analyzer.KPA_KPI_Overall;
+using KPA_KPI_Analyzer.Values;
 using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
@@ -763,13 +764,16 @@ namespace KPA_KPI_Analyzer
                     throw new NullReferenceException();
                 else
                 {
+                    Globals.CurrCountry = lbl_Country.Text;
                     // export the templates to overall.xlsx located in resources -> reports
                     DataExporter.Exporter.ExportOverall(
                         tempKpaOneData,
                         tempKpaTwoData,
                         tempKpiThreeData,
                         tempKpiFourData,
-                        tempKpiFiveData
+                        tempKpiFiveData,
+                        Globals.CurrCountry,
+                        Globals.PrpoGenerationDate
                     );
 
                     tempKpaOneData.Clear();

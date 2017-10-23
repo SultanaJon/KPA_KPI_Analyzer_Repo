@@ -126,10 +126,10 @@ namespace KPA_KPI_Analyzer
                     });
                     break;
                 case 7: // PR Purch Group
-                    ChkdListBx_PurchGroup.Invoke((MethodInvoker)delegate {
-                        ChkdListBx_PurchGroup.Items.Clear();
+                    ChkdListBx_PrPurchGroup.Invoke((MethodInvoker)delegate {
+                        ChkdListBx_PrPurchGroup.Items.Clear();
                         lst = new List<string>(data);
-                        ChkdListBx_PurchGroup.Items.AddRange(lst.ToArray());
+                        ChkdListBx_PrPurchGroup.Items.AddRange(lst.ToArray());
                     });
                     break;
                 case 8: // PO Purch Group
@@ -167,6 +167,13 @@ namespace KPA_KPI_Analyzer
                         ChkdListBx_CommodityCat.Items.AddRange(lst.ToArray());
                     });
                     break;
+                case 13: // Final Receipt Date
+                    ChkdListBx_FinalReceiptDate.Invoke((MethodInvoker)delegate {
+                        ChkdListBx_FinalReceiptDate.Items.Clear();
+                        lst = new List<string>(data);
+                        ChkdListBx_FinalReceiptDate.Items.AddRange(lst.ToArray());
+                    });
+                    break;
                 default:
                     break;
             }
@@ -174,7 +181,11 @@ namespace KPA_KPI_Analyzer
 
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tag"></param>
+        /// <returns></returns>
         internal FilterUtils.Filters GetActiveCLBFitler(int tag)
         {
             switch (tag)
@@ -201,8 +212,10 @@ namespace KPA_KPI_Analyzer
                     return FilterUtils.Filters.FxdSuppName;
                 case 10: // Dsrd Supp Name
                     return FilterUtils.Filters.DsrdSuppName;
-                default: // Commodity Cat
+                case 11: // Commodity Cat
                     return FilterUtils.Filters.CommCat;
+                default:
+                    return FilterUtils.Filters.FinalReceiptDate;
             }
         }
 
@@ -245,7 +258,7 @@ namespace KPA_KPI_Analyzer
                         }
                     }
                     break;
-                case 1:
+                case 1: // WBS Element
                     if (e.NewValue == CheckState.Checked)
                     {
                         Filters.FilterValues.wbsElement.Add(clb.Items[e.Index].ToString());
@@ -360,18 +373,18 @@ namespace KPA_KPI_Analyzer
                         }
                     }
                     break;
-                case 6: // Purch Group
+                case 6: // PR Purch Group
                     if (e.NewValue == CheckState.Checked)
                     {
                         Filters.FilterValues.purchGroup.Add(clb.Items[e.Index].ToString());
-                        activeCLBs.Add(int.Parse(ChkdListBx_PurchGroup.Tag.ToString()));
+                        activeCLBs.Add(int.Parse(ChkdListBx_PrPurchGroup.Tag.ToString()));
                         BuildQueryFilters();
                         FilterUtils.LoadFiltersExcluded(filters, FilterUtils.Filters.PurchGroup);
                     }
                     else
                     {
                         Filters.FilterValues.purchGroup.Remove(clb.Items[e.Index].ToString());
-                        int position = activeCLBs.LastIndexOf(int.Parse(ChkdListBx_PurchGroup.Tag.ToString()));
+                        int position = activeCLBs.LastIndexOf(int.Parse(ChkdListBx_PrPurchGroup.Tag.ToString()));
                         activeCLBs.RemoveAt(position);
                         BuildQueryFilters();
                         if (activeCLBs.Count == 0)
@@ -498,6 +511,29 @@ namespace KPA_KPI_Analyzer
                         }
                     }
                     break;
+                case 12: // Final Receipt Date
+                    if (e.NewValue == CheckState.Checked)
+                    {
+                        Filters.FilterValues.finalRecDate.Add(clb.Items[e.Index].ToString());
+                        activeCLBs.Add(int.Parse(ChkdListBx_FinalReceiptDate.Tag.ToString()));
+                        BuildQueryFilters();
+                        FilterUtils.LoadFiltersExcluded(filters, FilterUtils.Filters.FinalReceiptDate);
+                    }
+                    else
+                    {
+                        Filters.FilterValues.finalRecDate.Remove(clb.Items[e.Index].ToString());
+                        int position = activeCLBs.LastIndexOf(int.Parse(ChkdListBx_FinalReceiptDate.Tag.ToString()));
+                        activeCLBs.RemoveAt(position);
+                        BuildQueryFilters();
+                        if (activeCLBs.Count == 0)
+                            FilterUtils.LoadFilters(filters);
+                        else
+                        {
+                            FilterUtils.LoadFiltersExcluded(filters, GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
+                            FilterUtils.LoadFilter(GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
+                        }
+                    }
+                    break;
             }
             UpdateCheckedItems();
         }
@@ -515,7 +551,7 @@ namespace KPA_KPI_Analyzer
             filters = string.Empty;
 
 
-
+            // Project Number
             if (Filters.FilterValues.projectNumber.Count > 0)
             {
                 for (int i = 0; i < Filters.FilterValues.projectNumber.Count; ++i)
@@ -541,7 +577,7 @@ namespace KPA_KPI_Analyzer
 
 
 
-
+            // WBS Element
             if (Filters.FilterValues.wbsElement.Count > 0)
             {
                 for (int i = 0; i < Filters.FilterValues.wbsElement.Count; ++i)
@@ -565,6 +601,8 @@ namespace KPA_KPI_Analyzer
                 }
             }
 
+
+            // Material
             if (Filters.FilterValues.material.Count > 0)
             {
                 for (int i = 0; i < Filters.FilterValues.material.Count; ++i)
@@ -587,7 +625,7 @@ namespace KPA_KPI_Analyzer
                 }
             }
             
-
+            // Material Group
             if(Filters.FilterValues.materialGroup.Count > 0)
             {
                 for (int i = 0; i < Filters.FilterValues.materialGroup.Count; ++i)
@@ -611,7 +649,7 @@ namespace KPA_KPI_Analyzer
                 }
             }
             
-
+            // Vendor
             if(Filters.FilterValues.vendor.Count > 0)
             {
                 for (int i = 0; i < Filters.FilterValues.vendor.Count; ++i)
@@ -635,7 +673,7 @@ namespace KPA_KPI_Analyzer
                 }
             }
             
-
+            // Vendor Description
             if(Filters.FilterValues.vendorDesc.Count > 0)
             {
                 for (int i = 0; i < Filters.FilterValues.vendorDesc.Count; ++i)
@@ -660,6 +698,7 @@ namespace KPA_KPI_Analyzer
             }
             
 
+            // Purchase Group
             if(Filters.FilterValues.purchGroup.Count > 0)
             {
                 for (int i = 0; i < Filters.FilterValues.purchGroup.Count; ++i)
@@ -686,7 +725,7 @@ namespace KPA_KPI_Analyzer
 
 
 
-
+            // PO Purchase Group
             if (Filters.FilterValues.poPurchGroup.Count > 0)
             {
                 for (int i = 0; i < Filters.FilterValues.poPurchGroup.Count; ++i)
@@ -712,7 +751,7 @@ namespace KPA_KPI_Analyzer
             }
 
 
-
+            // IR Supp Name
             if (Filters.FilterValues.irSuppName.Count > 0)
             {
                 for (int i = 0; i < Filters.FilterValues.irSuppName.Count; ++i)
@@ -738,7 +777,7 @@ namespace KPA_KPI_Analyzer
             }
             
 
-
+            // Fxd Supp Name
             if(Filters.FilterValues.fxdSuppName.Count > 0)
             {
                 for (int i = 0; i < Filters.FilterValues.fxdSuppName.Count; ++i)
@@ -764,7 +803,7 @@ namespace KPA_KPI_Analyzer
             }
             
 
-
+            // Dsrd Supp Name
             if(Filters.FilterValues.dsrdSuppName.Count > 0)
             {
                 for (int i = 0; i < Filters.FilterValues.dsrdSuppName.Count; ++i)
@@ -790,6 +829,7 @@ namespace KPA_KPI_Analyzer
             }
             
 
+            // Comm Category
             if(Filters.FilterValues.commCategory.Count > 0)
             {
                 for (int i = 0; i < Filters.FilterValues.commCategory.Count; ++i)
@@ -813,6 +853,32 @@ namespace KPA_KPI_Analyzer
                         filters += ")";
                 }
             }
+
+
+            // Final Receipt Date
+            if (Filters.FilterValues.finalRecDate.Count > 0)
+            {
+                for (int i = 0; i < Filters.FilterValues.finalRecDate.Count; ++i)
+                {
+                    if (i == 0 && filters != string.Empty)
+                        filters += " AND (";
+
+                    if (i == 0 && filters == string.Empty)
+                        filters += "(";
+
+
+                    if (Filters.FilterValues.finalRecDate[i] == "[Blanks]")
+                        filters += Values.Globals.SelectedCountry + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.FinalReceiptDate] + "] IS NULL";
+                    else
+                        filters += Values.Globals.SelectedCountry + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.FinalReceiptDate] + "] = " + "'" + Filters.FilterValues.finalRecDate[i] + "'";
+
+
+                    if (i != (Filters.FilterValues.finalRecDate.Count - 1))
+                        filters += " OR ";
+                    else
+                        filters += ")";
+                }
+            }
         }
 
 
@@ -826,7 +892,8 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         private void UpdateCheckedItems()
         {
-            int index;
+            int index = 0;
+
             // Project Number
             if (Filters.FilterValues.projectNumber.Count > 0)
             {
@@ -929,20 +996,20 @@ namespace KPA_KPI_Analyzer
             }
 
 
-            // Purch Group
+            // PR Purch Group
             if (Filters.FilterValues.purchGroup.Count > 0)
             {
-                ChkdListBx_PurchGroup.ItemCheck -= ckdListBox_ItemCheck;
+                ChkdListBx_PrPurchGroup.ItemCheck -= ckdListBox_ItemCheck;
                 foreach (string str in Filters.FilterValues.purchGroup)
                 {
-                    index = ChkdListBx_PurchGroup.Items.IndexOf(str);
+                    index = ChkdListBx_PrPurchGroup.Items.IndexOf(str);
                     if (index >= 0)
                     {
-                        if (!ChkdListBx_PurchGroup.GetItemChecked(index))
-                            ChkdListBx_PurchGroup.SetItemChecked(index, true);
+                        if (!ChkdListBx_PrPurchGroup.GetItemChecked(index))
+                            ChkdListBx_PrPurchGroup.SetItemChecked(index, true);
                     }
                 }
-                ChkdListBx_PurchGroup.ItemCheck += ckdListBox_ItemCheck;
+                ChkdListBx_PrPurchGroup.ItemCheck += ckdListBox_ItemCheck;
             }
 
 
@@ -1018,7 +1085,7 @@ namespace KPA_KPI_Analyzer
             }
 
 
-            // Dsrd Supp Name
+            // Commodity Category
             if (Filters.FilterValues.commCategory.Count > 0)
             {
                 ChkdListBx_CommodityCat.ItemCheck -= ckdListBox_ItemCheck;
@@ -1032,6 +1099,22 @@ namespace KPA_KPI_Analyzer
                     }
                 }
                 ChkdListBx_CommodityCat.ItemCheck += ckdListBox_ItemCheck;
+            }
+
+            // Final Receipt Date
+            if (Filters.FilterValues.finalRecDate.Count > 0)
+            {
+                ChkdListBx_FinalReceiptDate.ItemCheck -= ckdListBox_ItemCheck;
+                foreach (string str in Filters.FilterValues.finalRecDate)
+                {
+                    index = ChkdListBx_FinalReceiptDate.Items.IndexOf(str);
+                    if (index >= 0)
+                    {
+                        if (!ChkdListBx_FinalReceiptDate.GetItemChecked(index))
+                            ChkdListBx_FinalReceiptDate.SetItemChecked(index, true);
+                    }
+                }
+                ChkdListBx_FinalReceiptDate.ItemCheck += ckdListBox_ItemCheck;
             }
         }
 
@@ -1068,15 +1151,15 @@ namespace KPA_KPI_Analyzer
 
             if (ColumnFiltersAdded)
             {
+                // Project Number
                 foreach (int i in ChkdListBx_ProjectNumber.CheckedIndices)
                 {
                     ChkdListBx_ProjectNumber.ItemCheck -= ckdListBox_ItemCheck;
                     ChkdListBx_ProjectNumber.SetItemCheckState(i, CheckState.Unchecked);
                     ChkdListBx_ProjectNumber.ItemCheck += ckdListBox_ItemCheck;
-
                 }
 
-
+                // WBS Element
                 foreach (int i in ChkdListBx_WBSElement.CheckedIndices)
                 {
                     ChkdListBx_WBSElement.ItemCheck -= ckdListBox_ItemCheck;
@@ -1085,6 +1168,7 @@ namespace KPA_KPI_Analyzer
 
                 }
 
+                // Material
                 foreach (int i in ChkdListBx_Material.CheckedIndices)
                 {
                     ChkdListBx_Material.ItemCheck -= ckdListBox_ItemCheck;
@@ -1093,6 +1177,7 @@ namespace KPA_KPI_Analyzer
 
                 }
 
+                // Material Group
                 foreach (int i in ChkdListBx_MaterialGroup.CheckedIndices)
                 {
                     ChkdListBx_MaterialGroup.ItemCheck -= ckdListBox_ItemCheck;
@@ -1101,6 +1186,7 @@ namespace KPA_KPI_Analyzer
 
                 }
 
+                // Vendor
                 foreach (int i in ChkdListBx_Vendor.CheckedIndices)
                 {
                     ChkdListBx_Vendor.ItemCheck -= ckdListBox_ItemCheck;
@@ -1108,6 +1194,7 @@ namespace KPA_KPI_Analyzer
                     ChkdListBx_Vendor.ItemCheck += ckdListBox_ItemCheck;
                 }
 
+                // Vendor Desc
                 foreach (int i in ChkdListBx_VendorDesc.CheckedIndices)
                 {
                     ChkdListBx_VendorDesc.ItemCheck -= ckdListBox_ItemCheck;
@@ -1115,13 +1202,15 @@ namespace KPA_KPI_Analyzer
                     ChkdListBx_VendorDesc.ItemCheck += ckdListBox_ItemCheck;
                 }
 
-                foreach (int i in ChkdListBx_PurchGroup.CheckedIndices)
+                // PR Purchase Group
+                foreach (int i in ChkdListBx_PrPurchGroup.CheckedIndices)
                 {
-                    ChkdListBx_PurchGroup.ItemCheck -= ckdListBox_ItemCheck;
-                    ChkdListBx_PurchGroup.SetItemCheckState(i, CheckState.Unchecked);
-                    ChkdListBx_PurchGroup.ItemCheck += ckdListBox_ItemCheck;
+                    ChkdListBx_PrPurchGroup.ItemCheck -= ckdListBox_ItemCheck;
+                    ChkdListBx_PrPurchGroup.SetItemCheckState(i, CheckState.Unchecked);
+                    ChkdListBx_PrPurchGroup.ItemCheck += ckdListBox_ItemCheck;
                 }
 
+                // PO Purch Group
                 foreach (int i in ChkdListBx_PoPurchGroup.CheckedIndices)
                 {
                     ChkdListBx_PoPurchGroup.ItemCheck -= ckdListBox_ItemCheck;
@@ -1129,6 +1218,7 @@ namespace KPA_KPI_Analyzer
                     ChkdListBx_PoPurchGroup.ItemCheck += ckdListBox_ItemCheck;
                 }
 
+                // IR Supp Name
                 foreach (int i in ChkdListBx_IRSuppName.CheckedIndices)
                 {
                     ChkdListBx_IRSuppName.ItemCheck -= ckdListBox_ItemCheck;
@@ -1136,6 +1226,7 @@ namespace KPA_KPI_Analyzer
                     ChkdListBx_IRSuppName.ItemCheck += ckdListBox_ItemCheck;
                 }
 
+                // Fxd Supp Name
                 foreach (int i in ChkdListBx_FxdSuppName.CheckedIndices)
                 {
                     ChkdListBx_FxdSuppName.ItemCheck -= ckdListBox_ItemCheck;
@@ -1143,6 +1234,7 @@ namespace KPA_KPI_Analyzer
                     ChkdListBx_FxdSuppName.ItemCheck += ckdListBox_ItemCheck;
                 }
 
+                // Dsrd Supp Name
                 foreach (int i in ChkdListBx_DsrdSuppName.CheckedIndices)
                 {
                     ChkdListBx_DsrdSuppName.ItemCheck -= ckdListBox_ItemCheck;
@@ -1150,11 +1242,20 @@ namespace KPA_KPI_Analyzer
                     ChkdListBx_DsrdSuppName.ItemCheck += ckdListBox_ItemCheck;
                 }
 
+                // Commodity Category
                 foreach (int i in ChkdListBx_CommodityCat.CheckedIndices)
                 {
                     ChkdListBx_CommodityCat.ItemCheck -= ckdListBox_ItemCheck;
                     ChkdListBx_CommodityCat.SetItemCheckState(i, CheckState.Unchecked);
                     ChkdListBx_CommodityCat.ItemCheck += ckdListBox_ItemCheck;
+                }
+
+                // Final Receipt Date
+                foreach (int i in ChkdListBx_FinalReceiptDate.CheckedIndices)
+                {
+                    ChkdListBx_FinalReceiptDate.ItemCheck -= ckdListBox_ItemCheck;
+                    ChkdListBx_FinalReceiptDate.SetItemCheckState(i, CheckState.Unchecked);
+                    ChkdListBx_FinalReceiptDate.ItemCheck += ckdListBox_ItemCheck;
                 }
 
                 Filters.FilterValues.Clear();
@@ -1172,64 +1273,82 @@ namespace KPA_KPI_Analyzer
         {
             Filters.FilterValues.Clear();
 
+            // Project Number
             foreach (int i in ChkdListBx_ProjectNumber.CheckedIndices)
             {
                 Filters.FilterValues.projectNumber.Add(ChkdListBx_ProjectNumber.Items[i].ToString());
             }
 
+            // WBS Element
             foreach (int i in ChkdListBx_WBSElement.CheckedIndices)
             {
                 Filters.FilterValues.wbsElement.Add(ChkdListBx_WBSElement.Items[i].ToString());
             }
 
+            // Material
             foreach (int i in ChkdListBx_Material.CheckedIndices)
             {
                 Filters.FilterValues.material.Add(ChkdListBx_Material.Items[i].ToString());
             }
 
+            // Material Group
             foreach (int i in ChkdListBx_MaterialGroup.CheckedIndices)
             {
                 Filters.FilterValues.materialGroup.Add(ChkdListBx_MaterialGroup.Items[i].ToString());
             }
 
+            // Vendor
             foreach (int i in ChkdListBx_Vendor.CheckedIndices)
             {
                 Filters.FilterValues.vendor.Add(ChkdListBx_Vendor.Items[i].ToString());
             }
 
+            // Vendor Desc
             foreach (int i in ChkdListBx_VendorDesc.CheckedIndices)
             {
                 Filters.FilterValues.vendorDesc.Add(ChkdListBx_VendorDesc.Items[i].ToString());
             }
 
-            foreach (int i in ChkdListBx_PurchGroup.CheckedIndices)
+            // PR Purchase Group
+            foreach (int i in ChkdListBx_PrPurchGroup.CheckedIndices)
             {
-                Filters.FilterValues.purchGroup.Add(ChkdListBx_PurchGroup.Items[i].ToString());
+                Filters.FilterValues.purchGroup.Add(ChkdListBx_PrPurchGroup.Items[i].ToString());
             }
 
+            // PO Purchase Group
             foreach (int i in ChkdListBx_PoPurchGroup.CheckedIndices)
             {
                 Filters.FilterValues.poPurchGroup.Add(ChkdListBx_PoPurchGroup.Items[i].ToString());
             }
 
+            // IR Supp Name:
             foreach (int i in ChkdListBx_IRSuppName.CheckedIndices)
             {
                 Filters.FilterValues.irSuppName.Add(ChkdListBx_IRSuppName.Items[i].ToString());
             }
 
+            // Fxd Supp Name
             foreach (int i in ChkdListBx_FxdSuppName.CheckedIndices)
             {
                 Filters.FilterValues.fxdSuppName.Add(ChkdListBx_FxdSuppName.Items[i].ToString());
             }
 
+            // Dsrd Supp Name
             foreach (int i in ChkdListBx_DsrdSuppName.CheckedIndices)
             {
                 Filters.FilterValues.dsrdSuppName.Add(ChkdListBx_DsrdSuppName.Items[i].ToString());
             }
 
+            // Commodity Cat
             foreach (int i in ChkdListBx_CommodityCat.CheckedIndices)
             {
                 Filters.FilterValues.commCategory.Add(ChkdListBx_CommodityCat.Items[i].ToString());
+            }
+
+            // Final Receipt Date
+            foreach (int i in ChkdListBx_FinalReceiptDate.CheckedIndices)
+            {
+                Filters.FilterValues.finalRecDate.Add(ChkdListBx_FinalReceiptDate.Items[i].ToString());
             }
         }
 
@@ -1396,6 +1515,7 @@ namespace KPA_KPI_Analyzer
             if (Filters.FilterValues.fxdSuppName.Count > 0) ColumnFiltersAdded = true;
             if (Filters.FilterValues.dsrdSuppName.Count > 0) ColumnFiltersAdded = true;
             if (Filters.FilterValues.commCategory.Count > 0) ColumnFiltersAdded = true;
+            if (Filters.FilterValues.finalRecDate.Count > 0) ColumnFiltersAdded = true;
         }
 
 

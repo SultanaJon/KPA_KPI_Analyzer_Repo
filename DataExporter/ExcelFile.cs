@@ -56,7 +56,23 @@
         public System.IO.FileInfo FileInfo { get; set; }
 
 
+
+        /// <summary>
+        /// The path of the overall.xlsx file
+        /// </summary>
         public static string OverallFilePath { get { return overallFilePath; } }
+
+
+        /// <summary>
+        /// The country that belongs with the data.
+        /// </summary>
+        public string Country { get; set; }
+
+
+        /// <summary>
+        /// The date the PRPO report loaded into the applicaiton was generated.
+        /// </summary>
+        public string PrpoGenerationDate { get; set; }
 
         #endregion
 
@@ -65,7 +81,7 @@
         #region ENUMERATION
         
         /// <summary>
-        /// 
+        /// Indexers for the start position within the overall.xlsx file.
         /// </summary>
         public enum DataColumnPosition : byte
         {
@@ -76,7 +92,7 @@
 
 
         /// <summary>
-        /// 
+        /// Indexers for cell positions within the KPA and KPI Overall summery sheets.
         /// </summary>
         public enum OverallCellPositions : byte
         {
@@ -120,7 +136,7 @@
 
 
         /// <summary>
-        /// 
+        /// An indexer fro the default file name
         /// </summary>
         private enum DefaultDataFileName
         {
@@ -128,7 +144,7 @@
         }
 
         /// <summary>
-        /// 
+        /// An indexer for the sheets names within overall.xlsx.
         /// </summary>
         public enum OverallSheetNames
         {

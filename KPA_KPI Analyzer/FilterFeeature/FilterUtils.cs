@@ -57,6 +57,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             FxdSuppName,
             DsrdSuppName,
             CommCat,
+            FinalReceiptDate
         }
 
 
@@ -82,6 +83,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             "Fxd Supp Name",
             "Dsrd Supp Name",
             "Commodity category",
+            "Last PO Rec#Date"
         };
 
 

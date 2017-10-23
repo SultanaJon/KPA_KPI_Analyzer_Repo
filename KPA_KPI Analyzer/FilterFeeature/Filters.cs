@@ -99,7 +99,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             public static List<string> fxdSuppName = new List<string>();
             public static List<string> dsrdSuppName = new List<string>();
             public static List<string> commCategory = new List<string>();
-
+            public static List<string> finalRecDate = new List<string>();
 
 
 
@@ -122,6 +122,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
                 fxdSuppName.Clear();
                 dsrdSuppName.Clear();
                 commCategory.Clear();
+                finalRecDate.Clear();
             }
         }
     }
