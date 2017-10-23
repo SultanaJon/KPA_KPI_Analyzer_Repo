@@ -125,6 +125,8 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             public static List<string> dsrdSuppName = new List<string>();
             public static List<string> commCategory = new List<string>();
             public static List<string> escaped = new List<string>();
+            public static List<string> poDocumentType = new List<string>();
+            public static List<string> prodOrderMat = new List<string>();
 
 
 
@@ -147,6 +149,8 @@ namespace KPA_KPI_Analyzer.FilterFeeature
                 dsrdSuppName.Clear();
                 commCategory.Clear();
                 escaped.Clear();
+                poDocumentType.Clear();
+                prodOrderMat.Clear();
             }
         }
     }

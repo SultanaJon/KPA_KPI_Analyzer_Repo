@@ -56,7 +56,9 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             FxdSuppName,
             DsrdSuppName,
             CommCat,
-            Escaped
+            Escaped,
+            PoDocumentType,
+            ProdOrderMaterial
         }
 
 
@@ -82,7 +84,9 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             "Fxd Supp Name",
             "Dsrd Supp Name",
             "Commodity category",
-            "Escaped"
+            "Escaped",
+            "PO Doc# Type",
+            "Prd Ord Mat"
         };
 
 
