@@ -332,18 +332,18 @@ namespace KPA_KPI_Analyzer
 
 
 
-        /// <summary>
-        /// this form prevents flickering of the ui when it repaints.
-        /// </summary>
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams handleparam = base.CreateParams;
-                handleparam.Style &= ~0x2000000; // turn off ws_clipchildren
-                return handleparam;
-            }
-        }
+        ///// <summary>
+        ///// this form prevents flickering of the ui when it repaints.
+        ///// </summary>
+        //protected override CreateParams CreateParams
+        //{
+        //    get
+        //    {
+        //        CreateParams handleparam = base.CreateParams;
+        //        handleparam.Style &= ~0x2000000; // turn off ws_clipchildren
+        //        return handleparam;
+        //    }
+        //}
 
 
 
@@ -690,6 +690,8 @@ namespace KPA_KPI_Analyzer
 
         private void btn_Correlation_Click(object sender, EventArgs e)
         {
+
+
         }
 
 

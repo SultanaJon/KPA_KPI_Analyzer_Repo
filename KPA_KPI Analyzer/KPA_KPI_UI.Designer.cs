@@ -118,6 +118,9 @@
             this.tableLayoutPanel18 = new System.Windows.Forms.TableLayoutPanel();
             this.bunifuCustomLabel24 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.ChkdListBx_poDocumentType = new System.Windows.Forms.CheckedListBox();
+            this.tableLayoutPanel19 = new System.Windows.Forms.TableLayoutPanel();
+            this.bunifuCustomLabel31 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.ChkdListBx_productionOrderMat = new System.Windows.Forms.CheckedListBox();
             this.pnl_note = new System.Windows.Forms.Panel();
             this.bunifuCustomLabel30 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel28 = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -205,9 +208,6 @@
             this.dc_titlePanel = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.be_mainUI = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.be_note = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.tableLayoutPanel19 = new System.Windows.Forms.TableLayoutPanel();
-            this.bunifuCustomLabel31 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.ChkdListBx_productionOrderMat = new System.Windows.Forms.CheckedListBox();
             this.pnl_menuStrip.SuspendLayout();
             this.ms_applicaitonMenuStrip.SuspendLayout();
             this.pnl_topPanel.SuspendLayout();
@@ -230,6 +230,7 @@
             this.tableLayoutPanel12.SuspendLayout();
             this.tableLayoutPanel13.SuspendLayout();
             this.tableLayoutPanel18.SuspendLayout();
+            this.tableLayoutPanel19.SuspendLayout();
             this.pnl_note.SuspendLayout();
             this.pnl_NavigationPanelMax.SuspendLayout();
             this.pnl_KPISectionsPanel.SuspendLayout();
@@ -255,7 +256,6 @@
             this.pnl_CategorySelectorButton.SuspendLayout();
             this.panel8.SuspendLayout();
             this.pnl_TopUIPanel.SuspendLayout();
-            this.tableLayoutPanel19.SuspendLayout();
             this.SuspendLayout();
             // 
             // dc_MainUI
@@ -469,9 +469,9 @@
             // 
             // pnl_activePage
             // 
+            this.pnl_activePage.Controls.Add(this.pnl_loadingScreen);
             this.pnl_activePage.Controls.Add(this.tblpnl_Filters);
             this.pnl_activePage.Controls.Add(this.pnl_NavigationPanelMax);
-            this.pnl_activePage.Controls.Add(this.pnl_loadingScreen);
             this.pnl_activePage.Controls.Add(this.tblpnl_DashbaordPage);
             this.pnl_activePage.Controls.Add(this.tblpnl_DragDrop);
             this.pnl_activePage.Controls.Add(this.pnl_CountrySelector);
@@ -1439,6 +1439,50 @@
             this.ChkdListBx_poDocumentType.Tag = "13";
             this.ChkdListBx_poDocumentType.ThreeDCheckBoxes = true;
             this.ChkdListBx_poDocumentType.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.ckdListBox_ItemCheck);
+            // 
+            // tableLayoutPanel19
+            // 
+            this.tableLayoutPanel19.ColumnCount = 1;
+            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel19.Controls.Add(this.bunifuCustomLabel31, 0, 0);
+            this.tableLayoutPanel19.Controls.Add(this.ChkdListBx_productionOrderMat, 0, 1);
+            this.tableLayoutPanel19.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel19.Location = new System.Drawing.Point(593, 1053);
+            this.tableLayoutPanel19.Name = "tableLayoutPanel19";
+            this.tableLayoutPanel19.RowCount = 2;
+            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
+            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel19.Size = new System.Drawing.Size(289, 344);
+            this.tableLayoutPanel19.TabIndex = 8;
+            // 
+            // bunifuCustomLabel31
+            // 
+            this.bunifuCustomLabel31.AutoSize = true;
+            this.bunifuCustomLabel31.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bunifuCustomLabel31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.bunifuCustomLabel31.Location = new System.Drawing.Point(3, 0);
+            this.bunifuCustomLabel31.Name = "bunifuCustomLabel31";
+            this.bunifuCustomLabel31.Size = new System.Drawing.Size(283, 15);
+            this.bunifuCustomLabel31.TabIndex = 0;
+            this.bunifuCustomLabel31.Text = "Production Order Material:";
+            // 
+            // ChkdListBx_productionOrderMat
+            // 
+            this.ChkdListBx_productionOrderMat.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ChkdListBx_productionOrderMat.CheckOnClick = true;
+            this.ChkdListBx_productionOrderMat.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ChkdListBx_productionOrderMat.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.ChkdListBx_productionOrderMat.FormattingEnabled = true;
+            this.ChkdListBx_productionOrderMat.HorizontalScrollbar = true;
+            this.ChkdListBx_productionOrderMat.Location = new System.Drawing.Point(3, 18);
+            this.ChkdListBx_productionOrderMat.Name = "ChkdListBx_productionOrderMat";
+            this.ChkdListBx_productionOrderMat.Size = new System.Drawing.Size(283, 323);
+            this.ChkdListBx_productionOrderMat.TabIndex = 1;
+            this.ChkdListBx_productionOrderMat.Tag = "14";
+            this.ChkdListBx_productionOrderMat.ThreeDCheckBoxes = true;
+            this.ChkdListBx_productionOrderMat.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.ckdListBox_ItemCheck);
             // 
             // pnl_note
             // 
@@ -2870,50 +2914,6 @@
             this.be_note.ElipseRadius = 5;
             this.be_note.TargetControl = this.pnl_note;
             // 
-            // tableLayoutPanel19
-            // 
-            this.tableLayoutPanel19.ColumnCount = 1;
-            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel19.Controls.Add(this.bunifuCustomLabel31, 0, 0);
-            this.tableLayoutPanel19.Controls.Add(this.ChkdListBx_productionOrderMat, 0, 1);
-            this.tableLayoutPanel19.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel19.Location = new System.Drawing.Point(593, 1053);
-            this.tableLayoutPanel19.Name = "tableLayoutPanel19";
-            this.tableLayoutPanel19.RowCount = 2;
-            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
-            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel19.Size = new System.Drawing.Size(289, 344);
-            this.tableLayoutPanel19.TabIndex = 8;
-            // 
-            // bunifuCustomLabel31
-            // 
-            this.bunifuCustomLabel31.AutoSize = true;
-            this.bunifuCustomLabel31.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bunifuCustomLabel31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
-            this.bunifuCustomLabel31.Location = new System.Drawing.Point(3, 0);
-            this.bunifuCustomLabel31.Name = "bunifuCustomLabel31";
-            this.bunifuCustomLabel31.Size = new System.Drawing.Size(283, 15);
-            this.bunifuCustomLabel31.TabIndex = 0;
-            this.bunifuCustomLabel31.Text = "Production Order Material:";
-            // 
-            // ChkdListBx_productionOrderMat
-            // 
-            this.ChkdListBx_productionOrderMat.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.ChkdListBx_productionOrderMat.CheckOnClick = true;
-            this.ChkdListBx_productionOrderMat.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ChkdListBx_productionOrderMat.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
-            this.ChkdListBx_productionOrderMat.FormattingEnabled = true;
-            this.ChkdListBx_productionOrderMat.HorizontalScrollbar = true;
-            this.ChkdListBx_productionOrderMat.Location = new System.Drawing.Point(3, 18);
-            this.ChkdListBx_productionOrderMat.Name = "ChkdListBx_productionOrderMat";
-            this.ChkdListBx_productionOrderMat.Size = new System.Drawing.Size(283, 323);
-            this.ChkdListBx_productionOrderMat.TabIndex = 1;
-            this.ChkdListBx_productionOrderMat.Tag = "14";
-            this.ChkdListBx_productionOrderMat.ThreeDCheckBoxes = true;
-            this.ChkdListBx_productionOrderMat.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.ckdListBox_ItemCheck);
-            // 
             // KPA_KPI_UI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2977,6 +2977,8 @@
             this.tableLayoutPanel13.PerformLayout();
             this.tableLayoutPanel18.ResumeLayout(false);
             this.tableLayoutPanel18.PerformLayout();
+            this.tableLayoutPanel19.ResumeLayout(false);
+            this.tableLayoutPanel19.PerformLayout();
             this.pnl_note.ResumeLayout(false);
             this.pnl_note.PerformLayout();
             this.pnl_NavigationPanelMax.ResumeLayout(false);
@@ -3013,8 +3015,6 @@
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             this.pnl_TopUIPanel.ResumeLayout(false);
-            this.tableLayoutPanel19.ResumeLayout(false);
-            this.tableLayoutPanel19.PerformLayout();
             this.ResumeLayout(false);
 
         }
