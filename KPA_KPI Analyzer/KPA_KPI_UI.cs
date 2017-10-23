@@ -333,15 +333,15 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// This form prevents flickering of the UI when it repaints.
+        /// this form prevents flickering of the ui when it repaints.
         /// </summary>
         protected override CreateParams CreateParams
         {
             get
             {
-                var ccp = base.CreateParams;
-                ccp.ExStyle |= 0x02000000;
-                return ccp;
+                CreateParams handleparam = base.CreateParams;
+                handleparam.Style &= ~0x2000000; // turn off ws_clipchildren
+                return handleparam;
             }
         }
 
@@ -653,6 +653,7 @@ namespace KPA_KPI_Analyzer
         {
             ShowPage(Pages.LoadingScreen);
             cpb_loadingScreenCircProgBar.Text = "Loading Data...";
+            ms_applicaitonMenuStrip.Enabled = false;
             overallData = new Overall();
             PRPO_DB_Utils.DataLoadProcessStarted = false;
             PRPO_DB_Utils.DataLoaded = false;

@@ -104,22 +104,22 @@ namespace KPA_KPI_Analyzer
 
 
 
-        ///// <summary>
-        ///// This form prevents flickering of the UI when it repaints.
-        ///// </summary>
-        ///// <remarks>
-        /////     06/25/2017 - Created
-        ///// </remarks>
-        //protected override CreateParams CreateParams
-        //{
-        //    get
-        //    {
-        //        CreateParams handleParam = base.CreateParams;
-        //        //handleParam.ExStyle |= 0x02000000;   // WS_EX_COMPOSITED
-        //        handleParam.Style &= ~0x2000000; // Turn off WS_CLIPCHILDREN
-        //        return handleParam;
-        //    }
-        //}
+        /// <summary>
+        /// This form prevents flickering of the UI when it repaints.
+        /// </summary>
+        /// <remarks>
+        ///     06/25/2017 - Created
+        /// </remarks>
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams handleParam = base.CreateParams;
+                //handleParam.ExStyle |= 0x02000000;   // WS_EX_COMPOSITED
+                handleParam.Style &= ~0x2000000; // Turn off WS_CLIPCHILDREN
+                return handleParam;
+            }
+        }
 
 
 

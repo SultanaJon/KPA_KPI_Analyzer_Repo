@@ -46,7 +46,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             get
             {
                 CreateParams handleParam = base.CreateParams;
-                //handleParam.ExStyle |= 0x02000000;   // WS_EX_COMPOSITED
                 handleParam.Style &= ~0x2000000; // Turn off WS_CLIPCHILDREN
                 return handleParam;
             }
