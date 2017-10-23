@@ -60,7 +60,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                             }
                         }
 
-
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
+                                continue;
+                            }
+                        }
 
                         string[] strPrPlanDate = (dr["PR Delivery Date"].ToString()).Split('/');
                         int delConfYear = int.Parse(strPrPlanDate[2]);
@@ -217,7 +224,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                             }
                         }
 
-
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
+                                continue;
+                            }
+                        }
 
                         string[] strPrPlanDate = (dr["PR Delivery Date"].ToString()).Split('/');
                         int delConfYear = int.Parse(strPrPlanDate[2]);
@@ -366,7 +380,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                             }
                         }
 
-
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
+                                continue;
+                            }
+                        }
 
                         string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
                         int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
@@ -545,6 +566,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                             }
                         }
 
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
+                                continue;
+                            }
+                        }
 
 
                         string[] strFirstConfDate = (dr["1st Conf Date"].ToString()).Split('/');
@@ -728,7 +757,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                             }
                         }
 
-
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
+                                continue;
+                            }
+                        }
 
                         string[] strFirstConfDate = (dr["1st Conf Date"].ToString()).Split('/');
                         int firstConfYear = int.Parse(strFirstConfDate[2]);
@@ -907,7 +943,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                             }
                         }
 
-
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
+                                continue;
+                            }
+                        }
 
                         string[] strDelConfDate = (dr["Del#Conf#Date"].ToString()).Split('/');
                         int delConfYear = int.Parse(strDelConfDate[2]);
@@ -1080,7 +1123,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                             }
                         }
 
-
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
+                                continue;
+                            }
+                        }
 
                         string[] strLastPORecDate = (dr["Last PO Rec#Date"].ToString()).Split('/');
                         int lastPORecDtYear = int.Parse(strLastPORecDate[2]);
@@ -1238,7 +1288,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                             }
                         }
 
-
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
+                                continue;
+                            }
+                        }
 
                         string[] strLastPORecDate = (dr["Last PO Rec#Date"].ToString()).Split('/');
                         int lastPORecDtYear = int.Parse(strLastPORecDate[2]);
@@ -1414,7 +1471,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                             }
                         }
 
-
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
+                                continue;
+                            }
+                        }
 
                         string[] strLastPORecDate = (dr["Last PO Rec#Date"].ToString()).Split('/');
                         int lastPORecDtYear = int.Parse(strLastPORecDate[2]);
@@ -1601,7 +1665,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                             }
                         }
 
-
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
+                                continue;
+                            }
+                        }
 
                         string[] strPOLineCreateDate = (dr["PO Line Creat#DT"].ToString()).Split('/');
                         int poCreateDtYear = int.Parse(strPOLineCreateDate[2]);
@@ -1753,7 +1824,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                             }
                         }
 
-
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
+                                continue;
+                            }
+                        }
 
                         string[] strPOLine1stRelDt = (dr["PO Line 1st Rel Dt"].ToString()).Split('/');
                         int poLine1stRelDtYear = int.Parse(strPOLine1stRelDt[2]);
@@ -1916,7 +1994,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                             }
                         }
 
-
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
+                                continue;
+                            }
+                        }
 
                         string[] strPOLineFirstRelDate = (dr["PO Line 1st Rel Dt"].ToString()).Split('/');
                         int poLineFirstRelDateYear = int.Parse(strPOLineFirstRelDate[2]);
@@ -2116,7 +2201,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                             }
                         }
 
-
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
+                                continue;
+                            }
+                        }
 
                         string[] strPOLineFirstRelDate = (dr["PO Line 1st Rel Dt"].ToString()).Split('/');
                         int poLineFirstRelYear = int.Parse(strPOLineFirstRelDate[2]);
@@ -2281,7 +2373,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                             }
                         }
 
-
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
+                                continue;
+                            }
+                        }
 
                         string[] strFirstConCreatefDate = (dr["1st Conf Creation Da"].ToString()).Split('/');
                         int poLineFirstConCreatefYear = int.Parse(strFirstConCreatefDate[2]);
@@ -2467,7 +2566,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                             }
                         }
 
-
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
+                                continue;
+                            }
+                        }
 
                         string[] strfirstConfCreateDt = (dr["1st Conf Creation Da"].ToString()).Split('/');
                         int firstConfCreateYear = int.Parse(strfirstConfCreateDt[2]);
@@ -2656,6 +2762,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                             }
                         }
 
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
+                                continue;
+                            }
+                        }
 
 
                         strPoLineFirstRelDate = (dr["PO Line 1st Rel Dt"].ToString()).Split('/');
@@ -2815,7 +2929,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                             }
                         }
 
-
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
+                                continue;
+                            }
+                        }
 
                         string[] strPR2ndLvlRelDate = (dr["PR 2° Rel# Date"].ToString()).Split('/');
                         int pr2ndLvlRelYear = int.Parse(strPR2ndLvlRelDate[2]);
@@ -2993,7 +3114,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                             }
                         }
 
-
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
+                                continue;
+                            }
+                        }
 
                         string[] strReqDate = (dr["Requisn Date"].ToString()).Split('/');
                         int reqDateYear = int.Parse(strReqDate[2]);
@@ -3133,7 +3261,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                             }
                         }
 
-
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
+                                continue;
+                            }
+                        }
 
                         string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
                         int pr2ndLvlRelDtYear = int.Parse(strPr2ndLvlRelDt[2]);
@@ -3270,7 +3405,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                             }
                         }
 
-
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
+                                continue;
+                            }
+                        }
 
                         string[] strPoCreateDt = (dr["PO Line Creat#DT"].ToString()).Split('/');
                         int poCreateDtYear = int.Parse(strPoCreateDt[2]);
@@ -3404,6 +3546,15 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                             if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
                             {
                                 // The PO Date was not in range of the filter the user applied.
+                                continue;
+                            }
+                        }
+
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
                                 continue;
                             }
                         }
@@ -3550,7 +3701,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                             }
                         }
 
-
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
+                                continue;
+                            }
+                        }
 
                         if (dr["Purch# Group"].ToString() != "UHJ")
                             continue;

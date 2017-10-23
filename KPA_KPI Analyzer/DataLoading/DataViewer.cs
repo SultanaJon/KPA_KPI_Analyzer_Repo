@@ -354,6 +354,61 @@ namespace KPA_KPI_Analyzer
 
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        private void OrderColumns()
+        {
+            try
+            {
+                dgv_dataViewerDgv.Columns["Material Group"].DisplayIndex = 0;
+                dgv_dataViewerDgv.Columns["Commodity category"].DisplayIndex = 1;
+                dgv_dataViewerDgv.Columns["Bid Package"].DisplayIndex = 2;
+                dgv_dataViewerDgv.Columns["Material"].DisplayIndex = 3;
+                dgv_dataViewerDgv.Columns["Material Description"].DisplayIndex = 4;
+                dgv_dataViewerDgv.Columns["Mfr Part Number"].DisplayIndex = 5;
+                dgv_dataViewerDgv.Columns["Purch# Group"].DisplayIndex = 6;
+                dgv_dataViewerDgv.Columns["Purchase Req#"].DisplayIndex = 7;
+                dgv_dataViewerDgv.Columns["Deletion Ind#"].DisplayIndex = 8;
+                dgv_dataViewerDgv.Columns["PR Item"].DisplayIndex = 9;
+                dgv_dataViewerDgv.Columns["Release status"].DisplayIndex = 10;
+                dgv_dataViewerDgv.Columns["Open PR Qty"].DisplayIndex = 11;
+                dgv_dataViewerDgv.Columns["Requisn Date"].DisplayIndex = 12;
+                dgv_dataViewerDgv.Columns["PR Delivery Date"].DisplayIndex = 13;
+                dgv_dataViewerDgv.Columns["PR 2° Rel# Date"].DisplayIndex = 14;
+                dgv_dataViewerDgv.Columns["WBS Element"].DisplayIndex = 15;
+                dgv_dataViewerDgv.Columns["POPurcGroup"].DisplayIndex = 16;
+                dgv_dataViewerDgv.Columns["Purchasing Doc#"].DisplayIndex = 17;
+                dgv_dataViewerDgv.Columns["Item"].DisplayIndex = 18;
+                dgv_dataViewerDgv.Columns["PO Deletion"].DisplayIndex = 19;
+                dgv_dataViewerDgv.Columns["PO Doc# Type"].DisplayIndex = 20;
+                dgv_dataViewerDgv.Columns["Escaped"].DisplayIndex = 21;
+                dgv_dataViewerDgv.Columns["Vendor"].DisplayIndex = 22;
+                dgv_dataViewerDgv.Columns["Vendor Description"].DisplayIndex = 23;
+                dgv_dataViewerDgv.Columns["PO Qty"].DisplayIndex = 24;
+                dgv_dataViewerDgv.Columns["PO Unit"].DisplayIndex = 25;
+                dgv_dataViewerDgv.Columns["PO Date"].DisplayIndex = 26;
+                dgv_dataViewerDgv.Columns["PO LIne Creat#DT"].DisplayIndex = 27;
+                dgv_dataViewerDgv.Columns["PO Line 1st Rel Dt"].DisplayIndex = 28;
+                dgv_dataViewerDgv.Columns["GR Posting Date"].DisplayIndex = 29;
+                dgv_dataViewerDgv.Columns["Delivery Document"].DisplayIndex = 30;
+                dgv_dataViewerDgv.Columns["PO Sign Date"].DisplayIndex = 31;
+                dgv_dataViewerDgv.Columns["Delivery Date"].DisplayIndex = 32;
+                dgv_dataViewerDgv.Columns["Rescheduling date"].DisplayIndex = 33;
+                dgv_dataViewerDgv.Columns["Del#Conf#Date"].DisplayIndex = 34;
+                dgv_dataViewerDgv.Columns["1st Conf Date"].DisplayIndex = 35;
+                dgv_dataViewerDgv.Columns["1st Conf Creation Da"].DisplayIndex = 36;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Column Order Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+
+
+
 
 
 
@@ -366,7 +421,11 @@ namespace KPA_KPI_Analyzer
         /// <param name="e"></param>
         private void dgv_dataViewerDgv_DataSourceChanged(object sender, EventArgs e)
         {
-            HideLoadingScreen();
+            if (dgv_dataViewerDgv.DataSource != null)
+            {
+                OrderColumns();
+            }
+                HideLoadingScreen();
         }
 
 

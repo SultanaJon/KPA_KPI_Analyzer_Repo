@@ -56,8 +56,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             IRSuppName,
             FxdSuppName,
             DsrdSuppName,
-            CommCat,
-            FinalReceiptDate
+            CommCat
         }
 
 
@@ -82,8 +81,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             "IR Supp Name",
             "Fxd Supp Name",
             "Dsrd Supp Name",
-            "Commodity category",
-            "Last PO Rec#Date"
+            "Commodity category"
         };
 
 
@@ -460,6 +458,42 @@ namespace KPA_KPI_Analyzer.FilterFeeature
                 return false;
             }
 
+            return true;
+        }
+
+
+
+        /// <summary>
+        /// Returns whether or no the PO Line Creation date is within the data row is
+        /// </summary>
+        /// <param name="dr">The data row we are usin to get the data for this specific PR or PO line.</param>
+        /// <returns>Returns a boolean indicating whether or no the PO line creation date is within the spcified filter dates</returns>
+        public static bool FinalReceiptDateInRange(string finalReceiptDate)
+        {
+            string[] strFinalRecDate = finalReceiptDate.Split('/');
+            int finRecYear = int.Parse(strFinalRecDate[2]);
+            int finRecMonth = int.Parse(strFinalRecDate[0]);
+            int finRecDay = int.Parse(strFinalRecDate[1]);
+
+            if (finRecYear == 0 && finRecMonth == 0 && finRecDay == 0)
+            {
+                // This record does not have a final receipt date
+                return false;
+            }
+            else
+            {
+                finRecYear = int.Parse(strFinalRecDate[2]);
+                finRecMonth = int.Parse(strFinalRecDate[0].TrimStart('0'));
+                finRecDay = int.Parse(strFinalRecDate[1].TrimStart('0'));
+            }
+
+            DateTime finalRecDate = new DateTime(finRecYear, finRecMonth, finRecDay);
+
+            if (finalRecDate < FilterFeeature.Filters.FinalReceiptFromDate || finalRecDate > FilterFeeature.Filters.FinalReceiptToDate)
+            {
+                // This records final receipt date is not within the filters final receipt date range.
+                return false;
+            }
             return true;
         }
     }

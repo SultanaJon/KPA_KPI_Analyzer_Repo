@@ -101,6 +101,8 @@ namespace KPA_KPI_Analyzer
             dp_PRToDate.Value = today;
             dp_POFromDate.Value = today;
             dp_POToDate.Value = today;
+            dp_finalReceiptFromDate.Value = today;
+            dp_finalReciptToDate.Value = today;
 
             ShowPage(Pages.LoadingScreen);
             ms_applicaitonMenuStrip.Enabled = false;

@@ -58,6 +58,15 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             }
                         }
 
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
+                                continue;
+                            }
+                        }
+
 
 
                         string[] reqCreationDate = (dr["Requisn Date"].ToString()).Split('/');
@@ -173,6 +182,15 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
                             {
                                 // The PO Date was not in range of the filter the user applied.
+                                continue;
+                            }
+                        }
+
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
                                 continue;
                             }
                         }
@@ -301,6 +319,15 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             }
                         }
 
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
+                                continue;
+                            }
+                        }
+
 
                         string[] strDate = (dr["PR 2° Rel# Date"].ToString()).Split('/');
                         int year = int.Parse(strDate[2]);
@@ -413,6 +440,15 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
                             {
                                 // The PO Date was not in range of the filter the user applied.
+                                continue;
+                            }
+                        }
+
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
                                 continue;
                             }
                         }
@@ -533,6 +569,15 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             }
                         }
 
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
+                                continue;
+                            }
+                        }
+
 
                         string[] strDate = (dr["PO Line Creat#DT"].ToString()).Split('/');
                         int year = int.Parse(strDate[2]);
@@ -645,6 +690,15 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
                             {
                                 // The PO Date was not in range of the filter the user applied.
+                                continue;
+                            }
+                        }
+
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
                                 continue;
                             }
                         }
@@ -886,6 +940,15 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             }
                         }
 
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
+                                continue;
+                            }
+                        }
+
 
                         string[] strDate = (dr["PO Line Creat#DT"].ToString()).Split('/');
                         int year = int.Parse(strDate[2]);
@@ -1002,6 +1065,15 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
                             {
                                 // The PO Date was not in range of the filter the user applied.
+                                continue;
+                            }
+                        }
+
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
                                 continue;
                             }
                         }
@@ -1134,6 +1206,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             }
                         }
 
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
+                                continue;
+                            }
+                        }
 
 
                         string[] strCurrConfDate = (dr["Del#Conf#Date"].ToString()).Split('/');
@@ -1270,6 +1350,15 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             }
                         }
 
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
+                                continue;
+                            }
+                        }
+
 
 
                         string[] strDate = (dr["Del#Conf#Date"].ToString()).Split('/');
@@ -1383,6 +1472,15 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
                             {
                                 // The PO Date was not in range of the filter the user applied.
+                                continue;
+                            }
+                        }
+
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
                                 continue;
                             }
                         }
@@ -1526,6 +1624,15 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             }
                         }
 
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
+                                continue;
+                            }
+                        }
+
 
                         string[] strDate = (dr["PR 2° Rel# Date"].ToString()).Split('/');
                         int year = int.Parse(strDate[2]);
@@ -1639,6 +1746,15 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
                             {
                                 // The PO Date was not in range of the filter the user applied.
+                                continue;
+                            }
+                        }
+
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
                                 continue;
                             }
                         }
@@ -1757,6 +1873,15 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
                             {
                                 // The PO Date was not in range of the filter the user applied.
+                                continue;
+                            }
+                        }
+
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
                                 continue;
                             }
                         }
@@ -1887,6 +2012,15 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             }
                         }
 
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
+                                continue;
+                            }
+                        }
+
 
 
                         string[] strCurrReqDate = (dr["PR Delivery Date"].ToString()).Split('/');
@@ -2001,6 +2135,15 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             }
                         }
 
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
+                                continue;
+                            }
+                        }
+
 
                         string[] strDate = (dr["PR 2° Rel# Date"].ToString()).Split('/');
                         int year = int.Parse(strDate[2]);
@@ -2109,6 +2252,15 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
                             {
                                 // The PO Date was not in range of the filter the user applied.
+                                continue;
+                            }
+                        }
+
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
                                 continue;
                             }
                         }
@@ -2233,6 +2385,15 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             }
                         }
 
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
+                                continue;
+                            }
+                        }
+
 
 
                         string[] reqCreationDate = (dr["Requisn Date"].ToString()).Split('/');
@@ -2340,6 +2501,15 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
                             {
                                 // The PO Date was not in range of the filter the user applied.
+                                continue;
+                            }
+                        }
+
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
                                 continue;
                             }
                         }
@@ -2452,6 +2622,15 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
                             {
                                 // The PO Date was not in range of the filter the user applied.
+                                continue;
+                            }
+                        }
+
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
                                 continue;
                             }
                         }
@@ -2577,6 +2756,15 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
                             {
                                 // The PO Date was not in range of the filter the user applied.
+                                continue;
+                            }
+                        }
+
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
                                 continue;
                             }
                         }
@@ -2736,6 +2924,15 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
                             {
                                 // The PO Date was not in range of the filter the user applied.
+                                continue;
+                            }
+                        }
+
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
                                 continue;
                             }
                         }

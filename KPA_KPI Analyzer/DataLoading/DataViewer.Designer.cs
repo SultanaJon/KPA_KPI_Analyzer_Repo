@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.topPanelDragCntl = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.pnl_menuStrip = new System.Windows.Forms.Panel();
             this.ms_topPanelMenuStrip = new System.Windows.Forms.MenuStrip();
@@ -74,6 +76,7 @@
             this.tmr_waitTimer = new System.Windows.Forms.Timer(this.components);
             this.tmr_ExportTimer = new System.Windows.Forms.Timer(this.components);
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
+            this.be_dataViewerUI = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.pnl_menuStrip.SuspendLayout();
             this.ms_topPanelMenuStrip.SuspendLayout();
             this.pnl_topPanel.SuspendLayout();
@@ -120,7 +123,7 @@
             this.helpToolStripMenuItem});
             this.ms_topPanelMenuStrip.Location = new System.Drawing.Point(3, 1);
             this.ms_topPanelMenuStrip.Name = "ms_topPanelMenuStrip";
-            this.ms_topPanelMenuStrip.Size = new System.Drawing.Size(191, 24);
+            this.ms_topPanelMenuStrip.Size = new System.Drawing.Size(99, 24);
             this.ms_topPanelMenuStrip.TabIndex = 0;
             this.ms_topPanelMenuStrip.Text = "menuStrip1";
             // 
@@ -152,7 +155,7 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
             // 
             // pnl_topPanel
@@ -487,6 +490,8 @@
             // 
             this.dgv_dataViewerDgv.AllowUserToAddRows = false;
             this.dgv_dataViewerDgv.AllowUserToDeleteRows = false;
+            this.dgv_dataViewerDgv.AllowUserToOrderColumns = true;
+            this.dgv_dataViewerDgv.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgv_dataViewerDgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_dataViewerDgv.BackgroundColor = System.Drawing.Color.Gainsboro;
@@ -494,23 +499,39 @@
             this.dgv_dataViewerDgv.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgv_dataViewerDgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgv_dataViewerDgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgv_dataViewerDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_dataViewerDgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_dataViewerDgv.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_dataViewerDgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_dataViewerDgv.DoubleBuffered = true;
             this.dgv_dataViewerDgv.EnableHeadersVisualStyles = false;
-            this.dgv_dataViewerDgv.HeaderBgColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.dgv_dataViewerDgv.HeaderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.dgv_dataViewerDgv.HeaderBgColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
+            this.dgv_dataViewerDgv.HeaderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
             this.dgv_dataViewerDgv.Location = new System.Drawing.Point(0, 0);
             this.dgv_dataViewerDgv.Name = "dgv_dataViewerDgv";
             this.dgv_dataViewerDgv.ReadOnly = true;
             this.dgv_dataViewerDgv.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_dataViewerDgv.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgv_dataViewerDgv.RowTemplate.Height = 18;
             this.dgv_dataViewerDgv.Size = new System.Drawing.Size(1200, 623);
             this.dgv_dataViewerDgv.TabIndex = 6;
@@ -591,6 +612,11 @@
             // 
             this.fileSystemWatcher1.EnableRaisingEvents = true;
             this.fileSystemWatcher1.SynchronizingObject = this;
+            // 
+            // be_dataViewerUI
+            // 
+            this.be_dataViewerUI.ElipseRadius = 5;
+            this.be_dataViewerUI.TargetControl = this;
             // 
             // DataViewer
             // 
@@ -681,5 +707,6 @@
         private System.Windows.Forms.Timer tmr_waitTimer;
         private System.Windows.Forms.Timer tmr_ExportTimer;
         private System.IO.FileSystemWatcher fileSystemWatcher1;
+        private Bunifu.Framework.UI.BunifuElipse be_dataViewerUI;
     }
 }

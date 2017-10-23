@@ -90,7 +90,14 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                         }
                     }
 
-
+                    if (Filters.FilterByFinalReceiptDate)
+                    {
+                        if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                        {
+                            // The final receipt date was not in range of the filter the user applied
+                            continue;
+                        }
+                    }
 
                     string[] reqCreationDate = (dr["Requisn Date"].ToString()).Split('/');
                     int year = int.Parse(reqCreationDate[2]);
@@ -179,7 +186,14 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                         }
                     }
 
-
+                    if (Filters.FilterByFinalReceiptDate)
+                    {
+                        if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                        {
+                            // The final receipt date was not in range of the filter the user applied
+                            continue;
+                        }
+                    }
 
                     string[] strCurrReqDate = (dr["PR Delivery Date"].ToString()).Split('/');
                     int year = int.Parse(strCurrReqDate[2]);

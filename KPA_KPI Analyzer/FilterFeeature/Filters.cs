@@ -25,6 +25,13 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
 
         /// <summary>
+        /// Boolean value indicating whether or not the user wants to filter by PO date range
+        /// </summary>
+        public static bool FilterByFinalReceiptDate { get; set; }
+
+
+
+        /// <summary>
         /// When PR Date range filter is applied this will be the PR from date.
         /// </summary>
         public static DateTime PrFromDate { get; set; }
@@ -49,6 +56,24 @@ namespace KPA_KPI_Analyzer.FilterFeeature
         /// When the PO date range filter is applied this will be the PO to date.
         /// </summary>
         public static DateTime PoToDate { get; set; }
+
+
+
+
+        /// <summary>
+        /// When the Final Receipt Date range filter is applie this will be the Final Recipt from date.
+        /// </summary>
+        public static DateTime FinalReceiptFromDate { get; set; }
+
+
+
+
+        /// <summary>
+        /// When the Final Receipt Date range filter is applie this will be the Final Recipt to date.
+        /// </summary>
+        public static DateTime FinalReceiptToDate { get; set; }
+
+
 
 
 
@@ -99,7 +124,6 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             public static List<string> fxdSuppName = new List<string>();
             public static List<string> dsrdSuppName = new List<string>();
             public static List<string> commCategory = new List<string>();
-            public static List<string> finalRecDate = new List<string>();
 
 
 
@@ -122,7 +146,6 @@ namespace KPA_KPI_Analyzer.FilterFeeature
                 fxdSuppName.Clear();
                 dsrdSuppName.Clear();
                 commCategory.Clear();
-                finalRecDate.Clear();
             }
         }
     }

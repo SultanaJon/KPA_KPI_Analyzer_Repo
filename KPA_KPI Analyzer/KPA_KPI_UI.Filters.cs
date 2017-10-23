@@ -64,6 +64,14 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         public static bool FilterByPoDate { get; set; }
 
+
+
+
+        /// <summary>
+        /// Boolean value indicating whether the program should filter by the PO date range.
+        /// </summary>
+        public static bool FilterByFinalRecDate { get; set; }
+
         #endregion
 
 
@@ -167,13 +175,6 @@ namespace KPA_KPI_Analyzer
                         ChkdListBx_CommodityCat.Items.AddRange(lst.ToArray());
                     });
                     break;
-                case 13: // Final Receipt Date
-                    ChkdListBx_FinalReceiptDate.Invoke((MethodInvoker)delegate {
-                        ChkdListBx_FinalReceiptDate.Items.Clear();
-                        lst = new List<string>(data);
-                        ChkdListBx_FinalReceiptDate.Items.AddRange(lst.ToArray());
-                    });
-                    break;
                 default:
                     break;
             }
@@ -212,10 +213,8 @@ namespace KPA_KPI_Analyzer
                     return FilterUtils.Filters.FxdSuppName;
                 case 10: // Dsrd Supp Name
                     return FilterUtils.Filters.DsrdSuppName;
-                case 11: // Commodity Cat
+                default: // Commodity Cat
                     return FilterUtils.Filters.CommCat;
-                default:
-                    return FilterUtils.Filters.FinalReceiptDate;
             }
         }
 
@@ -500,29 +499,6 @@ namespace KPA_KPI_Analyzer
                     {
                         Filters.FilterValues.commCategory.Remove(clb.Items[e.Index].ToString());
                         int position = activeCLBs.LastIndexOf(int.Parse(ChkdListBx_CommodityCat.Tag.ToString()));
-                        activeCLBs.RemoveAt(position);
-                        BuildQueryFilters();
-                        if (activeCLBs.Count == 0)
-                            FilterUtils.LoadFilters(filters);
-                        else
-                        {
-                            FilterUtils.LoadFiltersExcluded(filters, GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
-                            FilterUtils.LoadFilter(GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
-                        }
-                    }
-                    break;
-                case 12: // Final Receipt Date
-                    if (e.NewValue == CheckState.Checked)
-                    {
-                        Filters.FilterValues.finalRecDate.Add(clb.Items[e.Index].ToString());
-                        activeCLBs.Add(int.Parse(ChkdListBx_FinalReceiptDate.Tag.ToString()));
-                        BuildQueryFilters();
-                        FilterUtils.LoadFiltersExcluded(filters, FilterUtils.Filters.FinalReceiptDate);
-                    }
-                    else
-                    {
-                        Filters.FilterValues.finalRecDate.Remove(clb.Items[e.Index].ToString());
-                        int position = activeCLBs.LastIndexOf(int.Parse(ChkdListBx_FinalReceiptDate.Tag.ToString()));
                         activeCLBs.RemoveAt(position);
                         BuildQueryFilters();
                         if (activeCLBs.Count == 0)
@@ -853,32 +829,6 @@ namespace KPA_KPI_Analyzer
                         filters += ")";
                 }
             }
-
-
-            // Final Receipt Date
-            if (Filters.FilterValues.finalRecDate.Count > 0)
-            {
-                for (int i = 0; i < Filters.FilterValues.finalRecDate.Count; ++i)
-                {
-                    if (i == 0 && filters != string.Empty)
-                        filters += " AND (";
-
-                    if (i == 0 && filters == string.Empty)
-                        filters += "(";
-
-
-                    if (Filters.FilterValues.finalRecDate[i] == "[Blanks]")
-                        filters += Values.Globals.SelectedCountry + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.FinalReceiptDate] + "] IS NULL";
-                    else
-                        filters += Values.Globals.SelectedCountry + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.FinalReceiptDate] + "] = " + "'" + Filters.FilterValues.finalRecDate[i] + "'";
-
-
-                    if (i != (Filters.FilterValues.finalRecDate.Count - 1))
-                        filters += " OR ";
-                    else
-                        filters += ")";
-                }
-            }
         }
 
 
@@ -1100,22 +1050,6 @@ namespace KPA_KPI_Analyzer
                 }
                 ChkdListBx_CommodityCat.ItemCheck += ckdListBox_ItemCheck;
             }
-
-            // Final Receipt Date
-            if (Filters.FilterValues.finalRecDate.Count > 0)
-            {
-                ChkdListBx_FinalReceiptDate.ItemCheck -= ckdListBox_ItemCheck;
-                foreach (string str in Filters.FilterValues.finalRecDate)
-                {
-                    index = ChkdListBx_FinalReceiptDate.Items.IndexOf(str);
-                    if (index >= 0)
-                    {
-                        if (!ChkdListBx_FinalReceiptDate.GetItemChecked(index))
-                            ChkdListBx_FinalReceiptDate.SetItemChecked(index, true);
-                    }
-                }
-                ChkdListBx_FinalReceiptDate.ItemCheck += ckdListBox_ItemCheck;
-            }
         }
 
 
@@ -1145,6 +1079,12 @@ namespace KPA_KPI_Analyzer
                 {
                     FilterByPoDate = false;
                     chkBox_PoDateRange.Checked = false;
+                }
+
+                if (FilterByFinalRecDate)
+                {
+                    FilterByFinalRecDate = false;
+                    chkBox_FinalReceiptDate.Checked = false;
                 }
             }
 
@@ -1250,14 +1190,6 @@ namespace KPA_KPI_Analyzer
                     ChkdListBx_CommodityCat.ItemCheck += ckdListBox_ItemCheck;
                 }
 
-                // Final Receipt Date
-                foreach (int i in ChkdListBx_FinalReceiptDate.CheckedIndices)
-                {
-                    ChkdListBx_FinalReceiptDate.ItemCheck -= ckdListBox_ItemCheck;
-                    ChkdListBx_FinalReceiptDate.SetItemCheckState(i, CheckState.Unchecked);
-                    ChkdListBx_FinalReceiptDate.ItemCheck += ckdListBox_ItemCheck;
-                }
-
                 Filters.FilterValues.Clear();
                 filters = string.Empty;
                 FilterUtils.LoadFilters(filters);
@@ -1344,12 +1276,6 @@ namespace KPA_KPI_Analyzer
             {
                 Filters.FilterValues.commCategory.Add(ChkdListBx_CommodityCat.Items[i].ToString());
             }
-
-            // Final Receipt Date
-            foreach (int i in ChkdListBx_FinalReceiptDate.CheckedIndices)
-            {
-                Filters.FilterValues.finalRecDate.Add(ChkdListBx_FinalReceiptDate.Items[i].ToString());
-            }
         }
 
 
@@ -1402,6 +1328,27 @@ namespace KPA_KPI_Analyzer
             else
             {
                 Filters.FilterByPoDateRange = false;
+            }
+
+
+
+            if (FilterByFinalRecDate)
+            {
+                if (CheckDateRange(4))
+                {
+                    Filters.FilterByFinalReceiptDate = false;
+                    return;
+                }
+                else
+                {
+                    Filters.FinalReceiptFromDate = dp_POFromDate.Value;
+                    Filters.FinalReceiptToDate = dp_finalReciptToDate.Value;
+                    Filters.FilterByFinalReceiptDate = true;
+                }
+            }
+            else
+            {
+                Filters.FilterByFinalReceiptDate = false;
             }
 
 
@@ -1495,7 +1442,7 @@ namespace KPA_KPI_Analyzer
             ColumnFiltersAdded = false;
 
             // Check if the user enable the option to filter by PR or PO date range.
-            if (FilterByPrDate || FilterByPoDate)
+            if (FilterByPrDate || FilterByPoDate || FilterByFinalRecDate)
                 DateFiltersAdded = true;
              else
                 DateFiltersAdded = false;
@@ -1515,7 +1462,6 @@ namespace KPA_KPI_Analyzer
             if (Filters.FilterValues.fxdSuppName.Count > 0) ColumnFiltersAdded = true;
             if (Filters.FilterValues.dsrdSuppName.Count > 0) ColumnFiltersAdded = true;
             if (Filters.FilterValues.commCategory.Count > 0) ColumnFiltersAdded = true;
-            if (Filters.FilterValues.finalRecDate.Count > 0) ColumnFiltersAdded = true;
         }
 
 
@@ -1602,7 +1548,7 @@ namespace KPA_KPI_Analyzer
         /// <param name="e"></param>
         private void dp_DateRangeChange(object sender, EventArgs e)
         {
-            if(FilterByPrDate || FilterByPoDate)
+            if(FilterByPrDate || FilterByPoDate || FilterByFinalRecDate)
             {
                 Bunifu.Framework.UI.BunifuDatepicker dp = (Bunifu.Framework.UI.BunifuDatepicker)sender;
                 int tag = int.Parse(dp.Tag.ToString());
@@ -1626,6 +1572,8 @@ namespace KPA_KPI_Analyzer
             DateTime prTo;
             DateTime poFrom;
             DateTime poTo;
+            DateTime finalRecFrom;
+            DateTime finalRecTo;
 
             switch (datePickerTag)
             {
@@ -1652,6 +1600,21 @@ namespace KPA_KPI_Analyzer
                     {
                         btn_applyFilters.Enabled = false;
                         MessageBox.Show("The PO from date cannot greater than the PO to date!", "PO Date Range Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return true;
+                    }
+                    else
+                    {
+                        btn_applyFilters.Enabled = true;
+                    }
+                    break;
+                case 4: // final receipt from date tag number
+                case 5: // final receipt to date tag number
+                    finalRecFrom = dp_finalReceiptFromDate.Value;
+                    finalRecTo = dp_finalReciptToDate.Value;
+                    if (finalRecFrom > finalRecTo)
+                    {
+                        btn_applyFilters.Enabled = false;
+                        MessageBox.Show("The final recipt from date cannot greater than the final receipt to date!", "Final Receipt Date Range Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return true;
                     }
                     else
@@ -1722,6 +1685,33 @@ namespace KPA_KPI_Analyzer
 
 
 
+        /// <summary>
+        /// this event will toggle the final receipt date range check box and enable the
+        /// program to check for a final receipt date within the final receipt date range.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void finalRecDateRangeCheckBox_OnChange(object sender, EventArgs e)
+        {
+            if (chkBox_FinalReceiptDate.Checked)
+            {
+                // if this checkbox is checked then we will want to enable the ability to filter by final receipt date range.
+                FilterByFinalRecDate = true;
+                CheckDateRange(4);
+                UpdateFilterButtons();
+            }
+            else
+            {
+                // we want to turn off the ability to filter by final receipt date range
+                FilterByFinalRecDate = false;
+                UpdateFilterButtons();
+            }
+        }
+
+
+
+
+
 
         /// <summary>
         /// When the user clicks the label "PR Date Range: " label, this event will toggle the PR date range check box and enable the
@@ -1769,6 +1759,32 @@ namespace KPA_KPI_Analyzer
             {
                 chkBox_PoDateRange.Checked = true;
                 FilterByPoDate = true;
+                UpdateFilterButtons();
+            }
+        }
+
+
+
+
+        /// <summary>
+        /// When the user clicks the label "Final Receipt Date: " label, this event will toggle the Final Receipt Date Range check box and enable the
+        /// program to check for a Final Receipt Dates within the final receipt date range.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void finalRecDateRangeLabel_Click(object sender, EventArgs e)
+        {
+            if (chkBox_FinalReceiptDate.Checked)
+            {
+                chkBox_FinalReceiptDate.Checked = false;
+                FilterByFinalRecDate = false;
+                CheckDateRange(2);
+                UpdateFilterButtons();
+            }
+            else
+            {
+                chkBox_FinalReceiptDate.Checked = true;
+                FilterByFinalRecDate = true;
                 UpdateFilterButtons();
             }
         }

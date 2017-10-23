@@ -16,9 +16,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
         }
 
 
-
-
-
         public string Name { get { return "Cancellations"; } }
 
 

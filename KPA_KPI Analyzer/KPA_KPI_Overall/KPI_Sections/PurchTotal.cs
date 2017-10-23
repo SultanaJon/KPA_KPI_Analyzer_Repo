@@ -75,7 +75,14 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                         }
                     }
 
-
+                    if (Filters.FilterByFinalReceiptDate)
+                    {
+                        if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                        {
+                            // The final receipt date was not in range of the filter the user applied
+                            continue;
+                        }
+                    }
 
                     string[] strfirstConfCreateDt = (dr["1st Conf Creation Da"].ToString()).Split('/');
                     int firstConfCreateYear = int.Parse(strfirstConfCreateDt[2]);
