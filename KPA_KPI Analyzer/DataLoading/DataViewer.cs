@@ -1,11 +1,10 @@
-﻿using KPA_KPI_Analyzer.Values;
+﻿using DataExporter;
+using KPA_KPI_Analyzer.DataLoading;
+using KPA_KPI_Analyzer.Values;
 using System;
 using System.Data;
-using System.Windows.Forms;
-using KPA_KPI_Analyzer.DataLoading;
 using System.Threading;
-using System.Diagnostics;
-using DataExporter;
+using System.Windows.Forms;
 
 namespace KPA_KPI_Analyzer
 {

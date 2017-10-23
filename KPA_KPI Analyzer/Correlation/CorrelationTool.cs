@@ -1,12 +1,10 @@
 ﻿using LiveCharts;
+using LiveCharts.Defaults;
+using LiveCharts.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Windows.Forms;
-using LiveCharts;
-using LiveCharts.Defaults;
-using LiveCharts.Wpf;
-using System.Drawing;
 
 namespace KPA_KPI_Analyzer.Correlation
 {

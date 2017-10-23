@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using MathNet.Numerics.Statistics;
 using System.Windows.Forms;
 
 namespace KPA_KPI_Analyzer.Correlation

@@ -175,6 +175,13 @@ namespace KPA_KPI_Analyzer
                         ChkdListBx_CommodityCat.Items.AddRange(lst.ToArray());
                     });
                     break;
+                case 13: // Escaped
+                    ChkdListBx_Escaped.Invoke((MethodInvoker)delegate {
+                        ChkdListBx_Escaped.Items.Clear();
+                        lst = new List<string>(data);
+                        ChkdListBx_Escaped.Items.AddRange(lst.ToArray());
+                    });
+                    break;
                 default:
                     break;
             }
@@ -213,8 +220,10 @@ namespace KPA_KPI_Analyzer
                     return FilterUtils.Filters.FxdSuppName;
                 case 10: // Dsrd Supp Name
                     return FilterUtils.Filters.DsrdSuppName;
-                default: // Commodity Cat
+                case 11: // Commodity Cat
                     return FilterUtils.Filters.CommCat;
+                default: // Escaped
+                    return FilterUtils.Filters.Escaped;
             }
         }
 
@@ -499,6 +508,29 @@ namespace KPA_KPI_Analyzer
                     {
                         Filters.FilterValues.commCategory.Remove(clb.Items[e.Index].ToString());
                         int position = activeCLBs.LastIndexOf(int.Parse(ChkdListBx_CommodityCat.Tag.ToString()));
+                        activeCLBs.RemoveAt(position);
+                        BuildQueryFilters();
+                        if (activeCLBs.Count == 0)
+                            FilterUtils.LoadFilters(filters);
+                        else
+                        {
+                            FilterUtils.LoadFiltersExcluded(filters, GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
+                            FilterUtils.LoadFilter(GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
+                        }
+                    }
+                    break;
+                case 12: // Escaped
+                    if (e.NewValue == CheckState.Checked)
+                    {
+                        Filters.FilterValues.escaped.Add(clb.Items[e.Index].ToString());
+                        activeCLBs.Add(int.Parse(ChkdListBx_Escaped.Tag.ToString()));
+                        BuildQueryFilters();
+                        FilterUtils.LoadFiltersExcluded(filters, FilterUtils.Filters.Escaped);
+                    }
+                    else
+                    {
+                        Filters.FilterValues.escaped.Remove(clb.Items[e.Index].ToString());
+                        int position = activeCLBs.LastIndexOf(int.Parse(ChkdListBx_Escaped.Tag.ToString()));
                         activeCLBs.RemoveAt(position);
                         BuildQueryFilters();
                         if (activeCLBs.Count == 0)
@@ -829,6 +861,31 @@ namespace KPA_KPI_Analyzer
                         filters += ")";
                 }
             }
+
+            // Escaped
+            if (Filters.FilterValues.escaped.Count > 0)
+            {
+                for (int i = 0; i < Filters.FilterValues.escaped.Count; ++i)
+                {
+                    if (i == 0 && filters != string.Empty)
+                        filters += " AND (";
+
+                    if (i == 0 && filters == string.Empty)
+                        filters += "(";
+
+
+                    if (Filters.FilterValues.escaped[i] == "[Blanks]")
+                        filters += Values.Globals.SelectedCountry + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Escaped] + "] IS NULL";
+                    else
+                        filters += Values.Globals.SelectedCountry + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Escaped] + "] = " + "'" + Filters.FilterValues.escaped[i] + "'";
+
+
+                    if (i != (Filters.FilterValues.escaped.Count - 1))
+                        filters += " OR ";
+                    else
+                        filters += ")";
+                }
+            }
         }
 
 
@@ -1050,6 +1107,23 @@ namespace KPA_KPI_Analyzer
                 }
                 ChkdListBx_CommodityCat.ItemCheck += ckdListBox_ItemCheck;
             }
+
+
+            // Escaped
+            if (Filters.FilterValues.escaped.Count > 0)
+            {
+                ChkdListBx_Escaped.ItemCheck -= ckdListBox_ItemCheck;
+                foreach (string str in Filters.FilterValues.escaped)
+                {
+                    index = ChkdListBx_Escaped.Items.IndexOf(str);
+                    if (index >= 0)
+                    {
+                        if (!ChkdListBx_Escaped.GetItemChecked(index))
+                            ChkdListBx_Escaped.SetItemChecked(index, true);
+                    }
+                }
+                ChkdListBx_Escaped.ItemCheck += ckdListBox_ItemCheck;
+            }
         }
 
 
@@ -1190,6 +1264,14 @@ namespace KPA_KPI_Analyzer
                     ChkdListBx_CommodityCat.ItemCheck += ckdListBox_ItemCheck;
                 }
 
+                // Escaped
+                foreach (int i in ChkdListBx_Escaped.CheckedIndices)
+                {
+                    ChkdListBx_Escaped.ItemCheck -= ckdListBox_ItemCheck;
+                    ChkdListBx_Escaped.SetItemCheckState(i, CheckState.Unchecked);
+                    ChkdListBx_Escaped.ItemCheck += ckdListBox_ItemCheck;
+                }
+
                 Filters.FilterValues.Clear();
                 filters = string.Empty;
                 FilterUtils.LoadFilters(filters);
@@ -1275,6 +1357,12 @@ namespace KPA_KPI_Analyzer
             foreach (int i in ChkdListBx_CommodityCat.CheckedIndices)
             {
                 Filters.FilterValues.commCategory.Add(ChkdListBx_CommodityCat.Items[i].ToString());
+            }
+
+            // Escaped
+            foreach (int i in ChkdListBx_Escaped.CheckedIndices)
+            {
+                Filters.FilterValues.escaped.Add(ChkdListBx_Escaped.Items[i].ToString());
             }
         }
 
@@ -1462,6 +1550,7 @@ namespace KPA_KPI_Analyzer
             if (Filters.FilterValues.fxdSuppName.Count > 0) ColumnFiltersAdded = true;
             if (Filters.FilterValues.dsrdSuppName.Count > 0) ColumnFiltersAdded = true;
             if (Filters.FilterValues.commCategory.Count > 0) ColumnFiltersAdded = true;
+            if (Filters.FilterValues.escaped.Count > 0) ColumnFiltersAdded = true;
         }
 
 

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
 
@@ -56,7 +55,8 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             IRSuppName,
             FxdSuppName,
             DsrdSuppName,
-            CommCat
+            CommCat,
+            Escaped
         }
 
 
@@ -81,7 +81,8 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             "IR Supp Name",
             "Fxd Supp Name",
             "Dsrd Supp Name",
-            "Commodity category"
+            "Commodity category",
+            "Escaped"
         };
 
 
