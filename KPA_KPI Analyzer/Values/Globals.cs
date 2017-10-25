@@ -8,6 +8,21 @@ namespace KPA_KPI_Analyzer.Values
         /// The SelectedCountry that the user selected to load into the application.
         /// </summary>
         public static AccessInfo.MainTables SelectedCountry { get; set; }
+        public static string CountryTableName
+        {
+            get
+            {
+                if (SelectedCountry == AccessInfo.MainTables.US_PRPO)
+                {
+                    return DatabaseUtils.PRPOCommands.mainTableNames[(int)DatabaseUtils.PRPOCommands.DatabaseTables.MainTables.MX_PRPO];
+                }
+                else
+                {
+                    return DatabaseUtils.PRPOCommands.mainTableNames[(int)DatabaseUtils.PRPOCommands.DatabaseTables.MainTables.US_PRPO];
+                }
+            }
+        }
+
 
 
         /// <summary>

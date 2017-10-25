@@ -12,23 +12,10 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
     {
         private Overall data;
 
-        public NewKPIOverall(Overall _data)
-        {
-            InitializeComponent();
-            ApplyDataGridStyles();
-            data = _data;
 
-
-            Globals.CurrPerformance = "KPI";
-
-            if (Globals.SelectedCountry == DataImporter.Access.AccessInfo.MainTables.US_PRPO)
-                Globals.CurrCountry = Globals.countries[(int)Globals.Countries.UnitedStates];
-            else
-                Globals.CurrCountry = Globals.countries[(int)Globals.Countries.Mexico];
-        }
-
-
-
+        /// <summary>
+        /// 
+        /// </summary>
         public enum TempThreeHeaderNames
         {
             Section,
@@ -48,7 +35,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         }
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         public enum TempFourHeaderNames
         {
             Section,
@@ -70,7 +59,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         }
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         public enum TempFiveHeaderNames
         {
             Section,
@@ -88,6 +79,29 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TimeSpanTen,
             Total,
         }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="_data"></param>
+        public NewKPIOverall(Overall _data)
+        {
+            InitializeComponent();
+            ApplyDataGridStyles();
+            data = _data;
+
+
+            Globals.CurrPerformance = "KPI";
+
+            if (Globals.SelectedCountry == DataImporter.Access.AccessInfo.MainTables.US_PRPO)
+                Globals.CurrCountry = Globals.countries[(int)Globals.Countries.UnitedStates];
+            else
+                Globals.CurrCountry = Globals.countries[(int)Globals.Countries.Mexico];
+        }
+
+
+
 
 
 
@@ -1095,6 +1109,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                     case 0: // PR Plan Date vs Current Plan Date
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
+                            case 2: // Average
+                                return;
                             case 3: // <= -22 Days
                                 dv.DataLoader += KpiDataTableLoader.Plan.LoadPrPlanDateVsCurrentPlanDateDataTable;
                                 dv.ColumnTag = (int)TempThree.DataViews.Minus_TwentyTwo;
@@ -1140,6 +1159,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                     case 1: // (Original Plan Date - 2nd Lvl Rel Date) vs Coded Lead-time
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
+                            case 2: // Average
+                                return;
                             case 3: // <= -22 Days
                                 dv.DataLoader += KpiDataTableLoader.Plan.LoadOrigPlanDate2ndLvlRelDate_CodedLeadDataTable;
                                 dv.ColumnTag = (int)TempThree.DataViews.Minus_TwentyTwo;
@@ -1185,6 +1209,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                     case 2: // (Current Plan Date - 2nd Lvl Rel Date) vs Coded Lead-time
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
+                            case 2: // Average
+                                return;
                             case 3: // <= -22 Days
                                 dv.DataLoader += KpiDataTableLoader.Plan.LoadCurrPlanDate2ndLvlRelDate_CodedLeadDataTable;
                                 dv.ColumnTag = (int)TempThree.DataViews.Minus_TwentyTwo;
@@ -1251,6 +1280,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                     case 3:
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
+                            case 2: // Average
+                                return;
                             case 3: // <= -22 Days
                                 dv.DataLoader += KpiDataTableLoader.Purch.LoadInitialConfVsPrPlanDateDataTable;
                                 dv.ColumnTag = (int)TempThree.DataViews.Minus_TwentyTwo;
@@ -1321,6 +1355,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                     case 4: // Initial Confirmation Date vs current Confirmation Date
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
+                            case 2: // Average
+                                return;
                             case 3: // <= -22 Days
                                 dv.DataLoader += KpiDataTableLoader.FollowUp.LoadInitConfVsCurrConfDataTable;
                                 dv.ColumnTag = (int)TempThree.DataViews.Minus_TwentyTwo;
@@ -1370,6 +1409,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                     case 5: // Final Confirmation Date vs Final Plan Date
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
+                            case 2: // Average
+                                return;
                             case 3: // <= -22 Days
                                 dv.DataLoader += KpiDataTableLoader.FollowUp.LoadFinalConfDateVsFinalPlanDateDataTable;
                                 dv.ColumnTag = (int)TempThree.DataViews.Minus_TwentyTwo;
@@ -1419,6 +1463,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                     case 6: // Receipt Date vs Current Plan Date
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
+                            case 2: // Average
+                                return;
                             case 3: // <= -22 Days
                                 dv.DataLoader += KpiDataTableLoader.FollowUp.LoadRecDateVsCurrPlanDateDataTable;
                                 dv.ColumnTag = (int)TempThree.DataViews.Minus_TwentyTwo;
@@ -1464,6 +1513,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                     case 7: // Receipt Date vs Original Confirmation Date
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
+                            case 2: // Average
+                                return;
                             case 3: // <= -22 Days
                                 dv.DataLoader += KpiDataTableLoader.FollowUp.LoadRecDateVsOrigConfDateDataTable;
                                 dv.ColumnTag = (int)TempThree.DataViews.Minus_TwentyTwo;
@@ -1513,6 +1567,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                     case 8: // Receipt Date vs Current Confirmation Date
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
+                            case 2: // Average
+                                return;
                             case 3: // <= -22 Days
                                 dv.DataLoader += KpiDataTableLoader.FollowUp.LoadRecDateVsCurrConfDateDataTable;
                                 dv.ColumnTag = (int)TempThree.DataViews.Minus_TwentyTwo;
@@ -1583,6 +1642,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                     case 2: // PR 2nd Lvl Release Date vs PO Creation Date
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
+                            case 2: // Average
+                                return;
                             case 3: // <= 0 Days
                                 dv.DataLoader += KpiDataTableLoader.PurchTwo.LoadPr2ndLvlRelVsPOCreationDataTable;
                                 dv.ColumnTag = (int)TempFour.DataViews.LessThanZero;
@@ -1636,6 +1700,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                     case 3: // PO Creation Date vs PO Release Date
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
+                            case 2: // Average
+                                return;
                             case 3: // <= 0 Days
                                 dv.DataLoader += KpiDataTableLoader.PurchTwo.LoadPoCreationVsPoReleaseDataTable;
                                 dv.ColumnTag = (int)TempFour.DataViews.LessThanZero;
@@ -1689,6 +1758,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                     case 4: // PO Rleaese Date vs PO Confirmation Date
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
+                            case 2: // Average
+                                return;
                             case 3: // <= 0 Days
                                 dv.DataLoader += KpiDataTableLoader.PurchTwo.LoadPoReleaseVsPoConfDataTable;
                                 dv.ColumnTag = (int)TempFour.DataViews.LessThanZero;
@@ -1767,6 +1841,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                     case 5: // PR Release Date vs PO Release Date
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
+                            case 2: // Average
+                                return;
                             case 3: // <= 0 Days
                                 dv.DataLoader += KpiDataTableLoader.PurchSub.LoadPrRelVsPoRelDataTable;
                                 dv.ColumnTag = (int)TempFour.DataViews.LessThanZero;
@@ -1820,6 +1899,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                     case 6: // PO Creation Date vs Confirmation Entry Date
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
+                            case 2: // Average
+                                return;
                             case 3: // <= 0 Days
                                 dv.DataLoader += KpiDataTableLoader.PurchSub.LoadPoCreationVsConfEntryDateDataTable;
                                 dv.ColumnTag = (int)TempFour.DataViews.LessThanZero;
@@ -1898,6 +1982,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                     case 7: // Pr Release Date to Confirmation Entry Date
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
+                            case 2: // Average
+                                return;
                             case 3: // <= 0 Days
                                 dv.DataLoader += KpiDataTableLoader.PurchTotal.LoadPrReleaseConfEntryDataTable;
                                 dv.ColumnTag = (int)TempFour.DataViews.LessThanZero;
@@ -1976,6 +2065,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                     case 8: // PO Release vs PR Delivery Date
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
+                            case 2: // Average
+                                return;
                             case 3: // <= 0 Days
                                 dv.DataLoader += KpiDataTableLoader.PurchPlan.LoadPoRelVsPrDelDateDataTable;
                                 dv.ColumnTag = (int)TempFour.DataViews.LessThanZero;
@@ -2029,6 +2123,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                     case 9: // PR 2nd Lvl Release Date to Original Planned Delivery Date
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
+                            case 2: // Average
+                                return;
                             case 3: // <= 0 Days
                                 dv.DataLoader += KpiDataTableLoader.PurchPlan.LoadPr2ndLvlRelOrigPlanDateDataTable;
                                 dv.ColumnTag = (int)TempFour.DataViews.LessThanZero;
@@ -2102,6 +2201,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                     case 0: // PRs Created
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
+                            case 2: // total value. The user can just click total to view all the data.
+                                return;
                             case 3: // >= 0 Weeks
                                 dv.DataLoader += KpiDataTableLoader.Other.LoadPrsCreated;
                                 dv.ColumnTag = (int)TempFive.DataViews.GreaterThanZeroWeeks;
@@ -2151,6 +2255,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                     case 1: // PRs Released
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
+                            case 2: // total value. The user can just click total to view all the data.
+                                return;
                             case 3: // >= 0 Weeks
                                 dv.DataLoader += KpiDataTableLoader.Other.LoadPrsReleased;
                                 dv.ColumnTag = (int)TempFive.DataViews.GreaterThanZeroWeeks;
@@ -2200,6 +2309,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                     case 2: // Total Spend
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
+                            case 2: // total value. The user can just click total to view all the data.
+                                return;
                             case 3: // >= 0 Weeks
                                 dv.DataLoader += KpiDataTableLoader.Other.LoadTotalSpend;
                                 dv.ColumnTag = (int)TempFive.DataViews.GreaterThanZeroWeeks;
@@ -2249,6 +2363,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                     case 3: // PR Value vs PO Value
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
+                            case 2: // total value. The user can just click total to view all the data.
+                                return;
                             case 3: // >= 0 Weeks
                                 dv.DataLoader += KpiDataTableLoader.Other.LoadPrVsPoValue;
                                 dv.ColumnTag = (int)TempFive.DataViews.GreaterThanZeroWeeks;
@@ -2298,6 +2417,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                     case 4: // Hot Job PRs 
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
+                            case 2: // total value. The user can just click total to view all the data.
+                                return;
                             case 3: // >= 0 Weeks
                                 dv.DataLoader += KpiDataTableLoader.Other.LoadHotJobPrs;
                                 dv.ColumnTag = (int)TempFive.DataViews.GreaterThanZeroWeeks;

@@ -5,6 +5,7 @@ using KPA_KPI_Analyzer.DatabaseUtils;
 using KPA_KPI_Analyzer.Diagnostics;
 using KPA_KPI_Analyzer.DragDropFeatures;
 using KPA_KPI_Analyzer.FilterFeeature;
+using KPA_KPI_Analyzer.Values;
 using System;
 using System.IO;
 using System.Threading;
@@ -201,7 +202,6 @@ namespace KPA_KPI_Analyzer
                 if (AccessUtils.US_PRPO_TableExists)
                 {
                     PRPO_DB_Utils.ScheduledDataRemovals++;
-
                     usThread = new Thread(() =>
                     {
                         PRPO_DB_Utils.RemoveData(PRPOCommands.DatabaseTables.MainTables.US_PRPO);
@@ -241,6 +241,7 @@ namespace KPA_KPI_Analyzer
                 {
                     lbl_Country.Text = Values.Globals.countries[(int)Values.Globals.Countries.Mexico];
                     Values.Globals.SelectedCountry = AccessInfo.MainTables.MX_PRPO;
+                    string test = PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Plan_PRsAgingNotRel];
                     InitializeDataLoadProcess();
                 }
             }
@@ -357,14 +358,14 @@ namespace KPA_KPI_Analyzer
                     ms_applicaitonMenuStrip.Enabled = true;
                 }
 
-                if (Values.Globals.SelectedCountry == AccessInfo.MainTables.US_PRPO)
+                if (Globals.SelectedCountry == AccessInfo.MainTables.US_PRPO)
                 {
                     // Populate Dashboard with PRPO report date.
                     DateTime dt = GetLoadedUsPrpoReportDate();
                     settings.reportSettings.PrpoUsLastLoadedDate = DateTime.Now.Month.ToString() + " " + DateTime.Now.Day.ToString() + " " + DateTime.Now.Year.ToString();
                     lbl_dashboardDate.Text = dt.ToString("MMMM dd, yyyy");
                     lbl_topPanelNavPrpoDate.Text = dt.ToString("MMMM dd, yyyy");
-                    Values.Globals.PrpoGenerationDate = lbl_topPanelNavPrpoDate.Text;
+                    Globals.PrpoGenerationDate = lbl_topPanelNavPrpoDate.Text;
                 }
                 else
                 {

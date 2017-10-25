@@ -1,6 +1,7 @@
 ﻿using KPA_KPI_Analyzer.DatabaseUtils;
 using KPA_KPI_Analyzer.FilterFeeature;
 using KPA_KPI_Analyzer.Templates;
+using KPA_KPI_Analyzer.Values;
 using System;
 using System.Data;
 using System.Data.OleDb;
@@ -65,6 +66,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 dt = new DataTable();
+                Globals.SelectedCountry = DataImporter.Access.AccessInfo.MainTables.MX_PRPO;
                 cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Plan_PRsAgingNotRel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                 da = new OleDbDataAdapter(cmd);
                 da.Fill(dt);

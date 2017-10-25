@@ -226,7 +226,7 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
                 if (country == PRPOCommands.DatabaseTables.MainTables.US_PRPO)
                 {
                     OleDbCommand cmd;
-                    cmd = new OleDbCommand(PRPOCommands.removableData, DatabaseConnection);
+                    cmd = new OleDbCommand(PRPOCommands.removableUSDataQuery, DatabaseConnection);
                     cmd.ExecuteNonQuery();
                     result = true;
                     CompletedDataRemovals++;
@@ -235,15 +235,16 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
                 else
                 {
                     OleDbCommand cmd;
-                    cmd = new OleDbCommand(PRPOCommands.removableData, DatabaseConnection);
+                    cmd = new OleDbCommand(PRPOCommands.removableMXDataQuery, DatabaseConnection);
                     cmd.ExecuteNonQuery();
                     result = true;
                     CompletedDataRemovals++;
                     UpdateDataRemovalProgress();
                 }
             }
-            catch(Exception)
+            catch(Exception ex)
             {
+                MessageBox.Show(ex.Message);
                 MessageBox.Show("The data being imported seems to contain incorrect or no data. Please check to see if the data is corrupted. If the report contains corrupted data, please contact your SAP Administrator.", "Corrupted Data Detection", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 DropCreateDb();
                 DisplayDragDropPage();

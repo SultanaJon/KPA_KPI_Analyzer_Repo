@@ -877,6 +877,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                     case 0: // PRs Aging (Not Released)
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
                             case 2: // <= 0 Days
                                 dv.DataLoader += KpaDataTableLoader.Plan.LoadPRsAgingNotRelDataTable;
                                 dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
@@ -916,6 +919,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                     case 1: // Material Due
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
                             case 2: // <= 0 Days
                                 dv.DataLoader += KpaDataTableLoader.Plan.LoadMaterialDueDataTable;
                                dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
@@ -977,6 +983,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                     case 2: // PRs Aging (Released)
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
                             case 2: // <= 0 Days
                                 dv.DataLoader += KpaDataTableLoader.Purch.LoadPrsAgingReleasedDataTable;
                                 dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
@@ -1016,6 +1025,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                     case 3: // PO First Release
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
                             case 2: // <= 0 Days
                                 dv.DataLoader += KpaDataTableLoader.Purch.LoadPoFirstReleaseDataTable;
                                 dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
@@ -1055,6 +1067,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                     case 4: // PO Prev Release
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
                             case 2: // <= 0 Days
                                 dv.DataLoader += KpaDataTableLoader.Purch.LoadPoPrevReleaseDataTable;
                                 dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
@@ -1094,6 +1109,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                     case 5: // No Confirmation
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
                             case 2: // <= 0 Days
                                 dv.DataLoader += KpaDataTableLoader.Purch.LoadNoConfirmationsDataTable;
                                 dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
@@ -1154,6 +1172,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                     case 6: // PR Release to Po Release
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
                             case 2: // <= 0 Days
                                 dv.DataLoader += KpaDataTableLoader.PurchSub.LoadPrReleaseToPoReleaseDataTable;
                                 dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
@@ -1193,6 +1214,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                     case 7: // PO Creation to Confirmation Entry
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
                             case 2: // <= 0 Days
                                 dv.DataLoader += KpaDataTableLoader.PurchSub.LoadPoCreationToConfirmationEntryDataTable;
                                 dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
@@ -1252,6 +1276,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                     case 8: // PR Release to Confirmation Entry
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
                             case 2: // <= 0 Days
                                 dv.DataLoader += KpaDataTableLoader.PurchTotal.LoadPrReleaseToConfEntryDataTable;
                                 dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
@@ -1312,6 +1339,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                     case 10: // Confirmed Date vs Plan Date
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
                             case 2: // <= 0 Days
                                 dv.DataLoader += KpaDataTableLoader.FollowUp.LoadConfirmedVsPlanDateDataTable;
                                 dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
@@ -1351,6 +1381,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                     case 11: // Confirmed Date for Upcoming Deliveries
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
                             case 2: // <= 0 Days
                                 dv.DataLoader += KpaDataTableLoader.FollowUp.LoadConfirmedDateForUpcomingDeliveriesDataTable;
                                 dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
@@ -1390,6 +1423,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                     case 12: // Late to Confirmed
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
                             case 2: // <= 0 Days
                                 dv.DataLoader += KpaDataTableLoader.FollowUp.LoadLateToConfirmedDateDataTable;
                                 dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
@@ -1449,6 +1485,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                     case 17: // PRs (Not on PO) - Hot Jobs Only
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
                             case 2: // <= 0 Days
                                 dv.DataLoader += KpaDataTableLoader.HotJobs.LoadPRsNotOnPODataTable;
                                 dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
@@ -1488,6 +1527,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                     case 18: // No Confirmations - Hot Jobs Only
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
                             case 2: // <= 0 Days
                                 dv.DataLoader += KpaDataTableLoader.HotJobs.LoadNoConfirmationDataTable;
                                 dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
@@ -1527,6 +1569,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                     case 19: // Late to Confirmed - Hot Jobs Only
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
                             case 2: // <= 0 Days
                                 dv.DataLoader += KpaDataTableLoader.HotJobs.LoadLateToConfirmedDataTable;
                                 dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
@@ -1585,6 +1630,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                     case 20: // PRs Aging (Not Released)
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
                             case 2: // <= 0 Days
                                 dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
                                 break;
@@ -1617,6 +1665,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                     case 21: // PRs Aging (Released)
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
                             case 2: // <= 0 Days
                                 dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
                                 break;
@@ -1649,6 +1700,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                     case 22: // PO Creation Date to Confirmation Entry Date
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
                             case 2: // <= 0 Days
                                 dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
                                 break;
@@ -1702,6 +1756,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                     case 23: // PRs Aging (Not Released)
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
                             case 2: // <= 0 Days
                                 dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
                                 break;
@@ -1734,6 +1791,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                     case 24: // PRs Aging (Released)
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
                             case 2: // <= 0 Days
                                 dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
                                 break;
@@ -1766,6 +1826,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                     case 25: // PO Creation Date to Confirmation Entry Date
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
                             case 2: // <= 0 Days
                                 dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
                                 break;
@@ -1820,6 +1883,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                     case 0: // Current Plan Date vs Current Confirmation Date
                         switch (columnIndex)
                         {
+                            case 0: // section
+                            case 1: // category
+                                return;
                             case 2: // Average
                                 return;
                             case 3: // <-3 Weeks

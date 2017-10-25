@@ -321,13 +321,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
                     switch (ActiveCategory)
                     {
-                        case 0: // Planned Order Aging
-                            break;
-                        case 1: // PRs Aging (Not Released)
+                        case 0: // PRs Aging (Not Released)
                             dv.DataLoader += KpaDataTableLoader.Plan.LoadPRsAgingNotRelDataTable;
                             dv.ColumnTag = tag;
                             break;
-                        case 2: // Material Due
+                        case 1: // Material Due
                             dv.DataLoader += KpaDataTableLoader.Plan.LoadMaterialDueDataTable;
                             dv.ColumnTag = tag;
                             break;

@@ -38,8 +38,6 @@
             this.ms_topPanelMenuStrip = new System.Windows.Forms.MenuStrip();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnl_topPanel = new System.Windows.Forms.Panel();
             this.pnl_Minimize = new System.Windows.Forms.Panel();
             this.pnl_Maximize = new System.Windows.Forms.Panel();
@@ -119,11 +117,10 @@
             this.ms_topPanelMenuStrip.Dock = System.Windows.Forms.DockStyle.None;
             this.ms_topPanelMenuStrip.Enabled = false;
             this.ms_topPanelMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolsToolStripMenuItem,
-            this.helpToolStripMenuItem});
+            this.toolsToolStripMenuItem});
             this.ms_topPanelMenuStrip.Location = new System.Drawing.Point(3, 1);
             this.ms_topPanelMenuStrip.Name = "ms_topPanelMenuStrip";
-            this.ms_topPanelMenuStrip.Size = new System.Drawing.Size(99, 24);
+            this.ms_topPanelMenuStrip.Size = new System.Drawing.Size(55, 24);
             this.ms_topPanelMenuStrip.TabIndex = 0;
             this.ms_topPanelMenuStrip.Text = "menuStrip1";
             // 
@@ -139,24 +136,9 @@
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exportToolStripMenuItem.Text = "Export to Excel";
             this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
-            // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem});
-            this.helpToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.helpToolStripMenuItem.Text = "Help";
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.aboutToolStripMenuItem.Text = "About";
             // 
             // pnl_topPanel
             // 
@@ -697,8 +679,6 @@
         private System.Windows.Forms.MenuStrip ms_topPanelMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.Panel pnl_datagridview;
         private Bunifu.Framework.UI.BunifuCustomDataGrid dgv_dataViewerDgv;
         private System.Windows.Forms.TableLayoutPanel tblpnl_loadingScreen;

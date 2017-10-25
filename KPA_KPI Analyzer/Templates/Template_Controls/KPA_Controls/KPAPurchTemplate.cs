@@ -220,6 +220,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             dp.addLabely(lbl_xLabelFour.Text, TimeBucketFour);
             dp.addLabely(lbl_xLabelFive.Text, TimeBucketFive);
             dp.addLabely(lbl_xLabelSix.Text, TimeBucketSix);
+            dp.addLabely(lbl_xLabelSeven.Text, TimeBucketSeven);
 
             TimeBucketOne = string.Format("{0:n0}", overallData.kpa.purch.prsAgingRel.data.LessThanZero);
             TimeBucketTwo = string.Format("{0:n0}", overallData.kpa.purch.prsAgingRel.data.One_Three);
@@ -229,7 +230,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             TimeBucketSix = string.Format("{0:n0}", overallData.kpa.purch.prsAgingRel.data.TwentyTwo_TwentyEight);
             TimeBucketSeven = string.Format("{0:n0}", overallData.kpa.purch.prsAgingRel.data.TwentyNinePlus);
 
-            dp.addLabely(lbl_xLabelSeven.Text, TimeBucketSeven);
 
             canvas.addData(dp);
             dataviz.Render(canvas);
