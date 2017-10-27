@@ -234,14 +234,13 @@ namespace KPA_KPI_Analyzer
                 else if (AccessUtils.US_PRPO_TableExists)
                 {
                     lbl_Country.Text = Values.Globals.countries[(int)Values.Globals.Countries.UnitedStates];
-                    Values.Globals.SelectedCountry = AccessInfo.MainTables.US_PRPO;
+                    Globals.FocusedCountry = Globals.Countries.UnitedStates;
                     InitializeDataLoadProcess();
                 }
                 else // only the mexico file exists.
                 {
                     lbl_Country.Text = Values.Globals.countries[(int)Values.Globals.Countries.Mexico];
-                    Values.Globals.SelectedCountry = AccessInfo.MainTables.MX_PRPO;
-                    string test = PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Plan_PRsAgingNotRel];
+                    Globals.FocusedCountry = Globals.Countries.Mexico;
                     InitializeDataLoadProcess();
                 }
             }
@@ -358,7 +357,7 @@ namespace KPA_KPI_Analyzer
                     ms_applicaitonMenuStrip.Enabled = true;
                 }
 
-                if (Globals.SelectedCountry == AccessInfo.MainTables.US_PRPO)
+                if (Globals.FocusedCountry == Globals.Countries.UnitedStates)
                 {
                     // Populate Dashboard with PRPO report date.
                     DateTime dt = GetLoadedUsPrpoReportDate();
@@ -369,7 +368,7 @@ namespace KPA_KPI_Analyzer
                 }
                 else
                 {
-                    // Populate Dashboard with PRPO report da.te
+                    // Populate Dashboard with PRPO report date
                     DateTime dt = GetLoadedMxPrpoReportDate();
                     settings.reportSettings.PrpoMxLastLoadedDate = DateTime.Now.Month.ToString() + " " + DateTime.Now.Day.ToString() + " " + DateTime.Now.Year.ToString();
                     lbl_dashboardDate.Text = dt.ToString("MMMM dd, yyyy");

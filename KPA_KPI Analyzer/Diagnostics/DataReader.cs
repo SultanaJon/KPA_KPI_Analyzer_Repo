@@ -1,5 +1,4 @@
-﻿using DataImporter.Access;
-using System;
+﻿using System;
 using System.IO;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
@@ -21,7 +20,7 @@ namespace KPA_KPI_Analyzer.Diagnostics
         {
             try
             {
-                if(Values.Globals.SelectedCountry == AccessInfo.MainTables.US_PRPO)
+                if(Values.Globals.FocusedCountry == Values.Globals.Countries.UnitedStates)
                 {
                     dataJSONString = File.ReadAllText(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFiles.US_Overall]);
                 }
@@ -52,7 +51,7 @@ namespace KPA_KPI_Analyzer.Diagnostics
             try
             {
                 dataJSONString = ser.Serialize(data);
-                if(Values.Globals.SelectedCountry == AccessInfo.MainTables.US_PRPO)
+                if(Values.Globals.FocusedCountry == Values.Globals.Countries.UnitedStates)
                 {
                     File.WriteAllText(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFiles.US_Overall], dataJSONString);
                 }

@@ -65,7 +65,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 dt = new DataTable();
-                cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_PurchSub_PRReleasePORelease] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.KPA_PurchSub_PRReleasePORelease) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                 da = new OleDbDataAdapter(cmd);
                 da.Fill(dt);
 
@@ -164,7 +164,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 dt = new DataTable();
-                cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_PurchSub_POCreationCOnfEntry] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.KPA_PurchSub_POCreationCOnfEntry) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                 da = new OleDbDataAdapter(cmd);
                 da.Fill(dt);
 

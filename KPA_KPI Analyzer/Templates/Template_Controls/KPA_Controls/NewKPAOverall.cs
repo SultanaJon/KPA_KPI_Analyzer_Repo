@@ -19,7 +19,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             data = _data;
             Globals.CurrPerformance = "KPA";
 
-            if (Globals.SelectedCountry == DataImporter.Access.AccessInfo.MainTables.US_PRPO)
+            if (Values.Globals.FocusedCountry == Values.Globals.Countries.UnitedStates)
                 Globals.CurrCountry = Globals.countries[(int)Globals.Countries.UnitedStates];
             else
                 Globals.CurrCountry = Globals.countries[(int)Globals.Countries.Mexico];

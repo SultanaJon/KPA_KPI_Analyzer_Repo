@@ -1,24 +1,22 @@
-﻿using DataImporter.Access;
-
-namespace KPA_KPI_Analyzer.Values
+﻿namespace KPA_KPI_Analyzer.Values
 {
     internal static class Globals
     {
-        /// <summary>
-        /// The SelectedCountry that the user selected to load into the application.
-        /// </summary>
-        public static AccessInfo.MainTables SelectedCountry { get; set; }
+        public static Countries FocusedCountry { get; set; }
+
         public static string CountryTableName
         {
             get
             {
-                if (SelectedCountry == AccessInfo.MainTables.US_PRPO)
+                if (FocusedCountry == Countries.UnitedStates)
                 {
-                    return DatabaseUtils.PRPOCommands.mainTableNames[(int)DatabaseUtils.PRPOCommands.DatabaseTables.MainTables.MX_PRPO];
+                    //Logger.Log(AppDirectoryUtils.LogFiles.AppEvents, "United States");
+                    return DatabaseUtils.PRPOCommands.mainTableNames[(int)DatabaseUtils.PRPOCommands.DatabaseTables.MainTables.US_PRPO];
                 }
                 else
                 {
-                    return DatabaseUtils.PRPOCommands.mainTableNames[(int)DatabaseUtils.PRPOCommands.DatabaseTables.MainTables.US_PRPO];
+                    //Logger.Log(AppDirectoryUtils.LogFiles.AppEvents, "Mexico");
+                    return DatabaseUtils.PRPOCommands.mainTableNames[(int)DatabaseUtils.PRPOCommands.DatabaseTables.MainTables.MX_PRPO];
                 }
             }
         }

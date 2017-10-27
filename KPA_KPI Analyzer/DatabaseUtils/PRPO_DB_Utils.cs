@@ -270,23 +270,23 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
                 {
                     using (OleDbDataAdapter da = new OleDbDataAdapter())
                     {
-                        cmd.CommandText = PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.AllPOs] + Filters.FilterQuery;
+                        cmd.CommandText = PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.AllPOs) + Filters.FilterQuery;
                         da.SelectCommand = cmd;
                         da.Fill(prsOnPOsDt);
 
-                        cmd.CommandText = PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.POLinesRecComplete] + Filters.FilterQuery;
+                        cmd.CommandText = PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.POLinesRecComplete) + Filters.FilterQuery;
                         da.SelectCommand = cmd;
                         da.Fill(posRecCompDt);
 
-                        cmd.CommandText = PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.PR_2ndLvlRel] + Filters.FilterQuery;
+                        cmd.CommandText = PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.PR_2ndLvlRel) + Filters.FilterQuery;
                         da.SelectCommand = cmd;
                         da.Fill(pr2ndLvlRelDateDt);
 
 
                         if (Filters.FilterQuery == string.Empty)
-                            cmd.CommandText = PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.AllData];
+                            cmd.CommandText = PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.AllData);
                         else
-                            cmd.CommandText = PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.AllData] + " WHERE " + Filters.SecondaryFilterQuery;
+                            cmd.CommandText = PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.AllData) + " WHERE " + Filters.SecondaryFilterQuery;
 
                         da.SelectCommand = cmd;
                         da.Fill(AllDt);
@@ -340,7 +340,7 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
                     foreach (Values.Globals.CorrelationMatrixIndexer index in Enum.GetValues(typeof(Values.Globals.CorrelationMatrixIndexer)))
                     {
                         tempDt = new DataTable();
-                        cmd.CommandText = "SELECT " + Values.Globals.SelectedCountry + ".[" + Values.Globals.correlationQueryHeaders[(int)index] + "], " + Values.Globals.SelectedCountry + ".[" + Values.Globals.correlationDateRangeFilters[(int)Values.Globals.CorrelationDateRangeFilters.RequisitionDate] + "]," + Values.Globals.SelectedCountry + ".[" + Values.Globals.correlationDateRangeFilters[(int)Values.Globals.CorrelationDateRangeFilters.PoLineCreateDate] + "], " + Values.Globals.SelectedCountry + ".[" + Values.Globals.correlationDateRangeFilters[(int)Values.Globals.CorrelationDateRangeFilters.QtyOrdered] + "] FROM " + Values.Globals.SelectedCountry;
+                        cmd.CommandText = "SELECT " + Values.Globals.CountryTableName + ".[" + Values.Globals.correlationQueryHeaders[(int)index] + "], " + Values.Globals.CountryTableName + ".[" + Values.Globals.correlationDateRangeFilters[(int)Values.Globals.CorrelationDateRangeFilters.RequisitionDate] + "]," + Values.Globals.CountryTableName + ".[" + Values.Globals.correlationDateRangeFilters[(int)Values.Globals.CorrelationDateRangeFilters.PoLineCreateDate] + "], " + Values.Globals.CountryTableName + ".[" + Values.Globals.correlationDateRangeFilters[(int)Values.Globals.CorrelationDateRangeFilters.QtyOrdered] + "] FROM " + Values.Globals.CountryTableName;
                         da.SelectCommand = cmd;
                         da.Fill(tempDt);
                         tempDt.TableName = Values.Globals.correlationHeaders[(int)index];

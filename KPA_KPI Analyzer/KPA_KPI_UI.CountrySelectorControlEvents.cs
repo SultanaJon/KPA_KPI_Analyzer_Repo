@@ -56,7 +56,6 @@ namespace KPA_KPI_Analyzer
             {
                 ConfigureToUnitedStates();
 
-
                 if (AppDirectoryUtils.DataFileExists(AppDirectoryUtils.OverallFiles.US_Overall))
                 {
                     // the file exists
@@ -66,6 +65,10 @@ namespace KPA_KPI_Analyzer
                         if (dt == DateTime.Today.Date)
                         {
                             DataReader.LoadOverallData(ref overallData);
+                            dt = GetLoadedUsPrpoReportDate();
+                            lbl_dashboardDate.Text = dt.ToString("MMMM dd, yyyy");
+                            lbl_topPanelNavPrpoDate.Text = dt.ToString("MMMM dd, yyyy");
+                            Values.Globals.PrpoGenerationDate = lbl_topPanelNavPrpoDate.Text;
                             InitializeFilterLoadProcess();
                         }
                         else
@@ -97,6 +100,10 @@ namespace KPA_KPI_Analyzer
                         if (dt == DateTime.Today.Date)
                         {
                             DataReader.LoadOverallData(ref overallData);
+                            dt = GetLoadedMxPrpoReportDate();
+                            lbl_dashboardDate.Text = dt.ToString("MMMM dd, yyyy");
+                            lbl_topPanelNavPrpoDate.Text = dt.ToString("MMMM dd, yyyy");
+                            Values.Globals.PrpoGenerationDate = lbl_topPanelNavPrpoDate.Text;
                             InitializeFilterLoadProcess();
                         }
                         else
@@ -132,6 +139,7 @@ namespace KPA_KPI_Analyzer
         private void btn_dashboardCancel_Click(object sender, EventArgs e)
         {
             NavigationLocked = true;
+            ms_applicaitonMenuStrip.Enabled = false;
             ShowPage(Pages.DragDropDash);
         }
     }

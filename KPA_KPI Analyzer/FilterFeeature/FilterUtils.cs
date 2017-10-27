@@ -107,11 +107,11 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
             if (filters == string.Empty)
             {
-                temp = "SELECT DISTINCT " + Values.Globals.SelectedCountry + ".[" + column + "] FROM " + Values.Globals.SelectedCountry;
+                temp = "SELECT DISTINCT " + Values.Globals.CountryTableName + ".[" + column + "] FROM " + Values.Globals.CountryTableName;
             }
             else
             {
-                temp = "SELECT DISTINCT " + Values.Globals.SelectedCountry + ".[" + column + "] FROM " + Values.Globals.SelectedCountry + " WHERE " + filters;
+                temp = "SELECT DISTINCT " + Values.Globals.CountryTableName + ".[" + column + "] FROM " + Values.Globals.CountryTableName + " WHERE " + filters;
             }
             query = temp;
         }
@@ -127,11 +127,11 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
             if (filters == string.Empty)
             {
-                temp = "SELECT DISTINCT " + Values.Globals.SelectedCountry + ".[" + column + "] FROM " + Values.Globals.SelectedCountry;
+                temp = "SELECT DISTINCT " + Values.Globals.CountryTableName + ".[" + column + "] FROM " + Values.Globals.CountryTableName;
             }
             else
             {
-                temp = "SELECT DISTINCT " + Values.Globals.SelectedCountry + ".[" + column + "] FROM " + Values.Globals.SelectedCountry + " WHERE " + filters;
+                temp = "SELECT DISTINCT " + Values.Globals.CountryTableName + ".[" + column + "] FROM " + Values.Globals.CountryTableName + " WHERE " + filters;
             }
             query = temp;
         }

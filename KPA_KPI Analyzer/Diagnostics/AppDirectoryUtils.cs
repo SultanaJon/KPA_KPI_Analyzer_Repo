@@ -239,5 +239,21 @@ namespace KPA_KPI_Analyzer.Diagnostics
                 Application.Exit();
             }
         }
+
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="file"></param>
+        internal static void RemoveFile(OverallFiles file)
+        {
+            if(File.Exists(overallFiles[(int)file]))
+            {
+                File.Delete(overallFiles[(int)file]);
+            }
+        }
     }
 }

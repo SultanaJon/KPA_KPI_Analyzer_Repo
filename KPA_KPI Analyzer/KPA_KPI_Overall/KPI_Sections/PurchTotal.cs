@@ -103,12 +103,36 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                     DateTime poLineConfCreateDate = new DateTime(firstConfCreateYear, firstConfCreateMonth, firstConfCreateDay);
 
-                    string[] strPR2ndLvlRelDate = (dr["PR 2° Rel# Date"].ToString()).Split('/');
-                    int secLvlRelYear = int.Parse(strPR2ndLvlRelDate[2]);
-                    int secLvlRelMonth = int.Parse(strPR2ndLvlRelDate[0].TrimStart('0'));
-                    int secLvlRelDay = int.Parse(strPR2ndLvlRelDate[1].TrimStart('0'));
+                    // This is a tempory fix for MEXICO TAG_MEXICO_FIX
+                    // DELETE the refion below this commented code and uncomment this code.
 
-                    DateTime pr2ndLvlRelDate = new DateTime(secLvlRelYear, secLvlRelMonth, secLvlRelDay);
+                    //string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
+                    //int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
+                    //int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
+                    //int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+
+                    #region MEXICOs TEMP FIX
+
+                    string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
+                    int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
+                    int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0]);
+                    int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1]);
+
+                    if (pr2ndLvlRelYear == 0 && pr2ndLvlRelMonth == 0 && pr2ndLvlRelDay == 0)
+                    {
+                        // just ignore this bad Mexico data.
+                        continue;
+                    }
+                    else
+                    {
+                        pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
+                        pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
+                        pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+                    }
+
+                    #endregion
+
+                    DateTime pr2ndLvlRelDate = new DateTime(pr2ndLvlRelYear, pr2ndLvlRelMonth, pr2ndLvlRelDay);
                     double elapsedDays = (poLineConfCreateDate - pr2ndLvlRelDate).TotalDays;
                     totalDays += elapsedDays;
                     elapsedDays = (int)elapsedDays;

@@ -72,8 +72,8 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         public void ConfigureToUnitedStates()
         {
-            lbl_Country.Text = Values.Globals.countries[(int)Values.Globals.Countries.UnitedStates];
-            Values.Globals.SelectedCountry = AccessInfo.MainTables.US_PRPO;
+            lbl_Country.Text = Globals.countries[(int)Globals.Countries.UnitedStates];
+            Globals.FocusedCountry = Globals.Countries.UnitedStates;
         }
 
 
@@ -85,8 +85,8 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         public void ConfigureToMexico()
         {
-            lbl_Country.Text = Values.Globals.countries[(int)Values.Globals.Countries.Mexico];
-            Values.Globals.SelectedCountry = AccessInfo.MainTables.MX_PRPO;
+            lbl_Country.Text = Globals.countries[(int)Globals.Countries.Mexico];
+            Globals.FocusedCountry = Globals.Countries.Mexico;
         }
 
 
@@ -124,6 +124,9 @@ namespace KPA_KPI_Analyzer
             FilterUtils.UpdateFilter += UpdateFilters;
             PRPO_DB_Utils.RenewDataLoadTimer += RenewDataLoadTimer;
             PRPO_DB_Utils.DisplayDragDropPage += ShowDragDropPage;
+            DragDropFeatures.DragDropUtils.DisplayDragDropPage += ShowDragDropPage;
+            DragDropFeatures.DragDropUtils.ClearMxSettings += ResetMxSettings;
+            DragDropFeatures.DragDropUtils.ClearUsSettings += ResetUsSettings;
         }
 
 
@@ -218,6 +221,32 @@ namespace KPA_KPI_Analyzer
 
             DateTime dt = new DateTime(year, month, day);
             return dt;
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void ResetUsSettings()
+        {
+            settings.reportSettings.PrpoUsReportLoaded = false;
+            settings.reportSettings.PrpoUsReportFileName = string.Empty;
+            settings.reportSettings.PrpoUsLastLoadedDate = string.Empty;
+            settings.reportSettings.PrpoUsDate = string.Empty;
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void ResetMxSettings()
+        {
+            settings.reportSettings.PrpoMxReportLoaded = false;
+            settings.reportSettings.PrpoMxReportFileName = string.Empty;
+            settings.reportSettings.PrpoMxLastLoadedDate = string.Empty;
+            settings.reportSettings.PrpoMxDate = string.Empty;
         }
 
 

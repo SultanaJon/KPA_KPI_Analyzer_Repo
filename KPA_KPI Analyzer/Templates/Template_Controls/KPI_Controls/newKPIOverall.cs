@@ -94,7 +94,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
             Globals.CurrPerformance = "KPI";
 
-            if (Globals.SelectedCountry == DataImporter.Access.AccessInfo.MainTables.US_PRPO)
+            if (Globals.FocusedCountry == Globals.Countries.UnitedStates)
                 Globals.CurrCountry = Globals.countries[(int)Globals.Countries.UnitedStates];
             else
                 Globals.CurrCountry = Globals.countries[(int)Globals.Countries.Mexico];

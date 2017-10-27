@@ -635,9 +635,9 @@ namespace KPA_KPI_Analyzer
                         filters += "(";
 
                     if (Filters.FilterValues.projectNumber[i] == "[Blanks]")
-                        filters += Values.Globals.SelectedCountry + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.ProjectNum_WBS_Element] + "] IS NULL OR " + Values.Globals.SelectedCountry + ".[" + FilterFeeature.FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.ProjectNUm_ProdOrdWbs] + "] IS NULL";
+                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.ProjectNum_WBS_Element] + "] IS NULL OR " + Values.Globals.CountryTableName + ".[" + FilterFeeature.FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.ProjectNUm_ProdOrdWbs] + "] IS NULL";
                     else
-                        filters += Values.Globals.SelectedCountry + ".[" + FilterFeeature.FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.ProjectNum_WBS_Element] + "] LIKE " + "'%" + Filters.FilterValues.projectNumber[i] + "%' OR " + Values.Globals.SelectedCountry + ".[" + FilterFeeature.FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.ProjectNUm_ProdOrdWbs] + "] LIKE " + "'%" + Filters.FilterValues.projectNumber[i] + "%'";
+                        filters += Values.Globals.CountryTableName + ".[" + FilterFeeature.FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.ProjectNum_WBS_Element] + "] LIKE " + "'%" + Filters.FilterValues.projectNumber[i] + "%' OR " + Values.Globals.CountryTableName + ".[" + FilterFeeature.FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.ProjectNUm_ProdOrdWbs] + "] LIKE " + "'%" + Filters.FilterValues.projectNumber[i] + "%'";
 
                     if (i != (Filters.FilterValues.projectNumber.Count - 1))
                         filters += " OR ";
@@ -661,9 +661,9 @@ namespace KPA_KPI_Analyzer
                         filters += "(";
 
                     if (Filters.FilterValues.wbsElement[i] == "[Blanks]")
-                        filters += Values.Globals.SelectedCountry + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.WBS_Element] + "] IS NULL";
+                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.WBS_Element] + "] IS NULL";
                     else
-                        filters += Values.Globals.SelectedCountry + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.WBS_Element] + "] = " + "'" + Filters.FilterValues.wbsElement[i] + "'";
+                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.WBS_Element] + "] = " + "'" + Filters.FilterValues.wbsElement[i] + "'";
 
 
                     if (i != (Filters.FilterValues.wbsElement.Count - 1))
@@ -686,9 +686,9 @@ namespace KPA_KPI_Analyzer
                         filters += "(";
 
                     if (Filters.FilterValues.material[i] == "[Blanks]")
-                        filters += Values.Globals.SelectedCountry + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Material] + "] IS NULL";
+                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Material] + "] IS NULL";
                     else
-                        filters += Values.Globals.SelectedCountry + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Material] + "] = " + "'" + Filters.FilterValues.material[i] + "'";
+                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Material] + "] = " + "'" + Filters.FilterValues.material[i] + "'";
 
                     if (i != (Filters.FilterValues.material.Count - 1))
                         filters += " OR ";
@@ -710,9 +710,9 @@ namespace KPA_KPI_Analyzer
                         filters += "(";
 
                     if (Filters.FilterValues.materialGroup[i] == "[Blanks]")
-                        filters += Values.Globals.SelectedCountry + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.MaterialGroup] + "] IS NULL";
+                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.MaterialGroup] + "] IS NULL";
                     else
-                        filters += Values.Globals.SelectedCountry + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.MaterialGroup] + "] = " + "'" + Filters.FilterValues.materialGroup[i] + "'";
+                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.MaterialGroup] + "] = " + "'" + Filters.FilterValues.materialGroup[i] + "'";
 
                     if (i != (Filters.FilterValues.materialGroup.Count - 1))
                         filters += " OR ";
@@ -734,9 +734,9 @@ namespace KPA_KPI_Analyzer
                         filters += "(";
 
                     if (Filters.FilterValues.vendor[i] == "[Blanks]")
-                        filters += Values.Globals.SelectedCountry + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Vendor] + "] IS NULL";
+                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Vendor] + "] IS NULL";
                     else
-                        filters += Values.Globals.SelectedCountry + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Vendor] + "] = " + Filters.FilterValues.vendor[i];
+                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Vendor] + "] = " + Filters.FilterValues.vendor[i];
 
                     if (i != (Filters.FilterValues.vendor.Count - 1))
                         filters += " OR ";
@@ -758,9 +758,9 @@ namespace KPA_KPI_Analyzer
                         filters += "(";
 
                     if (Filters.FilterValues.vendorDesc[i] == "[Blanks]")
-                        filters += Values.Globals.SelectedCountry + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.VendorDescription] + "] IS NULL";
+                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.VendorDescription] + "] IS NULL";
                     else
-                        filters += Values.Globals.SelectedCountry + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.VendorDescription] + "] = " + "'" + Filters.FilterValues.vendorDesc[i] + "'";
+                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.VendorDescription] + "] = " + "'" + Filters.FilterValues.vendorDesc[i] + "'";
 
                     if (i != (Filters.FilterValues.vendorDesc.Count - 1))
                         filters += " OR ";
@@ -784,9 +784,9 @@ namespace KPA_KPI_Analyzer
 
 
                     if (Filters.FilterValues.purchGroup[i] == "[Blanks]")
-                        filters += Values.Globals.SelectedCountry + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.PurchGroup] + "] IS NULL";
+                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.PurchGroup] + "] IS NULL";
                     else
-                        filters += Values.Globals.SelectedCountry + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.PurchGroup] + "] = " + "'" + Filters.FilterValues.purchGroup[i] + "'";
+                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.PurchGroup] + "] = " + "'" + Filters.FilterValues.purchGroup[i] + "'";
 
                     if (i != (Filters.FilterValues.purchGroup.Count - 1))
                         filters += " OR ";
@@ -811,9 +811,9 @@ namespace KPA_KPI_Analyzer
 
 
                     if (Filters.FilterValues.poPurchGroup[i] == "[Blanks]")
-                        filters += Values.Globals.SelectedCountry + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.PoPurchGroup] + "] IS NULL";
+                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.PoPurchGroup] + "] IS NULL";
                     else
-                        filters += Values.Globals.SelectedCountry + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.PoPurchGroup] + "] = " + "'" + Filters.FilterValues.poPurchGroup[i] + "'";
+                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.PoPurchGroup] + "] = " + "'" + Filters.FilterValues.poPurchGroup[i] + "'";
 
                     if (i != (Filters.FilterValues.poPurchGroup.Count - 1))
                         filters += " OR ";
@@ -837,9 +837,9 @@ namespace KPA_KPI_Analyzer
 
 
                     if (Filters.FilterValues.irSuppName[i] == "[Blanks]")
-                        filters += Values.Globals.SelectedCountry + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.IRSuppName] + "] IS NULL";
+                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.IRSuppName] + "] IS NULL";
                     else
-                        filters += Values.Globals.SelectedCountry + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.IRSuppName] + "] = " + "'" + Filters.FilterValues.irSuppName[i] + "'";
+                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.IRSuppName] + "] = " + "'" + Filters.FilterValues.irSuppName[i] + "'";
 
                     if (i != (Filters.FilterValues.irSuppName.Count - 1))
                         filters += " OR ";
@@ -863,9 +863,9 @@ namespace KPA_KPI_Analyzer
 
 
                     if (Filters.FilterValues.fxdSuppName[i] == "[Blanks]")
-                        filters += Values.Globals.SelectedCountry + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.FxdSuppName] + "] IS NULL";
+                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.FxdSuppName] + "] IS NULL";
                     else
-                        filters += Values.Globals.SelectedCountry + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.FxdSuppName] + "] = " + "'" + Filters.FilterValues.fxdSuppName[i] + "'";
+                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.FxdSuppName] + "] = " + "'" + Filters.FilterValues.fxdSuppName[i] + "'";
 
                     if (i != (Filters.FilterValues.fxdSuppName.Count - 1))
                         filters += " OR ";
@@ -889,9 +889,9 @@ namespace KPA_KPI_Analyzer
 
 
                     if (Filters.FilterValues.dsrdSuppName[i] == "[Blanks]")
-                        filters += Values.Globals.SelectedCountry + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.DsrdSuppName] + "] IS NULL";
+                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.DsrdSuppName] + "] IS NULL";
                     else
-                        filters += Values.Globals.SelectedCountry + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.DsrdSuppName] + "] = " + "'" + Filters.FilterValues.dsrdSuppName[i] + "'";
+                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.DsrdSuppName] + "] = " + "'" + Filters.FilterValues.dsrdSuppName[i] + "'";
 
                     if (i != (Filters.FilterValues.dsrdSuppName.Count - 1))
                         filters += " OR ";
@@ -914,9 +914,9 @@ namespace KPA_KPI_Analyzer
 
 
                     if (Filters.FilterValues.commCategory[i] == "[Blanks]")
-                        filters += Values.Globals.SelectedCountry + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.CommCat] + "] IS NULL";
+                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.CommCat] + "] IS NULL";
                     else
-                        filters += Values.Globals.SelectedCountry + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.CommCat] + "] = " + "'" + Filters.FilterValues.commCategory[i] + "'";
+                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.CommCat] + "] = " + "'" + Filters.FilterValues.commCategory[i] + "'";
 
 
                     if (i != (Filters.FilterValues.commCategory.Count - 1))
@@ -939,9 +939,9 @@ namespace KPA_KPI_Analyzer
 
 
                     if (Filters.FilterValues.escaped[i] == "[Blanks]")
-                        filters += Values.Globals.SelectedCountry + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Escaped] + "] IS NULL";
+                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Escaped] + "] IS NULL";
                     else
-                        filters += Values.Globals.SelectedCountry + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Escaped] + "] = " + "'" + Filters.FilterValues.escaped[i] + "'";
+                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Escaped] + "] = " + "'" + Filters.FilterValues.escaped[i] + "'";
 
 
                     if (i != (Filters.FilterValues.escaped.Count - 1))
@@ -965,9 +965,9 @@ namespace KPA_KPI_Analyzer
 
 
                     if (Filters.FilterValues.poDocumentType[i] == "[Blanks]")
-                        filters += Values.Globals.SelectedCountry + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.PoDocumentType] + "] IS NULL";
+                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.PoDocumentType] + "] IS NULL";
                     else
-                        filters += Values.Globals.SelectedCountry + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.PoDocumentType] + "] = " + "'" + Filters.FilterValues.poDocumentType[i] + "'";
+                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.PoDocumentType] + "] = " + "'" + Filters.FilterValues.poDocumentType[i] + "'";
 
 
                     if (i != (Filters.FilterValues.poDocumentType.Count - 1))
@@ -990,9 +990,9 @@ namespace KPA_KPI_Analyzer
 
 
                     if (Filters.FilterValues.prodOrderMat[i] == "[Blanks]")
-                        filters += Values.Globals.SelectedCountry + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.ProdOrderMaterial] + "] IS NULL";
+                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.ProdOrderMaterial] + "] IS NULL";
                     else
-                        filters += Values.Globals.SelectedCountry + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.ProdOrderMaterial] + "] = " + "'" + Filters.FilterValues.prodOrderMat[i] + "'";
+                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.ProdOrderMaterial] + "] = " + "'" + Filters.FilterValues.prodOrderMat[i] + "'";
 
 
                     if (i != (Filters.FilterValues.prodOrderMat.Count - 1))

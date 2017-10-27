@@ -201,12 +201,36 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                         }
                     }
 
-                    string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
-                    int pr2ndLvlRelDtYear = int.Parse(strPr2ndLvlRelDt[2]);
-                    int pr2ndLvlRelDtMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
-                    int pr2ndLvlRelDtDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+                    // This is a tempory fix for MEXICO TAG_MEXICO_FIX
+                    // DELETE the refion below this commented code and uncomment this code.
 
-                    DateTime pr2ndLvlRelDt = new DateTime(pr2ndLvlRelDtYear, pr2ndLvlRelDtMonth, pr2ndLvlRelDtDay);
+                    //string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
+                    //int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
+                    //int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
+                    //int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+
+                    #region MEXICOs TEMP FIX
+
+                    string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
+                    int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
+                    int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0]);
+                    int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1]);
+
+                    if (pr2ndLvlRelYear == 0 && pr2ndLvlRelMonth == 0 && pr2ndLvlRelDay == 0)
+                    {
+                        // just ignore this bad Mexico data.
+                        continue;
+                    }
+                    else
+                    {
+                        pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
+                        pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
+                        pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+                    }
+
+                    #endregion
+
+                    DateTime pr2ndLvlRelDt = new DateTime(pr2ndLvlRelYear, pr2ndLvlRelMonth, pr2ndLvlRelDay);
 
                     totalValue += decimal.Parse(dr["PR Pos#Value"].ToString());
 
@@ -565,13 +589,11 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 totalValue = 0;
 
 
-
-
                 PRPO_DB_Utils.UpdateLoadProgress();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.StackTrace, "KPI -> Other Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "KPI -> Other Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw new ThreadInteruptedException();
             }
         }

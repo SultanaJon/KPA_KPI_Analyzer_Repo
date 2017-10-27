@@ -13,7 +13,17 @@ namespace KPA_KPI_Analyzer.DragDropFeatures
         public static string MX_PRPO_FilePath = string.Empty;
 
 
+        public delegate void DisplayDragDropPageHandler();
+        public static event DisplayDragDropPageHandler DisplayDragDropPage;
 
+
+
+        public delegate void ClearUsSettingsHandler();
+        public static event ClearUsSettingsHandler ClearUsSettings;
+
+
+        public delegate void ClearMxSettingsHandler();
+        public static event ClearMxSettingsHandler ClearMxSettings;
 
 
 
@@ -45,12 +55,29 @@ namespace KPA_KPI_Analyzer.DragDropFeatures
 
 
 
+
+        public static void StopFileProcessing()
+        {
+            US_PRPO_FilePath = string.Empty;
+            MX_PRPO_FilePath = string.Empty;
+            ExcelInfo.USUpdated = false;
+            ExcelInfo.MXUpdated = false;
+        }
+
+
+
+
+
+
         /// <summary>
         /// If the files are valid so far, this function will populate the filepath variables that will be used to import into MS Access
         /// </summary>
         /// <param name="filePaths">The file paths of the PRPO files that were dropped by the user.</param>
         private static void PopulateExcelFilePaths(string[] filePaths)
         {
+            bool usFileProcessed = false;
+            bool mxFileProcessed = false;
+           
             ExcelInfo.USUpdated = false;
             ExcelInfo.MXUpdated = false;
             US_PRPO_FilePath = string.Empty;
@@ -69,8 +96,18 @@ namespace KPA_KPI_Analyzer.DragDropFeatures
                     {
                         if (MessageBox.Show("This file looks to be outdated. Would you still like to import the data?", "Outdated Time Stamp Detection", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
-                            US_PRPO_FilePath = file;
-                            ExcelInfo.USUpdated = true;
+                            if(!usFileProcessed)
+                            {
+                                usFileProcessed = true;
+                                US_PRPO_FilePath = file;
+                                ExcelInfo.USUpdated = true;
+                            }
+                            else
+                            {
+                                MessageBox.Show("To avoid memory consumption, please do not load more than one PRPO file from the same country.");
+                                StopFileProcessing();
+                                DisplayDragDropPage();
+                            }
                         }
                     }
                     else
@@ -85,10 +122,20 @@ namespace KPA_KPI_Analyzer.DragDropFeatures
 
                     if (!file.Contains(DateTime.Now.ToString("MMddyyyy")))
                     {
-                        if (MessageBox.Show("This file does not have a time stamp of " + DateTime.Now.ToString("MMMM dd, yyyy") + ". Do you still want to import this data?", "Time Stamp Detection", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        if (MessageBox.Show("This file looks to be outdated. Would you still like to import the data?", "Outdated Time Stamp Detection", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
-                            MX_PRPO_FilePath = file;
-                            ExcelInfo.MXUpdated = true;
+                            if(!mxFileProcessed)
+                            {
+                                mxFileProcessed = true;
+                                MX_PRPO_FilePath = file;
+                                ExcelInfo.MXUpdated = true;
+                            }
+                            else
+                            {
+                                MessageBox.Show("To avoid memory consumption, please do not load more than one PRPO file from the same country.");
+                                StopFileProcessing();
+                                DisplayDragDropPage();
+                            }
                         }
                     }
                     else
@@ -101,6 +148,19 @@ namespace KPA_KPI_Analyzer.DragDropFeatures
                 {
                     // Cannot determine the SelectedCountry based on the file name.
                     MessageBox.Show("Cannot determine the country of origin based on the file(s) name.");
+                }
+
+
+                if(!usFileProcessed)
+                {
+                    Diagnostics.AppDirectoryUtils.RemoveFile(Diagnostics.AppDirectoryUtils.OverallFiles.US_Overall);
+                    ClearUsSettings();
+                }
+
+                if (!mxFileProcessed)
+                {
+                    Diagnostics.AppDirectoryUtils.RemoveFile(Diagnostics.AppDirectoryUtils.OverallFiles.MX_Overall);
+                    ClearMxSettings();
                 }
             }
         }

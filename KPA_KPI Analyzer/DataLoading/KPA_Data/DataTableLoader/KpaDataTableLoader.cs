@@ -1,5 +1,4 @@
-﻿using DataImporter.Access;
-using KPA_KPI_Analyzer.DatabaseUtils;
+﻿using KPA_KPI_Analyzer.DatabaseUtils;
 using KPA_KPI_Analyzer.FilterFeeature;
 using System;
 using System.Data;
@@ -29,7 +28,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                 {
                     dt = new DataTable();
                     prsAgingNotRelDt = new DataTable();
-                    cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Plan_PRsAgingNotRel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.KPA_Plan_PRsAgingNotRel) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
 
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
@@ -156,10 +155,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                     dt = new DataTable();
                     MaterialDueDt = new DataTable();
 
-                    if (Values.Globals.SelectedCountry == AccessInfo.MainTables.US_PRPO)
-                        cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Plan_MaterialDue] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
-                    else
-                        cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Plan_MaterialDue] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.KPA_Plan_MaterialDue) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
 
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
@@ -291,7 +287,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                 {
                     dt = new DataTable();
                     prsAgingRelDt = new DataTable();
-                    cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Purch_PRsAgingRel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.KPA_Purch_PRsAgingRel) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
 
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
@@ -414,7 +410,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                     dt = new DataTable();
                     poFirstRelDt = new DataTable();
 
-                    cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Purch_POFirstRelease] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.KPA_Purch_POFirstRelease) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
 
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
@@ -539,7 +535,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                 {
                     dt = new DataTable();
                     poPrevRelDt = new DataTable();
-                    cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Purch_POPrevRelease] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.KPA_Purch_POPrevRelease) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
 
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
@@ -664,7 +660,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                 {
                     dt = new DataTable();
                     noConfirmationsDt = new DataTable();
-                    cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Purch_NoConfirmation] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.KPA_Purch_NoConfirmation) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
 
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
@@ -795,7 +791,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                 {
                     dt = new DataTable();
                     prRelPoRelDt = new DataTable();
-                    cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_PurchSub_PRReleasePORelease] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.KPA_PurchSub_PRReleasePORelease) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
 
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
@@ -911,7 +907,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                 {
                     dt = new DataTable();
                     poCreatConfEntryDt = new DataTable();
-                    cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_PurchSub_POCreationCOnfEntry] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.KPA_PurchSub_POCreationCOnfEntry) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
 
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
@@ -1041,7 +1037,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                 {
                     dt = new DataTable();
                     prRelConfEntry = new DataTable();
-                    cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_PurchTotal_PRRelConfEntry] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.KPA_PurchTotal_PRRelConfEntry) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
 
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
@@ -1177,7 +1173,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                 {
                     dt = new DataTable();
                     confVsPlanDateDt = new DataTable();
-                    cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_FollowUp_ConfPlanDate] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.KPA_FollowUp_ConfPlanDate) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
 
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
@@ -1322,7 +1318,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                 {
                     dt = new DataTable();
                     poFirsconfDateUpDelDt = new DataTable();
-                    cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_FollowUp_ConfDateUpcomingDel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.KPA_FollowUp_ConfDateUpcomingDel) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
 
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
@@ -1447,7 +1443,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                 {
                     dt = new DataTable();
                     LateConfDateDt = new DataTable();
-                    cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_FollowUp_LateToConfirmedDate] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.KPA_FollowUp_LateToConfirmedDate) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
 
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
@@ -1595,7 +1591,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                 {
                     dt = new DataTable();
                     prsNotonPOHotJob = new DataTable();
-                    cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_HotJobs_PrsNotonPO] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.KPA_HotJobs_PrsNotonPO) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
 
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
@@ -1721,7 +1717,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                 {
                     dt = new DataTable();
                     noConfirmations = new DataTable();
-                    cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_HotJobs_NoConfirmations] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.KPA_HotJobs_NoConfirmations) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
 
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
@@ -1848,7 +1844,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                 {
                     dt = new DataTable();
                     lateToConfirmed = new DataTable();
-                    cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_HotJobs_LateToConfirmed] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.KPA_HotJobs_LateToConfirmed) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
 
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
@@ -1983,7 +1979,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                 {
                     dt = new DataTable();
                     prsAgingNotRelDt = new DataTable();
-                    cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_ExcessStock_Stock_PrsAgingNotRel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.KPA_ExcessStock_Stock_PrsAgingNotRel) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
 
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
@@ -2107,7 +2103,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                 {
                     dt = new DataTable();
                     prsAgingRelDt = new DataTable();
-                    cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_ExcessStock_Stock_PrsAgingRel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.KPA_ExcessStock_Stock_PrsAgingRel) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
 
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
@@ -2227,7 +2223,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                 {
                     dt = new DataTable();
                     poCreatConfEntryDt = new DataTable();
-                    cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_ExcessStock_Stock_PoCreateToConfEntry] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.KPA_ExcessStock_Stock_PoCreateToConfEntry) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
 
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
@@ -2356,7 +2352,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                 {
                     dt = new DataTable();
                     prsAgingNotRelDt = new DataTable();
-                    cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_ExcessStock_OpenOrders_PrsAgingNotRel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.KPA_ExcessStock_OpenOrders_PrsAgingNotRel) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
 
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
@@ -2477,7 +2473,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                 {
                     dt = new DataTable();
                     prsAgingRelDt = new DataTable();
-                    cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_ExcessStock_OpenOrders_PrsAgingRel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.KPA_ExcessStock_OpenOrders_PrsAgingRel) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
 
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
@@ -2597,7 +2593,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                 {
                     dt = new DataTable();
                     poCreatConfEntryDt = new DataTable();
-                    cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_ExcessStock_OpenOrders_PoCreateToConfEntry] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.KPA_ExcessStock_OpenOrders_PoCreateToConfEntry) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
 
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
@@ -2731,7 +2727,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                     dt = new DataTable();
                     currPlanDateVsCurrConfDateDt = new DataTable();
 
-                    cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_CurrPlanActual_CurrPlanDateCurrConfDateOpenPO] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.KPA_CurrPlanActual_CurrPlanDateCurrConfDateOpenPO) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
 
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
@@ -2899,7 +2895,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                 {
                     dt = new DataTable();
                     currPlanDateVsCurrConfDateDtHotJobs = new DataTable();
-                    cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_CurrPlanActual_CurrPlanDateCurrConfDateOpenPOHotJobs] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.KPA_CurrPlanActual_CurrPlanDateCurrConfDateOpenPOHotJobs) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
 
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);

@@ -1,7 +1,6 @@
 ﻿using KPA_KPI_Analyzer.DatabaseUtils;
 using KPA_KPI_Analyzer.FilterFeeature;
 using KPA_KPI_Analyzer.Templates;
-using KPA_KPI_Analyzer.Values;
 using System;
 using System.Data;
 using System.Data.OleDb;
@@ -55,7 +54,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
         /// <summary>
         /// Loads the data of a specific KPA
         /// </summary>
-        /// <param name="SelectedCountry"></param>
         public void LoadData()
         {
             try
@@ -65,14 +63,13 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                 // PRs Aging (Not Released)
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
                 dt = new DataTable();
-                Globals.SelectedCountry = DataImporter.Access.AccessInfo.MainTables.MX_PRPO;
-                cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Plan_PRsAgingNotRel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.KPA_Plan_PRsAgingNotRel) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                 da = new OleDbDataAdapter(cmd);
                 da.Fill(dt);
 
-
-                foreach(DataRow dr in dt.Rows)
+                foreach (DataRow dr in dt.Rows)
                 {
                     if (Filters.FilterByPrDateRange)
                     {
@@ -164,7 +161,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 dt = new DataTable();
-                cmd = new OleDbCommand(PRPOCommands.Queries[(int)PRPOCommands.DatabaseTables.TableNames.KPA_Plan_MaterialDue] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.KPA_Plan_MaterialDue) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                 da = new OleDbDataAdapter(cmd);
                 da.Fill(dt);
 
@@ -255,7 +252,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "KPA -> Plan Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.StackTrace, "KPA -> Plan Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw new ThreadInteruptedException();
             }
             finally
