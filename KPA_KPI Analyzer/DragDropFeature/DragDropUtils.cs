@@ -56,6 +56,9 @@ namespace KPA_KPI_Analyzer.DragDropFeatures
 
 
 
+        /// <summary>
+        /// If a file is incorrect this function will be called and the import process will not start.
+        /// </summary>
         public static void StopFileProcessing()
         {
             US_PRPO_FilePath = string.Empty;

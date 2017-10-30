@@ -451,9 +451,9 @@
             // 
             // pnl_activePage
             // 
+            this.pnl_activePage.Controls.Add(this.tblpnl_Filters);
             this.pnl_activePage.Controls.Add(this.pnl_loadingScreen);
             this.pnl_activePage.Controls.Add(this.pnl_CountrySelector);
-            this.pnl_activePage.Controls.Add(this.tblpnl_Filters);
             this.pnl_activePage.Controls.Add(this.pnl_NavigationPanelMax);
             this.pnl_activePage.Controls.Add(this.tblpnl_DashbaordPage);
             this.pnl_activePage.Controls.Add(this.tblpnl_DragDrop);
@@ -1389,7 +1389,7 @@
             this.bunifuCustomLabel13.Name = "bunifuCustomLabel13";
             this.bunifuCustomLabel13.Size = new System.Drawing.Size(283, 15);
             this.bunifuCustomLabel13.TabIndex = 0;
-            this.bunifuCustomLabel13.Text = "PO Purchase Group:";
+            this.bunifuCustomLabel13.Text = "PR Purchase Group:";
             // 
             // ChkdListBx_PrPurchGroup
             // 
