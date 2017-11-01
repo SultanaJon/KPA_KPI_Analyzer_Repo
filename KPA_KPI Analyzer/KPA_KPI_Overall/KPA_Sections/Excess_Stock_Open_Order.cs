@@ -103,14 +103,15 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                             continue;
                     }
 
-                    string[] strCurrReqDate = (dr["PR Delivery Date"].ToString()).Split('/');
-                    int year = int.Parse(strCurrReqDate[2]);
-                    int month = int.Parse(strCurrReqDate[0].TrimStart('0'));
-                    int day = int.Parse(strCurrReqDate[1].TrimStart('0'));
 
-                    DateTime currReqDate = new DateTime(year, month, day);
+                    string[] reqCreationDate = (dr["Requisn Date"].ToString()).Split('/');
+                    int year = int.Parse(reqCreationDate[2]);
+                    int month = int.Parse(reqCreationDate[0].TrimStart('0'));
+                    int day = int.Parse(reqCreationDate[1].TrimStart('0'));
+
+                    DateTime reqDate = new DateTime(year, month, day);
                     DateTime today = DateTime.Now.Date;
-                    double elapsedDays = (currReqDate - today).TotalDays;
+                    double elapsedDays = (today - reqDate).TotalDays;
                     totalDays += elapsedDays;
                     elapsedDays = (int)elapsedDays;
 
