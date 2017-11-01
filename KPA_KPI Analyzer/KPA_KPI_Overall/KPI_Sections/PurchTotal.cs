@@ -84,6 +84,13 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                         }
                     }
 
+                    if (AdvancedFilters.AdvanceFiltersChanged())
+                    {
+                        // We have some advanced filters that the user would like to exclude.
+                        if (!FilterUtils.CheckAdvancedFilters(dr))
+                            continue;
+                    }
+
                     string[] strfirstConfCreateDt = (dr["1st Conf Creation Da"].ToString()).Split('/');
                     int firstConfCreateYear = int.Parse(strfirstConfCreateDt[2]);
                     int firstConfCreateMonth = int.Parse(strfirstConfCreateDt[0]);

@@ -516,6 +516,54 @@ namespace KPA_KPI_Analyzer
 
 
 
+        /// <summary>
+        /// Once the user wants to export the data contained within the datagridview, this function
+        /// will order the data to the specified column order.
+        /// </summary>
+        private void OrderDataTable()
+        {
+            DataViewerUtils.Data.Columns["Material Group"].SetOrdinal(0);
+            DataViewerUtils.Data.Columns["Commodity category"].SetOrdinal(1);
+            DataViewerUtils.Data.Columns["Bid Package"].SetOrdinal(2);
+            DataViewerUtils.Data.Columns["Material"].SetOrdinal(3);
+            DataViewerUtils.Data.Columns["Material Description"].SetOrdinal(4);
+            DataViewerUtils.Data.Columns["Mfr Part Number"].SetOrdinal(5);
+            DataViewerUtils.Data.Columns["Purch# Group"].SetOrdinal(6);
+            DataViewerUtils.Data.Columns["Purchase Req#"].SetOrdinal(7);
+            DataViewerUtils.Data.Columns["Deletion Ind#"].SetOrdinal(8);
+            DataViewerUtils.Data.Columns["PR Item"].SetOrdinal(9);
+            DataViewerUtils.Data.Columns["Release status"].SetOrdinal(10);
+            DataViewerUtils.Data.Columns["Open PR Qty"].SetOrdinal(11);
+            DataViewerUtils.Data.Columns["Requisn Date"].SetOrdinal(12);
+            DataViewerUtils.Data.Columns["PR Delivery Date"].SetOrdinal(13);
+            DataViewerUtils.Data.Columns["PR 2° Rel# Date"].SetOrdinal(14);
+            DataViewerUtils.Data.Columns["WBS Element"].SetOrdinal(15);
+            DataViewerUtils.Data.Columns["POPurcGroup"].SetOrdinal(16);
+            DataViewerUtils.Data.Columns["Purchasing Doc#"].SetOrdinal(17);
+            DataViewerUtils.Data.Columns["Item"].SetOrdinal(18);
+            DataViewerUtils.Data.Columns["PO Deletion"].SetOrdinal(19);
+            DataViewerUtils.Data.Columns["PO Doc# Type"].SetOrdinal(20);
+            DataViewerUtils.Data.Columns["Escaped"].SetOrdinal(21);
+            DataViewerUtils.Data.Columns["Vendor"].SetOrdinal(22);
+            DataViewerUtils.Data.Columns["Vendor Description"].SetOrdinal(23);
+            DataViewerUtils.Data.Columns["PO Qty"].SetOrdinal(24);
+            DataViewerUtils.Data.Columns["PO Unit"].SetOrdinal(25);
+            DataViewerUtils.Data.Columns["PO Date"].SetOrdinal(26);
+            DataViewerUtils.Data.Columns["PO LIne Creat#DT"].SetOrdinal(27);
+            DataViewerUtils.Data.Columns["PO Line 1st Rel Dt"].SetOrdinal(28);
+            DataViewerUtils.Data.Columns["GR Posting Date"].SetOrdinal(29);
+            DataViewerUtils.Data.Columns["Delivery Document"].SetOrdinal(30);
+            DataViewerUtils.Data.Columns["PO Sign Date"].SetOrdinal(31);
+            DataViewerUtils.Data.Columns["Delivery Date"].SetOrdinal(32);
+            DataViewerUtils.Data.Columns["Rescheduling date"].SetOrdinal(33);
+            DataViewerUtils.Data.Columns["Del#Conf#Date"].SetOrdinal(34);
+            DataViewerUtils.Data.Columns["1st Conf Date"].SetOrdinal(35);
+            DataViewerUtils.Data.Columns["1st Conf Creation Da"].SetOrdinal(36);
+        }
+
+
+
+
 
 
         /// <summary>
@@ -526,6 +574,7 @@ namespace KPA_KPI_Analyzer
             try
             {
                 ExportUtils.Data = (DataTable)dgv_dataViewerDgv.DataSource;
+                OrderDataTable();
                 ExportUtils.DataLoaded = true;
             }
             catch (Exception ex)

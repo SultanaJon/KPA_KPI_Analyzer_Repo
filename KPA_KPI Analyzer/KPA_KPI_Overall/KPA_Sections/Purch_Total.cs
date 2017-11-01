@@ -91,7 +91,12 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                     }
 
 
-
+                    if (AdvancedFilters.AdvanceFiltersChanged())
+                    {
+                        // We have some advanced filters that the user would like to exclude.
+                        if (!FilterUtils.CheckAdvancedFilters(dr))
+                            continue;
+                    }
 
 
                     string[] strDate = (dr["PR 2° Rel# Date"].ToString()).Split('/');

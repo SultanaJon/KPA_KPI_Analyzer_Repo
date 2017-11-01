@@ -1,5 +1,7 @@
-﻿using System;
+﻿using KPA_KPI_Analyzer.Values;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
 
@@ -499,6 +501,97 @@ namespace KPA_KPI_Analyzer.FilterFeeature
                 // This records final receipt date is not within the filters final receipt date range.
                 return false;
             }
+            return true;
+        }
+
+
+
+
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dr"></param>
+        public static bool CheckAdvancedFilters(DataRow dr)
+        {
+            if(!AdvancedFilters.FilterByServicePrPo)
+            {
+                if(int.Parse(dr["Item Category"].ToString()) == Globals.ServicePOCategory)
+                {
+                    return false;
+                }
+            }
+
+
+            //if(!AdvancedFilters.FilterBySteelPrPo)
+            //{
+            //    string material = dr["Material"].ToString();
+            //    if(material.Contains("TAL-ST"))
+            //    {
+            //        return false;
+            //    }
+            //}
+
+
+            //if(!AdvancedFilters.FilterByPouPrPo)
+            //{
+            //    string docType = dr["Document Type"].ToString();
+            //    if (docType.Contains("POU"))
+            //    {
+            //        return false;
+            //    }
+            //}
+
+
+            ////if(!AdvancedFilters.FilterByReturnPo)
+            ////{
+            ////    if ()
+            ////    {
+
+            ////    }
+            ////}
+
+
+            //if(!AdvancedFilters.FilterByIntercompPo)
+            //{
+            //    string vendorDesc = dr["Vendor Description"].ToString();
+            //    if (vendorDesc.Contains("COMAU"))
+            //    {
+            //        return false;
+            //    }
+            //}
+
+
+            //if(!AdvancedFilters.FilterByCodifiedMatNonSubcont)
+            //{
+            //    if (dr["Material"].ToString() != string.Empty)
+            //    {
+            //        return false;
+            //    }
+            //}
+
+
+            //if(!AdvancedFilters.FilterByCodifiedMatSubcont)
+            //{
+            //    if (dr["Prd Ord Mat"].ToString() != string.Empty)
+            //    {
+            //        return false;
+            //    }
+            //}
+
+
+            ////if(AdvancedFilters.FilterByManualPr)
+            ////{
+            ////    if ()
+            ////    {
+
+            ////    }
+            ////}
+
+
             return true;
         }
     }

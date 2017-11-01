@@ -89,6 +89,14 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                         }
                     }
 
+                    if (AdvancedFilters.AdvanceFiltersChanged())
+                    {
+                        // We have some advanced filters that the user would like to exclude.
+                        if (!FilterUtils.CheckAdvancedFilters(dr))
+                            continue;
+                    }
+
+
                     strPoLineFirstRelDate = (dr["PO Line 1st Rel Dt"].ToString()).Split('/');
                     int poLineFirstRelYear = int.Parse(strPoLineFirstRelDate[2]);
                     int poLineFirstRelMonth = int.Parse(strPoLineFirstRelDate[0]);
@@ -214,6 +222,12 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                         }
                     }
 
+                    if (AdvancedFilters.AdvanceFiltersChanged())
+                    {
+                        // We have some advanced filters that the user would like to exclude.
+                        if (!FilterUtils.CheckAdvancedFilters(dr))
+                            continue;
+                    }
 
                     string[] strPR2ndLvlRelDate = (dr["PR 2° Rel# Date"].ToString()).Split('/');
                     int pr2ndLvlRelYear = int.Parse(strPR2ndLvlRelDate[2]);

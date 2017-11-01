@@ -104,6 +104,13 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                         }
                     }
 
+                    if (AdvancedFilters.AdvanceFiltersChanged())
+                    {
+                        // We have some advanced filters that the user would like to exclude.
+                        if (!FilterUtils.CheckAdvancedFilters(dr))
+                            continue;
+                    }
+
                     string[] strReqDate = (dr["Requisn Date"].ToString()).Split('/');
                     int reqDateYear = int.Parse(strReqDate[2]);
                     int reqDateMonth = int.Parse(strReqDate[0].TrimStart('0'));
@@ -200,6 +207,15 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                             continue;
                         }
                     }
+
+
+                    if (AdvancedFilters.AdvanceFiltersChanged())
+                    {
+                        // We have some advanced filters that the user would like to exclude.
+                        if (!FilterUtils.CheckAdvancedFilters(dr))
+                            continue;
+                    }
+
 
                     // This is a tempory fix for MEXICO TAG_MEXICO_FIX
                     // DELETE the refion below this commented code and uncomment this code.
@@ -324,6 +340,13 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                         }
                     }
 
+                    if (AdvancedFilters.AdvanceFiltersChanged())
+                    {
+                        // We have some advanced filters that the user would like to exclude.
+                        if (!FilterUtils.CheckAdvancedFilters(dr))
+                            continue;
+                    }
+
                     string[] strPoCreateDt = (dr["PO Line Creat#DT"].ToString()).Split('/');
                     int poCreateDtYear = int.Parse(strPoCreateDt[2]);
                     int poCreateDtMonth = int.Parse(strPoCreateDt[0].TrimStart('0'));
@@ -421,6 +444,13 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                             // The final receipt date was not in range of the filter the user applied
                             continue;
                         }
+                    }
+
+                    if (AdvancedFilters.AdvanceFiltersChanged())
+                    {
+                        // We have some advanced filters that the user would like to exclude.
+                        if (!FilterUtils.CheckAdvancedFilters(dr))
+                            continue;
                     }
 
                     string[] strPoCreateDt = (dr["PO Line Creat#DT"].ToString()).Split('/');
@@ -523,6 +553,14 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                             continue;
                         }
                     }
+
+                    if (AdvancedFilters.AdvanceFiltersChanged())
+                    {
+                        // We have some advanced filters that the user would like to exclude.
+                        if (!FilterUtils.CheckAdvancedFilters(dr))
+                            continue;
+                    }
+
 
                     if (dr["Purch# Group"].ToString() != "UHJ")
                         continue;

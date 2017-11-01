@@ -101,6 +101,13 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                         }
                     }
 
+                    if (AdvancedFilters.AdvanceFiltersChanged())
+                    {
+                        // We have some advanced filters that the user would like to exclude.
+                        if (!FilterUtils.CheckAdvancedFilters(dr))
+                            continue;
+                    }
+
                     string[] strFirstConfDate = (dr["1st Conf Date"].ToString()).Split('/');
                     int firstConfYear = int.Parse(strFirstConfDate[2]);
                     int firstConfMonth = int.Parse(strFirstConfDate[0]);
@@ -244,6 +251,13 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                         }
                     }
 
+                    if (AdvancedFilters.AdvanceFiltersChanged())
+                    {
+                        // We have some advanced filters that the user would like to exclude.
+                        if (!FilterUtils.CheckAdvancedFilters(dr))
+                            continue;
+                    }
+
                     string[] strDelConfDate = (dr["Del#Conf#Date"].ToString()).Split('/');
                     int delConfYear = int.Parse(strDelConfDate[2]);
                     int delConfMonth = int.Parse(strDelConfDate[0]);
@@ -385,6 +399,15 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                         }
                     }
 
+
+                    if (AdvancedFilters.AdvanceFiltersChanged())
+                    {
+                        // We have some advanced filters that the user would like to exclude.
+                        if (!FilterUtils.CheckAdvancedFilters(dr))
+                            continue;
+                    }
+
+
                     string[] strLastPORecDate = (dr["Last PO Rec#Date"].ToString()).Split('/');
                     int lastPORecDtYear = int.Parse(strLastPORecDate[2]);
                     int lastPORecDtMonth = int.Parse(strLastPORecDate[0]);
@@ -514,6 +537,13 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                             // The final receipt date was not in range of the filter the user applied
                             continue;
                         }
+                    }
+
+                    if (AdvancedFilters.AdvanceFiltersChanged())
+                    {
+                        // We have some advanced filters that the user would like to exclude.
+                        if (!FilterUtils.CheckAdvancedFilters(dr))
+                            continue;
                     }
 
                     string[] strLastPORecDate = (dr["Last PO Rec#Date"].ToString()).Split('/');
@@ -656,6 +686,13 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                             // The final receipt date was not in range of the filter the user applied
                             continue;
                         }
+                    }
+
+                    if (AdvancedFilters.AdvanceFiltersChanged())
+                    {
+                        // We have some advanced filters that the user would like to exclude.
+                        if (!FilterUtils.CheckAdvancedFilters(dr))
+                            continue;
                     }
 
                     string[] strLastPORecDate = (dr["Last PO Rec#Date"].ToString()).Split('/');

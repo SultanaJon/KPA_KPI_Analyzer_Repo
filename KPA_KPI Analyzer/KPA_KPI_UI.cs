@@ -143,7 +143,7 @@ namespace KPA_KPI_Analyzer
         {
             mainNavActiveBtn = btn_Dashboard; // set the active button as the first button (Dashboard)
             InitializeProgramEvents();
-
+            GetCheckBoxControls();
             InitializeProgram();
         }
 

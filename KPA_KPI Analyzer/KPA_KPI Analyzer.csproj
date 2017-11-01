@@ -123,6 +123,7 @@
     <Compile Include="DataLoading\KPA_Data\DataTableLoader\KpaDataTableLoader.cs" />
     <Compile Include="DataLoading\KPI_Data\DataTableLoader\KpiDataTableLoader.cs" />
     <Compile Include="Diagnostics\DataReader.cs" />
+    <Compile Include="FilterFeeature\AdvancedFilters.cs" />
     <Compile Include="Templates\Template_Controls\KPA_Controls\KPAExcessStockOpenOrders.cs">
       <SubType>UserControl</SubType>
     </Compile>

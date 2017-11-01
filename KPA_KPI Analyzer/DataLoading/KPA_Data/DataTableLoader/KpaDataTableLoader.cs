@@ -3,6 +3,7 @@ using KPA_KPI_Analyzer.FilterFeeature;
 using System;
 using System.Data;
 using System.Data.OleDb;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
@@ -64,6 +65,13 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                                 // The final receipt date was not in range of the filter the user applied
                                 continue;
                             }
+                        }
+
+                        if (AdvancedFilters.AdvanceFiltersChanged())
+                        {
+                            // We have some advanced filters that the user would like to exclude.
+                            if (!FilterUtils.CheckAdvancedFilters(dr))
+                                continue;
                         }
 
 
@@ -191,6 +199,12 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             }
                         }
 
+                        if (AdvancedFilters.AdvanceFiltersChanged())
+                        {
+                            // We have some advanced filters that the user would like to exclude.
+                            if (!FilterUtils.CheckAdvancedFilters(dr))
+                                continue;
+                        }
 
                         string[] strCurrReqDate = (dr["PR Delivery Date"].ToString()).Split('/');
                         int year = int.Parse(strCurrReqDate[2]);
@@ -324,6 +338,13 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             }
                         }
 
+                        if (AdvancedFilters.AdvanceFiltersChanged())
+                        {
+                            // We have some advanced filters that the user would like to exclude.
+                            if (!FilterUtils.CheckAdvancedFilters(dr))
+                                continue;
+                        }
+
 
                         string[] strDate = (dr["PR 2° Rel# Date"].ToString()).Split('/');
                         int year = int.Parse(strDate[2]);
@@ -449,6 +470,12 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             }
                         }
 
+                        if (AdvancedFilters.AdvanceFiltersChanged())
+                        {
+                            // We have some advanced filters that the user would like to exclude.
+                            if (!FilterUtils.CheckAdvancedFilters(dr))
+                                continue;
+                        }
 
                         string[] strDate = (dr["PO Line Creat#DT"].ToString()).Split('/');
                         int year = int.Parse(strDate[2]);
@@ -572,6 +599,13 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                                 // The final receipt date was not in range of the filter the user applied
                                 continue;
                             }
+                        }
+
+                        if (AdvancedFilters.AdvanceFiltersChanged())
+                        {
+                            // We have some advanced filters that the user would like to exclude.
+                            if (!FilterUtils.CheckAdvancedFilters(dr))
+                                continue;
                         }
 
 
@@ -699,7 +733,12 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             }
                         }
 
-
+                        if (AdvancedFilters.AdvanceFiltersChanged())
+                        {
+                            // We have some advanced filters that the user would like to exclude.
+                            if (!FilterUtils.CheckAdvancedFilters(dr))
+                                continue;
+                        }
 
                         string[] strDate = (dr["PO Line 1st Rel Dt"].ToString()).Split('/');
                         int year = int.Parse(strDate[2]);
@@ -818,6 +857,22 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                                 // The PO Date was not in range of the filter the user applied.
                                 continue;
                             }
+                        }
+
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
+                                continue;
+                            }
+                        }
+
+                        if (AdvancedFilters.AdvanceFiltersChanged())
+                        {
+                            // We have some advanced filters that the user would like to exclude.
+                            if (!FilterUtils.CheckAdvancedFilters(dr))
+                                continue;
                         }
 
 
@@ -945,6 +1000,12 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             }
                         }
 
+                        if (AdvancedFilters.AdvanceFiltersChanged())
+                        {
+                            // We have some advanced filters that the user would like to exclude.
+                            if (!FilterUtils.CheckAdvancedFilters(dr))
+                                continue;
+                        }
 
                         string[] strDate = (dr["PO Line Creat#DT"].ToString()).Split('/');
                         int year = int.Parse(strDate[2]);
@@ -1072,6 +1133,13 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                                 // The final receipt date was not in range of the filter the user applied
                                 continue;
                             }
+                        }
+
+                        if (AdvancedFilters.AdvanceFiltersChanged())
+                        {
+                            // We have some advanced filters that the user would like to exclude.
+                            if (!FilterUtils.CheckAdvancedFilters(dr))
+                                continue;
                         }
 
 
@@ -1209,6 +1277,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                                 // The final receipt date was not in range of the filter the user applied
                                 continue;
                             }
+                        }
+
+
+                        if (AdvancedFilters.AdvanceFiltersChanged())
+                        {
+                            // We have some advanced filters that the user would like to exclude.
+                            if (!FilterUtils.CheckAdvancedFilters(dr))
+                                continue;
                         }
 
 
@@ -1355,7 +1431,12 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             }
                         }
 
-
+                        if (AdvancedFilters.AdvanceFiltersChanged())
+                        {
+                            // We have some advanced filters that the user would like to exclude.
+                            if (!FilterUtils.CheckAdvancedFilters(dr))
+                                continue;
+                        }
 
                         string[] strDate = (dr["Del#Conf#Date"].ToString()).Split('/');
                         int year = int.Parse(strDate[2]);
@@ -1481,6 +1562,12 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             }
                         }
 
+                        if (AdvancedFilters.AdvanceFiltersChanged())
+                        {
+                            // We have some advanced filters that the user would like to exclude.
+                            if (!FilterUtils.CheckAdvancedFilters(dr))
+                                continue;
+                        }
 
 
                         string[] strDate = (dr["Del#Conf#Date"].ToString()).Split('/');
@@ -1630,6 +1717,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                         }
 
 
+                        if (AdvancedFilters.AdvanceFiltersChanged())
+                        {
+                            // We have some advanced filters that the user would like to exclude.
+                            if (!FilterUtils.CheckAdvancedFilters(dr))
+                                continue;
+                        }
+
+
                         string[] strDate = (dr["PR 2° Rel# Date"].ToString()).Split('/');
                         int year = int.Parse(strDate[2]);
                         int month = int.Parse(strDate[0].TrimStart('0'));
@@ -1755,7 +1850,12 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             }
                         }
 
-
+                        if (AdvancedFilters.AdvanceFiltersChanged())
+                        {
+                            // We have some advanced filters that the user would like to exclude.
+                            if (!FilterUtils.CheckAdvancedFilters(dr))
+                                continue;
+                        }
 
                         string[] strDate = (dr["PO Line Creat#DT"].ToString()).Split('/');
                         int year = int.Parse(strDate[2]);
@@ -1882,7 +1982,12 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             }
                         }
 
-
+                        if (AdvancedFilters.AdvanceFiltersChanged())
+                        {
+                            // We have some advanced filters that the user would like to exclude.
+                            if (!FilterUtils.CheckAdvancedFilters(dr))
+                                continue;
+                        }
 
                         string[] strDate = (dr["Del#Conf#Date"].ToString()).Split('/');
                         int year = int.Parse(strDate[2]);
@@ -2017,7 +2122,12 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             }
                         }
 
-
+                        if (AdvancedFilters.AdvanceFiltersChanged())
+                        {
+                            // We have some advanced filters that the user would like to exclude.
+                            if (!FilterUtils.CheckAdvancedFilters(dr))
+                                continue;
+                        }
 
                         string[] strCurrReqDate = (dr["PR Delivery Date"].ToString()).Split('/');
                         int year = int.Parse(strCurrReqDate[2]);
@@ -2140,6 +2250,12 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             }
                         }
 
+                        if (AdvancedFilters.AdvanceFiltersChanged())
+                        {
+                            // We have some advanced filters that the user would like to exclude.
+                            if (!FilterUtils.CheckAdvancedFilters(dr))
+                                continue;
+                        }
 
                         string[] strDate = (dr["PR 2° Rel# Date"].ToString()).Split('/');
                         int year = int.Parse(strDate[2]);
@@ -2261,6 +2377,12 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             }
                         }
 
+                        if (AdvancedFilters.AdvanceFiltersChanged())
+                        {
+                            // We have some advanced filters that the user would like to exclude.
+                            if (!FilterUtils.CheckAdvancedFilters(dr))
+                                continue;
+                        }
 
                         string[] strDate = (dr["PO Line Creat#DT"].ToString()).Split('/');
                         int year = int.Parse(strDate[2]);
@@ -2390,7 +2512,12 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             }
                         }
 
-
+                        if (AdvancedFilters.AdvanceFiltersChanged())
+                        {
+                            // We have some advanced filters that the user would like to exclude.
+                            if (!FilterUtils.CheckAdvancedFilters(dr))
+                                continue;
+                        }
 
                         string[] reqCreationDate = (dr["Requisn Date"].ToString()).Split('/');
                         int year = int.Parse(reqCreationDate[2]);
@@ -2510,6 +2637,12 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             }
                         }
 
+                        if (AdvancedFilters.AdvanceFiltersChanged())
+                        {
+                            // We have some advanced filters that the user would like to exclude.
+                            if (!FilterUtils.CheckAdvancedFilters(dr))
+                                continue;
+                        }
 
                         string[] strDate = (dr["PR 2° Rel# Date"].ToString()).Split('/');
                         int year = int.Parse(strDate[2]);
@@ -2631,6 +2764,12 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             }
                         }
 
+                        if (AdvancedFilters.AdvanceFiltersChanged())
+                        {
+                            // We have some advanced filters that the user would like to exclude.
+                            if (!FilterUtils.CheckAdvancedFilters(dr))
+                                continue;
+                        }
 
                         string[] strDate = (dr["PO Line Creat#DT"].ToString()).Split('/');
                         int year = int.Parse(strDate[2]);
@@ -2765,6 +2904,12 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             }
                         }
 
+                        if (AdvancedFilters.AdvanceFiltersChanged())
+                        {
+                            // We have some advanced filters that the user would like to exclude.
+                            if (!FilterUtils.CheckAdvancedFilters(dr))
+                                continue;
+                        }
 
                         string[] strDate = (dr["Del#Conf#Date"].ToString()).Split('/');
                         int year = int.Parse(strDate[2]);
@@ -2933,7 +3078,12 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             }
                         }
 
-
+                        if (AdvancedFilters.AdvanceFiltersChanged())
+                        {
+                            // We have some advanced filters that the user would like to exclude.
+                            if (!FilterUtils.CheckAdvancedFilters(dr))
+                                continue;
+                        }
 
                         string[] strDate = (dr["Del#Conf#Date"].ToString()).Split('/');
                         int year = int.Parse(strDate[2]);

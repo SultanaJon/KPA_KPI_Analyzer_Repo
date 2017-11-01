@@ -52,26 +52,25 @@
             this.ImportTimer = new System.Windows.Forms.Timer(this.components);
             this.DataRemovalTimer = new System.Windows.Forms.Timer(this.components);
             this.pnl_activePage = new System.Windows.Forms.Panel();
-            this.pnl_CountrySelector = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.bunifuCustomLabel25 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.btn_usSwitch = new Bunifu.Framework.UI.BunifuSwitch();
-            this.bunifuCustomLabel23 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.btn_mxSwitch = new Bunifu.Framework.UI.BunifuSwitch();
-            this.bunifuCustomLabel26 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.btn_LoadData = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.btn_dashboardCancel = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.pnl_loadingScreen = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.cpb_loadingScreenCircProgBar = new CircularProgressBar.CircularProgressBar();
             this.tblpnl_Filters = new System.Windows.Forms.TableLayoutPanel();
             this.panel27 = new System.Windows.Forms.Panel();
+            this.gb_advancedFilters = new System.Windows.Forms.GroupBox();
+            this.chkBox_manualPr = new Bunifu.Framework.UI.BunifuCheckbox();
+            this.chkBox_codifiedMatSubCon = new Bunifu.Framework.UI.BunifuCheckbox();
+            this.chkBox_codifiedMatNonSub = new Bunifu.Framework.UI.BunifuCheckbox();
+            this.chkBox_IntCompPo = new Bunifu.Framework.UI.BunifuCheckbox();
+            this.chkBox_returnPo = new Bunifu.Framework.UI.BunifuCheckbox();
+            this.chkBox_pouPrPo = new Bunifu.Framework.UI.BunifuCheckbox();
+            this.chkBox_SteelPrPo = new Bunifu.Framework.UI.BunifuCheckbox();
+            this.chkBox_servicePrPo = new Bunifu.Framework.UI.BunifuCheckbox();
+            this.bunifuCustomLabel40 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel39 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel38 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel37 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel36 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel35 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel34 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel33 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.chkBox_PoDateRange = new Bunifu.Framework.UI.BunifuCheckbox();
             this.chkBox_FinalReceiptDate = new Bunifu.Framework.UI.BunifuCheckbox();
             this.chkBox_PrDateRange = new Bunifu.Framework.UI.BunifuCheckbox();
@@ -140,6 +139,24 @@
             this.pnl_note = new System.Windows.Forms.Panel();
             this.bunifuCustomLabel30 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel28 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.pnl_loadingScreen = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.cpb_loadingScreenCircProgBar = new CircularProgressBar.CircularProgressBar();
+            this.pnl_CountrySelector = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.bunifuCustomLabel25 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.btn_usSwitch = new Bunifu.Framework.UI.BunifuSwitch();
+            this.bunifuCustomLabel23 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.btn_mxSwitch = new Bunifu.Framework.UI.BunifuSwitch();
+            this.bunifuCustomLabel26 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.btn_LoadData = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btn_dashboardCancel = new Bunifu.Framework.UI.BunifuFlatButton();
             this.pnl_NavigationPanelMax = new System.Windows.Forms.Panel();
             this.btn_Filters = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btn_Correlation = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -211,18 +228,9 @@
             this.pnl_topPanel.SuspendLayout();
             this.pnl_titlePanel.SuspendLayout();
             this.pnl_activePage.SuspendLayout();
-            this.pnl_CountrySelector.SuspendLayout();
-            this.tableLayoutPanel8.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.panel7.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.pnl_loadingScreen.SuspendLayout();
-            this.tableLayoutPanel9.SuspendLayout();
-            this.panel9.SuspendLayout();
             this.tblpnl_Filters.SuspendLayout();
             this.panel27.SuspendLayout();
+            this.gb_advancedFilters.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel17.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -240,6 +248,16 @@
             this.tableLayoutPanel18.SuspendLayout();
             this.tableLayoutPanel19.SuspendLayout();
             this.pnl_note.SuspendLayout();
+            this.pnl_loadingScreen.SuspendLayout();
+            this.tableLayoutPanel9.SuspendLayout();
+            this.panel9.SuspendLayout();
+            this.pnl_CountrySelector.SuspendLayout();
+            this.tableLayoutPanel8.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.pnl_NavigationPanelMax.SuspendLayout();
             this.pnl_KPISectionsPanel.SuspendLayout();
             this.pnl_KPASectionsPanel.SuspendLayout();
@@ -302,26 +320,26 @@
             this.newAnalysisToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.analysisToolStripMenuItem});
             this.newAnalysisToolStripMenuItem.Name = "newAnalysisToolStripMenuItem";
-            this.newAnalysisToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newAnalysisToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
             this.newAnalysisToolStripMenuItem.Text = "New";
             // 
             // analysisToolStripMenuItem
             // 
             this.analysisToolStripMenuItem.Name = "analysisToolStripMenuItem";
-            this.analysisToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.analysisToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.analysisToolStripMenuItem.Text = "Analysis";
             this.analysisToolStripMenuItem.Click += new System.EventHandler(this.analysisToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(149, 6);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(95, 6);
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem1
             // 
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(98, 22);
             this.exitToolStripMenuItem1.Text = "Exit";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -464,299 +482,6 @@
             this.pnl_activePage.TabIndex = 44;
             this.pnl_activePage.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.pnl_activePage_ControlAdded);
             // 
-            // pnl_CountrySelector
-            // 
-            this.pnl_CountrySelector.Controls.Add(this.tableLayoutPanel8);
-            this.pnl_CountrySelector.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_CountrySelector.Location = new System.Drawing.Point(0, 0);
-            this.pnl_CountrySelector.Name = "pnl_CountrySelector";
-            this.pnl_CountrySelector.Size = new System.Drawing.Size(1200, 623);
-            this.pnl_CountrySelector.TabIndex = 55;
-            // 
-            // tableLayoutPanel8
-            // 
-            this.tableLayoutPanel8.ColumnCount = 4;
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 156F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 153F));
-            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.Controls.Add(this.panel4, 1, 1);
-            this.tableLayoutPanel8.Controls.Add(this.panel5, 1, 2);
-            this.tableLayoutPanel8.Controls.Add(this.panel6, 2, 2);
-            this.tableLayoutPanel8.Controls.Add(this.panel7, 1, 3);
-            this.tableLayoutPanel8.Controls.Add(this.panel3, 1, 4);
-            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
-            this.tableLayoutPanel8.RowCount = 6;
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
-            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(1200, 623);
-            this.tableLayoutPanel8.TabIndex = 4;
-            // 
-            // panel4
-            // 
-            this.tableLayoutPanel8.SetColumnSpan(this.panel4, 2);
-            this.panel4.Controls.Add(this.bunifuCustomLabel25);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(445, 230);
-            this.panel4.Margin = new System.Windows.Forms.Padding(0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(309, 40);
-            this.panel4.TabIndex = 0;
-            // 
-            // bunifuCustomLabel25
-            // 
-            this.bunifuCustomLabel25.AutoSize = true;
-            this.bunifuCustomLabel25.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
-            this.bunifuCustomLabel25.Location = new System.Drawing.Point(72, 11);
-            this.bunifuCustomLabel25.Name = "bunifuCustomLabel25";
-            this.bunifuCustomLabel25.Size = new System.Drawing.Size(175, 20);
-            this.bunifuCustomLabel25.TabIndex = 0;
-            this.bunifuCustomLabel25.Text = "Select a country to load";
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.btn_usSwitch);
-            this.panel5.Controls.Add(this.bunifuCustomLabel23);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(445, 270);
-            this.panel5.Margin = new System.Windows.Forms.Padding(0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(156, 39);
-            this.panel5.TabIndex = 0;
-            // 
-            // btn_usSwitch
-            // 
-            this.btn_usSwitch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.btn_usSwitch.BorderRadius = 0;
-            this.btn_usSwitch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_usSwitch.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_usSwitch.Location = new System.Drawing.Point(90, 10);
-            this.btn_usSwitch.Name = "btn_usSwitch";
-            this.btn_usSwitch.Oncolor = System.Drawing.Color.Teal;
-            this.btn_usSwitch.Onoffcolor = System.Drawing.Color.DarkGray;
-            this.btn_usSwitch.Size = new System.Drawing.Size(51, 19);
-            this.btn_usSwitch.TabIndex = 1;
-            this.btn_usSwitch.Textcolor = System.Drawing.SystemColors.Control;
-            this.btn_usSwitch.Value = true;
-            this.btn_usSwitch.Click += new System.EventHandler(this.btn_usSwitch_Click);
-            // 
-            // bunifuCustomLabel23
-            // 
-            this.bunifuCustomLabel23.AutoSize = true;
-            this.bunifuCustomLabel23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
-            this.bunifuCustomLabel23.Location = new System.Drawing.Point(13, 13);
-            this.bunifuCustomLabel23.Name = "bunifuCustomLabel23";
-            this.bunifuCustomLabel23.Size = new System.Drawing.Size(71, 13);
-            this.bunifuCustomLabel23.TabIndex = 2;
-            this.bunifuCustomLabel23.Text = "United States";
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.btn_mxSwitch);
-            this.panel6.Controls.Add(this.bunifuCustomLabel26);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(601, 270);
-            this.panel6.Margin = new System.Windows.Forms.Padding(0);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(153, 39);
-            this.panel6.TabIndex = 0;
-            // 
-            // btn_mxSwitch
-            // 
-            this.btn_mxSwitch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.btn_mxSwitch.BorderRadius = 0;
-            this.btn_mxSwitch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_mxSwitch.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_mxSwitch.Location = new System.Drawing.Point(76, 10);
-            this.btn_mxSwitch.Name = "btn_mxSwitch";
-            this.btn_mxSwitch.Oncolor = System.Drawing.Color.Teal;
-            this.btn_mxSwitch.Onoffcolor = System.Drawing.Color.DarkGray;
-            this.btn_mxSwitch.Size = new System.Drawing.Size(51, 19);
-            this.btn_mxSwitch.TabIndex = 1;
-            this.btn_mxSwitch.Textcolor = System.Drawing.SystemColors.Control;
-            this.btn_mxSwitch.Value = false;
-            this.btn_mxSwitch.Click += new System.EventHandler(this.btn_mxSwitch_Click);
-            // 
-            // bunifuCustomLabel26
-            // 
-            this.bunifuCustomLabel26.AutoSize = true;
-            this.bunifuCustomLabel26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
-            this.bunifuCustomLabel26.Location = new System.Drawing.Point(29, 13);
-            this.bunifuCustomLabel26.Name = "bunifuCustomLabel26";
-            this.bunifuCustomLabel26.Size = new System.Drawing.Size(41, 13);
-            this.bunifuCustomLabel26.TabIndex = 2;
-            this.bunifuCustomLabel26.Text = "Mexico";
-            // 
-            // panel7
-            // 
-            this.tableLayoutPanel8.SetColumnSpan(this.panel7, 2);
-            this.panel7.Controls.Add(this.btn_LoadData);
-            this.panel7.Location = new System.Drawing.Point(445, 309);
-            this.panel7.Margin = new System.Windows.Forms.Padding(0);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(309, 41);
-            this.panel7.TabIndex = 0;
-            // 
-            // btn_LoadData
-            // 
-            this.btn_LoadData.Activecolor = System.Drawing.Color.DarkSlateGray;
-            this.btn_LoadData.BackColor = System.Drawing.Color.Teal;
-            this.btn_LoadData.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_LoadData.BorderRadius = 0;
-            this.btn_LoadData.ButtonText = "Load Data";
-            this.btn_LoadData.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_LoadData.DisabledColor = System.Drawing.Color.Gray;
-            this.btn_LoadData.Iconcolor = System.Drawing.Color.Transparent;
-            this.btn_LoadData.Iconimage = null;
-            this.btn_LoadData.Iconimage_right = null;
-            this.btn_LoadData.Iconimage_right_Selected = null;
-            this.btn_LoadData.Iconimage_Selected = null;
-            this.btn_LoadData.IconMarginLeft = 0;
-            this.btn_LoadData.IconMarginRight = 0;
-            this.btn_LoadData.IconRightVisible = true;
-            this.btn_LoadData.IconRightZoom = 0D;
-            this.btn_LoadData.IconVisible = true;
-            this.btn_LoadData.IconZoom = 90D;
-            this.btn_LoadData.IsTab = false;
-            this.btn_LoadData.Location = new System.Drawing.Point(77, 6);
-            this.btn_LoadData.Name = "btn_LoadData";
-            this.btn_LoadData.Normalcolor = System.Drawing.Color.Teal;
-            this.btn_LoadData.OnHovercolor = System.Drawing.Color.DarkSlateGray;
-            this.btn_LoadData.OnHoverTextColor = System.Drawing.Color.White;
-            this.btn_LoadData.selected = false;
-            this.btn_LoadData.Size = new System.Drawing.Size(159, 30);
-            this.btn_LoadData.TabIndex = 3;
-            this.btn_LoadData.Text = "Load Data";
-            this.btn_LoadData.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btn_LoadData.Textcolor = System.Drawing.Color.White;
-            this.btn_LoadData.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_LoadData.Click += new System.EventHandler(this.btn_LoadData_Click);
-            // 
-            // panel3
-            // 
-            this.tableLayoutPanel8.SetColumnSpan(this.panel3, 2);
-            this.panel3.Controls.Add(this.btn_dashboardCancel);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(445, 350);
-            this.panel3.Margin = new System.Windows.Forms.Padding(0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(309, 43);
-            this.panel3.TabIndex = 0;
-            // 
-            // btn_dashboardCancel
-            // 
-            this.btn_dashboardCancel.Activecolor = System.Drawing.Color.DarkSlateGray;
-            this.btn_dashboardCancel.BackColor = System.Drawing.Color.Teal;
-            this.btn_dashboardCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_dashboardCancel.BorderRadius = 0;
-            this.btn_dashboardCancel.ButtonText = "Cancel";
-            this.btn_dashboardCancel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_dashboardCancel.DisabledColor = System.Drawing.Color.Gray;
-            this.btn_dashboardCancel.Iconcolor = System.Drawing.Color.Transparent;
-            this.btn_dashboardCancel.Iconimage = null;
-            this.btn_dashboardCancel.Iconimage_right = null;
-            this.btn_dashboardCancel.Iconimage_right_Selected = null;
-            this.btn_dashboardCancel.Iconimage_Selected = null;
-            this.btn_dashboardCancel.IconMarginLeft = 0;
-            this.btn_dashboardCancel.IconMarginRight = 0;
-            this.btn_dashboardCancel.IconRightVisible = true;
-            this.btn_dashboardCancel.IconRightZoom = 0D;
-            this.btn_dashboardCancel.IconVisible = true;
-            this.btn_dashboardCancel.IconZoom = 90D;
-            this.btn_dashboardCancel.IsTab = false;
-            this.btn_dashboardCancel.Location = new System.Drawing.Point(77, 7);
-            this.btn_dashboardCancel.Name = "btn_dashboardCancel";
-            this.btn_dashboardCancel.Normalcolor = System.Drawing.Color.Teal;
-            this.btn_dashboardCancel.OnHovercolor = System.Drawing.Color.DarkSlateGray;
-            this.btn_dashboardCancel.OnHoverTextColor = System.Drawing.Color.White;
-            this.btn_dashboardCancel.selected = false;
-            this.btn_dashboardCancel.Size = new System.Drawing.Size(159, 30);
-            this.btn_dashboardCancel.TabIndex = 3;
-            this.btn_dashboardCancel.Text = "Cancel";
-            this.btn_dashboardCancel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btn_dashboardCancel.Textcolor = System.Drawing.Color.White;
-            this.btn_dashboardCancel.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_dashboardCancel.Click += new System.EventHandler(this.btn_dashboardCancel_Click);
-            // 
-            // pnl_loadingScreen
-            // 
-            this.pnl_loadingScreen.Controls.Add(this.tableLayoutPanel9);
-            this.pnl_loadingScreen.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_loadingScreen.Location = new System.Drawing.Point(0, 0);
-            this.pnl_loadingScreen.Name = "pnl_loadingScreen";
-            this.pnl_loadingScreen.Size = new System.Drawing.Size(1200, 623);
-            this.pnl_loadingScreen.TabIndex = 0;
-            // 
-            // tableLayoutPanel9
-            // 
-            this.tableLayoutPanel9.ColumnCount = 3;
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 234F));
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.Controls.Add(this.panel9, 1, 1);
-            this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
-            this.tableLayoutPanel9.RowCount = 3;
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 234F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(1200, 623);
-            this.tableLayoutPanel9.TabIndex = 1;
-            // 
-            // panel9
-            // 
-            this.panel9.Controls.Add(this.cpb_loadingScreenCircProgBar);
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel9.Location = new System.Drawing.Point(483, 194);
-            this.panel9.Margin = new System.Windows.Forms.Padding(0);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(234, 234);
-            this.panel9.TabIndex = 0;
-            // 
-            // cpb_loadingScreenCircProgBar
-            // 
-            this.cpb_loadingScreenCircProgBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
-            this.cpb_loadingScreenCircProgBar.AnimationSpeed = 500;
-            this.cpb_loadingScreenCircProgBar.BackColor = System.Drawing.Color.Transparent;
-            this.cpb_loadingScreenCircProgBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.cpb_loadingScreenCircProgBar.ForeColor = System.Drawing.Color.Silver;
-            this.cpb_loadingScreenCircProgBar.InnerColor = System.Drawing.SystemColors.Control;
-            this.cpb_loadingScreenCircProgBar.InnerMargin = 2;
-            this.cpb_loadingScreenCircProgBar.InnerWidth = -1;
-            this.cpb_loadingScreenCircProgBar.Location = new System.Drawing.Point(2, 0);
-            this.cpb_loadingScreenCircProgBar.MarqueeAnimationSpeed = 1000;
-            this.cpb_loadingScreenCircProgBar.Name = "cpb_loadingScreenCircProgBar";
-            this.cpb_loadingScreenCircProgBar.OuterColor = System.Drawing.Color.Gainsboro;
-            this.cpb_loadingScreenCircProgBar.OuterMargin = -25;
-            this.cpb_loadingScreenCircProgBar.OuterWidth = 26;
-            this.cpb_loadingScreenCircProgBar.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
-            this.cpb_loadingScreenCircProgBar.ProgressWidth = 5;
-            this.cpb_loadingScreenCircProgBar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 36F);
-            this.cpb_loadingScreenCircProgBar.Size = new System.Drawing.Size(231, 234);
-            this.cpb_loadingScreenCircProgBar.StartAngle = 270;
-            this.cpb_loadingScreenCircProgBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.cpb_loadingScreenCircProgBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.cpb_loadingScreenCircProgBar.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
-            this.cpb_loadingScreenCircProgBar.SubscriptText = "";
-            this.cpb_loadingScreenCircProgBar.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.cpb_loadingScreenCircProgBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
-            this.cpb_loadingScreenCircProgBar.SuperscriptText = "";
-            this.cpb_loadingScreenCircProgBar.TabIndex = 1;
-            this.cpb_loadingScreenCircProgBar.Text = "Loading Data...";
-            this.cpb_loadingScreenCircProgBar.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
-            this.cpb_loadingScreenCircProgBar.Value = 36;
-            // 
             // tblpnl_Filters
             // 
             this.tblpnl_Filters.AutoScroll = true;
@@ -781,7 +506,7 @@
             this.tblpnl_Filters.Padding = new System.Windows.Forms.Padding(10);
             this.tblpnl_Filters.RowCount = 4;
             this.tblpnl_Filters.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
-            this.tblpnl_Filters.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+            this.tblpnl_Filters.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 220F));
             this.tblpnl_Filters.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tblpnl_Filters.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblpnl_Filters.Size = new System.Drawing.Size(1200, 623);
@@ -790,6 +515,7 @@
             // panel27
             // 
             this.tblpnl_Filters.SetColumnSpan(this.panel27, 6);
+            this.panel27.Controls.Add(this.gb_advancedFilters);
             this.panel27.Controls.Add(this.chkBox_PoDateRange);
             this.panel27.Controls.Add(this.chkBox_FinalReceiptDate);
             this.panel27.Controls.Add(this.chkBox_PrDateRange);
@@ -809,8 +535,249 @@
             this.panel27.Location = new System.Drawing.Point(10, 55);
             this.panel27.Margin = new System.Windows.Forms.Padding(0);
             this.panel27.Name = "panel27";
-            this.panel27.Size = new System.Drawing.Size(1180, 140);
+            this.panel27.Size = new System.Drawing.Size(1180, 220);
             this.panel27.TabIndex = 3;
+            // 
+            // gb_advancedFilters
+            // 
+            this.gb_advancedFilters.Controls.Add(this.chkBox_manualPr);
+            this.gb_advancedFilters.Controls.Add(this.chkBox_codifiedMatSubCon);
+            this.gb_advancedFilters.Controls.Add(this.chkBox_codifiedMatNonSub);
+            this.gb_advancedFilters.Controls.Add(this.chkBox_IntCompPo);
+            this.gb_advancedFilters.Controls.Add(this.chkBox_returnPo);
+            this.gb_advancedFilters.Controls.Add(this.chkBox_pouPrPo);
+            this.gb_advancedFilters.Controls.Add(this.chkBox_SteelPrPo);
+            this.gb_advancedFilters.Controls.Add(this.chkBox_servicePrPo);
+            this.gb_advancedFilters.Controls.Add(this.bunifuCustomLabel40);
+            this.gb_advancedFilters.Controls.Add(this.bunifuCustomLabel39);
+            this.gb_advancedFilters.Controls.Add(this.bunifuCustomLabel38);
+            this.gb_advancedFilters.Controls.Add(this.bunifuCustomLabel37);
+            this.gb_advancedFilters.Controls.Add(this.bunifuCustomLabel36);
+            this.gb_advancedFilters.Controls.Add(this.bunifuCustomLabel35);
+            this.gb_advancedFilters.Controls.Add(this.bunifuCustomLabel34);
+            this.gb_advancedFilters.Controls.Add(this.bunifuCustomLabel33);
+            this.gb_advancedFilters.Location = new System.Drawing.Point(512, 15);
+            this.gb_advancedFilters.Name = "gb_advancedFilters";
+            this.gb_advancedFilters.Size = new System.Drawing.Size(478, 190);
+            this.gb_advancedFilters.TabIndex = 4;
+            this.gb_advancedFilters.TabStop = false;
+            this.gb_advancedFilters.Text = "Advanced Filters";
+            // 
+            // chkBox_manualPr
+            // 
+            this.chkBox_manualPr.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
+            this.chkBox_manualPr.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
+            this.chkBox_manualPr.Checked = true;
+            this.chkBox_manualPr.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
+            this.chkBox_manualPr.ForeColor = System.Drawing.Color.White;
+            this.chkBox_manualPr.Location = new System.Drawing.Point(254, 147);
+            this.chkBox_manualPr.Name = "chkBox_manualPr";
+            this.chkBox_manualPr.Size = new System.Drawing.Size(20, 20);
+            this.chkBox_manualPr.TabIndex = 5;
+            this.chkBox_manualPr.Tag = "10";
+            this.chkBox_manualPr.OnChange += new System.EventHandler(this.checkBox_OnChange);
+            // 
+            // chkBox_codifiedMatSubCon
+            // 
+            this.chkBox_codifiedMatSubCon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
+            this.chkBox_codifiedMatSubCon.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
+            this.chkBox_codifiedMatSubCon.Checked = true;
+            this.chkBox_codifiedMatSubCon.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
+            this.chkBox_codifiedMatSubCon.ForeColor = System.Drawing.Color.White;
+            this.chkBox_codifiedMatSubCon.Location = new System.Drawing.Point(254, 107);
+            this.chkBox_codifiedMatSubCon.Name = "chkBox_codifiedMatSubCon";
+            this.chkBox_codifiedMatSubCon.Size = new System.Drawing.Size(20, 20);
+            this.chkBox_codifiedMatSubCon.TabIndex = 5;
+            this.chkBox_codifiedMatSubCon.Tag = "9";
+            this.chkBox_codifiedMatSubCon.OnChange += new System.EventHandler(this.checkBox_OnChange);
+            // 
+            // chkBox_codifiedMatNonSub
+            // 
+            this.chkBox_codifiedMatNonSub.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
+            this.chkBox_codifiedMatNonSub.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
+            this.chkBox_codifiedMatNonSub.Checked = true;
+            this.chkBox_codifiedMatNonSub.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
+            this.chkBox_codifiedMatNonSub.ForeColor = System.Drawing.Color.White;
+            this.chkBox_codifiedMatNonSub.Location = new System.Drawing.Point(254, 67);
+            this.chkBox_codifiedMatNonSub.Name = "chkBox_codifiedMatNonSub";
+            this.chkBox_codifiedMatNonSub.Size = new System.Drawing.Size(20, 20);
+            this.chkBox_codifiedMatNonSub.TabIndex = 5;
+            this.chkBox_codifiedMatNonSub.Tag = "8";
+            this.chkBox_codifiedMatNonSub.OnChange += new System.EventHandler(this.checkBox_OnChange);
+            // 
+            // chkBox_IntCompPo
+            // 
+            this.chkBox_IntCompPo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
+            this.chkBox_IntCompPo.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
+            this.chkBox_IntCompPo.Checked = true;
+            this.chkBox_IntCompPo.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
+            this.chkBox_IntCompPo.ForeColor = System.Drawing.Color.White;
+            this.chkBox_IntCompPo.Location = new System.Drawing.Point(254, 27);
+            this.chkBox_IntCompPo.Name = "chkBox_IntCompPo";
+            this.chkBox_IntCompPo.Size = new System.Drawing.Size(20, 20);
+            this.chkBox_IntCompPo.TabIndex = 5;
+            this.chkBox_IntCompPo.Tag = "7";
+            this.chkBox_IntCompPo.OnChange += new System.EventHandler(this.checkBox_OnChange);
+            // 
+            // chkBox_returnPo
+            // 
+            this.chkBox_returnPo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
+            this.chkBox_returnPo.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
+            this.chkBox_returnPo.Checked = true;
+            this.chkBox_returnPo.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
+            this.chkBox_returnPo.ForeColor = System.Drawing.Color.White;
+            this.chkBox_returnPo.Location = new System.Drawing.Point(18, 147);
+            this.chkBox_returnPo.Name = "chkBox_returnPo";
+            this.chkBox_returnPo.Size = new System.Drawing.Size(20, 20);
+            this.chkBox_returnPo.TabIndex = 5;
+            this.chkBox_returnPo.Tag = "6";
+            this.chkBox_returnPo.OnChange += new System.EventHandler(this.checkBox_OnChange);
+            // 
+            // chkBox_pouPrPo
+            // 
+            this.chkBox_pouPrPo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
+            this.chkBox_pouPrPo.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
+            this.chkBox_pouPrPo.Checked = true;
+            this.chkBox_pouPrPo.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
+            this.chkBox_pouPrPo.ForeColor = System.Drawing.Color.White;
+            this.chkBox_pouPrPo.Location = new System.Drawing.Point(18, 107);
+            this.chkBox_pouPrPo.Name = "chkBox_pouPrPo";
+            this.chkBox_pouPrPo.Size = new System.Drawing.Size(20, 20);
+            this.chkBox_pouPrPo.TabIndex = 5;
+            this.chkBox_pouPrPo.Tag = "5";
+            this.chkBox_pouPrPo.OnChange += new System.EventHandler(this.checkBox_OnChange);
+            // 
+            // chkBox_SteelPrPo
+            // 
+            this.chkBox_SteelPrPo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
+            this.chkBox_SteelPrPo.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
+            this.chkBox_SteelPrPo.Checked = true;
+            this.chkBox_SteelPrPo.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
+            this.chkBox_SteelPrPo.ForeColor = System.Drawing.Color.White;
+            this.chkBox_SteelPrPo.Location = new System.Drawing.Point(18, 67);
+            this.chkBox_SteelPrPo.Name = "chkBox_SteelPrPo";
+            this.chkBox_SteelPrPo.Size = new System.Drawing.Size(20, 20);
+            this.chkBox_SteelPrPo.TabIndex = 5;
+            this.chkBox_SteelPrPo.Tag = "4";
+            this.chkBox_SteelPrPo.OnChange += new System.EventHandler(this.checkBox_OnChange);
+            // 
+            // chkBox_servicePrPo
+            // 
+            this.chkBox_servicePrPo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
+            this.chkBox_servicePrPo.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
+            this.chkBox_servicePrPo.Checked = true;
+            this.chkBox_servicePrPo.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
+            this.chkBox_servicePrPo.ForeColor = System.Drawing.Color.White;
+            this.chkBox_servicePrPo.Location = new System.Drawing.Point(18, 27);
+            this.chkBox_servicePrPo.Name = "chkBox_servicePrPo";
+            this.chkBox_servicePrPo.Size = new System.Drawing.Size(20, 20);
+            this.chkBox_servicePrPo.TabIndex = 5;
+            this.chkBox_servicePrPo.Tag = "3";
+            this.chkBox_servicePrPo.OnChange += new System.EventHandler(this.checkBox_OnChange);
+            // 
+            // bunifuCustomLabel40
+            // 
+            this.bunifuCustomLabel40.AutoSize = true;
+            this.bunifuCustomLabel40.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel40.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.bunifuCustomLabel40.Location = new System.Drawing.Point(281, 151);
+            this.bunifuCustomLabel40.Name = "bunifuCustomLabel40";
+            this.bunifuCustomLabel40.Size = new System.Drawing.Size(60, 13);
+            this.bunifuCustomLabel40.TabIndex = 4;
+            this.bunifuCustomLabel40.Tag = "10";
+            this.bunifuCustomLabel40.Text = "Manual PR";
+            this.bunifuCustomLabel40.Click += new System.EventHandler(this.filterLabel_Click);
+            // 
+            // bunifuCustomLabel39
+            // 
+            this.bunifuCustomLabel39.AutoSize = true;
+            this.bunifuCustomLabel39.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel39.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.bunifuCustomLabel39.Location = new System.Drawing.Point(281, 111);
+            this.bunifuCustomLabel39.Name = "bunifuCustomLabel39";
+            this.bunifuCustomLabel39.Size = new System.Drawing.Size(152, 13);
+            this.bunifuCustomLabel39.TabIndex = 4;
+            this.bunifuCustomLabel39.Tag = "9";
+            this.bunifuCustomLabel39.Text = "Codified Material (Subcontract)";
+            this.bunifuCustomLabel39.Click += new System.EventHandler(this.filterLabel_Click);
+            // 
+            // bunifuCustomLabel38
+            // 
+            this.bunifuCustomLabel38.AutoSize = true;
+            this.bunifuCustomLabel38.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.bunifuCustomLabel38.Location = new System.Drawing.Point(281, 71);
+            this.bunifuCustomLabel38.Name = "bunifuCustomLabel38";
+            this.bunifuCustomLabel38.Size = new System.Drawing.Size(175, 13);
+            this.bunifuCustomLabel38.TabIndex = 4;
+            this.bunifuCustomLabel38.Tag = "8";
+            this.bunifuCustomLabel38.Text = "Codified Material (Non-Subcontract)";
+            this.bunifuCustomLabel38.Click += new System.EventHandler(this.filterLabel_Click);
+            // 
+            // bunifuCustomLabel37
+            // 
+            this.bunifuCustomLabel37.AutoSize = true;
+            this.bunifuCustomLabel37.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel37.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.bunifuCustomLabel37.Location = new System.Drawing.Point(281, 31);
+            this.bunifuCustomLabel37.Name = "bunifuCustomLabel37";
+            this.bunifuCustomLabel37.Size = new System.Drawing.Size(89, 13);
+            this.bunifuCustomLabel37.TabIndex = 4;
+            this.bunifuCustomLabel37.Tag = "7";
+            this.bunifuCustomLabel37.Text = "Intercompany PO";
+            this.bunifuCustomLabel37.Click += new System.EventHandler(this.filterLabel_Click);
+            // 
+            // bunifuCustomLabel36
+            // 
+            this.bunifuCustomLabel36.AutoSize = true;
+            this.bunifuCustomLabel36.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.bunifuCustomLabel36.Location = new System.Drawing.Point(45, 151);
+            this.bunifuCustomLabel36.Name = "bunifuCustomLabel36";
+            this.bunifuCustomLabel36.Size = new System.Drawing.Size(57, 13);
+            this.bunifuCustomLabel36.TabIndex = 4;
+            this.bunifuCustomLabel36.Tag = "6";
+            this.bunifuCustomLabel36.Text = "Return PO";
+            this.bunifuCustomLabel36.Click += new System.EventHandler(this.filterLabel_Click);
+            // 
+            // bunifuCustomLabel35
+            // 
+            this.bunifuCustomLabel35.AutoSize = true;
+            this.bunifuCustomLabel35.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.bunifuCustomLabel35.Location = new System.Drawing.Point(45, 111);
+            this.bunifuCustomLabel35.Name = "bunifuCustomLabel35";
+            this.bunifuCustomLabel35.Size = new System.Drawing.Size(68, 13);
+            this.bunifuCustomLabel35.TabIndex = 4;
+            this.bunifuCustomLabel35.Tag = "5";
+            this.bunifuCustomLabel35.Text = "POU PR/PO";
+            this.bunifuCustomLabel35.Click += new System.EventHandler(this.filterLabel_Click);
+            // 
+            // bunifuCustomLabel34
+            // 
+            this.bunifuCustomLabel34.AutoSize = true;
+            this.bunifuCustomLabel34.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.bunifuCustomLabel34.Location = new System.Drawing.Point(45, 71);
+            this.bunifuCustomLabel34.Name = "bunifuCustomLabel34";
+            this.bunifuCustomLabel34.Size = new System.Drawing.Size(69, 13);
+            this.bunifuCustomLabel34.TabIndex = 4;
+            this.bunifuCustomLabel34.Tag = "4";
+            this.bunifuCustomLabel34.Text = "Steel PR/PO";
+            this.bunifuCustomLabel34.Click += new System.EventHandler(this.filterLabel_Click);
+            // 
+            // bunifuCustomLabel33
+            // 
+            this.bunifuCustomLabel33.AutoSize = true;
+            this.bunifuCustomLabel33.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.bunifuCustomLabel33.Location = new System.Drawing.Point(45, 31);
+            this.bunifuCustomLabel33.Name = "bunifuCustomLabel33";
+            this.bunifuCustomLabel33.Size = new System.Drawing.Size(81, 13);
+            this.bunifuCustomLabel33.TabIndex = 4;
+            this.bunifuCustomLabel33.Tag = "3";
+            this.bunifuCustomLabel33.Text = "Service PR/PO";
+            this.bunifuCustomLabel33.Click += new System.EventHandler(this.filterLabel_Click);
             // 
             // chkBox_PoDateRange
             // 
@@ -819,11 +786,12 @@
             this.chkBox_PoDateRange.Checked = false;
             this.chkBox_PoDateRange.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
             this.chkBox_PoDateRange.ForeColor = System.Drawing.Color.White;
-            this.chkBox_PoDateRange.Location = new System.Drawing.Point(7, 73);
+            this.chkBox_PoDateRange.Location = new System.Drawing.Point(7, 82);
             this.chkBox_PoDateRange.Name = "chkBox_PoDateRange";
             this.chkBox_PoDateRange.Size = new System.Drawing.Size(20, 20);
             this.chkBox_PoDateRange.TabIndex = 3;
-            this.chkBox_PoDateRange.OnChange += new System.EventHandler(this.poDateRangeCheckBox_OnChange);
+            this.chkBox_PoDateRange.Tag = "1";
+            this.chkBox_PoDateRange.OnChange += new System.EventHandler(this.checkBox_OnChange);
             // 
             // chkBox_FinalReceiptDate
             // 
@@ -832,11 +800,12 @@
             this.chkBox_FinalReceiptDate.Checked = false;
             this.chkBox_FinalReceiptDate.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
             this.chkBox_FinalReceiptDate.ForeColor = System.Drawing.Color.White;
-            this.chkBox_FinalReceiptDate.Location = new System.Drawing.Point(506, 5);
+            this.chkBox_FinalReceiptDate.Location = new System.Drawing.Point(7, 149);
             this.chkBox_FinalReceiptDate.Name = "chkBox_FinalReceiptDate";
             this.chkBox_FinalReceiptDate.Size = new System.Drawing.Size(20, 20);
             this.chkBox_FinalReceiptDate.TabIndex = 3;
-            this.chkBox_FinalReceiptDate.OnChange += new System.EventHandler(this.finalRecDateRangeCheckBox_OnChange);
+            this.chkBox_FinalReceiptDate.Tag = "2";
+            this.chkBox_FinalReceiptDate.OnChange += new System.EventHandler(this.checkBox_OnChange);
             // 
             // chkBox_PrDateRange
             // 
@@ -845,16 +814,17 @@
             this.chkBox_PrDateRange.Checked = false;
             this.chkBox_PrDateRange.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
             this.chkBox_PrDateRange.ForeColor = System.Drawing.Color.White;
-            this.chkBox_PrDateRange.Location = new System.Drawing.Point(7, 6);
+            this.chkBox_PrDateRange.Location = new System.Drawing.Point(7, 15);
             this.chkBox_PrDateRange.Name = "chkBox_PrDateRange";
             this.chkBox_PrDateRange.Size = new System.Drawing.Size(20, 20);
             this.chkBox_PrDateRange.TabIndex = 3;
-            this.chkBox_PrDateRange.OnChange += new System.EventHandler(this.prDateRangeCheckBox_OnChange);
+            this.chkBox_PrDateRange.Tag = "0";
+            this.chkBox_PrDateRange.OnChange += new System.EventHandler(this.checkBox_OnChange);
             // 
             // bunifuCustomLabel32
             // 
             this.bunifuCustomLabel32.AutoSize = true;
-            this.bunifuCustomLabel32.Location = new System.Drawing.Point(736, 38);
+            this.bunifuCustomLabel32.Location = new System.Drawing.Point(237, 182);
             this.bunifuCustomLabel32.Name = "bunifuCustomLabel32";
             this.bunifuCustomLabel32.Size = new System.Drawing.Size(16, 13);
             this.bunifuCustomLabel32.TabIndex = 2;
@@ -863,7 +833,7 @@
             // bunifuCustomLabel7
             // 
             this.bunifuCustomLabel7.AutoSize = true;
-            this.bunifuCustomLabel7.Location = new System.Drawing.Point(237, 103);
+            this.bunifuCustomLabel7.Location = new System.Drawing.Point(237, 112);
             this.bunifuCustomLabel7.Name = "bunifuCustomLabel7";
             this.bunifuCustomLabel7.Size = new System.Drawing.Size(16, 13);
             this.bunifuCustomLabel7.TabIndex = 2;
@@ -872,7 +842,7 @@
             // bunifuCustomLabel5
             // 
             this.bunifuCustomLabel5.AutoSize = true;
-            this.bunifuCustomLabel5.Location = new System.Drawing.Point(237, 39);
+            this.bunifuCustomLabel5.Location = new System.Drawing.Point(237, 48);
             this.bunifuCustomLabel5.Name = "bunifuCustomLabel5";
             this.bunifuCustomLabel5.Size = new System.Drawing.Size(16, 13);
             this.bunifuCustomLabel5.TabIndex = 2;
@@ -885,7 +855,7 @@
             this.dp_finalReciptToDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
             this.dp_finalReciptToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dp_finalReciptToDate.FormatCustom = "MMMM dd, yyyy";
-            this.dp_finalReciptToDate.Location = new System.Drawing.Point(758, 32);
+            this.dp_finalReciptToDate.Location = new System.Drawing.Point(259, 176);
             this.dp_finalReciptToDate.Name = "dp_finalReciptToDate";
             this.dp_finalReciptToDate.Size = new System.Drawing.Size(224, 29);
             this.dp_finalReciptToDate.TabIndex = 1;
@@ -900,7 +870,7 @@
             this.dp_POToDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
             this.dp_POToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dp_POToDate.FormatCustom = "MMMM dd, yyyy";
-            this.dp_POToDate.Location = new System.Drawing.Point(259, 99);
+            this.dp_POToDate.Location = new System.Drawing.Point(259, 108);
             this.dp_POToDate.Name = "dp_POToDate";
             this.dp_POToDate.Size = new System.Drawing.Size(224, 29);
             this.dp_POToDate.TabIndex = 1;
@@ -915,7 +885,7 @@
             this.dp_PRToDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
             this.dp_PRToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dp_PRToDate.FormatCustom = "MMMM dd, yyyy";
-            this.dp_PRToDate.Location = new System.Drawing.Point(259, 33);
+            this.dp_PRToDate.Location = new System.Drawing.Point(259, 42);
             this.dp_PRToDate.Name = "dp_PRToDate";
             this.dp_PRToDate.Size = new System.Drawing.Size(224, 29);
             this.dp_PRToDate.TabIndex = 1;
@@ -930,7 +900,7 @@
             this.dp_POFromDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
             this.dp_POFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dp_POFromDate.FormatCustom = "MMMM dd, yyyy";
-            this.dp_POFromDate.Location = new System.Drawing.Point(7, 99);
+            this.dp_POFromDate.Location = new System.Drawing.Point(7, 108);
             this.dp_POFromDate.Name = "dp_POFromDate";
             this.dp_POFromDate.Size = new System.Drawing.Size(224, 29);
             this.dp_POFromDate.TabIndex = 1;
@@ -945,7 +915,7 @@
             this.dp_finalReceiptFromDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
             this.dp_finalReceiptFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dp_finalReceiptFromDate.FormatCustom = "MMMM dd, yyyy";
-            this.dp_finalReceiptFromDate.Location = new System.Drawing.Point(506, 32);
+            this.dp_finalReceiptFromDate.Location = new System.Drawing.Point(7, 176);
             this.dp_finalReceiptFromDate.Name = "dp_finalReceiptFromDate";
             this.dp_finalReceiptFromDate.Size = new System.Drawing.Size(224, 29);
             this.dp_finalReceiptFromDate.TabIndex = 1;
@@ -958,24 +928,26 @@
             this.bunifuCustomLabel6.AutoSize = true;
             this.bunifuCustomLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
-            this.bunifuCustomLabel6.Location = new System.Drawing.Point(39, 77);
+            this.bunifuCustomLabel6.Location = new System.Drawing.Point(39, 86);
             this.bunifuCustomLabel6.Name = "bunifuCustomLabel6";
             this.bunifuCustomLabel6.Size = new System.Drawing.Size(179, 13);
             this.bunifuCustomLabel6.TabIndex = 0;
+            this.bunifuCustomLabel6.Tag = "1";
             this.bunifuCustomLabel6.Text = "PO Line Creation Date Range:";
-            this.bunifuCustomLabel6.Click += new System.EventHandler(this.poDateRangeLabel_Click);
+            this.bunifuCustomLabel6.Click += new System.EventHandler(this.filterLabel_Click);
             // 
             // lbl_finalReciptDateRange
             // 
             this.lbl_finalReciptDateRange.AutoSize = true;
             this.lbl_finalReciptDateRange.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_finalReciptDateRange.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
-            this.lbl_finalReciptDateRange.Location = new System.Drawing.Point(537, 8);
+            this.lbl_finalReciptDateRange.Location = new System.Drawing.Point(38, 152);
             this.lbl_finalReciptDateRange.Name = "lbl_finalReciptDateRange";
             this.lbl_finalReciptDateRange.Size = new System.Drawing.Size(158, 13);
             this.lbl_finalReciptDateRange.TabIndex = 0;
+            this.lbl_finalReciptDateRange.Tag = "2";
             this.lbl_finalReciptDateRange.Text = "Final Receipt Date Range:";
-            this.lbl_finalReciptDateRange.Click += new System.EventHandler(this.finalRecDateRangeLabel_Click);
+            this.lbl_finalReciptDateRange.Click += new System.EventHandler(this.filterLabel_Click);
             // 
             // dp_PRFromDate
             // 
@@ -984,7 +956,7 @@
             this.dp_PRFromDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
             this.dp_PRFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dp_PRFromDate.FormatCustom = "MMMM dd, yyyy";
-            this.dp_PRFromDate.Location = new System.Drawing.Point(7, 33);
+            this.dp_PRFromDate.Location = new System.Drawing.Point(7, 42);
             this.dp_PRFromDate.Name = "dp_PRFromDate";
             this.dp_PRFromDate.Size = new System.Drawing.Size(224, 29);
             this.dp_PRFromDate.TabIndex = 1;
@@ -997,12 +969,13 @@
             this.lbl_prDateRange.AutoSize = true;
             this.lbl_prDateRange.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_prDateRange.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
-            this.lbl_prDateRange.Location = new System.Drawing.Point(38, 9);
+            this.lbl_prDateRange.Location = new System.Drawing.Point(38, 18);
             this.lbl_prDateRange.Name = "lbl_prDateRange";
             this.lbl_prDateRange.Size = new System.Drawing.Size(100, 13);
             this.lbl_prDateRange.TabIndex = 0;
+            this.lbl_prDateRange.Tag = "0";
             this.lbl_prDateRange.Text = "PR Date Range:";
-            this.lbl_prDateRange.Click += new System.EventHandler(this.prDateRangeLabel_Click);
+            this.lbl_prDateRange.Click += new System.EventHandler(this.filterLabel_Click);
             // 
             // bunifuCustomLabel2
             // 
@@ -1088,7 +1061,7 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel18, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel19, 2, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 235);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 315);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
@@ -1096,7 +1069,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 350F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 350F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 350F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1180, 378);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1180, 298);
             this.tableLayoutPanel1.TabIndex = 11;
             // 
             // tableLayoutPanel17
@@ -1766,7 +1739,7 @@
             this.pnl_note.Controls.Add(this.bunifuCustomLabel30);
             this.pnl_note.Controls.Add(this.bunifuCustomLabel28);
             this.pnl_note.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_note.Location = new System.Drawing.Point(13, 198);
+            this.pnl_note.Location = new System.Drawing.Point(13, 278);
             this.pnl_note.Name = "pnl_note";
             this.pnl_note.Size = new System.Drawing.Size(1174, 34);
             this.pnl_note.TabIndex = 12;
@@ -1792,6 +1765,299 @@
             this.bunifuCustomLabel28.Size = new System.Drawing.Size(43, 13);
             this.bunifuCustomLabel28.TabIndex = 5;
             this.bunifuCustomLabel28.Text = "*Note:";
+            // 
+            // pnl_loadingScreen
+            // 
+            this.pnl_loadingScreen.Controls.Add(this.tableLayoutPanel9);
+            this.pnl_loadingScreen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_loadingScreen.Location = new System.Drawing.Point(0, 0);
+            this.pnl_loadingScreen.Name = "pnl_loadingScreen";
+            this.pnl_loadingScreen.Size = new System.Drawing.Size(1200, 623);
+            this.pnl_loadingScreen.TabIndex = 0;
+            // 
+            // tableLayoutPanel9
+            // 
+            this.tableLayoutPanel9.ColumnCount = 3;
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 234F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel9.Controls.Add(this.panel9, 1, 1);
+            this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
+            this.tableLayoutPanel9.RowCount = 3;
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 234F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(1200, 623);
+            this.tableLayoutPanel9.TabIndex = 1;
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.cpb_loadingScreenCircProgBar);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel9.Location = new System.Drawing.Point(483, 194);
+            this.panel9.Margin = new System.Windows.Forms.Padding(0);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(234, 234);
+            this.panel9.TabIndex = 0;
+            // 
+            // cpb_loadingScreenCircProgBar
+            // 
+            this.cpb_loadingScreenCircProgBar.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.Liner;
+            this.cpb_loadingScreenCircProgBar.AnimationSpeed = 500;
+            this.cpb_loadingScreenCircProgBar.BackColor = System.Drawing.Color.Transparent;
+            this.cpb_loadingScreenCircProgBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.cpb_loadingScreenCircProgBar.ForeColor = System.Drawing.Color.Silver;
+            this.cpb_loadingScreenCircProgBar.InnerColor = System.Drawing.SystemColors.Control;
+            this.cpb_loadingScreenCircProgBar.InnerMargin = 2;
+            this.cpb_loadingScreenCircProgBar.InnerWidth = -1;
+            this.cpb_loadingScreenCircProgBar.Location = new System.Drawing.Point(2, 0);
+            this.cpb_loadingScreenCircProgBar.MarqueeAnimationSpeed = 1000;
+            this.cpb_loadingScreenCircProgBar.Name = "cpb_loadingScreenCircProgBar";
+            this.cpb_loadingScreenCircProgBar.OuterColor = System.Drawing.Color.Gainsboro;
+            this.cpb_loadingScreenCircProgBar.OuterMargin = -25;
+            this.cpb_loadingScreenCircProgBar.OuterWidth = 26;
+            this.cpb_loadingScreenCircProgBar.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
+            this.cpb_loadingScreenCircProgBar.ProgressWidth = 5;
+            this.cpb_loadingScreenCircProgBar.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 36F);
+            this.cpb_loadingScreenCircProgBar.Size = new System.Drawing.Size(231, 234);
+            this.cpb_loadingScreenCircProgBar.StartAngle = 270;
+            this.cpb_loadingScreenCircProgBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.cpb_loadingScreenCircProgBar.SubscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.cpb_loadingScreenCircProgBar.SubscriptMargin = new System.Windows.Forms.Padding(10, -35, 0, 0);
+            this.cpb_loadingScreenCircProgBar.SubscriptText = "";
+            this.cpb_loadingScreenCircProgBar.SuperscriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
+            this.cpb_loadingScreenCircProgBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
+            this.cpb_loadingScreenCircProgBar.SuperscriptText = "";
+            this.cpb_loadingScreenCircProgBar.TabIndex = 1;
+            this.cpb_loadingScreenCircProgBar.Text = "Loading Data...";
+            this.cpb_loadingScreenCircProgBar.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
+            this.cpb_loadingScreenCircProgBar.Value = 36;
+            // 
+            // pnl_CountrySelector
+            // 
+            this.pnl_CountrySelector.Controls.Add(this.tableLayoutPanel8);
+            this.pnl_CountrySelector.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_CountrySelector.Location = new System.Drawing.Point(0, 0);
+            this.pnl_CountrySelector.Name = "pnl_CountrySelector";
+            this.pnl_CountrySelector.Size = new System.Drawing.Size(1200, 623);
+            this.pnl_CountrySelector.TabIndex = 55;
+            // 
+            // tableLayoutPanel8
+            // 
+            this.tableLayoutPanel8.ColumnCount = 4;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 156F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 153F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.Controls.Add(this.panel4, 1, 1);
+            this.tableLayoutPanel8.Controls.Add(this.panel5, 1, 2);
+            this.tableLayoutPanel8.Controls.Add(this.panel6, 2, 2);
+            this.tableLayoutPanel8.Controls.Add(this.panel7, 1, 3);
+            this.tableLayoutPanel8.Controls.Add(this.panel3, 1, 4);
+            this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.RowCount = 6;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(1200, 623);
+            this.tableLayoutPanel8.TabIndex = 4;
+            // 
+            // panel4
+            // 
+            this.tableLayoutPanel8.SetColumnSpan(this.panel4, 2);
+            this.panel4.Controls.Add(this.bunifuCustomLabel25);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(445, 230);
+            this.panel4.Margin = new System.Windows.Forms.Padding(0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(309, 40);
+            this.panel4.TabIndex = 0;
+            // 
+            // bunifuCustomLabel25
+            // 
+            this.bunifuCustomLabel25.AutoSize = true;
+            this.bunifuCustomLabel25.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.bunifuCustomLabel25.Location = new System.Drawing.Point(72, 11);
+            this.bunifuCustomLabel25.Name = "bunifuCustomLabel25";
+            this.bunifuCustomLabel25.Size = new System.Drawing.Size(175, 20);
+            this.bunifuCustomLabel25.TabIndex = 0;
+            this.bunifuCustomLabel25.Text = "Select a country to load";
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.btn_usSwitch);
+            this.panel5.Controls.Add(this.bunifuCustomLabel23);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(445, 270);
+            this.panel5.Margin = new System.Windows.Forms.Padding(0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(156, 39);
+            this.panel5.TabIndex = 0;
+            // 
+            // btn_usSwitch
+            // 
+            this.btn_usSwitch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.btn_usSwitch.BorderRadius = 0;
+            this.btn_usSwitch.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_usSwitch.ForeColor = System.Drawing.SystemColors.Control;
+            this.btn_usSwitch.Location = new System.Drawing.Point(90, 10);
+            this.btn_usSwitch.Name = "btn_usSwitch";
+            this.btn_usSwitch.Oncolor = System.Drawing.Color.Teal;
+            this.btn_usSwitch.Onoffcolor = System.Drawing.Color.DarkGray;
+            this.btn_usSwitch.Size = new System.Drawing.Size(51, 19);
+            this.btn_usSwitch.TabIndex = 1;
+            this.btn_usSwitch.Textcolor = System.Drawing.SystemColors.Control;
+            this.btn_usSwitch.Value = true;
+            this.btn_usSwitch.Click += new System.EventHandler(this.btn_usSwitch_Click);
+            // 
+            // bunifuCustomLabel23
+            // 
+            this.bunifuCustomLabel23.AutoSize = true;
+            this.bunifuCustomLabel23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.bunifuCustomLabel23.Location = new System.Drawing.Point(13, 13);
+            this.bunifuCustomLabel23.Name = "bunifuCustomLabel23";
+            this.bunifuCustomLabel23.Size = new System.Drawing.Size(71, 13);
+            this.bunifuCustomLabel23.TabIndex = 2;
+            this.bunifuCustomLabel23.Text = "United States";
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.btn_mxSwitch);
+            this.panel6.Controls.Add(this.bunifuCustomLabel26);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.Location = new System.Drawing.Point(601, 270);
+            this.panel6.Margin = new System.Windows.Forms.Padding(0);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(153, 39);
+            this.panel6.TabIndex = 0;
+            // 
+            // btn_mxSwitch
+            // 
+            this.btn_mxSwitch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.btn_mxSwitch.BorderRadius = 0;
+            this.btn_mxSwitch.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_mxSwitch.ForeColor = System.Drawing.SystemColors.Control;
+            this.btn_mxSwitch.Location = new System.Drawing.Point(76, 10);
+            this.btn_mxSwitch.Name = "btn_mxSwitch";
+            this.btn_mxSwitch.Oncolor = System.Drawing.Color.Teal;
+            this.btn_mxSwitch.Onoffcolor = System.Drawing.Color.DarkGray;
+            this.btn_mxSwitch.Size = new System.Drawing.Size(51, 19);
+            this.btn_mxSwitch.TabIndex = 1;
+            this.btn_mxSwitch.Textcolor = System.Drawing.SystemColors.Control;
+            this.btn_mxSwitch.Value = false;
+            this.btn_mxSwitch.Click += new System.EventHandler(this.btn_mxSwitch_Click);
+            // 
+            // bunifuCustomLabel26
+            // 
+            this.bunifuCustomLabel26.AutoSize = true;
+            this.bunifuCustomLabel26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.bunifuCustomLabel26.Location = new System.Drawing.Point(29, 13);
+            this.bunifuCustomLabel26.Name = "bunifuCustomLabel26";
+            this.bunifuCustomLabel26.Size = new System.Drawing.Size(41, 13);
+            this.bunifuCustomLabel26.TabIndex = 2;
+            this.bunifuCustomLabel26.Text = "Mexico";
+            // 
+            // panel7
+            // 
+            this.tableLayoutPanel8.SetColumnSpan(this.panel7, 2);
+            this.panel7.Controls.Add(this.btn_LoadData);
+            this.panel7.Location = new System.Drawing.Point(445, 309);
+            this.panel7.Margin = new System.Windows.Forms.Padding(0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(309, 41);
+            this.panel7.TabIndex = 0;
+            // 
+            // btn_LoadData
+            // 
+            this.btn_LoadData.Activecolor = System.Drawing.Color.DarkSlateGray;
+            this.btn_LoadData.BackColor = System.Drawing.Color.Teal;
+            this.btn_LoadData.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_LoadData.BorderRadius = 0;
+            this.btn_LoadData.ButtonText = "Load Data";
+            this.btn_LoadData.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_LoadData.DisabledColor = System.Drawing.Color.Gray;
+            this.btn_LoadData.Iconcolor = System.Drawing.Color.Transparent;
+            this.btn_LoadData.Iconimage = null;
+            this.btn_LoadData.Iconimage_right = null;
+            this.btn_LoadData.Iconimage_right_Selected = null;
+            this.btn_LoadData.Iconimage_Selected = null;
+            this.btn_LoadData.IconMarginLeft = 0;
+            this.btn_LoadData.IconMarginRight = 0;
+            this.btn_LoadData.IconRightVisible = true;
+            this.btn_LoadData.IconRightZoom = 0D;
+            this.btn_LoadData.IconVisible = true;
+            this.btn_LoadData.IconZoom = 90D;
+            this.btn_LoadData.IsTab = false;
+            this.btn_LoadData.Location = new System.Drawing.Point(77, 6);
+            this.btn_LoadData.Name = "btn_LoadData";
+            this.btn_LoadData.Normalcolor = System.Drawing.Color.Teal;
+            this.btn_LoadData.OnHovercolor = System.Drawing.Color.DarkSlateGray;
+            this.btn_LoadData.OnHoverTextColor = System.Drawing.Color.White;
+            this.btn_LoadData.selected = false;
+            this.btn_LoadData.Size = new System.Drawing.Size(159, 30);
+            this.btn_LoadData.TabIndex = 3;
+            this.btn_LoadData.Text = "Load Data";
+            this.btn_LoadData.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_LoadData.Textcolor = System.Drawing.Color.White;
+            this.btn_LoadData.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_LoadData.Click += new System.EventHandler(this.btn_LoadData_Click);
+            // 
+            // panel3
+            // 
+            this.tableLayoutPanel8.SetColumnSpan(this.panel3, 2);
+            this.panel3.Controls.Add(this.btn_dashboardCancel);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(445, 350);
+            this.panel3.Margin = new System.Windows.Forms.Padding(0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(309, 43);
+            this.panel3.TabIndex = 0;
+            // 
+            // btn_dashboardCancel
+            // 
+            this.btn_dashboardCancel.Activecolor = System.Drawing.Color.DarkSlateGray;
+            this.btn_dashboardCancel.BackColor = System.Drawing.Color.Teal;
+            this.btn_dashboardCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_dashboardCancel.BorderRadius = 0;
+            this.btn_dashboardCancel.ButtonText = "Cancel";
+            this.btn_dashboardCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_dashboardCancel.DisabledColor = System.Drawing.Color.Gray;
+            this.btn_dashboardCancel.Iconcolor = System.Drawing.Color.Transparent;
+            this.btn_dashboardCancel.Iconimage = null;
+            this.btn_dashboardCancel.Iconimage_right = null;
+            this.btn_dashboardCancel.Iconimage_right_Selected = null;
+            this.btn_dashboardCancel.Iconimage_Selected = null;
+            this.btn_dashboardCancel.IconMarginLeft = 0;
+            this.btn_dashboardCancel.IconMarginRight = 0;
+            this.btn_dashboardCancel.IconRightVisible = true;
+            this.btn_dashboardCancel.IconRightZoom = 0D;
+            this.btn_dashboardCancel.IconVisible = true;
+            this.btn_dashboardCancel.IconZoom = 90D;
+            this.btn_dashboardCancel.IsTab = false;
+            this.btn_dashboardCancel.Location = new System.Drawing.Point(77, 7);
+            this.btn_dashboardCancel.Name = "btn_dashboardCancel";
+            this.btn_dashboardCancel.Normalcolor = System.Drawing.Color.Teal;
+            this.btn_dashboardCancel.OnHovercolor = System.Drawing.Color.DarkSlateGray;
+            this.btn_dashboardCancel.OnHoverTextColor = System.Drawing.Color.White;
+            this.btn_dashboardCancel.selected = false;
+            this.btn_dashboardCancel.Size = new System.Drawing.Size(159, 30);
+            this.btn_dashboardCancel.TabIndex = 3;
+            this.btn_dashboardCancel.Text = "Cancel";
+            this.btn_dashboardCancel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_dashboardCancel.Textcolor = System.Drawing.Color.White;
+            this.btn_dashboardCancel.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_dashboardCancel.Click += new System.EventHandler(this.btn_dashboardCancel_Click);
             // 
             // pnl_NavigationPanelMax
             // 
@@ -2926,23 +3192,12 @@
             this.pnl_titlePanel.PerformLayout();
             this.pnl_activePage.ResumeLayout(false);
             this.pnl_activePage.PerformLayout();
-            this.pnl_CountrySelector.ResumeLayout(false);
-            this.tableLayoutPanel8.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
-            this.panel7.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.pnl_loadingScreen.ResumeLayout(false);
-            this.tableLayoutPanel9.ResumeLayout(false);
-            this.panel9.ResumeLayout(false);
             this.tblpnl_Filters.ResumeLayout(false);
             this.tblpnl_Filters.PerformLayout();
             this.panel27.ResumeLayout(false);
             this.panel27.PerformLayout();
+            this.gb_advancedFilters.ResumeLayout(false);
+            this.gb_advancedFilters.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel17.ResumeLayout(false);
             this.tableLayoutPanel17.PerformLayout();
@@ -2976,6 +3231,19 @@
             this.tableLayoutPanel19.PerformLayout();
             this.pnl_note.ResumeLayout(false);
             this.pnl_note.PerformLayout();
+            this.pnl_loadingScreen.ResumeLayout(false);
+            this.tableLayoutPanel9.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
+            this.pnl_CountrySelector.ResumeLayout(false);
+            this.tableLayoutPanel8.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.pnl_NavigationPanelMax.ResumeLayout(false);
             this.pnl_NavigationPanelMax.PerformLayout();
             this.pnl_KPISectionsPanel.ResumeLayout(false);
@@ -3179,6 +3447,23 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel19;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel31;
         private System.Windows.Forms.CheckedListBox ChkdListBx_productionOrderMat;
+        private System.Windows.Forms.GroupBox gb_advancedFilters;
+        private Bunifu.Framework.UI.BunifuCheckbox chkBox_servicePrPo;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel33;
+        private Bunifu.Framework.UI.BunifuCheckbox chkBox_manualPr;
+        private Bunifu.Framework.UI.BunifuCheckbox chkBox_codifiedMatSubCon;
+        private Bunifu.Framework.UI.BunifuCheckbox chkBox_codifiedMatNonSub;
+        private Bunifu.Framework.UI.BunifuCheckbox chkBox_IntCompPo;
+        private Bunifu.Framework.UI.BunifuCheckbox chkBox_returnPo;
+        private Bunifu.Framework.UI.BunifuCheckbox chkBox_pouPrPo;
+        private Bunifu.Framework.UI.BunifuCheckbox chkBox_SteelPrPo;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel40;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel39;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel38;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel37;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel36;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel35;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel34;
     }
 }
 

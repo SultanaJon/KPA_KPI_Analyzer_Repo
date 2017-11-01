@@ -2,6 +2,9 @@
 {
     internal static class Globals
     {
+        public static int ServicePOCategory = 9;
+
+
         public static Countries FocusedCountry { get; set; }
 
         public static string CountryTableName

@@ -89,6 +89,13 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                         }
                     }
 
+                    if (AdvancedFilters.AdvanceFiltersChanged())
+                    {
+                        // We have some advanced filters that the user would like to exclude.
+                        if (!FilterUtils.CheckAdvancedFilters(dr))
+                            continue;
+                    }
+
                     string[] strPrPlanDate = (dr["PR Delivery Date"].ToString()).Split('/');
                     int delConfYear = int.Parse(strPrPlanDate[2]);
                     int delConfMonth = int.Parse(strPrPlanDate[0].TrimStart('0'));
@@ -221,6 +228,15 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                             continue;
                         }
                     }
+
+                    if (AdvancedFilters.AdvanceFiltersChanged())
+                    {
+                        // We have some advanced filters that the user would like to exclude.
+                        if (!FilterUtils.CheckAdvancedFilters(dr))
+                            continue;
+                    }
+
+
 
                     string[] strPrPlanDate = (dr["PR Delivery Date"].ToString()).Split('/');
                     int delConfYear = int.Parse(strPrPlanDate[2]);
@@ -370,6 +386,15 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                             continue;
                         }
                     }
+
+                    if (AdvancedFilters.AdvanceFiltersChanged())
+                    {
+                        // We have some advanced filters that the user would like to exclude.
+                        if (!FilterUtils.CheckAdvancedFilters(dr))
+                            continue;
+                    }
+
+
 
                     // This is a tempory fix for MEXICO TAG_MEXICO_FIX
                     // DELETE the refion below this commented code and uncomment this code.

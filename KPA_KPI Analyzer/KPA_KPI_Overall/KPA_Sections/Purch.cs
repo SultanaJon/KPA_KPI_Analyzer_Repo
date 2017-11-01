@@ -110,6 +110,14 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                     }
 
 
+                    if (AdvancedFilters.AdvanceFiltersChanged())
+                    {
+                        // We have some advanced filters that the user would like to exclude.
+                        if (!FilterUtils.CheckAdvancedFilters(dr))
+                            continue;
+                    }
+
+
                     string[] strDate = (dr["PR 2° Rel# Date"].ToString()).Split('/');
                     int year = int.Parse(strDate[2]);
                     int month = int.Parse(strDate[0].TrimStart('0'));
@@ -212,6 +220,12 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                     }
 
 
+                    if (AdvancedFilters.AdvanceFiltersChanged())
+                    {
+                        // We have some advanced filters that the user would like to exclude.
+                        if (!FilterUtils.CheckAdvancedFilters(dr))
+                            continue;
+                    }
 
 
                     string[] strDate = (dr["PO Line Creat#DT"].ToString()).Split('/');
@@ -313,6 +327,13 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                         }
                     }
 
+                    if (AdvancedFilters.AdvanceFiltersChanged())
+                    {
+                        // We have some advanced filters that the user would like to exclude.
+                        if (!FilterUtils.CheckAdvancedFilters(dr))
+                            continue;
+                    }
+
 
                     string[] strDate = (dr["PO Line Creat#DT"].ToString()).Split('/');
                     int year = int.Parse(strDate[2]);
@@ -412,6 +433,14 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                             // The final receipt date was not in range of the filter the user applied
                             continue;
                         }
+                    }
+
+
+                    if (AdvancedFilters.AdvanceFiltersChanged())
+                    {
+                        // We have some advanced filters that the user would like to exclude.
+                        if (!FilterUtils.CheckAdvancedFilters(dr))
+                            continue;
                     }
 
 

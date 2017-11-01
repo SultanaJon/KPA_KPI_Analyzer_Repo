@@ -12,6 +12,8 @@ namespace KPA_KPI_Analyzer
 
         private static string filters = string.Empty;
         private List<int> activeCLBs = new List<int>();
+        List<Bunifu.Framework.UI.BunifuCheckbox> checkBoxes = new List<Bunifu.Framework.UI.BunifuCheckbox>();
+
 
         #endregion
 
@@ -34,6 +36,12 @@ namespace KPA_KPI_Analyzer
 
 
 
+        public static bool AdvancedFiltersAdded { get; set; }
+
+
+
+
+
         /// <summary>
         /// boolean value indicating whether or not the user has applied the filters to the data.
         /// </summary>
@@ -47,6 +55,14 @@ namespace KPA_KPI_Analyzer
         /// boolean value indicating whether or not the user has applied date filters to the data
         /// </summary>
         public static bool DateFiltersApplied { get; set; }
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static bool AdvancedFiltersApplied { get; set; }
 
 
 
@@ -71,6 +87,7 @@ namespace KPA_KPI_Analyzer
         /// Boolean value indicating whether the program should filter by the PO date range.
         /// </summary>
         public static bool FilterByFinalRecDate { get; set; }
+
 
         #endregion
 
@@ -1278,8 +1295,6 @@ namespace KPA_KPI_Analyzer
 
 
 
-
-
         /// <summary>
         /// Any filters that are checked will be unchecked and the filters check lists
         /// will be set back to the normal state.
@@ -1309,6 +1324,16 @@ namespace KPA_KPI_Analyzer
                     FilterByFinalRecDate = false;
                     chkBox_FinalReceiptDate.Checked = false;
                 }
+            }
+
+
+
+            // If advanced filter were edited, reset them.
+            if (AdvancedFiltersAdded)
+            {
+                AdvancedFiltersAdded = false;
+                AdvancedFilters.ResetAdvanceFilters();
+                ResetAdvancedFilters();
             }
 
 
@@ -1448,7 +1473,9 @@ namespace KPA_KPI_Analyzer
 
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         private void GetCheckedColumnFilters()
         {
             Filters.FilterValues.Clear();
@@ -1607,7 +1634,7 @@ namespace KPA_KPI_Analyzer
                 }
                 else
                 {
-                    Filters.FinalReceiptFromDate = dp_POFromDate.Value;
+                    Filters.FinalReceiptFromDate = dp_finalReceiptFromDate.Value;
                     Filters.FinalReceiptToDate = dp_finalReciptToDate.Value;
                     Filters.FilterByFinalReceiptDate = true;
                 }
@@ -1616,6 +1643,7 @@ namespace KPA_KPI_Analyzer
             {
                 Filters.FilterByFinalReceiptDate = false;
             }
+
 
 
             BuildQueryFilters();
@@ -1645,6 +1673,16 @@ namespace KPA_KPI_Analyzer
                 DateFiltersApplied = false;
             }
 
+
+            if(AdvancedFilters.AdvanceFiltersChanged())
+            {
+                AdvancedFiltersApplied = true;
+            }
+            else
+            {
+                AdvancedFiltersApplied = false;
+            }
+
             InitializeDataLoadProcess();
         }
 
@@ -1660,7 +1698,6 @@ namespace KPA_KPI_Analyzer
         /// <param name="e"></param>
         private void btn_clearFilters_Click(object sender, EventArgs e)
         {
-
             ResetFilters();
             UpdateFilterButtons();
             DataReader.LoadOverallData(ref overallData);
@@ -1671,12 +1708,32 @@ namespace KPA_KPI_Analyzer
 
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        private void ResetAdvancedFilters()
+        {
+            foreach (Bunifu.Framework.UI.BunifuCheckbox chkBox in checkBoxes)
+            {
+                if (int.Parse(chkBox.Tag.ToString()) <= 2)
+                    continue;
+                else
+                    chkBox.Checked = true;
+            }
+
+
+            AdvancedFiltersAdded = false;
+            AdvancedFiltersApplied = false;
+            AdvancedFilters.ResetAdvanceFilters();
+        }
+
+
 
 
         /// <summary>
         /// 
         /// </summary>
-        internal void ResetFilters()
+        private void ResetFilters()
         {
             Filters.FilterValues.Clear();
             Filters.FilterQuery = string.Empty;
@@ -1693,6 +1750,7 @@ namespace KPA_KPI_Analyzer
             ColumnFiltersApplied = false;
             DateFiltersAdded = false;
             DateFiltersApplied = false;
+            ResetAdvancedFilters();
         }
 
 
@@ -1713,6 +1771,8 @@ namespace KPA_KPI_Analyzer
              else
                 DateFiltersAdded = false;
 
+            // Check if the user has changed the advanced filters
+            AdvancedFiltersAdded = AdvancedFilters.AdvanceFiltersChanged();
 
             // Check if the user selected any filters from the following check list boxes.
             if (Filters.FilterValues.projectNumber.Count > 0) ColumnFiltersAdded = true;
@@ -1785,7 +1845,7 @@ namespace KPA_KPI_Analyzer
         private void UpdateFilterButtons()
         {
             HasFiltersAdded();
-            if(ColumnFiltersAdded || DateFiltersAdded)
+            if(ColumnFiltersAdded || DateFiltersAdded || AdvancedFiltersAdded)
             {
                 EnableApplyFiltersButton();
                 EnableClearSelectedButton();
@@ -1797,7 +1857,7 @@ namespace KPA_KPI_Analyzer
             }
 
 
-            if(ColumnFiltersApplied || DateFiltersApplied)
+            if(ColumnFiltersApplied || DateFiltersApplied || AdvancedFiltersApplied)
             {
                 EnableClearFiltersButton();
             }
@@ -1896,31 +1956,144 @@ namespace KPA_KPI_Analyzer
             }
             return false;
         }
-
+        
 
 
 
         /// <summary>
-        /// this event will toggle the PR date range check box and enable the
-        /// program to check for a PR date range.
+        /// 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void prDateRangeCheckBox_OnChange(object sender, EventArgs e)
+        public void CheckFilters(int tag)
         {
-            if (chkBox_PrDateRange.Checked)
+            switch(tag)
             {
-                // if this checkbox is checked then we will want to enable the ability to filter by PR date range.
-                FilterByPrDate = true;
-                CheckDateRange(0);
-                UpdateFilterButtons();
+                case 0:
+                    // Check if the user has chosen the option to filter by PR Date.
+                    if (chkBox_PrDateRange.Checked)
+                    {
+                        FilterByPrDate = true;
+                        CheckDateRange(0);
+                    }
+                    else
+                    {
+                        FilterByPrDate = false;
+                    }
+                    break;
+                case 1:
+                    // Check if the user has chosen the option to filter by PO Date.
+                    if (chkBox_PoDateRange.Checked)
+                    {
+                        FilterByPoDate = true;
+                        CheckDateRange(2);
+                    }
+                    else
+                    {
+                        FilterByPoDate = false;
+                    }
+                    break;
+                case 2:
+                    // Check if the user has chosen the option to filter by final receipt date.
+                    if (chkBox_FinalReceiptDate.Checked)
+                    {
+                        FilterByFinalRecDate = true;
+                        CheckDateRange(2);
+                    }
+                    else
+                    {
+                        FilterByFinalRecDate = false;
+                    }
+                    break;
+                case 3:
+                    // Check if the user has chosent the option to filter service PR/POs
+                    if (chkBox_servicePrPo.Checked)
+                    {
+                        AdvancedFilters.FilterByServicePrPo = true;
+                    }
+                    else
+                    {
+                        AdvancedFilters.FilterByServicePrPo = false;
+                    }
+                    break;
+                case 4:
+                    // Check if the user has chosent the option to filter steel PR/POs
+                    if (chkBox_SteelPrPo.Checked)
+                    {
+                        AdvancedFilters.FilterBySteelPrPo = true;
+                    }
+                    else
+                    {
+                        AdvancedFilters.FilterBySteelPrPo = false;
+                    }
+                    break;
+                case 5:
+                    // Check if the user has chosent the option to filter POU PR/POs
+                    if (chkBox_pouPrPo.Checked)
+                    {
+                        AdvancedFilters.FilterByPouPrPo = true;
+                    }
+                    else
+                    {
+                        AdvancedFilters.FilterByPouPrPo = false;
+                    }
+                    break;
+                case 6:
+                    // Check if the user has chosent the option to filter return POs
+                    if (chkBox_returnPo.Checked)
+                    {
+                        AdvancedFilters.FilterByReturnPo = true;
+                    }
+                    else
+                    {
+                        AdvancedFilters.FilterByReturnPo = false;
+                    }
+                    break;
+                case 7:
+                    // Check if the user has chosent the option to filter Intercompany POs
+                    if (chkBox_IntCompPo.Checked)
+                    {
+                        AdvancedFilters.FilterByIntercompPo = true;
+                    }
+                    else
+                    {
+                        AdvancedFilters.FilterByIntercompPo = false;
+                    }
+                    break;
+                case 8:
+                    // Check if the user has chosent the option to filter Codified Material (non- subcontract)
+                    if (chkBox_codifiedMatNonSub.Checked)
+                    {
+                        AdvancedFilters.FilterByCodifiedMatNonSubcont = true;
+                    }
+                    else
+                    {
+                        AdvancedFilters.FilterByCodifiedMatNonSubcont = false;
+                    }
+                    break;
+                case 9:
+                    // Check if the user has chosent the option to filter Codified Material (Subcontact)
+                    if (chkBox_codifiedMatSubCon.Checked)
+                    {
+                        AdvancedFilters.FilterByCodifiedMatSubcont = true;
+                    }
+                    else
+                    {
+                        AdvancedFilters.FilterByCodifiedMatSubcont = false;
+                    }
+                    break;
+                default:
+                    // Check if the user has chosent the option to filter Manual PRs
+                    if (chkBox_manualPr.Checked)
+                    {
+                        AdvancedFilters.FilterByManualPr = true;
+                    }
+                    else
+                    {
+                        AdvancedFilters.FilterByManualPr = false;
+                    }
+                    break;
             }
-            else
-            {
-                // we want to turn off the ability to filter by PR date range.
-                FilterByPrDate = false;
-                UpdateFilterButtons();
-            }
+
+            UpdateFilterButtons();
         }
 
 
@@ -1928,107 +2101,43 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// this event will toggle the PO date range check box and enable the
-        /// program to check for a PO date range.
+        /// 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void poDateRangeCheckBox_OnChange(object sender, EventArgs e)
+        public void GetCheckBoxControls()
         {
-            if (chkBox_PoDateRange.Checked)
-            {
-                // if this checkbox is checked then we will want to enable the ability to filter by PO date range.
-                FilterByPoDate = true;
-                CheckDateRange(2);
-                UpdateFilterButtons();
-            }
-            else
-            {
-                // we want to turn off the ability to filter by PO date range
-                FilterByPoDate = false;
-                UpdateFilterButtons();
-            }
+            checkBoxes.Add(chkBox_PrDateRange);
+            checkBoxes.Add(chkBox_PoDateRange);
+            checkBoxes.Add(chkBox_FinalReceiptDate);
+            checkBoxes.Add(chkBox_servicePrPo);
+            checkBoxes.Add(chkBox_SteelPrPo);
+            checkBoxes.Add(chkBox_pouPrPo);
+            checkBoxes.Add(chkBox_returnPo);
+            checkBoxes.Add(chkBox_IntCompPo);
+            checkBoxes.Add(chkBox_codifiedMatNonSub);
+            checkBoxes.Add(chkBox_codifiedMatSubCon);
+            checkBoxes.Add(chkBox_manualPr);
         }
 
 
 
 
-
         /// <summary>
-        /// this event will toggle the final receipt date range check box and enable the
-        /// program to check for a final receipt date within the final receipt date range.
+        /// 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void finalRecDateRangeCheckBox_OnChange(object sender, EventArgs e)
+        private void checkBox_OnChange(object sender, EventArgs e)
         {
-            if (chkBox_FinalReceiptDate.Checked)
+            try
             {
-                // if this checkbox is checked then we will want to enable the ability to filter by final receipt date range.
-                FilterByFinalRecDate = true;
-                CheckDateRange(4);
-                UpdateFilterButtons();
+
+                Bunifu.Framework.UI.BunifuCheckbox chkBox = (Bunifu.Framework.UI.BunifuCheckbox)sender;
+                int tag = int.Parse(chkBox.Tag.ToString());
+                CheckFilters(tag);
             }
-            else
+            catch(Exception ex)
             {
-                // we want to turn off the ability to filter by final receipt date range
-                FilterByFinalRecDate = false;
-                UpdateFilterButtons();
-            }
-        }
-
-
-
-
-
-
-        /// <summary>
-        /// When the user clicks the label "PR Date Range: " label, this event will toggle the PR date range check box and enable the
-        /// program to check for a PR date range.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void prDateRangeLabel_Click(object sender, EventArgs e)
-        {
-            if (chkBox_PrDateRange.Checked)
-            {
-                chkBox_PrDateRange.Checked = false;
-                FilterByPrDate = false;
-                CheckDateRange(0);
-                UpdateFilterButtons();
-            }
-            else
-            {
-                chkBox_PrDateRange.Checked = true;
-                FilterByPrDate = true;
-                UpdateFilterButtons();
-            }
-        }
-
-
-
-
-
-        /// <summary>
-        /// When the user clicks the label "PO Date Range: " label, this event will toggle the PO date range check box and enable the
-        /// program to check for a PO date range.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void poDateRangeLabel_Click(object sender, EventArgs e)
-        {
-            if (chkBox_PoDateRange.Checked)
-            {
-                chkBox_PoDateRange.Checked = false;
-                FilterByPoDate = false;
-                CheckDateRange(2);
-                UpdateFilterButtons();
-            }
-            else
-            {
-                chkBox_PoDateRange.Checked = true;
-                FilterByPoDate = true;
-                UpdateFilterButtons();
+                MessageBox.Show(ex.Message, "Filter Checkbox OnChange Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -2036,25 +2145,31 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// When the user clicks the label "Final Receipt Date: " label, this event will toggle the Final Receipt Date Range check box and enable the
-        /// program to check for a Final Receipt Dates within the final receipt date range.
+        /// 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void finalRecDateRangeLabel_Click(object sender, EventArgs e)
+        private void filterLabel_Click(object sender, EventArgs e)
         {
-            if (chkBox_FinalReceiptDate.Checked)
+            try
             {
-                chkBox_FinalReceiptDate.Checked = false;
-                FilterByFinalRecDate = false;
-                CheckDateRange(2);
-                UpdateFilterButtons();
+                Bunifu.Framework.UI.BunifuCustomLabel label = (Bunifu.Framework.UI.BunifuCustomLabel)sender;
+                int tag = int.Parse(label.Tag.ToString());
+
+                if (checkBoxes[tag].Checked)
+                {
+                    checkBoxes[tag].Checked = false;
+                }
+                else
+                {
+                    checkBoxes[tag].Checked = true;
+                }
+
+                CheckFilters(tag);
             }
-            else
+            catch(Exception ex)
             {
-                chkBox_FinalReceiptDate.Checked = true;
-                FilterByFinalRecDate = true;
-                UpdateFilterButtons();
+                MessageBox.Show(ex.Message, "Filter Label Click Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
