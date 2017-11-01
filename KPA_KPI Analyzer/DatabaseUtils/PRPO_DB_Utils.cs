@@ -322,7 +322,7 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
             AllDt.Clear();
             AllDt = null;
             GC.Collect();
-    }
+        }
 
 
 

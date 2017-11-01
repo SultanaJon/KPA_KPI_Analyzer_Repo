@@ -3206,7 +3206,12 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                 {
                     dt = new DataTable();
                     prsCreated = new DataTable();
-                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.AllData) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    //cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.AllData) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+
+                    if (Filters.FilterQuery == string.Empty)
+                        cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.AllData), PRPO_DB_Utils.DatabaseConnection);
+                    else
+                        cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.AllData) + " WHERE " + Filters.SecondaryFilterQuery, PRPO_DB_Utils.DatabaseConnection);
 
 
                     da = new OleDbDataAdapter(cmd);

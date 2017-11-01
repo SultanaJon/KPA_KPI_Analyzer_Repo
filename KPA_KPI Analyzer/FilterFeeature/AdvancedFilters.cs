@@ -29,12 +29,6 @@ namespace KPA_KPI_Analyzer.FilterFeeature
         /// <summary>
         /// 
         /// </summary>
-        public static bool FilterByReturnPo { get; set; } = true;
-
-
-        /// <summary>
-        /// 
-        /// </summary>
         public static bool FilterByIntercompPo { get; set; } = true;
 
 
@@ -68,7 +62,6 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             if (FilterByServicePrPo && 
                 FilterBySteelPrPo && 
                 FilterByPouPrPo && 
-                FilterByReturnPo && 
                 FilterByIntercompPo && 
                 FilterByCodifiedMatNonSubcont && 
                 FilterByCodifiedMatSubcont && 
@@ -94,7 +87,6 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             FilterByServicePrPo = true;
             FilterBySteelPrPo = true;
             FilterByPouPrPo = true;
-            FilterByReturnPo = true;
             FilterByIntercompPo = true;
             FilterByCodifiedMatNonSubcont = true;
             FilterByCodifiedMatSubcont = true;

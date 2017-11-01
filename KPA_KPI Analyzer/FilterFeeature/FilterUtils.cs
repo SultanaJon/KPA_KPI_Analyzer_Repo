@@ -519,78 +519,75 @@ namespace KPA_KPI_Analyzer.FilterFeeature
         {
             if(!AdvancedFilters.FilterByServicePrPo)
             {
-                if(int.Parse(dr["Item Category"].ToString()) == Globals.ServicePOCategory)
+                string temp = dr["PR ItemCat1"].ToString();
+                if(temp != string.Empty)
+                {
+                    if (int.Parse(temp) == Globals.ServicePOCategory)
+                    {
+                        return false;
+                    }
+                }                
+            }
+
+
+            if (!AdvancedFilters.FilterBySteelPrPo)
+            {
+                string material = dr["Material"].ToString();
+                if (material.Contains("TAL-ST"))
                 {
                     return false;
                 }
             }
 
 
-            //if(!AdvancedFilters.FilterBySteelPrPo)
-            //{
-            //    string material = dr["Material"].ToString();
-            //    if(material.Contains("TAL-ST"))
-            //    {
-            //        return false;
-            //    }
-            //}
+            if (!AdvancedFilters.FilterByPouPrPo)
+            {
+                string docType = dr["Document Type"].ToString();
+                if (docType.Contains("POU"))
+                {
+                    return false;
+                }
+            }
 
 
-            //if(!AdvancedFilters.FilterByPouPrPo)
-            //{
-            //    string docType = dr["Document Type"].ToString();
-            //    if (docType.Contains("POU"))
-            //    {
-            //        return false;
-            //    }
-            //}
+            if (!AdvancedFilters.FilterByIntercompPo)
+            {
+                string vendorDesc = dr["Vendor Description"].ToString();
+                if (vendorDesc.Contains("COMAU"))
+                {
+                    return false;
+                }
+            }
 
 
-            ////if(!AdvancedFilters.FilterByReturnPo)
-            ////{
-            ////    if ()
-            ////    {
-
-            ////    }
-            ////}
-
-
-            //if(!AdvancedFilters.FilterByIntercompPo)
-            //{
-            //    string vendorDesc = dr["Vendor Description"].ToString();
-            //    if (vendorDesc.Contains("COMAU"))
-            //    {
-            //        return false;
-            //    }
-            //}
+            if (!AdvancedFilters.FilterByCodifiedMatNonSubcont)
+            {
+                if (dr["Material"].ToString() != string.Empty)
+                {
+                    return false;
+                }
+            }
 
 
-            //if(!AdvancedFilters.FilterByCodifiedMatNonSubcont)
-            //{
-            //    if (dr["Material"].ToString() != string.Empty)
-            //    {
-            //        return false;
-            //    }
-            //}
+            if (!AdvancedFilters.FilterByCodifiedMatSubcont)
+            {
+                if (dr["Prd Ord Mat"].ToString() != string.Empty)
+                {
+                    return false;
+                }
+            }
 
 
-            //if(!AdvancedFilters.FilterByCodifiedMatSubcont)
-            //{
-            //    if (dr["Prd Ord Mat"].ToString() != string.Empty)
-            //    {
-            //        return false;
-            //    }
-            //}
+            if (!AdvancedFilters.FilterByManualPr)
+            {
+                string material = dr["Material"].ToString();
+                string prdOrdMat = dr["Prd Ord Mat"].ToString();
 
-
-            ////if(AdvancedFilters.FilterByManualPr)
-            ////{
-            ////    if ()
-            ////    {
-
-            ////    }
-            ////}
-
+                if (material == string.Empty && prdOrdMat == string.Empty)
+                {
+                    return false;
+                }
+            }
 
             return true;
         }

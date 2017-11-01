@@ -2037,17 +2037,6 @@ namespace KPA_KPI_Analyzer
                     }
                     break;
                 case 6:
-                    // Check if the user has chosent the option to filter return POs
-                    if (chkBox_returnPo.Checked)
-                    {
-                        AdvancedFilters.FilterByReturnPo = true;
-                    }
-                    else
-                    {
-                        AdvancedFilters.FilterByReturnPo = false;
-                    }
-                    break;
-                case 7:
                     // Check if the user has chosent the option to filter Intercompany POs
                     if (chkBox_IntCompPo.Checked)
                     {
@@ -2058,7 +2047,7 @@ namespace KPA_KPI_Analyzer
                         AdvancedFilters.FilterByIntercompPo = false;
                     }
                     break;
-                case 8:
+                case 7:
                     // Check if the user has chosent the option to filter Codified Material (non- subcontract)
                     if (chkBox_codifiedMatNonSub.Checked)
                     {
@@ -2069,7 +2058,7 @@ namespace KPA_KPI_Analyzer
                         AdvancedFilters.FilterByCodifiedMatNonSubcont = false;
                     }
                     break;
-                case 9:
+                case 8:
                     // Check if the user has chosent the option to filter Codified Material (Subcontact)
                     if (chkBox_codifiedMatSubCon.Checked)
                     {
@@ -2111,7 +2100,6 @@ namespace KPA_KPI_Analyzer
             checkBoxes.Add(chkBox_servicePrPo);
             checkBoxes.Add(chkBox_SteelPrPo);
             checkBoxes.Add(chkBox_pouPrPo);
-            checkBoxes.Add(chkBox_returnPo);
             checkBoxes.Add(chkBox_IntCompPo);
             checkBoxes.Add(chkBox_codifiedMatNonSub);
             checkBoxes.Add(chkBox_codifiedMatSubCon);

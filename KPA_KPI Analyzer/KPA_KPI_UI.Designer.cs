@@ -54,20 +54,19 @@
             this.pnl_activePage = new System.Windows.Forms.Panel();
             this.tblpnl_Filters = new System.Windows.Forms.TableLayoutPanel();
             this.panel27 = new System.Windows.Forms.Panel();
-            this.gb_advancedFilters = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.chkBox_manualPr = new Bunifu.Framework.UI.BunifuCheckbox();
+            this.bunifuCustomLabel37 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.chkBox_codifiedMatSubCon = new Bunifu.Framework.UI.BunifuCheckbox();
+            this.bunifuCustomLabel38 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.chkBox_codifiedMatNonSub = new Bunifu.Framework.UI.BunifuCheckbox();
+            this.bunifuCustomLabel39 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.chkBox_IntCompPo = new Bunifu.Framework.UI.BunifuCheckbox();
-            this.chkBox_returnPo = new Bunifu.Framework.UI.BunifuCheckbox();
+            this.bunifuCustomLabel40 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.gb_advancedFilters = new System.Windows.Forms.GroupBox();
             this.chkBox_pouPrPo = new Bunifu.Framework.UI.BunifuCheckbox();
             this.chkBox_SteelPrPo = new Bunifu.Framework.UI.BunifuCheckbox();
             this.chkBox_servicePrPo = new Bunifu.Framework.UI.BunifuCheckbox();
-            this.bunifuCustomLabel40 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.bunifuCustomLabel39 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.bunifuCustomLabel38 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.bunifuCustomLabel37 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.bunifuCustomLabel36 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel35 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel34 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel33 = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -230,6 +229,7 @@
             this.pnl_activePage.SuspendLayout();
             this.tblpnl_Filters.SuspendLayout();
             this.panel27.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.gb_advancedFilters.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel17.SuspendLayout();
@@ -515,6 +515,7 @@
             // panel27
             // 
             this.tblpnl_Filters.SetColumnSpan(this.panel27, 6);
+            this.panel27.Controls.Add(this.groupBox1);
             this.panel27.Controls.Add(this.gb_advancedFilters);
             this.panel27.Controls.Add(this.chkBox_PoDateRange);
             this.panel27.Controls.Add(this.chkBox_FinalReceiptDate);
@@ -538,30 +539,20 @@
             this.panel27.Size = new System.Drawing.Size(1180, 220);
             this.panel27.TabIndex = 3;
             // 
-            // gb_advancedFilters
+            // groupBox1
             // 
-            this.gb_advancedFilters.Controls.Add(this.chkBox_manualPr);
-            this.gb_advancedFilters.Controls.Add(this.chkBox_codifiedMatSubCon);
-            this.gb_advancedFilters.Controls.Add(this.chkBox_codifiedMatNonSub);
-            this.gb_advancedFilters.Controls.Add(this.chkBox_IntCompPo);
-            this.gb_advancedFilters.Controls.Add(this.chkBox_returnPo);
-            this.gb_advancedFilters.Controls.Add(this.chkBox_pouPrPo);
-            this.gb_advancedFilters.Controls.Add(this.chkBox_SteelPrPo);
-            this.gb_advancedFilters.Controls.Add(this.chkBox_servicePrPo);
-            this.gb_advancedFilters.Controls.Add(this.bunifuCustomLabel40);
-            this.gb_advancedFilters.Controls.Add(this.bunifuCustomLabel39);
-            this.gb_advancedFilters.Controls.Add(this.bunifuCustomLabel38);
-            this.gb_advancedFilters.Controls.Add(this.bunifuCustomLabel37);
-            this.gb_advancedFilters.Controls.Add(this.bunifuCustomLabel36);
-            this.gb_advancedFilters.Controls.Add(this.bunifuCustomLabel35);
-            this.gb_advancedFilters.Controls.Add(this.bunifuCustomLabel34);
-            this.gb_advancedFilters.Controls.Add(this.bunifuCustomLabel33);
-            this.gb_advancedFilters.Location = new System.Drawing.Point(512, 15);
-            this.gb_advancedFilters.Name = "gb_advancedFilters";
-            this.gb_advancedFilters.Size = new System.Drawing.Size(478, 190);
-            this.gb_advancedFilters.TabIndex = 4;
-            this.gb_advancedFilters.TabStop = false;
-            this.gb_advancedFilters.Text = "Advanced Filters";
+            this.groupBox1.Controls.Add(this.chkBox_manualPr);
+            this.groupBox1.Controls.Add(this.chkBox_codifiedMatSubCon);
+            this.groupBox1.Controls.Add(this.bunifuCustomLabel38);
+            this.groupBox1.Controls.Add(this.chkBox_codifiedMatNonSub);
+            this.groupBox1.Controls.Add(this.bunifuCustomLabel39);
+            this.groupBox1.Controls.Add(this.bunifuCustomLabel40);
+            this.groupBox1.Location = new System.Drawing.Point(679, 15);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(252, 191);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Advanced Filters II";
             // 
             // chkBox_manualPr
             // 
@@ -570,12 +561,25 @@
             this.chkBox_manualPr.Checked = true;
             this.chkBox_manualPr.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
             this.chkBox_manualPr.ForeColor = System.Drawing.Color.White;
-            this.chkBox_manualPr.Location = new System.Drawing.Point(254, 147);
+            this.chkBox_manualPr.Location = new System.Drawing.Point(27, 106);
             this.chkBox_manualPr.Name = "chkBox_manualPr";
             this.chkBox_manualPr.Size = new System.Drawing.Size(20, 20);
             this.chkBox_manualPr.TabIndex = 5;
-            this.chkBox_manualPr.Tag = "10";
+            this.chkBox_manualPr.Tag = "9";
             this.chkBox_manualPr.OnChange += new System.EventHandler(this.checkBox_OnChange);
+            // 
+            // bunifuCustomLabel37
+            // 
+            this.bunifuCustomLabel37.AutoSize = true;
+            this.bunifuCustomLabel37.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel37.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.bunifuCustomLabel37.Location = new System.Drawing.Point(46, 149);
+            this.bunifuCustomLabel37.Name = "bunifuCustomLabel37";
+            this.bunifuCustomLabel37.Size = new System.Drawing.Size(89, 13);
+            this.bunifuCustomLabel37.TabIndex = 4;
+            this.bunifuCustomLabel37.Tag = "6";
+            this.bunifuCustomLabel37.Text = "Intercompany PO";
+            this.bunifuCustomLabel37.Click += new System.EventHandler(this.filterLabel_Click);
             // 
             // chkBox_codifiedMatSubCon
             // 
@@ -584,12 +588,25 @@
             this.chkBox_codifiedMatSubCon.Checked = true;
             this.chkBox_codifiedMatSubCon.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
             this.chkBox_codifiedMatSubCon.ForeColor = System.Drawing.Color.White;
-            this.chkBox_codifiedMatSubCon.Location = new System.Drawing.Point(254, 107);
+            this.chkBox_codifiedMatSubCon.Location = new System.Drawing.Point(27, 66);
             this.chkBox_codifiedMatSubCon.Name = "chkBox_codifiedMatSubCon";
             this.chkBox_codifiedMatSubCon.Size = new System.Drawing.Size(20, 20);
             this.chkBox_codifiedMatSubCon.TabIndex = 5;
-            this.chkBox_codifiedMatSubCon.Tag = "9";
+            this.chkBox_codifiedMatSubCon.Tag = "8";
             this.chkBox_codifiedMatSubCon.OnChange += new System.EventHandler(this.checkBox_OnChange);
+            // 
+            // bunifuCustomLabel38
+            // 
+            this.bunifuCustomLabel38.AutoSize = true;
+            this.bunifuCustomLabel38.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.bunifuCustomLabel38.Location = new System.Drawing.Point(54, 30);
+            this.bunifuCustomLabel38.Name = "bunifuCustomLabel38";
+            this.bunifuCustomLabel38.Size = new System.Drawing.Size(175, 13);
+            this.bunifuCustomLabel38.TabIndex = 4;
+            this.bunifuCustomLabel38.Tag = "7";
+            this.bunifuCustomLabel38.Text = "Codified Material (Non-Subcontract)";
+            this.bunifuCustomLabel38.Click += new System.EventHandler(this.filterLabel_Click);
             // 
             // chkBox_codifiedMatNonSub
             // 
@@ -598,12 +615,25 @@
             this.chkBox_codifiedMatNonSub.Checked = true;
             this.chkBox_codifiedMatNonSub.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
             this.chkBox_codifiedMatNonSub.ForeColor = System.Drawing.Color.White;
-            this.chkBox_codifiedMatNonSub.Location = new System.Drawing.Point(254, 67);
+            this.chkBox_codifiedMatNonSub.Location = new System.Drawing.Point(27, 26);
             this.chkBox_codifiedMatNonSub.Name = "chkBox_codifiedMatNonSub";
             this.chkBox_codifiedMatNonSub.Size = new System.Drawing.Size(20, 20);
             this.chkBox_codifiedMatNonSub.TabIndex = 5;
-            this.chkBox_codifiedMatNonSub.Tag = "8";
+            this.chkBox_codifiedMatNonSub.Tag = "7";
             this.chkBox_codifiedMatNonSub.OnChange += new System.EventHandler(this.checkBox_OnChange);
+            // 
+            // bunifuCustomLabel39
+            // 
+            this.bunifuCustomLabel39.AutoSize = true;
+            this.bunifuCustomLabel39.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel39.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.bunifuCustomLabel39.Location = new System.Drawing.Point(54, 70);
+            this.bunifuCustomLabel39.Name = "bunifuCustomLabel39";
+            this.bunifuCustomLabel39.Size = new System.Drawing.Size(152, 13);
+            this.bunifuCustomLabel39.TabIndex = 4;
+            this.bunifuCustomLabel39.Tag = "8";
+            this.bunifuCustomLabel39.Text = "Codified Material (Subcontract)";
+            this.bunifuCustomLabel39.Click += new System.EventHandler(this.filterLabel_Click);
             // 
             // chkBox_IntCompPo
             // 
@@ -612,26 +642,42 @@
             this.chkBox_IntCompPo.Checked = true;
             this.chkBox_IntCompPo.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
             this.chkBox_IntCompPo.ForeColor = System.Drawing.Color.White;
-            this.chkBox_IntCompPo.Location = new System.Drawing.Point(254, 27);
+            this.chkBox_IntCompPo.Location = new System.Drawing.Point(19, 145);
             this.chkBox_IntCompPo.Name = "chkBox_IntCompPo";
             this.chkBox_IntCompPo.Size = new System.Drawing.Size(20, 20);
             this.chkBox_IntCompPo.TabIndex = 5;
-            this.chkBox_IntCompPo.Tag = "7";
+            this.chkBox_IntCompPo.Tag = "6";
             this.chkBox_IntCompPo.OnChange += new System.EventHandler(this.checkBox_OnChange);
             // 
-            // chkBox_returnPo
+            // bunifuCustomLabel40
             // 
-            this.chkBox_returnPo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
-            this.chkBox_returnPo.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
-            this.chkBox_returnPo.Checked = true;
-            this.chkBox_returnPo.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
-            this.chkBox_returnPo.ForeColor = System.Drawing.Color.White;
-            this.chkBox_returnPo.Location = new System.Drawing.Point(18, 147);
-            this.chkBox_returnPo.Name = "chkBox_returnPo";
-            this.chkBox_returnPo.Size = new System.Drawing.Size(20, 20);
-            this.chkBox_returnPo.TabIndex = 5;
-            this.chkBox_returnPo.Tag = "6";
-            this.chkBox_returnPo.OnChange += new System.EventHandler(this.checkBox_OnChange);
+            this.bunifuCustomLabel40.AutoSize = true;
+            this.bunifuCustomLabel40.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel40.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.bunifuCustomLabel40.Location = new System.Drawing.Point(54, 110);
+            this.bunifuCustomLabel40.Name = "bunifuCustomLabel40";
+            this.bunifuCustomLabel40.Size = new System.Drawing.Size(60, 13);
+            this.bunifuCustomLabel40.TabIndex = 4;
+            this.bunifuCustomLabel40.Tag = "9";
+            this.bunifuCustomLabel40.Text = "Manual PR";
+            this.bunifuCustomLabel40.Click += new System.EventHandler(this.filterLabel_Click);
+            // 
+            // gb_advancedFilters
+            // 
+            this.gb_advancedFilters.Controls.Add(this.chkBox_pouPrPo);
+            this.gb_advancedFilters.Controls.Add(this.bunifuCustomLabel37);
+            this.gb_advancedFilters.Controls.Add(this.chkBox_SteelPrPo);
+            this.gb_advancedFilters.Controls.Add(this.chkBox_servicePrPo);
+            this.gb_advancedFilters.Controls.Add(this.bunifuCustomLabel35);
+            this.gb_advancedFilters.Controls.Add(this.bunifuCustomLabel34);
+            this.gb_advancedFilters.Controls.Add(this.chkBox_IntCompPo);
+            this.gb_advancedFilters.Controls.Add(this.bunifuCustomLabel33);
+            this.gb_advancedFilters.Location = new System.Drawing.Point(512, 15);
+            this.gb_advancedFilters.Name = "gb_advancedFilters";
+            this.gb_advancedFilters.Size = new System.Drawing.Size(149, 190);
+            this.gb_advancedFilters.TabIndex = 4;
+            this.gb_advancedFilters.TabStop = false;
+            this.gb_advancedFilters.Text = "Advanced Filters I";
             // 
             // chkBox_pouPrPo
             // 
@@ -640,7 +686,7 @@
             this.chkBox_pouPrPo.Checked = true;
             this.chkBox_pouPrPo.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
             this.chkBox_pouPrPo.ForeColor = System.Drawing.Color.White;
-            this.chkBox_pouPrPo.Location = new System.Drawing.Point(18, 107);
+            this.chkBox_pouPrPo.Location = new System.Drawing.Point(19, 107);
             this.chkBox_pouPrPo.Name = "chkBox_pouPrPo";
             this.chkBox_pouPrPo.Size = new System.Drawing.Size(20, 20);
             this.chkBox_pouPrPo.TabIndex = 5;
@@ -654,7 +700,7 @@
             this.chkBox_SteelPrPo.Checked = true;
             this.chkBox_SteelPrPo.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
             this.chkBox_SteelPrPo.ForeColor = System.Drawing.Color.White;
-            this.chkBox_SteelPrPo.Location = new System.Drawing.Point(18, 67);
+            this.chkBox_SteelPrPo.Location = new System.Drawing.Point(19, 67);
             this.chkBox_SteelPrPo.Name = "chkBox_SteelPrPo";
             this.chkBox_SteelPrPo.Size = new System.Drawing.Size(20, 20);
             this.chkBox_SteelPrPo.TabIndex = 5;
@@ -668,84 +714,19 @@
             this.chkBox_servicePrPo.Checked = true;
             this.chkBox_servicePrPo.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
             this.chkBox_servicePrPo.ForeColor = System.Drawing.Color.White;
-            this.chkBox_servicePrPo.Location = new System.Drawing.Point(18, 27);
+            this.chkBox_servicePrPo.Location = new System.Drawing.Point(19, 27);
             this.chkBox_servicePrPo.Name = "chkBox_servicePrPo";
             this.chkBox_servicePrPo.Size = new System.Drawing.Size(20, 20);
             this.chkBox_servicePrPo.TabIndex = 5;
             this.chkBox_servicePrPo.Tag = "3";
             this.chkBox_servicePrPo.OnChange += new System.EventHandler(this.checkBox_OnChange);
             // 
-            // bunifuCustomLabel40
-            // 
-            this.bunifuCustomLabel40.AutoSize = true;
-            this.bunifuCustomLabel40.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel40.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
-            this.bunifuCustomLabel40.Location = new System.Drawing.Point(281, 151);
-            this.bunifuCustomLabel40.Name = "bunifuCustomLabel40";
-            this.bunifuCustomLabel40.Size = new System.Drawing.Size(60, 13);
-            this.bunifuCustomLabel40.TabIndex = 4;
-            this.bunifuCustomLabel40.Tag = "10";
-            this.bunifuCustomLabel40.Text = "Manual PR";
-            this.bunifuCustomLabel40.Click += new System.EventHandler(this.filterLabel_Click);
-            // 
-            // bunifuCustomLabel39
-            // 
-            this.bunifuCustomLabel39.AutoSize = true;
-            this.bunifuCustomLabel39.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel39.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
-            this.bunifuCustomLabel39.Location = new System.Drawing.Point(281, 111);
-            this.bunifuCustomLabel39.Name = "bunifuCustomLabel39";
-            this.bunifuCustomLabel39.Size = new System.Drawing.Size(152, 13);
-            this.bunifuCustomLabel39.TabIndex = 4;
-            this.bunifuCustomLabel39.Tag = "9";
-            this.bunifuCustomLabel39.Text = "Codified Material (Subcontract)";
-            this.bunifuCustomLabel39.Click += new System.EventHandler(this.filterLabel_Click);
-            // 
-            // bunifuCustomLabel38
-            // 
-            this.bunifuCustomLabel38.AutoSize = true;
-            this.bunifuCustomLabel38.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
-            this.bunifuCustomLabel38.Location = new System.Drawing.Point(281, 71);
-            this.bunifuCustomLabel38.Name = "bunifuCustomLabel38";
-            this.bunifuCustomLabel38.Size = new System.Drawing.Size(175, 13);
-            this.bunifuCustomLabel38.TabIndex = 4;
-            this.bunifuCustomLabel38.Tag = "8";
-            this.bunifuCustomLabel38.Text = "Codified Material (Non-Subcontract)";
-            this.bunifuCustomLabel38.Click += new System.EventHandler(this.filterLabel_Click);
-            // 
-            // bunifuCustomLabel37
-            // 
-            this.bunifuCustomLabel37.AutoSize = true;
-            this.bunifuCustomLabel37.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel37.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
-            this.bunifuCustomLabel37.Location = new System.Drawing.Point(281, 31);
-            this.bunifuCustomLabel37.Name = "bunifuCustomLabel37";
-            this.bunifuCustomLabel37.Size = new System.Drawing.Size(89, 13);
-            this.bunifuCustomLabel37.TabIndex = 4;
-            this.bunifuCustomLabel37.Tag = "7";
-            this.bunifuCustomLabel37.Text = "Intercompany PO";
-            this.bunifuCustomLabel37.Click += new System.EventHandler(this.filterLabel_Click);
-            // 
-            // bunifuCustomLabel36
-            // 
-            this.bunifuCustomLabel36.AutoSize = true;
-            this.bunifuCustomLabel36.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
-            this.bunifuCustomLabel36.Location = new System.Drawing.Point(45, 151);
-            this.bunifuCustomLabel36.Name = "bunifuCustomLabel36";
-            this.bunifuCustomLabel36.Size = new System.Drawing.Size(57, 13);
-            this.bunifuCustomLabel36.TabIndex = 4;
-            this.bunifuCustomLabel36.Tag = "6";
-            this.bunifuCustomLabel36.Text = "Return PO";
-            this.bunifuCustomLabel36.Click += new System.EventHandler(this.filterLabel_Click);
-            // 
             // bunifuCustomLabel35
             // 
             this.bunifuCustomLabel35.AutoSize = true;
             this.bunifuCustomLabel35.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel35.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
-            this.bunifuCustomLabel35.Location = new System.Drawing.Point(45, 111);
+            this.bunifuCustomLabel35.Location = new System.Drawing.Point(46, 111);
             this.bunifuCustomLabel35.Name = "bunifuCustomLabel35";
             this.bunifuCustomLabel35.Size = new System.Drawing.Size(68, 13);
             this.bunifuCustomLabel35.TabIndex = 4;
@@ -758,7 +739,7 @@
             this.bunifuCustomLabel34.AutoSize = true;
             this.bunifuCustomLabel34.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
-            this.bunifuCustomLabel34.Location = new System.Drawing.Point(45, 71);
+            this.bunifuCustomLabel34.Location = new System.Drawing.Point(46, 71);
             this.bunifuCustomLabel34.Name = "bunifuCustomLabel34";
             this.bunifuCustomLabel34.Size = new System.Drawing.Size(69, 13);
             this.bunifuCustomLabel34.TabIndex = 4;
@@ -771,7 +752,7 @@
             this.bunifuCustomLabel33.AutoSize = true;
             this.bunifuCustomLabel33.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
-            this.bunifuCustomLabel33.Location = new System.Drawing.Point(45, 31);
+            this.bunifuCustomLabel33.Location = new System.Drawing.Point(46, 31);
             this.bunifuCustomLabel33.Name = "bunifuCustomLabel33";
             this.bunifuCustomLabel33.Size = new System.Drawing.Size(81, 13);
             this.bunifuCustomLabel33.TabIndex = 4;
@@ -3196,6 +3177,8 @@
             this.tblpnl_Filters.PerformLayout();
             this.panel27.ResumeLayout(false);
             this.panel27.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.gb_advancedFilters.ResumeLayout(false);
             this.gb_advancedFilters.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -3454,16 +3437,15 @@
         private Bunifu.Framework.UI.BunifuCheckbox chkBox_codifiedMatSubCon;
         private Bunifu.Framework.UI.BunifuCheckbox chkBox_codifiedMatNonSub;
         private Bunifu.Framework.UI.BunifuCheckbox chkBox_IntCompPo;
-        private Bunifu.Framework.UI.BunifuCheckbox chkBox_returnPo;
         private Bunifu.Framework.UI.BunifuCheckbox chkBox_pouPrPo;
         private Bunifu.Framework.UI.BunifuCheckbox chkBox_SteelPrPo;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel40;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel39;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel38;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel37;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel36;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel35;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel34;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 
