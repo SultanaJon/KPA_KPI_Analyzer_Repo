@@ -566,16 +566,16 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
             row = new string[]{
                 data.kpa.excessStockStock.Name,
-                data.kpa.excessStockStock.categoryNames[(int)Excess_Stock_Stock.CategorNames.PoCreationToConfirmationEntry],
-                string.Format("{0:n0}", data.kpa.excessStockStock.POCreatToConfEntry.data.LessThanZero),
-                string.Format("{0:n0}", data.kpa.excessStockStock.POCreatToConfEntry.data.One_Three),
-                string.Format("{0:n0}", data.kpa.excessStockStock.POCreatToConfEntry.data.Four_Seven),
-                string.Format("{0:n0}", data.kpa.excessStockStock.POCreatToConfEntry.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpa.excessStockStock.POCreatToConfEntry.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpa.excessStockStock.POCreatToConfEntry.data.TwentyTwo_TwentyEight),
-                string.Format("{0:n0}", data.kpa.excessStockStock.POCreatToConfEntry.data.TwentyNinePlus),
-                string.Format("{0:n}", data.kpa.excessStockStock.POCreatToConfEntry.data.Average),
-                string.Format("{0:n0}", data.kpa.excessStockStock.POCreatToConfEntry.data.Total)
+                data.kpa.excessStockStock.categoryNames[(int)Excess_Stock_Stock.CategorNames.PoCreationThruDelivery],
+                string.Format("{0:n0}", data.kpa.excessStockStock.PoCreationThruDeliv.data.LessThanZero),
+                string.Format("{0:n0}", data.kpa.excessStockStock.PoCreationThruDeliv.data.One_Three),
+                string.Format("{0:n0}", data.kpa.excessStockStock.PoCreationThruDeliv.data.Four_Seven),
+                string.Format("{0:n0}", data.kpa.excessStockStock.PoCreationThruDeliv.data.Eight_Fourteen),
+                string.Format("{0:n0}", data.kpa.excessStockStock.PoCreationThruDeliv.data.Fifteen_TwentyOne),
+                string.Format("{0:n0}", data.kpa.excessStockStock.PoCreationThruDeliv.data.TwentyTwo_TwentyEight),
+                string.Format("{0:n0}", data.kpa.excessStockStock.PoCreationThruDeliv.data.TwentyNinePlus),
+                string.Format("{0:n}", data.kpa.excessStockStock.PoCreationThruDeliv.data.Average),
+                string.Format("{0:n0}", data.kpa.excessStockStock.PoCreationThruDeliv.data.Total)
             };
             TemplateOneDataGrid.Rows.Add(row);
         }
@@ -617,16 +617,16 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
             row = new string[]{
                 data.kpa.excessStockOpenOrders.Name,
-                data.kpa.excessStockOpenOrders.categoryNames[(int)Excess_Stock_Stock.CategorNames.PoCreationToConfirmationEntry],
-                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.POCreatToConfEntry.data.LessThanZero),
-                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.POCreatToConfEntry.data.One_Three),
-                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.POCreatToConfEntry.data.Four_Seven),
-                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.POCreatToConfEntry.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.POCreatToConfEntry.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.POCreatToConfEntry.data.TwentyTwo_TwentyEight),
-                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.POCreatToConfEntry.data.TwentyNinePlus),
-                string.Format("{0:n}", data.kpa.excessStockOpenOrders.POCreatToConfEntry.data.Average),
-                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.POCreatToConfEntry.data.Total)
+                data.kpa.excessStockOpenOrders.categoryNames[(int)Excess_Stock_Stock.CategorNames.PoCreationThruDelivery],
+                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.PoCreationThruDeliv.data.LessThanZero),
+                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.PoCreationThruDeliv.data.One_Three),
+                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.PoCreationThruDeliv.data.Four_Seven),
+                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.PoCreationThruDeliv.data.Eight_Fourteen),
+                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.PoCreationThruDeliv.data.Fifteen_TwentyOne),
+                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.PoCreationThruDeliv.data.TwentyTwo_TwentyEight),
+                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.PoCreationThruDeliv.data.TwentyNinePlus),
+                string.Format("{0:n}", data.kpa.excessStockOpenOrders.PoCreationThruDeliv.data.Average),
+                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.PoCreationThruDeliv.data.Total)
             };
             TemplateOneDataGrid.Rows.Add(row);
         }
@@ -792,7 +792,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                         break;
                     case 22:
                         Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.ExcessStock_Stock];
-                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.ExcessStock_Stock][(int)Globals.KPA_Categories.ExcessStockStock.POCreationDateConfEntryDate];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.ExcessStock_Stock][(int)Globals.KPA_Categories.ExcessStockStock.POCreationThruDelivery];
                         HandleExcessStockStock(e.RowIndex, e.ColumnIndex);
                         break;
                     case 23: // 23 - 25 = Excess Stock - Open Orders
@@ -807,7 +807,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                         break;
                     case 25:
                         Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.ExcessStock_OpenOrders];
-                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.ExcessStock_OpenOrders][(int)Globals.KPA_Categories.ExcessStockOpenOrders.POCreationDateConfEntryDate];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.ExcessStock_OpenOrders][(int)Globals.KPA_Categories.ExcessStockOpenOrders.POCreationThruDelivery];
                         HandleExcessStockOpenOrders(e.RowIndex, e.ColumnIndex);
                         break;
                 }
@@ -1730,7 +1730,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                                 dv.ColumnTag = (int)TempOne.DataViews.Total;
                                 break;
                         }
-                        dv.DataLoader += KpaDataTableLoader.ExcessStock_Stock.LoadPoCreateToConfEntry;
+                        dv.DataLoader += KpaDataTableLoader.ExcessStock_Stock.LoadPoConfThruDeliv;
                         break;
                 }
                 dv.ShowDialog();
@@ -1856,7 +1856,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                                 dv.ColumnTag = (int)TempOne.DataViews.Total;
                                 break;
                         }
-                        dv.DataLoader += KpaDataTableLoader.ExcessStock_OpenOrders.LoadPoCreateToConfEntry;
+                        dv.DataLoader += KpaDataTableLoader.ExcessStock_OpenOrders.LoadPoConfThruDeliv;
                         break;
                 }
                 dv.ShowDialog();

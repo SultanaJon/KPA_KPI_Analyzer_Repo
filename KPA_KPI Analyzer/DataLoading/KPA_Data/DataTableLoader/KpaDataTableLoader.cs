@@ -2076,7 +2076,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
         {
             private static DataTable prsAgingNotRelDt;
             private static DataTable prsAgingRelDt;
-            private static DataTable poCreatConfEntryDt;
+            private static DataTable poConfThruDeliv;
 
             internal static void LoadPrsAgingNotReleased(int tag)
             {
@@ -2333,19 +2333,19 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
 
 
 
-            internal static void LoadPoCreateToConfEntry(int tag)
+            internal static void LoadPoConfThruDeliv(int tag)
             {
                 try
                 {
                     dt = new DataTable();
-                    poCreatConfEntryDt = new DataTable();
+                    poConfThruDeliv = new DataTable();
                     cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.KPA_ExcessStock_Stock_PoCreateToConfEntry) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
 
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
 
-                    poCreatConfEntryDt = dt.Clone();
+                    poConfThruDeliv = dt.Clone();
 
 
                     foreach (DataRow dr in dt.Rows)
@@ -2396,59 +2396,59 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                         switch (tag)
                         {
                             case 0:
-                                poCreatConfEntryDt.ImportRow(dr);
+                                poConfThruDeliv.ImportRow(dr);
                                 break;
                             case 1:
                                 if (elapsedDays <= 0)
                                 {
-                                    poCreatConfEntryDt.ImportRow(dr);
+                                    poConfThruDeliv.ImportRow(dr);
                                 }
                                 continue;
                             case 2:
                                 if (elapsedDays >= 1 && elapsedDays <= 3)
                                 {
-                                    poCreatConfEntryDt.ImportRow(dr);
+                                    poConfThruDeliv.ImportRow(dr);
                                 }
                                 continue;
                             case 3:
                                 if (elapsedDays >= 4 && elapsedDays <= 7)
                                 {
-                                    poCreatConfEntryDt.ImportRow(dr);
+                                    poConfThruDeliv.ImportRow(dr);
                                 }
                                 continue;
                             case 4:
                                 if (elapsedDays >= 8 && elapsedDays <= 14)
                                 {
-                                    poCreatConfEntryDt.ImportRow(dr);
+                                    poConfThruDeliv.ImportRow(dr);
                                 }
                                 continue;
                             case 5:
                                 if (elapsedDays >= 15 && elapsedDays <= 21)
                                 {
-                                    poCreatConfEntryDt.ImportRow(dr);
+                                    poConfThruDeliv.ImportRow(dr);
                                 }
                                 continue;
                             case 6:
                                 if (elapsedDays >= 22 && elapsedDays <= 28)
                                 {
-                                    poCreatConfEntryDt.ImportRow(dr);
+                                    poConfThruDeliv.ImportRow(dr);
                                 }
                                 continue;
                             case 7:
                                 if (elapsedDays >= 29)
                                 {
-                                    poCreatConfEntryDt.ImportRow(dr);
+                                    poConfThruDeliv.ImportRow(dr);
                                 }
                                 continue;
                             default:
                                 continue;
                         }
                     }
-                    DataViewerUtils.Data = poCreatConfEntryDt.Copy();
+                    DataViewerUtils.Data = poConfThruDeliv.Copy();
                     DataViewerUtils.DataLoaded = true;
 
-                    poCreatConfEntryDt.Rows.Clear();
-                    poCreatConfEntryDt = null;
+                    poConfThruDeliv.Rows.Clear();
+                    poConfThruDeliv = null;
                     dt.Rows.Clear();
                     dt = null;
                     GC.Collect();
@@ -2466,7 +2466,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
         {
             private static DataTable prsAgingNotRelDt;
             private static DataTable prsAgingRelDt;
-            private static DataTable poCreatConfEntryDt;
+            private static DataTable poConfThruDeliv;
 
             internal static void LoadPrsAgingNotReleased(int tag)
             {
@@ -2720,19 +2720,19 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
 
 
 
-            internal static void LoadPoCreateToConfEntry(int tag)
+            internal static void LoadPoConfThruDeliv(int tag)
             {
                 try
                 {
                     dt = new DataTable();
-                    poCreatConfEntryDt = new DataTable();
+                    poConfThruDeliv = new DataTable();
                     cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.KPA_ExcessStock_OpenOrders_PoCreateToConfEntry) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
 
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
 
-                    poCreatConfEntryDt = dt.Clone();
+                    poConfThruDeliv = dt.Clone();
 
 
                     foreach (DataRow dr in dt.Rows)
@@ -2783,59 +2783,59 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                         switch (tag)
                         {
                             case 0:
-                                poCreatConfEntryDt.ImportRow(dr);
+                                poConfThruDeliv.ImportRow(dr);
                                 break;
                             case 1:
                                 if (elapsedDays <= 0)
                                 {
-                                    poCreatConfEntryDt.ImportRow(dr);
+                                    poConfThruDeliv.ImportRow(dr);
                                 }
                                 continue;
                             case 2:
                                 if (elapsedDays >= 1 && elapsedDays <= 3)
                                 {
-                                    poCreatConfEntryDt.ImportRow(dr);
+                                    poConfThruDeliv.ImportRow(dr);
                                 }
                                 continue;
                             case 3:
                                 if (elapsedDays >= 4 && elapsedDays <= 7)
                                 {
-                                    poCreatConfEntryDt.ImportRow(dr);
+                                    poConfThruDeliv.ImportRow(dr);
                                 }
                                 continue;
                             case 4:
                                 if (elapsedDays >= 8 && elapsedDays <= 14)
                                 {
-                                    poCreatConfEntryDt.ImportRow(dr);
+                                    poConfThruDeliv.ImportRow(dr);
                                 }
                                 continue;
                             case 5:
                                 if (elapsedDays >= 15 && elapsedDays <= 21)
                                 {
-                                    poCreatConfEntryDt.ImportRow(dr);
+                                    poConfThruDeliv.ImportRow(dr);
                                 }
                                 continue;
                             case 6:
                                 if (elapsedDays >= 22 && elapsedDays <= 28)
                                 {
-                                    poCreatConfEntryDt.ImportRow(dr);
+                                    poConfThruDeliv.ImportRow(dr);
                                 }
                                 continue;
                             case 7:
                                 if (elapsedDays >= 29)
                                 {
-                                    poCreatConfEntryDt.ImportRow(dr);
+                                    poConfThruDeliv.ImportRow(dr);
                                 }
                                 continue;
                             default:
                                 continue;
                         }
                     }
-                    DataViewerUtils.Data = poCreatConfEntryDt.Copy();
+                    DataViewerUtils.Data = poConfThruDeliv.Copy();
                     DataViewerUtils.DataLoaded = true;
 
-                    poCreatConfEntryDt.Rows.Clear();
-                    poCreatConfEntryDt = null;
+                    poConfThruDeliv.Rows.Clear();
+                    poConfThruDeliv = null;
                     dt.Rows.Clear();
                     dt = null;
                     GC.Collect();

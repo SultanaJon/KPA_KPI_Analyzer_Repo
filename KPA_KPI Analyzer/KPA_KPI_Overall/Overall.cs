@@ -55,10 +55,10 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
                     new List<string>(kpa.hotJobs.lateToConfirmed.data.GetData()),
                     new List<string>(kpa.excessStockStock.prsAgingNotRel.data.GetData()),
                     new List<string>(kpa.excessStockStock.prsAgingRel.data.GetData()),
-                    new List<string>(kpa.excessStockStock.POCreatToConfEntry.data.GetData()),
+                    new List<string>(kpa.excessStockStock.PoCreationThruDeliv.data.GetData()),
                     new List<string>(kpa.excessStockOpenOrders.prsAgingNotRel.data.GetData()),
                     new List<string>(kpa.excessStockOpenOrders.prsAgingRel.data.GetData()),
-                    new List<string>(kpa.excessStockOpenOrders.POCreatToConfEntry.data.GetData()),
+                    new List<string>(kpa.excessStockOpenOrders.PoCreationThruDeliv.data.GetData()),
                 };
 
                 results = new List<List<string>>(temp);

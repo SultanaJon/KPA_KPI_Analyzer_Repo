@@ -238,7 +238,7 @@
             this.btn_Three.BackColor = System.Drawing.SystemColors.Control;
             this.btn_Three.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_Three.BorderRadius = 0;
-            this.btn_Three.ButtonText = "PO Creation to Confrimation Entry";
+            this.btn_Three.ButtonText = "PO Creation Thru Delivery";
             this.btn_Three.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Three.DisabledColor = System.Drawing.Color.Gray;
             this.btn_Three.Dock = System.Windows.Forms.DockStyle.Left;
@@ -265,7 +265,7 @@
             this.btn_Three.Size = new System.Drawing.Size(175, 50);
             this.btn_Three.TabIndex = 2;
             this.btn_Three.Tag = "2";
-            this.btn_Three.Text = "PO Creation to Confrimation Entry";
+            this.btn_Three.Text = "PO Creation Thru Delivery";
             this.btn_Three.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btn_Three.Textcolor = System.Drawing.Color.DimGray;
             this.btn_Three.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

@@ -13,7 +13,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
     {
         public PRs_Aging_Not_Rel prsAgingNotRel;
         public PRs_Aging_Rel prsAgingRel;
-        public PoCreateDate_ConfirmationEntry POCreatToConfEntry;
+        public PoCreationThruDelivery PoCreationThruDeliv;
         private double totalDays = 0;
         private DataTable dt;
         private OleDbCommand cmd;
@@ -24,7 +24,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
         {
             prsAgingNotRel = new PRs_Aging_Not_Rel();
             prsAgingRel = new PRs_Aging_Rel();
-            POCreatToConfEntry = new PoCreateDate_ConfirmationEntry();
+            PoCreationThruDeliv = new PoCreationThruDelivery();
         }
 
 
@@ -38,7 +38,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
         {
             PrsAgingNotReleased,
             PrsAgingReleased,
-            PoCreationToConfirmationEntry
+            PoCreationThruDelivery
         }
 
         public string[] categoryNames =
@@ -337,48 +337,48 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                     totalDays += elapsedDays;
                     elapsedDays = (int)elapsedDays;
 
-                    POCreatToConfEntry.data.Total++;
+                    PoCreationThruDeliv.data.Total++;
 
 
                     if (elapsedDays <= 0)
                     {
-                        POCreatToConfEntry.data.LessThanZero++;
+                        PoCreationThruDeliv.data.LessThanZero++;
                     }
                     else if (elapsedDays >= 1 && elapsedDays <= 3)
                     {
-                        POCreatToConfEntry.data.One_Three++;
+                        PoCreationThruDeliv.data.One_Three++;
                     }
                     else if (elapsedDays >= 4 && elapsedDays <= 7)
                     {
-                        POCreatToConfEntry.data.Four_Seven++;
+                        PoCreationThruDeliv.data.Four_Seven++;
                     }
                     else if (elapsedDays >= 8 && elapsedDays <= 14)
                     {
-                        POCreatToConfEntry.data.Eight_Fourteen++;
+                        PoCreationThruDeliv.data.Eight_Fourteen++;
                     }
                     else if (elapsedDays >= 15 && elapsedDays <= 21)
                     {
-                        POCreatToConfEntry.data.Fifteen_TwentyOne++;
+                        PoCreationThruDeliv.data.Fifteen_TwentyOne++;
                     }
                     else if (elapsedDays >= 22 && elapsedDays <= 28)
                     {
-                        POCreatToConfEntry.data.TwentyTwo_TwentyEight++;
+                        PoCreationThruDeliv.data.TwentyTwo_TwentyEight++;
                     }
                     else // 29+
                     {
-                        POCreatToConfEntry.data.TwentyNinePlus++;
+                        PoCreationThruDeliv.data.TwentyNinePlus++;
                     }
                 }
 
                 try
                 {
-                    POCreatToConfEntry.data.Average = Math.Round(totalDays / POCreatToConfEntry.data.Total, 2);
-                    if (double.IsNaN(POCreatToConfEntry.data.Average))
-                        POCreatToConfEntry.data.Average = 0;
+                    PoCreationThruDeliv.data.Average = Math.Round(totalDays / PoCreationThruDeliv.data.Total, 2);
+                    if (double.IsNaN(PoCreationThruDeliv.data.Average))
+                        PoCreationThruDeliv.data.Average = 0;
                 }
                 catch (DivideByZeroException)
                 {
-                    POCreatToConfEntry.data.Average = 0;
+                    PoCreationThruDeliv.data.Average = 0;
                 }
 
                 PRPO_DB_Utils.UpdateLoadProgress();
@@ -405,7 +405,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
         //
         //  The below classes act as a specific KPA category that fall under a specific KPA section.
         //
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         public class PRs_Aging_Not_Rel
         {
             public TempOne data;
@@ -436,11 +436,11 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
 
 
 
-        public class PoCreateDate_ConfirmationEntry
+        public class PoCreationThruDelivery
         {
             public TempOne data;
 
-            public PoCreateDate_ConfirmationEntry()
+            public PoCreationThruDelivery()
             {
                 data = new TempOne();
             }

@@ -291,21 +291,21 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         {
             canvas = new Bunifu.DataViz.Canvas();
             dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
-            Title = Globals.kpaCategories[(int)Globals.KPA_Sections.ExcessStock_OpenOrders][(int)Globals.KPA_Categories.ExcessStockOpenOrders.POCreationDateConfEntryDate];
+            Title = Globals.kpaCategories[(int)Globals.KPA_Sections.ExcessStock_OpenOrders][(int)Globals.KPA_Categories.ExcessStockOpenOrders.POCreationThruDelivery];
             Globals.CurrCategory = Title;
             Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.ExcessStock_OpenOrders];
             ChangeCategory();
 
-            TimeBucketOne = overallData.kpa.excessStockOpenOrders.POCreatToConfEntry.data.LessThanZero.ToString();
-            TimeBucketTwo = overallData.kpa.excessStockOpenOrders.POCreatToConfEntry.data.One_Three.ToString();
-            TimeBucketThree = overallData.kpa.excessStockOpenOrders.POCreatToConfEntry.data.Four_Seven.ToString();
-            TimeBucketFour = overallData.kpa.excessStockOpenOrders.POCreatToConfEntry.data.Eight_Fourteen.ToString();
-            TimeBucketFive = overallData.kpa.excessStockOpenOrders.POCreatToConfEntry.data.Fifteen_TwentyOne.ToString();
-            TimeBucketSix = overallData.kpa.excessStockOpenOrders.POCreatToConfEntry.data.TwentyTwo_TwentyEight.ToString();
-            TimeBucketSeven = overallData.kpa.excessStockOpenOrders.POCreatToConfEntry.data.TwentyNinePlus.ToString();
+            TimeBucketOne = overallData.kpa.excessStockOpenOrders.PoCreationThruDeliv.data.LessThanZero.ToString();
+            TimeBucketTwo = overallData.kpa.excessStockOpenOrders.PoCreationThruDeliv.data.One_Three.ToString();
+            TimeBucketThree = overallData.kpa.excessStockOpenOrders.PoCreationThruDeliv.data.Four_Seven.ToString();
+            TimeBucketFour = overallData.kpa.excessStockOpenOrders.PoCreationThruDeliv.data.Eight_Fourteen.ToString();
+            TimeBucketFive = overallData.kpa.excessStockOpenOrders.PoCreationThruDeliv.data.Fifteen_TwentyOne.ToString();
+            TimeBucketSix = overallData.kpa.excessStockOpenOrders.PoCreationThruDeliv.data.TwentyTwo_TwentyEight.ToString();
+            TimeBucketSeven = overallData.kpa.excessStockOpenOrders.PoCreationThruDeliv.data.TwentyNinePlus.ToString();
 
-            Average = string.Format("{0:n}", overallData.kpa.excessStockOpenOrders.POCreatToConfEntry.data.Average);
-            TotalOrders = string.Format("{0:n0}", overallData.kpa.excessStockOpenOrders.POCreatToConfEntry.data.Total);
+            Average = string.Format("{0:n}", overallData.kpa.excessStockOpenOrders.PoCreationThruDeliv.data.Average);
+            TotalOrders = string.Format("{0:n0}", overallData.kpa.excessStockOpenOrders.PoCreationThruDeliv.data.Total);
 
             AnalysisOne = "- Will only show in this field if PR is on PO, PO line item does not have a confirmation date, PO line is not received complete, General Stock On Order > 0 and Project Stock On Order > 0.";
             AnalysisTwo = "- Difference between todays date and the date the PR was added to the PO.";
@@ -321,13 +321,13 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             canvas.addData(dp);
             dataviz.Render(canvas);
 
-            TimeBucketOne = string.Format("{0:n0}", overallData.kpa.excessStockOpenOrders.POCreatToConfEntry.data.LessThanZero);
-            TimeBucketTwo = string.Format("{0:n0}", overallData.kpa.excessStockOpenOrders.POCreatToConfEntry.data.One_Three);
-            TimeBucketThree = string.Format("{0:n0}", overallData.kpa.excessStockOpenOrders.POCreatToConfEntry.data.Four_Seven);
-            TimeBucketFour = string.Format("{0:n0}", overallData.kpa.excessStockOpenOrders.POCreatToConfEntry.data.Eight_Fourteen);
-            TimeBucketFive = string.Format("{0:n0}", overallData.kpa.excessStockOpenOrders.POCreatToConfEntry.data.Fifteen_TwentyOne);
-            TimeBucketSix = string.Format("{0:n0}", overallData.kpa.excessStockOpenOrders.POCreatToConfEntry.data.TwentyTwo_TwentyEight);
-            TimeBucketSeven = string.Format("{0:n0}", overallData.kpa.excessStockOpenOrders.POCreatToConfEntry.data.TwentyNinePlus);
+            TimeBucketOne = string.Format("{0:n0}", overallData.kpa.excessStockOpenOrders.PoCreationThruDeliv.data.LessThanZero);
+            TimeBucketTwo = string.Format("{0:n0}", overallData.kpa.excessStockOpenOrders.PoCreationThruDeliv.data.One_Three);
+            TimeBucketThree = string.Format("{0:n0}", overallData.kpa.excessStockOpenOrders.PoCreationThruDeliv.data.Four_Seven);
+            TimeBucketFour = string.Format("{0:n0}", overallData.kpa.excessStockOpenOrders.PoCreationThruDeliv.data.Eight_Fourteen);
+            TimeBucketFive = string.Format("{0:n0}", overallData.kpa.excessStockOpenOrders.PoCreationThruDeliv.data.Fifteen_TwentyOne);
+            TimeBucketSix = string.Format("{0:n0}", overallData.kpa.excessStockOpenOrders.PoCreationThruDeliv.data.TwentyTwo_TwentyEight);
+            TimeBucketSeven = string.Format("{0:n0}", overallData.kpa.excessStockOpenOrders.PoCreationThruDeliv.data.TwentyNinePlus);
 
         }
 
@@ -385,7 +385,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                             dv.ColumnTag = tag;
                             break;
                         case 2: // Po Creation Date to Confirmation Entry
-                            dv.DataLoader += KpaDataTableLoader.ExcessStock_OpenOrders.LoadPoCreateToConfEntry;
+                            dv.DataLoader += KpaDataTableLoader.ExcessStock_OpenOrders.LoadPoConfThruDeliv;
                             dv.ColumnTag = tag;
                             break;
                         default:

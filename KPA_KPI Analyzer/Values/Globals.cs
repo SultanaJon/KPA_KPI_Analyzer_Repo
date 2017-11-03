@@ -174,7 +174,7 @@
             {
                 PrsAgingNotRel,
                 PRsAgingRel,
-                POCreationDateConfEntryDate,
+                POCreationThruDelivery,
             }
 
 
@@ -182,7 +182,7 @@
             {
                 PrsAgingNotRel,
                 PRsAgingRel,
-                POCreationDateConfEntryDate,
+                POCreationThruDelivery,
             }
 
             public enum CurrPlanVsActual
@@ -203,8 +203,8 @@
             new string[] { "Cancellation Count", "Cancellation Value"},
             new string[] { "Open NCRs", "Open NCR Values"},
             new string[] { "PRs (Not on PO) - Hot Jobs Only", "No Confirmations - Hot Jobs Only", "Late to Confirmed - Hot Jobs Only"},
-            new string[] { "Prs Aging (Not Released)", "PRs Aging (Released)", "PO Creation Date to Confirmation Entry Date", "Confirmed Date vs Plan Date", "Confirmed Date for Upcoming Deliveries"},
-            new string[] { "Prs Aging (Not Released)", "PRs Aging (Released)", "PO Creation Date to Confirmation Entry Date", "Confirmed Date vs Plan Date", "Confirmed Date for Upcoming Deliveries"},
+            new string[] { "Prs Aging (Not Released)", "PRs Aging (Released)", "PO Creation Thru Delivery"},
+            new string[] { "Prs Aging (Not Released)", "PRs Aging (Released)", "PO Creation Thru Delivery"},
             new string[] { "Current Plan Date vs Current Confirmation Date", "Current Plan Date vs Current Confirmation Date - Hot Jobs Only"},
         };
 
