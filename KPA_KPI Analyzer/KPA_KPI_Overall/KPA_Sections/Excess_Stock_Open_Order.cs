@@ -278,11 +278,11 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
 
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 //
-                // Po Creation Date to Confirmation Entry
+                // Po Creation Thru Delivery
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 dt = new DataTable();
-                cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.KPA_ExcessStock_OpenOrders_PoCreateToConfEntry) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.KPA_ExcessStock_OpenOrders_PoCreateThruDelivery) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                 da = new OleDbDataAdapter(cmd);
                 da.Fill(dt);
 

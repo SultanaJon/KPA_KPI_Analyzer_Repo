@@ -12,6 +12,8 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
         public PR_Plan_Date_Curr_Plan prPlanDateVsCurrPlan;
         public Orig_Plan_Date_Minus_2nd_Lvl_Rel_Date_vs_CodedLead origPlanDateMinus2ndLvlRelDateVsCodedLead;
         public Curr_Plan_Date_Minus_2nd_Lvl_Rel_Date_vs_CodedLead currPlanDateMinus2ndLvlRelDateVsCodedLead;
+        public MaterialDueOrigPlannedDate materialDueOrigPlanDate;
+        public MaterialDueFinalPlanDate materialDueFinalPlanDate;
         private double totalDays = 0;
 
 
@@ -22,6 +24,8 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
             prPlanDateVsCurrPlan = new PR_Plan_Date_Curr_Plan();
             origPlanDateMinus2ndLvlRelDateVsCodedLead = new Orig_Plan_Date_Minus_2nd_Lvl_Rel_Date_vs_CodedLead();
             currPlanDateMinus2ndLvlRelDateVsCodedLead = new Curr_Plan_Date_Minus_2nd_Lvl_Rel_Date_vs_CodedLead();
+            materialDueOrigPlanDate = new MaterialDueOrigPlannedDate();
+            materialDueFinalPlanDate = new MaterialDueFinalPlanDate();
         }
 
 
@@ -34,13 +38,19 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
             prPlanDateVsCurrPlan,
             origPlanDateMinus2ndLvlRelDateVsCodedLead,
             currPlanDateMinus2ndLvlRelDateVsCodedLead,
+            materialDueOrigPlanDate,
+            materialDueFinalPlanDate
         }
+
+
 
         public string[] categoryNames =
         {
             "PR Plan Date vs Current Plan Date",
             "(Original Plan Date - 2nd Lvl Release Date) vs Coded Lead-Time",
             "(Current Plan Date - 2nd Lvl Release Date) vs Coded Lead-Time",
+            "Material Due Original Planned Date",
+            "Material Due Final Planned Date"
         };
 
 
@@ -536,6 +546,347 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 totalDays = 0;
 
 
+
+
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                //
+                // Material Due Original Planned Date
+                //
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                foreach (DataRow dr in PRPO_DB_Utils.pr2ndLvlRelDateDt.Rows)
+                {
+                    if (Filters.FilterByPrDateRange)
+                    {
+                        if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
+                        {
+                            // The PR Date was not in range of the filter the user applied.
+                            continue;
+                        }
+                    }
+
+                    if (Filters.FilterByPoDateRange)
+                    {
+                        if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
+                        {
+                            // The PO Date was not in range of the filter the user applied.
+                            continue;
+                        }
+                    }
+
+                    if (Filters.FilterByFinalReceiptDate)
+                    {
+                        if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                        {
+                            // The final receipt date was not in range of the filter the user applied
+                            continue;
+                        }
+                    }
+
+                    if (AdvancedFilters.AdvanceFiltersChanged())
+                    {
+                        // We have some advanced filters that the user would like to exclude.
+                        if (!FilterUtils.CheckAdvancedFilters(dr))
+                            continue;
+                    }
+
+
+
+                    string[] strOrigPlanDate = (dr["PR Delivery Date"].ToString()).Split('/');
+                    int origPlanYear = int.Parse(strOrigPlanDate[2]);
+                    int origPlanMonth = int.Parse(strOrigPlanDate[0]);
+                    int origPlanDay = int.Parse(strOrigPlanDate[1]);
+
+
+                    // This is a tempory fix for MEXICO TAG_MEXICO_FIX
+                    // DELETE the refion below this commented code and uncomment this code.
+
+                    //string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
+                    //int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
+                    //int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
+                    //int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+
+                    #region MEXICOs TEMP FIX
+
+                    string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
+                    int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
+                    int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0]);
+                    int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1]);
+
+                    if (pr2ndLvlRelYear == 0 && pr2ndLvlRelMonth == 0 && pr2ndLvlRelDay == 0)
+                    {
+                        // just ignore this bad Mexico data.
+                        continue;
+                    }
+                    else
+                    {
+                        pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
+                        pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
+                        pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+                    }
+
+                    #endregion
+
+
+
+
+                    DateTime pr2ndRelDate = new DateTime(pr2ndLvlRelYear, pr2ndLvlRelMonth, pr2ndLvlRelDay);
+                    DateTime origPlanDate = new DateTime(origPlanYear, origPlanMonth, origPlanDay);
+
+                    double elapsedDays = (origPlanDate - pr2ndRelDate).TotalDays;
+                    totalDays += elapsedDays;
+
+                    if (elapsedDays < 0)
+                        elapsedDays = Math.Floor(elapsedDays);
+
+                    if (elapsedDays > 0)
+                        elapsedDays = Math.Ceiling(elapsedDays);
+
+                    elapsedDays = (int)elapsedDays;
+
+
+
+                    materialDueOrigPlanDate.data.Total++;
+
+
+
+
+                    if (elapsedDays <= (-22))
+                    {
+                        materialDueOrigPlanDate.data.Minus_TwentyTwo++;
+                    }
+                    else if (elapsedDays > (-22) && elapsedDays <= (-15))
+                    {
+                        materialDueOrigPlanDate.data.Minus_Fifteen_TwentyOne++;
+                    }
+                    else if (elapsedDays > (-15) && elapsedDays <= (-8))
+                    {
+                        materialDueOrigPlanDate.data.Minus_Eight_Fourteen++;
+                    }
+                    else if (elapsedDays > (-8) && elapsedDays <= (-1))
+                    {
+                        materialDueOrigPlanDate.data.Minus_One_Seven++;
+                    }
+                    else if (elapsedDays == 0)
+                    {
+                        materialDueOrigPlanDate.data.Zero++;
+                    }
+                    else if (elapsedDays >= 1 && elapsedDays <= 7)
+                    {
+                        materialDueOrigPlanDate.data.One_Seven++;
+                    }
+                    else if (elapsedDays >= 8 && elapsedDays <= 14)
+                    {
+                        materialDueOrigPlanDate.data.Eight_Fourteen++;
+                    }
+                    else if (elapsedDays >= 15 && elapsedDays <= 21)
+                    {
+                        materialDueOrigPlanDate.data.Fifteen_TwentyOne++;
+                    }
+                    else // 22 Days or greater
+                    {
+                        materialDueOrigPlanDate.data.TwentyTwo++;
+                    }
+                }
+
+
+
+                try
+                {
+                    materialDueOrigPlanDate.data.Average = Math.Round(totalDays / materialDueOrigPlanDate.data.Total, 2);
+                    if (double.IsNaN(materialDueOrigPlanDate.data.Average))
+                        materialDueOrigPlanDate.data.Average = 0;
+                }
+                catch (DivideByZeroException)
+                {
+                    materialDueOrigPlanDate.data.Average = 0;
+                }
+
+                totalDays = 0;
+
+
+
+
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                //
+                // Material Due Final Planned Date
+                //
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                foreach (DataRow dr in PRPO_DB_Utils.pr2ndLvlRelDateDt.Rows)
+                {
+                    if (Filters.FilterByPrDateRange)
+                    {
+                        if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
+                        {
+                            // The PR Date was not in range of the filter the user applied.
+                            continue;
+                        }
+                    }
+
+                    if (Filters.FilterByPoDateRange)
+                    {
+                        if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
+                        {
+                            // The PO Date was not in range of the filter the user applied.
+                            continue;
+                        }
+                    }
+
+                    if (Filters.FilterByFinalReceiptDate)
+                    {
+                        if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                        {
+                            // The final receipt date was not in range of the filter the user applied
+                            continue;
+                        }
+                    }
+
+                    if (AdvancedFilters.AdvanceFiltersChanged())
+                    {
+                        // We have some advanced filters that the user would like to exclude.
+                        if (!FilterUtils.CheckAdvancedFilters(dr))
+                            continue;
+                    }
+
+
+
+                    // This is a tempory fix for MEXICO TAG_MEXICO_FIX
+                    // DELETE the refion below this commented code and uncomment this code.
+
+                    //string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
+                    //int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
+                    //int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
+                    //int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+
+                    #region MEXICOs TEMP FIX
+
+                    string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
+                    int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
+                    int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0]);
+                    int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1]);
+
+                    if (pr2ndLvlRelYear == 0 && pr2ndLvlRelMonth == 0 && pr2ndLvlRelDay == 0)
+                    {
+                        // just ignore this bad Mexico data.
+                        continue;
+                    }
+                    else
+                    {
+                        pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
+                        pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
+                        pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+                    }
+
+                    #endregion
+
+                    string[] strCurrPlanDate = (dr["Rescheduling date"].ToString()).Split('/');
+                    int origPlanYear = int.Parse(strCurrPlanDate[2]);
+                    int origPlanMonth = int.Parse(strCurrPlanDate[0]);
+                    int origPlanDay = int.Parse(strCurrPlanDate[1]);
+
+                    if (origPlanYear == 0 && origPlanMonth == 0 && origPlanDay == 0)
+                    {
+                        string[] strNewCurrPlanDelDate = (dr["Delivery Date"].ToString()).Split('/');
+                        origPlanYear = int.Parse(strNewCurrPlanDelDate[2]);
+                        origPlanMonth = int.Parse(strNewCurrPlanDelDate[0]);
+                        origPlanDay = int.Parse(strNewCurrPlanDelDate[1]);
+
+                        if (origPlanYear == 0 && origPlanMonth == 0 && origPlanDay == 0)
+                        {
+                            string[] strNewCurrPlanPrDelDate = (dr["PR Delivery Date"].ToString()).Split('/');
+                            origPlanYear = int.Parse(strNewCurrPlanPrDelDate[2]);
+                            origPlanMonth = int.Parse(strNewCurrPlanPrDelDate[0].TrimStart('0'));
+                            origPlanDay = int.Parse(strNewCurrPlanPrDelDate[1].TrimStart('0'));
+                        }
+                        else
+                        {
+                            origPlanYear = int.Parse(strNewCurrPlanDelDate[2]);
+                            origPlanMonth = int.Parse(strNewCurrPlanDelDate[0].TrimStart('0'));
+                            origPlanDay = int.Parse(strNewCurrPlanDelDate[1].TrimStart('0'));
+                        }
+                    }
+                    else
+                    {
+                        origPlanYear = int.Parse(strCurrPlanDate[2]);
+                        origPlanMonth = int.Parse(strCurrPlanDate[0].TrimStart('0'));
+                        origPlanDay = int.Parse(strCurrPlanDate[1].TrimStart('0'));
+                    }
+
+                    DateTime pr2ndRelDate = new DateTime(pr2ndLvlRelYear, pr2ndLvlRelMonth, pr2ndLvlRelDay);
+                    DateTime currPlanDate = new DateTime(origPlanYear, origPlanMonth, origPlanDay);
+
+                    double elapsedDays = (currPlanDate - pr2ndRelDate).TotalDays;
+                    totalDays += elapsedDays;
+
+
+                    if (elapsedDays < 0)
+                        elapsedDays = Math.Floor(elapsedDays);
+
+                    if (elapsedDays > 0)
+                        elapsedDays = Math.Ceiling(elapsedDays);
+
+                    elapsedDays = (int)elapsedDays;
+
+
+
+                    materialDueFinalPlanDate.data.Total++;
+
+
+
+
+                    if (elapsedDays <= (-22))
+                    {
+                        materialDueFinalPlanDate.data.Minus_TwentyTwo++;
+                    }
+                    else if (elapsedDays > (-22) && elapsedDays <= (-15))
+                    {
+                        materialDueFinalPlanDate.data.Minus_Fifteen_TwentyOne++;
+                    }
+                    else if (elapsedDays > (-15) && elapsedDays <= (-8))
+                    {
+                        materialDueFinalPlanDate.data.Minus_Eight_Fourteen++;
+                    }
+                    else if (elapsedDays > (-8) && elapsedDays <= (-1))
+                    {
+                        materialDueFinalPlanDate.data.Minus_One_Seven++;
+                    }
+                    else if (elapsedDays == 0)
+                    {
+                        materialDueFinalPlanDate.data.Zero++;
+                    }
+                    else if (elapsedDays >= 1 && elapsedDays <= 7)
+                    {
+                        materialDueFinalPlanDate.data.One_Seven++;
+                    }
+                    else if (elapsedDays >= 8 && elapsedDays <= 14)
+                    {
+                        materialDueFinalPlanDate.data.Eight_Fourteen++;
+                    }
+                    else if (elapsedDays >= 15 && elapsedDays <= 21)
+                    {
+                        materialDueFinalPlanDate.data.Fifteen_TwentyOne++;
+                    }
+                    else // 22 Days or greater
+                    {
+                        materialDueFinalPlanDate.data.TwentyTwo++;
+                    }
+                }
+
+
+
+                try
+                {
+                    materialDueFinalPlanDate.data.Average = Math.Round(totalDays / materialDueFinalPlanDate.data.Total, 2);
+                    if (double.IsNaN(materialDueFinalPlanDate.data.Average))
+                        materialDueFinalPlanDate.data.Average = 0;
+                }
+                catch (DivideByZeroException)
+                {
+                    materialDueFinalPlanDate.data.Average = 0;
+                }
+
+                totalDays = 0;
+
+
                 PRPO_DB_Utils.UpdateLoadProgress();
             }
             catch (Exception ex)
@@ -549,7 +900,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
 
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //
     //
     //  The below classes act as a specific KPA category that fall under a specific KPA section.
@@ -568,8 +919,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
 
 
-
-
     public class Orig_Plan_Date_Minus_2nd_Lvl_Rel_Date_vs_CodedLead
     {
         public TempThree data;
@@ -582,13 +931,32 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
 
 
-
-
     public class Curr_Plan_Date_Minus_2nd_Lvl_Rel_Date_vs_CodedLead
     {
         public TempThree data;
 
         public Curr_Plan_Date_Minus_2nd_Lvl_Rel_Date_vs_CodedLead()
+        {
+            data = new TempThree();
+        }
+    }
+
+    public class MaterialDueOrigPlannedDate
+    {
+        public TempThree data;
+
+        public MaterialDueOrigPlannedDate()
+        {
+            data = new TempThree();
+        }
+    }
+
+
+    public class MaterialDueFinalPlanDate
+    {
+        public TempThree data;
+
+        public MaterialDueFinalPlanDate()
         {
             data = new TempThree();
         }

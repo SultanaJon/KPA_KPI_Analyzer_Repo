@@ -121,6 +121,8 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
                     new List<string>(kpi.plan.prPlanDateVsCurrPlan.data.GetData()),
                     new List<string>(kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.GetData()),
                     new List<string>(kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.GetData()),
+                    new List<string>(kpi.plan.materialDueOrigPlanDate.data.GetData()),
+                    new List<string>(kpi.plan.materialDueFinalPlanDate.data.GetData()),
                     new List<string>(kpi.purch.initConfVsPRPlanDate.data.GetData()),
                     new List<string>(kpi.followUp.initConfVsCurrConf.data.GetData()),
                     new List<string>(kpi.followUp.finalConfDateVsFinalPlan.data.GetData()),

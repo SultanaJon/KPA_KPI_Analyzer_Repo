@@ -248,7 +248,9 @@
             {
                 PRPlanDatevsCurrentPlanDate,
                 OriginalPlanDate2ndLvlReleaseDatevsCodedLeadTime,
-                CurrentPlanDate2ndLvlReleaseDatevsCodedLeadTime
+                CurrentPlanDate2ndLvlReleaseDatevsCodedLeadTime,
+                MaterialDueOriginalPlanDate,
+                MaterialDueFinalPlannedDate
             }
 
             public enum Purch
@@ -310,15 +312,25 @@
 
         public static string[][] kpiCategories =
         {
-            new string[] { "PR Plan Date vs Current Plan Date", "(Original Plan Date - 2nd Lvl Release Date) vs Coded Lead-Time", "(Current Plan Date - 2nd Lvl Release Date) vs Coded Lead-Time"},
+            // Plan One
+            new string[] { "PR Plan Date vs Current Plan Date", "(Original Plan Date - 2nd Lvl Release Date) vs Coded Lead-Time", "(Current Plan Date - 2nd Lvl Release Date) vs Coded Lead-Time", "Material Due (Original Planned Date)", "Material Due (Final Planned Date)"},
+            // Purch
             new string[] { "Initial Confirmation Date vs PR Plan Date"},
+            // Follow Up
             new string[] { "Initial Confirmation Date vs Current Confirmation Date", "Final Confirmation Date vs Final Plan Date", "Receipt Date vs Current Plan Date", "Receipt Date vs Original Confirmation Date", "Receipt Date vs Current Confirmation Date"},
+            // Plan two
             new string[] { "PR Plan Date vs PR 2nd Lvl Release Date", "Plan Order Creation Date vs 2nd Lvl Release Date"},
+            // Purch Two
             new string[] { "PR 2nd Lvl Release Date vs PO Creation Date", "PO Creation Date vs PO Release Date", "PO Release Date vs PO Confirmation Date"},
+            // Purch Sub
             new string[] { "PR Release Date vs PO Release Date", "PO Creation Date vs Confirmation Entry Date" },
+            // Purch Total
             new string[] { "PR Release Date to Confirmation Entry Date"},
+            // Purch Plan
             new string[] { "PO Release vs PR Delivery Date", "PR 2nd Lvl Release Date to Original Planned Delivery Date"},
+            // Purch Plan Total
             new string[] { "Planned Order Creation Date vs Confirmation Entry Date"},
+            // Other
             new string[] { "PRs Created", "PRs Released", "Total Spend", "PR Value vs PO Value", "Hot Job PRs"},
         };
 

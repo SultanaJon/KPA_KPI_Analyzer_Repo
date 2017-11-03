@@ -153,6 +153,8 @@
             this.lbl_analysisTwo = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.lbl_analysisOne = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.datavizLoadTimer = new System.Windows.Forms.Timer(this.components);
+            this.btn_Four = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btn_Five = new Bunifu.Framework.UI.BunifuFlatButton();
             this.tblPnl_template.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -254,6 +256,8 @@
             // panel2
             // 
             this.tblPnl_template.SetColumnSpan(this.panel2, 2);
+            this.panel2.Controls.Add(this.btn_Five);
+            this.panel2.Controls.Add(this.btn_Four);
             this.panel2.Controls.Add(this.btn_Three);
             this.panel2.Controls.Add(this.btn_Two);
             this.panel2.Controls.Add(this.btn_One);
@@ -287,14 +291,14 @@
             this.btn_Three.IconVisible = true;
             this.btn_Three.IconZoom = 90D;
             this.btn_Three.IsTab = false;
-            this.btn_Three.Location = new System.Drawing.Point(397, 0);
+            this.btn_Three.Location = new System.Drawing.Point(389, 0);
             this.btn_Three.Margin = new System.Windows.Forms.Padding(0);
             this.btn_Three.Name = "btn_Three";
             this.btn_Three.Normalcolor = System.Drawing.SystemColors.Control;
             this.btn_Three.OnHovercolor = System.Drawing.SystemColors.Control;
             this.btn_Three.OnHoverTextColor = System.Drawing.Color.Coral;
             this.btn_Three.selected = false;
-            this.btn_Three.Size = new System.Drawing.Size(222, 50);
+            this.btn_Three.Size = new System.Drawing.Size(209, 50);
             this.btn_Three.TabIndex = 2;
             this.btn_Three.Tag = "2";
             this.btn_Three.Text = "(Current Plan Date - 2nd Lvl Release Date) vs coded lead-time";
@@ -333,7 +337,7 @@
             this.btn_Two.OnHovercolor = System.Drawing.SystemColors.Control;
             this.btn_Two.OnHoverTextColor = System.Drawing.Color.Coral;
             this.btn_Two.selected = false;
-            this.btn_Two.Size = new System.Drawing.Size(222, 50);
+            this.btn_Two.Size = new System.Drawing.Size(214, 50);
             this.btn_Two.TabIndex = 1;
             this.btn_Two.Tag = "1";
             this.btn_Two.Text = "(Original Plan Date - 2nd Lvl Release Date) vs coded lead-time";
@@ -2194,6 +2198,84 @@
             this.datavizLoadTimer.Interval = 500;
             this.datavizLoadTimer.Tick += new System.EventHandler(this.datavizLoadTimer_Tick);
             // 
+            // btn_Four
+            // 
+            this.btn_Four.Activecolor = System.Drawing.SystemColors.Control;
+            this.btn_Four.BackColor = System.Drawing.SystemColors.Control;
+            this.btn_Four.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_Four.BorderRadius = 0;
+            this.btn_Four.ButtonText = "Material Due (Orig Planned Date)";
+            this.btn_Four.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Four.DisabledColor = System.Drawing.SystemColors.Control;
+            this.btn_Four.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_Four.ForeColor = System.Drawing.Color.DimGray;
+            this.btn_Four.Iconcolor = System.Drawing.Color.Transparent;
+            this.btn_Four.Iconimage = null;
+            this.btn_Four.Iconimage_right = null;
+            this.btn_Four.Iconimage_right_Selected = null;
+            this.btn_Four.Iconimage_Selected = null;
+            this.btn_Four.IconMarginLeft = 0;
+            this.btn_Four.IconMarginRight = 0;
+            this.btn_Four.IconRightVisible = false;
+            this.btn_Four.IconRightZoom = 0D;
+            this.btn_Four.IconVisible = true;
+            this.btn_Four.IconZoom = 90D;
+            this.btn_Four.IsTab = false;
+            this.btn_Four.Location = new System.Drawing.Point(598, 0);
+            this.btn_Four.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_Four.Name = "btn_Four";
+            this.btn_Four.Normalcolor = System.Drawing.SystemColors.Control;
+            this.btn_Four.OnHovercolor = System.Drawing.SystemColors.Control;
+            this.btn_Four.OnHoverTextColor = System.Drawing.Color.Coral;
+            this.btn_Four.selected = false;
+            this.btn_Four.Size = new System.Drawing.Size(144, 50);
+            this.btn_Four.TabIndex = 3;
+            this.btn_Four.Tag = "3";
+            this.btn_Four.Text = "Material Due (Orig Planned Date)";
+            this.btn_Four.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_Four.Textcolor = System.Drawing.Color.DimGray;
+            this.btn_Four.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Four.Click += new System.EventHandler(this.CategoryButton_Click);
+            // 
+            // btn_Five
+            // 
+            this.btn_Five.Activecolor = System.Drawing.SystemColors.Control;
+            this.btn_Five.BackColor = System.Drawing.SystemColors.Control;
+            this.btn_Five.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_Five.BorderRadius = 0;
+            this.btn_Five.ButtonText = "Material Due (Final Planned Date)";
+            this.btn_Five.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Five.DisabledColor = System.Drawing.SystemColors.Control;
+            this.btn_Five.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_Five.ForeColor = System.Drawing.Color.DimGray;
+            this.btn_Five.Iconcolor = System.Drawing.Color.Transparent;
+            this.btn_Five.Iconimage = null;
+            this.btn_Five.Iconimage_right = null;
+            this.btn_Five.Iconimage_right_Selected = null;
+            this.btn_Five.Iconimage_Selected = null;
+            this.btn_Five.IconMarginLeft = 0;
+            this.btn_Five.IconMarginRight = 0;
+            this.btn_Five.IconRightVisible = false;
+            this.btn_Five.IconRightZoom = 0D;
+            this.btn_Five.IconVisible = true;
+            this.btn_Five.IconZoom = 90D;
+            this.btn_Five.IsTab = false;
+            this.btn_Five.Location = new System.Drawing.Point(742, 0);
+            this.btn_Five.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_Five.Name = "btn_Five";
+            this.btn_Five.Normalcolor = System.Drawing.SystemColors.Control;
+            this.btn_Five.OnHovercolor = System.Drawing.SystemColors.Control;
+            this.btn_Five.OnHoverTextColor = System.Drawing.Color.Coral;
+            this.btn_Five.selected = false;
+            this.btn_Five.Size = new System.Drawing.Size(155, 50);
+            this.btn_Five.TabIndex = 4;
+            this.btn_Five.Tag = "4";
+            this.btn_Five.Text = "Material Due (Final Planned Date)";
+            this.btn_Five.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_Five.Textcolor = System.Drawing.Color.DimGray;
+            this.btn_Five.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Five.Click += new System.EventHandler(this.CategoryButton_Click);
+            // 
             // KPIPlanTemplate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2429,5 +2511,7 @@
         private Bunifu.Framework.UI.BunifuCustomLabel lbl_analysisOne;
         private Bunifu.Framework.UI.BunifuFlatButton btn_Three;
         private System.Windows.Forms.Timer datavizLoadTimer;
+        private Bunifu.Framework.UI.BunifuFlatButton btn_Five;
+        private Bunifu.Framework.UI.BunifuFlatButton btn_Four;
     }
 }

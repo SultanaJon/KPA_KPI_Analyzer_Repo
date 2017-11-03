@@ -50,10 +50,10 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
                 KPA_HotJobs_LateToConfirmed,
                 KPA_ExcessStock_Stock_PrsAgingNotRel,
                 KPA_ExcessStock_Stock_PrsAgingRel,
-                KPA_ExcessStock_Stock_PoCreateToConfEntry,
+                KPA_ExcessStock_Stock_PoCreateThruDelivery,
                 KPA_ExcessStock_OpenOrders_PrsAgingNotRel,
                 KPA_ExcessStock_OpenOrders_PrsAgingRel,
-                KPA_ExcessStock_OpenOrders_PoCreateToConfEntry,
+                KPA_ExcessStock_OpenOrders_PoCreateThruDelivery,
                 KPA_CurrPlanActual_CurrPlanDateCurrConfDateOpenPO,
                 KPA_CurrPlanActual_CurrPlanDateCurrConfDateOpenPOHotJobs
             }

@@ -70,6 +70,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                 btn_One.Textcolor = value;
                 btn_Two.Textcolor = value;
                 btn_Three.Textcolor = value;
+                btn_Four.Textcolor = value;
+                btn_Five.Textcolor = value;
             }
         }
         #endregion
@@ -150,10 +152,12 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             btn_One.selected = false;
             btn_Two.selected = false;
             btn_Three.selected = false;
+            btn_Four.selected = false;
+            btn_Five.selected = false;
 
             btn.selected = true;
-            DefaultButtonTextColor = System.Drawing.Color.DarkGray;
-            btn.Textcolor = System.Drawing.Color.Coral;
+            DefaultButtonTextColor = Color.DarkGray;
+            btn.Textcolor = Color.Coral;
 
 
             int tag = int.Parse(btn.Tag.ToString());
@@ -170,6 +174,12 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                     break;
                 case 2:
                     RenderThree();
+                    break;
+                case 3:
+                    RenderFour();
+                    break;
+                case 4:
+                    RenderFive();
                     break;
                 default:
                     break;
@@ -371,6 +381,130 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
 
+        /// <summary>
+        /// Renders the specific KPI category into the loaded template
+        /// </summary>
+        private void RenderFour()
+        {
+            Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
+            Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
+
+            Title = Globals.kpiCategories[(int)Globals.KPI_Sections.Plan][(int)Globals.KPI_Categories.Plan.MaterialDueOriginalPlanDate];
+            Globals.CurrCategory = Title;
+            Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.Plan];
+            ChangeCategory();
+
+            Average = overallData.kpi.plan.materialDueOrigPlanDate.data.Average.ToString();
+            TotalOrders = overallData.kpi.plan.materialDueOrigPlanDate.data.Total.ToString();
+            TimeBucketOne = overallData.kpi.plan.materialDueOrigPlanDate.data.Minus_TwentyTwo.ToString();
+            TimeBucketTwo = overallData.kpi.plan.materialDueOrigPlanDate.data.Minus_Fifteen_TwentyOne.ToString();
+            TimeBucketThree = overallData.kpi.plan.materialDueOrigPlanDate.data.Minus_Eight_Fourteen.ToString();
+            TimeBucketFour = overallData.kpi.plan.materialDueOrigPlanDate.data.Minus_One_Seven.ToString();
+            TimeBucketFive = overallData.kpi.plan.materialDueOrigPlanDate.data.Zero.ToString();
+            TimeBucketSix = overallData.kpi.plan.materialDueOrigPlanDate.data.One_Seven.ToString();
+            TimeBucketSeven = overallData.kpi.plan.materialDueOrigPlanDate.data.Eight_Fourteen.ToString();
+            TimeBucketEight = overallData.kpi.plan.materialDueOrigPlanDate.data.Fifteen_TwentyOne.ToString();
+            TimeBucketNine = overallData.kpi.plan.materialDueOrigPlanDate.data.TwentyTwo.ToString();
+
+
+
+            AnalysisOne = "- Will show if PR has 2nd level release.";
+            AnalysisTwo = "- (current planned date - 2nd level release date) - commodity coded leadtime.";
+
+
+            dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
+            dp.addLabely(lbl_xLabelTwo.Text, TimeBucketTwo);
+            dp.addLabely(lbl_xLabelThree.Text, TimeBucketThree);
+            dp.addLabely(lbl_xLabelFour.Text, TimeBucketFour);
+            dp.addLabely(lbl_xLabelFive.Text, TimeBucketFive);
+            dp.addLabely(lbl_xLabelSix.Text, TimeBucketSix);
+            dp.addLabely(lbl_xLabelSeven.Text, TimeBucketSeven);
+            dp.addLabely(lbl_xLabelEight.Text, TimeBucketEight);
+            dp.addLabely(lbl_xLabelNine.Text, TimeBucketNine);
+
+            Average = string.Format("{0:n}", overallData.kpi.plan.materialDueOrigPlanDate.data.Average);
+            TotalOrders = string.Format("{0:n0}", overallData.kpi.plan.materialDueOrigPlanDate.data.Total);
+            TimeBucketOne = string.Format("{0:n0}", overallData.kpi.plan.materialDueOrigPlanDate.data.Minus_TwentyTwo);
+            TimeBucketTwo = string.Format("{0:n0}", overallData.kpi.plan.materialDueOrigPlanDate.data.Minus_Fifteen_TwentyOne);
+            TimeBucketThree = string.Format("{0:n0}", overallData.kpi.plan.materialDueOrigPlanDate.data.Minus_Eight_Fourteen);
+            TimeBucketFour = string.Format("{0:n0}", overallData.kpi.plan.materialDueOrigPlanDate.data.Minus_One_Seven);
+            TimeBucketFive = string.Format("{0:n0}", overallData.kpi.plan.materialDueOrigPlanDate.data.Zero);
+            TimeBucketSix = string.Format("{0:n0}", overallData.kpi.plan.materialDueOrigPlanDate.data.One_Seven);
+            TimeBucketSeven = string.Format("{0:n0}", overallData.kpi.plan.materialDueOrigPlanDate.data.Eight_Fourteen);
+            TimeBucketEight = string.Format("{0:n0}", overallData.kpi.plan.materialDueOrigPlanDate.data.Fifteen_TwentyOne);
+            TimeBucketNine = string.Format("{0:n0}", overallData.kpi.plan.materialDueOrigPlanDate.data.TwentyTwo);
+
+
+            canvas.addData(dp);
+            dataviz.Render(canvas);
+        }
+
+
+
+
+        /// <summary>
+        /// Renders the specific KPI category into the loaded template
+        /// </summary>
+        private void RenderFive()
+        {
+            Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
+            Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
+
+            Title = Globals.kpiCategories[(int)Globals.KPI_Sections.Plan][(int)Globals.KPI_Categories.Plan.MaterialDueFinalPlannedDate];
+            Globals.CurrCategory = Title;
+            Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.Plan];
+            ChangeCategory();
+
+            Average = overallData.kpi.plan.materialDueFinalPlanDate.data.Average.ToString();
+            TotalOrders = overallData.kpi.plan.materialDueFinalPlanDate.data.Total.ToString();
+            TimeBucketOne = overallData.kpi.plan.materialDueFinalPlanDate.data.Minus_TwentyTwo.ToString();
+            TimeBucketTwo = overallData.kpi.plan.materialDueFinalPlanDate.data.Minus_Fifteen_TwentyOne.ToString();
+            TimeBucketThree = overallData.kpi.plan.materialDueFinalPlanDate.data.Minus_Eight_Fourteen.ToString();
+            TimeBucketFour = overallData.kpi.plan.materialDueFinalPlanDate.data.Minus_One_Seven.ToString();
+            TimeBucketFive = overallData.kpi.plan.materialDueFinalPlanDate.data.Zero.ToString();
+            TimeBucketSix = overallData.kpi.plan.materialDueFinalPlanDate.data.One_Seven.ToString();
+            TimeBucketSeven = overallData.kpi.plan.materialDueFinalPlanDate.data.Eight_Fourteen.ToString();
+            TimeBucketEight = overallData.kpi.plan.materialDueFinalPlanDate.data.Fifteen_TwentyOne.ToString();
+            TimeBucketNine = overallData.kpi.plan.materialDueFinalPlanDate.data.TwentyTwo.ToString();
+
+
+
+            AnalysisOne = "- Will show if PR has 2nd level release.";
+            AnalysisTwo = "- (current planned date - 2nd level release date) - commodity coded leadtime.";
+
+
+            dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
+            dp.addLabely(lbl_xLabelTwo.Text, TimeBucketTwo);
+            dp.addLabely(lbl_xLabelThree.Text, TimeBucketThree);
+            dp.addLabely(lbl_xLabelFour.Text, TimeBucketFour);
+            dp.addLabely(lbl_xLabelFive.Text, TimeBucketFive);
+            dp.addLabely(lbl_xLabelSix.Text, TimeBucketSix);
+            dp.addLabely(lbl_xLabelSeven.Text, TimeBucketSeven);
+            dp.addLabely(lbl_xLabelEight.Text, TimeBucketEight);
+            dp.addLabely(lbl_xLabelNine.Text, TimeBucketNine);
+
+            Average = string.Format("{0:n}", overallData.kpi.plan.materialDueFinalPlanDate.data.Average);
+            TotalOrders = string.Format("{0:n0}", overallData.kpi.plan.materialDueFinalPlanDate.data.Total);
+            TimeBucketOne = string.Format("{0:n0}", overallData.kpi.plan.materialDueFinalPlanDate.data.Minus_TwentyTwo);
+            TimeBucketTwo = string.Format("{0:n0}", overallData.kpi.plan.materialDueFinalPlanDate.data.Minus_Fifteen_TwentyOne);
+            TimeBucketThree = string.Format("{0:n0}", overallData.kpi.plan.materialDueFinalPlanDate.data.Minus_Eight_Fourteen);
+            TimeBucketFour = string.Format("{0:n0}", overallData.kpi.plan.materialDueFinalPlanDate.data.Minus_One_Seven);
+            TimeBucketFive = string.Format("{0:n0}", overallData.kpi.plan.materialDueFinalPlanDate.data.Zero);
+            TimeBucketSix = string.Format("{0:n0}", overallData.kpi.plan.materialDueFinalPlanDate.data.One_Seven);
+            TimeBucketSeven = string.Format("{0:n0}", overallData.kpi.plan.materialDueFinalPlanDate.data.Eight_Fourteen);
+            TimeBucketEight = string.Format("{0:n0}", overallData.kpi.plan.materialDueFinalPlanDate.data.Fifteen_TwentyOne);
+            TimeBucketNine = string.Format("{0:n0}", overallData.kpi.plan.materialDueFinalPlanDate.data.TwentyTwo);
+
+
+            canvas.addData(dp);
+            dataviz.Render(canvas);
+        }
+
+
+
+
+
+
 
         /// <summary>
         /// Triggered when the template is loaded. This will load the data in the template
@@ -421,6 +555,14 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                             break;
                         case 2: // (Current Planned Date - 2nd Lvl Release Date) vs Coded lead-time
                             dv.DataLoader += KpiDataTableLoader.Plan.LoadCurrPlanDate2ndLvlRelDate_CodedLeadDataTable;
+                            dv.ColumnTag = tag;
+                            break;
+                        case 3: // (Current Planned Date - 2nd Lvl Release Date) vs Coded lead-time
+                            dv.DataLoader += KpiDataTableLoader.Plan.LoadMaterialDueOrigPlanDate;
+                            dv.ColumnTag = tag;
+                            break;
+                        case 4: // (Current Planned Date - 2nd Lvl Release Date) vs Coded lead-time
+                            dv.DataLoader += KpiDataTableLoader.Plan.LoadMaterialDueFinalPlanDate;
                             dv.ColumnTag = tag;
                             break;
                         default:

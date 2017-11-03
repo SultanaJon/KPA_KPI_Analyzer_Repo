@@ -412,6 +412,43 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                 string.Format("{0:n0}", data.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Total)
             };
             TemplateThreeDataGrid.Rows.Add(row);
+            
+
+
+            row = new string[]{
+                data.kpi.plan.Name,
+                data.kpi.plan.categoryNames[(int)Plan.CategorNames.materialDueOrigPlanDate],
+                string.Format("{0:n}", data.kpi.plan.materialDueOrigPlanDate.data.Average),
+                string.Format("{0:n0}", data.kpi.plan.materialDueOrigPlanDate.data.Minus_TwentyTwo),
+                string.Format("{0:n0}", data.kpi.plan.materialDueOrigPlanDate.data.Minus_Fifteen_TwentyOne),
+                string.Format("{0:n0}", data.kpi.plan.materialDueOrigPlanDate.data.Minus_Eight_Fourteen),
+                string.Format("{0:n0}", data.kpi.plan.materialDueOrigPlanDate.data.Minus_One_Seven),
+                string.Format("{0:n0}", data.kpi.plan.materialDueOrigPlanDate.data.Zero),
+                string.Format("{0:n0}", data.kpi.plan.materialDueOrigPlanDate.data.One_Seven),
+                string.Format("{0:n0}", data.kpi.plan.materialDueOrigPlanDate.data.Eight_Fourteen),
+                string.Format("{0:n0}", data.kpi.plan.materialDueOrigPlanDate.data.Fifteen_TwentyOne),
+                string.Format("{0:n0}", data.kpi.plan.materialDueOrigPlanDate.data.TwentyTwo),
+                string.Format("{0:n0}", data.kpi.plan.materialDueOrigPlanDate.data.Total)
+            };
+            TemplateThreeDataGrid.Rows.Add(row);
+
+
+            row = new string[]{
+                data.kpi.plan.Name,
+                data.kpi.plan.categoryNames[(int)Plan.CategorNames.materialDueFinalPlanDate],
+                string.Format("{0:n}", data.kpi.plan.materialDueFinalPlanDate.data.Average),
+                string.Format("{0:n0}", data.kpi.plan.materialDueFinalPlanDate.data.Minus_TwentyTwo),
+                string.Format("{0:n0}", data.kpi.plan.materialDueFinalPlanDate.data.Minus_Fifteen_TwentyOne),
+                string.Format("{0:n0}", data.kpi.plan.materialDueFinalPlanDate.data.Minus_Eight_Fourteen),
+                string.Format("{0:n0}", data.kpi.plan.materialDueFinalPlanDate.data.Minus_One_Seven),
+                string.Format("{0:n0}", data.kpi.plan.materialDueFinalPlanDate.data.Zero),
+                string.Format("{0:n0}", data.kpi.plan.materialDueFinalPlanDate.data.One_Seven),
+                string.Format("{0:n0}", data.kpi.plan.materialDueFinalPlanDate.data.Eight_Fourteen),
+                string.Format("{0:n0}", data.kpi.plan.materialDueFinalPlanDate.data.Fifteen_TwentyOne),
+                string.Format("{0:n0}", data.kpi.plan.materialDueFinalPlanDate.data.TwentyTwo),
+                string.Format("{0:n0}", data.kpi.plan.materialDueFinalPlanDate.data.Total)
+            };
+            TemplateThreeDataGrid.Rows.Add(row);
         }
 
 
@@ -899,7 +936,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
                 switch (e.RowIndex)
                 {
-                    case 0: // 0 - 2 = Plan
+                    case 0: // 0 - 4 = Plan
                         Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.Plan];
                         Globals.CurrCategory = Globals.kpiCategories[(int)Globals.KPI_Sections.Plan][(int)Globals.KPI_Categories.Plan.PRPlanDatevsCurrentPlanDate];
                         HandlePlanDataTableLoading(e.RowIndex, e.ColumnIndex);
@@ -914,32 +951,42 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         Globals.CurrCategory = Globals.kpiCategories[(int)Globals.KPI_Sections.Plan][(int)Globals.KPI_Categories.Plan.CurrentPlanDate2ndLvlReleaseDatevsCodedLeadTime];
                         HandlePlanDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
-                    case 3: // Purch
+                    case 3:
+                        Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.Plan];
+                        Globals.CurrCategory = Globals.kpiCategories[(int)Globals.KPI_Sections.Plan][(int)Globals.KPI_Categories.Plan.MaterialDueOriginalPlanDate];
+                        HandlePlanDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 4:
+                        Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.Plan];
+                        Globals.CurrCategory = Globals.kpiCategories[(int)Globals.KPI_Sections.Plan][(int)Globals.KPI_Categories.Plan.CurrentPlanDate2ndLvlReleaseDatevsCodedLeadTime];
+                        HandlePlanDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 5: // Purch
                         Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.Purch];
                         Globals.CurrCategory = Globals.kpiCategories[(int)Globals.KPI_Sections.Purch][(int)Globals.KPI_Categories.Purch.InitialConfirmationDatevsPRPlanDate];
                         HandlePurchDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
-                    case 4: // 4 - 8 = Follow Up
+                    case 6: // 4 - 8 = Follow Up
                         Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.FollowUp];
                         Globals.CurrCategory = Globals.kpiCategories[(int)Globals.KPI_Sections.FollowUp][(int)Globals.KPI_Categories.FollowUp.InitialConfirmationDatevsCurrentConfirmationDate];
                         HandleFollowUpDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
-                    case 5:
+                    case 7:
                         Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.FollowUp];
                         Globals.CurrCategory = Globals.kpiCategories[(int)Globals.KPI_Sections.FollowUp][(int)Globals.KPI_Categories.FollowUp.FinalConfirmationDatevsFinalPlanDate];
                         HandleFollowUpDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
-                    case 6:
+                    case 8:
                         Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.FollowUp];
                         Globals.CurrCategory = Globals.kpiCategories[(int)Globals.KPI_Sections.FollowUp][(int)Globals.KPI_Categories.FollowUp.ReceiptDatevsCurrentPlanDate];
                         HandleFollowUpDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
-                    case 7:
+                    case 9:
                         Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.FollowUp];
                         Globals.CurrCategory = Globals.kpiCategories[(int)Globals.KPI_Sections.FollowUp][(int)Globals.KPI_Categories.FollowUp.ReceiptDatevsOriginalConfirmationDate];
                         HandleFollowUpDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
-                    case 8:
+                    case 10:
                         Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.FollowUp];
                         Globals.CurrCategory = Globals.kpiCategories[(int)Globals.KPI_Sections.FollowUp][(int)Globals.KPI_Categories.FollowUp.ReceiptDatevsCurrentConfirmationDate];
                         HandleFollowUpDataTableLoading(e.RowIndex, e.ColumnIndex);
@@ -1252,6 +1299,106 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                                 break;
                             case 12: // Total
                                 dv.DataLoader += KpiDataTableLoader.Plan.LoadCurrPlanDate2ndLvlRelDate_CodedLeadDataTable;
+                                dv.ColumnTag = (int)TempThree.DataViews.Total;
+                                break;
+                        }
+                        break;
+                    case 3: // Material Due (Final Planned Date)
+                        switch (columnIndex)
+                        {
+                            case 0: // section
+                            case 1: // category
+                                return;
+                            case 2: // Average
+                                return;
+                            case 3: // <= -22 Days
+                                dv.DataLoader += KpiDataTableLoader.Plan.LoadMaterialDueOrigPlanDate;
+                                dv.ColumnTag = (int)TempThree.DataViews.Minus_TwentyTwo;
+                                break;
+                            case 4: // -(15 - 21) Days
+                                dv.DataLoader += KpiDataTableLoader.Plan.LoadMaterialDueOrigPlanDate;
+                                dv.ColumnTag = (int)TempThree.DataViews.Minus_Fifteen_TwentyOne;
+                                break;
+                            case 5: // -(8 - 14) Days
+                                dv.DataLoader += KpiDataTableLoader.Plan.LoadMaterialDueOrigPlanDate;
+                                dv.ColumnTag = (int)TempThree.DataViews.Minus_Eight_Fourteen;
+                                break;
+                            case 6: // -(1 - 7) Days
+                                dv.DataLoader += KpiDataTableLoader.Plan.LoadMaterialDueOrigPlanDate;
+                                dv.ColumnTag = (int)TempThree.DataViews.Minus_One_Seven;
+                                break;
+                            case 7: // 0 days
+                                dv.DataLoader += KpiDataTableLoader.Plan.LoadMaterialDueOrigPlanDate;
+                                dv.ColumnTag = (int)TempThree.DataViews.Zero;
+                                break;
+                            case 8: // 1 - 7 Days
+                                dv.DataLoader += KpiDataTableLoader.Plan.LoadMaterialDueOrigPlanDate;
+                                dv.ColumnTag = (int)TempThree.DataViews.One_Seven;
+                                break;
+                            case 9: // 8 - 14 Days
+                                dv.DataLoader += KpiDataTableLoader.Plan.LoadMaterialDueOrigPlanDate;
+                                dv.ColumnTag = (int)TempThree.DataViews.Eight_Fourteen;
+                                break;
+                            case 10: // 15 - 21 Days
+                                dv.DataLoader += KpiDataTableLoader.Plan.LoadMaterialDueOrigPlanDate;
+                                dv.ColumnTag = (int)TempThree.DataViews.Fifteen_TwentyOne;
+                                break;
+                            case 11: // >= 22 Days
+                                dv.DataLoader += KpiDataTableLoader.Plan.LoadMaterialDueOrigPlanDate;
+                                dv.ColumnTag = (int)TempThree.DataViews.TwentyTwo;
+                                break;
+                            case 12: // Total
+                                dv.DataLoader += KpiDataTableLoader.Plan.LoadMaterialDueOrigPlanDate;
+                                dv.ColumnTag = (int)TempThree.DataViews.Total;
+                                break;
+                        }
+                        break;
+                    case 4: // Material Due (Original Planned Date)
+                        switch (columnIndex)
+                        {
+                            case 0: // section
+                            case 1: // category
+                                return;
+                            case 2: // Average
+                                return;
+                            case 3: // <= -22 Days
+                                dv.DataLoader += KpiDataTableLoader.Plan.LoadMaterialDueFinalPlanDate;
+                                dv.ColumnTag = (int)TempThree.DataViews.Minus_TwentyTwo;
+                                break;
+                            case 4: // -(15 - 21) Days
+                                dv.DataLoader += KpiDataTableLoader.Plan.LoadMaterialDueFinalPlanDate;
+                                dv.ColumnTag = (int)TempThree.DataViews.Minus_Fifteen_TwentyOne;
+                                break;
+                            case 5: // -(8 - 14) Days
+                                dv.DataLoader += KpiDataTableLoader.Plan.LoadMaterialDueFinalPlanDate;
+                                dv.ColumnTag = (int)TempThree.DataViews.Minus_Eight_Fourteen;
+                                break;
+                            case 6: // -(1 - 7) Days
+                                dv.DataLoader += KpiDataTableLoader.Plan.LoadMaterialDueFinalPlanDate;
+                                dv.ColumnTag = (int)TempThree.DataViews.Minus_One_Seven;
+                                break;
+                            case 7: // 0 days
+                                dv.DataLoader += KpiDataTableLoader.Plan.LoadMaterialDueFinalPlanDate;
+                                dv.ColumnTag = (int)TempThree.DataViews.Zero;
+                                break;
+                            case 8: // 1 - 7 Days
+                                dv.DataLoader += KpiDataTableLoader.Plan.LoadMaterialDueFinalPlanDate;
+                                dv.ColumnTag = (int)TempThree.DataViews.One_Seven;
+                                break;
+                            case 9: // 8 - 14 Days
+                                dv.DataLoader += KpiDataTableLoader.Plan.LoadMaterialDueFinalPlanDate;
+                                dv.ColumnTag = (int)TempThree.DataViews.Eight_Fourteen;
+                                break;
+                            case 10: // 15 - 21 Days
+                                dv.DataLoader += KpiDataTableLoader.Plan.LoadMaterialDueFinalPlanDate;
+                                dv.ColumnTag = (int)TempThree.DataViews.Fifteen_TwentyOne;
+                                break;
+                            case 11: // >= 22 Days
+                                dv.DataLoader += KpiDataTableLoader.Plan.LoadMaterialDueFinalPlanDate;
+                                dv.ColumnTag = (int)TempThree.DataViews.TwentyTwo;
+                                break;
+                            case 12: // Total
+                                dv.DataLoader += KpiDataTableLoader.Plan.LoadMaterialDueFinalPlanDate;
                                 dv.ColumnTag = (int)TempThree.DataViews.Total;
                                 break;
                         }

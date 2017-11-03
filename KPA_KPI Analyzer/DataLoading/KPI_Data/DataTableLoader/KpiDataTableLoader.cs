@@ -20,7 +20,8 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             private static DataTable prPlanDateVsCurrPlanDt;
             private static DataTable OrigPlan2ndLvlRel_CodedLeadTime;
             private static DataTable CurrPlan2ndLvlRel_CodedLeadTime;
-
+            private static DataTable MaterialDueOrigPlanDate;
+            private static DataTable MaterialDueFinalPlannedDate;
 
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
@@ -254,10 +255,34 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                         int delConfDay = int.Parse(strPrPlanDate[1].TrimStart('0'));
 
 
+                        // This is a tempory fix for MEXICO TAG_MEXICO_FIX
+                        // DELETE the refion below this commented code and uncomment this code.
+
+                        //string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
+                        //int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
+                        //int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
+                        //int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+
+                        #region MEXICOs TEMP FIX
+
                         string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
                         int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
-                        int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
-                        int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+                        int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0]);
+                        int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1]);
+
+                        if (pr2ndLvlRelYear == 0 && pr2ndLvlRelMonth == 0 && pr2ndLvlRelDay == 0)
+                        {
+                            // just ignore this bad Mexico data.
+                            continue;
+                        }
+                        else
+                        {
+                            pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
+                            pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
+                            pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+                        }
+
+                        #endregion
 
 
                         DateTime prPlanDate = new DateTime(delConfYear, delConfMonth, delConfDay);
@@ -412,10 +437,34 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                         }
 
 
+                        // This is a tempory fix for MEXICO TAG_MEXICO_FIX
+                        // DELETE the refion below this commented code and uncomment this code.
+
+                        //string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
+                        //int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
+                        //int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
+                        //int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+
+                        #region MEXICOs TEMP FIX
+
                         string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
                         int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
-                        int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
-                        int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+                        int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0]);
+                        int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1]);
+
+                        if (pr2ndLvlRelYear == 0 && pr2ndLvlRelMonth == 0 && pr2ndLvlRelDay == 0)
+                        {
+                            // just ignore this bad Mexico data.
+                            continue;
+                        }
+                        else
+                        {
+                            pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
+                            pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
+                            pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+                        }
+
+                        #endregion
 
 
                         string[] strCurrPlanDate = (dr["Rescheduling date"].ToString()).Split('/');
@@ -534,6 +583,419 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                     CurrPlan2ndLvlRel_CodedLeadTime.Rows.Clear();
                     CurrPlan2ndLvlRel_CodedLeadTime = null;
+                    dt.Rows.Clear();
+                    dt = null;
+                    GC.Collect();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+
+
+
+
+
+            /// <summary>
+            /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
+            /// </summary>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
+            internal static void LoadMaterialDueOrigPlanDate(int tag)
+            {
+                try
+                {
+                    dt = new DataTable();
+                    MaterialDueOrigPlanDate = new DataTable();
+
+                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.PR_2ndLvlRel) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    da = new OleDbDataAdapter(cmd);
+                    da.Fill(dt);
+
+
+                    MaterialDueOrigPlanDate = dt.Clone();
+
+
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        #region DateFilter_AdvancedFilter_Check
+
+                        if (Filters.FilterByPrDateRange)
+                        {
+                            if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
+                            {
+                                // The PR Date was not in range of the filter the user applied.
+                                continue;
+                            }
+                        }
+
+                        if (Filters.FilterByPoDateRange)
+                        {
+                            if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
+                            {
+                                // The PO Date was not in range of the filter the user applied.
+                                continue;
+                            }
+                        }
+
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
+                                continue;
+                            }
+                        }
+
+                        if (AdvancedFilters.AdvanceFiltersChanged())
+                        {
+                            // We have some advanced filters that the user would like to exclude.
+                            if (!FilterUtils.CheckAdvancedFilters(dr))
+                                continue;
+                        }
+
+                        #endregion
+
+
+
+
+                        string[] strOrigPlanDate = (dr["PR Delivery Date"].ToString()).Split('/');
+                        int origPlanYear = int.Parse(strOrigPlanDate[2]);
+                        int origPlanMonth = int.Parse(strOrigPlanDate[0]);
+                        int origPlanDay = int.Parse(strOrigPlanDate[1]);
+
+
+                        // This is a tempory fix for MEXICO TAG_MEXICO_FIX
+                        // DELETE the refion below this commented code and uncomment this code.
+
+                        //string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
+                        //int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
+                        //int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
+                        //int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+
+                        #region MEXICOs TEMP FIX
+
+                        string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
+                        int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
+                        int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0]);
+                        int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1]);
+
+                        if (pr2ndLvlRelYear == 0 && pr2ndLvlRelMonth == 0 && pr2ndLvlRelDay == 0)
+                        {
+                            // just ignore this bad Mexico data.
+                            continue;
+                        }
+                        else
+                        {
+                            pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
+                            pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
+                            pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+                        }
+
+                        #endregion
+
+
+
+
+                        DateTime pr2ndRelDate = new DateTime(pr2ndLvlRelYear, pr2ndLvlRelMonth, pr2ndLvlRelDay);
+                        DateTime origPlanDate = new DateTime(origPlanYear, origPlanMonth, origPlanDay);
+
+                        double elapsedDays = (origPlanDate - pr2ndRelDate).TotalDays;
+
+                        if (elapsedDays < 0)
+                            elapsedDays = Math.Floor(elapsedDays);
+
+                        if (elapsedDays > 0)
+                            elapsedDays = Math.Ceiling(elapsedDays);
+
+                        elapsedDays = (int)elapsedDays;
+
+                        switch (tag)
+                        {
+                            case 0:
+                                MaterialDueOrigPlanDate.ImportRow(dr);
+                                break;
+                            case 1:
+                                if (elapsedDays <= (-22))
+                                {
+                                    MaterialDueOrigPlanDate.ImportRow(dr);
+                                }
+                                continue;
+                            case 2:
+                                if (elapsedDays > (-22) && elapsedDays <= (-15))
+                                {
+                                    MaterialDueOrigPlanDate.ImportRow(dr);
+                                }
+                                continue;
+                            case 3:
+                                if (elapsedDays > (-15) && elapsedDays <= (-8))
+                                {
+                                    MaterialDueOrigPlanDate.ImportRow(dr);
+                                }
+                                continue;
+                            case 4:
+                                if (elapsedDays > (-8) && elapsedDays <= (-1))
+                                {
+                                    MaterialDueOrigPlanDate.ImportRow(dr);
+                                }
+                                continue;
+                            case 5:
+                                if (elapsedDays == 0)
+                                {
+                                    MaterialDueOrigPlanDate.ImportRow(dr);
+                                }
+                                continue;
+                            case 6:
+                                if (elapsedDays >= 1 && elapsedDays <= 7)
+                                {
+                                    MaterialDueOrigPlanDate.ImportRow(dr);
+                                }
+                                continue;
+                            case 7:
+                                if (elapsedDays >= 8 && elapsedDays <= 14)
+                                {
+                                    MaterialDueOrigPlanDate.ImportRow(dr);
+                                }
+                                continue;
+                            case 8:
+                                if (elapsedDays >= 15 && elapsedDays <= 21)
+                                {
+                                    MaterialDueOrigPlanDate.ImportRow(dr);
+                                }
+                                continue;
+                            case 9:
+                                if (elapsedDays >= 22)
+                                {
+                                    MaterialDueOrigPlanDate.ImportRow(dr);
+                                }
+                                continue;
+                            default:
+                                continue;
+                        }
+                    }
+                    DataViewerUtils.Data = MaterialDueOrigPlanDate.Copy();
+                    DataViewerUtils.DataLoaded = true;
+
+                    MaterialDueOrigPlanDate.Rows.Clear();
+                    MaterialDueOrigPlanDate = null;
+                    dt.Rows.Clear();
+                    dt = null;
+                    GC.Collect();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+
+
+
+
+
+            /// <summary>
+            /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
+            /// </summary>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
+            internal static void LoadMaterialDueFinalPlanDate(int tag)
+            {
+                try
+                {
+                    dt = new DataTable();
+                    MaterialDueFinalPlannedDate = new DataTable();
+
+                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.AllPOs) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    da = new OleDbDataAdapter(cmd);
+                    da.Fill(dt);
+
+
+                    MaterialDueFinalPlannedDate = dt.Clone();
+
+
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        #region Date Range Filters and Advanced Filters Check
+
+                        if (Filters.FilterByPrDateRange)
+                        {
+                            if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
+                            {
+                                // The PR Date was not in range of the filter the user applied.
+                                continue;
+                            }
+                        }
+
+                        if (Filters.FilterByPoDateRange)
+                        {
+                            if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
+                            {
+                                // The PO Date was not in range of the filter the user applied.
+                                continue;
+                            }
+                        }
+
+                        if (Filters.FilterByFinalReceiptDate)
+                        {
+                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                            {
+                                // The final receipt date was not in range of the filter the user applied
+                                continue;
+                            }
+                        }
+
+                        if (AdvancedFilters.AdvanceFiltersChanged())
+                        {
+                            // We have some advanced filters that the user would like to exclude.
+                            if (!FilterUtils.CheckAdvancedFilters(dr))
+                                continue;
+                        }
+
+                        #endregion
+
+
+                        // This is a tempory fix for MEXICO TAG_MEXICO_FIX
+                        // DELETE the refion below this commented code and uncomment this code.
+
+                        //string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
+                        //int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
+                        //int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
+                        //int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+
+                        #region MEXICOs TEMP FIX
+
+                        string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
+                        int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
+                        int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0]);
+                        int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1]);
+
+                        if (pr2ndLvlRelYear == 0 && pr2ndLvlRelMonth == 0 && pr2ndLvlRelDay == 0)
+                        {
+                            // just ignore this bad Mexico data.
+                            continue;
+                        }
+                        else
+                        {
+                            pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
+                            pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
+                            pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+                        }
+
+                        #endregion
+
+                        string[] strCurrPlanDate = (dr["Rescheduling date"].ToString()).Split('/');
+                        int origPlanYear = int.Parse(strCurrPlanDate[2]);
+                        int origPlanMonth = int.Parse(strCurrPlanDate[0]);
+                        int origPlanDay = int.Parse(strCurrPlanDate[1]);
+
+                        if (origPlanYear == 0 && origPlanMonth == 0 && origPlanDay == 0)
+                        {
+                            string[] strNewCurrPlanDelDate = (dr["Delivery Date"].ToString()).Split('/');
+                            origPlanYear = int.Parse(strNewCurrPlanDelDate[2]);
+                            origPlanMonth = int.Parse(strNewCurrPlanDelDate[0]);
+                            origPlanDay = int.Parse(strNewCurrPlanDelDate[1]);
+
+                            if (origPlanYear == 0 && origPlanMonth == 0 && origPlanDay == 0)
+                            {
+                                string[] strNewCurrPlanPrDelDate = (dr["PR Delivery Date"].ToString()).Split('/');
+                                origPlanYear = int.Parse(strNewCurrPlanPrDelDate[2]);
+                                origPlanMonth = int.Parse(strNewCurrPlanPrDelDate[0].TrimStart('0'));
+                                origPlanDay = int.Parse(strNewCurrPlanPrDelDate[1].TrimStart('0'));
+                            }
+                            else
+                            {
+                                origPlanYear = int.Parse(strNewCurrPlanDelDate[2]);
+                                origPlanMonth = int.Parse(strNewCurrPlanDelDate[0].TrimStart('0'));
+                                origPlanDay = int.Parse(strNewCurrPlanDelDate[1].TrimStart('0'));
+                            }
+                        }
+                        else
+                        {
+                            origPlanYear = int.Parse(strCurrPlanDate[2]);
+                            origPlanMonth = int.Parse(strCurrPlanDate[0].TrimStart('0'));
+                            origPlanDay = int.Parse(strCurrPlanDate[1].TrimStart('0'));
+                        }
+
+                        DateTime pr2ndRelDate = new DateTime(pr2ndLvlRelYear, pr2ndLvlRelMonth, pr2ndLvlRelDay);
+                        DateTime currPlanDate = new DateTime(origPlanYear, origPlanMonth, origPlanDay);
+
+                        double elapsedDays = (currPlanDate - pr2ndRelDate).TotalDays;
+
+                        if (elapsedDays < 0)
+                            elapsedDays = Math.Floor(elapsedDays);
+
+                        if (elapsedDays > 0)
+                            elapsedDays = Math.Ceiling(elapsedDays);
+
+                        elapsedDays = (int)elapsedDays;
+
+                        switch (tag)
+                        {
+                            case 0:
+                                MaterialDueFinalPlannedDate.ImportRow(dr);
+                                break;
+                            case 1:
+                                if (elapsedDays <= (-22))
+                                {
+                                    MaterialDueFinalPlannedDate.ImportRow(dr);
+                                }
+                                continue;
+                            case 2:
+                                if (elapsedDays > (-22) && elapsedDays <= (-15))
+                                {
+                                    MaterialDueFinalPlannedDate.ImportRow(dr);
+                                }
+                                continue;
+                            case 3:
+                                if (elapsedDays > (-15) && elapsedDays <= (-8))
+                                {
+                                    MaterialDueFinalPlannedDate.ImportRow(dr);
+                                }
+                                continue;
+                            case 4:
+                                if (elapsedDays > (-8) && elapsedDays <= (-1))
+                                {
+                                    MaterialDueFinalPlannedDate.ImportRow(dr);
+                                }
+                                continue;
+                            case 5:
+                                if (elapsedDays == 0)
+                                {
+                                    MaterialDueFinalPlannedDate.ImportRow(dr);
+                                }
+                                continue;
+                            case 6:
+                                if (elapsedDays >= 1 && elapsedDays <= 7)
+                                {
+                                    MaterialDueFinalPlannedDate.ImportRow(dr);
+                                }
+                                continue;
+                            case 7:
+                                if (elapsedDays >= 8 && elapsedDays <= 14)
+                                {
+                                    MaterialDueFinalPlannedDate.ImportRow(dr);
+                                }
+                                continue;
+                            case 8:
+                                if (elapsedDays >= 15 && elapsedDays <= 21)
+                                {
+                                    MaterialDueFinalPlannedDate.ImportRow(dr);
+                                }
+                                continue;
+                            case 9:
+                                if (elapsedDays >= 22)
+                                {
+                                    MaterialDueFinalPlannedDate.ImportRow(dr);
+                                }
+                                continue;
+                            default:
+                                continue;
+                        }
+                    }
+
+                    DataViewerUtils.Data = MaterialDueFinalPlannedDate.Copy();
+                    DataViewerUtils.DataLoaded = true;
+
+                    MaterialDueFinalPlannedDate.Rows.Clear();
+                    MaterialDueFinalPlannedDate = null;
                     dt.Rows.Clear();
                     dt = null;
                     GC.Collect();
@@ -1755,12 +2217,36 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                         DateTime poLineCreateDate = new DateTime(poCreateDtYear, poCreateDtMonth, poCreateDtDay);
 
-                        string[] strPR2ndLvlRelDate = (dr["PR 2° Rel# Date"].ToString()).Split('/');
-                        int secLvlRelYear = int.Parse(strPR2ndLvlRelDate[2]);
-                        int secLvlRelMonth = int.Parse(strPR2ndLvlRelDate[0].TrimStart('0'));
-                        int secLvlRelDay = int.Parse(strPR2ndLvlRelDate[1].TrimStart('0'));
+                        // This is a tempory fix for MEXICO TAG_MEXICO_FIX
+                        // DELETE the refion below this commented code and uncomment this code.
 
-                        DateTime pr2ndLvlRelDate = new DateTime(secLvlRelYear, secLvlRelMonth, secLvlRelDay);
+                        //string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
+                        //int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
+                        //int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
+                        //int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+
+                        #region MEXICOs TEMP FIX
+
+                        string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
+                        int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
+                        int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0]);
+                        int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1]);
+
+                        if (pr2ndLvlRelYear == 0 && pr2ndLvlRelMonth == 0 && pr2ndLvlRelDay == 0)
+                        {
+                            // just ignore this bad Mexico data.
+                            continue;
+                        }
+                        else
+                        {
+                            pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
+                            pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
+                            pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+                        }
+
+                        #endregion
+
+                        DateTime pr2ndLvlRelDate = new DateTime(pr2ndLvlRelYear, pr2ndLvlRelMonth, pr2ndLvlRelDay);
                         double elapsedDays = (int)(poLineCreateDate - pr2ndLvlRelDate).TotalDays;
 
                         switch (tag)
@@ -2324,12 +2810,36 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                         DateTime poLineFirstRelDate = new DateTime(poLineFirstRelYear, poLineFirstRelMonth, poLineFirstRelDay);
 
-                        string[] strPR2ndLvlRelDate = (dr["PR 2° Rel# Date"].ToString()).Split('/');
-                        int secLvlRelYear = int.Parse(strPR2ndLvlRelDate[2]);
-                        int secLvlRelMonth = int.Parse(strPR2ndLvlRelDate[0].TrimStart('0'));
-                        int secLvlRelDay = int.Parse(strPR2ndLvlRelDate[1].TrimStart('0'));
+                        // This is a tempory fix for MEXICO TAG_MEXICO_FIX
+                        // DELETE the refion below this commented code and uncomment this code.
 
-                        DateTime pr2ndLvlRelDate = new DateTime(secLvlRelYear, secLvlRelMonth, secLvlRelDay);
+                        //string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
+                        //int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
+                        //int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
+                        //int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+
+                        #region MEXICOs TEMP FIX
+
+                        string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
+                        int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
+                        int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0]);
+                        int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1]);
+
+                        if (pr2ndLvlRelYear == 0 && pr2ndLvlRelMonth == 0 && pr2ndLvlRelDay == 0)
+                        {
+                            // just ignore this bad Mexico data.
+                            continue;
+                        }
+                        else
+                        {
+                            pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
+                            pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
+                            pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+                        }
+
+                        #endregion
+
+                        DateTime pr2ndLvlRelDate = new DateTime(pr2ndLvlRelYear, pr2ndLvlRelMonth, pr2ndLvlRelDay);
                         double elapsedDays = (int)(poLineFirstRelDate - pr2ndLvlRelDate).TotalDays;
 
                         switch (tag)
@@ -2705,12 +3215,36 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                         DateTime poLineConfCreateDate = new DateTime(firstConfCreateYear, firstConfCreateMonth, firstConfCreateDay);
 
-                        string[] strPR2ndLvlRelDate = (dr["PR 2° Rel# Date"].ToString()).Split('/');
-                        int secLvlRelYear = int.Parse(strPR2ndLvlRelDate[2]);
-                        int secLvlRelMonth = int.Parse(strPR2ndLvlRelDate[0].TrimStart('0'));
-                        int secLvlRelDay = int.Parse(strPR2ndLvlRelDate[1].TrimStart('0'));
+                        // This is a tempory fix for MEXICO TAG_MEXICO_FIX
+                        // DELETE the refion below this commented code and uncomment this code.
 
-                        DateTime pr2ndLvlRelDate = new DateTime(secLvlRelYear, secLvlRelMonth, secLvlRelDay);
+                        //string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
+                        //int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
+                        //int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
+                        //int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+
+                        #region MEXICOs TEMP FIX
+
+                        string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
+                        int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
+                        int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0]);
+                        int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1]);
+
+                        if (pr2ndLvlRelYear == 0 && pr2ndLvlRelMonth == 0 && pr2ndLvlRelDay == 0)
+                        {
+                            // just ignore this bad Mexico data.
+                            continue;
+                        }
+                        else
+                        {
+                            pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
+                            pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
+                            pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+                        }
+
+                        #endregion
+
+                        DateTime pr2ndLvlRelDate = new DateTime(pr2ndLvlRelYear, pr2ndLvlRelMonth, pr2ndLvlRelDay);
                         double elapsedDays = (int)(poLineConfCreateDate - pr2ndLvlRelDate).TotalDays;
 
                         switch (tag)
@@ -3064,21 +3598,36 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                                 continue;
                         }
 
-                        string[] strPR2ndLvlRelDate = (dr["PR 2° Rel# Date"].ToString()).Split('/');
-                        int pr2ndLvlRelYear = int.Parse(strPR2ndLvlRelDate[2]);
-                        int pr2ndLvlRelMonth = int.Parse(strPR2ndLvlRelDate[0]);
-                        int pr2ndLvlRelDay = int.Parse(strPR2ndLvlRelDate[1]);
+                        // This is a tempory fix for MEXICO TAG_MEXICO_FIX
+                        // DELETE the refion below this commented code and uncomment this code.
+
+                        //string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
+                        //int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
+                        //int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
+                        //int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+
+                        #region MEXICOs TEMP FIX
+
+                        string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
+                        int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
+                        int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0]);
+                        int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1]);
 
                         if (pr2ndLvlRelYear == 0 && pr2ndLvlRelMonth == 0 && pr2ndLvlRelDay == 0)
                         {
+                            // just ignore this bad Mexico data.
                             continue;
                         }
                         else
                         {
-                            pr2ndLvlRelYear = int.Parse(strPR2ndLvlRelDate[2]);
-                            pr2ndLvlRelMonth = int.Parse(strPR2ndLvlRelDate[0].TrimStart('0'));
-                            pr2ndLvlRelDay = int.Parse(strPR2ndLvlRelDate[1].TrimStart('0'));
+                            pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
+                            pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
+                            pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
                         }
+
+                        #endregion
+
+
                         DateTime pr2ndLvlRelDate = new DateTime(pr2ndLvlRelYear, pr2ndLvlRelMonth, pr2ndLvlRelDay);
 
                         string[] strPRDelDate = (dr["PR Delivery Date"].ToString()).Split('/');
@@ -3412,12 +3961,36 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                                 continue;
                         }
 
-                        string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
-                        int pr2ndLvlRelDtYear = int.Parse(strPr2ndLvlRelDt[2]);
-                        int pr2ndLvlRelDtMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
-                        int pr2ndLvlRelDtDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+                        // This is a tempory fix for MEXICO TAG_MEXICO_FIX
+                        // DELETE the refion below this commented code and uncomment this code.
 
-                        DateTime pr2ndLvlRelDt = new DateTime(pr2ndLvlRelDtYear, pr2ndLvlRelDtMonth, pr2ndLvlRelDtDay);
+                        //string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
+                        //int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
+                        //int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
+                        //int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+
+                        #region MEXICOs TEMP FIX
+
+                        string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
+                        int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
+                        int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0]);
+                        int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1]);
+
+                        if (pr2ndLvlRelYear == 0 && pr2ndLvlRelMonth == 0 && pr2ndLvlRelDay == 0)
+                        {
+                            // just ignore this bad Mexico data.
+                            continue;
+                        }
+                        else
+                        {
+                            pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
+                            pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
+                            pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+                        }
+
+                        #endregion
+
+                        DateTime pr2ndLvlRelDt = new DateTime(pr2ndLvlRelYear, pr2ndLvlRelMonth, pr2ndLvlRelDay);
                         DateTime today = DateTime.Now.Date;
                         double elapsedDays = (pr2ndLvlRelDt - today).TotalDays;
                         double weeks = Math.Floor(elapsedDays / 7);

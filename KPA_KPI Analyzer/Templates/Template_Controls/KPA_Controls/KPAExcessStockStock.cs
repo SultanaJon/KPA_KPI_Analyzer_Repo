@@ -328,7 +328,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             TimeBucketFive = string.Format("{0:n0}", overallData.kpa.excessStockStock.PoCreationThruDeliv.data.Fifteen_TwentyOne);
             TimeBucketSix = string.Format("{0:n0}", overallData.kpa.excessStockStock.PoCreationThruDeliv.data.TwentyTwo_TwentyEight);
             TimeBucketSeven = string.Format("{0:n0}", overallData.kpa.excessStockStock.PoCreationThruDeliv.data.TwentyNinePlus);
-
         }
 
 
@@ -378,19 +377,17 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                     {
                         case 0: // PRs Aging (Not Released)
                             dv.DataLoader += KpaDataTableLoader.ExcessStock_Stock.LoadPrsAgingNotReleased;
-                            dv.ColumnTag = tag;
                             break;
                         case 1: // PRs Aging (Released)
                             dv.DataLoader += KpaDataTableLoader.ExcessStock_Stock.LoadPrsAgingReleased;
-                            dv.ColumnTag = tag;
                             break;
                         case 2: // Po Creation Date to Confirmation Entry
                             dv.DataLoader += KpaDataTableLoader.ExcessStock_Stock.LoadPoConfThruDeliv;
-                            dv.ColumnTag = tag;
                             break;
                         default:
                             break;
                     }
+                    dv.ColumnTag = tag;
                     dv.ShowDialog();
                 }
             }

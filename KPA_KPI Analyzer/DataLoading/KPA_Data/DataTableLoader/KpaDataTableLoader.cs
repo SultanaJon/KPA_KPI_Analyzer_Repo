@@ -2339,7 +2339,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                 {
                     dt = new DataTable();
                     poConfThruDeliv = new DataTable();
-                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.KPA_ExcessStock_Stock_PoCreateToConfEntry) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.KPA_ExcessStock_Stock_PoCreateThruDelivery) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
 
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
@@ -2376,6 +2376,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                                 continue;
                             }
                         }
+
 
                         if (AdvancedFilters.AdvanceFiltersChanged())
                         {
@@ -2726,7 +2727,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                 {
                     dt = new DataTable();
                     poConfThruDeliv = new DataTable();
-                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.KPA_ExcessStock_OpenOrders_PoCreateToConfEntry) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.KPA_ExcessStock_OpenOrders_PoCreateThruDelivery) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
 
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
