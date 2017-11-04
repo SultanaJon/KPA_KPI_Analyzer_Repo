@@ -355,7 +355,6 @@
             QtyOrdered,
             Delivered,
             QtyConf,
-            PoSourceTime,
             OpenPrQty
         }
 
@@ -380,7 +379,6 @@
             "Qty Ordered",
             "Delivered",
             "Qty Conf",
-            "PO Src Time",
             "Open PR Qty"
         };
 
@@ -405,7 +403,6 @@
             "Qty Ordered",
             "Delivered",
             "Qty Conf#",
-            "PO Source Time",
             "Open PR Qty"
         };
 

@@ -340,7 +340,7 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
                     foreach (Values.Globals.CorrelationMatrixIndexer index in Enum.GetValues(typeof(Values.Globals.CorrelationMatrixIndexer)))
                     {
                         tempDt = new DataTable();
-                        cmd.CommandText = "SELECT " + Values.Globals.CountryTableName + ".[" + Values.Globals.correlationQueryHeaders[(int)index] + "], " + Values.Globals.CountryTableName + ".[" + Values.Globals.correlationDateRangeFilters[(int)Values.Globals.CorrelationDateRangeFilters.RequisitionDate] + "]," + Values.Globals.CountryTableName + ".[" + Values.Globals.correlationDateRangeFilters[(int)Values.Globals.CorrelationDateRangeFilters.PoLineCreateDate] + "], " + Values.Globals.CountryTableName + ".[" + Values.Globals.correlationDateRangeFilters[(int)Values.Globals.CorrelationDateRangeFilters.QtyOrdered] + "] FROM " + Values.Globals.CountryTableName;
+                        cmd.CommandText = "SELECT " + Values.Globals.CountryTableName + ".[" + Values.Globals.correlationQueryHeaders[(int)index] + "], " + Values.Globals.CountryTableName + ".[" + Values.Globals.correlationDateRangeFilters[(int)Values.Globals.CorrelationDateRangeFilters.RequisitionDate] + "], " + Values.Globals.CountryTableName + ".[" + Values.Globals.correlationDateRangeFilters[(int)Values.Globals.CorrelationDateRangeFilters.PoLineCreateDate] + "], " + Values.Globals.CountryTableName + ".[" + Values.Globals.correlationDateRangeFilters[(int)Values.Globals.CorrelationDateRangeFilters.QtyOrdered] + "] FROM " + Values.Globals.CountryTableName;
                         da.SelectCommand = cmd;
                         da.Fill(tempDt);
                         tempDt.TableName = Values.Globals.correlationHeaders[(int)index];

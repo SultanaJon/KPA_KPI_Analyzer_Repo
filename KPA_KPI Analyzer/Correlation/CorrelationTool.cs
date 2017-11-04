@@ -281,9 +281,6 @@ namespace KPA_KPI_Analyzer.Correlation
             rawDataLoadThreads[(int)Values.Globals.CorrelationMatrixIndexer.QtyConf] = new Thread(() =>
             { data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.QtyConf]] = CorrelationDataRetriever.GetQtyConfData(); });
 
-            rawDataLoadThreads[(int)Values.Globals.CorrelationMatrixIndexer.PoSourceTime] = new Thread(() =>
-            { data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoSourceTime]] = CorrelationDataRetriever.GetPoSourceTimeData(); });
-
             rawDataLoadThreads[(int)Values.Globals.CorrelationMatrixIndexer.OpenPrQty] = new Thread(() =>
             { data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.OpenPrQty]] = CorrelationDataRetriever.GetOpenPrQtyData(); });
         }
@@ -330,9 +327,6 @@ namespace KPA_KPI_Analyzer.Correlation
 
             correlationDataLoadThreads[(int)Values.Globals.CorrelationMatrixIndexer.QtyConf] = new Thread(() =>
             { data.correlationData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.QtyConf]] = CorrelationDataRetriever.FindCorrelation(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.QtyConf]]); });
-
-            correlationDataLoadThreads[(int)Values.Globals.CorrelationMatrixIndexer.PoSourceTime] = new Thread(() =>
-            { data.correlationData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoSourceTime]] = CorrelationDataRetriever.FindCorrelation(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoSourceTime]]); });
 
             correlationDataLoadThreads[(int)Values.Globals.CorrelationMatrixIndexer.OpenPrQty] = new Thread(() =>
             { data.correlationData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.OpenPrQty]] = CorrelationDataRetriever.FindCorrelation(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.OpenPrQty]]); });
@@ -445,10 +439,9 @@ namespace KPA_KPI_Analyzer.Correlation
                 double corrNine = Math.Round(tempList[(int)Values.Globals.CorrelationMatrixIndexer.QtyOrdered], 3);
                 double corrTen = Math.Round(tempList[(int)Values.Globals.CorrelationMatrixIndexer.Delivered], 3);
                 double corrEleven = Math.Round(tempList[(int)Values.Globals.CorrelationMatrixIndexer.QtyConf], 3);
-                double corrTwelve = Math.Round(tempList[(int)Values.Globals.CorrelationMatrixIndexer.PoSourceTime], 3);
-                double corrThirteen = Math.Round(tempList[(int)Values.Globals.CorrelationMatrixIndexer.OpenPrQty], 3);
+                double corrTwelve = Math.Round(tempList[(int)Values.Globals.CorrelationMatrixIndexer.OpenPrQty], 3);
 
-                dgv_correlationmatrix.Rows.Add(Values.Globals.correlationHeaders[(int)index], corrOne, corrTwo, corrThree, corrFour, corrFive, corrSix, corrSeven, corrEight, corrNine, corrTen, corrEleven, corrTwelve, corrThirteen);
+                dgv_correlationmatrix.Rows.Add(Values.Globals.correlationHeaders[(int)index], corrOne, corrTwo, corrThree, corrFour, corrFive, corrSix, corrSeven, corrEight, corrNine, corrTen, corrEleven, corrTwelve);
             }
         }
 
@@ -615,9 +608,6 @@ namespace KPA_KPI_Analyzer.Correlation
                                 RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoQty]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.QtyConf]]);
                                 break;
                             case 12:
-                                RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoQty]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoSourceTime]]);
-                                break;
-                            case 13:
                                 RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoQty]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.OpenPrQty]]);
                                 break;
                         }
@@ -661,9 +651,6 @@ namespace KPA_KPI_Analyzer.Correlation
                                 RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PrQty]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.QtyConf]]);
                                 break;
                             case 12:
-                                RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PrQty]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoSourceTime]]);
-                                break;
-                            case 13:
                                 RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PrQty]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.OpenPrQty]]);
                                 break;
                         }
@@ -707,9 +694,6 @@ namespace KPA_KPI_Analyzer.Correlation
                                 RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PriceUnit]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.QtyConf]]);
                                 break;
                             case 12:
-                                RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PriceUnit]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoSourceTime]]);
-                                break;
-                            case 13:
                                 RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PriceUnit]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.OpenPrQty]]);
                                 break;
                         }
@@ -753,9 +737,6 @@ namespace KPA_KPI_Analyzer.Correlation
                                 RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PrPosValue]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.QtyConf]]);
                                 break;
                             case 12:
-                                RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PrPosValue]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoSourceTime]]);
-                                break;
-                            case 13:
                                 RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PrPosValue]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.OpenPrQty]]);
                                 break;
                         }
@@ -799,9 +780,6 @@ namespace KPA_KPI_Analyzer.Correlation
                                 RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoNetPrice]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.QtyConf]]);
                                 break;
                             case 12:
-                                RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoNetPrice]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoSourceTime]]);
-                                break;
-                            case 13:
                                 RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoNetPrice]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.OpenPrQty]]);
                                 break;
                         }
@@ -845,9 +823,6 @@ namespace KPA_KPI_Analyzer.Correlation
                                 RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoValue]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.QtyConf]]);
                                 break;
                             case 12:
-                                RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoValue]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoSourceTime]]);
-                                break;
-                            case 13:
                                 RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoValue]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.OpenPrQty]]);
                                 break;
                         }
@@ -891,9 +866,6 @@ namespace KPA_KPI_Analyzer.Correlation
                                 RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PriceUnit]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.QtyConf]]);
                                 break;
                             case 12:
-                                RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PriceUnit]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoSourceTime]]);
-                                break;
-                            case 13:
                                 RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PriceUnit]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.OpenPrQty]]);
                                 break;
                         }
@@ -937,9 +909,6 @@ namespace KPA_KPI_Analyzer.Correlation
                                 RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PlDelivTime]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.QtyConf]]);
                                 break;
                             case 12:
-                                RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PlDelivTime]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoSourceTime]]);
-                                break;
-                            case 13:
                                 RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PlDelivTime]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.OpenPrQty]]);
                                 break;
                         }
@@ -983,9 +952,6 @@ namespace KPA_KPI_Analyzer.Correlation
                                 RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.QtyOrdered]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.QtyConf]]);
                                 break;
                             case 12:
-                                RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.QtyOrdered]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoSourceTime]]);
-                                break;
-                            case 13:
                                 RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.QtyOrdered]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.OpenPrQty]]);
                                 break;
                         }
@@ -1029,9 +995,6 @@ namespace KPA_KPI_Analyzer.Correlation
                                 RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.Delivered]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.QtyConf]]);
                                 break;
                             case 12:
-                                RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.Delivered]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoSourceTime]]);
-                                break;
-                            case 13:
                                 RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.Delivered]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.OpenPrQty]]);
                                 break;
                         }
@@ -1075,60 +1038,11 @@ namespace KPA_KPI_Analyzer.Correlation
                                 RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.QtyConf]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.QtyConf]]);
                                 break;
                             case 12:
-                                RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.QtyConf]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoSourceTime]]);
-                                break;
-                            case 13:
                                 RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.QtyConf]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.OpenPrQty]]);
                                 break;
                         }
                         break;
                     case 11:
-                        switch (e.ColumnIndex)
-                        {
-                            case 0:
-                                break;
-                            case 1:
-                                RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoSourceTime]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoQty]]);
-                                break;
-                            case 2:
-                                RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoSourceTime]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PrQty]]);
-                                break;
-                            case 3:
-                                RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoSourceTime]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PrPrice]]);
-                                break;
-                            case 4:
-                                RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoSourceTime]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PrPosValue]]);
-                                break;
-                            case 5:
-                                RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoSourceTime]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoNetPrice]]);
-                                break;
-                            case 6:
-                                RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoSourceTime]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoValue]]);
-                                break;
-                            case 7:
-                                RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoSourceTime]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PriceUnit]]);
-                                break;
-                            case 8:
-                                RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoSourceTime]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PlDelivTime]]);
-                                break;
-                            case 9:
-                                RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoSourceTime]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.QtyOrdered]]);
-                                break;
-                            case 10:
-                                RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoSourceTime]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.Delivered]]);
-                                break;
-                            case 11:
-                                RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoSourceTime]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.QtyConf]]);
-                                break;
-                            case 12:
-                                RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoSourceTime]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoSourceTime]]);
-                                break;
-                            case 13:
-                                RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoSourceTime]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.OpenPrQty]]);
-                                break;
-                        }
-                        break;
-                    case 12:
                         switch (e.ColumnIndex)
                         {
                             case 0:
@@ -1167,13 +1081,9 @@ namespace KPA_KPI_Analyzer.Correlation
                                 RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.OpenPrQty]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.QtyConf]]);
                                 break;
                             case 12:
-                                RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.OpenPrQty]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoSourceTime]]);
-                                break;
-                            case 13:
                                 RenderScatterPlot(data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.OpenPrQty]], data.rawData[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.OpenPrQty]]);
                                 break;
                         }
-                        break;
                         break;
                 }
             }

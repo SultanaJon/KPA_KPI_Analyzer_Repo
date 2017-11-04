@@ -123,7 +123,7 @@ namespace KPA_KPI_Analyzer
                             Show();
                         }
                     }
-                        break;
+                    break;
                 default:
                     break;
             }

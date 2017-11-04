@@ -502,49 +502,6 @@ namespace KPA_KPI_Analyzer.Correlation
 
 
 
-        /// <summary>
-        /// Returns the data that falls under Source Time
-        /// </summary>
-        /// <returns></returns>
-        internal static List<double> GetPoSourceTimeData()
-        {
-            List<double> tempDataList = new List<double>();
-
-            foreach (DataRow dr in DatabaseUtils.PRPO_DB_Utils.ds.Tables[Values.Globals.correlationHeaders[(int)Values.Globals.CorrelationMatrixIndexer.PoSourceTime]].Rows)
-            {
-                #region CheckDateRanges
-                if (CorrelationSettings.FilterByPrDate)
-                {
-                    if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
-                    {
-                        // The PR Date was not in range of the filter the user applied.
-                        continue;
-                    }
-                }
-
-                if (CorrelationSettings.FilterbyPoDate)
-                {
-                    if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
-                    {
-                        // The PO Date was not in range of the filter the user applied.
-                        continue;
-                    }
-                }
-                #endregion
-
-                tempDataList.Add(double.Parse(dr["PO Source Time"].ToString()));
-            }
-
-            CorrelationLoaderUtils.NumberOfCompletedRawDataLoads++;
-            MethodInvoker del = delegate
-            {
-                UpdateRawDataLoadProcess();
-            };
-            del.Invoke();
-
-            return tempDataList;
-        }
-
 
 
 
