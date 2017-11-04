@@ -958,7 +958,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         break;
                     case 4:
                         Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.Plan];
-                        Globals.CurrCategory = Globals.kpiCategories[(int)Globals.KPI_Sections.Plan][(int)Globals.KPI_Categories.Plan.CurrentPlanDate2ndLvlReleaseDatevsCodedLeadTime];
+                        Globals.CurrCategory = Globals.kpiCategories[(int)Globals.KPI_Sections.Plan][(int)Globals.KPI_Categories.Plan.MaterialDueFinalPlannedDate];
                         HandlePlanDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 5: // Purch

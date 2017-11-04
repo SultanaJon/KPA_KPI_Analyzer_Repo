@@ -618,8 +618,6 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                     foreach (DataRow dr in dt.Rows)
                     {
-                        #region DateFilter_AdvancedFilter_Check
-
                         if (Filters.FilterByPrDateRange)
                         {
                             if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
@@ -653,9 +651,6 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                             if (!FilterUtils.CheckAdvancedFilters(dr))
                                 continue;
                         }
-
-                        #endregion
-
 
 
 
@@ -813,8 +808,6 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                     foreach (DataRow dr in dt.Rows)
                     {
-                        #region Date Range Filters and Advanced Filters Check
-
                         if (Filters.FilterByPrDateRange)
                         {
                             if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
@@ -849,7 +842,6 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                                 continue;
                         }
 
-                        #endregion
 
 
                         // This is a tempory fix for MEXICO TAG_MEXICO_FIX
@@ -919,6 +911,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                         double elapsedDays = (currPlanDate - pr2ndRelDate).TotalDays;
 
+
                         if (elapsedDays < 0)
                             elapsedDays = Math.Floor(elapsedDays);
 
@@ -926,6 +919,9 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                             elapsedDays = Math.Ceiling(elapsedDays);
 
                         elapsedDays = (int)elapsedDays;
+
+
+
 
                         switch (tag)
                         {

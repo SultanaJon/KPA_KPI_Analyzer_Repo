@@ -711,7 +711,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 // Material Due Final Planned Date
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                foreach (DataRow dr in PRPO_DB_Utils.pr2ndLvlRelDateDt.Rows)
+                foreach (DataRow dr in PRPO_DB_Utils.prsOnPOsDt.Rows)
                 {
                     if (Filters.FilterByPrDateRange)
                     {
