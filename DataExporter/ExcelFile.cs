@@ -113,12 +113,12 @@
 
             KpiOverallTempFourRowStartPosition = 15,
             KpiOverallTempFourColStartPosition = 4,
-            KpiOverallTempFourMaxRow = 26,
+            KpiOverallTempFourMaxRow = 25,
             KpiOverallTempFourMaxCol = 17,
 
-            KpiOverallTempFiveRowStartPosition = 29,
+            KpiOverallTempFiveRowStartPosition = 28,
             KpiOverallTempFiveColStartPosition = 4,
-            KpiOverallTempFiveMaxRow = 33,
+            KpiOverallTempFiveMaxRow = 32,
             KpiOverallTempFiveMaxCol = 16
         }
 
