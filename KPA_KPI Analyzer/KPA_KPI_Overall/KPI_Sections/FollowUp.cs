@@ -72,7 +72,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                foreach (DataRow dr in PRPO_DB_Utils.posRecCompDt.Rows)
+                foreach (DataRow dr in PRPO_DB_Utils.prsOnPOsDt.Rows)
                 {
                     if (Filters.FilterByPrDateRange)
                     {

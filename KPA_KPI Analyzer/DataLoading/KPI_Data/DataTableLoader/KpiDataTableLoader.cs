@@ -804,7 +804,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     initConfVsCurrConf = new DataTable();
                     unconfirmed = new DataTable();
 
-                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.POLinesRecComplete) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.AllPOs) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 

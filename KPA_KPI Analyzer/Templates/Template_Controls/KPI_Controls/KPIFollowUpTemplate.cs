@@ -231,7 +231,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TimeBucketEight = overallData.kpi.followUp.initConfVsCurrConf.data.Fifteen_TwentyOne.ToString();
             TimeBucketNine = overallData.kpi.followUp.initConfVsCurrConf.data.TwentyTwo.ToString();
 
-            AnalysisOne = "- Will show if PO line item is received complete and the line has a confirmation date.";
+            AnalysisOne = "- Will show if PO line item has been confirmed.";
             AnalysisTwo = "- Difference between final confirmation date and first confirmation date.";
 
 
