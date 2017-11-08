@@ -72,8 +72,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             set
             {
                 btn_One.Textcolor = value;
-                btn_Two.Textcolor = value;
-
             }
         }
         #endregion  
@@ -153,7 +151,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
             btn_One.selected = false;
-            btn_Two.selected = false;
 
             btn.selected = true;
             DefaultButtonTextColor = System.Drawing.Color.DarkGray;
@@ -167,9 +164,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             {
                 case 0:
                     RenderOne();
-                    break;
-                case 1:
-                    RenderTwo();
                     break;
                 default:
                     break;
@@ -246,72 +240,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
 
-
-        /// <summary>
-        /// Renders the specific KPI category into the loaded template
-        /// </summary>
-        private void RenderTwo()
-        {
-            Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
-            Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
-
-            Title = Globals.kpiCategories[(int)Globals.KPI_Sections.PurchPlan][(int)Globals.KPI_Categories.PurchPlan.PR2ndLvlReleaseDatetoOriginalPlannedDeliveryDate];
-            Globals.CurrCategory = Title;
-            Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.PurchPlan];
-            ChangeCategory();
-
-            TimeBucketOne = overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.LessThanZero.ToString();
-            TimeBucketTwo = overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.One_Three.ToString();
-            TimeBucketThree = overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Four_Seven.ToString();
-            TimeBucketFour = overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Eight_Fourteen.ToString();
-            TimeBucketFive = overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Fifteen_TwentyOne.ToString();
-            TimeBucketSix = overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.TwentyTwo_TwentyEight.ToString();
-            TimeBucketSeven = overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.TwentyNine_ThirtyFive.ToString();
-            TimeBucketEight = overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.ThirtySix_FourtyTwo.ToString();
-            TimeBucketNine = overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.FourtyThree_FourtyNine.ToString();
-            TimeBucketTen = overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Fifty_FiftySix.ToString();
-            TimeBucketEleven = overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.GreaterThanEqualFiftySeven.ToString();
-
-
-            AnalysisOne = "- Will show if PR is fully released.";
-            AnalysisTwo = "- Difference between PR delivery date and PR 2nd level release Date.";
-
-
-            dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
-            dp.addLabely(lbl_xLabelTwo.Text, TimeBucketTwo);
-            dp.addLabely(lbl_xLabelThree.Text, TimeBucketThree);
-            dp.addLabely(lbl_xLabelFour.Text, TimeBucketFour);
-            dp.addLabely(lbl_xLabelFive.Text, TimeBucketFive);
-            dp.addLabely(lbl_xLabelSix.Text, TimeBucketSix);
-            dp.addLabely(lbl_xLabelSeven.Text, TimeBucketSeven);
-            dp.addLabely(lbl_xLabelEight.Text, TimeBucketEight);
-            dp.addLabely(lbl_xLabelNine.Text, TimeBucketNine);
-            dp.addLabely(lbl_xLabelTen.Text, TimeBucketTen);
-            dp.addLabely(lbl_xLabelEleven.Text, TimeBucketEleven);
-
-            TotalOrders = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Total);
-            Average = string.Format("{0:n}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Average);
-            TimeBucketOne = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.LessThanZero);
-            TimeBucketTwo = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.One_Three);
-            TimeBucketThree = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Four_Seven);
-            TimeBucketFour = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Eight_Fourteen);
-            TimeBucketFive = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Fifteen_TwentyOne);
-            TimeBucketSix = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.TwentyTwo_TwentyEight);
-            TimeBucketSeven = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.TwentyNine_ThirtyFive);
-            TimeBucketEight = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.ThirtySix_FourtyTwo);
-            TimeBucketNine = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.FourtyThree_FourtyNine);
-            TimeBucketTen = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Fifty_FiftySix);
-            TimeBucketEleven = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.GreaterThanEqualFiftySeven);
-
-
-            canvas.addData(dp);
-            dataviz.Render(canvas);
-        }
-
-
-
-
-
         /// <summary>
         /// Triggered when the template is loaded. This will load the data in the template
         /// into the dataviz object
@@ -352,10 +280,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                     {
                         case 0: // PO Release vs PR Deliver Date
                             dv.DataLoader += KpiDataTableLoader.PurchPlan.LoadPoRelVsPrDelDateDataTable;
-                            dv.ColumnTag = tag;
-                            break;
-                        case 1: // PR 2nd Level Release to Original Planned Delivery Date
-                            dv.DataLoader += KpiDataTableLoader.PurchPlan.LoadPr2ndLvlRelOrigPlanDateDataTable;
                             dv.ColumnTag = tag;
                             break;
                         default:

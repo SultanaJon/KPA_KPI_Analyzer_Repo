@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.tblPnl_template = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btn_Two = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btn_One = new Bunifu.Framework.UI.BunifuFlatButton();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.bunifuCards3 = new Bunifu.Framework.UI.BunifuCards();
@@ -285,7 +284,6 @@
             // panel2
             // 
             this.tblPnl_template.SetColumnSpan(this.panel2, 2);
-            this.panel2.Controls.Add(this.btn_Two);
             this.panel2.Controls.Add(this.btn_One);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(10, 10);
@@ -293,44 +291,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(957, 50);
             this.panel2.TabIndex = 1;
-            // 
-            // btn_Two
-            // 
-            this.btn_Two.Activecolor = System.Drawing.SystemColors.Control;
-            this.btn_Two.BackColor = System.Drawing.SystemColors.Control;
-            this.btn_Two.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_Two.BorderRadius = 0;
-            this.btn_Two.ButtonText = "PR 2nd Level Release to Original Planned Delivery Date";
-            this.btn_Two.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_Two.DisabledColor = System.Drawing.Color.Gray;
-            this.btn_Two.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn_Two.Iconcolor = System.Drawing.Color.Transparent;
-            this.btn_Two.Iconimage = null;
-            this.btn_Two.Iconimage_right = null;
-            this.btn_Two.Iconimage_right_Selected = null;
-            this.btn_Two.Iconimage_Selected = null;
-            this.btn_Two.IconMarginLeft = 0;
-            this.btn_Two.IconMarginRight = 0;
-            this.btn_Two.IconRightVisible = true;
-            this.btn_Two.IconRightZoom = 0D;
-            this.btn_Two.IconVisible = true;
-            this.btn_Two.IconZoom = 90D;
-            this.btn_Two.IsTab = false;
-            this.btn_Two.Location = new System.Drawing.Point(175, 0);
-            this.btn_Two.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_Two.Name = "btn_Two";
-            this.btn_Two.Normalcolor = System.Drawing.SystemColors.Control;
-            this.btn_Two.OnHovercolor = System.Drawing.SystemColors.Control;
-            this.btn_Two.OnHoverTextColor = System.Drawing.Color.Coral;
-            this.btn_Two.selected = false;
-            this.btn_Two.Size = new System.Drawing.Size(229, 50);
-            this.btn_Two.TabIndex = 1;
-            this.btn_Two.Tag = "1";
-            this.btn_Two.Text = "PR 2nd Level Release to Original Planned Delivery Date";
-            this.btn_Two.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btn_Two.Textcolor = System.Drawing.Color.DimGray;
-            this.btn_Two.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Two.Click += new System.EventHandler(this.CategoryButton_Click);
             // 
             // btn_One
             // 
@@ -1879,7 +1839,7 @@
             // bunifuFlatButton11
             // 
             this.bunifuFlatButton11.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.bunifuFlatButton11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(86)))), ((int)(((byte)(84)))));
+            this.bunifuFlatButton11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.bunifuFlatButton11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bunifuFlatButton11.BorderRadius = 5;
             this.bunifuFlatButton11.ButtonText = "View";
@@ -2033,7 +1993,7 @@
             // bunifuFlatButton12
             // 
             this.bunifuFlatButton12.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.bunifuFlatButton12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(58)))), ((int)(((byte)(56)))));
+            this.bunifuFlatButton12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.bunifuFlatButton12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bunifuFlatButton12.BorderRadius = 5;
             this.bunifuFlatButton12.ButtonText = "View";
@@ -2187,7 +2147,7 @@
             // bunifuFlatButton13
             // 
             this.bunifuFlatButton13.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.bunifuFlatButton13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(38)))), ((int)(((byte)(36)))));
+            this.bunifuFlatButton13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.bunifuFlatButton13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bunifuFlatButton13.BorderRadius = 5;
             this.bunifuFlatButton13.ButtonText = "View";
@@ -2341,7 +2301,7 @@
             // bunifuFlatButton1
             // 
             this.bunifuFlatButton1.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.bunifuFlatButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(13)))), ((int)(((byte)(18)))));
+            this.bunifuFlatButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.bunifuFlatButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bunifuFlatButton1.BorderRadius = 5;
             this.bunifuFlatButton1.ButtonText = "View";
@@ -2752,7 +2712,6 @@
         private System.Windows.Forms.Panel panel41;
         private Bunifu.Framework.UI.BunifuCustomLabel lbl_analysisTwo;
         private Bunifu.Framework.UI.BunifuCustomLabel lbl_analysisOne;
-        private Bunifu.Framework.UI.BunifuFlatButton btn_Two;
         private System.Windows.Forms.Timer datavizLoadTimer;
         private Bunifu.Framework.UI.BunifuCards bunifuCards12;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel16;

@@ -10,7 +10,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
     public class PurchPlan
     {
         public Po_Rel_vs_PR_Del_Date poRelVsPRDelDate;
-        public PR_2nd_Lvl_Rel_Orig_Plan_Del_Date pr2ndLvlRelOrigPlanDelDate;
         private double totalDays = 0;
         string[] strPoLineFirstRelDate;
 
@@ -22,7 +21,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
         public PurchPlan()
         {
             poRelVsPRDelDate = new Po_Rel_vs_PR_Del_Date();
-            pr2ndLvlRelOrigPlanDelDate = new PR_2nd_Lvl_Rel_Orig_Plan_Del_Date();
         }
 
 
@@ -34,13 +32,11 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
         public enum CategorNames
         {
             poRelVsPRDelDate,
-            pr2ndLvlRelOrigPlanDelDate
         }
 
         public string[] categoryNames =
         {
             "PO Release vs PR Delivery Date",
-            "PR 2nd Lvl Release Date to Original Planned Delivery Date",
         };
 
 
@@ -186,135 +182,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 
                 totalDays = 0;
 
-
-
-                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                //
-                // PR 2nd Lvl Release to Original Planned Delivery Date
-                //
-                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                foreach (DataRow dr in PRPO_DB_Utils.pr2ndLvlRelDateDt.Rows)
-                {
-                    if (Filters.FilterByPrDateRange)
-                    {
-                        if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
-                        {
-                            // The PR Date was not in range of the filter the user applied.
-                            continue;
-                        }
-                    }
-
-                    if (Filters.FilterByPoDateRange)
-                    {
-                        if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
-                        {
-                            // The PO Date was not in range of the filter the user applied.
-                            continue;
-                        }
-                    }
-
-                    if (Filters.FilterByFinalReceiptDate)
-                    {
-                        if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
-                        {
-                            // The final receipt date was not in range of the filter the user applied
-                            continue;
-                        }
-                    }
-
-                    if (AdvancedFilters.AdvanceFiltersChanged())
-                    {
-                        // We have some advanced filters that the user would like to exclude.
-                        if (!FilterUtils.CheckAdvancedFilters(dr))
-                            continue;
-                    }
-
-                    string[] strPR2ndLvlRelDate = (dr["PR 2° Rel# Date"].ToString()).Split('/');
-                    int pr2ndLvlRelYear = int.Parse(strPR2ndLvlRelDate[2]);
-                    int pr2ndLvlRelMonth = int.Parse(strPR2ndLvlRelDate[0]);
-                    int pr2ndLvlRelDay = int.Parse(strPR2ndLvlRelDate[1]);
-
-                    if (pr2ndLvlRelYear == 0 && pr2ndLvlRelMonth == 0 && pr2ndLvlRelDay == 0)
-                    {
-                        continue;
-                    }
-                    else
-                    {
-                        pr2ndLvlRelOrigPlanDelDate.data.Total++;
-                        pr2ndLvlRelYear = int.Parse(strPR2ndLvlRelDate[2]);
-                        pr2ndLvlRelMonth = int.Parse(strPR2ndLvlRelDate[0].TrimStart('0'));
-                        pr2ndLvlRelDay = int.Parse(strPR2ndLvlRelDate[1].TrimStart('0'));
-                    }
-                    DateTime pr2ndLvlRelDate = new DateTime(pr2ndLvlRelYear, pr2ndLvlRelMonth, pr2ndLvlRelDay);
-
-                    string[] strPRDelDate = (dr["PR Delivery Date"].ToString()).Split('/');
-                    int prDelYear = int.Parse(strPRDelDate[2]);
-                    int prDelMonth = int.Parse(strPRDelDate[0].TrimStart('0'));
-                    int prDelDay = int.Parse(strPRDelDate[1].TrimStart('0'));
-
-                    DateTime prDelDate = new DateTime(prDelYear, prDelMonth, prDelDay);
-                    double elapsedDays = (prDelDate - pr2ndLvlRelDate).TotalDays;
-                    totalDays += elapsedDays;
-                    elapsedDays = (int)elapsedDays;
-
-                    if (elapsedDays <= 0)
-                    {
-                        pr2ndLvlRelOrigPlanDelDate.data.LessThanZero++;
-                    }
-                    else if (elapsedDays >= 1 && elapsedDays <= 3)
-                    {
-                        pr2ndLvlRelOrigPlanDelDate.data.One_Three++;
-                    }
-                    else if (elapsedDays >= 4 && elapsedDays <= 7)
-                    {
-                        pr2ndLvlRelOrigPlanDelDate.data.Four_Seven++;
-                    }
-                    else if (elapsedDays >= 8 && elapsedDays <= 14)
-                    {
-                        pr2ndLvlRelOrigPlanDelDate.data.Eight_Fourteen++;
-                    }
-                    else if (elapsedDays >= 15 && elapsedDays <= 21)
-                    {
-                        pr2ndLvlRelOrigPlanDelDate.data.Fifteen_TwentyOne++;
-                    }
-                    else if (elapsedDays >= 22 && elapsedDays <= 28)
-                    {
-                        pr2ndLvlRelOrigPlanDelDate.data.TwentyTwo_TwentyEight++;
-                    }
-                    else if (elapsedDays >= 29 && elapsedDays <= 35)
-                    {
-                        pr2ndLvlRelOrigPlanDelDate.data.TwentyNine_ThirtyFive++;
-                    }
-                    else if (elapsedDays >= 36 && elapsedDays <= 42)
-                    {
-                        pr2ndLvlRelOrigPlanDelDate.data.ThirtySix_FourtyTwo++;
-                    }
-                    else if (elapsedDays >= 43 && elapsedDays <= 49)
-                    {
-                        pr2ndLvlRelOrigPlanDelDate.data.FourtyThree_FourtyNine++;
-                    }
-                    else if (elapsedDays >= 50 && elapsedDays <= 56)
-                    {
-                        pr2ndLvlRelOrigPlanDelDate.data.Fifty_FiftySix++;
-                    }
-                    else // elapsed days >= 57
-                    {
-                        pr2ndLvlRelOrigPlanDelDate.data.GreaterThanEqualFiftySeven++;
-                    }
-                }
-
-                try
-                {
-                    pr2ndLvlRelOrigPlanDelDate.data.Average = Math.Round(totalDays / pr2ndLvlRelOrigPlanDelDate.data.Total, 2);
-                    if (double.IsNaN(pr2ndLvlRelOrigPlanDelDate.data.Average))
-                        pr2ndLvlRelOrigPlanDelDate.data.Average = 0;
-                }
-                catch (DivideByZeroException)
-                {
-                    pr2ndLvlRelOrigPlanDelDate.data.Average = 0;
-                }
-                totalDays = 0;
-
                 PRPO_DB_Utils.UpdateLoadProgress();
             }
             catch (Exception ex)
@@ -343,21 +210,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
         public TempFour data;
 
         public Po_Rel_vs_PR_Del_Date()
-        {
-            data = new TempFour();
-        }
-    }
-
-
-
-
-
-
-    public class PR_2nd_Lvl_Rel_Orig_Plan_Del_Date
-    {
-        public TempFour data;
-
-        public PR_2nd_Lvl_Rel_Orig_Plan_Del_Date()
         {
             data = new TempFour();
         }

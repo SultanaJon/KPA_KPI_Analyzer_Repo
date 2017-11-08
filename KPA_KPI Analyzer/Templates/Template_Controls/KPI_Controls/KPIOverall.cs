@@ -261,22 +261,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             lbl_kpiPurchPlanPORelVsPRDelDate_Twelve.Text = string.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.GreaterThanEqualFiftySeven);
             lbl_kpiPurchPlanPORelVsPRDelDate_Thirteen.Text = string.Format("{0:n0}", overallData.kpi.purchPlan.poRelVsPRDelDate.data.Total);
 
-            // KPI -> Purch/Plan - PR 2nd Lvl Rel to Orig Del Date
-            lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_One.Text = string.Format("{0:n}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Average);
-            lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Two.Text = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.LessThanZero);
-            lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Three.Text = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.One_Three);
-            lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Four.Text = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Four_Seven);
-            lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Five.Text = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Eight_Fourteen);
-            lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Six.Text = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Fifteen_TwentyOne);
-            lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Seven.Text = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.TwentyTwo_TwentyEight);
-            lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Eight.Text = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.TwentyNine_ThirtyFive);
-            lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Nine.Text = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.ThirtySix_FourtyTwo);
-            lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Ten.Text = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.FourtyThree_FourtyNine);
-            lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Eleven.Text = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Fifty_FiftySix);
-            lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Twelve.Text = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.GreaterThanEqualFiftySeven);
-            lbl_kpiPurchPlanPR2ndLvlRelOrigPlanDelDate_Thirteen.Text = string.Format("{0:n0}", overallData.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Total);
-
-
 
             // KPI -> Other - PRs Created
             lbl_kpiOtherPrsCreated_One.Text = "$" + string.Format("{0:n}", overallData.kpi.other.prsCreated.data.TotalValue);

@@ -777,25 +777,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                 string.Format("{0:n0}", data.kpi.purchPlan.poRelVsPRDelDate.data.Total)
             };
             TemplateFourDataGrid.Rows.Add(row);
-
-            row = new string[]{
-                data.kpi.purchPlan.Name,
-                data.kpi.purchPlan.categoryNames[(int)PurchPlan.CategorNames.pr2ndLvlRelOrigPlanDelDate],
-                string.Format("{0:n}", data.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Average),
-                string.Format("{0:n0}", data.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.LessThanZero),
-                string.Format("{0:n0}", data.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.One_Three),
-                string.Format("{0:n0}", data.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Four_Seven),
-                string.Format("{0:n0}", data.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.TwentyTwo_TwentyEight),
-                string.Format("{0:n0}", data.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.TwentyNine_ThirtyFive),
-                string.Format("{0:n0}", data.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.ThirtySix_FourtyTwo),
-                string.Format("{0:n0}", data.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.FourtyThree_FourtyNine),
-                string.Format("{0:n0}", data.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Fifty_FiftySix),
-                string.Format("{0:n0}", data.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.GreaterThanEqualFiftySeven),
-                string.Format("{0:n0}", data.kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.Total)
-            };
-            TemplateFourDataGrid.Rows.Add(row);
         }
 
 
@@ -1062,12 +1043,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         Globals.CurrCategory = Globals.kpiCategories[(int)Globals.KPI_Sections.PurchPlan][(int)Globals.KPI_Categories.PurchPlan.POReleasevsPRDeliveryDate];
                         HandlePurchPlanDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
-                    case 10:
-                        Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.PurchPlan];
-                        Globals.CurrCategory = Globals.kpiCategories[(int)Globals.KPI_Sections.PurchPlan][(int)Globals.KPI_Categories.PurchPlan.PR2ndLvlReleaseDatetoOriginalPlannedDeliveryDate];
-                        HandlePurchPlanDataTableLoading(e.RowIndex, e.ColumnIndex);
-                        break;
-                    case 11: // Purch Plan Total
+                    case 10: // Purch Plan Total
                         break;
                 }
             }
@@ -2294,64 +2270,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                                 break;
                             case 14: // Total
                                 dv.DataLoader += KpiDataTableLoader.PurchPlan.LoadPoRelVsPrDelDateDataTable;
-                                dv.ColumnTag = (int)TempFour.DataViews.Total;
-                                break;
-                        }
-                        break;
-                    case 10: // PR 2nd Lvl Release Date to Original Planned Delivery Date
-                        switch (columnIndex)
-                        {
-                            case 0: // section
-                            case 1: // category
-                                return;
-                            case 2: // Average
-                                return;
-                            case 3: // <= 0 Days
-                                dv.DataLoader += KpiDataTableLoader.PurchPlan.LoadPr2ndLvlRelOrigPlanDateDataTable;
-                                dv.ColumnTag = (int)TempFour.DataViews.LessThanZero;
-                                break;
-                            case 4: // 1 - 3 Days
-                                dv.DataLoader += KpiDataTableLoader.PurchPlan.LoadPr2ndLvlRelOrigPlanDateDataTable;
-                                dv.ColumnTag = (int)TempFour.DataViews.One_Three;
-                                break;
-                            case 5: // 4 - 7 Days
-                                dv.DataLoader += KpiDataTableLoader.PurchPlan.LoadPr2ndLvlRelOrigPlanDateDataTable;
-                                dv.ColumnTag = (int)TempFour.DataViews.Four_Seven;
-                                break;
-                            case 6: // 8 - 14 Days
-                                dv.DataLoader += KpiDataTableLoader.PurchPlan.LoadPr2ndLvlRelOrigPlanDateDataTable;
-                                dv.ColumnTag = (int)TempFour.DataViews.Eight_Fourteen;
-                                break;
-                            case 7: // 15 - 21 Days
-                                dv.DataLoader += KpiDataTableLoader.PurchPlan.LoadPr2ndLvlRelOrigPlanDateDataTable;
-                                dv.ColumnTag = (int)TempFour.DataViews.Fifteen_TwentyOne;
-                                break;
-                            case 8: // 22 - 28 Days
-                                dv.DataLoader += KpiDataTableLoader.PurchPlan.LoadPr2ndLvlRelOrigPlanDateDataTable;
-                                dv.ColumnTag = (int)TempFour.DataViews.TwentyTwo_TwentyEight;
-                                break;
-                            case 9: // 29 - 35 Days
-                                dv.DataLoader += KpiDataTableLoader.PurchPlan.LoadPr2ndLvlRelOrigPlanDateDataTable;
-                                dv.ColumnTag = (int)TempFour.DataViews.TwentyNine_ThirtyFive;
-                                break;
-                            case 10: // 36 - 42 Days
-                                dv.DataLoader += KpiDataTableLoader.PurchPlan.LoadPr2ndLvlRelOrigPlanDateDataTable;
-                                dv.ColumnTag = (int)TempFour.DataViews.ThirtySix_FourtyTwo;
-                                break;
-                            case 11: // 43 - 49 Days
-                                dv.DataLoader += KpiDataTableLoader.PurchPlan.LoadPr2ndLvlRelOrigPlanDateDataTable;
-                                dv.ColumnTag = (int)TempFour.DataViews.FourtyThree_FourtyNine;
-                                break;
-                            case 12: // 50 - 56 Days
-                                dv.DataLoader += KpiDataTableLoader.PurchPlan.LoadPr2ndLvlRelOrigPlanDateDataTable;
-                                dv.ColumnTag = (int)TempFour.DataViews.Fifty_FiftySix;
-                                break;
-                            case 13: // 57+ Days
-                                dv.DataLoader += KpiDataTableLoader.PurchPlan.LoadPr2ndLvlRelOrigPlanDateDataTable;
-                                dv.ColumnTag = (int)TempFour.DataViews.GreaterThanEqualFiftySeven;
-                                break;
-                            case 14: // Total
-                                dv.DataLoader += KpiDataTableLoader.PurchPlan.LoadPr2ndLvlRelOrigPlanDateDataTable;
                                 dv.ColumnTag = (int)TempFour.DataViews.Total;
                                 break;
                         }

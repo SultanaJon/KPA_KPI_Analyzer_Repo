@@ -302,8 +302,7 @@
             }
             public enum PurchPlan
             {
-                POReleasevsPRDeliveryDate,
-                PR2ndLvlReleaseDatetoOriginalPlannedDeliveryDate
+                POReleasevsPRDeliveryDate
             }
             public enum PurchPlanTotal
             {
@@ -338,7 +337,7 @@
             // Purch Total
             new string[] { "PR Release Date to Confirmation Entry Date"},
             // Purch Plan
-            new string[] { "PO Release vs PR Delivery Date", "PR 2nd Lvl Release Date to Original Planned Delivery Date"},
+            new string[] { "PO Release vs PR Delivery Date" },
             // Purch Plan Total
             new string[] { "Planned Order Creation Date vs Confirmation Entry Date"},
             // Other

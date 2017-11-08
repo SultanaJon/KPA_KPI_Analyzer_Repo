@@ -166,9 +166,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
                     new List<string>(kpi.purchSub.poCreateVsConfEntry.data.GetData()),
                     new List<string>(kpi.purchTotal.prRelConfEntry.data.GetData()),
                     new List<string>(kpi.purchPlan.poRelVsPRDelDate.data.GetData()),
-                    new List<string>(kpi.purchPlan.pr2ndLvlRelOrigPlanDelDate.data.GetData()),
                     null,
-
                 };
 
                 results = new List<List<string>>(temp);
