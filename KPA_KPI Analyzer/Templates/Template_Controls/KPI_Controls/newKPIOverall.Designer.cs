@@ -141,7 +141,7 @@
             this.tableLayoutPanel1.RowCount = 6;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 162F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 226F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 194F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 98F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -370,7 +370,7 @@
             this.TemplateFiveDataGrid.EnableHeadersVisualStyles = false;
             this.TemplateFiveDataGrid.HeaderBgColor = System.Drawing.SystemColors.Control;
             this.TemplateFiveDataGrid.HeaderForeColor = System.Drawing.Color.White;
-            this.TemplateFiveDataGrid.Location = new System.Drawing.Point(10, 438);
+            this.TemplateFiveDataGrid.Location = new System.Drawing.Point(10, 406);
             this.TemplateFiveDataGrid.Margin = new System.Windows.Forms.Padding(0);
             this.TemplateFiveDataGrid.Name = "TemplateFiveDataGrid";
             this.TemplateFiveDataGrid.ReadOnly = true;
@@ -558,7 +558,7 @@
             this.TemplateFourDataGrid.RowHeadersVisible = false;
             this.TemplateFourDataGrid.RowTemplate.Height = 16;
             this.TemplateFourDataGrid.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.TemplateFourDataGrid.Size = new System.Drawing.Size(1130, 226);
+            this.TemplateFourDataGrid.Size = new System.Drawing.Size(1130, 194);
             this.TemplateFourDataGrid.TabIndex = 4;
             this.TemplateFourDataGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TemplateFourDataGrid_CellDoubleClick);
             this.TemplateFourDataGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.bunifuCustomDataGrid2_CellFormatting);
