@@ -52,6 +52,13 @@
             this.ImportTimer = new System.Windows.Forms.Timer(this.components);
             this.DataRemovalTimer = new System.Windows.Forms.Timer(this.components);
             this.pnl_activePage = new System.Windows.Forms.Panel();
+            this.tblpnl_DashbaordPage = new System.Windows.Forms.TableLayoutPanel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.pnl_ViewPrintReports = new System.Windows.Forms.Panel();
+            this.lbl_dashboardDate = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel16 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel15 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.tblpnl_Filters = new System.Windows.Forms.TableLayoutPanel();
             this.panel27 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -188,12 +195,6 @@
             this.btn_kpaOverall = new System.Windows.Forms.Button();
             this.btn_KPA = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btn_Dashboard = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.tblpnl_DashbaordPage = new System.Windows.Forms.TableLayoutPanel();
-            this.pnl_ViewPrintReports = new System.Windows.Forms.Panel();
-            this.lbl_dashboardDate = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.bunifuCustomLabel16 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.bunifuCustomLabel15 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.tblpnl_DragDrop = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnl_MainNavigation = new System.Windows.Forms.Panel();
@@ -227,6 +228,8 @@
             this.pnl_topPanel.SuspendLayout();
             this.pnl_titlePanel.SuspendLayout();
             this.pnl_activePage.SuspendLayout();
+            this.tblpnl_DashbaordPage.SuspendLayout();
+            this.pnl_ViewPrintReports.SuspendLayout();
             this.tblpnl_Filters.SuspendLayout();
             this.panel27.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -261,8 +264,6 @@
             this.pnl_NavigationPanelMax.SuspendLayout();
             this.pnl_KPISectionsPanel.SuspendLayout();
             this.pnl_KPASectionsPanel.SuspendLayout();
-            this.tblpnl_DashbaordPage.SuspendLayout();
-            this.pnl_ViewPrintReports.SuspendLayout();
             this.tblpnl_DragDrop.SuspendLayout();
             this.pnl_MainNavigation.SuspendLayout();
             this.tableLayoutPanel14.SuspendLayout();
@@ -469,11 +470,11 @@
             // 
             // pnl_activePage
             // 
-            this.pnl_activePage.Controls.Add(this.tblpnl_Filters);
             this.pnl_activePage.Controls.Add(this.pnl_loadingScreen);
+            this.pnl_activePage.Controls.Add(this.tblpnl_DashbaordPage);
+            this.pnl_activePage.Controls.Add(this.tblpnl_Filters);
             this.pnl_activePage.Controls.Add(this.pnl_CountrySelector);
             this.pnl_activePage.Controls.Add(this.pnl_NavigationPanelMax);
-            this.pnl_activePage.Controls.Add(this.tblpnl_DashbaordPage);
             this.pnl_activePage.Controls.Add(this.tblpnl_DragDrop);
             this.pnl_activePage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_activePage.Location = new System.Drawing.Point(0, 77);
@@ -481,6 +482,101 @@
             this.pnl_activePage.Size = new System.Drawing.Size(1200, 623);
             this.pnl_activePage.TabIndex = 44;
             this.pnl_activePage.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.pnl_activePage_ControlAdded);
+            // 
+            // tblpnl_DashbaordPage
+            // 
+            this.tblpnl_DashbaordPage.AllowDrop = true;
+            this.tblpnl_DashbaordPage.ColumnCount = 4;
+            this.tblpnl_DashbaordPage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tblpnl_DashbaordPage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tblpnl_DashbaordPage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tblpnl_DashbaordPage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tblpnl_DashbaordPage.Controls.Add(this.panel2, 0, 0);
+            this.tblpnl_DashbaordPage.Controls.Add(this.pnl_ViewPrintReports, 3, 0);
+            this.tblpnl_DashbaordPage.Controls.Add(this.flowLayoutPanel1, 0, 1);
+            this.tblpnl_DashbaordPage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tblpnl_DashbaordPage.Location = new System.Drawing.Point(0, 0);
+            this.tblpnl_DashbaordPage.Name = "tblpnl_DashbaordPage";
+            this.tblpnl_DashbaordPage.RowCount = 3;
+            this.tblpnl_DashbaordPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 41.73355F));
+            this.tblpnl_DashbaordPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28.41092F));
+            this.tblpnl_DashbaordPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30.01605F));
+            this.tblpnl_DashbaordPage.Size = new System.Drawing.Size(1200, 623);
+            this.tblpnl_DashbaordPage.TabIndex = 52;
+            // 
+            // panel2
+            // 
+            this.panel2.AllowDrop = true;
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.dragDropLargeCenter;
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.tblpnl_DashbaordPage.SetColumnSpan(this.panel2, 3);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(10, 10);
+            this.panel2.Margin = new System.Windows.Forms.Padding(10, 10, 5, 5);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(885, 244);
+            this.panel2.TabIndex = 9;
+            this.panel2.DragDrop += new System.Windows.Forms.DragEventHandler(this.pnl_DragDropArea_DragDrop);
+            this.panel2.DragEnter += new System.Windows.Forms.DragEventHandler(this.pnl_DragDropArea_DragEnter);
+            // 
+            // pnl_ViewPrintReports
+            // 
+            this.pnl_ViewPrintReports.BackColor = System.Drawing.Color.White;
+            this.pnl_ViewPrintReports.Controls.Add(this.lbl_dashboardDate);
+            this.pnl_ViewPrintReports.Controls.Add(this.bunifuCustomLabel16);
+            this.pnl_ViewPrintReports.Controls.Add(this.bunifuCustomLabel15);
+            this.pnl_ViewPrintReports.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_ViewPrintReports.Enabled = false;
+            this.pnl_ViewPrintReports.Location = new System.Drawing.Point(905, 10);
+            this.pnl_ViewPrintReports.Margin = new System.Windows.Forms.Padding(5, 10, 10, 5);
+            this.pnl_ViewPrintReports.Name = "pnl_ViewPrintReports";
+            this.pnl_ViewPrintReports.Size = new System.Drawing.Size(285, 244);
+            this.pnl_ViewPrintReports.TabIndex = 9;
+            // 
+            // lbl_dashboardDate
+            // 
+            this.lbl_dashboardDate.AutoSize = true;
+            this.lbl_dashboardDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_dashboardDate.ForeColor = System.Drawing.Color.DarkGray;
+            this.lbl_dashboardDate.Location = new System.Drawing.Point(17, 160);
+            this.lbl_dashboardDate.Name = "lbl_dashboardDate";
+            this.lbl_dashboardDate.Size = new System.Drawing.Size(148, 29);
+            this.lbl_dashboardDate.TabIndex = 1;
+            this.lbl_dashboardDate.Text = "June 5, 2017";
+            // 
+            // bunifuCustomLabel16
+            // 
+            this.bunifuCustomLabel16.AutoSize = true;
+            this.bunifuCustomLabel16.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.bunifuCustomLabel16.Location = new System.Drawing.Point(15, 104);
+            this.bunifuCustomLabel16.Name = "bunifuCustomLabel16";
+            this.bunifuCustomLabel16.Size = new System.Drawing.Size(170, 37);
+            this.bunifuCustomLabel16.TabIndex = 0;
+            this.bunifuCustomLabel16.Text = "Data From";
+            // 
+            // bunifuCustomLabel15
+            // 
+            this.bunifuCustomLabel15.AutoSize = true;
+            this.bunifuCustomLabel15.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.bunifuCustomLabel15.Location = new System.Drawing.Point(12, 60);
+            this.bunifuCustomLabel15.Name = "bunifuCustomLabel15";
+            this.bunifuCustomLabel15.Size = new System.Drawing.Size(267, 37);
+            this.bunifuCustomLabel15.TabIndex = 0;
+            this.bunifuCustomLabel15.Text = "Currently Viewing";
+            // 
+            // flowLayoutPanel1
+            // 
+            this.tblpnl_DashbaordPage.SetColumnSpan(this.flowLayoutPanel1, 4);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(10, 264);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(10, 5, 10, 10);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.tblpnl_DashbaordPage.SetRowSpan(this.flowLayoutPanel1, 2);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1180, 349);
+            this.flowLayoutPanel1.TabIndex = 10;
             // 
             // tblpnl_Filters
             // 
@@ -2135,6 +2231,7 @@
             this.btn_Correlation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_Correlation.Textcolor = System.Drawing.Color.White;
             this.btn_Correlation.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Correlation.Visible = false;
             this.btn_Correlation.Click += new System.EventHandler(this.mainNavButton_Click);
             // 
             // pnl_KPISectionsPanel
@@ -2757,88 +2854,6 @@
             this.btn_Dashboard.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Dashboard.Click += new System.EventHandler(this.mainNavButton_Click);
             // 
-            // tblpnl_DashbaordPage
-            // 
-            this.tblpnl_DashbaordPage.AllowDrop = true;
-            this.tblpnl_DashbaordPage.ColumnCount = 3;
-            this.tblpnl_DashbaordPage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tblpnl_DashbaordPage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 54.3889F));
-            this.tblpnl_DashbaordPage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.6111F));
-            this.tblpnl_DashbaordPage.Controls.Add(this.pnl_ViewPrintReports, 2, 0);
-            this.tblpnl_DashbaordPage.Controls.Add(this.panel2, 0, 0);
-            this.tblpnl_DashbaordPage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tblpnl_DashbaordPage.Location = new System.Drawing.Point(0, 0);
-            this.tblpnl_DashbaordPage.Name = "tblpnl_DashbaordPage";
-            this.tblpnl_DashbaordPage.RowCount = 3;
-            this.tblpnl_DashbaordPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 250F));
-            this.tblpnl_DashbaordPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.tblpnl_DashbaordPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 104F));
-            this.tblpnl_DashbaordPage.Size = new System.Drawing.Size(1200, 623);
-            this.tblpnl_DashbaordPage.TabIndex = 52;
-            // 
-            // pnl_ViewPrintReports
-            // 
-            this.pnl_ViewPrintReports.BackColor = System.Drawing.Color.White;
-            this.pnl_ViewPrintReports.Controls.Add(this.lbl_dashboardDate);
-            this.pnl_ViewPrintReports.Controls.Add(this.bunifuCustomLabel16);
-            this.pnl_ViewPrintReports.Controls.Add(this.bunifuCustomLabel15);
-            this.pnl_ViewPrintReports.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_ViewPrintReports.Enabled = false;
-            this.pnl_ViewPrintReports.Location = new System.Drawing.Point(748, 10);
-            this.pnl_ViewPrintReports.Margin = new System.Windows.Forms.Padding(5, 10, 10, 5);
-            this.pnl_ViewPrintReports.Name = "pnl_ViewPrintReports";
-            this.pnl_ViewPrintReports.Size = new System.Drawing.Size(442, 235);
-            this.pnl_ViewPrintReports.TabIndex = 9;
-            // 
-            // lbl_dashboardDate
-            // 
-            this.lbl_dashboardDate.AutoSize = true;
-            this.lbl_dashboardDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_dashboardDate.ForeColor = System.Drawing.Color.DarkGray;
-            this.lbl_dashboardDate.Location = new System.Drawing.Point(19, 154);
-            this.lbl_dashboardDate.Name = "lbl_dashboardDate";
-            this.lbl_dashboardDate.Size = new System.Drawing.Size(148, 29);
-            this.lbl_dashboardDate.TabIndex = 1;
-            this.lbl_dashboardDate.Text = "June 5, 2017";
-            // 
-            // bunifuCustomLabel16
-            // 
-            this.bunifuCustomLabel16.AutoSize = true;
-            this.bunifuCustomLabel16.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
-            this.bunifuCustomLabel16.Location = new System.Drawing.Point(16, 94);
-            this.bunifuCustomLabel16.Name = "bunifuCustomLabel16";
-            this.bunifuCustomLabel16.Size = new System.Drawing.Size(200, 44);
-            this.bunifuCustomLabel16.TabIndex = 0;
-            this.bunifuCustomLabel16.Text = "Data From";
-            // 
-            // bunifuCustomLabel15
-            // 
-            this.bunifuCustomLabel15.AutoSize = true;
-            this.bunifuCustomLabel15.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
-            this.bunifuCustomLabel15.Location = new System.Drawing.Point(13, 50);
-            this.bunifuCustomLabel15.Name = "bunifuCustomLabel15";
-            this.bunifuCustomLabel15.Size = new System.Drawing.Size(318, 44);
-            this.bunifuCustomLabel15.TabIndex = 0;
-            this.bunifuCustomLabel15.Text = "Currently Viewing";
-            // 
-            // panel2
-            // 
-            this.panel2.AllowDrop = true;
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.dragDropLargeCenter;
-            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.tblpnl_DashbaordPage.SetColumnSpan(this.panel2, 2);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(10, 10);
-            this.panel2.Margin = new System.Windows.Forms.Padding(10, 10, 5, 5);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(728, 235);
-            this.panel2.TabIndex = 9;
-            this.panel2.DragDrop += new System.Windows.Forms.DragEventHandler(this.pnl_DragDropArea_DragDrop);
-            this.panel2.DragEnter += new System.Windows.Forms.DragEventHandler(this.pnl_DragDropArea_DragEnter);
-            // 
             // tblpnl_DragDrop
             // 
             this.tblpnl_DragDrop.ColumnCount = 2;
@@ -3172,6 +3187,9 @@
             this.pnl_titlePanel.PerformLayout();
             this.pnl_activePage.ResumeLayout(false);
             this.pnl_activePage.PerformLayout();
+            this.tblpnl_DashbaordPage.ResumeLayout(false);
+            this.pnl_ViewPrintReports.ResumeLayout(false);
+            this.pnl_ViewPrintReports.PerformLayout();
             this.tblpnl_Filters.ResumeLayout(false);
             this.tblpnl_Filters.PerformLayout();
             this.panel27.ResumeLayout(false);
@@ -3230,9 +3248,6 @@
             this.pnl_NavigationPanelMax.PerformLayout();
             this.pnl_KPISectionsPanel.ResumeLayout(false);
             this.pnl_KPASectionsPanel.ResumeLayout(false);
-            this.tblpnl_DashbaordPage.ResumeLayout(false);
-            this.pnl_ViewPrintReports.ResumeLayout(false);
-            this.pnl_ViewPrintReports.PerformLayout();
             this.tblpnl_DragDrop.ResumeLayout(false);
             this.pnl_MainNavigation.ResumeLayout(false);
             this.tableLayoutPanel14.ResumeLayout(false);
@@ -3259,7 +3274,6 @@
         private System.Windows.Forms.Timer DataRemovalTimer;
         private System.Windows.Forms.Panel pnl_activePage;
         private System.Windows.Forms.TableLayoutPanel tblpnl_DashbaordPage;
-        private System.Windows.Forms.Panel pnl_ViewPrintReports;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TableLayoutPanel tblpnl_DragDrop;
         private System.Windows.Forms.Panel panel1;
@@ -3276,9 +3290,6 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel7;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel25;
-        private Bunifu.Framework.UI.BunifuCustomLabel lbl_dashboardDate;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel16;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel15;
         private System.Windows.Forms.Panel panel3;
         private Bunifu.Framework.UI.BunifuFlatButton btn_dashboardCancel;
         private System.Windows.Forms.Panel pnl_loadingScreen;
@@ -3445,6 +3456,11 @@
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel35;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel34;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Panel pnl_ViewPrintReports;
+        private Bunifu.Framework.UI.BunifuCustomLabel lbl_dashboardDate;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel16;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel15;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }
 

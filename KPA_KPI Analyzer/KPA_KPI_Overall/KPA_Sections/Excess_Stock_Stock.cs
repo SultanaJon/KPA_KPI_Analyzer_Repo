@@ -19,6 +19,9 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
         private OleDbCommand cmd;
         private OleDbDataAdapter da;
 
+
+
+
         // Default Constructor
         public Excess_Stock_Stock()
         {
@@ -26,8 +29,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
             prsAgingRel = new PRs_Aging_Rel();
             PoCreationThruDeliv = new PoCreationThruDelivery();
         }
-
-
 
 
 
@@ -41,11 +42,11 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
             PoCreationThruDelivery
         }
 
-        public string[] categoryNames =
+        public string[] catNames =
         {
             "Prs Aging (Not Released)",
             "PRs Aging (Released)",
-            "PO Creation to Confirmation Entry"
+            "PO Creation Thru Delivery"
         };
 
 

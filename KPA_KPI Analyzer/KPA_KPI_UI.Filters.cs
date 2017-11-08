@@ -1741,10 +1741,13 @@ namespace KPA_KPI_Analyzer
 
             Filters.FilterByPrDateRange = false;
             Filters.FilterByPoDateRange = false;
+            Filters.FilterByFinalReceiptDate = false;
             FilterByPrDate = false;
             FilterByPoDate = false;
+            FilterByFinalRecDate = false;
             chkBox_PrDateRange.Checked = false;
             chkBox_PoDateRange.Checked = false;
+            chkBox_FinalReceiptDate.Checked = false;
 
             ColumnFiltersAdded = false;
             ColumnFiltersApplied = false;

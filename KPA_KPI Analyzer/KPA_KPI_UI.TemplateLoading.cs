@@ -7,6 +7,12 @@ namespace KPA_KPI_Analyzer
     public partial class KPA_KPI_UI : Form
     {
 
+        public enum Performance
+        {
+            KPA,
+            KPI
+        }
+
         /// <summary>
         /// Instantiates a template object and adds the control to the active page panel for loading/viewing
         /// </summary>
@@ -324,6 +330,26 @@ namespace KPA_KPI_Analyzer
 
 
 
+        /// <summary>
+        /// Instantiates a template object and adds the control to the active page panel for loading/viewing
+        /// </summary>
+        private void CreateKpiPlanTwoTemplate()
+        {
+            lbl_Section.Text = "Plan";
+            KPIPlanTwoTemplate kpiPlanTwoTemplate = new KPIPlanTwoTemplate()
+            {
+                Name = "Plan",
+                Dock = DockStyle.Fill
+            };
+            KPIPlanTwoTemplate.ChangeCategory += UpdateCategoryStatus;
+            pnl_activePage.Controls.Add(kpiPlanTwoTemplate);
+            kpiPlanTwoTemplate.BringToFront();
+            MenuInFront = true;
+            pnl_NavigationPanelMax.BringToFront();
+        }
+
+
+
 
 
         /// <summary>
@@ -344,6 +370,10 @@ namespace KPA_KPI_Analyzer
             pnl_NavigationPanelMax.BringToFront();
         }
 
+
+
+
+        
 
 
 
@@ -548,6 +578,11 @@ namespace KPA_KPI_Analyzer
                         kpiFollowUp.LoadPanel(overallData);
                         activeTemplate = kpiFollowUp;
                         break;
+                    case 18:
+                        KPIPlanTwoTemplate kpiPlanTwo  = (KPIPlanTwoTemplate)e.Control;
+                        kpiPlanTwo.LoadPanel(overallData);
+                        activeTemplate = kpiPlanTwo;
+                        break;
                     case 19:
                         KPIPurchTwoTemplate kpiPurchTwo = (KPIPurchTwoTemplate)e.Control;
                         kpiPurchTwo.LoadPanel(overallData);
@@ -647,6 +682,10 @@ namespace KPA_KPI_Analyzer
                         KPIFollowUpTemplate kpiFollowUp = (KPIFollowUpTemplate)activeTemplate;
                         kpiFollowUp.RefreshTemplate();
                         break;
+                    case 18:
+                        KPIPlanTwoTemplate kpiPlanTwo = (KPIPlanTwoTemplate)activeTemplate;
+                        kpiPlanTwo.RefreshTemplate();
+                        break;
                     case 19:
                         KPIPurchTwoTemplate kpiPurchTwo = (KPIPurchTwoTemplate)activeTemplate;
                         kpiPurchTwo.RefreshTemplate();
@@ -671,16 +710,6 @@ namespace KPA_KPI_Analyzer
                         break;
                 }
             }
-        }
-
-
-
-
-
-        public enum Performance
-        {
-            KPA,
-            KPI
         }
 
 

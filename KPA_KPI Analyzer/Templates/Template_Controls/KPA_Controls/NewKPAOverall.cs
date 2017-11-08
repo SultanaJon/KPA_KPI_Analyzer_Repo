@@ -536,7 +536,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         {
             string[] row = {
                 data.kpa.excessStockStock.Name,
-                data.kpa.excessStockStock.categoryNames[(int)Excess_Stock_Stock.CategorNames.PrsAgingNotReleased],
+                data.kpa.excessStockStock.catNames[(int)Excess_Stock_Stock.CategorNames.PrsAgingNotReleased],
                 string.Format("{0:n0}", data.kpa.excessStockStock.prsAgingNotRel.data.LessThanZero),
                 string.Format("{0:n0}", data.kpa.excessStockStock.prsAgingNotRel.data.One_Three),
                 string.Format("{0:n0}", data.kpa.excessStockStock.prsAgingNotRel.data.Four_Seven),
@@ -551,7 +551,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
             row = new string[]{
                 data.kpa.excessStockStock.Name,
-                data.kpa.excessStockStock.categoryNames[(int)Excess_Stock_Stock.CategorNames.PrsAgingReleased],
+                data.kpa.excessStockStock.catNames[(int)Excess_Stock_Stock.CategorNames.PrsAgingReleased],
                 string.Format("{0:n0}", data.kpa.excessStockStock.prsAgingRel.data.LessThanZero),
                 string.Format("{0:n0}", data.kpa.excessStockStock.prsAgingRel.data.One_Three),
                 string.Format("{0:n0}", data.kpa.excessStockStock.prsAgingRel.data.Four_Seven),
@@ -566,7 +566,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
             row = new string[]{
                 data.kpa.excessStockStock.Name,
-                data.kpa.excessStockStock.categoryNames[(int)Excess_Stock_Stock.CategorNames.PoCreationThruDelivery],
+                data.kpa.excessStockStock.catNames[(int)Excess_Stock_Stock.CategorNames.PoCreationThruDelivery],
                 string.Format("{0:n0}", data.kpa.excessStockStock.PoCreationThruDeliv.data.LessThanZero),
                 string.Format("{0:n0}", data.kpa.excessStockStock.PoCreationThruDeliv.data.One_Three),
                 string.Format("{0:n0}", data.kpa.excessStockStock.PoCreationThruDeliv.data.Four_Seven),

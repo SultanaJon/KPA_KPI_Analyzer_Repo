@@ -98,7 +98,6 @@ namespace KPA_KPI_Analyzer
                 case 12: // KPA --> Current Plan vs Actual
                     CreateKpaCurrPlanActualTemplate();
                     break;
-                // REMOVED CASE 13: KPA -> MTC. THIS FEATURE IS NOT POSSIBLE
                 case 14: // KPI --> Overall
                     LoadOverallTemplate(Performance.KPI);
                     break;
@@ -112,7 +111,7 @@ namespace KPA_KPI_Analyzer
                     CreateKpiFollowUpTemplate();
                     break;
                 case 18: // KPI --> Plan
-                    LoadDataComingSoonTemplate();
+                    CreateKpiPlanTwoTemplate();
                     break;
                 case 19: // KPI --> Purch
                     CreateKpiPurchTwoTemplate();

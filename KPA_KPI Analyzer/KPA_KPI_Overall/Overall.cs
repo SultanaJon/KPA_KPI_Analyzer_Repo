@@ -121,8 +121,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
                     new List<string>(kpi.plan.prPlanDateVsCurrPlan.data.GetData()),
                     new List<string>(kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.GetData()),
                     new List<string>(kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.GetData()),
-                    new List<string>(kpi.plan.materialDueOrigPlanDate.data.GetData()),
-                    new List<string>(kpi.plan.materialDueFinalPlanDate.data.GetData()),
                     new List<string>(kpi.purch.initConfVsPRPlanDate.data.GetData()),
                     new List<string>(kpi.followUp.initConfVsCurrConf.data.GetData()),
                     new List<string>(kpi.followUp.finalConfDateVsFinalPlan.data.GetData()),
@@ -159,7 +157,8 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
                 List<List<string>> temp = new List<List<string>>
                 {
                     null,
-                    null,
+                    new List<string>(kpi.planTwo.materialDueOrigPlanDate.data.GetData()),
+                    new List<string>(kpi.planTwo.materialDueFinalPlanDate.data.GetData()),
                     new List<string>(kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.GetData()),
                     new List<string>(kpi.purchTwo.poCreationVsPORel.data.GetData()),
                     new List<string>(kpi.purchTwo.poRelVsPOConf.data.GetData()),

@@ -194,17 +194,29 @@
 
         public static string[][] kpaCategories =
         {
+            // Plan
             new string[] { "Planned Order Aging", "PRs Aging (Not Released)", "Material Due"},
+            // Purch
             new string[] { "PRs Aging (Released)", "PO First Release", "PO Prev Release", "No Confirmation"},
+            // Purch Sub
             new string[] { "PR Release to PO Release", "PO Creation to Confirmation Entry"},
+            // Purch Total
             new string[] {"PR Release to Confirmation Entry"},
+            // Purch Plan Total
             new string[] {"Purchasing/Planning Total Aging"},
+            // Follow Up
             new string[] { "Confirmed Date vs Plan Date", "Confirmed Date for Upcoming Deliveries", "Due Today or Late to Confirmed Date"},
+            // Cancellations
             new string[] { "Cancellation Count", "Cancellation Value"},
+            // NCRs
             new string[] { "Open NCRs", "Open NCR Values"},
+            // Hot Jobs
             new string[] { "PRs (Not on PO) - Hot Jobs Only", "No Confirmations - Hot Jobs Only", "Late to Confirmed - Hot Jobs Only"},
+            // Excess Stock - Stock
             new string[] { "Prs Aging (Not Released)", "PRs Aging (Released)", "PO Creation Thru Delivery"},
+            // Excess Stock - Open Orders
             new string[] { "Prs Aging (Not Released)", "PRs Aging (Released)", "PO Creation Thru Delivery"},
+            // Current Plan vs Actual
             new string[] { "Current Plan Date vs Current Confirmation Date", "Current Plan Date vs Current Confirmation Date - Hot Jobs Only"},
         };
 
@@ -248,9 +260,7 @@
             {
                 PRPlanDatevsCurrentPlanDate,
                 OriginalPlanDate2ndLvlReleaseDatevsCodedLeadTime,
-                CurrentPlanDate2ndLvlReleaseDatevsCodedLeadTime,
-                MaterialDueOriginalPlanDate,
-                MaterialDueFinalPlannedDate
+                CurrentPlanDate2ndLvlReleaseDatevsCodedLeadTime
             }
 
             public enum Purch
@@ -269,8 +279,9 @@
 
             public enum PlanTwo
             {
-                PRPlanDatevsPR2ndLvlReleaseDate,
-                PlanOrderCreationDatevs2ndLvlReleaseDate
+                PlanOrderCreationDatevs2ndLvlReleaseDate,
+                MaterialDueOriginalPlanDate,
+                MaterialDueFinalPlannedDate
             }
 
             public enum PurchTwo
@@ -313,13 +324,13 @@
         public static string[][] kpiCategories =
         {
             // Plan One
-            new string[] { "PR Plan Date vs Current Plan Date", "(Original Plan Date - 2nd Lvl Release Date) vs Coded Lead-Time", "(Current Plan Date - 2nd Lvl Release Date) vs Coded Lead-Time", "Material Due (Original Planned Date)", "Material Due (Final Planned Date)"},
+            new string[] { "PR Plan Date vs Current Plan Date", "(Original Plan Date - 2nd Lvl Release Date) vs Coded Lead-Time", "(Current Plan Date - 2nd Lvl Release Date) vs Coded Lead-Time"},
             // Purch
             new string[] { "Initial Confirmation Date vs PR Plan Date"},
             // Follow Up
             new string[] { "Initial Confirmation Date vs Current Confirmation Date", "Final Confirmation Date vs Final Plan Date", "Receipt Date vs Current Plan Date", "Receipt Date vs Original Confirmation Date", "Receipt Date vs Current Confirmation Date"},
             // Plan two
-            new string[] { "PR Plan Date vs PR 2nd Lvl Release Date", "Plan Order Creation Date vs 2nd Lvl Release Date"},
+            new string[] { "Plan Order Creation Date vs 2nd Lvl Release Date", "Material Due (Original Planned Date)", "Material Due (Final Planned Date)"},
             // Purch Two
             new string[] { "PR 2nd Lvl Release Date vs PO Creation Date", "PO Creation Date vs PO Release Date", "PO Release Date vs PO Confirmation Date"},
             // Purch Sub

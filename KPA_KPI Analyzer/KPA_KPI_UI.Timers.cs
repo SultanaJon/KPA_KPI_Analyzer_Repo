@@ -28,6 +28,7 @@ namespace KPA_KPI_Analyzer
         Thread KPI_PlanThread;
         Thread KPI_PurchThread;
         Thread KPI_FollowUpThread;
+        Thread KPI_PlanTwoThread;
         Thread KPI_PurchTwoThread;
         Thread KPI_PurchSubThread;
         Thread KPI_PurchTotalThread;
@@ -266,6 +267,7 @@ namespace KPA_KPI_Analyzer
             KPI_PlanThread = new Thread(() => { try { overallData.kpi.plan.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
             KPI_PurchThread = new Thread(() => { try { overallData.kpi.purch.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
             KPI_FollowUpThread = new Thread(() => { try { overallData.kpi.followUp.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+            KPI_PlanTwoThread = new Thread(() => { try { overallData.kpi.planTwo.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
             KPI_PurchTwoThread = new Thread(() => { try { overallData.kpi.purchTwo.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
             KPI_PurchSubThread = new Thread(() => { try { overallData.kpi.purchSub.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
             KPI_PurchTotalThread = new Thread(() => { try { overallData.kpi.purchTotal.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
@@ -302,6 +304,7 @@ namespace KPA_KPI_Analyzer
                 KPI_PlanThread.Start();
                 KPI_PurchThread.Start();
                 KPI_FollowUpThread.Start();
+                KPI_PlanTwoThread.Start();
                 KPI_PurchTwoThread.Start();
                 KPI_PurchSubThread.Start();
                 KPI_PurchTotalThread.Start();
@@ -327,7 +330,7 @@ namespace KPA_KPI_Analyzer
             {
                 PRPO_DB_Utils.DataLoadProcessStarted = true;
                 PRPO_DB_Utils.KPITablesLoaded = false;
-                PRPO_DB_Utils.ScheduledDataLoads = 18;
+                PRPO_DB_Utils.ScheduledDataLoads = 19;
                 StartThreads(true, false);
             }
 

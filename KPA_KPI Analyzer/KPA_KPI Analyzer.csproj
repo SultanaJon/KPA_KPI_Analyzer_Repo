@@ -142,6 +142,12 @@
     <Compile Include="Templates\Template_Controls\KPA_Controls\NewKPAOverall.Designer.cs">
       <DependentUpon>NewKPAOverall.cs</DependentUpon>
     </Compile>
+    <Compile Include="Templates\Template_Controls\KPI_Controls\KPIPlanTwoTemplate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Templates\Template_Controls\KPI_Controls\KPIPlanTwoTemplate.Designer.cs">
+      <DependentUpon>KPIPlanTwoTemplate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Templates\Template_Controls\KPI_Controls\newKPIOverall.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -422,6 +428,9 @@
     <EmbeddedResource Include="Templates\Template_Controls\KPI_Controls\KPIPlanTemplate.resx">
       <DependentUpon>KPIPlanTemplate.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Templates\Template_Controls\KPI_Controls\KPIPlanTwoTemplate.resx">
+      <DependentUpon>KPIPlanTwoTemplate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Templates\Template_Controls\KPI_Controls\KPIPurchPlanTemplate.resx">
       <DependentUpon>KPIPurchPlanTemplate.cs</DependentUpon>

@@ -3,7 +3,6 @@ using KPA_KPI_Analyzer.FilterFeeature;
 using System;
 using System.Data;
 using System.Data.OleDb;
-using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
