@@ -111,7 +111,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                     DateTime poLineConfCreateDate = new DateTime(firstConfCreateYear, firstConfCreateMonth, firstConfCreateDay);
 
                     // This is a tempory fix for MEXICO TAG_MEXICO_FIX
-                    // DELETE the refion below this commented code and uncomment this code.
+                    // DELETE the region below this commented code and uncomment this code.
 
                     //string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
                     //int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);

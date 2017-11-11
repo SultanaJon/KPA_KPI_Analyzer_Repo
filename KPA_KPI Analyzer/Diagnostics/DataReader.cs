@@ -35,7 +35,6 @@ namespace KPA_KPI_Analyzer.Diagnostics
                 MessageBox.Show(ex.Message.ToString(), "Overall DataReader Loading Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
-
         }
 
 

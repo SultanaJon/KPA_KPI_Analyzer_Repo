@@ -31,7 +31,8 @@ namespace KPA_KPI_Analyzer
         private static readonly List<string> errorList = new List<string>();
         private Overall overallData = new Overall();
         private UserControl activeTemplate = new UserControl();
-        ApplicationConfiguration.ApplicationConfig settings = new ApplicationConfiguration.ApplicationConfig();
+        private ApplicationConfiguration.ApplicationConfig settings = new ApplicationConfiguration.ApplicationConfig();
+        private Filter_Variant.FilterVariants variantSettings = new Filter_Variant.FilterVariants();
 
 
 
@@ -834,6 +835,53 @@ namespace KPA_KPI_Analyzer
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+
+
+
+        /// <summary>
+        /// When the user clicks the add variant button on the menu strip, if there are filters applied, this function
+        /// will show the add variant window which will add the filters to a variant and add it to the list of saved
+        /// variants so the user can quickly load them and apply them to the data.
+        /// </summary>
+        /// <param name="sender">The menu strip add variant button</param>
+        /// <param name="e">The click button</param>
+        private void addVariantToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // When the user clicks this menu strip button, the add variant window will open.
+            using (Filter_Variant.VariantsCreationWindow vcw = new Filter_Variant.VariantsCreationWindow())
+            {
+                vcw.ShowDialog();
+
+                // Get the name and the description the user just entered and pass it to the constructor
+                // of the new variant.
+                Filter_Variant.Variant variant = new Filter_Variant.Variant(vcw.VariantName, vcw.VariantDescription, Filters.GetSelectedFilters());
+
+                // add the variant to the variants of FilterVariants.
+                variantSettings.AddVariant(variant);
+            }
+        }
+
+
+
+
+
+
+        /// <summary>
+        /// When the user clicks the view variants button on the menu strip. If any, the variants the user has added will be displayed in this window.
+        /// </summary>
+        /// <param name="sender">The view variants button</param>
+        /// <param name="e">The click event</param>
+        private void viewVariantsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // When the user clicks this menu strip button, the variants view window will open.
+            using (Filter_Variant.VariantsViewWindow vvw = new Filter_Variant.VariantsViewWindow() { Variants = variantSettings.Variants })
+            { 
+                vvw.ShowDialog();
+                // Get the list of variants in case the user updated it.    
+                variantSettings.Variants = vvw.Variants;
             }
         }
     }

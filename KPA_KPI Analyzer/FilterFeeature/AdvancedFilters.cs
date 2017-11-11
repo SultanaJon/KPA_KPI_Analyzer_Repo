@@ -1,4 +1,6 @@
-﻿namespace KPA_KPI_Analyzer.FilterFeeature
+﻿using System.Collections.Generic;
+
+namespace KPA_KPI_Analyzer.FilterFeeature
 {
     public class AdvancedFilters
     {
@@ -47,6 +49,43 @@
 
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public enum AdvancedFilter
+        {
+            ServicePrPo,
+            SteelPrPo,
+            PouPrPo,
+            IntercompanyPo,
+            CodifiedMatNonSubCont,
+            CodifiedMatSubCont,
+            ManualPr
+        }
+
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static string[] advancedFilters =
+        {
+            "Service PR/PO",
+            "Steel PR/PO",
+            "POU PR/PO",
+            "Intercompany PO",
+            "Codified Material (Non-Subcontract)",
+            "Codified Material (Subcontract)",
+            "Manual PR"
+        };
+
+
+
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -85,6 +124,23 @@
             FilterByCodifiedMatNonSubcont = true;
             FilterByCodifiedMatSubcont = true;
             FilterByManualPr = true;
+        }
+
+
+
+
+        public static List<string> GetSelectedAdvancedFilters()
+        {
+            List<string> temp = new List<string>();
+            if (!FilterByServicePrPo) temp.Add(advancedFilters[(int)AdvancedFilter.ServicePrPo]);
+            if (!FilterBySteelPrPo) temp.Add(advancedFilters[(int)AdvancedFilter.SteelPrPo]);
+            if (!FilterByPouPrPo) temp.Add(advancedFilters[(int)AdvancedFilter.PouPrPo]);
+            if (!FilterByIntercompPo) temp.Add(advancedFilters[(int)AdvancedFilter.IntercompanyPo]);
+            if (!FilterByCodifiedMatNonSubcont) temp.Add(advancedFilters[(int)AdvancedFilter.CodifiedMatNonSubCont]);
+            if (!FilterByCodifiedMatSubcont) temp.Add(advancedFilters[(int)AdvancedFilter.CodifiedMatSubCont]);
+            if (!FilterByManualPr) temp.Add(advancedFilters[(int)AdvancedFilter.ManualPr]);
+
+            return temp;
         }
     }
 }

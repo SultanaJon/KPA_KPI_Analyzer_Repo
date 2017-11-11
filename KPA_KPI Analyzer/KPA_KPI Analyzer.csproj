@@ -123,7 +123,31 @@
     <Compile Include="DataLoading\KPA_Data\DataTableLoader\KpaDataTableLoader.cs" />
     <Compile Include="DataLoading\KPI_Data\DataTableLoader\KpiDataTableLoader.cs" />
     <Compile Include="Diagnostics\DataReader.cs" />
+    <Compile Include="Diagnostics\Loadable.cs" />
+    <Compile Include="Diagnostics\Storable.cs" />
+    <Compile Include="Filter Variant\FilterVariants.cs" />
+    <Compile Include="Filter Variant\Variant.cs" />
+    <Compile Include="Filter Variant\VariantsCreationWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Filter Variant\VariantsCreationWindow.Designer.cs">
+      <DependentUpon>VariantsCreationWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Filter Variant\VariantsDetailDisplayWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Filter Variant\VariantsDetailDisplayWindow.Designer.cs">
+      <DependentUpon>VariantsDetailDisplayWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Filter Variant\VariantsViewWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Filter Variant\VariantsViewWindow.Designer.cs">
+      <DependentUpon>VariantsViewWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="FilterFeeature\AdvancedFilters.cs" />
+    <Compile Include="FilterFeeature\Filters.cs" />
+    <Compile Include="Temp.cs" />
     <Compile Include="Templates\Template_Controls\KPA_Controls\KPAExcessStockOpenOrders.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -171,7 +195,6 @@
     </Compile>
     <Compile Include="DragDropFeature\Exceptions\DragDropExceptions.cs" />
     <Compile Include="DragDropFeature\DragDropUtils.cs" />
-    <Compile Include="FilterFeeature\Filters.cs" />
     <Compile Include="FilterFeeature\FilterUtils.cs" />
     <Compile Include="Diagnostics\AppDirectoryUtils.cs" />
     <Compile Include="Diagnostics\Logger.cs" />
@@ -369,6 +392,15 @@
     <EmbeddedResource Include="DataLoading\DataViewer.resx">
       <DependentUpon>DataViewer.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Filter Variant\VariantsCreationWindow.resx">
+      <DependentUpon>VariantsCreationWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Filter Variant\VariantsDetailDisplayWindow.resx">
+      <DependentUpon>VariantsDetailDisplayWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Filter Variant\VariantsViewWindow.resx">
+      <DependentUpon>VariantsViewWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Templates\Template_Controls\KPA_Controls\KPAExcessStockOpenOrders.resx">
       <DependentUpon>KPAExcessStockOpenOrders.cs</DependentUpon>
