@@ -45,9 +45,16 @@
             this.lbl_VariantDescription = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel21 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.dgv_details = new System.Windows.Forms.DataGridView();
+            this.btn_ok = new System.Windows.Forms.Button();
+            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.bdc_logo = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.bdc_title = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.bdc_titlePanel = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.bdc_topPanel = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.prDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.poLineCreateDateRange = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.finalRecDateRange = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AdvancedFilters = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.projectNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.material = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.materialGroup = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,12 +70,6 @@
             this.escaped = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.poDocumentType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prodOrdMaterial = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_ok = new System.Windows.Forms.Button();
-            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.bdc_logo = new Bunifu.Framework.UI.BunifuDragControl(this.components);
-            this.bdc_title = new Bunifu.Framework.UI.BunifuDragControl(this.components);
-            this.bdc_titlePanel = new Bunifu.Framework.UI.BunifuDragControl(this.components);
-            this.bdc_topPanel = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.pnl_TopUIPanel.SuspendLayout();
             this.pnl_topPanel.SuspendLayout();
             this.pnl_titlePanel.SuspendLayout();
@@ -263,6 +264,7 @@
             this.prDate,
             this.poLineCreateDateRange,
             this.finalRecDateRange,
+            this.AdvancedFilters,
             this.projectNumber,
             this.material,
             this.materialGroup,
@@ -284,6 +286,49 @@
             this.dgv_details.Size = new System.Drawing.Size(961, 261);
             this.dgv_details.TabIndex = 61;
             // 
+            // btn_ok
+            // 
+            this.btn_ok.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btn_ok.Location = new System.Drawing.Point(884, 362);
+            this.btn_ok.Name = "btn_ok";
+            this.btn_ok.Size = new System.Drawing.Size(90, 32);
+            this.btn_ok.TabIndex = 62;
+            this.btn_ok.Text = "OK";
+            this.btn_ok.UseVisualStyleBackColor = true;
+            // 
+            // bunifuElipse1
+            // 
+            this.bunifuElipse1.ElipseRadius = 5;
+            this.bunifuElipse1.TargetControl = this;
+            // 
+            // bdc_logo
+            // 
+            this.bdc_logo.Fixed = true;
+            this.bdc_logo.Horizontal = true;
+            this.bdc_logo.TargetControl = this.pnl_logo;
+            this.bdc_logo.Vertical = true;
+            // 
+            // bdc_title
+            // 
+            this.bdc_title.Fixed = true;
+            this.bdc_title.Horizontal = true;
+            this.bdc_title.TargetControl = this.lbl_title;
+            this.bdc_title.Vertical = true;
+            // 
+            // bdc_titlePanel
+            // 
+            this.bdc_titlePanel.Fixed = true;
+            this.bdc_titlePanel.Horizontal = true;
+            this.bdc_titlePanel.TargetControl = this.pnl_titlePanel;
+            this.bdc_titlePanel.Vertical = true;
+            // 
+            // bdc_topPanel
+            // 
+            this.bdc_topPanel.Fixed = true;
+            this.bdc_topPanel.Horizontal = true;
+            this.bdc_topPanel.TargetControl = this.pnl_topPanel;
+            this.bdc_topPanel.Vertical = true;
+            // 
             // prDate
             // 
             this.prDate.HeaderText = "PR Date";
@@ -301,6 +346,12 @@
             this.finalRecDateRange.HeaderText = "finalRecDateRange";
             this.finalRecDateRange.Name = "finalRecDateRange";
             this.finalRecDateRange.ReadOnly = true;
+            // 
+            // AdvancedFilters
+            // 
+            this.AdvancedFilters.HeaderText = "Advanced Filters";
+            this.AdvancedFilters.Name = "AdvancedFilters";
+            this.AdvancedFilters.ReadOnly = true;
             // 
             // projectNumber
             // 
@@ -392,49 +443,6 @@
             this.prodOrdMaterial.Name = "prodOrdMaterial";
             this.prodOrdMaterial.ReadOnly = true;
             // 
-            // btn_ok
-            // 
-            this.btn_ok.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btn_ok.Location = new System.Drawing.Point(884, 362);
-            this.btn_ok.Name = "btn_ok";
-            this.btn_ok.Size = new System.Drawing.Size(90, 32);
-            this.btn_ok.TabIndex = 62;
-            this.btn_ok.Text = "OK";
-            this.btn_ok.UseVisualStyleBackColor = true;
-            // 
-            // bunifuElipse1
-            // 
-            this.bunifuElipse1.ElipseRadius = 5;
-            this.bunifuElipse1.TargetControl = this;
-            // 
-            // bdc_logo
-            // 
-            this.bdc_logo.Fixed = true;
-            this.bdc_logo.Horizontal = true;
-            this.bdc_logo.TargetControl = this.pnl_logo;
-            this.bdc_logo.Vertical = true;
-            // 
-            // bdc_title
-            // 
-            this.bdc_title.Fixed = true;
-            this.bdc_title.Horizontal = true;
-            this.bdc_title.TargetControl = this.lbl_title;
-            this.bdc_title.Vertical = true;
-            // 
-            // bdc_titlePanel
-            // 
-            this.bdc_titlePanel.Fixed = true;
-            this.bdc_titlePanel.Horizontal = true;
-            this.bdc_titlePanel.TargetControl = this.pnl_titlePanel;
-            this.bdc_titlePanel.Vertical = true;
-            // 
-            // bdc_topPanel
-            // 
-            this.bdc_topPanel.Fixed = true;
-            this.bdc_topPanel.Horizontal = true;
-            this.bdc_topPanel.TargetControl = this.pnl_topPanel;
-            this.bdc_topPanel.Vertical = true;
-            // 
             // VariantsDetailDisplayWindow
             // 
             this.AcceptButton = this.btn_ok;
@@ -485,9 +493,15 @@
         private Bunifu.Framework.UI.BunifuCustomLabel lbl_VariantName;
         private System.Windows.Forms.DataGridView dgv_details;
         private System.Windows.Forms.Button btn_ok;
+        private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
+        private Bunifu.Framework.UI.BunifuDragControl bdc_logo;
+        private Bunifu.Framework.UI.BunifuDragControl bdc_title;
+        private Bunifu.Framework.UI.BunifuDragControl bdc_titlePanel;
+        private Bunifu.Framework.UI.BunifuDragControl bdc_topPanel;
         private System.Windows.Forms.DataGridViewTextBoxColumn prDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn poLineCreateDateRange;
         private System.Windows.Forms.DataGridViewTextBoxColumn finalRecDateRange;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AdvancedFilters;
         private System.Windows.Forms.DataGridViewTextBoxColumn projectNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn material;
         private System.Windows.Forms.DataGridViewTextBoxColumn materialGroup;
@@ -503,10 +517,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn escaped;
         private System.Windows.Forms.DataGridViewTextBoxColumn poDocumentType;
         private System.Windows.Forms.DataGridViewTextBoxColumn prodOrdMaterial;
-        private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
-        private Bunifu.Framework.UI.BunifuDragControl bdc_logo;
-        private Bunifu.Framework.UI.BunifuDragControl bdc_title;
-        private Bunifu.Framework.UI.BunifuDragControl bdc_titlePanel;
-        private Bunifu.Framework.UI.BunifuDragControl bdc_topPanel;
     }
 }

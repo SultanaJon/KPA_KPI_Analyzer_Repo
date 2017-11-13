@@ -6,17 +6,19 @@ namespace KPA_KPI_Analyzer.Filter_Variant
 {
     public partial class VariantsViewWindow : Form
     {
+        #region DELEGATES & EVENTS
         // Call-back functions to update variants tools.
         public delegate void UpdateVariantToolsHandler();
         public static event UpdateVariantToolsHandler UpdateVariantTools;
 
 
+        // Call-back function to begin data loading of the users variant.
+        public delegate void BegingVariantLoadHandler(Dictionary<string, List<string>> _filters);
+        public static event BegingVariantLoadHandler BeingVariantLoadProcess;
+        #endregion
 
 
         public List<Variant> Variants { get; set; }
-
-
-
 
 
         /// <summary>
@@ -26,9 +28,6 @@ namespace KPA_KPI_Analyzer.Filter_Variant
         {
             InitializeComponent();
         }
-
-
-
 
 
 
@@ -46,10 +45,6 @@ namespace KPA_KPI_Analyzer.Filter_Variant
                 ToggleButtons(true);
             }
         }
-
-
-
-
 
 
 
@@ -149,8 +144,6 @@ namespace KPA_KPI_Analyzer.Filter_Variant
 
 
 
-
-
         /// <summary>
         /// Add all of the user variants to the datagrid view.
         /// </summary>
@@ -166,7 +159,6 @@ namespace KPA_KPI_Analyzer.Filter_Variant
                 }
             }
         }
-
 
 
 
@@ -192,8 +184,6 @@ namespace KPA_KPI_Analyzer.Filter_Variant
                 btn_view.Enabled = false;
             }
         }
-
-
 
 
 
@@ -254,6 +244,29 @@ namespace KPA_KPI_Analyzer.Filter_Variant
                 ToggleButtons(false);
             }
             UpdateVariantTools();
+        }
+
+
+
+
+
+
+
+        /// <summary>
+        /// Applies the users saved variant against the data.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_apply_Click(object sender, EventArgs e)
+        {
+            DataGridViewSelectedRowCollection selectedRow = dgv_variants.SelectedRows;
+
+            if(selectedRow.Count == 1)
+            {
+                // There is only one row so grab the first one.
+                DataGridViewRow row = selectedRow[0];
+                BeingVariantLoadProcess(Variants[row.Index].details);              
+            }
         }
     }
 }

@@ -147,6 +147,7 @@ namespace KPA_KPI_Analyzer
             // Setup callback functions that update the Variants tool on the menu strip toolbar.
             Filter_Variant.VariantsViewWindow.UpdateVariantTools += UpdateVariantTools;
             Filter_Variant.FilterVariants.UpdateVariantTools += UpdateVariantTools;
+            Filter_Variant.VariantsViewWindow.BeingVariantLoadProcess += BeginVariantLoadProcess;
         }
 
 
@@ -865,6 +866,9 @@ namespace KPA_KPI_Analyzer
                 // of the new variant.
                 Filter_Variant.Variant variant = new Filter_Variant.Variant(vcw.VariantName, vcw.VariantDescription, Filters.GetSelectedFilters());
 
+                // Deactivate all of the variants.
+                DeactivateVariants();
+
                 // add the variant to the variants of FilterVariants.
                 variantSettings.AddVariant(variant);
             }
@@ -895,6 +899,17 @@ namespace KPA_KPI_Analyzer
 
 
 
+        /// <summary>
+        /// Deactivate all of the variants.
+        /// </summary>
+        private void DeactivateVariants()
+        {
+            // Deactivate all of the variants
+            foreach (var savedVariant in variantSettings.Variants)
+                savedVariant.Active = false;
+        }
+
+
 
         /// <summary>
         /// Check the status of the filter and update the variant filter tools.
@@ -914,6 +929,21 @@ namespace KPA_KPI_Analyzer
                 viewVariantsToolStripMenuItem.Enabled = true;
             else
                 viewVariantsToolStripMenuItem.Enabled = false;
+        }
+
+
+
+
+
+        /// <summary>
+        /// Used as a call-back function for when the user chooses to apply a saved variant against the data.
+        /// </summary>
+        /// <param name="_variantDetails">A Dictionary object that stores the filters saved in the chosen variant.</param>
+        public void BeginVariantLoadProcess(Dictionary<string, List<string>> _variantDetails)
+        {
+            // Pass Variant details to filters for calibration
+
+            // Once filters are setup, start the data load process and pray.
         }
     }
 }

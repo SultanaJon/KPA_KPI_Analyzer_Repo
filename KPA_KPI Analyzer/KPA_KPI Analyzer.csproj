@@ -175,7 +175,6 @@
     <Compile Include="Filter Variant\VariantsViewWindow.Designer.cs">
       <DependentUpon>VariantsViewWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="FilterFeeature\AdvancedFilters.cs" />
     <Compile Include="FilterFeeature\Filters.cs" />
     <Compile Include="Temp.cs" />
     <Compile Include="Templates\Template_Controls\KPA_Controls\KPAExcessStockOpenOrders.cs">

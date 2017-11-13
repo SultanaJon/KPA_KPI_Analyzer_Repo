@@ -1715,8 +1715,14 @@ namespace KPA_KPI_Analyzer
             ResetFilters();
             UpdateFilterButtons();
             DataReader.LoadOverallData(ref overallData);
+            
+            // Dactivate all of the variants.
+            DeactivateVariants();
 
+            // Update the variant tools within the menu strip.
             UpdateVariantTools();
+
+            // Start the filter load process.
             InitializeFilterLoadProcess();
         }
 

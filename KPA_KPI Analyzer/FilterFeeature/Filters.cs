@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 
 
+
+
 namespace KPA_KPI_Analyzer.FilterFeeature
 {
     public static class Filters
@@ -323,9 +325,19 @@ namespace KPA_KPI_Analyzer.FilterFeeature
         public static Dictionary<string, List<string>> GetSelectedFilters()
         {
             Dictionary<string, List<string>> selectedFilters = new Dictionary<string, List<string>>();
-            string prDateRange = string.Format(DateFilters.PrFromDate.ToString() + " to " + DateFilters.PrToDate.ToString());
-            string poDateRange = string.Format(DateFilters.PoFromDate.ToString() + " to " + DateFilters.PoFromDate.ToString());
-            string finalRecDateRange = string.Format(DateFilters.FinalReceiptFromDate.ToString() + " to " + DateFilters.FinalReceiptToDate.ToString());
+            string prDateRange = string.Empty;
+            string poDateRange = string.Empty;
+            string finalRecDateRange = string.Empty;
+
+
+            if(DateFilters.FilterByPrDateRange)
+                prDateRange = string.Format(DateFilters.PrFromDate.ToString() + " to " + DateFilters.PrToDate.ToString());
+
+            if(DateFilters.FilterByPoDateRange)
+                poDateRange = string.Format(DateFilters.PoFromDate.ToString() + " to " + DateFilters.PoFromDate.ToString());
+
+            if(DateFilters.FilterByFinalReceiptDate)
+                finalRecDateRange = string.Format(DateFilters.FinalReceiptFromDate.ToString() + " to " + DateFilters.FinalReceiptToDate.ToString());
 
             // Get all of the unselected advanced filters
             List<string> advancedFilters = AdvancedFilters.GetSelectedAdvancedFilters();
@@ -353,6 +365,18 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
 
             return selectedFilters;
+        }
+
+
+
+
+        /// <summary>
+        /// Calibrates the filters based on the values that were saved in the users custom variant.
+        /// </summary>
+        /// <param name="variantDetails">the details(filters) of the saved variant.</param>
+        public static void CalibrateFilters(Dictionary<string, List<string>> variantDetails)
+        {
+
         }
         #endregion
     }

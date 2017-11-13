@@ -46,7 +46,9 @@ namespace KPA_KPI_Analyzer.Filter_Variant
             details = _values;
             VariantName = _name;
             VariantDescription = _description;
-            Active = false;
+            
+            // When the user adds a variant, they have already applied this variant against the data.
+            Active = true;
         }
     }
 }
