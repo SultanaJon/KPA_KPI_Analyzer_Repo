@@ -1,90 +1,19 @@
 ﻿using KPA_KPI_Analyzer.Filter_Variant;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+
 
 namespace KPA_KPI_Analyzer.FilterFeeature
 {
     public static class Filters
     {
+        #region FIELD DATA
         private static string filters = string.Empty;
         private static string secFilters = string.Empty;
+        #endregion
 
-
-
-        /// <summary>
-        /// Boolean value indicating whether or not the user wants to filter by PR date range
-        /// </summary>
-        public static bool FilterByPrDateRange { get; set; }
-
-
-
-        /// <summary>
-        /// Boolean value indicating whether or not the user wants to filter by PO date range
-        /// </summary>
-        public static bool FilterByPoDateRange { get; set; }
-
-
-
-        /// <summary>
-        /// Boolean value indicating whether or not the user wants to filter by PO date range
-        /// </summary>
-        public static bool FilterByFinalReceiptDate { get; set; }
-
-
-
-        /// <summary>
-        /// When PR Date range filter is applied this will be the PR from date.
-        /// </summary>
-        public static DateTime PrFromDate { get; set; }
-
-
-
-        /// <summary>
-        /// When PR Date range filter is applied this will be the PR to date.
-        /// </summary>
-        public static DateTime PrToDate { get; set; }
-
-
-
-        /// <summary>
-        /// When the PO date range filter is applied this will be the PO from date
-        /// </summary>
-        public static DateTime PoFromDate { get; set; }
-
-
-
-        /// <summary>
-        /// When the PO date range filter is applied this will be the PO to date.
-        /// </summary>
-        public static DateTime PoToDate { get; set; }
-
-
-
-
-        /// <summary>
-        /// When the Final Receipt Date range filter is applie this will be the Final Recipt from date.
-        /// </summary>
-        public static DateTime FinalReceiptFromDate { get; set; }
-
-
-
-
-        /// <summary>
-        /// When the Final Receipt Date range filter is applie this will be the Final Recipt to date.
-        /// </summary>
-        public static DateTime FinalReceiptToDate { get; set; }
-
-
-
-
-
-
-
-
-
+        #region PROPERTIES
         /// <summary>
         /// The filters that will be applied to the database when loading the data.
         /// </summary>
@@ -97,6 +26,8 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
 
 
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -105,17 +36,168 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             get { return secFilters; }
             set { if (value == null) secFilters = ""; else secFilters = value; }
         }
+        #endregion
 
-
-
-
-
-
-        /// <summary> 
-        /// Structure & Lists that hold the values of the currently selected filters.
+        #region STRUCTURES
+        /// <summary>
+        /// Field data, properties, and methods that deal with advanced filters.
         /// </summary>
-        public struct FilterValues
+        public struct AdvancedFilters
         {
+            #region FIELD DATA
+            /// <summary>
+            /// 
+            /// </summary>
+            public enum AdvancedFilter
+            {
+                ServicePrPo,
+                SteelPrPo,
+                PouPrPo,
+                IntercompanyPo,
+                CodifiedMatNonSubCont,
+                CodifiedMatSubCont,
+                ManualPr
+            }
+
+
+
+
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public static string[] advancedFilters =
+            {
+                "Service PR/PO",
+                "Steel PR/PO",
+                "POU PR/PO",
+                "Intercompany PO",
+                "Codified Material (Non-Subcontract)",
+                "Codified Material (Subcontract)",
+                "Manual PR"
+            };
+            #endregion
+
+            #region PROPERTIES
+            /// <summary>
+            /// 
+            /// </summary>
+            public static bool FilterByServicePrPo { get; set; } = true;
+
+
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public static bool FilterBySteelPrPo { get; set; } = true;
+
+
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public static bool FilterByPouPrPo { get; set; } = true;
+
+
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public static bool FilterByIntercompPo { get; set; } = true;
+
+
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public static bool FilterByCodifiedMatNonSubcont { get; set; } = true;
+
+
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public static bool FilterByCodifiedMatSubcont { get; set; } = true;
+
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public static bool FilterByManualPr { get; set; } = true;
+            #endregion
+
+            #region HELPER FUNCTIONS
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
+            public static bool AdvanceFiltersChanged()
+            {
+                if (FilterByServicePrPo &&
+                    FilterBySteelPrPo &&
+                    FilterByPouPrPo &&
+                    FilterByIntercompPo &&
+                    FilterByCodifiedMatNonSubcont &&
+                    FilterByCodifiedMatSubcont &&
+                    FilterByManualPr)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+
+
+
+
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public static void ResetAdvanceFilters()
+            {
+                FilterByServicePrPo = true;
+                FilterBySteelPrPo = true;
+                FilterByPouPrPo = true;
+                FilterByIntercompPo = true;
+                FilterByCodifiedMatNonSubcont = true;
+                FilterByCodifiedMatSubcont = true;
+                FilterByManualPr = true;
+            }
+
+
+
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns>The selected advanced filters</returns>
+            public static List<string> GetSelectedAdvancedFilters()
+            {
+                List<string> temp = new List<string>();
+                if (!FilterByServicePrPo) temp.Add(advancedFilters[(int)AdvancedFilter.ServicePrPo]);
+                if (!FilterBySteelPrPo) temp.Add(advancedFilters[(int)AdvancedFilter.SteelPrPo]);
+                if (!FilterByPouPrPo) temp.Add(advancedFilters[(int)AdvancedFilter.PouPrPo]);
+                if (!FilterByIntercompPo) temp.Add(advancedFilters[(int)AdvancedFilter.IntercompanyPo]);
+                if (!FilterByCodifiedMatNonSubcont) temp.Add(advancedFilters[(int)AdvancedFilter.CodifiedMatNonSubCont]);
+                if (!FilterByCodifiedMatSubcont) temp.Add(advancedFilters[(int)AdvancedFilter.CodifiedMatSubCont]);
+                if (!FilterByManualPr) temp.Add(advancedFilters[(int)AdvancedFilter.ManualPr]);
+
+                return temp;
+            }
+            #endregion
+        }
+
+
+
+
+        /// <summary>
+        /// Field data, properties, and methods that deal with column filters.
+        /// </summary>
+        public struct ColumnFilters
+        {
+            #region FIELD DATA
             public static List<string> projectNumber = new List<string>();
             public static List<string> wbsElement = new List<string>();
             public static List<string> material = new List<string>();
@@ -131,12 +213,11 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             public static List<string> escaped = new List<string>();
             public static List<string> poDocumentType = new List<string>();
             public static List<string> prodOrderMat = new List<string>();
+            #endregion
 
-
-
-
+            #region HELPER FUNCTIONS
             /// <summary>
-            /// Clear the contents of all the lists within FilterValues.
+            /// Clear the contents of all the lists within ColumnFilters.
             /// </summary>
             public static void Clear()
             {
@@ -156,9 +237,85 @@ namespace KPA_KPI_Analyzer.FilterFeeature
                 poDocumentType.Clear();
                 prodOrderMat.Clear();
             }
+            #endregion
         }
 
 
+
+
+        /// <summary>
+        /// Field data, properties, and methods that deal with date filters.
+        /// </summary>
+        public struct DateFilters
+        {
+            #region PROPERTIES
+            /// <summary>
+            /// Boolean value indicating whether or not the user wants to filter by PR date range
+            /// </summary>
+            public static bool FilterByPrDateRange { get; set; }
+
+
+
+            /// <summary>
+            /// Boolean value indicating whether or not the user wants to filter by PO date range
+            /// </summary>
+            public static bool FilterByPoDateRange { get; set; }
+
+
+
+            /// <summary>
+            /// Boolean value indicating whether or not the user wants to filter by PO date range
+            /// </summary>
+            public static bool FilterByFinalReceiptDate { get; set; }
+
+
+
+            /// <summary>
+            /// When PR Date range filter is applied this will be the PR from date.
+            /// </summary>
+            public static DateTime PrFromDate { get; set; }
+
+
+
+            /// <summary>
+            /// When PR Date range filter is applied this will be the PR to date.
+            /// </summary>
+            public static DateTime PrToDate { get; set; }
+
+
+
+            /// <summary>
+            /// When the PO date range filter is applied this will be the PO from date
+            /// </summary>
+            public static DateTime PoFromDate { get; set; }
+
+
+
+            /// <summary>
+            /// When the PO date range filter is applied this will be the PO to date.
+            /// </summary>
+            public static DateTime PoToDate { get; set; }
+
+
+
+
+            /// <summary>
+            /// When the Final Receipt Date range filter is applie this will be the Final Recipt from date.
+            /// </summary>
+            public static DateTime FinalReceiptFromDate { get; set; }
+
+
+
+
+            /// <summary>
+            /// When the Final Receipt Date range filter is applie this will be the Final Recipt to date.
+            /// </summary>
+            public static DateTime FinalReceiptToDate { get; set; }
+            #endregion
+        }
+        #endregion
+
+        #region HELPER FUNCTIONS
         /// <summary>
         /// This function is used for filter variants to get the list of selected filters to store as a variant.
         /// </summary>
@@ -166,9 +323,9 @@ namespace KPA_KPI_Analyzer.FilterFeeature
         public static Dictionary<string, List<string>> GetSelectedFilters()
         {
             Dictionary<string, List<string>> selectedFilters = new Dictionary<string, List<string>>();
-            string prDateRange = string.Format(PrFromDate.ToString() + " to " + PrToDate.ToString());
-            string poDateRange = string.Format(PoFromDate.ToString() + " to " + PoFromDate.ToString());
-            string finalRecDateRange = string.Format(FinalReceiptFromDate.ToString() + " to " + FinalReceiptToDate.ToString());
+            string prDateRange = string.Format(DateFilters.PrFromDate.ToString() + " to " + DateFilters.PrToDate.ToString());
+            string poDateRange = string.Format(DateFilters.PoFromDate.ToString() + " to " + DateFilters.PoFromDate.ToString());
+            string finalRecDateRange = string.Format(DateFilters.FinalReceiptFromDate.ToString() + " to " + DateFilters.FinalReceiptToDate.ToString());
 
             // Get all of the unselected advanced filters
             List<string> advancedFilters = AdvancedFilters.GetSelectedAdvancedFilters();
@@ -178,24 +335,25 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             selectedFilters.Add(FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.PoLineCreateDateRange], new List<string>() { poDateRange });
             selectedFilters.Add(FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.FinalRecDateRange], new List<string>() { finalRecDateRange });
             selectedFilters.Add(FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.AdvancedFilters], advancedFilters);
-            selectedFilters.Add(FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.ProjectNumber], FilterValues.projectNumber);
-            selectedFilters.Add(FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.WbsElement], FilterValues.wbsElement);
-            selectedFilters.Add(FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.Material], FilterValues.material);
-            selectedFilters.Add(FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.MaterialGroup], FilterValues.materialGroup);
-            selectedFilters.Add(FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.Vendor], FilterValues.vendor);
-            selectedFilters.Add(FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.VendorDesciption], FilterValues.vendorDesc);
-            selectedFilters.Add(FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.PrPurchGroup], FilterValues.purchGroup);
-            selectedFilters.Add(FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.PoPurchGroup], FilterValues.poPurchGroup);
-            selectedFilters.Add(FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.IrSuppName], FilterValues.irSuppName);
-            selectedFilters.Add(FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.FxdSuppName], FilterValues.fxdSuppName);
-            selectedFilters.Add(FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.DsrdSuppName], FilterValues.dsrdSuppName);
-            selectedFilters.Add(FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.CommCategory], FilterValues.commCategory);
-            selectedFilters.Add(FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.Escaped], FilterValues.escaped);
-            selectedFilters.Add(FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.PoDocType], FilterValues.poDocumentType);
-            selectedFilters.Add(FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.ProdOrdMaterial], FilterValues.prodOrderMat);
+            selectedFilters.Add(FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.ProjectNumber], ColumnFilters.projectNumber);
+            selectedFilters.Add(FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.WbsElement], ColumnFilters.wbsElement);
+            selectedFilters.Add(FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.Material], ColumnFilters.material);
+            selectedFilters.Add(FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.MaterialGroup], ColumnFilters.materialGroup);
+            selectedFilters.Add(FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.Vendor], ColumnFilters.vendor);
+            selectedFilters.Add(FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.VendorDesciption], ColumnFilters.vendorDesc);
+            selectedFilters.Add(FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.PrPurchGroup], ColumnFilters.purchGroup);
+            selectedFilters.Add(FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.PoPurchGroup], ColumnFilters.poPurchGroup);
+            selectedFilters.Add(FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.IrSuppName], ColumnFilters.irSuppName);
+            selectedFilters.Add(FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.FxdSuppName], ColumnFilters.fxdSuppName);
+            selectedFilters.Add(FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.DsrdSuppName], ColumnFilters.dsrdSuppName);
+            selectedFilters.Add(FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.CommCategory], ColumnFilters.commCategory);
+            selectedFilters.Add(FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.Escaped], ColumnFilters.escaped);
+            selectedFilters.Add(FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.PoDocType], ColumnFilters.poDocumentType);
+            selectedFilters.Add(FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.ProdOrdMaterial], ColumnFilters.prodOrderMat);
 
 
             return selectedFilters;
         }
+        #endregion
     }
 }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
-
+using KPA_KPI_Analyzer.FilterFeeature;
 
 namespace KPA_KPI_Analyzer.FilterFeeature
 {
@@ -432,7 +432,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
             DateTime poTestDate = new DateTime(poYear, poMonth, poDay);
 
-            if (poTestDate < FilterFeeature.Filters.PoFromDate || poTestDate > FilterFeeature.Filters.PoToDate)
+            if (poTestDate < FilterFeeature.Filters.DateFilters.PoFromDate || poTestDate > FilterFeeature.Filters.DateFilters.PoToDate)
             {
                 // The PO date is not within the PO date range.
                 return false;
@@ -458,7 +458,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             int reqDay = int.Parse(requisnDate[1].TrimStart('0'));
             DateTime reqTestDate = new DateTime(reqYear, reqMonth, reqDay);
 
-            if (reqTestDate < FilterFeeature.Filters.PrFromDate || reqTestDate > FilterFeeature.Filters.PrToDate)
+            if (reqTestDate < FilterFeeature.Filters.DateFilters.PrFromDate || reqTestDate > FilterFeeature.Filters.DateFilters.PrToDate)
             {
                 // The PR date is not within the PR date range.
                 return false;
@@ -495,7 +495,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
             DateTime finalRecDate = new DateTime(finRecYear, finRecMonth, finRecDay);
 
-            if (finalRecDate < FilterFeeature.Filters.FinalReceiptFromDate || finalRecDate > FilterFeeature.Filters.FinalReceiptToDate)
+            if (finalRecDate < FilterFeeature.Filters.DateFilters.FinalReceiptFromDate || finalRecDate > FilterFeeature.Filters.DateFilters.FinalReceiptToDate)
             {
                 // This records final receipt date is not within the filters final receipt date range.
                 return false;
@@ -516,7 +516,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
         /// <param name="dr"></param>
         public static bool CheckAdvancedFilters(DataRow dr)
         {
-            if(!AdvancedFilters.FilterByServicePrPo)
+            if(!FilterFeeature.Filters.AdvancedFilters.FilterByServicePrPo)
             {
                 string temp = dr["PR ItemCat1"].ToString();
                 if(temp != string.Empty)
@@ -529,7 +529,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             }
 
 
-            if (!AdvancedFilters.FilterBySteelPrPo)
+            if (!FilterFeeature.Filters.AdvancedFilters.FilterBySteelPrPo)
             {
                 string material = dr["Material"].ToString();
                 if (material.Contains("TAL-ST"))
@@ -539,7 +539,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             }
 
 
-            if (!AdvancedFilters.FilterByPouPrPo)
+            if (!FilterFeeature.Filters.AdvancedFilters.FilterByPouPrPo)
             {
                 string docType = dr["Document Type"].ToString();
                 if (docType.Contains("POU"))
@@ -549,7 +549,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             }
 
 
-            if (!AdvancedFilters.FilterByIntercompPo)
+            if (!FilterFeeature.Filters.AdvancedFilters.FilterByIntercompPo)
             {
                 string vendorDesc = dr["Vendor Description"].ToString();
                 if (vendorDesc.Contains("COMAU"))
@@ -559,7 +559,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             }
 
 
-            if (!AdvancedFilters.FilterByCodifiedMatNonSubcont)
+            if (!FilterFeeature.Filters.AdvancedFilters.FilterByCodifiedMatNonSubcont)
             {
                 if (dr["Material"].ToString() != string.Empty)
                 {
@@ -568,7 +568,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             }
 
 
-            if (!AdvancedFilters.FilterByCodifiedMatSubcont)
+            if (!FilterFeeature.Filters.AdvancedFilters.FilterByCodifiedMatSubcont)
             {
                 if (dr["Prd Ord Mat"].ToString() != string.Empty)
                 {
@@ -577,7 +577,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             }
 
 
-            if (!AdvancedFilters.FilterByManualPr)
+            if (!FilterFeeature.Filters.AdvancedFilters.FilterByManualPr)
             {
                 string material = dr["Material"].ToString();
                 string prdOrdMat = dr["Prd Ord Mat"].ToString();

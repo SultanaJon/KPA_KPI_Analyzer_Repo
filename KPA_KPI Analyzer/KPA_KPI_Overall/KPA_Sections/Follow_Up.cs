@@ -70,7 +70,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
 
                 foreach (DataRow dr in dt.Rows)
                 {
-                    if (Filters.FilterByPrDateRange)
+                    if (Filters.DateFilters.FilterByPrDateRange)
                     {
                         if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
                         {
@@ -79,7 +79,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                         }
                     }
 
-                    if (Filters.FilterByPoDateRange)
+                    if (Filters.DateFilters.FilterByPoDateRange)
                     {
                         if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
                         {
@@ -88,7 +88,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                         }
                     }
 
-                    if (Filters.FilterByFinalReceiptDate)
+                    if (Filters.DateFilters.FilterByFinalReceiptDate)
                     {
                         if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
                         {
@@ -98,7 +98,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                     }
 
 
-                    if (AdvancedFilters.AdvanceFiltersChanged())
+                    if (Filters.AdvancedFilters.AdvanceFiltersChanged())
                     {
                         // We have some advanced filters that the user would like to exclude.
                         if (!FilterUtils.CheckAdvancedFilters(dr))
@@ -198,7 +198,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
 
                 foreach (DataRow dr in dt.Rows)
                 {
-                    if (Filters.FilterByPrDateRange)
+                    if (Filters.DateFilters.FilterByPrDateRange)
                     {
                         if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
                         {
@@ -207,7 +207,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                         }
                     }
 
-                    if (Filters.FilterByPoDateRange)
+                    if (Filters.DateFilters.FilterByPoDateRange)
                     {
                         if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
                         {
@@ -216,7 +216,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                         }
                     }
 
-                    if (Filters.FilterByFinalReceiptDate)
+                    if (Filters.DateFilters.FilterByFinalReceiptDate)
                     {
                         if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
                         {
@@ -226,7 +226,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                     }
 
 
-                    if (AdvancedFilters.AdvanceFiltersChanged())
+                    if (Filters.AdvancedFilters.AdvanceFiltersChanged())
                     {
                         // We have some advanced filters that the user would like to exclude.
                         if (!FilterUtils.CheckAdvancedFilters(dr))
@@ -305,7 +305,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
 
                 foreach (DataRow dr in dt.Rows)
                 {
-                    if (Filters.FilterByPrDateRange)
+                    if (Filters.DateFilters.FilterByPrDateRange)
                     {
                         if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
                         {
@@ -314,7 +314,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                         }
                     }
 
-                    if (Filters.FilterByPoDateRange)
+                    if (Filters.DateFilters.FilterByPoDateRange)
                     {
                         if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
                         {
@@ -323,7 +323,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                         }
                     }
 
-                    if (Filters.FilterByFinalReceiptDate)
+                    if (Filters.DateFilters.FilterByFinalReceiptDate)
                     {
                         if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
                         {
@@ -333,7 +333,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                     }
 
 
-                    if (AdvancedFilters.AdvanceFiltersChanged())
+                    if (Filters.AdvancedFilters.AdvanceFiltersChanged())
                     {
                         // We have some advanced filters that the user would like to exclude.
                         if (!FilterUtils.CheckAdvancedFilters(dr))
