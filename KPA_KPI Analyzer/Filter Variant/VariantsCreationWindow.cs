@@ -18,10 +18,14 @@ namespace KPA_KPI_Analyzer.Filter_Variant
         public string VariantName { get; set; }
 
 
+
+
         /// <summary>
         /// A breif description of this variant.
         /// </summary>
         public string VariantDescription { get; set; }
+
+
 
 
 
@@ -32,6 +36,8 @@ namespace KPA_KPI_Analyzer.Filter_Variant
         {
             InitializeComponent();
         }
+
+
 
 
 

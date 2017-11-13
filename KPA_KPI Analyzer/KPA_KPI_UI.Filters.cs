@@ -220,8 +220,10 @@ namespace KPA_KPI_Analyzer
 
 
 
+
+
         /// <summary>
-        /// 
+        /// Returns the active Check List Box Filters enumeration.
         /// </summary>
         /// <param name="tag"></param>
         /// <returns></returns>
@@ -631,7 +633,6 @@ namespace KPA_KPI_Analyzer
 
 
 
-
         /// <summary>
         /// Builds the query that consists of the filters that will load the data.
         /// </summary>
@@ -1019,8 +1020,6 @@ namespace KPA_KPI_Analyzer
                 }
             }
         }
-
-
 
 
 
@@ -1473,11 +1472,13 @@ namespace KPA_KPI_Analyzer
 
 
 
+
         /// <summary>
-        /// 
+        /// Add the check Indices of all the filter check list boxes and add them to the saved fitlers.
         /// </summary>
         private void GetCheckedColumnFilters()
         {
+            // Clear the selected fitlers and get the updated checked filters
             Filters.FilterValues.Clear();
 
             // Project Number
@@ -1683,10 +1684,23 @@ namespace KPA_KPI_Analyzer
                 AdvancedFiltersApplied = false;
             }
 
+
+
+
+            addVariantToolStripMenuItem.Enabled = false;
+
+            if (variantSettings.Variants.Count > 0)
+            {
+                // There are still variants saved. Allow the user to still view them.
+                viewVariantsToolStripMenuItem.Enabled = true;
+            }
+
+
+            // Check the filter status to update the variant tools.
+            UpdateVariantTools();
+
             InitializeDataLoadProcess();
         }
-
-
 
 
 
@@ -1701,15 +1715,16 @@ namespace KPA_KPI_Analyzer
             ResetFilters();
             UpdateFilterButtons();
             DataReader.LoadOverallData(ref overallData);
+
+            UpdateVariantTools();
             InitializeFilterLoadProcess();
         }
 
 
 
 
-
         /// <summary>
-        /// 
+        /// Resets the advanced filters to the state of checked.
         /// </summary>
         private void ResetAdvancedFilters()
         {
@@ -1731,7 +1746,7 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// 
+        /// Resets the program to the state of having no filters applied.
         /// </summary>
         private void ResetFilters()
         {
@@ -1755,7 +1770,6 @@ namespace KPA_KPI_Analyzer
             DateFiltersApplied = false;
             ResetAdvancedFilters();
         }
-
 
 
 
@@ -1800,7 +1814,7 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// 
+        /// Enables the apply filters button.
         /// </summary>
         private void EnableApplyFiltersButton()
         {
@@ -1810,8 +1824,11 @@ namespace KPA_KPI_Analyzer
         }
 
 
+
+
+
         /// <summary>
-        /// 
+        /// Enables the clear selected filter button.
         /// </summary>
         private void EnableClearSelectedButton()
         {
@@ -1819,9 +1836,13 @@ namespace KPA_KPI_Analyzer
             btn_clearSelected.BackColor = System.Drawing.Color.DarkSlateGray;
             btn_clearSelected.ForeColor = System.Drawing.SystemColors.ButtonFace;
         }
+        
 
 
 
+        /// <summary>
+        /// Enables the clear filters button.
+        /// </summary>
         private void EnableClearFiltersButton()
         {
             btn_clearFilters.Enabled = true;
@@ -1830,44 +1851,16 @@ namespace KPA_KPI_Analyzer
         }
 
 
+
+
         /// <summary>
-        /// 
+        /// Disables the instance button passed in as a parameter.
         /// </summary>
         private void DisableButton(Button btn)
         {
             btn.Enabled = false;
             btn.BackColor = System.Drawing.Color.LightGray;
             btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
-        }
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private void UpdateFilterButtons()
-        {
-            HasFiltersAdded();
-            if(ColumnFiltersAdded || DateFiltersAdded || AdvancedFiltersAdded)
-            {
-                EnableApplyFiltersButton();
-                EnableClearSelectedButton();
-            }
-            else
-            {
-                DisableButton(btn_applyFilters);
-                DisableButton(btn_clearSelected);
-            }
-
-
-            if(ColumnFiltersApplied || DateFiltersApplied || AdvancedFiltersApplied)
-            {
-                EnableClearFiltersButton();
-            }
-            else
-            {
-                DisableButton(btn_clearFilters);
-            }
         }
 
 
@@ -1959,12 +1952,46 @@ namespace KPA_KPI_Analyzer
             }
             return false;
         }
-        
+
+
 
 
 
         /// <summary>
-        /// 
+        /// Determines if the apply, clear, and clear selected buttons should be enabled or disabled.
+        /// </summary>
+        private void UpdateFilterButtons()
+        {
+            HasFiltersAdded();
+            if (ColumnFiltersAdded || DateFiltersAdded || AdvancedFiltersAdded)
+            {
+                EnableApplyFiltersButton();
+                EnableClearSelectedButton();
+            }
+            else
+            {
+                DisableButton(btn_applyFilters);
+                DisableButton(btn_clearSelected);
+            }
+
+
+            if (ColumnFiltersApplied || DateFiltersApplied || AdvancedFiltersApplied)
+            {
+                EnableClearFiltersButton();
+            }
+            else
+            {
+                DisableButton(btn_clearFilters);
+            }
+        }
+
+
+
+
+
+
+        /// <summary>
+        /// Checks if the user has selected to filter by date ranges or advanced filters.
         /// </summary>
         public void CheckFilters(int tag)
         {
@@ -2093,7 +2120,7 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// 
+        /// Load all the date ranges and advanced filter check boxes into a list of checkboxes.
         /// </summary>
         public void GetCheckBoxControls()
         {
@@ -2113,7 +2140,7 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// 
+        /// When the state of a checkbox changes, this event will trigger.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -2136,7 +2163,7 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// 
+        /// When a user clicks a label associated with date ranges or advanced filters, this event will trigger.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

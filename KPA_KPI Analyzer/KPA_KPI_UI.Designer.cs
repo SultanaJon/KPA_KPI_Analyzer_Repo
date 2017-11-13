@@ -42,9 +42,17 @@
             this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.overallDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.filtersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addVariantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.viewVariantsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnl_topPanel = new System.Windows.Forms.Panel();
+            this.pnl_Minimize = new System.Windows.Forms.Panel();
+            this.pnl_Maximize = new System.Windows.Forms.Panel();
+            this.pnl_Close = new System.Windows.Forms.Panel();
             this.pnl_titlePanel = new System.Windows.Forms.Panel();
             this.lbl_title = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.pnl_logo = new System.Windows.Forms.Panel();
             this.ImportTimer = new System.Windows.Forms.Timer(this.components);
             this.DataRemovalTimer = new System.Windows.Forms.Timer(this.components);
             this.pnl_activePage = new System.Windows.Forms.Panel();
@@ -53,6 +61,7 @@
             this.panel9 = new System.Windows.Forms.Panel();
             this.cpb_loadingScreenCircProgBar = new CircularProgressBar.CircularProgressBar();
             this.tblpnl_DashbaordPage = new System.Windows.Forms.TableLayoutPanel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.pnl_ViewPrintReports = new System.Windows.Forms.Panel();
             this.lbl_dashboardDate = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel16 = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -159,6 +168,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.btn_dashboardCancel = new Bunifu.Framework.UI.BunifuFlatButton();
             this.pnl_NavigationPanelMax = new System.Windows.Forms.Panel();
+            this.btn_Filters = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btn_Correlation = new Bunifu.Framework.UI.BunifuFlatButton();
             this.pnl_KPISectionsPanel = new System.Windows.Forms.Panel();
             this.btn_kpiOther = new System.Windows.Forms.Button();
             this.btn_kpiPurchPlanTotal = new System.Windows.Forms.Button();
@@ -171,6 +182,7 @@
             this.btn_kpiPurchOne = new System.Windows.Forms.Button();
             this.btn_kpiPlanOne = new System.Windows.Forms.Button();
             this.btn_kpiOverall = new System.Windows.Forms.Button();
+            this.btn_KPI = new Bunifu.Framework.UI.BunifuFlatButton();
             this.pnl_KPASectionsPanel = new System.Windows.Forms.Panel();
             this.btn_kpaCurrentPlanActual = new System.Windows.Forms.Button();
             this.btn_kpaExcessStock_OpenOrder = new System.Windows.Forms.Button();
@@ -185,9 +197,13 @@
             this.btn_kpaPurch = new System.Windows.Forms.Button();
             this.btn_kpaPlan = new System.Windows.Forms.Button();
             this.btn_kpaOverall = new System.Windows.Forms.Button();
+            this.btn_KPA = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btn_Dashboard = new Bunifu.Framework.UI.BunifuFlatButton();
             this.tblpnl_DragDrop = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.pnl_MainNavigation = new System.Windows.Forms.Panel();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
             this.pnl_CountrySelectorButton = new System.Windows.Forms.Panel();
             this.lbl_Country = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel3 = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -211,22 +227,6 @@
             this.dc_titlePanel = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.be_mainUI = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.be_note = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btn_Filters = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.btn_Correlation = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.btn_KPI = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.btn_KPA = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.btn_Dashboard = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.pnl_Minimize = new System.Windows.Forms.Panel();
-            this.pnl_Maximize = new System.Windows.Forms.Panel();
-            this.pnl_Close = new System.Windows.Forms.Panel();
-            this.pnl_logo = new System.Windows.Forms.Panel();
-            this.filtersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addVariantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.viewVariantsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnl_menuStrip.SuspendLayout();
             this.ms_applicaitonMenuStrip.SuspendLayout();
             this.pnl_topPanel.SuspendLayout();
@@ -381,6 +381,37 @@
             this.overallDataToolStripMenuItem.Text = "Overall Data";
             this.overallDataToolStripMenuItem.Click += new System.EventHandler(this.overallDataToolStripMenuItem_Click);
             // 
+            // filtersToolStripMenuItem
+            // 
+            this.filtersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.viewVariantsToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.addVariantToolStripMenuItem});
+            this.filtersToolStripMenuItem.Name = "filtersToolStripMenuItem";
+            this.filtersToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.filtersToolStripMenuItem.Text = "Filters";
+            // 
+            // addVariantToolStripMenuItem
+            // 
+            this.addVariantToolStripMenuItem.Enabled = false;
+            this.addVariantToolStripMenuItem.Name = "addVariantToolStripMenuItem";
+            this.addVariantToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addVariantToolStripMenuItem.Text = "Add Variant";
+            this.addVariantToolStripMenuItem.Click += new System.EventHandler(this.addVariantToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+            // 
+            // viewVariantsToolStripMenuItem
+            // 
+            this.viewVariantsToolStripMenuItem.Enabled = false;
+            this.viewVariantsToolStripMenuItem.Name = "viewVariantsToolStripMenuItem";
+            this.viewVariantsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.viewVariantsToolStripMenuItem.Text = "View Variants";
+            this.viewVariantsToolStripMenuItem.Click += new System.EventHandler(this.viewVariantsToolStripMenuItem_Click);
+            // 
             // pnl_topPanel
             // 
             this.pnl_topPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
@@ -396,6 +427,45 @@
             this.pnl_topPanel.Size = new System.Drawing.Size(1200, 25);
             this.pnl_topPanel.TabIndex = 0;
             this.pnl_topPanel.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pnl_TopPanel_MouseDoubleClick);
+            // 
+            // pnl_Minimize
+            // 
+            this.pnl_Minimize.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.Minimize;
+            this.pnl_Minimize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pnl_Minimize.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnl_Minimize.Location = new System.Drawing.Point(1050, 0);
+            this.pnl_Minimize.Name = "pnl_Minimize";
+            this.pnl_Minimize.Size = new System.Drawing.Size(50, 25);
+            this.pnl_Minimize.TabIndex = 4;
+            this.pnl_Minimize.Click += new System.EventHandler(this.btn_Minimize_Click);
+            this.pnl_Minimize.MouseLeave += new System.EventHandler(this.btn_Minimize_MouseLeave);
+            this.pnl_Minimize.MouseHover += new System.EventHandler(this.btn_Minimize_MouseEnter);
+            // 
+            // pnl_Maximize
+            // 
+            this.pnl_Maximize.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.Maximize;
+            this.pnl_Maximize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pnl_Maximize.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnl_Maximize.Location = new System.Drawing.Point(1100, 0);
+            this.pnl_Maximize.Name = "pnl_Maximize";
+            this.pnl_Maximize.Size = new System.Drawing.Size(50, 25);
+            this.pnl_Maximize.TabIndex = 3;
+            this.pnl_Maximize.Click += new System.EventHandler(this.btn_Expand_Click);
+            this.pnl_Maximize.MouseLeave += new System.EventHandler(this.btn_Expand_MouseLeave);
+            this.pnl_Maximize.MouseHover += new System.EventHandler(this.btn_Expand_MouseHover);
+            // 
+            // pnl_Close
+            // 
+            this.pnl_Close.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.Close;
+            this.pnl_Close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pnl_Close.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnl_Close.Location = new System.Drawing.Point(1150, 0);
+            this.pnl_Close.Name = "pnl_Close";
+            this.pnl_Close.Size = new System.Drawing.Size(50, 25);
+            this.pnl_Close.TabIndex = 2;
+            this.pnl_Close.Click += new System.EventHandler(this.btn_Close_Click);
+            this.pnl_Close.MouseLeave += new System.EventHandler(this.btn_Close_MouseLeave);
+            this.pnl_Close.MouseHover += new System.EventHandler(this.btn_Close_MouseHover);
             // 
             // pnl_titlePanel
             // 
@@ -415,6 +485,16 @@
             this.lbl_title.Size = new System.Drawing.Size(97, 13);
             this.lbl_title.TabIndex = 0;
             this.lbl_title.Text = "KPA - KPI Analyzer";
+            // 
+            // pnl_logo
+            // 
+            this.pnl_logo.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.comau_logo;
+            this.pnl_logo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pnl_logo.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnl_logo.Location = new System.Drawing.Point(0, 0);
+            this.pnl_logo.Name = "pnl_logo";
+            this.pnl_logo.Size = new System.Drawing.Size(50, 25);
+            this.pnl_logo.TabIndex = 0;
             // 
             // ImportTimer
             // 
@@ -529,6 +609,22 @@
             this.tblpnl_DashbaordPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30.01605F));
             this.tblpnl_DashbaordPage.Size = new System.Drawing.Size(1200, 623);
             this.tblpnl_DashbaordPage.TabIndex = 52;
+            // 
+            // panel2
+            // 
+            this.panel2.AllowDrop = true;
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.dragDropLargeCenter;
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.tblpnl_DashbaordPage.SetColumnSpan(this.panel2, 3);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(10, 10);
+            this.panel2.Margin = new System.Windows.Forms.Padding(10, 10, 5, 5);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(885, 244);
+            this.panel2.TabIndex = 9;
+            this.panel2.DragDrop += new System.Windows.Forms.DragEventHandler(this.pnl_DragDropArea_DragDrop);
+            this.panel2.DragEnter += new System.Windows.Forms.DragEventHandler(this.pnl_DragDropArea_DragEnter);
             // 
             // pnl_ViewPrintReports
             // 
@@ -868,7 +964,7 @@
             // 
             // chkBox_PoDateRange
             // 
-            this.chkBox_PoDateRange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
+            this.chkBox_PoDateRange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.chkBox_PoDateRange.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.chkBox_PoDateRange.Checked = false;
             this.chkBox_PoDateRange.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
@@ -882,7 +978,7 @@
             // 
             // chkBox_FinalReceiptDate
             // 
-            this.chkBox_FinalReceiptDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
+            this.chkBox_FinalReceiptDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.chkBox_FinalReceiptDate.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.chkBox_FinalReceiptDate.Checked = false;
             this.chkBox_FinalReceiptDate.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
@@ -896,7 +992,7 @@
             // 
             // chkBox_PrDateRange
             // 
-            this.chkBox_PrDateRange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
+            this.chkBox_PrDateRange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.chkBox_PrDateRange.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.chkBox_PrDateRange.Checked = false;
             this.chkBox_PrDateRange.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
@@ -2095,6 +2191,85 @@
             this.pnl_NavigationPanelMax.TabIndex = 0;
             this.pnl_NavigationPanelMax.Leave += new System.EventHandler(this.pnl_NavigationPanelMax_Leave);
             // 
+            // btn_Filters
+            // 
+            this.btn_Filters.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
+            this.btn_Filters.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
+            this.btn_Filters.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_Filters.BorderRadius = 0;
+            this.btn_Filters.ButtonText = "  Filters";
+            this.btn_Filters.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Filters.DisabledColor = System.Drawing.Color.Gray;
+            this.btn_Filters.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_Filters.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Filters.Iconcolor = System.Drawing.Color.Transparent;
+            this.btn_Filters.Iconimage = global::KPA_KPI_Analyzer.Properties.Resources.FiltersLogo;
+            this.btn_Filters.Iconimage_right = null;
+            this.btn_Filters.Iconimage_right_Selected = null;
+            this.btn_Filters.Iconimage_Selected = null;
+            this.btn_Filters.IconMarginLeft = 0;
+            this.btn_Filters.IconMarginRight = 0;
+            this.btn_Filters.IconRightVisible = true;
+            this.btn_Filters.IconRightZoom = 0D;
+            this.btn_Filters.IconVisible = true;
+            this.btn_Filters.IconZoom = 100D;
+            this.btn_Filters.IsTab = false;
+            this.btn_Filters.Location = new System.Drawing.Point(0, 744);
+            this.btn_Filters.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_Filters.Name = "btn_Filters";
+            this.btn_Filters.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
+            this.btn_Filters.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(218)))), ((int)(((byte)(207)))));
+            this.btn_Filters.OnHoverTextColor = System.Drawing.Color.White;
+            this.btn_Filters.selected = false;
+            this.btn_Filters.Size = new System.Drawing.Size(228, 48);
+            this.btn_Filters.TabIndex = 24;
+            this.btn_Filters.Tag = "4";
+            this.btn_Filters.Text = "  Filters";
+            this.btn_Filters.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Filters.Textcolor = System.Drawing.Color.White;
+            this.btn_Filters.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Filters.Click += new System.EventHandler(this.mainNavButton_Click);
+            // 
+            // btn_Correlation
+            // 
+            this.btn_Correlation.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(163)))), ((int)(((byte)(156)))));
+            this.btn_Correlation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(163)))), ((int)(((byte)(156)))));
+            this.btn_Correlation.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_Correlation.BorderRadius = 0;
+            this.btn_Correlation.ButtonText = "  Correlation";
+            this.btn_Correlation.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Correlation.DisabledColor = System.Drawing.Color.Gray;
+            this.btn_Correlation.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_Correlation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Correlation.Iconcolor = System.Drawing.Color.Transparent;
+            this.btn_Correlation.Iconimage = global::KPA_KPI_Analyzer.Properties.Resources.kpiLogo;
+            this.btn_Correlation.Iconimage_right = null;
+            this.btn_Correlation.Iconimage_right_Selected = null;
+            this.btn_Correlation.Iconimage_Selected = null;
+            this.btn_Correlation.IconMarginLeft = 0;
+            this.btn_Correlation.IconMarginRight = 0;
+            this.btn_Correlation.IconRightVisible = true;
+            this.btn_Correlation.IconRightZoom = 0D;
+            this.btn_Correlation.IconVisible = true;
+            this.btn_Correlation.IconZoom = 90D;
+            this.btn_Correlation.IsTab = false;
+            this.btn_Correlation.Location = new System.Drawing.Point(0, 696);
+            this.btn_Correlation.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_Correlation.Name = "btn_Correlation";
+            this.btn_Correlation.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(163)))), ((int)(((byte)(156)))));
+            this.btn_Correlation.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(183)))), ((int)(((byte)(176)))));
+            this.btn_Correlation.OnHoverTextColor = System.Drawing.Color.White;
+            this.btn_Correlation.selected = false;
+            this.btn_Correlation.Size = new System.Drawing.Size(228, 48);
+            this.btn_Correlation.TabIndex = 21;
+            this.btn_Correlation.Tag = "5";
+            this.btn_Correlation.Text = "  Correlation";
+            this.btn_Correlation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Correlation.Textcolor = System.Drawing.Color.White;
+            this.btn_Correlation.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Correlation.Visible = false;
+            this.btn_Correlation.Click += new System.EventHandler(this.mainNavButton_Click);
+            // 
             // pnl_KPISectionsPanel
             // 
             this.pnl_KPISectionsPanel.AutoSize = true;
@@ -2326,6 +2501,45 @@
             this.btn_kpiOverall.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_kpiOverall.UseVisualStyleBackColor = false;
             this.btn_kpiOverall.Click += new System.EventHandler(this.sectionBtn_Click);
+            // 
+            // btn_KPI
+            // 
+            this.btn_KPI.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(163)))), ((int)(((byte)(156)))));
+            this.btn_KPI.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(163)))), ((int)(((byte)(156)))));
+            this.btn_KPI.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_KPI.BorderRadius = 0;
+            this.btn_KPI.ButtonText = "  KPIs";
+            this.btn_KPI.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_KPI.DisabledColor = System.Drawing.Color.Gray;
+            this.btn_KPI.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_KPI.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_KPI.Iconcolor = System.Drawing.Color.Transparent;
+            this.btn_KPI.Iconimage = global::KPA_KPI_Analyzer.Properties.Resources.kpiLogo;
+            this.btn_KPI.Iconimage_right = null;
+            this.btn_KPI.Iconimage_right_Selected = null;
+            this.btn_KPI.Iconimage_Selected = null;
+            this.btn_KPI.IconMarginLeft = 0;
+            this.btn_KPI.IconMarginRight = 0;
+            this.btn_KPI.IconRightVisible = true;
+            this.btn_KPI.IconRightZoom = 0D;
+            this.btn_KPI.IconVisible = true;
+            this.btn_KPI.IconZoom = 90D;
+            this.btn_KPI.IsTab = false;
+            this.btn_KPI.Location = new System.Drawing.Point(0, 395);
+            this.btn_KPI.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_KPI.Name = "btn_KPI";
+            this.btn_KPI.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(163)))), ((int)(((byte)(156)))));
+            this.btn_KPI.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(183)))), ((int)(((byte)(176)))));
+            this.btn_KPI.OnHoverTextColor = System.Drawing.Color.White;
+            this.btn_KPI.selected = false;
+            this.btn_KPI.Size = new System.Drawing.Size(228, 48);
+            this.btn_KPI.TabIndex = 2;
+            this.btn_KPI.Tag = "2";
+            this.btn_KPI.Text = "  KPIs";
+            this.btn_KPI.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_KPI.Textcolor = System.Drawing.Color.White;
+            this.btn_KPI.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_KPI.Click += new System.EventHandler(this.mainNavButton_Click);
             // 
             // pnl_KPASectionsPanel
             // 
@@ -2598,6 +2812,84 @@
             this.btn_kpaOverall.UseVisualStyleBackColor = false;
             this.btn_kpaOverall.Click += new System.EventHandler(this.sectionBtn_Click);
             // 
+            // btn_KPA
+            // 
+            this.btn_KPA.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(188)))), ((int)(((byte)(155)))));
+            this.btn_KPA.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(188)))), ((int)(((byte)(155)))));
+            this.btn_KPA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_KPA.BorderRadius = 0;
+            this.btn_KPA.ButtonText = "  KPAs";
+            this.btn_KPA.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_KPA.DisabledColor = System.Drawing.Color.Gray;
+            this.btn_KPA.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_KPA.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_KPA.Iconcolor = System.Drawing.Color.Transparent;
+            this.btn_KPA.Iconimage = global::KPA_KPI_Analyzer.Properties.Resources.kpaLogo;
+            this.btn_KPA.Iconimage_right = null;
+            this.btn_KPA.Iconimage_right_Selected = null;
+            this.btn_KPA.Iconimage_Selected = null;
+            this.btn_KPA.IconMarginLeft = 0;
+            this.btn_KPA.IconMarginRight = 0;
+            this.btn_KPA.IconRightVisible = true;
+            this.btn_KPA.IconRightZoom = 0D;
+            this.btn_KPA.IconVisible = true;
+            this.btn_KPA.IconZoom = 75D;
+            this.btn_KPA.IsTab = false;
+            this.btn_KPA.Location = new System.Drawing.Point(0, 48);
+            this.btn_KPA.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_KPA.Name = "btn_KPA";
+            this.btn_KPA.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(188)))), ((int)(((byte)(155)))));
+            this.btn_KPA.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(208)))), ((int)(((byte)(175)))));
+            this.btn_KPA.OnHoverTextColor = System.Drawing.Color.White;
+            this.btn_KPA.selected = false;
+            this.btn_KPA.Size = new System.Drawing.Size(228, 48);
+            this.btn_KPA.TabIndex = 3;
+            this.btn_KPA.Tag = "1";
+            this.btn_KPA.Text = "  KPAs";
+            this.btn_KPA.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_KPA.Textcolor = System.Drawing.Color.White;
+            this.btn_KPA.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_KPA.Click += new System.EventHandler(this.mainNavButton_Click);
+            // 
+            // btn_Dashboard
+            // 
+            this.btn_Dashboard.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(201)))), ((int)(((byte)(169)))));
+            this.btn_Dashboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(201)))), ((int)(((byte)(169)))));
+            this.btn_Dashboard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_Dashboard.BorderRadius = 0;
+            this.btn_Dashboard.ButtonText = "Dashboard";
+            this.btn_Dashboard.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Dashboard.DisabledColor = System.Drawing.Color.Gray;
+            this.btn_Dashboard.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_Dashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Dashboard.Iconcolor = System.Drawing.Color.Transparent;
+            this.btn_Dashboard.Iconimage = global::KPA_KPI_Analyzer.Properties.Resources.DashboardLogo;
+            this.btn_Dashboard.Iconimage_right = null;
+            this.btn_Dashboard.Iconimage_right_Selected = null;
+            this.btn_Dashboard.Iconimage_Selected = null;
+            this.btn_Dashboard.IconMarginLeft = 0;
+            this.btn_Dashboard.IconMarginRight = 0;
+            this.btn_Dashboard.IconRightVisible = false;
+            this.btn_Dashboard.IconRightZoom = 0D;
+            this.btn_Dashboard.IconVisible = true;
+            this.btn_Dashboard.IconZoom = 100D;
+            this.btn_Dashboard.IsTab = false;
+            this.btn_Dashboard.Location = new System.Drawing.Point(0, 0);
+            this.btn_Dashboard.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_Dashboard.Name = "btn_Dashboard";
+            this.btn_Dashboard.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(201)))), ((int)(((byte)(169)))));
+            this.btn_Dashboard.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(221)))), ((int)(((byte)(189)))));
+            this.btn_Dashboard.OnHoverTextColor = System.Drawing.Color.White;
+            this.btn_Dashboard.selected = false;
+            this.btn_Dashboard.Size = new System.Drawing.Size(228, 48);
+            this.btn_Dashboard.TabIndex = 23;
+            this.btn_Dashboard.Tag = "0";
+            this.btn_Dashboard.Text = "Dashboard";
+            this.btn_Dashboard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Dashboard.Textcolor = System.Drawing.Color.White;
+            this.btn_Dashboard.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Dashboard.Click += new System.EventHandler(this.mainNavButton_Click);
+            // 
             // tblpnl_DragDrop
             // 
             this.tblpnl_DragDrop.ColumnCount = 2;
@@ -2615,6 +2907,23 @@
             this.tblpnl_DragDrop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tblpnl_DragDrop.Size = new System.Drawing.Size(1200, 623);
             this.tblpnl_DragDrop.TabIndex = 54;
+            // 
+            // panel1
+            // 
+            this.panel1.AllowDrop = true;
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.dragDropLargeCenter;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.tblpnl_DragDrop.SetColumnSpan(this.panel1, 2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(10, 10);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
+            this.panel1.Name = "panel1";
+            this.tblpnl_DragDrop.SetRowSpan(this.panel1, 2);
+            this.panel1.Size = new System.Drawing.Size(1180, 603);
+            this.panel1.TabIndex = 0;
+            this.panel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.pnl_DragDropArea_DragDrop);
+            this.panel1.DragEnter += new System.Windows.Forms.DragEventHandler(this.pnl_DragDropArea_DragEnter);
             // 
             // pnl_MainNavigation
             // 
@@ -2653,6 +2962,20 @@
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel14.Size = new System.Drawing.Size(1200, 51);
             this.tableLayoutPanel14.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.Menu;
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Margin = new System.Windows.Forms.Padding(0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(50, 51);
+            this.button1.TabIndex = 4;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.btn_NavExpander_Click);
             // 
             // pnl_CountrySelectorButton
             // 
@@ -2869,327 +3192,6 @@
             // 
             this.be_note.ElipseRadius = 5;
             this.be_note.TargetControl = this.pnl_note;
-            // 
-            // panel2
-            // 
-            this.panel2.AllowDrop = true;
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.dragDropLargeCenter;
-            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.tblpnl_DashbaordPage.SetColumnSpan(this.panel2, 3);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(10, 10);
-            this.panel2.Margin = new System.Windows.Forms.Padding(10, 10, 5, 5);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(885, 244);
-            this.panel2.TabIndex = 9;
-            this.panel2.DragDrop += new System.Windows.Forms.DragEventHandler(this.pnl_DragDropArea_DragDrop);
-            this.panel2.DragEnter += new System.Windows.Forms.DragEventHandler(this.pnl_DragDropArea_DragEnter);
-            // 
-            // btn_Filters
-            // 
-            this.btn_Filters.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
-            this.btn_Filters.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
-            this.btn_Filters.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_Filters.BorderRadius = 0;
-            this.btn_Filters.ButtonText = "  Filters";
-            this.btn_Filters.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_Filters.DisabledColor = System.Drawing.Color.Gray;
-            this.btn_Filters.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_Filters.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Filters.Iconcolor = System.Drawing.Color.Transparent;
-            this.btn_Filters.Iconimage = global::KPA_KPI_Analyzer.Properties.Resources.FiltersLogo;
-            this.btn_Filters.Iconimage_right = null;
-            this.btn_Filters.Iconimage_right_Selected = null;
-            this.btn_Filters.Iconimage_Selected = null;
-            this.btn_Filters.IconMarginLeft = 0;
-            this.btn_Filters.IconMarginRight = 0;
-            this.btn_Filters.IconRightVisible = true;
-            this.btn_Filters.IconRightZoom = 0D;
-            this.btn_Filters.IconVisible = true;
-            this.btn_Filters.IconZoom = 100D;
-            this.btn_Filters.IsTab = false;
-            this.btn_Filters.Location = new System.Drawing.Point(0, 744);
-            this.btn_Filters.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_Filters.Name = "btn_Filters";
-            this.btn_Filters.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
-            this.btn_Filters.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(218)))), ((int)(((byte)(207)))));
-            this.btn_Filters.OnHoverTextColor = System.Drawing.Color.White;
-            this.btn_Filters.selected = false;
-            this.btn_Filters.Size = new System.Drawing.Size(228, 48);
-            this.btn_Filters.TabIndex = 24;
-            this.btn_Filters.Tag = "4";
-            this.btn_Filters.Text = "  Filters";
-            this.btn_Filters.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Filters.Textcolor = System.Drawing.Color.White;
-            this.btn_Filters.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Filters.Click += new System.EventHandler(this.mainNavButton_Click);
-            // 
-            // btn_Correlation
-            // 
-            this.btn_Correlation.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(163)))), ((int)(((byte)(156)))));
-            this.btn_Correlation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(163)))), ((int)(((byte)(156)))));
-            this.btn_Correlation.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_Correlation.BorderRadius = 0;
-            this.btn_Correlation.ButtonText = "  Correlation";
-            this.btn_Correlation.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_Correlation.DisabledColor = System.Drawing.Color.Gray;
-            this.btn_Correlation.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_Correlation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Correlation.Iconcolor = System.Drawing.Color.Transparent;
-            this.btn_Correlation.Iconimage = global::KPA_KPI_Analyzer.Properties.Resources.kpiLogo;
-            this.btn_Correlation.Iconimage_right = null;
-            this.btn_Correlation.Iconimage_right_Selected = null;
-            this.btn_Correlation.Iconimage_Selected = null;
-            this.btn_Correlation.IconMarginLeft = 0;
-            this.btn_Correlation.IconMarginRight = 0;
-            this.btn_Correlation.IconRightVisible = true;
-            this.btn_Correlation.IconRightZoom = 0D;
-            this.btn_Correlation.IconVisible = true;
-            this.btn_Correlation.IconZoom = 90D;
-            this.btn_Correlation.IsTab = false;
-            this.btn_Correlation.Location = new System.Drawing.Point(0, 696);
-            this.btn_Correlation.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_Correlation.Name = "btn_Correlation";
-            this.btn_Correlation.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(163)))), ((int)(((byte)(156)))));
-            this.btn_Correlation.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(183)))), ((int)(((byte)(176)))));
-            this.btn_Correlation.OnHoverTextColor = System.Drawing.Color.White;
-            this.btn_Correlation.selected = false;
-            this.btn_Correlation.Size = new System.Drawing.Size(228, 48);
-            this.btn_Correlation.TabIndex = 21;
-            this.btn_Correlation.Tag = "5";
-            this.btn_Correlation.Text = "  Correlation";
-            this.btn_Correlation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Correlation.Textcolor = System.Drawing.Color.White;
-            this.btn_Correlation.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Correlation.Visible = false;
-            this.btn_Correlation.Click += new System.EventHandler(this.mainNavButton_Click);
-            // 
-            // btn_KPI
-            // 
-            this.btn_KPI.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(163)))), ((int)(((byte)(156)))));
-            this.btn_KPI.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(163)))), ((int)(((byte)(156)))));
-            this.btn_KPI.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_KPI.BorderRadius = 0;
-            this.btn_KPI.ButtonText = "  KPIs";
-            this.btn_KPI.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_KPI.DisabledColor = System.Drawing.Color.Gray;
-            this.btn_KPI.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_KPI.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_KPI.Iconcolor = System.Drawing.Color.Transparent;
-            this.btn_KPI.Iconimage = global::KPA_KPI_Analyzer.Properties.Resources.kpiLogo;
-            this.btn_KPI.Iconimage_right = null;
-            this.btn_KPI.Iconimage_right_Selected = null;
-            this.btn_KPI.Iconimage_Selected = null;
-            this.btn_KPI.IconMarginLeft = 0;
-            this.btn_KPI.IconMarginRight = 0;
-            this.btn_KPI.IconRightVisible = true;
-            this.btn_KPI.IconRightZoom = 0D;
-            this.btn_KPI.IconVisible = true;
-            this.btn_KPI.IconZoom = 90D;
-            this.btn_KPI.IsTab = false;
-            this.btn_KPI.Location = new System.Drawing.Point(0, 395);
-            this.btn_KPI.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_KPI.Name = "btn_KPI";
-            this.btn_KPI.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(163)))), ((int)(((byte)(156)))));
-            this.btn_KPI.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(183)))), ((int)(((byte)(176)))));
-            this.btn_KPI.OnHoverTextColor = System.Drawing.Color.White;
-            this.btn_KPI.selected = false;
-            this.btn_KPI.Size = new System.Drawing.Size(228, 48);
-            this.btn_KPI.TabIndex = 2;
-            this.btn_KPI.Tag = "2";
-            this.btn_KPI.Text = "  KPIs";
-            this.btn_KPI.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_KPI.Textcolor = System.Drawing.Color.White;
-            this.btn_KPI.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_KPI.Click += new System.EventHandler(this.mainNavButton_Click);
-            // 
-            // btn_KPA
-            // 
-            this.btn_KPA.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(188)))), ((int)(((byte)(155)))));
-            this.btn_KPA.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(188)))), ((int)(((byte)(155)))));
-            this.btn_KPA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_KPA.BorderRadius = 0;
-            this.btn_KPA.ButtonText = "  KPAs";
-            this.btn_KPA.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_KPA.DisabledColor = System.Drawing.Color.Gray;
-            this.btn_KPA.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_KPA.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_KPA.Iconcolor = System.Drawing.Color.Transparent;
-            this.btn_KPA.Iconimage = global::KPA_KPI_Analyzer.Properties.Resources.kpaLogo;
-            this.btn_KPA.Iconimage_right = null;
-            this.btn_KPA.Iconimage_right_Selected = null;
-            this.btn_KPA.Iconimage_Selected = null;
-            this.btn_KPA.IconMarginLeft = 0;
-            this.btn_KPA.IconMarginRight = 0;
-            this.btn_KPA.IconRightVisible = true;
-            this.btn_KPA.IconRightZoom = 0D;
-            this.btn_KPA.IconVisible = true;
-            this.btn_KPA.IconZoom = 75D;
-            this.btn_KPA.IsTab = false;
-            this.btn_KPA.Location = new System.Drawing.Point(0, 48);
-            this.btn_KPA.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_KPA.Name = "btn_KPA";
-            this.btn_KPA.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(188)))), ((int)(((byte)(155)))));
-            this.btn_KPA.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(208)))), ((int)(((byte)(175)))));
-            this.btn_KPA.OnHoverTextColor = System.Drawing.Color.White;
-            this.btn_KPA.selected = false;
-            this.btn_KPA.Size = new System.Drawing.Size(228, 48);
-            this.btn_KPA.TabIndex = 3;
-            this.btn_KPA.Tag = "1";
-            this.btn_KPA.Text = "  KPAs";
-            this.btn_KPA.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_KPA.Textcolor = System.Drawing.Color.White;
-            this.btn_KPA.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_KPA.Click += new System.EventHandler(this.mainNavButton_Click);
-            // 
-            // btn_Dashboard
-            // 
-            this.btn_Dashboard.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(201)))), ((int)(((byte)(169)))));
-            this.btn_Dashboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(201)))), ((int)(((byte)(169)))));
-            this.btn_Dashboard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_Dashboard.BorderRadius = 0;
-            this.btn_Dashboard.ButtonText = "Dashboard";
-            this.btn_Dashboard.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_Dashboard.DisabledColor = System.Drawing.Color.Gray;
-            this.btn_Dashboard.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_Dashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Dashboard.Iconcolor = System.Drawing.Color.Transparent;
-            this.btn_Dashboard.Iconimage = global::KPA_KPI_Analyzer.Properties.Resources.DashboardLogo;
-            this.btn_Dashboard.Iconimage_right = null;
-            this.btn_Dashboard.Iconimage_right_Selected = null;
-            this.btn_Dashboard.Iconimage_Selected = null;
-            this.btn_Dashboard.IconMarginLeft = 0;
-            this.btn_Dashboard.IconMarginRight = 0;
-            this.btn_Dashboard.IconRightVisible = false;
-            this.btn_Dashboard.IconRightZoom = 0D;
-            this.btn_Dashboard.IconVisible = true;
-            this.btn_Dashboard.IconZoom = 100D;
-            this.btn_Dashboard.IsTab = false;
-            this.btn_Dashboard.Location = new System.Drawing.Point(0, 0);
-            this.btn_Dashboard.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_Dashboard.Name = "btn_Dashboard";
-            this.btn_Dashboard.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(201)))), ((int)(((byte)(169)))));
-            this.btn_Dashboard.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(221)))), ((int)(((byte)(189)))));
-            this.btn_Dashboard.OnHoverTextColor = System.Drawing.Color.White;
-            this.btn_Dashboard.selected = false;
-            this.btn_Dashboard.Size = new System.Drawing.Size(228, 48);
-            this.btn_Dashboard.TabIndex = 23;
-            this.btn_Dashboard.Tag = "0";
-            this.btn_Dashboard.Text = "Dashboard";
-            this.btn_Dashboard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Dashboard.Textcolor = System.Drawing.Color.White;
-            this.btn_Dashboard.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Dashboard.Click += new System.EventHandler(this.mainNavButton_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.AllowDrop = true;
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.dragDropLargeCenter;
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.tblpnl_DragDrop.SetColumnSpan(this.panel1, 2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(10, 10);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0);
-            this.panel1.Name = "panel1";
-            this.tblpnl_DragDrop.SetRowSpan(this.panel1, 2);
-            this.panel1.Size = new System.Drawing.Size(1180, 603);
-            this.panel1.TabIndex = 0;
-            this.panel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.pnl_DragDropArea_DragDrop);
-            this.panel1.DragEnter += new System.Windows.Forms.DragEventHandler(this.pnl_DragDropArea_DragEnter);
-            // 
-            // button1
-            // 
-            this.button1.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.Menu;
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Margin = new System.Windows.Forms.Padding(0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(50, 51);
-            this.button1.TabIndex = 4;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.btn_NavExpander_Click);
-            // 
-            // pnl_Minimize
-            // 
-            this.pnl_Minimize.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.Minimize;
-            this.pnl_Minimize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pnl_Minimize.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnl_Minimize.Location = new System.Drawing.Point(1050, 0);
-            this.pnl_Minimize.Name = "pnl_Minimize";
-            this.pnl_Minimize.Size = new System.Drawing.Size(50, 25);
-            this.pnl_Minimize.TabIndex = 4;
-            this.pnl_Minimize.Click += new System.EventHandler(this.btn_Minimize_Click);
-            this.pnl_Minimize.MouseLeave += new System.EventHandler(this.btn_Minimize_MouseLeave);
-            this.pnl_Minimize.MouseHover += new System.EventHandler(this.btn_Minimize_MouseEnter);
-            // 
-            // pnl_Maximize
-            // 
-            this.pnl_Maximize.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.Maximize;
-            this.pnl_Maximize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pnl_Maximize.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnl_Maximize.Location = new System.Drawing.Point(1100, 0);
-            this.pnl_Maximize.Name = "pnl_Maximize";
-            this.pnl_Maximize.Size = new System.Drawing.Size(50, 25);
-            this.pnl_Maximize.TabIndex = 3;
-            this.pnl_Maximize.Click += new System.EventHandler(this.btn_Expand_Click);
-            this.pnl_Maximize.MouseLeave += new System.EventHandler(this.btn_Expand_MouseLeave);
-            this.pnl_Maximize.MouseHover += new System.EventHandler(this.btn_Expand_MouseHover);
-            // 
-            // pnl_Close
-            // 
-            this.pnl_Close.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.Close;
-            this.pnl_Close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pnl_Close.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnl_Close.Location = new System.Drawing.Point(1150, 0);
-            this.pnl_Close.Name = "pnl_Close";
-            this.pnl_Close.Size = new System.Drawing.Size(50, 25);
-            this.pnl_Close.TabIndex = 2;
-            this.pnl_Close.Click += new System.EventHandler(this.btn_Close_Click);
-            this.pnl_Close.MouseLeave += new System.EventHandler(this.btn_Close_MouseLeave);
-            this.pnl_Close.MouseHover += new System.EventHandler(this.btn_Close_MouseHover);
-            // 
-            // pnl_logo
-            // 
-            this.pnl_logo.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.comau_logo;
-            this.pnl_logo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pnl_logo.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnl_logo.Location = new System.Drawing.Point(0, 0);
-            this.pnl_logo.Name = "pnl_logo";
-            this.pnl_logo.Size = new System.Drawing.Size(50, 25);
-            this.pnl_logo.TabIndex = 0;
-            // 
-            // filtersToolStripMenuItem
-            // 
-            this.filtersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addVariantToolStripMenuItem,
-            this.toolStripMenuItem1,
-            this.viewVariantsToolStripMenuItem});
-            this.filtersToolStripMenuItem.Name = "filtersToolStripMenuItem";
-            this.filtersToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.filtersToolStripMenuItem.Text = "Filters";
-            // 
-            // addVariantToolStripMenuItem
-            // 
-            this.addVariantToolStripMenuItem.Name = "addVariantToolStripMenuItem";
-            this.addVariantToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.addVariantToolStripMenuItem.Text = "Add Variant";
-            this.addVariantToolStripMenuItem.Click += new System.EventHandler(this.addVariantToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
-            // 
-            // viewVariantsToolStripMenuItem
-            // 
-            this.viewVariantsToolStripMenuItem.Name = "viewVariantsToolStripMenuItem";
-            this.viewVariantsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.viewVariantsToolStripMenuItem.Text = "View Variants";
-            this.viewVariantsToolStripMenuItem.Click += new System.EventHandler(this.viewVariantsToolStripMenuItem_Click);
             // 
             // KPA_KPI_UI
             // 

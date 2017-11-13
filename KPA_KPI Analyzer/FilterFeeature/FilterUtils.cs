@@ -259,7 +259,6 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             strData = new HashSet<string>();
             try
             {
-
                 foreach (Filters col in Enum.GetValues(typeof(Filters)))
                 {
                     if (ignoredCol == col)

@@ -174,6 +174,7 @@
             // btn_apply
             // 
             this.btn_apply.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btn_apply.Enabled = false;
             this.btn_apply.Location = new System.Drawing.Point(226, 373);
             this.btn_apply.Name = "btn_apply";
             this.btn_apply.Size = new System.Drawing.Size(90, 32);
@@ -183,6 +184,7 @@
             // 
             // btn_view
             // 
+            this.btn_view.Enabled = false;
             this.btn_view.Location = new System.Drawing.Point(322, 373);
             this.btn_view.Name = "btn_view";
             this.btn_view.Size = new System.Drawing.Size(90, 32);
@@ -193,6 +195,7 @@
             // 
             // btn_remove
             // 
+            this.btn_remove.Enabled = false;
             this.btn_remove.Location = new System.Drawing.Point(418, 373);
             this.btn_remove.Name = "btn_remove";
             this.btn_remove.Size = new System.Drawing.Size(90, 32);

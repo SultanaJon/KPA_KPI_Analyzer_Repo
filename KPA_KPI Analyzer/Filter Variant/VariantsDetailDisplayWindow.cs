@@ -1,18 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Accord.Controls;
 
 namespace KPA_KPI_Analyzer.Filter_Variant
 {
     public partial class VariantsDetailDisplayWindow : Form
     {
-        public List<Variant> DetailVariants { get; set; }
+        public Dictionary<string, List<string>> VariantDetails { get; set; }
 
 
 
@@ -58,7 +53,87 @@ namespace KPA_KPI_Analyzer.Filter_Variant
         /// <param name="e"></param>
         private void VariantsDetailDisplayWindow_Load(object sender, EventArgs e)
         {
+            lbl_VariantName.Text = VariantName;
+            lbl_VariantDescription.Text = VariantDescription;
 
+            // Need to load the details into the datagridview.
+            LoadDataGridView();
+        }
+
+
+        
+
+        /// <summary>
+        /// Gets the highest number of element contained within the details of the filters.
+        /// </summary>
+        /// <returns></returns>
+        private int GetMaxLength()
+        {
+            int maxLength = -99999;
+            foreach(var list in VariantDetails.Values)
+                if (list.Count > maxLength)
+                    maxLength = list.Count;
+
+            return maxLength;
+        }
+
+
+
+
+        
+        /// <summary>
+        /// Populate the empty cells of the variant details.
+        /// </summary>
+        private void CleanVariantDetails(int highestNumElement)
+        {
+            foreach(var list in VariantDetails.Values)
+            {
+                if(list.Count < highestNumElement)
+                {
+                    for(int i = list.Count; i < highestNumElement; ++i)
+                        list.Add(string.Empty);
+                }
+            }
+        }
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void LoadDataGridView()
+        {
+            int maxLength = GetMaxLength();
+            CleanVariantDetails(maxLength);
+
+
+            for (int i = 0; i < maxLength; ++i)
+            {
+                string[] row =
+                {
+                    VariantDetails[FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.PrDateRange]][i],
+                    VariantDetails[FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.PoLineCreateDateRange]][i],
+                    VariantDetails[FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.FinalRecDateRange]][i],
+                    VariantDetails[FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.AdvancedFilters]][i],
+                    VariantDetails[FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.ProjectNumber]][i],
+                    VariantDetails[FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.WbsElement]][i],
+                    VariantDetails[FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.Material]][i],
+                    VariantDetails[FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.MaterialGroup]][i],
+                    VariantDetails[FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.Vendor]][i],
+                    VariantDetails[FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.VendorDesciption]][i],
+                    VariantDetails[FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.PrPurchGroup]][i],
+                    VariantDetails[FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.PoPurchGroup]][i],
+                    VariantDetails[FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.IrSuppName]][i],
+                    VariantDetails[FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.FxdSuppName]][i],
+                    VariantDetails[FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.DsrdSuppName]][i],
+                    VariantDetails[FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.CommCategory]][i],
+                    VariantDetails[FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.Escaped]][i],
+                    VariantDetails[FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.PoDocType]][i],
+                    VariantDetails[FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.ProdOrdMaterial]][i]
+                };
+                dgv_details.Rows.Add(row);
+            }
         }
 
 

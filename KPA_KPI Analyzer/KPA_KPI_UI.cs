@@ -36,6 +36,9 @@ namespace KPA_KPI_Analyzer
 
 
 
+
+
+
         /// <summary>
         /// The initital constructor of the main ui
         /// </summary>
@@ -45,6 +48,7 @@ namespace KPA_KPI_Analyzer
             NavigationLocked = true;
             PRPO_DB_Utils.AI = AccessUtils.AI;
         }
+
 
 
 
@@ -68,6 +72,9 @@ namespace KPA_KPI_Analyzer
 
 
 
+
+
+
         /// <summary>
         /// Configure the application to the United States
         /// </summary>
@@ -81,6 +88,8 @@ namespace KPA_KPI_Analyzer
 
 
 
+
+
         /// <summary>
         /// Configure the application to Mexico
         /// </summary>
@@ -89,6 +98,10 @@ namespace KPA_KPI_Analyzer
             lbl_Country.Text = Globals.countries[(int)Globals.Countries.Mexico];
             Globals.FocusedCountry = Globals.Countries.Mexico;
         }
+
+
+
+
 
 
 
@@ -117,6 +130,8 @@ namespace KPA_KPI_Analyzer
 
 
 
+
+
         /// <summary>
         /// Initializes callback functions used while in seperate threads of execution.
         /// </summary>
@@ -128,7 +143,12 @@ namespace KPA_KPI_Analyzer
             DragDropFeatures.DragDropUtils.DisplayDragDropPage += ShowDragDropPage;
             DragDropFeatures.DragDropUtils.ClearMxSettings += ResetMxSettings;
             DragDropFeatures.DragDropUtils.ClearUsSettings += ResetUsSettings;
+
+            // Setup callback functions that update the Variants tool on the menu strip toolbar.
+            Filter_Variant.VariantsViewWindow.UpdateVariantTools += UpdateVariantTools;
+            Filter_Variant.FilterVariants.UpdateVariantTools += UpdateVariantTools;
         }
+
 
 
 
@@ -147,6 +167,8 @@ namespace KPA_KPI_Analyzer
             GetCheckBoxControls();
             InitializeProgram();
         }
+
+
 
 
 
@@ -171,6 +193,8 @@ namespace KPA_KPI_Analyzer
 
 
 
+
+
         /// <summary>
         /// Returns the last time (in a DateTime format) of when the data was reloaded for the MX PRPO report
         /// </summary>
@@ -186,6 +210,9 @@ namespace KPA_KPI_Analyzer
             DateTime dt = new DateTime(year, month, day);
             return dt;
         }
+
+
+
 
 
 
@@ -209,6 +236,9 @@ namespace KPA_KPI_Analyzer
 
 
 
+
+
+
         /// <summary>
         /// Returns the date (in a DateTime format) of the loaded US PRPO report.
         /// </summary>
@@ -226,6 +256,10 @@ namespace KPA_KPI_Analyzer
 
 
 
+
+
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -239,6 +273,10 @@ namespace KPA_KPI_Analyzer
 
 
 
+
+
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -249,6 +287,7 @@ namespace KPA_KPI_Analyzer
             settings.reportSettings.PrpoMxLastLoadedDate = string.Empty;
             settings.reportSettings.PrpoMxDate = string.Empty;
         }
+
 
 
 
@@ -357,23 +396,6 @@ namespace KPA_KPI_Analyzer
             }
         }
 
-
-
-
-
-
-        ///// <summary>
-        ///// this form prevents flickering of the ui when it repaints.
-        ///// </summary>
-        //protected override CreateParams CreateParams
-        //{
-        //    get
-        //    {
-        //        CreateParams handleparam = base.CreateParams;
-        //        handleparam.Style &= ~0x2000000; // turn off ws_clipchildren
-        //        return handleparam;
-        //    }
-        //}
 
 
 
@@ -583,11 +605,6 @@ namespace KPA_KPI_Analyzer
 
 
 
-
-
-
-
-
         /// <summary>
         /// The pages that can be displayed in the active page panel.
         /// </summary>
@@ -599,6 +616,8 @@ namespace KPA_KPI_Analyzer
             LoadingScreen,
             CountrySelector
         }
+
+
 
 
 
@@ -718,23 +737,6 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btn_Correlation_Click(object sender, EventArgs e)
-        {
-
-
-        }
-
-
-
-
-
-
-
-        /// <summary>
         /// Closes the running process.
         /// </summary>
         /// <param name="sender"></param>
@@ -773,6 +775,8 @@ namespace KPA_KPI_Analyzer
         {
             ShowPage(Pages.DragDropDash);
         }
+
+
 
 
 
@@ -841,6 +845,8 @@ namespace KPA_KPI_Analyzer
 
 
 
+
+
         /// <summary>
         /// When the user clicks the add variant button on the menu strip, if there are filters applied, this function
         /// will show the add variant window which will add the filters to a variant and add it to the list of saved
@@ -883,6 +889,31 @@ namespace KPA_KPI_Analyzer
                 // Get the list of variants in case the user updated it.    
                 variantSettings.Variants = vvw.Variants;
             }
+        }
+
+
+
+
+
+
+        /// <summary>
+        /// Check the status of the filter and update the variant filter tools.
+        /// </summary>
+        public void UpdateVariantTools()
+        {
+            // If the user has any filters applied, allow them to add variants, otherwise block this ability.
+            if (DateFiltersApplied || AdvancedFiltersApplied || ColumnFiltersApplied)
+                addVariantToolStripMenuItem.Enabled = true;
+            else
+                addVariantToolStripMenuItem.Enabled = false;
+
+
+
+            // If the user has any fitlers still applied, still provide the ability to view them.
+            if (variantSettings.Variants.Count > 0)
+                viewVariantsToolStripMenuItem.Enabled = true;
+            else
+                viewVariantsToolStripMenuItem.Enabled = false;
         }
     }
 }

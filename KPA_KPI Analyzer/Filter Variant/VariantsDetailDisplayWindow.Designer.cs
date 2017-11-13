@@ -253,6 +253,10 @@
             // 
             // dgv_details
             // 
+            this.dgv_details.AllowUserToAddRows = false;
+            this.dgv_details.AllowUserToDeleteRows = false;
+            this.dgv_details.AllowUserToOrderColumns = true;
+            this.dgv_details.AllowUserToResizeRows = false;
             this.dgv_details.BackgroundColor = System.Drawing.Color.White;
             this.dgv_details.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_details.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {

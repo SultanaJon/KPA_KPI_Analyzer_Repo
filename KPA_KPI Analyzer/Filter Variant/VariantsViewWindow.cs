@@ -1,18 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KPA_KPI_Analyzer.Filter_Variant
 {
     public partial class VariantsViewWindow : Form
     {
+        // Call-back functions to update variants tools.
+        public delegate void UpdateVariantToolsHandler();
+        public static event UpdateVariantToolsHandler UpdateVariantTools;
+
+
+
+
         public List<Variant> Variants { get; set; }
+
+
+
 
 
         /// <summary>
@@ -26,10 +30,26 @@ namespace KPA_KPI_Analyzer.Filter_Variant
 
 
 
+
+
+        /// <summary>
+        /// After the application loads, this event will trigger.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void VariantsViewWindow_Load(object sender, EventArgs e)
         {
             LoadDataGridView();
+
+            if(Variants.Count > 0)
+            {
+                ToggleButtons(true);
+            }
         }
+
+
+
+
 
 
 
@@ -150,6 +170,34 @@ namespace KPA_KPI_Analyzer.Filter_Variant
 
 
 
+
+        /// <summary>
+        /// Toggle whether or not the buttons are enabled.
+        /// </summary>
+        /// <param name="_on">Boolean value indicating to turn on or off the buttons.</param>
+        private void ToggleButtons(bool _on)
+        {
+            if(_on)
+            {
+                // Enable the buttons
+                btn_apply.Enabled = true;
+                btn_remove.Enabled = true;
+                btn_view.Enabled = true;
+            }
+            else
+            {
+                // Disable the buttons
+                btn_apply.Enabled = false;
+                btn_remove.Enabled = false;
+                btn_view.Enabled = false;
+            }
+        }
+
+
+
+
+
+
         /// <summary>
         /// Loads the Variant Detail Display Window.
         /// </summary>
@@ -162,19 +210,17 @@ namespace KPA_KPI_Analyzer.Filter_Variant
             if(selectedRow.Count == 1)
             {
                 DataGridViewRow row = selectedRow[0];
-                using (Filter_Variant.VariantsDetailDisplayWindow vddw = new VariantsDetailDisplayWindow()
+                using (VariantsDetailDisplayWindow vddw = new VariantsDetailDisplayWindow()
                 {
                     VariantName = Variants[row.Index].VariantName,
                     VariantDescription = Variants[row.Index].VariantDescription,
-                    DetailVariants = Variants
+                    VariantDetails = Variants[row.Index].details
                 })
                 {
                     vddw.ShowDialog();
                 }
             }   
         }
-
-
 
 
 
@@ -202,6 +248,12 @@ namespace KPA_KPI_Analyzer.Filter_Variant
                 // remove this row from the data grid view.
                 dgv_variants.Rows.RemoveAt(index);
             }
+
+            if(Variants.Count == 0)
+            {
+                ToggleButtons(false);
+            }
+            UpdateVariantTools();
         }
     }
 }

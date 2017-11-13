@@ -5,12 +5,18 @@ namespace KPA_KPI_Analyzer.Filter_Variant
 {
     public class FilterVariants : Storable<FilterVariants>, Loadable<FilterVariants>
     {
+        // Call-back functions to update variants tools.
+        public delegate void UpdateVariantToolsHandler();
+        public static event UpdateVariantToolsHandler UpdateVariantTools;
+
+
+
         private List<Variant> variants;
 
 
 
         /// <summary>
-        /// 
+        /// Property to easily get and set variants to the list of variants applied by the user.
         /// </summary>
         public List<Variant> Variants
         {
@@ -49,6 +55,9 @@ namespace KPA_KPI_Analyzer.Filter_Variant
             PoDocType,
             ProdOrdMaterial
         }
+
+
+
 
 
 
@@ -94,17 +103,15 @@ namespace KPA_KPI_Analyzer.Filter_Variant
 
 
         /// <summary>
-        /// 
+        /// Adds the variant to the list of fitler variants.
         /// </summary>
-        /// <param name="_name"></param>
-        /// <param name="_description"></param>
-        /// <param name="_category"></param>
-        /// <param name="_values"></param>
+        /// <param name="_variant">The new variant added by the user.</param>
         /// <returns></returns>
         public void AddVariant(Variant _variant)
         {
             // add the variant to the list of variants
             variants.Add(_variant);
+            UpdateVariantTools();
         }
 
 
