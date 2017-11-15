@@ -3382,7 +3382,6 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
         internal static class PurchPlan
         {
             private static DataTable poRelVsPRDelDateDt;
-            private static DataTable pr2ndLvlRelOrigPlanDelDateDt;
             private static string[] strPoLineFirstRelDate;
 
             /// <summary>

@@ -156,13 +156,13 @@ namespace KPA_KPI_Analyzer.DragDropFeatures
 
                 if(!usFileProcessed)
                 {
-                    Diagnostics.AppDirectoryUtils.RemoveFile(Diagnostics.AppDirectoryUtils.OverallFiles.US_Overall);
+                    Diagnostics.AppDirectoryUtils.RemoveFile(Diagnostics.AppDirectoryUtils.OverallFile.US_Overall);
                     ClearUsSettings();
                 }
 
                 if (!mxFileProcessed)
                 {
-                    Diagnostics.AppDirectoryUtils.RemoveFile(Diagnostics.AppDirectoryUtils.OverallFiles.MX_Overall);
+                    Diagnostics.AppDirectoryUtils.RemoveFile(Diagnostics.AppDirectoryUtils.OverallFile.MX_Overall);
                     ClearMxSettings();
                 }
             }

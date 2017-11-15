@@ -67,7 +67,7 @@ namespace KPA_KPI_Analyzer
                             },
                             new AccessInfo()
                             {
-                                FileName = Configuration.DbPath,
+                                FileName = AppDirectoryUtils.DbPath,
                                 TableName = AccessInfo.mainTableNames[(int)AccessInfo.MainTables.US_PRPO]
                             }
                         );
@@ -102,7 +102,7 @@ namespace KPA_KPI_Analyzer
                             },
                             new AccessInfo()
                             {
-                                FileName = Configuration.DbPath,
+                                FileName = AppDirectoryUtils.DbPath,
                                 TableName = AccessInfo.mainTableNames[(int)AccessInfo.MainTables.MX_PRPO]
                             }
                         );

@@ -22,11 +22,11 @@ namespace KPA_KPI_Analyzer.Diagnostics
             {
                 if(Values.Globals.FocusedCountry == Values.Globals.Countries.UnitedStates)
                 {
-                    dataJSONString = File.ReadAllText(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFiles.US_Overall]);
+                    dataJSONString = File.ReadAllText(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFile.US_Overall]);
                 }
                 else
                 {
-                    dataJSONString = File.ReadAllText(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFiles.MX_Overall]);
+                    dataJSONString = File.ReadAllText(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFile.MX_Overall]);
                 }
                 data = ser.Deserialize<KPA_KPI_Overall.Overall>(dataJSONString);
             }
@@ -52,11 +52,11 @@ namespace KPA_KPI_Analyzer.Diagnostics
                 dataJSONString = ser.Serialize(data);
                 if(Values.Globals.FocusedCountry == Values.Globals.Countries.UnitedStates)
                 {
-                    File.WriteAllText(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFiles.US_Overall], dataJSONString);
+                    File.WriteAllText(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFile.US_Overall], dataJSONString);
                 }
                 else
                 {
-                    File.WriteAllText(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFiles.MX_Overall], dataJSONString);
+                    File.WriteAllText(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFile.MX_Overall], dataJSONString);
                 }
             }
             catch (Exception ex)

@@ -56,10 +56,10 @@ namespace KPA_KPI_Analyzer
             {
                 ConfigureToUnitedStates();
 
-                if (AppDirectoryUtils.DataFileExists(AppDirectoryUtils.OverallFiles.US_Overall))
+                if (AppDirectoryUtils.DataFileExists(AppDirectoryUtils.OverallFile.US_Overall))
                 {
                     // the file exists
-                    if (new FileInfo(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFiles.US_Overall]).Length > 0)
+                    if (new FileInfo(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFile.US_Overall]).Length > 0)
                     {
                         DateTime dt = GetLastLoadedUsPrpoReportDate();
                         if (dt == DateTime.Today.Date)
@@ -83,7 +83,7 @@ namespace KPA_KPI_Analyzer
                 }
                 else // the file does not exist
                 {
-                    AppDirectoryUtils.CreateFile(AppDirectoryUtils.OverallFiles.US_Overall);
+                    AppDirectoryUtils.CreateFile(AppDirectoryUtils.OverallFile.US_Overall);
                     InitializeDataLoadProcess();
                 }
             }
@@ -91,10 +91,10 @@ namespace KPA_KPI_Analyzer
             {
                 ConfigureToMexico();
 
-                if (AppDirectoryUtils.DataFileExists(AppDirectoryUtils.OverallFiles.MX_Overall))
+                if (AppDirectoryUtils.DataFileExists(AppDirectoryUtils.OverallFile.MX_Overall))
                 {
                     // the file exists
-                    if (new FileInfo(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFiles.MX_Overall]).Length > 0)
+                    if (new FileInfo(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFile.MX_Overall]).Length > 0)
                     {
                         DateTime dt = GetLastLoadedMxPrpoReportDate();
                         if (dt == DateTime.Today.Date)
@@ -118,7 +118,7 @@ namespace KPA_KPI_Analyzer
                 }
                 else // the file does not exist
                 {
-                    AppDirectoryUtils.CreateFile(AppDirectoryUtils.OverallFiles.MX_Overall);
+                    AppDirectoryUtils.CreateFile(AppDirectoryUtils.OverallFile.MX_Overall);
                     InitializeDataLoadProcess();
                 }
             }

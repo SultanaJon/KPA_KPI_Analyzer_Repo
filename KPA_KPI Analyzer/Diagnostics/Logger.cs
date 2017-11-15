@@ -11,7 +11,7 @@ namespace KPA_KPI_Analyzer.Diagnostics
         /// </summary>
         /// <param name="logFile"></param>
         /// <param name="message"></param>
-        public static void Log(AppDirectoryUtils.LogFiles logFile, string message)
+        public static void Log(AppDirectoryUtils.LogFile logFile, string message)
         {
             try
             {

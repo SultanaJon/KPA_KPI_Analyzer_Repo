@@ -138,7 +138,7 @@ namespace KPA_KPI_Analyzer.ApplicationConfiguration
             try
             {
                 dataJSONString = ser.Serialize(settingsToSave);
-                File.WriteAllText(AppDirectoryUtils.resourceFiles[(int)AppDirectoryUtils.ResourceFiles.Settings], dataJSONString);
+                File.WriteAllText(AppDirectoryUtils.resourcesFiles[(int)AppDirectoryUtils.ResourceFile.Settings], dataJSONString);
                 return true;
             }
             catch (Exception ex)
@@ -159,7 +159,7 @@ namespace KPA_KPI_Analyzer.ApplicationConfiguration
         {
             try
             {
-                dataJSONString = File.ReadAllText(AppDirectoryUtils.resourceFiles[(int)AppDirectoryUtils.ResourceFiles.Settings]);
+                dataJSONString = File.ReadAllText(AppDirectoryUtils.resourcesFiles[(int)AppDirectoryUtils.ResourceFile.Settings]);
                 settingsToLoad = ser.Deserialize<ApplicationConfig>(dataJSONString);
                 return true;
             }

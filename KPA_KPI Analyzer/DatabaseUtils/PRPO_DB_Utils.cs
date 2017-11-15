@@ -158,9 +158,9 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
                 if(DatabaseConnection != null)
                     DatabaseConnection.Close();
 
-                Logger.Log(AppDirectoryUtils.LogFiles.DbConnectionEvents, "Import Process Started. Database connection dropped.");
+                Logger.Log(AppDirectoryUtils.LogFile.DbConnectionEvents, "Import Process Started. Database connection dropped.");
 
-                File.Delete(Configuration.DbPath);
+                File.Delete(AppDirectoryUtils.DbPath);
                 AccessUtils.CreateAccessDB();
                 result = true;
             }
