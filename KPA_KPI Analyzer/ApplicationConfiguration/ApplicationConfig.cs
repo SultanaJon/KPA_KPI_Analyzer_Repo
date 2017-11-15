@@ -6,29 +6,24 @@ using System.Windows.Forms;
 
 namespace KPA_KPI_Analyzer.ApplicationConfiguration
 {
-    /// <summary>
-    /// This interface allows objects to save ther instance to a JSON file for storage.
-    /// </summary>
-    internal interface IStorable<T>
-    {
-        bool Save(T obj);
-        bool Load(ref T obj);
-    }
-
-
-    public class ApplicationConfig : IStorable<ApplicationConfig>
+    public class ApplicationConfig : IStorable, ILoadable<ApplicationConfig>
     {
         public ReportSettings reportSettings;
         public CorrelationSettings correlationSettings;
 
+
+
+        /// <summary>
+        /// JavaScript serializer used to serialize and deserializer ApplicationConfig objects
+        /// </summary>
         private JavaScriptSerializer ser;
         private string dataJSONString;
 
 
 
-
-
-
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
         public ApplicationConfig()
         {
             reportSettings = new ReportSettings();
@@ -40,9 +35,14 @@ namespace KPA_KPI_Analyzer.ApplicationConfiguration
 
 
 
-
+        /// <summary>
+        /// Internal class - The setting for the report settings.
+        /// </summary>
         public class ReportSettings
         {
+            /// <summary>
+            /// Default Constructor
+            /// </summary>
             public ReportSettings()
             {
                 PrpoUsReportLoaded = false;
@@ -54,7 +54,6 @@ namespace KPA_KPI_Analyzer.ApplicationConfiguration
                 PrpoUsReportFileName = "N/A";
                 PrpoMxReportFileName = "N/A";
             }
-
 
 
 
@@ -112,6 +111,9 @@ namespace KPA_KPI_Analyzer.ApplicationConfiguration
 
 
 
+        /// <summary>
+        /// Internal calss - The settings for the correlation feature.
+        /// </summary>
         public class CorrelationSettings
         {
             public CorrelationSettings()
@@ -128,45 +130,41 @@ namespace KPA_KPI_Analyzer.ApplicationConfiguration
 
 
 
+
         /// <summary>
-        /// Saves the settings to a tempory storage location in JSON format for later loading.
+        /// Loads the setting from a tempory storage location in JSON format.
         /// </summary>
-        /// <param name="settings">the application settings to be saved.</param>
-        /// <returns></returns>
-        public bool Save(ApplicationConfig settingsToSave)
+        /// <returns>Boolean value indicating whether or not the Load operation was successful.</returns>
+        public void Load(ref ApplicationConfig settings)
         {
             try
             {
-                dataJSONString = ser.Serialize(settingsToSave);
-                File.WriteAllText(AppDirectoryUtils.resourcesFiles[(int)AppDirectoryUtils.ResourceFile.Settings], dataJSONString);
-                return true;
+                dataJSONString = File.ReadAllText(AppDirectoryUtils.resourcesFiles[(int)AppDirectoryUtils.ResourceFile.Settings]);
+                settings = ser.Deserialize<ApplicationConfig>(dataJSONString);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Settings File Saving Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                MessageBox.Show(ex.Message, "Settings File Loading Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
 
 
+
         /// <summary>
-        /// Loads the setting from a tempory storage location in JSON format.
+        /// Saves the settings to a tempory storage location in JSON format for later loading.
         /// </summary>
-        /// <param name="settings">the application settings used to stored the settigns loaded.</param>
-        /// <returns></returns>
-        public bool Load(ref ApplicationConfig settingsToLoad)
+        /// <returns>Boolean value indicating whether or not the save operation as successful.</returns>
+        public void Save()
         {
             try
             {
-                dataJSONString = File.ReadAllText(AppDirectoryUtils.resourcesFiles[(int)AppDirectoryUtils.ResourceFile.Settings]);
-                settingsToLoad = ser.Deserialize<ApplicationConfig>(dataJSONString);
-                return true;
+                dataJSONString = ser.Serialize(this);
+                File.WriteAllText(AppDirectoryUtils.resourcesFiles[(int)AppDirectoryUtils.ResourceFile.Settings], dataJSONString);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Settings File Loading Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                MessageBox.Show(ex.Message, "Settings File Saving Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

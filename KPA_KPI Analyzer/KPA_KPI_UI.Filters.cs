@@ -1714,8 +1714,12 @@ namespace KPA_KPI_Analyzer
         {
             ResetFilters();
             UpdateFilterButtons();
-            DataReader.LoadOverallData(ref overallData);
-            
+
+            //DataReader.LoadOverallData(ref overallData);
+
+            // Load the overall data
+            overallData.Load(ref overallData);
+
             // Dactivate all of the variants.
             DeactivateVariants();
 

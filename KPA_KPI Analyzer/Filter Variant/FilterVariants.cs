@@ -1,17 +1,28 @@
 ﻿using KPA_KPI_Analyzer.Diagnostics;
+using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Web.Script.Serialization;
+using System.Windows.Forms;
 
 namespace KPA_KPI_Analyzer.Filter_Variant
 {
-    public class FilterVariants : Storable<FilterVariants>, Loadable<FilterVariants>
+    public class FilterVariants : IStorable, ILoadable<FilterVariants>
     {
+        private List<Variant> variants;
+
+
+        /// <summary>
+        /// JavaScript serializer used to serialize and deserializer ApplicationConfig objects
+        /// </summary>
+        private JavaScriptSerializer ser;
+        private string dataJSONString;
+
+
         // Call-back functions to update variants tools.
         public delegate void UpdateVariantToolsHandler();
         public static event UpdateVariantToolsHandler UpdateVariantTools;
 
-
-
-        private List<Variant> variants;
 
 
 
@@ -59,8 +70,6 @@ namespace KPA_KPI_Analyzer.Filter_Variant
 
 
 
-
-
         /// <summary>
         /// The names of the filter categories.
         /// </summary>
@@ -96,8 +105,8 @@ namespace KPA_KPI_Analyzer.Filter_Variant
         public FilterVariants()
         {
             variants = new List<Variant>();
+            ser = new JavaScriptSerializer();
         }
-
 
 
 
@@ -106,7 +115,7 @@ namespace KPA_KPI_Analyzer.Filter_Variant
         /// Adds the variant to the list of fitler variants.
         /// </summary>
         /// <param name="_variant">The new variant added by the user.</param>
-        /// <returns></returns>
+        /// <returns>boolean value indicating whether or not the Add operation for the variant was successful.</returns>
         public void AddVariant(Variant _variant)
         {
             // add the variant to the list of variants
@@ -117,25 +126,41 @@ namespace KPA_KPI_Analyzer.Filter_Variant
 
 
 
-
-
         /// <summary>
-        /// Loads the Fitler Variants from a JSON file.
-        bool Loadable<FilterVariants>.Load(FilterVariants obj)
+        /// Loads the filter variant from a JSON file.
+        /// </summary>
+        /// <returns></returns>
+        public void Load(ref FilterVariants variants)
         {
-            return false;
+            try
+            {
+                dataJSONString = File.ReadAllText(AppDirectoryUtils.variantFiles[(int)AppDirectoryUtils.VariantFile.FilterVariants]);
+                variants = ser.Deserialize<FilterVariants>(dataJSONString);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Filter Variants File Loading Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 
 
 
-
         /// <summary>
-        /// Saves the Filter Variants to a JSON file.
+        /// Saves the filter variants to a JSON file.
         /// </summary>
-        bool Storable<FilterVariants>.Save(FilterVariants obj)
+        /// <returns>Boolean value indicating whether or not the save operation was successful.</returns>
+        public void Save()
         {
-            return false;
+            try
+            {
+                dataJSONString = ser.Serialize(this);
+                File.WriteAllText(AppDirectoryUtils.variantFiles[(int)AppDirectoryUtils.VariantFile.FilterVariants], dataJSONString);   
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Filter Variants File Saving Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

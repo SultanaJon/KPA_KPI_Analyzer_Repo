@@ -16,15 +16,16 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
         public static DataTable posRecCompDt;
         public static DataTable pr2ndLvlRelDateDt;
         public static DataTable AllDt;
-
         public static DataSet ds;
 
         private static readonly List<string> errorList = new List<string>();
 
+
+        // Call back function to renew the data loader timer.
         public delegate void RenewDataLoadTimerHandler();
         public static event RenewDataLoadTimerHandler RenewDataLoadTimer;
 
-
+        // Callback function to display the drag drop feature.
         public delegate void DisplayDragDropPageHandler();
         public static event DisplayDragDropPageHandler DisplayDragDropPage;
 
@@ -34,6 +35,8 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
 
 
 
+
+        #region PROPERTIES
         /// <summary>s
         /// data used to check the state of a data removal process.
         /// </summary>
@@ -44,9 +47,6 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
 
 
 
-
-
-
         /// <summary>
         /// Data used to check the state of a data load process.
         /// </summary>
@@ -54,8 +54,6 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
         public static bool DataLoaded { get; set; }
         public static int CompletedDataLoads { get; set; }
         public static int ScheduledDataLoads { get; set; }
-
-
 
 
 
@@ -76,13 +74,11 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
 
 
 
-
         /// <summary>
         /// Information regarding the Access databse file.
         /// </summary>
         public static AccessInfo AI { get; set; }
-
-
+        #endregion
 
 
 
@@ -98,7 +94,6 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
                 DataRemoved = true;
             }
         }
-
 
 
 
@@ -143,7 +138,6 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
 
 
 
-
         /// <summary>
         /// Check certain conditions and drops the access database every time PRPO reports are imported. This is
         /// important becauase the database will continue to grow in size.
@@ -160,7 +154,7 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
 
                 Logger.Log(AppDirectoryUtils.LogFile.DbConnectionEvents, "Import Process Started. Database connection dropped.");
 
-                File.Delete(AppDirectoryUtils.DbPath);
+                File.Delete(Configuration.DbPath);
                 AccessUtils.CreateAccessDB();
                 result = true;
             }
@@ -172,8 +166,6 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
             }
             return result;
         }
-
-
 
 
 
@@ -205,10 +197,7 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
 
             return result;
         }
-
-
-
-
+        
 
 
         /// <summary>
@@ -309,7 +298,7 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
 
 
         /// <summary>
-        /// 
+        /// Free the KPI tables back to the free store
         /// </summary>
         public static void ReleaseKPITables()
         {
@@ -327,6 +316,9 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
 
 
 
+        /// <summary>
+        /// Loads the correlation columns into a dataset.
+        /// </summary>
         public static void LoadCorrelationFields()
         {
             DataTable tempDt = new DataTable();
@@ -351,7 +343,6 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
                     }
                 }
             }
-
             Correlation.CorrelationLoaderUtils.TablesLoaded = true;
         }
     }

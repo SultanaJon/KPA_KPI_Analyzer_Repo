@@ -15,6 +15,8 @@ namespace KPA_KPI_Analyzer
 {
     public partial class KPA_KPI_UI : Form
     {
+        #region LOADING THREADS
+
         Thread KPA_PlanThread;
         Thread KPA_PurchThread;
         Thread KPA_PurchSubThread;
@@ -34,6 +36,11 @@ namespace KPA_KPI_Analyzer
         Thread KPI_PurchTotalThread;
         Thread KPI_PurchPlanThread;
         Thread KPI_OtherThread;
+
+        #endregion
+
+
+
 
 
         /// <summary>
@@ -67,7 +74,7 @@ namespace KPA_KPI_Analyzer
                             },
                             new AccessInfo()
                             {
-                                FileName = AppDirectoryUtils.DbPath,
+                                FileName = Configuration.DbPath,
                                 TableName = AccessInfo.mainTableNames[(int)AccessInfo.MainTables.US_PRPO]
                             }
                         );
@@ -102,7 +109,7 @@ namespace KPA_KPI_Analyzer
                             },
                             new AccessInfo()
                             {
-                                FileName = AppDirectoryUtils.DbPath,
+                                FileName = Configuration.DbPath,
                                 TableName = AccessInfo.mainTableNames[(int)AccessInfo.MainTables.MX_PRPO]
                             }
                         );
@@ -248,8 +255,11 @@ namespace KPA_KPI_Analyzer
         }
 
 
+
+
+
         /// <summary>
-        /// 
+        /// Create the threads that will load the data into the application
         /// </summary>
         private void CreateThreads()
         {
@@ -274,6 +284,8 @@ namespace KPA_KPI_Analyzer
             KPI_PurchPlanThread = new Thread(() => { try { overallData.kpi.purchPlan.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
             KPI_OtherThread = new Thread(() => { try { overallData.kpi.other.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
         }
+
+
 
 
 
@@ -349,7 +361,10 @@ namespace KPA_KPI_Analyzer
 
                 if (!ColumnFiltersApplied && !DateFiltersApplied)
                 {
-                    DataReader.SaveOverallData(overallData);
+                    // Save the overall data to a JSON file.
+                    overallData.Save();
+                    //DataReader.SaveOverallData(overallData);
+
                     InitializeFilterLoadProcess();
                 }
                 else
@@ -376,11 +391,10 @@ namespace KPA_KPI_Analyzer
                     settings.reportSettings.PrpoMxLastLoadedDate = DateTime.Now.Month.ToString() + " " + DateTime.Now.Day.ToString() + " " + DateTime.Now.Year.ToString();
                     lbl_dashboardDate.Text = dt.ToString("MMMM dd, yyyy");
                     lbl_topPanelNavPrpoDate.Text = dt.ToString("MMMM dd, yyyy");
-                    Values.Globals.PrpoGenerationDate = lbl_topPanelNavPrpoDate.Text;
+                    Globals.PrpoGenerationDate = lbl_topPanelNavPrpoDate.Text;
                 }
             }
         }
-
 
 
 
@@ -408,7 +422,9 @@ namespace KPA_KPI_Analyzer
             {
                 FilterUtils.FiltersLoaded = false;
                 FiltersTimer.Stop();
-                settings.Save(settings);
+
+                // Save the settings
+                settings.Save();
                 ShowPage(Pages.Dashboard);
                 ms_applicaitonMenuStrip.Enabled = true;
                 NavigationLocked = false;

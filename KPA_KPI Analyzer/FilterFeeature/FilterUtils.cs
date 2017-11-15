@@ -17,10 +17,8 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
 
         /// <summary>
-        /// Callback function used to update the checklist boxes on the filter page.
+        /// Callback function and event used to update the checklist boxes on the filter page.
         /// </summary>
-        /// <param name="data"></param>
-        /// <param name="filter"></param>
         public delegate void UpdateFilterHandler(HashSet<string> data, Filters filter);
         public static event UpdateFilterHandler UpdateFilter;
 
@@ -121,6 +119,11 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
 
 
+
+        /// <summary>
+        /// Get teh query based off of the column passed as a parameter.
+        /// </summary>
+        /// <param name="col"></param>
         private static void getQuery(Filters col)
         {
             string filters = string.Empty;
@@ -137,8 +140,6 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             }
             query = temp;
         }
-
-
 
 
 
@@ -172,10 +173,6 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             tempHash = null;
             GC.Collect(); 
         }
-
-
-
-
 
 
 
@@ -242,7 +239,6 @@ namespace KPA_KPI_Analyzer.FilterFeeature
                 GC.Collect();
             }
         }
-
 
 
 
@@ -399,6 +395,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
 
 
+
         /// <summary>
         /// Returns whether or no the PO Line Creation date is within the data row is
         /// </summary>
@@ -439,7 +436,6 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             }
             return true;
         }
-
 
 
 
@@ -502,11 +498,6 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             }
             return true;
         }
-
-
-
-
-
 
 
 

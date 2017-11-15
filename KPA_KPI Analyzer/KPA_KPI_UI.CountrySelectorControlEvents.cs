@@ -64,12 +64,16 @@ namespace KPA_KPI_Analyzer
                         DateTime dt = GetLastLoadedUsPrpoReportDate();
                         if (dt == DateTime.Today.Date)
                         {
-                            DataReader.LoadOverallData(ref overallData);
+                            //overallData..LoadOverallData(ref overallData);
+
+                            // Load the overall data
+                            overallData.Load(ref overallData);
+
                             dt = GetLoadedUsPrpoReportDate();
                             lbl_dashboardDate.Text = dt.ToString("MMMM dd, yyyy");
                             lbl_topPanelNavPrpoDate.Text = dt.ToString("MMMM dd, yyyy");
                             Values.Globals.PrpoGenerationDate = lbl_topPanelNavPrpoDate.Text;
-                            InitializeFilterLoadProcess();
+                            InitializeFilterLoadProcess();                  
                         }
                         else
                         {
@@ -99,7 +103,11 @@ namespace KPA_KPI_Analyzer
                         DateTime dt = GetLastLoadedMxPrpoReportDate();
                         if (dt == DateTime.Today.Date)
                         {
-                            DataReader.LoadOverallData(ref overallData);
+                            //DataReader.LoadOverallData(ref overallData);
+
+                            // Load the overall data
+                            overallData.Load(ref overallData);
+                            
                             dt = GetLoadedMxPrpoReportDate();
                             lbl_dashboardDate.Text = dt.ToString("MMMM dd, yyyy");
                             lbl_topPanelNavPrpoDate.Text = dt.ToString("MMMM dd, yyyy");

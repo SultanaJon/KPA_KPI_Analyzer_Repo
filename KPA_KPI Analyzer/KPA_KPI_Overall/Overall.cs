@@ -1,13 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using KPA_KPI_Analyzer.Diagnostics;
+using System.IO;
+using System.Web.Script.Serialization;
 
 namespace KPA_KPI_Analyzer.KPA_KPI_Overall
 {
-    public class Overall
+    public class Overall : IStorable, ILoadable<Overall>
     {
         public KPA kpa;
         public KPI kpi;
+
+
+
+        private JavaScriptSerializer ser;
+        private string dataJSONString;
 
 
 
@@ -18,14 +26,16 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
         {
             kpa = new KPA();
             kpi = new KPI();
+            ser = new JavaScriptSerializer();
+            dataJSONString = string.Empty;
         }
 
 
 
         /// <summary>
-        /// 
+        /// Gathers a multidimentional list of all the data contained within KPI Temp One DataGridView
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A multidimentional list</returns>
         public List<List<string>> GetKpaTempOneData()
         {
             List<List<string>> results = null;
@@ -76,9 +86,9 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
 
 
         /// <summary>
-        /// 
+        /// Gathers a multidimentional list of all the data contained within KPI Temp Two DataGridView
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A multidimentional list</returns>
         public List<List<string>> GetKpaTempTwoData()
         {
             List<List<string>> results = null;
@@ -107,9 +117,9 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
 
 
         /// <summary>
-        /// 
+        /// Gathers a multidimentional list of all the data contained within KPI Temp Three DataGridView
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A multidimentional list</returns>
         public List<List<string>> GetKpiTempThreeData()
         {
             List<List<string>> results = null;
@@ -145,9 +155,9 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
 
 
         /// <summary>
-        /// 
+        /// Gathers a multidimentional list of all the data contained within KPI Temp Four DataGridView
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A multidimentional list</returns>
         public List<List<string>> GetKpiTempFourData()
         {
             List<List<string>> results = null;
@@ -184,11 +194,10 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
 
 
 
-
         /// <summary>
-        /// 
+        /// Gathers a multidimentional list of all the data contained within KPI Temp Five DataGridView
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A multidimentional list</returns>
         public List<List<string>> GetKpiTempFiveData()
         {
             List<List<string>> results = null;
@@ -230,6 +239,57 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
             }
 
             return results;
+        }
+
+
+
+
+        /// <summary>
+        /// Loads the Overall object from JSON file.
+        /// </summary>
+        /// <returns>Boolean value indicating whether or not he load operation was successful.</returns>
+        public void Load(ref Overall overallData)
+        {
+            try
+            {
+                if (Values.Globals.FocusedCountry == Values.Globals.Countries.UnitedStates)
+                    dataJSONString = File.ReadAllText(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFile.US_Overall]);
+                else
+                    dataJSONString = File.ReadAllText(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFile.MX_Overall]);
+
+                overallData = ser.Deserialize<Overall>(dataJSONString);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString(), "Overall DataReader Loading Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+
+        /// <summary>
+        /// Saves the overall data to a JSON file.
+        /// </summary>
+        /// <returns>A boolean value indicating whether or not the save operation was successful.</returns>
+        public void Save()
+        {
+            try
+            {
+                dataJSONString = ser.Serialize(this);
+                if (Values.Globals.FocusedCountry == Values.Globals.Countries.UnitedStates)
+                {
+                    File.WriteAllText(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFile.US_Overall], dataJSONString);
+                }
+                else
+                {
+                    File.WriteAllText(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFile.MX_Overall], dataJSONString);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Overall DataReader Saving Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

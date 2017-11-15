@@ -6,12 +6,6 @@ namespace KPA_KPI_Analyzer.Diagnostics
 {
     public static class AppDirectoryUtils
     {
-        public static readonly string AppDir = AppDomain.CurrentDomain.BaseDirectory;
-        public static readonly string DbPath = Path.Combine(AppDir, Diagnostics.AppDirectoryUtils.resourcesFiles[(int)Diagnostics.AppDirectoryUtils.ResourceFile.PRPO_Database]);
-
-
-
-
         /// <summary>
         /// A integer indexer of there the directories are located within the folder structure.
         /// </summary>
@@ -168,7 +162,7 @@ namespace KPA_KPI_Analyzer.Diagnostics
         /// <returns>
         /// Returns the file path of where the directory is located
         /// </returns>
-        public static string GetFullPath(AppDirectory dir) => AppDir + directories[(int)dir];
+        public static string GetFullPath(AppDirectory dir) => Configuration.AppDir + directories[(int)dir];
 
 
 
@@ -209,7 +203,7 @@ namespace KPA_KPI_Analyzer.Diagnostics
         {
             try
             {
-                File.Create(Path.Combine(AppDir, logFiles[(int)file]));
+                File.Create(Path.Combine(Configuration.AppDir, logFiles[(int)file]));
             }
             catch (Exception ex)
             {
@@ -230,7 +224,7 @@ namespace KPA_KPI_Analyzer.Diagnostics
         {
             try
             {
-                File.Create(Path.Combine(AppDir, overallFiles[(int)file]));
+                File.Create(Path.Combine(Configuration.AppDir, overallFiles[(int)file]));
             }
             catch (Exception ex)
             {
@@ -250,7 +244,7 @@ namespace KPA_KPI_Analyzer.Diagnostics
         {
             try
             {
-                File.Create(Path.Combine(AppDir, resourcesFiles[(int)settingsFile]));
+                File.Create(Path.Combine(Configuration.AppDir, resourcesFiles[(int)settingsFile]));
             }
             catch(Exception ex)
             {
@@ -272,7 +266,7 @@ namespace KPA_KPI_Analyzer.Diagnostics
         {
             try
             {
-                File.Create(Path.Combine(AppDir, variantFiles[(int)file]));
+                File.Create(Path.Combine(Configuration.AppDir, variantFiles[(int)file]));
             }
             catch(Exception ex)
             {

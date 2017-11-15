@@ -98,9 +98,9 @@ namespace KPA_KPI_Analyzer
 
             errorList = new List<string>();
 
-            AccessUtils.AppDirectoryPath = AppDirectoryUtils.AppDir;
-            AccessUtils.DatabasePath = AppDirectoryUtils.DbPath;
-            AccessUtils.AI = new AccessInfo { FileName = AppDirectoryUtils.DbPath };
+            AccessUtils.AppDirectoryPath = Configuration.AppDir;
+            AccessUtils.DatabasePath = Configuration.DbPath;
+            AccessUtils.AI = new AccessInfo { FileName = Configuration.DbPath };
         }
 
 
@@ -175,24 +175,22 @@ namespace KPA_KPI_Analyzer
         {
             if (CurrentAppStatus == LoadStatus.Complete)
             {
-
                 if (conn != null && !newSettings)
                 {
-                    settings.Load(ref settings);
-
                     try
                     {
+                        settings.Load(ref settings);
                         Application.Run(new KPA_KPI_UI(conn, settings));
                     }
                     catch(Exception ex)
                     {
-                        MessageBox.Show(ex.StackTrace);
+                        MessageBox.Show(ex.Message);
                     }
-
-
                 }
                 else
+                {
                     Application.Run(new KPA_KPI_UI());
+                }
             }
         }
 
@@ -228,10 +226,10 @@ namespace KPA_KPI_Analyzer
             {
                 foreach (var directory in Enum.GetValues(typeof(AppDirectoryUtils.AppDirectory)))
                 {
-                    if (!Directory.Exists(Path.Combine(AppDirectoryUtils.AppDir, AppDirectoryUtils.directories[(int)directory])))
+                    if (!Directory.Exists(Path.Combine(Configuration.AppDir, AppDirectoryUtils.directories[(int)directory])))
                     {
                         lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Creating Directory - " + AppDirectoryUtils.directories[(int)directory]; });
-                        Directory.CreateDirectory(Path.Combine(AppDirectoryUtils.AppDir, AppDirectoryUtils.directories[(int)directory]));
+                        Directory.CreateDirectory(Path.Combine(Configuration.AppDir, AppDirectoryUtils.directories[(int)directory]));
                     }
                 }
             }
@@ -259,7 +257,7 @@ namespace KPA_KPI_Analyzer
             {
                 foreach (AppDirectoryUtils.ResourceFile file in Enum.GetValues(typeof(AppDirectoryUtils.ResourceFile)))
                 {
-                    if (!File.Exists(Path.Combine(AppDirectoryUtils.AppDir, AppDirectoryUtils.resourcesFiles[(int)file])))
+                    if (!File.Exists(Path.Combine(Configuration.AppDir, AppDirectoryUtils.resourcesFiles[(int)file])))
                     {
                         lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Creating File - " + AppDirectoryUtils.resourcesFiles[(int)file]; });
 
@@ -288,7 +286,7 @@ namespace KPA_KPI_Analyzer
 
                 foreach (AppDirectoryUtils.LogFile file in Enum.GetValues(typeof(AppDirectoryUtils.LogFile)))
                 {
-                    if (!File.Exists(Path.Combine(AppDirectoryUtils.AppDir, AppDirectoryUtils.logFiles[(int)file])))
+                    if (!File.Exists(Path.Combine(Configuration.AppDir, AppDirectoryUtils.logFiles[(int)file])))
                     {
                         lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Creating File - " + AppDirectoryUtils.logFiles[(int)file]; });
                         AppDirectoryUtils.CreateFile(file);
@@ -300,9 +298,20 @@ namespace KPA_KPI_Analyzer
 
                 foreach(AppDirectoryUtils.OverallFile file in Enum.GetValues(typeof(AppDirectoryUtils.OverallFile)))
                 {
-                    if (!File.Exists(Path.Combine(AppDirectoryUtils.AppDir, AppDirectoryUtils.overallFiles[(int)file])))
+                    if (!File.Exists(Path.Combine(Configuration.AppDir, AppDirectoryUtils.overallFiles[(int)file])))
                     {
                         lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Creating File - " + AppDirectoryUtils.overallFiles[(int)file]; });
+                        AppDirectoryUtils.CreateFile(file);
+                    }
+                }
+
+
+
+                foreach(AppDirectoryUtils.VariantFile file in Enum.GetValues(typeof(AppDirectoryUtils.VariantFile)))
+                {
+                    if(!File.Exists(Path.Combine(Configuration.AppDir, AppDirectoryUtils.variantFiles[(int)file])))
+                    {
+                        lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Creating File - " + AppDirectoryUtils.variantFiles[(int)file]; });
                         AppDirectoryUtils.CreateFile(file);
                     }
                 }
@@ -365,7 +374,7 @@ namespace KPA_KPI_Analyzer
 
                 try
                 {
-                    File.Delete(AppDirectoryUtils.DbPath);
+                    File.Delete(Configuration.DbPath);
                     AccessUtils.CreateAccessDB();
                     CurrentStatus = CheckStatus.Complete;
                 }

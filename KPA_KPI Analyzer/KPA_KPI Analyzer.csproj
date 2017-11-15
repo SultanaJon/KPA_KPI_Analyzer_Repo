@@ -152,9 +152,8 @@
     <Compile Include="DataLoading\ExportUtils.cs" />
     <Compile Include="DataLoading\KPA_Data\DataTableLoader\KpaDataTableLoader.cs" />
     <Compile Include="DataLoading\KPI_Data\DataTableLoader\KpiDataTableLoader.cs" />
-    <Compile Include="Diagnostics\DataReader.cs" />
-    <Compile Include="Diagnostics\Loadable.cs" />
-    <Compile Include="Diagnostics\Storable.cs" />
+    <Compile Include="Diagnostics\ILoadable.cs" />
+    <Compile Include="Diagnostics\IStorable.cs" />
     <Compile Include="Filter Variant\FilterVariants.cs" />
     <Compile Include="Filter Variant\Variant.cs" />
     <Compile Include="Filter Variant\VariantsCreationWindow.cs">
