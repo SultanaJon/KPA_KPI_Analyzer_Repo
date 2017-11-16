@@ -136,6 +136,7 @@ namespace KPA_KPI_Analyzer.Filter_Variant
 
 
 
+
         /// <summary>
         /// This event will trigger when the user starts to enter text into any of the text fields.
         /// Once the both the name and the description text fields contain information this event
@@ -154,8 +155,6 @@ namespace KPA_KPI_Analyzer.Filter_Variant
                 btn_Create.Enabled = false;
             }
         }
-
-
 
 
 

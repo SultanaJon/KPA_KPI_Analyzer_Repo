@@ -702,8 +702,6 @@ namespace KPA_KPI_Analyzer
 
 
 
-
-
         /// <summary>
         /// This function sets up variables to their default state before begining the data load process.
         /// </summary>
@@ -760,6 +758,7 @@ namespace KPA_KPI_Analyzer
 
         
 
+
         /// <summary>
         /// Shows the drag drop screen.
         /// </summary>
@@ -784,7 +783,6 @@ namespace KPA_KPI_Analyzer
         {
             ShowPage(Pages.DragDropDash);
         }
-
 
 
 
@@ -868,20 +866,21 @@ namespace KPA_KPI_Analyzer
             // When the user clicks this menu strip button, the add variant window will open.
             using (Filter_Variant.VariantsCreationWindow vcw = new Filter_Variant.VariantsCreationWindow())
             {
-                vcw.ShowDialog();
+                if(vcw.ShowDialog() == DialogResult.OK)
+                {
+                    // Get the name and the description the user just entered and pass it to the constructor
+                    // of the new variant.
+                    Filter_Variant.Variant variant = new Filter_Variant.Variant(vcw.VariantName, vcw.VariantDescription, Filters.GetSelectedFilters());
 
-                // Get the name and the description the user just entered and pass it to the constructor
-                // of the new variant.
-                Filter_Variant.Variant variant = new Filter_Variant.Variant(vcw.VariantName, vcw.VariantDescription, Filters.GetSelectedFilters());
+                    // Deactivate all of the variants.
+                    DeactivateVariants();
 
-                // Deactivate all of the variants.
-                DeactivateVariants();
-
-                // add the variant to the variants of FilterVariants.
-                variantSettings.AddVariant(variant);
+                    // add the variant to the list of variants and save them.
+                    variantSettings.AddVariant(variant);
+                    variantSettings.Save();
+                }
             }
         }
-
 
 
 
@@ -898,8 +897,9 @@ namespace KPA_KPI_Analyzer
             using (Filter_Variant.VariantsViewWindow vvw = new Filter_Variant.VariantsViewWindow() { Variants = variantSettings.Variants })
             { 
                 vvw.ShowDialog();
-                // Get the list of variants in case the user updated it.    
+                // Get the list of variants in case the user updated them and save.  
                 variantSettings.Variants = vvw.Variants;
+                variantSettings.Save();
             }
         }
 
@@ -916,6 +916,8 @@ namespace KPA_KPI_Analyzer
             foreach (var savedVariant in variantSettings.Variants)
                 savedVariant.Active = false;
         }
+
+
 
 
 
