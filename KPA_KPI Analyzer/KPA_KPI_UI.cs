@@ -105,6 +105,32 @@ namespace KPA_KPI_Analyzer
 
 
 
+
+        /// <summary>
+        /// Initializes callback functions used while in seperate threads of execution.
+        /// </summary>
+        private void InitializeProgramEvents()
+        {
+            FilterUtils.UpdateFilter += UpdateFilters;
+            PRPO_DB_Utils.RenewDataLoadTimer += RenewDataLoadTimer;
+            PRPO_DB_Utils.DisplayDragDropPage += ShowDragDropPage;
+            DragDropFeatures.DragDropUtils.DisplayDragDropPage += ShowDragDropPage;
+            DragDropFeatures.DragDropUtils.ClearMxSettings += ResetMxSettings;
+            DragDropFeatures.DragDropUtils.ClearUsSettings += ResetUsSettings;
+
+            // Setup callback functions that update the Variants tool on the menu strip toolbar.
+            Filter_Variant.VariantsViewWindow.UpdateVariantTools += UpdateVariantTools;
+            Filter_Variant.FilterVariants.UpdateVariantTools += UpdateVariantTools;
+            Filter_Variant.VariantsViewWindow.BeginVariantLoadProcess += BeginVariantLoadProcess;
+        }
+
+
+
+
+
+
+
+
         /// <summary>
         /// Start the loading of the filters.
         /// </summary>
@@ -131,31 +157,6 @@ namespace KPA_KPI_Analyzer
 
 
 
-
-        /// <summary>
-        /// Initializes callback functions used while in seperate threads of execution.
-        /// </summary>
-        private void InitializeProgramEvents()
-        {
-            FilterUtils.UpdateFilter += UpdateFilters;
-            PRPO_DB_Utils.RenewDataLoadTimer += RenewDataLoadTimer;
-            PRPO_DB_Utils.DisplayDragDropPage += ShowDragDropPage;
-            DragDropFeatures.DragDropUtils.DisplayDragDropPage += ShowDragDropPage;
-            DragDropFeatures.DragDropUtils.ClearMxSettings += ResetMxSettings;
-            DragDropFeatures.DragDropUtils.ClearUsSettings += ResetUsSettings;
-
-            // Setup callback functions that update the Variants tool on the menu strip toolbar.
-            Filter_Variant.VariantsViewWindow.UpdateVariantTools += UpdateVariantTools;
-            Filter_Variant.FilterVariants.UpdateVariantTools += UpdateVariantTools;
-            Filter_Variant.VariantsViewWindow.BeingVariantLoadProcess += BeginVariantLoadProcess;
-        }
-
-
-
-
-
-
-
         /// <summary>
         /// This functijon will be called when the form loads.
         /// </summary>
@@ -166,6 +167,7 @@ namespace KPA_KPI_Analyzer
             mainNavActiveBtn = btn_Dashboard; // set the active button as the first button (Dashboard)
             InitializeProgramEvents();
             GetCheckBoxControls();
+            GetCheckListBoxes();
             InitializeProgram();
         }
 
@@ -262,7 +264,7 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// 
+        /// Reset the settings that deal with United States.
         /// </summary>
         public void ResetUsSettings()
         {
@@ -279,7 +281,7 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// 
+        /// Resets the settings that deal with Mexico
         /// </summary>
         public void ResetMxSettings()
         {
@@ -293,12 +295,32 @@ namespace KPA_KPI_Analyzer
 
 
 
+        /// <summary>
+        /// Checks if there is a variant settigs file available to load. if not the variant settings file will
+        /// be initialized.
+        /// </summary>
+        private void CheckVariantSettings()
+        {
+            // Load the variant settings
+            if (new FileInfo(AppDirectoryUtils.variantFiles[(int)AppDirectoryUtils.VariantFile.FilterVariants]).Length != 0)
+            {
+                variantSettings.Load(ref variantSettings);
+
+                if (variantSettings.Variants.Count > 0)
+                    viewVariantsToolStripMenuItem.Enabled = true;
+            }
+        }
+
+
+
 
         /// <summary>
         /// Configure the application based on the resources available to it.
         /// </summary>
         private void InitializeProgram()
         {
+            CheckVariantSettings();
+
             if (PRPO_DB_Utils.DatabaseConnection != null && new FileInfo(AppDirectoryUtils.resourcesFiles[(int)AppDirectoryUtils.ResourceFile.Settings]).Length != 0)
             {
                 try
@@ -396,8 +418,7 @@ namespace KPA_KPI_Analyzer
             }
             else
             {
-                if (settings == null)
-                    settings = new ApplicationConfiguration.ApplicationConfig();
+                settings = new ApplicationConfiguration.ApplicationConfig();
 
                 lbl_Country.Text = "Waiting...";
                 lbl_topPanelNavPrpoDate.Text = "Waiting...";
@@ -951,9 +972,52 @@ namespace KPA_KPI_Analyzer
         /// <param name="_variantDetails">A Dictionary object that stores the filters saved in the chosen variant.</param>
         public void BeginVariantLoadProcess(Dictionary<string, List<string>> _variantDetails)
         {
-            // Pass Variant details to filters for calibration
+            addVariantToolStripMenuItem.Enabled = false;
 
-            // Once filters are setup, start the data load process and pray.
+            // Pass Variant details to filters for calibration
+            Filters.CalibrateFilters(_variantDetails);
+            BuildQueryFilters();
+            FilterUtils.FiltersLoaded = false;
+
+            HasFiltersAdded();
+
+            if (ColumnFiltersAdded)
+            {
+                Filters.SecondaryFilterQuery = filters;
+                Filters.FilterQuery = " AND " + filters;
+                ColumnFiltersApplied = true;
+            }
+            else
+            {
+                filters = string.Empty;
+                Filters.FilterQuery = filters;
+                Filters.SecondaryFilterQuery = filters;
+                ColumnFiltersApplied = false;
+            }
+
+
+            if (DateFiltersAdded)
+            {
+                DateFiltersApplied = true;
+            }
+            else
+            {
+                DateFiltersApplied = false;
+            }
+
+
+            if (Filters.AdvancedFilters.AdvanceFiltersChanged())
+            {
+                AdvancedFiltersApplied = true;
+            }
+            else
+            {
+                AdvancedFiltersApplied = false;
+            }
+
+            UpdateCheckedItems();
+            InitializeDataLoadProcess();
+            UpdateFilterButtons();
         }
     }
 }

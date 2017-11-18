@@ -121,31 +121,6 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
 
         /// <summary>
-        /// Get teh query based off of the column passed as a parameter.
-        /// </summary>
-        /// <param name="col"></param>
-        private static void getQuery(Filters col)
-        {
-            string filters = string.Empty;
-            string temp;
-            string column = filterCols[(int)col];
-
-            if (filters == string.Empty)
-            {
-                temp = "SELECT DISTINCT " + Values.Globals.CountryTableName + ".[" + column + "] FROM " + Values.Globals.CountryTableName;
-            }
-            else
-            {
-                temp = "SELECT DISTINCT " + Values.Globals.CountryTableName + ".[" + column + "] FROM " + Values.Globals.CountryTableName + " WHERE " + filters;
-            }
-            query = temp;
-        }
-
-
-
-
-
-        /// <summary>
         /// When the Loading Filters for the "Project Number" Checked List Box, both the WBS Element and Prod Ord. WBS fields need to be
         /// combined which is performed in the LoadFilters function. The peropose of this function is to take loop through each record,
         /// remove any value that contains an underscore and talk the first part of any remaining value within the hashtable
@@ -184,7 +159,6 @@ namespace KPA_KPI_Analyzer.FilterFeeature
         /// <param name="filters">the current filters loaded.</param>
         internal static void LoadFilters(string filters)
         {
-            filters = string.Empty;
             OleDbCommand cmd = new OleDbCommand();
             strData = new HashSet<string>();
             try
@@ -230,7 +204,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Filter Utils - Load Filters Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.StackTrace, "Filter Utils - Load Filters Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -241,157 +215,6 @@ namespace KPA_KPI_Analyzer.FilterFeeature
         }
 
 
-
-
-
-        /// <summary>
-        /// Loads the filters for each unique filter column excluding the ignored filter
-        /// </summary>
-        /// <param name="filters">The current filters</param>
-        /// <param name="ignoredCol">The column that we want to ignore</param>
-        internal static void LoadFiltersExcluded(string filters, Filters ignoredCol)
-        {
-            OleDbCommand cmd = new OleDbCommand();
-            strData = new HashSet<string>();
-            try
-            {
-                foreach (Filters col in Enum.GetValues(typeof(Filters)))
-                {
-                    if (ignoredCol == col)
-                    {
-                        continue;
-                    }
-
-                    if (col == Filters.ProjectNUm_ProdOrdWbs && ignoredCol == Filters.ProjectNum_WBS_Element)
-                        continue;
-
-                    if (col == Filters.ProjectNum_WBS_Element && ignoredCol == Filters.ProjectNUm_ProdOrdWbs)
-                        continue;
-
-                    getQuery(col, filters);
-                    cmd = new OleDbCommand(query, DatabaseUtils.PRPO_DB_Utils.DatabaseConnection);
-
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            if (reader[filterCols[(int)col]] == DBNull.Value)
-                            {
-                                strData.Add("[Blanks]");
-                                continue;
-                            }
-                            else
-                            {
-                                strData.Add(reader[filterCols[(int)col]].ToString());
-                            }
-                        }
-
-
-                        // We want to continue to add Prod Ord WBS element to the already added WBS elements to create the project numbers
-                        if (col == Filters.ProjectNum_WBS_Element) continue;
-
-
-                        // Now that we have combined all unique values from WBS Element and Prod Ord. WBS fields, we want to clean them up before storing them
-                        // in the Checked list views.
-                        if (col == Filters.ProjectNUm_ProdOrdWbs)
-                            CleanUpProjectNumbers();
-
-
-                        UpdateFilter(strData, col);
-                    }
-                    strData.Clear();
-                }
-                FiltersLoaded = true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Filter Utils - Load Filters Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                strData.Clear();
-                strData = null;
-                GC.Collect();
-            }
-        }
-
-
-
-
-        /// <summary>
-        /// Loads the fitler of the supplied filter name excluding the rest.
-        /// </summary>
-        /// <param name="filters">The filters used to query the data.</param>
-        /// <param name="filtersToLoad">The filter column that needs to be loaded into the application</param>
-        internal static void LoadFilter(Filters filtersToLoad)
-        {
-            OleDbCommand cmd = new OleDbCommand();
-            strData = new HashSet<string>();
-            try
-            {
-
-
-                foreach (Filters col in Enum.GetValues(typeof(Filters)))
-                {
-                    if (filtersToLoad != col)
-                    {
-                        if (filtersToLoad == Filters.ProjectNum_WBS_Element && col == Filters.ProjectNUm_ProdOrdWbs)
-                            ;
-                        else if (filtersToLoad == Filters.ProjectNUm_ProdOrdWbs && col == Filters.ProjectNum_WBS_Element)
-                            ;
-                        else
-                            continue;
-                    }
-
-
-                    
-
-                    getQuery(col);
-                    cmd = new OleDbCommand(query, DatabaseUtils.PRPO_DB_Utils.DatabaseConnection);
-
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            if (reader[filterCols[(int)col]] == DBNull.Value)
-                            {
-                                strData.Add("[Blanks]");
-                                continue;
-                            }
-                            else
-                            {
-                                strData.Add(reader[filterCols[(int)col]].ToString());
-                            }
-                        }
-
-
-                        // We want to continue to add Prod Ord WBS element to the already added WBS elements to create the project numbers
-                        if (col == Filters.ProjectNum_WBS_Element) continue;
-
-
-                        // Now that we have combined all unique values from WBS Element and Prod Ord. WBS fields, we want to clean them up before storing them
-                        // in the Checked list views.
-                        if (col == Filters.ProjectNUm_ProdOrdWbs)
-                            CleanUpProjectNumbers();
-
-
-                        UpdateFilter(strData, col);
-                    }
-                    strData.Clear();
-                }
-                FiltersLoaded = true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Filter Utils - Load Filters Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                strData.Clear();
-                strData = null;
-                GC.Collect();
-            }
-        }
 
 
 

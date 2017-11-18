@@ -14,7 +14,7 @@ namespace KPA_KPI_Analyzer.Filter_Variant
 
         // Call-back function to begin data loading of the users variant.
         public delegate void BegingVariantLoadHandler(Dictionary<string, List<string>> _filters);
-        public static event BegingVariantLoadHandler BeingVariantLoadProcess;
+        public static event BegingVariantLoadHandler BeginVariantLoadProcess;
         #endregion
 
 
@@ -43,6 +43,7 @@ namespace KPA_KPI_Analyzer.Filter_Variant
             if(Variants.Count > 0)
             {
                 ToggleButtons(true);
+                dgv_variants.Rows[0].Selected = true;
             }
         }
 
@@ -220,7 +221,7 @@ namespace KPA_KPI_Analyzer.Filter_Variant
         /// <summary>
         /// Removes the selected rows from the list of variants and the datagridview.
         /// </summary>
-        /// <param name="sender"></param>
+        /// <param name="sender">The remove button</param>
         /// <param name="e"></param>
         private void btn_remove_Click(object sender, EventArgs e)
         {
@@ -243,7 +244,47 @@ namespace KPA_KPI_Analyzer.Filter_Variant
             {
                 ToggleButtons(false);
             }
+            else
+            {
+                dgv_variants.Rows[dgv_variants.Rows.Count - 1].Selected = true;
+            }
             UpdateVariantTools();
+        }
+
+
+
+        /// <summary>
+        /// Deavtivate the variants.
+        /// </summary>
+        private void DeactivateVariants()
+        {
+            foreach(Variant variant in Variants)
+            {
+                variant.Active = false;
+            }
+        }
+
+
+
+
+        /// <summary>
+        /// Applies the users saved variant against the data.
+        /// </summary>
+        /// <param name="sender">The apply button</param>
+        /// <param name="e">the click event</param>
+        private void btn_apply_Click(object sender, EventArgs e)
+        {
+            DataGridViewSelectedRowCollection selectedRow = dgv_variants.SelectedRows;
+            if(selectedRow.Count == 1)
+            {
+                // There is only one row so grab the first one.
+                DataGridViewRow row = selectedRow[0];
+                DeactivateVariants();
+
+                // The user want to load this variant so set it to active.
+                Variants[row.Index].Active = true;
+                BeginVariantLoadProcess(Variants[row.Index].details);              
+            }
         }
 
 
@@ -252,20 +293,20 @@ namespace KPA_KPI_Analyzer.Filter_Variant
 
 
 
-        /// <summary>
-        /// Applies the users saved variant against the data.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btn_apply_Click(object sender, EventArgs e)
-        {
-            DataGridViewSelectedRowCollection selectedRow = dgv_variants.SelectedRows;
 
-            if(selectedRow.Count == 1)
+        /// <summary>
+        /// When the user selects a cell. Highlight the entire row so the user can load that variant if they choose to do so.
+        /// </summary>
+        /// <param name="sender">The cell</param>
+        /// <param name="e">The cell click event</param>
+        private void dgv_variants_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewSelectedCellCollection selectedCell = dgv_variants.SelectedCells;
+
+            if(selectedCell.Count == 1)
             {
-                // There is only one row so grab the first one.
-                DataGridViewRow row = selectedRow[0];
-                BeingVariantLoadProcess(Variants[row.Index].details);              
+                DataGridViewCell cell = selectedCell[0];
+                dgv_variants.Rows[cell.RowIndex].Selected = true;
             }
         }
     }

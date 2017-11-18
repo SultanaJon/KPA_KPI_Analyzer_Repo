@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace KPA_KPI_Analyzer.Filter_Variant
 {
@@ -36,6 +32,10 @@ namespace KPA_KPI_Analyzer.Filter_Variant
         public string VariantDescription { get; set; }
 
 
+        public Variant()
+        {
+
+        }
 
 
         /// <summary>

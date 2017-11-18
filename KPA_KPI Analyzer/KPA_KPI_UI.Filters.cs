@@ -10,17 +10,16 @@ namespace KPA_KPI_Analyzer
     {
         #region MEMBERS
 
-        private static string filters = string.Empty;
-        private List<int> activeCLBs = new List<int>();
+        string filters = string.Empty;
         List<Bunifu.Framework.UI.BunifuCheckbox> checkBoxes = new List<Bunifu.Framework.UI.BunifuCheckbox>();
-
+        List<CheckedListBox> checkListBoxes = new List<CheckedListBox>();
 
         #endregion
 
         #region PROPERTIES
 
         /// <summary>
-        /// boolean value stating whether or not the user has checked filters TO apply
+        /// boolean value stating whether or not the user has checked filters to apply
         /// </summary>
         public static bool ColumnFiltersAdded { get; set; }
 
@@ -28,7 +27,7 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// Boolean value stating whether or not the user has added a date range filters to either the PR or PO Creation date.
+        /// boolean value stating whether or not the user has added a date range filters to either the pr or po creation date.
         /// </summary>
         public static bool DateFiltersAdded { get; set; }
 
@@ -67,7 +66,7 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// Boolean value indicating whether the program should filter by the PR date range.
+        /// boolean value indicating whether the program should filter by the pr date range.
         /// </summary>
         public static bool FilterByPrDate { get; set; }
 
@@ -76,7 +75,7 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// Boolean vaule indicating whether the program should filter by the PO date range.
+        /// boolean vaule indicating whether the program should filter by the po date range.
         /// </summary>
         public static bool FilterByPoDate { get; set; }
 
@@ -84,11 +83,9 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// Boolean value indicating whether the program should filter by the PO date range.
+        /// boolean value indicating whether the program should filter by the po date range.
         /// </summary>
         public static bool FilterByFinalRecDate { get; set; }
-
-
         #endregion
 
 
@@ -223,52 +220,6 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// Returns the active Check List Box Filters enumeration.
-        /// </summary>
-        /// <param name="tag"></param>
-        /// <returns></returns>
-        internal FilterUtils.Filters GetActiveCLBFitler(int tag)
-        {
-            switch (tag)
-            {
-                case 0: // Project number
-                    return FilterUtils.Filters.ProjectNum_WBS_Element;
-                case 1: // WBS Element
-                    return FilterUtils.Filters.WBS_Element;
-                case 2: // Material
-                    return FilterUtils.Filters.Material;
-                case 3: // Material Group
-                    return FilterUtils.Filters.MaterialGroup;
-                case 4: // Vendor
-                    return FilterUtils.Filters.Vendor;
-                case 5: // Vendor Desc
-                    return FilterUtils.Filters.VendorDescription;
-                case 6: // Purch Group
-                    return FilterUtils.Filters.PurchGroup;
-                case 7: // PO Purch Group
-                    return FilterUtils.Filters.PoPurchGroup;
-                case 8: // IR Supp Name
-                    return FilterUtils.Filters.IRSuppName;
-                case 9: // Fxd Supp Name
-                    return FilterUtils.Filters.FxdSuppName;
-                case 10: // Dsrd Supp Name
-                    return FilterUtils.Filters.DsrdSuppName;
-                case 11: // Commodity Cat
-                    return FilterUtils.Filters.CommCat;
-                case 12: // Escaped
-                    return FilterUtils.Filters.Escaped;
-                case 13: // PO Document Type
-                    return FilterUtils.Filters.PoDocumentType;
-                default: // Production Order Material
-                    return FilterUtils.Filters.ProdOrderMaterial;
-            }
-        }
-
-
-
-
-
-        /// <summary>
         /// When a check box is check this event will fire.
         /// </summary>
         /// <param name="sender"></param>
@@ -284,351 +235,457 @@ namespace KPA_KPI_Analyzer
                     if (e.NewValue == CheckState.Checked)
                     {
                         Filters.ColumnFilters.projectNumber.Add(clb.Items[e.Index].ToString());
-                        activeCLBs.Add(int.Parse(ChkdListBx_ProjectNumber.Tag.ToString()));
                         BuildQueryFilters();
-                        FilterUtils.LoadFiltersExcluded(filters, FilterUtils.Filters.ProjectNum_WBS_Element);
                     }
                     else
                     {
                         Filters.ColumnFilters.projectNumber.Remove(clb.Items[e.Index].ToString());
-                        int position = activeCLBs.LastIndexOf(int.Parse(ChkdListBx_ProjectNumber.Tag.ToString()));
-                        activeCLBs.RemoveAt(position);
                         BuildQueryFilters();
-                        if (activeCLBs.Count == 0)
-                            FilterUtils.LoadFilters(filters);
-                        else
-                        {
-                            FilterUtils.LoadFiltersExcluded(filters, GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
-                            FilterUtils.LoadFilter(GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
-                        }
                     }
                     break;
                 case 1: // WBS Element
                     if (e.NewValue == CheckState.Checked)
                     {
                         Filters.ColumnFilters.wbsElement.Add(clb.Items[e.Index].ToString());
-                        activeCLBs.Add(int.Parse(ChkdListBx_WBSElement.Tag.ToString()));
                         BuildQueryFilters();
-                        FilterUtils.LoadFiltersExcluded(filters, FilterUtils.Filters.WBS_Element);
                     }
                     else
                     {
                         Filters.ColumnFilters.wbsElement.Remove(clb.Items[e.Index].ToString());
-                        int position = activeCLBs.LastIndexOf(int.Parse(ChkdListBx_WBSElement.Tag.ToString()));
-                        activeCLBs.RemoveAt(position);
                         BuildQueryFilters();
-                        if (activeCLBs.Count == 0)
-                            FilterUtils.LoadFilters(filters);
-                        else
-                        {
-                            FilterUtils.LoadFiltersExcluded(filters, GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
-                            FilterUtils.LoadFilter(GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
-                        }
                     }
                     break;
                 case 2: // Material
                     if (e.NewValue == CheckState.Checked)
                     {
                         Filters.ColumnFilters.material.Add(clb.Items[e.Index].ToString());
-                        activeCLBs.Add(int.Parse(ChkdListBx_Material.Tag.ToString()));
                         BuildQueryFilters();
-                        FilterUtils.LoadFiltersExcluded(filters, FilterUtils.Filters.Material);
                     }
                     else
                     {
                         Filters.ColumnFilters.material.Remove(clb.Items[e.Index].ToString());
-                        int position = activeCLBs.LastIndexOf(int.Parse(ChkdListBx_Material.Tag.ToString()));
-                        activeCLBs.RemoveAt(position);
                         BuildQueryFilters();
-                        if (activeCLBs.Count == 0)
-                            FilterUtils.LoadFilters(filters);
-                        else
-                        {
-                            FilterUtils.LoadFiltersExcluded(filters, GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
-                            FilterUtils.LoadFilter(GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
-                        }
                     }
                     break;
                 case 3: // Material Group
                     if (e.NewValue == CheckState.Checked)
                     {
                         Filters.ColumnFilters.materialGroup.Add(clb.Items[e.Index].ToString());
-                        activeCLBs.Add(int.Parse(ChkdListBx_MaterialGroup.Tag.ToString()));
                         BuildQueryFilters();
-                        FilterUtils.LoadFiltersExcluded(filters, FilterUtils.Filters.MaterialGroup);
                     }
                     else
                     {
                         Filters.ColumnFilters.materialGroup.Remove(clb.Items[e.Index].ToString());
-                        int position = activeCLBs.LastIndexOf(int.Parse(ChkdListBx_MaterialGroup.Tag.ToString()));
-                        activeCLBs.RemoveAt(position);
                         BuildQueryFilters();
-                        if (activeCLBs.Count == 0)
-                            FilterUtils.LoadFilters(filters);
-                        else
-                        {
-                            FilterUtils.LoadFiltersExcluded(filters, GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
-                            FilterUtils.LoadFilter(GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
-                        }
                     }
                     break;
                 case 4: // Vendor
                     if (e.NewValue == CheckState.Checked)
                     {
                         Filters.ColumnFilters.vendor.Add(clb.Items[e.Index].ToString());
-                        activeCLBs.Add(int.Parse(ChkdListBx_Vendor.Tag.ToString()));
                         BuildQueryFilters();
-                        FilterUtils.LoadFiltersExcluded(filters, FilterUtils.Filters.Vendor);
                     }
                     else
                     {
                         Filters.ColumnFilters.vendor.Remove(clb.Items[e.Index].ToString());
-                        int position = activeCLBs.LastIndexOf(int.Parse(ChkdListBx_Vendor.Tag.ToString()));
-                        activeCLBs.RemoveAt(position);
                         BuildQueryFilters();
-                        if (activeCLBs.Count == 0)
-                            FilterUtils.LoadFilters(filters);
-                        else
-                        {
-                            FilterUtils.LoadFiltersExcluded(filters, GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
-                            FilterUtils.LoadFilter(GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
-                        }
                     }
                     break;
                 case 5: // Vendor Desc
                     if (e.NewValue == CheckState.Checked)
                     {
                         Filters.ColumnFilters.vendorDesc.Add(clb.Items[e.Index].ToString());
-                        activeCLBs.Add(int.Parse(ChkdListBx_VendorDesc.Tag.ToString()));
                         BuildQueryFilters();
-                        FilterUtils.LoadFiltersExcluded(filters, FilterUtils.Filters.VendorDescription);
                     }
                     else
                     {
                         Filters.ColumnFilters.vendorDesc.Remove(clb.Items[e.Index].ToString());
-                        int position = activeCLBs.LastIndexOf(int.Parse(ChkdListBx_VendorDesc.Tag.ToString()));
-                        activeCLBs.RemoveAt(position);
                         BuildQueryFilters();
-                        if (activeCLBs.Count == 0)
-                            FilterUtils.LoadFilters(filters);
-                        else
-                        {
-                            FilterUtils.LoadFiltersExcluded(filters, GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
-                            FilterUtils.LoadFilter(GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
-                        }
                     }
                     break;
                 case 6: // PR Purch Group
                     if (e.NewValue == CheckState.Checked)
                     {
                         Filters.ColumnFilters.purchGroup.Add(clb.Items[e.Index].ToString());
-                        activeCLBs.Add(int.Parse(ChkdListBx_PrPurchGroup.Tag.ToString()));
                         BuildQueryFilters();
-                        FilterUtils.LoadFiltersExcluded(filters, FilterUtils.Filters.PurchGroup);
                     }
                     else
                     {
                         Filters.ColumnFilters.purchGroup.Remove(clb.Items[e.Index].ToString());
-                        int position = activeCLBs.LastIndexOf(int.Parse(ChkdListBx_PrPurchGroup.Tag.ToString()));
-                        activeCLBs.RemoveAt(position);
                         BuildQueryFilters();
-                        if (activeCLBs.Count == 0)
-                            FilterUtils.LoadFilters(filters);
-                        else
-                        {
-                            FilterUtils.LoadFiltersExcluded(filters, GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
-                            FilterUtils.LoadFilter(GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
-                        }
                     }
                     break;
                 case 7: // PO Purch Group
                     if (e.NewValue == CheckState.Checked)
                     {
                         Filters.ColumnFilters.poPurchGroup.Add(clb.Items[e.Index].ToString());
-                        activeCLBs.Add(int.Parse(ChkdListBx_PoPurchGroup.Tag.ToString()));
                         BuildQueryFilters();
-                        FilterUtils.LoadFiltersExcluded(filters, FilterUtils.Filters.PoPurchGroup);
                     }
                     else
                     {
                         Filters.ColumnFilters.poPurchGroup.Remove(clb.Items[e.Index].ToString());
-                        int position = activeCLBs.LastIndexOf(int.Parse(ChkdListBx_PoPurchGroup.Tag.ToString()));
-                        activeCLBs.RemoveAt(position);
                         BuildQueryFilters();
-                        if (activeCLBs.Count == 0)
-                            FilterUtils.LoadFilters(filters);
-                        else
-                        {
-                            FilterUtils.LoadFiltersExcluded(filters, GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
-                            FilterUtils.LoadFilter(GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
-                        }
                     }
                     break;
                 case 8: // IR Supp Name
                     if (e.NewValue == CheckState.Checked)
                     {
                         Filters.ColumnFilters.irSuppName.Add(clb.Items[e.Index].ToString());
-                        activeCLBs.Add(int.Parse(ChkdListBx_IRSuppName.Tag.ToString()));
                         BuildQueryFilters();
-                        FilterUtils.LoadFiltersExcluded(filters, FilterUtils.Filters.IRSuppName);
                     }
                     else
                     {
                         Filters.ColumnFilters.irSuppName.Remove(clb.Items[e.Index].ToString());
-                        int position = activeCLBs.LastIndexOf(int.Parse(ChkdListBx_IRSuppName.Tag.ToString()));
-                        activeCLBs.RemoveAt(position);
                         BuildQueryFilters();
-                        if (activeCLBs.Count == 0)
-                            FilterUtils.LoadFilters(filters);
-                        else
-                        {
-                            FilterUtils.LoadFiltersExcluded(filters, GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
-                            FilterUtils.LoadFilter(GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
-                        }
                     }
                     break;
                 case 9: // Fxd Supp Name
                     if (e.NewValue == CheckState.Checked)
                     {
                         Filters.ColumnFilters.fxdSuppName.Add(clb.Items[e.Index].ToString());
-                        activeCLBs.Add(int.Parse(ChkdListBx_FxdSuppName.Tag.ToString()));
                         BuildQueryFilters();
-                        FilterUtils.LoadFiltersExcluded(filters, FilterUtils.Filters.FxdSuppName);
                     }
                     else
                     {
                         Filters.ColumnFilters.fxdSuppName.Remove(clb.Items[e.Index].ToString());
-                        int position = activeCLBs.LastIndexOf(int.Parse(ChkdListBx_FxdSuppName.Tag.ToString()));
-                        activeCLBs.RemoveAt(position);
                         BuildQueryFilters();
-                        if (activeCLBs.Count == 0)
-                            FilterUtils.LoadFilters(filters);
-                        else
-                        {
-                            FilterUtils.LoadFiltersExcluded(filters, GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
-                            FilterUtils.LoadFilter(GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
-                        }
                     }
                     break;
                 case 10: // Dsrd Supp Name
                     if (e.NewValue == CheckState.Checked)
                     {
                         Filters.ColumnFilters.dsrdSuppName.Add(clb.Items[e.Index].ToString());
-                        activeCLBs.Add(int.Parse(ChkdListBx_DsrdSuppName.Tag.ToString()));
                         BuildQueryFilters();
-                        FilterUtils.LoadFiltersExcluded(filters, FilterUtils.Filters.DsrdSuppName);
                     }
                     else
                     {
                         Filters.ColumnFilters.dsrdSuppName.Remove(clb.Items[e.Index].ToString());
-                        int position = activeCLBs.LastIndexOf(int.Parse(ChkdListBx_DsrdSuppName.Tag.ToString()));
-                        activeCLBs.RemoveAt(position);
                         BuildQueryFilters();
-                        if (activeCLBs.Count == 0)
-                            FilterUtils.LoadFilters(filters);
-                        else
-                        {
-                            FilterUtils.LoadFiltersExcluded(filters, GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
-                            FilterUtils.LoadFilter(GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
-                        }
                     }
                     break;
                 case 11: // Commodity Category
                     if (e.NewValue == CheckState.Checked)
                     {
                         Filters.ColumnFilters.commCategory.Add(clb.Items[e.Index].ToString());
-                        activeCLBs.Add(int.Parse(ChkdListBx_CommodityCat.Tag.ToString()));
                         BuildQueryFilters();
-                        FilterUtils.LoadFiltersExcluded(filters, FilterUtils.Filters.CommCat);
                     }
                     else
                     {
                         Filters.ColumnFilters.commCategory.Remove(clb.Items[e.Index].ToString());
-                        int position = activeCLBs.LastIndexOf(int.Parse(ChkdListBx_CommodityCat.Tag.ToString()));
-                        activeCLBs.RemoveAt(position);
                         BuildQueryFilters();
-                        if (activeCLBs.Count == 0)
-                            FilterUtils.LoadFilters(filters);
-                        else
-                        {
-                            FilterUtils.LoadFiltersExcluded(filters, GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
-                            FilterUtils.LoadFilter(GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
-                        }
                     }
                     break;
                 case 12: // Escaped
                     if (e.NewValue == CheckState.Checked)
                     {
                         Filters.ColumnFilters.escaped.Add(clb.Items[e.Index].ToString());
-                        activeCLBs.Add(int.Parse(ChkdListBx_Escaped.Tag.ToString()));
                         BuildQueryFilters();
-                        FilterUtils.LoadFiltersExcluded(filters, FilterUtils.Filters.Escaped);
                     }
                     else
                     {
                         Filters.ColumnFilters.escaped.Remove(clb.Items[e.Index].ToString());
-                        int position = activeCLBs.LastIndexOf(int.Parse(ChkdListBx_Escaped.Tag.ToString()));
-                        activeCLBs.RemoveAt(position);
                         BuildQueryFilters();
-                        if (activeCLBs.Count == 0)
-                            FilterUtils.LoadFilters(filters);
-                        else
-                        {
-                            FilterUtils.LoadFiltersExcluded(filters, GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
-                            FilterUtils.LoadFilter(GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
-                        }
                     }
                     break;
                 case 13: // PO Document Type
                     if (e.NewValue == CheckState.Checked)
                     {
                         Filters.ColumnFilters.poDocumentType.Add(clb.Items[e.Index].ToString());
-                        activeCLBs.Add(int.Parse(ChkdListBx_poDocumentType.Tag.ToString()));
                         BuildQueryFilters();
-                        FilterUtils.LoadFiltersExcluded(filters, FilterUtils.Filters.PoDocumentType);
                     }
                     else
                     {
                         Filters.ColumnFilters.poDocumentType.Remove(clb.Items[e.Index].ToString());
-                        int position = activeCLBs.LastIndexOf(int.Parse(ChkdListBx_poDocumentType.Tag.ToString()));
-                        activeCLBs.RemoveAt(position);
                         BuildQueryFilters();
-                        if (activeCLBs.Count == 0)
-                            FilterUtils.LoadFilters(filters);
-                        else
-                        {
-                            FilterUtils.LoadFiltersExcluded(filters, GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
-                            FilterUtils.LoadFilter(GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
-                        }
                     }
                     break;
                 case 14: // PO Document Type
                     if (e.NewValue == CheckState.Checked)
                     {
                         Filters.ColumnFilters.prodOrderMat.Add(clb.Items[e.Index].ToString());
-                        activeCLBs.Add(int.Parse(ChkdListBx_productionOrderMat.Tag.ToString()));
                         BuildQueryFilters();
-                        FilterUtils.LoadFiltersExcluded(filters, FilterUtils.Filters.ProdOrderMaterial);
                     }
                     else
                     {
                         Filters.ColumnFilters.prodOrderMat.Remove(clb.Items[e.Index].ToString());
-                        int position = activeCLBs.LastIndexOf(int.Parse(ChkdListBx_productionOrderMat.Tag.ToString()));
-                        activeCLBs.RemoveAt(position);
                         BuildQueryFilters();
-                        if (activeCLBs.Count == 0)
-                            FilterUtils.LoadFilters(filters);
-                        else
-                        {
-                            FilterUtils.LoadFiltersExcluded(filters, GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
-                            FilterUtils.LoadFilter(GetActiveCLBFitler(activeCLBs[activeCLBs.Count - 1]));
-                        }
                     }
                     break;
             }
-            UpdateCheckedItems();
+            HasFiltersAdded();
+            UpdateFilterButtons();
         }
 
+
+
+
+
+        /// <summary>
+        /// This function will ensure that values that are checked stay checked
+        /// after the check boxes are updated and populated with new values.
+        /// </summary>
+        private void UpdateCheckedItems()
+        {
+            int index = 0;
+
+            // Project Number
+            if (Filters.ColumnFilters.projectNumber.Count > 0)
+            {
+                ChkdListBx_ProjectNumber.ItemCheck -= ckdListBox_ItemCheck;
+                foreach (string str in Filters.ColumnFilters.projectNumber)
+                {
+                    index = ChkdListBx_ProjectNumber.Items.IndexOf(str);
+                    if (index >= 0)
+                    {
+                        if (!ChkdListBx_ProjectNumber.GetItemChecked(index))
+                            ChkdListBx_ProjectNumber.SetItemChecked(index, true);
+                    }
+                }
+                ChkdListBx_ProjectNumber.ItemCheck += ckdListBox_ItemCheck;
+            }
+
+
+
+            // WBS Element
+            if (Filters.ColumnFilters.wbsElement.Count > 0)
+            {
+                ChkdListBx_WBSElement.ItemCheck -= ckdListBox_ItemCheck;
+                foreach (string str in Filters.ColumnFilters.wbsElement)
+                {
+                    index = ChkdListBx_WBSElement.Items.IndexOf(str);
+                    if (index >= 0)
+                    {
+                        if (!ChkdListBx_WBSElement.GetItemChecked(index))
+                            ChkdListBx_WBSElement.SetItemChecked(index, true);
+                    }
+                }
+                ChkdListBx_WBSElement.ItemCheck += ckdListBox_ItemCheck;
+            }
+
+            // Material
+            if (Filters.ColumnFilters.material.Count > 0)
+            {
+                ChkdListBx_Material.ItemCheck -= ckdListBox_ItemCheck;
+                foreach (string str in Filters.ColumnFilters.material)
+                {
+                    index = ChkdListBx_Material.Items.IndexOf(str);
+                    if (index >= 0)
+                    {
+                        if (!ChkdListBx_Material.GetItemChecked(index))
+                            ChkdListBx_Material.SetItemChecked(index, true);
+                    }
+                }
+                ChkdListBx_Material.ItemCheck += ckdListBox_ItemCheck;
+            }
+
+
+            // Material Group
+            if (Filters.ColumnFilters.materialGroup.Count > 0)
+            {
+                ChkdListBx_MaterialGroup.ItemCheck -= ckdListBox_ItemCheck;
+                foreach (string str in Filters.ColumnFilters.materialGroup)
+                {
+                    index = ChkdListBx_MaterialGroup.Items.IndexOf(str);
+                    if (index >= 0)
+                    {
+                        if (!ChkdListBx_MaterialGroup.GetItemChecked(index))
+                            ChkdListBx_MaterialGroup.SetItemChecked(index, true);
+                    }
+                }
+                ChkdListBx_MaterialGroup.ItemCheck += ckdListBox_ItemCheck;
+            }
+
+
+            // Vendor
+            if (Filters.ColumnFilters.vendor.Count > 0)
+            {
+                ChkdListBx_Vendor.ItemCheck -= ckdListBox_ItemCheck;
+                foreach (string str in Filters.ColumnFilters.vendor)
+                {
+                    index = ChkdListBx_Vendor.Items.IndexOf(str);
+                    if (index >= 0)
+                    {
+                        if (!ChkdListBx_Vendor.GetItemChecked(index))
+                            ChkdListBx_Vendor.SetItemChecked(index, true);
+                    }
+                }
+                ChkdListBx_Vendor.ItemCheck += ckdListBox_ItemCheck;
+            }
+
+
+            // Vendor Description
+            if (Filters.ColumnFilters.vendorDesc.Count > 0)
+            {
+                ChkdListBx_VendorDesc.ItemCheck -= ckdListBox_ItemCheck;
+                foreach (string str in Filters.ColumnFilters.vendorDesc)
+                {
+                    index = ChkdListBx_VendorDesc.Items.IndexOf(str);
+                    if (index >= 0)
+                    {
+                        if (!ChkdListBx_VendorDesc.GetItemChecked(index))
+                            ChkdListBx_VendorDesc.SetItemChecked(index, true);
+                    }
+                }
+                ChkdListBx_VendorDesc.ItemCheck += ckdListBox_ItemCheck;
+            }
+
+
+            // PR Purch Group
+            if (Filters.ColumnFilters.purchGroup.Count > 0)
+            {
+                ChkdListBx_PrPurchGroup.ItemCheck -= ckdListBox_ItemCheck;
+                foreach (string str in Filters.ColumnFilters.purchGroup)
+                {
+                    index = ChkdListBx_PrPurchGroup.Items.IndexOf(str);
+                    if (index >= 0)
+                    {
+                        if (!ChkdListBx_PrPurchGroup.GetItemChecked(index))
+                            ChkdListBx_PrPurchGroup.SetItemChecked(index, true);
+                    }
+                }
+                ChkdListBx_PrPurchGroup.ItemCheck += ckdListBox_ItemCheck;
+            }
+
+
+
+            // PO Purch Group
+            if (Filters.ColumnFilters.poPurchGroup.Count > 0)
+            {
+                ChkdListBx_PoPurchGroup.ItemCheck -= ckdListBox_ItemCheck;
+                foreach (string str in Filters.ColumnFilters.poPurchGroup)
+                {
+                    index = ChkdListBx_PoPurchGroup.Items.IndexOf(str);
+                    if (index >= 0)
+                    {
+                        if (!ChkdListBx_PoPurchGroup.GetItemChecked(index))
+                            ChkdListBx_PoPurchGroup.SetItemChecked(index, true);
+                    }
+                }
+                ChkdListBx_PoPurchGroup.ItemCheck += ckdListBox_ItemCheck;
+            }
+
+
+
+
+            // IR Supp Name
+            if (Filters.ColumnFilters.irSuppName.Count > 0)
+            {
+                ChkdListBx_IRSuppName.ItemCheck -= ckdListBox_ItemCheck;
+                foreach (string str in Filters.ColumnFilters.irSuppName)
+                {
+                    index = ChkdListBx_IRSuppName.Items.IndexOf(str);
+                    if (index >= 0)
+                    {
+                        if (!ChkdListBx_IRSuppName.GetItemChecked(index))
+                            ChkdListBx_IRSuppName.SetItemChecked(index, true);
+                    }
+                }
+                ChkdListBx_IRSuppName.ItemCheck += ckdListBox_ItemCheck;
+            }
+
+
+
+            // Fxd Supp Name
+            if (Filters.ColumnFilters.fxdSuppName.Count > 0)
+            {
+                ChkdListBx_FxdSuppName.ItemCheck -= ckdListBox_ItemCheck;
+                foreach (string str in Filters.ColumnFilters.fxdSuppName)
+                {
+                    index = ChkdListBx_FxdSuppName.Items.IndexOf(str);
+                    if (index >= 0)
+                    {
+                        if (!ChkdListBx_FxdSuppName.GetItemChecked(index))
+                            ChkdListBx_FxdSuppName.SetItemChecked(index, true);
+                    }
+                }
+                ChkdListBx_FxdSuppName.ItemCheck += ckdListBox_ItemCheck;
+            }
+
+
+            // Dsrd Supp Name
+            if (Filters.ColumnFilters.dsrdSuppName.Count > 0)
+            {
+                ChkdListBx_DsrdSuppName.ItemCheck -= ckdListBox_ItemCheck;
+                foreach (string str in Filters.ColumnFilters.dsrdSuppName)
+                {
+                    index = ChkdListBx_DsrdSuppName.Items.IndexOf(str);
+                    if (index >= 0)
+                    {
+                        if (!ChkdListBx_DsrdSuppName.GetItemChecked(index))
+                            ChkdListBx_DsrdSuppName.SetItemChecked(index, true);
+                    }
+                }
+                ChkdListBx_DsrdSuppName.ItemCheck += ckdListBox_ItemCheck;
+            }
+
+
+            // Commodity Category
+            if (Filters.ColumnFilters.commCategory.Count > 0)
+            {
+                ChkdListBx_CommodityCat.ItemCheck -= ckdListBox_ItemCheck;
+                foreach (string str in Filters.ColumnFilters.commCategory)
+                {
+                    index = ChkdListBx_CommodityCat.Items.IndexOf(str);
+                    if (index >= 0)
+                    {
+                        if (!ChkdListBx_CommodityCat.GetItemChecked(index))
+                            ChkdListBx_CommodityCat.SetItemChecked(index, true);
+                    }
+                }
+                ChkdListBx_CommodityCat.ItemCheck += ckdListBox_ItemCheck;
+            }
+
+
+            // Escaped
+            if (Filters.ColumnFilters.escaped.Count > 0)
+            {
+                ChkdListBx_Escaped.ItemCheck -= ckdListBox_ItemCheck;
+                foreach (string str in Filters.ColumnFilters.escaped)
+                {
+                    index = ChkdListBx_Escaped.Items.IndexOf(str);
+                    if (index >= 0)
+                    {
+                        if (!ChkdListBx_Escaped.GetItemChecked(index))
+                            ChkdListBx_Escaped.SetItemChecked(index, true);
+                    }
+                }
+                ChkdListBx_Escaped.ItemCheck += ckdListBox_ItemCheck;
+            }
+
+
+            // PO Document Type
+            if (Filters.ColumnFilters.poDocumentType.Count > 0)
+            {
+                ChkdListBx_poDocumentType.ItemCheck -= ckdListBox_ItemCheck;
+                foreach (string str in Filters.ColumnFilters.poDocumentType)
+                {
+                    index = ChkdListBx_poDocumentType.Items.IndexOf(str);
+                    if (index >= 0)
+                    {
+                        if (!ChkdListBx_poDocumentType.GetItemChecked(index))
+                            ChkdListBx_poDocumentType.SetItemChecked(index, true);
+                    }
+                }
+                ChkdListBx_poDocumentType.ItemCheck += ckdListBox_ItemCheck;
+            }
+
+
+            // Production Order Material
+            if (Filters.ColumnFilters.prodOrderMat.Count > 0)
+            {
+                ChkdListBx_productionOrderMat.ItemCheck -= ckdListBox_ItemCheck;
+                foreach (string str in Filters.ColumnFilters.prodOrderMat)
+                {
+                    index = ChkdListBx_productionOrderMat.Items.IndexOf(str);
+                    if (index >= 0)
+                    {
+                        if (!ChkdListBx_productionOrderMat.GetItemChecked(index))
+                            ChkdListBx_productionOrderMat.SetItemChecked(index, true);
+                    }
+                }
+                ChkdListBx_productionOrderMat.ItemCheck += ckdListBox_ItemCheck;
+            }
+        }
 
 
 
@@ -1024,275 +1081,6 @@ namespace KPA_KPI_Analyzer
 
 
 
-        /// <summary>
-        /// This function will ensure that values that are checked stay checked
-        /// after the check boxes are updated and populated with new values.
-        /// </summary>
-        private void UpdateCheckedItems()
-        {
-            int index = 0;
-
-            // Project Number
-            if (Filters.ColumnFilters.projectNumber.Count > 0)
-            {
-                ChkdListBx_ProjectNumber.ItemCheck -= ckdListBox_ItemCheck;
-                foreach (string str in Filters.ColumnFilters.projectNumber)
-                {
-                    index = ChkdListBx_ProjectNumber.Items.IndexOf(str);
-                    if (index >= 0)
-                    {
-                        if (!ChkdListBx_ProjectNumber.GetItemChecked(index))
-                            ChkdListBx_ProjectNumber.SetItemChecked(index, true);
-                    }
-                }
-                ChkdListBx_ProjectNumber.ItemCheck += ckdListBox_ItemCheck;
-            }
-
-
-
-            // WBS Element
-            if (Filters.ColumnFilters.wbsElement.Count > 0)
-            {
-                ChkdListBx_WBSElement.ItemCheck -= ckdListBox_ItemCheck;
-                foreach (string str in Filters.ColumnFilters.wbsElement)
-                {
-                    index = ChkdListBx_WBSElement.Items.IndexOf(str);
-                    if (index >= 0)
-                    {
-                        if (!ChkdListBx_WBSElement.GetItemChecked(index))
-                            ChkdListBx_WBSElement.SetItemChecked(index, true);
-                    }
-                }
-                ChkdListBx_WBSElement.ItemCheck += ckdListBox_ItemCheck;
-            }
-
-            // Material
-            if (Filters.ColumnFilters.material.Count > 0)
-            {
-                ChkdListBx_Material.ItemCheck -= ckdListBox_ItemCheck;
-                foreach (string str in Filters.ColumnFilters.material)
-                {
-                    index = ChkdListBx_Material.Items.IndexOf(str);
-                    if(index >= 0)
-                    {
-                        if (!ChkdListBx_Material.GetItemChecked(index))
-                            ChkdListBx_Material.SetItemChecked(index, true);
-                    }
-                }
-                ChkdListBx_Material.ItemCheck += ckdListBox_ItemCheck;
-            }
-
-
-            // Material Group
-            if (Filters.ColumnFilters.materialGroup.Count > 0)
-            {
-                ChkdListBx_MaterialGroup.ItemCheck -= ckdListBox_ItemCheck;
-                foreach (string str in Filters.ColumnFilters.materialGroup)
-                {
-                    index = ChkdListBx_MaterialGroup.Items.IndexOf(str);
-                    if (index >= 0)
-                    {
-                        if (!ChkdListBx_MaterialGroup.GetItemChecked(index))
-                            ChkdListBx_MaterialGroup.SetItemChecked(index, true);
-                    }
-                }
-                ChkdListBx_MaterialGroup.ItemCheck += ckdListBox_ItemCheck;
-            }
-
-
-            // Vendor
-            if (Filters.ColumnFilters.vendor.Count > 0)
-            {
-                ChkdListBx_Vendor.ItemCheck -= ckdListBox_ItemCheck;
-                foreach (string str in Filters.ColumnFilters.vendor)
-                {
-                    index = ChkdListBx_Vendor.Items.IndexOf(str);
-                    if (index >= 0)
-                    {
-                        if (!ChkdListBx_Vendor.GetItemChecked(index))
-                            ChkdListBx_Vendor.SetItemChecked(index, true);
-                    }
-                }
-                ChkdListBx_Vendor.ItemCheck += ckdListBox_ItemCheck;
-            }
-
-
-            // Vendor Description
-            if (Filters.ColumnFilters.vendorDesc.Count > 0)
-            {
-                ChkdListBx_VendorDesc.ItemCheck -= ckdListBox_ItemCheck;
-                foreach (string str in Filters.ColumnFilters.vendorDesc)
-                {
-                    index = ChkdListBx_VendorDesc.Items.IndexOf(str);
-                    if (index >= 0)
-                    {
-                        if (!ChkdListBx_VendorDesc.GetItemChecked(index))
-                            ChkdListBx_VendorDesc.SetItemChecked(index, true);
-                    }
-                }
-                ChkdListBx_VendorDesc.ItemCheck += ckdListBox_ItemCheck;
-            }
-
-
-            // PR Purch Group
-            if (Filters.ColumnFilters.purchGroup.Count > 0)
-            {
-                ChkdListBx_PrPurchGroup.ItemCheck -= ckdListBox_ItemCheck;
-                foreach (string str in Filters.ColumnFilters.purchGroup)
-                {
-                    index = ChkdListBx_PrPurchGroup.Items.IndexOf(str);
-                    if (index >= 0)
-                    {
-                        if (!ChkdListBx_PrPurchGroup.GetItemChecked(index))
-                            ChkdListBx_PrPurchGroup.SetItemChecked(index, true);
-                    }
-                }
-                ChkdListBx_PrPurchGroup.ItemCheck += ckdListBox_ItemCheck;
-            }
-
-
-
-            // PO Purch Group
-            if (Filters.ColumnFilters.poPurchGroup.Count > 0)
-            {
-                ChkdListBx_PoPurchGroup.ItemCheck -= ckdListBox_ItemCheck;
-                foreach (string str in Filters.ColumnFilters.poPurchGroup)
-                {
-                    index = ChkdListBx_PoPurchGroup.Items.IndexOf(str);
-                    if (index >= 0)
-                    {
-                        if (!ChkdListBx_PoPurchGroup.GetItemChecked(index))
-                            ChkdListBx_PoPurchGroup.SetItemChecked(index, true);
-                    }
-                }
-                ChkdListBx_PoPurchGroup.ItemCheck += ckdListBox_ItemCheck;
-            }
-
-
-
-
-            // IR Supp Name
-            if (Filters.ColumnFilters.irSuppName.Count > 0)
-            {
-                ChkdListBx_IRSuppName.ItemCheck -= ckdListBox_ItemCheck;
-                foreach (string str in Filters.ColumnFilters.irSuppName)
-                {
-                    index = ChkdListBx_IRSuppName.Items.IndexOf(str);
-                    if (index >= 0)
-                    {
-                        if (!ChkdListBx_IRSuppName.GetItemChecked(index))
-                            ChkdListBx_IRSuppName.SetItemChecked(index, true);
-                    }
-                }
-                ChkdListBx_IRSuppName.ItemCheck += ckdListBox_ItemCheck;
-            }
-
-
-
-            // Fxd Supp Name
-            if (Filters.ColumnFilters.fxdSuppName.Count > 0)
-            {
-                ChkdListBx_FxdSuppName.ItemCheck -= ckdListBox_ItemCheck;
-                foreach (string str in Filters.ColumnFilters.fxdSuppName)
-                {
-                    index = ChkdListBx_FxdSuppName.Items.IndexOf(str);
-                    if (index >= 0)
-                    {
-                        if (!ChkdListBx_FxdSuppName.GetItemChecked(index))
-                            ChkdListBx_FxdSuppName.SetItemChecked(index, true);
-                    }
-                }
-                ChkdListBx_FxdSuppName.ItemCheck += ckdListBox_ItemCheck;
-            }
-
-
-            // Dsrd Supp Name
-            if (Filters.ColumnFilters.dsrdSuppName.Count > 0)
-            {
-                ChkdListBx_DsrdSuppName.ItemCheck -= ckdListBox_ItemCheck;
-                foreach (string str in Filters.ColumnFilters.dsrdSuppName)
-                {
-                    index = ChkdListBx_DsrdSuppName.Items.IndexOf(str);
-                    if (index >= 0)
-                    {
-                        if (!ChkdListBx_DsrdSuppName.GetItemChecked(index))
-                            ChkdListBx_DsrdSuppName.SetItemChecked(index, true);
-                    }
-                }
-                ChkdListBx_DsrdSuppName.ItemCheck += ckdListBox_ItemCheck;
-            }
-
-
-            // Commodity Category
-            if (Filters.ColumnFilters.commCategory.Count > 0)
-            {
-                ChkdListBx_CommodityCat.ItemCheck -= ckdListBox_ItemCheck;
-                foreach (string str in Filters.ColumnFilters.commCategory)
-                {
-                    index = ChkdListBx_CommodityCat.Items.IndexOf(str);
-                    if (index >= 0)
-                    {
-                        if (!ChkdListBx_CommodityCat.GetItemChecked(index))
-                            ChkdListBx_CommodityCat.SetItemChecked(index, true);
-                    }
-                }
-                ChkdListBx_CommodityCat.ItemCheck += ckdListBox_ItemCheck;
-            }
-
-
-            // Escaped
-            if (Filters.ColumnFilters.escaped.Count > 0)
-            {
-                ChkdListBx_Escaped.ItemCheck -= ckdListBox_ItemCheck;
-                foreach (string str in Filters.ColumnFilters.escaped)
-                {
-                    index = ChkdListBx_Escaped.Items.IndexOf(str);
-                    if (index >= 0)
-                    {
-                        if (!ChkdListBx_Escaped.GetItemChecked(index))
-                            ChkdListBx_Escaped.SetItemChecked(index, true);
-                    }
-                }
-                ChkdListBx_Escaped.ItemCheck += ckdListBox_ItemCheck;
-            }
-
-
-            // PO Document Type
-            if (Filters.ColumnFilters.poDocumentType.Count > 0)
-            {
-                ChkdListBx_poDocumentType.ItemCheck -= ckdListBox_ItemCheck;
-                foreach (string str in Filters.ColumnFilters.poDocumentType)
-                {
-                    index = ChkdListBx_poDocumentType.Items.IndexOf(str);
-                    if (index >= 0)
-                    {
-                        if (!ChkdListBx_poDocumentType.GetItemChecked(index))
-                            ChkdListBx_poDocumentType.SetItemChecked(index, true);
-                    }
-                }
-                ChkdListBx_poDocumentType.ItemCheck += ckdListBox_ItemCheck;
-            }
-
-
-            // Production Order Material
-            if (Filters.ColumnFilters.prodOrderMat.Count > 0)
-            {
-                ChkdListBx_productionOrderMat.ItemCheck -= ckdListBox_ItemCheck;
-                foreach (string str in Filters.ColumnFilters.prodOrderMat)
-                {
-                    index = ChkdListBx_productionOrderMat.Items.IndexOf(str);
-                    if (index >= 0)
-                    {
-                        if (!ChkdListBx_productionOrderMat.GetItemChecked(index))
-                            ChkdListBx_productionOrderMat.SetItemChecked(index, true);
-                    }
-                }
-                ChkdListBx_productionOrderMat.ItemCheck += ckdListBox_ItemCheck;
-            }
-        }
-
-
-
 
         /// <summary>
         /// Any filters that are checked will be unchecked and the filters check lists
@@ -1302,173 +1090,51 @@ namespace KPA_KPI_Analyzer
         /// <param name="e"></param>
         private void btn_clearSelected_Click(object sender, EventArgs e)
         {
-            HasFiltersAdded();
-
-            if (DateFiltersAdded)
-            {
-                if (FilterByPrDate)
-                {
-                    FilterByPrDate = false;
-                    chkBox_PrDateRange.Checked = false;
-                }
-
-                if (FilterByPoDate)
-                {
-                    FilterByPoDate = false;
-                    chkBox_PoDateRange.Checked = false;
-                }
-
-                if (FilterByFinalRecDate)
-                {
-                    FilterByFinalRecDate = false;
-                    chkBox_FinalReceiptDate.Checked = false;
-                }
-            }
-
-
-
-            // If advanced filter were edited, reset them.
-            if (AdvancedFiltersAdded)
-            {
-                AdvancedFiltersAdded = false;
-                Filters.AdvancedFilters.ResetAdvanceFilters();
-                ResetAdvancedFilters();
-            }
-
-
-            if (ColumnFiltersAdded)
-            {
-                // Project Number
-                foreach (int i in ChkdListBx_ProjectNumber.CheckedIndices)
-                {
-                    ChkdListBx_ProjectNumber.ItemCheck -= ckdListBox_ItemCheck;
-                    ChkdListBx_ProjectNumber.SetItemCheckState(i, CheckState.Unchecked);
-                    ChkdListBx_ProjectNumber.ItemCheck += ckdListBox_ItemCheck;
-                }
-
-                // WBS Element
-                foreach (int i in ChkdListBx_WBSElement.CheckedIndices)
-                {
-                    ChkdListBx_WBSElement.ItemCheck -= ckdListBox_ItemCheck;
-                    ChkdListBx_WBSElement.SetItemCheckState(i, CheckState.Unchecked);
-                    ChkdListBx_WBSElement.ItemCheck += ckdListBox_ItemCheck;
-
-                }
-
-                // Material
-                foreach (int i in ChkdListBx_Material.CheckedIndices)
-                {
-                    ChkdListBx_Material.ItemCheck -= ckdListBox_ItemCheck;
-                    ChkdListBx_Material.SetItemCheckState(i, CheckState.Unchecked);
-                    ChkdListBx_Material.ItemCheck += ckdListBox_ItemCheck;
-
-                }
-
-                // Material Group
-                foreach (int i in ChkdListBx_MaterialGroup.CheckedIndices)
-                {
-                    ChkdListBx_MaterialGroup.ItemCheck -= ckdListBox_ItemCheck;
-                    ChkdListBx_MaterialGroup.SetItemCheckState(i, CheckState.Unchecked);
-                    ChkdListBx_MaterialGroup.ItemCheck += ckdListBox_ItemCheck;
-
-                }
-
-                // Vendor
-                foreach (int i in ChkdListBx_Vendor.CheckedIndices)
-                {
-                    ChkdListBx_Vendor.ItemCheck -= ckdListBox_ItemCheck;
-                    ChkdListBx_Vendor.SetItemCheckState(i, CheckState.Unchecked);
-                    ChkdListBx_Vendor.ItemCheck += ckdListBox_ItemCheck;
-                }
-
-                // Vendor Desc
-                foreach (int i in ChkdListBx_VendorDesc.CheckedIndices)
-                {
-                    ChkdListBx_VendorDesc.ItemCheck -= ckdListBox_ItemCheck;
-                    ChkdListBx_VendorDesc.SetItemCheckState(i, CheckState.Unchecked);
-                    ChkdListBx_VendorDesc.ItemCheck += ckdListBox_ItemCheck;
-                }
-
-                // PR Purchase Group
-                foreach (int i in ChkdListBx_PrPurchGroup.CheckedIndices)
-                {
-                    ChkdListBx_PrPurchGroup.ItemCheck -= ckdListBox_ItemCheck;
-                    ChkdListBx_PrPurchGroup.SetItemCheckState(i, CheckState.Unchecked);
-                    ChkdListBx_PrPurchGroup.ItemCheck += ckdListBox_ItemCheck;
-                }
-
-                // PO Purch Group
-                foreach (int i in ChkdListBx_PoPurchGroup.CheckedIndices)
-                {
-                    ChkdListBx_PoPurchGroup.ItemCheck -= ckdListBox_ItemCheck;
-                    ChkdListBx_PoPurchGroup.SetItemCheckState(i, CheckState.Unchecked);
-                    ChkdListBx_PoPurchGroup.ItemCheck += ckdListBox_ItemCheck;
-                }
-
-                // IR Supp Name
-                foreach (int i in ChkdListBx_IRSuppName.CheckedIndices)
-                {
-                    ChkdListBx_IRSuppName.ItemCheck -= ckdListBox_ItemCheck;
-                    ChkdListBx_IRSuppName.SetItemCheckState(i, CheckState.Unchecked);
-                    ChkdListBx_IRSuppName.ItemCheck += ckdListBox_ItemCheck;
-                }
-
-                // Fxd Supp Name
-                foreach (int i in ChkdListBx_FxdSuppName.CheckedIndices)
-                {
-                    ChkdListBx_FxdSuppName.ItemCheck -= ckdListBox_ItemCheck;
-                    ChkdListBx_FxdSuppName.SetItemCheckState(i, CheckState.Unchecked);
-                    ChkdListBx_FxdSuppName.ItemCheck += ckdListBox_ItemCheck;
-                }
-
-                // Dsrd Supp Name
-                foreach (int i in ChkdListBx_DsrdSuppName.CheckedIndices)
-                {
-                    ChkdListBx_DsrdSuppName.ItemCheck -= ckdListBox_ItemCheck;
-                    ChkdListBx_DsrdSuppName.SetItemCheckState(i, CheckState.Unchecked);
-                    ChkdListBx_DsrdSuppName.ItemCheck += ckdListBox_ItemCheck;
-                }
-
-                // Commodity Category
-                foreach (int i in ChkdListBx_CommodityCat.CheckedIndices)
-                {
-                    ChkdListBx_CommodityCat.ItemCheck -= ckdListBox_ItemCheck;
-                    ChkdListBx_CommodityCat.SetItemCheckState(i, CheckState.Unchecked);
-                    ChkdListBx_CommodityCat.ItemCheck += ckdListBox_ItemCheck;
-                }
-
-                // Escaped
-                foreach (int i in ChkdListBx_Escaped.CheckedIndices)
-                {
-                    ChkdListBx_Escaped.ItemCheck -= ckdListBox_ItemCheck;
-                    ChkdListBx_Escaped.SetItemCheckState(i, CheckState.Unchecked);
-                    ChkdListBx_Escaped.ItemCheck += ckdListBox_ItemCheck;
-                }
-
-                // PO Document Type
-                foreach (int i in ChkdListBx_poDocumentType.CheckedIndices)
-                {
-                    ChkdListBx_poDocumentType.ItemCheck -= ckdListBox_ItemCheck;
-                    ChkdListBx_poDocumentType.SetItemCheckState(i, CheckState.Unchecked);
-                    ChkdListBx_poDocumentType.ItemCheck += ckdListBox_ItemCheck;
-                }
-                
-                // Production Order Material
-                foreach (int i in ChkdListBx_productionOrderMat.CheckedIndices)
-                {
-                    ChkdListBx_productionOrderMat.ItemCheck -= ckdListBox_ItemCheck;
-                    ChkdListBx_productionOrderMat.SetItemCheckState(i, CheckState.Unchecked);
-                    ChkdListBx_productionOrderMat.ItemCheck += ckdListBox_ItemCheck;
-                }
-
-
-                Filters.ColumnFilters.Clear();
-                filters = string.Empty;
-                FilterUtils.LoadFilters(filters);
-            }
-
+            filters = string.Empty;
+            ClearSelected();
             UpdateFilterButtons();
         }
+
+
+
+
+
+
+        /// <summary>
+        /// Clears the selected filters
+        /// </summary>
+        private void ClearSelected()
+        { 
+            // reset the added filters.
+            ResetAdded();
+
+            // Uncheck the date filters
+            chkBox_PrDateRange.Checked = false;
+            chkBox_PoDateRange.Checked = false;
+            chkBox_FinalReceiptDate.Checked = false;
+
+
+            // Uncheck the checklist boxes.
+            foreach (var chklistBox in checkListBoxes)
+            {
+                foreach (int index in chklistBox.CheckedIndices)
+                {
+                    chklistBox.SetItemCheckState(index, CheckState.Unchecked);
+                }
+            }
+
+
+            // Reset the advance filters back to their default state.
+            foreach (Bunifu.Framework.UI.BunifuCheckbox chkBox in checkBoxes)
+            {
+                if (int.Parse(chkBox.Tag.ToString()) <= 2)
+                    continue;
+                else
+                    chkBox.Checked = true;
+            }
+        }
+
+
 
 
 
@@ -1479,7 +1145,7 @@ namespace KPA_KPI_Analyzer
         private void GetCheckedColumnFilters()
         {
             // Clear the selected fitlers and get the updated checked filters
-            Filters.ColumnFilters.Clear();
+            Filters.ColumnFilters.Reset();
 
             // Project Number
             foreach (int i in ChkdListBx_ProjectNumber.CheckedIndices)
@@ -1571,6 +1237,9 @@ namespace KPA_KPI_Analyzer
                 Filters.ColumnFilters.prodOrderMat.Add(ChkdListBx_productionOrderMat.Items[i].ToString());
             }
         }
+
+
+
 
 
 
@@ -1698,7 +1367,6 @@ namespace KPA_KPI_Analyzer
 
             // Check the filter status to update the variant tools.
             UpdateVariantTools();
-
             InitializeDataLoadProcess();
         }
 
@@ -1712,10 +1380,10 @@ namespace KPA_KPI_Analyzer
         /// <param name="e"></param>
         private void btn_clearFilters_Click(object sender, EventArgs e)
         {
-            ResetFilters();
+            filters = string.Empty;
+            ClearFilters();
             UpdateFilterButtons();
 
-            //DataReader.LoadOverallData(ref overallData);
 
             // Load the overall data
             overallData.Load(ref overallData);
@@ -1725,60 +1393,56 @@ namespace KPA_KPI_Analyzer
 
             // Update the variant tools within the menu strip.
             UpdateVariantTools();
-
-            // Start the filter load process.
-            InitializeFilterLoadProcess();
         }
 
 
 
 
+
+
         /// <summary>
-        /// Resets the advanced filters to the state of checked.
+        /// Clears the filter settings and clears the fitlers applied on the data.
         /// </summary>
-        private void ResetAdvancedFilters()
+        private void ClearFilters()
         {
-            foreach (Bunifu.Framework.UI.BunifuCheckbox chkBox in checkBoxes)
-            {
-                if (int.Parse(chkBox.Tag.ToString()) <= 2)
-                    continue;
-                else
-                    chkBox.Checked = true;
-            }
+            // Reset column, advance, and date filters
+            ResetAdded();
+            ResetApplied();
+            Filters.ResetFilters();
+
+            // Clear selected filters.
+            ClearSelected();
+        }
 
 
+
+
+
+        /// <summary>
+        /// Resets applied data settings
+        /// </summary>
+        private void ResetApplied()
+        {
+            ColumnFiltersApplied = false;
             AdvancedFiltersAdded = false;
-            AdvancedFiltersApplied = false;
-            Filters.AdvancedFilters.ResetAdvanceFilters();
-        }
-
-
-
-
-        /// <summary>
-        /// Resets the program to the state of having no filters applied.
-        /// </summary>
-        private void ResetFilters()
-        {
-            Filters.ColumnFilters.Clear();
-            Filters.FilterQuery = string.Empty;
-            Filters.SecondaryFilterQuery = string.Empty;
-
-            Filters.DateFilters.FilterByPrDateRange = false;
-            Filters.DateFilters.FilterByPoDateRange = false;
-            Filters.DateFilters.FilterByFinalReceiptDate = false;
+            DateFiltersApplied = false;
             FilterByPrDate = false;
             FilterByPoDate = false;
             FilterByFinalRecDate = false;
-            chkBox_PrDateRange.Checked = false;
-            chkBox_PoDateRange.Checked = false;
-            chkBox_FinalReceiptDate.Checked = false;
+        }
 
+
+
+
+
+        /// <summary>
+        /// Resets the Added data settings
+        /// </summary>
+        private void ResetAdded()
+        {
             ColumnFiltersAdded = false;
-            ColumnFiltersApplied = false;
+            AdvancedFiltersAdded = false;
             DateFiltersAdded = false;
-            DateFiltersApplied = false;
-            ResetAdvancedFilters();
         }
 
 
@@ -2126,6 +1790,30 @@ namespace KPA_KPI_Analyzer
         }
 
 
+
+
+
+        /// <summary>
+        /// Gather all the check list boxes on the form so they can later be looped through.
+        /// </summary>
+        public void GetCheckListBoxes()
+        {
+            checkListBoxes.Add(ChkdListBx_ProjectNumber);
+            checkListBoxes.Add(ChkdListBx_WBSElement);
+            checkListBoxes.Add(ChkdListBx_Material);
+            checkListBoxes.Add(ChkdListBx_MaterialGroup);
+            checkListBoxes.Add(ChkdListBx_Vendor);
+            checkListBoxes.Add(ChkdListBx_VendorDesc);
+            checkListBoxes.Add(ChkdListBx_PrPurchGroup);
+            checkListBoxes.Add(ChkdListBx_PoPurchGroup);
+            checkListBoxes.Add(ChkdListBx_IRSuppName);
+            checkListBoxes.Add(ChkdListBx_FxdSuppName);
+            checkListBoxes.Add(ChkdListBx_DsrdSuppName);
+            checkListBoxes.Add(ChkdListBx_CommodityCat);
+            checkListBoxes.Add(ChkdListBx_Escaped);
+            checkListBoxes.Add(ChkdListBx_poDocumentType);
+            checkListBoxes.Add(ChkdListBx_productionOrderMat);
+        }
 
 
 

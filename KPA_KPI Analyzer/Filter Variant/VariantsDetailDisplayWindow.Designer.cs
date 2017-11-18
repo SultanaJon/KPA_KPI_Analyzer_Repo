@@ -44,18 +44,20 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.lbl_VariantDescription = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel21 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.dgv_details = new System.Windows.Forms.DataGridView();
-            this.btn_ok = new System.Windows.Forms.Button();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bdc_logo = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.bdc_title = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.bdc_titlePanel = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.bdc_topPanel = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_ok = new System.Windows.Forms.Button();
+            this.dgv_details = new System.Windows.Forms.DataGridView();
             this.prDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.poLineCreateDateRange = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.finalRecDateRange = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AdvancedFilters = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.projectNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.wbsElement = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.material = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.materialGroup = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vendor = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,11 +67,11 @@
             this.irSuppName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fxdSuppName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dsrdSuppName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.commCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.escaped = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.poDocumentType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prodOrdMaterial = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bunifuElipse2 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.pnl_TopUIPanel.SuspendLayout();
             this.pnl_topPanel.SuspendLayout();
             this.pnl_titlePanel.SuspendLayout();
@@ -77,6 +79,7 @@
             this.tableLayoutPanel14.SuspendLayout();
             this.pnl_CountrySelectorButton.SuspendLayout();
             this.panel8.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_details)).BeginInit();
             this.SuspendLayout();
             // 
@@ -252,50 +255,6 @@
             this.bunifuCustomLabel21.TabIndex = 0;
             this.bunifuCustomLabel21.Text = "Variant Description";
             // 
-            // dgv_details
-            // 
-            this.dgv_details.AllowUserToAddRows = false;
-            this.dgv_details.AllowUserToDeleteRows = false;
-            this.dgv_details.AllowUserToOrderColumns = true;
-            this.dgv_details.AllowUserToResizeRows = false;
-            this.dgv_details.BackgroundColor = System.Drawing.Color.White;
-            this.dgv_details.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_details.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.prDate,
-            this.poLineCreateDateRange,
-            this.finalRecDateRange,
-            this.AdvancedFilters,
-            this.projectNumber,
-            this.material,
-            this.materialGroup,
-            this.vendor,
-            this.vendorDescription,
-            this.prPurchGroup,
-            this.poPurchGroup,
-            this.irSuppName,
-            this.fxdSuppName,
-            this.dsrdSuppName,
-            this.Column1,
-            this.commCategory,
-            this.escaped,
-            this.poDocumentType,
-            this.prodOrdMaterial});
-            this.dgv_details.Location = new System.Drawing.Point(13, 92);
-            this.dgv_details.Name = "dgv_details";
-            this.dgv_details.RowHeadersVisible = false;
-            this.dgv_details.Size = new System.Drawing.Size(961, 261);
-            this.dgv_details.TabIndex = 61;
-            // 
-            // btn_ok
-            // 
-            this.btn_ok.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btn_ok.Location = new System.Drawing.Point(884, 362);
-            this.btn_ok.Name = "btn_ok";
-            this.btn_ok.Size = new System.Drawing.Size(90, 32);
-            this.btn_ok.TabIndex = 62;
-            this.btn_ok.Text = "OK";
-            this.btn_ok.UseVisualStyleBackColor = true;
-            // 
             // bunifuElipse1
             // 
             this.bunifuElipse1.ElipseRadius = 5;
@@ -329,6 +288,63 @@
             this.bdc_topPanel.TargetControl = this.pnl_topPanel;
             this.bdc_topPanel.Vertical = true;
             // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.btn_ok);
+            this.panel1.Controls.Add(this.dgv_details);
+            this.panel1.Location = new System.Drawing.Point(1, 80);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(984, 325);
+            this.panel1.TabIndex = 61;
+            // 
+            // btn_ok
+            // 
+            this.btn_ok.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btn_ok.Location = new System.Drawing.Point(883, 281);
+            this.btn_ok.Name = "btn_ok";
+            this.btn_ok.Size = new System.Drawing.Size(90, 32);
+            this.btn_ok.TabIndex = 64;
+            this.btn_ok.Text = "OK";
+            this.btn_ok.UseVisualStyleBackColor = true;
+            // 
+            // dgv_details
+            // 
+            this.dgv_details.AllowUserToAddRows = false;
+            this.dgv_details.AllowUserToDeleteRows = false;
+            this.dgv_details.AllowUserToOrderColumns = true;
+            this.dgv_details.AllowUserToResizeRows = false;
+            this.dgv_details.BackgroundColor = System.Drawing.Color.White;
+            this.dgv_details.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_details.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.prDate,
+            this.poLineCreateDateRange,
+            this.finalRecDateRange,
+            this.AdvancedFilters,
+            this.projectNumber,
+            this.wbsElement,
+            this.material,
+            this.materialGroup,
+            this.vendor,
+            this.vendorDescription,
+            this.prPurchGroup,
+            this.poPurchGroup,
+            this.irSuppName,
+            this.fxdSuppName,
+            this.dsrdSuppName,
+            this.commCategory,
+            this.escaped,
+            this.poDocumentType,
+            this.prodOrdMaterial});
+            this.dgv_details.Location = new System.Drawing.Point(12, 11);
+            this.dgv_details.Name = "dgv_details";
+            this.dgv_details.RowHeadersVisible = false;
+            this.dgv_details.Size = new System.Drawing.Size(961, 261);
+            this.dgv_details.TabIndex = 63;
+            // 
             // prDate
             // 
             this.prDate.HeaderText = "PR Date";
@@ -358,6 +374,12 @@
             this.projectNumber.HeaderText = "Project Number";
             this.projectNumber.Name = "projectNumber";
             this.projectNumber.ReadOnly = true;
+            // 
+            // wbsElement
+            // 
+            this.wbsElement.HeaderText = "WBS Element";
+            this.wbsElement.Name = "wbsElement";
+            this.wbsElement.ReadOnly = true;
             // 
             // material
             // 
@@ -413,12 +435,6 @@
             this.dsrdSuppName.Name = "dsrdSuppName";
             this.dsrdSuppName.ReadOnly = true;
             // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Column1";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
             // commCategory
             // 
             this.commCategory.HeaderText = "Commodity Category";
@@ -443,15 +459,19 @@
             this.prodOrdMaterial.Name = "prodOrdMaterial";
             this.prodOrdMaterial.ReadOnly = true;
             // 
+            // bunifuElipse2
+            // 
+            this.bunifuElipse2.ElipseRadius = 5;
+            this.bunifuElipse2.TargetControl = this.panel1;
+            // 
             // VariantsDetailDisplayWindow
             // 
             this.AcceptButton = this.btn_ok;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
             this.ClientSize = new System.Drawing.Size(986, 406);
-            this.Controls.Add(this.btn_ok);
-            this.Controls.Add(this.dgv_details);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnl_MainNavigation);
             this.Controls.Add(this.pnl_TopUIPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -469,6 +489,7 @@
             this.pnl_CountrySelectorButton.PerformLayout();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
+            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_details)).EndInit();
             this.ResumeLayout(false);
 
@@ -491,18 +512,20 @@
         private Bunifu.Framework.UI.BunifuCustomLabel lbl_VariantDescription;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel21;
         private Bunifu.Framework.UI.BunifuCustomLabel lbl_VariantName;
-        private System.Windows.Forms.DataGridView dgv_details;
-        private System.Windows.Forms.Button btn_ok;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
         private Bunifu.Framework.UI.BunifuDragControl bdc_logo;
         private Bunifu.Framework.UI.BunifuDragControl bdc_title;
         private Bunifu.Framework.UI.BunifuDragControl bdc_titlePanel;
         private Bunifu.Framework.UI.BunifuDragControl bdc_topPanel;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btn_ok;
+        private System.Windows.Forms.DataGridView dgv_details;
         private System.Windows.Forms.DataGridViewTextBoxColumn prDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn poLineCreateDateRange;
         private System.Windows.Forms.DataGridViewTextBoxColumn finalRecDateRange;
         private System.Windows.Forms.DataGridViewTextBoxColumn AdvancedFilters;
         private System.Windows.Forms.DataGridViewTextBoxColumn projectNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn wbsElement;
         private System.Windows.Forms.DataGridViewTextBoxColumn material;
         private System.Windows.Forms.DataGridViewTextBoxColumn materialGroup;
         private System.Windows.Forms.DataGridViewTextBoxColumn vendor;
@@ -512,10 +535,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn irSuppName;
         private System.Windows.Forms.DataGridViewTextBoxColumn fxdSuppName;
         private System.Windows.Forms.DataGridViewTextBoxColumn dsrdSuppName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn commCategory;
         private System.Windows.Forms.DataGridViewTextBoxColumn escaped;
         private System.Windows.Forms.DataGridViewTextBoxColumn poDocumentType;
         private System.Windows.Forms.DataGridViewTextBoxColumn prodOrdMaterial;
+        private Bunifu.Framework.UI.BunifuElipse bunifuElipse2;
     }
 }
