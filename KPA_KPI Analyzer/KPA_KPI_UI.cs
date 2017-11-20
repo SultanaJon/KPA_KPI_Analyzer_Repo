@@ -54,7 +54,6 @@ namespace KPA_KPI_Analyzer
 
 
 
-
         /// <summary>
         /// The custom constructor of the main user interface. This constructor takes a database conenection that will be used
         /// to connect to and read data from.
@@ -568,7 +567,15 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         /// <param name="sender">The Close button</param>
         /// <param name="e">The click event</param>
-        private void btn_Close_Click(object sender, EventArgs e) => Application.Exit();
+        private void btn_Close_Click(object sender, EventArgs e)
+        {
+            // Deactivate and save the variants.
+            variantSettings.DeactivateVariants();
+
+            // Close the application.
+            Application.Exit();
+        }
+
         #endregion
 
 
@@ -774,6 +781,9 @@ namespace KPA_KPI_Analyzer
         /// <param name="e"></param>
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Deactivate and save the variants.
+            variantSettings.DeactivateVariants();
+
             // Close the application
             Application.Exit();
         }

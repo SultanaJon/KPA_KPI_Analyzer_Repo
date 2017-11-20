@@ -253,17 +253,6 @@ namespace KPA_KPI_Analyzer.Filter_Variant
 
 
 
-        /// <summary>
-        /// Deavtivate the variants.
-        /// </summary>
-        private void DeactivateVariants()
-        {
-            foreach(Variant variant in Variants)
-            {
-                variant.Active = false;
-            }
-        }
-
 
 
 
@@ -287,6 +276,19 @@ namespace KPA_KPI_Analyzer.Filter_Variant
             }
         }
 
+
+
+
+
+
+        /// <summary>
+        /// Deavtivate the variants.
+        /// </summary>
+        public void DeactivateVariants()
+        {
+            foreach (Variant variant in Variants)
+                variant.Active = false;
+        }
 
 
 

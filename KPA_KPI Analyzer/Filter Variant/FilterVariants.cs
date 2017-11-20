@@ -127,6 +127,21 @@ namespace KPA_KPI_Analyzer.Filter_Variant
 
 
         /// <summary>
+        /// Deavtivate the variants.
+        /// </summary>
+        public void DeactivateVariants()
+        {
+            foreach (Variant variant in variants)
+                variant.Active = false;
+
+            // Save the update variants
+            Save();
+        }
+
+
+
+
+        /// <summary>
         /// Loads the filter variant from a JSON file.
         /// </summary>
         /// <returns></returns>
