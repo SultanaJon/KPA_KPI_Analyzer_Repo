@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace KPA_KPI_Analyzer.Filter_Variant
 {
     public partial class VariantsDetailDisplayWindow : Form
     {
         public Dictionary<string, List<string>> VariantDetails { get; set; }
-
 
 
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace KPA_KPI_Analyzer.Filter_Variant
@@ -197,7 +198,6 @@ namespace KPA_KPI_Analyzer.Filter_Variant
         private void btn_view_Click(object sender, EventArgs e)
         {
             DataGridViewSelectedRowCollection selectedRow = dgv_variants.SelectedRows;
-            
             if(selectedRow.Count == 1)
             {
                 DataGridViewRow row = selectedRow[0];
@@ -205,7 +205,7 @@ namespace KPA_KPI_Analyzer.Filter_Variant
                 {
                     VariantName = Variants[row.Index].VariantName,
                     VariantDescription = Variants[row.Index].VariantDescription,
-                    VariantDetails = Variants[row.Index].details
+                    VariantDetails = Variants[row.Index].details.ToDictionary(x => x.Key, x => x.Value.ToList())
                 })
                 {
                     vddw.ShowDialog();

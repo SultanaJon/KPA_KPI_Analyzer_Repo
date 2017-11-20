@@ -295,6 +295,7 @@ namespace KPA_KPI_Analyzer
 
 
 
+
         /// <summary>
         /// Checks if there is a variant settigs file available to load. if not the variant settings file will
         /// be initialized.
@@ -310,6 +311,8 @@ namespace KPA_KPI_Analyzer
                     viewVariantsToolStripMenuItem.Enabled = true;
             }
         }
+
+
 
 
 

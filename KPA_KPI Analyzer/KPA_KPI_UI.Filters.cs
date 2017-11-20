@@ -1354,21 +1354,52 @@ namespace KPA_KPI_Analyzer
             }
 
 
-
-
-            addVariantToolStripMenuItem.Enabled = false;
-
-            if (variantSettings.Variants.Count > 0)
-            {
-                // There are still variants saved. Allow the user to still view them.
-                viewVariantsToolStripMenuItem.Enabled = true;
-            }
+            // Toggles the variant tools within the menu strip based on certain conditions.
+            CheckActiveVariants();
 
 
             // Check the filter status to update the variant tools.
             UpdateVariantTools();
             InitializeDataLoadProcess();
         }
+
+
+
+
+
+
+
+        /// <summary>
+        /// Checks if there are any variants save and if the user has any variants applied against the data.
+        /// </summary>
+        private void CheckActiveVariants()
+        {
+
+            // If there are any variants allow the user to view them.
+            if (variantSettings.Variants.Count > 0)
+                viewVariantsToolStripMenuItem.Enabled = true;
+            else
+                viewVariantsToolStripMenuItem.Enabled = false;
+
+
+
+            // Loop throught each saved variant and see if they are active. We do not want the user
+            // to have the option to add a variant that is currently active against the data.
+            foreach (Filter_Variant.Variant setting in variantSettings.Variants)
+            {
+                if (setting.Active)
+                {
+                    addVariantToolStripMenuItem.Enabled = true;
+                    break;
+                }
+                else
+                    addVariantToolStripMenuItem.Enabled = false;
+            }
+        }
+
+
+
+
 
 
 
