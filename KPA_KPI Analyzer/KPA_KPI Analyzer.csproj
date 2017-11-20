@@ -140,6 +140,12 @@
     <Compile Include="Filter Variant\VariantsDetailDisplayWindow.Designer.cs">
       <DependentUpon>VariantsDetailDisplayWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Filter Variant\VariantsEditWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Filter Variant\VariantsEditWindow.Designer.cs">
+      <DependentUpon>VariantsEditWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Filter Variant\VariantsViewWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -398,6 +404,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Filter Variant\VariantsDetailDisplayWindow.resx">
       <DependentUpon>VariantsDetailDisplayWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Filter Variant\VariantsEditWindow.resx">
+      <DependentUpon>VariantsEditWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Filter Variant\VariantsViewWindow.resx">
       <DependentUpon>VariantsViewWindow.cs</DependentUpon>

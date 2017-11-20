@@ -151,6 +151,8 @@ namespace KPA_KPI_Analyzer.Filter_Variant
         /// </summary>
         private void LoadDataGridView()
         {
+            dgv_variants.Rows.Clear();
+            dgv_variants.Refresh();
             string[] row;
             if(Variants != null)
             {
@@ -160,6 +162,7 @@ namespace KPA_KPI_Analyzer.Filter_Variant
                     dgv_variants.Rows.Add(row);
                 }
             }
+            dgv_variants.Refresh();
         }
 
 
@@ -176,6 +179,7 @@ namespace KPA_KPI_Analyzer.Filter_Variant
                 // Enable the buttons
                 btn_apply.Enabled = true;
                 btn_remove.Enabled = true;
+                btn_edit.Enabled = true;
                 btn_view.Enabled = true;
             }
             else
@@ -183,6 +187,7 @@ namespace KPA_KPI_Analyzer.Filter_Variant
                 // Disable the buttons
                 btn_apply.Enabled = false;
                 btn_remove.Enabled = false;
+                btn_edit.Enabled = true;
                 btn_view.Enabled = false;
             }
         }
@@ -246,6 +251,11 @@ namespace KPA_KPI_Analyzer.Filter_Variant
             }
             else
             {
+                foreach(DataGridViewRow dgvRow in dgv_variants.Rows)
+                {
+                    dgvRow.Selected = false;
+                }
+
                 dgv_variants.Rows[dgv_variants.Rows.Count - 1].Selected = true;
             }
             UpdateVariantTools();
@@ -264,7 +274,7 @@ namespace KPA_KPI_Analyzer.Filter_Variant
         private void btn_apply_Click(object sender, EventArgs e)
         {
             DataGridViewSelectedRowCollection selectedRow = dgv_variants.SelectedRows;
-            if(selectedRow.Count == 1)
+            if (selectedRow.Count == 1)
             {
                 // There is only one row so grab the first one.
                 DataGridViewRow row = selectedRow[0];
@@ -272,8 +282,10 @@ namespace KPA_KPI_Analyzer.Filter_Variant
 
                 // The user want to load this variant so set it to active.
                 Variants[row.Index].Active = true;
-                BeginVariantLoadProcess(Variants[row.Index].details);              
+                BeginVariantLoadProcess(Variants[row.Index].details);
             }
+            else
+                return;
         }
 
 
@@ -309,6 +321,33 @@ namespace KPA_KPI_Analyzer.Filter_Variant
             {
                 DataGridViewCell cell = selectedCell[0];
                 dgv_variants.Rows[cell.RowIndex].Selected = true;
+            }
+        }
+
+
+
+
+        /// <summary>
+        /// Allows the user to edit the name and the description of the variant.
+        /// </summary>
+        /// <param name="sender">The edit button</param>
+        /// <param name="e">The click event</param>
+        private void btn_edit_Click(object sender, EventArgs e)
+        {
+            DataGridViewSelectedRowCollection selectedRow = dgv_variants.SelectedRows;
+
+            if(selectedRow.Count == 1)
+            {
+                DataGridViewRow row = selectedRow[0];
+                using (VariantsEditWindow editWind = new VariantsEditWindow())
+                {
+                    if(editWind.ShowDialog() == DialogResult.OK)
+                    {
+                        Variants[row.Index].VariantName = editWind.VariantName;
+                        Variants[row.Index].VariantDescription = editWind.VariantDescription;
+                        LoadDataGridView();
+                    }
+                }
             }
         }
     }

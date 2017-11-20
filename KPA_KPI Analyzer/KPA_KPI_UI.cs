@@ -575,7 +575,6 @@ namespace KPA_KPI_Analyzer
             // Close the application.
             Application.Exit();
         }
-
         #endregion
 
 
@@ -912,6 +911,9 @@ namespace KPA_KPI_Analyzer
                     // add the variant to the list of variants and save them.
                     variantSettings.AddVariant(variant);
                     variantSettings.Save();
+
+                    // The user must apply the filters in order to add them.
+                    addVariantToolStripMenuItem.Enabled = false;
                 }
             }
         }

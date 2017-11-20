@@ -31,11 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.pnl_TopUIPanel = new System.Windows.Forms.Panel();
             this.pnl_topPanel = new System.Windows.Forms.Panel();
-            this.pnl_Minimize = new System.Windows.Forms.Panel();
-            this.pnl_Close = new System.Windows.Forms.Panel();
             this.pnl_titlePanel = new System.Windows.Forms.Panel();
             this.lbl_title = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.pnl_logo = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.bdg_titleLbl = new Bunifu.Framework.UI.BunifuDragControl(this.components);
@@ -43,14 +40,17 @@
             this.bdg_titlePanel = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.bdg_topPanel = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.bdg_logo = new Bunifu.Framework.UI.BunifuDragControl(this.components);
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btn_Create = new System.Windows.Forms.Button();
-            this.btn_Cancel = new System.Windows.Forms.Button();
-            this.txtbox_Description = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtBox_Name = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.bunifuElipse2 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtBox_Name = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtbox_Description = new System.Windows.Forms.TextBox();
+            this.btn_Cancel = new System.Windows.Forms.Button();
+            this.btn_Create = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.pnl_Minimize = new System.Windows.Forms.Panel();
+            this.pnl_Close = new System.Windows.Forms.Panel();
+            this.pnl_logo = new System.Windows.Forms.Panel();
             this.pnl_TopUIPanel.SuspendLayout();
             this.pnl_topPanel.SuspendLayout();
             this.pnl_titlePanel.SuspendLayout();
@@ -81,32 +81,6 @@
             this.pnl_topPanel.Size = new System.Drawing.Size(528, 25);
             this.pnl_topPanel.TabIndex = 0;
             // 
-            // pnl_Minimize
-            // 
-            this.pnl_Minimize.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.Minimize;
-            this.pnl_Minimize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pnl_Minimize.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnl_Minimize.Location = new System.Drawing.Point(428, 0);
-            this.pnl_Minimize.Name = "pnl_Minimize";
-            this.pnl_Minimize.Size = new System.Drawing.Size(50, 25);
-            this.pnl_Minimize.TabIndex = 4;
-            this.pnl_Minimize.Click += new System.EventHandler(this.btn_Minimize_Click);
-            this.pnl_Minimize.MouseEnter += new System.EventHandler(this.btn_Minimize_MouseEnter);
-            this.pnl_Minimize.MouseLeave += new System.EventHandler(this.btn_Minimize_MouseLeave);
-            // 
-            // pnl_Close
-            // 
-            this.pnl_Close.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.Close;
-            this.pnl_Close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pnl_Close.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnl_Close.Location = new System.Drawing.Point(478, 0);
-            this.pnl_Close.Name = "pnl_Close";
-            this.pnl_Close.Size = new System.Drawing.Size(50, 25);
-            this.pnl_Close.TabIndex = 2;
-            this.pnl_Close.Click += new System.EventHandler(this.btn_Close_Click);
-            this.pnl_Close.MouseLeave += new System.EventHandler(this.btn_Close_MouseLeave);
-            this.pnl_Close.MouseHover += new System.EventHandler(this.btn_Close_MouseHover);
-            // 
             // pnl_titlePanel
             // 
             this.pnl_titlePanel.Controls.Add(this.lbl_title);
@@ -125,16 +99,6 @@
             this.lbl_title.Size = new System.Drawing.Size(173, 13);
             this.lbl_title.TabIndex = 0;
             this.lbl_title.Text = "KPA - KPI Analyzer - Create Variant";
-            // 
-            // pnl_logo
-            // 
-            this.pnl_logo.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.comau_logo;
-            this.pnl_logo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pnl_logo.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnl_logo.Location = new System.Drawing.Point(0, 0);
-            this.pnl_logo.Name = "pnl_logo";
-            this.pnl_logo.Size = new System.Drawing.Size(50, 25);
-            this.pnl_logo.TabIndex = 0;
             // 
             // panel1
             // 
@@ -194,6 +158,72 @@
             this.bdg_logo.TargetControl = this.pnl_logo;
             this.bdg_logo.Vertical = true;
             // 
+            // bunifuElipse2
+            // 
+            this.bunifuElipse2.ElipseRadius = 5;
+            this.bunifuElipse2.TargetControl = this.panel2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.label2.Location = new System.Drawing.Point(12, 12);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.TabIndex = 65;
+            this.label2.Text = "Name:";
+            // 
+            // txtBox_Name
+            // 
+            this.txtBox_Name.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.txtBox_Name.Location = new System.Drawing.Point(12, 28);
+            this.txtBox_Name.Name = "txtBox_Name";
+            this.txtBox_Name.Size = new System.Drawing.Size(504, 20);
+            this.txtBox_Name.TabIndex = 60;
+            this.txtBox_Name.TextChanged += new System.EventHandler(this.TextFields_TextChange);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.label3.Location = new System.Drawing.Point(12, 56);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(63, 13);
+            this.label3.TabIndex = 64;
+            this.label3.Text = "Description:";
+            // 
+            // txtbox_Description
+            // 
+            this.txtbox_Description.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.txtbox_Description.Location = new System.Drawing.Point(12, 72);
+            this.txtbox_Description.Multiline = true;
+            this.txtbox_Description.Name = "txtbox_Description";
+            this.txtbox_Description.Size = new System.Drawing.Size(504, 123);
+            this.txtbox_Description.TabIndex = 61;
+            this.txtbox_Description.TextChanged += new System.EventHandler(this.TextFields_TextChange);
+            // 
+            // btn_Cancel
+            // 
+            this.btn_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btn_Cancel.Location = new System.Drawing.Point(427, 201);
+            this.btn_Cancel.Name = "btn_Cancel";
+            this.btn_Cancel.Size = new System.Drawing.Size(90, 32);
+            this.btn_Cancel.TabIndex = 63;
+            this.btn_Cancel.Text = "Cancel";
+            this.btn_Cancel.UseVisualStyleBackColor = true;
+            // 
+            // btn_Create
+            // 
+            this.btn_Create.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btn_Create.Enabled = false;
+            this.btn_Create.Location = new System.Drawing.Point(331, 201);
+            this.btn_Create.Name = "btn_Create";
+            this.btn_Create.Size = new System.Drawing.Size(90, 32);
+            this.btn_Create.TabIndex = 62;
+            this.btn_Create.Text = "Create Variant";
+            this.btn_Create.UseVisualStyleBackColor = true;
+            this.btn_Create.Click += new System.EventHandler(this.btn_Create_Click);
+            // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -209,74 +239,44 @@
             this.panel2.Location = new System.Drawing.Point(1, 76);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(526, 314);
+            this.panel2.Size = new System.Drawing.Size(526, 242);
             this.panel2.TabIndex = 63;
             // 
-            // btn_Create
+            // pnl_Minimize
             // 
-            this.btn_Create.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btn_Create.Enabled = false;
-            this.btn_Create.Location = new System.Drawing.Point(329, 271);
-            this.btn_Create.Name = "btn_Create";
-            this.btn_Create.Size = new System.Drawing.Size(90, 32);
-            this.btn_Create.TabIndex = 62;
-            this.btn_Create.Text = "Create Variant";
-            this.btn_Create.UseVisualStyleBackColor = true;
-            this.btn_Create.Click += new System.EventHandler(this.btn_Create_Click);
+            this.pnl_Minimize.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.Minimize;
+            this.pnl_Minimize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pnl_Minimize.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnl_Minimize.Location = new System.Drawing.Point(428, 0);
+            this.pnl_Minimize.Name = "pnl_Minimize";
+            this.pnl_Minimize.Size = new System.Drawing.Size(50, 25);
+            this.pnl_Minimize.TabIndex = 4;
+            this.pnl_Minimize.Click += new System.EventHandler(this.btn_Minimize_Click);
+            this.pnl_Minimize.MouseEnter += new System.EventHandler(this.btn_Minimize_MouseEnter);
+            this.pnl_Minimize.MouseLeave += new System.EventHandler(this.btn_Minimize_MouseLeave);
             // 
-            // btn_Cancel
+            // pnl_Close
             // 
-            this.btn_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btn_Cancel.Location = new System.Drawing.Point(425, 271);
-            this.btn_Cancel.Name = "btn_Cancel";
-            this.btn_Cancel.Size = new System.Drawing.Size(90, 32);
-            this.btn_Cancel.TabIndex = 63;
-            this.btn_Cancel.Text = "Cancel";
-            this.btn_Cancel.UseVisualStyleBackColor = true;
+            this.pnl_Close.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.Close;
+            this.pnl_Close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pnl_Close.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnl_Close.Location = new System.Drawing.Point(478, 0);
+            this.pnl_Close.Name = "pnl_Close";
+            this.pnl_Close.Size = new System.Drawing.Size(50, 25);
+            this.pnl_Close.TabIndex = 2;
+            this.pnl_Close.Click += new System.EventHandler(this.btn_Close_Click);
+            this.pnl_Close.MouseLeave += new System.EventHandler(this.btn_Close_MouseLeave);
+            this.pnl_Close.MouseHover += new System.EventHandler(this.btn_Close_MouseHover);
             // 
-            // txtbox_Description
+            // pnl_logo
             // 
-            this.txtbox_Description.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.txtbox_Description.Location = new System.Drawing.Point(12, 72);
-            this.txtbox_Description.Multiline = true;
-            this.txtbox_Description.Name = "txtbox_Description";
-            this.txtbox_Description.Size = new System.Drawing.Size(504, 193);
-            this.txtbox_Description.TabIndex = 61;
-            this.txtbox_Description.TextChanged += new System.EventHandler(this.TextFields_TextChange);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.label3.Location = new System.Drawing.Point(12, 56);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 13);
-            this.label3.TabIndex = 64;
-            this.label3.Text = "Description:";
-            // 
-            // txtBox_Name
-            // 
-            this.txtBox_Name.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.txtBox_Name.Location = new System.Drawing.Point(12, 28);
-            this.txtBox_Name.Name = "txtBox_Name";
-            this.txtBox_Name.Size = new System.Drawing.Size(504, 20);
-            this.txtBox_Name.TabIndex = 60;
-            this.txtBox_Name.TextChanged += new System.EventHandler(this.TextFields_TextChange);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.label2.Location = new System.Drawing.Point(12, 12);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 13);
-            this.label2.TabIndex = 65;
-            this.label2.Text = "Name:";
-            // 
-            // bunifuElipse2
-            // 
-            this.bunifuElipse2.ElipseRadius = 5;
-            this.bunifuElipse2.TargetControl = this.panel2;
+            this.pnl_logo.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.comau_logo;
+            this.pnl_logo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pnl_logo.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnl_logo.Location = new System.Drawing.Point(0, 0);
+            this.pnl_logo.Name = "pnl_logo";
+            this.pnl_logo.Size = new System.Drawing.Size(50, 25);
+            this.pnl_logo.TabIndex = 0;
             // 
             // VariantsCreationWindow
             // 
@@ -285,7 +285,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
             this.CancelButton = this.btn_Cancel;
-            this.ClientSize = new System.Drawing.Size(528, 391);
+            this.ClientSize = new System.Drawing.Size(528, 319);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnl_TopUIPanel);
@@ -321,13 +321,13 @@
         private Bunifu.Framework.UI.BunifuDragControl bdg_titlePanel;
         private Bunifu.Framework.UI.BunifuDragControl bdg_topPanel;
         private Bunifu.Framework.UI.BunifuDragControl bdg_logo;
-        private System.Windows.Forms.Panel panel2;
+        private Bunifu.Framework.UI.BunifuElipse bunifuElipse2;
         private System.Windows.Forms.Button btn_Create;
         private System.Windows.Forms.Button btn_Cancel;
+        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox txtbox_Description;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtBox_Name;
         private System.Windows.Forms.Label label2;
-        private Bunifu.Framework.UI.BunifuElipse bunifuElipse2;
     }
 }
