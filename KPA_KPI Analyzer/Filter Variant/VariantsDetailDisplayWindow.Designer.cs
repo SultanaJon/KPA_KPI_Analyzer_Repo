@@ -52,6 +52,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btn_ok = new System.Windows.Forms.Button();
             this.dgv_details = new System.Windows.Forms.DataGridView();
+            this.bunifuElipse2 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.prDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.poLineCreateDateRange = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.finalRecDateRange = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,7 +72,6 @@
             this.escaped = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.poDocumentType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.prodOrdMaterial = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bunifuElipse2 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.pnl_TopUIPanel.SuspendLayout();
             this.pnl_topPanel.SuspendLayout();
             this.pnl_titlePanel.SuspendLayout();
@@ -315,7 +315,6 @@
             // 
             this.dgv_details.AllowUserToAddRows = false;
             this.dgv_details.AllowUserToDeleteRows = false;
-            this.dgv_details.AllowUserToOrderColumns = true;
             this.dgv_details.AllowUserToResizeRows = false;
             this.dgv_details.BackgroundColor = System.Drawing.Color.White;
             this.dgv_details.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -342,127 +341,147 @@
             this.dgv_details.Location = new System.Drawing.Point(12, 11);
             this.dgv_details.Name = "dgv_details";
             this.dgv_details.RowHeadersVisible = false;
+            this.dgv_details.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullColumnSelect;
             this.dgv_details.Size = new System.Drawing.Size(961, 261);
             this.dgv_details.TabIndex = 63;
+            // 
+            // bunifuElipse2
+            // 
+            this.bunifuElipse2.ElipseRadius = 5;
+            this.bunifuElipse2.TargetControl = this.panel1;
             // 
             // prDate
             // 
             this.prDate.HeaderText = "PR Date";
             this.prDate.Name = "prDate";
             this.prDate.ReadOnly = true;
+            this.prDate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // poLineCreateDateRange
             // 
             this.poLineCreateDateRange.HeaderText = "PO Line Creation Date Range";
             this.poLineCreateDateRange.Name = "poLineCreateDateRange";
             this.poLineCreateDateRange.ReadOnly = true;
+            this.poLineCreateDateRange.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // finalRecDateRange
             // 
             this.finalRecDateRange.HeaderText = "finalRecDateRange";
             this.finalRecDateRange.Name = "finalRecDateRange";
             this.finalRecDateRange.ReadOnly = true;
+            this.finalRecDateRange.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // AdvancedFilters
             // 
             this.AdvancedFilters.HeaderText = "Advanced Filters";
             this.AdvancedFilters.Name = "AdvancedFilters";
             this.AdvancedFilters.ReadOnly = true;
+            this.AdvancedFilters.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // projectNumber
             // 
             this.projectNumber.HeaderText = "Project Number";
             this.projectNumber.Name = "projectNumber";
             this.projectNumber.ReadOnly = true;
+            this.projectNumber.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // wbsElement
             // 
             this.wbsElement.HeaderText = "WBS Element";
             this.wbsElement.Name = "wbsElement";
             this.wbsElement.ReadOnly = true;
+            this.wbsElement.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // material
             // 
             this.material.HeaderText = "Material";
             this.material.Name = "material";
             this.material.ReadOnly = true;
+            this.material.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // materialGroup
             // 
             this.materialGroup.HeaderText = "Material Group";
             this.materialGroup.Name = "materialGroup";
             this.materialGroup.ReadOnly = true;
+            this.materialGroup.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // vendor
             // 
             this.vendor.HeaderText = "Vendor";
             this.vendor.Name = "vendor";
             this.vendor.ReadOnly = true;
+            this.vendor.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // vendorDescription
             // 
             this.vendorDescription.HeaderText = "Vendor Desciption";
             this.vendorDescription.Name = "vendorDescription";
             this.vendorDescription.ReadOnly = true;
+            this.vendorDescription.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // prPurchGroup
             // 
             this.prPurchGroup.HeaderText = "PR Purch Group";
             this.prPurchGroup.Name = "prPurchGroup";
             this.prPurchGroup.ReadOnly = true;
+            this.prPurchGroup.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // poPurchGroup
             // 
             this.poPurchGroup.HeaderText = "PO Purch Group";
             this.poPurchGroup.Name = "poPurchGroup";
             this.poPurchGroup.ReadOnly = true;
+            this.poPurchGroup.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // irSuppName
             // 
             this.irSuppName.HeaderText = "IR Supp Name";
             this.irSuppName.Name = "irSuppName";
             this.irSuppName.ReadOnly = true;
+            this.irSuppName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // fxdSuppName
             // 
             this.fxdSuppName.HeaderText = "Fxd Supp Name";
             this.fxdSuppName.Name = "fxdSuppName";
             this.fxdSuppName.ReadOnly = true;
+            this.fxdSuppName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // dsrdSuppName
             // 
             this.dsrdSuppName.HeaderText = "Dsrd Supp Name";
             this.dsrdSuppName.Name = "dsrdSuppName";
             this.dsrdSuppName.ReadOnly = true;
+            this.dsrdSuppName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // commCategory
             // 
             this.commCategory.HeaderText = "Commodity Category";
             this.commCategory.Name = "commCategory";
             this.commCategory.ReadOnly = true;
+            this.commCategory.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // escaped
             // 
             this.escaped.HeaderText = "Escaped";
             this.escaped.Name = "escaped";
             this.escaped.ReadOnly = true;
+            this.escaped.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // poDocumentType
             // 
             this.poDocumentType.HeaderText = "PO Document Type";
             this.poDocumentType.Name = "poDocumentType";
             this.poDocumentType.ReadOnly = true;
+            this.poDocumentType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // prodOrdMaterial
             // 
             this.prodOrdMaterial.HeaderText = "Production Order Material";
             this.prodOrdMaterial.Name = "prodOrdMaterial";
             this.prodOrdMaterial.ReadOnly = true;
-            // 
-            // bunifuElipse2
-            // 
-            this.bunifuElipse2.ElipseRadius = 5;
-            this.bunifuElipse2.TargetControl = this.panel1;
+            this.prodOrdMaterial.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // VariantsDetailDisplayWindow
             // 
@@ -520,6 +539,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btn_ok;
         private System.Windows.Forms.DataGridView dgv_details;
+        private Bunifu.Framework.UI.BunifuElipse bunifuElipse2;
         private System.Windows.Forms.DataGridViewTextBoxColumn prDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn poLineCreateDateRange;
         private System.Windows.Forms.DataGridViewTextBoxColumn finalRecDateRange;
@@ -539,6 +559,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn escaped;
         private System.Windows.Forms.DataGridViewTextBoxColumn poDocumentType;
         private System.Windows.Forms.DataGridViewTextBoxColumn prodOrdMaterial;
-        private Bunifu.Framework.UI.BunifuElipse bunifuElipse2;
     }
 }

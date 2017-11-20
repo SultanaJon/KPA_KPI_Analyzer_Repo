@@ -12,16 +12,27 @@ namespace KPA_KPI_Analyzer.Filter_Variant
 {
     public partial class VariantsEditWindow : Form
     {
+        #region PROPERTIES
+
         public string VariantName { get; set; }
         public string VariantDescription { get; set; }
 
+        #endregion
 
+
+
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
         public VariantsEditWindow()
         {
             InitializeComponent();
         }
 
 
+
+
+        #region EVENTS
 
         /////////////////////////////////////////////////// UI DIALOGS //////////////////////////////////////////////////
         //
@@ -154,5 +165,7 @@ namespace KPA_KPI_Analyzer.Filter_Variant
             VariantDescription = txtbox_Description.Text;
             Close();
         }
+
+        #endregion
     }
 }

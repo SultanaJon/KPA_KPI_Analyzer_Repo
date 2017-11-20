@@ -31,8 +31,11 @@
             this.components = new System.ComponentModel.Container();
             this.pnl_TopUIPanel = new System.Windows.Forms.Panel();
             this.pnl_topPanel = new System.Windows.Forms.Panel();
+            this.pnl_Minimize = new System.Windows.Forms.Panel();
+            this.pnl_Close = new System.Windows.Forms.Panel();
             this.pnl_titlePanel = new System.Windows.Forms.Panel();
             this.lbl_title = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.pnl_logo = new System.Windows.Forms.Panel();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bdc_logo = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.bdc_title = new Bunifu.Framework.UI.BunifuDragControl(this.components);
@@ -44,16 +47,13 @@
             this.btn_cancel = new System.Windows.Forms.Button();
             this.btn_remove = new System.Windows.Forms.Button();
             this.btn_view = new System.Windows.Forms.Button();
+            this.btn_edit = new System.Windows.Forms.Button();
             this.btn_apply = new System.Windows.Forms.Button();
             this.dgv_variants = new System.Windows.Forms.DataGridView();
+            this.bunifuElipse2 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.VariantName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Active = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VariantDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bunifuElipse2 = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.pnl_Minimize = new System.Windows.Forms.Panel();
-            this.pnl_Close = new System.Windows.Forms.Panel();
-            this.pnl_logo = new System.Windows.Forms.Panel();
-            this.btn_edit = new System.Windows.Forms.Button();
             this.pnl_TopUIPanel.SuspendLayout();
             this.pnl_topPanel.SuspendLayout();
             this.pnl_titlePanel.SuspendLayout();
@@ -85,6 +85,32 @@
             this.pnl_topPanel.Size = new System.Drawing.Size(616, 25);
             this.pnl_topPanel.TabIndex = 0;
             // 
+            // pnl_Minimize
+            // 
+            this.pnl_Minimize.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.Minimize;
+            this.pnl_Minimize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pnl_Minimize.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnl_Minimize.Location = new System.Drawing.Point(516, 0);
+            this.pnl_Minimize.Name = "pnl_Minimize";
+            this.pnl_Minimize.Size = new System.Drawing.Size(50, 25);
+            this.pnl_Minimize.TabIndex = 4;
+            this.pnl_Minimize.Click += new System.EventHandler(this.btn_Minimize_Click);
+            this.pnl_Minimize.MouseEnter += new System.EventHandler(this.btn_Minimize_MouseEnter);
+            this.pnl_Minimize.MouseLeave += new System.EventHandler(this.btn_Minimize_MouseLeave);
+            // 
+            // pnl_Close
+            // 
+            this.pnl_Close.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.Close;
+            this.pnl_Close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pnl_Close.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnl_Close.Location = new System.Drawing.Point(566, 0);
+            this.pnl_Close.Name = "pnl_Close";
+            this.pnl_Close.Size = new System.Drawing.Size(50, 25);
+            this.pnl_Close.TabIndex = 2;
+            this.pnl_Close.Click += new System.EventHandler(this.btn_Close_Click);
+            this.pnl_Close.MouseLeave += new System.EventHandler(this.btn_Close_MouseLeave);
+            this.pnl_Close.MouseHover += new System.EventHandler(this.btn_Close_MouseHover);
+            // 
             // pnl_titlePanel
             // 
             this.pnl_titlePanel.Controls.Add(this.lbl_title);
@@ -103,6 +129,16 @@
             this.lbl_title.Size = new System.Drawing.Size(170, 13);
             this.lbl_title.TabIndex = 0;
             this.lbl_title.Text = "KPA - KPI Analyzer - Variants View";
+            // 
+            // pnl_logo
+            // 
+            this.pnl_logo.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.comau_logo;
+            this.pnl_logo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pnl_logo.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnl_logo.Location = new System.Drawing.Point(0, 0);
+            this.pnl_logo.Name = "pnl_logo";
+            this.pnl_logo.Size = new System.Drawing.Size(50, 25);
+            this.pnl_logo.TabIndex = 0;
             // 
             // bunifuElipse1
             // 
@@ -208,6 +244,17 @@
             this.btn_view.UseVisualStyleBackColor = true;
             this.btn_view.Click += new System.EventHandler(this.btn_view_Click);
             // 
+            // btn_edit
+            // 
+            this.btn_edit.Enabled = false;
+            this.btn_edit.Location = new System.Drawing.Point(227, 308);
+            this.btn_edit.Name = "btn_edit";
+            this.btn_edit.Size = new System.Drawing.Size(90, 32);
+            this.btn_edit.TabIndex = 6;
+            this.btn_edit.Text = "Edit";
+            this.btn_edit.UseVisualStyleBackColor = true;
+            this.btn_edit.Click += new System.EventHandler(this.btn_edit_Click);
+            // 
             // btn_apply
             // 
             this.btn_apply.DialogResult = System.Windows.Forms.DialogResult.OK;
@@ -235,79 +282,37 @@
             this.dgv_variants.Location = new System.Drawing.Point(11, 9);
             this.dgv_variants.MultiSelect = false;
             this.dgv_variants.Name = "dgv_variants";
+            this.dgv_variants.ReadOnly = true;
+            this.dgv_variants.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_variants.ShowEditingIcon = false;
             this.dgv_variants.Size = new System.Drawing.Size(592, 293);
             this.dgv_variants.TabIndex = 5;
-            this.dgv_variants.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_variants_CellClick);
-            // 
-            // VariantName
-            // 
-            this.VariantName.HeaderText = "Name";
-            this.VariantName.Name = "VariantName";
-            this.VariantName.ReadOnly = true;
-            // 
-            // Active
-            // 
-            this.Active.HeaderText = "Active";
-            this.Active.Name = "Active";
-            this.Active.ReadOnly = true;
-            // 
-            // VariantDescription
-            // 
-            this.VariantDescription.HeaderText = "Description";
-            this.VariantDescription.Name = "VariantDescription";
-            this.VariantDescription.ReadOnly = true;
             // 
             // bunifuElipse2
             // 
             this.bunifuElipse2.ElipseRadius = 5;
             this.bunifuElipse2.TargetControl = this.panel2;
             // 
-            // pnl_Minimize
+            // VariantName
             // 
-            this.pnl_Minimize.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.Minimize;
-            this.pnl_Minimize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pnl_Minimize.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnl_Minimize.Location = new System.Drawing.Point(516, 0);
-            this.pnl_Minimize.Name = "pnl_Minimize";
-            this.pnl_Minimize.Size = new System.Drawing.Size(50, 25);
-            this.pnl_Minimize.TabIndex = 4;
-            this.pnl_Minimize.Click += new System.EventHandler(this.btn_Minimize_Click);
-            this.pnl_Minimize.MouseEnter += new System.EventHandler(this.btn_Minimize_MouseEnter);
-            this.pnl_Minimize.MouseLeave += new System.EventHandler(this.btn_Minimize_MouseLeave);
+            this.VariantName.HeaderText = "Name";
+            this.VariantName.Name = "VariantName";
+            this.VariantName.ReadOnly = true;
+            this.VariantName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // pnl_Close
+            // Active
             // 
-            this.pnl_Close.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.Close;
-            this.pnl_Close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pnl_Close.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnl_Close.Location = new System.Drawing.Point(566, 0);
-            this.pnl_Close.Name = "pnl_Close";
-            this.pnl_Close.Size = new System.Drawing.Size(50, 25);
-            this.pnl_Close.TabIndex = 2;
-            this.pnl_Close.Click += new System.EventHandler(this.btn_Close_Click);
-            this.pnl_Close.MouseLeave += new System.EventHandler(this.btn_Close_MouseLeave);
-            this.pnl_Close.MouseHover += new System.EventHandler(this.btn_Close_MouseHover);
+            this.Active.HeaderText = "Active";
+            this.Active.Name = "Active";
+            this.Active.ReadOnly = true;
+            this.Active.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // pnl_logo
+            // VariantDescription
             // 
-            this.pnl_logo.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.comau_logo;
-            this.pnl_logo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pnl_logo.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnl_logo.Location = new System.Drawing.Point(0, 0);
-            this.pnl_logo.Name = "pnl_logo";
-            this.pnl_logo.Size = new System.Drawing.Size(50, 25);
-            this.pnl_logo.TabIndex = 0;
-            // 
-            // btn_edit
-            // 
-            this.btn_edit.Enabled = false;
-            this.btn_edit.Location = new System.Drawing.Point(227, 308);
-            this.btn_edit.Name = "btn_edit";
-            this.btn_edit.Size = new System.Drawing.Size(90, 32);
-            this.btn_edit.TabIndex = 6;
-            this.btn_edit.Text = "Edit";
-            this.btn_edit.UseVisualStyleBackColor = true;
-            this.btn_edit.Click += new System.EventHandler(this.btn_edit_Click);
+            this.VariantDescription.HeaderText = "Description";
+            this.VariantDescription.Name = "VariantDescription";
+            this.VariantDescription.ReadOnly = true;
+            this.VariantDescription.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // VariantsViewWindow
             // 
@@ -359,10 +364,10 @@
         private System.Windows.Forms.Button btn_view;
         private System.Windows.Forms.Button btn_apply;
         private System.Windows.Forms.DataGridView dgv_variants;
+        private Bunifu.Framework.UI.BunifuElipse bunifuElipse2;
+        private System.Windows.Forms.Button btn_edit;
         private System.Windows.Forms.DataGridViewTextBoxColumn VariantName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Active;
         private System.Windows.Forms.DataGridViewTextBoxColumn VariantDescription;
-        private Bunifu.Framework.UI.BunifuElipse bunifuElipse2;
-        private System.Windows.Forms.Button btn_edit;
     }
 }

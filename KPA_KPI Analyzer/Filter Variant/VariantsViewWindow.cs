@@ -22,6 +22,8 @@ namespace KPA_KPI_Analyzer.Filter_Variant
         public List<Variant> Variants { get; set; }
 
 
+
+
         /// <summary>
         /// The forms constructor.
         /// </summary>
@@ -29,6 +31,9 @@ namespace KPA_KPI_Analyzer.Filter_Variant
         {
             InitializeComponent();
         }
+
+
+
 
 
 
@@ -41,12 +46,11 @@ namespace KPA_KPI_Analyzer.Filter_Variant
         {
             LoadDataGridView();
 
-            if(Variants.Count > 0)
-            {
+            if (Variants.Count > 0)
                 ToggleButtons(true);
-                dgv_variants.Rows[0].Selected = true;
-            }
         }
+
+
 
 
 
@@ -146,6 +150,8 @@ namespace KPA_KPI_Analyzer.Filter_Variant
 
 
 
+
+
         /// <summary>
         /// Add all of the user variants to the datagrid view.
         /// </summary>
@@ -164,6 +170,8 @@ namespace KPA_KPI_Analyzer.Filter_Variant
             }
             dgv_variants.Refresh();
         }
+
+
 
 
 
@@ -191,6 +199,8 @@ namespace KPA_KPI_Analyzer.Filter_Variant
                 btn_view.Enabled = false;
             }
         }
+
+
 
 
 
@@ -249,15 +259,7 @@ namespace KPA_KPI_Analyzer.Filter_Variant
             {
                 ToggleButtons(false);
             }
-            else
-            {
-                foreach(DataGridViewRow dgvRow in dgv_variants.Rows)
-                {
-                    dgvRow.Selected = false;
-                }
 
-                dgv_variants.Rows[dgv_variants.Rows.Count - 1].Selected = true;
-            }
             UpdateVariantTools();
         }
 
@@ -304,25 +306,6 @@ namespace KPA_KPI_Analyzer.Filter_Variant
 
 
 
-
-
-
-
-        /// <summary>
-        /// When the user selects a cell. Highlight the entire row so the user can load that variant if they choose to do so.
-        /// </summary>
-        /// <param name="sender">The cell</param>
-        /// <param name="e">The cell click event</param>
-        private void dgv_variants_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            DataGridViewSelectedCellCollection selectedCell = dgv_variants.SelectedCells;
-
-            if(selectedCell.Count == 1)
-            {
-                DataGridViewCell cell = selectedCell[0];
-                dgv_variants.Rows[cell.RowIndex].Selected = true;
-            }
-        }
 
 
 
