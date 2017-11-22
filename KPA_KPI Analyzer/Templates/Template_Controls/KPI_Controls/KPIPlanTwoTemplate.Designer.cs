@@ -39,7 +39,6 @@
             this.lbl_analysisTwo = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.lbl_analysisOne = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btn_Three = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btn_Two = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btn_One = new Bunifu.Framework.UI.BunifuFlatButton();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -401,7 +400,6 @@
             // panel2
             // 
             this.tblPnl_template.SetColumnSpan(this.panel2, 2);
-            this.panel2.Controls.Add(this.btn_Three);
             this.panel2.Controls.Add(this.btn_Two);
             this.panel2.Controls.Add(this.btn_One);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -411,52 +409,13 @@
             this.panel2.Size = new System.Drawing.Size(957, 50);
             this.panel2.TabIndex = 1;
             // 
-            // btn_Three
-            // 
-            this.btn_Three.Activecolor = System.Drawing.SystemColors.Control;
-            this.btn_Three.BackColor = System.Drawing.SystemColors.Control;
-            this.btn_Three.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_Three.BorderRadius = 0;
-            this.btn_Three.ButtonText = "Material Due (Final Planned Date)";
-            this.btn_Three.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_Three.DisabledColor = System.Drawing.SystemColors.Control;
-            this.btn_Three.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn_Three.ForeColor = System.Drawing.Color.DimGray;
-            this.btn_Three.Iconcolor = System.Drawing.Color.Transparent;
-            this.btn_Three.Iconimage = null;
-            this.btn_Three.Iconimage_right = null;
-            this.btn_Three.Iconimage_right_Selected = null;
-            this.btn_Three.Iconimage_Selected = null;
-            this.btn_Three.IconMarginLeft = 0;
-            this.btn_Three.IconMarginRight = 0;
-            this.btn_Three.IconRightVisible = false;
-            this.btn_Three.IconRightZoom = 0D;
-            this.btn_Three.IconVisible = true;
-            this.btn_Three.IconZoom = 90D;
-            this.btn_Three.IsTab = false;
-            this.btn_Three.Location = new System.Drawing.Point(404, 0);
-            this.btn_Three.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_Three.Name = "btn_Three";
-            this.btn_Three.Normalcolor = System.Drawing.SystemColors.Control;
-            this.btn_Three.OnHovercolor = System.Drawing.SystemColors.Control;
-            this.btn_Three.OnHoverTextColor = System.Drawing.Color.Coral;
-            this.btn_Three.selected = false;
-            this.btn_Three.Size = new System.Drawing.Size(224, 50);
-            this.btn_Three.TabIndex = 6;
-            this.btn_Three.Tag = "2";
-            this.btn_Three.Text = "Material Due (Final Planned Date)";
-            this.btn_Three.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btn_Three.Textcolor = System.Drawing.Color.DimGray;
-            this.btn_Three.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Three.Click += new System.EventHandler(this.CategoryButton_Click);
-            // 
             // btn_Two
             // 
             this.btn_Two.Activecolor = System.Drawing.SystemColors.Control;
             this.btn_Two.BackColor = System.Drawing.SystemColors.Control;
             this.btn_Two.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_Two.BorderRadius = 0;
-            this.btn_Two.ButtonText = "Material Due (Orig Planned Date)";
+            this.btn_Two.ButtonText = "Material Due (Final Planned Date)";
             this.btn_Two.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Two.DisabledColor = System.Drawing.SystemColors.Control;
             this.btn_Two.Dock = System.Windows.Forms.DockStyle.Left;
@@ -473,17 +432,17 @@
             this.btn_Two.IconVisible = true;
             this.btn_Two.IconZoom = 90D;
             this.btn_Two.IsTab = false;
-            this.btn_Two.Location = new System.Drawing.Point(192, 0);
+            this.btn_Two.Location = new System.Drawing.Point(212, 0);
             this.btn_Two.Margin = new System.Windows.Forms.Padding(0);
             this.btn_Two.Name = "btn_Two";
             this.btn_Two.Normalcolor = System.Drawing.SystemColors.Control;
             this.btn_Two.OnHovercolor = System.Drawing.SystemColors.Control;
             this.btn_Two.OnHoverTextColor = System.Drawing.Color.Coral;
             this.btn_Two.selected = false;
-            this.btn_Two.Size = new System.Drawing.Size(212, 50);
-            this.btn_Two.TabIndex = 5;
+            this.btn_Two.Size = new System.Drawing.Size(224, 50);
+            this.btn_Two.TabIndex = 6;
             this.btn_Two.Tag = "1";
-            this.btn_Two.Text = "Material Due (Orig Planned Date)";
+            this.btn_Two.Text = "Material Due (Final Planned Date)";
             this.btn_Two.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btn_Two.Textcolor = System.Drawing.Color.DimGray;
             this.btn_Two.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -495,10 +454,11 @@
             this.btn_One.BackColor = System.Drawing.SystemColors.Control;
             this.btn_One.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_One.BorderRadius = 0;
-            this.btn_One.ButtonText = "Plan Order Creation Date vs 2nd Lvl Release Date";
+            this.btn_One.ButtonText = "Material Due (Orig Planned Date)";
             this.btn_One.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_One.DisabledColor = System.Drawing.Color.Gray;
+            this.btn_One.DisabledColor = System.Drawing.SystemColors.Control;
             this.btn_One.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_One.ForeColor = System.Drawing.Color.DimGray;
             this.btn_One.Iconcolor = System.Drawing.Color.Transparent;
             this.btn_One.Iconimage = null;
             this.btn_One.Iconimage_right = null;
@@ -506,7 +466,7 @@
             this.btn_One.Iconimage_Selected = null;
             this.btn_One.IconMarginLeft = 0;
             this.btn_One.IconMarginRight = 0;
-            this.btn_One.IconRightVisible = true;
+            this.btn_One.IconRightVisible = false;
             this.btn_One.IconRightZoom = 0D;
             this.btn_One.IconVisible = true;
             this.btn_One.IconZoom = 90D;
@@ -518,13 +478,14 @@
             this.btn_One.OnHovercolor = System.Drawing.SystemColors.Control;
             this.btn_One.OnHoverTextColor = System.Drawing.Color.Coral;
             this.btn_One.selected = false;
-            this.btn_One.Size = new System.Drawing.Size(192, 50);
-            this.btn_One.TabIndex = 1;
+            this.btn_One.Size = new System.Drawing.Size(212, 50);
+            this.btn_One.TabIndex = 5;
             this.btn_One.Tag = "0";
-            this.btn_One.Text = "Plan Order Creation Date vs 2nd Lvl Release Date";
+            this.btn_One.Text = "Material Due (Orig Planned Date)";
             this.btn_One.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btn_One.Textcolor = System.Drawing.Color.DimGray;
             this.btn_One.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_One.Click += new System.EventHandler(this.CategoryButton_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -2672,7 +2633,6 @@
         private Bunifu.Framework.UI.BunifuCustomLabel lbl_analysisTwo;
         private Bunifu.Framework.UI.BunifuCustomLabel lbl_analysisOne;
         private System.Windows.Forms.Panel panel2;
-        private Bunifu.Framework.UI.BunifuFlatButton btn_One;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private Bunifu.Framework.UI.BunifuCards bunifuCards3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
@@ -2803,8 +2763,8 @@
         private Bunifu.Framework.UI.BunifuCustomLabel lbl_xLabelFive;
         private System.Windows.Forms.Panel panel55;
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton13;
-        private Bunifu.Framework.UI.BunifuFlatButton btn_Three;
         private Bunifu.Framework.UI.BunifuFlatButton btn_Two;
+        private Bunifu.Framework.UI.BunifuFlatButton btn_One;
         private System.Windows.Forms.Timer datavizLoadTimer;
     }
 }

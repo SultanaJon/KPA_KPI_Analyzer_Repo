@@ -538,72 +538,72 @@ namespace KPA_KPI_Analyzer
                         kpaPurchTotal.LoadPanel(overallData);
                         activeTemplate = kpaPurchTotal;
                         break;
-                    case 6:
+                    case 5:
                         KPAFollowUpTemplate kpaFollowUp = (KPAFollowUpTemplate)e.Control;
                         kpaFollowUp.LoadPanel(overallData);
                         activeTemplate = kpaFollowUp;
                         break;
-                    case 9:
+                    case 6:
                         KPAHotJobsTemplate kpaHotJobs = (KPAHotJobsTemplate)e.Control;
                         kpaHotJobs.LoadPanel(overallData);
                         activeTemplate = kpaHotJobs;
                         break;
-                    case 10:
+                    case 7:
                         KPAExcessStockStock kpaExcessStockStock = (KPAExcessStockStock)e.Control;
                         kpaExcessStockStock.LoadPanel(overallData);
                         activeTemplate = kpaExcessStockStock;
                         break;
-                    case 11:
+                    case 8:
                         KPAExcessStockOpenOrders kpaExcessStockOpenOrders = (KPAExcessStockOpenOrders)e.Control;
                         kpaExcessStockOpenOrders.LoadPanel(overallData);
                         activeTemplate = kpaExcessStockOpenOrders;
                         break;
-                    case 12:
+                    case 9:
                         KPACurrentPlanActualTemplate kpaCurrPlanActual = (KPACurrentPlanActualTemplate)e.Control;
                         kpaCurrPlanActual.LoadPanel(overallData);
                         activeTemplate = kpaCurrPlanActual;
                         break;
-                    case 15:
+                    case 11:
                         KPIPlanTemplate kpiPlan = (KPIPlanTemplate)e.Control;
                         kpiPlan.LoadPanel(overallData);
                         activeTemplate = kpiPlan;
                         break;
-                    case 16:
+                    case 12:
                         KPIPurchTemplate kpiPurch = (KPIPurchTemplate)e.Control;
                         kpiPurch.LoadPanel(overallData);
                         activeTemplate = kpiPurch;
                         break;
-                    case 17:
+                    case 13:
                         KPIFollowUpTemplate kpiFollowUp = (KPIFollowUpTemplate)e.Control;
                         kpiFollowUp.LoadPanel(overallData);
                         activeTemplate = kpiFollowUp;
                         break;
-                    case 18:
+                    case 14:
                         KPIPlanTwoTemplate kpiPlanTwo  = (KPIPlanTwoTemplate)e.Control;
                         kpiPlanTwo.LoadPanel(overallData);
                         activeTemplate = kpiPlanTwo;
                         break;
-                    case 19:
+                    case 15:
                         KPIPurchTwoTemplate kpiPurchTwo = (KPIPurchTwoTemplate)e.Control;
                         kpiPurchTwo.LoadPanel(overallData);
                         activeTemplate = kpiPurchTwo;
                         break;
-                    case 20:
+                    case 16:
                         KPIPurchSubTemplate kpiPurchSub = (KPIPurchSubTemplate)e.Control;
                         kpiPurchSub.LoadPanel(overallData);
                         activeTemplate = kpiPurchSub;
                         break;
-                    case 21:
+                    case 17:
                         KPIPurchTotalTemplate kpiPurchTotal = (KPIPurchTotalTemplate)e.Control;
                         kpiPurchTotal.LoadPanel(overallData);
                         activeTemplate = kpiPurchTotal;
                         break;
-                    case 22:
+                    case 18:
                         KPIPurchPlanTemplate kpiPurchPlan = (KPIPurchPlanTemplate)e.Control;
                         kpiPurchPlan.LoadPanel(overallData);
                         activeTemplate = kpiPurchPlan;
                         break;
-                    case 24:
+                    case 19:
                         KPIOtherTemplate kpiOther = (KPIOtherTemplate)e.Control;
                         kpiOther.LoadPanel(overallData);
                         activeTemplate = kpiOther;
@@ -650,59 +650,59 @@ namespace KPA_KPI_Analyzer
                         KPAPurchTotalTemplate kpaPurchTotal = (KPAPurchTotalTemplate)activeTemplate;
                         kpaPurchTotal.RefreshTemplate();
                         break;
-                    case 6:
+                    case 5:
                         KPAFollowUpTemplate kpaFollowUp = (KPAFollowUpTemplate)activeTemplate;
                         kpaFollowUp.RefreshTemplate();
                         break;
-                    case 9:
+                    case 6:
                         KPAHotJobsTemplate kpaHotJobs = (KPAHotJobsTemplate)activeTemplate;
                         kpaHotJobs.RefreshTemplate();
                         break;
-                    case 10:
+                    case 7:
                         KPAExcessStockStock kapExcessStockStock = (KPAExcessStockStock)activeTemplate;
                         kapExcessStockStock.RefreshTemplate();
                         break;
-                    case 11:
+                    case 8:
                         KPAExcessStockOpenOrders kpaExcessStockOpenOrders = (KPAExcessStockOpenOrders)activeTemplate;
                         kpaExcessStockOpenOrders.RefreshTemplate();
                         break;
-                    case 12:
+                    case 9:
                         KPACurrentPlanActualTemplate kpaCurrPlanActual = (KPACurrentPlanActualTemplate)activeTemplate;
                         kpaCurrPlanActual.RefreshTemplate();
                         break;
-                    case 15:
+                    case 11:
                         KPIPlanTemplate kpiPlan = (KPIPlanTemplate)activeTemplate;
                         kpiPlan.RefreshTemplate();
                         break;
-                    case 16:
+                    case 12:
                         KPIPurchTemplate kpiPurch = (KPIPurchTemplate)activeTemplate;
                         kpiPurch.RefreshTemplate();
                         break;
-                    case 17:
+                    case 13:
                         KPIFollowUpTemplate kpiFollowUp = (KPIFollowUpTemplate)activeTemplate;
                         kpiFollowUp.RefreshTemplate();
                         break;
-                    case 18:
+                    case 14:
                         KPIPlanTwoTemplate kpiPlanTwo = (KPIPlanTwoTemplate)activeTemplate;
                         kpiPlanTwo.RefreshTemplate();
                         break;
-                    case 19:
+                    case 15:
                         KPIPurchTwoTemplate kpiPurchTwo = (KPIPurchTwoTemplate)activeTemplate;
                         kpiPurchTwo.RefreshTemplate();
                         break;
-                    case 20:
+                    case 16:
                         KPIPurchSubTemplate kpiPurchSub = (KPIPurchSubTemplate)activeTemplate;
                         kpiPurchSub.RefreshTemplate();
                         break;
-                    case 21:
+                    case 17:
                         KPIPurchTotalTemplate kpiPurchTotal = (KPIPurchTotalTemplate)activeTemplate;
                         kpiPurchTotal.RefreshTemplate();
                         break;
-                    case 22:
+                    case 18:
                         KPIPurchPlanTemplate kpiPurchPlan = (KPIPurchPlanTemplate)activeTemplate;
                         kpiPurchPlan.RefreshTemplate();
                         break;
-                    case 24:
+                    case 19:
                         KPIOtherTemplate kpiOther = (KPIOtherTemplate)activeTemplate;
                         kpiOther.RefreshTemplate();
                         break;

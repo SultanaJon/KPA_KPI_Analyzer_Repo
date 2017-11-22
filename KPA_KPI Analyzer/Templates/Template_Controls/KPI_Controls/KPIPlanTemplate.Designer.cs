@@ -348,7 +348,7 @@
             this.btn_One.BackColor = System.Drawing.SystemColors.Control;
             this.btn_One.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_One.BorderRadius = 0;
-            this.btn_One.ButtonText = "PR Planned Date vs Current Planned Date";
+            this.btn_One.ButtonText = "Current Planned Date vs PR Planned Date";
             this.btn_One.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_One.DisabledColor = System.Drawing.Color.Gray;
             this.btn_One.Dock = System.Windows.Forms.DockStyle.Left;
@@ -374,7 +374,7 @@
             this.btn_One.Size = new System.Drawing.Size(175, 50);
             this.btn_One.TabIndex = 0;
             this.btn_One.Tag = "0";
-            this.btn_One.Text = "PR Planned Date vs Current Planned Date";
+            this.btn_One.Text = "Current Planned Date vs PR Planned Date";
             this.btn_One.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btn_One.Textcolor = System.Drawing.Color.DimGray;
             this.btn_One.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

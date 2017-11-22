@@ -51,7 +51,7 @@ namespace KPA_KPI_Analyzer
 
             int actSecTag = int.Parse(btn.Tag.ToString());
 
-            if (actSecTag >= 0 && actSecTag <= 14)
+            if (actSecTag >= 0 && actSecTag <= 9)
                 lbl_Performance.Text = "KPA";
             else
                 lbl_Performance.Text = "KPI";
@@ -74,61 +74,49 @@ namespace KPA_KPI_Analyzer
                 case 4: // KPA --> Purch Total
                     CreateKpaPurchTotalTemplate();
                     break;
-                case 5: // KPA --> Purch/Plan Total
-                    LoadDataComingSoonTemplate();
-                    break;
-                case 6: // KPA --> Follow Up
+                case 5: // KPA --> Follow Up
                     CreatekpaFollowUpTemplate();
                     break;
-                case 7: // KPA --> Cancellations
-                    LoadDataComingSoonTemplate();
-                    break;
-                case 8: // KPA --> NCRs
-                    LoadDataComingSoonTemplate();
-                    break;
-                case 9: // KPA --> Hot Jobs
+                case 6: // KPA --> Hot Jobs
                     CreateKpaHotJobsTemplate();
                     break;
-                case 10: // KPA --> Excess Stock - Stock
+                case 7: // KPA --> Excess Stock - Stock
                     CreateKpaExcessStockStockTemplate();
                     break;
-                case 11: // KPA --> Excess Stock - Open Orders
+                case 8: // KPA --> Excess Stock - Open Orders
                     CreateKpaExcessStockOpenOrdersTemplate();
                     break;
-                case 12: // KPA --> Current Plan vs Actual
+                case 9: // KPA --> Current Plan vs Actual
                     CreateKpaCurrPlanActualTemplate();
                     break;
-                case 14: // KPI --> Overall
+                case 10: // KPI --> Overall
                     LoadOverallTemplate(Performance.KPI);
                     break;
-                case 15: // KPI --> Plan
+                case 11: // KPI --> Plan
                     CreateKpiPlanTemplate();
                     break;
-                case 16: // KPI --> Purch
+                case 12: // KPI --> Purch
                     CreateKpiPurchTemplate();
                     break;
-                case 17: // KPI --> Follow Up
+                case 13: // KPI --> Follow Up
                     CreateKpiFollowUpTemplate();
                     break;
-                case 18: // KPI --> Plan
+                case 14: // KPI --> Plan
                     CreateKpiPlanTwoTemplate();
                     break;
-                case 19: // KPI --> Purch
+                case 15: // KPI --> Purch
                     CreateKpiPurchTwoTemplate();
                     break;
-                case 20: // KPI --> Purch Sub
+                case 16: // KPI --> Purch Sub
                     CreateKpiPurchSubTemplate();
                     break;
-                case 21: // KPI --> Purch Total
+                case 17: // KPI --> Purch Total
                     CreateKpiPurchTotalTemplate();
                     break;
-                case 22: // KPI --> Purch/Plan
+                case 18: // KPI --> Purch/Plan
                     CreateKpiPurchPlanTemplate();
                     break;
-                case 23: // KPI --> Purch/Plan Total
-                    LoadDataComingSoonTemplate();
-                    break;
-                case 24: // KPI --> Other
+                case 19: // KPI --> Other
                     CreateKpiOtherTemplate();
                     break;
                 default:

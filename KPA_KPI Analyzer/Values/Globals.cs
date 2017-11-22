@@ -80,8 +80,6 @@
             PurchSub,
             PurchTotal,
             FollowUp,
-            Cancellations,
-            NCRs,
             HotJobs,
             ExcessStock_Stock,
             ExcessStock_OpenOrders,

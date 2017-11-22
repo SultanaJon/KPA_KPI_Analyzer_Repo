@@ -71,7 +71,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             {
                 btn_One.Textcolor = value;
                 btn_Two.Textcolor = value;
-                btn_Three.Textcolor = value;
             }
         }
         #endregion
@@ -90,10 +89,10 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             SetGraphColor();
             DefaultButtonTextColor = Color.DarkGray;
             RenderTwo();
-            btn_Two.selected = true;
-            btn_Two.Textcolor = Color.Coral;
+            btn_One.selected = true;
+            btn_One.Textcolor = Color.Coral;
             DatavizLoaded = false;
-            ActiveCategory = 1;
+            ActiveCategory = 0;
             Globals.CurrCategory = Globals.kpiCategories[(int)Globals.KPI_Sections.PlanTwo][(int)Globals.KPI_Categories.PlanTwo.MaterialDueOriginalPlanDate];
             ChangeCategory();
             datavizLoadTimer.Start();
@@ -154,7 +153,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
             btn_One.selected = false;
             btn_One.selected = false;
-            btn_Two.selected = false;
+            btn_One.selected = false;
 
             btn.selected = true;
             DefaultButtonTextColor = Color.DarkGray;
@@ -167,11 +166,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
             switch (tag)
             {
+                case 0:
+                    RenderOne();
+                    break;
                 case 1:
                     RenderTwo();
-                    break;
-                case 2:
-                    RenderThree();
                     break;
                 default:
                     break;
@@ -181,28 +180,10 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
 
-
-
-
-
-
         /// <summary>
         /// Renders the specific KPI category into the loaded template
         /// </summary>
         private void RenderOne()
-        {
-            // Data not yet available
-        }
-
-
-
-
-
-
-        /// <summary>
-        /// Renders the specific KPI category into the loaded template
-        /// </summary>
-        private void RenderTwo()
         {
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
@@ -265,7 +246,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// <summary>
         /// Renders the specific KPI category into the loaded template
         /// </summary>
-        private void RenderThree()
+        private void RenderTwo()
         {
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
@@ -367,11 +348,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
                     switch (ActiveCategory)
                     {
-                        case 1: // PO Release vs PO Confirmation
+                        case 0: // PO Release vs PO Confirmation
                             dv.DataLoader += KpiDataTableLoader.PlanTwo.LoadMaterialDueOrigPlanDate;
                             dv.ColumnTag = tag;
                             break;
-                        case 2: // PO Release vs PO Confirmation
+                        case 1: // PO Release vs PO Confirmation
                             dv.DataLoader += KpiDataTableLoader.PlanTwo.LoadMaterialDueFinalPlanDate;
                             dv.ColumnTag = tag;
                             break;
