@@ -4,25 +4,8 @@
     {
         #region MEMBERS
 
-        public static string[] defaultSheetName =
-        {
-            "Sheet1"
-        };
-
-        public static string[] defaultFileNames =
-        {
-            "DefaultFileName"
-        };
-
-        public static string[] overallSheetNames =
-        {
-            "KPA Overall",
-            "KPI Overall"
-        };
-
-
-        private static string overallFilePath = @"Resources\Reports\Overall.xlsx";
-
+        private static string overallTemplateFilePath = @"Resources\Reports\OverallTemplate.xlsx";
+        private static string tempOverallFilePath = @"Resources\Reports\Overall.xlsx";
         #endregion
 
 
@@ -60,7 +43,16 @@
         /// <summary>
         /// The path of the overall.xlsx file
         /// </summary>
-        public static string OverallFilePath { get { return overallFilePath; } }
+        public static string OverallTemplateFilePath { get { return overallTemplateFilePath; } }
+
+
+
+        /// <summary>
+        /// The path of the viewable overall file.
+        /// </summary>
+        public static string TempOverallFilePath { get { return tempOverallFilePath; } }
+
+
 
 
         /// <summary>
@@ -98,50 +90,32 @@
         {
             KpaOverallTempOneRowStartPosition = 2,
             KpaOverallTempOneColStartPosition = 4,
-            KpaOverallTempOneMaxRow= 28,
+            KpaOverallTempOneMaxRow= 22,
             KpaOverallTempOneMaxCol = 12,
 
-            KpaOverallTempTwoRowStartPosition = 30,
+            KpaOverallTempTwoRowStartPosition = 25,
             KpaOverallTempTwoColStartPosition = 4,
-            KpaOverallTempTwoMaxRow = 31,
+            KpaOverallTempTwoMaxRow = 26,
             KpaOverallTempTwoMaxCol = 14,
 
             KpiOverallTempThreeRowStartPosition = 2,
             KpiOverallTempThreeColStartPosition = 4,
-            KpiOverallTempThreeMaxRow = 12,
+            KpiOverallTempThreeMaxRow = 10,
             KpiOverallTempThreeMaxCol = 15,
 
-            KpiOverallTempFourRowStartPosition = 15,
+            KpiOverallTempFourRowStartPosition = 13,
             KpiOverallTempFourColStartPosition = 4,
-            KpiOverallTempFourMaxRow = 25,
+            KpiOverallTempFourMaxRow = 21,
             KpiOverallTempFourMaxCol = 17,
 
-            KpiOverallTempFiveRowStartPosition = 28,
+            KpiOverallTempFiveRowStartPosition = 24,
             KpiOverallTempFiveColStartPosition = 4,
-            KpiOverallTempFiveMaxRow = 32,
-            KpiOverallTempFiveMaxCol = 16
+            KpiOverallTempFiveMaxRow = 28,
+            KpiOverallTempFiveMaxCol = 15
         }
 
 
 
-
-
-        /// <summary>
-        /// An indexer for default names of the excel file
-        /// </summary>
-        private enum DefaultDataSheetName
-        {
-            Sheet1
-        }
-
-
-        /// <summary>
-        /// An indexer fro the default file name
-        /// </summary>
-        private enum DefaultDataFileName
-        {
-            Default
-        }
 
         /// <summary>
         /// An indexer for the sheets names within overall.xlsx.
@@ -152,7 +126,23 @@
             KPIOverall
         }
 
+        public static string[] overallSheetNames =
+        {
+            "KPA Overall",
+            "KPI Overall"
+        };
 
+
+        public enum OverallDefaultSheetName
+        {
+            Default
+        }
+
+
+        public static string[] overallDefaultSheetNames =
+        {
+            "sheet1"
+        };
 
         #endregion
 
@@ -160,17 +150,14 @@
 
 
         #region CONSTRUCTORS
-        public ExcelFile(string fileName, string sheetName, bool containsHeaders)
+        public ExcelFile(string fileName,  bool containsHeaders)
         {
             FileName = fileName;
-            SheetName = sheetName;
+            //SheetName = sheetName;
+            SheetName = overallDefaultSheetNames[(int)OverallDefaultSheetName.Default];
             HasHeaders = containsHeaders;
             FileInfo = new System.IO.FileInfo(FileName);
         }
-
-        public ExcelFile(string fileName, string sheetName) : this(fileName, sheetName, false) { }
-        public ExcelFile(string fileName, bool headers) : this(fileName, defaultSheetName[(int)DefaultDataSheetName.Sheet1], headers) { }
-        public ExcelFile(string fileName) : this(fileName, defaultSheetName[(int)DefaultDataSheetName.Sheet1], false) { }
 
         #endregion
     }

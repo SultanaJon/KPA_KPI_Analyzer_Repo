@@ -98,7 +98,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             DatavizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            Globals.CurrCategory = "Initial Confirmation vs Current Confirmation";
+            Globals.CurrCategory = Globals.kpiCategories[(int)Globals.KPI_Sections.FollowUp][(int)Globals.KPI_Categories.FollowUp.CurrentConfDateVsInitialConfDate];
             ChangeCategory();
         }
 
@@ -115,6 +115,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             DatavizLoaded = false;
             datavizLoadTimer.Start();
         }
+
+
+
 
 
 
@@ -213,23 +216,23 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = "Initial Confirmation vs Current Confirmation";
+            Title = Globals.kpiCategories[(int)Globals.KPI_Sections.FollowUp][(int)Globals.KPI_Categories.FollowUp.CurrentConfDateVsInitialConfDate];
             Globals.CurrCategory = Title;
             Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.FollowUp];
             ChangeCategory();
 
-            TotalOrders = overallData.kpi.followUp.initConfVsCurrConf.data.Total.ToString();
-            Average = overallData.kpi.followUp.initConfVsCurrConf.data.Average.ToString();
-            PercNoConf = overallData.kpi.followUp.initConfVsCurrConf.data.PercentUnconf.ToString();
-            TimeBucketOne = overallData.kpi.followUp.initConfVsCurrConf.data.Minus_TwentyTwo.ToString();
-            TimeBucketTwo = overallData.kpi.followUp.initConfVsCurrConf.data.Minus_Fifteen_TwentyOne.ToString();
-            TimeBucketThree = overallData.kpi.followUp.initConfVsCurrConf.data.Minus_Eight_Fourteen.ToString();
-            TimeBucketFour = overallData.kpi.followUp.initConfVsCurrConf.data.Minus_One_Seven.ToString();
-            TimeBucketFive = overallData.kpi.followUp.initConfVsCurrConf.data.Zero.ToString();
-            TimeBucketSix = overallData.kpi.followUp.initConfVsCurrConf.data.One_Seven.ToString();
-            TimeBucketSeven = overallData.kpi.followUp.initConfVsCurrConf.data.Eight_Fourteen.ToString();
-            TimeBucketEight = overallData.kpi.followUp.initConfVsCurrConf.data.Fifteen_TwentyOne.ToString();
-            TimeBucketNine = overallData.kpi.followUp.initConfVsCurrConf.data.TwentyTwo.ToString();
+            TotalOrders = overallData.kpi.followUp.currConfVsInitConf.data.Total.ToString();
+            Average = overallData.kpi.followUp.currConfVsInitConf.data.Average.ToString();
+            PercNoConf = overallData.kpi.followUp.currConfVsInitConf.data.PercentUnconf.ToString();
+            TimeBucketOne = overallData.kpi.followUp.currConfVsInitConf.data.Minus_TwentyTwo.ToString();
+            TimeBucketTwo = overallData.kpi.followUp.currConfVsInitConf.data.Minus_Fifteen_TwentyOne.ToString();
+            TimeBucketThree = overallData.kpi.followUp.currConfVsInitConf.data.Minus_Eight_Fourteen.ToString();
+            TimeBucketFour = overallData.kpi.followUp.currConfVsInitConf.data.Minus_One_Seven.ToString();
+            TimeBucketFive = overallData.kpi.followUp.currConfVsInitConf.data.Zero.ToString();
+            TimeBucketSix = overallData.kpi.followUp.currConfVsInitConf.data.One_Seven.ToString();
+            TimeBucketSeven = overallData.kpi.followUp.currConfVsInitConf.data.Eight_Fourteen.ToString();
+            TimeBucketEight = overallData.kpi.followUp.currConfVsInitConf.data.Fifteen_TwentyOne.ToString();
+            TimeBucketNine = overallData.kpi.followUp.currConfVsInitConf.data.TwentyTwo.ToString();
 
             AnalysisOne = "- Will show if PO line item has been confirmed.";
             AnalysisTwo = "- Difference between final confirmation date and first confirmation date.";
@@ -245,19 +248,19 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             dp.addLabely(lbl_xLabelEight.Text, TimeBucketEight);
             dp.addLabely(lbl_xLabelNine.Text, TimeBucketNine);
 
-            TotalOrders = string.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.Total);
-            Average = string.Format("{0:n}", overallData.kpi.followUp.initConfVsCurrConf.data.Average);
-            PercNoConf = string.Format("{0:n}", overallData.kpi.followUp.initConfVsCurrConf.data.PercentUnconf);
-            PercNoConfTotal = string.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.PercentUnconfTotal);
-            TimeBucketOne = string.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.Minus_TwentyTwo);
-            TimeBucketTwo = string.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.Minus_Fifteen_TwentyOne);
-            TimeBucketThree = string.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.Minus_Eight_Fourteen);
-            TimeBucketFour = string.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.Minus_One_Seven);
-            TimeBucketFive = string.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.Zero);
-            TimeBucketSix = string.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.One_Seven);
-            TimeBucketSeven = string.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.Eight_Fourteen);
-            TimeBucketEight = string.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.Fifteen_TwentyOne);
-            TimeBucketNine = string.Format("{0:n0}", overallData.kpi.followUp.initConfVsCurrConf.data.TwentyTwo);
+            TotalOrders = string.Format("{0:n0}", overallData.kpi.followUp.currConfVsInitConf.data.Total);
+            Average = string.Format("{0:n}", overallData.kpi.followUp.currConfVsInitConf.data.Average);
+            PercNoConf = string.Format("{0:n}", overallData.kpi.followUp.currConfVsInitConf.data.PercentUnconf);
+            PercNoConfTotal = string.Format("{0:n0}", overallData.kpi.followUp.currConfVsInitConf.data.PercentUnconfTotal);
+            TimeBucketOne = string.Format("{0:n0}", overallData.kpi.followUp.currConfVsInitConf.data.Minus_TwentyTwo);
+            TimeBucketTwo = string.Format("{0:n0}", overallData.kpi.followUp.currConfVsInitConf.data.Minus_Fifteen_TwentyOne);
+            TimeBucketThree = string.Format("{0:n0}", overallData.kpi.followUp.currConfVsInitConf.data.Minus_Eight_Fourteen);
+            TimeBucketFour = string.Format("{0:n0}", overallData.kpi.followUp.currConfVsInitConf.data.Minus_One_Seven);
+            TimeBucketFive = string.Format("{0:n0}", overallData.kpi.followUp.currConfVsInitConf.data.Zero);
+            TimeBucketSix = string.Format("{0:n0}", overallData.kpi.followUp.currConfVsInitConf.data.One_Seven);
+            TimeBucketSeven = string.Format("{0:n0}", overallData.kpi.followUp.currConfVsInitConf.data.Eight_Fourteen);
+            TimeBucketEight = string.Format("{0:n0}", overallData.kpi.followUp.currConfVsInitConf.data.Fifteen_TwentyOne);
+            TimeBucketNine = string.Format("{0:n0}", overallData.kpi.followUp.currConfVsInitConf.data.TwentyTwo);
 
             canvas.addData(dp);
             dataviz.Render(canvas);
@@ -276,7 +279,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = "Final Confirmation Date vs Final Planned Date";
+            Title = Globals.kpiCategories[(int)Globals.KPI_Sections.FollowUp][(int)Globals.KPI_Categories.FollowUp.FinalConfirmationDatevsFinalPlanDate];
             Globals.CurrCategory = Title;
             Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.FollowUp];
             ChangeCategory();
@@ -339,7 +342,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = "Receipt Date vs Current Planed Date";
+            Title = Globals.kpiCategories[(int)Globals.KPI_Sections.FollowUp][(int)Globals.KPI_Categories.FollowUp.ReceiptDatevsCurrentPlanDate];
             Globals.CurrCategory = Title;
             Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.FollowUp];
             ChangeCategory();
@@ -398,7 +401,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = "Receipt Date vs Original Confirmed Date";
+            Title = Globals.kpiCategories[(int)Globals.KPI_Sections.FollowUp][(int)Globals.KPI_Categories.FollowUp.ReceiptDatevsOriginalConfirmationDate];
             Globals.CurrCategory = Title;
             Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.FollowUp];
             ChangeCategory();
@@ -461,7 +464,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = "Receipt Date vs Current Confirmed Date";
+            Title = Globals.kpiCategories[(int)Globals.KPI_Sections.FollowUp][(int)Globals.KPI_Categories.FollowUp.ReceiptDatevsCurrentConfirmationDate];
             Globals.CurrCategory = Title;
             Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.FollowUp];
             ChangeCategory();

@@ -10,23 +10,14 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 {
     public partial class NewKPAOverall : UserControl
     {
+        #region FIELD DATA
+
         private Overall data;
 
-        public NewKPAOverall(Overall _data)
-        {
-            InitializeComponent();
-            ApplyDataGridStyles();
-            data = _data;
-            Globals.CurrPerformance = "KPA";
 
-            if (Values.Globals.FocusedCountry == Values.Globals.Countries.UnitedStates)
-                Globals.CurrCountry = Globals.countries[(int)Globals.Countries.UnitedStates];
-            else
-                Globals.CurrCountry = Globals.countries[(int)Globals.Countries.Mexico];
-        }
-
-
-
+        /// <summary>
+        /// Indexers for template one's header position
+        /// </summary>
         public enum TempOneDataGridHeaderNames
         {
             Section,
@@ -43,10 +34,10 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         }
 
 
-        
+
 
         /// <summary>
-        /// 
+        /// Indexers for template two's header position
         /// </summary>
         public enum TempTwoDataGridHeaderNames
         {
@@ -65,10 +56,279 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Totals
         }
 
+        #endregion
+
+
+        /// <summary>
+        /// Custom Constructor
+        /// </summary>
+        /// <param name="_data"></param>
+        public NewKPAOverall(Overall _data)
+        {
+            InitializeComponent();
+            ApplyDataGridStyles();
+            data = _data;
+            Globals.CurrPerformance = "KPA";
+
+            if (Values.Globals.FocusedCountry == Values.Globals.Countries.UnitedStates)
+                Globals.CurrCountry = Globals.countries[(int)Globals.Countries.UnitedStates];
+            else
+                Globals.CurrCountry = Globals.countries[(int)Globals.Countries.Mexico];
+        }
+
+        #region EVENTS
+
+        /// <summary>
+        /// Formats the section name of template one's datagridview
+        /// </summary>
+        /// <param name="sender">Template one's datagridview</param>
+        /// <param name="e">The format event</param>
+        private void bunifuCustomDataGrid1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex == 0)
+                return;
+
+            if (e.ColumnIndex != 0)
+                return;
+
+            if (IsTheSameCellValueGridOne(e.ColumnIndex, e.RowIndex))
+            {
+                e.Value = "";
+                e.FormattingApplied = true;
+            }
+        }
 
 
 
 
+
+        /// <summary>
+        /// Formats the section name of template two's datagridview
+        /// </summary>
+        /// <param name="sender">Template two's datagridview</param>
+        /// <param name="e">The format event</param>
+        private void bunifuCustomDataGrid2_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex == 0)
+                return;
+
+            if (e.ColumnIndex != 0)
+                return;
+
+            if (IsTheSameCellValueGridTwo(e.ColumnIndex, e.RowIndex))
+            {
+                e.Value = "";
+                e.FormattingApplied = true;
+            }
+        }
+
+
+
+
+
+
+        /// <summary>
+        /// After the form is created, this load event will fire.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void NewKPAOverall_Load(object sender, EventArgs e)
+        {
+            LoadPlan();
+            LoadPurch();
+            LoadPurchSub();
+            LoadPurchTotal();
+            LoadFollowUp();
+            LoadHotJobs();
+            LoadExcessStockStock();
+            LoadExcessStockOpenOrders();
+            LoadCurrentPlanVsActual();
+
+            TemplateOneDataGrid.AutoGenerateColumns = false;
+            TemplateTwoDataGrid.AutoGenerateColumns = false;
+        }
+
+
+
+
+
+
+        /// <summary>
+        /// Handles the event of when a cell in the Template One DataGridView is double clicked. The corresponding data will be loaded
+        /// into the data viewer object.
+        /// </summary>
+        /// <param name="sender">the cell</param>
+        /// <param name="e">the cell double click event</param>
+        private void TemplateOneDataGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (TemplateOneDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == "0" || TemplateOneDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == string.Empty)
+                {
+                    MessageBox.Show("There is no data in this cell.", "Data Timespan", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+
+                switch (e.RowIndex)
+                {
+                    case 0: // Plan
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.Plan];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.Plan][(int)Globals.KPA_Categories.Plan.PRsAgingNotRel];
+                        HandlePlanDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 1:
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.Plan];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.Plan][(int)Globals.KPA_Categories.Plan.MaterialDue];
+                        HandlePlanDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 2: // Purch
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.Purch];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.Purch][(int)Globals.KPA_Categories.Purch.PRsAgingRel];
+                        HandlePurchDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 3:
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.Purch];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.Purch][(int)Globals.KPA_Categories.Purch.POFirstRelease];
+                        HandlePurchDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 4:
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.Purch];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.Purch][(int)Globals.KPA_Categories.Purch.POPrevRelease];
+                        HandlePurchDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 5:
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.Purch];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.Purch][(int)Globals.KPA_Categories.Purch.NoConfirmation];
+                        HandlePurchDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 6: // Purch Sub
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.PurchSub];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.PurchSub][(int)Globals.KPA_Categories.PurchSub.PRReleasePORelease];
+                        HandlePurchSubDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 7:
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.PurchSub];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.PurchSub][(int)Globals.KPA_Categories.PurchSub.POCreationCOnfEntry];
+                        HandlePurchSubDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 8: // Purch Total
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.PurchTotal];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.PurchTotal][(int)Globals.KPA_Categories.PurchTotal.PRRelConfEntry];
+                        HandlePurchTotalDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 9: // Follow Up
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.FollowUp];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.FollowUp][(int)Globals.KPA_Categories.FollowUp.ConfPlanDate];
+                        HandleFollowUpDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 10:
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.FollowUp];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.FollowUp][(int)Globals.KPA_Categories.FollowUp.ConfDateUpcomingDel];
+                        HandleFollowUpDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 11:
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.FollowUp];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.FollowUp][(int)Globals.KPA_Categories.FollowUp.DueTodayLateConf];
+                        HandleFollowUpDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 12: // Hot Jobs
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.HotJobs];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.HotJobs][(int)Globals.KPA_Categories.HotJobs.PrsNotonPO];
+                        HandleHotJobsDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 13:
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.HotJobs];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.HotJobs][(int)Globals.KPA_Categories.HotJobs.NoConfirmations];
+                        HandleHotJobsDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 14:
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.HotJobs];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.HotJobs][(int)Globals.KPA_Categories.HotJobs.LateToConfirmed];
+                        HandleHotJobsDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 15: // Excess Stock - Stock
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.ExcessStock_Stock];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.ExcessStock_Stock][(int)Globals.KPA_Categories.ExcessStockStock.PrsAgingNotRel];
+                        HandleExcessStockStock(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 16:
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.ExcessStock_Stock];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.ExcessStock_Stock][(int)Globals.KPA_Categories.ExcessStockStock.PRsAgingRel];
+                        HandleExcessStockStock(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 17:
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.ExcessStock_Stock];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.ExcessStock_Stock][(int)Globals.KPA_Categories.ExcessStockStock.POCreationThruDelivery];
+                        HandleExcessStockStock(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 18: // Excess Stock - Open Orders
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.ExcessStock_OpenOrders];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.ExcessStock_OpenOrders][(int)Globals.KPA_Categories.ExcessStockOpenOrders.PrsAgingNotRel];
+                        HandleExcessStockOpenOrders(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 19:
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.ExcessStock_OpenOrders];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.ExcessStock_OpenOrders][(int)Globals.KPA_Categories.ExcessStockOpenOrders.PRsAgingRel];
+                        HandleExcessStockOpenOrders(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 20:
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.ExcessStock_OpenOrders];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.ExcessStock_OpenOrders][(int)Globals.KPA_Categories.ExcessStockOpenOrders.POCreationThruDelivery];
+                        HandleExcessStockOpenOrders(e.RowIndex, e.ColumnIndex);
+                        break;
+                }
+            }
+            catch (Exception)
+            {
+                // if the user clicks on the header dividers an index out of range excepion will be thrown. I am ignoring it.
+            }
+        }
+
+
+
+
+
+
+        /// <summary>
+        /// Handles the event of when a cell in the Template One DataGridView is double clicked. The corresponding data will be loaded
+        /// into the data viewer object.
+        /// </summary>
+        /// <param name="sender">the cell</param>
+        /// <param name="e">the cell double click event</param>
+        private void TemplateTwoDataGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (TemplateTwoDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == "0" || TemplateTwoDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == string.Empty)
+                {
+                    MessageBox.Show("There is no data in this cell.", "Data Timespan", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                switch (e.RowIndex)
+                {
+                    case 0:
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.CurrPlanActual];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.CurrPlanActual][(int)Globals.KPA_Categories.CurrPlanVsActual.CurrPlanDateCurrConfDateOpenPO];
+                        HandleCurrentPlanVsActualDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 1:
+                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.CurrPlanActual];
+                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.CurrPlanActual][(int)Globals.KPA_Categories.CurrPlanVsActual.CurrPlanDateCurrConfDateOpenPOHotJobs];
+                        HandleCurrentPlanVsActualDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
+                }
+            }
+            catch(Exception)
+            {
+                // if the user clicks on the header dividers an index out of range excepion will be thrown. I am ignoring it.
+            }            
+        }
+
+        #endregion
+
+        #region HELPER FUNCTIONS
 
         /// <summary>
         /// Sets the color of the DataGridView Header cells only.
@@ -114,7 +374,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
 
         /// <summary>
-        /// 
+        /// Removes duplicate section names from template one's datagridview.
         /// </summary>
         /// <param name="column"></param>
         /// <param name="row"></param>
@@ -133,8 +393,10 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
 
 
+
+
         /// <summary>
-        /// 
+        /// Removes duplicate section names from template two's datagridview.
         /// </summary>
         /// <param name="column"></param>
         /// <param name="row"></param>
@@ -151,77 +413,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         }
 
 
-
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void bunifuCustomDataGrid1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (e.RowIndex == 0)
-                return;
-
-            if (e.ColumnIndex != 0)
-                return;
-
-            if (IsTheSameCellValueGridOne(e.ColumnIndex, e.RowIndex))
-            {
-                e.Value = "";
-                e.FormattingApplied = true;
-            }
-        }
-
-
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void bunifuCustomDataGrid2_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (e.RowIndex == 0)
-                return;
-
-            if (e.ColumnIndex != 0)
-                return;
-
-            if (IsTheSameCellValueGridTwo(e.ColumnIndex, e.RowIndex))
-            {
-                e.Value = "";
-                e.FormattingApplied = true;
-            }
-        }
-
-
-
-
-
-        // Load all the function that load all the data into the datagridviews.
-        private void NewKPAOverall_Load(object sender, EventArgs e)
-        {
-            LoadPlan();
-            LoadPurch();
-            LoadPurchSub();
-            LoadPurchTotal();
-            LoadPurchPlanTotal();
-            LoadFollowUp();
-            LoadCancellations();
-            LoadNCRs();
-            LoadHotJobs();
-            LoadExcessStockStock();
-            LoadExcessStockOpenOrders();
-            LoadCurrentPlanVsActual();
-
-            TemplateOneDataGrid.AutoGenerateColumns = false;
-            TemplateTwoDataGrid.AutoGenerateColumns = false;
-        }
 
 
 
@@ -262,6 +453,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             };
             TemplateOneDataGrid.Rows.Add(row);
         }
+
+
+
 
 
 
@@ -336,6 +530,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
 
 
+
+
+
         /// <summary>
         /// Loads all of the KPA Purch Sub data into the datagridview.
         /// </summary>
@@ -374,6 +571,10 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         }
 
 
+
+
+
+
         /// <summary>
         /// Loads all of the KPA Purch Total data into the datagridview.
         /// </summary>
@@ -395,14 +596,10 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             TemplateOneDataGrid.Rows.Add(row);
         }
 
-        /// <summary>
-        /// Loads all of the KPA Purch Plan data into the datagridview.
-        /// </summary>
-        private void LoadPurchPlanTotal()
-        {
-            string[] row = { data.kpa.purchPlanTotal.Name, data.kpa.purchPlanTotal.categoryNames[(int)Purch_Plan_Total.CategorNames.PurchPlanTotalAging], "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A" };
-            TemplateOneDataGrid.Rows.Add(row);
-        }
+
+
+
+
 
         /// <summary>
         /// Loads all of the KPA Follow Up data into the datagridview.
@@ -455,27 +652,10 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             TemplateOneDataGrid.Rows.Add(row);
         }
 
-        /// <summary>
-        /// Loads all of the KPA Cancellations data into the datagridview.
-        /// </summary>
-        private void LoadCancellations()
-        {
-            string[] row = { data.kpa.cancellations.Name, data.kpa.cancellations.categoryNames[(int)Cancellations.CategorNames.CancellationCount], "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A" };
-            TemplateOneDataGrid.Rows.Add(row);
-            row = new string[]{ data.kpa.cancellations.Name, data.kpa.cancellations.categoryNames[(int)Cancellations.CategorNames.CancellationValue], "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A" };
-            TemplateOneDataGrid.Rows.Add(row);
-        }
 
-        /// <summary>
-        /// Loads all of the NCRs Plan data into the datagridview.
-        /// </summary>
-        private void LoadNCRs()
-        {
-            string[] row = { data.kpa.ncrs.Name, data.kpa.ncrs.categoryNames[(int)NCRs.CategorNames.OpenNCRs], "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A" };
-            TemplateOneDataGrid.Rows.Add(row);
-            row = new string[]{ data.kpa.ncrs.Name, data.kpa.ncrs.categoryNames[(int)NCRs.CategorNames.OpenNCRValues], "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A" };
-            TemplateOneDataGrid.Rows.Add(row);
-        }
+
+
+
 
         /// <summary>
         /// Loads all of the KPA Hot Jobs data into the datagridview.
@@ -529,6 +709,10 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         }
 
 
+
+
+
+
         /// <summary>
         /// Loads all of the KPA Excess Stock - Stock data into the datagridview.
         /// </summary>
@@ -579,6 +763,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             };
             TemplateOneDataGrid.Rows.Add(row);
         }
+
+
+
+
+
 
         /// <summary>
         /// Loads all of the KPA Excess Stock - Open Orders data into the datagridview.
@@ -632,6 +821,10 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         }
 
 
+
+
+
+
         /// <summary>
         /// Loads all of the KPA Current Plan vs Actual data into the datagridview.
         /// </summary>
@@ -671,194 +864,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             };
             TemplateTwoDataGrid.Rows.Add(row);
         }
-
-
-
-        
-
-
-        /// <summary>
-        /// Handles the event of when a cell in the Template One DataGridView is double clicked. The corresponding data will be loaded
-        /// into the data viewer object.
-        /// </summary>
-        /// <param name="sender">the cell</param>
-        /// <param name="e">the cell double click event</param>
-        private void TemplateOneDataGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                if (TemplateOneDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == "0" || TemplateOneDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == string.Empty)
-                {
-                    MessageBox.Show("There is no data in this cell.", "Data Timespan", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-
-
-                switch (e.RowIndex)
-                {
-                    case 0: // 0 - 1 = Plan
-                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.Plan];
-                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.Plan][(int)Globals.KPA_Categories.Plan.PRsAgingNotRel];
-                        HandlePlanDataTableLoading(e.RowIndex, e.ColumnIndex);
-                        break;
-                    case 1:
-                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.Plan];
-                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.Plan][(int)Globals.KPA_Categories.Plan.MaterialDue];
-                        HandlePlanDataTableLoading(e.RowIndex, e.ColumnIndex);
-                        break;
-                    case 2: // 2 - 5 = Purch
-                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.Purch];
-                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.Purch][(int)Globals.KPA_Categories.Purch.PRsAgingRel];
-                        HandlePurchDataTableLoading(e.RowIndex, e.ColumnIndex);
-                        break;
-                    case 3:
-                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.Purch];
-                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.Purch][(int)Globals.KPA_Categories.Purch.POFirstRelease];
-                        HandlePurchDataTableLoading(e.RowIndex, e.ColumnIndex);
-                        break;
-                    case 4:
-                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.Purch];
-                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.Purch][(int)Globals.KPA_Categories.Purch.POPrevRelease];
-                        HandlePurchDataTableLoading(e.RowIndex, e.ColumnIndex);
-                        break;
-                    case 5:
-                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.Purch];
-                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.Purch][(int)Globals.KPA_Categories.Purch.NoConfirmation];
-                        HandlePurchDataTableLoading(e.RowIndex, e.ColumnIndex);
-                        break;
-                    case 6: // 6 - 7 = PurchSub
-                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.PurchSub];
-                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.PurchSub][(int)Globals.KPA_Categories.PurchSub.PRReleasePORelease];
-                        HandlePurchSubDataTableLoading(e.RowIndex, e.ColumnIndex);
-                        break;
-                    case 7:
-                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.PurchSub];
-                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.PurchSub][(int)Globals.KPA_Categories.PurchSub.POCreationCOnfEntry];
-                        HandlePurchSubDataTableLoading(e.RowIndex, e.ColumnIndex);
-                        break;
-                    case 8: // Purch Total
-                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.PurchTotal];
-                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.PurchTotal][(int)Globals.KPA_Categories.PurchTotal.PRRelConfEntry];
-                        HandlePurchTotalDataTableLoading(e.RowIndex, e.ColumnIndex);
-                        break;
-                    case 9: // Purch Plan Total
-                        // Not yet created
-                        break; 
-                    case 10: // 10 - 12 = Follow Up
-                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.FollowUp];
-                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.FollowUp][(int)Globals.KPA_Categories.FollowUp.ConfPlanDate];
-                        HandleFollowUpDataTableLoading(e.RowIndex, e.ColumnIndex);
-                        break;
-                    case 11:
-                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.FollowUp];
-                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.FollowUp][(int)Globals.KPA_Categories.FollowUp.ConfDateUpcomingDel];
-                        HandleFollowUpDataTableLoading(e.RowIndex, e.ColumnIndex);
-                        break;
-                    case 12:
-                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.FollowUp];
-                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.FollowUp][(int)Globals.KPA_Categories.FollowUp.DueTodayLateConf];
-                        HandleFollowUpDataTableLoading(e.RowIndex, e.ColumnIndex);
-                        break;
-                    case 13: // 13 - 14 Cancellations
-                    case 14:
-                        break;
-                    case 15: // 15 - 16 = NCRs
-                    case 16: // not yet created
-                        break;
-                    case 17: // 17 - 19 = Hot Jobs
-                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.HotJobs];
-                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.HotJobs][(int)Globals.KPA_Categories.HotJobs.PrsNotonPO];
-                        HandleHotJobsDataTableLoading(e.RowIndex, e.ColumnIndex);
-                        break;
-                    case 18:
-                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.HotJobs];
-                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.HotJobs][(int)Globals.KPA_Categories.HotJobs.NoConfirmations];
-                        HandleHotJobsDataTableLoading(e.RowIndex, e.ColumnIndex);
-                        break;
-                    case 19:
-                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.HotJobs];
-                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.HotJobs][(int)Globals.KPA_Categories.HotJobs.LateToConfirmed];
-                        HandleHotJobsDataTableLoading(e.RowIndex, e.ColumnIndex);
-                        break;
-                    case 20: // 20 - 22 = Excess Stock - Stock
-                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.ExcessStock_Stock];
-                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.ExcessStock_Stock][(int)Globals.KPA_Categories.ExcessStockStock.PrsAgingNotRel];
-                        HandleExcessStockStock(e.RowIndex, e.ColumnIndex);
-                        break;
-                    case 21:
-                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.ExcessStock_Stock];
-                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.ExcessStock_Stock][(int)Globals.KPA_Categories.ExcessStockStock.PRsAgingRel];
-                        HandleExcessStockStock(e.RowIndex, e.ColumnIndex);
-                        break;
-                    case 22:
-                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.ExcessStock_Stock];
-                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.ExcessStock_Stock][(int)Globals.KPA_Categories.ExcessStockStock.POCreationThruDelivery];
-                        HandleExcessStockStock(e.RowIndex, e.ColumnIndex);
-                        break;
-                    case 23: // 23 - 25 = Excess Stock - Open Orders
-                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.ExcessStock_OpenOrders];
-                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.ExcessStock_OpenOrders][(int)Globals.KPA_Categories.ExcessStockOpenOrders.PrsAgingNotRel];
-                        HandleExcessStockOpenOrders(e.RowIndex, e.ColumnIndex);
-                        break;
-                    case 24:
-                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.ExcessStock_OpenOrders];
-                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.ExcessStock_OpenOrders][(int)Globals.KPA_Categories.ExcessStockOpenOrders.PRsAgingRel];
-                        HandleExcessStockOpenOrders(e.RowIndex, e.ColumnIndex);
-                        break;
-                    case 25:
-                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.ExcessStock_OpenOrders];
-                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.ExcessStock_OpenOrders][(int)Globals.KPA_Categories.ExcessStockOpenOrders.POCreationThruDelivery];
-                        HandleExcessStockOpenOrders(e.RowIndex, e.ColumnIndex);
-                        break;
-                }
-            }
-            catch (Exception)
-            {
-                // if the user clicks on the header dividers an index out of range excepion will be thrown. I am ignoring it.
-            }
-        }
-
-
-
-
-
-        /// <summary>
-        /// Handles the event of when a cell in the Template One DataGridView is double clicked. The corresponding data will be loaded
-        /// into the data viewer object.
-        /// </summary>
-        /// <param name="sender">the cell</param>
-        /// <param name="e">the cell double click event</param>
-        private void TemplateTwoDataGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                if (TemplateTwoDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == "0" || TemplateTwoDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == string.Empty)
-                {
-                    MessageBox.Show("There is no data in this cell.", "Data Timespan", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-
-                switch (e.RowIndex)
-                {
-                    case 0:
-                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.CurrPlanActual];
-                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.CurrPlanActual][(int)Globals.KPA_Categories.CurrPlanVsActual.CurrPlanDateCurrConfDateOpenPO];
-                        HandleCurrentPlanVsActualDataTableLoading(e.RowIndex, e.ColumnIndex);
-                        break;
-                    case 1:
-                        Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.CurrPlanActual];
-                        Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.CurrPlanActual][(int)Globals.KPA_Categories.CurrPlanVsActual.CurrPlanDateCurrConfDateOpenPOHotJobs];
-                        HandleCurrentPlanVsActualDataTableLoading(e.RowIndex, e.ColumnIndex);
-                        break;
-                }
-            }
-            catch(Exception)
-            {
-                // if the user clicks on the header dividers an index out of range excepion will be thrown. I am ignoring it.
-            }            
-        }
-
-
 
 
 
@@ -1158,6 +1163,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
 
 
+
         /// <summary>
         /// Loads calls the data table loading funciton depending on the particular cell click under a particular KPA
         /// </summary>
@@ -1262,6 +1268,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
 
 
+
         /// <summary>
         /// Loads calls the data table loading funciton depending on the particular cell click under a particular KPA
         /// </summary>
@@ -1336,7 +1343,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             {
                 switch (rowIndex)
                 {
-                    case 10: // Confirmed Date vs Plan Date
+                    case 9: // Confirmed Date vs Plan Date
                         switch (columnIndex)
                         {
                             case 0: // section
@@ -1378,7 +1385,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                                 break;
                         }
                         break;
-                    case 11: // Confirmed Date for Upcoming Deliveries
+                    case 10: // Confirmed Date for Upcoming Deliveries
                         switch (columnIndex)
                         {
                             case 0: // section
@@ -1420,7 +1427,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                                 break;
                         }
                         break;
-                    case 12: // Late to Confirmed
+                    case 11: // Late to Confirmed
                         switch (columnIndex)
                         {
                             case 0: // section
@@ -1466,6 +1473,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                 dv.ShowDialog();
             }
         }
+
 
 
 
@@ -1482,7 +1490,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             {
                 switch (rowIndex)
                 {
-                    case 17: // PRs (Not on PO) - Hot Jobs Only
+                    case 12: // PRs (Not on PO) - Hot Jobs Only
                         switch (columnIndex)
                         {
                             case 0: // section
@@ -1524,7 +1532,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                                 break;
                         }
                         break;
-                    case 18: // No Confirmations - Hot Jobs Only
+                    case 13: // No Confirmations - Hot Jobs Only
                         switch (columnIndex)
                         {
                             case 0: // section
@@ -1566,7 +1574,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                                 break;
                         }
                         break;
-                    case 19: // Late to Confirmed - Hot Jobs Only
+                    case 14: // Late to Confirmed - Hot Jobs Only
                         switch (columnIndex)
                         {
                             case 0: // section
@@ -1616,6 +1624,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
 
 
+
+
         /// <summary>
         /// Loads calls the data table loading funciton depending on the particular cell click under a particular KPA
         /// </summary>
@@ -1627,7 +1637,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             {
                 switch (rowIndex)
                 {
-                    case 20: // PRs Aging (Not Released)
+                    case 15: // PRs Aging (Not Released)
                         switch (columnIndex)
                         {
                             case 0: // section
@@ -1662,7 +1672,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                         }
                         dv.DataLoader += KpaDataTableLoader.ExcessStock_Stock.LoadPrsAgingNotReleased;
                         break;
-                    case 21: // PRs Aging (Released)
+                    case 16: // PRs Aging (Released)
                         switch (columnIndex)
                         {
                             case 0: // section
@@ -1697,7 +1707,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                         }
                         dv.DataLoader += KpaDataTableLoader.ExcessStock_Stock.LoadPrsAgingReleased;
                         break;
-                    case 22: // PO Creation Date to Confirmation Entry Date
+                    case 17: // PO Creation Date to Confirmation Entry Date
                         switch (columnIndex)
                         {
                             case 0: // section
@@ -1753,7 +1763,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             {
                 switch (rowIndex)
                 {
-                    case 23: // PRs Aging (Not Released)
+                    case 18: // PRs Aging (Not Released)
                         switch (columnIndex)
                         {
                             case 0: // section
@@ -1788,7 +1798,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                         }
                         dv.DataLoader += KpaDataTableLoader.ExcessStock_OpenOrders.LoadPrsAgingNotReleased;
                         break;
-                    case 24: // PRs Aging (Released)
+                    case 19: // PRs Aging (Released)
                         switch (columnIndex)
                         {
                             case 0: // section
@@ -1823,7 +1833,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                         }
                         dv.DataLoader += KpaDataTableLoader.ExcessStock_OpenOrders.LoadPrsAgingReleased;
                         break;
-                    case 25: // PO Creation Date to Confirmation Entry Date
+                    case 20: // PO Creation Date to Confirmation Entry Date
                         switch (columnIndex)
                         {
                             case 0: // section
@@ -1862,7 +1872,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                 dv.ShowDialog();
             }
         }
-
 
 
 
@@ -1982,5 +1991,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             }
         }
 
+        #endregion
     }
 }

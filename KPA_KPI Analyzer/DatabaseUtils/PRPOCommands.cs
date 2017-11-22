@@ -114,16 +114,10 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
             // KPA -> Purch Total
             "SELECT * FROM " + mainTableNames[(int)DatabaseTables.MainTables.US_PRPO] + " WHERE " + "(" + mainTableNames[(int)DatabaseTables.MainTables.US_PRPO] + ".[Release Ind#] = 2 AND " + mainTableNames[(int)DatabaseTables.MainTables.US_PRPO] + ".[Del#Conf#Date] = '00/00/0000' AND " + mainTableNames[(int)DatabaseTables.MainTables.US_PRPO] + ".[Escaped] IS NULL)" ,
                 
-            // KPA -> Purch/Plan Total
-
             // KPA -> Follow Up
             "SELECT * FROM " + mainTableNames[(int)DatabaseTables.MainTables.US_PRPO] + " WHERE " + "(" + mainTableNames[(int)DatabaseTables.MainTables.US_PRPO] + ".[Qty Ordered] > 0 AND " + mainTableNames[(int)DatabaseTables.MainTables.US_PRPO] + ".[Del#Conf#Date] <> '00/00/0000' AND " + mainTableNames[(int)DatabaseTables.MainTables.US_PRPO] + ".[Escaped] IS NULL)" ,
             "SELECT * FROM " + mainTableNames[(int)DatabaseTables.MainTables.US_PRPO] + " WHERE " + "(" + mainTableNames[(int)DatabaseTables.MainTables.US_PRPO] + ".[Qty Ordered] > 0 AND " + mainTableNames[(int)DatabaseTables.MainTables.US_PRPO] + ".[Del#Conf#Date] <> '00/00/0000' AND " + mainTableNames[(int)DatabaseTables.MainTables.US_PRPO] + ".[Escaped] IS NULL)" ,
             "SELECT * FROM " + mainTableNames[(int)DatabaseTables.MainTables.US_PRPO] + " WHERE " + "(" + mainTableNames[(int)DatabaseTables.MainTables.US_PRPO] + ".[Qty Ordered] > 0 AND " + mainTableNames[(int)DatabaseTables.MainTables.US_PRPO] + ".[Del#Conf#Date] <> '00/00/0000' AND " + mainTableNames[(int)DatabaseTables.MainTables.US_PRPO] + ".[Escaped] IS NULL)" ,
-
-            // KPA -> Cancellations
-
-            // KPA -> NCRs
 
             // KPA -> Hot Jobs
             "SELECT * FROM " + mainTableNames[(int)DatabaseTables.MainTables.US_PRPO] + " WHERE " + "(" + mainTableNames[(int)DatabaseTables.MainTables.US_PRPO] + ".[PO Date] = '00/00/0000' AND " + mainTableNames[(int)DatabaseTables.MainTables.US_PRPO] + ".[PR 2° Rel# Date] <> '00/00/0000' AND " + mainTableNames[(int)DatabaseTables.MainTables.US_PRPO] + ".[Purch# Group] = 'UHJ')" ,
@@ -177,16 +171,10 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
             // KPA -> Purch Total
             "SELECT * FROM " + mainTableNames[(int)DatabaseTables.MainTables.MX_PRPO] + " WHERE " + "(" + mainTableNames[(int)DatabaseTables.MainTables.MX_PRPO] + ".[Release Ind#] = 2 AND " + mainTableNames[(int)DatabaseTables.MainTables.MX_PRPO] + ".[Del#Conf#Date] = '00/00/0000' AND " + mainTableNames[(int)DatabaseTables.MainTables.MX_PRPO] + ".[Escaped] IS NULL)" ,
                 
-            // KPA -> Purch/Plan Total
-
             // KPA -> Follow Up
             "SELECT * FROM " + mainTableNames[(int)DatabaseTables.MainTables.MX_PRPO] + " WHERE " + "(" + mainTableNames[(int)DatabaseTables.MainTables.MX_PRPO] + ".[Qty Ordered] > 0 AND " + mainTableNames[(int)DatabaseTables.MainTables.MX_PRPO] + ".[Del#Conf#Date] <> '00/00/0000' AND " + mainTableNames[(int)DatabaseTables.MainTables.MX_PRPO] + ".[Escaped] IS NULL)" ,
             "SELECT * FROM " + mainTableNames[(int)DatabaseTables.MainTables.MX_PRPO] + " WHERE " + "(" + mainTableNames[(int)DatabaseTables.MainTables.MX_PRPO] + ".[Qty Ordered] > 0 AND " + mainTableNames[(int)DatabaseTables.MainTables.MX_PRPO] + ".[Del#Conf#Date] <> '00/00/0000' AND " + mainTableNames[(int)DatabaseTables.MainTables.MX_PRPO] + ".[Escaped] IS NULL)" ,
             "SELECT * FROM " + mainTableNames[(int)DatabaseTables.MainTables.MX_PRPO] + " WHERE " + "(" + mainTableNames[(int)DatabaseTables.MainTables.MX_PRPO] + ".[Qty Ordered] > 0 AND " + mainTableNames[(int)DatabaseTables.MainTables.MX_PRPO] + ".[Del#Conf#Date] <> '00/00/0000' AND " + mainTableNames[(int)DatabaseTables.MainTables.MX_PRPO] + ".[Escaped] IS NULL)" ,
-
-            // KPA -> Cancellations
-
-            // KPA -> NCRs
 
             // KPA -> Hot Jobs
             "SELECT * FROM " + mainTableNames[(int)DatabaseTables.MainTables.MX_PRPO] + " WHERE " + "(" + mainTableNames[(int)DatabaseTables.MainTables.MX_PRPO] + ".[PO Date] = '00/00/0000' AND " + mainTableNames[(int)DatabaseTables.MainTables.MX_PRPO] + ".[PR 2° Rel# Date] <> '00/00/0000' AND " + mainTableNames[(int)DatabaseTables.MainTables.MX_PRPO] + ".[Purch# Group] = 'UHJ')" ,

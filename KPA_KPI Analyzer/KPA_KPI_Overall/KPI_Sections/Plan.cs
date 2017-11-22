@@ -9,7 +9,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 {
     public class Plan
     {
-        public PR_Plan_Date_Curr_Plan prPlanDateVsCurrPlan;
+        public CurrPlanDateVsPrPlanDate currPlanDateVsPrPlanDate;
         public Orig_Plan_Date_Minus_2nd_Lvl_Rel_Date_vs_CodedLead origPlanDateMinus2ndLvlRelDateVsCodedLead;
         public Curr_Plan_Date_Minus_2nd_Lvl_Rel_Date_vs_CodedLead currPlanDateMinus2ndLvlRelDateVsCodedLead;
         private double totalDays = 0;
@@ -19,7 +19,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
         // Default Constructor
         public Plan()
         {
-            prPlanDateVsCurrPlan = new PR_Plan_Date_Curr_Plan();
+            currPlanDateVsPrPlanDate = new CurrPlanDateVsPrPlanDate();
             origPlanDateMinus2ndLvlRelDateVsCodedLead = new Orig_Plan_Date_Minus_2nd_Lvl_Rel_Date_vs_CodedLead();
             currPlanDateMinus2ndLvlRelDateVsCodedLead = new Curr_Plan_Date_Minus_2nd_Lvl_Rel_Date_vs_CodedLead();
         }
@@ -31,7 +31,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
         public enum CategorNames
         {
-            prPlanDateVsCurrPlan,
+            currPlanVsPrPlanDate,
             origPlanDateMinus2ndLvlRelDateVsCodedLead,
             currPlanDateMinus2ndLvlRelDateVsCodedLead
         }
@@ -40,7 +40,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
         public string[] categoryNames =
         {
-            "PR Plan Date vs Current Plan Date",
+            "Current Plan Date vs PR Plan Date",
             "(Original Plan Date - 2nd Lvl Release Date) vs Coded Lead-Time",
             "(Current Plan Date - 2nd Lvl Release Date) vs Coded Lead-Time"
         };
@@ -137,46 +137,46 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                     elapsedDays = (int)elapsedDays;
 
 
-                    prPlanDateVsCurrPlan.data.Total++;
+                    currPlanDateVsPrPlanDate.data.Total++;
 
 
 
 
                     if (elapsedDays <= (-22))
                     {
-                        prPlanDateVsCurrPlan.data.Minus_TwentyTwo++;
+                        currPlanDateVsPrPlanDate.data.Minus_TwentyTwo++;
                     }
                     else if (elapsedDays > (-22) && elapsedDays <= (-15))
                     {
-                        prPlanDateVsCurrPlan.data.Minus_Fifteen_TwentyOne++;
+                        currPlanDateVsPrPlanDate.data.Minus_Fifteen_TwentyOne++;
                     }
                     else if (elapsedDays > (-15) && elapsedDays <= (-8))
                     {
-                        prPlanDateVsCurrPlan.data.Minus_Eight_Fourteen++;
+                        currPlanDateVsPrPlanDate.data.Minus_Eight_Fourteen++;
                     }
                     else if (elapsedDays > (-8) && elapsedDays <= (-1))
                     {
-                        prPlanDateVsCurrPlan.data.Minus_One_Seven++;
+                        currPlanDateVsPrPlanDate.data.Minus_One_Seven++;
                     }
                     else if (elapsedDays == 0)
                     {
-                        prPlanDateVsCurrPlan.data.Zero++;
+                        currPlanDateVsPrPlanDate.data.Zero++;
                     }
                     else if (elapsedDays >= 1 && elapsedDays <= 7)
                     {
-                        prPlanDateVsCurrPlan.data.One_Seven++;
+                        currPlanDateVsPrPlanDate.data.One_Seven++;
                     }
                     else if (elapsedDays >= 8 && elapsedDays <= 14)
                     {
-                        prPlanDateVsCurrPlan.data.Eight_Fourteen++;
+                        currPlanDateVsPrPlanDate.data.Eight_Fourteen++;
                     }
                     else if (elapsedDays >= 15 && elapsedDays <= 21)
                     {
-                        prPlanDateVsCurrPlan.data.Fifteen_TwentyOne++;
+                        currPlanDateVsPrPlanDate.data.Fifteen_TwentyOne++;
                     }
                     else // 22 Days or greater
                     {
-                        prPlanDateVsCurrPlan.data.TwentyTwo++;
+                        currPlanDateVsPrPlanDate.data.TwentyTwo++;
                     }
                 }
 
@@ -184,13 +184,13 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                 try
                 {
-                    prPlanDateVsCurrPlan.data.Average = Math.Round(totalDays / prPlanDateVsCurrPlan.data.Total, 2);
-                    if (double.IsNaN(prPlanDateVsCurrPlan.data.Average))
-                        prPlanDateVsCurrPlan.data.Average = 0;
+                    currPlanDateVsPrPlanDate.data.Average = Math.Round(totalDays / currPlanDateVsPrPlanDate.data.Total, 2);
+                    if (double.IsNaN(currPlanDateVsPrPlanDate.data.Average))
+                        currPlanDateVsPrPlanDate.data.Average = 0;
                 }
                 catch (DivideByZeroException)
                 {
-                    prPlanDateVsCurrPlan.data.Average = 0;
+                    currPlanDateVsPrPlanDate.data.Average = 0;
                 }
 
                 totalDays = 0;
@@ -558,11 +558,11 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
     //
     //
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public class PR_Plan_Date_Curr_Plan
+    public class CurrPlanDateVsPrPlanDate
     {
         public TempThree data;
 
-        public PR_Plan_Date_Curr_Plan()
+        public CurrPlanDateVsPrPlanDate()
         {
             data = new TempThree();
         }

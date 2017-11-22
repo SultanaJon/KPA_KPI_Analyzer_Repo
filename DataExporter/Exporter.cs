@@ -67,7 +67,7 @@ namespace DataExporter
             string country,
             string date)
         {
-            FileInfo fileInfo = new FileInfo(ExcelFile.OverallFilePath);
+            FileInfo fileInfo = new FileInfo(ExcelFile.OverallTemplateFilePath);
             using (ExcelPackage package = new ExcelPackage(fileInfo))
             {
                 ExcelWorksheet workSheet = package.Workbook.Worksheets.SingleOrDefault(x => x.Name == ExcelFile.overallSheetNames[(int)ExcelFile.OverallSheetNames.KPAOverall]);
@@ -89,13 +89,7 @@ namespace DataExporter
                             ++col;
                         }
                     }
-                    else
-                    {
-                        for (int i = (int)ExcelFile.OverallCellPositions.KpaOverallTempOneColStartPosition; i <= (int)ExcelFile.OverallCellPositions.KpaOverallTempOneMaxCol; ++i)
-                        {
-                            workSheet.Cells[row, i].Value = "N/A";
-                        }
-                    }
+
                     col = colStart;
                     ++row;
                 }
@@ -160,13 +154,7 @@ namespace DataExporter
                             ++col;
                         }
                     }
-                    else
-                    {
-                        for (int i = (int)ExcelFile.OverallCellPositions.KpiOverallTempFourColStartPosition; i <= (int)ExcelFile.OverallCellPositions.KpiOverallTempFourMaxCol; ++i)
-                        {
-                            workSheet.Cells[row, i].Value = "N/A";
-                        }
-                    }
+
                     col = colStart;
                     ++row;
                 }
@@ -191,9 +179,9 @@ namespace DataExporter
                     ++row;
                 }
 
-
-                package.Save();
-                OpenExcelFile(ExcelFile.OverallFilePath);
+                FileInfo tempOverallFileInfo = new FileInfo(ExcelFile.TempOverallFilePath);
+                package.SaveAs(tempOverallFileInfo);
+                OpenExcelFile(ExcelFile.TempOverallFilePath);
             }
         }
 

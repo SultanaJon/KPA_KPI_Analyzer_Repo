@@ -222,12 +222,6 @@
     <Compile Include="Templates\Template_Controls\KPA_Controls\KPAHotJobsTemplate.Designer.cs">
       <DependentUpon>KPAHotJobsTemplate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Templates\Template_Controls\KPA_Controls\KPAOverall.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Templates\Template_Controls\KPA_Controls\KPAOverall.Designer.cs">
-      <DependentUpon>KPAOverall.cs</DependentUpon>
-    </Compile>
     <Compile Include="Templates\Template_Controls\KPA_Controls\KPAPlanTemplate.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -252,17 +246,14 @@
     <Compile Include="Templates\Template_Controls\KPA_Controls\KPAPurchTotalTemplate.Designer.cs">
       <DependentUpon>KPAPurchTotalTemplate.cs</DependentUpon>
     </Compile>
-    <Compile Include="KPA_KPI_Overall\KPA_Sections\Cancellations.cs" />
     <Compile Include="KPA_KPI_Overall\KPA_Sections\Current_Plan_vs_Actual.cs" />
     <Compile Include="KPA_KPI_Overall\KPA_Sections\Excess_Stock_Open_Order.cs" />
     <Compile Include="KPA_KPI_Overall\KPA_Sections\Excess_Stock_Stock.cs" />
     <Compile Include="KPA_KPI_Overall\KPA_Sections\Follow_Up.cs" />
     <Compile Include="KPA_KPI_Overall\KPA_Sections\Hot_Jobs.cs" />
     <Compile Include="KPA_KPI_Overall\KPA.cs" />
-    <Compile Include="KPA_KPI_Overall\KPA_Sections\NCRs.cs" />
     <Compile Include="KPA_KPI_Overall\KPA_Sections\Plan.cs" />
     <Compile Include="KPA_KPI_Overall\KPA_Sections\Purch.cs" />
-    <Compile Include="KPA_KPI_Overall\KPA_Sections\Purch_Plan_Total.cs" />
     <Compile Include="KPA_KPI_Overall\KPA_Sections\Purch_Sub.cs" />
     <Compile Include="KPA_KPI_Overall\KPA_Sections\Purch_Total.cs" />
     <Compile Include="KPA_KPI_Overall\KPI_Sections\FollowUp.cs" />
@@ -272,7 +263,6 @@
     <Compile Include="KPA_KPI_Overall\KPI_Sections\PlanTwo.cs" />
     <Compile Include="KPA_KPI_Overall\KPI_Sections\Purch.cs" />
     <Compile Include="KPA_KPI_Overall\KPI_Sections\PurchPlan.cs" />
-    <Compile Include="KPA_KPI_Overall\KPI_Sections\PurchPlanTotal.cs" />
     <Compile Include="KPA_KPI_Overall\KPI_Sections\PurchSub.cs" />
     <Compile Include="KPA_KPI_Overall\KPI_Sections\PurchTotal.cs" />
     <Compile Include="KPA_KPI_Overall\KPI_Sections\PurchTwo.cs" />
@@ -323,12 +313,6 @@
     </Compile>
     <Compile Include="Templates\Template_Controls\KPI_Controls\KPIOtherTemplate.Designer.cs">
       <DependentUpon>KPIOtherTemplate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Templates\Template_Controls\KPI_Controls\KPIOverall.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Templates\Template_Controls\KPI_Controls\KPIOverall.Designer.cs">
-      <DependentUpon>KPIOverall.cs</DependentUpon>
     </Compile>
     <Compile Include="Templates\Template_Controls\KPI_Controls\KPIPlanTemplate.cs">
       <SubType>UserControl</SubType>
@@ -429,9 +413,6 @@
       <DependentUpon>KPAHotJobsTemplate.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Templates\Template_Controls\KPA_Controls\KPAOverall.resx">
-      <DependentUpon>KPAOverall.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Templates\Template_Controls\KPA_Controls\KPAPlanTemplate.resx">
       <DependentUpon>KPAPlanTemplate.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -462,9 +443,6 @@
     <EmbeddedResource Include="Templates\Template_Controls\KPI_Controls\KPIOtherTemplate.resx">
       <DependentUpon>KPIOtherTemplate.cs</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Templates\Template_Controls\KPI_Controls\KPIOverall.resx">
-      <DependentUpon>KPIOverall.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Templates\Template_Controls\KPI_Controls\KPIPlanTemplate.resx">
       <DependentUpon>KPIPlanTemplate.cs</DependentUpon>

@@ -94,7 +94,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             DatavizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            Globals.CurrCategory = Globals.kpiCategories[(int)Globals.KPI_Sections.Plan][(int)Globals.KPI_Categories.Plan.PRPlanDatevsCurrentPlanDate];
+            Globals.CurrCategory = Globals.kpiCategories[(int)Globals.KPI_Sections.Plan][(int)Globals.KPI_Categories.Plan.CurrentPlanDateVsPrPlanDate];
             ChangeCategory();
         }
 
@@ -189,22 +189,22 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = Globals.kpiCategories[(int)Globals.KPI_Sections.Plan][(int)Globals.KPI_Categories.Plan.PRPlanDatevsCurrentPlanDate];
+            Title = Globals.kpiCategories[(int)Globals.KPI_Sections.Plan][(int)Globals.KPI_Categories.Plan.CurrentPlanDateVsPrPlanDate];
             Globals.CurrCategory = Title;
             Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.Plan];
             ChangeCategory();
 
-            Average = overallData.kpi.plan.prPlanDateVsCurrPlan.data.Average.ToString();
-            TotalOrders = overallData.kpi.plan.prPlanDateVsCurrPlan.data.Total.ToString();
-            TimeBucketOne = overallData.kpi.plan.prPlanDateVsCurrPlan.data.Minus_TwentyTwo.ToString();
-            TimeBucketTwo = overallData.kpi.plan.prPlanDateVsCurrPlan.data.Minus_Fifteen_TwentyOne.ToString();
-            TimeBucketThree = overallData.kpi.plan.prPlanDateVsCurrPlan.data.Minus_Eight_Fourteen.ToString();
-            TimeBucketFour = overallData.kpi.plan.prPlanDateVsCurrPlan.data.Minus_One_Seven.ToString();
-            TimeBucketFive = overallData.kpi.plan.prPlanDateVsCurrPlan.data.Zero.ToString();
-            TimeBucketSix = overallData.kpi.plan.prPlanDateVsCurrPlan.data.One_Seven.ToString();
-            TimeBucketSeven = overallData.kpi.plan.prPlanDateVsCurrPlan.data.Eight_Fourteen.ToString();
-            TimeBucketEight = overallData.kpi.plan.prPlanDateVsCurrPlan.data.Fifteen_TwentyOne.ToString();
-            TimeBucketNine = overallData.kpi.plan.prPlanDateVsCurrPlan.data.TwentyTwo.ToString();
+            Average = overallData.kpi.plan.currPlanDateVsPrPlanDate.data.Average.ToString();
+            TotalOrders = overallData.kpi.plan.currPlanDateVsPrPlanDate.data.Total.ToString();
+            TimeBucketOne = overallData.kpi.plan.currPlanDateVsPrPlanDate.data.Minus_TwentyTwo.ToString();
+            TimeBucketTwo = overallData.kpi.plan.currPlanDateVsPrPlanDate.data.Minus_Fifteen_TwentyOne.ToString();
+            TimeBucketThree = overallData.kpi.plan.currPlanDateVsPrPlanDate.data.Minus_Eight_Fourteen.ToString();
+            TimeBucketFour = overallData.kpi.plan.currPlanDateVsPrPlanDate.data.Minus_One_Seven.ToString();
+            TimeBucketFive = overallData.kpi.plan.currPlanDateVsPrPlanDate.data.Zero.ToString();
+            TimeBucketSix = overallData.kpi.plan.currPlanDateVsPrPlanDate.data.One_Seven.ToString();
+            TimeBucketSeven = overallData.kpi.plan.currPlanDateVsPrPlanDate.data.Eight_Fourteen.ToString();
+            TimeBucketEight = overallData.kpi.plan.currPlanDateVsPrPlanDate.data.Fifteen_TwentyOne.ToString();
+            TimeBucketNine = overallData.kpi.plan.currPlanDateVsPrPlanDate.data.TwentyTwo.ToString();
 
 
 
@@ -222,17 +222,17 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             dp.addLabely(lbl_xLabelEight.Text, TimeBucketEight);
             dp.addLabely(lbl_xLabelNine.Text, TimeBucketNine);
 
-            Average = string.Format("{0:n}", overallData.kpi.plan.prPlanDateVsCurrPlan.data.Average);
-            TotalOrders = string.Format("{0:n0}", overallData.kpi.plan.prPlanDateVsCurrPlan.data.Total);
-            TimeBucketOne = string.Format("{0:n0}", overallData.kpi.plan.prPlanDateVsCurrPlan.data.Minus_TwentyTwo);
-            TimeBucketTwo = string.Format("{0:n0}", overallData.kpi.plan.prPlanDateVsCurrPlan.data.Minus_Fifteen_TwentyOne);
-            TimeBucketThree = string.Format("{0:n0}", overallData.kpi.plan.prPlanDateVsCurrPlan.data.Minus_Eight_Fourteen);
-            TimeBucketFour = string.Format("{0:n0}", overallData.kpi.plan.prPlanDateVsCurrPlan.data.Minus_One_Seven);
-            TimeBucketFive = string.Format("{0:n0}", overallData.kpi.plan.prPlanDateVsCurrPlan.data.Zero);
-            TimeBucketSix = string.Format("{0:n0}", overallData.kpi.plan.prPlanDateVsCurrPlan.data.One_Seven);
-            TimeBucketSeven = string.Format("{0:n0}", overallData.kpi.plan.prPlanDateVsCurrPlan.data.Eight_Fourteen);
-            TimeBucketEight = string.Format("{0:n0}", overallData.kpi.plan.prPlanDateVsCurrPlan.data.Fifteen_TwentyOne);
-            TimeBucketNine = string.Format("{0:n0}", overallData.kpi.plan.prPlanDateVsCurrPlan.data.TwentyTwo);
+            Average = string.Format("{0:n}", overallData.kpi.plan.currPlanDateVsPrPlanDate.data.Average);
+            TotalOrders = string.Format("{0:n0}", overallData.kpi.plan.currPlanDateVsPrPlanDate.data.Total);
+            TimeBucketOne = string.Format("{0:n0}", overallData.kpi.plan.currPlanDateVsPrPlanDate.data.Minus_TwentyTwo);
+            TimeBucketTwo = string.Format("{0:n0}", overallData.kpi.plan.currPlanDateVsPrPlanDate.data.Minus_Fifteen_TwentyOne);
+            TimeBucketThree = string.Format("{0:n0}", overallData.kpi.plan.currPlanDateVsPrPlanDate.data.Minus_Eight_Fourteen);
+            TimeBucketFour = string.Format("{0:n0}", overallData.kpi.plan.currPlanDateVsPrPlanDate.data.Minus_One_Seven);
+            TimeBucketFive = string.Format("{0:n0}", overallData.kpi.plan.currPlanDateVsPrPlanDate.data.Zero);
+            TimeBucketSix = string.Format("{0:n0}", overallData.kpi.plan.currPlanDateVsPrPlanDate.data.One_Seven);
+            TimeBucketSeven = string.Format("{0:n0}", overallData.kpi.plan.currPlanDateVsPrPlanDate.data.Eight_Fourteen);
+            TimeBucketEight = string.Format("{0:n0}", overallData.kpi.plan.currPlanDateVsPrPlanDate.data.Fifteen_TwentyOne);
+            TimeBucketNine = string.Format("{0:n0}", overallData.kpi.plan.currPlanDateVsPrPlanDate.data.TwentyTwo);
 
 
             canvas.addData(dp);

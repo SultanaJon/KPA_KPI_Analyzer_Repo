@@ -3560,14 +3560,6 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
         }
 
 
-
-        internal static class PurchPlanTotal
-        {
-
-        }
-
-
-
         internal static class Other
         {
             private static DataTable prsCreated;

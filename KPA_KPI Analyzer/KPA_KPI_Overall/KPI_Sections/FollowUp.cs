@@ -9,11 +9,11 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 {
     public class FollowUp
     {
-        public Init_Conf_vs_Curr_Conf initConfVsCurrConf;
-        public Final_Conf_Date_vs_Final_Plan finalConfDateVsFinalPlan;
-        public Receipt_Date_vs_Curr_Plan_Date receiptDateVsCurrPlanDate;
-        public Receipt_Date_vs_Orig_Conf_Date receiptDateVsOrigConfDate;
-        public Receipt_Date_vs_Curr_Conf_Date receiptDateVsCurrConfDate;
+        public CurrentConfirmationVsInitialConfirmationDate currConfVsInitConf;
+        public FinalConfirmatinoVsFinalPlanDate finalConfDateVsFinalPlan;
+        public ReceiptDateVsCurrentPlanDate receiptDateVsCurrPlanDate;
+        public ReceiptDateVsOriginalConfirmationDate receiptDateVsOrigConfDate;
+        public ReceiptDateVsCurrentConfirmationDate receiptDateVsCurrConfDate;
         private double totalDays = 0;
 
 
@@ -21,11 +21,11 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
         // Default Constructor
         public FollowUp()
         {
-            initConfVsCurrConf = new Init_Conf_vs_Curr_Conf();
-            finalConfDateVsFinalPlan = new Final_Conf_Date_vs_Final_Plan();
-            receiptDateVsCurrPlanDate = new Receipt_Date_vs_Curr_Plan_Date();
-            receiptDateVsOrigConfDate = new Receipt_Date_vs_Orig_Conf_Date();
-            receiptDateVsCurrConfDate = new Receipt_Date_vs_Curr_Conf_Date();
+            currConfVsInitConf = new CurrentConfirmationVsInitialConfirmationDate();
+            finalConfDateVsFinalPlan = new FinalConfirmatinoVsFinalPlanDate();
+            receiptDateVsCurrPlanDate = new ReceiptDateVsCurrentPlanDate();
+            receiptDateVsOrigConfDate = new ReceiptDateVsOriginalConfirmationDate();
+            receiptDateVsCurrConfDate = new ReceiptDateVsCurrentConfirmationDate();
         }
 
 
@@ -37,7 +37,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
         public enum CategorNames
         {
-            initConfVsCurrConf,
+            CurrConfVsInitConf,
             finalConfDateVsFinalPlan,
             receiptDateVsCurrPlanDate,
             receiptDateVsOrigConfDate,
@@ -46,7 +46,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
         public string[] categoryNames =
         {
-            "Initial Confirmation Date vs Current Confirmation Date",
+            "Current Confirmation Date vs Initial Confirmation Date",
             "Final Confirmation Date vs Final Plan Date",
             "Receipt Date vs Current Plan Date",
             "Receipt Date vs Original Confirmation Date",
@@ -116,7 +116,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                     if(firstConfYear == 0 && firstConfMonth == 0 && firstConfDay == 0)
                     {
-                        initConfVsCurrConf.data.PercentUnconfTotal++;
+                        currConfVsInitConf.data.PercentUnconfTotal++;
                         continue;
                     }
                     else
@@ -143,59 +143,59 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                     if(elapsedDays > 0)
                         elapsedDays = Math.Ceiling(elapsedDays);
 
-                    initConfVsCurrConf.data.Total++;
+                    currConfVsInitConf.data.Total++;
 
                     if (elapsedDays <= (-22))
                     {
-                        initConfVsCurrConf.data.Minus_TwentyTwo++;
+                        currConfVsInitConf.data.Minus_TwentyTwo++;
                     }
                     else if (elapsedDays > (-22) && elapsedDays <= (-15))
                     {
-                        initConfVsCurrConf.data.Minus_Fifteen_TwentyOne++;
+                        currConfVsInitConf.data.Minus_Fifteen_TwentyOne++;
                     }
                     else if (elapsedDays > (-15) && elapsedDays <= (-8))
                     {
-                        initConfVsCurrConf.data.Minus_Eight_Fourteen++;
+                        currConfVsInitConf.data.Minus_Eight_Fourteen++;
                     }
                     else if (elapsedDays > (-8) && elapsedDays <= (-1))
                     {
-                        initConfVsCurrConf.data.Minus_One_Seven++;
+                        currConfVsInitConf.data.Minus_One_Seven++;
                     }
                     else if (elapsedDays == 0)
                     {
-                        initConfVsCurrConf.data.Zero++;
+                        currConfVsInitConf.data.Zero++;
                     }
                     else if (elapsedDays >= 1 && elapsedDays <= 7)
                     {
-                        initConfVsCurrConf.data.One_Seven++;
+                        currConfVsInitConf.data.One_Seven++;
                     }
                     else if (elapsedDays >= 8 && elapsedDays <= 14)
                     {
-                        initConfVsCurrConf.data.Eight_Fourteen++;
+                        currConfVsInitConf.data.Eight_Fourteen++;
                     }
                     else if (elapsedDays >= 15 && elapsedDays <= 21)
                     {
-                        initConfVsCurrConf.data.Fifteen_TwentyOne++;
+                        currConfVsInitConf.data.Fifteen_TwentyOne++;
                     }
                     else // 22 Days or greater
                     {
-                        initConfVsCurrConf.data.TwentyTwo++;
+                        currConfVsInitConf.data.TwentyTwo++;
                     }
                 }
 
 
                 try
                 {
-                    initConfVsCurrConf.data.PercentUnconf = Math.Round(((double)initConfVsCurrConf.data.PercentUnconfTotal / (initConfVsCurrConf.data.Total + initConfVsCurrConf.data.PercentUnconfTotal)) * 100, 2);
-                    if (double.IsNaN(initConfVsCurrConf.data.PercentUnconf))
-                        initConfVsCurrConf.data.PercentUnconf = 0;
+                    currConfVsInitConf.data.PercentUnconf = Math.Round(((double)currConfVsInitConf.data.PercentUnconfTotal / (currConfVsInitConf.data.Total + currConfVsInitConf.data.PercentUnconfTotal)) * 100, 2);
+                    if (double.IsNaN(currConfVsInitConf.data.PercentUnconf))
+                        currConfVsInitConf.data.PercentUnconf = 0;
 
-                    if (double.IsInfinity(initConfVsCurrConf.data.PercentUnconf))
-                        initConfVsCurrConf.data.PercentUnconf = 100;
+                    if (double.IsInfinity(currConfVsInitConf.data.PercentUnconf))
+                        currConfVsInitConf.data.PercentUnconf = 100;
                 }
                 catch (DivideByZeroException)
                 {
-                    initConfVsCurrConf.data.PercentUnconf = 0;
+                    currConfVsInitConf.data.PercentUnconf = 0;
                 }
 
 
@@ -203,13 +203,13 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 
                 try
                 {
-                    initConfVsCurrConf.data.Average = Math.Round(totalDays / initConfVsCurrConf.data.Total, 2);
-                    if (double.IsNaN(initConfVsCurrConf.data.Average))
-                        initConfVsCurrConf.data.Average = 0;
+                    currConfVsInitConf.data.Average = Math.Round(totalDays / currConfVsInitConf.data.Total, 2);
+                    if (double.IsNaN(currConfVsInitConf.data.Average))
+                        currConfVsInitConf.data.Average = 0;
                 }
                 catch (DivideByZeroException)
                 {
-                    initConfVsCurrConf.data.Average = 0;
+                    currConfVsInitConf.data.Average = 0;
                 }
                 
                 totalDays = 0;
@@ -825,11 +825,11 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
     //
     //
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public class Init_Conf_vs_Curr_Conf
+    public class CurrentConfirmationVsInitialConfirmationDate
     {
         public TempThree data;
 
-        public Init_Conf_vs_Curr_Conf()
+        public CurrentConfirmationVsInitialConfirmationDate()
         {
             data = new TempThree();
         }
@@ -840,11 +840,11 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
 
 
-    public class Final_Conf_Date_vs_Final_Plan
+    public class FinalConfirmatinoVsFinalPlanDate
     {
         public TempThree data;
 
-        public Final_Conf_Date_vs_Final_Plan()
+        public FinalConfirmatinoVsFinalPlanDate()
         {
             data = new TempThree();
         }
@@ -855,11 +855,11 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
 
 
-    public class Receipt_Date_vs_Curr_Plan_Date
+    public class ReceiptDateVsCurrentPlanDate
     {
         public TempThree data;
 
-        public Receipt_Date_vs_Curr_Plan_Date()
+        public ReceiptDateVsCurrentPlanDate()
         {
             data = new TempThree();
         }
@@ -870,11 +870,11 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
 
 
-    public class Receipt_Date_vs_Orig_Conf_Date
+    public class ReceiptDateVsOriginalConfirmationDate
     {
         public TempThree data;
 
-        public Receipt_Date_vs_Orig_Conf_Date()
+        public ReceiptDateVsOriginalConfirmationDate()
         {
             data = new TempThree();
         }
@@ -885,11 +885,11 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
 
 
-    public class Receipt_Date_vs_Curr_Conf_Date
+    public class ReceiptDateVsCurrentConfirmationDate
     {
         public TempThree data;
 
-        public Receipt_Date_vs_Curr_Conf_Date()
+        public ReceiptDateVsCurrentConfirmationDate()
         {
             data = new TempThree();
         }

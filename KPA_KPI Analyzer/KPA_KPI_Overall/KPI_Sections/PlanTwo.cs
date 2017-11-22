@@ -9,7 +9,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 {
     public class PlanTwo
     {
-        public Plan_Order_Creation_vs_2nd_Lvl_Rel planOrderCreatVs2ndLvlRel;
         public MaterialDueOrigPlannedDate materialDueOrigPlanDate;
         public MaterialDueFinalPlanDate materialDueFinalPlanDate;
         private double totalDays = 0;
@@ -17,7 +16,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
         // Default Constructor
         public PlanTwo()
         {
-            planOrderCreatVs2ndLvlRel = new Plan_Order_Creation_vs_2nd_Lvl_Rel();
             materialDueOrigPlanDate = new MaterialDueOrigPlannedDate();
             materialDueFinalPlanDate = new MaterialDueFinalPlanDate();
         }
@@ -28,7 +26,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
         public enum CategoryNames
         {
-            planOrderCreatVs2ndLvlRel,
             materialDueOrigPlanDate,
             materialDueFinalPlanDate
         }
@@ -36,7 +33,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
         public string[] categoryNames =
         {
-            "Plan Order Creation Date vs 2nd Lvl Release Date",
             "Material Due Original Planned Date",
             "Material Due Final Planned Date"
         };
@@ -423,21 +419,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
     //
     //
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-    public class Plan_Order_Creation_vs_2nd_Lvl_Rel
-    {
-        public TempFour data;
-
-        public Plan_Order_Creation_vs_2nd_Lvl_Rel()
-        {
-            data = new TempFour();
-        }
-    }
-
-
 
     public class MaterialDueOrigPlannedDate
     {

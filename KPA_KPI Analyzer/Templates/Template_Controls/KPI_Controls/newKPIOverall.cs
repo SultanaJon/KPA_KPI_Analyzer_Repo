@@ -343,7 +343,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             LoadPurchSub();
             LoadPurchTotal();
             LoadPurchPlan();
-            LoadPurchPlanTotal();
             LoadOther();
 
             TemplateThreeDataGrid.AutoGenerateColumns = false;
@@ -364,18 +363,18 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         {
             string[] row = new string[]{
                 data.kpi.plan.Name,
-                data.kpi.plan.categoryNames[(int)Plan.CategorNames.prPlanDateVsCurrPlan],
-                string.Format("{0:n}", data.kpi.plan.prPlanDateVsCurrPlan.data.Average),
-                string.Format("{0:n0}", data.kpi.plan.prPlanDateVsCurrPlan.data.Minus_TwentyTwo),
-                string.Format("{0:n0}", data.kpi.plan.prPlanDateVsCurrPlan.data.Minus_Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpi.plan.prPlanDateVsCurrPlan.data.Minus_Eight_Fourteen),
-                string.Format("{0:n0}", data.kpi.plan.prPlanDateVsCurrPlan.data.Minus_One_Seven),
-                string.Format("{0:n0}", data.kpi.plan.prPlanDateVsCurrPlan.data.Zero),
-                string.Format("{0:n0}", data.kpi.plan.prPlanDateVsCurrPlan.data.One_Seven),
-                string.Format("{0:n0}", data.kpi.plan.prPlanDateVsCurrPlan.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpi.plan.prPlanDateVsCurrPlan.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpi.plan.prPlanDateVsCurrPlan.data.TwentyTwo),
-                string.Format("{0:n0}", data.kpi.plan.prPlanDateVsCurrPlan.data.Total)
+                data.kpi.plan.categoryNames[(int)Plan.CategorNames.currPlanVsPrPlanDate],
+                string.Format("{0:n}", data.kpi.plan.currPlanDateVsPrPlanDate.data.Average),
+                string.Format("{0:n0}", data.kpi.plan.currPlanDateVsPrPlanDate.data.Minus_TwentyTwo),
+                string.Format("{0:n0}", data.kpi.plan.currPlanDateVsPrPlanDate.data.Minus_Fifteen_TwentyOne),
+                string.Format("{0:n0}", data.kpi.plan.currPlanDateVsPrPlanDate.data.Minus_Eight_Fourteen),
+                string.Format("{0:n0}", data.kpi.plan.currPlanDateVsPrPlanDate.data.Minus_One_Seven),
+                string.Format("{0:n0}", data.kpi.plan.currPlanDateVsPrPlanDate.data.Zero),
+                string.Format("{0:n0}", data.kpi.plan.currPlanDateVsPrPlanDate.data.One_Seven),
+                string.Format("{0:n0}", data.kpi.plan.currPlanDateVsPrPlanDate.data.Eight_Fourteen),
+                string.Format("{0:n0}", data.kpi.plan.currPlanDateVsPrPlanDate.data.Fifteen_TwentyOne),
+                string.Format("{0:n0}", data.kpi.plan.currPlanDateVsPrPlanDate.data.TwentyTwo),
+                string.Format("{0:n0}", data.kpi.plan.currPlanDateVsPrPlanDate.data.Total)
             };
             TemplateThreeDataGrid.Rows.Add(row);
 
@@ -460,19 +459,19 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         {
             string[] row = new string[]{
                 data.kpi.followUp.Name,
-                data.kpi.followUp.categoryNames[(int)FollowUp.CategorNames.initConfVsCurrConf],
-                string.Format("{0:n}", data.kpi.followUp.initConfVsCurrConf.data.Average),
-                string.Format("{0:n0}", data.kpi.followUp.initConfVsCurrConf.data.Minus_TwentyTwo),
-                string.Format("{0:n0}", data.kpi.followUp.initConfVsCurrConf.data.Minus_Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpi.followUp.initConfVsCurrConf.data.Minus_Eight_Fourteen),
-                string.Format("{0:n0}", data.kpi.followUp.initConfVsCurrConf.data.Minus_One_Seven),
-                string.Format("{0:n0}", data.kpi.followUp.initConfVsCurrConf.data.Zero),
-                string.Format("{0:n0}", data.kpi.followUp.initConfVsCurrConf.data.One_Seven),
-                string.Format("{0:n0}", data.kpi.followUp.initConfVsCurrConf.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpi.followUp.initConfVsCurrConf.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpi.followUp.initConfVsCurrConf.data.TwentyTwo),
-                string.Format("{0:n0}", data.kpi.followUp.initConfVsCurrConf.data.Total),
-                string.Format("{0:n}", data.kpi.followUp.initConfVsCurrConf.data.PercentUnconf + "%")
+                data.kpi.followUp.categoryNames[(int)FollowUp.CategorNames.CurrConfVsInitConf],
+                string.Format("{0:n}", data.kpi.followUp.currConfVsInitConf.data.Average),
+                string.Format("{0:n0}", data.kpi.followUp.currConfVsInitConf.data.Minus_TwentyTwo),
+                string.Format("{0:n0}", data.kpi.followUp.currConfVsInitConf.data.Minus_Fifteen_TwentyOne),
+                string.Format("{0:n0}", data.kpi.followUp.currConfVsInitConf.data.Minus_Eight_Fourteen),
+                string.Format("{0:n0}", data.kpi.followUp.currConfVsInitConf.data.Minus_One_Seven),
+                string.Format("{0:n0}", data.kpi.followUp.currConfVsInitConf.data.Zero),
+                string.Format("{0:n0}", data.kpi.followUp.currConfVsInitConf.data.One_Seven),
+                string.Format("{0:n0}", data.kpi.followUp.currConfVsInitConf.data.Eight_Fourteen),
+                string.Format("{0:n0}", data.kpi.followUp.currConfVsInitConf.data.Fifteen_TwentyOne),
+                string.Format("{0:n0}", data.kpi.followUp.currConfVsInitConf.data.TwentyTwo),
+                string.Format("{0:n0}", data.kpi.followUp.currConfVsInitConf.data.Total),
+                string.Format("{0:n}", data.kpi.followUp.currConfVsInitConf.data.PercentUnconf + "%")
 
             };
             TemplateThreeDataGrid.Rows.Add(row);
@@ -561,10 +560,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// </summary>
         private void LoadPlanTwo()
         {
-            string[] row = { data.kpi.planTwo.Name, data.kpi.planTwo.categoryNames[(int)PlanTwo.CategoryNames.planOrderCreatVs2ndLvlRel], "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A" };
-            TemplateFourDataGrid.Rows.Add(row);
 
-            row = new string[]{
+            string[] row = new string[]{
                 data.kpi.planTwo.Name,
                 data.kpi.planTwo.categoryNames[(int)PlanTwo.CategoryNames.materialDueOrigPlanDate],
                 string.Format("{0:n}", data.kpi.planTwo.materialDueOrigPlanDate.data.Average),
@@ -784,19 +781,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
         /// <summary>
-        /// Loads all of the KPA Hot Jobs data into the datagridview.
-        /// </summary>
-        private void LoadPurchPlanTotal()
-        {
-            string[] row = { data.kpi.purchPlanTotal.Name, data.kpi.purchPlanTotal.categoryNames[(int)PurchPlanTotal.CategorNames.planOrderCreationVsConfEntry], "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A", "N/A" };
-            TemplateFourDataGrid.Rows.Add(row);
-        }
-
-
-
-
-
-        /// <summary>
         /// Loads all of the KPA Excess Stock - Stock data into the datagridview.
         /// </summary>
         private void LoadOther()
@@ -918,9 +902,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
                 switch (e.RowIndex)
                 {
-                    case 0: // 0 - 2 = Plan
+                    case 0: // Plan
                         Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.Plan];
-                        Globals.CurrCategory = Globals.kpiCategories[(int)Globals.KPI_Sections.Plan][(int)Globals.KPI_Categories.Plan.PRPlanDatevsCurrentPlanDate];
+                        Globals.CurrCategory = Globals.kpiCategories[(int)Globals.KPI_Sections.Plan][(int)Globals.KPI_Categories.Plan.CurrentPlanDateVsPrPlanDate];
                         HandlePlanDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 1:
@@ -938,9 +922,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         Globals.CurrCategory = Globals.kpiCategories[(int)Globals.KPI_Sections.Purch][(int)Globals.KPI_Categories.Purch.InitialConfirmationDatevsPRPlanDate];
                         HandlePurchDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
-                    case 4: // 4 - 8 = Follow Up
+                    case 4: // Follow Up
                         Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.FollowUp];
-                        Globals.CurrCategory = Globals.kpiCategories[(int)Globals.KPI_Sections.FollowUp][(int)Globals.KPI_Categories.FollowUp.InitialConfirmationDatevsCurrentConfirmationDate];
+                        Globals.CurrCategory = Globals.kpiCategories[(int)Globals.KPI_Sections.FollowUp][(int)Globals.KPI_Categories.FollowUp.CurrentConfDateVsInitialConfDate];
                         HandleFollowUpDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 5:
@@ -996,54 +980,50 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
                 switch (e.RowIndex)
                 {
-                    case 0: // 0 - 3 = Plan Two
-                        break;
-                    case 1: 
+                    case 0: 
                         Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.PlanTwo];
                         Globals.CurrCategory = Globals.kpiCategories[(int)Globals.KPI_Sections.PlanTwo][(int)Globals.KPI_Categories.PlanTwo.MaterialDueOriginalPlanDate];
                         HandlePlanTwoDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
-                    case 2:
+                    case 1:
                         Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.PlanTwo];
                         Globals.CurrCategory = Globals.kpiCategories[(int)Globals.KPI_Sections.PlanTwo][(int)Globals.KPI_Categories.PlanTwo.MaterialDueFinalPlannedDate];
                         HandlePlanTwoDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
-                    case 3: // 4 - 5 = Purch Two
+                    case 2: // 4 - 5 = Purch Two
                         Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.PurchTwo];
                         Globals.CurrCategory = Globals.kpiCategories[(int)Globals.KPI_Sections.PurchTwo][(int)Globals.KPI_Categories.PurchTwo.PR2ndLvlReleaseDatevsPOCreationDate];
                         HandlePurchTwoDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
-                    case 4:
+                    case 3:
                         Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.PurchTwo];
                         Globals.CurrCategory = Globals.kpiCategories[(int)Globals.KPI_Sections.PurchTwo][(int)Globals.KPI_Categories.PurchTwo.POCreationDatevsPOReleaseDate];
                         HandlePurchTwoDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
-                    case 5:
+                    case 4:
                         Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.PurchTwo];
                         Globals.CurrCategory = Globals.kpiCategories[(int)Globals.KPI_Sections.PurchTwo][(int)Globals.KPI_Categories.PurchTwo.POReleaseDatevsPOConfirmationDate];
                         HandlePurchTwoDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
-                    case 6: // 7 - 8 Purch Sub
+                    case 5: // 7 - 8 Purch Sub
                         Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.PurchSub];
                         Globals.CurrCategory = Globals.kpiCategories[(int)Globals.KPI_Sections.PurchSub][(int)Globals.KPI_Categories.PurchSub.PRReleaseDatevsPOReleaseDate];
                         HandlePurchSubDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
-                    case 7:
+                    case 6:
                         Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.PurchSub];
                         Globals.CurrCategory = Globals.kpiCategories[(int)Globals.KPI_Sections.PurchSub][(int)Globals.KPI_Categories.PurchSub.POCreationDatevsConfirmationEntryDate];
                         HandlePurchSubDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
-                    case 8: // Purch Total
+                    case 7: // Purch Total
                         Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.PurchTotal];
                         Globals.CurrCategory = Globals.kpiCategories[(int)Globals.KPI_Sections.PurchTotal][(int)Globals.KPI_Categories.PurchTotal.PRReleaseDatetoConfirmationEntryDate];
                         HandlePurchTotalDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
-                    case 9: // 10 - 11 = Purch Plan
+                    case 8: // 10 - 11 = Purch Plan
                         Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.PurchPlan];
                         Globals.CurrCategory = Globals.kpiCategories[(int)Globals.KPI_Sections.PurchPlan][(int)Globals.KPI_Categories.PurchPlan.POReleasevsPRDeliveryDate];
                         HandlePurchPlanDataTableLoading(e.RowIndex, e.ColumnIndex);
-                        break;
-                    case 10: // Purch Plan Total
                         break;
                 }
             }
@@ -1110,8 +1090,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                 // if the user clicks on the header dividers an index out of range excepion will be thrown. I am ignoring it.
             }
         }
-
-
 
 
 
@@ -1365,7 +1343,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
         /// <summary>
-        /// Loads calls the data table loading funciton depending on the particular cell click under a particular KPA
+        /// Loads cells the data table loading funciton depending on the particular cell click under a particular KPA
         /// </summary>
         /// <param name="rowIndex">The row index of the clicked cell</param>
         /// <param name="columnIndex">The column index of the clicked cell</param>
@@ -1651,13 +1629,19 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
 
+
+        /// <summary>
+        /// Loads cells the data table loading funciton depending on the particular cell click under a particular KPA
+        /// </summary>
+        /// <param name="rowIndex">The row index of the clicked cell</param>
+        /// <param name="columnIndex">The column index of the clicked cell</param>
         private void HandlePlanTwoDataTableLoading(int rowIndex, int columnIndex)
         {
             using (DataViewer dv = new DataViewer())
             {
                 switch(rowIndex)
                 {
-                    case 1: // Material Due (Original Planned Date)
+                    case 0: // Material Due (Original Planned Date)
                         switch (columnIndex)
                         {
                             case 0: // section
@@ -1714,7 +1698,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                                 break;
                         }
                         break;
-                    case 2: // Material Due (Final Planned Date)
+                    case 1: // Material Due (Final Planned Date)
                         switch (columnIndex)
                         {
                             case 0: // section
@@ -1783,7 +1767,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
         /// <summary>
-        /// Loads calls the data table loading funciton depending on the particular cell click under a particular KPA
+        /// Loads cells the data table loading funciton depending on the particular cell click under a particular KPA
         /// </summary>
         /// <param name="rowIndex">The row index of the clicked cell</param>
         /// <param name="columnIndex">The column index of the clicked cell</param>
@@ -1793,7 +1777,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             {
                 switch (rowIndex)
                 {
-                    case 3: // PR 2nd Lvl Release Date vs PO Creation Date
+                    case 2: // PR 2nd Lvl Release Date vs PO Creation Date
                         switch (columnIndex)
                         {
                             case 0: // section
@@ -1851,7 +1835,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                                 break;
                         }
                         break;
-                    case 4: // PO Creation Date vs PO Release Date
+                    case 3: // PO Creation Date vs PO Release Date
                         switch (columnIndex)
                         {
                             case 0: // section
@@ -1909,7 +1893,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                                 break;
                         }
                         break;
-                    case 5: // PO Rleaese Date vs PO Confirmation Date
+                    case 4: // PO Rleaese Date vs PO Confirmation Date
                         switch (columnIndex)
                         {
                             case 0: // section
@@ -1982,7 +1966,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
         /// <summary>
-        /// Loads calls the data table loading funciton depending on the particular cell click under a particular KPA
+        /// Loads cells the data table loading funciton depending on the particular cell click under a particular KPA
         /// </summary>
         /// <param name="rowIndex">The row index of the clicked cell</param>
         /// <param name="columnIndex">The column index of the clicked cell</param>
@@ -1992,7 +1976,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             { 
                 switch (rowIndex)
                 {
-                    case 6: // PR Release Date vs PO Release Date
+                    case 5: // PR Release Date vs PO Release Date
                         switch (columnIndex)
                         {
                             case 0: // section
@@ -2050,7 +2034,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                                 break;
                         }
                         break;
-                    case 7: // PO Creation Date vs Confirmation Entry Date
+                    case 6: // PO Creation Date vs Confirmation Entry Date
                         switch (columnIndex)
                         {
                             case 0: // section
@@ -2133,7 +2117,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             { 
                 switch (rowIndex)
                 {
-                    case 8: // Pr Release Date to Confirmation Entry Date
+                    case 7: // Pr Release Date to Confirmation Entry Date
                         switch (columnIndex)
                         {
                             case 0: // section
@@ -2216,7 +2200,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             { 
                 switch (rowIndex)
                 {
-                    case 9: // PO Release vs PR Delivery Date
+                    case 8: // PO Release vs PR Delivery Date
                         switch (columnIndex)
                         {
                             case 0: // section

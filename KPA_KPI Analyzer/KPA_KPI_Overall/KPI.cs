@@ -13,7 +13,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
         public PurchSub purchSub;
         public PurchTotal purchTotal;
         public PurchPlan purchPlan;
-        public PurchPlanTotal purchPlanTotal;
         public Other other;
 
 
@@ -34,7 +33,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
             purchSub = new PurchSub();
             purchTotal = new PurchTotal();
             purchPlan = new PurchPlan();
-            purchPlanTotal = new PurchPlanTotal();
             other = new Other();
         }
     }

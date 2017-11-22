@@ -79,7 +79,6 @@
             Purch,
             PurchSub,
             PurchTotal,
-            PurchPlanTotal,
             FollowUp,
             Cancellations,
             NCRs,
@@ -95,10 +94,7 @@
             "Purch",
             "Purch Sub",
             "Purch Total",
-            "Purch Plan Total",
             "Follow Up",
-            "Cancellations",
-            "NCRs",
             "Hot Jobs",
             "Excess Stock - Stock",
             "Excess Stock - Open Orders",
@@ -137,30 +133,11 @@
 
             }
 
-
-            public enum PurchPlanTotal
-            {
-                PurchPlanTotalAging,
-            }
-
             public enum FollowUp
             {
                 ConfPlanDate,
                 ConfDateUpcomingDel,
                 DueTodayLateConf,
-            }
-
-
-            public enum Cancellations
-            {
-                CancellationCount,
-                CancellationValue,
-            }
-
-            public enum NCRs
-            {
-                OpenNCRs,
-                OpenNCRValues,
             }
 
             public enum HotJobs
@@ -202,14 +179,8 @@
             new string[] { "PR Release to PO Release", "PO Creation to Confirmation Entry"},
             // Purch Total
             new string[] {"PR Release to Confirmation Entry"},
-            // Purch Plan Total
-            new string[] {"Purchasing/Planning Total Aging"},
             // Follow Up
             new string[] { "Confirmed Date vs Plan Date", "Confirmed Date for Upcoming Deliveries", "Due Today or Late to Confirmed Date"},
-            // Cancellations
-            new string[] { "Cancellation Count", "Cancellation Value"},
-            // NCRs
-            new string[] { "Open NCRs", "Open NCR Values"},
             // Hot Jobs
             new string[] { "PRs (Not on PO) - Hot Jobs Only", "No Confirmations - Hot Jobs Only", "Late to Confirmed - Hot Jobs Only"},
             // Excess Stock - Stock
@@ -232,7 +203,6 @@
             PurchSub,
             PurchTotal,
             PurchPlan,
-            PurchPlanTotal,
             Other
         }
 
@@ -247,7 +217,6 @@
             "Purch Sub",
             "Purch Total",
             "Purch Plan",
-            "Purch Plan Total",
             "Other",
         };
 
@@ -258,7 +227,7 @@
         {
             public enum Plan
             {
-                PRPlanDatevsCurrentPlanDate,
+                CurrentPlanDateVsPrPlanDate,
                 OriginalPlanDate2ndLvlReleaseDatevsCodedLeadTime,
                 CurrentPlanDate2ndLvlReleaseDatevsCodedLeadTime
             }
@@ -270,7 +239,7 @@
 
             public enum FollowUp
             {
-                InitialConfirmationDatevsCurrentConfirmationDate,
+                CurrentConfDateVsInitialConfDate,
                 FinalConfirmationDatevsFinalPlanDate,
                 ReceiptDatevsCurrentPlanDate,
                 ReceiptDatevsOriginalConfirmationDate,
@@ -279,7 +248,6 @@
 
             public enum PlanTwo
             {
-                PlanOrderCreationDatevs2ndLvlReleaseDate,
                 MaterialDueOriginalPlanDate,
                 MaterialDueFinalPlannedDate
             }
@@ -296,17 +264,15 @@
                 PRReleaseDatevsPOReleaseDate,
                 POCreationDatevsConfirmationEntryDate
             }
+
             public enum PurchTotal
             {
                 PRReleaseDatetoConfirmationEntryDate
             }
+
             public enum PurchPlan
             {
                 POReleasevsPRDeliveryDate
-            }
-            public enum PurchPlanTotal
-            {
-                PlannedOrderCreationDatevsConfirmationEntryDate
             }
 
             public enum Other
@@ -323,13 +289,13 @@
         public static string[][] kpiCategories =
         {
             // Plan One
-            new string[] { "PR Plan Date vs Current Plan Date", "(Original Plan Date - 2nd Lvl Release Date) vs Coded Lead-Time", "(Current Plan Date - 2nd Lvl Release Date) vs Coded Lead-Time"},
+            new string[] { "Current Plan vs PR Plan Date", "(Original Plan Date - 2nd Lvl Release Date) vs Coded Lead-Time", "(Current Plan Date - 2nd Lvl Release Date) vs Coded Lead-Time"},
             // Purch
             new string[] { "Initial Confirmation Date vs PR Plan Date"},
             // Follow Up
-            new string[] { "Initial Confirmation Date vs Current Confirmation Date", "Final Confirmation Date vs Final Plan Date", "Receipt Date vs Current Plan Date", "Receipt Date vs Original Confirmation Date", "Receipt Date vs Current Confirmation Date"},
+            new string[] { "Current Confirmation Date vs Initial Confirmation Date", "Final Confirmation Date vs Final Plan Date", "Receipt Date vs Current Plan Date", "Receipt Date vs Original Confirmation Date", "Receipt Date vs Current Confirmation Date"},
             // Plan two
-            new string[] { "Plan Order Creation Date vs 2nd Lvl Release Date", "Material Due (Original Planned Date)", "Material Due (Final Planned Date)"},
+            new string[] { "Material Due (Original Planned Date)", "Material Due (Final Planned Date)"},
             // Purch Two
             new string[] { "PR 2nd Lvl Release Date vs PO Creation Date", "PO Creation Date vs PO Release Date", "PO Release Date vs PO Confirmation Date"},
             // Purch Sub
@@ -338,8 +304,6 @@
             new string[] { "PR Release Date to Confirmation Entry Date"},
             // Purch Plan
             new string[] { "PO Release vs PR Delivery Date" },
-            // Purch Plan Total
-            new string[] { "Planned Order Creation Date vs Confirmation Entry Date"},
             // Other
             new string[] { "PRs Created", "PRs Released", "Total Spend", "PR Value vs PO Value", "Hot Job PRs"},
         };
