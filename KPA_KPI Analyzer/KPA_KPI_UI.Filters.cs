@@ -1455,7 +1455,7 @@ namespace KPA_KPI_Analyzer
         private void ResetApplied()
         {
             ColumnFiltersApplied = false;
-            AdvancedFiltersAdded = false;
+            AdvancedFiltersApplied = false;
             DateFiltersApplied = false;
             FilterByPrDate = false;
             FilterByPoDate = false;

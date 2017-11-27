@@ -39,7 +39,6 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.overallDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.filtersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -223,6 +222,12 @@
             this.dc_titlePanel = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.be_mainUI = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.be_note = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.overallDataToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.comparisonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kPIReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kPIReportToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.pnl_menuStrip.SuspendLayout();
             this.ms_applicaitonMenuStrip.SuspendLayout();
             this.pnl_topPanel.SuspendLayout();
@@ -298,10 +303,11 @@
             this.ms_applicaitonMenuStrip.Dock = System.Windows.Forms.DockStyle.None;
             this.ms_applicaitonMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
+            this.reportsToolStripMenuItem,
             this.toolsToolStripMenuItem});
             this.ms_applicaitonMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.ms_applicaitonMenuStrip.Name = "ms_applicaitonMenuStrip";
-            this.ms_applicaitonMenuStrip.Size = new System.Drawing.Size(92, 24);
+            this.ms_applicaitonMenuStrip.Size = new System.Drawing.Size(243, 24);
             this.ms_applicaitonMenuStrip.TabIndex = 0;
             this.ms_applicaitonMenuStrip.Text = "menuStrip1";
             // 
@@ -321,7 +327,7 @@
             this.newAnalysisToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.analysisToolStripMenuItem});
             this.newAnalysisToolStripMenuItem.Name = "newAnalysisToolStripMenuItem";
-            this.newAnalysisToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.newAnalysisToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.newAnalysisToolStripMenuItem.Text = "New";
             // 
             // analysisToolStripMenuItem
@@ -334,13 +340,13 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(95, 6);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(149, 6);
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem1
             // 
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(98, 22);
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem1.Text = "Exit";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -355,25 +361,18 @@
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.toolsToolStripMenuItem.Text = "Tools";
             // 
-            // importToolStripMenuItem
-            // 
-            this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-            this.importToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
-            this.importToolStripMenuItem.Text = "Import";
-            this.importToolStripMenuItem.Click += new System.EventHandler(this.importToolStripMenuItem_Click);
-            // 
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.overallDataToolStripMenuItem});
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exportToolStripMenuItem.Text = "Export";
             // 
             // overallDataToolStripMenuItem
             // 
             this.overallDataToolStripMenuItem.Name = "overallDataToolStripMenuItem";
-            this.overallDataToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.overallDataToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.overallDataToolStripMenuItem.Text = "Overall Data";
             this.overallDataToolStripMenuItem.Click += new System.EventHandler(this.overallDataToolStripMenuItem_Click);
             // 
@@ -384,27 +383,27 @@
             this.toolStripMenuItem1,
             this.addVariantToolStripMenuItem});
             this.filtersToolStripMenuItem.Name = "filtersToolStripMenuItem";
-            this.filtersToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.filtersToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.filtersToolStripMenuItem.Text = "Filters";
             // 
             // viewVariantsToolStripMenuItem
             // 
             this.viewVariantsToolStripMenuItem.Enabled = false;
             this.viewVariantsToolStripMenuItem.Name = "viewVariantsToolStripMenuItem";
-            this.viewVariantsToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.viewVariantsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.viewVariantsToolStripMenuItem.Text = "View Variants";
             this.viewVariantsToolStripMenuItem.Click += new System.EventHandler(this.viewVariantsToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(140, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
             // 
             // addVariantToolStripMenuItem
             // 
             this.addVariantToolStripMenuItem.Enabled = false;
             this.addVariantToolStripMenuItem.Name = "addVariantToolStripMenuItem";
-            this.addVariantToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.addVariantToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.addVariantToolStripMenuItem.Text = "Add Variant";
             this.addVariantToolStripMenuItem.Click += new System.EventHandler(this.addVariantToolStripMenuItem_Click);
             // 
@@ -3109,6 +3108,49 @@
             this.be_note.ElipseRadius = 5;
             this.be_note.TargetControl = this.pnl_note;
             // 
+            // reportsToolStripMenuItem
+            // 
+            this.reportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.overallDataToolStripMenuItem1,
+            this.comparisonToolStripMenuItem,
+            this.kPIReportToolStripMenuItem,
+            this.kPIReportToolStripMenuItem1});
+            this.reportsToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
+            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.reportsToolStripMenuItem.Text = "Reports";
+            // 
+            // overallDataToolStripMenuItem1
+            // 
+            this.overallDataToolStripMenuItem1.Name = "overallDataToolStripMenuItem1";
+            this.overallDataToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.overallDataToolStripMenuItem1.Text = "Overall Data";
+            // 
+            // importToolStripMenuItem
+            // 
+            this.importToolStripMenuItem.Name = "importToolStripMenuItem";
+            this.importToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.importToolStripMenuItem.Text = "Import";
+            this.importToolStripMenuItem.Click += new System.EventHandler(this.importToolStripMenuItem_Click);
+            // 
+            // comparisonToolStripMenuItem
+            // 
+            this.comparisonToolStripMenuItem.Name = "comparisonToolStripMenuItem";
+            this.comparisonToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.comparisonToolStripMenuItem.Text = "Comparison";
+            // 
+            // kPIReportToolStripMenuItem
+            // 
+            this.kPIReportToolStripMenuItem.Name = "kPIReportToolStripMenuItem";
+            this.kPIReportToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.kPIReportToolStripMenuItem.Text = "KPA Report";
+            // 
+            // kPIReportToolStripMenuItem1
+            // 
+            this.kPIReportToolStripMenuItem1.Name = "kPIReportToolStripMenuItem1";
+            this.kPIReportToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.kPIReportToolStripMenuItem1.Text = "KPI Report";
+            // 
             // KPA_KPI_UI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3311,7 +3353,6 @@
         private System.Windows.Forms.ToolStripSeparator exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem overallDataToolStripMenuItem;
         private Bunifu.Framework.UI.BunifuFlatButton btn_Dashboard;
@@ -3413,6 +3454,12 @@
         private System.Windows.Forms.ToolStripMenuItem addVariantToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem viewVariantsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reportsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem overallDataToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem comparisonToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem kPIReportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem kPIReportToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
     }
 }
 

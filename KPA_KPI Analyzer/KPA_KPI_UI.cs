@@ -989,6 +989,9 @@ namespace KPA_KPI_Analyzer
         {
             addVariantToolStripMenuItem.Enabled = false;
 
+            // Make sure there is no filters selected already.
+            ClearSelected();
+
             // Pass Variant details to filters for calibration
             Filters.CalibrateFilters(_variantDetails);
             BuildQueryFilters();

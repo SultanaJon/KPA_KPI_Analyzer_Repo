@@ -21,7 +21,6 @@ namespace KPA_KPI_Analyzer.Templates
 
 
 
-
         /// <summary>
         /// Returns a list of string element contained within the temptwo overall data.
         /// </summary>
@@ -75,7 +74,7 @@ namespace KPA_KPI_Analyzer.Templates
             LessThanEqualOneWeek,
             LessThanEqualTwoWeeks,
             LessThanEqualThreeWeeks,
-            GreaterThanThreeWeeks
+            GreaterThanThreeWeeks,
         }
 
 
