@@ -344,51 +344,52 @@ namespace KPA_KPI_Analyzer
 
 
 
-
         /// <summary>
-        /// This function will ensure that values that are checked stay checked
-        /// after the check boxes are updated and populated with new values.
+        /// Checks the date filters that are applied.
         /// </summary>
-        private void UpdateCheckedItems()
+        public void UpdateDateFilterCheckedItems()
         {
-            int index = 0;
-
-            if(Filters.DateFilters.Applied)
+            if (Filters.DateFilters.Applied)
             {
-                if(Filters.DateFilters.FilterByPrDateRange)
+                if (Filters.DateFilters.FilterByPrDateRange)
                 {
                     chkBox_PrDateRange.Checked = true;
                     dp_PRFromDate.Value = Filters.DateFilters.PrFromDate;
                     dp_PRToDate.Value = Filters.DateFilters.PrToDate;
                 }
 
-                if(Filters.DateFilters.FilterByPoDateRange)
+                if (Filters.DateFilters.FilterByPoDateRange)
                 {
                     chkBox_PoDateRange.Checked = true;
                     dp_POFromDate.Value = Filters.DateFilters.PoFromDate;
                     dp_POToDate.Value = Filters.DateFilters.PoToDate;
                 }
 
-                if(Filters.DateFilters.FilterByFinalReceiptDate)
+                if (Filters.DateFilters.FilterByFinalReceiptDate)
                 {
                     chkBox_FinalReceiptDate.Checked = true;
                     dp_finalReceiptFromDate.Value = Filters.DateFilters.FinalReceiptFromDate;
                     dp_finalReciptToDate.Value = Filters.DateFilters.FinalReceiptToDate;
                 }
             }
+        }
 
 
 
 
-
-            if(Filters.AdvancedFilters.Applied)
+        /// <summary>
+        /// Checks the advanced filters that are applied.
+        /// </summary>
+        public void UpdateAdvancedFilterCheckedItems()
+        {
+            if (Filters.AdvancedFilters.Applied)
             {
-                if(Filters.AdvancedFilters.FilterByServicePrPo)
+                if (Filters.AdvancedFilters.FilterByServicePrPo)
                 {
                     chkBox_servicePrPo.Checked = false;
                 }
 
-                if(Filters.AdvancedFilters.FilterBySteelPrPo)
+                if (Filters.AdvancedFilters.FilterBySteelPrPo)
                 {
                     chkBox_servicePrPo.Checked = false;
                 }
@@ -418,9 +419,16 @@ namespace KPA_KPI_Analyzer
                     chkBox_servicePrPo.Checked = false;
                 }
             }
+        }
 
 
 
+        /// <summary>
+        /// Checks the column filters that are applied.
+        /// </summary>
+        private void UpdateColumnFilterCheckedItems()
+        {
+            int index = 0;
 
 
             if (Filters.ColumnFilters.Applied)
@@ -1080,20 +1088,18 @@ namespace KPA_KPI_Analyzer
 
 
 
-
         /// <summary>
         /// Any filters that are checked will be unchecked and the filters check lists
         /// will be set back to the normal state.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">the clear filters button</param>
+        /// <param name="e">The click event</param>
         private void btn_clearSelected_Click(object sender, EventArgs e)
         {
             filters = string.Empty;
             ClearSelected();
             UpdateFilterButtons();
         }
-
 
 
 
@@ -1241,9 +1247,6 @@ namespace KPA_KPI_Analyzer
 
 
 
-
-
-
         /// <summary>
         /// Apply the filters and load the data again with the filters applied.
         /// </summary>
@@ -1356,13 +1359,10 @@ namespace KPA_KPI_Analyzer
             // Toggles the variant tools within the menu strip based on certain conditions.
             CheckActiveVariants();
 
-
             // Check the filter status to update the variant tools.
             UpdateVariantTools();
             InitializeDataLoadProcess();
         }
-
-
 
 
 

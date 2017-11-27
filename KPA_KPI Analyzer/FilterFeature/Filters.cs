@@ -508,7 +508,6 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             selectedFilters.Add(FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.PoDocType], new List<string>(ColumnFilters.poDocumentType));
             selectedFilters.Add(FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.ProdOrdMaterial], new List<string>(ColumnFilters.prodOrderMat));
 
-
             return selectedFilters;
         }
 

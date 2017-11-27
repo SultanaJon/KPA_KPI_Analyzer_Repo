@@ -1036,7 +1036,9 @@ namespace KPA_KPI_Analyzer
                 Filters.AdvancedFilters.Applied = false;
             }
 
-            UpdateCheckedItems();
+            UpdateColumnFilterCheckedItems();
+            UpdateDateFilterCheckedItems();
+            UpdateAdvancedFilterCheckedItems();
             InitializeDataLoadProcess();
             UpdateFilterButtons();
         }
