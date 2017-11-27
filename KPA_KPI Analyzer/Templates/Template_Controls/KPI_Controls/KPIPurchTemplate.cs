@@ -96,7 +96,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             DatavizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            Globals.CurrCategory = Globals.kpiCategories[(int)Globals.KPI_Sections.Purch][(int)Globals.KPI_Categories.Purch.InitialConfirmationDatevsPRPlanDate];
+            Globals.CurrCategory = StringUtils.KpiStringUtils.categories[(int)StringUtils.KpiStringUtils.Section.Purch][(int)StringUtils.KpiStringUtils.Category.Purch.InitialConfirmationDatevsPRPlanDate];
             ChangeCategory();
         }
 
@@ -189,9 +189,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = Globals.kpiCategories[(int)Globals.KPI_Sections.Purch][(int)Globals.KPI_Categories.Purch.InitialConfirmationDatevsPRPlanDate];
+            Title = StringUtils.KpiStringUtils.categories[(int)StringUtils.KpiStringUtils.Section.Purch][(int)StringUtils.KpiStringUtils.Category.Purch.InitialConfirmationDatevsPRPlanDate];
             Globals.CurrCategory = Title;
-            Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.Purch];
+            Globals.CurrSection = StringUtils.KpiStringUtils.sections[(int)StringUtils.KpiStringUtils.Section.Purch];
             ChangeCategory();
 
             TimeBucketOne = overallData.kpi.purch.initConfVsPRPlanDate.data.Minus_TwentyTwo.ToString();

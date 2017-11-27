@@ -94,7 +94,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             btn_One.Textcolor = System.Drawing.Color.Coral;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.PurchSub][(int)Globals.KPA_Categories.PurchSub.PRReleasePORelease];
+            Globals.CurrCategory = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.PurchSub][(int)StringUtils.KpaStringUtils.Category.PurchSub.PRReleasePORelease];
             ChangeCategory();
         }
 
@@ -181,9 +181,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = Globals.kpaCategories[(int)Globals.KPA_Sections.PurchSub][(int)Globals.KPA_Categories.PurchSub.PRReleasePORelease];
+            Title = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.PurchSub][(int)StringUtils.KpaStringUtils.Category.PurchSub.PRReleasePORelease];
             Globals.CurrCategory = Title;
-            Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.PurchSub];
+            Globals.CurrSection = StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.PurchSub];
             ChangeCategory();
 
             TimeBucketOne = overallData.kpa.purchSub.prRelToPORel.data.LessThanZero.ToString();
@@ -237,9 +237,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         {
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
-            Title = Globals.kpaCategories[(int)Globals.KPA_Sections.PurchSub][(int)Globals.KPA_Categories.PurchSub.POCreationCOnfEntry];
+            Title = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.PurchSub][(int)StringUtils.KpaStringUtils.Category.PurchSub.POCreationCOnfEntry];
             Globals.CurrCategory = Title;
-            Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.PurchSub];
+            Globals.CurrSection = StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.PurchSub];
             ChangeCategory();
 
             TimeBucketOne = overallData.kpa.purchSub.POCreatToConfEntry.data.LessThanZero.ToString();

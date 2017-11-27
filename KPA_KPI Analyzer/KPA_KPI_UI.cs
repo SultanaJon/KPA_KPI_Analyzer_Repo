@@ -9,8 +9,6 @@
 //          "Once you stop learning you start dying" - Albert Einstein
 //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
 using DataImporter.Access;
 using KPA_KPI_Analyzer.DatabaseUtils;
 using KPA_KPI_Analyzer.Diagnostics;
@@ -30,17 +28,27 @@ namespace KPA_KPI_Analyzer
 {
     public partial class KPA_KPI_UI : Form
     {
+        #region FIELD DATA
+
+        // Data regarding the form.
         private FormData frmData = new FormData();
-        private static readonly List<string> errorList = new List<string>();
+
+        // The overall data calculated.
         private Overall overallData = new Overall();
+
+        // The current active user controls visible.
         private UserControl activeTemplate = new UserControl();
+        
+        // The application settings.
         private ApplicationConfiguration.ApplicationConfig settings = new ApplicationConfiguration.ApplicationConfig();
+
+        // The settings used for filter variants.
         private Filter_Variant.FilterVariants variantSettings = new Filter_Variant.FilterVariants();
 
+        #endregion
 
 
-
-
+        #region CONSTRUCTORS
 
         /// <summary>
         /// The initital constructor of the main ui
@@ -71,6 +79,47 @@ namespace KPA_KPI_Analyzer
             settings = settingsData;
         }
 
+        #endregion
+
+
+        #region EVENTS
+
+        /// <summary>
+        /// This functijon will be called when the form loads.
+        /// </summary>
+        /// <param name="sender">The form</param>
+        /// <param name="e">The load event</param>
+        private void KPA_KPI_UI_Load(object sender, EventArgs e)
+        {
+            mainNavActiveBtn = btn_Dashboard; // set the active button as the first button (Dashboard)
+            InitializeProgramEvents();
+            GetCheckBoxControls();
+            GetCheckListBoxes();
+            InitializeProgram();
+        }
+
+
+
+        /////////////////////////////////////////////////// UI DIALOGS //////////////////////////////////////////////////
+        //
+        //  here we can control the behavior of the form.
+        // 
+        //  These functions perform the following
+        //  1) minimize the form into the taskbar.
+        //  2) maximize the form to the size of the screen and min down to normal size.
+        //  3) close the application.
+        //
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        #region UI CONTROL EVENTS
+        /// <summary>
+        /// This event will change the button background image while the user has their cursor over it.
+        /// </summary>
+        /// <param name="sender">The button</param>
+        /// <param name="e">The Mouse Hover Event</param>
+        private void btn_Expand_MouseHover(object sender, EventArgs e)
+        {
+            pnl_Maximize.BackgroundImage = Properties.Resources.Maximize_Hover_icon;
+        }
 
 
 
@@ -78,16 +127,365 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// Configure the application to the United States
+        /// This event will change the background of the image back to the original image.
         /// </summary>
-        public void ConfigureToUnitedStates()
+        /// <param name="sender">the button</param>
+        /// <param name="e">the Mouse Leave Event</param>
+        private void btn_Expand_MouseLeave(object sender, EventArgs e)
         {
-            lbl_Country.Text = Globals.countries[(int)Globals.Countries.UnitedStates];
-            Globals.FocusedCountry = Globals.Countries.UnitedStates;
+            pnl_Maximize.BackgroundImage = Properties.Resources.Maximize;
         }
 
 
 
+
+
+
+        /// <summary>
+        /// This event will trigger when the user clicks the expand button and the form will expand.
+        /// </summary>
+        /// <param name="sender">The expand button</param>
+        /// <param name="e">The click event.</param>
+        private void btn_Expand_Click(object sender, EventArgs e)
+        {
+            FormSizer();
+        }
+
+
+
+
+
+
+        /// <summary>
+        /// This event will change the background of the button when the user hovers over it.
+        /// </summary>
+        /// <param name="sender">the button</param>
+        /// <param name="e">The Mouse Enter Event</param>
+        private void btn_Minimize_MouseEnter(object sender, EventArgs e)
+        {
+            pnl_Minimize.BackgroundImage = Properties.Resources.Minimize_Hover_Icon;
+        }
+
+
+
+
+
+
+        /// <summary>
+        /// This event will change the background of the image back to the original image.
+        /// </summary>
+        /// <param name="sender">the button</param>
+        /// <param name="e">the Mouse Leave event</param>
+        private void btn_Minimize_MouseLeave(object sender, EventArgs e)
+        {
+            pnl_Minimize.BackgroundImage = Properties.Resources.Minimize;
+        }
+
+
+
+
+
+
+        /// <summary>
+        /// This event will trigger when the user clicks the minimize button. The form will minimize into the taskbar.
+        /// </summary>
+        /// <param name="sender">The minimize button</param>
+        /// <param name="e">The click event.</param>
+        private void btn_Minimize_Click(object sender, EventArgs e) => WindowState = FormWindowState.Minimized;
+
+
+
+
+
+
+        /// <summary>
+        /// This event will change the background of the button when the user hovers over it.
+        /// </summary>
+        /// <param name="sender">the button</param>
+        /// <param name="e">The Mouse Over event</param>
+        private void btn_Close_MouseHover(object sender, EventArgs e)
+        {
+            pnl_Close.BackgroundImage = Properties.Resources.Close_Hover_icon;
+        }
+
+
+
+
+
+
+        /// <summary>
+        /// This event will change the background of the button back to the original background image.
+        /// </summary>
+        /// <param name="sender">the close button</param>
+        /// <param name="e">The MouseLeave event</param>
+        private void btn_Close_MouseLeave(object sender, EventArgs e)
+        {
+            pnl_Close.BackgroundImage = Properties.Resources.Close;
+        }
+
+
+
+
+
+
+        /// <summary>
+        /// This event will close the entire application (process)
+        /// </summary>
+        /// <param name="sender">The Close button</param>
+        /// <param name="e">The click event</param>
+        private void btn_Close_Click(object sender, EventArgs e)
+        {
+            // Deactivate and save the variants.
+            variantSettings.DeactivateVariants();
+
+            // Close the application.
+            Application.Exit();
+        }
+        #endregion
+
+
+
+
+
+        /////////////////////////////////////////////////// TOP PANEL //////////////////////////////////////////////////
+        //
+        //  Here we can control the behavior of the top drag panel
+        // 
+        //  These functions perform the following.
+        //  1) size the form to the size of the screen when double clicked.
+        //
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        #region TOP DRAG PANEL EVENTS
+        /// <summary>
+        /// This event will trigger when the user double clicks the top panel of the the UI. This will max out the size of 
+        /// the screen based on the size of the working area of the computer.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pnl_TopPanel_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            FormSizer();
+        }
+
+
+        /// <summary>
+        /// This function will expand or minimize to original window size.
+        /// </summary>
+        private void FormSizer()
+        {
+            Screen screen = Screen.FromControl(this);
+
+            if (Width == screen.WorkingArea.Width && Height == screen.WorkingArea.Height) // the form is maxed
+            {
+                Width = Values.Constants.minFormWidth;
+                Height = Values.Constants.minFormHeight;
+                Left = frmData.FrmX;
+                Top = frmData.FrmY;
+            }
+            else // the form is its default size
+            {
+                frmData.FrmX = Left;
+                frmData.FrmY = Top;
+                Left = screen.WorkingArea.Left;
+                Top = screen.WorkingArea.Top;
+                Height = screen.WorkingArea.Height;
+                Width = screen.WorkingArea.Width;
+
+            }
+            RefreshTemplate();
+        }
+
+
+        #endregion
+
+
+
+
+
+        #region MENU ITEM EVENTS
+
+        /// <summary>
+        /// Closes the running process.
+        /// </summary>
+        /// <param name="sender">The menu strip File->Exit menu item</param>
+        /// <param name="e">The click event</param>
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Deactivate and save the variants.
+            variantSettings.DeactivateVariants();
+
+            // Close the application
+            Application.Exit();
+        }
+
+
+
+
+
+
+        /// <summary>
+        /// Shows the drag drop screen.
+        /// </summary>
+        /// <param name="sender">The View->Analysis menu item</param>
+        /// <param name="e">The click event</param>
+        private void analysisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowPage(Pages.DragDropDash);
+        }
+
+
+
+
+
+
+        /// <summary>
+        /// Shows the drag drop screen.
+        /// </summary>
+        /// <param name="sender">The Tools->Import menu item</param>
+        /// <param name="e">The click event</param>
+        private void importToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowPage(Pages.DragDropDash);
+        }
+
+
+
+
+
+
+        /// <summary>
+        /// Begins the export overall data operation.
+        /// </summary>
+        /// <param name="sender">The Tools->Export->Overall Data menu item</param>
+        /// <param name="e">The click event</param>
+        private void overallDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            List<List<string>> tempKpaOneData;
+            List<List<string>> tempKpaTwoData;
+            List<List<string>> tempKpiThreeData;
+            List<List<string>> tempKpiFourData;
+            List<List<string>> tempKpiFiveData;
+
+            try
+            {
+                tempKpaOneData = overallData.GetKpaTempOneData();
+                tempKpaTwoData = overallData.GetKpaTempTwoData();
+                tempKpiThreeData = overallData.GetKpiTempThreeData();
+                tempKpiFourData = overallData.GetKpiTempFourData();
+                tempKpiFiveData = overallData.GetKpiTempFiveData();
+
+                if (tempKpaOneData == null || tempKpaTwoData == null || tempKpiThreeData == null || tempKpiFourData == null || tempKpiFiveData == null)
+                    throw new NullReferenceException();
+                else
+                {
+                    Globals.CurrCountry = lbl_Country.Text;
+                    // export the templates to overall.xlsx located in resources -> reports
+                    DataExporter.Exporter.ExportOverall(
+                        tempKpaOneData,
+                        tempKpaTwoData,
+                        tempKpiThreeData,
+                        tempKpiFourData,
+                        tempKpiFiveData,
+                        Globals.CurrCountry,
+                        Globals.PrpoGenerationDate
+                    );
+
+                    tempKpaOneData.Clear();
+                    tempKpaTwoData.Clear();
+                    tempKpiThreeData.Clear();
+                    tempKpiFourData.Clear();
+                    tempKpiFiveData.Clear();
+
+                    tempKpaOneData = null;
+                    tempKpaTwoData = null;
+                    tempKpiThreeData = null;
+                    tempKpiFourData = null;
+                    tempKpiFiveData = null;
+                }
+            }
+            catch (NullReferenceException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+
+
+
+
+
+        /// <summary>
+        /// When the user clicks the add variant button on the menu strip, if there are filters applied, this function
+        /// will show the add variant window which will add the filters to a variant and add it to the list of saved
+        /// variants so the user can quickly load them and apply them to the data.
+        /// </summary>
+        /// <param name="sender">The Tools->Filters->Add Varaints menu item</param>
+        /// <param name="e">The click event</param>
+        private void addVariantToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // When the user clicks this menu strip button, the add variant window will open.
+            using (Filter_Variant.VariantsCreationWindow vcw = new Filter_Variant.VariantsCreationWindow())
+            {
+                if (vcw.ShowDialog() == DialogResult.OK)
+                {
+                    // Get the name and the description the user just entered and pass it to the constructor
+                    // of the new variant.
+                    Filter_Variant.Variant variant = new Filter_Variant.Variant(vcw.VariantName, vcw.VariantDescription, Filters.GetSelectedFilters());
+
+                    // Deactivate all of the variants.
+                    DeactivateVariants();
+
+                    // add the variant to the list of variants and save them.
+                    variantSettings.AddVariant(variant);
+                    variantSettings.Save();
+
+                    // The user must apply the filters in order to add them.
+                    addVariantToolStripMenuItem.Enabled = false;
+                }
+            }
+        }
+
+
+
+
+
+        /// <summary>
+        /// When the user clicks the view variants button on the menu strip. If any, the variants the user has added 
+        /// will be displayed in this window.
+        /// </summary>
+        /// <param name="sender">The Tools->Filters->View Variants menu item</param>
+        /// <param name="e">The click event</param>
+        private void viewVariantsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // When the user clicks this menu strip button, the variants view window will open.
+            using (Filter_Variant.VariantsViewWindow vvw = new Filter_Variant.VariantsViewWindow() { Variants = variantSettings.Variants })
+            {
+                vvw.ShowDialog();
+                // Get the list of variants in case the user updated them and save.  
+                variantSettings.Variants = vvw.Variants;
+                variantSettings.Save();
+            }
+        }
+
+        #endregion
+
+        #endregion
+
+
+        #region HELPER FUNCTIONS
+
+        /// <summary>
+        /// Configure the application to the United States
+        /// </summary>
+        public void ConfigureToUnitedStates()
+        {
+            lbl_Country.Text = StringUtils.countries[(int)StringUtils.Country.UnitedStates];
+            Globals.FocusedCountry = StringUtils.Country.UnitedStates;
+        }
 
 
 
@@ -97,12 +495,9 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         public void ConfigureToMexico()
         {
-            lbl_Country.Text = Globals.countries[(int)Globals.Countries.Mexico];
-            Globals.FocusedCountry = Globals.Countries.Mexico;
+            lbl_Country.Text = StringUtils.countries[(int)StringUtils.Country.Mexico];
+            Globals.FocusedCountry = StringUtils.Country.Mexico;
         }
-
-
-
 
 
 
@@ -125,9 +520,6 @@ namespace KPA_KPI_Analyzer
             Filter_Variant.FilterVariants.UpdateVariantTools += UpdateVariantTools;
             Filter_Variant.VariantsViewWindow.BeginVariantLoadProcess += BeginVariantLoadProcess;
         }
-
-
-
 
 
 
@@ -158,27 +550,6 @@ namespace KPA_KPI_Analyzer
 
 
 
-
-        /// <summary>
-        /// This functijon will be called when the form loads.
-        /// </summary>
-        /// <param name="sender">The form</param>
-        /// <param name="e">The load event</param>
-        private void KPA_KPI_UI_Load(object sender, EventArgs e)
-        {
-            mainNavActiveBtn = btn_Dashboard; // set the active button as the first button (Dashboard)
-            InitializeProgramEvents();
-            GetCheckBoxControls();
-            GetCheckListBoxes();
-            InitializeProgram();
-        }
-
-
-
-
-
-
-
         /// <summary>
         /// Returns the last time (in a DateTime format) of when the data was reloaded for the US PRPO report
         /// </summary>
@@ -193,8 +564,6 @@ namespace KPA_KPI_Analyzer
             DateTime dt = new DateTime(year, month, day);
             return dt;
         }
-
-
 
 
 
@@ -220,8 +589,6 @@ namespace KPA_KPI_Analyzer
 
 
 
-
-
         /// <summary>
         /// Returns the date (in a DateTime format) of the loaded US PRPO report.
         /// </summary>
@@ -236,9 +603,6 @@ namespace KPA_KPI_Analyzer
             DateTime dt = new DateTime(year, month, day);
             return dt;
         }
-
-
-
 
 
 
@@ -263,8 +627,6 @@ namespace KPA_KPI_Analyzer
 
 
 
-
-
         /// <summary>
         /// Reset the settings that deal with United States.
         /// </summary>
@@ -275,8 +637,6 @@ namespace KPA_KPI_Analyzer
             settings.reportSettings.PrpoUsLastLoadedDate = string.Empty;
             settings.reportSettings.PrpoUsDate = string.Empty;
         }
-
-
 
 
 
@@ -436,217 +796,6 @@ namespace KPA_KPI_Analyzer
 
 
 
-
-        /////////////////////////////////////////////////// UI DIALOGS //////////////////////////////////////////////////
-        //
-        //  here we can control the behavior of the form.
-        // 
-        //  These functions perform the following
-        //  1) minimize the form into the taskbar.
-        //  2) maximize the form to the size of the screen and min down to normal size.
-        //  3) close the application.
-        //
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        #region UI_Dialogs
-        /// <summary>
-        /// This event will change the button background image while the user has their cursor over it.
-        /// </summary>
-        /// <param name="sender">The button</param>
-        /// <param name="e">The Mouse Hover Event</param>
-        private void btn_Expand_MouseHover(object sender, EventArgs e)
-        {
-            pnl_Maximize.BackgroundImage = Properties.Resources.Maximize_Hover_icon;
-        }
-
-
-
-
-
-
-        /// <summary>
-        /// This event will change the background of the image back to the original image.
-        /// </summary>
-        /// <param name="sender">the button</param>
-        /// <param name="e">the Mouse Leave Event</param>
-        private void btn_Expand_MouseLeave(object sender, EventArgs e)
-        {
-            pnl_Maximize.BackgroundImage = Properties.Resources.Maximize;
-        }
-
-
-
-
-
-
-        /// <summary>
-        /// This event will trigger when the user clicks the expand button and the form will expand.
-        /// </summary>
-        /// <param name="sender">The expand button</param>
-        /// <param name="e">The click event.</param>
-        private void btn_Expand_Click(object sender, EventArgs e)
-        {
-            FormSizer();
-        }
-
-
-
-
-
-
-        /// <summary>
-        /// This event will change the background of the button when the user hovers over it.
-        /// </summary>
-        /// <param name="sender">the button</param>
-        /// <param name="e">The Mouse Enter Event</param>
-        private void btn_Minimize_MouseEnter(object sender, EventArgs e)
-        {
-            pnl_Minimize.BackgroundImage = Properties.Resources.Minimize_Hover_Icon;
-        }
-
-
-
-
-
-
-        /// <summary>
-        /// This event will change the background of the image back to the original image.
-        /// </summary>
-        /// <param name="sender">the button</param>
-        /// <param name="e">the Mouse Leave event</param>
-        private void btn_Minimize_MouseLeave(object sender, EventArgs e)
-        { 
-            pnl_Minimize.BackgroundImage = Properties.Resources.Minimize;
-        }
-
-
-
-
-
-
-        /// <summary>
-        /// This event will trigger when the user clicks the minimize button. The form will minimize into the taskbar.
-        /// </summary>
-        /// <param name="sender">The minimize button</param>
-        /// <param name="e">The click event.</param>
-        private void btn_Minimize_Click(object sender, EventArgs e) => WindowState = FormWindowState.Minimized;
-
-
-
-
-
-
-        /// <summary>
-        /// This event will change the background of the button when the user hovers over it.
-        /// </summary>
-        /// <param name="sender">the button</param>
-        /// <param name="e">The Mouse Over event</param>
-        private void btn_Close_MouseHover(object sender, EventArgs e)
-        {
-            pnl_Close.BackgroundImage = Properties.Resources.Close_Hover_icon;
-        }
-
-
-
-
-
-
-        /// <summary>
-        /// This event will change the background of the button back to the original background image.
-        /// </summary>
-        /// <param name="sender">the close button</param>
-        /// <param name="e">The MouseLeave event</param>
-        private void btn_Close_MouseLeave(object sender, EventArgs e)
-        {
-            pnl_Close.BackgroundImage = Properties.Resources.Close;
-        }
-
-
-
-
-
-
-        /// <summary>
-        /// This event will close the entire application (process)
-        /// </summary>
-        /// <param name="sender">The Close button</param>
-        /// <param name="e">The click event</param>
-        private void btn_Close_Click(object sender, EventArgs e)
-        {
-            // Deactivate and save the variants.
-            variantSettings.DeactivateVariants();
-
-            // Close the application.
-            Application.Exit();
-        }
-        #endregion
-
-
-
-
-
-
-        /////////////////////////////////////////////////// TOP PANEL //////////////////////////////////////////////////
-        //
-        //  Here we can control the behavior of the for with the top panel.
-        // 
-        //  These functions perform the following.
-        //  1) size the form to the size of the screen when double clicked.
-        //
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        #region Top_Panel
-        /// <summary>
-        /// This event will trigger when the user double clicks the top panel of the the UI. This will max out the size of 
-        /// the screen based on the size of the working area of the computer.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void pnl_TopPanel_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            FormSizer();
-        }
-
-
-
-
-
-
-
-
-        /// <summary>
-        /// This function will expand or minimize to original window size.
-        /// </summary>
-        private void FormSizer()
-        {
-            Screen screen = Screen.FromControl(this);
-
-            if (Width == screen.WorkingArea.Width && Height == screen.WorkingArea.Height) // the form is maxed
-            {
-                Width = Values.Constants.minFormWidth;
-                Height = Values.Constants.minFormHeight;
-                Left = frmData.FrmX;
-                Top = frmData.FrmY;
-            }
-            else // the form is its default size
-            {
-                frmData.FrmX = Left;
-                frmData.FrmY = Top;
-                Left = screen.WorkingArea.Left;
-                Top = screen.WorkingArea.Top;
-                Height = screen.WorkingArea.Height;
-                Width = screen.WorkingArea.Width;
-
-            }
-            RefreshTemplate();
-        }
-        #endregion
-
-
-
-
-
-
-
-
         /// <summary>
         /// The pages that can be displayed in the active page panel.
         /// </summary>
@@ -704,7 +853,6 @@ namespace KPA_KPI_Analyzer
 
 
 
-
         /// <summary>
         /// Used when data is being improted. This callback function will be used to display the drag drop page when an error occurs while improting or loading.
         /// </summary>
@@ -738,7 +886,7 @@ namespace KPA_KPI_Analyzer
         /// <summary>
         /// This function sets up variables to their default state before begining the data load process.
         /// </summary>
-        internal void InitializeDataLoadProcess()
+        public void InitializeDataLoadProcess()
         {
             ShowPage(Pages.LoadingScreen);
             cpb_loadingScreenCircProgBar.Text = "Loading Data...";
@@ -765,182 +913,12 @@ namespace KPA_KPI_Analyzer
         /// <remarks>
         /// This had to be done because after the DataLoaderTimer would run a couple of times its event would no longer fire as if it was unsubscribed somehow.
         /// </remarks>
-        internal void RenewDataLoadTimer()
+        public void RenewDataLoadTimer()
         {
             DataLoaderTimer.Tick -= DataLoaderTimer_Tick;
             DataLoaderTimer.Tick += DataLoaderTimer_Tick;
         }
 
-
-
-
-
-
-        /// <summary>
-        /// Closes the running process.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // Deactivate and save the variants.
-            variantSettings.DeactivateVariants();
-
-            // Close the application
-            Application.Exit();
-        }
-
-
-
-        
-
-
-        /// <summary>
-        /// Shows the drag drop screen.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void analysisToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ShowPage(Pages.DragDropDash);
-        }
-
-
-
-
-
-
-        /// <summary>
-        /// Shows the drag drop screen.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void importToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ShowPage(Pages.DragDropDash);
-        }
-
-
-
-
-
-
-        /// <summary>
-        /// Begins the export overall data operation.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void overallDataToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            List<List<string>> tempKpaOneData;
-            List<List<string>> tempKpaTwoData;
-            List<List<string>> tempKpiThreeData;
-            List<List<string>> tempKpiFourData;
-            List<List<string>> tempKpiFiveData;
-
-            try
-            {
-                tempKpaOneData = overallData.GetKpaTempOneData();
-                tempKpaTwoData = overallData.GetKpaTempTwoData();
-                tempKpiThreeData = overallData.GetKpiTempThreeData();
-                tempKpiFourData = overallData.GetKpiTempFourData();
-                tempKpiFiveData = overallData.GetKpiTempFiveData();
-
-                if (tempKpaOneData == null || tempKpaTwoData == null || tempKpiThreeData == null || tempKpiFourData == null || tempKpiFiveData == null)
-                    throw new NullReferenceException();
-                else
-                {
-                    Globals.CurrCountry = lbl_Country.Text;
-                    // export the templates to overall.xlsx located in resources -> reports
-                    DataExporter.Exporter.ExportOverall(
-                        tempKpaOneData,
-                        tempKpaTwoData,
-                        tempKpiThreeData,
-                        tempKpiFourData,
-                        tempKpiFiveData,
-                        Globals.CurrCountry,
-                        Globals.PrpoGenerationDate
-                    );
-
-                    tempKpaOneData.Clear();
-                    tempKpaTwoData.Clear();
-                    tempKpiThreeData.Clear();
-                    tempKpiFourData.Clear();
-                    tempKpiFiveData.Clear();
-
-                    tempKpaOneData = null;
-                    tempKpaTwoData = null;
-                    tempKpiThreeData = null;
-                    tempKpiFourData = null;
-                    tempKpiFiveData = null;
-                }
-            }
-            catch(NullReferenceException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-
-
-
-
-
-        /// <summary>
-        /// When the user clicks the add variant button on the menu strip, if there are filters applied, this function
-        /// will show the add variant window which will add the filters to a variant and add it to the list of saved
-        /// variants so the user can quickly load them and apply them to the data.
-        /// </summary>
-        /// <param name="sender">The menu strip add variant button</param>
-        /// <param name="e">The click button</param>
-        private void addVariantToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // When the user clicks this menu strip button, the add variant window will open.
-            using (Filter_Variant.VariantsCreationWindow vcw = new Filter_Variant.VariantsCreationWindow())
-            {
-                if(vcw.ShowDialog() == DialogResult.OK)
-                {
-                    // Get the name and the description the user just entered and pass it to the constructor
-                    // of the new variant.
-                    Filter_Variant.Variant variant = new Filter_Variant.Variant(vcw.VariantName, vcw.VariantDescription, Filters.GetSelectedFilters());
-
-                    // Deactivate all of the variants.
-                    DeactivateVariants();
-
-                    // add the variant to the list of variants and save them.
-                    variantSettings.AddVariant(variant);
-                    variantSettings.Save();
-
-                    // The user must apply the filters in order to add them.
-                    addVariantToolStripMenuItem.Enabled = false;
-                }
-            }
-        }
-
-
-
-
-
-        /// <summary>
-        /// When the user clicks the view variants button on the menu strip. If any, the variants the user has added will be displayed in this window.
-        /// </summary>
-        /// <param name="sender">The view variants button</param>
-        /// <param name="e">The click event</param>
-        private void viewVariantsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // When the user clicks this menu strip button, the variants view window will open.
-            using (Filter_Variant.VariantsViewWindow vvw = new Filter_Variant.VariantsViewWindow() { Variants = variantSettings.Variants })
-            { 
-                vvw.ShowDialog();
-                // Get the list of variants in case the user updated them and save.  
-                variantSettings.Variants = vvw.Variants;
-                variantSettings.Save();
-            }
-        }
 
 
 
@@ -1013,5 +991,7 @@ namespace KPA_KPI_Analyzer
             // Update the buttons.
             UpdateFilterButtons();
         }
+
+        #endregion
     }
 }

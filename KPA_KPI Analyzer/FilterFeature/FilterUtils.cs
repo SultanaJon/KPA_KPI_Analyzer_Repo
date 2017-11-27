@@ -107,11 +107,11 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
             if (filters == string.Empty)
             {
-                temp = "SELECT DISTINCT " + Values.Globals.CountryTableName + ".[" + column + "] FROM " + Values.Globals.CountryTableName;
+                temp = "SELECT DISTINCT " + DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + column + "] FROM " + DatabaseUtils.PRPO_DB_Utils.TargetCountryTable;
             }
             else
             {
-                temp = "SELECT DISTINCT " + Values.Globals.CountryTableName + ".[" + column + "] FROM " + Values.Globals.CountryTableName + " WHERE " + filters;
+                temp = "SELECT DISTINCT " + DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + column + "] FROM " + DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + " WHERE " + filters;
             }
             query = temp;
         }
@@ -157,7 +157,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
         /// Loads the unique filters into the application.
         /// </summary>
         /// <param name="filters">the current filters loaded.</param>
-        internal static void LoadFilters(string filters)
+        public static void LoadFilters(string filters)
         {
             OleDbCommand cmd = new OleDbCommand();
             strData = new HashSet<string>();
@@ -335,7 +335,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
                 string temp = dr["PR ItemCat1"].ToString();
                 if(temp != string.Empty)
                 {
-                    if (int.Parse(temp) == Globals.ServicePOCategory)
+                    if (int.Parse(temp) == Constants.ServicePOCategory)
                     {
                         return false;
                     }

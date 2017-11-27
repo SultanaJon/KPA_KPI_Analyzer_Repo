@@ -98,7 +98,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             DatavizLoaded = false;
             ActiveCategory = 1;
             datavizLoadTimer.Start();
-            Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.Plan][(int)Globals.KPA_Categories.Plan.PRsAgingNotRel];
+            Globals.CurrCategory = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.Plan][(int)StringUtils.KpaStringUtils.Category.Plan.PRsAgingNotRel];
             ChangeCategory();
         }
 
@@ -183,9 +183,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             canvas = new Bunifu.DataViz.Canvas();
             dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = Globals.kpaCategories[(int)Globals.KPA_Sections.Plan][(int)Globals.KPA_Categories.Plan.PRsAgingNotRel];
+            Title = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.Plan][(int)StringUtils.KpaStringUtils.Category.Plan.PRsAgingNotRel];
             Globals.CurrCategory = Title;
-            Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.Plan];
+            Globals.CurrSection = StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.Plan];
             ChangeCategory();
 
             TimeBucketOne = overallData.kpa.plan.prsAgingNotRel.data.LessThanZero.ToString();
@@ -236,9 +236,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         {
             canvas = new Bunifu.DataViz.Canvas();
             dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
-            Title = Globals.kpaCategories[(int)Globals.KPA_Sections.Plan][(int)Globals.KPA_Categories.Plan.MaterialDue];
+            Title = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.Plan][(int)StringUtils.KpaStringUtils.Category.Plan.MaterialDue];
             Globals.CurrCategory = Title;
-            Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.Plan];
+            Globals.CurrSection = StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.Plan];
             ChangeCategory();
 
             TimeBucketOne = overallData.kpa.plan.matDueDate.data.LessThanZero.ToString();

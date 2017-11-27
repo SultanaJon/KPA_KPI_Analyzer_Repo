@@ -1,11 +1,13 @@
-﻿namespace KPA_KPI_Analyzer.Correlation
+﻿using KPA_KPI_Analyzer.Values;
+
+namespace KPA_KPI_Analyzer.Correlation
 {
     public static class CorrelationLoaderUtils
     {
         /// <summary>
         /// The number of columns being used in the correlation tool.
         /// </summary>
-        public static int NumberOfCorrelationHeaders = Values.Globals.correlationHeaders.Length;
+        public static int NumberOfCorrelationHeaders = StringUtils.CorrelationStringUtils.correlationHeaders.Length;
 
 
 

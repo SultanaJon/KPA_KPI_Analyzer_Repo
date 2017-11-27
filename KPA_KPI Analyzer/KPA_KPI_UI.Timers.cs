@@ -212,7 +212,7 @@ namespace KPA_KPI_Analyzer
                     PRPO_DB_Utils.ScheduledDataRemovals++;
                     usThread = new Thread(() =>
                     {
-                        PRPO_DB_Utils.RemoveData(PRPOCommands.DatabaseTables.MainTables.US_PRPO);
+                        PRPO_DB_Utils.RemoveData();
                     });
                     usThread.Start();
                 }
@@ -223,7 +223,7 @@ namespace KPA_KPI_Analyzer
 
                     mxThread = new Thread(() =>
                     {
-                        PRPO_DB_Utils.RemoveData(PRPOCommands.DatabaseTables.MainTables.MX_PRPO);
+                        PRPO_DB_Utils.RemoveData();
                     });
                     mxThread.Start();
                 }
@@ -241,14 +241,14 @@ namespace KPA_KPI_Analyzer
                 }
                 else if (AccessUtils.US_PRPO_TableExists)
                 {
-                    lbl_Country.Text = Values.Globals.countries[(int)Values.Globals.Countries.UnitedStates];
-                    Globals.FocusedCountry = Globals.Countries.UnitedStates;
+                    lbl_Country.Text = StringUtils.countries[(int)StringUtils.Country.UnitedStates];
+                    Globals.FocusedCountry = StringUtils.Country.UnitedStates;
                     InitializeDataLoadProcess();
                 }
                 else // only the mexico file exists.
                 {
-                    lbl_Country.Text = Values.Globals.countries[(int)Values.Globals.Countries.Mexico];
-                    Globals.FocusedCountry = Globals.Countries.Mexico;
+                    lbl_Country.Text = StringUtils.countries[(int)StringUtils.Country.Mexico];
+                    Globals.FocusedCountry = StringUtils.Country.Mexico;
                     InitializeDataLoadProcess();
                 }
             }
@@ -377,7 +377,7 @@ namespace KPA_KPI_Analyzer
                     ms_applicaitonMenuStrip.Enabled = true;
                 }
 
-                if (Globals.FocusedCountry == Globals.Countries.UnitedStates)
+                if (Globals.FocusedCountry == StringUtils.Country.UnitedStates)
                 {
                     // Populate Dashboard with PRPO report date.
                     DateTime dt = GetLoadedUsPrpoReportDate();

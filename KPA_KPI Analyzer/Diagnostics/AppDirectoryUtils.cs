@@ -199,7 +199,7 @@ namespace KPA_KPI_Analyzer.Diagnostics
         /// Create the supplied type of log file
         /// </summary>
         /// <param name="file">The log file indexer that needs to be created.</param>
-        internal static void CreateFile(LogFile file)
+        public static void CreateFile(LogFile file)
         {
             try
             {
@@ -220,7 +220,7 @@ namespace KPA_KPI_Analyzer.Diagnostics
         /// Create the supplied type of overall data storage file (JSON file)
         /// </summary>
         /// <param name="file">The overall file indexer that needs to be created.</param>
-        internal static void CreateFile(OverallFile file)
+        public static void CreateFile(OverallFile file)
         {
             try
             {
@@ -240,7 +240,7 @@ namespace KPA_KPI_Analyzer.Diagnostics
         /// Create the supplied type of resource data storage file (JSON)
         /// </summary>
         /// <param name="file">The settings file indexer</param>
-        internal static void CreateFile(ResourceFile settingsFile)
+        public static void CreateFile(ResourceFile settingsFile)
         {
             try
             {
@@ -262,7 +262,7 @@ namespace KPA_KPI_Analyzer.Diagnostics
         /// Creates the variant file.
         /// </summary>
         /// <param name="varFile"></param>
-        internal static void CreateFile(VariantFile file)
+        public static void CreateFile(VariantFile file)
         {
             try
             {
@@ -282,7 +282,7 @@ namespace KPA_KPI_Analyzer.Diagnostics
         /// Remove the supplied countries overall file.
         /// </summary>
         /// <param name="file"></param>
-        internal static void RemoveFile(OverallFile file)
+        public static void RemoveFile(OverallFile file)
         {
             if(File.Exists(overallFiles[(int)file]))
             {

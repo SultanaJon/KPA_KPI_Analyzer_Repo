@@ -98,7 +98,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             DatavizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            Globals.CurrCategory = Globals.kpiCategories[(int)Globals.KPI_Sections.FollowUp][(int)Globals.KPI_Categories.FollowUp.CurrentConfDateVsInitialConfDate];
+            Globals.CurrCategory = StringUtils.KpiStringUtils.categories[(int)StringUtils.KpiStringUtils.Section.FollowUp][(int)StringUtils.KpiStringUtils.Category.FollowUp.CurrentConfDateVsInitialConfDate];
             ChangeCategory();
         }
 
@@ -216,9 +216,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = Globals.kpiCategories[(int)Globals.KPI_Sections.FollowUp][(int)Globals.KPI_Categories.FollowUp.CurrentConfDateVsInitialConfDate];
+            Title = StringUtils.KpiStringUtils.categories[(int)StringUtils.KpiStringUtils.Section.FollowUp][(int)StringUtils.KpiStringUtils.Category.FollowUp.CurrentConfDateVsInitialConfDate];
             Globals.CurrCategory = Title;
-            Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.FollowUp];
+            Globals.CurrSection = StringUtils.KpiStringUtils.sections[(int)StringUtils.KpiStringUtils.Section.FollowUp];
             ChangeCategory();
 
             TotalOrders = overallData.kpi.followUp.currConfVsInitConf.data.Total.ToString();
@@ -279,9 +279,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = Globals.kpiCategories[(int)Globals.KPI_Sections.FollowUp][(int)Globals.KPI_Categories.FollowUp.FinalConfirmationDatevsFinalPlanDate];
+            Title = StringUtils.KpiStringUtils.categories[(int)StringUtils.KpiStringUtils.Section.FollowUp][(int)StringUtils.KpiStringUtils.Category.FollowUp.FinalConfirmationDatevsFinalPlanDate];
             Globals.CurrCategory = Title;
-            Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.FollowUp];
+            Globals.CurrSection = StringUtils.KpiStringUtils.sections[(int)StringUtils.KpiStringUtils.Section.FollowUp];
             ChangeCategory();
 
             TotalOrders = overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Total.ToString();
@@ -342,9 +342,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = Globals.kpiCategories[(int)Globals.KPI_Sections.FollowUp][(int)Globals.KPI_Categories.FollowUp.ReceiptDatevsCurrentPlanDate];
+            Title = StringUtils.KpiStringUtils.categories[(int)StringUtils.KpiStringUtils.Section.FollowUp][(int)StringUtils.KpiStringUtils.Category.FollowUp.ReceiptDatevsCurrentPlanDate];
             Globals.CurrCategory = Title;
-            Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.FollowUp];
+            Globals.CurrSection = StringUtils.KpiStringUtils.sections[(int)StringUtils.KpiStringUtils.Section.FollowUp];
             ChangeCategory();
 
             TotalOrders = overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Total.ToString();
@@ -401,9 +401,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = Globals.kpiCategories[(int)Globals.KPI_Sections.FollowUp][(int)Globals.KPI_Categories.FollowUp.ReceiptDatevsOriginalConfirmationDate];
+            Title = StringUtils.KpiStringUtils.categories[(int)StringUtils.KpiStringUtils.Section.FollowUp][(int)StringUtils.KpiStringUtils.Category.FollowUp.ReceiptDatevsOriginalConfirmationDate];
             Globals.CurrCategory = Title;
-            Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.FollowUp];
+            Globals.CurrSection = StringUtils.KpiStringUtils.sections[(int)StringUtils.KpiStringUtils.Section.FollowUp];
             ChangeCategory();
 
             TotalOrders = overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Total.ToString();
@@ -464,9 +464,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = Globals.kpiCategories[(int)Globals.KPI_Sections.FollowUp][(int)Globals.KPI_Categories.FollowUp.ReceiptDatevsCurrentConfirmationDate];
+            Title = StringUtils.KpiStringUtils.categories[(int)StringUtils.KpiStringUtils.Section.FollowUp][(int)StringUtils.KpiStringUtils.Category.FollowUp.ReceiptDatevsCurrentConfirmationDate];
             Globals.CurrCategory = Title;
-            Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.FollowUp];
+            Globals.CurrSection = StringUtils.KpiStringUtils.sections[(int)StringUtils.KpiStringUtils.Section.FollowUp];
             ChangeCategory();
 
             TotalOrders = overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Total.ToString();
@@ -558,7 +558,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                     switch (ActiveCategory)
                     {
                         case 0: // Initial Confirmation vs Current Confirmation
-                            dv.DataLoader += KpiDataTableLoader.FollowUp.LoadInitConfVsCurrConfDataTable;
+                            dv.DataLoader += KpiDataTableLoader.FollowUp.LoadCurrConfVsInitConfDataTable;
                             dv.ColumnTag = tag;
                             break;
                         case 1: // Final Confirmation Date vs Final Planned Date

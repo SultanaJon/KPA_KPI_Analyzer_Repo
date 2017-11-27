@@ -2,37 +2,63 @@
 {
     public static class Constants
     {
-        // Form Size Constants
+        /// <summary>
+        /// Constant value for the minimum Form Height
+        /// </summary>
         public const int minFormHeight = 700;
+
+
+        /// <summary>
+        /// Constant value for the minimum Form Width
+        /// </summary>
         public const int minFormWidth = 1200;
 
 
-
-
-
-        // Main Navigation Size Constants
+        /// <summary>
+        /// Constatn value for the minimum navigation width
+        /// </summary>
         public const int minNavWidth = 54;
+
+
+        /// <summary>
+        /// Constant value for the maximum navigation width
+        /// </summary>
         public const int maxNavWidth = 228;
 
 
-
-
-
-        // Universal Constant
+        /// <summary>
+        /// Constant value for height of zero
+        /// </summary>
         public const int zeroHeight = 0;
+
+
+        /// <summary>
+        /// Constant value for main navigation button width.
+        /// </summary>
         public const int mainNavButtonWidth = 228;
+
+
+        /// <summary>
+        /// Constant value for main navigation button button height
+        /// </summary>
         public const int mainNavButtonHeight = 25;
 
 
-
-
-
-        // KPA Constantsd
+        /// <summary>
+        /// Constant value for the KPA section height
+        /// </summary>
         public const int KPA_SectionHeight = 300;
 
 
-
-        // KPI Constants
+        /// <summary>
+        /// Constant value for the KPI section height.
+        /// </summary>
         public const int KPI_SectionHeight = 275;
+
+
+        /// <summary>
+        /// The category of service pos.
+        /// </summary>
+        public const int ServicePOCategory = 9;
     }
 }

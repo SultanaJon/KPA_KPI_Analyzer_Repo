@@ -93,7 +93,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             btn_One.Textcolor = Color.Coral;
             DatavizLoaded = false;
             ActiveCategory = 0;
-            Globals.CurrCategory = Globals.kpiCategories[(int)Globals.KPI_Sections.PlanTwo][(int)Globals.KPI_Categories.PlanTwo.MaterialDueOriginalPlanDate];
+            Globals.CurrCategory = StringUtils.KpiStringUtils.categories[(int)StringUtils.KpiStringUtils.Section.PlanTwo][(int)StringUtils.KpiStringUtils.Category.PlanTwo.MaterialDueOriginalPlanDate];
             ChangeCategory();
             datavizLoadTimer.Start();
         }
@@ -188,9 +188,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = Globals.kpiCategories[(int)Globals.KPI_Sections.PlanTwo][(int)Globals.KPI_Categories.PlanTwo.MaterialDueOriginalPlanDate];
+            Title = StringUtils.KpiStringUtils.categories[(int)StringUtils.KpiStringUtils.Section.PlanTwo][(int)StringUtils.KpiStringUtils.Category.PlanTwo.MaterialDueOriginalPlanDate];
             Globals.CurrCategory = Title;
-            Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.PlanTwo];
+            Globals.CurrSection = StringUtils.KpiStringUtils.sections[(int)StringUtils.KpiStringUtils.Section.PlanTwo];
             ChangeCategory();
 
             TimeBucketOne = overallData.kpi.planTwo.materialDueOrigPlanDate.data.LessThanZero.ToString();
@@ -251,9 +251,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = Globals.kpiCategories[(int)Globals.KPI_Sections.PlanTwo][(int)Globals.KPI_Categories.PlanTwo.MaterialDueFinalPlannedDate];
+            Title = StringUtils.KpiStringUtils.categories[(int)StringUtils.KpiStringUtils.Section.PlanTwo][(int)StringUtils.KpiStringUtils.Category.PlanTwo.MaterialDueFinalPlannedDate];
             Globals.CurrCategory = Title;
-            Globals.CurrSection = Globals.kpiSection[(int)Globals.KPI_Sections.PlanTwo];
+            Globals.CurrSection = StringUtils.KpiStringUtils.sections[(int)StringUtils.KpiStringUtils.Section.PlanTwo];
             ChangeCategory();
 
             TimeBucketOne = overallData.kpi.planTwo.materialDueFinalPlanDate.data.LessThanZero.ToString();

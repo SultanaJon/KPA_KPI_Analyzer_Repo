@@ -24,7 +24,7 @@ namespace KPA_KPI_Analyzer
         /// <summary>
         /// The state that the current parallel running thread is in.
         /// </summary>
-        internal enum State
+        public enum State
         {
             DirectoryCheck,
             FileCheck,
@@ -37,7 +37,7 @@ namespace KPA_KPI_Analyzer
         /// <summary>
         /// The status of the state that the currently parallel running thread is in.
         /// </summary>
-        internal enum CheckStatus
+        public enum CheckStatus
         {
             Checking,
             Complete
@@ -49,7 +49,7 @@ namespace KPA_KPI_Analyzer
         /// <summary>
         /// The status of the loading operation of the application.
         /// </summary>
-        internal enum LoadStatus
+        public enum LoadStatus
         {
             Loading,
             Complete
@@ -61,7 +61,7 @@ namespace KPA_KPI_Analyzer
         /// <summary>
         /// The Current state of the secondary thread
         /// </summary>
-        internal static State CurrentState { get; set; }
+        public static State CurrentState { get; set; }
 
 
 
@@ -70,7 +70,7 @@ namespace KPA_KPI_Analyzer
         /// <summary>
         /// The current status of the secondary thread.
         /// </summary>
-        internal static CheckStatus CurrentStatus { get; set; }
+        public static CheckStatus CurrentStatus { get; set; }
 
 
 
@@ -79,7 +79,7 @@ namespace KPA_KPI_Analyzer
         /// <summary>
         /// The current status of the application load operation.
         /// </summary>
-        internal static  LoadStatus CurrentAppStatus { get; set; }
+        public static  LoadStatus CurrentAppStatus { get; set; }
 
 
 

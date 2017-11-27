@@ -30,13 +30,19 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
         public static event DisplayDragDropPageHandler DisplayDragDropPage;
 
 
-        internal static volatile object _updateDataLoadLock = new object();
+        public static volatile object _updateDataLoadLock = new object();
         public static volatile object locker = new object();
 
 
 
 
         #region PROPERTIES
+        /// <summary>
+        /// The table targeted depending on the focused country (the country table loaded)
+        /// </summary>
+        public static string TargetCountryTable { get; set; }
+
+
         /// <summary>s
         /// data used to check the state of a data removal process.
         /// </summary>
@@ -64,12 +70,10 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
 
 
 
-
         /// <summary>
         /// The connection to the access database.
         /// </summary>
         public static OleDbConnection DatabaseConnection { get; set; }
-
 
 
 
@@ -98,7 +102,6 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
 
 
 
-
         /// <summary>
         /// Callback funcion to update the progress of a data load process.
         /// </summary>
@@ -121,7 +124,7 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
         /// <summary>
         /// Checks the status of the data loading.
         /// </summary>
-        internal static void UpdateLoadProgress()
+        public static void UpdateLoadProgress()
         {
             lock (locker)
             {
@@ -206,32 +209,41 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
         /// </summary>
         /// <param name="tableName"></param>
         /// <returns></returns>
-        public static bool RemoveData(PRPOCommands.DatabaseTables.MainTables country)
+        public static bool RemoveData()
         {
             bool result = false;
 
             try
             {
-                if (country == PRPOCommands.DatabaseTables.MainTables.US_PRPO)
-                {
-                    OleDbCommand cmd;
-                    cmd = new OleDbCommand(PRPOCommands.removableUSDataQuery, DatabaseConnection);
-                    cmd.ExecuteNonQuery();
-                    result = true;
-                    CompletedDataRemovals++;
-                    UpdateDataRemovalProgress();
-                }
-                else
-                {
-                    OleDbCommand cmd;
-                    cmd = new OleDbCommand(PRPOCommands.removableMXDataQuery, DatabaseConnection);
-                    cmd.ExecuteNonQuery();
-                    result = true;
-                    CompletedDataRemovals++;
-                    UpdateDataRemovalProgress();
-                }
+                OleDbCommand cmd;
+                cmd = new OleDbCommand(Values.StringUtils.removableDataQuery, DatabaseConnection);
+                cmd.ExecuteNonQuery();
+                result = true;
+                CompletedDataRemovals++;
+                UpdateDataRemovalProgress();
+
+                #region DELETE
+                //if (country == PRPOCommands.DatabaseTables.MainTables.US_PRPO)
+                //{
+                //    OleDbCommand cmd;
+                //    cmd = new OleDbCommand(PRPOCommands.removableUSDataQuery, DatabaseConnection);
+                //    cmd.ExecuteNonQuery();
+                //    result = true;
+                //    CompletedDataRemovals++;
+                //    UpdateDataRemovalProgress();
+                //}
+                //else
+                //{
+                //    OleDbCommand cmd;
+                //    cmd = new OleDbCommand(PRPOCommands.removableMXDataQuery, DatabaseConnection);
+                //    cmd.ExecuteNonQuery();
+                //    result = true;
+                //    CompletedDataRemovals++;
+                //    UpdateDataRemovalProgress();
+                //}
+                #endregion
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
                 MessageBox.Show("The data being imported seems to contain incorrect or no data. Please check to see if the data is corrupted. If the report contains corrupted data, please contact your SAP Administrator.", "Corrupted Data Detection", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -259,23 +271,23 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
                 {
                     using (OleDbDataAdapter da = new OleDbDataAdapter())
                     {
-                        cmd.CommandText = PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.AllPOs) + Filters.FilterQuery;
+                        cmd.CommandText = Values.StringUtils.KpiStringUtils.queries[(int)Values.StringUtils.KpiStringUtils.Query.AllPOs] + Filters.FilterQuery;
                         da.SelectCommand = cmd;
                         da.Fill(prsOnPOsDt);
 
-                        cmd.CommandText = PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.POLinesRecComplete) + Filters.FilterQuery;
+                        cmd.CommandText = Values.StringUtils.KpiStringUtils.queries[(int)Values.StringUtils.KpiStringUtils.Query.POLinesRecComplete] + Filters.FilterQuery;
                         da.SelectCommand = cmd;
                         da.Fill(posRecCompDt);
 
-                        cmd.CommandText = PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.PR_2ndLvlRel) + Filters.FilterQuery;
+                        cmd.CommandText = Values.StringUtils.KpiStringUtils.queries[(int)Values.StringUtils.KpiStringUtils.Query.PR_2ndLvlRel] + Filters.FilterQuery;
                         da.SelectCommand = cmd;
                         da.Fill(pr2ndLvlRelDateDt);
 
 
                         if (Filters.FilterQuery == string.Empty)
-                            cmd.CommandText = PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.AllData);
+                            cmd.CommandText = Values.StringUtils.KpiStringUtils.queries[(int)Values.StringUtils.KpiStringUtils.Query.AllData];
                         else
-                            cmd.CommandText = PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.AllData) + " WHERE " + Filters.SecondaryFilterQuery;
+                            cmd.CommandText = Values.StringUtils.KpiStringUtils.queries[(int)Values.StringUtils.KpiStringUtils.Query.AllData] + " WHERE " + Filters.SecondaryFilterQuery;
 
                         da.SelectCommand = cmd;
                         da.Fill(AllDt);
@@ -329,14 +341,14 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
             {
                 using (OleDbDataAdapter da = new OleDbDataAdapter())
                 {
-                    foreach (Values.Globals.CorrelationMatrixIndexer index in Enum.GetValues(typeof(Values.Globals.CorrelationMatrixIndexer)))
+                    foreach (Values.StringUtils.CorrelationStringUtils.CorrelationMatrixIndexer index in Enum.GetValues(typeof(Values.StringUtils.CorrelationStringUtils.CorrelationMatrixIndexer)))
                     {
                         tempDt = new DataTable();
-                        cmd.CommandText = "SELECT " + Values.Globals.CountryTableName + ".[" + Values.Globals.correlationQueryHeaders[(int)index] + "], " + Values.Globals.CountryTableName + ".[" + Values.Globals.correlationDateRangeFilters[(int)Values.Globals.CorrelationDateRangeFilters.RequisitionDate] + "], " + Values.Globals.CountryTableName + ".[" + Values.Globals.correlationDateRangeFilters[(int)Values.Globals.CorrelationDateRangeFilters.PoLineCreateDate] + "], " + Values.Globals.CountryTableName + ".[" + Values.Globals.correlationDateRangeFilters[(int)Values.Globals.CorrelationDateRangeFilters.QtyOrdered] + "] FROM " + Values.Globals.CountryTableName;
+                        cmd.CommandText = "SELECT " + TargetCountryTable + ".[" + Values.StringUtils.CorrelationStringUtils.correlationQueryHeaders[(int)index] + "], " + TargetCountryTable + ".[" + Values.StringUtils.CorrelationStringUtils.correlationDateRangeFilters[(int)Values.StringUtils.CorrelationStringUtils.CorrelationDateRangeFilters.RequisitionDate] + "], " + TargetCountryTable + ".[" + Values.StringUtils.CorrelationStringUtils.correlationDateRangeFilters[(int)Values.StringUtils.CorrelationStringUtils.CorrelationDateRangeFilters.PoLineCreateDate] + "], " + TargetCountryTable + ".[" + Values.StringUtils.CorrelationStringUtils.correlationDateRangeFilters[(int)Values.StringUtils.CorrelationStringUtils.CorrelationDateRangeFilters.QtyOrdered] + "] FROM " + TargetCountryTable;
                         da.SelectCommand = cmd;
                         da.Fill(tempDt);
-                        tempDt.TableName = Values.Globals.correlationHeaders[(int)index];
-                        if (!ds.Tables.Contains(Values.Globals.correlationHeaders[(int)index]))
+                        tempDt.TableName = Values.StringUtils.CorrelationStringUtils.correlationHeaders[(int)index];
+                        if (!ds.Tables.Contains(Values.StringUtils.CorrelationStringUtils.correlationHeaders[(int)index]))
                         {
                             ds.Tables.Add(tempDt);
                         }

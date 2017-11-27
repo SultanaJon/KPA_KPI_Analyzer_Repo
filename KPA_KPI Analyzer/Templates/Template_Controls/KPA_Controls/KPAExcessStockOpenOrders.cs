@@ -99,7 +99,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             DatavizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            Globals.CurrCategory = Globals.kpaCategories[(int)Globals.KPA_Sections.ExcessStock_OpenOrders][(int)Globals.KPA_Categories.ExcessStockOpenOrders.PrsAgingNotRel];
+            Globals.CurrCategory = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.ExcessStock_OpenOrders][(int)StringUtils.KpaStringUtils.Category.ExcessStockOpenOrders.PrsAgingNotRel];
             ChangeCategory();
         }
 
@@ -188,9 +188,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             canvas = new Bunifu.DataViz.Canvas();
             dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = Globals.kpaCategories[(int)Globals.KPA_Sections.ExcessStock_OpenOrders][(int)Globals.KPA_Categories.ExcessStockOpenOrders.PrsAgingNotRel];
+            Title = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.ExcessStock_OpenOrders][(int)StringUtils.KpaStringUtils.Category.ExcessStockOpenOrders.PrsAgingNotRel];
             Globals.CurrCategory = Title;
-            Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.ExcessStock_OpenOrders];
+            Globals.CurrSection = StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.ExcessStock_OpenOrders];
             ChangeCategory();
 
             TimeBucketOne = overallData.kpa.excessStockOpenOrders.prsAgingNotRel.data.LessThanZero.ToString();
@@ -241,9 +241,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         {
             canvas = new Bunifu.DataViz.Canvas();
             dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
-            Title = Globals.kpaCategories[(int)Globals.KPA_Sections.ExcessStock_OpenOrders][(int)Globals.KPA_Categories.ExcessStockOpenOrders.PRsAgingRel];
+            Title = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.ExcessStock_OpenOrders][(int)StringUtils.KpaStringUtils.Category.ExcessStockOpenOrders.PRsAgingRel];
             Globals.CurrCategory = Title;
-            Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.ExcessStock_OpenOrders];
+            Globals.CurrSection = StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.ExcessStock_OpenOrders];
             ChangeCategory();
 
             TimeBucketOne = overallData.kpa.excessStockOpenOrders.prsAgingRel.data.LessThanZero.ToString();
@@ -291,9 +291,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         {
             canvas = new Bunifu.DataViz.Canvas();
             dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
-            Title = Globals.kpaCategories[(int)Globals.KPA_Sections.ExcessStock_OpenOrders][(int)Globals.KPA_Categories.ExcessStockOpenOrders.POCreationThruDelivery];
+            Title = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.ExcessStock_OpenOrders][(int)StringUtils.KpaStringUtils.Category.ExcessStockOpenOrders.POCreationThruDelivery];
             Globals.CurrCategory = Title;
-            Globals.CurrSection = Globals.kpaSections[(int)Globals.KPA_Sections.ExcessStock_OpenOrders];
+            Globals.CurrSection = StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.ExcessStock_OpenOrders];
             ChangeCategory();
 
             TimeBucketOne = overallData.kpa.excessStockOpenOrders.PoCreationThruDeliv.data.LessThanZero.ToString();

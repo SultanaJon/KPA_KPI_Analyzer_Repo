@@ -369,6 +369,7 @@
     <Compile Include="Templates\TemplateThreeStructure.cs" />
     <Compile Include="Templates\TemplateTwoStructure.cs" />
     <Compile Include="Values\Globals.cs" />
+    <Compile Include="Values\StringUtils.cs" />
     <EmbeddedResource Include="Correlation\CorrelationConfiguration.resx">
       <DependentUpon>CorrelationConfiguration.cs</DependentUpon>
     </EmbeddedResource>

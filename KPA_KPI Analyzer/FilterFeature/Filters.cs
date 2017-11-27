@@ -10,11 +10,22 @@ namespace KPA_KPI_Analyzer.FilterFeeature
     public static class Filters
     {
         #region FIELD DATA
+
+        /// <summary>
+        /// The string value used to query the data.
+        /// </summary>
         private static string filters = string.Empty;
+
+        /// <summary>
+        /// The secondary string value used to query the data when the data query is wide open.
+        /// </summary>
         private static string secFilters = string.Empty;
+
         #endregion
 
+
         #region PROPERTIES
+
         /// <summary>
         /// The filters that will be applied to the database when loading the data.
         /// </summary>
@@ -26,24 +37,26 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
 
         /// <summary>
-        /// 
+        /// This string is used when there are no filters applied and the data query is wide open.
         /// </summary>
         public static string SecondaryFilterQuery
         {
             get { return secFilters; }
             set { if (value == null) secFilters = string.Empty; else secFilters = value; }
         }
+
         #endregion
 
 
+        #region FILTER STRUCTURES
 
-        #region STRUCTURES
         /// <summary>
         /// Field data, properties, and methods that deal with advanced filters.
         /// </summary>
         public struct AdvancedFilters
         {
             #region FIELD DATA
+
             /// <summary>
             /// Indexers used to get the name of the advanced filter.
             /// </summary>
@@ -57,8 +70,6 @@ namespace KPA_KPI_Analyzer.FilterFeeature
                 CodifiedMatSubCont,
                 ManualPr
             }
-
-            
 
 
             /// <summary>
@@ -74,12 +85,22 @@ namespace KPA_KPI_Analyzer.FilterFeeature
                 "Codified Material (Subcontract)",
                 "Manual PR"
             };
+
             #endregion
 
-            #region PROPERTIES
-            public static bool Added { get; set; }
-            public static bool Applied { get; set; }
 
+            #region PROPERTIES
+
+            /// <summary>
+            /// Boolean value to determine whether or not advanced filters have been added.
+            /// </summary>
+            public static bool Added { get; set; }
+
+
+            /// <summary>
+            /// Boolean value to determine whether or not the advanced filters have been applied.
+            /// </summary>
+            public static bool Applied { get; set; }
 
 
             /// <summary>
@@ -88,14 +109,10 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             public static bool FilterByServicePrPo { get; set; } = true;
 
 
-
-
             /// <summary>
             /// Boolean value indicating whether or not the user is excluding Steel PR and POs
             /// </summary>
             public static bool FilterBySteelPrPo { get; set; } = true;
-
-
 
 
             /// <summary>
@@ -104,19 +121,16 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             public static bool FilterByPouPrPo { get; set; } = true;
 
 
-
             /// <summary>
             /// Boolean value indicating whether or not the user is excluding Inter Company PO
             /// </summary>
             public static bool FilterByIntercompPo { get; set; } = true;
 
 
-
             /// <summary>
             /// Boolean value indicating whether or not the user is excluding Codified Material Non Sub Contract
             /// </summary>
             public static bool FilterByCodifiedMatNonSubcont { get; set; } = true;
-
 
 
             /// <summary>
@@ -129,9 +143,12 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             /// Boolean value indicating whether or not the user is excluding manual prs
             /// </summary>
             public static bool FilterByManualPr { get; set; } = true;
+
             #endregion
 
+
             #region HELPER FUNCTIONS
+
             /// <summary>
             /// Checks to see if the advanced filters have been changed.
             /// </summary>
@@ -161,7 +178,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             /// <summary>
             /// Resets the advanced filter back to their default state.
             /// </summary>
-            internal static void Reset()
+            public static void Reset()
             {
                 FilterByServicePrPo = true;
                 FilterBySteelPrPo = true;
@@ -198,7 +215,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             /// Calibrates the advance filters.
             /// </summary>
             /// <param name="category"></param>
-            internal static void CalibrateAdvancedFilters(List<string> advFilterDetails)
+            public static void CalibrateAdvancedFilters(List<string> advFilterDetails)
             {
                 foreach(string filter in advFilterDetails)
                 {
@@ -232,6 +249,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
                     }
                 }
             }
+
             #endregion
         }
 
@@ -243,10 +261,24 @@ namespace KPA_KPI_Analyzer.FilterFeeature
         /// </summary>
         public struct ColumnFilters
         {
+            #region PROPERTIES
+
+            /// <summary>
+            /// Boolean value to determine whether or not advanced filters have been added.
+            /// </summary>
             public static bool Added { get; set; }
+
+
+            /// <summary>
+            /// Boolean value to determine whether or not the advanced filters have been applied.
+            /// </summary>
             public static bool Applied { get; set; }
 
+            #endregion  
+
+
             #region FIELD DATA
+
             public static List<string> projectNumber = new List<string>();
             public static List<string> wbsElement = new List<string>();
             public static List<string> material = new List<string>();
@@ -262,13 +294,16 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             public static List<string> escaped = new List<string>();
             public static List<string> poDocumentType = new List<string>();
             public static List<string> prodOrderMat = new List<string>();
+
             #endregion
 
+
             #region HELPER FUNCTIONS
+
             /// <summary>
             /// Clear the contents of all the lists within ColumnFilters.
             /// </summary>
-            internal static void Reset()
+            public static void Reset()
             {
                 projectNumber.Clear();
                 wbsElement.Clear();
@@ -286,6 +321,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
                 poDocumentType.Clear();
                 prodOrderMat.Clear();
             }
+
             #endregion
         }
 
@@ -298,13 +334,23 @@ namespace KPA_KPI_Analyzer.FilterFeeature
         public struct DateFilters
         {
             #region PROPERTIES
+
+            /// <summary>
+            /// Boolean value to determine whether or not advanced filters have been added.
+            /// </summary>
             public static bool Added { get; set; }
+
+
+            /// <summary>
+            /// Boolean value to determine whether or not the advanced filters have been applied.
+            /// </summary>
             public static bool Applied { get; set; }
+
+
             /// <summary>
             /// Boolean value indicating whether or not the user wants to filter by PR date range
             /// </summary>
             public static bool FilterByPrDateRange { get; set; }
-
 
 
             /// <summary>
@@ -313,12 +359,10 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             public static bool FilterByPoDateRange { get; set; }
 
 
-
             /// <summary>
             /// Boolean value indicating whether or not the user wants to filter by PO date range
             /// </summary>
             public static bool FilterByFinalReceiptDate { get; set; }
-
 
 
             /// <summary>
@@ -327,12 +371,10 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             public static DateTime PrFromDate { get; set; }
 
 
-
             /// <summary>
             /// When PR Date range filter is applied this will be the PR to date.
             /// </summary>
             public static DateTime PrToDate { get; set; }
-
 
 
             /// <summary>
@@ -341,13 +383,10 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             public static DateTime PoFromDate { get; set; }
 
 
-
             /// <summary>
             /// When the PO date range filter is applied this will be the PO to date.
             /// </summary>
             public static DateTime PoToDate { get; set; }
-
-
 
 
             /// <summary>
@@ -356,23 +395,19 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             public static DateTime FinalReceiptFromDate { get; set; }
 
 
-
-
             /// <summary>
             /// When the Final Receipt Date range filter is applie this will be the Final Recipt to date.
             /// </summary>
             public static DateTime FinalReceiptToDate { get; set; }
             #endregion
 
+
             #region HELPER FUNCTIONS
-
-
-
 
             /// <summary>
             ///  Resets the date filter setting so that the program does not filter by dates.
             /// </summary>
-            internal static void Reset()
+            public static void Reset()
             {
                 FilterByPrDateRange = false;
                 FilterByPoDateRange = false;
@@ -386,7 +421,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             /// <param name="prDateRange">The PR Date Range</param>
             /// <param name="poDateRange">The PO Date Range</param>
             /// <param name="finRecDateRange">The Final Receipt Date Range</param>
-             internal static void CalibrateDateRanges(string prDateRange, string poDateRange, string finRecDateRange)
+             public static void CalibrateDateRanges(string prDateRange, string poDateRange, string finRecDateRange)
             {
                 try
                 {
@@ -431,14 +466,14 @@ namespace KPA_KPI_Analyzer.FilterFeeature
                     MessageBox.Show(ex.Message, "Filters string to date Error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+
             #endregion
         }
+
         #endregion
 
 
-
         #region HELPER FUNCTIONS
-
 
         /// <summary>
         /// Resets the filter settings
@@ -546,6 +581,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             ColumnFilters.poDocumentType = new List<string>(variantDetails[FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.PoDocType]]);
             ColumnFilters.prodOrderMat = new List<string>(variantDetails[FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.ProdOrdMaterial]]);
         }
+
         #endregion
     }
 }

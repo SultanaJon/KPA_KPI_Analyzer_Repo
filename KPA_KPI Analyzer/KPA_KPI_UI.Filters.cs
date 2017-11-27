@@ -8,13 +8,16 @@ namespace KPA_KPI_Analyzer
 {
     public partial class KPA_KPI_UI : Form
     {
-        #region MEMBERS
+        #region FIELD DATA
 
         string filters = string.Empty;
         List<Bunifu.Framework.UI.BunifuCheckbox> checkBoxes = new List<Bunifu.Framework.UI.BunifuCheckbox>();
         List<CheckedListBox> checkListBoxes = new List<CheckedListBox>();
 
         #endregion
+
+
+        #region EVENTS
 
         /// <summary>
         /// Updates the contents of the of the checked list boxes on the filters page.
@@ -339,6 +342,287 @@ namespace KPA_KPI_Analyzer
             }
             HasFiltersAdded();
             UpdateFilterButtons();
+        }
+
+
+
+        /// <summary>
+        /// Determines if the PR or PO date ranges are valid.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dp_DateRangeChange(object sender, EventArgs e)
+        {
+            if (Filters.DateFilters.FilterByPrDateRange || Filters.DateFilters.FilterByPoDateRange || Filters.DateFilters.FilterByFinalReceiptDate)
+            {
+                Bunifu.Framework.UI.BunifuDatepicker dp = (Bunifu.Framework.UI.BunifuDatepicker)sender;
+                int tag = int.Parse(dp.Tag.ToString());
+                CheckDateRange(tag);
+            }
+        }
+
+
+
+
+
+        /// <summary>
+        /// Any filters that are checked will be unchecked and the filters check lists
+        /// will be set back to the normal state.
+        /// </summary>
+        /// <param name="sender">the clear filters button</param>
+        /// <param name="e">The click event</param>
+        private void btn_clearSelected_Click(object sender, EventArgs e)
+        {
+            filters = string.Empty;
+            ClearSelected();
+            UpdateFilterButtons();
+        }
+
+
+
+
+
+        /// <summary>
+        /// Apply the filters and load the data again with the filters applied.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_applyFilters_Click(object sender, EventArgs e)
+        {
+            GetCheckedColumnFilters();
+
+            if (Filters.DateFilters.FilterByPrDateRange)
+            {
+                if (CheckDateRange(0))
+                {
+                    Filters.DateFilters.FilterByPrDateRange = false;
+                    return;
+                }
+                else
+                {
+                    Filters.DateFilters.PrFromDate = dp_PRFromDate.Value;
+                    Filters.DateFilters.PrToDate = dp_PRToDate.Value;
+                    Filters.DateFilters.FilterByPrDateRange = true;
+                }
+            }
+            else
+            {
+                Filters.DateFilters.FilterByPrDateRange = false;
+            }
+
+
+            if (Filters.DateFilters.FilterByPoDateRange)
+            {
+                if (CheckDateRange(2))
+                {
+                    Filters.DateFilters.FilterByPoDateRange = false;
+                    return;
+                }
+                else
+                {
+                    Filters.DateFilters.PoFromDate = dp_POFromDate.Value;
+                    Filters.DateFilters.PoToDate = dp_POToDate.Value;
+                    Filters.DateFilters.FilterByPoDateRange = true;
+                }
+            }
+            else
+            {
+                Filters.DateFilters.FilterByPoDateRange = false;
+            }
+
+
+
+            if (Filters.DateFilters.FilterByFinalReceiptDate)
+            {
+                if (CheckDateRange(4))
+                {
+                    Filters.DateFilters.FilterByFinalReceiptDate = false;
+                    return;
+                }
+                else
+                {
+                    Filters.DateFilters.FinalReceiptFromDate = dp_finalReceiptFromDate.Value;
+                    Filters.DateFilters.FinalReceiptToDate = dp_finalReciptToDate.Value;
+                    Filters.DateFilters.FilterByFinalReceiptDate = true;
+                }
+            }
+            else
+            {
+                Filters.DateFilters.FilterByFinalReceiptDate = false;
+            }
+
+
+
+            BuildQueryFilters();
+
+            CheckFilterStatus();
+
+
+
+            // Toggles the variant tools within the menu strip based on certain conditions.
+            CheckActiveVariants();
+
+            // Check the filter status to update the variant tools.
+            UpdateVariantTools();
+            InitializeDataLoadProcess();
+        }
+
+
+
+
+
+        /// <summary>
+        /// Clear the filters and set everything back to default.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btn_clearFilters_Click(object sender, EventArgs e)
+        {
+            filters = string.Empty;
+            ClearFilters();
+            UpdateFilterButtons();
+
+
+            // Load the overall data
+            overallData.Load(ref overallData);
+
+            // Dactivate all of the variants.
+            DeactivateVariants();
+
+            // Update the variant tools within the menu strip.
+            UpdateVariantTools();
+        }
+
+
+
+
+
+
+        /// <summary>
+        /// When the state of a checkbox changes, this event will trigger.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void checkBox_OnChange(object sender, EventArgs e)
+        {
+            try
+            {
+
+                Bunifu.Framework.UI.BunifuCheckbox chkBox = (Bunifu.Framework.UI.BunifuCheckbox)sender;
+                int tag = int.Parse(chkBox.Tag.ToString());
+                CheckFilters(tag);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Filter Checkbox OnChange Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+
+
+
+        /// <summary>
+        /// When a user clicks a label associated with date ranges or advanced filters, this event will trigger.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void filterLabel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Bunifu.Framework.UI.BunifuCustomLabel label = (Bunifu.Framework.UI.BunifuCustomLabel)sender;
+                int tag = int.Parse(label.Tag.ToString());
+
+                if (checkBoxes[tag].Checked)
+                {
+                    checkBoxes[tag].Checked = false;
+                }
+                else
+                {
+                    checkBoxes[tag].Checked = true;
+                }
+
+                CheckFilters(tag);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Filter Label Click Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        #endregion
+
+
+        #region HELPER FUNCTIONS
+
+        /// <summary>
+        /// Depending on if the PR or PO date range filter is checked. The from date and to date will be compared and
+        /// a message box will be prompted to the user if the selected dates are incorrect.
+        /// </summary>
+        /// <returns>Returns whether or not the the date range of either the PR or PO date range is value. True if the date range is not valid and false if the date range is valid.</returns>
+        /// <param name="datePickerTag"></param>
+        private bool CheckDateRange(int datePickerTag)
+        {
+            DateTime prFrom;
+            DateTime prTo;
+            DateTime poFrom;
+            DateTime poTo;
+            DateTime finalRecFrom;
+            DateTime finalRecTo;
+
+            switch (datePickerTag)
+            {
+                case 0: // pr from date tag number
+                case 1: // pr to date tag number
+                    prFrom = dp_PRFromDate.Value;
+                    prTo = dp_PRToDate.Value;
+                    if (prFrom > prTo)
+                    {
+                        btn_applyFilters.Enabled = false;
+                        MessageBox.Show("The PR from date cannot greater than the PR to date!", "PR Date Range Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return true;
+                    }
+                    else
+                    {
+                        btn_applyFilters.Enabled = true;
+                    }
+                    break;
+                case 2: // po from date tag number
+                case 3: // po to date tag number
+                    poFrom = dp_POFromDate.Value;
+                    poTo = dp_POToDate.Value;
+                    if (poFrom > poTo)
+                    {
+                        btn_applyFilters.Enabled = false;
+                        MessageBox.Show("The PO from date cannot greater than the PO to date!", "PO Date Range Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return true;
+                    }
+                    else
+                    {
+                        btn_applyFilters.Enabled = true;
+                    }
+                    break;
+                case 4: // final receipt from date tag number
+                case 5: // final receipt to date tag number
+                    finalRecFrom = dp_finalReceiptFromDate.Value;
+                    finalRecTo = dp_finalReciptToDate.Value;
+                    if (finalRecFrom > finalRecTo)
+                    {
+                        btn_applyFilters.Enabled = false;
+                        MessageBox.Show("The final recipt from date cannot greater than the final receipt to date!", "Final Receipt Date Range Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return true;
+                    }
+                    else
+                    {
+                        btn_applyFilters.Enabled = true;
+                    }
+                    break;
+                default:
+                    break;
+            }
+            return false;
         }
 
 
@@ -717,9 +1001,9 @@ namespace KPA_KPI_Analyzer
                         filters += "(";
 
                     if (Filters.ColumnFilters.projectNumber[i] == "[Blanks]")
-                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.ProjectNum_WBS_Element] + "] IS NULL OR " + Values.Globals.CountryTableName + ".[" + FilterFeeature.FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.ProjectNUm_ProdOrdWbs] + "] IS NULL";
+                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.ProjectNum_WBS_Element] + "] IS NULL OR " + DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterFeeature.FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.ProjectNUm_ProdOrdWbs] + "] IS NULL";
                     else
-                        filters += Values.Globals.CountryTableName + ".[" + FilterFeeature.FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.ProjectNum_WBS_Element] + "] LIKE " + "'%" + Filters.ColumnFilters.projectNumber[i] + "%' OR " + Values.Globals.CountryTableName + ".[" + FilterFeeature.FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.ProjectNUm_ProdOrdWbs] + "] LIKE " + "'%" + Filters.ColumnFilters.projectNumber[i] + "%'";
+                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterFeeature.FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.ProjectNum_WBS_Element] + "] LIKE " + "'%" + Filters.ColumnFilters.projectNumber[i] + "%' OR " + DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterFeeature.FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.ProjectNUm_ProdOrdWbs] + "] LIKE " + "'%" + Filters.ColumnFilters.projectNumber[i] + "%'";
 
                     if (i != (Filters.ColumnFilters.projectNumber.Count - 1))
                         filters += " OR ";
@@ -743,9 +1027,9 @@ namespace KPA_KPI_Analyzer
                         filters += "(";
 
                     if (Filters.ColumnFilters.wbsElement[i] == "[Blanks]")
-                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.WBS_Element] + "] IS NULL";
+                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.WBS_Element] + "] IS NULL";
                     else
-                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.WBS_Element] + "] = " + "'" + Filters.ColumnFilters.wbsElement[i] + "'";
+                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.WBS_Element] + "] = " + "'" + Filters.ColumnFilters.wbsElement[i] + "'";
 
 
                     if (i != (Filters.ColumnFilters.wbsElement.Count - 1))
@@ -768,9 +1052,9 @@ namespace KPA_KPI_Analyzer
                         filters += "(";
 
                     if (Filters.ColumnFilters.material[i] == "[Blanks]")
-                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Material] + "] IS NULL";
+                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Material] + "] IS NULL";
                     else
-                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Material] + "] = " + "'" + Filters.ColumnFilters.material[i] + "'";
+                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Material] + "] = " + "'" + Filters.ColumnFilters.material[i] + "'";
 
                     if (i != (Filters.ColumnFilters.material.Count - 1))
                         filters += " OR ";
@@ -792,9 +1076,9 @@ namespace KPA_KPI_Analyzer
                         filters += "(";
 
                     if (Filters.ColumnFilters.materialGroup[i] == "[Blanks]")
-                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.MaterialGroup] + "] IS NULL";
+                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.MaterialGroup] + "] IS NULL";
                     else
-                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.MaterialGroup] + "] = " + "'" + Filters.ColumnFilters.materialGroup[i] + "'";
+                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.MaterialGroup] + "] = " + "'" + Filters.ColumnFilters.materialGroup[i] + "'";
 
                     if (i != (Filters.ColumnFilters.materialGroup.Count - 1))
                         filters += " OR ";
@@ -816,9 +1100,9 @@ namespace KPA_KPI_Analyzer
                         filters += "(";
 
                     if (Filters.ColumnFilters.vendor[i] == "[Blanks]")
-                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Vendor] + "] IS NULL";
+                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Vendor] + "] IS NULL";
                     else
-                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Vendor] + "] = " + Filters.ColumnFilters.vendor[i];
+                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Vendor] + "] = " + Filters.ColumnFilters.vendor[i];
 
                     if (i != (Filters.ColumnFilters.vendor.Count - 1))
                         filters += " OR ";
@@ -840,9 +1124,9 @@ namespace KPA_KPI_Analyzer
                         filters += "(";
 
                     if (Filters.ColumnFilters.vendorDesc[i] == "[Blanks]")
-                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.VendorDescription] + "] IS NULL";
+                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.VendorDescription] + "] IS NULL";
                     else
-                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.VendorDescription] + "] = " + "'" + Filters.ColumnFilters.vendorDesc[i] + "'";
+                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.VendorDescription] + "] = " + "'" + Filters.ColumnFilters.vendorDesc[i] + "'";
 
                     if (i != (Filters.ColumnFilters.vendorDesc.Count - 1))
                         filters += " OR ";
@@ -866,9 +1150,9 @@ namespace KPA_KPI_Analyzer
 
 
                     if (Filters.ColumnFilters.purchGroup[i] == "[Blanks]")
-                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.PurchGroup] + "] IS NULL";
+                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.PurchGroup] + "] IS NULL";
                     else
-                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.PurchGroup] + "] = " + "'" + Filters.ColumnFilters.purchGroup[i] + "'";
+                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.PurchGroup] + "] = " + "'" + Filters.ColumnFilters.purchGroup[i] + "'";
 
                     if (i != (Filters.ColumnFilters.purchGroup.Count - 1))
                         filters += " OR ";
@@ -893,9 +1177,9 @@ namespace KPA_KPI_Analyzer
 
 
                     if (Filters.ColumnFilters.poPurchGroup[i] == "[Blanks]")
-                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.PoPurchGroup] + "] IS NULL";
+                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.PoPurchGroup] + "] IS NULL";
                     else
-                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.PoPurchGroup] + "] = " + "'" + Filters.ColumnFilters.poPurchGroup[i] + "'";
+                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.PoPurchGroup] + "] = " + "'" + Filters.ColumnFilters.poPurchGroup[i] + "'";
 
                     if (i != (Filters.ColumnFilters.poPurchGroup.Count - 1))
                         filters += " OR ";
@@ -919,9 +1203,9 @@ namespace KPA_KPI_Analyzer
 
 
                     if (Filters.ColumnFilters.irSuppName[i] == "[Blanks]")
-                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.IRSuppName] + "] IS NULL";
+                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.IRSuppName] + "] IS NULL";
                     else
-                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.IRSuppName] + "] = " + "'" + Filters.ColumnFilters.irSuppName[i] + "'";
+                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.IRSuppName] + "] = " + "'" + Filters.ColumnFilters.irSuppName[i] + "'";
 
                     if (i != (Filters.ColumnFilters.irSuppName.Count - 1))
                         filters += " OR ";
@@ -945,9 +1229,9 @@ namespace KPA_KPI_Analyzer
 
 
                     if (Filters.ColumnFilters.fxdSuppName[i] == "[Blanks]")
-                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.FxdSuppName] + "] IS NULL";
+                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.FxdSuppName] + "] IS NULL";
                     else
-                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.FxdSuppName] + "] = " + "'" + Filters.ColumnFilters.fxdSuppName[i] + "'";
+                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.FxdSuppName] + "] = " + "'" + Filters.ColumnFilters.fxdSuppName[i] + "'";
 
                     if (i != (Filters.ColumnFilters.fxdSuppName.Count - 1))
                         filters += " OR ";
@@ -971,9 +1255,9 @@ namespace KPA_KPI_Analyzer
 
 
                     if (Filters.ColumnFilters.dsrdSuppName[i] == "[Blanks]")
-                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.DsrdSuppName] + "] IS NULL";
+                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.DsrdSuppName] + "] IS NULL";
                     else
-                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.DsrdSuppName] + "] = " + "'" + Filters.ColumnFilters.dsrdSuppName[i] + "'";
+                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.DsrdSuppName] + "] = " + "'" + Filters.ColumnFilters.dsrdSuppName[i] + "'";
 
                     if (i != (Filters.ColumnFilters.dsrdSuppName.Count - 1))
                         filters += " OR ";
@@ -996,9 +1280,9 @@ namespace KPA_KPI_Analyzer
 
 
                     if (Filters.ColumnFilters.commCategory[i] == "[Blanks]")
-                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.CommCat] + "] IS NULL";
+                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.CommCat] + "] IS NULL";
                     else
-                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.CommCat] + "] = " + "'" + Filters.ColumnFilters.commCategory[i] + "'";
+                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.CommCat] + "] = " + "'" + Filters.ColumnFilters.commCategory[i] + "'";
 
 
                     if (i != (Filters.ColumnFilters.commCategory.Count - 1))
@@ -1021,9 +1305,9 @@ namespace KPA_KPI_Analyzer
 
 
                     if (Filters.ColumnFilters.escaped[i] == "[Blanks]")
-                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Escaped] + "] IS NULL";
+                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Escaped] + "] IS NULL";
                     else
-                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Escaped] + "] = " + "'" + Filters.ColumnFilters.escaped[i] + "'";
+                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Escaped] + "] = " + "'" + Filters.ColumnFilters.escaped[i] + "'";
 
 
                     if (i != (Filters.ColumnFilters.escaped.Count - 1))
@@ -1047,9 +1331,9 @@ namespace KPA_KPI_Analyzer
 
 
                     if (Filters.ColumnFilters.poDocumentType[i] == "[Blanks]")
-                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.PoDocumentType] + "] IS NULL";
+                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.PoDocumentType] + "] IS NULL";
                     else
-                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.PoDocumentType] + "] = " + "'" + Filters.ColumnFilters.poDocumentType[i] + "'";
+                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.PoDocumentType] + "] = " + "'" + Filters.ColumnFilters.poDocumentType[i] + "'";
 
 
                     if (i != (Filters.ColumnFilters.poDocumentType.Count - 1))
@@ -1072,9 +1356,9 @@ namespace KPA_KPI_Analyzer
 
 
                     if (Filters.ColumnFilters.prodOrderMat[i] == "[Blanks]")
-                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.ProdOrderMaterial] + "] IS NULL";
+                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.ProdOrderMaterial] + "] IS NULL";
                     else
-                        filters += Values.Globals.CountryTableName + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.ProdOrderMaterial] + "] = " + "'" + Filters.ColumnFilters.prodOrderMat[i] + "'";
+                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.ProdOrderMaterial] + "] = " + "'" + Filters.ColumnFilters.prodOrderMat[i] + "'";
 
 
                     if (i != (Filters.ColumnFilters.prodOrderMat.Count - 1))
@@ -1084,23 +1368,6 @@ namespace KPA_KPI_Analyzer
                 }
             }
         }
-
-
-
-
-        /// <summary>
-        /// Any filters that are checked will be unchecked and the filters check lists
-        /// will be set back to the normal state.
-        /// </summary>
-        /// <param name="sender">the clear filters button</param>
-        /// <param name="e">The click event</param>
-        private void btn_clearSelected_Click(object sender, EventArgs e)
-        {
-            filters = string.Empty;
-            ClearSelected();
-            UpdateFilterButtons();
-        }
-
 
 
 
@@ -1138,7 +1405,6 @@ namespace KPA_KPI_Analyzer
                     chkBox.Checked = true;
             }
         }
-
 
 
 
@@ -1248,95 +1514,6 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// Apply the filters and load the data again with the filters applied.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btn_applyFilters_Click(object sender, EventArgs e)
-        {
-            GetCheckedColumnFilters();
-
-            if (Filters.DateFilters.FilterByPrDateRange)
-            {
-                if (CheckDateRange(0))
-                {
-                    Filters.DateFilters.FilterByPrDateRange = false;
-                    return;
-                }
-                else
-                {
-                    Filters.DateFilters.PrFromDate = dp_PRFromDate.Value;
-                    Filters.DateFilters.PrToDate = dp_PRToDate.Value;
-                    Filters.DateFilters.FilterByPrDateRange = true;
-                }
-            }
-            else
-            {
-                Filters.DateFilters.FilterByPrDateRange = false;
-            }
-
-
-            if(Filters.DateFilters.FilterByPoDateRange)
-            {
-                if (CheckDateRange(2))
-                {
-                    Filters.DateFilters.FilterByPoDateRange = false;
-                    return;
-                }
-                else
-                {
-                    Filters.DateFilters.PoFromDate = dp_POFromDate.Value;
-                    Filters.DateFilters.PoToDate = dp_POToDate.Value;
-                    Filters.DateFilters.FilterByPoDateRange = true;
-                }
-            }
-            else
-            {
-                Filters.DateFilters.FilterByPoDateRange = false;
-            }
-
-
-
-            if (Filters.DateFilters.FilterByFinalReceiptDate)
-            {
-                if (CheckDateRange(4))
-                {
-                    Filters.DateFilters.FilterByFinalReceiptDate = false;
-                    return;
-                }
-                else
-                {
-                    Filters.DateFilters.FinalReceiptFromDate = dp_finalReceiptFromDate.Value;
-                    Filters.DateFilters.FinalReceiptToDate = dp_finalReciptToDate.Value;
-                    Filters.DateFilters.FilterByFinalReceiptDate = true;
-                }
-            }
-            else
-            {
-                Filters.DateFilters.FilterByFinalReceiptDate = false;
-            }
-
-
-
-            BuildQueryFilters();
-        
-            CheckFilterStatus();
-
-
-
-            // Toggles the variant tools within the menu strip based on certain conditions.
-            CheckActiveVariants();
-
-            // Check the filter status to update the variant tools.
-            UpdateVariantTools();
-            InitializeDataLoadProcess();
-        }
-
-
-
-
-
-        /// <summary>
         /// Checks the status of the filters and applies them if they are added.
         /// </summary>
         public void CheckFilterStatus()
@@ -1408,32 +1585,6 @@ namespace KPA_KPI_Analyzer
                 else
                     addVariantToolStripMenuItem.Enabled = false;
             }
-        }
-
-
-
-
-
-        /// <summary>
-        /// Clear the filters and set everything back to default.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btn_clearFilters_Click(object sender, EventArgs e)
-        {
-            filters = string.Empty;
-            ClearFilters();
-            UpdateFilterButtons();
-
-
-            // Load the overall data
-            overallData.Load(ref overallData);
-
-            // Dactivate all of the variants.
-            DeactivateVariants();
-
-            // Update the variant tools within the menu strip.
-            UpdateVariantTools();
         }
 
 
@@ -1582,96 +1733,6 @@ namespace KPA_KPI_Analyzer
             btn.Enabled = false;
             btn.BackColor = System.Drawing.Color.LightGray;
             btn.ForeColor = System.Drawing.SystemColors.ButtonFace;
-        }
-
-
-
-
-        /// <summary>
-        /// Determines if the PR or PO date ranges are valid.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void dp_DateRangeChange(object sender, EventArgs e)
-        {
-            if(Filters.DateFilters.FilterByPrDateRange || Filters.DateFilters.FilterByPoDateRange || Filters.DateFilters.FilterByFinalReceiptDate)
-            {
-                Bunifu.Framework.UI.BunifuDatepicker dp = (Bunifu.Framework.UI.BunifuDatepicker)sender;
-                int tag = int.Parse(dp.Tag.ToString());
-                CheckDateRange(tag);
-            }
-        }
-
-
-
-
-
-        /// <summary>
-        /// Depending on if the PR or PO date range filter is checked. The from date and to date will be compared and
-        /// a message box will be prompted to the user if the selected dates are incorrect.
-        /// </summary>
-        /// <returns>Returns whether or not the the date range of either the PR or PO date range is value. True if the date range is not valid and false if the date range is valid.</returns>
-        /// <param name="datePickerTag"></param>
-        private bool CheckDateRange(int datePickerTag)
-        {
-            DateTime prFrom;
-            DateTime prTo;
-            DateTime poFrom;
-            DateTime poTo;
-            DateTime finalRecFrom;
-            DateTime finalRecTo;
-
-            switch (datePickerTag)
-            {
-                case 0: // pr from date tag number
-                case 1: // pr to date tag number
-                    prFrom = dp_PRFromDate.Value;
-                    prTo = dp_PRToDate.Value;
-                    if (prFrom > prTo)
-                    {
-                        btn_applyFilters.Enabled = false;
-                        MessageBox.Show("The PR from date cannot greater than the PR to date!", "PR Date Range Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        return true;
-                    }
-                    else
-                    {
-                        btn_applyFilters.Enabled = true;
-                    }
-                    break;
-                case 2: // po from date tag number
-                case 3: // po to date tag number
-                    poFrom = dp_POFromDate.Value;
-                    poTo = dp_POToDate.Value;
-                    if (poFrom > poTo)
-                    {
-                        btn_applyFilters.Enabled = false;
-                        MessageBox.Show("The PO from date cannot greater than the PO to date!", "PO Date Range Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        return true;
-                    }
-                    else
-                    {
-                        btn_applyFilters.Enabled = true;
-                    }
-                    break;
-                case 4: // final receipt from date tag number
-                case 5: // final receipt to date tag number
-                    finalRecFrom = dp_finalReceiptFromDate.Value;
-                    finalRecTo = dp_finalReciptToDate.Value;
-                    if (finalRecFrom > finalRecTo)
-                    {
-                        btn_applyFilters.Enabled = false;
-                        MessageBox.Show("The final recipt from date cannot greater than the final receipt to date!", "Final Receipt Date Range Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        return true;
-                    }
-                    else
-                    {
-                        btn_applyFilters.Enabled = true;
-                    }
-                    break;
-                default:
-                    break;
-            }
-            return false;
         }
 
 
@@ -1881,59 +1942,6 @@ namespace KPA_KPI_Analyzer
             checkBoxes.Add(chkBox_manualPr);
         }
 
-
-
-
-        /// <summary>
-        /// When the state of a checkbox changes, this event will trigger.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void checkBox_OnChange(object sender, EventArgs e)
-        {
-            try
-            {
-
-                Bunifu.Framework.UI.BunifuCheckbox chkBox = (Bunifu.Framework.UI.BunifuCheckbox)sender;
-                int tag = int.Parse(chkBox.Tag.ToString());
-                CheckFilters(tag);
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Filter Checkbox OnChange Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-
-
-
-        /// <summary>
-        /// When a user clicks a label associated with date ranges or advanced filters, this event will trigger.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void filterLabel_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Bunifu.Framework.UI.BunifuCustomLabel label = (Bunifu.Framework.UI.BunifuCustomLabel)sender;
-                int tag = int.Parse(label.Tag.ToString());
-
-                if (checkBoxes[tag].Checked)
-                {
-                    checkBoxes[tag].Checked = false;
-                }
-                else
-                {
-                    checkBoxes[tag].Checked = true;
-                }
-
-                CheckFilters(tag);
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Filter Label Click Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+        #endregion
     }
 }

@@ -1,5 +1,6 @@
 ﻿using KPA_KPI_Analyzer.DatabaseUtils;
 using KPA_KPI_Analyzer.FilterFeeature;
+using KPA_KPI_Analyzer.Values;
 using System;
 using System.Data;
 using System.Data.OleDb;
@@ -15,7 +16,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
         private static DataTable unconfirmed;
 
 
-        internal static class Plan
+        public static class Plan
         {
             private static DataTable prPlanDateVsCurrPlanDt;
             private static DataTable OrigPlan2ndLvlRel_CodedLeadTime;
@@ -26,13 +27,13 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
             /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
-            internal static void LoadPrPlanDateVsCurrentPlanDateDataTable(int tag)
+            public static void LoadPrPlanDateVsCurrentPlanDateDataTable(int tag)
             {
                 try
                 {
                     dt = new DataTable();
                     prPlanDateVsCurrPlanDt = new DataTable();
-                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.AllPOs) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.AllPOs] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -195,14 +196,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
             /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
-            internal static void LoadOrigPlanDate2ndLvlRelDate_CodedLeadDataTable(int tag)
+            public static void LoadOrigPlanDate2ndLvlRelDate_CodedLeadDataTable(int tag)
             {
                 try
                 {
                     dt = new DataTable();
                     OrigPlan2ndLvlRel_CodedLeadTime = new DataTable();
 
-                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.PR_2ndLvlRel) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.PR_2ndLvlRel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -384,14 +385,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
             /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
-            internal static void LoadCurrPlanDate2ndLvlRelDate_CodedLeadDataTable(int tag)
+            public static void LoadCurrPlanDate2ndLvlRelDate_CodedLeadDataTable(int tag)
             {
                 try
                 {
                     dt = new DataTable();
                     CurrPlan2ndLvlRel_CodedLeadTime = new DataTable();
 
-                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.PR_2ndLvlRel) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.PR_2ndLvlRel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -594,7 +595,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
         }
 
 
-        internal static class Purch
+        public static class Purch
         {
             private static DataTable initConfVsPrPlanDateDt;
 
@@ -603,14 +604,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
             /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
-            internal static void LoadInitialConfVsPrPlanDateDataTable(int tag)
+            public static void LoadInitialConfVsPrPlanDateDataTable(int tag)
             {
                 try
                 {
                     dt = new DataTable();
                     initConfVsPrPlanDateDt = new DataTable();
                     unconfirmed = new DataTable();
-                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.AllPOs) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.AllPOs] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -783,7 +784,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
         }
 
 
-        internal static class FollowUp
+        public static class FollowUp
         {
             private static DataTable initConfVsCurrConf;
             private static DataTable finalConfDateVsFinalPlanDateDt;
@@ -796,7 +797,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
             /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
-            internal static void LoadInitConfVsCurrConfDataTable(int tag)
+            public static void LoadCurrConfVsInitConfDataTable(int tag)
             {
                 try
                 {
@@ -804,7 +805,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     initConfVsCurrConf = new DataTable();
                     unconfirmed = new DataTable();
 
-                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.AllPOs) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.AllPOs] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -990,7 +991,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
             /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
-            internal static void LoadFinalConfDateVsFinalPlanDateDataTable(int tag)
+            public static void LoadFinalConfDateVsFinalPlanDateDataTable(int tag)
             {
                 try
                 {
@@ -998,7 +999,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     finalConfDateVsFinalPlanDateDt = new DataTable();
                     unconfirmed = new DataTable();
 
-                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.POLinesRecComplete) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.AllPOs] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -1182,14 +1183,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
             /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
-            internal static void LoadRecDateVsCurrPlanDateDataTable(int tag)
+            public static void LoadRecDateVsCurrPlanDateDataTable(int tag)
             {
                 try
                 {
                     dt = new DataTable();
                     recDateVsCurrPlanDateDt = new DataTable();
 
-                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.POLinesRecComplete) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.POLinesRecComplete] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -1350,7 +1351,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
             /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>s
-            internal static void LoadRecDateVsOrigConfDateDataTable(int tag)
+            public static void LoadRecDateVsOrigConfDateDataTable(int tag)
             {
                 try
                 {
@@ -1358,7 +1359,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     recDateVsOrigConfDateDt = new DataTable();
                     unconfirmed = new DataTable();
 
-                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.POLinesRecComplete) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.POLinesRecComplete] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -1540,14 +1541,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
             /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
-            internal static void LoadRecDateVsCurrConfDateDataTable(int tag)
+            public static void LoadRecDateVsCurrConfDateDataTable(int tag)
             {
                 try
                 {
                     dt = new DataTable();
                     recDateVsCurrConfDateDt = new DataTable();
                     unconfirmed = new DataTable();
-                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.POLinesRecComplete) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.POLinesRecComplete] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -1727,7 +1728,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
 
 
-        internal static class PlanTwo
+        public static class PlanTwo
         {
             private static DataTable MaterialDueOrigPlanDate;
             private static DataTable MaterialDueFinalPlannedDate;
@@ -1738,14 +1739,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
             /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
-            internal static void LoadMaterialDueOrigPlanDate(int tag)
+            public static void LoadMaterialDueOrigPlanDate(int tag)
             {
                 try
                 {
                     dt = new DataTable();
                     MaterialDueOrigPlanDate = new DataTable();
 
-                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.PR_2ndLvlRel) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.PR_2ndLvlRel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -1938,14 +1939,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
             /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
-            internal static void LoadMaterialDueFinalPlanDate(int tag)
+            public static void LoadMaterialDueFinalPlanDate(int tag)
             {
                 try
                 {
                     dt = new DataTable();
                     MaterialDueFinalPlannedDate = new DataTable();
 
-                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.AllPOs) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.AllPOs] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -2164,7 +2165,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
 
 
-        internal static class PurchTwo
+        public static class PurchTwo
         {
             private static DataTable pr2ndLvlRelVsPoCreate;
             private static DataTable poCreateVsPORel;
@@ -2174,13 +2175,13 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
             /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
-            internal static void LoadPr2ndLvlRelVsPOCreationDataTable(int tag)
+            public static void LoadPr2ndLvlRelVsPOCreationDataTable(int tag)
             {
                 try
                 {
                     dt = new DataTable();
                     pr2ndLvlRelVsPoCreate = new DataTable();
-                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.AllPOs) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.AllPOs] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -2365,13 +2366,13 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
             /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
-            internal static void LoadPoCreationVsPoReleaseDataTable(int tag)
+            public static void LoadPoCreationVsPoReleaseDataTable(int tag)
             {
                 try
                 {
                     dt = new DataTable();
                     poCreateVsPORel = new DataTable();
-                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.AllPOs) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.AllPOs] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -2543,14 +2544,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
             /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
-            internal static void LoadPoReleaseVsPoConfDataTable(int tag)
+            public static void LoadPoReleaseVsPoConfDataTable(int tag)
             {
                 try
                 {
                     dt = new DataTable();
                     poRelVsPoConf = new DataTable();
                     unconfirmed = new DataTable();
-                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.AllPOs) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.AllPOs] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -2746,7 +2747,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
 
 
-        internal static class PurchSub
+        public static class PurchSub
         {
             private static DataTable prRelVsPORel;
             private static DataTable poCreateVsConfEntry;
@@ -2756,14 +2757,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
             /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
-            internal static void LoadPrRelVsPoRelDataTable(int tag)
+            public static void LoadPrRelVsPoRelDataTable(int tag)
             {
                 try
                 {
                     dt = new DataTable();
                     prRelVsPORel = new DataTable();
 
-                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.AllPOs) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.AllPOs] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -2958,7 +2959,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
             /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
-            internal static void LoadPoCreationVsConfEntryDateDataTable(int tag)
+            public static void LoadPoCreationVsConfEntryDateDataTable(int tag)
             {
                 try
                 {
@@ -2966,7 +2967,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     poCreateVsConfEntry = new DataTable();
                     unconfirmed = new DataTable();
 
-                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.AllPOs) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.AllPOs] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -3152,7 +3153,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
 
 
-        internal static class PurchTotal
+        public static class PurchTotal
         {
             private static DataTable prReleaseConfEntry;
 
@@ -3160,14 +3161,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
             /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
-            internal static void LoadPrReleaseConfEntryDataTable(int tag)
+            public static void LoadPrReleaseConfEntryDataTable(int tag)
             {
                 try
                 {
                     dt = new DataTable();
                     prReleaseConfEntry = new DataTable();
                     unconfirmed = new DataTable();
-                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.AllPOs) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.AllPOs] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -3379,7 +3380,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
 
 
-        internal static class PurchPlan
+        public static class PurchPlan
         {
             private static DataTable poRelVsPRDelDateDt;
             private static string[] strPoLineFirstRelDate;
@@ -3388,14 +3389,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
             /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
-            internal static void LoadPoRelVsPrDelDateDataTable(int tag)
+            public static void LoadPoRelVsPrDelDateDataTable(int tag)
             {
                 try
                 {
                     dt = new DataTable();
                     poRelVsPRDelDateDt = new DataTable();
 
-                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.AllPOs) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.AllPOs] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -3560,7 +3561,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
         }
 
 
-        internal static class Other
+        public static class Other
         {
             private static DataTable prsCreated;
             private static DataTable prReleased;
@@ -3573,7 +3574,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
             /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
-            internal static void LoadPrsCreated(int tag)
+            public static void LoadPrsCreated(int tag)
             {
                 try
                 {
@@ -3582,9 +3583,9 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     //cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.AllData) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
 
                     if (Filters.FilterQuery == string.Empty)
-                        cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.AllData), PRPO_DB_Utils.DatabaseConnection);
+                        cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.AllData], PRPO_DB_Utils.DatabaseConnection);
                     else
-                        cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.AllData) + " WHERE " + Filters.SecondaryFilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                        cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.AllData] + " WHERE " + Filters.SecondaryFilterQuery, PRPO_DB_Utils.DatabaseConnection);
 
 
                     da = new OleDbDataAdapter(cmd);
@@ -3733,14 +3734,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
             /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
-            internal static void LoadPrsReleased(int tag)
+            public static void LoadPrsReleased(int tag)
             {
                 try
                 {
                     dt = new DataTable();
                     prReleased = new DataTable();
 
-                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.PR_2ndLvlRel) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.PR_2ndLvlRel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -3910,13 +3911,13 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
             /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
-            internal static void LoadTotalSpend(int tag)
+            public static void LoadTotalSpend(int tag)
             {
                 try
                 {
                     dt = new DataTable();
                     totalSpend = new DataTable();
-                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.AllPOs) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.AllPOs] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -4060,14 +4061,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
             /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
-            internal static void LoadPrVsPoValue(int tag)
+            public static void LoadPrVsPoValue(int tag)
             {
                 try
                 {
                     dt = new DataTable();
                     prVsPOValue = new DataTable();
 
-                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.AllPOs) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.AllPOs] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -4214,13 +4215,13 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
             /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
-            internal static void LoadHotJobPrs(int tag)
+            public static void LoadHotJobPrs(int tag)
             {
                 try
                 {
                     dt = new DataTable();
                     hotJobPRs = new DataTable();
-                    cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.AllData) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.AllData] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
 
 
                     da = new OleDbDataAdapter(cmd);

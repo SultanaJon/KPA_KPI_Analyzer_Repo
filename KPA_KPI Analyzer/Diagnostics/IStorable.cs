@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KPA_KPI_Analyzer.Diagnostics
 {
-    internal interface IStorable
+    public interface IStorable
     {
         /// <summary>
         /// Saves the object T to a JSON file.

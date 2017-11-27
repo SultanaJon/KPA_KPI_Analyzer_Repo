@@ -7,6 +7,9 @@ namespace KPA_KPI_Analyzer
     public partial class KPA_KPI_UI : Form
     {
 
+        /// <summary>
+        /// The current Performance
+        /// </summary>
         public enum Performance
         {
             KPA,
@@ -35,7 +38,6 @@ namespace KPA_KPI_Analyzer
 
 
 
-
         /// <summary>
         /// Instantiates a template object and adds the control to the active page panel for loading/viewing
         /// </summary>
@@ -54,9 +56,7 @@ namespace KPA_KPI_Analyzer
             MenuInFront = true;
             pnl_NavigationPanelMax.BringToFront();
         }
-
-
-
+    
 
 
         /// <summary>
@@ -77,10 +77,7 @@ namespace KPA_KPI_Analyzer
             MenuInFront = true;
             pnl_NavigationPanelMax.BringToFront();
         }
-
-
-
-
+    
 
 
         /// <summary>
@@ -101,8 +98,6 @@ namespace KPA_KPI_Analyzer
             MenuInFront = true;
             pnl_NavigationPanelMax.BringToFront();
         }
-
-
 
 
 
@@ -127,7 +122,6 @@ namespace KPA_KPI_Analyzer
 
 
 
-
         /// <summary>
         /// Instantiates a template object and adds the control to the active page panel for loading/viewing
         /// </summary>
@@ -145,7 +139,6 @@ namespace KPA_KPI_Analyzer
             MenuInFront = true;
             pnl_NavigationPanelMax.BringToFront();
         }
-
 
 
 
@@ -170,8 +163,9 @@ namespace KPA_KPI_Analyzer
 
 
 
-
-
+        /// <summary>
+        /// Instantiates a template object and adds the control to the active page panel for loading/viewing
+        /// </summary>
         private void CreateKpaExcessStockStockTemplate()
         {
             lbl_Section.Text = "Excess Stock - Stock";
@@ -190,9 +184,9 @@ namespace KPA_KPI_Analyzer
 
 
 
-
-
-
+        /// <summary>
+        /// Instantiates a template object and adds the control to the active page panel for loading/viewing
+        /// </summary>
         private void CreateKpaExcessStockOpenOrdersTemplate()
         {
             lbl_Section.Text = "Excess Stock - Open Orders";
@@ -208,9 +202,6 @@ namespace KPA_KPI_Analyzer
             MenuInFront = true;
             pnl_NavigationPanelMax.BringToFront();
         }
-
-
-
 
 
 
@@ -231,9 +222,6 @@ namespace KPA_KPI_Analyzer
             MenuInFront = true;
             pnl_NavigationPanelMax.BringToFront();
         }
-
-
-
 
 
 
@@ -259,9 +247,6 @@ namespace KPA_KPI_Analyzer
 
 
 
-
-
-
         /// <summary>
         /// Instantiates a template object and adds the control to the active page panel for loading/viewing
         /// </summary>
@@ -280,10 +265,6 @@ namespace KPA_KPI_Analyzer
             MenuInFront = true;
             pnl_NavigationPanelMax.BringToFront();
         }
-
-
-
-
 
 
 
@@ -307,7 +288,6 @@ namespace KPA_KPI_Analyzer
 
 
 
-
         /// <summary>
         /// Instantiates a template object and adds the control to the active page panel for loading/viewing
         /// </summary>
@@ -325,8 +305,6 @@ namespace KPA_KPI_Analyzer
             MenuInFront = true;
             pnl_NavigationPanelMax.BringToFront();
         }
-
-
 
 
 
@@ -350,8 +328,6 @@ namespace KPA_KPI_Analyzer
 
 
 
-
-
         /// <summary>
         /// Instantiates a template object and adds the control to the active page panel for loading/viewing
         /// </summary>
@@ -372,11 +348,6 @@ namespace KPA_KPI_Analyzer
 
 
 
-
-        
-
-
-
         /// <summary>
         /// Instantiates a template object and adds the control to the active page panel for loading/viewing
         /// </summary>
@@ -394,9 +365,6 @@ namespace KPA_KPI_Analyzer
             MenuInFront = true;
             pnl_NavigationPanelMax.BringToFront();
         }
-
-
-
 
 
 
@@ -421,7 +389,6 @@ namespace KPA_KPI_Analyzer
 
 
 
-
         /// <summary>
         /// Instantiates a template object and adds the control to the active page panel for loading/viewing
         /// </summary>
@@ -440,8 +407,6 @@ namespace KPA_KPI_Analyzer
             MenuInFront = true;
             pnl_NavigationPanelMax.BringToFront();
         }
-
-
 
 
 
@@ -497,10 +462,6 @@ namespace KPA_KPI_Analyzer
                 }
             }
         }
-
-
-
-
 
 
 
@@ -615,11 +576,7 @@ namespace KPA_KPI_Analyzer
         }
 
 
-
-
-
-
-
+    
         /// <summary>
         /// Refreshes the active template that is within pnl_activePage. This is called when the 
         /// application is made full screen and normal size. This is for the column chart located
@@ -714,7 +671,6 @@ namespace KPA_KPI_Analyzer
 
 
 
-
         /// <summary>
         /// Loads either the KPA or KPI overall data template depending on what navigation button was pressed.
         /// </summary>
@@ -756,9 +712,6 @@ namespace KPA_KPI_Analyzer
                 pnl_NavigationPanelMax.BringToFront();
             }
         }
-
-
-
 
 
 

@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using KPA_KPI_Analyzer.Diagnostics;
 using System.IO;
 using System.Web.Script.Serialization;
+using KPA_KPI_Analyzer.Values;
 
 namespace KPA_KPI_Analyzer.KPA_KPI_Overall
 {
@@ -245,7 +246,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
         {
             try
             {
-                if (Values.Globals.FocusedCountry == Values.Globals.Countries.UnitedStates)
+                if (Values.Globals.FocusedCountry == StringUtils.Country.UnitedStates)
                     dataJSONString = File.ReadAllText(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFile.US_Overall]);
                 else
                     dataJSONString = File.ReadAllText(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFile.MX_Overall]);
@@ -270,7 +271,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
             try
             {
                 dataJSONString = ser.Serialize(this);
-                if (Values.Globals.FocusedCountry == Values.Globals.Countries.UnitedStates)
+                if (Values.Globals.FocusedCountry == StringUtils.Country.UnitedStates)
                 {
                     File.WriteAllText(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFile.US_Overall], dataJSONString);
                 }

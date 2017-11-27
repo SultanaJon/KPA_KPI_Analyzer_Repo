@@ -12,30 +12,22 @@ namespace KPA_KPI_Analyzer
 {
     public partial class KPA_KPI_UI
     {
-        Thread usThread;
-        Thread mxThread;
-
-
-
+        #region FIELD DATA
 
         /// <summary>
-        /// When the threads seperate threads 'usThread' & 'mxThread' are performing the imports, We want to know when they have finished so we
-        /// can fully open the application to the user for viewing.
+        /// Thread to Load the United States data.
         /// </summary>
-        /// <param name="numImports">A integer value indicating the number of imports being performed</param>
-        /// <param name="compImports">A integer value indicating the number of imports completed.</param>
-        public void ImportProgress(int numImports, int compImports)
-        {
-            if ((numImports == compImports) && numImports != 0)
-            {
-                Importer.ImportComplete = true;
-            }
-        }
+        Thread usThread;
+
+        /// <summary>
+        /// Thread to load the Mexico data.
+        /// </summary>
+        Thread mxThread;
+
+        #endregion
 
 
-
-
-
+        #region EVENTS
 
         /// <summary>
         /// Triggered when PRPO reports enter the area of a drag & drop region.
@@ -53,10 +45,6 @@ namespace KPA_KPI_Analyzer
                 e.Effect = DragDropEffects.None;
             }
         }
-
-
-
-
 
 
 
@@ -120,5 +108,26 @@ namespace KPA_KPI_Analyzer
                 }
             }
         }
+
+        #endregion
+
+
+        #region HELPER FUNCTIONS
+
+        /// <summary>
+        /// When the threads seperate threads 'usThread' & 'mxThread' are performing the imports, We want to know when they have finished so we
+        /// can fully open the application to the user for viewing.
+        /// </summary>
+        /// <param name="numImports">A integer value indicating the number of imports being performed</param>
+        /// <param name="compImports">A integer value indicating the number of imports completed.</param>
+        public void ImportProgress(int numImports, int compImports)
+        {
+            if ((numImports == compImports) && numImports != 0)
+            {
+                Importer.ImportComplete = true;
+            }
+        }
+
+        #endregion
     }
 }

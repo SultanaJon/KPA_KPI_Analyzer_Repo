@@ -6,15 +6,17 @@ namespace KPA_KPI_Analyzer
 {
     public partial class KPA_KPI_UI
     {
+        #region FIELD DATA
+
+        /// <summary>
+        /// The section button that is currently active.
+        /// </summary>
         Button activeSectionBtn = new Button();
-        System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
+
+        #endregion
 
 
-
-
-
-
-
+        #region EVENTS
 
         /// <summary>
         /// Change the forecolor back to normal after the user performed a hover leave.
@@ -27,10 +29,6 @@ namespace KPA_KPI_Analyzer
             if (activeSectionBtn != btn)
                 btn.ForeColor = System.Drawing.Color.White;
         }
-
-
-
-
 
 
 
@@ -124,30 +122,31 @@ namespace KPA_KPI_Analyzer
             }
         }
 
+        #endregion
 
 
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private void SetActiveSectionBtn(Button btn)
-        {
-            activeSectionBtn = btn;
-            activeSectionBtn.BackColor = System.Drawing.Color.FromArgb(101, 198, 187);
-            activeSectionBtn.ForeColor = System.Drawing.Color.FromArgb(255, 255, 255);
-        }
-
-
-
+        #region HELPER FUNCTIONS
 
         /// <summary>
-        /// 
+        /// Set the current active section button back to its default state.
         /// </summary>
         private void SetActiveSectionBtnToDefault()
         {
             activeSectionBtn.BackColor = System.Drawing.Color.FromArgb(36, 41, 46);
             activeSectionBtn.ForeColor = System.Drawing.Color.FromArgb(103, 110, 117);
+        }
+
+
+
+        /// <summary>
+        /// Set the supplied button argument as the active section button
+        /// </summary>
+        /// <param name="btn">The button to make active</param>
+        private void SetActiveSectionBtn(Button btn)
+        {
+            activeSectionBtn = btn;
+            activeSectionBtn.BackColor = System.Drawing.Color.FromArgb(101, 198, 187);
+            activeSectionBtn.ForeColor = System.Drawing.Color.FromArgb(255, 255, 255);
         }
 
 
@@ -171,16 +170,15 @@ namespace KPA_KPI_Analyzer
 
 
 
-
-
         /// <summary>
         /// This function is used as a callback function for when the template controls are loaded and cateogries within 
         /// the templates are clicked, the label showing the current category is updated.
         /// </summary>
-        /// <param name="currentCategory"></param>
         private void UpdateCategoryStatus()
         {
             lbl_Category.Text = Globals.CurrCategory;
         }
+
+        #endregion
     }
 }

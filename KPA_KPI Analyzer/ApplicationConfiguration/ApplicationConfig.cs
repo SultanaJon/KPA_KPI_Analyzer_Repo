@@ -36,7 +36,7 @@ namespace KPA_KPI_Analyzer.ApplicationConfiguration
 
 
         /// <summary>
-        /// Internal class - The setting for the report settings.
+        /// public class - The setting for the report settings.
         /// </summary>
         public class ReportSettings
         {
@@ -112,7 +112,7 @@ namespace KPA_KPI_Analyzer.ApplicationConfiguration
 
 
         /// <summary>
-        /// Internal calss - The settings for the correlation feature.
+        /// public calss - The settings for the correlation feature.
         /// </summary>
         public class CorrelationSettings
         {

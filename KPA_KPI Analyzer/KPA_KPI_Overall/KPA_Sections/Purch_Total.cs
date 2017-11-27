@@ -5,6 +5,7 @@ using System;
 using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
+using KPA_KPI_Analyzer.Values;
 
 namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
 {
@@ -25,22 +26,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
 
 
 
-        public string Name { get { return "Purch Total"; } }
-
-
-        public enum CategorNames
-        {
-            PrReleaseConfEntry,
-        }
-
-        public string[] categoryNames =
-        {
-            "PR Release to Confirmation Entry"
-        };
-
-
-
-
         /// <summary>
         /// Loads the data for the specific KPA
         /// </summary>
@@ -55,7 +40,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 dt = new DataTable();
-                cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.KPA_PurchTotal_PRRelConfEntry) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                cmd = new OleDbCommand(StringUtils.KpaStringUtils.queries[(int)StringUtils.KpaStringUtils.Section.PurchTotal][(int)StringUtils.KpaStringUtils.Category.PurchTotal.PRRelConfEntry] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
 
                 da = new OleDbDataAdapter(cmd);
                 da.Fill(dt);

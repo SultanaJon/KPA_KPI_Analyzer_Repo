@@ -5,37 +5,35 @@ namespace KPA_KPI_Analyzer
 {
     public partial class KPA_KPI_UI
     {
+        #region FIELD DATA
+
+        /// <summary>
+        /// The active main navigation buttons
+        /// </summary>
         Bunifu.Framework.UI.BunifuFlatButton mainNavActiveBtn = new Bunifu.Framework.UI.BunifuFlatButton();
-
-        Panel mainNavActivePanel = new Panel() { Visible = false };
-        bool NavigationLocked = false;
-        bool MenuInFront = false;
-
-
-
-
-
-
-
 
 
         /// <summary>
-        /// Initiates when the user unfocuses from the navigation
+        /// The active panel if if KPA or KPI main navigation buttons are active.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void pnl_NavigationPanelMax_Leave(object sender, EventArgs e)
-        {
-            pnl_NavigationPanelMax.SendToBack();
-        }
+        Panel mainNavActivePanel = new Panel() { Visible = false };
 
 
+        /// <summary>
+        /// Boolean value indicating whether or not the navigation is locked from the user.
+        /// </summary>
+        bool NavigationLocked = false;
 
 
+        /// <summary>
+        /// Boolean value indicating whether or no the main navigation is in front.
+        /// </summary>
+        bool MenuInFront = false;
+
+        #endregion
 
 
-
-
+        #region EVENTS
 
         /// <summary>
         /// Triggered when the user clicks the navigation expander button.
@@ -55,13 +53,6 @@ namespace KPA_KPI_Analyzer
                 pnl_NavigationPanelMax.BringToFront();
             }
         }
-
-
-
-
-
-
-
 
 
         /// <summary>
@@ -129,23 +120,15 @@ namespace KPA_KPI_Analyzer
             }
         }
 
+        #endregion
 
 
-
-
-
-
-
-
-
-
-
-
-
+        #region HELPER FUNCTIONS
 
         /// <summary>
         /// This function will toggle the main navigation sections when either KPA or KPI buttons are clicked.
         /// </summary>
+        /// <param name="tag">The tag of the main navigation button that was clicked.</param>
         private void toggleMainNavSection(int tag)
         {
             switch (tag)
@@ -189,5 +172,7 @@ namespace KPA_KPI_Analyzer
                     break;
             }
         }
+
+        #endregion
     }
 }

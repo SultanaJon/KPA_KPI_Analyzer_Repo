@@ -11,15 +11,15 @@ namespace KPA_KPI_Analyzer.Correlation
         public CorrelationData()
         {
             rawData = new Dictionary<string, List<double>>();
-            foreach(Values.Globals.CorrelationMatrixIndexer index in Enum.GetValues(typeof(Values.Globals.CorrelationMatrixIndexer)))
+            foreach(Values.StringUtils.CorrelationStringUtils.CorrelationMatrixIndexer index in Enum.GetValues(typeof(Values.StringUtils.CorrelationStringUtils.CorrelationMatrixIndexer)))
             {
-                rawData.Add(Values.Globals.correlationHeaders[(int)index], new List<double>());
+                rawData.Add(Values.StringUtils.CorrelationStringUtils.correlationHeaders[(int)index], new List<double>());
             }
 
             correlationData = new Dictionary<string, List<double>>();
-            foreach (Values.Globals.CorrelationMatrixIndexer index in Enum.GetValues(typeof(Values.Globals.CorrelationMatrixIndexer)))
+            foreach (Values.StringUtils.CorrelationStringUtils.CorrelationMatrixIndexer index in Enum.GetValues(typeof(Values.StringUtils.CorrelationStringUtils.CorrelationMatrixIndexer)))
             {
-                correlationData.Add(Values.Globals.correlationHeaders[(int)index], new List<double>());
+                correlationData.Add(Values.StringUtils.CorrelationStringUtils.correlationHeaders[(int)index], new List<double>());
             }
         }
     }
