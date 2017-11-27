@@ -1000,46 +1000,17 @@ namespace KPA_KPI_Analyzer
             BuildQueryFilters();
             FilterUtils.FiltersLoaded = false;
 
-            HasFiltersAdded();
+            CheckFilterStatus();
 
-            if (Filters.ColumnFilters.Added)
-            {
-                Filters.SecondaryFilterQuery = filters;
-                Filters.FilterQuery = " AND " + filters;
-                Filters.ColumnFilters.Applied = true;
-            }
-            else
-            {
-                filters = string.Empty;
-                Filters.FilterQuery = filters;
-                Filters.SecondaryFilterQuery = filters;
-                Filters.ColumnFilters.Applied = false;
-            }
-
-
-            if (Filters.DateFilters.Added)
-            {
-                Filters.DateFilters.Applied = true;
-            }
-            else
-            {
-                Filters.DateFilters.Applied = false;
-            }
-
-
-            if (Filters.AdvancedFilters.AdvanceFiltersChanged())
-            {
-                Filters.AdvancedFilters.Applied = true;
-            }
-            else
-            {
-                Filters.AdvancedFilters.Applied = false;
-            }
-
+            // Update the checked items that are applied.
             UpdateColumnFilterCheckedItems();
             UpdateDateFilterCheckedItems();
             UpdateAdvancedFilterCheckedItems();
+
+            // Start the data load process.
             InitializeDataLoadProcess();
+
+            // Update the buttons.
             UpdateFilterButtons();
         }
     }

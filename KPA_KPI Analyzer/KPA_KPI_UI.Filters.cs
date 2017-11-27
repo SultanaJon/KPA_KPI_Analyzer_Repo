@@ -1319,8 +1319,30 @@ namespace KPA_KPI_Analyzer
 
 
             BuildQueryFilters();
+        
+            CheckFilterStatus();
+
+
+
+            // Toggles the variant tools within the menu strip based on certain conditions.
+            CheckActiveVariants();
+
+            // Check the filter status to update the variant tools.
+            UpdateVariantTools();
+            InitializeDataLoadProcess();
+        }
+
+
+
+
+
+        /// <summary>
+        /// Checks the status of the filters and applies them if they are added.
+        /// </summary>
+        public void CheckFilterStatus()
+        {
             HasFiltersAdded();
-            if(Filters.ColumnFilters.Added)
+            if (Filters.ColumnFilters.Added)
             {
                 Filters.SecondaryFilterQuery = filters;
                 filters = " AND " + filters;
@@ -1336,7 +1358,7 @@ namespace KPA_KPI_Analyzer
             }
 
 
-            if(Filters.DateFilters.Added)
+            if (Filters.DateFilters.Added)
             {
                 Filters.DateFilters.Applied = true;
             }
@@ -1346,7 +1368,7 @@ namespace KPA_KPI_Analyzer
             }
 
 
-            if(Filters.AdvancedFilters.AdvanceFiltersChanged())
+            if (Filters.AdvancedFilters.AdvanceFiltersChanged())
             {
                 Filters.AdvancedFilters.Applied = true;
             }
@@ -1354,14 +1376,6 @@ namespace KPA_KPI_Analyzer
             {
                 Filters.AdvancedFilters.Applied = false;
             }
-
-
-            // Toggles the variant tools within the menu strip based on certain conditions.
-            CheckActiveVariants();
-
-            // Check the filter status to update the variant tools.
-            UpdateVariantTools();
-            InitializeDataLoadProcess();
         }
 
 
