@@ -16,81 +16,6 @@ namespace KPA_KPI_Analyzer
 
         #endregion
 
-        #region PROPERTIES
-
-        /// <summary>
-        /// boolean value stating whether or not the user has checked filters to apply
-        /// </summary>
-        public static bool ColumnFiltersAdded { get; set; }
-
-
-
-
-        /// <summary>
-        /// boolean value stating whether or not the user has added a date range filters to either the pr or po creation date.
-        /// </summary>
-        public static bool DateFiltersAdded { get; set; }
-
-
-
-
-
-        public static bool AdvancedFiltersAdded { get; set; }
-
-
-
-
-
-        /// <summary>
-        /// boolean value indicating whether or not the user has applied the filters to the data.
-        /// </summary>
-        public static bool ColumnFiltersApplied { get; set; }
-
-
-
-
-
-        /// <summary>
-        /// boolean value indicating whether or not the user has applied date filters to the data
-        /// </summary>
-        public static bool DateFiltersApplied { get; set; }
-
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static bool AdvancedFiltersApplied { get; set; }
-
-
-
-        /// <summary>
-        /// boolean value indicating whether the program should filter by the pr date range.
-        /// </summary>
-        public static bool FilterByPrDate { get; set; }
-
-
-
-
-
-        /// <summary>
-        /// boolean vaule indicating whether the program should filter by the po date range.
-        /// </summary>
-        public static bool FilterByPoDate { get; set; }
-
-
-
-
-        /// <summary>
-        /// boolean value indicating whether the program should filter by the po date range.
-        /// </summary>
-        public static bool FilterByFinalRecDate { get; set; }
-        #endregion
-
-
-
-
         /// <summary>
         /// Updates the contents of the of the checked list boxes on the filters page.
         /// </summary>
@@ -428,262 +353,336 @@ namespace KPA_KPI_Analyzer
         {
             int index = 0;
 
-            // Project Number
-            if (Filters.ColumnFilters.projectNumber.Count > 0)
+            if(Filters.DateFilters.Applied)
             {
-                ChkdListBx_ProjectNumber.ItemCheck -= ckdListBox_ItemCheck;
-                foreach (string str in Filters.ColumnFilters.projectNumber)
+                if(Filters.DateFilters.FilterByPrDateRange)
                 {
-                    index = ChkdListBx_ProjectNumber.Items.IndexOf(str);
-                    if (index >= 0)
-                    {
-                        if (!ChkdListBx_ProjectNumber.GetItemChecked(index))
-                            ChkdListBx_ProjectNumber.SetItemChecked(index, true);
-                    }
+                    chkBox_PrDateRange.Checked = true;
+                    dp_PRFromDate.Value = Filters.DateFilters.PrFromDate;
+                    dp_PRToDate.Value = Filters.DateFilters.PrToDate;
                 }
-                ChkdListBx_ProjectNumber.ItemCheck += ckdListBox_ItemCheck;
-            }
 
-
-
-            // WBS Element
-            if (Filters.ColumnFilters.wbsElement.Count > 0)
-            {
-                ChkdListBx_WBSElement.ItemCheck -= ckdListBox_ItemCheck;
-                foreach (string str in Filters.ColumnFilters.wbsElement)
+                if(Filters.DateFilters.FilterByPoDateRange)
                 {
-                    index = ChkdListBx_WBSElement.Items.IndexOf(str);
-                    if (index >= 0)
-                    {
-                        if (!ChkdListBx_WBSElement.GetItemChecked(index))
-                            ChkdListBx_WBSElement.SetItemChecked(index, true);
-                    }
+                    chkBox_PoDateRange.Checked = true;
+                    dp_POFromDate.Value = Filters.DateFilters.PoFromDate;
+                    dp_POToDate.Value = Filters.DateFilters.PoToDate;
                 }
-                ChkdListBx_WBSElement.ItemCheck += ckdListBox_ItemCheck;
-            }
 
-            // Material
-            if (Filters.ColumnFilters.material.Count > 0)
-            {
-                ChkdListBx_Material.ItemCheck -= ckdListBox_ItemCheck;
-                foreach (string str in Filters.ColumnFilters.material)
+                if(Filters.DateFilters.FilterByFinalReceiptDate)
                 {
-                    index = ChkdListBx_Material.Items.IndexOf(str);
-                    if (index >= 0)
-                    {
-                        if (!ChkdListBx_Material.GetItemChecked(index))
-                            ChkdListBx_Material.SetItemChecked(index, true);
-                    }
+                    chkBox_FinalReceiptDate.Checked = true;
+                    dp_finalReceiptFromDate.Value = Filters.DateFilters.FinalReceiptFromDate;
+                    dp_finalReciptToDate.Value = Filters.DateFilters.FinalReceiptToDate;
                 }
-                ChkdListBx_Material.ItemCheck += ckdListBox_ItemCheck;
-            }
-
-
-            // Material Group
-            if (Filters.ColumnFilters.materialGroup.Count > 0)
-            {
-                ChkdListBx_MaterialGroup.ItemCheck -= ckdListBox_ItemCheck;
-                foreach (string str in Filters.ColumnFilters.materialGroup)
-                {
-                    index = ChkdListBx_MaterialGroup.Items.IndexOf(str);
-                    if (index >= 0)
-                    {
-                        if (!ChkdListBx_MaterialGroup.GetItemChecked(index))
-                            ChkdListBx_MaterialGroup.SetItemChecked(index, true);
-                    }
-                }
-                ChkdListBx_MaterialGroup.ItemCheck += ckdListBox_ItemCheck;
-            }
-
-
-            // Vendor
-            if (Filters.ColumnFilters.vendor.Count > 0)
-            {
-                ChkdListBx_Vendor.ItemCheck -= ckdListBox_ItemCheck;
-                foreach (string str in Filters.ColumnFilters.vendor)
-                {
-                    index = ChkdListBx_Vendor.Items.IndexOf(str);
-                    if (index >= 0)
-                    {
-                        if (!ChkdListBx_Vendor.GetItemChecked(index))
-                            ChkdListBx_Vendor.SetItemChecked(index, true);
-                    }
-                }
-                ChkdListBx_Vendor.ItemCheck += ckdListBox_ItemCheck;
-            }
-
-
-            // Vendor Description
-            if (Filters.ColumnFilters.vendorDesc.Count > 0)
-            {
-                ChkdListBx_VendorDesc.ItemCheck -= ckdListBox_ItemCheck;
-                foreach (string str in Filters.ColumnFilters.vendorDesc)
-                {
-                    index = ChkdListBx_VendorDesc.Items.IndexOf(str);
-                    if (index >= 0)
-                    {
-                        if (!ChkdListBx_VendorDesc.GetItemChecked(index))
-                            ChkdListBx_VendorDesc.SetItemChecked(index, true);
-                    }
-                }
-                ChkdListBx_VendorDesc.ItemCheck += ckdListBox_ItemCheck;
-            }
-
-
-            // PR Purch Group
-            if (Filters.ColumnFilters.purchGroup.Count > 0)
-            {
-                ChkdListBx_PrPurchGroup.ItemCheck -= ckdListBox_ItemCheck;
-                foreach (string str in Filters.ColumnFilters.purchGroup)
-                {
-                    index = ChkdListBx_PrPurchGroup.Items.IndexOf(str);
-                    if (index >= 0)
-                    {
-                        if (!ChkdListBx_PrPurchGroup.GetItemChecked(index))
-                            ChkdListBx_PrPurchGroup.SetItemChecked(index, true);
-                    }
-                }
-                ChkdListBx_PrPurchGroup.ItemCheck += ckdListBox_ItemCheck;
-            }
-
-
-
-            // PO Purch Group
-            if (Filters.ColumnFilters.poPurchGroup.Count > 0)
-            {
-                ChkdListBx_PoPurchGroup.ItemCheck -= ckdListBox_ItemCheck;
-                foreach (string str in Filters.ColumnFilters.poPurchGroup)
-                {
-                    index = ChkdListBx_PoPurchGroup.Items.IndexOf(str);
-                    if (index >= 0)
-                    {
-                        if (!ChkdListBx_PoPurchGroup.GetItemChecked(index))
-                            ChkdListBx_PoPurchGroup.SetItemChecked(index, true);
-                    }
-                }
-                ChkdListBx_PoPurchGroup.ItemCheck += ckdListBox_ItemCheck;
             }
 
 
 
 
-            // IR Supp Name
-            if (Filters.ColumnFilters.irSuppName.Count > 0)
+
+            if(Filters.AdvancedFilters.Applied)
             {
-                ChkdListBx_IRSuppName.ItemCheck -= ckdListBox_ItemCheck;
-                foreach (string str in Filters.ColumnFilters.irSuppName)
+                if(Filters.AdvancedFilters.FilterByServicePrPo)
                 {
-                    index = ChkdListBx_IRSuppName.Items.IndexOf(str);
-                    if (index >= 0)
-                    {
-                        if (!ChkdListBx_IRSuppName.GetItemChecked(index))
-                            ChkdListBx_IRSuppName.SetItemChecked(index, true);
-                    }
+                    chkBox_servicePrPo.Checked = false;
                 }
-                ChkdListBx_IRSuppName.ItemCheck += ckdListBox_ItemCheck;
+
+                if(Filters.AdvancedFilters.FilterBySteelPrPo)
+                {
+                    chkBox_servicePrPo.Checked = false;
+                }
+
+                if (Filters.AdvancedFilters.FilterByPouPrPo)
+                {
+                    chkBox_servicePrPo.Checked = false;
+                }
+
+                if (Filters.AdvancedFilters.FilterByIntercompPo)
+                {
+                    chkBox_servicePrPo.Checked = false;
+                }
+
+                if (Filters.AdvancedFilters.FilterByCodifiedMatNonSubcont)
+                {
+                    chkBox_servicePrPo.Checked = false;
+                }
+
+                if (Filters.AdvancedFilters.FilterByCodifiedMatSubcont)
+                {
+                    chkBox_servicePrPo.Checked = false;
+                }
+
+                if (Filters.AdvancedFilters.FilterByManualPr)
+                {
+                    chkBox_servicePrPo.Checked = false;
+                }
             }
 
 
 
-            // Fxd Supp Name
-            if (Filters.ColumnFilters.fxdSuppName.Count > 0)
+
+
+            if (Filters.ColumnFilters.Applied)
             {
-                ChkdListBx_FxdSuppName.ItemCheck -= ckdListBox_ItemCheck;
-                foreach (string str in Filters.ColumnFilters.fxdSuppName)
+                // Project Number
+                if (Filters.ColumnFilters.projectNumber.Count > 0)
                 {
-                    index = ChkdListBx_FxdSuppName.Items.IndexOf(str);
-                    if (index >= 0)
+                    ChkdListBx_ProjectNumber.ItemCheck -= ckdListBox_ItemCheck;
+                    foreach (string str in Filters.ColumnFilters.projectNumber)
                     {
-                        if (!ChkdListBx_FxdSuppName.GetItemChecked(index))
-                            ChkdListBx_FxdSuppName.SetItemChecked(index, true);
+                        index = ChkdListBx_ProjectNumber.Items.IndexOf(str);
+                        if (index >= 0)
+                        {
+                            if (!ChkdListBx_ProjectNumber.GetItemChecked(index))
+                                ChkdListBx_ProjectNumber.SetItemChecked(index, true);
+                        }
                     }
+                    ChkdListBx_ProjectNumber.ItemCheck += ckdListBox_ItemCheck;
                 }
-                ChkdListBx_FxdSuppName.ItemCheck += ckdListBox_ItemCheck;
-            }
 
 
-            // Dsrd Supp Name
-            if (Filters.ColumnFilters.dsrdSuppName.Count > 0)
-            {
-                ChkdListBx_DsrdSuppName.ItemCheck -= ckdListBox_ItemCheck;
-                foreach (string str in Filters.ColumnFilters.dsrdSuppName)
+
+                // WBS Element
+                if (Filters.ColumnFilters.wbsElement.Count > 0)
                 {
-                    index = ChkdListBx_DsrdSuppName.Items.IndexOf(str);
-                    if (index >= 0)
+                    ChkdListBx_WBSElement.ItemCheck -= ckdListBox_ItemCheck;
+                    foreach (string str in Filters.ColumnFilters.wbsElement)
                     {
-                        if (!ChkdListBx_DsrdSuppName.GetItemChecked(index))
-                            ChkdListBx_DsrdSuppName.SetItemChecked(index, true);
+                        index = ChkdListBx_WBSElement.Items.IndexOf(str);
+                        if (index >= 0)
+                        {
+                            if (!ChkdListBx_WBSElement.GetItemChecked(index))
+                                ChkdListBx_WBSElement.SetItemChecked(index, true);
+                        }
                     }
+                    ChkdListBx_WBSElement.ItemCheck += ckdListBox_ItemCheck;
                 }
-                ChkdListBx_DsrdSuppName.ItemCheck += ckdListBox_ItemCheck;
-            }
 
 
-            // Commodity Category
-            if (Filters.ColumnFilters.commCategory.Count > 0)
-            {
-                ChkdListBx_CommodityCat.ItemCheck -= ckdListBox_ItemCheck;
-                foreach (string str in Filters.ColumnFilters.commCategory)
+                // Material
+                if (Filters.ColumnFilters.material.Count > 0)
                 {
-                    index = ChkdListBx_CommodityCat.Items.IndexOf(str);
-                    if (index >= 0)
+                    ChkdListBx_Material.ItemCheck -= ckdListBox_ItemCheck;
+                    foreach (string str in Filters.ColumnFilters.material)
                     {
-                        if (!ChkdListBx_CommodityCat.GetItemChecked(index))
-                            ChkdListBx_CommodityCat.SetItemChecked(index, true);
+                        index = ChkdListBx_Material.Items.IndexOf(str);
+                        if (index >= 0)
+                        {
+                            if (!ChkdListBx_Material.GetItemChecked(index))
+                                ChkdListBx_Material.SetItemChecked(index, true);
+                        }
                     }
+                    ChkdListBx_Material.ItemCheck += ckdListBox_ItemCheck;
                 }
-                ChkdListBx_CommodityCat.ItemCheck += ckdListBox_ItemCheck;
-            }
 
 
-            // Escaped
-            if (Filters.ColumnFilters.escaped.Count > 0)
-            {
-                ChkdListBx_Escaped.ItemCheck -= ckdListBox_ItemCheck;
-                foreach (string str in Filters.ColumnFilters.escaped)
+                // Material Group
+                if (Filters.ColumnFilters.materialGroup.Count > 0)
                 {
-                    index = ChkdListBx_Escaped.Items.IndexOf(str);
-                    if (index >= 0)
+                    ChkdListBx_MaterialGroup.ItemCheck -= ckdListBox_ItemCheck;
+                    foreach (string str in Filters.ColumnFilters.materialGroup)
                     {
-                        if (!ChkdListBx_Escaped.GetItemChecked(index))
-                            ChkdListBx_Escaped.SetItemChecked(index, true);
+                        index = ChkdListBx_MaterialGroup.Items.IndexOf(str);
+                        if (index >= 0)
+                        {
+                            if (!ChkdListBx_MaterialGroup.GetItemChecked(index))
+                                ChkdListBx_MaterialGroup.SetItemChecked(index, true);
+                        }
                     }
+                    ChkdListBx_MaterialGroup.ItemCheck += ckdListBox_ItemCheck;
                 }
-                ChkdListBx_Escaped.ItemCheck += ckdListBox_ItemCheck;
-            }
 
 
-            // PO Document Type
-            if (Filters.ColumnFilters.poDocumentType.Count > 0)
-            {
-                ChkdListBx_poDocumentType.ItemCheck -= ckdListBox_ItemCheck;
-                foreach (string str in Filters.ColumnFilters.poDocumentType)
+                // Vendor
+                if (Filters.ColumnFilters.vendor.Count > 0)
                 {
-                    index = ChkdListBx_poDocumentType.Items.IndexOf(str);
-                    if (index >= 0)
+                    ChkdListBx_Vendor.ItemCheck -= ckdListBox_ItemCheck;
+                    foreach (string str in Filters.ColumnFilters.vendor)
                     {
-                        if (!ChkdListBx_poDocumentType.GetItemChecked(index))
-                            ChkdListBx_poDocumentType.SetItemChecked(index, true);
+                        index = ChkdListBx_Vendor.Items.IndexOf(str);
+                        if (index >= 0)
+                        {
+                            if (!ChkdListBx_Vendor.GetItemChecked(index))
+                                ChkdListBx_Vendor.SetItemChecked(index, true);
+                        }
                     }
+                    ChkdListBx_Vendor.ItemCheck += ckdListBox_ItemCheck;
                 }
-                ChkdListBx_poDocumentType.ItemCheck += ckdListBox_ItemCheck;
-            }
 
 
-            // Production Order Material
-            if (Filters.ColumnFilters.prodOrderMat.Count > 0)
-            {
-                ChkdListBx_productionOrderMat.ItemCheck -= ckdListBox_ItemCheck;
-                foreach (string str in Filters.ColumnFilters.prodOrderMat)
+                // Vendor Description
+                if (Filters.ColumnFilters.vendorDesc.Count > 0)
                 {
-                    index = ChkdListBx_productionOrderMat.Items.IndexOf(str);
-                    if (index >= 0)
+                    ChkdListBx_VendorDesc.ItemCheck -= ckdListBox_ItemCheck;
+                    foreach (string str in Filters.ColumnFilters.vendorDesc)
                     {
-                        if (!ChkdListBx_productionOrderMat.GetItemChecked(index))
-                            ChkdListBx_productionOrderMat.SetItemChecked(index, true);
+                        index = ChkdListBx_VendorDesc.Items.IndexOf(str);
+                        if (index >= 0)
+                        {
+                            if (!ChkdListBx_VendorDesc.GetItemChecked(index))
+                                ChkdListBx_VendorDesc.SetItemChecked(index, true);
+                        }
                     }
+                    ChkdListBx_VendorDesc.ItemCheck += ckdListBox_ItemCheck;
                 }
-                ChkdListBx_productionOrderMat.ItemCheck += ckdListBox_ItemCheck;
+
+
+                // PR Purch Group
+                if (Filters.ColumnFilters.purchGroup.Count > 0)
+                {
+                    ChkdListBx_PrPurchGroup.ItemCheck -= ckdListBox_ItemCheck;
+                    foreach (string str in Filters.ColumnFilters.purchGroup)
+                    {
+                        index = ChkdListBx_PrPurchGroup.Items.IndexOf(str);
+                        if (index >= 0)
+                        {
+                            if (!ChkdListBx_PrPurchGroup.GetItemChecked(index))
+                                ChkdListBx_PrPurchGroup.SetItemChecked(index, true);
+                        }
+                    }
+                    ChkdListBx_PrPurchGroup.ItemCheck += ckdListBox_ItemCheck;
+                }
+
+
+
+                // PO Purch Group
+                if (Filters.ColumnFilters.poPurchGroup.Count > 0)
+                {
+                    ChkdListBx_PoPurchGroup.ItemCheck -= ckdListBox_ItemCheck;
+                    foreach (string str in Filters.ColumnFilters.poPurchGroup)
+                    {
+                        index = ChkdListBx_PoPurchGroup.Items.IndexOf(str);
+                        if (index >= 0)
+                        {
+                            if (!ChkdListBx_PoPurchGroup.GetItemChecked(index))
+                                ChkdListBx_PoPurchGroup.SetItemChecked(index, true);
+                        }
+                    }
+                    ChkdListBx_PoPurchGroup.ItemCheck += ckdListBox_ItemCheck;
+                }
+
+
+
+
+                // IR Supp Name
+                if (Filters.ColumnFilters.irSuppName.Count > 0)
+                {
+                    ChkdListBx_IRSuppName.ItemCheck -= ckdListBox_ItemCheck;
+                    foreach (string str in Filters.ColumnFilters.irSuppName)
+                    {
+                        index = ChkdListBx_IRSuppName.Items.IndexOf(str);
+                        if (index >= 0)
+                        {
+                            if (!ChkdListBx_IRSuppName.GetItemChecked(index))
+                                ChkdListBx_IRSuppName.SetItemChecked(index, true);
+                        }
+                    }
+                    ChkdListBx_IRSuppName.ItemCheck += ckdListBox_ItemCheck;
+                }
+
+
+
+                // Fxd Supp Name
+                if (Filters.ColumnFilters.fxdSuppName.Count > 0)
+                {
+                    ChkdListBx_FxdSuppName.ItemCheck -= ckdListBox_ItemCheck;
+                    foreach (string str in Filters.ColumnFilters.fxdSuppName)
+                    {
+                        index = ChkdListBx_FxdSuppName.Items.IndexOf(str);
+                        if (index >= 0)
+                        {
+                            if (!ChkdListBx_FxdSuppName.GetItemChecked(index))
+                                ChkdListBx_FxdSuppName.SetItemChecked(index, true);
+                        }
+                    }
+                    ChkdListBx_FxdSuppName.ItemCheck += ckdListBox_ItemCheck;
+                }
+
+
+                // Dsrd Supp Name
+                if (Filters.ColumnFilters.dsrdSuppName.Count > 0)
+                {
+                    ChkdListBx_DsrdSuppName.ItemCheck -= ckdListBox_ItemCheck;
+                    foreach (string str in Filters.ColumnFilters.dsrdSuppName)
+                    {
+                        index = ChkdListBx_DsrdSuppName.Items.IndexOf(str);
+                        if (index >= 0)
+                        {
+                            if (!ChkdListBx_DsrdSuppName.GetItemChecked(index))
+                                ChkdListBx_DsrdSuppName.SetItemChecked(index, true);
+                        }
+                    }
+                    ChkdListBx_DsrdSuppName.ItemCheck += ckdListBox_ItemCheck;
+                }
+
+
+                // Commodity Category
+                if (Filters.ColumnFilters.commCategory.Count > 0)
+                {
+                    ChkdListBx_CommodityCat.ItemCheck -= ckdListBox_ItemCheck;
+                    foreach (string str in Filters.ColumnFilters.commCategory)
+                    {
+                        index = ChkdListBx_CommodityCat.Items.IndexOf(str);
+                        if (index >= 0)
+                        {
+                            if (!ChkdListBx_CommodityCat.GetItemChecked(index))
+                                ChkdListBx_CommodityCat.SetItemChecked(index, true);
+                        }
+                    }
+                    ChkdListBx_CommodityCat.ItemCheck += ckdListBox_ItemCheck;
+                }
+
+
+                // Escaped
+                if (Filters.ColumnFilters.escaped.Count > 0)
+                {
+                    ChkdListBx_Escaped.ItemCheck -= ckdListBox_ItemCheck;
+                    foreach (string str in Filters.ColumnFilters.escaped)
+                    {
+                        index = ChkdListBx_Escaped.Items.IndexOf(str);
+                        if (index >= 0)
+                        {
+                            if (!ChkdListBx_Escaped.GetItemChecked(index))
+                                ChkdListBx_Escaped.SetItemChecked(index, true);
+                        }
+                    }
+                    ChkdListBx_Escaped.ItemCheck += ckdListBox_ItemCheck;
+                }
+
+
+                // PO Document Type
+                if (Filters.ColumnFilters.poDocumentType.Count > 0)
+                {
+                    ChkdListBx_poDocumentType.ItemCheck -= ckdListBox_ItemCheck;
+                    foreach (string str in Filters.ColumnFilters.poDocumentType)
+                    {
+                        index = ChkdListBx_poDocumentType.Items.IndexOf(str);
+                        if (index >= 0)
+                        {
+                            if (!ChkdListBx_poDocumentType.GetItemChecked(index))
+                                ChkdListBx_poDocumentType.SetItemChecked(index, true);
+                        }
+                    }
+                    ChkdListBx_poDocumentType.ItemCheck += ckdListBox_ItemCheck;
+                }
+
+
+                // Production Order Material
+                if (Filters.ColumnFilters.prodOrderMat.Count > 0)
+                {
+                    ChkdListBx_productionOrderMat.ItemCheck -= ckdListBox_ItemCheck;
+                    foreach (string str in Filters.ColumnFilters.prodOrderMat)
+                    {
+                        index = ChkdListBx_productionOrderMat.Items.IndexOf(str);
+                        if (index >= 0)
+                        {
+                            if (!ChkdListBx_productionOrderMat.GetItemChecked(index))
+                                ChkdListBx_productionOrderMat.SetItemChecked(index, true);
+                        }
+                    }
+                    ChkdListBx_productionOrderMat.ItemCheck += ckdListBox_ItemCheck;
+                }
             }
         }
 
@@ -1254,7 +1253,7 @@ namespace KPA_KPI_Analyzer
         {
             GetCheckedColumnFilters();
 
-            if (FilterByPrDate)
+            if (Filters.DateFilters.FilterByPrDateRange)
             {
                 if (CheckDateRange(0))
                 {
@@ -1274,7 +1273,7 @@ namespace KPA_KPI_Analyzer
             }
 
 
-            if(FilterByPoDate)
+            if(Filters.DateFilters.FilterByPoDateRange)
             {
                 if (CheckDateRange(2))
                 {
@@ -1295,7 +1294,7 @@ namespace KPA_KPI_Analyzer
 
 
 
-            if (FilterByFinalRecDate)
+            if (Filters.DateFilters.FilterByFinalReceiptDate)
             {
                 if (CheckDateRange(4))
                 {
@@ -1318,39 +1317,39 @@ namespace KPA_KPI_Analyzer
 
             BuildQueryFilters();
             HasFiltersAdded();
-            if(ColumnFiltersAdded)
+            if(Filters.ColumnFilters.Added)
             {
                 Filters.SecondaryFilterQuery = filters;
                 filters = " AND " + filters;
                 Filters.FilterQuery = filters;
-                ColumnFiltersApplied = true;
+                Filters.ColumnFilters.Applied = true;
             }
             else
             {
                 filters = string.Empty;
                 Filters.FilterQuery = filters;
                 Filters.SecondaryFilterQuery = filters;
-                ColumnFiltersApplied = false;
+                Filters.ColumnFilters.Applied = false;
             }
 
 
-            if(DateFiltersAdded)
+            if(Filters.DateFilters.Added)
             {
-                DateFiltersApplied = true;
+                Filters.DateFilters.Applied = true;
             }
             else
             {
-                DateFiltersApplied = false;
+                Filters.DateFilters.Applied = false;
             }
 
 
             if(Filters.AdvancedFilters.AdvanceFiltersChanged())
             {
-                AdvancedFiltersApplied = true;
+                Filters.AdvancedFilters.Applied = true;
             }
             else
             {
-                AdvancedFiltersApplied = false;
+                Filters.AdvancedFilters.Applied = false;
             }
 
 
@@ -1396,9 +1395,6 @@ namespace KPA_KPI_Analyzer
                     addVariantToolStripMenuItem.Enabled = false;
             }
         }
-
-
-
 
 
 
@@ -1454,12 +1450,13 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         private void ResetApplied()
         {
-            ColumnFiltersApplied = false;
-            AdvancedFiltersApplied = false;
-            DateFiltersApplied = false;
-            FilterByPrDate = false;
-            FilterByPoDate = false;
-            FilterByFinalRecDate = false;
+            Filters.ColumnFilters.Applied = false;
+            Filters.AdvancedFilters.Applied = false;
+            Filters.DateFilters.Applied = false;
+
+            Filters.DateFilters.FilterByPrDateRange = false;
+            Filters.DateFilters.FilterByPoDateRange = false;
+            Filters.DateFilters.FilterByFinalReceiptDate = false;
         }
 
 
@@ -1471,9 +1468,9 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         private void ResetAdded()
         {
-            ColumnFiltersAdded = false;
-            AdvancedFiltersAdded = false;
-            DateFiltersAdded = false;
+            Filters.ColumnFilters.Added = false;
+            Filters.AdvancedFilters.Added = false;
+            Filters.DateFilters.Added = false;
         }
 
 
@@ -1485,34 +1482,39 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         public void HasFiltersAdded()
         {
-            ColumnFiltersAdded = false;
+            Filters.ColumnFilters.Added = false;
+            Filters.AdvancedFilters.Added = false;
+            Filters.DateFilters.Added = false;
 
             // Check if the user enable the option to filter by PR or PO date range.
-            if (FilterByPrDate || FilterByPoDate || FilterByFinalRecDate)
-                DateFiltersAdded = true;
+            if (Filters.DateFilters.FilterByPrDateRange || Filters.DateFilters.FilterByPoDateRange || Filters.DateFilters.FilterByFinalReceiptDate)
+                Filters.DateFilters.Added = true;
              else
-                DateFiltersAdded = false;
+                Filters.DateFilters.Added = false;
 
             // Check if the user has changed the advanced filters
-            AdvancedFiltersAdded = Filters.AdvancedFilters.AdvanceFiltersChanged();
+            Filters.AdvancedFilters.Added = Filters.AdvancedFilters.AdvanceFiltersChanged();
 
             // Check if the user selected any filters from the following check list boxes.
-            if (Filters.ColumnFilters.projectNumber.Count > 0) ColumnFiltersAdded = true;
-            if (Filters.ColumnFilters.wbsElement.Count > 0) ColumnFiltersAdded = true;
-            if (Filters.ColumnFilters.material.Count > 0) ColumnFiltersAdded = true;
-            if (Filters.ColumnFilters.material.Count > 0) ColumnFiltersAdded = true;
-            if (Filters.ColumnFilters.materialGroup.Count > 0) ColumnFiltersAdded = true;
-            if (Filters.ColumnFilters.vendor.Count > 0) ColumnFiltersAdded = true;
-            if (Filters.ColumnFilters.vendorDesc.Count > 0) ColumnFiltersAdded = true;
-            if (Filters.ColumnFilters.purchGroup.Count > 0) ColumnFiltersAdded = true;
-            if (Filters.ColumnFilters.poPurchGroup.Count > 0) ColumnFiltersAdded = true;
-            if (Filters.ColumnFilters.irSuppName.Count > 0) ColumnFiltersAdded = true;
-            if (Filters.ColumnFilters.fxdSuppName.Count > 0) ColumnFiltersAdded = true;
-            if (Filters.ColumnFilters.dsrdSuppName.Count > 0) ColumnFiltersAdded = true;
-            if (Filters.ColumnFilters.commCategory.Count > 0) ColumnFiltersAdded = true;
-            if (Filters.ColumnFilters.escaped.Count > 0) ColumnFiltersAdded = true;
-            if (Filters.ColumnFilters.poDocumentType.Count > 0) ColumnFiltersAdded = true;
-            if (Filters.ColumnFilters.prodOrderMat.Count > 0) ColumnFiltersAdded = true;
+            if (Filters.ColumnFilters.projectNumber.Count > 0
+                || Filters.ColumnFilters.wbsElement.Count > 0
+                || Filters.ColumnFilters.material.Count > 0
+                || Filters.ColumnFilters.material.Count > 0
+                || Filters.ColumnFilters.materialGroup.Count > 0
+                || Filters.ColumnFilters.vendor.Count > 0
+                || Filters.ColumnFilters.vendorDesc.Count > 0
+                || Filters.ColumnFilters.purchGroup.Count > 0
+                || Filters.ColumnFilters.poPurchGroup.Count > 0
+                || Filters.ColumnFilters.irSuppName.Count > 0
+                || Filters.ColumnFilters.fxdSuppName.Count > 0
+                || Filters.ColumnFilters.dsrdSuppName.Count > 0
+                || Filters.ColumnFilters.commCategory.Count > 0
+                || Filters.ColumnFilters.escaped.Count > 0
+                || Filters.ColumnFilters.poDocumentType.Count > 0
+                || Filters.ColumnFilters.prodOrderMat.Count > 0)
+            {
+                Filters.ColumnFilters.Added = true;
+            }
         }
 
 
@@ -1578,7 +1580,7 @@ namespace KPA_KPI_Analyzer
         /// <param name="e"></param>
         private void dp_DateRangeChange(object sender, EventArgs e)
         {
-            if(FilterByPrDate || FilterByPoDate || FilterByFinalRecDate)
+            if(Filters.DateFilters.FilterByPrDateRange || Filters.DateFilters.FilterByPoDateRange || Filters.DateFilters.FilterByFinalReceiptDate)
             {
                 Bunifu.Framework.UI.BunifuDatepicker dp = (Bunifu.Framework.UI.BunifuDatepicker)sender;
                 int tag = int.Parse(dp.Tag.ToString());
@@ -1668,7 +1670,7 @@ namespace KPA_KPI_Analyzer
         private void UpdateFilterButtons()
         {
             HasFiltersAdded();
-            if (ColumnFiltersAdded || DateFiltersAdded || AdvancedFiltersAdded)
+            if (Filters.ColumnFilters.Added || Filters.DateFilters.Added || Filters.AdvancedFilters.Added)
             {
                 EnableApplyFiltersButton();
                 EnableClearSelectedButton();
@@ -1680,7 +1682,7 @@ namespace KPA_KPI_Analyzer
             }
 
 
-            if (ColumnFiltersApplied || DateFiltersApplied || AdvancedFiltersApplied)
+            if (Filters.ColumnFilters.Applied || Filters.DateFilters.Applied || Filters.AdvancedFilters.Applied)
             {
                 EnableClearFiltersButton();
             }
@@ -1706,36 +1708,36 @@ namespace KPA_KPI_Analyzer
                     // Check if the user has chosen the option to filter by PR Date.
                     if (chkBox_PrDateRange.Checked)
                     {
-                        FilterByPrDate = true;
+                        Filters.DateFilters.FilterByPrDateRange = true;
                         CheckDateRange(0);
                     }
                     else
                     {
-                        FilterByPrDate = false;
+                        Filters.DateFilters.FilterByPrDateRange = false;
                     }
                     break;
                 case 1:
                     // Check if the user has chosen the option to filter by PO Date.
                     if (chkBox_PoDateRange.Checked)
                     {
-                        FilterByPoDate = true;
+                        Filters.DateFilters.FilterByPoDateRange = true;
                         CheckDateRange(2);
                     }
                     else
                     {
-                        FilterByPoDate = false;
+                        Filters.DateFilters.FilterByPoDateRange = false;
                     }
                     break;
                 case 2:
                     // Check if the user has chosen the option to filter by final receipt date.
                     if (chkBox_FinalReceiptDate.Checked)
                     {
-                        FilterByFinalRecDate = true;
+                        Filters.DateFilters.FilterByFinalReceiptDate = true;
                         CheckDateRange(2);
                     }
                     else
                     {
-                        FilterByFinalRecDate = false;
+                        Filters.DateFilters.FilterByFinalReceiptDate = false;
                     }
                     break;
                 case 3:

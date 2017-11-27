@@ -77,6 +77,11 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             #endregion
 
             #region PROPERTIES
+            public static bool Added { get; set; }
+            public static bool Applied { get; set; }
+
+
+
             /// <summary>
             /// Boolean value indicating whether or not the user is excluding Service POs
             /// </summary>
@@ -238,6 +243,9 @@ namespace KPA_KPI_Analyzer.FilterFeeature
         /// </summary>
         public struct ColumnFilters
         {
+            public static bool Added { get; set; }
+            public static bool Applied { get; set; }
+
             #region FIELD DATA
             public static List<string> projectNumber = new List<string>();
             public static List<string> wbsElement = new List<string>();
@@ -290,6 +298,8 @@ namespace KPA_KPI_Analyzer.FilterFeeature
         public struct DateFilters
         {
             #region PROPERTIES
+            public static bool Added { get; set; }
+            public static bool Applied { get; set; }
             /// <summary>
             /// Boolean value indicating whether or not the user wants to filter by PR date range
             /// </summary>
@@ -384,7 +394,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
                     {
                         string[] prDtSplitRange = prDateRange.Split(' ');
                         PrFromDate = DateTime.Parse(prDtSplitRange[0]);
-                        PrToDate = DateTime.Parse(prDtSplitRange[0]);
+                        PrToDate = DateTime.Parse(prDtSplitRange[2]);
                         FilterByPrDateRange = true;
                     }
                     else
@@ -396,7 +406,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
                     {
                         string[] poDtSplitRange = poDateRange.Split(' ');
                         PoFromDate = DateTime.Parse(poDtSplitRange[0]);
-                        PrToDate = DateTime.Parse(poDtSplitRange[0]);
+                        PrToDate = DateTime.Parse(poDtSplitRange[2]);
                         FilterByPoDateRange = true;
                     }
                     else
@@ -408,7 +418,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
                     {
                         string[] finRecDtSplitRange = finRecDateRange.Split(' ');
                         FinalReceiptFromDate = DateTime.Parse(finRecDtSplitRange[0]);
-                        FinalReceiptToDate = DateTime.Parse(finRecDtSplitRange[0]);
+                        FinalReceiptToDate = DateTime.Parse(finRecDtSplitRange[2]);
                         FilterByFinalReceiptDate = true;
                     }
                     else
@@ -466,13 +476,13 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
 
             if(DateFilters.FilterByPrDateRange)
-                prDateRange = string.Format(dateFormat, DateFilters.PrFromDate) + "  to " + string.Format(dateFormat, DateFilters.PrToDate);
+                prDateRange = string.Format(dateFormat, DateFilters.PrFromDate) + " to " + string.Format(dateFormat, DateFilters.PrToDate);
 
             if(DateFilters.FilterByPoDateRange)
-                poDateRange = string.Format(dateFormat, DateFilters.PoFromDate) + "  to " + string.Format(dateFormat, DateFilters.PoToDate);
+                poDateRange = string.Format(dateFormat, DateFilters.PoFromDate) + " to " + string.Format(dateFormat, DateFilters.PoToDate);
 
             if (DateFilters.FilterByFinalReceiptDate)
-                finalRecDateRange = string.Format(dateFormat, DateFilters.FinalReceiptFromDate) + "  to " + string.Format(dateFormat, DateFilters.FinalReceiptToDate);
+                finalRecDateRange = string.Format(dateFormat, DateFilters.FinalReceiptFromDate) + " to " + string.Format(dateFormat, DateFilters.FinalReceiptToDate);
 
 
             // Get all of the unselected advanced filters

@@ -23,6 +23,9 @@ using System.Data.OleDb;
 using System.IO;
 using System.Windows.Forms;
 
+
+
+
 namespace KPA_KPI_Analyzer
 {
     public partial class KPA_KPI_UI : Form
@@ -963,7 +966,7 @@ namespace KPA_KPI_Analyzer
         public void UpdateVariantTools()
         {
             // If the user has any filters applied, allow them to add variants, otherwise block this ability.
-            if (DateFiltersApplied || AdvancedFiltersApplied || ColumnFiltersApplied)
+            if (Filters.ColumnFilters.Applied || Filters.AdvancedFilters.Applied || Filters.DateFilters.Applied)
                 addVariantToolStripMenuItem.Enabled = true;
             else
                 addVariantToolStripMenuItem.Enabled = false;
@@ -999,38 +1002,38 @@ namespace KPA_KPI_Analyzer
 
             HasFiltersAdded();
 
-            if (ColumnFiltersAdded)
+            if (Filters.ColumnFilters.Added)
             {
                 Filters.SecondaryFilterQuery = filters;
                 Filters.FilterQuery = " AND " + filters;
-                ColumnFiltersApplied = true;
+                Filters.ColumnFilters.Applied = true;
             }
             else
             {
                 filters = string.Empty;
                 Filters.FilterQuery = filters;
                 Filters.SecondaryFilterQuery = filters;
-                ColumnFiltersApplied = false;
+                Filters.ColumnFilters.Applied = false;
             }
 
 
-            if (DateFiltersAdded)
+            if (Filters.DateFilters.Added)
             {
-                DateFiltersApplied = true;
+                Filters.DateFilters.Applied = true;
             }
             else
             {
-                DateFiltersApplied = false;
+                Filters.DateFilters.Applied = false;
             }
 
 
             if (Filters.AdvancedFilters.AdvanceFiltersChanged())
             {
-                AdvancedFiltersApplied = true;
+                Filters.AdvancedFilters.Applied = true;
             }
             else
             {
-                AdvancedFiltersApplied = false;
+                Filters.AdvancedFilters.Applied = false;
             }
 
             UpdateCheckedItems();

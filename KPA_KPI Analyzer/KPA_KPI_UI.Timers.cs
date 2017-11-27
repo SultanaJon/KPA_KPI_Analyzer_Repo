@@ -359,7 +359,9 @@ namespace KPA_KPI_Analyzer
                 DataLoaderTimer.Stop();
                 PRPO_DB_Utils.ReleaseKPITables();
 
-                if (!ColumnFiltersApplied && !DateFiltersApplied)
+                if (!Filters.ColumnFilters.Applied 
+                    && !Filters.DateFilters.Applied 
+                    && !Filters.AdvancedFilters.Applied)
                 {
                     // Save the overall data to a JSON file.
                     overallData.Save();
