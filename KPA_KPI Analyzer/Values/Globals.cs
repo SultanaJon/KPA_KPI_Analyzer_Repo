@@ -3,11 +3,9 @@
     public static class Globals
     {
         /// <summary>
-        ///  What country the application is currently displaying data for.
+        /// 
         /// </summary>
-        public static StringUtils.Country FocusedCountry { get; set; }
-
-
+        public static Countries.Country TargetCountry { get; set; }
         /// <summary>
         /// Current selected country to display in the data viewer
         /// </summary>

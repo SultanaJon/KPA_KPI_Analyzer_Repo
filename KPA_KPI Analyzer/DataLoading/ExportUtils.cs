@@ -7,7 +7,7 @@ namespace KPA_KPI_Analyzer.DataLoading
         /// <summary>
         /// 
         /// </summary>
-        public static DataTable Data { get; set; }
+        public static DataTable Values { get; set; }
 
 
         /// <summary>

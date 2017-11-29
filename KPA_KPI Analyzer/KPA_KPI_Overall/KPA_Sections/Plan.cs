@@ -1,4 +1,4 @@
-﻿using KPA_KPI_Analyzer.DatabaseUtils;
+﻿using KPA_KPI_Analyzer.Database;
 using KPA_KPI_Analyzer.FilterFeeature;
 using KPA_KPI_Analyzer.Templates;
 using KPA_KPI_Analyzer.Values;
@@ -55,7 +55,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
         /// <summary>
         /// Loads the data of a specific KPA
         /// </summary>
-        public void LoadData()
+        public void LoadValues()
         {
             try
             {
@@ -66,7 +66,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
                 dt = new DataTable();
-                cmd = new OleDbCommand(StringUtils.KpaStringUtils.queries[(int)StringUtils.KpaStringUtils.Section.Plan][(int)StringUtils.KpaStringUtils.Category.Plan.PRsAgingNotRel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                cmd = new OleDbCommand(Database.QueryManager.KpaQueries.PlanQueries.GetPrsAgingNotReleased() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
                 da = new OleDbDataAdapter(cmd);
                 da.Fill(dt);
 
@@ -169,7 +169,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 dt = new DataTable();
-                cmd = new OleDbCommand(StringUtils.KpaStringUtils.queries[(int)StringUtils.KpaStringUtils.Section.Plan][(int)StringUtils.KpaStringUtils.Category.Plan.MaterialDue] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                cmd = new OleDbCommand(Database.QueryManager.KpaQueries.PlanQueries.GetMaterialDue() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
                 da = new OleDbDataAdapter(cmd);
                 da.Fill(dt);
 
@@ -264,7 +264,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                     matDueDate.data.Average = 0;
                 }
 
-                PRPO_DB_Utils.UpdateLoadProgress();
+                DatabaseUtils.UpdateLoadProgress();
             }
             catch (Exception ex)
             {

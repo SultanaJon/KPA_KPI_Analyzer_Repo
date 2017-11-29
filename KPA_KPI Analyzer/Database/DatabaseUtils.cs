@@ -1,6 +1,7 @@
 ﻿using DataImporter.Access;
 using KPA_KPI_Analyzer.Diagnostics;
 using KPA_KPI_Analyzer.FilterFeeature;
+using KPA_KPI_Analyzer.Values;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,9 +9,9 @@ using System.Data.OleDb;
 using System.IO;
 using System.Windows.Forms;
 
-namespace KPA_KPI_Analyzer.DatabaseUtils
+namespace KPA_KPI_Analyzer.Database
 {
-    public static class PRPO_DB_Utils
+    public static class DatabaseUtils
     {
         public static DataTable prsOnPOsDt;
         public static DataTable posRecCompDt;
@@ -37,12 +38,6 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
 
 
         #region PROPERTIES
-        /// <summary>
-        /// The table targeted depending on the focused country (the country table loaded)
-        /// </summary>
-        public static string TargetCountryTable { get; set; }
-
-
         /// <summary>s
         /// data used to check the state of a data removal process.
         /// </summary>
@@ -128,10 +123,10 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
         {
             lock (locker)
             {
-                PRPO_DB_Utils.CompletedDataLoads++;
+                DatabaseUtils.CompletedDataLoads++;
                 MethodInvoker del = delegate
                 {
-                    PRPO_DB_Utils.UpdateDataLoadProgress();
+                    DatabaseUtils.UpdateDataLoadProgress();
                 };
                 del.Invoke();
             }
@@ -209,39 +204,30 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
         /// </summary>
         /// <param name="tableName"></param>
         /// <returns></returns>
-        public static bool RemoveData()
+        public static bool RemoveData(Countries.Country _country)
         {
             bool result = false;
 
             try
             {
-                OleDbCommand cmd;
-                cmd = new OleDbCommand(Values.StringUtils.removableDataQuery, DatabaseConnection);
-                cmd.ExecuteNonQuery();
-                result = true;
-                CompletedDataRemovals++;
-                UpdateDataRemovalProgress();
-
-                #region DELETE
-                //if (country == PRPOCommands.DatabaseTables.MainTables.US_PRPO)
-                //{
-                //    OleDbCommand cmd;
-                //    cmd = new OleDbCommand(PRPOCommands.removableUSDataQuery, DatabaseConnection);
-                //    cmd.ExecuteNonQuery();
-                //    result = true;
-                //    CompletedDataRemovals++;
-                //    UpdateDataRemovalProgress();
-                //}
-                //else
-                //{
-                //    OleDbCommand cmd;
-                //    cmd = new OleDbCommand(PRPOCommands.removableMXDataQuery, DatabaseConnection);
-                //    cmd.ExecuteNonQuery();
-                //    result = true;
-                //    CompletedDataRemovals++;
-                //    UpdateDataRemovalProgress();
-                //}
-                #endregion
+                if (_country == Countries.Country.UnitedStates)
+                {
+                    OleDbCommand cmd;
+                    cmd = new OleDbCommand(Database.QueryManager.GetUsRemovableDataQuery(), DatabaseConnection);
+                    cmd.ExecuteNonQuery();
+                    result = true;
+                    CompletedDataRemovals++;
+                    UpdateDataRemovalProgress();
+                }
+                else
+                {
+                    OleDbCommand cmd;
+                    cmd = new OleDbCommand(Database.QueryManager.GetMxRemovableDataQuery(), DatabaseConnection);
+                    cmd.ExecuteNonQuery();
+                    result = true;
+                    CompletedDataRemovals++;
+                    UpdateDataRemovalProgress();
+                }
             }
             catch (Exception ex)
             {
@@ -267,27 +253,27 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
 
             try
             {
-                using (OleDbCommand cmd = new OleDbCommand() { Connection = PRPO_DB_Utils.DatabaseConnection })
+                using (OleDbCommand cmd = new OleDbCommand() { Connection = DatabaseUtils.DatabaseConnection })
                 {
                     using (OleDbDataAdapter da = new OleDbDataAdapter())
                     {
-                        cmd.CommandText = Values.StringUtils.KpiStringUtils.queries[(int)Values.StringUtils.KpiStringUtils.Query.AllPOs] + Filters.FilterQuery;
+                        cmd.CommandText = Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterQuery;
                         da.SelectCommand = cmd;
                         da.Fill(prsOnPOsDt);
 
-                        cmd.CommandText = Values.StringUtils.KpiStringUtils.queries[(int)Values.StringUtils.KpiStringUtils.Query.POLinesRecComplete] + Filters.FilterQuery;
+                        cmd.CommandText = Database.QueryManager.KpiQueries.GetPoLinesReceivedComplete() + Filters.FilterQuery;
                         da.SelectCommand = cmd;
                         da.Fill(posRecCompDt);
 
-                        cmd.CommandText = Values.StringUtils.KpiStringUtils.queries[(int)Values.StringUtils.KpiStringUtils.Query.PR_2ndLvlRel] + Filters.FilterQuery;
+                        cmd.CommandText = Database.QueryManager.KpiQueries.GetPr2ndLevelRelease() + Filters.FilterQuery;
                         da.SelectCommand = cmd;
                         da.Fill(pr2ndLvlRelDateDt);
 
 
                         if (Filters.FilterQuery == string.Empty)
-                            cmd.CommandText = Values.StringUtils.KpiStringUtils.queries[(int)Values.StringUtils.KpiStringUtils.Query.AllData];
+                            cmd.CommandText = Database.QueryManager.KpiQueries.GetAllData();
                         else
-                            cmd.CommandText = Values.StringUtils.KpiStringUtils.queries[(int)Values.StringUtils.KpiStringUtils.Query.AllData] + " WHERE " + Filters.SecondaryFilterQuery;
+                            cmd.CommandText = Database.QueryManager.KpiQueries.GetAllData() + " WHERE " + Filters.SecondaryFilterQuery;
 
                         da.SelectCommand = cmd;
                         da.Fill(AllDt);
@@ -337,18 +323,18 @@ namespace KPA_KPI_Analyzer.DatabaseUtils
             ds = new DataSet();
 
 
-            using (OleDbCommand cmd = new OleDbCommand() { Connection = PRPO_DB_Utils.DatabaseConnection })
+            using (OleDbCommand cmd = new OleDbCommand() { Connection = DatabaseUtils.DatabaseConnection })
             {
                 using (OleDbDataAdapter da = new OleDbDataAdapter())
                 {
-                    foreach (Values.StringUtils.CorrelationStringUtils.CorrelationMatrixIndexer index in Enum.GetValues(typeof(Values.StringUtils.CorrelationStringUtils.CorrelationMatrixIndexer)))
+                    foreach (Correlation.CorrelationHeaders.CorrelationMatrixIndexer index in Enum.GetValues(typeof(Correlation.CorrelationHeaders.CorrelationMatrixIndexer)))
                     {
                         tempDt = new DataTable();
-                        cmd.CommandText = "SELECT " + TargetCountryTable + ".[" + Values.StringUtils.CorrelationStringUtils.correlationQueryHeaders[(int)index] + "], " + TargetCountryTable + ".[" + Values.StringUtils.CorrelationStringUtils.correlationDateRangeFilters[(int)Values.StringUtils.CorrelationStringUtils.CorrelationDateRangeFilters.RequisitionDate] + "], " + TargetCountryTable + ".[" + Values.StringUtils.CorrelationStringUtils.correlationDateRangeFilters[(int)Values.StringUtils.CorrelationStringUtils.CorrelationDateRangeFilters.PoLineCreateDate] + "], " + TargetCountryTable + ".[" + Values.StringUtils.CorrelationStringUtils.correlationDateRangeFilters[(int)Values.StringUtils.CorrelationStringUtils.CorrelationDateRangeFilters.QtyOrdered] + "] FROM " + TargetCountryTable;
+                        cmd.CommandText = "SELECT " + Database.QueryManager.GetDatabaseTableName() + ".[" + Correlation.CorrelationHeaders.correlationQueryHeaders[(int)index] + "], " + Database.QueryManager.GetDatabaseTableName() + ".[" + Correlation.CorrelationHeaders.correlationDateRangeFilters[(int)Correlation.CorrelationHeaders.CorrelationDateRangeFilters.RequisitionDate] + "], " + Database.QueryManager.GetDatabaseTableName() + ".[" + Correlation.CorrelationHeaders.correlationDateRangeFilters[(int)Correlation.CorrelationHeaders.CorrelationDateRangeFilters.PoLineCreateDate] + "], " + Database.QueryManager.GetDatabaseTableName() + ".[" + Correlation.CorrelationHeaders.correlationDateRangeFilters[(int)Correlation.CorrelationHeaders.CorrelationDateRangeFilters.QtyOrdered] + "] FROM " + Database.QueryManager.GetDatabaseTableName();
                         da.SelectCommand = cmd;
                         da.Fill(tempDt);
-                        tempDt.TableName = Values.StringUtils.CorrelationStringUtils.correlationHeaders[(int)index];
-                        if (!ds.Tables.Contains(Values.StringUtils.CorrelationStringUtils.correlationHeaders[(int)index]))
+                        tempDt.TableName = Correlation.CorrelationHeaders.correlationHeaders[(int)index];
+                        if (!ds.Tables.Contains(Correlation.CorrelationHeaders.correlationHeaders[(int)index]))
                         {
                             ds.Tables.Add(tempDt);
                         }

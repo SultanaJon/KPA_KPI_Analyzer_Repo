@@ -1,4 +1,4 @@
-﻿using KPA_KPI_Analyzer.DatabaseUtils;
+﻿using KPA_KPI_Analyzer.Database;
 using KPA_KPI_Analyzer.FilterFeeature;
 using KPA_KPI_Analyzer.Templates;
 using KPA_KPI_Analyzer.Values;
@@ -53,7 +53,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
         /// Loads the data for the specific KPA
         /// </summary>
         /// <param name="SelectedCountry"></param>
-        public void LoadData()
+        public void LoadValues()
         {
             try
             {
@@ -64,7 +64,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 dt = new DataTable();
-                cmd = new OleDbCommand(StringUtils.KpaStringUtils.queries[(int)StringUtils.KpaStringUtils.Section.FollowUp][(int)StringUtils.KpaStringUtils.Category.FollowUp.ConfPlanDate] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                cmd = new OleDbCommand(Database.QueryManager.KpaQueries.FollowUpQueries.GetConfirmedDateVsPlanDate() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
                 da = new OleDbDataAdapter(cmd);
                 da.Fill(dt);
 
@@ -192,7 +192,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 dt = new DataTable();
-                cmd = new OleDbCommand(StringUtils.KpaStringUtils.queries[(int)StringUtils.KpaStringUtils.Section.FollowUp][(int)StringUtils.KpaStringUtils.Category.FollowUp.ConfDateUpcomingDel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                cmd = new OleDbCommand(Database.QueryManager.KpaQueries.FollowUpQueries.GetConfrimedDateForUpcomingDeliveries() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
                 da = new OleDbDataAdapter(cmd);
                 da.Fill(dt);
 
@@ -295,11 +295,11 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
 
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 //
-                // Late to Confirmed Date
+                // Due Today or Late to Confrimed
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 dt = new DataTable();
-                cmd = new OleDbCommand(StringUtils.KpaStringUtils.queries[(int)StringUtils.KpaStringUtils.Section.FollowUp][(int)StringUtils.KpaStringUtils.Category.FollowUp.DueTodayLateConf] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                cmd = new OleDbCommand(Database.QueryManager.KpaQueries.FollowUpQueries.GetDueTodayOrLateToConfirmed() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
                 da = new OleDbDataAdapter(cmd);
                 da.Fill(dt);
 
@@ -402,7 +402,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
 
                 totalDays = 0;
 
-                PRPO_DB_Utils.UpdateLoadProgress();
+                DatabaseUtils.UpdateLoadProgress();
             }
             catch (Exception ex)
             {

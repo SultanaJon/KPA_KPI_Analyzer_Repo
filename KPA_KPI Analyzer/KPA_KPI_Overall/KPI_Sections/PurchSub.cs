@@ -1,4 +1,4 @@
-﻿using KPA_KPI_Analyzer.DatabaseUtils;
+﻿using KPA_KPI_Analyzer.Database;
 using KPA_KPI_Analyzer.FilterFeeature;
 using KPA_KPI_Analyzer.Templates;
 using System;
@@ -50,7 +50,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
         /// Loads the data for the specific KPI
         /// </summary>
         /// <param name="SelectedCountry"></param>
-        public void LoadData()
+        public void LoadValues()
         {
             try
             {
@@ -60,7 +60,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                foreach (DataRow dr in PRPO_DB_Utils.prsOnPOsDt.Rows)
+                foreach (DataRow dr in DatabaseUtils.prsOnPOsDt.Rows)
                 {
                     if (Filters.DateFilters.FilterByPrDateRange)
                     {
@@ -215,7 +215,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 //int tempTotal = 0;
-                foreach (DataRow dr in PRPO_DB_Utils.prsOnPOsDt.Rows)
+                foreach (DataRow dr in DatabaseUtils.prsOnPOsDt.Rows)
                 {
                     if (Filters.DateFilters.FilterByPrDateRange)
                     {
@@ -363,7 +363,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
                 totalDays = 0;
 
-                PRPO_DB_Utils.UpdateLoadProgress();
+                DatabaseUtils.UpdateLoadProgress();
             }
             catch (Exception ex)
             {

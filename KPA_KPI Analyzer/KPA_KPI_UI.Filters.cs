@@ -464,7 +464,7 @@ namespace KPA_KPI_Analyzer
 
             // Check the filter status to update the variant tools.
             UpdateVariantTools();
-            InitializeDataLoadProcess();
+            InitializeValuesLoadProcess();
         }
 
 
@@ -1001,9 +1001,9 @@ namespace KPA_KPI_Analyzer
                         filters += "(";
 
                     if (Filters.ColumnFilters.projectNumber[i] == "[Blanks]")
-                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.ProjectNum_WBS_Element] + "] IS NULL OR " + DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterFeeature.FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.ProjectNUm_ProdOrdWbs] + "] IS NULL";
+                        filters += Database.QueryManager.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.ProjectNum_WBS_Element] + "] IS NULL OR " + Database.QueryManager.GetDatabaseTableName() + ".[" + FilterFeeature.FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.ProjectNUm_ProdOrdWbs] + "] IS NULL";
                     else
-                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterFeeature.FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.ProjectNum_WBS_Element] + "] LIKE " + "'%" + Filters.ColumnFilters.projectNumber[i] + "%' OR " + DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterFeeature.FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.ProjectNUm_ProdOrdWbs] + "] LIKE " + "'%" + Filters.ColumnFilters.projectNumber[i] + "%'";
+                        filters += Database.QueryManager.GetDatabaseTableName() + ".[" + FilterFeeature.FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.ProjectNum_WBS_Element] + "] LIKE " + "'%" + Filters.ColumnFilters.projectNumber[i] + "%' OR " + Database.QueryManager.GetDatabaseTableName() + ".[" + FilterFeeature.FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.ProjectNUm_ProdOrdWbs] + "] LIKE " + "'%" + Filters.ColumnFilters.projectNumber[i] + "%'";
 
                     if (i != (Filters.ColumnFilters.projectNumber.Count - 1))
                         filters += " OR ";
@@ -1027,9 +1027,9 @@ namespace KPA_KPI_Analyzer
                         filters += "(";
 
                     if (Filters.ColumnFilters.wbsElement[i] == "[Blanks]")
-                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.WBS_Element] + "] IS NULL";
+                        filters += Database.QueryManager.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.WBS_Element] + "] IS NULL";
                     else
-                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.WBS_Element] + "] = " + "'" + Filters.ColumnFilters.wbsElement[i] + "'";
+                        filters += Database.QueryManager.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.WBS_Element] + "] = " + "'" + Filters.ColumnFilters.wbsElement[i] + "'";
 
 
                     if (i != (Filters.ColumnFilters.wbsElement.Count - 1))
@@ -1052,9 +1052,9 @@ namespace KPA_KPI_Analyzer
                         filters += "(";
 
                     if (Filters.ColumnFilters.material[i] == "[Blanks]")
-                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Material] + "] IS NULL";
+                        filters += Database.QueryManager.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Material] + "] IS NULL";
                     else
-                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Material] + "] = " + "'" + Filters.ColumnFilters.material[i] + "'";
+                        filters += Database.QueryManager.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Material] + "] = " + "'" + Filters.ColumnFilters.material[i] + "'";
 
                     if (i != (Filters.ColumnFilters.material.Count - 1))
                         filters += " OR ";
@@ -1076,9 +1076,9 @@ namespace KPA_KPI_Analyzer
                         filters += "(";
 
                     if (Filters.ColumnFilters.materialGroup[i] == "[Blanks]")
-                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.MaterialGroup] + "] IS NULL";
+                        filters += Database.QueryManager.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.MaterialGroup] + "] IS NULL";
                     else
-                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.MaterialGroup] + "] = " + "'" + Filters.ColumnFilters.materialGroup[i] + "'";
+                        filters += Database.QueryManager.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.MaterialGroup] + "] = " + "'" + Filters.ColumnFilters.materialGroup[i] + "'";
 
                     if (i != (Filters.ColumnFilters.materialGroup.Count - 1))
                         filters += " OR ";
@@ -1100,9 +1100,9 @@ namespace KPA_KPI_Analyzer
                         filters += "(";
 
                     if (Filters.ColumnFilters.vendor[i] == "[Blanks]")
-                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Vendor] + "] IS NULL";
+                        filters += Database.QueryManager.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Vendor] + "] IS NULL";
                     else
-                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Vendor] + "] = " + Filters.ColumnFilters.vendor[i];
+                        filters += Database.QueryManager.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Vendor] + "] = " + Filters.ColumnFilters.vendor[i];
 
                     if (i != (Filters.ColumnFilters.vendor.Count - 1))
                         filters += " OR ";
@@ -1124,9 +1124,9 @@ namespace KPA_KPI_Analyzer
                         filters += "(";
 
                     if (Filters.ColumnFilters.vendorDesc[i] == "[Blanks]")
-                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.VendorDescription] + "] IS NULL";
+                        filters += Database.QueryManager.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.VendorDescription] + "] IS NULL";
                     else
-                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.VendorDescription] + "] = " + "'" + Filters.ColumnFilters.vendorDesc[i] + "'";
+                        filters += Database.QueryManager.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.VendorDescription] + "] = " + "'" + Filters.ColumnFilters.vendorDesc[i] + "'";
 
                     if (i != (Filters.ColumnFilters.vendorDesc.Count - 1))
                         filters += " OR ";
@@ -1150,9 +1150,9 @@ namespace KPA_KPI_Analyzer
 
 
                     if (Filters.ColumnFilters.purchGroup[i] == "[Blanks]")
-                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.PurchGroup] + "] IS NULL";
+                        filters += Database.QueryManager.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.PurchGroup] + "] IS NULL";
                     else
-                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.PurchGroup] + "] = " + "'" + Filters.ColumnFilters.purchGroup[i] + "'";
+                        filters += Database.QueryManager.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.PurchGroup] + "] = " + "'" + Filters.ColumnFilters.purchGroup[i] + "'";
 
                     if (i != (Filters.ColumnFilters.purchGroup.Count - 1))
                         filters += " OR ";
@@ -1177,9 +1177,9 @@ namespace KPA_KPI_Analyzer
 
 
                     if (Filters.ColumnFilters.poPurchGroup[i] == "[Blanks]")
-                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.PoPurchGroup] + "] IS NULL";
+                        filters += Database.QueryManager.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.PoPurchGroup] + "] IS NULL";
                     else
-                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.PoPurchGroup] + "] = " + "'" + Filters.ColumnFilters.poPurchGroup[i] + "'";
+                        filters += Database.QueryManager.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.PoPurchGroup] + "] = " + "'" + Filters.ColumnFilters.poPurchGroup[i] + "'";
 
                     if (i != (Filters.ColumnFilters.poPurchGroup.Count - 1))
                         filters += " OR ";
@@ -1203,9 +1203,9 @@ namespace KPA_KPI_Analyzer
 
 
                     if (Filters.ColumnFilters.irSuppName[i] == "[Blanks]")
-                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.IRSuppName] + "] IS NULL";
+                        filters += Database.QueryManager.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.IRSuppName] + "] IS NULL";
                     else
-                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.IRSuppName] + "] = " + "'" + Filters.ColumnFilters.irSuppName[i] + "'";
+                        filters += Database.QueryManager.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.IRSuppName] + "] = " + "'" + Filters.ColumnFilters.irSuppName[i] + "'";
 
                     if (i != (Filters.ColumnFilters.irSuppName.Count - 1))
                         filters += " OR ";
@@ -1229,9 +1229,9 @@ namespace KPA_KPI_Analyzer
 
 
                     if (Filters.ColumnFilters.fxdSuppName[i] == "[Blanks]")
-                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.FxdSuppName] + "] IS NULL";
+                        filters += Database.QueryManager.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.FxdSuppName] + "] IS NULL";
                     else
-                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.FxdSuppName] + "] = " + "'" + Filters.ColumnFilters.fxdSuppName[i] + "'";
+                        filters += Database.QueryManager.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.FxdSuppName] + "] = " + "'" + Filters.ColumnFilters.fxdSuppName[i] + "'";
 
                     if (i != (Filters.ColumnFilters.fxdSuppName.Count - 1))
                         filters += " OR ";
@@ -1255,9 +1255,9 @@ namespace KPA_KPI_Analyzer
 
 
                     if (Filters.ColumnFilters.dsrdSuppName[i] == "[Blanks]")
-                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.DsrdSuppName] + "] IS NULL";
+                        filters += Database.QueryManager.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.DsrdSuppName] + "] IS NULL";
                     else
-                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.DsrdSuppName] + "] = " + "'" + Filters.ColumnFilters.dsrdSuppName[i] + "'";
+                        filters += Database.QueryManager.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.DsrdSuppName] + "] = " + "'" + Filters.ColumnFilters.dsrdSuppName[i] + "'";
 
                     if (i != (Filters.ColumnFilters.dsrdSuppName.Count - 1))
                         filters += " OR ";
@@ -1280,9 +1280,9 @@ namespace KPA_KPI_Analyzer
 
 
                     if (Filters.ColumnFilters.commCategory[i] == "[Blanks]")
-                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.CommCat] + "] IS NULL";
+                        filters += Database.QueryManager.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.CommCat] + "] IS NULL";
                     else
-                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.CommCat] + "] = " + "'" + Filters.ColumnFilters.commCategory[i] + "'";
+                        filters += Database.QueryManager.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.CommCat] + "] = " + "'" + Filters.ColumnFilters.commCategory[i] + "'";
 
 
                     if (i != (Filters.ColumnFilters.commCategory.Count - 1))
@@ -1305,9 +1305,9 @@ namespace KPA_KPI_Analyzer
 
 
                     if (Filters.ColumnFilters.escaped[i] == "[Blanks]")
-                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Escaped] + "] IS NULL";
+                        filters += Database.QueryManager.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Escaped] + "] IS NULL";
                     else
-                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Escaped] + "] = " + "'" + Filters.ColumnFilters.escaped[i] + "'";
+                        filters += Database.QueryManager.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.Escaped] + "] = " + "'" + Filters.ColumnFilters.escaped[i] + "'";
 
 
                     if (i != (Filters.ColumnFilters.escaped.Count - 1))
@@ -1331,9 +1331,9 @@ namespace KPA_KPI_Analyzer
 
 
                     if (Filters.ColumnFilters.poDocumentType[i] == "[Blanks]")
-                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.PoDocumentType] + "] IS NULL";
+                        filters += Database.QueryManager.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.PoDocumentType] + "] IS NULL";
                     else
-                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.PoDocumentType] + "] = " + "'" + Filters.ColumnFilters.poDocumentType[i] + "'";
+                        filters += Database.QueryManager.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.PoDocumentType] + "] = " + "'" + Filters.ColumnFilters.poDocumentType[i] + "'";
 
 
                     if (i != (Filters.ColumnFilters.poDocumentType.Count - 1))
@@ -1356,9 +1356,9 @@ namespace KPA_KPI_Analyzer
 
 
                     if (Filters.ColumnFilters.prodOrderMat[i] == "[Blanks]")
-                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.ProdOrderMaterial] + "] IS NULL";
+                        filters += Database.QueryManager.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.ProdOrderMaterial] + "] IS NULL";
                     else
-                        filters += DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.ProdOrderMaterial] + "] = " + "'" + Filters.ColumnFilters.prodOrderMat[i] + "'";
+                        filters += Database.QueryManager.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterFeeature.FilterUtils.Filters.ProdOrderMaterial] + "] = " + "'" + Filters.ColumnFilters.prodOrderMat[i] + "'";
 
 
                     if (i != (Filters.ColumnFilters.prodOrderMat.Count - 1))

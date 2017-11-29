@@ -58,7 +58,7 @@ namespace KPA_KPI_Analyzer
             switch (actSecTag)
             {
                 case 0: // KPA --> Overall
-                    LoadOverallTemplate(Performance.KPA);
+                    LoadOverallTemplate(Values.Performances.Performance.KPA);
                     break;
                 case 1: // KPA --> Plan
                     CreateKpaPlanTemplate();
@@ -88,7 +88,7 @@ namespace KPA_KPI_Analyzer
                     CreateKpaCurrPlanActualTemplate();
                     break;
                 case 10: // KPI --> Overall
-                    LoadOverallTemplate(Performance.KPI);
+                    LoadOverallTemplate(Values.Performances.Performance.KPI);
                     break;
                 case 11: // KPI --> Plan
                     CreateKpiPlanTemplate();

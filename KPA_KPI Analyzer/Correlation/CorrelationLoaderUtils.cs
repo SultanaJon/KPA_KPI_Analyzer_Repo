@@ -7,14 +7,14 @@ namespace KPA_KPI_Analyzer.Correlation
         /// <summary>
         /// The number of columns being used in the correlation tool.
         /// </summary>
-        public static int NumberOfCorrelationHeaders = StringUtils.CorrelationStringUtils.correlationHeaders.Length;
+        public static int NumberOfCorrelationHeaders = CorrelationHeaders.correlationHeaders.Length;
 
 
 
         /// <summary>
         /// 
         /// </summary>
-        public static int NumberOfCompletdCorrelationLoads { get; set; }
+        public static int NumberOfCompletedCorrelationLoads { get; set; }
 
 
 
@@ -70,7 +70,7 @@ namespace KPA_KPI_Analyzer.Correlation
         /// </summary>
         public static void Reset()
         {
-            NumberOfCompletdCorrelationLoads = 0;
+            NumberOfCompletedCorrelationLoads = 0;
             NumberOfCompletedRawDataLoads = 0;
             CorrelationLoadProcessStarted = false;
             CorrelationRawDataLoadProcessStarted = false;

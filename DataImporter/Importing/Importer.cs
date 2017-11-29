@@ -35,7 +35,7 @@ namespace DataImporter.Classes
 
 
         /// <summary>
-        /// Data used to report the progress of an import process
+        /// Values used to report the progress of an import process
         /// </summary>
         public static int NumberOfImports { get; set; }
         public static int CompletedImports { get; set; }
@@ -62,12 +62,12 @@ namespace DataImporter.Classes
         /// <summary>
         /// Custom constructor that takes excel Information and access information
         /// </summary>
-        /// <param name="excelData">The information about the excel file being imported into access</param>
-        /// <param name="accessData">The information about the access file that will hold the data.</param>
-        public Importer(ExcelInfo excelData, AccessInfo accessData)
+        /// <param name="excelValues">The information about the excel file being imported into access</param>
+        /// <param name="accessValues">The information about the access file that will hold the data.</param>
+        public Importer(ExcelInfo excelValues, AccessInfo accessValues)
         {
-            ExcelInformation = excelData;
-            AccessInformation = accessData;
+            ExcelInformation = excelValues;
+            AccessInformation = accessValues;
         }
 
 
@@ -113,7 +113,7 @@ namespace DataImporter.Classes
                 {
                     using (OleDbCommand cmd = new OleDbCommand() { Connection = conn })
                     {
-                        cmd.CommandText = @"SELECT * INTO [MS Access;Database=" + AccessInformation.FileName + "].[" + AccessInformation.TableName + "] FROM [" + ExcelInformation.SheetName + "]";
+                        cmd.CommandText = @"SELECT * INTO [MS Access;Valuesbase=" + AccessInformation.FileName + "].[" + AccessInformation.TableName + "] FROM [" + ExcelInformation.SheetName + "]";
                         conn.Open();
                         recordCount = cmd.ExecuteNonQuery();
                         CompletedImports++;

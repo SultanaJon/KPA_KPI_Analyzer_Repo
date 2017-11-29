@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KPA_KPI_Analyzer.DatabaseUtils
+namespace KPA_KPI_Analyzer.Database
 {
     class ThreadInteruptedException : Exception
     {

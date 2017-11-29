@@ -2,10 +2,10 @@
 
 namespace DataImporter.Access.ExceptionClasses
 {
-    public class PRPODatabaseNotFoundException : Exception
+    public class PRPOValuesbaseNotFoundException : Exception
     {
-        public PRPODatabaseNotFoundException() { }
+        public PRPOValuesbaseNotFoundException() { }
 
-        public PRPODatabaseNotFoundException(string message) : base(message) { }
+        public PRPOValuesbaseNotFoundException(string message) : base(message) { }
     }
 }

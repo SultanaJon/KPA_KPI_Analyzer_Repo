@@ -1,10 +1,10 @@
-﻿using KPA_KPI_Analyzer.DatabaseUtils;
-using KPA_KPI_Analyzer.FilterFeeature;
-using KPA_KPI_Analyzer.Values;
+﻿using KPA_KPI_Analyzer.FilterFeeature;
 using System;
 using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
+using KPA_KPI_Analyzer.Database;
+using KPA_KPI_Analyzer.DataLoading;
 
 namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 {
@@ -26,14 +26,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
             public static void LoadPrPlanDateVsCurrentPlanDateDataTable(int tag)
             {
                 try
                 {
                     dt = new DataTable();
                     prPlanDateVsCurrPlanDt = new DataTable();
-                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.AllPOs] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -195,7 +195,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
             public static void LoadOrigPlanDate2ndLvlRelDate_CodedLeadDataTable(int tag)
             {
                 try
@@ -203,7 +203,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     dt = new DataTable();
                     OrigPlan2ndLvlRel_CodedLeadTime = new DataTable();
 
-                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.PR_2ndLvlRel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetPr2ndLevelRelease() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -384,7 +384,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
             public static void LoadCurrPlanDate2ndLvlRelDate_CodedLeadDataTable(int tag)
             {
                 try
@@ -392,7 +392,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     dt = new DataTable();
                     CurrPlan2ndLvlRel_CodedLeadTime = new DataTable();
 
-                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.PR_2ndLvlRel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetPr2ndLevelRelease() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -603,7 +603,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
             public static void LoadInitialConfVsPrPlanDateDataTable(int tag)
             {
                 try
@@ -611,7 +611,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     dt = new DataTable();
                     initConfVsPrPlanDateDt = new DataTable();
                     unconfirmed = new DataTable();
-                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.AllPOs] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -796,7 +796,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
             public static void LoadCurrConfVsInitConfDataTable(int tag)
             {
                 try
@@ -805,7 +805,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     initConfVsCurrConf = new DataTable();
                     unconfirmed = new DataTable();
 
-                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.AllPOs] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -990,7 +990,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
             public static void LoadFinalConfDateVsFinalPlanDateDataTable(int tag)
             {
                 try
@@ -999,7 +999,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     finalConfDateVsFinalPlanDateDt = new DataTable();
                     unconfirmed = new DataTable();
 
-                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.AllPOs] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -1182,7 +1182,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
             public static void LoadRecDateVsCurrPlanDateDataTable(int tag)
             {
                 try
@@ -1190,7 +1190,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     dt = new DataTable();
                     recDateVsCurrPlanDateDt = new DataTable();
 
-                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.POLinesRecComplete] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetPoLinesReceivedComplete() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -1350,7 +1350,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>s
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>s
             public static void LoadRecDateVsOrigConfDateDataTable(int tag)
             {
                 try
@@ -1359,7 +1359,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     recDateVsOrigConfDateDt = new DataTable();
                     unconfirmed = new DataTable();
 
-                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.POLinesRecComplete] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetPoLinesReceivedComplete() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -1540,7 +1540,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
             public static void LoadRecDateVsCurrConfDateDataTable(int tag)
             {
                 try
@@ -1548,7 +1548,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     dt = new DataTable();
                     recDateVsCurrConfDateDt = new DataTable();
                     unconfirmed = new DataTable();
-                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.POLinesRecComplete] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetPoLinesReceivedComplete() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -1738,7 +1738,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
             public static void LoadMaterialDueOrigPlanDate(int tag)
             {
                 try
@@ -1746,7 +1746,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     dt = new DataTable();
                     MaterialDueOrigPlanDate = new DataTable();
 
-                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.PR_2ndLvlRel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetPr2ndLevelRelease() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -1938,7 +1938,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
             public static void LoadMaterialDueFinalPlanDate(int tag)
             {
                 try
@@ -1946,7 +1946,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     dt = new DataTable();
                     MaterialDueFinalPlannedDate = new DataTable();
 
-                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.AllPOs] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -2174,14 +2174,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
             public static void LoadPr2ndLvlRelVsPOCreationDataTable(int tag)
             {
                 try
                 {
                     dt = new DataTable();
                     pr2ndLvlRelVsPoCreate = new DataTable();
-                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.AllPOs] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -2365,14 +2365,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
             public static void LoadPoCreationVsPoReleaseDataTable(int tag)
             {
                 try
                 {
                     dt = new DataTable();
                     poCreateVsPORel = new DataTable();
-                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.AllPOs] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -2543,7 +2543,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
             public static void LoadPoReleaseVsPoConfDataTable(int tag)
             {
                 try
@@ -2551,7 +2551,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     dt = new DataTable();
                     poRelVsPoConf = new DataTable();
                     unconfirmed = new DataTable();
-                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.AllPOs] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -2756,7 +2756,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
             public static void LoadPrRelVsPoRelDataTable(int tag)
             {
                 try
@@ -2764,7 +2764,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     dt = new DataTable();
                     prRelVsPORel = new DataTable();
 
-                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.AllPOs] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -2958,7 +2958,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
             public static void LoadPoCreationVsConfEntryDateDataTable(int tag)
             {
                 try
@@ -2967,7 +2967,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     poCreateVsConfEntry = new DataTable();
                     unconfirmed = new DataTable();
 
-                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.AllPOs] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -3160,7 +3160,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
             public static void LoadPrReleaseConfEntryDataTable(int tag)
             {
                 try
@@ -3168,7 +3168,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     dt = new DataTable();
                     prReleaseConfEntry = new DataTable();
                     unconfirmed = new DataTable();
-                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.AllPOs] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -3388,7 +3388,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
             public static void LoadPoRelVsPrDelDateDataTable(int tag)
             {
                 try
@@ -3396,7 +3396,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     dt = new DataTable();
                     poRelVsPRDelDateDt = new DataTable();
 
-                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.AllPOs] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -3573,19 +3573,19 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
             public static void LoadPrsCreated(int tag)
             {
                 try
                 {
                     dt = new DataTable();
                     prsCreated = new DataTable();
-                    //cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.DatabaseTables.TableNames.AllData) + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    //cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.ValuesbaseTables.TableNames.AllValues) + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
 
                     if (Filters.FilterQuery == string.Empty)
-                        cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.AllData], PRPO_DB_Utils.DatabaseConnection);
+                        cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllData(), DatabaseUtils.DatabaseConnection);
                     else
-                        cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.AllData] + " WHERE " + Filters.SecondaryFilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                        cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllData() + " WHERE " + Filters.SecondaryFilterQuery, DatabaseUtils.DatabaseConnection);
 
 
                     da = new OleDbDataAdapter(cmd);
@@ -3733,7 +3733,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
             public static void LoadPrsReleased(int tag)
             {
                 try
@@ -3741,7 +3741,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     dt = new DataTable();
                     prReleased = new DataTable();
 
-                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.PR_2ndLvlRel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetPr2ndLevelRelease() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -3910,14 +3910,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
             public static void LoadTotalSpend(int tag)
             {
                 try
                 {
                     dt = new DataTable();
                     totalSpend = new DataTable();
-                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.AllPOs] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -4060,7 +4060,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
             public static void LoadPrVsPoValue(int tag)
             {
                 try
@@ -4068,7 +4068,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     dt = new DataTable();
                     prVsPOValue = new DataTable();
 
-                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.AllPOs] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -4214,14 +4214,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
             public static void LoadHotJobPrs(int tag)
             {
                 try
                 {
                     dt = new DataTable();
                     hotJobPRs = new DataTable();
-                    cmd = new OleDbCommand(StringUtils.KpiStringUtils.queries[(int)StringUtils.KpiStringUtils.Query.AllData] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllData() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
 
 
                     da = new OleDbDataAdapter(cmd);

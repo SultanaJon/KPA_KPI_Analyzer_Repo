@@ -1,4 +1,4 @@
-﻿using KPA_KPI_Analyzer.DatabaseUtils;
+﻿using KPA_KPI_Analyzer.Database;
 using KPA_KPI_Analyzer.FilterFeeature;
 using KPA_KPI_Analyzer.Templates;
 using KPA_KPI_Analyzer.Values;
@@ -62,10 +62,10 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
 
 
         /// <summary>
-        /// Loads the specific KPA Data
+        /// Loads the specific KPA Values
         /// </summary>
         /// <param name="SelectedCountry"></param>
-        public void LoadData()
+        public void LoadValues()
         {
             try
             {
@@ -76,7 +76,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 dt = new DataTable();
-                cmd = new OleDbCommand(StringUtils.KpaStringUtils.queries[(int)StringUtils.KpaStringUtils.Section.Purch][(int)StringUtils.KpaStringUtils.Category.Purch.PRsAgingRel] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                cmd = new OleDbCommand(Database.QueryManager.KpaQueries.PurchQueries.GetPrsAgingReleased() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
                 da = new OleDbDataAdapter(cmd);
                 da.Fill(dt);
 
@@ -186,7 +186,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 dt = new DataTable();
-                cmd = new OleDbCommand(StringUtils.KpaStringUtils.queries[(int)StringUtils.KpaStringUtils.Section.Purch][(int)StringUtils.KpaStringUtils.Category.Purch.POFirstRelease] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                cmd = new OleDbCommand(Database.QueryManager.KpaQueries.PurchQueries.GetPoFirstRelease() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
                 da = new OleDbDataAdapter(cmd);
                 da.Fill(dt);
 
@@ -294,7 +294,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 dt = new DataTable();
-                cmd = new OleDbCommand(StringUtils.KpaStringUtils.queries[(int)StringUtils.KpaStringUtils.Section.Purch][(int)StringUtils.KpaStringUtils.Category.Purch.POPrevRelease] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                cmd = new OleDbCommand(Database.QueryManager.KpaQueries.PurchQueries.GetPoPrevRelease() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
                 da = new OleDbDataAdapter(cmd);
                 da.Fill(dt);
 
@@ -402,7 +402,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 dt = new DataTable();
-                cmd = new OleDbCommand(StringUtils.KpaStringUtils.queries[(int)StringUtils.KpaStringUtils.Section.Purch][(int)StringUtils.KpaStringUtils.Category.Purch.NoConfirmation] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                cmd = new OleDbCommand(Database.QueryManager.KpaQueries.PurchQueries.GetNoConfirmations() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
                 da = new OleDbDataAdapter(cmd);
                 da.Fill(dt);
 
@@ -501,7 +501,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                 }
 
 
-                PRPO_DB_Utils.UpdateLoadProgress();
+                DatabaseUtils.UpdateLoadProgress();
             }
             catch (Exception ex)
             {

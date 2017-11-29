@@ -2,7 +2,7 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="KPA_KPI_Analyzer.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="RemoveData" Type="System.Boolean" Scope="Application">
+    <Setting Name="RemoveValues" Type="System.Boolean" Scope="Application">
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="IncludeCorrelation" Type="System.Boolean" Scope="Application">

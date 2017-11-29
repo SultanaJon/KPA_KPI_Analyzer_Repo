@@ -1,4 +1,5 @@
-﻿using KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader;
+﻿using KPA_KPI_Analyzer.DataLoading;
+using KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader;
 using KPA_KPI_Analyzer.KPA_KPI_Overall;
 using KPA_KPI_Analyzer.Values;
 using System;
@@ -19,7 +20,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// <summary>
         /// Boolean value indicating whether the data was loaded into the dataviz control
         /// </summary>
-        bool DatavizLoaded { get; set; }
+        bool ValuesvizLoaded { get; set; }
 
 
 
@@ -94,10 +95,10 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             RenderOne();
             btn_One.selected = true;
             btn_One.Textcolor = System.Drawing.Color.Coral;
-            DatavizLoaded = false;
+            ValuesvizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            Globals.CurrCategory = StringUtils.KpiStringUtils.categories[(int)StringUtils.KpiStringUtils.Section.PurchTwo][(int)StringUtils.KpiStringUtils.Category.PurchTwo.PR2ndLvlReleaseDatevsPOCreationDate];
+            Globals.CurrCategory = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PurchTwo][(int)Values.Categories.KpiCategory.PurchTwo.PR2ndLvlReleaseDatevsPOCreationDate];
             ChangeCategory();
         }
 
@@ -112,7 +113,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// </summary>
         public void RefreshTemplate()
         {
-            DatavizLoaded = false;
+            ValuesvizLoaded = false;
             datavizLoadTimer.Start();
         }
 
@@ -205,9 +206,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = StringUtils.KpiStringUtils.categories[(int)StringUtils.KpiStringUtils.Section.PurchTwo][(int)StringUtils.KpiStringUtils.Category.PurchTwo.PR2ndLvlReleaseDatevsPOCreationDate];
+            Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PurchTwo][(int)Values.Categories.KpiCategory.PurchTwo.PR2ndLvlReleaseDatevsPOCreationDate];
             Globals.CurrCategory = Title;
-            Globals.CurrSection = StringUtils.KpiStringUtils.sections[(int)StringUtils.KpiStringUtils.Section.PurchTwo];
+            Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.PurchTwo];
             ChangeCategory();
 
             TimeBucketOne = overallData.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.LessThanZero.ToString();
@@ -268,9 +269,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = StringUtils.KpiStringUtils.categories[(int)StringUtils.KpiStringUtils.Section.PurchTwo][(int)StringUtils.KpiStringUtils.Category.PurchTwo.POCreationDatevsPOReleaseDate];
+            Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PurchTwo][(int)Values.Categories.KpiCategory.PurchTwo.POCreationDatevsPOReleaseDate];
             Globals.CurrCategory = Title;
-            Globals.CurrSection = StringUtils.KpiStringUtils.sections[(int)StringUtils.KpiStringUtils.Section.PurchTwo];
+            Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.PurchTwo];
             ChangeCategory();
 
             TimeBucketOne = overallData.kpi.purchTwo.poCreationVsPORel.data.LessThanZero.ToString();
@@ -336,9 +337,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = StringUtils.KpiStringUtils.categories[(int)StringUtils.KpiStringUtils.Section.PurchTwo][(int)StringUtils.KpiStringUtils.Category.PurchTwo.POReleaseDatevsPOConfirmationDate];
+            Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PurchTwo][(int)Values.Categories.KpiCategory.PurchTwo.POReleaseDatevsPOConfirmationDate];
             Globals.CurrCategory = Title;
-            Globals.CurrSection = StringUtils.KpiStringUtils.sections[(int)StringUtils.KpiStringUtils.Section.PurchTwo];
+            Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.PurchTwo];
             ChangeCategory();
 
             TimeBucketOne = overallData.kpi.purchTwo.poRelVsPOConf.data.LessThanZero.ToString();
@@ -404,9 +405,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// <param name="e"></param>
         private void datavizLoadTimer_Tick(object sender, EventArgs e)
         {
-            if (!DatavizLoaded)
+            if (!ValuesvizLoaded)
             {
-                DatavizLoaded = true;
+                ValuesvizLoaded = true;
                 dataviz.Refresh();
                 datavizLoadTimer.Stop();
             }
@@ -424,7 +425,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void ViewData_Click(object sender, EventArgs e)
+        public void ViewValues_Click(object sender, EventArgs e)
         {
             try
             {
@@ -455,7 +456,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "KPI -> Purch Two Data Viewer Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "KPI -> Purch Two Values Viewer Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

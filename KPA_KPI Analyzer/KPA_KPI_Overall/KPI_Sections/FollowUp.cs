@@ -1,4 +1,4 @@
-﻿using KPA_KPI_Analyzer.DatabaseUtils;
+﻿using KPA_KPI_Analyzer.Database;
 using KPA_KPI_Analyzer.FilterFeeature;
 using KPA_KPI_Analyzer.Templates;
 using System;
@@ -62,7 +62,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
         /// Loads the data of a specific KPI
         /// </summary>
         /// <param name="SelectedCountry"></param>
-        public void LoadData()
+        public void LoadValues()
         {
             try
             {
@@ -72,7 +72,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                foreach (DataRow dr in PRPO_DB_Utils.prsOnPOsDt.Rows)
+                foreach (DataRow dr in DatabaseUtils.prsOnPOsDt.Rows)
                 {
                     if (Filters.DateFilters.FilterByPrDateRange)
                     {
@@ -222,7 +222,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-                foreach (DataRow dr in PRPO_DB_Utils.posRecCompDt.Rows)
+                foreach (DataRow dr in DatabaseUtils.posRecCompDt.Rows)
                 {
                     if (Filters.DateFilters.FilterByPrDateRange)
                     {
@@ -370,7 +370,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 // Receipt Date vs Current Planned Date
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                foreach (DataRow dr in PRPO_DB_Utils.posRecCompDt.Rows)
+                foreach (DataRow dr in DatabaseUtils.posRecCompDt.Rows)
                 {
                     if (Filters.DateFilters.FilterByPrDateRange)
                     {
@@ -510,7 +510,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                foreach (DataRow dr in PRPO_DB_Utils.posRecCompDt.Rows)
+                foreach (DataRow dr in DatabaseUtils.posRecCompDt.Rows)
                 {
                     if (Filters.DateFilters.FilterByPrDateRange)
                     {
@@ -659,7 +659,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 // Receipt Date vs Current Confirmed Date
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                foreach (DataRow dr in PRPO_DB_Utils.posRecCompDt.Rows)
+                foreach (DataRow dr in DatabaseUtils.posRecCompDt.Rows)
                 {
                     if (Filters.DateFilters.FilterByPrDateRange)
                     {
@@ -804,7 +804,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
 
 
 
-                PRPO_DB_Utils.UpdateLoadProgress();
+                DatabaseUtils.UpdateLoadProgress();
             }
             catch (Exception ex)
             {

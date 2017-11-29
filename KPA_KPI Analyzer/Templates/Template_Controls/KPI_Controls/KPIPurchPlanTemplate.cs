@@ -1,4 +1,5 @@
-﻿using KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader;
+﻿using KPA_KPI_Analyzer.DataLoading;
+using KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader;
 using KPA_KPI_Analyzer.KPA_KPI_Overall;
 using KPA_KPI_Analyzer.Values;
 using System;
@@ -20,7 +21,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// <summary>
         /// Boolean value indicating whether the data was loaded into the dataviz control
         /// </summary>
-        bool DatavizLoaded { get; set; }
+        bool ValuesvizLoaded { get; set; }
 
 
 
@@ -92,10 +93,10 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             RenderOne();
             btn_One.selected = true;
             btn_One.Textcolor = System.Drawing.Color.Coral;
-            DatavizLoaded = false;
+            ValuesvizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            Globals.CurrCategory = StringUtils.KpiStringUtils.categories[(int)StringUtils.KpiStringUtils.Section.PurchPlan][(int)StringUtils.KpiStringUtils.Category.PurchPlan.POReleasevsPRDeliveryDate];
+            Globals.CurrCategory = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PurchPlan][(int)Values.Categories.KpiCategory.PurchPlan.POReleasevsPRDeliveryDate];
             ChangeCategory();
         }
 
@@ -109,7 +110,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// </summary>
         public void RefreshTemplate()
         {
-            DatavizLoaded = false;
+            ValuesvizLoaded = false;
             datavizLoadTimer.Start();
         }
 
@@ -183,9 +184,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = StringUtils.KpiStringUtils.categories[(int)StringUtils.KpiStringUtils.Section.PurchPlan][(int)StringUtils.KpiStringUtils.Category.PurchPlan.POReleasevsPRDeliveryDate];
+            Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PurchPlan][(int)Values.Categories.KpiCategory.PurchPlan.POReleasevsPRDeliveryDate];
             Globals.CurrCategory = Title;
-            Globals.CurrSection = StringUtils.KpiStringUtils.sections[(int)StringUtils.KpiStringUtils.Section.PurchPlan];
+            Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.PurchPlan];
             ChangeCategory();
             
             TimeBucketOne = overallData.kpi.purchPlan.poRelVsPRDelDate.data.LessThanZero.ToString();
@@ -248,9 +249,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// <param name="e"></param>
         private void datavizLoadTimer_Tick(object sender, EventArgs e)
         {
-            if (!DatavizLoaded)
+            if (!ValuesvizLoaded)
             {
-                DatavizLoaded = true;
+                ValuesvizLoaded = true;
                 dataviz.Refresh();
                 datavizLoadTimer.Stop();
             }
@@ -267,7 +268,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void ViewData_Click(object sender, EventArgs e)
+        public void ViewValues_Click(object sender, EventArgs e)
         {
             try
             {
@@ -290,7 +291,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "KPI -> Purch/Plan Data Viewer Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "KPI -> Purch/Plan Values Viewer Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

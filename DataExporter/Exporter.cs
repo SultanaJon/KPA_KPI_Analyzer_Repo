@@ -36,7 +36,7 @@ namespace DataExporter
             using (ExcelPackage xlPackage = new ExcelPackage(xlFileInfo))
             {
                 ExcelWorksheet xlWorksheet = xlPackage.Workbook.Worksheets.Add(xlFile.SheetName);
-                xlWorksheet.Cells[(int)ExcelFile.DataColumnPosition.RowStartPosition, (int)ExcelFile.DataColumnPosition.ColumnStartPosition].LoadFromDataTable(dt, xlFile.HasHeaders);
+                xlWorksheet.Cells[(int)ExcelFile.ValuesColumnPosition.RowStartPosition, (int)ExcelFile.ValuesColumnPosition.ColumnStartPosition].LoadFromDataTable(dt, xlFile.HasHeaders);
                 xlPackage.Save();
 
                 ExportProcessCompleted = true;

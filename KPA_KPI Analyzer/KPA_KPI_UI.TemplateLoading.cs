@@ -6,16 +6,6 @@ namespace KPA_KPI_Analyzer
 {
     public partial class KPA_KPI_UI : Form
     {
-
-        /// <summary>
-        /// The current Performance
-        /// </summary>
-        public enum Performance
-        {
-            KPA,
-            KPI
-        }
-
         /// <summary>
         /// Instantiates a template object and adds the control to the active page panel for loading/viewing
         /// </summary>
@@ -674,9 +664,9 @@ namespace KPA_KPI_Analyzer
         /// <summary>
         /// Loads either the KPA or KPI overall data template depending on what navigation button was pressed.
         /// </summary>
-        private void LoadOverallTemplate(Performance page)
+        private void LoadOverallTemplate(Values.Performances.Performance page)
         {
-            if (page == Performance.KPA)
+            if (page == Values.Performances.Performance.KPA)
             {
                 activeSectionBtn = btn_kpaOverall;
                 SetActiveSectionBtn(activeSectionBtn);
@@ -694,7 +684,7 @@ namespace KPA_KPI_Analyzer
                 pnl_NavigationPanelMax.BringToFront();
             }
 
-            if (page == Performance.KPI)
+            if (page == Values.Performances.Performance.KPI)
             {
                 activeSectionBtn = btn_kpiOverall;
                 SetActiveSectionBtn(activeSectionBtn);

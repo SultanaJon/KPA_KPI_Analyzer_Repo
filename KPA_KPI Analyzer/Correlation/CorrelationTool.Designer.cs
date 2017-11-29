@@ -264,7 +264,7 @@
             this.dgv_correlationmatrix.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgv_correlationmatrix.Size = new System.Drawing.Size(1194, 341);
             this.dgv_correlationmatrix.TabIndex = 1;
-            this.dgv_correlationmatrix.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_correlationmatrix_CellDoubleClick);
+            //this.dgv_correlationmatrix.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_correlationmatrix_CellDoubleClick);
             // 
             // tableLayoutPanel2
             // 
@@ -389,7 +389,7 @@
             this.cpb_loadingScreenCircProgBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
             this.cpb_loadingScreenCircProgBar.SuperscriptText = "";
             this.cpb_loadingScreenCircProgBar.TabIndex = 1;
-            this.cpb_loadingScreenCircProgBar.Text = "Loading Data...";
+            this.cpb_loadingScreenCircProgBar.Text = "Loading Values...";
             this.cpb_loadingScreenCircProgBar.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
             this.cpb_loadingScreenCircProgBar.Value = 36;
             // 

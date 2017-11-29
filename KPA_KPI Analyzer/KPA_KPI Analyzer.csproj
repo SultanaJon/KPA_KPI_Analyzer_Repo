@@ -16,7 +16,7 @@
     </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -119,11 +120,18 @@
     <Compile Include="Correlation\CorrelationTool.Designer.cs">
       <DependentUpon>CorrelationTool.cs</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseUtils\ThreadInteruptedException.cs" />
+    <Compile Include="Database\DatabaseTables.cs" />
+    <Compile Include="Database\QueryManager.cs" />
+    <Compile Include="Database\ThreadInteruptedException.cs" />
     <Compile Include="DataLoading\DataViewerUtils.cs" />
     <Compile Include="DataLoading\ExportUtils.cs" />
     <Compile Include="DataLoading\KPA_Data\DataTableLoader\KpaDataTableLoader.cs" />
     <Compile Include="DataLoading\KPI_Data\DataTableLoader\KpiDataTableLoader.cs" />
+    <Compile Include="Values\Categories.cs" />
+    <Compile Include="Correlation\CorrelationHeaders.cs" />
+    <Compile Include="Values\Countries.cs" />
+    <Compile Include="Values\Performance.cs" />
+    <Compile Include="Values\Sections.cs" />
     <Compile Include="Diagnostics\ILoadable.cs" />
     <Compile Include="Diagnostics\IStorable.cs" />
     <Compile Include="Filter Variant\FilterVariants.cs" />
@@ -185,8 +193,7 @@
       <DependentUpon>newKPIOverall.cs</DependentUpon>
     </Compile>
     <Compile Include="Values\Constants.cs" />
-    <Compile Include="DatabaseUtils\PRPOCommands.cs" />
-    <Compile Include="DatabaseUtils\PRPO_DB_Utils.cs" />
+    <Compile Include="Database\DatabaseUtils.cs" />
     <Compile Include="DataComingSoon.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -369,7 +376,6 @@
     <Compile Include="Templates\TemplateThreeStructure.cs" />
     <Compile Include="Templates\TemplateTwoStructure.cs" />
     <Compile Include="Values\Globals.cs" />
-    <Compile Include="Values\StringUtils.cs" />
     <EmbeddedResource Include="Correlation\CorrelationConfiguration.resx">
       <DependentUpon>CorrelationConfiguration.cs</DependentUpon>
     </EmbeddedResource>

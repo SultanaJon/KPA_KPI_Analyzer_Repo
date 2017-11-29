@@ -50,7 +50,7 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.bunifuCustomLabel3 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.btn_viewData = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btn_viewValues = new Bunifu.Framework.UI.BunifuFlatButton();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.bunifuCards9 = new Bunifu.Framework.UI.BunifuCards();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
@@ -500,7 +500,7 @@
             // 
             // panel9
             // 
-            this.panel9.Controls.Add(this.btn_viewData);
+            this.panel9.Controls.Add(this.btn_viewValues);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel9.Location = new System.Drawing.Point(253, 0);
             this.panel9.Margin = new System.Windows.Forms.Padding(0);
@@ -508,42 +508,42 @@
             this.panel9.Size = new System.Drawing.Size(55, 37);
             this.panel9.TabIndex = 15;
             // 
-            // btn_viewData
+            // btn_viewValues
             // 
-            this.btn_viewData.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.btn_viewData.BackColor = System.Drawing.Color.DarkSalmon;
-            this.btn_viewData.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_viewData.BorderRadius = 5;
-            this.btn_viewData.ButtonText = "View";
-            this.btn_viewData.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_viewData.DisabledColor = System.Drawing.Color.Gray;
-            this.btn_viewData.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_viewData.Iconcolor = System.Drawing.Color.Transparent;
-            this.btn_viewData.Iconimage = null;
-            this.btn_viewData.Iconimage_right = null;
-            this.btn_viewData.Iconimage_right_Selected = null;
-            this.btn_viewData.Iconimage_Selected = null;
-            this.btn_viewData.IconMarginLeft = 0;
-            this.btn_viewData.IconMarginRight = 0;
-            this.btn_viewData.IconRightVisible = true;
-            this.btn_viewData.IconRightZoom = 0D;
-            this.btn_viewData.IconVisible = true;
-            this.btn_viewData.IconZoom = 90D;
-            this.btn_viewData.IsTab = false;
-            this.btn_viewData.Location = new System.Drawing.Point(2, 14);
-            this.btn_viewData.Name = "btn_viewData";
-            this.btn_viewData.Normalcolor = System.Drawing.Color.DarkSalmon;
-            this.btn_viewData.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btn_viewData.OnHoverTextColor = System.Drawing.Color.White;
-            this.btn_viewData.selected = false;
-            this.btn_viewData.Size = new System.Drawing.Size(47, 19);
-            this.btn_viewData.TabIndex = 15;
-            this.btn_viewData.Tag = "0";
-            this.btn_viewData.Text = "View";
-            this.btn_viewData.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btn_viewData.Textcolor = System.Drawing.Color.White;
-            this.btn_viewData.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_viewData.Click += new System.EventHandler(this.ViewData_Click);
+            this.btn_viewValues.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.btn_viewValues.BackColor = System.Drawing.Color.DarkSalmon;
+            this.btn_viewValues.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_viewValues.BorderRadius = 5;
+            this.btn_viewValues.ButtonText = "View";
+            this.btn_viewValues.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_viewValues.DisabledColor = System.Drawing.Color.Gray;
+            this.btn_viewValues.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_viewValues.Iconcolor = System.Drawing.Color.Transparent;
+            this.btn_viewValues.Iconimage = null;
+            this.btn_viewValues.Iconimage_right = null;
+            this.btn_viewValues.Iconimage_right_Selected = null;
+            this.btn_viewValues.Iconimage_Selected = null;
+            this.btn_viewValues.IconMarginLeft = 0;
+            this.btn_viewValues.IconMarginRight = 0;
+            this.btn_viewValues.IconRightVisible = true;
+            this.btn_viewValues.IconRightZoom = 0D;
+            this.btn_viewValues.IconVisible = true;
+            this.btn_viewValues.IconZoom = 90D;
+            this.btn_viewValues.IsTab = false;
+            this.btn_viewValues.Location = new System.Drawing.Point(2, 14);
+            this.btn_viewValues.Name = "btn_viewValues";
+            this.btn_viewValues.Normalcolor = System.Drawing.Color.DarkSalmon;
+            this.btn_viewValues.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btn_viewValues.OnHoverTextColor = System.Drawing.Color.White;
+            this.btn_viewValues.selected = false;
+            this.btn_viewValues.Size = new System.Drawing.Size(47, 19);
+            this.btn_viewValues.TabIndex = 15;
+            this.btn_viewValues.Tag = "0";
+            this.btn_viewValues.Text = "View";
+            this.btn_viewValues.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_viewValues.Textcolor = System.Drawing.Color.White;
+            this.btn_viewValues.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_viewValues.Click += new System.EventHandler(this.ViewValues_Click);
             // 
             // tableLayoutPanel3
             // 
@@ -723,7 +723,7 @@
             this.bunifuFlatButton10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton10.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton10.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuFlatButton10.Click += new System.EventHandler(this.ViewData_Click);
+            this.bunifuFlatButton10.Click += new System.EventHandler(this.ViewValues_Click);
             // 
             // bunifuCards8
             // 
@@ -877,7 +877,7 @@
             this.bunifuFlatButton9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton9.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton9.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuFlatButton9.Click += new System.EventHandler(this.ViewData_Click);
+            this.bunifuFlatButton9.Click += new System.EventHandler(this.ViewValues_Click);
             // 
             // bunifuCards7
             // 
@@ -1031,7 +1031,7 @@
             this.bunifuFlatButton8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton8.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton8.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuFlatButton8.Click += new System.EventHandler(this.ViewData_Click);
+            this.bunifuFlatButton8.Click += new System.EventHandler(this.ViewValues_Click);
             // 
             // bunifuCards6
             // 
@@ -1185,7 +1185,7 @@
             this.bunifuFlatButton7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton7.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton7.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuFlatButton7.Click += new System.EventHandler(this.ViewData_Click);
+            this.bunifuFlatButton7.Click += new System.EventHandler(this.ViewValues_Click);
             // 
             // bunifuCards5
             // 
@@ -1339,7 +1339,7 @@
             this.bunifuFlatButton5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton5.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton5.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuFlatButton5.Click += new System.EventHandler(this.ViewData_Click);
+            this.bunifuFlatButton5.Click += new System.EventHandler(this.ViewValues_Click);
             // 
             // bunifuCards4
             // 
@@ -1493,7 +1493,7 @@
             this.bunifuFlatButton3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton3.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton3.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuFlatButton3.Click += new System.EventHandler(this.ViewData_Click);
+            this.bunifuFlatButton3.Click += new System.EventHandler(this.ViewValues_Click);
             // 
             // bunifuCards1
             // 
@@ -1647,7 +1647,7 @@
             this.btn_viewOne.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btn_viewOne.Textcolor = System.Drawing.Color.White;
             this.btn_viewOne.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_viewOne.Click += new System.EventHandler(this.ViewData_Click);
+            this.btn_viewOne.Click += new System.EventHandler(this.ViewValues_Click);
             // 
             // tableLayoutPanel13
             // 
@@ -1885,7 +1885,7 @@
         private System.Windows.Forms.Panel panel7;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel3;
         private System.Windows.Forms.Panel panel9;
-        private Bunifu.Framework.UI.BunifuFlatButton btn_viewData;
+        private Bunifu.Framework.UI.BunifuFlatButton btn_viewValues;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private Bunifu.Framework.UI.BunifuCards bunifuCards9;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;

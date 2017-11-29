@@ -53,7 +53,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.TemplateTwoDataGrid = new Bunifu.Framework.UI.BunifuCustomDataGrid();
+            this.TemplateTwoValuesGrid = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.one = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.two = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.three = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,7 +67,7 @@
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TemplateOneDataGrid = new Bunifu.Framework.UI.BunifuCustomDataGrid();
+            this.TemplateOneValuesGrid = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.Section = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KPA_Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TimeSpanOne = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -80,8 +80,8 @@
             this.Average = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Totals = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TemplateTwoDataGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TemplateOneDataGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TemplateTwoValuesGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TemplateOneValuesGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -89,8 +89,8 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.TemplateTwoDataGrid, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.TemplateOneDataGrid, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.TemplateTwoValuesGrid, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.TemplateOneValuesGrid, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -102,18 +102,18 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1150, 650);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // TemplateTwoDataGrid
+            // TemplateTwoValuesGrid
             // 
-            this.TemplateTwoDataGrid.AllowUserToAddRows = false;
-            this.TemplateTwoDataGrid.AllowUserToDeleteRows = false;
-            this.TemplateTwoDataGrid.AllowUserToResizeRows = false;
+            this.TemplateTwoValuesGrid.AllowUserToAddRows = false;
+            this.TemplateTwoValuesGrid.AllowUserToDeleteRows = false;
+            this.TemplateTwoValuesGrid.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.TemplateTwoDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.TemplateTwoDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.TemplateTwoDataGrid.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.TemplateTwoDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TemplateTwoDataGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.TemplateTwoDataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.TemplateTwoValuesGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.TemplateTwoValuesGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.TemplateTwoValuesGrid.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.TemplateTwoValuesGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TemplateTwoValuesGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.TemplateTwoValuesGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -121,10 +121,10 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TemplateTwoDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.TemplateTwoDataGrid.ColumnHeadersHeight = 18;
-            this.TemplateTwoDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.TemplateTwoDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.TemplateTwoValuesGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.TemplateTwoValuesGrid.ColumnHeadersHeight = 18;
+            this.TemplateTwoValuesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.TemplateTwoValuesGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.one,
             this.two,
             this.three,
@@ -138,24 +138,24 @@
             this.Column7,
             this.Column8,
             this.Column9});
-            this.tableLayoutPanel1.SetColumnSpan(this.TemplateTwoDataGrid, 2);
-            this.TemplateTwoDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TemplateTwoDataGrid.DoubleBuffered = true;
-            this.TemplateTwoDataGrid.EnableHeadersVisualStyles = false;
-            this.TemplateTwoDataGrid.HeaderBgColor = System.Drawing.SystemColors.Control;
-            this.TemplateTwoDataGrid.HeaderForeColor = System.Drawing.Color.White;
-            this.TemplateTwoDataGrid.Location = new System.Drawing.Point(10, 390);
-            this.TemplateTwoDataGrid.Margin = new System.Windows.Forms.Padding(0);
-            this.TemplateTwoDataGrid.Name = "TemplateTwoDataGrid";
-            this.TemplateTwoDataGrid.ReadOnly = true;
-            this.TemplateTwoDataGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.TemplateTwoDataGrid.RowHeadersVisible = false;
-            this.TemplateTwoDataGrid.RowTemplate.Height = 16;
-            this.TemplateTwoDataGrid.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.TemplateTwoDataGrid.Size = new System.Drawing.Size(1130, 250);
-            this.TemplateTwoDataGrid.TabIndex = 2;
-            this.TemplateTwoDataGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TemplateTwoDataGrid_CellDoubleClick);
-            this.TemplateTwoDataGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.bunifuCustomDataGrid2_CellFormatting);
+            this.tableLayoutPanel1.SetColumnSpan(this.TemplateTwoValuesGrid, 2);
+            this.TemplateTwoValuesGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TemplateTwoValuesGrid.DoubleBuffered = true;
+            this.TemplateTwoValuesGrid.EnableHeadersVisualStyles = false;
+            this.TemplateTwoValuesGrid.HeaderBgColor = System.Drawing.SystemColors.Control;
+            this.TemplateTwoValuesGrid.HeaderForeColor = System.Drawing.Color.White;
+            this.TemplateTwoValuesGrid.Location = new System.Drawing.Point(10, 390);
+            this.TemplateTwoValuesGrid.Margin = new System.Windows.Forms.Padding(0);
+            this.TemplateTwoValuesGrid.Name = "TemplateTwoDataGrid";
+            this.TemplateTwoValuesGrid.ReadOnly = true;
+            this.TemplateTwoValuesGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.TemplateTwoValuesGrid.RowHeadersVisible = false;
+            this.TemplateTwoValuesGrid.RowTemplate.Height = 16;
+            this.TemplateTwoValuesGrid.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.TemplateTwoValuesGrid.Size = new System.Drawing.Size(1130, 250);
+            this.TemplateTwoValuesGrid.TabIndex = 2;
+            this.TemplateTwoValuesGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TemplateTwoValuesGrid_CellDoubleClick);
+            this.TemplateTwoValuesGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.bunifuCustomValuesGrid2_CellFormatting);
             // 
             // one
             // 
@@ -270,18 +270,18 @@
             this.Column9.ReadOnly = true;
             this.Column9.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // TemplateOneDataGrid
+            // TemplateOneValuesGrid
             // 
-            this.TemplateOneDataGrid.AllowUserToAddRows = false;
-            this.TemplateOneDataGrid.AllowUserToDeleteRows = false;
-            this.TemplateOneDataGrid.AllowUserToResizeRows = false;
+            this.TemplateOneValuesGrid.AllowUserToAddRows = false;
+            this.TemplateOneValuesGrid.AllowUserToDeleteRows = false;
+            this.TemplateOneValuesGrid.AllowUserToResizeRows = false;
             dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.TemplateOneDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle14;
-            this.TemplateOneDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.TemplateOneDataGrid.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.TemplateOneDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TemplateOneDataGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.TemplateOneDataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.TemplateOneValuesGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle14;
+            this.TemplateOneValuesGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.TemplateOneValuesGrid.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.TemplateOneValuesGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TemplateOneValuesGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.TemplateOneValuesGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle15.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -289,10 +289,10 @@
             dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TemplateOneDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
-            this.TemplateOneDataGrid.ColumnHeadersHeight = 18;
-            this.TemplateOneDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.TemplateOneDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.TemplateOneValuesGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            this.TemplateOneValuesGrid.ColumnHeadersHeight = 18;
+            this.TemplateOneValuesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.TemplateOneValuesGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Section,
             this.KPA_Category,
             this.TimeSpanOne,
@@ -304,24 +304,24 @@
             this.TimeSpanSeven,
             this.Average,
             this.Totals});
-            this.tableLayoutPanel1.SetColumnSpan(this.TemplateOneDataGrid, 2);
-            this.TemplateOneDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TemplateOneDataGrid.DoubleBuffered = true;
-            this.TemplateOneDataGrid.EnableHeadersVisualStyles = false;
-            this.TemplateOneDataGrid.HeaderBgColor = System.Drawing.SystemColors.Control;
-            this.TemplateOneDataGrid.HeaderForeColor = System.Drawing.Color.White;
-            this.TemplateOneDataGrid.Location = new System.Drawing.Point(10, 10);
-            this.TemplateOneDataGrid.Margin = new System.Windows.Forms.Padding(0);
-            this.TemplateOneDataGrid.Name = "TemplateOneDataGrid";
-            this.TemplateOneDataGrid.ReadOnly = true;
-            this.TemplateOneDataGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.TemplateOneDataGrid.RowHeadersVisible = false;
-            this.TemplateOneDataGrid.RowTemplate.Height = 16;
-            this.TemplateOneDataGrid.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.TemplateOneDataGrid.Size = new System.Drawing.Size(1130, 360);
-            this.TemplateOneDataGrid.TabIndex = 1;
-            this.TemplateOneDataGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TemplateOneDataGrid_CellDoubleClick);
-            this.TemplateOneDataGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.bunifuCustomDataGrid1_CellFormatting);
+            this.tableLayoutPanel1.SetColumnSpan(this.TemplateOneValuesGrid, 2);
+            this.TemplateOneValuesGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TemplateOneValuesGrid.DoubleBuffered = true;
+            this.TemplateOneValuesGrid.EnableHeadersVisualStyles = false;
+            this.TemplateOneValuesGrid.HeaderBgColor = System.Drawing.SystemColors.Control;
+            this.TemplateOneValuesGrid.HeaderForeColor = System.Drawing.Color.White;
+            this.TemplateOneValuesGrid.Location = new System.Drawing.Point(10, 10);
+            this.TemplateOneValuesGrid.Margin = new System.Windows.Forms.Padding(0);
+            this.TemplateOneValuesGrid.Name = "TemplateOneDataGrid";
+            this.TemplateOneValuesGrid.ReadOnly = true;
+            this.TemplateOneValuesGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.TemplateOneValuesGrid.RowHeadersVisible = false;
+            this.TemplateOneValuesGrid.RowTemplate.Height = 16;
+            this.TemplateOneValuesGrid.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.TemplateOneValuesGrid.Size = new System.Drawing.Size(1130, 360);
+            this.TemplateOneValuesGrid.TabIndex = 1;
+            this.TemplateOneValuesGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TemplateOneValuesGrid_CellDoubleClick);
+            this.TemplateOneValuesGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.bunifuCustomDataGrid1_CellFormatting);
             // 
             // Section
             // 
@@ -427,8 +427,8 @@
             this.Size = new System.Drawing.Size(1150, 650);
             this.Load += new System.EventHandler(this.NewKPAOverall_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.TemplateTwoDataGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TemplateOneDataGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TemplateTwoValuesGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TemplateOneValuesGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -436,8 +436,8 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private Bunifu.Framework.UI.BunifuCustomDataGrid TemplateOneDataGrid;
-        private Bunifu.Framework.UI.BunifuCustomDataGrid TemplateTwoDataGrid;
+        private Bunifu.Framework.UI.BunifuCustomDataGrid TemplateOneValuesGrid;
+        private Bunifu.Framework.UI.BunifuCustomDataGrid TemplateTwoValuesGrid;
         private System.Windows.Forms.DataGridViewTextBoxColumn one;
         private System.Windows.Forms.DataGridViewTextBoxColumn two;
         private System.Windows.Forms.DataGridViewTextBoxColumn three;

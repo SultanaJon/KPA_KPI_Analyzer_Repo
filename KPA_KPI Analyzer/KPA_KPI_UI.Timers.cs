@@ -1,7 +1,4 @@
-﻿using DataImporter.Access;
-using DataImporter.Classes;
-using DataImporter.Excel;
-using KPA_KPI_Analyzer.DatabaseUtils;
+﻿using KPA_KPI_Analyzer.Database;
 using KPA_KPI_Analyzer.Diagnostics;
 using KPA_KPI_Analyzer.DragDropFeatures;
 using KPA_KPI_Analyzer.FilterFeeature;
@@ -10,12 +7,15 @@ using System;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
+using DataImporter.Classes;
+using DataImporter.Excel;
+using DataImporter.Access;
 
 namespace KPA_KPI_Analyzer
 {
     public partial class KPA_KPI_UI : Form
     {
-        #region LOADING THREADS
+        #region FIELD DATA
 
         Thread KPA_PlanThread;
         Thread KPA_PurchThread;
@@ -40,13 +40,12 @@ namespace KPA_KPI_Analyzer
         #endregion
 
 
-
-
+        #region EVENTS
 
         /// <summary>
         /// When the user has successfully dropped PRPO files into the application, this timer will initiate.
         /// The import process will then begin, importing all the data contained within the PRPO report into the
-        /// Acces Database located in the resources folder.
+        /// Acces Valuesbase located in the resources folder.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -137,11 +136,11 @@ namespace KPA_KPI_Analyzer
                 {
                     Importer.ImportComplete = false;
                     ImportTimer.Stop();
-                    PRPO_DB_Utils.DataRemovalProcessStarted = false;
-                    PRPO_DB_Utils.DataRemoved = false;
-                    PRPO_DB_Utils.CompletedDataRemovals = 0;
-                    PRPO_DB_Utils.ScheduledDataRemovals = 0;
-                    PRPO_DB_Utils.ConnectToDatabase();
+                    DatabaseUtils.DataRemovalProcessStarted = false;
+                    DatabaseUtils.DataRemoved = false;
+                    DatabaseUtils.CompletedDataRemovals = 0;
+                    DatabaseUtils.ScheduledDataRemovals = 0;
+                    DatabaseUtils.ConnectToDatabase();
 
                     if (AccessUtils.US_PRPO_TableExists)
                     {
@@ -180,19 +179,16 @@ namespace KPA_KPI_Analyzer
                     }
 
 
-                    if(Properties.Settings.Default.RemoveData)
-                        DataRemovalTimer.Start();
+                    if(Properties.Settings.Default.RemoveValues)
+                        ValuesRemovalTimer.Start();
                 }
             }
-            catch (DataImporter.Importing.Exceptions.ImportExceptions.InvalidDataFileException)
+            catch (DataImporter.Importing.Exceptions.ImportExceptions.InvalidValuesFileException)
             {
                 ShowPage(Pages.DragDropDash);
             }
         }
-
-
-
-
+        
 
 
         /// <summary>
@@ -201,39 +197,39 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void DataRemovalTimer_Tick(object sender, EventArgs e)
+        private void ValuesRemovalTimer_Tick(object sender, EventArgs e)
         {
-            if (!PRPO_DB_Utils.DataRemovalProcessStarted)
+            if (!DatabaseUtils.DataRemovalProcessStarted)
             {
-                PRPO_DB_Utils.DataRemovalProcessStarted = true;
+                DatabaseUtils.DataRemovalProcessStarted = true;
 
                 if (AccessUtils.US_PRPO_TableExists)
                 {
-                    PRPO_DB_Utils.ScheduledDataRemovals++;
+                    DatabaseUtils.ScheduledDataRemovals++;
                     usThread = new Thread(() =>
                     {
-                        PRPO_DB_Utils.RemoveData();
+                        DatabaseUtils.RemoveData(Values.Countries.Country.UnitedStates);
                     });
                     usThread.Start();
                 }
 
                 if (AccessUtils.MX_PRPO_TableExists)
                 {
-                    PRPO_DB_Utils.ScheduledDataRemovals++;
+                    DatabaseUtils.ScheduledDataRemovals++;
 
                     mxThread = new Thread(() =>
                     {
-                        PRPO_DB_Utils.RemoveData();
+                        DatabaseUtils.RemoveData(Values.Countries.Country.Mexico);
                     });
                     mxThread.Start();
                 }
             }
 
 
-            if (PRPO_DB_Utils.DataRemoved)
+            if (DatabaseUtils.DataRemoved)
             {
-                PRPO_DB_Utils.DataRemoved = false;
-                DataRemovalTimer.Stop();
+                DatabaseUtils.DataRemoved = false;
+                ValuesRemovalTimer.Stop();
 
                 if (AccessUtils.US_PRPO_TableExists && AccessUtils.MX_PRPO_TableExists)
                 {
@@ -241,91 +237,16 @@ namespace KPA_KPI_Analyzer
                 }
                 else if (AccessUtils.US_PRPO_TableExists)
                 {
-                    lbl_Country.Text = StringUtils.countries[(int)StringUtils.Country.UnitedStates];
-                    Globals.FocusedCountry = StringUtils.Country.UnitedStates;
-                    InitializeDataLoadProcess();
+                    ConfigureToUnitedStates();
+                    InitializeValuesLoadProcess();
                 }
                 else // only the mexico file exists.
                 {
-                    lbl_Country.Text = StringUtils.countries[(int)StringUtils.Country.Mexico];
-                    Globals.FocusedCountry = StringUtils.Country.Mexico;
-                    InitializeDataLoadProcess();
+                    ConfigureToMexico();
+                    InitializeValuesLoadProcess();
                 }
             }
         }
-
-
-
-
-
-        /// <summary>
-        /// Create the threads that will load the data into the application
-        /// </summary>
-        private void CreateThreads()
-        {
-            KPA_PlanThread = new Thread(() => { try { overallData.kpa.plan.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPA_PurchThread = new Thread(() => { try { overallData.kpa.purch.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPA_PurchSubThread = new Thread(() => { try { overallData.kpa.purchSub.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPA_PurchTotalThread = new Thread(() => { try { overallData.kpa.purchTotal.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPA_FollowUpThread = new Thread(() => { try { overallData.kpa.followUp.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPA_HotJobs = new Thread(() => { try { overallData.kpa.hotJobs.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPA_ExcessStock_Stock = new Thread(() => { try { overallData.kpa.excessStockStock.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPA_ExcessStock_OpenOrders = new Thread(() => { try { overallData.kpa.excessStockOpenOrders.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPA_CurrPlanVsActualThread = new Thread(() => { try { overallData.kpa.currPlanVsActual.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-
-            tableLoadThread = new Thread(() => { try { PRPO_DB_Utils.LoadKPITables(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPI_PlanThread = new Thread(() => { try { overallData.kpi.plan.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPI_PurchThread = new Thread(() => { try { overallData.kpi.purch.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPI_FollowUpThread = new Thread(() => { try { overallData.kpi.followUp.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPI_PlanTwoThread = new Thread(() => { try { overallData.kpi.planTwo.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPI_PurchTwoThread = new Thread(() => { try { overallData.kpi.purchTwo.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPI_PurchSubThread = new Thread(() => { try { overallData.kpi.purchSub.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPI_PurchTotalThread = new Thread(() => { try { overallData.kpi.purchTotal.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPI_PurchPlanThread = new Thread(() => { try { overallData.kpi.purchPlan.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPI_OtherThread = new Thread(() => { try { overallData.kpi.other.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-        }
-
-
-
-
-
-        /// <summary>
-        /// Starts the threads that will load perform the calculations on the data.
-        /// </summary>
-        /// <param name="_startKpaThreads">Indicates whether or not the KPA threads should be started.</param>
-        /// <param name="_startKpiThreads">Indicates whether or not the KPI threads should be started.</param>
-        private void StartThreads(bool _startKpaThreads, bool _startKpiThreads)
-        {
-            if(_startKpaThreads)
-            {
-                KPA_PlanThread.Start();
-                KPA_PurchThread.Start();
-                KPA_PurchSubThread.Start();
-                KPA_PurchTotalThread.Start();
-                KPA_FollowUpThread.Start();
-                KPA_HotJobs.Start();
-                KPA_ExcessStock_Stock.Start();
-                KPA_ExcessStock_OpenOrders.Start();
-                KPA_CurrPlanVsActualThread.Start();
-                tableLoadThread.Start();
-            }
-
-
-            if(_startKpiThreads)
-            {
-                KPI_PlanThread.Start();
-                KPI_PurchThread.Start();
-                KPI_FollowUpThread.Start();
-                KPI_PlanTwoThread.Start();
-                KPI_PurchTwoThread.Start();
-                KPI_PurchSubThread.Start();
-                KPI_PurchTotalThread.Start();
-                KPI_PurchPlanThread.Start();
-                KPI_OtherThread.Start();
-            }
-        }
-
-
 
 
 
@@ -334,30 +255,30 @@ namespace KPA_KPI_Analyzer
         /// the access database will then be loaded into the application where calculations will occur.        /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void DataLoaderTimer_Tick(object sender, EventArgs e)
+        private void ValuesLoaderTimer_Tick(object sender, EventArgs e)
         {
             NavigationLocked = true;
 
-            if (!PRPO_DB_Utils.DataLoadProcessStarted)
+            if (!DatabaseUtils.DataLoadProcessStarted)
             {
-                PRPO_DB_Utils.DataLoadProcessStarted = true;
-                PRPO_DB_Utils.KPITablesLoaded = false;
-                PRPO_DB_Utils.ScheduledDataLoads = 19;
+                DatabaseUtils.DataLoadProcessStarted = true;
+                DatabaseUtils.KPITablesLoaded = false;
+                DatabaseUtils.ScheduledDataLoads = 19;
                 StartThreads(true, false);
             }
 
 
-            if (PRPO_DB_Utils.KPITablesLoaded)
+            if (DatabaseUtils.KPITablesLoaded)
             {
-                PRPO_DB_Utils.KPITablesLoaded = false;
+                DatabaseUtils.KPITablesLoaded = false;
                 StartThreads(false, true);
             }
 
-            if (PRPO_DB_Utils.DataLoaded)
+            if (DatabaseUtils.DataLoaded)
             {
-                PRPO_DB_Utils.DataLoaded = false;
-                DataLoaderTimer.Stop();
-                PRPO_DB_Utils.ReleaseKPITables();
+                DatabaseUtils.DataLoaded = false;
+                ValuesLoaderTimer.Stop();
+                DatabaseUtils.ReleaseKPITables();
 
                 if (!Filters.ColumnFilters.Applied 
                     && !Filters.DateFilters.Applied 
@@ -365,7 +286,7 @@ namespace KPA_KPI_Analyzer
                 {
                     // Save the overall data to a JSON file.
                     overallData.Save();
-                    //DataReader.SaveOverallData(overallData);
+                    //ValuesReader.SaveOverallValues(overallData);
 
                     InitializeFilterLoadProcess();
                 }
@@ -377,7 +298,7 @@ namespace KPA_KPI_Analyzer
                     ms_applicaitonMenuStrip.Enabled = true;
                 }
 
-                if (Globals.FocusedCountry == StringUtils.Country.UnitedStates)
+                if (Globals.TargetCountry == Values.Countries.Country.UnitedStates)
                 {
                     // Populate Dashboard with PRPO report date.
                     DateTime dt = GetLoadedUsPrpoReportDate();
@@ -397,9 +318,7 @@ namespace KPA_KPI_Analyzer
                 }
             }
         }
-
-
-
+        
 
 
         /// <summary>
@@ -432,5 +351,78 @@ namespace KPA_KPI_Analyzer
                 NavigationLocked = false;
             }
         }
+
+        #endregion
+
+
+        #region HELPER FUNCTIONS
+
+        /// <summary>
+        /// Create the threads that will load the data into the application
+        /// </summary>
+        private void CreateThreads()
+        {
+            KPA_PlanThread = new Thread(() => { try { overallData.kpa.plan.LoadValues(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+            KPA_PurchThread = new Thread(() => { try { overallData.kpa.purch.LoadValues(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+            KPA_PurchSubThread = new Thread(() => { try { overallData.kpa.purchSub.LoadValues(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+            KPA_PurchTotalThread = new Thread(() => { try { overallData.kpa.purchTotal.LoadValues(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+            KPA_FollowUpThread = new Thread(() => { try { overallData.kpa.followUp.LoadValues(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+            KPA_HotJobs = new Thread(() => { try { overallData.kpa.hotJobs.LoadValues(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+            KPA_ExcessStock_Stock = new Thread(() => { try { overallData.kpa.excessStockStock.LoadValues(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+            KPA_ExcessStock_OpenOrders = new Thread(() => { try { overallData.kpa.excessStockOpenOrders.LoadValues(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+            KPA_CurrPlanVsActualThread = new Thread(() => { try { overallData.kpa.currPlanVsActual.LoadValues(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+
+            tableLoadThread = new Thread(() => { try { DatabaseUtils.LoadKPITables(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+            KPI_PlanThread = new Thread(() => { try { overallData.kpi.plan.LoadValues(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+            KPI_PurchThread = new Thread(() => { try { overallData.kpi.purch.LoadValues(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+            KPI_FollowUpThread = new Thread(() => { try { overallData.kpi.followUp.LoadValues(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+            KPI_PlanTwoThread = new Thread(() => { try { overallData.kpi.planTwo.LoadValues(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+            KPI_PurchTwoThread = new Thread(() => { try { overallData.kpi.purchTwo.LoadValues(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+            KPI_PurchSubThread = new Thread(() => { try { overallData.kpi.purchSub.LoadValues(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+            KPI_PurchTotalThread = new Thread(() => { try { overallData.kpi.purchTotal.LoadValues(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+            KPI_PurchPlanThread = new Thread(() => { try { overallData.kpi.purchPlan.LoadValues(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+            KPI_OtherThread = new Thread(() => { try { overallData.kpi.other.LoadValues(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+        }
+
+        
+
+        /// <summary>
+        /// Starts the threads that will load perform the calculations on the data.
+        /// </summary>
+        /// <param name="_startKpaThreads">Indicates whether or not the KPA threads should be started.</param>
+        /// <param name="_startKpiThreads">Indicates whether or not the KPI threads should be started.</param>
+        private void StartThreads(bool _startKpaThreads, bool _startKpiThreads)
+        {
+            if (_startKpaThreads)
+            {
+                KPA_PlanThread.Start();
+                KPA_PurchThread.Start();
+                KPA_PurchSubThread.Start();
+                KPA_PurchTotalThread.Start();
+                KPA_FollowUpThread.Start();
+                KPA_HotJobs.Start();
+                KPA_ExcessStock_Stock.Start();
+                KPA_ExcessStock_OpenOrders.Start();
+                KPA_CurrPlanVsActualThread.Start();
+                tableLoadThread.Start();
+            }
+
+
+            if (_startKpiThreads)
+            {
+                KPI_PlanThread.Start();
+                KPI_PurchThread.Start();
+                KPI_FollowUpThread.Start();
+                KPI_PlanTwoThread.Start();
+                KPI_PurchTwoThread.Start();
+                KPI_PurchSubThread.Start();
+                KPI_PurchTotalThread.Start();
+                KPI_PurchPlanThread.Start();
+                KPI_OtherThread.Start();
+            }
+        }
+
+        #endregion
+
     }
 }

@@ -1,4 +1,6 @@
-﻿using KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader;
+﻿using KPA_KPI_Analyzer.DataLoading;
+using KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader;
+using KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader;
 using KPA_KPI_Analyzer.KPA_KPI_Overall;
 using KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections;
 using KPA_KPI_Analyzer.Values;
@@ -18,7 +20,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// <summary>
         /// Indexers for template one's header position
         /// </summary>
-        public enum TempOneDataGridHeaderNames
+        public enum TempOneValuesGridHeaderNames
         {
             Section,
             Category,
@@ -39,7 +41,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// <summary>
         /// Indexers for template two's header position
         /// </summary>
-        public enum TempTwoDataGridHeaderNames
+        public enum TempTwoValuesGridHeaderNames
         {
             Section,
             Category,
@@ -66,14 +68,14 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         public NewKPAOverall(Overall _data)
         {
             InitializeComponent();
-            ApplyDataGridStyles();
+            ApplyValuesGridStyles();
             data = _data;
             Globals.CurrPerformance = "KPA";
 
-            if (Values.Globals.FocusedCountry == StringUtils.Country.UnitedStates)
-                Globals.CurrCountry = StringUtils.countries[(int)StringUtils.Country.UnitedStates];
+            if (Values.Globals.TargetCountry == Values.Countries.Country.UnitedStates)
+                Globals.CurrCountry = Values.Countries.countries[(int)Values.Countries.Country.UnitedStates];
             else
-                Globals.CurrCountry = StringUtils.countries[(int)StringUtils.Country.Mexico];
+                Globals.CurrCountry = Values.Countries.countries[(int)Values.Countries.Country.Mexico];
         }
 
         #region EVENTS
@@ -107,7 +109,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// </summary>
         /// <param name="sender">Template two's datagridview</param>
         /// <param name="e">The format event</param>
-        private void bunifuCustomDataGrid2_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        private void bunifuCustomValuesGrid2_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.RowIndex == 0)
                 return;
@@ -144,8 +146,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             LoadExcessStockOpenOrders();
             LoadCurrentPlanVsActual();
 
-            TemplateOneDataGrid.AutoGenerateColumns = false;
-            TemplateTwoDataGrid.AutoGenerateColumns = false;
+            TemplateOneValuesGrid.AutoGenerateColumns = false;
+            TemplateTwoValuesGrid.AutoGenerateColumns = false;
         }
 
 
@@ -154,18 +156,18 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
 
         /// <summary>
-        /// Handles the event of when a cell in the Template One DataGridView is double clicked. The corresponding data will be loaded
+        /// Handles the event of when a cell in the Template One ValuesGridView is double clicked. The corresponding data will be loaded
         /// into the data viewer object.
         /// </summary>
         /// <param name="sender">the cell</param>
         /// <param name="e">the cell double click event</param>
-        private void TemplateOneDataGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void TemplateOneValuesGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                if (TemplateOneDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == "0" || TemplateOneDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == string.Empty)
+                if (TemplateOneValuesGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == "0" || TemplateOneValuesGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == string.Empty)
                 {
-                    MessageBox.Show("There is no data in this cell.", "Data Timespan", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("There is no data in this cell.", "Values Timespan", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 
@@ -173,108 +175,108 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                 switch (e.RowIndex)
                 {
                     case 0: // Plan
-                        Globals.CurrSection = StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.Plan];
-                        Globals.CurrCategory = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.Plan][(int)StringUtils.KpaStringUtils.Category.Plan.PRsAgingNotRel];
+                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.Plan];
+                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.Plan][(int)Values.Categories.KpaCategory.Plan.PRsAgingNotRel];
                         HandlePlanDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 1:
-                        Globals.CurrSection = StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.Plan];
-                        Globals.CurrCategory = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.Plan][(int)StringUtils.KpaStringUtils.Category.Plan.MaterialDue];
+                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.Plan];
+                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.Plan][(int)Values.Categories.KpaCategory.Plan.MaterialDue];
                         HandlePlanDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 2: // Purch
-                        Globals.CurrSection = StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.Purch];
-                        Globals.CurrCategory = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.Purch][(int)StringUtils.KpaStringUtils.Category.Purch.PRsAgingRel];
+                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.Purch];
+                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.Purch][(int)Values.Categories.KpaCategory.Purch.PRsAgingRel];
                         HandlePurchDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 3:
-                        Globals.CurrSection = StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.Purch];
-                        Globals.CurrCategory = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.Purch][(int)StringUtils.KpaStringUtils.Category.Purch.POFirstRelease];
+                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.Purch];
+                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.Purch][(int)Values.Categories.KpaCategory.Purch.POFirstRelease];
                         HandlePurchDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 4:
-                        Globals.CurrSection = StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.Purch];
-                        Globals.CurrCategory = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.Purch][(int)StringUtils.KpaStringUtils.Category.Purch.POPrevRelease];
+                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.Purch];
+                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.Purch][(int)Values.Categories.KpaCategory.Purch.POPrevRelease];
                         HandlePurchDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 5:
-                        Globals.CurrSection = StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.Purch];
-                        Globals.CurrCategory = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.Purch][(int)StringUtils.KpaStringUtils.Category.Purch.NoConfirmation];
+                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.Purch];
+                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.Purch][(int)Values.Categories.KpaCategory.Purch.NoConfirmation];
                         HandlePurchDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 6: // Purch Sub
-                        Globals.CurrSection = StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.PurchSub];
-                        Globals.CurrCategory = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.PurchSub][(int)StringUtils.KpaStringUtils.Category.PurchSub.PRReleasePORelease];
+                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.PurchSub];
+                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.PurchSub][(int)Values.Categories.KpaCategory.PurchSub.PRReleasePORelease];
                         HandlePurchSubDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 7:
-                        Globals.CurrSection = StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.PurchSub];
-                        Globals.CurrCategory = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.PurchSub][(int)StringUtils.KpaStringUtils.Category.PurchSub.POCreationCOnfEntry];
+                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.PurchSub];
+                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.PurchSub][(int)Values.Categories.KpaCategory.PurchSub.POCreationCOnfEntry];
                         HandlePurchSubDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 8: // Purch Total
-                        Globals.CurrSection = StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.PurchTotal];
-                        Globals.CurrCategory = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.PurchTotal][(int)StringUtils.KpaStringUtils.Category.PurchTotal.PRRelConfEntry];
+                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.PurchTotal];
+                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.PurchTotal][(int)Values.Categories.KpaCategory.PurchTotal.PRRelConfEntry];
                         HandlePurchTotalDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 9: // Follow Up
-                        Globals.CurrSection = StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.FollowUp];
-                        Globals.CurrCategory = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.FollowUp][(int)StringUtils.KpaStringUtils.Category.FollowUp.ConfPlanDate];
+                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.FollowUp];
+                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.FollowUp][(int)Values.Categories.KpaCategory.FollowUp.ConfPlanDate];
                         HandleFollowUpDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 10:
-                        Globals.CurrSection = StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.FollowUp];
-                        Globals.CurrCategory = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.FollowUp][(int)StringUtils.KpaStringUtils.Category.FollowUp.ConfDateUpcomingDel];
+                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.FollowUp];
+                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.FollowUp][(int)Values.Categories.KpaCategory.FollowUp.ConfDateUpcomingDel];
                         HandleFollowUpDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 11:
-                        Globals.CurrSection = StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.FollowUp];
-                        Globals.CurrCategory = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.FollowUp][(int)StringUtils.KpaStringUtils.Category.FollowUp.DueTodayLateConf];
+                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.FollowUp];
+                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.FollowUp][(int)Values.Categories.KpaCategory.FollowUp.DueTodayLateConf];
                         HandleFollowUpDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 12: // Hot Jobs
-                        Globals.CurrSection = StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.HotJobs];
-                        Globals.CurrCategory = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.HotJobs][(int)StringUtils.KpaStringUtils.Category.HotJobs.PrsNotonPO];
+                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.HotJobs];
+                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.HotJobs][(int)Values.Categories.KpaCategory.HotJobs.PrsNotonPO];
                         HandleHotJobsDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 13:
-                        Globals.CurrSection = StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.HotJobs];
-                        Globals.CurrCategory = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.HotJobs][(int)StringUtils.KpaStringUtils.Category.HotJobs.NoConfirmations];
+                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.HotJobs];
+                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.HotJobs][(int)Values.Categories.KpaCategory.HotJobs.NoConfirmations];
                         HandleHotJobsDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 14:
-                        Globals.CurrSection = StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.HotJobs];
-                        Globals.CurrCategory = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.HotJobs][(int)StringUtils.KpaStringUtils.Category.HotJobs.LateToConfirmed];
+                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.HotJobs];
+                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.HotJobs][(int)Values.Categories.KpaCategory.HotJobs.LateToConfirmed];
                         HandleHotJobsDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 15: // Excess Stock - Stock
-                        Globals.CurrSection = StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.ExcessStock_Stock];
-                        Globals.CurrCategory = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.ExcessStock_Stock][(int)StringUtils.KpaStringUtils.Category.ExcessStockStock.PrsAgingNotRel];
+                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.ExcessStock_Stock];
+                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.ExcessStock_Stock][(int)Values.Categories.KpaCategory.ExcessStockStock.PrsAgingNotRel];
                         HandleExcessStockStock(e.RowIndex, e.ColumnIndex);
                         break;
                     case 16:
-                        Globals.CurrSection = StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.ExcessStock_Stock];
-                        Globals.CurrCategory = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.ExcessStock_Stock][(int)StringUtils.KpaStringUtils.Category.ExcessStockStock.PRsAgingRel];
+                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.ExcessStock_Stock];
+                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.ExcessStock_Stock][(int)Values.Categories.KpaCategory.ExcessStockStock.PRsAgingRel];
                         HandleExcessStockStock(e.RowIndex, e.ColumnIndex);
                         break;
                     case 17:
-                        Globals.CurrSection = StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.ExcessStock_Stock];
-                        Globals.CurrCategory = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.ExcessStock_Stock][(int)StringUtils.KpaStringUtils.Category.ExcessStockStock.POCreationThruDelivery];
+                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.ExcessStock_Stock];
+                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.ExcessStock_Stock][(int)Values.Categories.KpaCategory.ExcessStockStock.POCreationThruDelivery];
                         HandleExcessStockStock(e.RowIndex, e.ColumnIndex);
                         break;
                     case 18: // Excess Stock - Open Orders
-                        Globals.CurrSection = StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.ExcessStock_OpenOrders];
-                        Globals.CurrCategory = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.ExcessStock_OpenOrders][(int)StringUtils.KpaStringUtils.Category.ExcessStockOpenOrders.PrsAgingNotRel];
+                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.ExcessStock_OpenOrders];
+                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.ExcessStock_OpenOrders][(int)Values.Categories.KpaCategory.ExcessStockOpenOrders.PrsAgingNotRel];
                         HandleExcessStockOpenOrders(e.RowIndex, e.ColumnIndex);
                         break;
                     case 19:
-                        Globals.CurrSection = StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.ExcessStock_OpenOrders];
-                        Globals.CurrCategory = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.ExcessStock_OpenOrders][(int)StringUtils.KpaStringUtils.Category.ExcessStockOpenOrders.PRsAgingRel];
+                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.ExcessStock_OpenOrders];
+                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.ExcessStock_OpenOrders][(int)Values.Categories.KpaCategory.ExcessStockOpenOrders.PRsAgingRel];
                         HandleExcessStockOpenOrders(e.RowIndex, e.ColumnIndex);
                         break;
                     case 20:
-                        Globals.CurrSection = StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.ExcessStock_OpenOrders];
-                        Globals.CurrCategory = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.ExcessStock_OpenOrders][(int)StringUtils.KpaStringUtils.Category.ExcessStockOpenOrders.POCreationThruDelivery];
+                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.ExcessStock_OpenOrders];
+                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.ExcessStock_OpenOrders][(int)Values.Categories.KpaCategory.ExcessStockOpenOrders.POCreationThruDelivery];
                         HandleExcessStockOpenOrders(e.RowIndex, e.ColumnIndex);
                         break;
                 }
@@ -291,31 +293,31 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
 
         /// <summary>
-        /// Handles the event of when a cell in the Template One DataGridView is double clicked. The corresponding data will be loaded
+        /// Handles the event of when a cell in the Template One ValuesGridView is double clicked. The corresponding data will be loaded
         /// into the data viewer object.
         /// </summary>
         /// <param name="sender">the cell</param>
         /// <param name="e">the cell double click event</param>
-        private void TemplateTwoDataGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void TemplateTwoValuesGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                if (TemplateTwoDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == "0" || TemplateTwoDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == string.Empty)
+                if (TemplateTwoValuesGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == "0" || TemplateTwoValuesGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == string.Empty)
                 {
-                    MessageBox.Show("There is no data in this cell.", "Data Timespan", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("There is no data in this cell.", "Values Timespan", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 
                 switch (e.RowIndex)
                 {
                     case 0:
-                        Globals.CurrSection = StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.CurrPlanActual];
-                        Globals.CurrCategory = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.CurrPlanActual][(int)StringUtils.KpaStringUtils.Category.CurrPlanVsActual.CurrPlanDateCurrConfDateOpenPO];
+                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.CurrPlanActual];
+                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.CurrPlanActual][(int)Values.Categories.KpaCategory.CurrPlanVsActual.CurrPlanDateCurrConfDateOpenPO];
                         HandleCurrentPlanVsActualDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 1:
-                        Globals.CurrSection = StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.CurrPlanActual];
-                        Globals.CurrCategory = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.CurrPlanActual][(int)StringUtils.KpaStringUtils.Category.CurrPlanVsActual.CurrPlanDateCurrConfDateOpenPOHotJobs];
+                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.CurrPlanActual];
+                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.CurrPlanActual][(int)Values.Categories.KpaCategory.CurrPlanVsActual.CurrPlanDateCurrConfDateOpenPOHotJobs];
                         HandleCurrentPlanVsActualDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                 }
@@ -331,42 +333,42 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         #region HELPER FUNCTIONS
 
         /// <summary>
-        /// Sets the color of the DataGridView Header cells only.
+        /// Sets the color of the ValuesGridView Header cells only.
         /// </summary>
-        private void ApplyDataGridStyles()
+        private void ApplyValuesGridStyles()
         {
-            TemplateOneDataGrid.Columns[(int)TempOneDataGridHeaderNames.TimeSpanOne].HeaderCell.Style.BackColor = Color.FromArgb(123, 204, 242);
-            TemplateOneDataGrid.Columns[(int)TempOneDataGridHeaderNames.TimeSpanOne].HeaderCell.Style.ForeColor = Color.FromArgb(36, 41, 46);
-            TemplateOneDataGrid.Columns[(int)TempOneDataGridHeaderNames.TimeSpanTwo].HeaderCell.Style.BackColor = Color.FromArgb(96, 189, 227);
-            TemplateOneDataGrid.Columns[(int)TempOneDataGridHeaderNames.TimeSpanTwo].HeaderCell.Style.ForeColor = Color.FromArgb(36, 41, 46);
-            TemplateOneDataGrid.Columns[(int)TempOneDataGridHeaderNames.TimeSpanThree].HeaderCell.Style.BackColor = Color.FromArgb(79, 179, 208);
-            TemplateOneDataGrid.Columns[(int)TempOneDataGridHeaderNames.TimeSpanThree].HeaderCell.Style.ForeColor = Color.FromArgb(36, 41, 46);
-            TemplateOneDataGrid.Columns[(int)TempOneDataGridHeaderNames.TimeSpanFour].HeaderCell.Style.BackColor = Color.FromArgb(62, 168, 186);
-            TemplateOneDataGrid.Columns[(int)TempOneDataGridHeaderNames.TimeSpanFive].HeaderCell.Style.BackColor = Color.FromArgb(50, 150, 150);
-            TemplateOneDataGrid.Columns[(int)TempOneDataGridHeaderNames.TimeSpanSix].HeaderCell.Style.BackColor = Color.FromArgb(41, 132, 137);
-            TemplateOneDataGrid.Columns[(int)TempOneDataGridHeaderNames.TimeSpanSeven].HeaderCell.Style.BackColor = Color.FromArgb(31, 109, 109);
-            TemplateOneDataGrid.Columns[(int)TempOneDataGridHeaderNames.Average].HeaderCell.Style.BackColor = Color.FromArgb(230, 184, 182);
-            TemplateOneDataGrid.Columns[(int)TempOneDataGridHeaderNames.Totals].HeaderCell.Style.BackColor = Color.FromArgb(218, 150, 148);
+            TemplateOneValuesGrid.Columns[(int)TempOneValuesGridHeaderNames.TimeSpanOne].HeaderCell.Style.BackColor = Color.FromArgb(123, 204, 242);
+            TemplateOneValuesGrid.Columns[(int)TempOneValuesGridHeaderNames.TimeSpanOne].HeaderCell.Style.ForeColor = Color.FromArgb(36, 41, 46);
+            TemplateOneValuesGrid.Columns[(int)TempOneValuesGridHeaderNames.TimeSpanTwo].HeaderCell.Style.BackColor = Color.FromArgb(96, 189, 227);
+            TemplateOneValuesGrid.Columns[(int)TempOneValuesGridHeaderNames.TimeSpanTwo].HeaderCell.Style.ForeColor = Color.FromArgb(36, 41, 46);
+            TemplateOneValuesGrid.Columns[(int)TempOneValuesGridHeaderNames.TimeSpanThree].HeaderCell.Style.BackColor = Color.FromArgb(79, 179, 208);
+            TemplateOneValuesGrid.Columns[(int)TempOneValuesGridHeaderNames.TimeSpanThree].HeaderCell.Style.ForeColor = Color.FromArgb(36, 41, 46);
+            TemplateOneValuesGrid.Columns[(int)TempOneValuesGridHeaderNames.TimeSpanFour].HeaderCell.Style.BackColor = Color.FromArgb(62, 168, 186);
+            TemplateOneValuesGrid.Columns[(int)TempOneValuesGridHeaderNames.TimeSpanFive].HeaderCell.Style.BackColor = Color.FromArgb(50, 150, 150);
+            TemplateOneValuesGrid.Columns[(int)TempOneValuesGridHeaderNames.TimeSpanSix].HeaderCell.Style.BackColor = Color.FromArgb(41, 132, 137);
+            TemplateOneValuesGrid.Columns[(int)TempOneValuesGridHeaderNames.TimeSpanSeven].HeaderCell.Style.BackColor = Color.FromArgb(31, 109, 109);
+            TemplateOneValuesGrid.Columns[(int)TempOneValuesGridHeaderNames.Average].HeaderCell.Style.BackColor = Color.FromArgb(230, 184, 182);
+            TemplateOneValuesGrid.Columns[(int)TempOneValuesGridHeaderNames.Totals].HeaderCell.Style.BackColor = Color.FromArgb(218, 150, 148);
 
 
-            TemplateTwoDataGrid.Columns[(int)TempTwoDataGridHeaderNames.Average].HeaderCell.Style.BackColor = Color.FromArgb(141, 180, 226);
-            TemplateTwoDataGrid.Columns[(int)TempTwoDataGridHeaderNames.TimeSpanOne].HeaderCell.Style.BackColor = Color.FromArgb(155, 187, 89);
-            TemplateTwoDataGrid.Columns[(int)TempTwoDataGridHeaderNames.TimeSpanTwo].HeaderCell.Style.BackColor = Color.FromArgb(196, 215, 155);
-            TemplateTwoDataGrid.Columns[(int)TempTwoDataGridHeaderNames.TimeSpanTwo].HeaderCell.Style.ForeColor = Color.FromArgb(36, 41, 46);
-            TemplateTwoDataGrid.Columns[(int)TempTwoDataGridHeaderNames.TimeSpanThree].HeaderCell.Style.BackColor = Color.FromArgb(216, 228, 188);
-            TemplateTwoDataGrid.Columns[(int)TempTwoDataGridHeaderNames.TimeSpanThree].HeaderCell.Style.ForeColor = Color.FromArgb(36, 41, 46);
-            TemplateTwoDataGrid.Columns[(int)TempTwoDataGridHeaderNames.TimeSpanFour].HeaderCell.Style.BackColor = Color.FromArgb(235, 241, 221);
-            TemplateTwoDataGrid.Columns[(int)TempTwoDataGridHeaderNames.TimeSpanFour].HeaderCell.Style.ForeColor = Color.FromArgb(36, 41, 46);
-            TemplateTwoDataGrid.Columns[(int)TempTwoDataGridHeaderNames.TimeSpanFive].HeaderCell.Style.BackColor = Color.FromArgb(235, 241, 221);
-            TemplateTwoDataGrid.Columns[(int)TempTwoDataGridHeaderNames.TimeSpanFive].HeaderCell.Style.ForeColor = Color.FromArgb(36, 41, 46);
-            TemplateTwoDataGrid.Columns[(int)TempTwoDataGridHeaderNames.TimeSpanSix].HeaderCell.Style.BackColor = Color.FromArgb(253, 233, 217);
-            TemplateTwoDataGrid.Columns[(int)TempTwoDataGridHeaderNames.TimeSpanSix].HeaderCell.Style.ForeColor = Color.FromArgb(36, 41, 46);
-            TemplateTwoDataGrid.Columns[(int)TempTwoDataGridHeaderNames.TimeSpanSeven].HeaderCell.Style.BackColor = Color.FromArgb(252, 213, 180);
-            TemplateTwoDataGrid.Columns[(int)TempTwoDataGridHeaderNames.TimeSpanSeven].HeaderCell.Style.ForeColor = Color.FromArgb(36, 41, 46);
-            TemplateTwoDataGrid.Columns[(int)TempTwoDataGridHeaderNames.TimeSpanEight].HeaderCell.Style.BackColor = Color.FromArgb(250, 191, 142);
-            TemplateTwoDataGrid.Columns[(int)TempTwoDataGridHeaderNames.TimeSpanEight].HeaderCell.Style.ForeColor = Color.FromArgb(36, 41, 46);
-            TemplateTwoDataGrid.Columns[(int)TempTwoDataGridHeaderNames.TimeSpanNine].HeaderCell.Style.BackColor = Color.FromArgb(151, 71, 6);
-            TemplateTwoDataGrid.Columns[(int)TempTwoDataGridHeaderNames.Totals].HeaderCell.Style.BackColor = Color.FromArgb(218, 150, 148);
+            TemplateTwoValuesGrid.Columns[(int)TempTwoValuesGridHeaderNames.Average].HeaderCell.Style.BackColor = Color.FromArgb(141, 180, 226);
+            TemplateTwoValuesGrid.Columns[(int)TempTwoValuesGridHeaderNames.TimeSpanOne].HeaderCell.Style.BackColor = Color.FromArgb(155, 187, 89);
+            TemplateTwoValuesGrid.Columns[(int)TempTwoValuesGridHeaderNames.TimeSpanTwo].HeaderCell.Style.BackColor = Color.FromArgb(196, 215, 155);
+            TemplateTwoValuesGrid.Columns[(int)TempTwoValuesGridHeaderNames.TimeSpanTwo].HeaderCell.Style.ForeColor = Color.FromArgb(36, 41, 46);
+            TemplateTwoValuesGrid.Columns[(int)TempTwoValuesGridHeaderNames.TimeSpanThree].HeaderCell.Style.BackColor = Color.FromArgb(216, 228, 188);
+            TemplateTwoValuesGrid.Columns[(int)TempTwoValuesGridHeaderNames.TimeSpanThree].HeaderCell.Style.ForeColor = Color.FromArgb(36, 41, 46);
+            TemplateTwoValuesGrid.Columns[(int)TempTwoValuesGridHeaderNames.TimeSpanFour].HeaderCell.Style.BackColor = Color.FromArgb(235, 241, 221);
+            TemplateTwoValuesGrid.Columns[(int)TempTwoValuesGridHeaderNames.TimeSpanFour].HeaderCell.Style.ForeColor = Color.FromArgb(36, 41, 46);
+            TemplateTwoValuesGrid.Columns[(int)TempTwoValuesGridHeaderNames.TimeSpanFive].HeaderCell.Style.BackColor = Color.FromArgb(235, 241, 221);
+            TemplateTwoValuesGrid.Columns[(int)TempTwoValuesGridHeaderNames.TimeSpanFive].HeaderCell.Style.ForeColor = Color.FromArgb(36, 41, 46);
+            TemplateTwoValuesGrid.Columns[(int)TempTwoValuesGridHeaderNames.TimeSpanSix].HeaderCell.Style.BackColor = Color.FromArgb(253, 233, 217);
+            TemplateTwoValuesGrid.Columns[(int)TempTwoValuesGridHeaderNames.TimeSpanSix].HeaderCell.Style.ForeColor = Color.FromArgb(36, 41, 46);
+            TemplateTwoValuesGrid.Columns[(int)TempTwoValuesGridHeaderNames.TimeSpanSeven].HeaderCell.Style.BackColor = Color.FromArgb(252, 213, 180);
+            TemplateTwoValuesGrid.Columns[(int)TempTwoValuesGridHeaderNames.TimeSpanSeven].HeaderCell.Style.ForeColor = Color.FromArgb(36, 41, 46);
+            TemplateTwoValuesGrid.Columns[(int)TempTwoValuesGridHeaderNames.TimeSpanEight].HeaderCell.Style.BackColor = Color.FromArgb(250, 191, 142);
+            TemplateTwoValuesGrid.Columns[(int)TempTwoValuesGridHeaderNames.TimeSpanEight].HeaderCell.Style.ForeColor = Color.FromArgb(36, 41, 46);
+            TemplateTwoValuesGrid.Columns[(int)TempTwoValuesGridHeaderNames.TimeSpanNine].HeaderCell.Style.BackColor = Color.FromArgb(151, 71, 6);
+            TemplateTwoValuesGrid.Columns[(int)TempTwoValuesGridHeaderNames.Totals].HeaderCell.Style.BackColor = Color.FromArgb(218, 150, 148);
         }
 
 
@@ -381,8 +383,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// <returns></returns>
         bool IsTheSameCellValueGridOne(int column, int row)
         {
-            DataGridViewCell cell1 = TemplateOneDataGrid[column, row];
-            DataGridViewCell cell2 = TemplateOneDataGrid[column, row - 1];
+            DataGridViewCell cell1 = TemplateOneValuesGrid[column, row];
+            DataGridViewCell cell2 = TemplateOneValuesGrid[column, row - 1];
             if (cell1.Value == null || cell2.Value == null)
             {
                 return false;
@@ -403,8 +405,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// <returns></returns>
         bool IsTheSameCellValueGridTwo(int column, int row)
         {
-            DataGridViewCell cell1 = TemplateTwoDataGrid[column, row];
-            DataGridViewCell cell2 = TemplateTwoDataGrid[column, row - 1];
+            DataGridViewCell cell1 = TemplateTwoValuesGrid[column, row];
+            DataGridViewCell cell2 = TemplateTwoValuesGrid[column, row - 1];
             if (cell1.Value == null || cell2.Value == null)
             {
                 return false;
@@ -423,8 +425,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         private void LoadPlan()
         {
             string[] row = new string[]{
-                StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.Plan],
-                StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.Plan][(int)StringUtils.KpaStringUtils.Category.Plan.PRsAgingNotRel],
+                Values.Sections.kpaSections[(int)Values.Sections.KpaSection.Plan],
+                Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.Plan][(int)Values.Categories.KpaCategory.Plan.PRsAgingNotRel],
                 string.Format("{0:n0}", data.kpa.plan.prsAgingNotRel.data.LessThanZero),
                 string.Format("{0:n0}", data.kpa.plan.prsAgingNotRel.data.One_Three),
                 string.Format("{0:n0}", data.kpa.plan.prsAgingNotRel.data.Four_Seven),
@@ -435,7 +437,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                 string.Format("{0:n}", data.kpa.plan.prsAgingNotRel.data.Average),
                 string.Format("{0:n0}", data.kpa.plan.prsAgingNotRel.data.Total)
             };
-            TemplateOneDataGrid.Rows.Add(row);
+            TemplateOneValuesGrid.Rows.Add(row);
 
 
             row = new string[]{
@@ -451,7 +453,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                 string.Format("{0:n}", data.kpa.plan.matDueDate.data.Average),
                 string.Format("{0:n0}", data.kpa.plan.matDueDate.data.Total)
             };
-            TemplateOneDataGrid.Rows.Add(row);
+            TemplateOneValuesGrid.Rows.Add(row);
         }
 
 
@@ -477,7 +479,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                 string.Format("{0:n}", data.kpa.purch.prsAgingRel.data.Average),
                 string.Format("{0:n0}", data.kpa.purch.prsAgingRel.data.Total)
             };
-            TemplateOneDataGrid.Rows.Add(row);
+            TemplateOneValuesGrid.Rows.Add(row);
 
 
             row = new string[]{
@@ -493,7 +495,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                 string.Format("{0:n}", data.kpa.purch.poFirstRel.data.Average),
                 string.Format("{0:n0}", data.kpa.purch.poFirstRel.data.Total)
             };
-            TemplateOneDataGrid.Rows.Add(row);
+            TemplateOneValuesGrid.Rows.Add(row);
 
 
             row = new string[]{
@@ -509,7 +511,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                 string.Format("{0:n}", data.kpa.purch.poPrevRel.data.Average),
                 string.Format("{0:n0}", data.kpa.purch.poPrevRel.data.Total)
             };
-            TemplateOneDataGrid.Rows.Add(row);
+            TemplateOneValuesGrid.Rows.Add(row);
 
 
             row = new string[]{
@@ -525,7 +527,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                 string.Format("{0:n}", data.kpa.purch.noConfirmation.data.Average),
                 string.Format("{0:n0}", data.kpa.purch.noConfirmation.data.Total)
             };
-            TemplateOneDataGrid.Rows.Add(row);
+            TemplateOneValuesGrid.Rows.Add(row);
         }
 
 
@@ -551,7 +553,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                 string.Format("{0:n}", data.kpa.purchSub.prRelToPORel.data.Average),
                 string.Format("{0:n0}", data.kpa.purchSub.prRelToPORel.data.Total)
             };
-            TemplateOneDataGrid.Rows.Add(row);
+            TemplateOneValuesGrid.Rows.Add(row);
 
 
             row = new string[]{
@@ -567,7 +569,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                 string.Format("{0:n}", data.kpa.purchSub.POCreatToConfEntry.data.Average),
                 string.Format("{0:n0}", data.kpa.purchSub.POCreatToConfEntry.data.Total)
             };
-            TemplateOneDataGrid.Rows.Add(row);
+            TemplateOneValuesGrid.Rows.Add(row);
         }
 
 
@@ -581,8 +583,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         private void LoadPurchTotal()
         {
             string[] row = {
-                StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.PurchTotal],
-                StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.PurchTotal][(int)StringUtils.KpaStringUtils.Category.PurchTotal.PRRelConfEntry],
+                Values.Sections.kpaSections[(int)Values.Sections.KpaSection.PurchTotal],
+                Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.PurchTotal][(int)Values.Categories.KpaCategory.PurchTotal.PRRelConfEntry],
                 string.Format("{0:n0}", data.kpa.purchTotal.prRelConfEntry.data.LessThanZero),
                 string.Format("{0:n0}", data.kpa.purchTotal.prRelConfEntry.data.One_Three),
                 string.Format("{0:n0}", data.kpa.purchTotal.prRelConfEntry.data.Four_Seven),
@@ -593,7 +595,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                 string.Format("{0:n}", data.kpa.purchTotal.prRelConfEntry.data.Average),
                 string.Format("{0:n0}", data.kpa.purchTotal.prRelConfEntry.data.Total)
             };
-            TemplateOneDataGrid.Rows.Add(row);
+            TemplateOneValuesGrid.Rows.Add(row);
         }
 
 
@@ -619,7 +621,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                 string.Format("{0:n}", data.kpa.followUp.confDateVsPlanDate.data.Average),
                 string.Format("{0:n0}", data.kpa.followUp.confDateVsPlanDate.data.Total)
             };
-            TemplateOneDataGrid.Rows.Add(row);
+            TemplateOneValuesGrid.Rows.Add(row);
 
             row = new string[]{
                 data.kpa.followUp.Name,
@@ -634,7 +636,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                 string.Format("{0:n}", data.kpa.followUp.ConfDateForUpcomingDel.data.Average),
                 string.Format("{0:n0}", data.kpa.followUp.ConfDateForUpcomingDel.data.Total)
             };
-            TemplateOneDataGrid.Rows.Add(row);
+            TemplateOneValuesGrid.Rows.Add(row);
 
             row = new string[]{
                 data.kpa.followUp.Name,
@@ -649,7 +651,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                 string.Format("{0:n}", data.kpa.followUp.LateToConfDate.data.Average),
                 string.Format("{0:n0}", data.kpa.followUp.LateToConfDate.data.Total)
             };
-            TemplateOneDataGrid.Rows.Add(row);
+            TemplateOneValuesGrid.Rows.Add(row);
         }
 
 
@@ -675,7 +677,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                 string.Format("{0:n}", data.kpa.hotJobs.prsNotOnPO.data.Average),
                 string.Format("{0:n0}", data.kpa.hotJobs.prsNotOnPO.data.Total)
             };
-            TemplateOneDataGrid.Rows.Add(row);
+            TemplateOneValuesGrid.Rows.Add(row);
 
             row = new string[]{
                 data.kpa.hotJobs.Name,
@@ -690,7 +692,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                 string.Format("{0:n}", data.kpa.hotJobs.noConfirmation.data.Average),
                 string.Format("{0:n0}", data.kpa.hotJobs.noConfirmation.data.Total)
             };
-            TemplateOneDataGrid.Rows.Add(row);
+            TemplateOneValuesGrid.Rows.Add(row);
 
             row = new string[]{
                 data.kpa.hotJobs.Name,
@@ -705,7 +707,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                 string.Format("{0:n}", data.kpa.hotJobs.lateToConfirmed.data.Average),
                 string.Format("{0:n0}", data.kpa.hotJobs.lateToConfirmed.data.Total)
             };
-            TemplateOneDataGrid.Rows.Add(row);
+            TemplateOneValuesGrid.Rows.Add(row);
         }
 
 
@@ -731,7 +733,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                 string.Format("{0:n}", data.kpa.excessStockStock.prsAgingNotRel.data.Average),
                 string.Format("{0:n0}", data.kpa.excessStockStock.prsAgingNotRel.data.Total)
             };
-            TemplateOneDataGrid.Rows.Add(row);
+            TemplateOneValuesGrid.Rows.Add(row);
 
             row = new string[]{
                 data.kpa.excessStockStock.Name,
@@ -746,7 +748,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                 string.Format("{0:n}", data.kpa.excessStockStock.prsAgingRel.data.Average),
                 string.Format("{0:n0}", data.kpa.excessStockStock.prsAgingRel.data.Total)
             };
-            TemplateOneDataGrid.Rows.Add(row);
+            TemplateOneValuesGrid.Rows.Add(row);
 
             row = new string[]{
                 data.kpa.excessStockStock.Name,
@@ -761,7 +763,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                 string.Format("{0:n}", data.kpa.excessStockStock.PoCreationThruDeliv.data.Average),
                 string.Format("{0:n0}", data.kpa.excessStockStock.PoCreationThruDeliv.data.Total)
             };
-            TemplateOneDataGrid.Rows.Add(row);
+            TemplateOneValuesGrid.Rows.Add(row);
         }
 
 
@@ -787,7 +789,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                 string.Format("{0:n}", data.kpa.excessStockOpenOrders.prsAgingNotRel.data.Average),
                 string.Format("{0:n0}", data.kpa.excessStockOpenOrders.prsAgingNotRel.data.Total)
             };
-            TemplateOneDataGrid.Rows.Add(row);
+            TemplateOneValuesGrid.Rows.Add(row);
 
             row = new string[]{
                 data.kpa.excessStockOpenOrders.Name,
@@ -802,7 +804,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                 string.Format("{0:n}", data.kpa.excessStockOpenOrders.prsAgingRel.data.Average),
                 string.Format("{0:n0}", data.kpa.excessStockOpenOrders.prsAgingRel.data.Total)
             };
-            TemplateOneDataGrid.Rows.Add(row);
+            TemplateOneValuesGrid.Rows.Add(row);
 
             row = new string[]{
                 data.kpa.excessStockOpenOrders.Name,
@@ -817,7 +819,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                 string.Format("{0:n}", data.kpa.excessStockOpenOrders.PoCreationThruDeliv.data.Average),
                 string.Format("{0:n0}", data.kpa.excessStockOpenOrders.PoCreationThruDeliv.data.Total)
             };
-            TemplateOneDataGrid.Rows.Add(row);
+            TemplateOneValuesGrid.Rows.Add(row);
         }
 
 
@@ -845,7 +847,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                 string.Format("{0:n0}", data.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.GreaterThanThreeWeeks),
                 string.Format("{0:n0}", data.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.Total)
             };
-            TemplateTwoDataGrid.Rows.Add(row);
+            TemplateTwoValuesGrid.Rows.Add(row);
 
             row = new string[]{
                 data.kpa.currPlanVsActual.Name,
@@ -862,7 +864,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                 string.Format("{0:n0}", data.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.GreaterThanThreeWeeks),
                 string.Format("{0:n0}", data.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.Total)
             };
-            TemplateTwoDataGrid.Rows.Add(row);
+            TemplateTwoValuesGrid.Rows.Add(row);
         }
 
 
@@ -1434,37 +1436,37 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                             case 1: // category
                                 return;
                             case 2: // <= 0 Days
-                                dv.DataLoader += KpaDataTableLoader.FollowUp.LoadLateToConfirmedDateDataTable;
+                                dv.DataLoader += KpaDataTableLoader.FollowUp.LoadDueTodayOrLateToConfirmed;
                                 dv.ColumnTag = (int)TempOne.DataViews.LessThanZero;
                                 break;
                             case 3: // 1 - 3 Days
-                                dv.DataLoader += KpaDataTableLoader.FollowUp.LoadLateToConfirmedDateDataTable;
+                                dv.DataLoader += KpaDataTableLoader.FollowUp.LoadDueTodayOrLateToConfirmed;
                                 dv.ColumnTag = (int)TempOne.DataViews.One_Three;
                                 break;
                             case 4: // 4 - 7 Days
-                                dv.DataLoader += KpaDataTableLoader.FollowUp.LoadLateToConfirmedDateDataTable;
+                                dv.DataLoader += KpaDataTableLoader.FollowUp.LoadDueTodayOrLateToConfirmed;
                                 dv.ColumnTag = (int)TempOne.DataViews.Four_Seven;
                                 break;
                             case 5: // 8 - 14 Days
-                                dv.DataLoader += KpaDataTableLoader.FollowUp.LoadLateToConfirmedDateDataTable;
+                                dv.DataLoader += KpaDataTableLoader.FollowUp.LoadDueTodayOrLateToConfirmed;
                                 dv.ColumnTag = (int)TempOne.DataViews.Eight_Fourteen;
                                 break;
                             case 6: // 15 - 21 Days
-                                dv.DataLoader += KpaDataTableLoader.FollowUp.LoadLateToConfirmedDateDataTable;
+                                dv.DataLoader += KpaDataTableLoader.FollowUp.LoadDueTodayOrLateToConfirmed;
                                 dv.ColumnTag = (int)TempOne.DataViews.Fifteen_TwentyOne;
                                 break;
                             case 7: // 22 - 28 Days
-                                dv.DataLoader += KpaDataTableLoader.FollowUp.LoadLateToConfirmedDateDataTable;
+                                dv.DataLoader += KpaDataTableLoader.FollowUp.LoadDueTodayOrLateToConfirmed;
                                 dv.ColumnTag = (int)TempOne.DataViews.TwentyTwo_TwentyEight;
                                 break;
                             case 8: // 29+ Days
-                                dv.DataLoader += KpaDataTableLoader.FollowUp.LoadLateToConfirmedDateDataTable;
+                                dv.DataLoader += KpaDataTableLoader.FollowUp.LoadDueTodayOrLateToConfirmed;
                                 dv.ColumnTag = (int)TempOne.DataViews.TwentyNinePlus;
                                 break;
                             case 9: // Average
                                 return;
                             case 10: // Totals
-                                dv.DataLoader += KpaDataTableLoader.FollowUp.LoadLateToConfirmedDateDataTable;
+                                dv.DataLoader += KpaDataTableLoader.FollowUp.LoadDueTodayOrLateToConfirmed;
                                 dv.ColumnTag = (int)TempOne.DataViews.Total;
                                 break;
                         }

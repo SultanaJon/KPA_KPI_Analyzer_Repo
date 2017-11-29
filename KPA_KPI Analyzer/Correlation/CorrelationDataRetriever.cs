@@ -16,7 +16,7 @@ namespace KPA_KPI_Analyzer.Correlation
         public static List<double> GetPoQtyData()
         {
             List<double> tempDataList = new List<double>();  
-            foreach (DataRow dr in DatabaseUtils.PRPO_DB_Utils.ds.Tables[StringUtils.CorrelationStringUtils.correlationHeaders[(int)StringUtils.CorrelationStringUtils.CorrelationMatrixIndexer.PoQty]].Rows)
+            foreach (DataRow dr in Database.DatabaseUtils.ds.Tables[CorrelationHeaders.correlationHeaders[(int)CorrelationHeaders.CorrelationMatrixIndexer.PoQty]].Rows)
             {
                 #region CheckDateRanges
                 if (CorrelationSettings.FilterByPrDate)
@@ -60,7 +60,7 @@ namespace KPA_KPI_Analyzer.Correlation
         {
             List<double> tempDataList = new List<double>();
 
-            foreach (DataRow dr in DatabaseUtils.PRPO_DB_Utils.ds.Tables[StringUtils.CorrelationStringUtils.correlationHeaders[(int)StringUtils.CorrelationStringUtils.CorrelationMatrixIndexer.PrQty]].Rows)
+            foreach (DataRow dr in Database.DatabaseUtils.ds.Tables[CorrelationHeaders.correlationHeaders[(int)CorrelationHeaders.CorrelationMatrixIndexer.PrQty]].Rows)
             {
                 #region CheckDateRanges
                 if (CorrelationSettings.FilterByPrDate)
@@ -105,7 +105,7 @@ namespace KPA_KPI_Analyzer.Correlation
         {
             List<double> tempDataList = new List<double>();
 
-            foreach (DataRow dr in DatabaseUtils.PRPO_DB_Utils.ds.Tables[StringUtils.CorrelationStringUtils.correlationHeaders[(int)StringUtils.CorrelationStringUtils.CorrelationMatrixIndexer.PrPrice]].Rows)
+            foreach (DataRow dr in Database.DatabaseUtils.ds.Tables[CorrelationHeaders.correlationHeaders[(int)CorrelationHeaders.CorrelationMatrixIndexer.PrPrice]].Rows)
             {
                 #region CheckDateRanges
                 if (CorrelationSettings.FilterByPrDate)
@@ -150,7 +150,7 @@ namespace KPA_KPI_Analyzer.Correlation
         {
             List<double> tempDataList = new List<double>();
 
-            foreach (DataRow dr in DatabaseUtils.PRPO_DB_Utils.ds.Tables[StringUtils.CorrelationStringUtils.correlationHeaders[(int)StringUtils.CorrelationStringUtils.CorrelationMatrixIndexer.PrPosValue]].Rows)
+            foreach (DataRow dr in Database.DatabaseUtils.ds.Tables[CorrelationHeaders.correlationHeaders[(int)CorrelationHeaders.CorrelationMatrixIndexer.PrPosValue]].Rows)
             {
                 #region CheckDateRanges
                 if (CorrelationSettings.FilterByPrDate)
@@ -196,7 +196,7 @@ namespace KPA_KPI_Analyzer.Correlation
         {
             List<double> tempDataList = new List<double>();
 
-            foreach (DataRow dr in DatabaseUtils.PRPO_DB_Utils.ds.Tables[StringUtils.CorrelationStringUtils.correlationHeaders[(int)StringUtils.CorrelationStringUtils.CorrelationMatrixIndexer.PoNetPrice]].Rows)
+            foreach (DataRow dr in Database.DatabaseUtils.ds.Tables[CorrelationHeaders.correlationHeaders[(int)CorrelationHeaders.CorrelationMatrixIndexer.PoNetPrice]].Rows)
             {
                 #region CheckDateRanges
                 if (CorrelationSettings.FilterByPrDate)
@@ -241,7 +241,7 @@ namespace KPA_KPI_Analyzer.Correlation
         {
             List<double> tempDataList = new List<double>();
 
-            foreach (DataRow dr in DatabaseUtils.PRPO_DB_Utils.ds.Tables[StringUtils.CorrelationStringUtils.correlationHeaders[(int)StringUtils.CorrelationStringUtils.CorrelationMatrixIndexer.PoValue]].Rows)
+            foreach (DataRow dr in Database.DatabaseUtils.ds.Tables[CorrelationHeaders.correlationHeaders[(int)CorrelationHeaders.CorrelationMatrixIndexer.PoValue]].Rows)
             {
                 #region CheckDateRanges
                 if (CorrelationSettings.FilterByPrDate)
@@ -285,7 +285,7 @@ namespace KPA_KPI_Analyzer.Correlation
         {
             List<double> tempDataList = new List<double>();
 
-            foreach (DataRow dr in DatabaseUtils.PRPO_DB_Utils.ds.Tables[StringUtils.CorrelationStringUtils.correlationHeaders[(int)StringUtils.CorrelationStringUtils.CorrelationMatrixIndexer.PriceUnit]].Rows)
+            foreach (DataRow dr in Database.DatabaseUtils.ds.Tables[CorrelationHeaders.correlationHeaders[(int)CorrelationHeaders.CorrelationMatrixIndexer.PriceUnit]].Rows)
             {
                 #region CheckDateRanges
                 if (CorrelationSettings.FilterByPrDate)
@@ -329,7 +329,7 @@ namespace KPA_KPI_Analyzer.Correlation
         {
             List<double> tempDataList = new List<double>();
 
-            foreach (DataRow dr in DatabaseUtils.PRPO_DB_Utils.ds.Tables[StringUtils.CorrelationStringUtils.correlationHeaders[(int)StringUtils.CorrelationStringUtils.CorrelationMatrixIndexer.PlDelivTime]].Rows)
+            foreach (DataRow dr in Database.DatabaseUtils.ds.Tables[CorrelationHeaders.correlationHeaders[(int)CorrelationHeaders.CorrelationMatrixIndexer.PlDelivTime]].Rows)
             {
                 #region CheckDateRanges
                 if (CorrelationSettings.FilterByPrDate)
@@ -374,7 +374,7 @@ namespace KPA_KPI_Analyzer.Correlation
         {
             List<double> tempDataList = new List<double>();
 
-            foreach (DataRow dr in DatabaseUtils.PRPO_DB_Utils.ds.Tables[StringUtils.CorrelationStringUtils.correlationHeaders[(int)StringUtils.CorrelationStringUtils.CorrelationMatrixIndexer.QtyOrdered]].Rows)
+            foreach (DataRow dr in Database.DatabaseUtils.ds.Tables[CorrelationHeaders.correlationHeaders[(int)CorrelationHeaders.CorrelationMatrixIndexer.QtyOrdered]].Rows)
             {
                 #region CheckDateRanges
                 if (CorrelationSettings.FilterByPrDate)
@@ -419,7 +419,7 @@ namespace KPA_KPI_Analyzer.Correlation
         {
             List<double> tempDataList = new List<double>();
 
-            foreach (DataRow dr in DatabaseUtils.PRPO_DB_Utils.ds.Tables[StringUtils.CorrelationStringUtils.correlationHeaders[(int)StringUtils.CorrelationStringUtils.CorrelationMatrixIndexer.Delivered]].Rows)
+            foreach (DataRow dr in Database.DatabaseUtils.ds.Tables[CorrelationHeaders.correlationHeaders[(int)CorrelationHeaders.CorrelationMatrixIndexer.Delivered]].Rows)
             {
                 #region CheckDateRanges
                 if (CorrelationSettings.FilterByPrDate)
@@ -465,7 +465,7 @@ namespace KPA_KPI_Analyzer.Correlation
         {
             List<double> tempDataList = new List<double>();
 
-            foreach (DataRow dr in DatabaseUtils.PRPO_DB_Utils.ds.Tables[StringUtils.CorrelationStringUtils.correlationHeaders[(int)StringUtils.CorrelationStringUtils.CorrelationMatrixIndexer.QtyConf]].Rows)
+            foreach (DataRow dr in Database.DatabaseUtils.ds.Tables[CorrelationHeaders.correlationHeaders[(int)CorrelationHeaders.CorrelationMatrixIndexer.QtyConf]].Rows)
             {
                 #region CheckDateRanges
                 if (CorrelationSettings.FilterByPrDate)
@@ -514,7 +514,7 @@ namespace KPA_KPI_Analyzer.Correlation
         {
             List<double> tempDataList = new List<double>();
 
-            foreach (DataRow dr in DatabaseUtils.PRPO_DB_Utils.ds.Tables[StringUtils.CorrelationStringUtils.correlationHeaders[(int)StringUtils.CorrelationStringUtils.CorrelationMatrixIndexer.OpenPrQty]].Rows)
+            foreach (DataRow dr in Database.DatabaseUtils.ds.Tables[CorrelationHeaders.correlationHeaders[(int)CorrelationHeaders.CorrelationMatrixIndexer.OpenPrQty]].Rows)
             {
                 #region CheckDateRanges
                 if (CorrelationSettings.FilterByPrDate)
@@ -569,18 +569,18 @@ namespace KPA_KPI_Analyzer.Correlation
 
             try
             {
-                foreach (StringUtils.CorrelationStringUtils.CorrelationMatrixIndexer index in Enum.GetValues(typeof(StringUtils.CorrelationStringUtils.CorrelationMatrixIndexer)))
+                foreach (CorrelationHeaders.CorrelationMatrixIndexer index in Enum.GetValues(typeof(CorrelationHeaders.CorrelationMatrixIndexer)))
                 {
-                    tempDataTable = DatabaseUtils.PRPO_DB_Utils.ds.Tables[StringUtils.CorrelationStringUtils.correlationHeaders[(int)index]];
+                    tempDataTable = Database.DatabaseUtils.ds.Tables[CorrelationHeaders.correlationHeaders[(int)index]];
                     foreach (DataRow row in tempDataTable.Rows)
                     {
-                        tempCorrelationList.Add(double.Parse(row[StringUtils.CorrelationStringUtils.correlationQueryHeaders[(int)index]].ToString()));
+                        tempCorrelationList.Add(double.Parse(row[CorrelationHeaders.correlationQueryHeaders[(int)index]].ToString()));
                     }
                     result.Add(MathNet.Numerics.Statistics.Correlation.Pearson(data, tempCorrelationList));
                     tempCorrelationList.Clear();
                 }
 
-                CorrelationLoaderUtils.NumberOfCompletdCorrelationLoads++;
+                CorrelationLoaderUtils.NumberOfCompletedCorrelationLoads++;
                 MethodInvoker del = delegate
                 {
                     UpdateCorrelationLoadProcess();
@@ -623,7 +623,7 @@ namespace KPA_KPI_Analyzer.Correlation
         /// </summary>
         public static void UpdateCorrelationLoadProcess()
         {
-            if(CorrelationLoaderUtils.NumberOfCorrelationHeaders == CorrelationLoaderUtils.NumberOfCompletdCorrelationLoads)
+            if(CorrelationLoaderUtils.NumberOfCorrelationHeaders == CorrelationLoaderUtils.NumberOfCompletedCorrelationLoads)
             {
                 CorrelationLoaderUtils.CorrelationCalculated = true;
             }

@@ -1,4 +1,6 @@
-﻿using KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader;
+﻿using KPA_KPI_Analyzer.DataLoading;
+using KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader;
+using KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader;
 using KPA_KPI_Analyzer.KPA_KPI_Overall;
 using KPA_KPI_Analyzer.Values;
 using System;
@@ -24,7 +26,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// <summary>
         /// Boolean value indicating whether the data was loaded into the dataviz control
         /// </summary>
-        bool DatavizLoaded { get; set; }
+        bool ValuesvizLoaded { get; set; }
 
 
 
@@ -96,10 +98,10 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             btn_One.selected = true;
             btn_One.Textcolor = System.Drawing.Color.Coral;
             RenderPRsAgingNotRel();
-            DatavizLoaded = false;
+            ValuesvizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            Globals.CurrCategory = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.ExcessStock_Stock][(int)StringUtils.KpaStringUtils.Category.ExcessStockStock.PrsAgingNotRel];
+            Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.ExcessStock_Stock][(int)Values.Categories.KpaCategory.ExcessStockStock.PrsAgingNotRel];
             ChangeCategory();
         }
 
@@ -113,7 +115,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// </summary>
         public void RefreshTemplate()
         {
-            DatavizLoaded = false;
+            ValuesvizLoaded = false;
             datavizLoadTimer.Start();
         }
 
@@ -188,9 +190,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             canvas = new Bunifu.DataViz.Canvas();
             dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.ExcessStock_Stock][(int)StringUtils.KpaStringUtils.Category.ExcessStockStock.PrsAgingNotRel];
+            Title = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.ExcessStock_Stock][(int)Values.Categories.KpaCategory.ExcessStockStock.PrsAgingNotRel];
             Globals.CurrCategory = Title;
-            Globals.CurrSection = StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.ExcessStock_Stock];
+            Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.ExcessStock_Stock];
             ChangeCategory();
 
             TimeBucketOne = overallData.kpa.excessStockStock.prsAgingNotRel.data.LessThanZero.ToString();
@@ -241,9 +243,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         {
             canvas = new Bunifu.DataViz.Canvas();
             dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
-            Title = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.ExcessStock_Stock][(int)StringUtils.KpaStringUtils.Category.ExcessStockStock.PRsAgingRel];
+            Title = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.ExcessStock_Stock][(int)Values.Categories.KpaCategory.ExcessStockStock.PRsAgingRel];
             Globals.CurrCategory = Title;
-            Globals.CurrSection = StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.ExcessStock_Stock];
+            Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.ExcessStock_Stock];
             ChangeCategory();
 
             TimeBucketOne = overallData.kpa.excessStockStock.prsAgingRel.data.LessThanZero.ToString();
@@ -291,9 +293,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         {
             canvas = new Bunifu.DataViz.Canvas();
             dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
-            Title = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.ExcessStock_Stock][(int)StringUtils.KpaStringUtils.Category.ExcessStockStock.POCreationThruDelivery];
+            Title = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.ExcessStock_Stock][(int)Values.Categories.KpaCategory.ExcessStockStock.POCreationThruDelivery];
             Globals.CurrCategory = Title;
-            Globals.CurrSection = StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.ExcessStock_Stock];
+            Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.ExcessStock_Stock];
             ChangeCategory();
 
             TimeBucketOne = overallData.kpa.excessStockStock.PoCreationThruDeliv.data.LessThanZero.ToString();
@@ -343,9 +345,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// <param name="e"></param>
         private void datavizLoadTimer_Tick(object sender, EventArgs e)
         {
-            if (!DatavizLoaded)
+            if (!ValuesvizLoaded)
             {
-                DatavizLoaded = true;
+                ValuesvizLoaded = true;
                 dataviz.Refresh();
                 datavizLoadTimer.Stop();
             }
@@ -364,7 +366,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btn_viewData_Click(object sender, EventArgs e)
+        private void btn_viewValues_Click(object sender, EventArgs e)
         {
             try
             {
@@ -393,7 +395,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "KPA -> Excess Stock - Stock Data Viewer Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "KPA -> Excess Stock - Stock Values Viewer Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

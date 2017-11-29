@@ -54,7 +54,7 @@ namespace KPA_KPI_Analyzer.Filter_Variant
             lbl_VariantDescription.Text = VariantDescription;
 
             // Need to load the details into the datagridview.
-            LoadDataGridView();
+            LoadValuesGridView();
         }
 
 
@@ -99,7 +99,7 @@ namespace KPA_KPI_Analyzer.Filter_Variant
         /// <summary>
         /// 
         /// </summary>
-        private void LoadDataGridView()
+        private void LoadValuesGridView()
         {
             int maxLength = GetMaxLength();
             CleanVariantDetails(maxLength);

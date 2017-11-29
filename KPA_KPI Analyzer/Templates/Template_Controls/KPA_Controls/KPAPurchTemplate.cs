@@ -1,4 +1,5 @@
-﻿using KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader;
+﻿using KPA_KPI_Analyzer.DataLoading;
+using KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader;
 using KPA_KPI_Analyzer.KPA_KPI_Overall;
 using KPA_KPI_Analyzer.Values;
 using System;
@@ -20,7 +21,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// <summary>
         /// Boolean value indicating whether the data was loaded into the dataviz control
         /// </summary>
-        bool DatavizLoaded { get; set; }
+        bool ValuesvizLoaded { get; set; }
 
 
 
@@ -97,7 +98,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             btn_One.Textcolor = System.Drawing.Color.Coral;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            Globals.CurrCategory = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.Purch][(int)StringUtils.KpaStringUtils.Category.Purch.PRsAgingRel];
+            Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.Purch][(int)Values.Categories.KpaCategory.Purch.PRsAgingRel];
             ChangeCategory();
         }
 
@@ -111,7 +112,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// </summary>
         public void RefreshTemplate()
         {
-            DatavizLoaded = false;
+            ValuesvizLoaded = false;
             datavizLoadTimer.Start();
         }
 
@@ -193,9 +194,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.Purch][(int)StringUtils.KpaStringUtils.Category.Purch.PRsAgingRel];
+            Title = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.Purch][(int)Values.Categories.KpaCategory.Purch.PRsAgingRel];
             Globals.CurrCategory = Title;
-            Globals.CurrSection = StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.Purch];
+            Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.Purch];
             ChangeCategory();
             
             TimeBucketOne = overallData.kpa.purch.prsAgingRel.data.LessThanZero.ToString();
@@ -247,9 +248,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         {
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
-            Title = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.Purch][(int)StringUtils.KpaStringUtils.Category.Purch.POFirstRelease];
+            Title = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.Purch][(int)Values.Categories.KpaCategory.Purch.POFirstRelease];
             Globals.CurrCategory = Title;
-            Globals.CurrSection = StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.Purch];
+            Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.Purch];
             ChangeCategory();
 
             TimeBucketOne = overallData.kpa.purch.poFirstRel.data.LessThanZero.ToString();
@@ -300,9 +301,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         {
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
-            Title = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.Purch][(int)StringUtils.KpaStringUtils.Category.Purch.POPrevRelease];
+            Title = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.Purch][(int)Values.Categories.KpaCategory.Purch.POPrevRelease];
             Globals.CurrCategory = Title;
-            Globals.CurrSection = StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.PurchTotal];
+            Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.PurchTotal];
             ChangeCategory();
 
             TimeBucketOne = overallData.kpa.purch.poPrevRel.data.LessThanZero.ToString();
@@ -354,9 +355,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         {
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
-            Title = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.Purch][(int)StringUtils.KpaStringUtils.Category.Purch.NoConfirmation];
+            Title = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.Purch][(int)Values.Categories.KpaCategory.Purch.NoConfirmation];
             Globals.CurrCategory = Title;
-            Globals.CurrSection = StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.PurchTotal];
+            Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.PurchTotal];
             ChangeCategory();
 
             TimeBucketOne = overallData.kpa.purch.noConfirmation.data.LessThanZero.ToString();
@@ -411,9 +412,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// <param name="e"></param>
         private void datavizLoadTimer_Tick(object sender, EventArgs e)
         {
-            if (!DatavizLoaded)
+            if (!ValuesvizLoaded)
             {
-                DatavizLoaded = true;
+                ValuesvizLoaded = true;
                 dataviz.Refresh();
                 datavizLoadTimer.Stop();
             }
@@ -430,7 +431,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void ViewData_Click(object sender, EventArgs e)
+        public void ViewValues_Click(object sender, EventArgs e)
         {
             try
             {
@@ -463,7 +464,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "KPA -> Purch Data Viewer Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "KPA -> Purch Values Viewer Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

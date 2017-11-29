@@ -34,10 +34,10 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
 
 
         /// <summary>
-        /// Gathers a multidimentional list of all the data contained within KPI Temp One DataGridView
+        /// Gathers a multidimentional list of all the data contained within KPI Temp One ValuesGridView
         /// </summary>
         /// <returns>A multidimentional list</returns>
-        public List<List<string>> GetKpaTempOneData()
+        public List<List<string>> GetKpaTempOneValues()
         {
             List<List<string>> results = null;
             try
@@ -82,10 +82,10 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
 
 
         /// <summary>
-        /// Gathers a multidimentional list of all the data contained within KPI Temp Two DataGridView
+        /// Gathers a multidimentional list of all the data contained within KPI Temp Two ValuesGridView
         /// </summary>
         /// <returns>A multidimentional list</returns>
-        public List<List<string>> GetKpaTempTwoData()
+        public List<List<string>> GetKpaTempTwoValues()
         {
             List<List<string>> results = null;
 
@@ -113,10 +113,10 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
 
 
         /// <summary>
-        /// Gathers a multidimentional list of all the data contained within KPI Temp Three DataGridView
+        /// Gathers a multidimentional list of all the data contained within KPI Temp Three ValuesGridView
         /// </summary>
         /// <returns>A multidimentional list</returns>
-        public List<List<string>> GetKpiTempThreeData()
+        public List<List<string>> GetKpiTempThreeValues()
         {
             List<List<string>> results = null;
 
@@ -151,10 +151,10 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
 
 
         /// <summary>
-        /// Gathers a multidimentional list of all the data contained within KPI Temp Four DataGridView
+        /// Gathers a multidimentional list of all the data contained within KPI Temp Four ValuesGridView
         /// </summary>
         /// <returns>A multidimentional list</returns>
-        public List<List<string>> GetKpiTempFourData()
+        public List<List<string>> GetKpiTempFourValues()
         {
             List<List<string>> results = null;
 
@@ -189,10 +189,10 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
 
 
         /// <summary>
-        /// Gathers a multidimentional list of all the data contained within KPI Temp Five DataGridView
+        /// Gathers a multidimentional list of all the data contained within KPI Temp Five ValuesGridView
         /// </summary>
         /// <returns>A multidimentional list</returns>
-        public List<List<string>> GetKpiTempFiveData()
+        public List<List<string>> GetKpiTempFiveValues()
         {
             List<List<string>> results = null;
 
@@ -246,7 +246,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
         {
             try
             {
-                if (Values.Globals.FocusedCountry == StringUtils.Country.UnitedStates)
+                if (Values.Globals.TargetCountry == Values.Countries.Country.UnitedStates)
                     dataJSONString = File.ReadAllText(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFile.US_Overall]);
                 else
                     dataJSONString = File.ReadAllText(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFile.MX_Overall]);
@@ -255,7 +255,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString(), "Overall DataReader Loading Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message.ToString(), "Overall ValuesReader Loading Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -271,7 +271,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
             try
             {
                 dataJSONString = ser.Serialize(this);
-                if (Values.Globals.FocusedCountry == StringUtils.Country.UnitedStates)
+                if (Values.Globals.TargetCountry == Values.Countries.Country.UnitedStates)
                 {
                     File.WriteAllText(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFile.US_Overall], dataJSONString);
                 }
@@ -282,7 +282,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Overall DataReader Saving Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Overall ValuesReader Saving Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

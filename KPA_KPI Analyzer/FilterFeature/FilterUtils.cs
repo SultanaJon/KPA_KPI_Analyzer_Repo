@@ -5,14 +5,14 @@ using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
 using KPA_KPI_Analyzer.FilterFeeature;
+using System.Data;
 
 namespace KPA_KPI_Analyzer.FilterFeeature
 {
     public static class FilterUtils
     {
-        private static HashSet<string> strData;
+        private static HashSet<string> strValues;
         public static string query = string.Empty;
-
 
 
 
@@ -24,17 +24,13 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
 
 
-
-
         /// <summary>
-        /// Data used to updated the progress of the filter load process.
+        /// Values used to updated the progress of the filter load process.
         /// </summary>
         public static bool FilterLoadProcessStarted { get; set; }
         public static bool FiltersLoaded { get; set; }
         public static int NumThreadsStarted { get; set; }
         public static int NumThreadCompleted { get; set; }
-
-
 
 
 
@@ -60,8 +56,6 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             PoDocumentType,
             ProdOrderMaterial
         }
-
-
 
 
 
@@ -92,8 +86,6 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
 
 
-
-
         /// <summary>
         /// Returns the query that will be used to get the unique data contained within the columns of the PRPO report
         /// </summary>
@@ -107,11 +99,11 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
             if (filters == string.Empty)
             {
-                temp = "SELECT DISTINCT " + DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + column + "] FROM " + DatabaseUtils.PRPO_DB_Utils.TargetCountryTable;
+                temp = "SELECT DISTINCT " + Database.QueryManager.GetDatabaseTableName() + ".[" + column + "] FROM " + Database.QueryManager.GetDatabaseTableName();
             }
             else
             {
-                temp = "SELECT DISTINCT " + DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + ".[" + column + "] FROM " + DatabaseUtils.PRPO_DB_Utils.TargetCountryTable + " WHERE " + filters;
+                temp = "SELECT DISTINCT " + Database.QueryManager.GetDatabaseTableName() + ".[" + column + "] FROM " + Database.QueryManager.GetDatabaseTableName() + " WHERE " + filters;
             }
             query = temp;
         }
@@ -130,7 +122,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
         private static void CleanUpProjectNumbers()
         {
             HashSet<string> tempHash = new HashSet<string>();
-            foreach(var str in strData)
+            foreach(var str in strValues)
             {
                 if (str.Contains("_"))
                 {
@@ -144,7 +136,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
                     tempHash.Add(tempStrArray[0]);
                 }
             }
-            strData = tempHash;
+            strValues = tempHash;
             tempHash = null;
             GC.Collect(); 
         }
@@ -160,25 +152,25 @@ namespace KPA_KPI_Analyzer.FilterFeeature
         public static void LoadFilters(string filters)
         {
             OleDbCommand cmd = new OleDbCommand();
-            strData = new HashSet<string>();
+            strValues = new HashSet<string>();
             try
             {
                 foreach (Filters col in Enum.GetValues(typeof(Filters)))
                 {
                     getQuery(col, filters);
-                    cmd = new OleDbCommand(query, DatabaseUtils.PRPO_DB_Utils.DatabaseConnection);
+                    cmd = new OleDbCommand(query, Database.DatabaseUtils.DatabaseConnection);
                     using (var reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
                             if (reader[filterCols[(int)col]] == DBNull.Value)
                             {
-                                strData.Add("[Blanks]");
+                                strValues.Add("[Blanks]");
                                 continue;
                             }
                             else
                             {
-                                strData.Add(reader[filterCols[(int)col]].ToString());
+                                strValues.Add(reader[filterCols[(int)col]].ToString());
                             }
                         }
 
@@ -194,11 +186,11 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
                         MethodInvoker del = delegate
                         {
-                            UpdateFilter(strData, col);
+                            UpdateFilter(strValues, col);
                         };
                         del.Invoke();
                     }
-                    strData.Clear();
+                    strValues.Clear();
                 }
                 FiltersLoaded = true;
             }
@@ -208,8 +200,8 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             }
             finally
             {
-                strData.Clear();
-                strData = null;
+                strValues.Clear();
+                strValues = null;
                 GC.Collect();
             }
         }

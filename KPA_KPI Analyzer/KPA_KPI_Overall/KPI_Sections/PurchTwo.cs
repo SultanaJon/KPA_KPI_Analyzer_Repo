@@ -1,4 +1,4 @@
-﻿using KPA_KPI_Analyzer.DatabaseUtils;
+﻿using KPA_KPI_Analyzer.Database;
 using KPA_KPI_Analyzer.FilterFeeature;
 using KPA_KPI_Analyzer.Templates;
 using System;
@@ -51,7 +51,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
         /// <summary>
         /// Loads the data for the specific KPI
         /// </summary>
-        public void LoadData()
+        public void LoadValues()
         {
             try
             {
@@ -60,7 +60,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 // PR 2nd Level Release vs PO Creation
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                foreach (DataRow dr in PRPO_DB_Utils.prsOnPOsDt.Rows)
+                foreach (DataRow dr in DatabaseUtils.prsOnPOsDt.Rows)
                 {
                     if (Filters.DateFilters.FilterByPrDateRange)
                     {
@@ -207,7 +207,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 // PO Creation vs PO Release
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                foreach (DataRow dr in PRPO_DB_Utils.prsOnPOsDt.Rows)
+                foreach (DataRow dr in DatabaseUtils.prsOnPOsDt.Rows)
                 {
                     if (Filters.DateFilters.FilterByPrDateRange)
                     {
@@ -343,7 +343,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 // PO Release vs PO Confirm
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                foreach (DataRow dr in PRPO_DB_Utils.prsOnPOsDt.Rows)
+                foreach (DataRow dr in DatabaseUtils.prsOnPOsDt.Rows)
                 {
                     if (Filters.DateFilters.FilterByPrDateRange)
                     {
@@ -498,7 +498,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 }
 
 
-                PRPO_DB_Utils.UpdateLoadProgress();
+                DatabaseUtils.UpdateLoadProgress();
             }
             catch (Exception ex)
             {

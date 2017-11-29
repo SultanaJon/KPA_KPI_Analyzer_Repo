@@ -1,4 +1,4 @@
-﻿using KPA_KPI_Analyzer.DatabaseUtils;
+﻿using KPA_KPI_Analyzer.Database;
 using KPA_KPI_Analyzer.FilterFeeature;
 using KPA_KPI_Analyzer.Templates;
 using System;
@@ -53,7 +53,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
         /// Loads the data of a specific KPI
         /// </summary>
         /// <param name="SelectedCountry"></param>
-        public void LoadData()
+        public void LoadValues()
         {
             try
             {
@@ -62,7 +62,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 // PR Plan Date vs Current Plan Date
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                foreach (DataRow dr in PRPO_DB_Utils.prsOnPOsDt.Rows)
+                foreach (DataRow dr in DatabaseUtils.prsOnPOsDt.Rows)
                 {
                     if (Filters.DateFilters.FilterByPrDateRange)
                     {
@@ -202,7 +202,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 // (Original Planned Date - 2nd Lvl Release Date) vs Coded Lead-time
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                foreach (DataRow dr in PRPO_DB_Utils.pr2ndLvlRelDateDt.Rows)
+                foreach (DataRow dr in DatabaseUtils.pr2ndLvlRelDateDt.Rows)
                 {
                     if (Filters.DateFilters.FilterByPrDateRange)
                     {
@@ -360,7 +360,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 // (Current Planned Date - 2nd Lvl Release Date) vs Coded Lead-Time
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                foreach (DataRow dr in PRPO_DB_Utils.pr2ndLvlRelDateDt.Rows)
+                foreach (DataRow dr in DatabaseUtils.pr2ndLvlRelDateDt.Rows)
                 {
                     if (Filters.DateFilters.FilterByPrDateRange)
                     {
@@ -538,7 +538,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 totalDays = 0;
 
 
-                PRPO_DB_Utils.UpdateLoadProgress();
+                DatabaseUtils.UpdateLoadProgress();
             }
             catch (Exception ex)
             {

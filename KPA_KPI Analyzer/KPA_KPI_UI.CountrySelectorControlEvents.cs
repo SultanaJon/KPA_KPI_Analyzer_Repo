@@ -47,13 +47,13 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         /// <param name="sender">The load data button</param>
         /// <param name="e">The click event</param>
-        private void btn_LoadData_Click(object sender, EventArgs e)
+        private void btn_LoadValues_Click(object sender, EventArgs e)
         {
             if (btn_usSwitch.Value)
             {
                 ConfigureToUnitedStates();
 
-                if (AppDirectoryUtils.DataFileExists(AppDirectoryUtils.OverallFile.US_Overall))
+                if (AppDirectoryUtils.ValuesFileExists(AppDirectoryUtils.OverallFile.US_Overall))
                 {
                     // the file exists
                     if (new FileInfo(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFile.US_Overall]).Length > 0)
@@ -61,8 +61,6 @@ namespace KPA_KPI_Analyzer
                         DateTime dt = GetLastLoadedUsPrpoReportDate();
                         if (dt == DateTime.Today.Date)
                         {
-                            //overallData..LoadOverallData(ref overallData);
-
                             // Load the overall data
                             overallData.Load(ref overallData);
 
@@ -74,25 +72,25 @@ namespace KPA_KPI_Analyzer
                         }
                         else
                         {
-                            InitializeDataLoadProcess();
+                            InitializeValuesLoadProcess();
                         }
                     }
                     else
                     {
-                        InitializeDataLoadProcess();
+                        InitializeValuesLoadProcess();
                     }
                 }
                 else // the file does not exist
                 {
                     AppDirectoryUtils.CreateFile(AppDirectoryUtils.OverallFile.US_Overall);
-                    InitializeDataLoadProcess();
+                    InitializeValuesLoadProcess();
                 }
             }
             else
             {
                 ConfigureToMexico();
 
-                if (AppDirectoryUtils.DataFileExists(AppDirectoryUtils.OverallFile.MX_Overall))
+                if (AppDirectoryUtils.ValuesFileExists(AppDirectoryUtils.OverallFile.MX_Overall))
                 {
                     // the file exists
                     if (new FileInfo(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFile.MX_Overall]).Length > 0)
@@ -100,7 +98,7 @@ namespace KPA_KPI_Analyzer
                         DateTime dt = GetLastLoadedMxPrpoReportDate();
                         if (dt == DateTime.Today.Date)
                         {
-                            //DataReader.LoadOverallData(ref overallData);
+                            //ValuesReader.LoadOverallValues(ref overallData);
 
                             // Load the overall data
                             overallData.Load(ref overallData);
@@ -113,18 +111,18 @@ namespace KPA_KPI_Analyzer
                         }
                         else
                         {
-                            InitializeDataLoadProcess();
+                            InitializeValuesLoadProcess();
                         }
                     }
                     else
                     {
-                        InitializeDataLoadProcess();
+                        InitializeValuesLoadProcess();
                     }
                 }
                 else // the file does not exist
                 {
                     AppDirectoryUtils.CreateFile(AppDirectoryUtils.OverallFile.MX_Overall);
-                    InitializeDataLoadProcess();
+                    InitializeValuesLoadProcess();
                 }
             }
         }

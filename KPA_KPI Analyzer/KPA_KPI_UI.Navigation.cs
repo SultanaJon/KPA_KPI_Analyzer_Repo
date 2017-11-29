@@ -87,12 +87,12 @@ namespace KPA_KPI_Analyzer
                 case 1: // KPA btn clicked
                     toggleMainNavSection(tag);
                     SetActiveSectionBtnToDefault();
-                    LoadOverallTemplate(Performance.KPA);
+                    LoadOverallTemplate(Values.Performances.Performance.KPA);
                     break;
                 case 2: // KPI btn clicked
                     toggleMainNavSection(tag);
                     SetActiveSectionBtnToDefault();
-                    LoadOverallTemplate(Performance.KPI);
+                    LoadOverallTemplate(Values.Performances.Performance.KPI);
                     break;
                 case 3: // Charts btn clicked
                     toggleMainNavSection(tag);

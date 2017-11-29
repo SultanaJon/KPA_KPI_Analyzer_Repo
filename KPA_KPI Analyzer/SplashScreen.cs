@@ -28,7 +28,7 @@ namespace KPA_KPI_Analyzer
         {
             DirectoryCheck,
             FileCheck,
-            DatabaseCheck,
+            ValuesbaseCheck,
         }
 
 
@@ -99,7 +99,7 @@ namespace KPA_KPI_Analyzer
             errorList = new List<string>();
 
             AccessUtils.AppDirectoryPath = Configuration.AppDir;
-            AccessUtils.DatabasePath = Configuration.DbPath;
+            AccessUtils.ValuesbasePath = Configuration.DbPath;
             AccessUtils.AI = new AccessInfo { FileName = Configuration.DbPath };
         }
 
@@ -130,10 +130,10 @@ namespace KPA_KPI_Analyzer
                         CheckApplicationFiles();
                     }).Start();
                 }
-                else if(CurrentState == State.DatabaseCheck)
+                else if(CurrentState == State.ValuesbaseCheck)
                 {
                     new Thread(() => {
-                        CheckDatabase();
+                        CheckValuesbase();
                     }).Start();
                 }
             }
@@ -142,7 +142,7 @@ namespace KPA_KPI_Analyzer
                 
                 if(CurrentStatus == CheckStatus.Complete)
                 {
-                    if (CurrentState == State.DatabaseCheck)
+                    if (CurrentState == State.ValuesbaseCheck)
                     {
                         CurrentAppStatus = LoadStatus.Complete;
                         Thread thrd = new Thread(() => { loadMainThread(); });
@@ -261,7 +261,7 @@ namespace KPA_KPI_Analyzer
                     {
                         lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Creating File - " + AppDirectoryUtils.resourcesFiles[(int)file]; });
 
-                        if(file == AppDirectoryUtils.ResourceFile.PRPO_Database)
+                        if(file == AppDirectoryUtils.ResourceFile.PRPO_Valuesbase)
                         {
                             try
                             {
@@ -316,7 +316,7 @@ namespace KPA_KPI_Analyzer
                     }
                 }
             }
-            catch(DatabaseCreationFailureException ex)
+            catch(ValuesbaseCreationFailureException ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -337,12 +337,12 @@ namespace KPA_KPI_Analyzer
         /// <summary>
         /// This function will check the presence of the database used to read data from.
         /// </summary>
-        private void CheckDatabase()
+        private void CheckValuesbase()
         {
             try
             {
                 lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Checking for a valid database..."; });
-                AccessUtils.CheckDatabase();
+                AccessUtils.CheckValuesbase();
                 lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Valid database found. Establishing a connection..."; });
                 conn = new OleDbConnection(AccessUtils.AI.connectionString());
                 CurrentStatus = CheckStatus.Complete;
@@ -352,7 +352,7 @@ namespace KPA_KPI_Analyzer
                 // The database exists but the tables did not. We want to keep the current database but we do not want to attempt to connect.
                 CurrentStatus = CheckStatus.Complete;
             }
-            catch (PRPODatabaseNotFoundException)
+            catch (PRPOValuesbaseNotFoundException)
             {
                 // The database did not exist so create a new one before the application starts.
                 lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Creating new database..."; });
@@ -360,7 +360,7 @@ namespace KPA_KPI_Analyzer
                 {
                     AccessUtils.CreateAccessDB();
                 }
-                catch(DatabaseCreationFailureException ex)
+                catch(ValuesbaseCreationFailureException ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
@@ -370,7 +370,7 @@ namespace KPA_KPI_Analyzer
             {
                 // The names of the table are not correct so leta delete the database and create a new one and
                 // wait for the user to drop new files to load.
-                lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Database error! Creating new database..."; });
+                lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Valuesbase error! Creating new database..."; });
 
                 try
                 {
@@ -378,7 +378,7 @@ namespace KPA_KPI_Analyzer
                     AccessUtils.CreateAccessDB();
                     CurrentStatus = CheckStatus.Complete;
                 }
-                catch (DatabaseCreationFailureException ex)
+                catch (ValuesbaseCreationFailureException ex)
                 {
                     MessageBox.Show(ex.Message);
                 }

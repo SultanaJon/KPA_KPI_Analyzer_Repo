@@ -1,7 +1,7 @@
 ﻿using DataImporter.Access;
 using DataImporter.Classes;
 using DataImporter.Excel;
-using KPA_KPI_Analyzer.DatabaseUtils;
+using KPA_KPI_Analyzer.Database;
 using KPA_KPI_Analyzer.DragDropFeatures;
 using KPA_KPI_Analyzer.DragDropFeatures.Exceptions;
 using System;
@@ -98,12 +98,12 @@ namespace KPA_KPI_Analyzer
                     lbl_topPanelNavPrpoDate.Text = "Loading...";
                     overallData = new KPA_KPI_Overall.Overall();
                     if (AccessUtils.US_PRPO_TableExists || AccessUtils.MX_PRPO_TableExists)
-                        PRPO_DB_Utils.DropCreateDb();
+                        DatabaseUtils.DropCreateDb();
                     else
                         AccessUtils.CreateAccessDB();
 
                     ShowPage(Pages.LoadingScreen);
-                    cpb_loadingScreenCircProgBar.Text = "Importing Data...";
+                    cpb_loadingScreenCircProgBar.Text = "Importing Values...";
                     ImportTimer.Start();
                 }
             }

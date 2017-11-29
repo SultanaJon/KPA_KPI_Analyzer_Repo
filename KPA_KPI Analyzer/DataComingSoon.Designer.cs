@@ -75,7 +75,7 @@ namespace KPA_KPI_Analyzer
             this.bunifuCustomLabel1.TabIndex = 0;
             this.bunifuCustomLabel1.Text = "Data Coming Soon";
             // 
-            // DataComingSoon
+            // ValuesComingSoon
             // 
             this.AutoScaleDimensions = new SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;

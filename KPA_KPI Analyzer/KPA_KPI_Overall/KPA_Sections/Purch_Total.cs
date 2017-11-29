@@ -1,4 +1,4 @@
-﻿using KPA_KPI_Analyzer.DatabaseUtils;
+﻿using KPA_KPI_Analyzer.Database;
 using KPA_KPI_Analyzer.FilterFeeature;
 using KPA_KPI_Analyzer.Templates;
 using System;
@@ -30,7 +30,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
         /// Loads the data for the specific KPA
         /// </summary>
         /// <param name="SelectedCountry"></param>
-        public void LoadData()
+        public void LoadValues()
         {
             try
             {
@@ -40,7 +40,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 dt = new DataTable();
-                cmd = new OleDbCommand(StringUtils.KpaStringUtils.queries[(int)StringUtils.KpaStringUtils.Section.PurchTotal][(int)StringUtils.KpaStringUtils.Category.PurchTotal.PRRelConfEntry] + Filters.FilterQuery, PRPO_DB_Utils.DatabaseConnection);
+                cmd = new OleDbCommand(Database.QueryManager.KpaQueries.PurchTotalQueries.GetPrReleaseToConfirmationEntry() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
 
                 da = new OleDbDataAdapter(cmd);
                 da.Fill(dt);
@@ -144,7 +144,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
 
                 totalDays = 0;
 
-                PRPO_DB_Utils.UpdateLoadProgress();
+                DatabaseUtils.UpdateLoadProgress();
             }
             catch (Exception ex)
             {

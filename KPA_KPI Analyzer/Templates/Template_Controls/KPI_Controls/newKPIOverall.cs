@@ -1,4 +1,5 @@
-﻿using KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader;
+﻿using KPA_KPI_Analyzer.DataLoading;
+using KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader;
 using KPA_KPI_Analyzer.KPA_KPI_Overall;
 using KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections;
 using KPA_KPI_Analyzer.Values;
@@ -94,10 +95,10 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
             Globals.CurrPerformance = "KPI";
 
-            if (Globals.FocusedCountry == StringUtils.Country.UnitedStates)
-                Globals.CurrCountry = StringUtils.countries[(int)StringUtils.Country.UnitedStates];
+            if (Globals.TargetCountry == Values.Countries.Country.UnitedStates)
+                Globals.CurrCountry = Values.Countries.countries[(int)Values.Countries.Country.UnitedStates];
             else
-                Globals.CurrCountry = StringUtils.countries[(int)StringUtils.Country.Mexico];
+                Globals.CurrCountry = Values.Countries.countries[(int)Values.Countries.Country.Mexico];
         }
 
 
@@ -903,48 +904,48 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                 switch (e.RowIndex)
                 {
                     case 0: // Plan
-                        Globals.CurrSection = StringUtils.KpiStringUtils.sections[(int)StringUtils.KpiStringUtils.Section.Plan];
-                        Globals.CurrCategory = StringUtils.KpiStringUtils.categories[(int)StringUtils.KpiStringUtils.Section.Plan][(int)StringUtils.KpiStringUtils.Category.Plan.CurrentPlanDateVsPrPlanDate];
+                        Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.Plan];
+                        Globals.CurrCategory = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.Plan][(int)Values.Categories.KpiCategory.Plan.CurrentPlanDateVsPrPlanDate];
                         HandlePlanDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 1:
-                        Globals.CurrSection = StringUtils.KpiStringUtils.sections[(int)StringUtils.KpiStringUtils.Section.Plan];
-                        Globals.CurrCategory = StringUtils.KpiStringUtils.categories[(int)StringUtils.KpiStringUtils.Section.Plan][(int)StringUtils.KpiStringUtils.Category.Plan.OriginalPlanDate2ndLvlReleaseDatevsCodedLeadTime];
+                        Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.Plan];
+                        Globals.CurrCategory = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.Plan][(int)Values.Categories.KpiCategory.Plan.OriginalPlanDate2ndLvlReleaseDatevsCodedLeadTime];
                         HandlePlanDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 2:
-                        Globals.CurrSection = StringUtils.KpiStringUtils.sections[(int)StringUtils.KpiStringUtils.Section.Plan];
-                        Globals.CurrCategory = StringUtils.KpiStringUtils.categories[(int)StringUtils.KpiStringUtils.Section.Plan][(int)StringUtils.KpiStringUtils.Category.Plan.CurrentPlanDate2ndLvlReleaseDatevsCodedLeadTime];
+                        Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.Plan];
+                        Globals.CurrCategory = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.Plan][(int)Values.Categories.KpiCategory.Plan.CurrentPlanDate2ndLvlReleaseDatevsCodedLeadTime];
                         HandlePlanDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 3: // Purch
-                        Globals.CurrSection = StringUtils.KpiStringUtils.sections[(int)StringUtils.KpiStringUtils.Section.Purch];
-                        Globals.CurrCategory = StringUtils.KpiStringUtils.categories[(int)StringUtils.KpiStringUtils.Section.Purch][(int)StringUtils.KpiStringUtils.Category.Purch.InitialConfirmationDatevsPRPlanDate];
+                        Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.Purch];
+                        Globals.CurrCategory = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.Purch][(int)Values.Categories.KpiCategory.Purch.InitialConfirmationDatevsPRPlanDate];
                         HandlePurchDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 4: // Follow Up
-                        Globals.CurrSection = StringUtils.KpiStringUtils.sections[(int)StringUtils.KpiStringUtils.Section.FollowUp];
-                        Globals.CurrCategory = StringUtils.KpiStringUtils.categories[(int)StringUtils.KpiStringUtils.Section.FollowUp][(int)StringUtils.KpiStringUtils.Category.FollowUp.CurrentConfDateVsInitialConfDate];
+                        Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.FollowUp];
+                        Globals.CurrCategory = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.FollowUp][(int)Values.Categories.KpiCategory.FollowUp.CurrentConfDateVsInitialConfDate];
                         HandleFollowUpDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 5:
-                        Globals.CurrSection = StringUtils.KpiStringUtils.sections[(int)StringUtils.KpiStringUtils.Section.FollowUp];
-                        Globals.CurrCategory = StringUtils.KpiStringUtils.categories[(int)StringUtils.KpiStringUtils.Section.FollowUp][(int)StringUtils.KpiStringUtils.Category.FollowUp.FinalConfirmationDatevsFinalPlanDate];
+                        Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.FollowUp];
+                        Globals.CurrCategory = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.FollowUp][(int)Values.Categories.KpiCategory.FollowUp.FinalConfirmationDatevsFinalPlanDate];
                         HandleFollowUpDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 6:
-                        Globals.CurrSection = StringUtils.KpiStringUtils.sections[(int)StringUtils.KpiStringUtils.Section.FollowUp];
-                        Globals.CurrCategory = StringUtils.KpiStringUtils.categories[(int)StringUtils.KpiStringUtils.Section.FollowUp][(int)StringUtils.KpiStringUtils.Category.FollowUp.ReceiptDatevsCurrentPlanDate];
+                        Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.FollowUp];
+                        Globals.CurrCategory = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.FollowUp][(int)Values.Categories.KpiCategory.FollowUp.ReceiptDatevsCurrentPlanDate];
                         HandleFollowUpDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 7:
-                        Globals.CurrSection = StringUtils.KpiStringUtils.sections[(int)StringUtils.KpiStringUtils.Section.FollowUp];
-                        Globals.CurrCategory = StringUtils.KpiStringUtils.categories[(int)StringUtils.KpiStringUtils.Section.FollowUp][(int)StringUtils.KpiStringUtils.Category.FollowUp.ReceiptDatevsOriginalConfirmationDate];
+                        Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.FollowUp];
+                        Globals.CurrCategory = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.FollowUp][(int)Values.Categories.KpiCategory.FollowUp.ReceiptDatevsOriginalConfirmationDate];
                         HandleFollowUpDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 8:
-                        Globals.CurrSection = StringUtils.KpiStringUtils.sections[(int)StringUtils.KpiStringUtils.Section.FollowUp];
-                        Globals.CurrCategory = StringUtils.KpiStringUtils.categories[(int)StringUtils.KpiStringUtils.Section.FollowUp][(int)StringUtils.KpiStringUtils.Category.FollowUp.ReceiptDatevsCurrentConfirmationDate];
+                        Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.FollowUp];
+                        Globals.CurrCategory = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.FollowUp][(int)Values.Categories.KpiCategory.FollowUp.ReceiptDatevsCurrentConfirmationDate];
                         HandleFollowUpDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                 }
@@ -981,48 +982,48 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                 switch (e.RowIndex)
                 {
                     case 0: 
-                        Globals.CurrSection = StringUtils.KpiStringUtils.sections[(int)StringUtils.KpiStringUtils.Section.PlanTwo];
-                        Globals.CurrCategory = StringUtils.KpiStringUtils.categories[(int)StringUtils.KpiStringUtils.Section.PlanTwo][(int)StringUtils.KpiStringUtils.Category.PlanTwo.MaterialDueOriginalPlanDate];
+                        Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.PlanTwo];
+                        Globals.CurrCategory = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PlanTwo][(int)Values.Categories.KpiCategory.PlanTwo.MaterialDueOriginalPlanDate];
                         HandlePlanTwoDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 1:
-                        Globals.CurrSection = StringUtils.KpiStringUtils.sections[(int)StringUtils.KpiStringUtils.Section.PlanTwo];
-                        Globals.CurrCategory = StringUtils.KpiStringUtils.categories[(int)StringUtils.KpiStringUtils.Section.PlanTwo][(int)StringUtils.KpiStringUtils.Category.PlanTwo.MaterialDueFinalPlannedDate];
+                        Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.PlanTwo];
+                        Globals.CurrCategory = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PlanTwo][(int)Values.Categories.KpiCategory.PlanTwo.MaterialDueFinalPlannedDate];
                         HandlePlanTwoDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 2: // 4 - 5 = Purch Two
-                        Globals.CurrSection = StringUtils.KpiStringUtils.sections[(int)StringUtils.KpiStringUtils.Section.PurchTwo];
-                        Globals.CurrCategory = StringUtils.KpiStringUtils.categories[(int)StringUtils.KpiStringUtils.Section.PurchTwo][(int)StringUtils.KpiStringUtils.Category.PurchTwo.PR2ndLvlReleaseDatevsPOCreationDate];
+                        Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.PurchTwo];
+                        Globals.CurrCategory = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PurchTwo][(int)Values.Categories.KpiCategory.PurchTwo.PR2ndLvlReleaseDatevsPOCreationDate];
                         HandlePurchTwoDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 3:
-                        Globals.CurrSection = StringUtils.KpiStringUtils.sections[(int)StringUtils.KpiStringUtils.Section.PurchTwo];
-                        Globals.CurrCategory = StringUtils.KpiStringUtils.categories[(int)StringUtils.KpiStringUtils.Section.PurchTwo][(int)StringUtils.KpiStringUtils.Category.PurchTwo.POCreationDatevsPOReleaseDate];
+                        Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.PurchTwo];
+                        Globals.CurrCategory = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PurchTwo][(int)Values.Categories.KpiCategory.PurchTwo.POCreationDatevsPOReleaseDate];
                         HandlePurchTwoDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 4:
-                        Globals.CurrSection = StringUtils.KpiStringUtils.sections[(int)StringUtils.KpiStringUtils.Section.PurchTwo];
-                        Globals.CurrCategory = StringUtils.KpiStringUtils.categories[(int)StringUtils.KpiStringUtils.Section.PurchTwo][(int)StringUtils.KpiStringUtils.Category.PurchTwo.POReleaseDatevsPOConfirmationDate];
+                        Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.PurchTwo];
+                        Globals.CurrCategory = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PurchTwo][(int)Values.Categories.KpiCategory.PurchTwo.POReleaseDatevsPOConfirmationDate];
                         HandlePurchTwoDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 5: // 7 - 8 Purch Sub
-                        Globals.CurrSection = StringUtils.KpiStringUtils.sections[(int)StringUtils.KpiStringUtils.Section.PurchSub];
-                        Globals.CurrCategory = StringUtils.KpiStringUtils.categories[(int)StringUtils.KpiStringUtils.Section.PurchSub][(int)StringUtils.KpiStringUtils.Category.PurchSub.PRReleaseDatevsPOReleaseDate];
+                        Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.PurchSub];
+                        Globals.CurrCategory = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PurchSub][(int)Values.Categories.KpiCategory.PurchSub.PRReleaseDatevsPOReleaseDate];
                         HandlePurchSubDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 6:
-                        Globals.CurrSection = StringUtils.KpiStringUtils.sections[(int)StringUtils.KpiStringUtils.Section.PurchSub];
-                        Globals.CurrCategory = StringUtils.KpiStringUtils.categories[(int)StringUtils.KpiStringUtils.Section.PurchSub][(int)StringUtils.KpiStringUtils.Category.PurchSub.POCreationDatevsConfirmationEntryDate];
+                        Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.PurchSub];
+                        Globals.CurrCategory = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PurchSub][(int)Values.Categories.KpiCategory.PurchSub.POCreationDatevsConfirmationEntryDate];
                         HandlePurchSubDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 7: // Purch Total
-                        Globals.CurrSection = StringUtils.KpiStringUtils.sections[(int)StringUtils.KpiStringUtils.Section.PurchTotal];
-                        Globals.CurrCategory = StringUtils.KpiStringUtils.categories[(int)StringUtils.KpiStringUtils.Section.PurchTotal][(int)StringUtils.KpiStringUtils.Category.PurchTotal.PRReleaseDatetoConfirmationEntryDate];
+                        Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.PurchTotal];
+                        Globals.CurrCategory = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PurchTotal][(int)Values.Categories.KpiCategory.PurchTotal.PRReleaseDatetoConfirmationEntryDate];
                         HandlePurchTotalDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 8: // 10 - 11 = Purch Plan
-                        Globals.CurrSection = StringUtils.KpiStringUtils.sections[(int)StringUtils.KpiStringUtils.Section.PurchPlan];
-                        Globals.CurrCategory = StringUtils.KpiStringUtils.categories[(int)StringUtils.KpiStringUtils.Section.PurchPlan][(int)StringUtils.KpiStringUtils.Category.PurchPlan.POReleasevsPRDeliveryDate];
+                        Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.PurchPlan];
+                        Globals.CurrCategory = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PurchPlan][(int)Values.Categories.KpiCategory.PurchPlan.POReleasevsPRDeliveryDate];
                         HandlePurchPlanDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                 }
@@ -1059,28 +1060,28 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                 switch(e.RowIndex)
                 {
                     case 0:
-                        Globals.CurrSection = StringUtils.KpiStringUtils.sections[(int)StringUtils.KpiStringUtils.Section.Other];
-                        Globals.CurrCategory = StringUtils.KpiStringUtils.categories[(int)StringUtils.KpiStringUtils.Section.Other][(int)StringUtils.KpiStringUtils.Category.Other.PRsCreated];
+                        Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.Other];
+                        Globals.CurrCategory = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.Other][(int)Values.Categories.KpiCategory.Other.PRsCreated];
                         HandleOtherDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 1:
-                        Globals.CurrSection = StringUtils.KpiStringUtils.sections[(int)StringUtils.KpiStringUtils.Section.Other];
-                        Globals.CurrCategory = StringUtils.KpiStringUtils.categories[(int)StringUtils.KpiStringUtils.Section.Other][(int)StringUtils.KpiStringUtils.Category.Other.PRsReleased];
+                        Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.Other];
+                        Globals.CurrCategory = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.Other][(int)Values.Categories.KpiCategory.Other.PRsReleased];
                         HandleOtherDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 2:
-                        Globals.CurrSection = StringUtils.KpiStringUtils.sections[(int)StringUtils.KpiStringUtils.Section.Other];
-                        Globals.CurrCategory = StringUtils.KpiStringUtils.categories[(int)StringUtils.KpiStringUtils.Section.Other][(int)StringUtils.KpiStringUtils.Category.Other.TotalSpend];
+                        Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.Other];
+                        Globals.CurrCategory = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.Other][(int)Values.Categories.KpiCategory.Other.TotalSpend];
                         HandleOtherDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 3:
-                        Globals.CurrSection = StringUtils.KpiStringUtils.sections[(int)StringUtils.KpiStringUtils.Section.Other];
-                        Globals.CurrCategory = StringUtils.KpiStringUtils.categories[(int)StringUtils.KpiStringUtils.Section.Other][(int)StringUtils.KpiStringUtils.Category.Other.PRValuevsPOValue];
+                        Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.Other];
+                        Globals.CurrCategory = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.Other][(int)Values.Categories.KpiCategory.Other.PRValuevsPOValue];
                         HandleOtherDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 4:
-                        Globals.CurrSection = StringUtils.KpiStringUtils.sections[(int)StringUtils.KpiStringUtils.Section.Other];
-                        Globals.CurrCategory = StringUtils.KpiStringUtils.categories[(int)StringUtils.KpiStringUtils.Section.Other][(int)StringUtils.KpiStringUtils.Category.Other.HotJobPRs];
+                        Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.Other];
+                        Globals.CurrCategory = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.Other][(int)Values.Categories.KpiCategory.Other.HotJobPRs];
                         HandleOtherDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                 }

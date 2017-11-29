@@ -90,7 +90,7 @@ namespace KPA_KPI_Analyzer.DragDropFeatures
 
             foreach (var file in filePaths)
             {
-                if (file.Contains("US")) // This file contains United States Data
+                if (file.Contains("US")) // This file contains United States Values
                 {
                     // if the file has already been updated do nothing and continue.
                     //if (US_PRPO_FilePath == file) continue;
@@ -119,7 +119,7 @@ namespace KPA_KPI_Analyzer.DragDropFeatures
                         ExcelInfo.USUpdated = true;
                     }
                 }
-                else if (file.Contains("MX")) // This file contains Mexico Data
+                else if (file.Contains("MX")) // This file contains Mexico Values
                 {
                     //if (MX_PRPO_FilePath == file) continue;
 

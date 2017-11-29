@@ -45,7 +45,7 @@ namespace KPA_KPI_Analyzer.Diagnostics
         /// </summary>
         public enum ResourceFile
         {
-            PRPO_Database,
+            PRPO_Valuesbase,
             Settings
         }
 
@@ -173,7 +173,7 @@ namespace KPA_KPI_Analyzer.Diagnostics
         /// </summary>
         /// <param name="file"></param>
         /// <returns></returns>
-        public static bool DataFileExists(OverallFile file) => File.Exists(overallFiles[(int)file]);
+        public static bool ValuesFileExists(OverallFile file) => File.Exists(overallFiles[(int)file]);
 
 
 
@@ -228,7 +228,7 @@ namespace KPA_KPI_Analyzer.Diagnostics
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Overall Data Storage File Creation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Overall Values Storage File Creation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }

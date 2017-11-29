@@ -1,4 +1,5 @@
-﻿using KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader;
+﻿using KPA_KPI_Analyzer.DataLoading;
+using KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader;
 using KPA_KPI_Analyzer.KPA_KPI_Overall;
 using KPA_KPI_Analyzer.Values;
 using System;
@@ -16,7 +17,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// <summary>
         /// Boolean determining whether or not the dataviz graph was loaded.
         /// </summary>
-        bool DatavizLoaded { get; set; }
+        bool ValuesvizLoaded { get; set; }
 
 
 
@@ -99,10 +100,10 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             RenderCurrPlanCurrConfDateOpenPO();
             btn_One.selected = true;
             btn_One.Textcolor = System.Drawing.Color.Coral;
-            DatavizLoaded = false;
+            ValuesvizLoaded = false;
             datavizLoadTimer.Start();
             ActiveCategory = 0;
-            Globals.CurrCategory = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.CurrPlanActual][(int)StringUtils.KpaStringUtils.Category.CurrPlanVsActual.CurrPlanDateCurrConfDateOpenPO];
+            Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.CurrPlanActual][(int)Values.Categories.KpaCategory.CurrPlanVsActual.CurrPlanDateCurrConfDateOpenPO];
             ChangeCategory();
         }
 
@@ -117,7 +118,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// </summary>
         public void RefreshTemplate()
         {
-            DatavizLoaded = false;
+            ValuesvizLoaded = false;
             datavizLoadTimer.Start();
         }
 
@@ -194,9 +195,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.CurrPlanActual][(int)StringUtils.KpaStringUtils.Category.CurrPlanVsActual.CurrPlanDateCurrConfDateOpenPO];
+            Title = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.CurrPlanActual][(int)Values.Categories.KpaCategory.CurrPlanVsActual.CurrPlanDateCurrConfDateOpenPO];
             Globals.CurrCategory = Title;
-            Globals.CurrSection = StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.CurrPlanActual];
+            Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.CurrPlanActual];
             ChangeCategory();
 
             TimeBucketOne = overallData.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.LessThanMinusThree.ToString();
@@ -254,9 +255,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         {
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
-            Title = StringUtils.KpaStringUtils.cateogories[(int)StringUtils.KpaStringUtils.Section.CurrPlanActual][(int)StringUtils.KpaStringUtils.Category.CurrPlanVsActual.CurrPlanDateCurrConfDateOpenPOHotJobs];
+            Title = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.CurrPlanActual][(int)Values.Categories.KpaCategory.CurrPlanVsActual.CurrPlanDateCurrConfDateOpenPOHotJobs];
             Globals.CurrCategory = Title;
-            Globals.CurrSection = StringUtils.KpaStringUtils.sections[(int)StringUtils.KpaStringUtils.Section.CurrPlanActual];
+            Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.CurrPlanActual];
             ChangeCategory();
 
             TimeBucketOne = overallData.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.LessThanMinusThree.ToString();
@@ -316,9 +317,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// <param name="e"></param>
         private void datavizLoadTimer_Tick(object sender, EventArgs e)
         {
-            if (!DatavizLoaded)
+            if (!ValuesvizLoaded)
             {
-                DatavizLoaded = true;
+                ValuesvizLoaded = true;
                 dataviz.Refresh();
                 datavizLoadTimer.Stop();
             }
@@ -334,7 +335,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void ViewData_Click(object sender, EventArgs e)
+        public void ViewValues_Click(object sender, EventArgs e)
         {
             try
             {
@@ -362,7 +363,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "KPA -> Current Plan vs Actual Data Viewer Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "KPA -> Current Plan vs Actual Values Viewer Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

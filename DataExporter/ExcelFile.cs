@@ -75,7 +75,7 @@
         /// <summary>
         /// Indexers for the start position within the overall.xlsx file.
         /// </summary>
-        public enum DataColumnPosition : byte
+        public enum ValuesColumnPosition : byte
         {
             RowStartPosition = 1,
             ColumnStartPosition = 1
