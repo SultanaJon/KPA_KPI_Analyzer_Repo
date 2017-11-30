@@ -2608,10 +2608,10 @@
             this.bunifuCustomLabel30.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.bunifuCustomLabel30.Location = new System.Drawing.Point(53, 10);
             this.bunifuCustomLabel30.Name = "bunifuCustomLabel30";
-            this.bunifuCustomLabel30.Size = new System.Drawing.Size(570, 13);
+            this.bunifuCustomLabel30.Size = new System.Drawing.Size(560, 13);
             this.bunifuCustomLabel30.TabIndex = 6;
-            this.bunifuCustomLabel30.Text = "[Project Number] will search for data within [WBS Element] and [Prd Ord. WBS] c" +
-    "ontaining the substring you selected.";
+            this.bunifuCustomLabel30.Text = "[Project Number] will search for data within [WBS Element] and [Prd Ord. WBS] con" +
+    "taining the substring you selected.";
             // 
             // bunifuCustomLabel28
             // 

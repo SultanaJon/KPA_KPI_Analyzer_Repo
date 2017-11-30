@@ -14,8 +14,8 @@ namespace KPA_KPI_Analyzer.Filter_Variant
 
 
         // Call-back function to begin data loading of the users variant.
-        public delegate void BegingVariantLoadHandler(Dictionary<string, List<string>> _filters);
-        public static event BegingVariantLoadHandler BeginVariantLoadProcess;
+        public delegate void BeginVariantLoadHandler(Dictionary<string, List<string>> _filters);
+        public static event BeginVariantLoadHandler BeginVariantLoadProcess;
         #endregion
 
 

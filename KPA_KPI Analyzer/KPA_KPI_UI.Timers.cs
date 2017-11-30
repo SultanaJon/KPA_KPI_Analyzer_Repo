@@ -242,7 +242,7 @@ namespace KPA_KPI_Analyzer
                 else // only the mexico file exists.
                 {
                     ConfigureToMexico();
-                    ConfigureToUnitedStates();
+                    InitializeDataLoadProcess();
                 }
             }
         }

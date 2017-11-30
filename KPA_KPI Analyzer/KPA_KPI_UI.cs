@@ -718,18 +718,18 @@ namespace KPA_KPI_Analyzer
                                 }
                                 else
                                 {
-                                    ConfigureToUnitedStates();
+                                    InitializeDataLoadProcess();
                                 }
                             }
                             else
                             {
-                                ConfigureToUnitedStates();
+                                InitializeDataLoadProcess();
                             }
                         }
                         else // the file does not exist
                         {
                             AppDirectoryUtils.CreateFile(AppDirectoryUtils.OverallFile.US_Overall);
-                            ConfigureToUnitedStates();
+                            InitializeDataLoadProcess();
                         }
                     }
                     else if(settings.reportSettings.PrpoMxReportLoaded)
@@ -755,18 +755,18 @@ namespace KPA_KPI_Analyzer
                                 }
                                 else
                                 {
-                                    ConfigureToUnitedStates();
+                                    InitializeDataLoadProcess();
                                 }
                             }
                             else
                             {
-                                ConfigureToUnitedStates();
+                                InitializeDataLoadProcess();
                             }
                         }
                         else // the file does not exist
                         {
                             AppDirectoryUtils.CreateFile(AppDirectoryUtils.OverallFile.MX_Overall);
-                            ConfigureToUnitedStates();
+                            InitializeDataLoadProcess();
                         }
                     }
                 }
@@ -981,7 +981,7 @@ namespace KPA_KPI_Analyzer
             UpdateAdvancedFilterCheckedItems();
 
             // Start the data load process.
-            ConfigureToUnitedStates();
+            InitializeDataLoadProcess();
 
             // Update the buttons.
             UpdateFilterButtons();
