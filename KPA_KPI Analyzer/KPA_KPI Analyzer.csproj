@@ -16,7 +16,7 @@
     </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -378,9 +378,11 @@
     <Compile Include="Values\Globals.cs" />
     <EmbeddedResource Include="Correlation\CorrelationConfiguration.resx">
       <DependentUpon>CorrelationConfiguration.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Correlation\CorrelationTool.resx">
       <DependentUpon>CorrelationTool.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="DataComingSoon.resx">
       <DependentUpon>DataComingSoon.cs</DependentUpon>
@@ -392,18 +394,23 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Filter Variant\VariantsCreationWindow.resx">
       <DependentUpon>VariantsCreationWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Filter Variant\VariantsDetailDisplayWindow.resx">
       <DependentUpon>VariantsDetailDisplayWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Filter Variant\VariantsEditWindow.resx">
       <DependentUpon>VariantsEditWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Filter Variant\VariantsViewWindow.resx">
       <DependentUpon>VariantsViewWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Templates\Template_Controls\KPA_Controls\KPAExcessStockOpenOrders.resx">
       <DependentUpon>KPAExcessStockOpenOrders.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Templates\Template_Controls\KPA_Controls\KPACurrentPlanActualTemplate.resx">
       <DependentUpon>KPACurrentPlanActualTemplate.cs</DependentUpon>
@@ -411,6 +418,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Templates\Template_Controls\KPA_Controls\KPAExcessStockStock.resx">
       <DependentUpon>KPAExcessStockStock.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Templates\Template_Controls\KPA_Controls\KPAFollowUpTemplate.resx">
       <DependentUpon>KPAFollowUpTemplate.cs</DependentUpon>
@@ -442,6 +450,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Templates\Template_Controls\KPA_Controls\NewKPAOverall.resx">
       <DependentUpon>NewKPAOverall.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Templates\Template_Controls\KPI_Controls\KPIFollowUpTemplate.resx">
       <DependentUpon>KPIFollowUpTemplate.cs</DependentUpon>
@@ -457,6 +466,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Templates\Template_Controls\KPI_Controls\KPIPlanTwoTemplate.resx">
       <DependentUpon>KPIPlanTwoTemplate.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Templates\Template_Controls\KPI_Controls\KPIPurchPlanTemplate.resx">
       <DependentUpon>KPIPurchPlanTemplate.cs</DependentUpon>

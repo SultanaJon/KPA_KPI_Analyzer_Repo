@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace KPA_KPI_Analyzer.Database
+﻿namespace KPA_KPI_Analyzer.Database
 {
     public class DatabaseTables
     {

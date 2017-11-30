@@ -1,5 +1,4 @@
-﻿using KPA_KPI_Analyzer.Diagnostics;
-using KPA_KPI_Analyzer.FilterFeeature;
+﻿using KPA_KPI_Analyzer.FilterFeeature;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -464,7 +463,7 @@ namespace KPA_KPI_Analyzer
 
             // Check the filter status to update the variant tools.
             UpdateVariantTools();
-            InitializeValuesLoadProcess();
+            InitializeDataLoadProcess();
         }
 
 

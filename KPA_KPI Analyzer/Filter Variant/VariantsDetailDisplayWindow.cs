@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using System.Linq;
 
 namespace KPA_KPI_Analyzer.Filter_Variant
 {
@@ -54,7 +53,7 @@ namespace KPA_KPI_Analyzer.Filter_Variant
             lbl_VariantDescription.Text = VariantDescription;
 
             // Need to load the details into the datagridview.
-            LoadValuesGridView();
+            LoadDataGridView();
         }
 
 
@@ -99,7 +98,7 @@ namespace KPA_KPI_Analyzer.Filter_Variant
         /// <summary>
         /// 
         /// </summary>
-        private void LoadValuesGridView()
+        private void LoadDataGridView()
         {
             int maxLength = GetMaxLength();
             CleanVariantDetails(maxLength);

@@ -22,7 +22,7 @@ namespace DataImporter.Access
         /// <summary>
         /// 
         /// </summary>
-        public static string ValuesbasePath { get; set; }
+        public static string DatabasePath { get; set; }
 
 
 
@@ -50,7 +50,7 @@ namespace DataImporter.Access
         /// <summary>
         /// Boolean value indicating whether or not the database exists
         /// </summary>
-        public static bool ValuesbaseExists { get; set; }
+        public static bool DatabaseExists { get; set; }
 
 
 
@@ -69,16 +69,16 @@ namespace DataImporter.Access
         /// Check the database. If the database does not exist, throw an exeption so it can be created.
         /// If the database tables do not exist, thow an exception so the program can continue.
         /// </summary>
-        /// <exception cref="PRPOValuesbaseNotFoundException"></exception>
-        public static void CheckValuesbase()
+        /// <exception cref="PRPODatabaseNotFoundException"></exception>
+        public static void CheckDatabase()
         {
             if (!File.Exists(AI.FileName))
             {
-                throw new PRPOValuesbaseNotFoundException("The PRPO Valuesbase does not exists");
+                throw new PRPODatabaseNotFoundException("The PRPO Database does not exists");
             }
             else
             {
-                ValuesbaseExists = true;
+                DatabaseExists = true;
                 US_PRPO_TableExists = false;
                 MX_PRPO_TableExists = false;
                 TablesExist();
@@ -103,7 +103,7 @@ namespace DataImporter.Access
         {
             string[] restrictionValue = new string[4] { null, null, null, "TABLE" };
             List<string> dbTableName = new List<string>();
-            AccessInfo AI = new AccessInfo() { FileName = ValuesbasePath };
+            AccessInfo AI = new AccessInfo() { FileName = DatabasePath };
             OleDbConnection accConn = new OleDbConnection(AI.connectionString());
 
 
@@ -214,7 +214,7 @@ namespace DataImporter.Access
         /// <summary>
         /// This function will create the database that will be used for retreiving the PRPO data.
         /// </summary>
-        /// <exception cref="ValuesbaseCreationFailureException"></exception>
+        /// <exception cref="DatabaseCreationFailureException"></exception>
         /// <returns>
         /// A boolean value indicating whether or not he database was created.
         /// </returns>
@@ -242,7 +242,7 @@ namespace DataImporter.Access
                 }
                 catch (Exception)
                 {
-                    throw new ValuesbaseCreationFailureException("There was an error while creating the MS Access Database.");
+                    throw new DatabaseCreationFailureException("There was an error while creating the MS Access Database.");
                 }
             }
             return result;

@@ -15,8 +15,8 @@ namespace KPA_KPI_Analyzer.DataLoading
         Thread thrd;
 
         // Call back used to load the data into the data viewer
-        public delegate void LoadValuesGridHandler(int _tag);
-        public event LoadValuesGridHandler DataLoader;
+        public delegate void LoadDataGridHandler(int _tag);
+        public event LoadDataGridHandler DataLoader;
         #endregion
 
 
@@ -235,7 +235,7 @@ namespace KPA_KPI_Analyzer.DataLoading
         /// <param name="e">The click event</param>
         private void btn_Close_Click(object sender, EventArgs e)
         {
-            CleanUpValues();
+            CleanUpData();
 
             dgv_dataViewerDgv.DataSource = null;
 
@@ -312,7 +312,7 @@ namespace KPA_KPI_Analyzer.DataLoading
         /// <summary>
         /// Loads the data into the datagridview for viewing
         /// </summary>
-        private void LoadValues()
+        private void LoadData()
         {
             thrd = new System.Threading.Thread(() =>
             {
@@ -418,8 +418,8 @@ namespace KPA_KPI_Analyzer.DataLoading
         {
             try
             {
-                ShowLoadingScreen("Exporting Values...");
-                CleanUpValues();
+                ShowLoadingScreen("Exporting Data...");
+                CleanUpData();
                 ExportUtils.DataLoaded = false;
                 Exporter.ExportProcessCompleted = false;
                 tmr_ExportTimer.Start();
@@ -445,12 +445,12 @@ namespace KPA_KPI_Analyzer.DataLoading
         /// <summary>
         /// Get rid of data stored in memory when not needed.
         /// </summary>
-        private void CleanUpValues()
+        private void CleanUpData()
         {
-            if(ExportUtils.Values != null)
+            if(ExportUtils.Data != null)
             {
-                ExportUtils.Values.Rows.Clear();
-                ExportUtils.Values = null;
+                ExportUtils.Data.Rows.Clear();
+                ExportUtils.Data = null;
                 GC.Collect();
             }
 
@@ -472,7 +472,7 @@ namespace KPA_KPI_Analyzer.DataLoading
                 if (sfd.ShowDialog() == DialogResult.OK)
                 {
                     thrd = new Thread(() => {
-                        Exporter.ExportData(ExportUtils.Values, new ExcelFile(sfd.FileName, true));
+                        Exporter.ExportData(ExportUtils.Data, new ExcelFile(sfd.FileName, true));
                     });
                     thrd.Start();
                 }
@@ -545,7 +545,7 @@ namespace KPA_KPI_Analyzer.DataLoading
         {
             try
             {
-                ExportUtils.Values = (DataTable)dgv_dataViewerDgv.DataSource;
+                ExportUtils.Data = (DataTable)dgv_dataViewerDgv.DataSource;
                 OrderDataTable();
                 ExportUtils.DataLoaded = true;
             }
@@ -580,7 +580,7 @@ namespace KPA_KPI_Analyzer.DataLoading
                 if(!DataViewerUtils.DataLoadProcessStarted)
                 {
                     DataViewerUtils.DataLoadProcessStarted = true;
-                    LoadValues();
+                    LoadData();
                 }
 
                 if(DataViewerUtils.DataLoaded)
@@ -588,7 +588,7 @@ namespace KPA_KPI_Analyzer.DataLoading
                     DataViewerUtils.DataLoaded = false;
                     tmr_waitTimer.Stop();
                     dgv_dataViewerDgv.DataSource = DataViewerUtils.Data;
-                    CleanUpValues();
+                    CleanUpData();
                     ms_topPanelMenuStrip.Enabled = true;
                 }
             }

@@ -389,7 +389,7 @@
             this.cpb_loadingScreenCircProgBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
             this.cpb_loadingScreenCircProgBar.SuperscriptText = "";
             this.cpb_loadingScreenCircProgBar.TabIndex = 1;
-            this.cpb_loadingScreenCircProgBar.Text = "Loading Values...";
+            this.cpb_loadingScreenCircProgBar.Text = "Loading Data...";
             this.cpb_loadingScreenCircProgBar.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
             this.cpb_loadingScreenCircProgBar.Value = 36;
             // 

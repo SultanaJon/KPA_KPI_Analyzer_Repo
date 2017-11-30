@@ -19,7 +19,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// <summary>
         /// Boolean value indicating whether the data was loaded into the dataviz control
         /// </summary>
-        bool ValuesvizLoaded { get; set; }
+        bool DatavizLoaded { get; set; }
 
 
 
@@ -96,7 +96,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             RenderOne();
             btn_One.selected = true;
             btn_One.Textcolor = System.Drawing.Color.Coral;
-            ValuesvizLoaded = false;
+            DatavizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
             Globals.CurrCategory = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.FollowUp][(int)Values.Categories.KpiCategory.FollowUp.CurrentConfDateVsInitialConfDate];
@@ -113,7 +113,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// </summary>
         public void RefreshTemplate()
         {
-            ValuesvizLoaded = false;
+            DatavizLoaded = false;
             datavizLoadTimer.Start();
         }
 
@@ -528,9 +528,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// <param name="e"></param>
         private void datavizLoadTimer_Tick(object sender, EventArgs e)
         {
-            if (!ValuesvizLoaded)
+            if (!DatavizLoaded)
             {
-                ValuesvizLoaded = true;
+                DatavizLoaded = true;
                 dataviz.Refresh();
                 datavizLoadTimer.Stop();
             }
@@ -547,7 +547,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void ViewValues_Click(object sender, EventArgs e)
+        public void btn_viewData_Click(object sender, EventArgs e)
         {
             try
             {

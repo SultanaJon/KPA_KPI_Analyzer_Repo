@@ -51,7 +51,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
         /// <summary>
         /// Loads the data for the specific KPI
         /// </summary>
-        public void LoadValues()
+        public void LoadData()
         {
             try
             {

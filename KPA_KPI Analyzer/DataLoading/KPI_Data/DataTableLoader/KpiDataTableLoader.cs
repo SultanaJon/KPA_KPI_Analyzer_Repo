@@ -1,10 +1,9 @@
-﻿using KPA_KPI_Analyzer.FilterFeeature;
+﻿using KPA_KPI_Analyzer.Database;
+using KPA_KPI_Analyzer.FilterFeeature;
 using System;
 using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
-using KPA_KPI_Analyzer.Database;
-using KPA_KPI_Analyzer.DataLoading;
 
 namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 {
@@ -26,7 +25,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
             public static void LoadPrPlanDateVsCurrentPlanDateDataTable(int tag)
             {
                 try
@@ -195,7 +194,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
             public static void LoadOrigPlanDate2ndLvlRelDate_CodedLeadDataTable(int tag)
             {
                 try
@@ -384,7 +383,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
             public static void LoadCurrPlanDate2ndLvlRelDate_CodedLeadDataTable(int tag)
             {
                 try
@@ -603,7 +602,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
             public static void LoadInitialConfVsPrPlanDateDataTable(int tag)
             {
                 try
@@ -796,7 +795,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
             public static void LoadCurrConfVsInitConfDataTable(int tag)
             {
                 try
@@ -990,7 +989,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
             public static void LoadFinalConfDateVsFinalPlanDateDataTable(int tag)
             {
                 try
@@ -1182,7 +1181,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
             public static void LoadRecDateVsCurrPlanDateDataTable(int tag)
             {
                 try
@@ -1350,7 +1349,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>s
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>s
             public static void LoadRecDateVsOrigConfDateDataTable(int tag)
             {
                 try
@@ -1540,7 +1539,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
             public static void LoadRecDateVsCurrConfDateDataTable(int tag)
             {
                 try
@@ -1738,7 +1737,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
             public static void LoadMaterialDueOrigPlanDate(int tag)
             {
                 try
@@ -1938,7 +1937,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
             public static void LoadMaterialDueFinalPlanDate(int tag)
             {
                 try
@@ -2174,7 +2173,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
             public static void LoadPr2ndLvlRelVsPOCreationDataTable(int tag)
             {
                 try
@@ -2365,7 +2364,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
             public static void LoadPoCreationVsPoReleaseDataTable(int tag)
             {
                 try
@@ -2543,7 +2542,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
             public static void LoadPoReleaseVsPoConfDataTable(int tag)
             {
                 try
@@ -2756,7 +2755,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
             public static void LoadPrRelVsPoRelDataTable(int tag)
             {
                 try
@@ -2958,7 +2957,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
             public static void LoadPoCreationVsConfEntryDateDataTable(int tag)
             {
                 try
@@ -3160,7 +3159,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
             public static void LoadPrReleaseConfEntryDataTable(int tag)
             {
                 try
@@ -3388,7 +3387,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
             public static void LoadPoRelVsPrDelDateDataTable(int tag)
             {
                 try
@@ -3573,14 +3572,13 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
             public static void LoadPrsCreated(int tag)
             {
                 try
                 {
                     dt = new DataTable();
                     prsCreated = new DataTable();
-                    //cmd = new OleDbCommand(PRPOCommands.GetQuery(PRPOCommands.ValuesbaseTables.TableNames.AllValues) + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
 
                     if (Filters.FilterQuery == string.Empty)
                         cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllData(), DatabaseUtils.DatabaseConnection);
@@ -3733,7 +3731,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
             public static void LoadPrsReleased(int tag)
             {
                 try
@@ -3910,7 +3908,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
             public static void LoadTotalSpend(int tag)
             {
                 try
@@ -4060,7 +4058,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
             public static void LoadPrVsPoValue(int tag)
             {
                 try
@@ -4214,7 +4212,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall ValuesGridView.</param>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
             public static void LoadHotJobPrs(int tag)
             {
                 try

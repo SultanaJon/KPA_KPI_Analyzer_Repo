@@ -1,6 +1,5 @@
 ﻿using KPA_KPI_Analyzer.DataLoading;
 using KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader;
-using KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader;
 using KPA_KPI_Analyzer.KPA_KPI_Overall;
 using KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections;
 using KPA_KPI_Analyzer.Values;
@@ -156,7 +155,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
 
         /// <summary>
-        /// Handles the event of when a cell in the Template One ValuesGridView is double clicked. The corresponding data will be loaded
+        /// Handles the event of when a cell in the Template One DataGridView is double clicked. The corresponding data will be loaded
         /// into the data viewer object.
         /// </summary>
         /// <param name="sender">the cell</param>
@@ -293,7 +292,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
 
         /// <summary>
-        /// Handles the event of when a cell in the Template One ValuesGridView is double clicked. The corresponding data will be loaded
+        /// Handles the event of when a cell in the Template One DataGridView is double clicked. The corresponding data will be loaded
         /// into the data viewer object.
         /// </summary>
         /// <param name="sender">the cell</param>
@@ -333,7 +332,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         #region HELPER FUNCTIONS
 
         /// <summary>
-        /// Sets the color of the ValuesGridView Header cells only.
+        /// Sets the color of the DataGridView Header cells only.
         /// </summary>
         private void ApplyValuesGridStyles()
         {

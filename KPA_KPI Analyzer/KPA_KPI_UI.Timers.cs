@@ -1,5 +1,7 @@
-﻿using KPA_KPI_Analyzer.Database;
-using KPA_KPI_Analyzer.Diagnostics;
+﻿using DataImporter.Access;
+using DataImporter.Excel;
+using DataImporter.Importing;
+using KPA_KPI_Analyzer.Database;
 using KPA_KPI_Analyzer.DragDropFeatures;
 using KPA_KPI_Analyzer.FilterFeeature;
 using KPA_KPI_Analyzer.Values;
@@ -7,9 +9,6 @@ using System;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
-using DataImporter.Classes;
-using DataImporter.Excel;
-using DataImporter.Access;
 
 namespace KPA_KPI_Analyzer
 {
@@ -45,7 +44,7 @@ namespace KPA_KPI_Analyzer
         /// <summary>
         /// When the user has successfully dropped PRPO files into the application, this timer will initiate.
         /// The import process will then begin, importing all the data contained within the PRPO report into the
-        /// Acces Valuesbase located in the resources folder.
+        /// Acces Database located in the resources folder.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -179,11 +178,11 @@ namespace KPA_KPI_Analyzer
                     }
 
 
-                    if(Properties.Settings.Default.RemoveValues)
-                        ValuesRemovalTimer.Start();
+                    if(Properties.Settings.Default.RemoveData)
+                        DataRemovalTimer.Start();
                 }
             }
-            catch (DataImporter.Importing.Exceptions.ImportExceptions.InvalidValuesFileException)
+            catch (DataImporter.Importing.Exceptions.ImportExceptions.InvalidDataFileException)
             {
                 ShowPage(Pages.DragDropDash);
             }
@@ -197,7 +196,7 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ValuesRemovalTimer_Tick(object sender, EventArgs e)
+        private void DataRemovalTimer_Tick(object sender, EventArgs e)
         {
             if (!DatabaseUtils.DataRemovalProcessStarted)
             {
@@ -229,7 +228,7 @@ namespace KPA_KPI_Analyzer
             if (DatabaseUtils.DataRemoved)
             {
                 DatabaseUtils.DataRemoved = false;
-                ValuesRemovalTimer.Stop();
+                DataRemovalTimer.Stop();
 
                 if (AccessUtils.US_PRPO_TableExists && AccessUtils.MX_PRPO_TableExists)
                 {
@@ -238,12 +237,12 @@ namespace KPA_KPI_Analyzer
                 else if (AccessUtils.US_PRPO_TableExists)
                 {
                     ConfigureToUnitedStates();
-                    InitializeValuesLoadProcess();
+                    InitializeDataLoadProcess();
                 }
                 else // only the mexico file exists.
                 {
                     ConfigureToMexico();
-                    InitializeValuesLoadProcess();
+                    ConfigureToUnitedStates();
                 }
             }
         }
@@ -255,7 +254,7 @@ namespace KPA_KPI_Analyzer
         /// the access database will then be loaded into the application where calculations will occur.        /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ValuesLoaderTimer_Tick(object sender, EventArgs e)
+        private void DataLoaderTimer_Tick(object sender, EventArgs e)
         {
             NavigationLocked = true;
 
@@ -277,7 +276,7 @@ namespace KPA_KPI_Analyzer
             if (DatabaseUtils.DataLoaded)
             {
                 DatabaseUtils.DataLoaded = false;
-                ValuesLoaderTimer.Stop();
+                DataLoaderTimer.Stop();
                 DatabaseUtils.ReleaseKPITables();
 
                 if (!Filters.ColumnFilters.Applied 
@@ -286,7 +285,6 @@ namespace KPA_KPI_Analyzer
                 {
                     // Save the overall data to a JSON file.
                     overallData.Save();
-                    //ValuesReader.SaveOverallValues(overallData);
 
                     InitializeFilterLoadProcess();
                 }
@@ -362,26 +360,26 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         private void CreateThreads()
         {
-            KPA_PlanThread = new Thread(() => { try { overallData.kpa.plan.LoadValues(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPA_PurchThread = new Thread(() => { try { overallData.kpa.purch.LoadValues(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPA_PurchSubThread = new Thread(() => { try { overallData.kpa.purchSub.LoadValues(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPA_PurchTotalThread = new Thread(() => { try { overallData.kpa.purchTotal.LoadValues(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPA_FollowUpThread = new Thread(() => { try { overallData.kpa.followUp.LoadValues(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPA_HotJobs = new Thread(() => { try { overallData.kpa.hotJobs.LoadValues(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPA_ExcessStock_Stock = new Thread(() => { try { overallData.kpa.excessStockStock.LoadValues(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPA_ExcessStock_OpenOrders = new Thread(() => { try { overallData.kpa.excessStockOpenOrders.LoadValues(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPA_CurrPlanVsActualThread = new Thread(() => { try { overallData.kpa.currPlanVsActual.LoadValues(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+            KPA_PlanThread = new Thread(() => { try { overallData.kpa.plan.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+            KPA_PurchThread = new Thread(() => { try { overallData.kpa.purch.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+            KPA_PurchSubThread = new Thread(() => { try { overallData.kpa.purchSub.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+            KPA_PurchTotalThread = new Thread(() => { try { overallData.kpa.purchTotal.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+            KPA_FollowUpThread = new Thread(() => { try { overallData.kpa.followUp.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+            KPA_HotJobs = new Thread(() => { try { overallData.kpa.hotJobs.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+            KPA_ExcessStock_Stock = new Thread(() => { try { overallData.kpa.excessStockStock.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+            KPA_ExcessStock_OpenOrders = new Thread(() => { try { overallData.kpa.excessStockOpenOrders.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+            KPA_CurrPlanVsActualThread = new Thread(() => { try { overallData.kpa.currPlanVsActual.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
 
             tableLoadThread = new Thread(() => { try { DatabaseUtils.LoadKPITables(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPI_PlanThread = new Thread(() => { try { overallData.kpi.plan.LoadValues(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPI_PurchThread = new Thread(() => { try { overallData.kpi.purch.LoadValues(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPI_FollowUpThread = new Thread(() => { try { overallData.kpi.followUp.LoadValues(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPI_PlanTwoThread = new Thread(() => { try { overallData.kpi.planTwo.LoadValues(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPI_PurchTwoThread = new Thread(() => { try { overallData.kpi.purchTwo.LoadValues(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPI_PurchSubThread = new Thread(() => { try { overallData.kpi.purchSub.LoadValues(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPI_PurchTotalThread = new Thread(() => { try { overallData.kpi.purchTotal.LoadValues(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPI_PurchPlanThread = new Thread(() => { try { overallData.kpi.purchPlan.LoadValues(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPI_OtherThread = new Thread(() => { try { overallData.kpi.other.LoadValues(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+            KPI_PlanThread = new Thread(() => { try { overallData.kpi.plan.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+            KPI_PurchThread = new Thread(() => { try { overallData.kpi.purch.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+            KPI_FollowUpThread = new Thread(() => { try { overallData.kpi.followUp.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+            KPI_PlanTwoThread = new Thread(() => { try { overallData.kpi.planTwo.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+            KPI_PurchTwoThread = new Thread(() => { try { overallData.kpi.purchTwo.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+            KPI_PurchSubThread = new Thread(() => { try { overallData.kpi.purchSub.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+            KPI_PurchTotalThread = new Thread(() => { try { overallData.kpi.purchTotal.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+            KPI_PurchPlanThread = new Thread(() => { try { overallData.kpi.purchPlan.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+            KPI_OtherThread = new Thread(() => { try { overallData.kpi.other.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
         }
 
         

@@ -4,10 +4,10 @@ namespace DataImporter.Importing.Exceptions
 {
     public static class ImportExceptions
     {
-        public class InvalidValuesFileException : Exception
+        public class InvalidDataFileException : Exception
         {
-            public InvalidValuesFileException() { }
-            public InvalidValuesFileException(string message) : base(message) { }
+            public InvalidDataFileException() { }
+            public InvalidDataFileException(string message) : base(message) { }
         }
     }
 }

@@ -2,7 +2,6 @@
 using KPA_KPI_Analyzer.Database;
 using KPA_KPI_Analyzer.FilterFeeature;
 using KPA_KPI_Analyzer.Templates;
-using KPA_KPI_Analyzer.Values;
 using System;
 using System.Data;
 using System.Data.OleDb;
@@ -57,7 +56,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
         /// <summary>
         /// Loads the data of the specific KPA.
         /// </summary>
-        public void LoadValues()
+        public void LoadData()
         {
             try
             {

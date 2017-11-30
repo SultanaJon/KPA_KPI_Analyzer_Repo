@@ -59,7 +59,7 @@
             this.lbl_title = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.pnl_logo = new System.Windows.Forms.Panel();
             this.ImportTimer = new System.Windows.Forms.Timer(this.components);
-            this.ValuesRemovalTimer = new System.Windows.Forms.Timer(this.components);
+            this.DataRemovalTimer = new System.Windows.Forms.Timer(this.components);
             this.pnl_activePage = new System.Windows.Forms.Panel();
             this.pnl_NavigationPanelMax = new System.Windows.Forms.Panel();
             this.btn_Filters = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -197,7 +197,7 @@
             this.btn_mxSwitch = new Bunifu.Framework.UI.BunifuSwitch();
             this.bunifuCustomLabel26 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.btn_LoadValues = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btn_LoadData = new Bunifu.Framework.UI.BunifuFlatButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btn_dashboardCancel = new Bunifu.Framework.UI.BunifuFlatButton();
             this.tblpnl_DragDrop = new System.Windows.Forms.TableLayoutPanel();
@@ -222,7 +222,7 @@
             this.bunifuCustomLabel21 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.FiltersTimer = new System.Windows.Forms.Timer(this.components);
             this.pnl_TopUIPanel = new System.Windows.Forms.Panel();
-            this.ValuesLoaderTimer = new System.Windows.Forms.Timer(this.components);
+            this.DataLoaderTimer = new System.Windows.Forms.Timer(this.components);
             this.dc_logo = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.dc_title = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.dc_titlePanel = new Bunifu.Framework.UI.BunifuDragControl(this.components);
@@ -366,7 +366,7 @@
             // 
             this.overallDataToolStripMenuItem1.Name = "overallDataToolStripMenuItem1";
             this.overallDataToolStripMenuItem1.Size = new System.Drawing.Size(139, 22);
-            this.overallDataToolStripMenuItem1.Text = "Overall Values";
+            this.overallDataToolStripMenuItem1.Text = "Overall Data";
             // 
             // comparisonToolStripMenuItem
             // 
@@ -416,7 +416,7 @@
             // 
             this.overallDataToolStripMenuItem.Name = "overallDataToolStripMenuItem";
             this.overallDataToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
-            this.overallDataToolStripMenuItem.Text = "Overall Values";
+            this.overallDataToolStripMenuItem.Text = "Overall Data";
             this.overallDataToolStripMenuItem.Click += new System.EventHandler(this.overallDataToolStripMenuItem_Click);
             // 
             // filtersToolStripMenuItem
@@ -538,9 +538,9 @@
             // 
             this.ImportTimer.Tick += new System.EventHandler(this.ImportTimer_Tick);
             // 
-            // ValuesRemovalTimer
+            // DataRemovalTimer
             // 
-            this.ValuesRemovalTimer.Tick += new System.EventHandler(this.ValuesRemovalTimer_Tick);
+            this.DataRemovalTimer.Tick += new System.EventHandler(this.DataRemovalTimer_Tick);
             // 
             // pnl_activePage
             // 
@@ -1260,7 +1260,7 @@
             this.cpb_loadingScreenCircProgBar.SuperscriptMargin = new System.Windows.Forms.Padding(10, 35, 0, 0);
             this.cpb_loadingScreenCircProgBar.SuperscriptText = "";
             this.cpb_loadingScreenCircProgBar.TabIndex = 1;
-            this.cpb_loadingScreenCircProgBar.Text = "Loading Values...";
+            this.cpb_loadingScreenCircProgBar.Text = "Loading Data...";
             this.cpb_loadingScreenCircProgBar.TextMargin = new System.Windows.Forms.Padding(8, 8, 0, 0);
             this.cpb_loadingScreenCircProgBar.Value = 36;
             // 
@@ -1335,7 +1335,7 @@
             this.bunifuCustomLabel16.Name = "bunifuCustomLabel16";
             this.bunifuCustomLabel16.Size = new System.Drawing.Size(170, 37);
             this.bunifuCustomLabel16.TabIndex = 0;
-            this.bunifuCustomLabel16.Text = "Values From";
+            this.bunifuCustomLabel16.Text = "Data From";
             // 
             // bunifuCustomLabel15
             // 
@@ -2610,7 +2610,7 @@
             this.bunifuCustomLabel30.Name = "bunifuCustomLabel30";
             this.bunifuCustomLabel30.Size = new System.Drawing.Size(570, 13);
             this.bunifuCustomLabel30.TabIndex = 6;
-            this.bunifuCustomLabel30.Text = "[Project Number] will search for values within [WBS Element] and [Prd Ord. WBS] c" +
+            this.bunifuCustomLabel30.Text = "[Project Number] will search for data within [WBS Element] and [Prd Ord. WBS] c" +
     "ontaining the substring you selected.";
             // 
             // bunifuCustomLabel28
@@ -2759,47 +2759,47 @@
             // panel7
             // 
             this.tableLayoutPanel8.SetColumnSpan(this.panel7, 2);
-            this.panel7.Controls.Add(this.btn_LoadValues);
+            this.panel7.Controls.Add(this.btn_LoadData);
             this.panel7.Location = new System.Drawing.Point(445, 309);
             this.panel7.Margin = new System.Windows.Forms.Padding(0);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(309, 41);
             this.panel7.TabIndex = 0;
             // 
-            // btn_LoadValues
+            // btn_LoadData
             // 
-            this.btn_LoadValues.Activecolor = System.Drawing.Color.DarkSlateGray;
-            this.btn_LoadValues.BackColor = System.Drawing.Color.Teal;
-            this.btn_LoadValues.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_LoadValues.BorderRadius = 0;
-            this.btn_LoadValues.ButtonText = "Load Values";
-            this.btn_LoadValues.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_LoadValues.DisabledColor = System.Drawing.Color.Gray;
-            this.btn_LoadValues.Iconcolor = System.Drawing.Color.Transparent;
-            this.btn_LoadValues.Iconimage = null;
-            this.btn_LoadValues.Iconimage_right = null;
-            this.btn_LoadValues.Iconimage_right_Selected = null;
-            this.btn_LoadValues.Iconimage_Selected = null;
-            this.btn_LoadValues.IconMarginLeft = 0;
-            this.btn_LoadValues.IconMarginRight = 0;
-            this.btn_LoadValues.IconRightVisible = true;
-            this.btn_LoadValues.IconRightZoom = 0D;
-            this.btn_LoadValues.IconVisible = true;
-            this.btn_LoadValues.IconZoom = 90D;
-            this.btn_LoadValues.IsTab = false;
-            this.btn_LoadValues.Location = new System.Drawing.Point(77, 6);
-            this.btn_LoadValues.Name = "btn_LoadValues";
-            this.btn_LoadValues.Normalcolor = System.Drawing.Color.Teal;
-            this.btn_LoadValues.OnHovercolor = System.Drawing.Color.DarkSlateGray;
-            this.btn_LoadValues.OnHoverTextColor = System.Drawing.Color.White;
-            this.btn_LoadValues.selected = false;
-            this.btn_LoadValues.Size = new System.Drawing.Size(159, 30);
-            this.btn_LoadValues.TabIndex = 3;
-            this.btn_LoadValues.Text = "Load Values";
-            this.btn_LoadValues.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btn_LoadValues.Textcolor = System.Drawing.Color.White;
-            this.btn_LoadValues.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_LoadValues.Click += new System.EventHandler(this.btn_LoadValues_Click);
+            this.btn_LoadData.Activecolor = System.Drawing.Color.DarkSlateGray;
+            this.btn_LoadData.BackColor = System.Drawing.Color.Teal;
+            this.btn_LoadData.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_LoadData.BorderRadius = 0;
+            this.btn_LoadData.ButtonText = "Load Data";
+            this.btn_LoadData.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_LoadData.DisabledColor = System.Drawing.Color.Gray;
+            this.btn_LoadData.Iconcolor = System.Drawing.Color.Transparent;
+            this.btn_LoadData.Iconimage = null;
+            this.btn_LoadData.Iconimage_right = null;
+            this.btn_LoadData.Iconimage_right_Selected = null;
+            this.btn_LoadData.Iconimage_Selected = null;
+            this.btn_LoadData.IconMarginLeft = 0;
+            this.btn_LoadData.IconMarginRight = 0;
+            this.btn_LoadData.IconRightVisible = true;
+            this.btn_LoadData.IconRightZoom = 0D;
+            this.btn_LoadData.IconVisible = true;
+            this.btn_LoadData.IconZoom = 90D;
+            this.btn_LoadData.IsTab = false;
+            this.btn_LoadData.Location = new System.Drawing.Point(77, 6);
+            this.btn_LoadData.Name = "btn_LoadData";
+            this.btn_LoadData.Normalcolor = System.Drawing.Color.Teal;
+            this.btn_LoadData.OnHovercolor = System.Drawing.Color.DarkSlateGray;
+            this.btn_LoadData.OnHoverTextColor = System.Drawing.Color.White;
+            this.btn_LoadData.selected = false;
+            this.btn_LoadData.Size = new System.Drawing.Size(159, 30);
+            this.btn_LoadData.TabIndex = 3;
+            this.btn_LoadData.Text = "Load Data";
+            this.btn_LoadData.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btn_LoadData.Textcolor = System.Drawing.Color.White;
+            this.btn_LoadData.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_LoadData.Click += new System.EventHandler(this.btn_LoadData_Click);
             // 
             // panel3
             // 
@@ -3115,9 +3115,9 @@
             this.pnl_TopUIPanel.Size = new System.Drawing.Size(1200, 26);
             this.pnl_TopUIPanel.TabIndex = 56;
             // 
-            // ValuesLoaderTimer
+            // DataLoaderTimer
             // 
-            this.ValuesLoaderTimer.Tick += new System.EventHandler(this.ValuesLoaderTimer_Tick);
+            this.DataLoaderTimer.Tick += new System.EventHandler(this.DataLoaderTimer_Tick);
             // 
             // dc_logo
             // 
@@ -3264,7 +3264,7 @@
         private System.Windows.Forms.Panel pnl_NavigationPanelMax;
         private Bunifu.Framework.UI.BunifuDragControl dc_MainUI;
         private System.Windows.Forms.Timer ImportTimer;
-        private System.Windows.Forms.Timer ValuesRemovalTimer;
+        private System.Windows.Forms.Timer DataRemovalTimer;
         private System.Windows.Forms.Panel pnl_activePage;
         private System.Windows.Forms.TableLayoutPanel tblpnl_DashbaordPage;
         private System.Windows.Forms.Panel panel2;
@@ -3276,7 +3276,7 @@
         private Bunifu.Framework.UI.BunifuSwitch btn_mxSwitch;
         private Bunifu.Framework.UI.BunifuSwitch btn_usSwitch;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel26;
-        private Bunifu.Framework.UI.BunifuFlatButton btn_LoadValues;
+        private Bunifu.Framework.UI.BunifuFlatButton btn_LoadData;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
@@ -3335,7 +3335,7 @@
         private Bunifu.Framework.UI.BunifuFlatButton btn_KPA;
         private Bunifu.Framework.UI.BunifuFlatButton btn_KPI;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Timer ValuesLoaderTimer;
+        private System.Windows.Forms.Timer DataLoaderTimer;
         private CircularProgressBar.CircularProgressBar cpb_loadingScreenCircProgBar;
         private System.Windows.Forms.Panel panel8;
         private Bunifu.Framework.UI.BunifuCustomLabel lbl_topPanelNavPrpoDate;

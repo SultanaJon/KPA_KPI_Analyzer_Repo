@@ -1,10 +1,9 @@
-﻿using System;
+﻿using KPA_KPI_Analyzer.Diagnostics;
+using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
-using KPA_KPI_Analyzer.Diagnostics;
 using System.IO;
 using System.Web.Script.Serialization;
-using KPA_KPI_Analyzer.Values;
+using System.Windows.Forms;
 
 namespace KPA_KPI_Analyzer.KPA_KPI_Overall
 {
@@ -34,10 +33,10 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
 
 
         /// <summary>
-        /// Gathers a multidimentional list of all the data contained within KPI Temp One ValuesGridView
+        /// Gathers a multidimentional list of all the data contained within KPI Temp One DataGridView
         /// </summary>
         /// <returns>A multidimentional list</returns>
-        public List<List<string>> GetKpaTempOneValues()
+        public List<List<string>> GetKpaTempOneData()
         {
             List<List<string>> results = null;
             try
@@ -82,10 +81,10 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
 
 
         /// <summary>
-        /// Gathers a multidimentional list of all the data contained within KPI Temp Two ValuesGridView
+        /// Gathers a multidimentional list of all the data contained within KPI Temp Two DataGridView
         /// </summary>
         /// <returns>A multidimentional list</returns>
-        public List<List<string>> GetKpaTempTwoValues()
+        public List<List<string>> GetKpaTempTwoData()
         {
             List<List<string>> results = null;
 
@@ -113,10 +112,10 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
 
 
         /// <summary>
-        /// Gathers a multidimentional list of all the data contained within KPI Temp Three ValuesGridView
+        /// Gathers a multidimentional list of all the data contained within KPI Temp Three DataGridView
         /// </summary>
         /// <returns>A multidimentional list</returns>
-        public List<List<string>> GetKpiTempThreeValues()
+        public List<List<string>> GetKpiTempThreeData()
         {
             List<List<string>> results = null;
 
@@ -151,10 +150,10 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
 
 
         /// <summary>
-        /// Gathers a multidimentional list of all the data contained within KPI Temp Four ValuesGridView
+        /// Gathers a multidimentional list of all the data contained within KPI Temp Four DataGridView
         /// </summary>
         /// <returns>A multidimentional list</returns>
-        public List<List<string>> GetKpiTempFourValues()
+        public List<List<string>> GetKpiTempFourData()
         {
             List<List<string>> results = null;
 
@@ -189,10 +188,10 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
 
 
         /// <summary>
-        /// Gathers a multidimentional list of all the data contained within KPI Temp Five ValuesGridView
+        /// Gathers a multidimentional list of all the data contained within KPI Temp Five DataGridView
         /// </summary>
         /// <returns>A multidimentional list</returns>
-        public List<List<string>> GetKpiTempFiveValues()
+        public List<List<string>> GetKpiTempFiveData()
         {
             List<List<string>> results = null;
 
@@ -255,7 +254,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString(), "Overall ValuesReader Loading Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message.ToString(), "Overall DataReader Loading Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -282,7 +281,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Overall ValuesReader Saving Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Overall DataReader Saving Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

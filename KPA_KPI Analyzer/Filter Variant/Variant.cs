@@ -41,9 +41,9 @@ namespace KPA_KPI_Analyzer.Filter_Variant
         /// <summary>
         /// Custom Constructor
         /// </summary>
-        public Variant(string _name, string _description, Dictionary<string, List<string>> _values)
+        public Variant(string _name, string _description, Dictionary<string, List<string>> _data)
         {
-            details = _values;
+            details = _data;
             VariantName = _name;
             VariantDescription = _description;
             

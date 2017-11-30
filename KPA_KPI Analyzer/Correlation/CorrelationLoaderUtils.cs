@@ -1,6 +1,4 @@
-﻿using KPA_KPI_Analyzer.Values;
-
-namespace KPA_KPI_Analyzer.Correlation
+﻿namespace KPA_KPI_Analyzer.Correlation
 {
     public static class CorrelationLoaderUtils
     {

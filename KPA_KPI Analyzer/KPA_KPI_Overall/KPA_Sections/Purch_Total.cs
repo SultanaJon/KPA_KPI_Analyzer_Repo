@@ -5,7 +5,6 @@ using System;
 using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
-using KPA_KPI_Analyzer.Values;
 
 namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
 {
@@ -30,7 +29,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
         /// Loads the data for the specific KPA
         /// </summary>
         /// <param name="SelectedCountry"></param>
-        public void LoadValues()
+        public void LoadData()
         {
             try
             {

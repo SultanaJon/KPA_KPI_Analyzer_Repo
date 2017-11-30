@@ -1,6 +1,5 @@
 ﻿using KPA_KPI_Analyzer.DataLoading;
 using KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader;
-using KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader;
 using KPA_KPI_Analyzer.KPA_KPI_Overall;
 using KPA_KPI_Analyzer.Values;
 using System;
@@ -23,7 +22,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// <summary>
         /// Boolean value indicating whether the data was loaded into the dataviz control
         /// </summary>
-        bool ValuesvizLoaded { get; set; }
+        bool DatavizLoaded { get; set; }
 
 
 
@@ -108,7 +107,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// </summary>
         public void RefreshTemplate()
         {
-            ValuesvizLoaded = false;
+            DatavizLoaded = false;
             datavizLoadTimer.Start();
         }
 
@@ -229,9 +228,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// <param name="e"></param>
         private void datavizLoadTimer_Tick(object sender, EventArgs e)
         {
-            if (!ValuesvizLoaded)
+            if (!DatavizLoaded)
             {
-                ValuesvizLoaded = true;
+                DatavizLoaded = true;
                 dataviz.Refresh();
                 datavizLoadTimer.Stop();
             }
@@ -248,7 +247,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void ViewValues_Click(object sender, EventArgs e)
+        public void btn_viewData_Click(object sender, EventArgs e)
         {
             try
             {
@@ -265,7 +264,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "KPA -> Purch Total Values Viewer Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "KPA -> Purch Total Data Viewer Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

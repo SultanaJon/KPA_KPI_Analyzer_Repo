@@ -27,7 +27,7 @@ namespace KPA_KPI_Analyzer
     {
         #region FIELD DATA
 
-        // Values regarding the form.
+        // Data regarding the form.
         private FormData frmData = new FormData();
 
         // The overall data calculated.
@@ -67,13 +67,13 @@ namespace KPA_KPI_Analyzer
         /// to connect to and read data from.
         /// </summary>
         /// <param name="conn">The database connection that was established in the splash screen.</param>
-        public KPA_KPI_UI(OleDbConnection conn, ApplicationConfiguration.ApplicationConfig settingsValues)
+        public KPA_KPI_UI(OleDbConnection conn, ApplicationConfiguration.ApplicationConfig settingsData)
         {
             InitializeComponent();
             // Configure the database Utilities class.
             DatabaseUtils.AI = AccessUtils.AI;
             DatabaseUtils.DatabaseConnection = new OleDbConnection(conn.ConnectionString);
-            settings = settingsValues;
+            settings = settingsData;
         }
 
         #endregion
@@ -353,51 +353,51 @@ namespace KPA_KPI_Analyzer
         /// <summary>
         /// Begins the export overall data operation.
         /// </summary>
-        /// <param name="sender">The Tools->Export->Overall Values menu item</param>
+        /// <param name="sender">The Tools->Export->Overall Data menu item</param>
         /// <param name="e">The click event</param>
         private void overallDataToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            List<List<string>> tempKpaOneValues;
-            List<List<string>> tempKpaTwoValues;
-            List<List<string>> tempKpiThreeValues;
-            List<List<string>> tempKpiFourValues;
-            List<List<string>> tempKpiFiveValues;
+            List<List<string>> tempKpaOneData;
+            List<List<string>> tempKpaTwoData;
+            List<List<string>> tempKpiThreeData;
+            List<List<string>> tempKpiFourData;
+            List<List<string>> tempKpiFiveData;
 
             try
             {
-                tempKpaOneValues = overallData.GetKpaTempOneValues();
-                tempKpaTwoValues = overallData.GetKpaTempTwoValues();
-                tempKpiThreeValues = overallData.GetKpiTempThreeValues();
-                tempKpiFourValues = overallData.GetKpiTempFourValues();
-                tempKpiFiveValues = overallData.GetKpiTempFiveValues();
+                tempKpaOneData = overallData.GetKpaTempOneData();
+                tempKpaTwoData = overallData.GetKpaTempTwoData();
+                tempKpiThreeData = overallData.GetKpiTempThreeData();
+                tempKpiFourData = overallData.GetKpiTempFourData();
+                tempKpiFiveData = overallData.GetKpiTempFiveData();
 
-                if (tempKpaOneValues == null || tempKpaTwoValues == null || tempKpiThreeValues == null || tempKpiFourValues == null || tempKpiFiveValues == null)
+                if (tempKpaOneData == null || tempKpaTwoData == null || tempKpiThreeData == null || tempKpiFourData == null || tempKpiFiveData == null)
                     throw new NullReferenceException();
                 else
                 {
                     Globals.CurrCountry = lbl_Country.Text;
                     // export the templates to overall.xlsx located in resources -> reports
                     DataExporter.Exporter.ExportOverall(
-                        tempKpaOneValues,
-                        tempKpaTwoValues,
-                        tempKpiThreeValues,
-                        tempKpiFourValues,
-                        tempKpiFiveValues,
+                        tempKpaOneData,
+                        tempKpaTwoData,
+                        tempKpiThreeData,
+                        tempKpiFourData,
+                        tempKpiFiveData,
                         Globals.CurrCountry,
                         Globals.PrpoGenerationDate
                     );
 
-                    tempKpaOneValues.Clear();
-                    tempKpaTwoValues.Clear();
-                    tempKpiThreeValues.Clear();
-                    tempKpiFourValues.Clear();
-                    tempKpiFiveValues.Clear();
+                    tempKpaOneData.Clear();
+                    tempKpaTwoData.Clear();
+                    tempKpiThreeData.Clear();
+                    tempKpiFourData.Clear();
+                    tempKpiFiveData.Clear();
 
-                    tempKpaOneValues = null;
-                    tempKpaTwoValues = null;
-                    tempKpiThreeValues = null;
-                    tempKpiFourValues = null;
-                    tempKpiFiveValues = null;
+                    tempKpaOneData = null;
+                    tempKpaTwoData = null;
+                    tempKpiThreeData = null;
+                    tempKpiFourData = null;
+                    tempKpiFiveData = null;
                 }
             }
             catch (NullReferenceException ex)
@@ -508,7 +508,7 @@ namespace KPA_KPI_Analyzer
         private void InitializeProgramEvents()
         {
             FilterUtils.UpdateFilter += UpdateFilters;
-            DatabaseUtils.RenewDataLoadTimer += RenewValuesLoadTimer;
+            DatabaseUtils.RenewDataLoadTimer += RenewDataLoadTimer;
             DatabaseUtils.DisplayDragDropPage += ShowDragDropPage;
             DragDropFeatures.DragDropUtils.DisplayDragDropPage += ShowDragDropPage;
             DragDropFeatures.DragDropUtils.ClearMxSettings += ResetMxSettings;
@@ -699,7 +699,7 @@ namespace KPA_KPI_Analyzer
                     {
                         ConfigureToUnitedStates();
 
-                        if (AppDirectoryUtils.ValuesFileExists(AppDirectoryUtils.OverallFile.US_Overall))
+                        if (AppDirectoryUtils.DataFileExists(AppDirectoryUtils.OverallFile.US_Overall))
                         {
                             // the file exists
                             if (new FileInfo(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFile.US_Overall]).Length > 0)
@@ -707,8 +707,6 @@ namespace KPA_KPI_Analyzer
                                 DateTime dt = GetLastLoadedUsPrpoReportDate();
                                 if (dt == DateTime.Today.Date)
                                 {
-                                    //ValuesReader.LoadOverallValues(ref overallData);
-
                                     // Load the overall data
                                     overallData.Load(ref overallData);
 
@@ -720,25 +718,25 @@ namespace KPA_KPI_Analyzer
                                 }
                                 else
                                 {
-                                    InitializeValuesLoadProcess();
+                                    ConfigureToUnitedStates();
                                 }
                             }
                             else
                             {
-                                InitializeValuesLoadProcess();
+                                ConfigureToUnitedStates();
                             }
                         }
                         else // the file does not exist
                         {
                             AppDirectoryUtils.CreateFile(AppDirectoryUtils.OverallFile.US_Overall);
-                            InitializeValuesLoadProcess();
+                            ConfigureToUnitedStates();
                         }
                     }
                     else if(settings.reportSettings.PrpoMxReportLoaded)
                     {
                         ConfigureToMexico();
 
-                        if (AppDirectoryUtils.ValuesFileExists(AppDirectoryUtils.OverallFile.MX_Overall))
+                        if (AppDirectoryUtils.DataFileExists(AppDirectoryUtils.OverallFile.MX_Overall))
                         {
                             // the file exists
                             if (new FileInfo(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFile.MX_Overall]).Length > 0)
@@ -746,8 +744,6 @@ namespace KPA_KPI_Analyzer
                                 DateTime dt = GetLastLoadedMxPrpoReportDate();
                                 if (dt == DateTime.Today.Date)
                                 {
-                                    //ValuesReader.LoadOverallValues(ref overallData);
-                                    
                                     // Load the overall data
                                     overallData.Load(ref overallData);
 
@@ -759,18 +755,18 @@ namespace KPA_KPI_Analyzer
                                 }
                                 else
                                 {
-                                    InitializeValuesLoadProcess();
+                                    ConfigureToUnitedStates();
                                 }
                             }
                             else
                             {
-                                InitializeValuesLoadProcess();
+                                ConfigureToUnitedStates();
                             }
                         }
                         else // the file does not exist
                         {
                             AppDirectoryUtils.CreateFile(AppDirectoryUtils.OverallFile.MX_Overall);
-                            InitializeValuesLoadProcess();
+                            ConfigureToUnitedStates();
                         }
                     }
                 }
@@ -885,10 +881,10 @@ namespace KPA_KPI_Analyzer
         /// <summary>
         /// This function sets up variables to their default state before begining the data load process.
         /// </summary>
-        public void InitializeValuesLoadProcess()
+        public void InitializeDataLoadProcess()
         {
             ShowPage(Pages.LoadingScreen);
-            cpb_loadingScreenCircProgBar.Text = "Loading Values...";
+            cpb_loadingScreenCircProgBar.Text = "Loading Data...";
             ms_applicaitonMenuStrip.Enabled = false;
             overallData = new Overall();
             DatabaseUtils.DataLoadProcessStarted = false;
@@ -897,8 +893,8 @@ namespace KPA_KPI_Analyzer
             DatabaseUtils.CompletedDataLoads = 0;
             DatabaseUtils.ScheduledDataLoads = 0;
             CreateThreads();
-            RenewValuesLoadTimer();
-            ValuesLoaderTimer.Start();
+            RenewDataLoadTimer();
+            DataLoaderTimer.Start();
         }
 
 
@@ -907,15 +903,15 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// This event will resubscribe the ValuesLoaderTimer.Tick event.
+        /// This event will resubscribe the DataLoaderTimer.Tick event.
         /// </summary>
         /// <remarks>
-        /// This had to be done because after the ValuesLoaderTimer would run a couple of times its event would no longer fire as if it was unsubscribed somehow.
+        /// This had to be done because after the DataLoaderTimer would run a couple of times its event would no longer fire as if it was unsubscribed somehow.
         /// </remarks>
-        public void RenewValuesLoadTimer()
+        public void RenewDataLoadTimer()
         {
-            ValuesLoaderTimer.Tick -= ValuesLoaderTimer_Tick;
-            ValuesLoaderTimer.Tick += ValuesLoaderTimer_Tick;
+            DataLoaderTimer.Tick -= DataLoaderTimer_Tick;
+            DataLoaderTimer.Tick += DataLoaderTimer_Tick;
         }
 
 
@@ -985,7 +981,7 @@ namespace KPA_KPI_Analyzer
             UpdateAdvancedFilterCheckedItems();
 
             // Start the data load process.
-            InitializeValuesLoadProcess();
+            ConfigureToUnitedStates();
 
             // Update the buttons.
             UpdateFilterButtons();

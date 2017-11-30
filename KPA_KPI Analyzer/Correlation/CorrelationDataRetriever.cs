@@ -1,5 +1,4 @@
 ﻿using KPA_KPI_Analyzer.FilterFeeature;
-using KPA_KPI_Analyzer.Values;
 using System;
 using System.Collections.Generic;
 using System.Data;

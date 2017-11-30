@@ -1,6 +1,6 @@
 ﻿using DataImporter.Access;
-using DataImporter.Classes;
 using DataImporter.Excel;
+using DataImporter.Importing;
 using KPA_KPI_Analyzer.Database;
 using KPA_KPI_Analyzer.DragDropFeatures;
 using KPA_KPI_Analyzer.DragDropFeatures.Exceptions;
@@ -103,7 +103,7 @@ namespace KPA_KPI_Analyzer
                         AccessUtils.CreateAccessDB();
 
                     ShowPage(Pages.LoadingScreen);
-                    cpb_loadingScreenCircProgBar.Text = "Importing Values...";
+                    cpb_loadingScreenCircProgBar.Text = "Importing Data...";
                     ImportTimer.Start();
                 }
             }

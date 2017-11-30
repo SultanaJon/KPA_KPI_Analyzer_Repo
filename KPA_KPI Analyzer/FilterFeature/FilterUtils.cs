@@ -4,14 +4,12 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
-using KPA_KPI_Analyzer.FilterFeeature;
-using System.Data;
 
 namespace KPA_KPI_Analyzer.FilterFeeature
 {
     public static class FilterUtils
     {
-        private static HashSet<string> strValues;
+        private static HashSet<string> strData;
         public static string query = string.Empty;
 
 
@@ -25,7 +23,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
 
         /// <summary>
-        /// Values used to updated the progress of the filter load process.
+        /// Data used to updated the progress of the filter load process.
         /// </summary>
         public static bool FilterLoadProcessStarted { get; set; }
         public static bool FiltersLoaded { get; set; }
@@ -122,7 +120,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
         private static void CleanUpProjectNumbers()
         {
             HashSet<string> tempHash = new HashSet<string>();
-            foreach(var str in strValues)
+            foreach(var str in strData)
             {
                 if (str.Contains("_"))
                 {
@@ -136,7 +134,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
                     tempHash.Add(tempStrArray[0]);
                 }
             }
-            strValues = tempHash;
+            strData = tempHash;
             tempHash = null;
             GC.Collect(); 
         }
@@ -152,7 +150,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
         public static void LoadFilters(string filters)
         {
             OleDbCommand cmd = new OleDbCommand();
-            strValues = new HashSet<string>();
+            strData = new HashSet<string>();
             try
             {
                 foreach (Filters col in Enum.GetValues(typeof(Filters)))
@@ -165,12 +163,12 @@ namespace KPA_KPI_Analyzer.FilterFeeature
                         {
                             if (reader[filterCols[(int)col]] == DBNull.Value)
                             {
-                                strValues.Add("[Blanks]");
+                                strData.Add("[Blanks]");
                                 continue;
                             }
                             else
                             {
-                                strValues.Add(reader[filterCols[(int)col]].ToString());
+                                strData.Add(reader[filterCols[(int)col]].ToString());
                             }
                         }
 
@@ -186,11 +184,11 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
                         MethodInvoker del = delegate
                         {
-                            UpdateFilter(strValues, col);
+                            UpdateFilter(strData, col);
                         };
                         del.Invoke();
                     }
-                    strValues.Clear();
+                    strData.Clear();
                 }
                 FiltersLoaded = true;
             }
@@ -200,8 +198,8 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             }
             finally
             {
-                strValues.Clear();
-                strValues = null;
+                strData.Clear();
+                strData = null;
                 GC.Collect();
             }
         }

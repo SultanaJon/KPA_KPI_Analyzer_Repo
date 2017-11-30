@@ -2,9 +2,9 @@
 
 namespace DataImporter.Access.ExceptionClasses
 {
-    public class ValuesbaseCreationFailureException : Exception
+    public class DatabaseCreationFailureException : Exception
     {
-        public ValuesbaseCreationFailureException() { }
-        public ValuesbaseCreationFailureException(string message) : base(message) { }
+        public DatabaseCreationFailureException() { }
+        public DatabaseCreationFailureException(string message) : base(message) { }
     }
 }

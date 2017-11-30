@@ -44,7 +44,7 @@ namespace KPA_KPI_Analyzer.Filter_Variant
         /// <param name="e"></param>
         private void VariantsViewWindow_Load(object sender, EventArgs e)
         {
-            LoadValuesGridView();
+            LoadDataGridView();
 
             if (Variants.Count > 0)
                 ToggleButtons(true);
@@ -155,7 +155,7 @@ namespace KPA_KPI_Analyzer.Filter_Variant
         /// <summary>
         /// Add all of the user variants to the datagrid view.
         /// </summary>
-        private void LoadValuesGridView()
+        private void LoadDataGridView()
         {
             dgv_variants.Rows.Clear();
             dgv_variants.Refresh();
@@ -328,7 +328,7 @@ namespace KPA_KPI_Analyzer.Filter_Variant
                     {
                         Variants[row.Index].VariantName = editWind.VariantName;
                         Variants[row.Index].VariantDescription = editWind.VariantDescription;
-                        LoadValuesGridView();
+                        LoadDataGridView();
                     }
                 }
             }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using KPA_KPI_Analyzer.Values;
+﻿using KPA_KPI_Analyzer.Values;
 
 namespace KPA_KPI_Analyzer.Database
 {
