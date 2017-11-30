@@ -161,7 +161,6 @@
       <DependentUpon>VariantsViewWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="FilterFeature\Filters.cs" />
-    <Compile Include="Temp.cs" />
     <Compile Include="Templates\Template_Controls\KPA_Controls\KPAExcessStockOpenOrders.cs">
       <SubType>UserControl</SubType>
     </Compile>
