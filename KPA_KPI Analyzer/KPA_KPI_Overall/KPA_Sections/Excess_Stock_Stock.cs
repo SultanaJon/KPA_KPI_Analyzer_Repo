@@ -144,7 +144,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 dt = new DataTable();
-                cmd = new OleDbCommand(Database.QueryManager.KpaQueries.ExcessStockStockQueries.GetPrsAgingReleased(), DatabaseUtils.DatabaseConnection);
+                cmd = new OleDbCommand(Database.QueryManager.KpaQueries.ExcessStockStockQueries.GetPrsAgingReleased() + Filters.FilterData.FilterQuery, DatabaseUtils.DatabaseConnection);
                 da = new OleDbDataAdapter(cmd);
                 da.Fill(dt);
 
