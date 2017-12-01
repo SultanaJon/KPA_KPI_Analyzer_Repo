@@ -3,7 +3,7 @@ using DataImporter.Excel;
 using DataImporter.Importing;
 using KPA_KPI_Analyzer.Database;
 using KPA_KPI_Analyzer.DragDropFeatures;
-using KPA_KPI_Analyzer.FilterFeeature;
+using KPA_KPI_Analyzer.Filters;
 using KPA_KPI_Analyzer.Values;
 using System;
 using System.IO;
@@ -279,9 +279,9 @@ namespace KPA_KPI_Analyzer
                 DataLoaderTimer.Stop();
                 DatabaseUtils.ReleaseKPITables();
 
-                if (!Filters.ColumnFilters.Applied 
-                    && !Filters.DateFilters.Applied 
-                    && !Filters.AdvancedFilters.Applied)
+                if (!FilterData.ColumnFilters.Applied 
+                    && !FilterData.DateFilters.Applied 
+                    && !FilterData.AdvancedFilters.Applied)
                 {
                     // Save the overall data to a JSON file.
                     overallData.Save();

@@ -1,5 +1,5 @@
 ﻿using KPA_KPI_Analyzer.Database;
-using KPA_KPI_Analyzer.FilterFeeature;
+using KPA_KPI_Analyzer.Filters;
 using System;
 using System.Data;
 using System.Data.OleDb;
@@ -32,7 +32,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                 {
                     dt = new DataTable();
                     prPlanDateVsCurrPlanDt = new DataTable();
-                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterData.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -41,38 +41,11 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                     foreach (DataRow dr in dt.Rows)
                     {
-                        if (Filters.DateFilters.FilterByPrDateRange)
+                        //Check if the datarow meets the conditions of any applied filters.
+                        if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
                         {
-                            if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
-                            {
-                                // The PR Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByPoDateRange)
-                        {
-                            if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
-                            {
-                                // The PO Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByFinalReceiptDate)
-                        {
-                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
-                            {
-                                // The final receipt date was not in range of the filter the user applied
-                                continue;
-                            }
-                        }
-
-                        if (Filters.AdvancedFilters.AdvanceFiltersChanged())
-                        {
-                            // We have some advanced filters that the user would like to exclude.
-                            if (!FilterUtils.CheckAdvancedFilters(dr))
-                                continue;
+                            // This datarow dos not meet the conditions of the filters applied.
+                            continue;
                         }
 
                         string[] strPrPlanDate = (dr["PR Delivery Date"].ToString()).Split('/');
@@ -202,7 +175,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     dt = new DataTable();
                     OrigPlan2ndLvlRel_CodedLeadTime = new DataTable();
 
-                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetPr2ndLevelRelease() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetPr2ndLevelRelease() + Filters.FilterData.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -212,39 +185,11 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                     foreach (DataRow dr in dt.Rows)
                     {
-                        if (Filters.DateFilters.FilterByPrDateRange)
+                        //Check if the datarow meets the conditions of any applied filters.
+                        if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
                         {
-                            if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
-                            {
-                                // The PR Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByPoDateRange)
-                        {
-                            if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
-                            {
-                                // The PO Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByFinalReceiptDate)
-                        {
-                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
-                            {
-                                // The final receipt date was not in range of the filter the user applied
-                                continue;
-                            }
-                        }
-
-
-                        if (Filters.AdvancedFilters.AdvanceFiltersChanged())
-                        {
-                            // We have some advanced filters that the user would like to exclude.
-                            if (!FilterUtils.CheckAdvancedFilters(dr))
-                                continue;
+                            // This datarow dos not meet the conditions of the filters applied.
+                            continue;
                         }
 
 
@@ -391,7 +336,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     dt = new DataTable();
                     CurrPlan2ndLvlRel_CodedLeadTime = new DataTable();
 
-                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetPr2ndLevelRelease() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetPr2ndLevelRelease() + Filters.FilterData.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -401,38 +346,11 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                     foreach (DataRow dr in dt.Rows)
                     {
-                        if (Filters.DateFilters.FilterByPrDateRange)
+                        //Check if the datarow meets the conditions of any applied filters.
+                        if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
                         {
-                            if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
-                            {
-                                // The PR Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByPoDateRange)
-                        {
-                            if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
-                            {
-                                // The PO Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByFinalReceiptDate)
-                        {
-                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
-                            {
-                                // The final receipt date was not in range of the filter the user applied
-                                continue;
-                            }
-                        }
-
-                        if (Filters.AdvancedFilters.AdvanceFiltersChanged())
-                        {
-                            // We have some advanced filters that the user would like to exclude.
-                            if (!FilterUtils.CheckAdvancedFilters(dr))
-                                continue;
+                            // This datarow dos not meet the conditions of the filters applied.
+                            continue;
                         }
 
 
@@ -610,7 +528,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     dt = new DataTable();
                     initConfVsPrPlanDateDt = new DataTable();
                     unconfirmed = new DataTable();
-                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterData.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -619,38 +537,11 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                     foreach (DataRow dr in dt.Rows)
                     {
-                        if (Filters.DateFilters.FilterByPrDateRange)
+                        //Check if the datarow meets the conditions of any applied filters.
+                        if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
                         {
-                            if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
-                            {
-                                // The PR Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByPoDateRange)
-                        {
-                            if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
-                            {
-                                // The PO Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByFinalReceiptDate)
-                        {
-                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
-                            {
-                                // The final receipt date was not in range of the filter the user applied
-                                continue;
-                            }
-                        }
-
-                        if (Filters.AdvancedFilters.AdvanceFiltersChanged())
-                        {
-                            // We have some advanced filters that the user would like to exclude.
-                            if (!FilterUtils.CheckAdvancedFilters(dr))
-                                continue;
+                            // This datarow dos not meet the conditions of the filters applied.
+                            continue;
                         }
 
 
@@ -804,7 +695,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     initConfVsCurrConf = new DataTable();
                     unconfirmed = new DataTable();
 
-                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterData.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -817,38 +708,11 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                     foreach (DataRow dr in dt.Rows)
                     {
-                        if (Filters.DateFilters.FilterByPrDateRange)
+                        //Check if the datarow meets the conditions of any applied filters.
+                        if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
                         {
-                            if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
-                            {
-                                // The PR Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByPoDateRange)
-                        {
-                            if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
-                            {
-                                // The PO Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByFinalReceiptDate)
-                        {
-                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
-                            {
-                                // The final receipt date was not in range of the filter the user applied
-                                continue;
-                            }
-                        }
-
-                        if (Filters.AdvancedFilters.AdvanceFiltersChanged())
-                        {
-                            // We have some advanced filters that the user would like to exclude.
-                            if (!FilterUtils.CheckAdvancedFilters(dr))
-                                continue;
+                            // This datarow dos not meet the conditions of the filters applied.
+                            continue;
                         }
 
                         string[] strFirstConfDate = (dr["1st Conf Date"].ToString()).Split('/');
@@ -998,7 +862,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     finalConfDateVsFinalPlanDateDt = new DataTable();
                     unconfirmed = new DataTable();
 
-                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterData.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -1010,38 +874,11 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                     foreach (DataRow dr in dt.Rows)
                     {
-                        if (Filters.DateFilters.FilterByPrDateRange)
+                        //Check if the datarow meets the conditions of any applied filters.
+                        if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
                         {
-                            if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
-                            {
-                                // The PR Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByPoDateRange)
-                        {
-                            if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
-                            {
-                                // The PO Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByFinalReceiptDate)
-                        {
-                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
-                            {
-                                // The final receipt date was not in range of the filter the user applied
-                                continue;
-                            }
-                        }
-
-                        if (Filters.AdvancedFilters.AdvanceFiltersChanged())
-                        {
-                            // We have some advanced filters that the user would like to exclude.
-                            if (!FilterUtils.CheckAdvancedFilters(dr))
-                                continue;
+                            // This datarow dos not meet the conditions of the filters applied.
+                            continue;
                         }
 
                         string[] strDelConfDate = (dr["Del#Conf#Date"].ToString()).Split('/');
@@ -1189,7 +1026,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     dt = new DataTable();
                     recDateVsCurrPlanDateDt = new DataTable();
 
-                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetPoLinesReceivedComplete() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetPoLinesReceivedComplete() + Filters.FilterData.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -1197,38 +1034,11 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                     foreach (DataRow dr in dt.Rows)
                     {
-                        if (Filters.DateFilters.FilterByPrDateRange)
+                        //Check if the datarow meets the conditions of any applied filters.
+                        if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
                         {
-                            if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
-                            {
-                                // The PR Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByPoDateRange)
-                        {
-                            if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
-                            {
-                                // The PO Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByFinalReceiptDate)
-                        {
-                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
-                            {
-                                // The final receipt date was not in range of the filter the user applied
-                                continue;
-                            }
-                        }
-
-                        if (Filters.AdvancedFilters.AdvanceFiltersChanged())
-                        {
-                            // We have some advanced filters that the user would like to exclude.
-                            if (!FilterUtils.CheckAdvancedFilters(dr))
-                                continue;
+                            // This datarow dos not meet the conditions of the filters applied.
+                            continue;
                         }
 
                         string[] strLastPORecDate = (dr["Last PO Rec#Date"].ToString()).Split('/');
@@ -1358,7 +1168,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     recDateVsOrigConfDateDt = new DataTable();
                     unconfirmed = new DataTable();
 
-                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetPoLinesReceivedComplete() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetPoLinesReceivedComplete() + Filters.FilterData.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -1369,38 +1179,11 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                     foreach (DataRow dr in dt.Rows)
                     {
-                        if (Filters.DateFilters.FilterByPrDateRange)
+                        //Check if the datarow meets the conditions of any applied filters.
+                        if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
                         {
-                            if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
-                            {
-                                // The PR Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByPoDateRange)
-                        {
-                            if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
-                            {
-                                // The PO Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByFinalReceiptDate)
-                        {
-                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
-                            {
-                                // The final receipt date was not in range of the filter the user applied
-                                continue;
-                            }
-                        }
-
-                        if (Filters.AdvancedFilters.AdvanceFiltersChanged())
-                        {
-                            // We have some advanced filters that the user would like to exclude.
-                            if (!FilterUtils.CheckAdvancedFilters(dr))
-                                continue;
+                            // This datarow dos not meet the conditions of the filters applied.
+                            continue;
                         }
 
                         string[] strLastPORecDate = (dr["Last PO Rec#Date"].ToString()).Split('/');
@@ -1547,7 +1330,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     dt = new DataTable();
                     recDateVsCurrConfDateDt = new DataTable();
                     unconfirmed = new DataTable();
-                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetPoLinesReceivedComplete() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetPoLinesReceivedComplete() + Filters.FilterData.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -1559,38 +1342,11 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                     foreach (DataRow dr in dt.Rows)
                     {
-                        if (Filters.DateFilters.FilterByPrDateRange)
+                        //Check if the datarow meets the conditions of any applied filters.
+                        if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
                         {
-                            if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
-                            {
-                                // The PR Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByPoDateRange)
-                        {
-                            if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
-                            {
-                                // The PO Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByFinalReceiptDate)
-                        {
-                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
-                            {
-                                // The final receipt date was not in range of the filter the user applied
-                                continue;
-                            }
-                        }
-
-                        if (Filters.AdvancedFilters.AdvanceFiltersChanged())
-                        {
-                            // We have some advanced filters that the user would like to exclude.
-                            if (!FilterUtils.CheckAdvancedFilters(dr))
-                                continue;
+                            // This datarow dos not meet the conditions of the filters applied.
+                            continue;
                         }
 
 
@@ -1745,7 +1501,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     dt = new DataTable();
                     MaterialDueOrigPlanDate = new DataTable();
 
-                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetPr2ndLevelRelease() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetPr2ndLevelRelease() + Filters.FilterData.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -1755,38 +1511,11 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                     foreach (DataRow dr in dt.Rows)
                     {
-                        if (Filters.DateFilters.FilterByPrDateRange)
+                        //Check if the datarow meets the conditions of any applied filters.
+                        if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
                         {
-                            if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
-                            {
-                                // The PR Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByPoDateRange)
-                        {
-                            if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
-                            {
-                                // The PO Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByFinalReceiptDate)
-                        {
-                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
-                            {
-                                // The final receipt date was not in range of the filter the user applied
-                                continue;
-                            }
-                        }
-
-                        if (Filters.AdvancedFilters.AdvanceFiltersChanged())
-                        {
-                            // We have some advanced filters that the user would like to exclude.
-                            if (!FilterUtils.CheckAdvancedFilters(dr))
-                                continue;
+                            // This datarow dos not meet the conditions of the filters applied.
+                            continue;
                         }
 
 
@@ -1945,7 +1674,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     dt = new DataTable();
                     MaterialDueFinalPlannedDate = new DataTable();
 
-                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterData.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -1955,38 +1684,11 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                     foreach (DataRow dr in dt.Rows)
                     {
-                        if (Filters.DateFilters.FilterByPrDateRange)
+                        //Check if the datarow meets the conditions of any applied filters.
+                        if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
                         {
-                            if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
-                            {
-                                // The PR Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByPoDateRange)
-                        {
-                            if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
-                            {
-                                // The PO Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByFinalReceiptDate)
-                        {
-                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
-                            {
-                                // The final receipt date was not in range of the filter the user applied
-                                continue;
-                            }
-                        }
-
-                        if (Filters.AdvancedFilters.AdvanceFiltersChanged())
-                        {
-                            // We have some advanced filters that the user would like to exclude.
-                            if (!FilterUtils.CheckAdvancedFilters(dr))
-                                continue;
+                            // This datarow dos not meet the conditions of the filters applied.
+                            continue;
                         }
 
 
@@ -2180,7 +1882,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                 {
                     dt = new DataTable();
                     pr2ndLvlRelVsPoCreate = new DataTable();
-                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterData.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -2191,39 +1893,11 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                     foreach (DataRow dr in dt.Rows)
                     {
-                        if (Filters.DateFilters.FilterByPrDateRange)
+                        //Check if the datarow meets the conditions of any applied filters.
+                        if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
                         {
-                            if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
-                            {
-                                // The PR Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByPoDateRange)
-                        {
-                            if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
-                            {
-                                // The PO Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByFinalReceiptDate)
-                        {
-                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
-                            {
-                                // The final receipt date was not in range of the filter the user applied
-                                continue;
-                            }
-                        }
-
-
-                        if (Filters.AdvancedFilters.AdvanceFiltersChanged())
-                        {
-                            // We have some advanced filters that the user would like to exclude.
-                            if (!FilterUtils.CheckAdvancedFilters(dr))
-                                continue;
+                            // This datarow dos not meet the conditions of the filters applied.
+                            continue;
                         }
 
                         string[] strPOLineCreateDate = (dr["PO Line Creat#DT"].ToString()).Split('/');
@@ -2371,7 +2045,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                 {
                     dt = new DataTable();
                     poCreateVsPORel = new DataTable();
-                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterData.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -2382,38 +2056,11 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                     foreach (DataRow dr in dt.Rows)
                     {
-                        if (Filters.DateFilters.FilterByPrDateRange)
+                        //Check if the datarow meets the conditions of any applied filters.
+                        if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
                         {
-                            if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
-                            {
-                                // The PR Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByPoDateRange)
-                        {
-                            if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
-                            {
-                                // The PO Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByFinalReceiptDate)
-                        {
-                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
-                            {
-                                // The final receipt date was not in range of the filter the user applied
-                                continue;
-                            }
-                        }
-
-                        if (Filters.AdvancedFilters.AdvanceFiltersChanged())
-                        {
-                            // We have some advanced filters that the user would like to exclude.
-                            if (!FilterUtils.CheckAdvancedFilters(dr))
-                                continue;
+                            // This datarow dos not meet the conditions of the filters applied.
+                            continue;
                         }
 
                         string[] strPOLine1stRelDt = (dr["PO Line 1st Rel Dt"].ToString()).Split('/');
@@ -2550,7 +2197,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     dt = new DataTable();
                     poRelVsPoConf = new DataTable();
                     unconfirmed = new DataTable();
-                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterData.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -2559,38 +2206,11 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                     foreach (DataRow dr in dt.Rows)
                     {
-                        if (Filters.DateFilters.FilterByPrDateRange)
+                        //Check if the datarow meets the conditions of any applied filters.
+                        if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
                         {
-                            if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
-                            {
-                                // The PR Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByPoDateRange)
-                        {
-                            if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
-                            {
-                                // The PO Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByFinalReceiptDate)
-                        {
-                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
-                            {
-                                // The final receipt date was not in range of the filter the user applied
-                                continue;
-                            }
-                        }
-
-                        if (Filters.AdvancedFilters.AdvanceFiltersChanged())
-                        {
-                            // We have some advanced filters that the user would like to exclude.
-                            if (!FilterUtils.CheckAdvancedFilters(dr))
-                                continue;
+                            // This datarow dos not meet the conditions of the filters applied.
+                            continue;
                         }
 
                         string[] strPOLineFirstRelDate = (dr["PO Line 1st Rel Dt"].ToString()).Split('/');
@@ -2763,7 +2383,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     dt = new DataTable();
                     prRelVsPORel = new DataTable();
 
-                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterData.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -2773,38 +2393,11 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                     foreach (DataRow dr in dt.Rows)
                     {
-                        if (Filters.DateFilters.FilterByPrDateRange)
+                        //Check if the datarow meets the conditions of any applied filters.
+                        if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
                         {
-                            if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
-                            {
-                                // The PR Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByPoDateRange)
-                        {
-                            if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
-                            {
-                                // The PO Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByFinalReceiptDate)
-                        {
-                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
-                            {
-                                // The final receipt date was not in range of the filter the user applied
-                                continue;
-                            }
-                        }
-
-                        if (Filters.AdvancedFilters.AdvanceFiltersChanged())
-                        {
-                            // We have some advanced filters that the user would like to exclude.
-                            if (!FilterUtils.CheckAdvancedFilters(dr))
-                                continue;
+                            // This datarow dos not meet the conditions of the filters applied.
+                            continue;
                         }
 
 
@@ -2966,7 +2559,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     poCreateVsConfEntry = new DataTable();
                     unconfirmed = new DataTable();
 
-                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterData.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -2977,38 +2570,11 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                     foreach (DataRow dr in dt.Rows)
                     {
-                        if (Filters.DateFilters.FilterByPrDateRange)
+                        //Check if the datarow meets the conditions of any applied filters.
+                        if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
                         {
-                            if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
-                            {
-                                // The PR Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByPoDateRange)
-                        {
-                            if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
-                            {
-                                // The PO Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByFinalReceiptDate)
-                        {
-                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
-                            {
-                                // The final receipt date was not in range of the filter the user applied
-                                continue;
-                            }
-                        }
-
-                        if (Filters.AdvancedFilters.AdvanceFiltersChanged())
-                        {
-                            // We have some advanced filters that the user would like to exclude.
-                            if (!FilterUtils.CheckAdvancedFilters(dr))
-                                continue;
+                            // This datarow dos not meet the conditions of the filters applied.
+                            continue;
                         }
 
                         string[] strFirstConCreatefDate = (dr["1st Conf Creation Da"].ToString()).Split('/');
@@ -3167,7 +2733,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     dt = new DataTable();
                     prReleaseConfEntry = new DataTable();
                     unconfirmed = new DataTable();
-                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterData.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -3178,38 +2744,11 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                     foreach (DataRow dr in dt.Rows)
                     {
-                        if (Filters.DateFilters.FilterByPrDateRange)
+                        //Check if the datarow meets the conditions of any applied filters.
+                        if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
                         {
-                            if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
-                            {
-                                // The PR Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByPoDateRange)
-                        {
-                            if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
-                            {
-                                // The PO Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByFinalReceiptDate)
-                        {
-                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
-                            {
-                                // The final receipt date was not in range of the filter the user applied
-                                continue;
-                            }
-                        }
-
-                        if (Filters.AdvancedFilters.AdvanceFiltersChanged())
-                        {
-                            // We have some advanced filters that the user would like to exclude.
-                            if (!FilterUtils.CheckAdvancedFilters(dr))
-                                continue;
+                            // This datarow dos not meet the conditions of the filters applied.
+                            continue;
                         }
 
 
@@ -3395,7 +2934,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     dt = new DataTable();
                     poRelVsPRDelDateDt = new DataTable();
 
-                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterData.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -3406,39 +2945,11 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                     foreach (DataRow dr in dt.Rows)
                     {
-                        if (Filters.DateFilters.FilterByPrDateRange)
+                        //Check if the datarow meets the conditions of any applied filters.
+                        if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
                         {
-                            if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
-                            {
-                                // The PR Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByPoDateRange)
-                        {
-                            if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
-                            {
-                                // The PO Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByFinalReceiptDate)
-                        {
-                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
-                            {
-                                // The final receipt date was not in range of the filter the user applied
-                                continue;
-                            }
-                        }
-
-
-                        if (Filters.AdvancedFilters.AdvanceFiltersChanged())
-                        {
-                            // We have some advanced filters that the user would like to exclude.
-                            if (!FilterUtils.CheckAdvancedFilters(dr))
-                                continue;
+                            // This datarow dos not meet the conditions of the filters applied.
+                            continue;
                         }
 
 
@@ -3580,10 +3091,10 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     dt = new DataTable();
                     prsCreated = new DataTable();
 
-                    if (Filters.FilterQuery == string.Empty)
+                    if (Filters.FilterData.FilterQuery == string.Empty)
                         cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllData(), DatabaseUtils.DatabaseConnection);
                     else
-                        cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllData() + " WHERE " + Filters.SecondaryFilterQuery, DatabaseUtils.DatabaseConnection);
+                        cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllData() + " WHERE " + FilterData.SecondaryFilterQuery, DatabaseUtils.DatabaseConnection);
 
 
                     da = new OleDbDataAdapter(cmd);
@@ -3596,38 +3107,11 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                     foreach (DataRow dr in dt.Rows)
                     {
-                        if (Filters.DateFilters.FilterByPrDateRange)
+                        //Check if the datarow meets the conditions of any applied filters.
+                        if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
                         {
-                            if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
-                            {
-                                // The PR Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByPoDateRange)
-                        {
-                            if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
-                            {
-                                // The PO Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByFinalReceiptDate)
-                        {
-                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
-                            {
-                                // The final receipt date was not in range of the filter the user applied
-                                continue;
-                            }
-                        }
-
-                        if (Filters.AdvancedFilters.AdvanceFiltersChanged())
-                        {
-                            // We have some advanced filters that the user would like to exclude.
-                            if (!FilterUtils.CheckAdvancedFilters(dr))
-                                continue;
+                            // This datarow dos not meet the conditions of the filters applied.
+                            continue;
                         }
 
                         string[] strReqDate = (dr["Requisn Date"].ToString()).Split('/');
@@ -3739,7 +3223,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     dt = new DataTable();
                     prReleased = new DataTable();
 
-                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetPr2ndLevelRelease() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetPr2ndLevelRelease() + Filters.FilterData.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -3750,38 +3234,11 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                     foreach (DataRow dr in dt.Rows)
                     {
-                        if (Filters.DateFilters.FilterByPrDateRange)
+                        //Check if the datarow meets the conditions of any applied filters.
+                        if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
                         {
-                            if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
-                            {
-                                // The PR Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByPoDateRange)
-                        {
-                            if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
-                            {
-                                // The PO Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByFinalReceiptDate)
-                        {
-                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
-                            {
-                                // The final receipt date was not in range of the filter the user applied
-                                continue;
-                            }
-                        }
-
-                        if (Filters.AdvancedFilters.AdvanceFiltersChanged())
-                        {
-                            // We have some advanced filters that the user would like to exclude.
-                            if (!FilterUtils.CheckAdvancedFilters(dr))
-                                continue;
+                            // This datarow dos not meet the conditions of the filters applied.
+                            continue;
                         }
 
                         // This is a tempory fix for MEXICO TAG_MEXICO_FIX
@@ -3915,7 +3372,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                 {
                     dt = new DataTable();
                     totalSpend = new DataTable();
-                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterData.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -3925,38 +3382,11 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                     foreach (DataRow dr in dt.Rows)
                     {
-                        if (Filters.DateFilters.FilterByPrDateRange)
+                        //Check if the datarow meets the conditions of any applied filters.
+                        if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
                         {
-                            if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
-                            {
-                                // The PR Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByPoDateRange)
-                        {
-                            if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
-                            {
-                                // The PO Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByFinalReceiptDate)
-                        {
-                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
-                            {
-                                // The final receipt date was not in range of the filter the user applied
-                                continue;
-                            }
-                        }
-
-                        if (Filters.AdvancedFilters.AdvanceFiltersChanged())
-                        {
-                            // We have some advanced filters that the user would like to exclude.
-                            if (!FilterUtils.CheckAdvancedFilters(dr))
-                                continue;
+                            // This datarow dos not meet the conditions of the filters applied.
+                            continue;
                         }
 
                         string[] strPoCreateDt = (dr["PO Line Creat#DT"].ToString()).Split('/');
@@ -4066,7 +3496,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     dt = new DataTable();
                     prVsPOValue = new DataTable();
 
-                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterData.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -4077,39 +3507,11 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                     foreach (DataRow dr in dt.Rows)
                     {
-                        if (Filters.DateFilters.FilterByPrDateRange)
+                        //Check if the datarow meets the conditions of any applied filters.
+                        if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
                         {
-                            if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
-                            {
-                                // The PR Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByPoDateRange)
-                        {
-                            if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
-                            {
-                                // The PO Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByFinalReceiptDate)
-                        {
-                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
-                            {
-                                // The final receipt date was not in range of the filter the user applied
-                                continue;
-                            }
-                        }
-
-
-                        if (Filters.AdvancedFilters.AdvanceFiltersChanged())
-                        {
-                            // We have some advanced filters that the user would like to exclude.
-                            if (!FilterUtils.CheckAdvancedFilters(dr))
-                                continue;
+                            // This datarow dos not meet the conditions of the filters applied.
+                            continue;
                         }
 
                         string[] strPoCreateDt = (dr["PO Line Creat#DT"].ToString()).Split('/');
@@ -4219,7 +3621,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                 {
                     dt = new DataTable();
                     hotJobPRs = new DataTable();
-                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllData() + Filters.FilterQuery, DatabaseUtils.DatabaseConnection);
+                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllData() + Filters.FilterData.FilterQuery, DatabaseUtils.DatabaseConnection);
 
 
                     da = new OleDbDataAdapter(cmd);
@@ -4232,38 +3634,11 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                     foreach (DataRow dr in dt.Rows)
                     {
-                        if (Filters.DateFilters.FilterByPrDateRange)
+                        //Check if the datarow meets the conditions of any applied filters.
+                        if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
                         {
-                            if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
-                            {
-                                // The PR Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByPoDateRange)
-                        {
-                            if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
-                            {
-                                // The PO Date was not in range of the filter the user applied.
-                                continue;
-                            }
-                        }
-
-                        if (Filters.DateFilters.FilterByFinalReceiptDate)
-                        {
-                            if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
-                            {
-                                // The final receipt date was not in range of the filter the user applied
-                                continue;
-                            }
-                        }
-
-                        if (Filters.AdvancedFilters.AdvanceFiltersChanged())
-                        {
-                            // We have some advanced filters that the user would like to exclude.
-                            if (!FilterUtils.CheckAdvancedFilters(dr))
-                                continue;
+                            // This datarow dos not meet the conditions of the filters applied.
+                            continue;
                         }
 
                         if (dr["Purch# Group"].ToString() != "UHJ")

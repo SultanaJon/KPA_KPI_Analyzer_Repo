@@ -12,7 +12,7 @@
 using DataImporter.Access;
 using KPA_KPI_Analyzer.Database;
 using KPA_KPI_Analyzer.Diagnostics;
-using KPA_KPI_Analyzer.FilterFeeature;
+using KPA_KPI_Analyzer.Filters;
 using KPA_KPI_Analyzer.KPA_KPI_Overall;
 using KPA_KPI_Analyzer.Values;
 using System;
@@ -428,7 +428,7 @@ namespace KPA_KPI_Analyzer
                 {
                     // Get the name and the description the user just entered and pass it to the constructor
                     // of the new variant.p
-                    Variants.Variant variant = new Variants.Variant(vcw.VariantName, vcw.VariantDescription, Filters.GetSelectedFilters());
+                    Variants.Variant variant = new Variants.Variant(vcw.VariantName, vcw.VariantDescription, FilterData.GetSelectedFilters());
 
                     // Deactivate all of the variants.
                     DeactivateVariants();
@@ -893,7 +893,7 @@ namespace KPA_KPI_Analyzer
         public void UpdateVariantTools()
         {
             // If the user has any filters applied, allow them to add variants, otherwise block this ability.
-            if (Filters.ColumnFilters.Applied || Filters.AdvancedFilters.Applied || Filters.DateFilters.Applied)
+            if (FilterData.ColumnFilters.Applied || FilterData.AdvancedFilters.Applied || FilterData.DateFilters.Applied)
                 addVariantToolStripMenuItem.Enabled = true;
             else
                 addVariantToolStripMenuItem.Enabled = false;
@@ -920,7 +920,7 @@ namespace KPA_KPI_Analyzer
             ClearSelected();
 
             // Pass Variant details to filters for calibration
-            Filters.CalibrateFilters(_variantDetails);
+            FilterData.CalibrateFilters(_variantDetails);
             BuildQueryFilters();
             FilterUtils.FiltersLoaded = false;
 

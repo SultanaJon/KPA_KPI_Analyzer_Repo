@@ -54,7 +54,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             TimeSpanSeven,
             TimeSpanEight,
             TimeSpanNine,
-            Totals
+            Totals,
+            PercentFavorable
         }
 
         #endregion
@@ -166,7 +167,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             {
                 if (TemplateOneValuesGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == "0" || TemplateOneValuesGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == string.Empty)
                 {
-                    MessageBox.Show("There is no data in this cell.", "Values Timespan", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("There is no data in this cell.", "Data Timespan", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 
@@ -368,6 +369,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             TemplateTwoValuesGrid.Columns[(int)TempTwoValuesGridHeaderNames.TimeSpanEight].HeaderCell.Style.ForeColor = Color.FromArgb(36, 41, 46);
             TemplateTwoValuesGrid.Columns[(int)TempTwoValuesGridHeaderNames.TimeSpanNine].HeaderCell.Style.BackColor = Color.FromArgb(151, 71, 6);
             TemplateTwoValuesGrid.Columns[(int)TempTwoValuesGridHeaderNames.Totals].HeaderCell.Style.BackColor = Color.FromArgb(218, 150, 148);
+            TemplateTwoValuesGrid.Columns[(int)TempTwoValuesGridHeaderNames.PercentFavorable].HeaderCell.Style.BackColor = Color.Green;
+            TemplateTwoValuesGrid.Columns[(int)TempTwoValuesGridHeaderNames.PercentFavorable].HeaderCell.Style.ForeColor = Color.White;
         }
 
 

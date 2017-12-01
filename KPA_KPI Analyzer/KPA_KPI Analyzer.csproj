@@ -166,7 +166,7 @@
     <Compile Include="Variants\VariantsViewWindow.Designer.cs">
       <DependentUpon>VariantsViewWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="FilterFeature\Filters.cs" />
+    <Compile Include="Filters\FilterData.cs" />
     <Compile Include="Templates\Template_Controls\KPA_Controls\KPAExcessStockOpenOrders.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -213,7 +213,7 @@
     </Compile>
     <Compile Include="DragDropFeature\Exceptions\DragDropExceptions.cs" />
     <Compile Include="DragDropFeature\DragDropUtils.cs" />
-    <Compile Include="FilterFeature\FilterUtils.cs" />
+    <Compile Include="Filters\FilterUtils.cs" />
     <Compile Include="Diagnostics\AppDirectoryUtils.cs" />
     <Compile Include="Diagnostics\Logger.cs" />
     <Compile Include="Templates\Template_Controls\KPA_Controls\KPACurrentPlanActualTemplate.cs">

@@ -5,7 +5,7 @@ using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
 
-namespace KPA_KPI_Analyzer.FilterFeeature
+namespace KPA_KPI_Analyzer.Filters
 {
     public static class FilterUtils
     {
@@ -17,7 +17,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
         /// <summary>
         /// Callback function and event used to update the checklist boxes on the filter page.
         /// </summary>
-        public delegate void UpdateFilterHandler(HashSet<string> data, Filters filter);
+        public delegate void UpdateFilterHandler(HashSet<string> data, FilterColumn filter);
         public static event UpdateFilterHandler UpdateFilter;
 
 
@@ -35,7 +35,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
         /// <summary>
         /// The names of the columns that will be included in the category filters.
         /// </summary>
-        public enum Filters : byte
+        public enum FilterColumn : byte
         {
             ProjectNum_WBS_Element,
             ProjectNUm_ProdOrdWbs,
@@ -90,7 +90,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
         /// <param name="col"></param>
         /// <param name="filter"></param>
         /// <returns></returns>
-        private static void getQuery(Filters col, string filters)
+        private static void getQuery(FilterColumn col, string filters)
         {
             string temp;
             string column = filterCols[(int)col];
@@ -153,7 +153,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             strData = new HashSet<string>();
             try
             {
-                foreach (Filters col in Enum.GetValues(typeof(Filters)))
+                foreach (FilterColumn col in Enum.GetValues(typeof(FilterColumn)))
                 {
                     getQuery(col, filters);
                     cmd = new OleDbCommand(query, Database.DatabaseUtils.DatabaseConnection);
@@ -173,12 +173,12 @@ namespace KPA_KPI_Analyzer.FilterFeeature
                         }
 
                         // We want to continue to add Prod Ord WBS element to the already added WBS elements to create the project numbers
-                        if (col == Filters.ProjectNum_WBS_Element) continue;
+                        if (col == FilterColumn.ProjectNum_WBS_Element) continue;
 
 
                         // Now that we have combined all unique values from WBS Element and Prod Ord. WBS fields, we want to clean them up before storing them
                         // in the Checked list views.
-                        if (col == Filters.ProjectNUm_ProdOrdWbs)
+                        if (col == FilterColumn.ProjectNUm_ProdOrdWbs)
                             CleanUpProjectNumbers();
 
 
@@ -242,7 +242,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
             DateTime poTestDate = new DateTime(poYear, poMonth, poDay);
 
-            if (poTestDate < FilterFeeature.Filters.DateFilters.PoFromDate || poTestDate > FilterFeeature.Filters.DateFilters.PoToDate)
+            if (poTestDate < Filters.FilterData.DateFilters.PoFromDate || poTestDate > Filters.FilterData.DateFilters.PoToDate)
             {
                 // The PO date is not within the PO date range.
                 return false;
@@ -267,7 +267,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             int reqDay = int.Parse(requisnDate[1].TrimStart('0'));
             DateTime reqTestDate = new DateTime(reqYear, reqMonth, reqDay);
 
-            if (reqTestDate < FilterFeeature.Filters.DateFilters.PrFromDate || reqTestDate > FilterFeeature.Filters.DateFilters.PrToDate)
+            if (reqTestDate < Filters.FilterData.DateFilters.PrFromDate || reqTestDate > Filters.FilterData.DateFilters.PrToDate)
             {
                 // The PR date is not within the PR date range.
                 return false;
@@ -304,7 +304,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
 
             DateTime finalRecDate = new DateTime(finRecYear, finRecMonth, finRecDay);
 
-            if (finalRecDate < FilterFeeature.Filters.DateFilters.FinalReceiptFromDate || finalRecDate > FilterFeeature.Filters.DateFilters.FinalReceiptToDate)
+            if (finalRecDate < Filters.FilterData.DateFilters.FinalReceiptFromDate || finalRecDate > Filters.FilterData.DateFilters.FinalReceiptToDate)
             {
                 // This records final receipt date is not within the filters final receipt date range.
                 return false;
@@ -320,7 +320,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
         /// <param name="dr"></param>
         public static bool CheckAdvancedFilters(DataRow dr)
         {
-            if(!FilterFeeature.Filters.AdvancedFilters.FilterByServicePrPo)
+            if(!FilterData.AdvancedFilters.FilterByServicePrPo)
             {
                 string temp = dr["PR ItemCat1"].ToString();
                 if(temp != string.Empty)
@@ -333,7 +333,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             }
 
 
-            if (!FilterFeeature.Filters.AdvancedFilters.FilterBySteelPrPo)
+            if (!FilterData.AdvancedFilters.FilterBySteelPrPo)
             {
                 string material = dr["Material"].ToString();
                 if (material.Contains("TAL-ST"))
@@ -343,7 +343,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             }
 
 
-            if (!FilterFeeature.Filters.AdvancedFilters.FilterByPouPrPo)
+            if (!FilterData.AdvancedFilters.FilterByPouPrPo)
             {
                 string docType = dr["Document Type"].ToString();
                 if (docType.Contains("POU"))
@@ -353,7 +353,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             }
 
 
-            if (!FilterFeeature.Filters.AdvancedFilters.FilterByIntercompPo)
+            if (!FilterData.AdvancedFilters.FilterByIntercompPo)
             {
                 string vendorDesc = dr["Vendor Description"].ToString();
                 if (vendorDesc.Contains("COMAU"))
@@ -363,7 +363,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             }
 
 
-            if (!FilterFeeature.Filters.AdvancedFilters.FilterByCodifiedMatNonSubcont)
+            if (!FilterData.AdvancedFilters.FilterByCodifiedMatNonSubcont)
             {
                 if (dr["Material"].ToString() != string.Empty)
                 {
@@ -372,7 +372,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             }
 
 
-            if (!FilterFeeature.Filters.AdvancedFilters.FilterByCodifiedMatSubcont)
+            if (!FilterData.AdvancedFilters.FilterByCodifiedMatSubcont)
             {
                 if (dr["Prd Ord Mat"].ToString() != string.Empty)
                 {
@@ -381,7 +381,7 @@ namespace KPA_KPI_Analyzer.FilterFeeature
             }
 
 
-            if (!FilterFeeature.Filters.AdvancedFilters.FilterByManualPr)
+            if (!FilterData.AdvancedFilters.FilterByManualPr)
             {
                 string material = dr["Material"].ToString();
                 string prdOrdMat = dr["Prd Ord Mat"].ToString();
@@ -390,6 +390,57 @@ namespace KPA_KPI_Analyzer.FilterFeeature
                 {
                     return false;
                 }
+            }
+
+            return true;
+        }
+
+
+
+
+
+
+
+        /// <summary>
+        /// When the program is loading the data, if filters are applied, it will return true or false
+        /// if the datarow applies to the conditions.
+        /// </summary>
+        /// <param name="dr">The datarow being evaluated</param>
+        /// <returns>True if the datarow meets the conditions of the filter, false otherwise.</returns>
+        public static bool EvaluateAgainstFilters(DataRow dr)
+        {
+            if (FilterData.DateFilters.FilterByPrDateRange)
+            {
+                if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
+                {
+                    // The PR Date was not in range of the filter the user applied.
+                    return false;
+                }
+            }
+
+            if (FilterData.DateFilters.FilterByPoDateRange)
+            {
+                if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
+                {
+                    // The PO Date was not in range of the filter the user applied.
+                    return false;
+                }
+            }
+
+            if (FilterData.DateFilters.FilterByFinalReceiptDate)
+            {
+                if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
+                {
+                    // The final receipt date was not in range of the filter the user applied
+                    return false;
+                }
+            }
+
+            if (FilterData.AdvancedFilters.AdvanceFiltersChanged())
+            {
+                // We have some advanced filters that the user would like to exclude.
+                if (!FilterUtils.CheckAdvancedFilters(dr))
+                    return false;
             }
 
             return true;

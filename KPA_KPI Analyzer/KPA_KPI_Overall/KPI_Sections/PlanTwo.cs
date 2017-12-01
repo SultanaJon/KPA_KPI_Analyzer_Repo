@@ -1,5 +1,5 @@
 ﻿using KPA_KPI_Analyzer.Database;
-using KPA_KPI_Analyzer.FilterFeeature;
+using KPA_KPI_Analyzer.Filters;
 using KPA_KPI_Analyzer.Templates;
 using System;
 using System.Data;
@@ -56,38 +56,11 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 foreach (DataRow dr in DatabaseUtils.pr2ndLvlRelDateDt.Rows)
                 {
-                    if (Filters.DateFilters.FilterByPrDateRange)
+                    //Check if the datarow meets the conditions of any applied filters.
+                    if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
                     {
-                        if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
-                        {
-                            // The PR Date was not in range of the filter the user applied
-                            continue;
-                        }
-                    }
-
-                    if (Filters.DateFilters.FilterByPoDateRange)
-                    {
-                        if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
-                        {
-                            // The PO Date was not in range of the filter the user applied.
-                            continue;
-                        }
-                    }
-
-                    if (Filters.DateFilters.FilterByFinalReceiptDate)
-                    {
-                        if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
-                        {
-                            // The final receipt date was not in range of the filter the user applied
-                            continue;
-                        }
-                    }
-
-                    if (Filters.AdvancedFilters.AdvanceFiltersChanged())
-                    {
-                        // We have some advanced filters that the user would like to exclude.
-                        if (!FilterUtils.CheckAdvancedFilters(dr))
-                            continue;
+                        // This datarow dos not meet the conditions of the filters applied.
+                        continue;
                     }
 
 
@@ -221,38 +194,11 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 foreach (DataRow dr in DatabaseUtils.prsOnPOsDt.Rows)
                 {
-                    if (Filters.DateFilters.FilterByPrDateRange)
+                    //Check if the datarow meets the conditions of any applied filters.
+                    if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
                     {
-                        if (!FilterUtils.PrDateInRange(dr["Requisn Date"].ToString()))
-                        {
-                            // The PR Date was not in range of the filter the user applied.
-                            continue;
-                        }
-                    }
-
-                    if (Filters.DateFilters.FilterByPoDateRange)
-                    {
-                        if (!FilterUtils.PoCreateDateInRange(dr["PO Line Creat#DT"].ToString(), dr["Qty Ordered"].ToString()))
-                        {
-                            // The PO Date was not in range of the filter the user applied.
-                            continue;
-                        }
-                    }
-
-                    if (Filters.DateFilters.FilterByFinalReceiptDate)
-                    {
-                        if (!FilterUtils.FinalReceiptDateInRange(dr["Last PO Rec#Date"].ToString()))
-                        {
-                            // The final receipt date was not in range of the filter the user applied
-                            continue;
-                        }
-                    }
-
-                    if (Filters.AdvancedFilters.AdvanceFiltersChanged())
-                    {
-                        // We have some advanced filters that the user would like to exclude.
-                        if (!FilterUtils.CheckAdvancedFilters(dr))
-                            continue;
+                        // This datarow dos not meet the conditions of the filters applied.
+                        continue;
                     }
 
 

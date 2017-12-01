@@ -1,6 +1,6 @@
 ﻿using DataImporter.Access;
 using KPA_KPI_Analyzer.Diagnostics;
-using KPA_KPI_Analyzer.FilterFeeature;
+using KPA_KPI_Analyzer.Filters;
 using KPA_KPI_Analyzer.Values;
 using System;
 using System.Collections.Generic;
@@ -257,23 +257,23 @@ namespace KPA_KPI_Analyzer.Database
                 {
                     using (OleDbDataAdapter da = new OleDbDataAdapter())
                     {
-                        cmd.CommandText = Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterQuery;
+                        cmd.CommandText = Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterData.FilterQuery;
                         da.SelectCommand = cmd;
                         da.Fill(prsOnPOsDt);
 
-                        cmd.CommandText = Database.QueryManager.KpiQueries.GetPoLinesReceivedComplete() + Filters.FilterQuery;
+                        cmd.CommandText = Database.QueryManager.KpiQueries.GetPoLinesReceivedComplete() + Filters.FilterData.FilterQuery;
                         da.SelectCommand = cmd;
                         da.Fill(posRecCompDt);
 
-                        cmd.CommandText = Database.QueryManager.KpiQueries.GetPr2ndLevelRelease() + Filters.FilterQuery;
+                        cmd.CommandText = Database.QueryManager.KpiQueries.GetPr2ndLevelRelease() + Filters.FilterData.FilterQuery;
                         da.SelectCommand = cmd;
                         da.Fill(pr2ndLvlRelDateDt);
 
 
-                        if (Filters.FilterQuery == string.Empty)
+                        if (Filters.FilterData.FilterQuery == string.Empty)
                             cmd.CommandText = Database.QueryManager.KpiQueries.GetAllData();
                         else
-                            cmd.CommandText = Database.QueryManager.KpiQueries.GetAllData() + " WHERE " + Filters.SecondaryFilterQuery;
+                            cmd.CommandText = Database.QueryManager.KpiQueries.GetAllData() + " WHERE " + Filters.FilterData.SecondaryFilterQuery;
 
                         da.SelectCommand = cmd;
                         da.Fill(AllDt);

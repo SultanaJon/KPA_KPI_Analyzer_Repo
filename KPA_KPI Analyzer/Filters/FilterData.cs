@@ -5,9 +5,9 @@ using System.Windows.Forms;
 
 
 
-namespace KPA_KPI_Analyzer.FilterFeeature
+namespace KPA_KPI_Analyzer.Filters
 {
-    public static class Filters
+    public static class FilterData
     {
         #region FIELD DATA
 

@@ -79,6 +79,7 @@
             this.TimeSpanSeven = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Average = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Totals = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Favorable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TemplateTwoValuesGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TemplateOneValuesGrid)).BeginInit();
@@ -137,7 +138,8 @@
             this.Column6,
             this.Column7,
             this.Column8,
-            this.Column9});
+            this.Column9,
+            this.Favorable});
             this.tableLayoutPanel1.SetColumnSpan(this.TemplateTwoValuesGrid, 2);
             this.TemplateTwoValuesGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TemplateTwoValuesGrid.DoubleBuffered = true;
@@ -146,7 +148,7 @@
             this.TemplateTwoValuesGrid.HeaderForeColor = System.Drawing.Color.White;
             this.TemplateTwoValuesGrid.Location = new System.Drawing.Point(10, 390);
             this.TemplateTwoValuesGrid.Margin = new System.Windows.Forms.Padding(0);
-            this.TemplateTwoValuesGrid.Name = "TemplateTwoDataGrid";
+            this.TemplateTwoValuesGrid.Name = "TemplateTwoValuesGrid";
             this.TemplateTwoValuesGrid.ReadOnly = true;
             this.TemplateTwoValuesGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.TemplateTwoValuesGrid.RowHeadersVisible = false;
@@ -312,7 +314,7 @@
             this.TemplateOneValuesGrid.HeaderForeColor = System.Drawing.Color.White;
             this.TemplateOneValuesGrid.Location = new System.Drawing.Point(10, 10);
             this.TemplateOneValuesGrid.Margin = new System.Windows.Forms.Padding(0);
-            this.TemplateOneValuesGrid.Name = "TemplateOneDataGrid";
+            this.TemplateOneValuesGrid.Name = "TemplateOneValuesGrid";
             this.TemplateOneValuesGrid.ReadOnly = true;
             this.TemplateOneValuesGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.TemplateOneValuesGrid.RowHeadersVisible = false;
@@ -418,6 +420,12 @@
             this.Totals.ReadOnly = true;
             this.Totals.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
+            // Favorable
+            // 
+            this.Favorable.HeaderText = "% Favorable";
+            this.Favorable.Name = "Favorable";
+            this.Favorable.ReadOnly = true;
+            // 
             // NewKPAOverall
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -462,5 +470,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TimeSpanSeven;
         private System.Windows.Forms.DataGridViewTextBoxColumn Average;
         private System.Windows.Forms.DataGridViewTextBoxColumn Totals;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Favorable;
     }
 }
