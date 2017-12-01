@@ -140,30 +140,30 @@
     <Compile Include="Values\Sections.cs" />
     <Compile Include="Diagnostics\ILoadable.cs" />
     <Compile Include="Diagnostics\IStorable.cs" />
-    <Compile Include="Filter Variant\FilterVariants.cs" />
-    <Compile Include="Filter Variant\Variant.cs" />
-    <Compile Include="Filter Variant\VariantsCreationWindow.cs">
+    <Compile Include="Variants\FilterVariants.cs" />
+    <Compile Include="Variants\Variant.cs" />
+    <Compile Include="Variants\VariantsCreationWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Filter Variant\VariantsCreationWindow.Designer.cs">
+    <Compile Include="Variants\VariantsCreationWindow.Designer.cs">
       <DependentUpon>VariantsCreationWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Filter Variant\VariantsDetailDisplayWindow.cs">
+    <Compile Include="Variants\VariantsDetailDisplayWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Filter Variant\VariantsDetailDisplayWindow.Designer.cs">
+    <Compile Include="Variants\VariantsDetailDisplayWindow.Designer.cs">
       <DependentUpon>VariantsDetailDisplayWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Filter Variant\VariantsEditWindow.cs">
+    <Compile Include="Variants\VariantsEditWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Filter Variant\VariantsEditWindow.Designer.cs">
+    <Compile Include="Variants\VariantsEditWindow.Designer.cs">
       <DependentUpon>VariantsEditWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Filter Variant\VariantsViewWindow.cs">
+    <Compile Include="Variants\VariantsViewWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Filter Variant\VariantsViewWindow.Designer.cs">
+    <Compile Include="Variants\VariantsViewWindow.Designer.cs">
       <DependentUpon>VariantsViewWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="FilterFeature\Filters.cs" />
@@ -400,19 +400,19 @@
       <DependentUpon>DataViewer.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Filter Variant\VariantsCreationWindow.resx">
+    <EmbeddedResource Include="Variants\VariantsCreationWindow.resx">
       <DependentUpon>VariantsCreationWindow.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Filter Variant\VariantsDetailDisplayWindow.resx">
+    <EmbeddedResource Include="Variants\VariantsDetailDisplayWindow.resx">
       <DependentUpon>VariantsDetailDisplayWindow.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Filter Variant\VariantsEditWindow.resx">
+    <EmbeddedResource Include="Variants\VariantsEditWindow.resx">
       <DependentUpon>VariantsEditWindow.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Filter Variant\VariantsViewWindow.resx">
+    <EmbeddedResource Include="Variants\VariantsViewWindow.resx">
       <DependentUpon>VariantsViewWindow.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>

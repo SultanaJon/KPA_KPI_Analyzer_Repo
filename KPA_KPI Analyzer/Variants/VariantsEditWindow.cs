@@ -1,14 +1,39 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace KPA_KPI_Analyzer.Filter_Variant
+namespace KPA_KPI_Analyzer.Variants
 {
     public partial class VariantsEditWindow : Form
     {
         #region PROPERTIES
+        private string name;
+        private string description;
 
-        public string VariantName { get; set; }
-        public string VariantDescription { get; set; }
+        public string VariantName
+        {
+            get { return name; }
+            set
+            {
+                if (value != null)
+                {
+                    name = value;
+                    txtBox_Name.Text = name;
+                }
+            }
+        }
+
+        public string VariantDescription
+        {
+            get { return description; }
+            set
+            {
+                if(value != null)
+                {
+                    description = value;
+                    txtbox_Description.Text = description;
+                }
+            }
+        }
 
         #endregion
 

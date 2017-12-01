@@ -5,7 +5,7 @@ using System.IO;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
 
-namespace KPA_KPI_Analyzer.Filter_Variant
+namespace KPA_KPI_Analyzer.Variants
 {
     public class FilterVariants : IStorable, ILoadable<FilterVariants>
     {

@@ -1,4 +1,4 @@
-﻿using KPA_KPI_Analyzer.Filter_Variant;
+﻿using KPA_KPI_Analyzer.Variants;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;

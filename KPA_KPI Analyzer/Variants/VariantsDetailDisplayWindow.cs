@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace KPA_KPI_Analyzer.Filter_Variant
+namespace KPA_KPI_Analyzer.Variants
 {
     public partial class VariantsDetailDisplayWindow : Form
     {

@@ -40,7 +40,7 @@ namespace KPA_KPI_Analyzer
         private ApplicationConfiguration.ApplicationConfig settings = new ApplicationConfiguration.ApplicationConfig();
 
         // The settings used for filter variants.
-        private Filter_Variant.FilterVariants variantSettings = new Filter_Variant.FilterVariants();
+        private Variants.FilterVariants variantSettings = new Variants.FilterVariants();
 
         #endregion
 
@@ -422,13 +422,13 @@ namespace KPA_KPI_Analyzer
         private void addVariantToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // When the user clicks this menu strip button, the add variant window will open.
-            using (Filter_Variant.VariantsCreationWindow vcw = new Filter_Variant.VariantsCreationWindow())
+            using (Variants.VariantsCreationWindow vcw = new Variants.VariantsCreationWindow())
             {
                 if (vcw.ShowDialog() == DialogResult.OK)
                 {
                     // Get the name and the description the user just entered and pass it to the constructor
-                    // of the new variant.
-                    Filter_Variant.Variant variant = new Filter_Variant.Variant(vcw.VariantName, vcw.VariantDescription, Filters.GetSelectedFilters());
+                    // of the new variant.p
+                    Variants.Variant variant = new Variants.Variant(vcw.VariantName, vcw.VariantDescription, Filters.GetSelectedFilters());
 
                     // Deactivate all of the variants.
                     DeactivateVariants();
@@ -456,7 +456,7 @@ namespace KPA_KPI_Analyzer
         private void viewVariantsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // When the user clicks this menu strip button, the variants view window will open.
-            using (Filter_Variant.VariantsViewWindow vvw = new Filter_Variant.VariantsViewWindow() { Variants = variantSettings.Variants })
+            using (Variants.VariantsViewWindow vvw = new Variants.VariantsViewWindow() { Variants = variantSettings.Variants })
             {
                 vvw.ShowDialog();
                 // Get the list of variants in case the user updated them and save.  
@@ -509,9 +509,9 @@ namespace KPA_KPI_Analyzer
             DragDropFeatures.DragDropUtils.ClearUsSettings += ResetUsSettings;
 
             // Setup callback functions that update the Variants tool on the menu strip toolbar.
-            Filter_Variant.VariantsViewWindow.UpdateVariantTools += UpdateVariantTools;
-            Filter_Variant.FilterVariants.UpdateVariantTools += UpdateVariantTools;
-            Filter_Variant.VariantsViewWindow.BeginVariantLoadProcess += BeginVariantLoadProcess;
+            Variants.VariantsViewWindow.UpdateVariantTools += UpdateVariantTools;
+            Variants.FilterVariants.UpdateVariantTools += UpdateVariantTools;
+            Variants.VariantsViewWindow.BeginVariantLoadProcess += BeginVariantLoadProcess;
         }
 
 

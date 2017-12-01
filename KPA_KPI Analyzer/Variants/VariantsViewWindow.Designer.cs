@@ -1,4 +1,4 @@
-﻿namespace KPA_KPI_Analyzer.Filter_Variant
+﻿namespace KPA_KPI_Analyzer.Variants
 {
     partial class VariantsViewWindow
     {

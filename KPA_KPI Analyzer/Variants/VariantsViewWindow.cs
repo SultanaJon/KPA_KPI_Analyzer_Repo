@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace KPA_KPI_Analyzer.Filter_Variant
+namespace KPA_KPI_Analyzer.Variants
 {
     public partial class VariantsViewWindow : Form
     {
@@ -322,7 +322,10 @@ namespace KPA_KPI_Analyzer.Filter_Variant
             if(selectedRow.Count == 1)
             {
                 DataGridViewRow row = selectedRow[0];
-                using (VariantsEditWindow editWind = new VariantsEditWindow())
+                using (VariantsEditWindow editWind = new VariantsEditWindow() {
+                    VariantName = Variants[row.Index].VariantName,
+                    VariantDescription = Variants[row.Index].VariantDescription
+                })
                 {
                     if(editWind.ShowDialog() == DialogResult.OK)
                     {

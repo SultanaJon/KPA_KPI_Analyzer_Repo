@@ -1574,7 +1574,7 @@ namespace KPA_KPI_Analyzer
 
             // Loop throught each saved variant and see if they are active. We do not want the user
             // to have the option to add a variant that is currently active against the data.
-            foreach (Filter_Variant.Variant setting in variantSettings.Variants)
+            foreach (Variants.Variant setting in variantSettings.Variants)
             {
                 if (setting.Active)
                 {

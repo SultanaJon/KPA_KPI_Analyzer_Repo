@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace KPA_KPI_Analyzer.Filter_Variant
+namespace KPA_KPI_Analyzer.Variants
 {
     public class Variant
     {
