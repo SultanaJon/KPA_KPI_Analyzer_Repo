@@ -1,6 +1,5 @@
 ﻿
 using KPA_KPI_Analyzer.Database;
-using KPA_KPI_Analyzer.Filters;
 using KPA_KPI_Analyzer.Templates;
 using System;
 using System.Data;
@@ -165,8 +164,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                     int day = int.Parse(strDate[1].TrimStart('0'));
 
                     DateTime date = new DateTime(year, month, day);
-                    DateTime today = DateTime.Now.Date;
-                    double elapsedDays = (today - date).TotalDays;
+                    double elapsedDays = (DateTime.Now - date).TotalDays;
                     totalDays += elapsedDays;
                     elapsedDays = (int)elapsedDays;
 

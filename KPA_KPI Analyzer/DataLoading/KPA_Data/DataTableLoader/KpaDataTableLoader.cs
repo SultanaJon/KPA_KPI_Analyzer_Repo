@@ -1,5 +1,4 @@
 ﻿using KPA_KPI_Analyzer.Database;
-using KPA_KPI_Analyzer.Filters;
 using System;
 using System.Data;
 using System.Data.OleDb;

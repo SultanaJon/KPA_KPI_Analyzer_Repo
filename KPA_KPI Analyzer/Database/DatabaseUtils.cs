@@ -1,6 +1,5 @@
 ﻿using DataImporter.Access;
 using KPA_KPI_Analyzer.Diagnostics;
-using KPA_KPI_Analyzer.Filters;
 using KPA_KPI_Analyzer.Values;
 using System;
 using System.Collections.Generic;

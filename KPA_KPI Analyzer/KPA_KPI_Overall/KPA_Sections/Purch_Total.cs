@@ -1,5 +1,4 @@
 ﻿using KPA_KPI_Analyzer.Database;
-using KPA_KPI_Analyzer.Filters;
 using KPA_KPI_Analyzer.Templates;
 using System;
 using System.Data;
