@@ -59,9 +59,6 @@ namespace KPA_KPI_Analyzer
 
 
 
-
-
-
         /// <summary>
         /// The custom constructor of the main user interface. This constructor takes a database conenection that will be used
         /// to connect to and read data from.
@@ -487,7 +484,6 @@ namespace KPA_KPI_Analyzer
 
 
 
-
         /// <summary>
         /// Configure the application to Mexico
         /// </summary>
@@ -497,8 +493,6 @@ namespace KPA_KPI_Analyzer
             Globals.TargetCountry = Values.Countries.Country.Mexico;
             Database.QueryManager.SetDatabaseTable(Values.Countries.Country.Mexico);
         }
-
-
 
 
 
@@ -519,8 +513,6 @@ namespace KPA_KPI_Analyzer
             Filter_Variant.FilterVariants.UpdateVariantTools += UpdateVariantTools;
             Filter_Variant.VariantsViewWindow.BeginVariantLoadProcess += BeginVariantLoadProcess;
         }
-
-
 
 
 
@@ -547,8 +539,6 @@ namespace KPA_KPI_Analyzer
 
 
 
-
-
         /// <summary>
         /// Returns the last time (in a DateTime format) of when the data was reloaded for the US PRPO report
         /// </summary>
@@ -563,8 +553,6 @@ namespace KPA_KPI_Analyzer
             DateTime dt = new DateTime(year, month, day);
             return dt;
         }
-
-
 
 
 
@@ -586,8 +574,6 @@ namespace KPA_KPI_Analyzer
 
 
 
-
-
         /// <summary>
         /// Returns the date (in a DateTime format) of the loaded US PRPO report.
         /// </summary>
@@ -602,9 +588,6 @@ namespace KPA_KPI_Analyzer
             DateTime dt = new DateTime(year, month, day);
             return dt;
         }
-
-
-
 
 
         /// <summary>
@@ -624,8 +607,6 @@ namespace KPA_KPI_Analyzer
 
 
 
-
-
         /// <summary>
         /// Reset the settings that deal with United States.
         /// </summary>
@@ -639,8 +620,6 @@ namespace KPA_KPI_Analyzer
 
 
 
-
-
         /// <summary>
         /// Resets the settings that deal with Mexico
         /// </summary>
@@ -651,30 +630,6 @@ namespace KPA_KPI_Analyzer
             settings.reportSettings.PrpoMxLastLoadedDate = string.Empty;
             settings.reportSettings.PrpoMxDate = string.Empty;
         }
-
-
-
-
-
-
-        /// <summary>
-        /// Checks if there is a variant settigs file available to load. if not the variant settings file will
-        /// be initialized.
-        /// </summary>
-        private void CheckVariantSettings()
-        {
-            // Load the variant settings
-            if (new FileInfo(AppDirectoryUtils.variantFiles[(int)AppDirectoryUtils.VariantFile.FilterVariants]).Length != 0)
-            {
-                variantSettings.Load(ref variantSettings);
-
-                if (variantSettings.Variants.Count > 0)
-                    viewVariantsToolStripMenuItem.Enabled = true;
-            }
-        }
-
-
-
 
 
 
@@ -844,10 +799,6 @@ namespace KPA_KPI_Analyzer
         }
 
 
-
-
-
-
         /// <summary>
         /// Used when data is being improted. This callback function will be used to display the drag drop page when an error occurs while improting or loading.
         /// </summary>
@@ -855,9 +806,6 @@ namespace KPA_KPI_Analyzer
         {
             ShowPage(Pages.DragDropDash);
         }
-
-
-
 
 
 
@@ -872,9 +820,6 @@ namespace KPA_KPI_Analyzer
             pnl_CountrySelector.Visible = false;
             pnl_loadingScreen.Visible = false;
         }
-
-
-
 
 
 
@@ -899,9 +844,6 @@ namespace KPA_KPI_Analyzer
 
 
 
-
-
-
         /// <summary>
         /// This event will resubscribe the DataLoaderTimer.Tick event.
         /// </summary>
@@ -916,6 +858,21 @@ namespace KPA_KPI_Analyzer
 
 
 
+        /// <summary>
+        /// Checks if there is a variant settigs file available to load. if not the variant settings file will
+        /// be initialized.
+        /// </summary>
+        private void CheckVariantSettings()
+        {
+            // Load the variant settings
+            if (new FileInfo(AppDirectoryUtils.variantFiles[(int)AppDirectoryUtils.VariantFile.FilterVariants]).Length != 0)
+            {
+                variantSettings.Load(ref variantSettings);
+
+                if (variantSettings.Variants.Count > 0)
+                    viewVariantsToolStripMenuItem.Enabled = true;
+            }
+        }
 
 
 
@@ -928,9 +885,6 @@ namespace KPA_KPI_Analyzer
             foreach (var savedVariant in variantSettings.Variants)
                 savedVariant.Active = false;
         }
-
-
-
 
 
         /// <summary>
@@ -952,9 +906,6 @@ namespace KPA_KPI_Analyzer
             else
                 viewVariantsToolStripMenuItem.Enabled = false;
         }
-
-
-
 
 
         /// <summary>

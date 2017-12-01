@@ -445,6 +445,7 @@ namespace KPA_KPI_Analyzer
                     case "CurrPlanActual":
                     case "PurchPlan":
                     case "Other":
+                    case "Correlation":
                         pnl_activePage.Controls.Remove(ctrl);
                         break;
                     default:
@@ -463,6 +464,12 @@ namespace KPA_KPI_Analyzer
         /// <param name="e"></param>
         private void pnl_activePage_ControlAdded(object sender, ControlEventArgs e)
         {
+            if(e.Control is Correlation.CorrelationControl)
+            {
+                return;
+            }
+
+
             if (e.Control is UserControl)
             {
                 int tag = int.Parse(activeSectionBtn.Tag.ToString());
@@ -721,6 +728,28 @@ namespace KPA_KPI_Analyzer
 
             pnl_activePage.Controls.Add(comingSoon);
             comingSoon.BringToFront();
+            pnl_NavigationPanelMax.BringToFront();
+        }
+
+
+
+        /// <summary>
+        /// Loads the correlation controls into view.
+        /// </summary>
+        private void CreateCorrelationWindow()
+        {
+            lbl_Performance.Text = "N/A";
+            lbl_Section.Text = "N/A";
+            lbl_Category.Text = "N/A";
+            MenuInFront = true;
+            Correlation.CorrelationControl correlation = new Correlation.CorrelationControl()
+            {
+                Name = "Correlation",
+                Dock = DockStyle.Fill
+            };
+
+            pnl_activePage.Controls.Add(correlation);
+            correlation.BringToFront();
             pnl_NavigationPanelMax.BringToFront();
         }
     }

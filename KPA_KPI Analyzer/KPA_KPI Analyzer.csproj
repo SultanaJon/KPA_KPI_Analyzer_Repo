@@ -120,6 +120,12 @@
     <Compile Include="Correlation\CorrelationTool.Designer.cs">
       <DependentUpon>CorrelationTool.cs</DependentUpon>
     </Compile>
+    <Compile Include="Correlation\CorrelationControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Correlation\CorrelationControl.Designer.cs">
+      <DependentUpon>CorrelationControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Database\DatabaseTables.cs" />
     <Compile Include="Database\QueryManager.cs" />
     <Compile Include="Database\ThreadInteruptedException.cs" />
@@ -382,6 +388,9 @@
     <EmbeddedResource Include="Correlation\CorrelationTool.resx">
       <DependentUpon>CorrelationTool.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Correlation\CorrelationControl.resx">
+      <DependentUpon>CorrelationControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DataComingSoon.resx">
       <DependentUpon>DataComingSoon.cs</DependentUpon>

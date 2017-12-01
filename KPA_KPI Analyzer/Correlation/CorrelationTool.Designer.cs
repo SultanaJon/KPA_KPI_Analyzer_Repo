@@ -44,7 +44,6 @@
             this.dc_title = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.dc_titlePanel = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.tblpnl_correlationTool = new System.Windows.Forms.TableLayoutPanel();
-            this.dgv_correlationmatrix = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbl_CorrelationTitle = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -55,30 +54,31 @@
             this.panel9 = new System.Windows.Forms.Panel();
             this.cpb_loadingScreenCircProgBar = new CircularProgressBar.CircularProgressBar();
             this.tmr_dataloader = new System.Windows.Forms.Timer(this.components);
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_correlationmatrix = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.pnl_TopUIPanel.SuspendLayout();
             this.pnl_topPanel.SuspendLayout();
             this.pnl_titlePanel.SuspendLayout();
             this.tblpnl_correlationTool.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_correlationmatrix)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnl_loadingScreen.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
             this.panel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_correlationmatrix)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_TopUIPanel
@@ -219,53 +219,6 @@
             this.tblpnl_correlationTool.Size = new System.Drawing.Size(1200, 674);
             this.tblpnl_correlationTool.TabIndex = 58;
             // 
-            // dgv_correlationmatrix
-            // 
-            this.dgv_correlationmatrix.AllowUserToAddRows = false;
-            this.dgv_correlationmatrix.AllowUserToDeleteRows = false;
-            this.dgv_correlationmatrix.AllowUserToOrderColumns = true;
-            this.dgv_correlationmatrix.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgv_correlationmatrix.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgv_correlationmatrix.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgv_correlationmatrix.BackgroundColor = System.Drawing.Color.Gainsboro;
-            this.dgv_correlationmatrix.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgv_correlationmatrix.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_correlationmatrix.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgv_correlationmatrix.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_correlationmatrix.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.Column7,
-            this.Column8,
-            this.Column9,
-            this.Column10,
-            this.Column11,
-            this.Column12,
-            this.Column14});
-            this.dgv_correlationmatrix.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgv_correlationmatrix.DoubleBuffered = true;
-            this.dgv_correlationmatrix.EnableHeadersVisualStyles = false;
-            this.dgv_correlationmatrix.HeaderBgColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.dgv_correlationmatrix.HeaderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
-            this.dgv_correlationmatrix.Location = new System.Drawing.Point(3, 330);
-            this.dgv_correlationmatrix.Name = "dgv_correlationmatrix";
-            this.dgv_correlationmatrix.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgv_correlationmatrix.Size = new System.Drawing.Size(1194, 341);
-            this.dgv_correlationmatrix.TabIndex = 1;
-            //this.dgv_correlationmatrix.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_correlationmatrix_CellDoubleClick);
-            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
@@ -397,70 +350,116 @@
             // 
             this.tmr_dataloader.Tick += new System.EventHandler(this.tmr_dataloader_Tick);
             // 
-            // Column1
+            // Column14
             // 
-            this.Column1.HeaderText = "";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "PO Qty";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "PR Qty";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "PR Price";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "PR Pos Val";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "PO Net Price";
-            this.Column6.Name = "Column6";
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "PO Val";
-            this.Column7.Name = "Column7";
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "Price Unit";
-            this.Column8.Name = "Column8";
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "Plan Del Time";
-            this.Column9.Name = "Column9";
-            // 
-            // Column10
-            // 
-            this.Column10.HeaderText = "Qty Ordered";
-            this.Column10.Name = "Column10";
-            // 
-            // Column11
-            // 
-            this.Column11.HeaderText = "Delivered";
-            this.Column11.Name = "Column11";
+            this.Column14.HeaderText = "Open PR Qty";
+            this.Column14.Name = "Column14";
             // 
             // Column12
             // 
             this.Column12.HeaderText = "Qty Conf";
             this.Column12.Name = "Column12";
             // 
-            // Column14
+            // Column11
             // 
-            this.Column14.HeaderText = "Open PR Qty";
-            this.Column14.Name = "Column14";
+            this.Column11.HeaderText = "Delivered";
+            this.Column11.Name = "Column11";
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "Qty Ordered";
+            this.Column10.Name = "Column10";
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "Plan Del Time";
+            this.Column9.Name = "Column9";
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "Price Unit";
+            this.Column8.Name = "Column8";
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "PO Val";
+            this.Column7.Name = "Column7";
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "PO Net Price";
+            this.Column6.Name = "Column6";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "PR Pos Val";
+            this.Column5.Name = "Column5";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "PR Price";
+            this.Column4.Name = "Column4";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "PR Qty";
+            this.Column3.Name = "Column3";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "PO Qty";
+            this.Column2.Name = "Column2";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "";
+            this.Column1.Name = "Column1";
+            // 
+            // dgv_correlationmatrix
+            // 
+            this.dgv_correlationmatrix.AllowUserToAddRows = false;
+            this.dgv_correlationmatrix.AllowUserToDeleteRows = false;
+            this.dgv_correlationmatrix.AllowUserToOrderColumns = true;
+            this.dgv_correlationmatrix.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgv_correlationmatrix.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgv_correlationmatrix.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_correlationmatrix.BackgroundColor = System.Drawing.Color.Gainsboro;
+            this.dgv_correlationmatrix.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgv_correlationmatrix.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_correlationmatrix.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgv_correlationmatrix.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_correlationmatrix.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6,
+            this.Column7,
+            this.Column8,
+            this.Column9,
+            this.Column10,
+            this.Column11,
+            this.Column12,
+            this.Column14});
+            this.dgv_correlationmatrix.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_correlationmatrix.DoubleBuffered = true;
+            this.dgv_correlationmatrix.EnableHeadersVisualStyles = false;
+            this.dgv_correlationmatrix.HeaderBgColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.dgv_correlationmatrix.HeaderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.dgv_correlationmatrix.Location = new System.Drawing.Point(3, 330);
+            this.dgv_correlationmatrix.Name = "dgv_correlationmatrix";
+            this.dgv_correlationmatrix.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgv_correlationmatrix.Size = new System.Drawing.Size(1194, 341);
+            this.dgv_correlationmatrix.TabIndex = 1;
             // 
             // CorrelationTool
             // 
@@ -481,7 +480,6 @@
             this.pnl_titlePanel.ResumeLayout(false);
             this.pnl_titlePanel.PerformLayout();
             this.tblpnl_correlationTool.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_correlationmatrix)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -489,6 +487,7 @@
             this.pnl_loadingScreen.ResumeLayout(false);
             this.tableLayoutPanel9.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_correlationmatrix)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -508,7 +507,6 @@
         private Bunifu.Framework.UI.BunifuDragControl dc_title;
         private Bunifu.Framework.UI.BunifuDragControl dc_titlePanel;
         private System.Windows.Forms.TableLayoutPanel tblpnl_correlationTool;
-        private Bunifu.Framework.UI.BunifuCustomDataGrid dgv_correlationmatrix;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
@@ -519,6 +517,7 @@
         private CircularProgressBar.CircularProgressBar cpb_loadingScreenCircProgBar;
         private System.Windows.Forms.Timer tmr_dataloader;
         private LiveCharts.WinForms.CartesianChart cartesianChart1;
+        private Bunifu.Framework.UI.BunifuCustomDataGrid dgv_correlationmatrix;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
