@@ -19,6 +19,7 @@ namespace KPA_KPI_Analyzer.Templates
         public int Total { get; set; }
         public double PercentUnconf { get; set; }
         public int PercentUnconfTotal { get; set; }
+        public double PercentFavorable { get; set; }
 
 
 
@@ -49,6 +50,7 @@ namespace KPA_KPI_Analyzer.Templates
                 temp.Add(TwentyTwo.ToString());
                 temp.Add(Total.ToString());
                 temp.Add(PercentUnconf.ToString());
+                temp.Add(PercentFavorable.ToString());
 
                 results = new List<string>(temp);
                 temp.Clear();
@@ -81,7 +83,7 @@ namespace KPA_KPI_Analyzer.Templates
             Eight_Fourteen,
             Fifteen_TwentyOne,
             TwentyTwo,
-            PercentUnconf
+            PercentUnconf,
         }
 
 

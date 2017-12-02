@@ -5,7 +5,7 @@ using System.IO;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
 
-namespace KPA_KPI_Analyzer.KPA_KPI_Overall
+namespace KPA_KPI_Analyzer.Overall_Data
 {
     public class Overall : IStorable, ILoadable<Overall>
     {

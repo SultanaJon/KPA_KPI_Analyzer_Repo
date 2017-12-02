@@ -6,7 +6,7 @@ using System.Data.OleDb;
 using System.Windows.Forms;
 
 
-namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
+namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
 {
     public class Current_Plan_vs_Actual
     {
@@ -287,6 +287,11 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                     currPlanDateCurrConfDateHotJobs.data.Average = 0;
                 }
 
+
+
+                // Get the percent favorable for the above KPIs.
+                GatherPercentFavorable();
+
                 DatabaseUtils.UpdateLoadProgress();
             }
             catch (Exception ex)
@@ -301,6 +306,19 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                 dt = null;
                 GC.Collect();
             }
+        }
+
+
+
+
+
+        /// <summary>
+        /// Gather the percent favorable for these KPIs.
+        /// </summary>
+        public void GatherPercentFavorable()
+        {
+            currPlanDateCurrConfDate.CalculatePercentFavorable();
+            currPlanDateCurrConfDateHotJobs.CalculatePercentFavorable();
         }
     }
 
@@ -322,6 +340,21 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
         {
             data = new TempTwo();
         }
+
+
+        /// <summary>
+        /// Get the percentage of favorable records.
+        /// </summary>
+        public void CalculatePercentFavorable()
+        {
+            if (data.Total != 0)
+            {
+                double favorableTimeSpanCounts = data.LessThanMinusThree + data.GreaterThanEqualMinusThree + data.GreaterThanEqualMinusTwo + data.GreaterThanEqualMinusOne + data.ZeroWeeks;
+
+                // calculate the Percent Favorable
+                data.PercentFavorable = Math.Round((favorableTimeSpanCounts / data.Total) * 100, 2);
+            }
+        }
     }
 
 
@@ -336,6 +369,22 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
         public Curr_Plan_Date_vs_Curr_Conf_Date_OpenPOs_HotJobs()
         {
             data = new TempTwo();
+        }
+
+
+
+        /// <summary>
+        /// Get the percentage of favorable records.
+        /// </summary>
+        public void CalculatePercentFavorable()
+        {
+            if (data.Total != 0)
+            {
+                double favorableTimeSpanCounts = data.LessThanMinusThree + data.GreaterThanEqualMinusThree + data.GreaterThanEqualMinusTwo + data.GreaterThanEqualMinusOne + data.ZeroWeeks;
+
+                // calculate the Percent Favorable
+                data.PercentFavorable = Math.Round((favorableTimeSpanCounts / data.Total) * 100, 2);
+            }
         }
     }
 }

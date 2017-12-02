@@ -17,7 +17,7 @@ namespace KPA_KPI_Analyzer.Templates
         public int LessThanEqualThreeWeeks { get; set; }
         public int GreaterThanThreeWeeks { get; set; }
         public int Total { get; set; }
-
+        public double PercentFavorable { get; set; }
 
 
 
@@ -43,7 +43,7 @@ namespace KPA_KPI_Analyzer.Templates
                 temp.Add(LessThanEqualThreeWeeks.ToString());
                 temp.Add(GreaterThanThreeWeeks.ToString());
                 temp.Add(Total.ToString());
-
+                temp.Add(PercentFavorable.ToString());
 
                 results = new List<string>(temp);
                 temp.Clear();
@@ -75,28 +75,6 @@ namespace KPA_KPI_Analyzer.Templates
             LessThanEqualTwoWeeks,
             LessThanEqualThreeWeeks,
             GreaterThanThreeWeeks,
-        }
-
-
-
-
-
-        /// <summary>
-        /// Clears the data stored in the template object
-        /// </summary>
-        public void ClearData()
-        {
-            Average  = 0;
-            LessThanMinusThree  = 0;
-            GreaterThanEqualMinusThree  = 0;
-            GreaterThanEqualMinusTwo = 0;
-            GreaterThanEqualMinusOne = 0;
-            ZeroWeeks  = 0;
-            LessThanEqualOneWeek = 0;
-            LessThanEqualTwoWeeks = 0;
-            LessThanEqualThreeWeeks = 0;
-            GreaterThanThreeWeeks = 0;
-            Total  = 0;
         }
     }
 }

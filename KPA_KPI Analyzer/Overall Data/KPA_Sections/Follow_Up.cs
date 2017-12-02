@@ -5,7 +5,7 @@ using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
 
-namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
+namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
 {
     public class Follow_Up
     {
@@ -316,6 +316,12 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
 
                 totalDays = 0;
 
+
+                // Get the favorable percentages for:
+                //  - Confirmed Date vs Plan Date
+                //  - Confirmed date for upcoming deliveries.
+                GatherFavorablePercentages();
+
                 DatabaseUtils.UpdateLoadProgress();
             }
             catch (Exception ex)
@@ -335,6 +341,18 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
 
 
 
+        /// <summary>
+        /// Get the favorable percentages for the KPAs
+        /// </summary>
+        public void GatherFavorablePercentages()
+        {
+            confDateVsPlanDate.CalculatePercentFavorable();
+            ConfDateForUpcomingDel.CalculatePercentFavorable(LateToConfDate.data.LessThanZero);
+        }
+            
+
+
+
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //
@@ -350,6 +368,19 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
             {
                 data = new TempOne();
             }
+
+
+            /// <summary>
+            /// Get the percentage of favorable records.
+            /// </summary>
+            public void CalculatePercentFavorable()
+            {
+                if (data.Total != 0)
+                {
+                    // calculate the Percent Favorable
+                    data.PercentFavorable = Math.Round(((double)data.LessThanZero / data.Total) * 100, 2);
+                }
+            }
         }
 
 
@@ -363,6 +394,24 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
             public Conf_Date_Upcoming_Del()
             {
                 data = new TempOne();
+            }
+
+
+
+            /// <summary>
+            /// Get the percentage of favorable records.
+            /// </summary>
+            /// <param name="LessThanZeroDueToday">The Less than zero time span count from due today or late to confirmed.</param>
+            public void CalculatePercentFavorable(double LessThanZeroDueToday)
+            {
+                if (data.Total != 0)
+                {
+                    double favorableTimeSpanCounts = data.One_Three + data.Four_Seven + data.Eight_Fourteen + data.Fifteen_TwentyOne + data.TwentyTwo_TwentyEight + data.TwentyNinePlus;
+                    double totalFavorable = favorableTimeSpanCounts + LessThanZeroDueToday;
+
+                    // calculate the Percent Favorable
+                    data.PercentFavorable = Math.Round((totalFavorable / data.Total) * 100, 2);
+                }
             }
         }
 

@@ -91,17 +91,17 @@
             KpaOverallTempOneRowStartPosition = 2,
             KpaOverallTempOneColStartPosition = 4,
             KpaOverallTempOneMaxRow= 22,
-            KpaOverallTempOneMaxCol = 12,
+            KpaOverallTempOneMaxCol = 13,
 
             KpaOverallTempTwoRowStartPosition = 25,
             KpaOverallTempTwoColStartPosition = 4,
             KpaOverallTempTwoMaxRow = 26,
-            KpaOverallTempTwoMaxCol = 14,
+            KpaOverallTempTwoMaxCol = 15,
 
             KpiOverallTempThreeRowStartPosition = 2,
             KpiOverallTempThreeColStartPosition = 4,
             KpiOverallTempThreeMaxRow = 10,
-            KpiOverallTempThreeMaxCol = 15,
+            KpiOverallTempThreeMaxCol = 16,
 
             KpiOverallTempFourRowStartPosition = 13,
             KpiOverallTempFourColStartPosition = 4,

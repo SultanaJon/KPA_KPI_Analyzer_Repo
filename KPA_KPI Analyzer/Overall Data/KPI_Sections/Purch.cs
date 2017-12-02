@@ -4,7 +4,7 @@ using System;
 using System.Data;
 using System.Windows.Forms;
 
-namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
+namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
 {
     public class Purch
     {
@@ -159,6 +159,12 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 {
                     initConfVsPRPlanDate.data.PercentUnconf = 0;
                 }
+
+
+
+                // Gather the percent favorable for these KPIs
+                GatherPercentFavorable();
+                
                 totalDays = 0;
 
                 DatabaseUtils.UpdateLoadProgress();
@@ -168,6 +174,17 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 MessageBox.Show(ex.Message, "KPI -> Purch Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw new ThreadInteruptedException();
             }
+        }
+
+
+
+
+        /// <summary>
+        /// Gets the percent favorable for these KPIs.
+        /// </summary>
+        public void GatherPercentFavorable()
+        {
+            initConfVsPRPlanDate.CalculatePercentFavorable();
         }
     }
 
@@ -190,6 +207,22 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
         public Init_Conf_vs_PR_Plan_Date()
         {
             data = new TempThree();
+        }
+
+
+        /// <summary>
+        /// Get the percentage of favorable records.
+        /// </summary>
+        public void CalculatePercentFavorable()
+        {
+            if (data.Total != 0)
+            {
+                // Sum up the favorable time spans
+                double favorableTimeSpans = data.Minus_TwentyTwo + data.Minus_Fifteen_TwentyOne + data.Minus_Eight_Fourteen + data.Minus_One_Seven + data.Zero;
+
+                // calculate the Percent Favorable
+                data.PercentFavorable = Math.Round((favorableTimeSpans / data.Total) * 100, 2);
+            }
         }
     }
 }

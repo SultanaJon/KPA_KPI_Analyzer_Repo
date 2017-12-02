@@ -4,7 +4,7 @@ using System;
 using System.Data;
 using System.Windows.Forms;
 
-namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
+namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
 {
     public class Plan
     {
@@ -165,6 +165,8 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                     currPlanDateVsPrPlanDate.data.Average = 0;
                 }
 
+
+               
                 totalDays = 0;
 
 
@@ -293,6 +295,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 {
                     origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Average = 0;
                 }
+
 
                 totalDays = 0;
 
@@ -456,6 +459,9 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 totalDays = 0;
 
 
+                // Get the percent favorable for these KPIs
+                GatherPercentFavorable();
+
                 DatabaseUtils.UpdateLoadProgress();
             }
             catch (Exception ex)
@@ -463,6 +469,21 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 MessageBox.Show(ex.Message, "KPI -> Plan Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw new ThreadInteruptedException();
             }
+        }
+
+
+
+
+
+
+        /// <summary>
+        /// Gather the percent favorable for these KPIs.
+        /// </summary>
+        public void GatherPercentFavorable()
+        {
+            currPlanDateVsPrPlanDate.CalculatePercentFavorable();
+            origPlanDateMinus2ndLvlRelDateVsCodedLead.CalculatePercentFavorable();
+            currPlanDateMinus2ndLvlRelDateVsCodedLead.CalculatePercentFavorable();
         }
     }
 
@@ -484,6 +505,24 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
         {
             data = new TempThree();
         }
+
+
+
+
+        /// <summary>
+        /// Get the percentage of favorable records.
+        /// </summary>
+        public void CalculatePercentFavorable()
+        {
+            if (data.Total != 0)
+            {
+                // Sum up the favorable time spans
+                double favorableTimeSpans = data.Minus_TwentyTwo + data.Minus_Fifteen_TwentyOne + data.Minus_Eight_Fourteen + data.Minus_One_Seven + data.Zero;
+
+                // calculate the Percent Favorable
+                data.PercentFavorable = Math.Round((favorableTimeSpans / data.Total) * 100, 2);
+            }
+        }
     }
 
 
@@ -496,6 +535,23 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
         {
             data = new TempThree();
         }
+
+
+
+        /// <summary>
+        /// Calculates the Percent of favorable line items within the data.
+        /// </summary>
+        public void CalculatePercentFavorable()
+        {
+            if (data.Total != 0)
+            {
+                // Get the favorable timespans
+                double favorableTimeSpans = data.Zero + data.One_Seven + data.Eight_Fourteen + data.Fifteen_TwentyOne + data.TwentyTwo;
+
+                // calculate the Percent Favorable
+                data.PercentFavorable = Math.Round((favorableTimeSpans / data.Total) * 100, 2);
+            }
+        }
     }
 
 
@@ -507,6 +563,25 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
         public Curr_Plan_Date_Minus_2nd_Lvl_Rel_Date_vs_CodedLead()
         {
             data = new TempThree();
+        }
+
+
+
+
+        /// <summary>
+        /// Calculates the percent of favorable line items within the data.
+        /// </summary>
+        public void CalculatePercentFavorable()
+        {
+            if (data.Total != 0)
+            {
+                // Get the favorable timespans
+                double favorableTimeSpans = data.Zero + data.One_Seven + data.Eight_Fourteen + data.Fifteen_TwentyOne + data.TwentyTwo;
+
+
+                // calculate the Percent Favorable
+                data.PercentFavorable = Math.Round((favorableTimeSpans / data.Total) * 100, 2);
+            }
         }
     }
 }

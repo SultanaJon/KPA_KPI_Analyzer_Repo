@@ -1,7 +1,7 @@
 ﻿using KPA_KPI_Analyzer.DataLoading;
 using KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader;
-using KPA_KPI_Analyzer.KPA_KPI_Overall;
-using KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections;
+using KPA_KPI_Analyzer.Overall_Data;
+using KPA_KPI_Analyzer.Overall_Data.KPA_Sections;
 using KPA_KPI_Analyzer.Values;
 using System;
 using System.Drawing;
@@ -31,7 +31,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             TimeSpanSix,
             TimeSpanSeven,
             Average,
-            Totals
+            Totals,
+            Favorable
         }
 
 
@@ -55,7 +56,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             TimeSpanEight,
             TimeSpanNine,
             Totals,
-            PercentFavorable
+            Favorable
         }
 
         #endregion
@@ -349,6 +350,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             TemplateOneValuesGrid.Columns[(int)TempOneValuesGridHeaderNames.TimeSpanSeven].HeaderCell.Style.BackColor = Color.FromArgb(31, 109, 109);
             TemplateOneValuesGrid.Columns[(int)TempOneValuesGridHeaderNames.Average].HeaderCell.Style.BackColor = Color.FromArgb(230, 184, 182);
             TemplateOneValuesGrid.Columns[(int)TempOneValuesGridHeaderNames.Totals].HeaderCell.Style.BackColor = Color.FromArgb(218, 150, 148);
+            TemplateOneValuesGrid.Columns[(int)TempOneValuesGridHeaderNames.Favorable].HeaderCell.Style.BackColor = Color.FromArgb(169, 208, 142);
+            TemplateOneValuesGrid.Columns[(int)TempOneValuesGridHeaderNames.Favorable].HeaderCell.Style.ForeColor = Color.White;
+
 
 
             TemplateTwoValuesGrid.Columns[(int)TempTwoValuesGridHeaderNames.Average].HeaderCell.Style.BackColor = Color.FromArgb(141, 180, 226);
@@ -369,8 +373,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             TemplateTwoValuesGrid.Columns[(int)TempTwoValuesGridHeaderNames.TimeSpanEight].HeaderCell.Style.ForeColor = Color.FromArgb(36, 41, 46);
             TemplateTwoValuesGrid.Columns[(int)TempTwoValuesGridHeaderNames.TimeSpanNine].HeaderCell.Style.BackColor = Color.FromArgb(151, 71, 6);
             TemplateTwoValuesGrid.Columns[(int)TempTwoValuesGridHeaderNames.Totals].HeaderCell.Style.BackColor = Color.FromArgb(218, 150, 148);
-            TemplateTwoValuesGrid.Columns[(int)TempTwoValuesGridHeaderNames.PercentFavorable].HeaderCell.Style.BackColor = Color.Green;
-            TemplateTwoValuesGrid.Columns[(int)TempTwoValuesGridHeaderNames.PercentFavorable].HeaderCell.Style.ForeColor = Color.White;
+            TemplateTwoValuesGrid.Columns[(int)TempTwoValuesGridHeaderNames.Favorable].HeaderCell.Style.BackColor = Color.FromArgb(169, 208, 142);
+            TemplateTwoValuesGrid.Columns[(int)TempTwoValuesGridHeaderNames.Favorable].HeaderCell.Style.ForeColor = Color.White;
         }
 
 
@@ -621,7 +625,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                 string.Format("{0:n0}", data.kpa.followUp.confDateVsPlanDate.data.TwentyTwo_TwentyEight),
                 string.Format("{0:n0}", data.kpa.followUp.confDateVsPlanDate.data.TwentyNinePlus),
                 string.Format("{0:n}", data.kpa.followUp.confDateVsPlanDate.data.Average),
-                string.Format("{0:n0}", data.kpa.followUp.confDateVsPlanDate.data.Total)
+                string.Format("{0:n0}", data.kpa.followUp.confDateVsPlanDate.data.Total),
+                string.Format("{0:n0}", data.kpa.followUp.confDateVsPlanDate.data.PercentFavorable + "%")
             };
             TemplateOneValuesGrid.Rows.Add(row);
 
@@ -636,7 +641,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                 string.Format("{0:n0}", data.kpa.followUp.ConfDateForUpcomingDel.data.TwentyTwo_TwentyEight),
                 string.Format("{0:n0}", data.kpa.followUp.ConfDateForUpcomingDel.data.TwentyNinePlus),
                 string.Format("{0:n}", data.kpa.followUp.ConfDateForUpcomingDel.data.Average),
-                string.Format("{0:n0}", data.kpa.followUp.ConfDateForUpcomingDel.data.Total)
+                string.Format("{0:n0}", data.kpa.followUp.ConfDateForUpcomingDel.data.Total),
+                string.Format("{0:n0}", data.kpa.followUp.ConfDateForUpcomingDel.data.PercentFavorable + "%")
             };
             TemplateOneValuesGrid.Rows.Add(row);
 
@@ -847,7 +853,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                 string.Format("{0:n0}", data.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.LessThanEqualTwoWeeks),
                 string.Format("{0:n0}", data.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.LessThanEqualThreeWeeks),
                 string.Format("{0:n0}", data.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.GreaterThanThreeWeeks),
-                string.Format("{0:n0}", data.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.Total)
+                string.Format("{0:n0}", data.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.Total),
+                string.Format("{0:n0}", data.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.PercentFavorable + "%")
             };
             TemplateTwoValuesGrid.Rows.Add(row);
 
@@ -864,7 +871,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                 string.Format("{0:n0}", data.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.LessThanEqualTwoWeeks),
                 string.Format("{0:n0}", data.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.LessThanEqualThreeWeeks),
                 string.Format("{0:n0}", data.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.GreaterThanThreeWeeks),
-                string.Format("{0:n0}", data.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.Total)
+                string.Format("{0:n0}", data.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.Total),
+                string.Format("{0:n0}", data.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.PercentFavorable + "%")
             };
             TemplateTwoValuesGrid.Rows.Add(row);
         }

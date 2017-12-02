@@ -1,7 +1,7 @@
 ﻿using KPA_KPI_Analyzer.DataLoading;
 using KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader;
-using KPA_KPI_Analyzer.KPA_KPI_Overall;
-using KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections;
+using KPA_KPI_Analyzer.Overall_Data;
+using KPA_KPI_Analyzer.Overall_Data.KPI_Sections;
 using KPA_KPI_Analyzer.Values;
 using System;
 using System.Drawing;
@@ -32,7 +32,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TimeSpanEight,
             TimeSpanNine,
             Total,
-            PercentUnconf
+            PercentUnconf,
+            Favorable
         }
 
 
@@ -132,7 +133,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TemplateThreeDataGrid.Columns[(int)TempThreeHeaderNames.TimeSpanNine].HeaderCell.Style.BackColor = Color.FromArgb(246, 144, 60);
             TemplateThreeDataGrid.Columns[(int)TempThreeHeaderNames.Total].HeaderCell.Style.BackColor = Color.FromArgb(103, 65, 114);
             TemplateThreeDataGrid.Columns[(int)TempThreeHeaderNames.PercentUnconf].HeaderCell.Style.BackColor = Color.IndianRed;
-
+            TemplateThreeDataGrid.Columns[(int)TempThreeHeaderNames.Favorable].HeaderCell.Style.BackColor = Color.FromArgb(169, 208, 142);
+            TemplateThreeDataGrid.Columns[(int)TempThreeHeaderNames.Favorable].HeaderCell.Style.ForeColor = Color.White;
 
             TemplateFourDataGrid.Columns[(int)TempFourHeaderNames.Average].HeaderCell.Style.BackColor = Color.FromArgb(141, 180, 226);
             TemplateFourDataGrid.Columns[(int)TempFourHeaderNames.TimeSpanOne].HeaderCell.Style.BackColor = Color.FromArgb(252, 213, 180);
@@ -375,7 +377,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                 string.Format("{0:n0}", data.kpi.plan.currPlanDateVsPrPlanDate.data.Eight_Fourteen),
                 string.Format("{0:n0}", data.kpi.plan.currPlanDateVsPrPlanDate.data.Fifteen_TwentyOne),
                 string.Format("{0:n0}", data.kpi.plan.currPlanDateVsPrPlanDate.data.TwentyTwo),
-                string.Format("{0:n0}", data.kpi.plan.currPlanDateVsPrPlanDate.data.Total)
+                string.Format("{0:n0}", data.kpi.plan.currPlanDateVsPrPlanDate.data.Total),
+                "",
+                string.Format("{0:n0}", data.kpi.plan.currPlanDateVsPrPlanDate.data.PercentFavorable + "%")
             };
             TemplateThreeDataGrid.Rows.Add(row);
 
@@ -394,7 +398,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                 string.Format("{0:n0}", data.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Eight_Fourteen),
                 string.Format("{0:n0}", data.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Fifteen_TwentyOne),
                 string.Format("{0:n0}", data.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.TwentyTwo),
-                string.Format("{0:n0}", data.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Total)
+                string.Format("{0:n0}", data.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Total),
+                "",
+                string.Format("{0:n0}", data.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.PercentFavorable + "%")
             };
             TemplateThreeDataGrid.Rows.Add(row);
 
@@ -412,7 +418,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                 string.Format("{0:n0}", data.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Eight_Fourteen),
                 string.Format("{0:n0}", data.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Fifteen_TwentyOne),
                 string.Format("{0:n0}", data.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.TwentyTwo),
-                string.Format("{0:n0}", data.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Total)
+                string.Format("{0:n0}", data.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Total),
+                "",
+                string.Format("{0:n0}", data.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.PercentFavorable + "%")
             };
             TemplateThreeDataGrid.Rows.Add(row);
         }
@@ -442,7 +450,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                 string.Format("{0:n0}", data.kpi.purch.initConfVsPRPlanDate.data.Fifteen_TwentyOne),
                 string.Format("{0:n0}", data.kpi.purch.initConfVsPRPlanDate.data.TwentyTwo),
                 string.Format("{0:n0}", data.kpi.purch.initConfVsPRPlanDate.data.Total),
-                string.Format("{0:n}", data.kpi.purch.initConfVsPRPlanDate.data.PercentUnconf + "%")
+                string.Format("{0:n}", data.kpi.purch.initConfVsPRPlanDate.data.PercentUnconf + "%"),
+                string.Format("{0:n0}", data.kpi.purch.initConfVsPRPlanDate.data.PercentFavorable + "%")
             };
             TemplateThreeDataGrid.Rows.Add(row);
         }
@@ -472,8 +481,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                 string.Format("{0:n0}", data.kpi.followUp.currConfVsInitConf.data.Fifteen_TwentyOne),
                 string.Format("{0:n0}", data.kpi.followUp.currConfVsInitConf.data.TwentyTwo),
                 string.Format("{0:n0}", data.kpi.followUp.currConfVsInitConf.data.Total),
-                string.Format("{0:n}", data.kpi.followUp.currConfVsInitConf.data.PercentUnconf + "%")
-
+                string.Format("{0:n}", data.kpi.followUp.currConfVsInitConf.data.PercentUnconf + "%"),
+                string.Format("{0:n0}", data.kpi.followUp.currConfVsInitConf.data.PercentFavorable + "%")
             };
             TemplateThreeDataGrid.Rows.Add(row);
 
@@ -491,7 +500,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                 string.Format("{0:n0}", data.kpi.followUp.finalConfDateVsFinalPlan.data.Fifteen_TwentyOne),
                 string.Format("{0:n0}", data.kpi.followUp.finalConfDateVsFinalPlan.data.TwentyTwo),
                 string.Format("{0:n0}", data.kpi.followUp.finalConfDateVsFinalPlan.data.Total),
-                string.Format("{0:n}", data.kpi.followUp.finalConfDateVsFinalPlan.data.PercentUnconf + "%")
+                string.Format("{0:n}", data.kpi.followUp.finalConfDateVsFinalPlan.data.PercentUnconf + "%"),
+                string.Format("{0:n0}", data.kpi.followUp.finalConfDateVsFinalPlan.data.PercentFavorable + "%")
 
             };
             TemplateThreeDataGrid.Rows.Add(row);
@@ -509,7 +519,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                 string.Format("{0:n0}", data.kpi.followUp.receiptDateVsCurrPlanDate.data.Eight_Fourteen),
                 string.Format("{0:n0}", data.kpi.followUp.receiptDateVsCurrPlanDate.data.Fifteen_TwentyOne),
                 string.Format("{0:n0}", data.kpi.followUp.receiptDateVsCurrPlanDate.data.TwentyTwo),
-                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsCurrPlanDate.data.Total)
+                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsCurrPlanDate.data.Total),
+                "",
+                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsCurrPlanDate.data.PercentFavorable + "%")
 
             };
             TemplateThreeDataGrid.Rows.Add(row);
@@ -528,7 +540,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                 string.Format("{0:n0}", data.kpi.followUp.receiptDateVsOrigConfDate.data.Fifteen_TwentyOne),
                 string.Format("{0:n0}", data.kpi.followUp.receiptDateVsOrigConfDate.data.TwentyTwo),
                 string.Format("{0:n0}", data.kpi.followUp.receiptDateVsOrigConfDate.data.Total),
-                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsOrigConfDate.data.PercentUnconf + "%")
+                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsOrigConfDate.data.PercentUnconf + "%"),
+                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsOrigConfDate.data.PercentFavorable + "%")
             };
             TemplateThreeDataGrid.Rows.Add(row);
 
@@ -546,7 +559,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                 string.Format("{0:n0}", data.kpi.followUp.receiptDateVsCurrConfDate.data.Fifteen_TwentyOne),
                 string.Format("{0:n0}", data.kpi.followUp.receiptDateVsCurrConfDate.data.TwentyTwo),
                 string.Format("{0:n0}", data.kpi.followUp.receiptDateVsCurrConfDate.data.Total),
-                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsCurrConfDate.data.PercentUnconf + "%")
+                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsCurrConfDate.data.PercentUnconf + "%"),
+                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsCurrConfDate.data.PercentFavorable + "%")
 
             };
             TemplateThreeDataGrid.Rows.Add(row);

@@ -1,7 +1,7 @@
 ﻿
-using KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections;
+using KPA_KPI_Analyzer.Overall_Data.KPI_Sections;
 
-namespace KPA_KPI_Analyzer.KPA_KPI_Overall
+namespace KPA_KPI_Analyzer.Overall_Data
 {
     public class KPI
     {

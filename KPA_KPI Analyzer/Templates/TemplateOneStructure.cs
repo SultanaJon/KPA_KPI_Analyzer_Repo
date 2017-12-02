@@ -15,7 +15,7 @@ namespace KPA_KPI_Analyzer.Templates
         public int TwentyTwo_TwentyEight { get; set; }
         public int TwentyNinePlus { get; set; }
         public double Average { get; set; }
-
+        public double PercentFavorable { get; set; }
 
 
 
@@ -57,6 +57,7 @@ namespace KPA_KPI_Analyzer.Templates
                 temp.Add(TwentyNinePlus.ToString());
                 temp.Add(Average.ToString());
                 temp.Add(Total.ToString());
+                temp.Add(PercentFavorable.ToString());
 
                 results = new List<string>(temp);
                 temp.Clear();
@@ -68,24 +69,6 @@ namespace KPA_KPI_Analyzer.Templates
             }
 
             return results;
-        }
-
-
-        /// <summary>
-        /// Clears the data stored in the template object
-        /// </summary>
-        public void ClearData()
-        {
-            LessThanZero = 0;
-            One_Three = 0;
-            Four_Seven = 0;
-            Eight_Fourteen = 0;
-            Fifteen_TwentyOne = 0;
-            TwentyTwo_TwentyEight = 0;
-            TwentyTwo_TwentyEight = 0;
-            TwentyNinePlus = 0;
-            Average = 0;
-            Total = 0;
         }
     }
 }

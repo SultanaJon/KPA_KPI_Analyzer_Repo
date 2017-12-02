@@ -4,7 +4,7 @@ using System;
 using System.Data;
 using System.Windows.Forms;
 
-namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
+namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
 {
     public class PurchTwo
     {

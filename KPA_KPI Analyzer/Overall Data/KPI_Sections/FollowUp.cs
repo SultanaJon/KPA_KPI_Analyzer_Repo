@@ -4,7 +4,7 @@ using System;
 using System.Data;
 using System.Windows.Forms;
 
-namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
+namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
 {
     public class FollowUp
     {
@@ -183,6 +183,12 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 {
                     currConfVsInitConf.data.Average = 0;
                 }
+
+
+
+
+                // Calculate the percent of favorable line items
+                currConfVsInitConf.CalculatePercentFavorable();
                 
                 totalDays = 0;
 
@@ -307,6 +313,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                     finalConfDateVsFinalPlan.data.PercentUnconf = 0;
                 }
 
+
                 totalDays = 0;
 
 
@@ -411,7 +418,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                     if (double.IsNaN(receiptDateVsCurrPlanDate.data.Average))
                         receiptDateVsCurrPlanDate.data.Average = 0;
                 }
-                catch(DivideByZeroException)
+                catch (DivideByZeroException)
                 {
                     receiptDateVsCurrPlanDate.data.Average = 0;
                 }
@@ -540,6 +547,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                     receiptDateVsOrigConfDate.data.PercentUnconf = 0;
                 }
 
+
                 totalDays = 0;
 
 
@@ -665,8 +673,10 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                     receiptDateVsCurrConfDate.data.PercentUnconf = 0;
                 }
 
+                // Get the percent favorable for these KPIs
+                GatherPercentFavorables();
 
-
+                // Update the status of this KPIs load progress.
                 DatabaseUtils.UpdateLoadProgress();
             }
             catch (Exception ex)
@@ -674,6 +684,20 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
                 MessageBox.Show(ex.Message, "KPI -> Follow Up Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw new ThreadInteruptedException();
             }
+        }
+
+
+
+
+        /// <summary>
+        /// Gathers the percent unfavorable for the follow up KPIs.
+        /// </summary>
+        public void GatherPercentFavorables()
+        {
+            finalConfDateVsFinalPlan.CalculatePercentFavorable();
+            receiptDateVsCurrPlanDate.CalculatePercentFavorable();
+            receiptDateVsOrigConfDate.CalculatePercentFavorable();
+            receiptDateVsCurrConfDate.CalculatePercentFavorable();
         }
     }
 
@@ -696,6 +720,23 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
         {
             data = new TempThree();
         }
+
+
+
+        /// <summary>
+        /// Get the percentage of favorable records.
+        /// </summary>
+        public void CalculatePercentFavorable()
+        {
+            if (data.Total != 0)
+            {
+                // Sum up the favorable time spans
+                double favorableTimeSpans = data.Minus_TwentyTwo + data.Minus_Fifteen_TwentyOne + data.Minus_Eight_Fourteen + data.Minus_One_Seven + data.Zero;
+                
+                // calculate the Percent Favorable
+                data.PercentFavorable = Math.Round((favorableTimeSpans / data.Total) * 100, 2);
+            }
+        }
     }
 
 
@@ -710,6 +751,23 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
         public FinalConfirmatinoVsFinalPlanDate()
         {
             data = new TempThree();
+        }
+
+
+
+        /// <summary>
+        /// Get the percentage of favorable records.
+        /// </summary>
+        public void CalculatePercentFavorable()
+        {
+            if (data.Total != 0)
+            {
+                // Sum up the favorable time spans
+                double favorableTimeSpans = data.Minus_TwentyTwo + data.Minus_Fifteen_TwentyOne + data.Minus_Eight_Fourteen + data.Minus_One_Seven + data.Zero;
+
+                // calculate the Percent Favorable
+                data.PercentFavorable = Math.Round((favorableTimeSpans / data.Total) * 100, 2);
+            }
         }
     }
 
@@ -726,6 +784,22 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
         {
             data = new TempThree();
         }
+
+
+        /// <summary>
+        /// Get the percentage of favorable records.
+        /// </summary>
+        public void CalculatePercentFavorable()
+        {
+            if (data.Total != 0)
+            {
+                // Sum up the favorable time spans
+                double favorableTimeSpans = data.Minus_TwentyTwo + data.Minus_Fifteen_TwentyOne + data.Minus_Eight_Fourteen + data.Minus_One_Seven + data.Zero;
+
+                // calculate the Percent Favorable
+                data.PercentFavorable = Math.Round((favorableTimeSpans / data.Total) * 100, 2);
+            }
+        }
     }
 
 
@@ -741,6 +815,23 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
         {
             data = new TempThree();
         }
+
+
+
+        /// <summary>
+        /// Get the percentage of favorable records.
+        /// </summary>
+        public void CalculatePercentFavorable()
+        {
+            if (data.Total != 0)
+            {
+                // Sum up the favorable time spans
+                double favorableTimeSpans = data.Minus_TwentyTwo + data.Minus_Fifteen_TwentyOne + data.Minus_Eight_Fourteen + data.Minus_One_Seven + data.Zero;
+
+                // calculate the Percent Favorable
+                data.PercentFavorable = Math.Round((favorableTimeSpans / data.Total) * 100, 2);
+            }
+        }
     }
 
 
@@ -755,6 +846,23 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPI_Sections
         public ReceiptDateVsCurrentConfirmationDate()
         {
             data = new TempThree();
+        }
+
+
+
+        /// <summary>
+        /// Get the percentage of favorable records.
+        /// </summary>
+        public void CalculatePercentFavorable()
+        {
+            if (data.Total != 0)
+            {
+                // Sum up the favorable time spans
+                double favorableTimeSpans = data.Minus_TwentyTwo + data.Minus_Fifteen_TwentyOne + data.Minus_Eight_Fourteen + data.Minus_One_Seven + data.Zero;
+
+                // calculate the Percent Favorable
+                data.PercentFavorable = Math.Round((favorableTimeSpans / data.Total) * 100, 2);
+            }
         }
     }
 }

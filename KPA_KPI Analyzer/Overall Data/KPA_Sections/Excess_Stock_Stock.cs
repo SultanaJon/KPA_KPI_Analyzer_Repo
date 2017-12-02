@@ -6,7 +6,7 @@ using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
 
-namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
+namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
 {
     public class Excess_Stock_Stock
     {

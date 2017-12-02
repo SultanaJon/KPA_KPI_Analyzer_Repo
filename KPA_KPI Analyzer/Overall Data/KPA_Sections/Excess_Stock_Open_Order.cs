@@ -5,12 +5,13 @@ using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
 
-namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
+namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
 {
-    public class Plan
+    public class Excess_Stock_Open_Order
     {
-        public PRs_Aging_NotRel prsAgingNotRel;
-        public MaterialDueDate matDueDate;
+        public PRs_Aging_Not_Rel prsAgingNotRel;
+        public PRs_Aging_Rel prsAgingRel;
+        public PoCreationThruDelivery PoCreationThruDeliv;
         private double totalDays = 0;
         private DataTable dt;
         private OleDbCommand cmd;
@@ -19,39 +20,36 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
 
 
         // Default Constructor
-        public Plan()
+        public Excess_Stock_Open_Order()
         {
-            prsAgingNotRel = new PRs_Aging_NotRel();
-            matDueDate = new MaterialDueDate();
+            prsAgingNotRel = new PRs_Aging_Not_Rel();
+            prsAgingRel = new PRs_Aging_Rel();
+            PoCreationThruDeliv = new PoCreationThruDelivery();
         }
 
 
-
-
-
-        public string Name { get { return "Plan"; } }
-
+        public string Name { get { return "Excess Stock - Open Orders"; } }
 
 
         public enum CategorNames
         {
             PrsAgingNotReleased,
-            MaterialDue
+            PrsAgingReleased,
+            PoCreationThruDelivery
         }
-
 
         public string[] categoryNames =
         {
-            "PRs Aging (Not Released)",
-            "Material Due"
+            "Prs Aging (Not Released)",
+            "PRs Aging (Released)",
+            "PO Creation Thru Delivery"
         };
 
 
 
 
-
         /// <summary>
-        /// Loads the data of a specific KPA
+        /// Loads the data of the specific KPA.
         /// </summary>
         public void LoadData()
         {
@@ -59,12 +57,11 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
             {
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 //
-                // PRs Aging (Not Released)
+                // Prs Aging Not Released
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
                 dt = new DataTable();
-                cmd = new OleDbCommand(Database.QueryManager.KpaQueries.PlanQueries.GetPrsAgingNotReleased() + Filters.FilterData.FilterQuery, DatabaseUtils.DatabaseConnection);
+                cmd = new OleDbCommand(Database.QueryManager.KpaQueries.ExcessStockOpenOrdersQueries.GetPrsAgingNotReleased() + Filters.FilterData.FilterQuery, DatabaseUtils.DatabaseConnection);
                 da = new OleDbDataAdapter(cmd);
                 da.Fill(dt);
 
@@ -77,6 +74,7 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                         continue;
                     }
 
+
                     string[] reqCreationDate = (dr["Requisn Date"].ToString()).Split('/');
                     int year = int.Parse(reqCreationDate[2]);
                     int month = int.Parse(reqCreationDate[0].TrimStart('0'));
@@ -87,7 +85,6 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                     double elapsedDays = (today - reqDate).TotalDays;
                     totalDays += elapsedDays;
                     elapsedDays = (int)elapsedDays;
-
 
                     prsAgingNotRel.data.Total++;
 
@@ -121,28 +118,33 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                     }
                 }
 
+
                 try
                 {
                     prsAgingNotRel.data.Average = Math.Round(totalDays / prsAgingNotRel.data.Total, 2);
                     if (double.IsNaN(prsAgingNotRel.data.Average))
                         prsAgingNotRel.data.Average = 0;
                 }
-                catch(DivideByZeroException)
+                catch (DivideByZeroException)
                 {
                     prsAgingNotRel.data.Average = 0;
                 }
+
                 totalDays = 0;
 
 
+
+
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 //
-                // Material Due
+                // Prs Aging Released
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 dt = new DataTable();
-                cmd = new OleDbCommand(Database.QueryManager.KpaQueries.PlanQueries.GetMaterialDue() + Filters.FilterData.FilterQuery, DatabaseUtils.DatabaseConnection);
+                cmd = new OleDbCommand(Database.QueryManager.KpaQueries.ExcessStockOpenOrdersQueries.GetPrsAgingReleased() + Filters.FilterData.FilterQuery, DatabaseUtils.DatabaseConnection);
                 da = new OleDbDataAdapter(cmd);
                 da.Fill(dt);
+
 
                 foreach (DataRow dr in dt.Rows)
                 {
@@ -153,65 +155,151 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
                         continue;
                     }
 
-                    string[] strCurrReqDate = (dr["PR Delivery Date"].ToString()).Split('/');
-                    int year = int.Parse(strCurrReqDate[2]);
-                    int month = int.Parse(strCurrReqDate[0].TrimStart('0'));
-                    int day = int.Parse(strCurrReqDate[1].TrimStart('0'));
 
-                    DateTime currReqDate = new DateTime(year, month, day);
+                    string[] strDate = (dr["PR 2° Rel# Date"].ToString()).Split('/');
+                    int year = int.Parse(strDate[2]);
+                    int month = int.Parse(strDate[0].TrimStart('0'));
+                    int day = int.Parse(strDate[1].TrimStart('0'));
+
+                    DateTime date = new DateTime(year, month, day);
                     DateTime today = DateTime.Now.Date;
-                    double elapsedDays = (currReqDate - today).TotalDays;
+                    double elapsedDays = (today - date).TotalDays;
                     totalDays += elapsedDays;
                     elapsedDays = (int)elapsedDays;
 
-                    matDueDate.data.Total++;
+                    prsAgingRel.data.Total++;
+
+
 
                     if (elapsedDays <= 0)
                     {
-                        matDueDate.data.LessThanZero++;
+                        prsAgingRel.data.LessThanZero++;
                     }
                     else if (elapsedDays >= 1 && elapsedDays <= 3)
                     {
-                        matDueDate.data.One_Three++;
+                        prsAgingRel.data.One_Three++;
                     }
                     else if (elapsedDays >= 4 && elapsedDays <= 7)
                     {
-                        matDueDate.data.Four_Seven++;
+                        prsAgingRel.data.Four_Seven++;
                     }
                     else if (elapsedDays >= 8 && elapsedDays <= 14)
                     {
-                        matDueDate.data.Eight_Fourteen++;
+                        prsAgingRel.data.Eight_Fourteen++;
                     }
                     else if (elapsedDays >= 15 && elapsedDays <= 21)
                     {
-                        matDueDate.data.Fifteen_TwentyOne++;
+                        prsAgingRel.data.Fifteen_TwentyOne++;
                     }
                     else if (elapsedDays >= 22 && elapsedDays <= 28)
                     {
-                        matDueDate.data.TwentyTwo_TwentyEight++;
+                        prsAgingRel.data.TwentyTwo_TwentyEight++;
                     }
                     else // 29+
                     {
-                        matDueDate.data.TwentyNinePlus++;
+                        prsAgingRel.data.TwentyNinePlus++;
+                    }
+
+
+                    try
+                    {
+                        prsAgingRel.data.Average = Math.Round(totalDays / prsAgingRel.data.Total, 2);
+                        if (double.IsNaN(prsAgingRel.data.Average))
+                            prsAgingRel.data.Average = 0;
+                    }
+                    catch (DivideByZeroException)
+                    {
+                        prsAgingRel.data.Average = 0;
+                    }
+                }
+
+
+
+                totalDays = 0;
+
+
+
+
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                //
+                // Po Creation Thru Delivery
+                //
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                dt = new DataTable();
+                cmd = new OleDbCommand(Database.QueryManager.KpaQueries.ExcessStockOpenOrdersQueries.GetPoCreationThruDelivery() + Filters.FilterData.FilterQuery, DatabaseUtils.DatabaseConnection);
+                da = new OleDbDataAdapter(cmd);
+                da.Fill(dt);
+
+
+                foreach (DataRow dr in dt.Rows)
+                {
+                    //Check if the datarow meets the conditions of any applied filters.
+                    if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
+                    {
+                        // This datarow dos not meet the conditions of the filters applied.
+                        continue;
+                    }
+
+                    string[] strDate = (dr["PO Line Creat#DT"].ToString()).Split('/');
+                    int year = int.Parse(strDate[2]);
+                    int month = int.Parse(strDate[0].TrimStart('0'));
+                    int day = int.Parse(strDate[1].TrimStart('0'));
+
+                    DateTime date = new DateTime(year, month, day);
+                    DateTime today = DateTime.Now.Date;
+                    double elapsedDays = (today - date).TotalDays;
+                    totalDays += elapsedDays;
+                    elapsedDays = (int)elapsedDays;
+
+                    PoCreationThruDeliv.data.Total++;
+
+
+                    if (elapsedDays <= 0)
+                    {
+                        PoCreationThruDeliv.data.LessThanZero++;
+                    }
+                    else if (elapsedDays >= 1 && elapsedDays <= 3)
+                    {
+                        PoCreationThruDeliv.data.One_Three++;
+                    }
+                    else if (elapsedDays >= 4 && elapsedDays <= 7)
+                    {
+                        PoCreationThruDeliv.data.Four_Seven++;
+                    }
+                    else if (elapsedDays >= 8 && elapsedDays <= 14)
+                    {
+                        PoCreationThruDeliv.data.Eight_Fourteen++;
+                    }
+                    else if (elapsedDays >= 15 && elapsedDays <= 21)
+                    {
+                        PoCreationThruDeliv.data.Fifteen_TwentyOne++;
+                    }
+                    else if (elapsedDays >= 22 && elapsedDays <= 28)
+                    {
+                        PoCreationThruDeliv.data.TwentyTwo_TwentyEight++;
+                    }
+                    else // 29+
+                    {
+                        PoCreationThruDeliv.data.TwentyNinePlus++;
                     }
                 }
 
                 try
                 {
-                    matDueDate.data.Average = Math.Round(totalDays / matDueDate.data.Total, 2);
-                    if (double.IsNaN(matDueDate.data.Average))
-                        matDueDate.data.Average = 0;
+                    PoCreationThruDeliv.data.Average = Math.Round(totalDays / PoCreationThruDeliv.data.Total, 2);
+                    if (double.IsNaN(PoCreationThruDeliv.data.Average))
+                        PoCreationThruDeliv.data.Average = 0;
                 }
                 catch (DivideByZeroException)
                 {
-                    matDueDate.data.Average = 0;
+                    PoCreationThruDeliv.data.Average = 0;
                 }
 
                 DatabaseUtils.UpdateLoadProgress();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.StackTrace, "KPA -> Plan Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "KPA -> Excess Stock - Stock Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw new ThreadInteruptedException();
             }
             finally
@@ -234,11 +322,11 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
     //  The below classes act as a specific KPA category that fall under a specific KPA section.
     //
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public class PRs_Aging_NotRel
+    public class PRs_Aging_Not_Rel
     {
         public TempOne data;
 
-        public PRs_Aging_NotRel()
+        public PRs_Aging_Not_Rel()
         {
             data = new TempOne();
         }
@@ -249,11 +337,22 @@ namespace KPA_KPI_Analyzer.KPA_KPI_Overall.KPA_Sections
 
 
 
-    public class MaterialDueDate
+    public class PRs_Aging_Rel
     {
         public TempOne data;
 
-        public MaterialDueDate()
+        public PRs_Aging_Rel()
+        {
+            data = new TempOne();
+        }
+    }
+
+
+    public class PoCreationThruDelivery
+    {
+        public TempOne data;
+
+        public PoCreationThruDelivery()
         {
             data = new TempOne();
         }

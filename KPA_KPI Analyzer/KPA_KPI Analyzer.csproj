@@ -258,27 +258,27 @@
     <Compile Include="Templates\Template_Controls\KPA_Controls\KPAPurchTotalTemplate.Designer.cs">
       <DependentUpon>KPAPurchTotalTemplate.cs</DependentUpon>
     </Compile>
-    <Compile Include="KPA_KPI_Overall\KPA_Sections\Current_Plan_vs_Actual.cs" />
-    <Compile Include="KPA_KPI_Overall\KPA_Sections\Excess_Stock_Open_Order.cs" />
-    <Compile Include="KPA_KPI_Overall\KPA_Sections\Excess_Stock_Stock.cs" />
-    <Compile Include="KPA_KPI_Overall\KPA_Sections\Follow_Up.cs" />
-    <Compile Include="KPA_KPI_Overall\KPA_Sections\Hot_Jobs.cs" />
-    <Compile Include="KPA_KPI_Overall\KPA.cs" />
-    <Compile Include="KPA_KPI_Overall\KPA_Sections\Plan.cs" />
-    <Compile Include="KPA_KPI_Overall\KPA_Sections\Purch.cs" />
-    <Compile Include="KPA_KPI_Overall\KPA_Sections\Purch_Sub.cs" />
-    <Compile Include="KPA_KPI_Overall\KPA_Sections\Purch_Total.cs" />
-    <Compile Include="KPA_KPI_Overall\KPI_Sections\FollowUp.cs" />
-    <Compile Include="KPA_KPI_Overall\KPI.cs" />
-    <Compile Include="KPA_KPI_Overall\KPI_Sections\Other.cs" />
-    <Compile Include="KPA_KPI_Overall\KPI_Sections\Plan.cs" />
-    <Compile Include="KPA_KPI_Overall\KPI_Sections\PlanTwo.cs" />
-    <Compile Include="KPA_KPI_Overall\KPI_Sections\Purch.cs" />
-    <Compile Include="KPA_KPI_Overall\KPI_Sections\PurchPlan.cs" />
-    <Compile Include="KPA_KPI_Overall\KPI_Sections\PurchSub.cs" />
-    <Compile Include="KPA_KPI_Overall\KPI_Sections\PurchTotal.cs" />
-    <Compile Include="KPA_KPI_Overall\KPI_Sections\PurchTwo.cs" />
-    <Compile Include="KPA_KPI_Overall\Overall.cs" />
+    <Compile Include="Overall Data\KPA_Sections\Current_Plan_vs_Actual.cs" />
+    <Compile Include="Overall Data\KPA_Sections\Excess_Stock_Open_Order.cs" />
+    <Compile Include="Overall Data\KPA_Sections\Excess_Stock_Stock.cs" />
+    <Compile Include="Overall Data\KPA_Sections\Follow_Up.cs" />
+    <Compile Include="Overall Data\KPA_Sections\Hot_Jobs.cs" />
+    <Compile Include="Overall Data\KPA.cs" />
+    <Compile Include="Overall Data\KPA_Sections\Plan.cs" />
+    <Compile Include="Overall Data\KPA_Sections\Purch.cs" />
+    <Compile Include="Overall Data\KPA_Sections\Purch_Sub.cs" />
+    <Compile Include="Overall Data\KPA_Sections\Purch_Total.cs" />
+    <Compile Include="Overall Data\KPI_Sections\FollowUp.cs" />
+    <Compile Include="Overall Data\KPI.cs" />
+    <Compile Include="Overall Data\KPI_Sections\Other.cs" />
+    <Compile Include="Overall Data\KPI_Sections\Plan.cs" />
+    <Compile Include="Overall Data\KPI_Sections\PlanTwo.cs" />
+    <Compile Include="Overall Data\KPI_Sections\Purch.cs" />
+    <Compile Include="Overall Data\KPI_Sections\PurchPlan.cs" />
+    <Compile Include="Overall Data\KPI_Sections\PurchSub.cs" />
+    <Compile Include="Overall Data\KPI_Sections\PurchTotal.cs" />
+    <Compile Include="Overall Data\KPI_Sections\PurchTwo.cs" />
+    <Compile Include="Overall Data\Overall.cs" />
     <Compile Include="KPA_KPI_UI.CountrySelectorControlEvents.cs">
       <DependentUpon>KPA_KPI_UI.cs</DependentUpon>
       <SubType>Form</SubType>

@@ -96,7 +96,7 @@ namespace KPA_KPI_Analyzer
                 {
                     lbl_Country.Text = "Loading...";
                     lbl_topPanelNavPrpoDate.Text = "Loading...";
-                    overallData = new KPA_KPI_Overall.Overall();
+                    overallData = new Overall_Data.Overall();
                     if (AccessUtils.US_PRPO_TableExists || AccessUtils.MX_PRPO_TableExists)
                         DatabaseUtils.DropCreateDb();
                     else
