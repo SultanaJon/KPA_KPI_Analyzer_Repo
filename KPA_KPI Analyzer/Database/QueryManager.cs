@@ -42,8 +42,6 @@ namespace KPA_KPI_Analyzer.Database
         }
 
 
-
-
         /// <summary>
         /// returns the name of the table that the application is targeting in the database.
         /// </summary>
@@ -52,11 +50,6 @@ namespace KPA_KPI_Analyzer.Database
         {
             return table;
         }
-
-
-
-
-
 
 
         /// <summary>

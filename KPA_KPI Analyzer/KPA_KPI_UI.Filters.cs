@@ -667,39 +667,39 @@ namespace KPA_KPI_Analyzer
         {
             if (FilterData.AdvancedFilters.Applied)
             {
-                if (FilterData.AdvancedFilters.FilterByServicePrPo)
+                if (!FilterData.AdvancedFilters.FilterByServicePrPo)
                 {
                     chkBox_servicePrPo.Checked = false;
                 }
 
-                if (FilterData.AdvancedFilters.FilterBySteelPrPo)
+                if (!FilterData.AdvancedFilters.FilterBySteelPrPo)
                 {
-                    chkBox_servicePrPo.Checked = false;
+                    chkBox_SteelPrPo.Checked = false;
                 }
 
-                if (FilterData.AdvancedFilters.FilterByPouPrPo)
+                if (!FilterData.AdvancedFilters.FilterByPouPrPo)
                 {
-                    chkBox_servicePrPo.Checked = false;
+                    chkBox_pouPrPo.Checked = false;
                 }
 
-                if (FilterData.AdvancedFilters.FilterByIntercompPo)
+                if (!FilterData.AdvancedFilters.FilterByIntercompPo)
                 {
-                    chkBox_servicePrPo.Checked = false;
+                    chkBox_IntCompPo.Checked = false;
                 }
 
-                if (FilterData.AdvancedFilters.FilterByCodifiedMatNonSubcont)
+                if (!FilterData.AdvancedFilters.FilterByCodifiedMatNonSubcont)
                 {
-                    chkBox_servicePrPo.Checked = false;
+                    chkBox_codifiedMatNonSub.Checked = false;
                 }
 
-                if (FilterData.AdvancedFilters.FilterByCodifiedMatSubcont)
+                if (!FilterData.AdvancedFilters.FilterByCodifiedMatSubcont)
                 {
-                    chkBox_servicePrPo.Checked = false;
+                    chkBox_codifiedMatSubCon.Checked = false;
                 }
 
-                if (FilterData.AdvancedFilters.FilterByManualPr)
+                if (!FilterData.AdvancedFilters.FilterByManualPr)
                 {
-                    chkBox_servicePrPo.Checked = false;
+                    chkBox_manualPr.Checked = false;
                 }
             }
         }
