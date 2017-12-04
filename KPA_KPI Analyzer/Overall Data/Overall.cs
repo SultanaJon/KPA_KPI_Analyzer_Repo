@@ -238,7 +238,7 @@ namespace KPA_KPI_Analyzer.Overall_Data
 
 
         /// <summary>
-        /// Loads the Overall object from JSON file.
+        /// Loads the Overall object from JSON file.kpa 
         /// </summary>
         /// <returns>Boolean value indicating whether or not he load operation was successful.</returns>
         public void Load(ref Overall overallData)
