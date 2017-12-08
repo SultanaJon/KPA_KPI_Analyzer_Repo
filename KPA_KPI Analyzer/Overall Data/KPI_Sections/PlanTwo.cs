@@ -20,7 +20,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
         }
 
 
-        public string Name { get { return "Plan"; } }
+        public string Name { get { return "Plan II"; } }
 
 
         public enum CategoryNames

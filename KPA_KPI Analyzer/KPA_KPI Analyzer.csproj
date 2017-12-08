@@ -41,10 +41,10 @@
   <ItemGroup>
     <Reference Include="BunifuDataViz 1.0.1, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Program Files (x86)\Bunifu Technologies\Bunifu DataViz Manager\bin\updates\Bunifu DataViz\BunifuDataViz 1.0.1.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Bunifu Technologies\Bunifu DataViz Manager\bin\updates\Bunifu DataViz\BunifuDataViz 1.0.1.dll</HintPath>
     </Reference>
     <Reference Include="Bunifu_UI_v1.5.3">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Bunifu Technologies\Bunifu Framework Manager\bin\updates\Bunifu UI 1.5.3\Bunifu_UI_v1.5.3.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Bunifu Technologies\Bunifu Framework Manager\Bunifu_UI_v1.5.3.dll</HintPath>
     </Reference>
     <Reference Include="CircularProgressBar, Version=2.5.6403.13419, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\CircularProgressBar.2.5.6403.13419\lib\net35-client\CircularProgressBar.dll</HintPath>
@@ -73,6 +73,9 @@
     <Reference Include="MathNet.Numerics, Version=3.20.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MathNet.Numerics.3.20.0\lib\net40\MathNet.Numerics.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="PresentationCore" />
@@ -103,6 +106,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationConfiguration\ApplicationConfig.cs" />
+    <Compile Include="ApplicationConfiguration\PRPOSettings.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="Correlation\CorrelationConfiguration.cs">
       <SubType>Form</SubType>
@@ -133,84 +137,10 @@
     <Compile Include="DataLoading\ExportUtils.cs" />
     <Compile Include="DataLoading\KPA_Data\DataTableLoader\KpaDataTableLoader.cs" />
     <Compile Include="DataLoading\KPI_Data\DataTableLoader\KpiDataTableLoader.cs" />
-    <Compile Include="Data\Kpi\Kpis.cs" />
-    <Compile Include="Interfaces\IFavorable.cs" />
-    <Compile Include="Interfaces\ICalculatable.cs" />
-    <Compile Include="Interfaces\IJSONLoadable.cs" />
-    <Compile Include="Interfaces\IJSONStoreable.cs" />
-    <Compile Include="Data\Kpa\Kpas.cs" />
-    <Compile Include="Data\Kpa\Sections\Categories\CurrentPlanVsActual\CurrentPlanVsCurrentConfirmed.cs" />
-    <Compile Include="Data\Kpa\Sections\Categories\CurrentPlanVsActual\CurrentPlanVsCurrentConfirmedHotJobs.cs" />
-    <Compile Include="Data\Kpa\Sections\Categories\ExcesssStockOpenOrders\PoCreationThruDelivery.cs" />
-    <Compile Include="Data\Kpa\Sections\Categories\ExcesssStockOpenOrders\PrsAgingNotReleased.cs" />
-    <Compile Include="Data\Kpa\Sections\Categories\ExcesssStockOpenOrders\PrsAgingReleased.cs" />
-    <Compile Include="Data\Kpa\Sections\Categories\ExcessStockStock\PoCreationThruDelivery.cs" />
-    <Compile Include="Data\Kpa\Sections\Categories\ExcessStockStock\PrsAgingNotReleased.cs" />
-    <Compile Include="Data\Kpa\Sections\Categories\ExcessStockStock\PrsAgingReleased.cs" />
-    <Compile Include="Data\Kpa\Sections\Categories\FollowUp\ConfirmedVsPlan.cs" />
-    <Compile Include="Data\Kpa\Sections\Categories\FollowUp\ConfirrmedForUpcomingDeliveries.cs" />
-    <Compile Include="Data\Kpa\Sections\Categories\FollowUp\DueTodayOrLateToConfrimed.cs" />
-    <Compile Include="Data\Kpa\Sections\Categories\HotJobs\LateToConfirmed.cs" />
-    <Compile Include="Data\Kpa\Sections\Categories\HotJobs\NoConfirmations.cs" />
-    <Compile Include="Data\Kpa\Sections\Categories\HotJobs\PrsNotOnPo.cs" />
-    <Compile Include="Data\Kpa\Sections\Categories\Plan\MaterialDue.cs" />
-    <Compile Include="Data\Kpa\Sections\Categories\Plan\PrsAgingNotReleased.cs" />
-    <Compile Include="Data\Kpa\Sections\Categories\PurchSub\PoCreationToConfirmationEntry.cs" />
-    <Compile Include="Data\Kpa\Sections\Categories\PurchSub\PrReleaseToPoRelease.cs" />
-    <Compile Include="Data\Kpa\Sections\Categories\PurchTotal\PrReleaseToConfirmationEntry.cs" />
-    <Compile Include="Data\Kpa\Sections\Categories\Purch\NoConfirmations.cs" />
-    <Compile Include="Data\Kpa\Sections\Categories\Purch\PoFirstRelease.cs" />
-    <Compile Include="Data\Kpa\Sections\Categories\Purch\PoPreviousRelease.cs" />
-    <Compile Include="Data\Kpa\Sections\Categories\Purch\PrsAgingReleased.cs" />
-    <Compile Include="Data\Kpa\Sections\CurrentPlanVsActual.cs" />
-    <Compile Include="Data\Kpa\Sections\ExcessStockOpenOrders.cs" />
-    <Compile Include="Data\Kpa\Sections\ExcessStockStock.cs" />
-    <Compile Include="Data\Kpa\Sections\FollowUp.cs" />
-    <Compile Include="Data\Kpa\Sections\HotJobs.cs" />
-    <Compile Include="Data\Kpa\Sections\Plan.cs" />
-    <Compile Include="Data\Kpa\Sections\PurchTotal.cs" />
-    <Compile Include="Data\Kpa\Sections\Purch.cs" />
-    <Compile Include="Data\Kpa\Sections\PurchSub.cs" />
-    <Compile Include="Data\Kpi\Sections\Categories\FollowUp\FinalConfirmationVsFinalPlan.cs" />
-    <Compile Include="Data\Kpi\Sections\Categories\FollowUp\CurrentConfirmationVsInitialConfirmation.cs" />
-    <Compile Include="Data\Kpi\Sections\Categories\FollowUp\ReceiptVsCurrentConfirmation.cs" />
-    <Compile Include="Data\Kpi\Sections\Categories\FollowUp\ReceiptVsCurrentPlan.cs" />
-    <Compile Include="Data\Kpi\Sections\Categories\FollowUp\ReceiptVsOriginalConfirmation.cs" />
-    <Compile Include="Data\Kpi\Sections\Categories\Other\HotJobPrs.cs" />
-    <Compile Include="Data\Kpi\Sections\Categories\Other\PrsCreated.cs" />
-    <Compile Include="Data\Kpi\Sections\Categories\Other\PrsReleased.cs" />
-    <Compile Include="Data\Kpi\Sections\Categories\Other\PrValueVsPoValue.cs" />
-    <Compile Include="Data\Kpi\Sections\Categories\Other\TotalSpend.cs" />
-    <Compile Include="Data\Kpi\Sections\Categories\PlanTwo\MaterialDueFinalPlan.cs" />
-    <Compile Include="Data\Kpi\Sections\Categories\PlanTwo\MaterialDueOriginalPlan.cs" />
-    <Compile Include="Data\Kpi\Sections\Categories\Plan\CurrentPlanToSecondLvlReleasesVsCodedLead.cs" />
-    <Compile Include="Data\Kpi\Sections\Categories\Plan\CurrentPlanVsPrPlan.cs" />
-    <Compile Include="Data\Kpi\Sections\Categories\Plan\OriginalPlanToSecondLvlReleaseVsCodedLead.cs" />
-    <Compile Include="Data\Kpi\Sections\Categories\PurchPlan\PoReleaseVsPrDelivery.cs" />
-    <Compile Include="Data\Kpi\Sections\Categories\PurchSub\PoCreationVsConfrimationEntry.cs" />
-    <Compile Include="Data\Kpi\Sections\Categories\PurchSub\PrReleaseVsPoRelease.cs" />
-    <Compile Include="Data\Kpi\Sections\Categories\PurchTotal\PrReleaseToConfirmationEntry.cs" />
-    <Compile Include="Data\Kpi\Sections\Categories\PurchTwo\PoCreationVsPoRelease.cs" />
-    <Compile Include="Data\Kpi\Sections\Categories\PurchTwo\PoReleaseVsPoConfirmation.cs" />
-    <Compile Include="Data\Kpi\Sections\Categories\PurchTwo\Pr2ndLvlReleaseVsPoCreation.cs" />
-    <Compile Include="Data\Kpi\Sections\Categories\Purch\InitialConfirmationVsCurrentConfirmation.cs" />
-    <Compile Include="Data\Kpi\Sections\Categories\Purch\InitialConfirmationVsPrPlan.cs" />
-    <Compile Include="Data\Kpi\Sections\FollowUp.cs" />
-    <Compile Include="Data\Kpi\Sections\Other.cs" />
-    <Compile Include="Data\Kpi\Sections\Plan.cs" />
-    <Compile Include="Data\Kpi\Sections\PlanTwo.cs" />
-    <Compile Include="Data\Kpi\Sections\Purch.cs" />
-    <Compile Include="Data\Kpi\Sections\PurchPlan.cs" />
-    <Compile Include="Data\Kpi\Sections\PurchSub.cs" />
-    <Compile Include="Data\Kpi\Sections\PurchTotal.cs" />
-    <Compile Include="Data\Kpi\Sections\PurchTwo.cs" />
-    <Compile Include="Data\OverallData.cs" />
-    <Compile Include="Interfaces\ILoadable.cs" />
-    <Compile Include="Interfaces\ITemplateFive.cs" />
-    <Compile Include="Interfaces\ITemplateFour.cs" />
-    <Compile Include="Interfaces\ITemplateOne.cs" />
-    <Compile Include="Interfaces\ITemplateThree.cs" />
-    <Compile Include="Interfaces\ITemplateTwo.cs" />
+    <Compile Include="ExcelFiles\ExcelFileType.cs" />
+    <Compile Include="ExcelFiles\IPrpoExcelFile.cs" />
+    <Compile Include="ExcelFiles\MxPrpoExcelFile.cs" />
+    <Compile Include="ExcelFiles\UsPrpoExcelFile.cs" />
     <Compile Include="Values\Categories.cs" />
     <Compile Include="Correlation\CorrelationHeaders.cs" />
     <Compile Include="Values\Countries.cs" />
@@ -289,8 +219,8 @@
     <Compile Include="DataLoading\DataViewer.Designer.cs">
       <DependentUpon>DataViewer.cs</DependentUpon>
     </Compile>
-    <Compile Include="DragDropFeature\Exceptions\DragDropExceptions.cs" />
-    <Compile Include="DragDropFeature\DragDropUtils.cs" />
+    <Compile Include="FileProcessing\Exceptions\DragDropExceptions.cs" />
+    <Compile Include="FileProcessing\ExcelFileProcessor.cs" />
     <Compile Include="Filters\FilterUtils.cs" />
     <Compile Include="Diagnostics\AppDirectoryUtils.cs" />
     <Compile Include="Diagnostics\Logger.cs" />
@@ -916,9 +846,7 @@
     <None Include="Resources\logo.jpg" />
     <None Include="Resources\splashscreen.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\Templates\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

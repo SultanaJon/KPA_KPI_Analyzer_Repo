@@ -463,7 +463,7 @@ namespace KPA_KPI_Analyzer
 
             // Check the filter status to update the variant tools.
             UpdateVariantTools();
-            InitializeDataLoadProcess();
+            BeginDataLoadProcess();
         }
 
 

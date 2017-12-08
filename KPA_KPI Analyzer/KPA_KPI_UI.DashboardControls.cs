@@ -2,9 +2,11 @@
 using DataImporter.Excel;
 using DataImporter.Importing;
 using KPA_KPI_Analyzer.Database;
-using KPA_KPI_Analyzer.DragDropFeatures;
-using KPA_KPI_Analyzer.DragDropFeatures.Exceptions;
+using KPA_KPI_Analyzer.ExcelFiles;
+using KPA_KPI_Analyzer.FileProcessing;
+using KPA_KPI_Analyzer.FileProcessing.Exceptions;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -23,6 +25,11 @@ namespace KPA_KPI_Analyzer
         /// Thread to load the Mexico data.
         /// </summary>
         Thread mxThread;
+
+        /// <summary>
+        /// The files that the user supplied and have been processed.
+        /// </summary>
+        List<IPrpoExcelFile> processedFiles;
 
         #endregion
 
@@ -55,13 +62,16 @@ namespace KPA_KPI_Analyzer
         /// <param name="e"></param>
         private void pnl_DragDropArea_DragDrop(object sender, DragEventArgs e)
         {
+            processedFiles = new List<IPrpoExcelFile>();
+
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
                 string[] filePaths = ((string[])e.Data.GetData(DataFormats.FileDrop));
 
                 try
                 {
-                    DragDropUtils.ProcessFiles(filePaths);
+                    // Get the processed files.
+                    processedFiles = ExcelFileProcessor.ProcessFiles(filePaths);
                 }
                 catch (DragDropExceptions.DragDropFileOverloadException ex)
                 {
@@ -86,26 +96,11 @@ namespace KPA_KPI_Analyzer
 
 
 
-                Importer.NumberOfImports = filePaths.Length;
-                Importer.ImportComplete = false;
-                Importer.CompletedImports = 0;
+                Importer.SetupImportSettings(filePaths.Length);
                 Importer.ImportProgress += ImportProgress;
-                Importer.importStarted = false;
 
-                if (ExcelInfo.USUpdated || ExcelInfo.MXUpdated)
-                {
-                    lbl_Country.Text = "Loading...";
-                    lbl_topPanelNavPrpoDate.Text = "Loading...";
-                    overallData = new Overall_Data.Overall();
-                    if (AccessUtils.US_PRPO_TableExists || AccessUtils.MX_PRPO_TableExists)
-                        DatabaseUtils.DropCreateDb();
-                    else
-                        AccessUtils.CreateAccessDB();
-
-                    ShowPage(Pages.LoadingScreen);
-                    cpb_loadingScreenCircProgBar.Text = "Importing Data...";
-                    ImportTimer.Start();
-                }
+                // Begin the process of importing the files supplied
+                BeginImportProcess();
             }
         }
 

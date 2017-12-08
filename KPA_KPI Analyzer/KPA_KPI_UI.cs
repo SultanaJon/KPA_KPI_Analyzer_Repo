@@ -501,12 +501,17 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         private void InitializeProgramEvents()
         {
+            // Setup callback functions for Filters loading.
             FilterUtils.UpdateFilter += UpdateFilters;
+
+            // Setup callback functions for Dataloading.
             DatabaseUtils.RenewDataLoadTimer += RenewDataLoadTimer;
             DatabaseUtils.DisplayDragDropPage += ShowDragDropPage;
-            DragDropFeatures.DragDropUtils.DisplayDragDropPage += ShowDragDropPage;
-            DragDropFeatures.DragDropUtils.ClearMxSettings += ResetMxSettings;
-            DragDropFeatures.DragDropUtils.ClearUsSettings += ResetUsSettings;
+
+            // Setup callback functions for Drag & Drop screen
+            FileProcessing.ExcelFileProcessor.DisplayDragDropPage += ShowDragDropPage;
+            FileProcessing.ExcelFileProcessor.ClearMxSettings += ResetMxSettings;
+            FileProcessing.ExcelFileProcessor.ClearUsSettings += ResetUsSettings;
 
             // Setup callback functions that update the Variants tool on the menu strip toolbar.
             Variants.VariantsViewWindow.UpdateVariantTools += UpdateVariantTools;
@@ -673,18 +678,18 @@ namespace KPA_KPI_Analyzer
                                 }
                                 else
                                 {
-                                    InitializeDataLoadProcess();
+                                    BeginDataLoadProcess();
                                 }
                             }
                             else
                             {
-                                InitializeDataLoadProcess();
+                                BeginDataLoadProcess();
                             }
                         }
                         else // the file does not exist
                         {
                             AppDirectoryUtils.CreateFile(AppDirectoryUtils.OverallFile.US_Overall);
-                            InitializeDataLoadProcess();
+                            BeginDataLoadProcess();
                         }
                     }
                     else if(settings.reportSettings.PrpoMxReportLoaded)
@@ -710,18 +715,18 @@ namespace KPA_KPI_Analyzer
                                 }
                                 else
                                 {
-                                    InitializeDataLoadProcess();
+                                    BeginDataLoadProcess();
                                 }
                             }
                             else
                             {
-                                InitializeDataLoadProcess();
+                                BeginDataLoadProcess();
                             }
                         }
                         else // the file does not exist
                         {
                             AppDirectoryUtils.CreateFile(AppDirectoryUtils.OverallFile.MX_Overall);
-                            InitializeDataLoadProcess();
+                            BeginDataLoadProcess();
                         }
                     }
                 }
@@ -823,24 +828,6 @@ namespace KPA_KPI_Analyzer
 
 
 
-        /// <summary>
-        /// This function sets up variables to their default state before begining the data load process.
-        /// </summary>
-        public void InitializeDataLoadProcess()
-        {
-            ShowPage(Pages.LoadingScreen);
-            cpb_loadingScreenCircProgBar.Text = "Loading Data...";
-            ms_applicaitonMenuStrip.Enabled = false;
-            overallData = new Overall();
-            DatabaseUtils.DataLoadProcessStarted = false;
-            DatabaseUtils.DataLoaded = false;
-            DatabaseUtils.KPITablesLoaded = false;
-            DatabaseUtils.CompletedDataLoads = 0;
-            DatabaseUtils.ScheduledDataLoads = 0;
-            CreateThreads();
-            RenewDataLoadTimer();
-            DataLoaderTimer.Start();
-        }
 
 
 
@@ -932,7 +919,7 @@ namespace KPA_KPI_Analyzer
             UpdateAdvancedFilterCheckedItems();
 
             // Start the data load process.
-            InitializeDataLoadProcess();
+            BeginDataLoadProcess();
 
             // Update the buttons.
             UpdateFilterButtons();

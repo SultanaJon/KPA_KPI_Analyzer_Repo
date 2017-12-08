@@ -1,4 +1,6 @@
-﻿namespace KPA_KPI_Analyzer.Values
+﻿using System;
+
+namespace KPA_KPI_Analyzer.Values
 {
     public static class Constants
     {

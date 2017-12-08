@@ -25,7 +25,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
         }
 
 
-        public string Name { get { return "Purch"; } }
+        public string Name { get { return "Purch II"; } }
 
 
         public enum CategorNames

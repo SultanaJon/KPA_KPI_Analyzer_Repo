@@ -2,8 +2,9 @@
 using DataImporter.Excel;
 using DataImporter.Importing;
 using KPA_KPI_Analyzer.Database;
-using KPA_KPI_Analyzer.DragDropFeatures;
+using KPA_KPI_Analyzer.FileProcessing;
 using KPA_KPI_Analyzer.Filters;
+using KPA_KPI_Analyzer.Overall_Data;
 using KPA_KPI_Analyzer.Values;
 using System;
 using System.IO;
@@ -50,136 +51,37 @@ namespace KPA_KPI_Analyzer
         /// <param name="e"></param>
         private void ImportTimer_Tick(object sender, EventArgs e)
         {
-            ms_applicaitonMenuStrip.Enabled = false;
             try
             {
-                if (!Importer.importStarted)
-                {
-                    Importer.importStarted = true;
-                    NavigationLocked = true; // Lock the navigation bar
-                                             // load loading screen
-                    if (ExcelInfo.USUpdated)
-                    {
-                        settings.reportSettings.PrpoUsReportFileName = DragDropUtils.US_PRPO_FilePath;
-
-                        // import only the US PRPO file
-                        Importer usImport = new Importer(
-                            new ExcelInfo()
-                            {
-                                FileName = DragDropUtils.US_PRPO_FilePath,
-                                HasHeaders = true,
-                                SheetName = ExcelInfo.sheetName[(int)ExcelInfo.SheetNames.US_PRPO]
-                            },
-                            new AccessInfo()
-                            {
-                                FileName = Configuration.DbPath,
-                                TableName = AccessInfo.mainTableNames[(int)AccessInfo.MainTables.US_PRPO]
-                            }
-                        );
-
-                        usThread = new Thread((mainThread) =>
-                        {
-                            try
-                            {
-                                usImport.Run();
-                            }
-                            catch(ThreadInterruptedException)
-                            {
-                                ShowPage(Pages.DragDropDash);
-                            }
-                        });
-                        usThread.Name = "US";
-                        usThread.Start(Thread.CurrentThread);
-                    }
-
-
-                    if (ExcelInfo.MXUpdated)
-                    {
-                        settings.reportSettings.PrpoMxReportFileName = DragDropUtils.MX_PRPO_FilePath;
-
-                        // Import only the MX PRPO file.
-                        Importer mxImport = new Importer(
-                            new ExcelInfo()
-                            {
-                                FileName = DragDropUtils.MX_PRPO_FilePath,
-                                HasHeaders = true,
-                                SheetName = ExcelInfo.sheetName[(int)ExcelInfo.SheetNames.MX_PRPO]
-                            },
-                            new AccessInfo()
-                            {
-                                FileName = Configuration.DbPath,
-                                TableName = AccessInfo.mainTableNames[(int)AccessInfo.MainTables.MX_PRPO]
-                            }
-                        );
-
-
-                        mxThread = new Thread((mainThread) =>
-                        {
-                            try
-                            {
-                                mxImport.Run();
-                            }
-                            catch(ThreadInterruptedException)
-                            {
-                                ShowPage(Pages.DragDropDash);
-                            }
-                        });
-
-                        mxThread.Name = "MX";
-                        mxThread.Start(Thread.CurrentThread);
-                    }
-                }
-
-
                 if (Importer.ImportComplete)
                 {
                     Importer.ImportComplete = false;
                     ImportTimer.Stop();
-                    DatabaseUtils.DataRemovalProcessStarted = false;
-                    DatabaseUtils.DataRemoved = false;
-                    DatabaseUtils.CompletedDataRemovals = 0;
-                    DatabaseUtils.ScheduledDataRemovals = 0;
-                    DatabaseUtils.ConnectToDatabase();
 
-                    if (AccessUtils.US_PRPO_TableExists)
+                    BeginDataRemovalProcess();
+
+                    foreach(var file in processedFiles)
                     {
-                        string strFileName = Path.GetFileNameWithoutExtension(DragDropUtils.US_PRPO_FilePath);
-                        string strMonth = strFileName[7].ToString() + strFileName[8].ToString();
-                        string strday = strFileName[9].ToString() + strFileName[10].ToString();
-                        string strYear = strFileName[11].ToString() + strFileName[12].ToString() + strFileName[13].ToString() + strFileName[14].ToString();
+                        if(file is ExcelFiles.UsPrpoExcelFile)
+                        {
+                            if(AccessUtils.US_PRPO_TableExists)
+                            {
+                                DateTime dt = file.Date;
+                                settings.reportSettings.PrpoUsDate = dt.Month.ToString() + " " + dt.Day.ToString() + " " + dt.Year.ToString();
+                                settings.reportSettings.PrpoUsReportLoaded = true;
+                            }
+                        }
 
-                        int month = int.Parse(strMonth.TrimStart('0'));
-                        int day = int.Parse(strday.TrimStart('0'));
-                        int year = int.Parse(strYear);
-
-                        DateTime dt = new DateTime(year, month, day);
-                        lbl_dashboardDate.Text = dt.ToString("MMMM dd, yyyy");
-                        lbl_topPanelNavPrpoDate.Text = dt.ToString("MMMM dd, yyyy");
-                        settings.reportSettings.PrpoUsDate = month.ToString() + " " + day.ToString() + " " + year.ToString();
-                        settings.reportSettings.PrpoUsReportLoaded = true;
+                        if(file is ExcelFiles.MxPrpoExcelFile)
+                        {
+                            if(AccessUtils.MX_PRPO_TableExists)
+                            {
+                                DateTime dt = file.Date;
+                                settings.reportSettings.PrpoMxDate = dt.Month.ToString() + " " + dt.Day.ToString() + " " + dt.Year.ToString();
+                                settings.reportSettings.PrpoMxReportLoaded = true;
+                            }
+                        }
                     }
-
-                    if (AccessUtils.MX_PRPO_TableExists)
-                    {
-                        string strFileName = Path.GetFileNameWithoutExtension(DragDropUtils.MX_PRPO_FilePath);
-                        string strMonth = strFileName[7].ToString() + strFileName[8].ToString();
-                        string strday = strFileName[9].ToString() + strFileName[10].ToString();
-                        string strYear = strFileName[11].ToString() + strFileName[12].ToString() + strFileName[13].ToString() + strFileName[14].ToString();
-
-                        int month = int.Parse(strMonth.TrimStart('0'));
-                        int day = int.Parse(strday.TrimStart('0'));
-                        int year = int.Parse(strYear);
-
-                        DateTime dt = new DateTime(year, month, day);
-                        lbl_dashboardDate.Text = dt.ToString("MMMM dd, yyyy");
-                        lbl_topPanelNavPrpoDate.Text = dt.ToString("MMMM dd, yyyy");
-                        settings.reportSettings.PrpoMxDate = month.ToString() + " " + day.ToString() + " " + year.ToString();
-                        settings.reportSettings.PrpoMxReportLoaded = true;
-                    }
-
-
-                    if(Properties.Settings.Default.RemoveData)
-                        DataRemovalTimer.Start();
                 }
             }
             catch (DataImporter.Importing.Exceptions.ImportExceptions.InvalidDataFileException)
@@ -198,33 +100,6 @@ namespace KPA_KPI_Analyzer
         /// <param name="e"></param>
         private void DataRemovalTimer_Tick(object sender, EventArgs e)
         {
-            if (!DatabaseUtils.DataRemovalProcessStarted)
-            {
-                DatabaseUtils.DataRemovalProcessStarted = true;
-
-                if (AccessUtils.US_PRPO_TableExists)
-                {
-                    DatabaseUtils.ScheduledDataRemovals++;
-                    usThread = new Thread(() =>
-                    {
-                        DatabaseUtils.RemoveData(Values.Countries.Country.UnitedStates);
-                    });
-                    usThread.Start();
-                }
-
-                if (AccessUtils.MX_PRPO_TableExists)
-                {
-                    DatabaseUtils.ScheduledDataRemovals++;
-
-                    mxThread = new Thread(() =>
-                    {
-                        DatabaseUtils.RemoveData(Values.Countries.Country.Mexico);
-                    });
-                    mxThread.Start();
-                }
-            }
-
-
             if (DatabaseUtils.DataRemoved)
             {
                 DatabaseUtils.DataRemoved = false;
@@ -237,12 +112,12 @@ namespace KPA_KPI_Analyzer
                 else if (AccessUtils.US_PRPO_TableExists)
                 {
                     ConfigureToUnitedStates();
-                    InitializeDataLoadProcess();
+                    BeginDataLoadProcess();
                 }
                 else // only the mexico file exists.
                 {
                     ConfigureToMexico();
-                    InitializeDataLoadProcess();
+                    BeginDataLoadProcess();
                 }
             }
         }
@@ -383,7 +258,6 @@ namespace KPA_KPI_Analyzer
         }
 
         
-
         /// <summary>
         /// Starts the threads that will load perform the calculations on the data.
         /// </summary>
@@ -420,7 +294,193 @@ namespace KPA_KPI_Analyzer
             }
         }
 
-        #endregion
 
+        /// <summary>
+        /// Begins the import process
+        /// </summary>
+        public void BeginImportProcess()
+        {
+            lbl_Country.Text = "Loading...";
+            lbl_topPanelNavPrpoDate.Text = "Loading...";
+            overallData = new Overall_Data.Overall();
+
+            if (AccessUtils.US_PRPO_TableExists || AccessUtils.MX_PRPO_TableExists)
+                DatabaseUtils.DropCreateDb();
+            else
+                AccessUtils.CreateAccessDB();
+
+            ShowPage(Pages.LoadingScreen);
+            cpb_loadingScreenCircProgBar.Text = "Importing Data...";
+
+
+            // Start the timer to check if the import has completed.
+            ImportTimer.Start();
+
+
+            foreach (var file in processedFiles)
+            {
+                if (file is ExcelFiles.UsPrpoExcelFile)
+                {
+                    // This file is a US PRPO file.
+                    // Start importing the Report
+                    ImportPrpoExcelFile(file);
+                }
+                else if(file is ExcelFiles.MxPrpoExcelFile)
+                {
+                    // This file is a MX PRPO file.
+                    // Start importing the report
+                    ImportPrpoExcelFile(file);
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Starts the threads to import the PRPO reports.
+        /// </summary>
+        /// <param name="_excelFile"></param>
+        private void ImportPrpoExcelFile(ExcelFiles.IPrpoExcelFile _excelFile)
+        {
+            ms_applicaitonMenuStrip.Enabled = false;
+            NavigationLocked = true; // Lock the navigation bar
+
+            if (_excelFile is ExcelFiles.UsPrpoExcelFile)
+            {
+                settings.reportSettings.PrpoUsReportFileName = _excelFile.Path;
+
+                // import only the US PRPO file
+                Importer usImport = new Importer(
+                    new ExcelInfo()
+                    {
+                        FileName = _excelFile.Path,
+                        HasHeaders = true,
+                        SheetName = ExcelInfo.sheetName[(int)ExcelInfo.SheetNames.US_PRPO]
+                    },
+                    new AccessInfo()
+                    {
+                        FileName = Configuration.DbPath,
+                        TableName = AccessInfo.mainTableNames[(int)AccessInfo.MainTables.US_PRPO]
+                    }
+                );
+
+                usThread = new Thread((mainThread) =>
+                {
+                    try
+                    {
+                        usImport.Run();
+                    }
+                    catch (ThreadInterruptedException)
+                    {
+                        ShowPage(Pages.DragDropDash);
+                    }
+                });
+
+                usThread.Name = "US";
+                usThread.Start(Thread.CurrentThread);
+            }
+
+
+            if (_excelFile is ExcelFiles.MxPrpoExcelFile)
+            {
+                settings.reportSettings.PrpoMxReportFileName = _excelFile.Path;
+
+                // Import only the MX PRPO file.
+                Importer mxImport = new Importer(
+                    new ExcelInfo()
+                    {
+                        FileName = _excelFile.Path,
+                        HasHeaders = true,
+                        SheetName = ExcelInfo.sheetName[(int)ExcelInfo.SheetNames.MX_PRPO]
+                    },
+                    new AccessInfo()
+                    {
+                        FileName = Configuration.DbPath,
+                        TableName = AccessInfo.mainTableNames[(int)AccessInfo.MainTables.MX_PRPO]
+                    }
+                );
+
+
+                mxThread = new Thread((mainThread) =>
+                {
+                    try
+                    {
+                        mxImport.Run();
+                    }
+                    catch (ThreadInterruptedException)
+                    {
+                        ShowPage(Pages.DragDropDash);
+                    }
+                });
+
+                mxThread.Name = "MX";
+                mxThread.Start(Thread.CurrentThread);
+            }
+        }
+
+
+        /// <summary>
+        /// Begins the Data removal process.
+        /// </summary>
+        public void BeginDataRemovalProcess()
+        {
+            DatabaseUtils.DataRemoved = false;
+            DatabaseUtils.CompletedDataRemovals = 0;
+            DatabaseUtils.ScheduledDataRemovals = 0;
+            DatabaseUtils.ConnectToDatabase();
+
+
+            DataRemovalTimer.Start();
+            RemovePrpoData();
+        }
+
+
+        /// <summary>
+        /// Starts the threads that removes the uneeded data from the PRPO database.
+        /// </summary>
+        private void RemovePrpoData()
+        {
+            if (AccessUtils.US_PRPO_TableExists)
+            {
+                DatabaseUtils.ScheduledDataRemovals++;
+                usThread = new Thread(() =>
+                {
+                    DatabaseUtils.RemoveData(Values.Countries.Country.UnitedStates);
+                });
+                usThread.Start();
+            }
+
+            if (AccessUtils.MX_PRPO_TableExists)
+            {
+                DatabaseUtils.ScheduledDataRemovals++;
+
+                mxThread = new Thread(() =>
+                {
+                    DatabaseUtils.RemoveData(Values.Countries.Country.Mexico);
+                });
+                mxThread.Start();
+            }
+        }
+
+
+        /// <summary>
+        /// This function sets up variables to their default state before begining the data load process.
+        /// </summary>
+        public void BeginDataLoadProcess()
+        {
+            ShowPage(Pages.LoadingScreen);
+            cpb_loadingScreenCircProgBar.Text = "Loading Data...";
+            ms_applicaitonMenuStrip.Enabled = false;
+            overallData = new Overall();
+            DatabaseUtils.DataLoadProcessStarted = false;
+            DatabaseUtils.DataLoaded = false;
+            DatabaseUtils.KPITablesLoaded = false;
+            DatabaseUtils.CompletedDataLoads = 0;
+            DatabaseUtils.ScheduledDataLoads = 0;
+            CreateThreads();
+            RenewDataLoadTimer();
+            DataLoaderTimer.Start();
+        }
+
+        #endregion
     }
 }

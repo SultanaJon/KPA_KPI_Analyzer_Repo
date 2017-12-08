@@ -39,7 +39,6 @@ namespace DataImporter.Importing
         /// </summary>
         public static int NumberOfImports { get; set; }
         public static int CompletedImports { get; set; }
-        public static bool importStarted { get; set; }
         public static bool ImportComplete { get; set; }
 
 
@@ -68,6 +67,21 @@ namespace DataImporter.Importing
         {
             ExcelInformation = excelData;
             AccessInformation = accessData;
+        }
+
+
+
+
+
+        /// <summary>
+        /// Setup the import process.
+        /// </summary>
+        /// <param name="_importCount">The number of file being imported</param>
+        public static void SetupImportSettings(int _importCount)
+        {
+            NumberOfImports = _importCount;
+            ImportComplete = false;
+            CompletedImports = 0;
         }
 
 

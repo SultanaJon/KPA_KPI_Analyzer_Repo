@@ -5,25 +5,6 @@ namespace DataImporter.Excel
 {
     public class ExcelInfo
     {
-
-        /// <summary>
-        /// Boolean value indicating wheather or not the US excel was updated or not.
-        /// </summary>
-        public static bool USUpdated { get; set; }
-
-
-
-
-
-        /// <summary>
-        /// Boolean value indicating whether or not the Mexico excel file was updated or not.
-        /// </summary>
-        public static bool MXUpdated { get; set; }
-
-
-
-
-
         /// <summary>
         /// Full file path of where the data is located to be imported.
         /// </summary>

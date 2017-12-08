@@ -72,18 +72,18 @@ namespace KPA_KPI_Analyzer
                         }
                         else
                         {
-                            InitializeDataLoadProcess();
+                            BeginDataLoadProcess();
                         }
                     }
                     else
                     {
-                        InitializeDataLoadProcess();
+                        BeginDataLoadProcess();
                     }
                 }
                 else // the file does not exist
                 {
                     AppDirectoryUtils.CreateFile(AppDirectoryUtils.OverallFile.US_Overall);
-                    InitializeDataLoadProcess();
+                    BeginDataLoadProcess();
                 }
             }
             else
@@ -109,18 +109,18 @@ namespace KPA_KPI_Analyzer
                         }
                         else
                         {
-                            InitializeDataLoadProcess();
+                            BeginDataLoadProcess();
                         }
                     }
                     else
                     {
-                        InitializeDataLoadProcess();
+                        BeginDataLoadProcess();
                     }
                 }
                 else // the file does not exist
                 {
                     AppDirectoryUtils.CreateFile(AppDirectoryUtils.OverallFile.MX_Overall);
-                    InitializeDataLoadProcess();
+                    BeginDataLoadProcess();
                 }
             }
         }

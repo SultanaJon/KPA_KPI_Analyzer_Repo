@@ -40,7 +40,6 @@ namespace KPA_KPI_Analyzer.Database
         /// <summary>s
         /// data used to check the state of a data removal process.
         /// </summary>
-        public static bool DataRemovalProcessStarted { get; set; }
         public static bool DataRemoved { get; set; }
         public static int CompletedDataRemovals { get; set; }
         public static int ScheduledDataRemovals { get; set; }
