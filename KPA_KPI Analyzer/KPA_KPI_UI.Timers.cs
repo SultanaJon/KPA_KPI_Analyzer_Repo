@@ -339,7 +339,7 @@ namespace KPA_KPI_Analyzer
         /// Starts the threads to import the PRPO reports.
         /// </summary>
         /// <param name="_excelFile"></param>
-        private void ImportPrpoExcelFile(ExcelFiles.IPrpoExcelFile _excelFile)
+        private void ImportPrpoExcelFile(ExcelFiles.PrpoExcelFile _excelFile)
         {
             ms_applicaitonMenuStrip.Enabled = false;
             NavigationLocked = true; // Lock the navigation bar

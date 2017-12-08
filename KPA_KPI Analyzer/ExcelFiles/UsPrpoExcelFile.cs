@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KPA_KPI_Analyzer.ExcelFiles
 {
-    public class UsPrpoExcelFile : IPrpoExcelFile
+    public class UsPrpoExcelFile : PrpoExcelFile
     {
         /// <summary>
         /// Default Constructor

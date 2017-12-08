@@ -29,7 +29,7 @@ namespace KPA_KPI_Analyzer
         /// <summary>
         /// The files that the user supplied and have been processed.
         /// </summary>
-        List<IPrpoExcelFile> processedFiles;
+        List<PrpoExcelFile> processedFiles;
 
         #endregion
 
@@ -62,7 +62,7 @@ namespace KPA_KPI_Analyzer
         /// <param name="e"></param>
         private void pnl_DragDropArea_DragDrop(object sender, DragEventArgs e)
         {
-            processedFiles = new List<IPrpoExcelFile>();
+            processedFiles = new List<PrpoExcelFile>();
 
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
@@ -73,17 +73,17 @@ namespace KPA_KPI_Analyzer
                     // Get the processed files.
                     processedFiles = ExcelFileProcessor.ProcessFiles(filePaths);
                 }
-                catch (DragDropExceptions.DragDropFileOverloadException ex)
+                catch (FileProcessingExceptions.PrpoFileOverloadException ex)
                 {
                     // An attempt of more than two files were dropped on the form.
                     MessageBox.Show(ex.Message);
                 }
-                catch (DragDropExceptions.DragDropInvalidExtensionException ex)
+                catch (FileProcessingExceptions.FileProcessingInvalidExtensionException ex)
                 {
                     // Files were dropped that had an invalid file extention
                     MessageBox.Show(ex.Message);
                 }
-                catch (DragDropExceptions.DragDropInvalidExcelFileException ex)
+                catch (FileProcessingExceptions.FileProcessingInvalidExcelFileException ex)
                 {
                     // Files were dropped that were not PRPO files
                     MessageBox.Show(ex.Message);

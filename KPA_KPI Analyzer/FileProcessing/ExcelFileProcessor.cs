@@ -22,9 +22,9 @@ namespace KPA_KPI_Analyzer.FileProcessing
         public static event ClearMxSettingsHandler ClearMxSettings;
 
 
-        private static List<IPrpoExcelFile> files;
-        public static IPrpoExcelFile usPrpoFile = null;
-        public static IPrpoExcelFile mxPrpoFile = null;
+        private static List<PrpoExcelFile> files;
+        public static PrpoExcelFile usPrpoFile = null;
+        public static PrpoExcelFile mxPrpoFile = null;
 
 
 
@@ -32,23 +32,23 @@ namespace KPA_KPI_Analyzer.FileProcessing
         /// This file will begin to process the files that were dropped into the form.
         /// </summary>
         /// <param name="filePaths">The file paths of the files that are to be imported to excel</param>
-        public static List<IPrpoExcelFile> ProcessFiles(string[] filePaths)
+        public static List<PrpoExcelFile> ProcessFiles(string[] filePaths)
         {
             // Create a new list of excel files to return
-            files = new List<IPrpoExcelFile>();
+            files = new List<PrpoExcelFile>();
 
             // Check for too many dropped files
             if (filePaths.Length > 2)
-                throw new DragDropExceptions.DragDropFileOverloadException("Attempted to drop more than two files. Please drop only two or less excel files.");
+                throw new FileProcessingExceptions.PrpoFileOverloadException("Attempted to drop more than two files. Please drop only two or less excel files.");
 
             // Check for invalid file types
             foreach (var file in filePaths)
             {
                 if (Path.GetExtension(file).ToUpper() != ".XLSX" && Path.GetExtension(file).ToUpper() != ".XLS")
-                    throw new DragDropExceptions.DragDropInvalidExtensionException(Path.GetFileName(file) + " has a incompatable file type. Please only supply excel files.");
+                    throw new FileProcessingExceptions.FileProcessingInvalidExtensionException(Path.GetFileName(file) + " has a incompatable file type. Please only supply excel files.");
 
                 if (!file.Contains("PRPO")) // the file is not a PRPO file
-                    throw new DragDropExceptions.DragDropInvalidExcelFileException("You must supply a either US & MX PRPO file.Do not drop PO_PROG or PURDASH!");
+                    throw new FileProcessingExceptions.FileProcessingInvalidExcelFileException("You must supply a either US & MX PRPO file.Do not drop PO_PROG or PURDASH!");
                 else
                     ProcessPrpoReport(file);
             }
@@ -102,7 +102,7 @@ namespace KPA_KPI_Analyzer.FileProcessing
         /// are no longer accepted due to query changes because of column changes.
         /// </summary>
         /// <returns></returns>
-        private static bool GetPrpoDate(IPrpoExcelFile _file)
+        private static bool GetPrpoDate(PrpoExcelFile _file)
         {
             try
             {

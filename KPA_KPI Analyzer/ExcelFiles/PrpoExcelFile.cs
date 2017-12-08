@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KPA_KPI_Analyzer.ExcelFiles
 {
-    public class IPrpoExcelFile
+    public class PrpoExcelFile
     {
         /// <summary>
         /// The path of the excel file
