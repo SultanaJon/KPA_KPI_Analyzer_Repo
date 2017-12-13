@@ -85,7 +85,7 @@ namespace DataExporter
                     {
                         foreach (string str in listRow)
                         {
-                            workSheet.Cells[row, col].Value = str;
+                            workSheet.Cells[row, col].Value = double.Parse(str);
                             ++col;
                         }
                     }
@@ -105,7 +105,7 @@ namespace DataExporter
                     {
                         foreach (string str in listRow)
                         {
-                            workSheet.Cells[row, col].Value = str;
+                            workSheet.Cells[row, col].Value = double.Parse(str);
                             ++col;
                         }
                     }
@@ -130,7 +130,7 @@ namespace DataExporter
                     {
                         foreach (string str in listRow)
                         {
-                            workSheet.Cells[row, col].Value = str;
+                            workSheet.Cells[row, col].Value = double.Parse(str);
                             ++col;
                         }
                     }
@@ -150,7 +150,7 @@ namespace DataExporter
                     {
                         foreach (string str in listRow)
                         {
-                            workSheet.Cells[row, col].Value = str;
+                            workSheet.Cells[row, col].Value = double.Parse(str);
                             ++col;
                         }
                     }
@@ -170,7 +170,7 @@ namespace DataExporter
                     {
                         foreach (string str in listRow)
                         {
-                            workSheet.Cells[row, col].Value = str;
+                            workSheet.Cells[row, col].Value = double.Parse(str);
                             ++col;
                         }
                     }

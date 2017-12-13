@@ -72,35 +72,41 @@ namespace KPA_KPI_Analyzer
                 {
                     // Get the processed files.
                     processedFiles = ExcelFileProcessor.ProcessFiles(filePaths);
+
+                    Importer.SetupImportSettings(filePaths.Length);
+                    Importer.ImportProgress += ImportProgress;
+
+                    // Begin the process of importing the files supplied
+                    BeginImportProcess();
                 }
                 catch (FileProcessingExceptions.PrpoFileOverloadException ex)
                 {
                     // An attempt of more than two files were dropped on the form.
                     MessageBox.Show(ex.Message);
+                    ShowPage(Pages.DragDropDash);
                 }
                 catch (FileProcessingExceptions.FileProcessingInvalidExtensionException ex)
                 {
                     // Files were dropped that had an invalid file extention
                     MessageBox.Show(ex.Message);
+                    ShowPage(Pages.DragDropDash);
                 }
                 catch (FileProcessingExceptions.FileProcessingInvalidExcelFileException ex)
                 {
                     // Files were dropped that were not PRPO files
                     MessageBox.Show(ex.Message);
+                    ShowPage(Pages.DragDropDash);
+                }
+                catch(FileProcessingExceptions.PrpoDateProcessingErrorException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    ShowPage(Pages.DragDropDash);
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
+                    ShowPage(Pages.DragDropDash);
                 }
-
-
-
-
-                Importer.SetupImportSettings(filePaths.Length);
-                Importer.ImportProgress += ImportProgress;
-
-                // Begin the process of importing the files supplied
-                BeginImportProcess();
             }
         }
 

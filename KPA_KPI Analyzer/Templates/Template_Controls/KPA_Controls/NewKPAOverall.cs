@@ -1395,6 +1395,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                                 dv.DataLoader += KpaDataTableLoader.FollowUp.LoadConfirmedVsPlanDateDataTable;
                                 dv.ColumnTag = (int)TempOne.DataViews.Total;
                                 break;
+                            case 11: // This is % Favorable. We want to ignore any cell double clicks.
+                                return;
                         }
                         break;
                     case 10: // Confirmed Date for Upcoming Deliveries
@@ -1437,6 +1439,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                                 dv.DataLoader += KpaDataTableLoader.FollowUp.LoadConfirmedDateForUpcomingDeliveriesDataTable;
                                 dv.ColumnTag = (int)TempOne.DataViews.Total;
                                 break;
+                            case 11: // This is % Favorable. We want to ignore any cell double clicks.
+                                return;
                         }
                         break;
                     case 11: // Late to Confirmed
@@ -1906,7 +1910,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                         {
                             case 0: // section
                             case 1: // category
-                                return;
                             case 2: // Average
                                 return;
                             case 3: // <-3 Weeks
@@ -1949,11 +1952,15 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                                 dv.DataLoader += KpaDataTableLoader.CurrentPlanVsActual.LoadCurrentPlanVsCurrentConfDateDataTable;
                                 dv.ColumnTag = (int)TempTwo.DataViews.Total;
                                 break;
+                            case 13: // This is % Favorable. We want to ignore any cell double clicks.
+                                return;
                         }
                         break;
                     case 1: // Current Plan Date vs Current Confirmation Date - Hot Jobs Only
                         switch (columnIndex)
                         {
+                            case 0:
+                            case 1:
                             case 2: // Average
                                 return;
                             case 3: // <-3 Weeks
@@ -1996,6 +2003,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                                 dv.DataLoader += KpaDataTableLoader.CurrentPlanVsActual.LoadCurrPlandDateVsCurrConfDateOpenPOs_HotJobsDataTable;
                                 dv.ColumnTag = (int)TempTwo.DataViews.Total;
                                 break;
+                            case 13: // This is % Favorable. We want to ignore any cell double clicks.
+                                return;
                         }
                         break;
                 }

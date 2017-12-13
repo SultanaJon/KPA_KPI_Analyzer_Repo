@@ -783,6 +783,7 @@ namespace KPA_KPI_Analyzer
                     break;
                 case 1:
                     NavigationLocked = true;
+                    ms_applicaitonMenuStrip.Enabled = false;
                     tblpnl_DragDrop.Visible = true;
                     tblpnl_DragDrop.BringToFront();
                     break;
@@ -791,10 +792,14 @@ namespace KPA_KPI_Analyzer
                     tblpnl_Filters.BringToFront();
                     break;
                 case 3:
+                    NavigationLocked = true;
+                    ms_applicaitonMenuStrip.Enabled = false;
                     pnl_loadingScreen.Visible = true;
                     pnl_loadingScreen.BringToFront();
                     break;
                 case 4:
+                    NavigationLocked = true;
+                    ms_applicaitonMenuStrip.Enabled = false;
                     pnl_CountrySelector.Visible = true;
                     pnl_CountrySelector.BringToFront();
                     break;

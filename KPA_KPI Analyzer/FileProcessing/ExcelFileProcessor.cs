@@ -1,6 +1,7 @@
 ﻿using DataImporter.Excel;
 using KPA_KPI_Analyzer.ExcelFiles;
 using KPA_KPI_Analyzer.FileProcessing.Exceptions;
+using KPA_KPI_Analyzer.Values;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -70,6 +71,9 @@ namespace KPA_KPI_Analyzer.FileProcessing
             // Get any excel files created
             GatherFiles();
 
+            // Reset the temporary file processing variables
+            ResetFileProcessing();
+
             // Return the files.
             return files;
         }
@@ -102,7 +106,7 @@ namespace KPA_KPI_Analyzer.FileProcessing
         /// are no longer accepted due to query changes because of column changes.
         /// </summary>
         /// <returns></returns>
-        private static bool GetPrpoDate(PrpoExcelFile _file)
+        private static void GetPrpoDate(PrpoExcelFile _file)
         {
             try
             {
@@ -118,14 +122,20 @@ namespace KPA_KPI_Analyzer.FileProcessing
 
                 DateTime dt = new DateTime(year, month, day);
 
+
+                if(dt < Globals.LastestExceptedPrpoReportDate)
+                {
+                    ResetFileProcessing();
+                    throw new FileProcessingExceptions.PrpoDateProcessingErrorException("The date of one or more of the PRPO reports is no longer excepted by the analyzer.");
+                }
+
+
                 // Store the date of the file within the excel file object
                 _file.Date = dt;
-                return true;
             }
-            catch (Exception ex)
+            catch(FileProcessingExceptions.PrpoDateProcessingErrorException ex)
             {
-                MessageBox.Show(ex.Message, "Drag & drop report date processing error.", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                throw ex;
             }
         }
 
@@ -140,7 +150,6 @@ namespace KPA_KPI_Analyzer.FileProcessing
         {
             usPrpoFile = null;
             mxPrpoFile = null;
-            DisplayDragDropPage();
         }
 
 
@@ -162,7 +171,7 @@ namespace KPA_KPI_Analyzer.FileProcessing
                     usPrpoFile.AssociatedCountry = Values.Countries.Country.UnitedStates;
 
                     // Get and store the file
-                    GetPrpoDate(usPrpoFile);
+                    GetPrpoDate(usPrpoFile);                    
                 }
                 else
                 {

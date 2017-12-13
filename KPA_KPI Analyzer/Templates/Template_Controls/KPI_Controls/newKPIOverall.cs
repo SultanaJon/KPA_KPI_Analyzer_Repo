@@ -1127,7 +1127,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         {
                             case 0: // section
                             case 1: // category
-                                return;
                             case 2: // Average
                                 return;
                             case 3: // <= -22 Days
@@ -1170,6 +1169,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                                 dv.DataLoader += KpiDataTableLoader.Plan.LoadPrPlanDateVsCurrentPlanDateDataTable;
                                 dv.ColumnTag = (int)TempThree.DataViews.Total;
                                 break;
+                            case 13: // empy cell for % unconfirmed. This is not being recorded for this KPI
+                            case 14: // This is % Favorable and we want to ignore any cell double clicks.
+                                return;
                         }
                         break;
                     case 1: // (Original Plan Date - 2nd Lvl Rel Date) vs Coded Lead-time
@@ -1177,7 +1179,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         {
                             case 0: // section
                             case 1: // category
-                                return;
                             case 2: // Average
                                 return;
                             case 3: // <= -22 Days
@@ -1220,6 +1221,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                                 dv.DataLoader += KpiDataTableLoader.Plan.LoadOrigPlanDate2ndLvlRelDate_CodedLeadDataTable;
                                 dv.ColumnTag = (int)TempThree.DataViews.Total;
                                 break;
+                            case 13: // empy cell for % unconfirmed. This is not being recorded for this KPI
+                            case 14: // This is % Favorable and we want to ignore any cell double clicks.
+                                return;
                         }
                         break;
                     case 2: // (Current Plan Date - 2nd Lvl Rel Date) vs Coded Lead-time
@@ -1227,7 +1231,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         {
                             case 0: // section
                             case 1: // category
-                                return;
                             case 2: // Average
                                 return;
                             case 3: // <= -22 Days
@@ -1270,6 +1273,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                                 dv.DataLoader += KpiDataTableLoader.Plan.LoadCurrPlanDate2ndLvlRelDate_CodedLeadDataTable;
                                 dv.ColumnTag = (int)TempThree.DataViews.Total;
                                 break;
+                            case 13: // empy cell for % unconfirmed. This is not being recorded for this KPI
+                            case 14: // This is % Favorable and we want to ignore any cell double clicks.
+                                return;
                         }
                         break;
                 }
@@ -1298,7 +1304,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         {
                             case 0: // section
                             case 1: // category
-                                return;
                             case 2: // Average
                                 return;
                             case 3: // <= -22 Days
@@ -1345,6 +1350,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                                 dv.DataLoader += KpiDataTableLoader.Purch.LoadInitialConfVsPrPlanDateDataTable;
                                 dv.ColumnTag = (int)TempThree.DataViews.PercentUnconf;
                                 break;
+                            case 14: // This is % Favorable and we want to ignore any cell double clicks.
+                                return;
                         }
                         break;
                 }
@@ -1373,7 +1380,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         {
                             case 0: // section
                             case 1: // category
-                                return;
                             case 2: // Average
                                 return;
                             case 3: // <= -22 Days
@@ -1420,6 +1426,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                                 dv.DataLoader += KpiDataTableLoader.FollowUp.LoadCurrConfVsInitConfDataTable;
                                 dv.ColumnTag = (int)TempThree.DataViews.PercentUnconf;
                                 break;
+                            case 14: // This is % Favorable and we want to ignore any cell double clicks.
+                                return;
                         }
                         break;
                     case 5: // Final Confirmation Date vs Final Plan Date
@@ -1474,6 +1482,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                                 dv.DataLoader += KpiDataTableLoader.FollowUp.LoadFinalConfDateVsFinalPlanDateDataTable;
                                 dv.ColumnTag = (int)TempThree.DataViews.PercentUnconf;
                                 break;
+                            case 14: // This is % Favorable and we want to ignore any cell double clicks.
+                                return;
                         }
                         break;
                     case 6: // Receipt Date vs Current Plan Date
@@ -1524,6 +1534,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                                 dv.DataLoader += KpiDataTableLoader.FollowUp.LoadRecDateVsCurrPlanDateDataTable;
                                 dv.ColumnTag = (int)TempThree.DataViews.Total;
                                 break;
+                            case 13: // empy cell for % unconfirmed. This is not being recorded for this KPI
+                            case 14: // This is % Favorable and we want to ignore any cell double clicks.
+                                return;
                         }
                         break;
                     case 7: // Receipt Date vs Original Confirmation Date
@@ -1578,6 +1591,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                                 dv.DataLoader += KpiDataTableLoader.FollowUp.LoadRecDateVsOrigConfDateDataTable;
                                 dv.ColumnTag = (int)TempThree.DataViews.PercentUnconf;
                                 break;
+                            case 14: // This is % Favorable and we want to ignore any cell double clicks.
+                                return;
                         }
                         break;
                     case 8: // Receipt Date vs Current Confirmation Date
@@ -1632,6 +1647,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                                 dv.DataLoader += KpiDataTableLoader.FollowUp.LoadRecDateVsCurrConfDateDataTable;
                                 dv.ColumnTag = (int)TempThree.DataViews.PercentUnconf;
                                 break;
+                            case 14: // This is % Favorable and we want to ignore any cell double clicks.
+                                return;
                         }
                         break;
                 }

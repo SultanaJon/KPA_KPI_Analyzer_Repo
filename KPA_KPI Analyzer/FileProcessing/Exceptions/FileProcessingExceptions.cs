@@ -29,5 +29,14 @@ namespace KPA_KPI_Analyzer.FileProcessing.Exceptions
             public FileProcessingInvalidExcelFileException() { }
             public FileProcessingInvalidExcelFileException(string message) : base(message) { }
         }
+
+
+
+
+        public class PrpoDateProcessingErrorException : Exception
+        {
+            public PrpoDateProcessingErrorException() { }
+            public PrpoDateProcessingErrorException(string message) : base(message) { }
+        }
     }
 }

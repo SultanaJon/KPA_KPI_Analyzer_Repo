@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.tblPnl_template = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btn_Two = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -150,8 +149,8 @@
             this.panel41 = new System.Windows.Forms.Panel();
             this.lbl_analysisTwo = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.lbl_analysisOne = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.datavizLoadTimer = new System.Windows.Forms.Timer(this.components);
             this.dataviz = new Bunifu.DataViz.BunifuDataViz();
+            this.datavizLoadTimer = new System.Windows.Forms.Timer();
             this.tblPnl_template.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -2119,10 +2118,6 @@
             this.lbl_analysisOne.TabIndex = 2;
             this.lbl_analysisOne.Text = "All information below is based on data from:";
             // 
-            // datavizLoadTimer
-            // 
-            this.datavizLoadTimer.Tick += new System.EventHandler(this.datavizLoadTimer_Tick);
-            // 
             // dataviz
             // 
             this.dataviz.animationEnabled = false;
@@ -2149,6 +2144,10 @@
             this.dataviz.TabIndex = 3;
             this.dataviz.Theme = Bunifu.DataViz.BunifuDataViz._theme.theme1;
             this.dataviz.Title = "";
+            // 
+            // datavizLoadTimer
+            // 
+            this.datavizLoadTimer.Tick += new System.EventHandler(this.datavizLoadTimer_Tick);
             // 
             // KPACurrentPlanActualTemplate
             // 
