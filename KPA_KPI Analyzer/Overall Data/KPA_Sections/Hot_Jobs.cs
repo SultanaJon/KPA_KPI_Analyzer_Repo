@@ -83,7 +83,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                         continue;
                     }
 
-                    string[] strDate = (dr["PR Fully Rel Date"].ToString()).Split('/');
+                    string[] strDate = (dr["PR 2° Rel# Date"].ToString()).Split('/');
                     int year = int.Parse(strDate[2]);
                     int month = int.Parse(strDate[0].TrimStart('0'));
                     int day = int.Parse(strDate[1].TrimStart('0'));
@@ -240,7 +240,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                         continue;
                     }
 
-                    string[] strDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
+                    string[] strDate = (dr["Del#Conf#Date"].ToString()).Split('/');
                     int year = int.Parse(strDate[2]);
                     int month = int.Parse(strDate[0].TrimStart('0'));
                     int day = int.Parse(strDate[1].TrimStart('0'));

@@ -202,14 +202,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                         // This is a tempory fix for MEXICO TAG_MEXICO_FIX
                         // DELETE the refion below this commented code and uncomment this code.
 
-                        //string[] strPr2ndLvlRelDt = (dr["PR Fully Rel Date"].ToString()).Split('/');
+                        //string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
                         //int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
                         //int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
                         //int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
 
                         #region MEXICOs TEMP FIX
 
-                        string[] strPr2ndLvlRelDt = (dr["PR Fully Rel Date"].ToString()).Split('/');
+                        string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
                         int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
                         int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0]);
                         int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1]);
@@ -357,14 +357,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                         // This is a tempory fix for MEXICO TAG_MEXICO_FIX
                         // DELETE the refion below this commented code and uncomment this code.
 
-                        //string[] strPr2ndLvlRelDt = (dr["PR Fully Rel Date"].ToString()).Split('/');
+                        //string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
                         //int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
                         //int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
                         //int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
 
                         #region MEXICOs TEMP FIX
 
-                        string[] strPr2ndLvlRelDt = (dr["PR Fully Rel Date"].ToString()).Split('/');
+                        string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
                         int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
                         int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0]);
                         int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1]);
@@ -735,7 +735,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                         DateTime firstConfDate = new DateTime(firstConfYear, firstConfMonth, firstConfDay);
 
-                        string[] strDdelConfDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
+                        string[] strDdelConfDate = (dr["Del#Conf#Date"].ToString()).Split('/');
                         int delConfYear = int.Parse(strDdelConfDate[2]);
                         int delConfMonth = int.Parse(strDdelConfDate[0].TrimStart('0'));
                         int delConfDay = int.Parse(strDdelConfDate[1].TrimStart('0'));
@@ -881,7 +881,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                             continue;
                         }
 
-                        string[] strDelConfDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
+                        string[] strDelConfDate = (dr["Del#Conf#Date"].ToString()).Split('/');
                         int delConfYear = int.Parse(strDelConfDate[2]);
                         int delConfMonth = int.Parse(strDelConfDate[0]);
                         int delConfDay = int.Parse(strDelConfDate[1]);
@@ -1357,7 +1357,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                         DateTime lastPORecDate = new DateTime(lastPORecDtYear, lastPORecDtMonth, lastPORecDtDay);
 
-                        string[] strCurrConfDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
+                        string[] strCurrConfDate = (dr["Del#Conf#Date"].ToString()).Split('/');
                         int currConfYear = int.Parse(strCurrConfDate[2]);
                         int currConfMonth = int.Parse(strCurrConfDate[0]);
                         int currConfDay = int.Parse(strCurrConfDate[1]);
@@ -1529,14 +1529,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                         // This is a tempory fix for MEXICO TAG_MEXICO_FIX
                         // DELETE the refion below this commented code and uncomment this code.
 
-                        //string[] strPr2ndLvlRelDt = (dr["PR Fully Rel Date"].ToString()).Split('/');
+                        //string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
                         //int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
                         //int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
                         //int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
 
                         #region MEXICOs TEMP FIX
 
-                        string[] strPr2ndLvlRelDt = (dr["PR Fully Rel Date"].ToString()).Split('/');
+                        string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
                         int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
                         int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0]);
                         int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1]);
@@ -1696,14 +1696,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                         // This is a tempory fix for MEXICO TAG_MEXICO_FIX
                         // DELETE the refion below this commented code and uncomment this code.
 
-                        //string[] strPr2ndLvlRelDt = (dr["PR Fully Rel Date"].ToString()).Split('/');
+                        //string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
                         //int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
                         //int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
                         //int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
 
                         #region MEXICOs TEMP FIX
 
-                        string[] strPr2ndLvlRelDt = (dr["PR Fully Rel Date"].ToString()).Split('/');
+                        string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
                         int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
                         int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0]);
                         int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1]);
@@ -1910,14 +1910,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                         // This is a tempory fix for MEXICO TAG_MEXICO_FIX
                         // DELETE the refion below this commented code and uncomment this code.
 
-                        //string[] strPr2ndLvlRelDt = (dr["PR Fully Rel Date"].ToString()).Split('/');
+                        //string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
                         //int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
                         //int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
                         //int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
 
                         #region MEXICOs TEMP FIX
 
-                        string[] strPr2ndLvlRelDt = (dr["PR Fully Rel Date"].ToString()).Split('/');
+                        string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
                         int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
                         int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0]);
                         int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1]);
@@ -2422,14 +2422,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                         // This is a tempory fix for MEXICO TAG_MEXICO_FIX
                         // DELETE the refion below this commented code and uncomment this code.
 
-                        //string[] strPr2ndLvlRelDt = (dr["PR Fully Rel Date"].ToString()).Split('/');
+                        //string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
                         //int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
                         //int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
                         //int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
 
                         #region MEXICOs TEMP FIX
 
-                        string[] strPr2ndLvlRelDt = (dr["PR Fully Rel Date"].ToString()).Split('/');
+                        string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
                         int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
                         int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0]);
                         int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1]);
@@ -2774,14 +2774,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                         // This is a tempory fix for MEXICO TAG_MEXICO_FIX
                         // DELETE the refion below this commented code and uncomment this code.
 
-                        //string[] strPr2ndLvlRelDt = (dr["PR Fully Rel Date"].ToString()).Split('/');
+                        //string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
                         //int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
                         //int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
                         //int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
 
                         #region MEXICOs TEMP FIX
 
-                        string[] strPr2ndLvlRelDt = (dr["PR Fully Rel Date"].ToString()).Split('/');
+                        string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
                         int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
                         int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0]);
                         int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1]);
@@ -3244,14 +3244,14 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                         // This is a tempory fix for MEXICO TAG_MEXICO_FIX
                         // DELETE the refion below this commented code and uncomment this code.
 
-                        //string[] strPr2ndLvlRelDt = (dr["PR Fully Rel Date"].ToString()).Split('/');
+                        //string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
                         //int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
                         //int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
                         //int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
 
                         #region MEXICOs TEMP FIX
 
-                        string[] strPr2ndLvlRelDt = (dr["PR Fully Rel Date"].ToString()).Split('/');
+                        string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
                         int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
                         int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0]);
                         int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1]);

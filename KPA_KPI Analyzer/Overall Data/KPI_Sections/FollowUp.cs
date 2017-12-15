@@ -2,7 +2,6 @@
 using KPA_KPI_Analyzer.Templates;
 using System;
 using System.Data;
-using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
@@ -101,7 +100,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
 
                     DateTime firstConfDate = new DateTime(firstConfYear, firstConfMonth, firstConfDay);
 
-                    string[] strDelConfDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
+                    string[] strDelConfDate = (dr["Del#Conf#Date"].ToString()).Split('/');
                     int delConfYear = int.Parse(strDelConfDate[2]);
                     int delConfMonth = int.Parse(strDelConfDate[0].TrimStart('0'));
                     int delConfDay = int.Parse(strDelConfDate[1].TrimStart('0'));
@@ -210,7 +209,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                         continue;
                     }
 
-                    string[] strDelConfDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
+                    string[] strDelConfDate = (dr["Del#Conf#Date"].ToString()).Split('/');
                     int delConfYear = int.Parse(strDelConfDate[2]);
                     int delConfMonth = int.Parse(strDelConfDate[0]);
                     int delConfDay = int.Parse(strDelConfDate[1]);
@@ -337,7 +336,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                     int lastPORecDtYear = int.Parse(strLastPORecDate[2]);
                     int lastPORecDtMonth = int.Parse(strLastPORecDate[0]);
                     int lastPORecDtDay = int.Parse(strLastPORecDate[1]);
-                    Debug.WriteLine(lastPORecDtYear + "/" + lastPORecDtMonth + "/" + lastPORecDtDay);
+
                     DateTime lastPORecDate = new DateTime(lastPORecDtYear, lastPORecDtMonth, lastPORecDtDay);
 
                     string[] strCurrPlanDate = (dr["Rescheduling date"].ToString()).Split('/');
@@ -574,7 +573,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
 
                     DateTime lastPORecDate = new DateTime(lastPORecDtYear, lastPORecDtMonth, lastPORecDtDay);
 
-                    string[] strCurrConfDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
+                    string[] strCurrConfDate = (dr["Del#Conf#Date"].ToString()).Split('/');
                     int currConfYear = int.Parse(strCurrConfDate[2]);
                     int currConfMonth = int.Parse(strCurrConfDate[0]);
                     int currConfDay = int.Parse(strCurrConfDate[1]);
@@ -682,7 +681,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.StackTrace, "KPI -> Follow Up Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "KPI -> Follow Up Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw new ThreadInteruptedException();
             }
         }

@@ -346,7 +346,7 @@ namespace KPA_KPI_Analyzer.DataLoading
                 dgv_dataViewerDgv.Columns["Open PR Qty"].DisplayIndex = 11;
                 dgv_dataViewerDgv.Columns["Requisn Date"].DisplayIndex = 12;
                 dgv_dataViewerDgv.Columns["PR Delivery Date"].DisplayIndex = 13;
-                dgv_dataViewerDgv.Columns["PR Fully Rel Date"].DisplayIndex = 14;
+                dgv_dataViewerDgv.Columns["PR 2° Rel# Date"].DisplayIndex = 14;
                 dgv_dataViewerDgv.Columns["WBS Element"].DisplayIndex = 15;
                 dgv_dataViewerDgv.Columns["POPurcGroup"].DisplayIndex = 16;
                 dgv_dataViewerDgv.Columns["Purchasing Doc#"].DisplayIndex = 17;
@@ -366,7 +366,7 @@ namespace KPA_KPI_Analyzer.DataLoading
                 dgv_dataViewerDgv.Columns["PO Sign Date"].DisplayIndex = 31;
                 dgv_dataViewerDgv.Columns["Delivery Date"].DisplayIndex = 32;
                 dgv_dataViewerDgv.Columns["Rescheduling date"].DisplayIndex = 33;
-                dgv_dataViewerDgv.Columns["Latest Conf#Dt"].DisplayIndex = 34;
+                dgv_dataViewerDgv.Columns["Del#Conf#Date"].DisplayIndex = 34;
                 dgv_dataViewerDgv.Columns["1st Conf Date"].DisplayIndex = 35;
                 dgv_dataViewerDgv.Columns["1st Conf Creation Da"].DisplayIndex = 36;
             }
@@ -508,7 +508,7 @@ namespace KPA_KPI_Analyzer.DataLoading
             DataViewerUtils.Data.Columns["Open PR Qty"].SetOrdinal(11);
             DataViewerUtils.Data.Columns["Requisn Date"].SetOrdinal(12);
             DataViewerUtils.Data.Columns["PR Delivery Date"].SetOrdinal(13);
-            DataViewerUtils.Data.Columns["PR Fully Rel Date"].SetOrdinal(14);
+            DataViewerUtils.Data.Columns["PR 2° Rel# Date"].SetOrdinal(14);
             DataViewerUtils.Data.Columns["WBS Element"].SetOrdinal(15);
             DataViewerUtils.Data.Columns["POPurcGroup"].SetOrdinal(16);
             DataViewerUtils.Data.Columns["Purchasing Doc#"].SetOrdinal(17);
@@ -528,7 +528,7 @@ namespace KPA_KPI_Analyzer.DataLoading
             DataViewerUtils.Data.Columns["PO Sign Date"].SetOrdinal(31);
             DataViewerUtils.Data.Columns["Delivery Date"].SetOrdinal(32);
             DataViewerUtils.Data.Columns["Rescheduling date"].SetOrdinal(33);
-            DataViewerUtils.Data.Columns["Latest Conf#Dt"].SetOrdinal(34);
+            DataViewerUtils.Data.Columns["Del#Conf#Date"].SetOrdinal(34);
             DataViewerUtils.Data.Columns["1st Conf Date"].SetOrdinal(35);
             DataViewerUtils.Data.Columns["1st Conf Creation Da"].SetOrdinal(36);
         }
