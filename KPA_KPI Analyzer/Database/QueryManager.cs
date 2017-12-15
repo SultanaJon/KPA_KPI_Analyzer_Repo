@@ -98,7 +98,7 @@ namespace KPA_KPI_Analyzer.Database
 
                 public static string GetNoConfirmations()
                 {
-                    return "SELECT * FROM " + table + " WHERE " + "(" + table + ".[Qty Ordered] > 0 AND " + table + ".[PO Line 1st Rel Dt] <> '00/00/0000' AND " + table + ".[Del#Conf#Date] = '00/00/0000' AND " + table + ".[Escaped] IS NULL)";
+                    return "SELECT * FROM " + table + " WHERE " + "(" + table + ".[Qty Ordered] > 0 AND " + table + ".[PO Line 1st Rel Dt] <> '00/00/0000' AND " + table + ".[Latest Conf#Date] = '00/00/0000' AND " + table + ".[Escaped] IS NULL)";
                 }
             }
 
@@ -114,7 +114,7 @@ namespace KPA_KPI_Analyzer.Database
 
                 public static string GetPoCreationToConfirmationEntry()
                 {
-                    return "SELECT * FROM " + table + " WHERE " + "(" + table + ".[Qty Ordered] > 0 AND " + table + ".[Del#Conf#Date] = '00/00/0000' AND " + table + ".[Escaped] IS NULL)";
+                    return "SELECT * FROM " + table + " WHERE " + "(" + table + ".[Qty Ordered] > 0 AND " + table + ".[Latest Conf#Date] = '00/00/0000' AND " + table + ".[Escaped] IS NULL)";
                 }
             }
 
@@ -124,7 +124,7 @@ namespace KPA_KPI_Analyzer.Database
             {
                 public static string GetPrReleaseToConfirmationEntry()
                 {
-                    return "SELECT * FROM " + table + " WHERE " + "(" + table + ".[Release Ind#] = 2 AND " + table + ".[Del#Conf#Date] = '00/00/0000' AND " + table + ".[Escaped] IS NULL)";
+                    return "SELECT * FROM " + table + " WHERE " + "(" + table + ".[Release Ind#] = 2 AND " + table + ".[Latest Conf#Date] = '00/00/0000' AND " + table + ".[Escaped] IS NULL)";
                 }
             }
 
@@ -135,18 +135,18 @@ namespace KPA_KPI_Analyzer.Database
             
                 public static string GetConfirmedDateVsPlanDate()
                 {
-                    return "SELECT * FROM " + table + " WHERE " + "(" + table + ".[Qty Ordered] > 0 AND " + table + ".[Del#Conf#Date] <> '00/00/0000' AND " + table + ".[Escaped] IS NULL)";
+                    return "SELECT * FROM " + table + " WHERE " + "(" + table + ".[Qty Ordered] > 0 AND " + table + ".[Latest Conf#Date] <> '00/00/0000' AND " + table + ".[Escaped] IS NULL)";
                 }
 
                 public static string GetConfrimedDateForUpcomingDeliveries()
                 {
-                    return "SELECT * FROM " + table + " WHERE " + "(" + table + ".[Qty Ordered] > 0 AND " + table + ".[Del#Conf#Date] <> '00/00/0000' AND " + table + ".[Escaped] IS NULL)";
+                    return "SELECT * FROM " + table + " WHERE " + "(" + table + ".[Qty Ordered] > 0 AND " + table + ".[Latest Conf#Date] <> '00/00/0000' AND " + table + ".[Escaped] IS NULL)";
                 }
 
 
                 public static string GetDueTodayOrLateToConfirmed()
                 {
-                    return "SELECT * FROM " + table + " WHERE " + "(" + table + ".[Qty Ordered] > 0 AND " + table + ".[Del#Conf#Date] <> '00/00/0000' AND " + table + ".[Escaped] IS NULL)";
+                    return "SELECT * FROM " + table + " WHERE " + "(" + table + ".[Qty Ordered] > 0 AND " + table + ".[Latest Conf#Date] <> '00/00/0000' AND " + table + ".[Escaped] IS NULL)";
                 }
             }
 
@@ -157,13 +157,13 @@ namespace KPA_KPI_Analyzer.Database
             
                 public static string GetPrsNotOnPo()
                 {
-                    return "SELECT * FROM " + table + " WHERE " + "(" + table + ".[PO Date] = '00/00/0000' AND " + table + ".[PR 2° Rel# Date] <> '00/00/0000' AND " + table + ".[Purch# Group] = 'UHJ')";
+                    return "SELECT * FROM " + table + " WHERE " + "(" + table + ".[PO Date] = '00/00/0000' AND " + table + ".[PR Fully Rel Date] <> '00/00/0000' AND " + table + ".[Purch# Group] = 'UHJ')";
 
                 }
 
                 public static string GetNoConfirmations()
                 {
-                    return "SELECT * FROM " + table + " WHERE " + "(" + table + ".[Qty Ordered] > 0 AND " + table + ".[Del#Conf#Date] = '00/00/0000' AND " + table + ".[PO Line Creat#DT] <> '00/00/0000' AND " + table + ".[Purch# Group] = 'UHJ' AND " + table + ".[Escaped] IS NULL)";
+                    return "SELECT * FROM " + table + " WHERE " + "(" + table + ".[Qty Ordered] > 0 AND " + table + ".[Latest Conf#Date] = '00/00/0000' AND " + table + ".[PO Line Creat#DT] <> '00/00/0000' AND " + table + ".[Purch# Group] = 'UHJ' AND " + table + ".[Escaped] IS NULL)";
 
                 }
 
@@ -171,7 +171,7 @@ namespace KPA_KPI_Analyzer.Database
 
                 public static string GetLateToConfirmed()
                 {
-                    return "SELECT * FROM " + table + " WHERE " + "(" + table + ".[Qty Ordered] > 0 AND " + table + ".[Del#Conf#Date] <> '00/00/0000' AND " + table + ".[Purch# Group] = 'UHJ' AND " + table + ".[Escaped] IS NULL)";
+                    return "SELECT * FROM " + table + " WHERE " + "(" + table + ".[Qty Ordered] > 0 AND " + table + ".[Latest Conf#Date] <> '00/00/0000' AND " + table + ".[Purch# Group] = 'UHJ' AND " + table + ".[Escaped] IS NULL)";
 
                 }
             }
@@ -236,13 +236,13 @@ namespace KPA_KPI_Analyzer.Database
 
                 public static string GetCurrentPlanDateVsCurrentConfirmationDate()
                 {
-                    return "SELECT * FROM " + table + " WHERE " + "(" + table + ".[Qty Ordered] > 0 AND " + table + ".[Del#Conf#Date] <> '00/00/0000' AND " + table + ".[Escaped] IS NULL)";
+                    return "SELECT * FROM " + table + " WHERE " + "(" + table + ".[Qty Ordered] > 0 AND " + table + ".[Latest Conf#Date] <> '00/00/0000' AND " + table + ".[Escaped] IS NULL)";
 
                 }
 
                 public static string GetCurrentPlanDateVsCurrentConfirmationDateForHotJobs()
                 {
-                    return "SELECT * FROM " + table + " WHERE " + "(" + table + ".[Qty Ordered] > 0 AND " + table + ".[Del#Conf#Date] <> '00/00/0000' AND " + table + ".[Purch# Group]  = 'UHJ' AND " + table + ".[Escaped] IS NULL)";
+                    return "SELECT * FROM " + table + " WHERE " + "(" + table + ".[Qty Ordered] > 0 AND " + table + ".[Latest Conf#Date] <> '00/00/0000' AND " + table + ".[Purch# Group]  = 'UHJ' AND " + table + ".[Escaped] IS NULL)";
                 }
             }
         }
@@ -261,7 +261,7 @@ namespace KPA_KPI_Analyzer.Database
 
             public static string GetPoLinesUnconfirmed()
             {
-                return "SELECT * FROM " + table + " WHERE " + "(" + table + ".[Qty Ordered] > 0 AND " + table + ".[Del#Conf#Date] = '00/00/0000')";
+                return "SELECT * FROM " + table + " WHERE " + "(" + table + ".[Qty Ordered] > 0 AND " + table + ".[Latest Conf#Date] = '00/00/0000')";
             }
 
 
@@ -274,7 +274,7 @@ namespace KPA_KPI_Analyzer.Database
 
             public static string GetUnconfirmedReceivedCompletePoLines()
             {
-                return "SELECT * FROM " + table + " WHERE " + "(" + table + ".[Escaped] IS NOT NULL AND " + table + ".[Del#Conf#Date] = '00/00/0000')";
+                return "SELECT * FROM " + table + " WHERE " + "(" + table + ".[Escaped] IS NOT NULL AND " + table + ".[Latest Conf#Date] = '00/00/0000')";
 
             }
 

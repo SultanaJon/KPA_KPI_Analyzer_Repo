@@ -100,7 +100,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
 
                     DateTime firstConfDate = new DateTime(firstConfYear, firstConfMonth, firstConfDay);
 
-                    string[] strDelConfDate = (dr["Del#Conf#Date"].ToString()).Split('/');
+                    string[] strDelConfDate = (dr["Latest Conf#Date"].ToString()).Split('/');
                     int delConfYear = int.Parse(strDelConfDate[2]);
                     int delConfMonth = int.Parse(strDelConfDate[0].TrimStart('0'));
                     int delConfDay = int.Parse(strDelConfDate[1].TrimStart('0'));
@@ -209,7 +209,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                         continue;
                     }
 
-                    string[] strDelConfDate = (dr["Del#Conf#Date"].ToString()).Split('/');
+                    string[] strDelConfDate = (dr["Latest Conf#Date"].ToString()).Split('/');
                     int delConfYear = int.Parse(strDelConfDate[2]);
                     int delConfMonth = int.Parse(strDelConfDate[0]);
                     int delConfDay = int.Parse(strDelConfDate[1]);
@@ -573,7 +573,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
 
                     DateTime lastPORecDate = new DateTime(lastPORecDtYear, lastPORecDtMonth, lastPORecDtDay);
 
-                    string[] strCurrConfDate = (dr["Del#Conf#Date"].ToString()).Split('/');
+                    string[] strCurrConfDate = (dr["Latest Conf#Date"].ToString()).Split('/');
                     int currConfYear = int.Parse(strCurrConfDate[2]);
                     int currConfMonth = int.Parse(strCurrConfDate[0]);
                     int currConfDay = int.Parse(strCurrConfDate[1]);

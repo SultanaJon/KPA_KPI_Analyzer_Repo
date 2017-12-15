@@ -365,26 +365,26 @@
             // overallDataToolStripMenuItem1
             // 
             this.overallDataToolStripMenuItem1.Name = "overallDataToolStripMenuItem1";
-            this.overallDataToolStripMenuItem1.Size = new System.Drawing.Size(139, 22);
+            this.overallDataToolStripMenuItem1.Size = new System.Drawing.Size(223, 22);
             this.overallDataToolStripMenuItem1.Text = "Overall Data";
             // 
             // comparisonToolStripMenuItem
             // 
             this.comparisonToolStripMenuItem.Name = "comparisonToolStripMenuItem";
-            this.comparisonToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
-            this.comparisonToolStripMenuItem.Text = "Comparison";
+            this.comparisonToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
+            this.comparisonToolStripMenuItem.Text = "Comparison (Coming Soon)";
             // 
             // kPIReportToolStripMenuItem
             // 
             this.kPIReportToolStripMenuItem.Name = "kPIReportToolStripMenuItem";
-            this.kPIReportToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
-            this.kPIReportToolStripMenuItem.Text = "KPA Report";
+            this.kPIReportToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
+            this.kPIReportToolStripMenuItem.Text = "KPA Report (Coming Soon)";
             // 
             // kPIReportToolStripMenuItem1
             // 
             this.kPIReportToolStripMenuItem1.Name = "kPIReportToolStripMenuItem1";
-            this.kPIReportToolStripMenuItem1.Size = new System.Drawing.Size(139, 22);
-            this.kPIReportToolStripMenuItem1.Text = "KPI Report";
+            this.kPIReportToolStripMenuItem1.Size = new System.Drawing.Size(223, 22);
+            this.kPIReportToolStripMenuItem1.Text = "KPI Report (Coming Soon)";
             // 
             // toolsToolStripMenuItem
             // 
