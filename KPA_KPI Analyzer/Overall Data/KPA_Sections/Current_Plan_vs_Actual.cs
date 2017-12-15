@@ -78,8 +78,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
 
                     string[] strDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
                     int year = int.Parse(strDate[2]);
-                    int month = int.Parse(strDate[0].TrimStart('0'));
-                    int day = int.Parse(strDate[1].TrimStart('0'));
+                    int month = int.Parse(strDate[0]);
+                    int day = int.Parse(strDate[1]);
 
                     DateTime confDate = new DateTime(year, month, day);
 
@@ -93,14 +93,14 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                     {
                         string[] strNewCurrConfDate = (dr["Delivery Date"].ToString()).Split('/');
                         currConfYear = int.Parse(strNewCurrConfDate[2]);
-                        currConfMonth = int.Parse(strNewCurrConfDate[0].TrimStart('0'));
-                        currConfDay = int.Parse(strNewCurrConfDate[1].TrimStart('0'));
+                        currConfMonth = int.Parse(strNewCurrConfDate[0]);
+                        currConfDay = int.Parse(strNewCurrConfDate[1]);
                     }
                     else
                     {
                         currConfYear = int.Parse(strCurrPlanDate[2]);
-                        currConfMonth = int.Parse(strCurrPlanDate[0].TrimStart('0'));
-                        currConfDay = int.Parse(strCurrPlanDate[1].TrimStart('0'));
+                        currConfMonth = int.Parse(strCurrPlanDate[0]);
+                        currConfDay = int.Parse(strCurrPlanDate[1]);
                     }
 
                     DateTime currPlanDate = new DateTime(currConfYear, currConfMonth, currConfDay);
@@ -196,8 +196,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
 
                     string[] strDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
                     int year = int.Parse(strDate[2]);
-                    int month = int.Parse(strDate[0].TrimStart('0'));
-                    int day = int.Parse(strDate[1].TrimStart('0'));
+                    int month = int.Parse(strDate[0]);
+                    int day = int.Parse(strDate[1]);
 
                     DateTime confDate = new DateTime(year, month, day);
 
@@ -210,14 +210,14 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                     {
                         string[] strNewCurrConfDate = (dr["Delivery Date"].ToString()).Split('/');
                         currConfYear = int.Parse(strNewCurrConfDate[2]);
-                        currConfMonth = int.Parse(strNewCurrConfDate[0].TrimStart('0'));
-                        currConfDay = int.Parse(strNewCurrConfDate[1].TrimStart('0'));
+                        currConfMonth = int.Parse(strNewCurrConfDate[0]);
+                        currConfDay = int.Parse(strNewCurrConfDate[1]);
                     }
                     else
                     {
                         currConfYear = int.Parse(strCurrPlanDate[2]);
-                        currConfMonth = int.Parse(strCurrPlanDate[0].TrimStart('0'));
-                        currConfDay = int.Parse(strCurrPlanDate[1].TrimStart('0'));
+                        currConfMonth = int.Parse(strCurrPlanDate[0]);
+                        currConfDay = int.Parse(strCurrPlanDate[1]);
                     }
 
                     DateTime currPlanDate = new DateTime(currConfYear, currConfMonth, currConfDay);

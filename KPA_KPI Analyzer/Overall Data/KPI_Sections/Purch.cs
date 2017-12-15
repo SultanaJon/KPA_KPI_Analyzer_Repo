@@ -74,16 +74,16 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                     {
                         initConfVsPRPlanDate.data.Total++;
                         firstConfYear = int.Parse(strFirstConfDate[2]);
-                        firstConfMonth = int.Parse(strFirstConfDate[0].TrimStart('0'));
-                        firstConfDay = int.Parse(strFirstConfDate[1].TrimStart('0'));
+                        firstConfMonth = int.Parse(strFirstConfDate[0]);
+                        firstConfDay = int.Parse(strFirstConfDate[1]);
                     }
 
                     DateTime firstConfDate = new DateTime(firstConfYear, firstConfMonth, firstConfDay);
 
                     string[] strPRPlanDate = (dr["PR Delivery Date"].ToString()).Split('/');
                     int prDelYear = int.Parse(strPRPlanDate[2]);
-                    int prDelMonth = int.Parse(strPRPlanDate[0].TrimStart('0'));
-                    int prDelDay = int.Parse(strPRPlanDate[1].TrimStart('0'));
+                    int prDelMonth = int.Parse(strPRPlanDate[0]);
+                    int prDelDay = int.Parse(strPRPlanDate[1]);
 
                     DateTime prPlanDate = new DateTime(prDelYear, prDelMonth, prDelDay);
                     double elapsedDays = (firstConfDate - prPlanDate).TotalDays;

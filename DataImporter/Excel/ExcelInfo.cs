@@ -81,12 +81,12 @@ namespace DataImporter.Excel
             if (Path.GetExtension(FileName).ToUpper() == "XLS")
             {
                 strbldr.Provider = "Microsoft.Jet.OLEDB.4.0";
-                strbldr.Add("Extended Properties", "Excel 8.0;IMEX=1;HDR" + Header);
+                strbldr.Add("Extended Properties", "Excel 8.0;IMEX=1;HDR=NO");
             }
             else
             {
                 strbldr.Provider = "Microsoft.ACE.OLEDB.12.0";
-                strbldr.Add("Extended Properties", "Excel 12.0;IMEX=1;HDR=" + Header);
+                strbldr.Add("Extended Properties", "Excel 12.0;IMEX=1;HDR=NO");
             }
 
             strbldr.DataSource = FileName;

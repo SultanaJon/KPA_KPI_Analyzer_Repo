@@ -95,16 +95,16 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                     else
                     {
                         firstConfYear = int.Parse(strFirstConfDate[2]);
-                        firstConfMonth = int.Parse(strFirstConfDate[0].TrimStart('0'));
-                        firstConfDay = int.Parse(strFirstConfDate[1].TrimStart('0'));
+                        firstConfMonth = int.Parse(strFirstConfDate[0]);
+                        firstConfDay = int.Parse(strFirstConfDate[1]);
                     }
 
                     DateTime firstConfDate = new DateTime(firstConfYear, firstConfMonth, firstConfDay);
 
                     string[] strDelConfDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
                     int delConfYear = int.Parse(strDelConfDate[2]);
-                    int delConfMonth = int.Parse(strDelConfDate[0].TrimStart('0'));
-                    int delConfDay = int.Parse(strDelConfDate[1].TrimStart('0'));
+                    int delConfMonth = int.Parse(strDelConfDate[0]);
+                    int delConfDay = int.Parse(strDelConfDate[1]);
 
                     DateTime delConfDate = new DateTime(delConfYear, delConfMonth, delConfDay);
                     double elapsedDays = (delConfDate - firstConfDate).TotalDays;
@@ -223,8 +223,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                     else
                     {
                         delConfYear = int.Parse(strDelConfDate[2]);
-                        delConfMonth = int.Parse(strDelConfDate[0].TrimStart('0'));
-                        delConfDay = int.Parse(strDelConfDate[1].TrimStart('0'));
+                        delConfMonth = int.Parse(strDelConfDate[0]);
+                        delConfDay = int.Parse(strDelConfDate[1]);
                     }
 
                     DateTime delConfDate = new DateTime(delConfYear, delConfMonth, delConfDay);
@@ -232,8 +232,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
 
                     string[] strDelDate = (dr["Delivery Date"].ToString()).Split('/');
                     int delYear = int.Parse(strDelDate[2]);
-                    int delMonth = int.Parse(strDelDate[0].TrimStart('0'));
-                    int delDay = int.Parse(strDelDate[1].TrimStart('0'));
+                    int delMonth = int.Parse(strDelDate[0]);
+                    int delDay = int.Parse(strDelDate[1]);
 
                     DateTime delDate = new DateTime(delYear, delMonth, delDay);
                     double elapsedDays = (delConfDate - delDate).TotalDays;
@@ -333,11 +333,21 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                     }
 
 
+                    #region MEXICOs TEMP FIX
+
                     string[] strLastPORecDate = (dr["Last PO Rec#Date"].ToString()).Split('/');
                     int lastPORecDtYear = int.Parse(strLastPORecDate[2]);
                     int lastPORecDtMonth = int.Parse(strLastPORecDate[0]);
                     int lastPORecDtDay = int.Parse(strLastPORecDate[1]);
-                    Debug.WriteLine(lastPORecDtYear + "/" + lastPORecDtMonth + "/" + lastPORecDtDay);
+
+                    if (lastPORecDtYear == 0 && lastPORecDtMonth == 0 && lastPORecDtDay == 0)
+                    {
+                        // just ignore this bad Mexico data.
+                        continue;
+                    }
+
+                    #endregion
+
                     DateTime lastPORecDate = new DateTime(lastPORecDtYear, lastPORecDtMonth, lastPORecDtDay);
 
                     string[] strCurrPlanDate = (dr["Rescheduling date"].ToString()).Split('/');
@@ -349,14 +359,14 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                     {
                         string[] strNewCurrConfDate = (dr["Delivery Date"].ToString()).Split('/');
                         currConfYear = int.Parse(strNewCurrConfDate[2]);
-                        currConfMonth = int.Parse(strNewCurrConfDate[0].TrimStart('0'));
-                        currConfDay = int.Parse(strNewCurrConfDate[1].TrimStart('0'));
+                        currConfMonth = int.Parse(strNewCurrConfDate[0]);
+                        currConfDay = int.Parse(strNewCurrConfDate[1]);
                     }
                     else
                     {
                         currConfYear = int.Parse(strCurrPlanDate[2]);
-                        currConfMonth = int.Parse(strCurrPlanDate[0].TrimStart('0'));
-                        currConfDay = int.Parse(strCurrPlanDate[1].TrimStart('0'));
+                        currConfMonth = int.Parse(strCurrPlanDate[0]);
+                        currConfDay = int.Parse(strCurrPlanDate[1]);
                     }
 
                     DateTime currPlanDate = new DateTime(currConfYear, currConfMonth, currConfDay);
@@ -444,10 +454,20 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                         continue;
                     }
 
+                    #region MEXICOs TEMP FIX
+
                     string[] strLastPORecDate = (dr["Last PO Rec#Date"].ToString()).Split('/');
                     int lastPORecDtYear = int.Parse(strLastPORecDate[2]);
                     int lastPORecDtMonth = int.Parse(strLastPORecDate[0]);
                     int lastPORecDtDay = int.Parse(strLastPORecDate[1]);
+
+                    if (lastPORecDtYear == 0 && lastPORecDtMonth == 0 && lastPORecDtDay == 0)
+                    {
+                        // just ignore this bad Mexico data.
+                        continue;
+                    }
+
+                    #endregion
 
                     DateTime lastPORecDate = new DateTime(lastPORecDtYear, lastPORecDtMonth, lastPORecDtDay);
 
@@ -464,8 +484,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                     else
                     {
                         firstConfYear = int.Parse(strFirstConfDate[2]);
-                        firstConfMonth = int.Parse(strFirstConfDate[0].TrimStart('0'));
-                        firstConfDay = int.Parse(strFirstConfDate[1].TrimStart('0'));
+                        firstConfMonth = int.Parse(strFirstConfDate[0]);
+                        firstConfDay = int.Parse(strFirstConfDate[1]);
                     }
 
                     DateTime firstConfDate = new DateTime(firstConfYear, firstConfMonth, firstConfDay);
@@ -567,10 +587,20 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                         continue;
                     }
 
+                    #region MEXICOs TEMP FIX
+
                     string[] strLastPORecDate = (dr["Last PO Rec#Date"].ToString()).Split('/');
                     int lastPORecDtYear = int.Parse(strLastPORecDate[2]);
                     int lastPORecDtMonth = int.Parse(strLastPORecDate[0]);
                     int lastPORecDtDay = int.Parse(strLastPORecDate[1]);
+
+                    if (lastPORecDtYear == 0 && lastPORecDtMonth == 0 && lastPORecDtDay == 0)
+                    {
+                        // just ignore this bad Mexico data.
+                        continue;
+                    }
+
+                    #endregion
 
                     DateTime lastPORecDate = new DateTime(lastPORecDtYear, lastPORecDtMonth, lastPORecDtDay);
 
@@ -587,8 +617,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                     else
                     {
                         currConfYear = int.Parse(strCurrConfDate[2]);
-                        currConfMonth = int.Parse(strCurrConfDate[0].TrimStart('0'));
-                        currConfDay = int.Parse(strCurrConfDate[1].TrimStart('0'));
+                        currConfMonth = int.Parse(strCurrConfDate[0]);
+                        currConfDay = int.Parse(strCurrConfDate[1]);
                     }
 
                     DateTime currConfDate = new DateTime(currConfYear, currConfMonth, currConfDay);

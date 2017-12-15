@@ -72,8 +72,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
 
                     string[] strPrPlanDate = (dr["PR Delivery Date"].ToString()).Split('/');
                     int delConfYear = int.Parse(strPrPlanDate[2]);
-                    int delConfMonth = int.Parse(strPrPlanDate[0].TrimStart('0'));
-                    int delConfDay = int.Parse(strPrPlanDate[1].TrimStart('0'));
+                    int delConfMonth = int.Parse(strPrPlanDate[0]);
+                    int delConfDay = int.Parse(strPrPlanDate[1]);
 
                     DateTime prPlanDate = new DateTime(delConfYear, delConfMonth, delConfDay);
 
@@ -86,14 +86,14 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                     {
                         string[] strNewCurrConfDate = (dr["Delivery Date"].ToString()).Split('/');
                         currConfYear = int.Parse(strNewCurrConfDate[2]);
-                        currConfMonth = int.Parse(strNewCurrConfDate[0].TrimStart('0'));
-                        currConfDay = int.Parse(strNewCurrConfDate[1].TrimStart('0'));
+                        currConfMonth = int.Parse(strNewCurrConfDate[0]);
+                        currConfDay = int.Parse(strNewCurrConfDate[1]);
                     }
                     else
                     {
                         currConfYear = int.Parse(strCurrPlanDate[2]);
-                        currConfMonth = int.Parse(strCurrPlanDate[0].TrimStart('0'));
-                        currConfDay = int.Parse(strCurrPlanDate[1].TrimStart('0'));
+                        currConfMonth = int.Parse(strCurrPlanDate[0]);
+                        currConfDay = int.Parse(strCurrPlanDate[1]);
                     }
 
                     DateTime reqDate = new DateTime(currConfYear, currConfMonth, currConfDay);
@@ -189,8 +189,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
 
                     string[] strPrPlanDate = (dr["PR Delivery Date"].ToString()).Split('/');
                     int delConfYear = int.Parse(strPrPlanDate[2]);
-                    int delConfMonth = int.Parse(strPrPlanDate[0].TrimStart('0'));
-                    int delConfDay = int.Parse(strPrPlanDate[1].TrimStart('0'));
+                    int delConfMonth = int.Parse(strPrPlanDate[0]);
+                    int delConfDay = int.Parse(strPrPlanDate[1]);
 
 
 
@@ -199,8 +199,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
 
                     //string[] strPr2ndLvlRelDt = (dr["PR Fully Rel Date"].ToString()).Split('/');
                     //int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
-                    //int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
-                    //int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+                    //int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0]);
+                    //int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1]);
 
                     #region MEXICOs TEMP FIX
 
@@ -217,8 +217,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                     else
                     {
                         pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
-                        pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
-                        pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+                        pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0]);
+                        pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1]);
                     }
 
                     #endregion
@@ -324,8 +324,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
 
                     //string[] strPr2ndLvlRelDt = (dr["PR Fully Rel Date"].ToString()).Split('/');
                     //int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
-                    //int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
-                    //int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+                    //int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0]);
+                    //int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1]);
 
                     #region MEXICOs TEMP FIX
 
@@ -342,8 +342,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                     else
                     {
                         pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
-                        pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
-                        pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+                        pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0]);
+                        pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1]);
                     }
 
                     #endregion
@@ -365,21 +365,21 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                         {
                             string[] strNewCurrPlanPrDelDate = (dr["PR Delivery Date"].ToString()).Split('/');
                             currPlanYear = int.Parse(strNewCurrPlanPrDelDate[2]);
-                            currPlanMonth = int.Parse(strNewCurrPlanPrDelDate[0].TrimStart('0'));
-                            currPlanDay = int.Parse(strNewCurrPlanPrDelDate[1].TrimStart('0'));
+                            currPlanMonth = int.Parse(strNewCurrPlanPrDelDate[0]);
+                            currPlanDay = int.Parse(strNewCurrPlanPrDelDate[1]);
                         }
                         else
                         {
                             currPlanYear = int.Parse(strNewCurrPlanDelDate[2]);
-                            currPlanMonth = int.Parse(strNewCurrPlanDelDate[0].TrimStart('0'));
-                            currPlanDay = int.Parse(strNewCurrPlanDelDate[1].TrimStart('0'));
+                            currPlanMonth = int.Parse(strNewCurrPlanDelDate[0]);
+                            currPlanDay = int.Parse(strNewCurrPlanDelDate[1]);
                         }
                     }
                     else
                     {
                         currPlanYear = int.Parse(strCurrPlanDate[2]);
-                        currPlanMonth = int.Parse(strCurrPlanDate[0].TrimStart('0'));
-                        currPlanDay = int.Parse(strCurrPlanDate[1].TrimStart('0'));
+                        currPlanMonth = int.Parse(strCurrPlanDate[0]);
+                        currPlanDay = int.Parse(strCurrPlanDate[1]);
                     }
 
                     DateTime pr2ndRelDate = new DateTime(pr2ndLvlRelYear, pr2ndLvlRelMonth, pr2ndLvlRelDay);

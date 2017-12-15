@@ -70,8 +70,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
 
                     string[] strPOLineCreateDate = (dr["PO Line Creat#DT"].ToString()).Split('/');
                     int poCreateDtYear = int.Parse(strPOLineCreateDate[2]);
-                    int poCreateDtMonth = int.Parse(strPOLineCreateDate[0].TrimStart('0'));
-                    int poCreateDtDay = int.Parse(strPOLineCreateDate[1].TrimStart('0'));
+                    int poCreateDtMonth = int.Parse(strPOLineCreateDate[0]);
+                    int poCreateDtDay = int.Parse(strPOLineCreateDate[1]);
 
                     DateTime poLineCreateDate = new DateTime(poCreateDtYear, poCreateDtMonth, poCreateDtDay);
 
@@ -80,8 +80,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
 
                     //string[] strPr2ndLvlRelDt = (dr["PR Fully Rel Date"].ToString()).Split('/');
                     //int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
-                    //int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
-                    //int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+                    //int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0]);
+                    //int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1]);
 
                     #region MEXICOs TEMP FIX
 
@@ -98,8 +98,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                     else
                     {
                         pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
-                        pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
-                        pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+                        pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0]);
+                        pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1]);
                     }
 
                     #endregion
@@ -202,16 +202,16 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                     {
                         poCreationVsPORel.data.Total++;
                         poLine1stRelDtYear = int.Parse(strPOLine1stRelDt[2]);
-                        poLine1stRelDtMonth = int.Parse(strPOLine1stRelDt[0].TrimStart('0'));
-                        poLine1stRelDtDay = int.Parse(strPOLine1stRelDt[1].TrimStart('0'));
+                        poLine1stRelDtMonth = int.Parse(strPOLine1stRelDt[0]);
+                        poLine1stRelDtDay = int.Parse(strPOLine1stRelDt[1]);
                     }
 
                     DateTime poLine1stRelDate = new DateTime(poLine1stRelDtYear, poLine1stRelDtMonth, poLine1stRelDtDay);
 
                     string[] strPOLineCreateDt = (dr["PO Line Creat#DT"].ToString()).Split('/');
                     int poOLineCreateDtYear = int.Parse(strPOLineCreateDt[2]);
-                    int poOLineCreateDtMonth = int.Parse(strPOLineCreateDt[0].TrimStart('0'));
-                    int poOLineCreateDtDay = int.Parse(strPOLineCreateDt[1].TrimStart('0'));
+                    int poOLineCreateDtMonth = int.Parse(strPOLineCreateDt[0]);
+                    int poOLineCreateDtDay = int.Parse(strPOLineCreateDt[1]);
 
                     DateTime poCreateDate = new DateTime(poOLineCreateDtYear, poOLineCreateDtMonth, poOLineCreateDtDay);
                     double elapsedDays = (poLine1stRelDate - poCreateDate).TotalDays;
@@ -310,8 +310,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                     else
                     {
                         poLineFirstRelDateYear = int.Parse(strPOLineFirstRelDate[2]);
-                        poLineFirstRelDateMonth = int.Parse(strPOLineFirstRelDate[0].TrimStart('0'));
-                        poLineFirstRelDateDay = int.Parse(strPOLineFirstRelDate[1].TrimStart('0'));
+                        poLineFirstRelDateMonth = int.Parse(strPOLineFirstRelDate[0]);
+                        poLineFirstRelDateDay = int.Parse(strPOLineFirstRelDate[1]);
                     }
 
                     DateTime poLineFirstRelDate = new DateTime(poLineFirstRelDateYear, poLineFirstRelDateMonth, poLineFirstRelDateDay);
@@ -330,8 +330,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                     else
                     {
                         poLineFirstConfCreateYear = int.Parse(strPOLineFirstConfCreateDate[2]);
-                        poLineFirstConfCreateMonth = int.Parse(strPOLineFirstConfCreateDate[0].TrimStart('0'));
-                        poLineFirstConfCreateDay = int.Parse(strPOLineFirstConfCreateDate[1].TrimStart('0'));
+                        poLineFirstConfCreateMonth = int.Parse(strPOLineFirstConfCreateDate[0]);
+                        poLineFirstConfCreateDay = int.Parse(strPOLineFirstConfCreateDate[1]);
                     }
 
                     poRelVsPOConf.data.Total++;

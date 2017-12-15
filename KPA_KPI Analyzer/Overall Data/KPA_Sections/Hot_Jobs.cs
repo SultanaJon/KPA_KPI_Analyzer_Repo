@@ -85,8 +85,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
 
                     string[] strDate = (dr["PR Fully Rel Date"].ToString()).Split('/');
                     int year = int.Parse(strDate[2]);
-                    int month = int.Parse(strDate[0].TrimStart('0'));
-                    int day = int.Parse(strDate[1].TrimStart('0'));
+                    int month = int.Parse(strDate[0]);
+                    int day = int.Parse(strDate[1]);
 
                     DateTime secLvlRelDt = new DateTime(year, month, day);
                     DateTime today = DateTime.Now.Date;
@@ -166,8 +166,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
 
                     string[] strDate = (dr["PO Line Creat#DT"].ToString()).Split('/');
                     int year = int.Parse(strDate[2]);
-                    int month = int.Parse(strDate[0].TrimStart('0'));
-                    int day = int.Parse(strDate[1].TrimStart('0'));
+                    int month = int.Parse(strDate[0]);
+                    int day = int.Parse(strDate[1]);
 
                     DateTime date = new DateTime(year, month, day);
                     DateTime today = DateTime.Now.Date;
@@ -242,8 +242,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
 
                     string[] strDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
                     int year = int.Parse(strDate[2]);
-                    int month = int.Parse(strDate[0].TrimStart('0'));
-                    int day = int.Parse(strDate[1].TrimStart('0'));
+                    int month = int.Parse(strDate[0]);
+                    int day = int.Parse(strDate[1]);
 
                     DateTime delConfDate = new DateTime(year, month, day);
                     DateTime today = DateTime.Now.Date;
@@ -305,7 +305,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "KPA -> Hot Jobs Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.StackTrace, "KPA -> Hot Jobs Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw new ThreadInteruptedException();
             }
             finally

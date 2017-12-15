@@ -85,8 +85,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
 
                     string[] strReqDate = (dr["Requisn Date"].ToString()).Split('/');
                     int reqDateYear = int.Parse(strReqDate[2]);
-                    int reqDateMonth = int.Parse(strReqDate[0].TrimStart('0'));
-                    int reqDateDay = int.Parse(strReqDate[1].TrimStart('0'));
+                    int reqDateMonth = int.Parse(strReqDate[0]);
+                    int reqDateDay = int.Parse(strReqDate[1]);
 
                     DateTime requiDate = new DateTime(reqDateYear, reqDateMonth, reqDateDay);
 
@@ -166,8 +166,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
 
                     //string[] strPr2ndLvlRelDt = (dr["PR Fully Rel Date"].ToString()).Split('/');
                     //int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
-                    //int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
-                    //int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+                    //int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0]);
+                    //int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1]);
 
                     #region MEXICOs TEMP FIX
 
@@ -184,8 +184,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                     else
                     {
                         pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
-                        pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
-                        pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+                        pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0]);
+                        pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1]);
                     }
 
                     #endregion
@@ -266,8 +266,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
 
                     string[] strPoCreateDt = (dr["PO Line Creat#DT"].ToString()).Split('/');
                     int poCreateDtYear = int.Parse(strPoCreateDt[2]);
-                    int poCreateDtMonth = int.Parse(strPoCreateDt[0].TrimStart('0'));
-                    int poCreateDtDay = int.Parse(strPoCreateDt[1].TrimStart('0'));
+                    int poCreateDtMonth = int.Parse(strPoCreateDt[0]);
+                    int poCreateDtDay = int.Parse(strPoCreateDt[1]);
 
                     DateTime poCreateDate = new DateTime(poCreateDtYear, poCreateDtMonth, poCreateDtDay);
 
@@ -345,8 +345,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
 
                     string[] strPoCreateDt = (dr["PO Line Creat#DT"].ToString()).Split('/');
                     int poCreateDtYear = int.Parse(strPoCreateDt[2]);
-                    int poCreateDtMonth = int.Parse(strPoCreateDt[0].TrimStart('0'));
-                    int poCreateDtDay = int.Parse(strPoCreateDt[1].TrimStart('0'));
+                    int poCreateDtMonth = int.Parse(strPoCreateDt[0]);
+                    int poCreateDtDay = int.Parse(strPoCreateDt[1]);
 
                     DateTime poCreateDate = new DateTime(poCreateDtYear, poCreateDtMonth, poCreateDtDay);
 
@@ -433,8 +433,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
 
                     string[] strPrReqDt = (dr["Requisn Date"].ToString()).Split('/');
                     int reqDateYear = int.Parse(strPrReqDt[2]);
-                    int reqDateMonth = int.Parse(strPrReqDt[0].TrimStart('0'));
-                    int reqDateDay = int.Parse(strPrReqDt[1].TrimStart('0'));
+                    int reqDateMonth = int.Parse(strPrReqDt[0]);
+                    int reqDateDay = int.Parse(strPrReqDt[1]);
 
                     DateTime prReqDate = new DateTime(reqDateYear, reqDateMonth, reqDateDay);
 
