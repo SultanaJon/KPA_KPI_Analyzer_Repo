@@ -1010,7 +1010,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                         }
 
 
-                        string[] strCurrConfDate = (dr["Latest Conf#Date"].ToString()).Split('/');
+                        string[] strCurrConfDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
                         int delConfYear = int.Parse(strCurrConfDate[2]);
                         int delConfMonth = int.Parse(strCurrConfDate[0].TrimStart('0'));
                         int delConfDay = int.Parse(strCurrConfDate[1].TrimStart('0'));
@@ -1133,7 +1133,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             continue;
                         }
 
-                        string[] strDate = (dr["Latest Conf#Date"].ToString()).Split('/');
+                        string[] strDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
                         int year = int.Parse(strDate[2]);
                         int month = int.Parse(strDate[0].TrimStart('0'));
                         int day = int.Parse(strDate[1].TrimStart('0'));
@@ -1238,7 +1238,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                         }
 
 
-                        string[] strDate = (dr["Latest Conf#Date"].ToString()).Split('/');
+                        string[] strDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
                         int year = int.Parse(strDate[2]);
                         int month = int.Parse(strDate[0].TrimStart('0'));
                         int day = int.Parse(strDate[1].TrimStart('0'));
@@ -1565,7 +1565,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             continue;
                         }
 
-                        string[] strDate = (dr["Latest Conf#Date"].ToString()).Split('/');
+                        string[] strDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
                         int year = int.Parse(strDate[2]);
                         int month = int.Parse(strDate[0].TrimStart('0'));
                         int day = int.Parse(strDate[1].TrimStart('0'));
@@ -2294,7 +2294,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             continue;
                         }
 
-                        string[] strDate = (dr["Latest Conf#Date"].ToString()).Split('/');
+                        string[] strDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
                         int year = int.Parse(strDate[2]);
                         int month = int.Parse(strDate[0].TrimStart('0'));
                         int day = int.Parse(strDate[1].TrimStart('0'));
@@ -2441,7 +2441,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             continue;
                         }
 
-                        string[] strDate = (dr["Latest Conf#Date"].ToString()).Split('/');
+                        string[] strDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
                         int year = int.Parse(strDate[2]);
                         int month = int.Parse(strDate[0].TrimStart('0'));
                         int day = int.Parse(strDate[1].TrimStart('0'));

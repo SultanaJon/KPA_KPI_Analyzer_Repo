@@ -96,7 +96,8 @@
             // 
             // topPanelDragCntl
             // 
-            this.topPanelDragCntl.Fixed = true;
+            this.topPanelDragCntl.
+                ed = true;
             this.topPanelDragCntl.Horizontal = true;
             this.topPanelDragCntl.TargetControl = this.pnl_menuStrip;
             this.topPanelDragCntl.Vertical = true;

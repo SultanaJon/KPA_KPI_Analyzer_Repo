@@ -176,7 +176,8 @@
             // 
             // dc_topPanel
             // 
-            this.dc_topPanel.Fixed = true;
+            this.dc_topPanel.
+                ed = true;
             this.dc_topPanel.Horizontal = true;
             this.dc_topPanel.TargetControl = this.pnl_topPanel;
             this.dc_topPanel.Vertical = true;

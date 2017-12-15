@@ -366,7 +366,7 @@ namespace KPA_KPI_Analyzer.DataLoading
                 dgv_dataViewerDgv.Columns["PO Sign Date"].DisplayIndex = 31;
                 dgv_dataViewerDgv.Columns["Delivery Date"].DisplayIndex = 32;
                 dgv_dataViewerDgv.Columns["Rescheduling date"].DisplayIndex = 33;
-                dgv_dataViewerDgv.Columns["Latest Conf#Date"].DisplayIndex = 34;
+                dgv_dataViewerDgv.Columns["Latest Conf#Dt"].DisplayIndex = 34;
                 dgv_dataViewerDgv.Columns["1st Conf Date"].DisplayIndex = 35;
                 dgv_dataViewerDgv.Columns["1st Conf Creation Da"].DisplayIndex = 36;
             }
@@ -528,7 +528,7 @@ namespace KPA_KPI_Analyzer.DataLoading
             DataViewerUtils.Data.Columns["PO Sign Date"].SetOrdinal(31);
             DataViewerUtils.Data.Columns["Delivery Date"].SetOrdinal(32);
             DataViewerUtils.Data.Columns["Rescheduling date"].SetOrdinal(33);
-            DataViewerUtils.Data.Columns["Latest Conf#Date"].SetOrdinal(34);
+            DataViewerUtils.Data.Columns["Latest Conf#Dt"].SetOrdinal(34);
             DataViewerUtils.Data.Columns["1st Conf Date"].SetOrdinal(35);
             DataViewerUtils.Data.Columns["1st Conf Creation Da"].SetOrdinal(36);
         }
