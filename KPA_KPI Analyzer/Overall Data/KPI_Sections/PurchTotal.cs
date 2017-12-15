@@ -76,8 +76,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                     else
                     {
                         firstConfCreateYear = int.Parse(strfirstConfCreateDt[2]);
-                        firstConfCreateMonth = int.Parse(strfirstConfCreateDt[0]);
-                        firstConfCreateDay = int.Parse(strfirstConfCreateDt[1]);
+                        firstConfCreateMonth = int.Parse(strfirstConfCreateDt[0].TrimStart('0'));
+                        firstConfCreateDay = int.Parse(strfirstConfCreateDt[1].TrimStart('0'));
                     }
 
                     DateTime poLineConfCreateDate = new DateTime(firstConfCreateYear, firstConfCreateMonth, firstConfCreateDay);
@@ -87,8 +87,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
 
                     //string[] strPr2ndLvlRelDt = (dr["PR Fully Rel Date"].ToString()).Split('/');
                     //int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
-                    //int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0]);
-                    //int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1]);
+                    //int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
+                    //int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
 
                     #region MEXICOs TEMP FIX
 
@@ -105,8 +105,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                     else
                     {
                         pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
-                        pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0]);
-                        pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1]);
+                        pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
+                        pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
                     }
 
                     #endregion

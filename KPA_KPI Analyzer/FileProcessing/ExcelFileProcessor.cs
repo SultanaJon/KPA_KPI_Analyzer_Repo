@@ -116,8 +116,8 @@ namespace KPA_KPI_Analyzer.FileProcessing
                 string strDay = strFileName[9].ToString() + strFileName[10].ToString();
                 string strYear = strFileName[11].ToString() + strFileName[12].ToString() + strFileName[13].ToString() + strFileName[14].ToString();
 
-                int month = int.Parse(strMonth);
-                int day = int.Parse(strDay);
+                int month = int.Parse(strMonth.TrimStart('0'));
+                int day = int.Parse(strDay.TrimStart('0'));
                 int year = int.Parse(strYear);
 
                 DateTime dt = new DateTime(year, month, day);

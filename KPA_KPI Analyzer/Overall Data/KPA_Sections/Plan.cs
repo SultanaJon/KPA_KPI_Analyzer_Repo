@@ -79,8 +79,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
 
                     string[] reqCreationDate = (dr["Requisn Date"].ToString()).Split('/');
                     int year = int.Parse(reqCreationDate[2]);
-                    int month = int.Parse(reqCreationDate[0]);
-                    int day = int.Parse(reqCreationDate[1]);
+                    int month = int.Parse(reqCreationDate[0].TrimStart('0'));
+                    int day = int.Parse(reqCreationDate[1].TrimStart('0'));
 
                     DateTime reqDate = new DateTime(year, month, day);
                     DateTime today = DateTime.Now.Date;
@@ -155,8 +155,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
 
                     string[] strCurrReqDate = (dr["PR Delivery Date"].ToString()).Split('/');
                     int year = int.Parse(strCurrReqDate[2]);
-                    int month = int.Parse(strCurrReqDate[0]);
-                    int day = int.Parse(strCurrReqDate[1]);
+                    int month = int.Parse(strCurrReqDate[0].TrimStart('0'));
+                    int day = int.Parse(strCurrReqDate[1].TrimStart('0'));
 
                     DateTime currReqDate = new DateTime(year, month, day);
                     DateTime today = DateTime.Now.Date;

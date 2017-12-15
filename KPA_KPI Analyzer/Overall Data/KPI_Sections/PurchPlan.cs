@@ -78,16 +78,16 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                     {
                         poRelVsPRDelDate.data.Total++;
                         poLineFirstRelYear = int.Parse(strPoLineFirstRelDate[2]);
-                        poLineFirstRelMonth = int.Parse(strPoLineFirstRelDate[0]);
-                        poLineFirstRelDay = int.Parse(strPoLineFirstRelDate[1]);
+                        poLineFirstRelMonth = int.Parse(strPoLineFirstRelDate[0].TrimStart('0'));
+                        poLineFirstRelDay = int.Parse(strPoLineFirstRelDate[1].TrimStart('0'));
                     }
 
                     DateTime poLineFirstRelDate = new DateTime(poLineFirstRelYear, poLineFirstRelMonth, poLineFirstRelDay);
 
                     string[] strPRDelDate = (dr["PR Delivery Date"].ToString()).Split('/');
                     int prDelYear = int.Parse(strPRDelDate[2]);
-                    int prDelMonth = int.Parse(strPRDelDate[0]);
-                    int prDelDay = int.Parse(strPRDelDate[1]);
+                    int prDelMonth = int.Parse(strPRDelDate[0].TrimStart('0'));
+                    int prDelDay = int.Parse(strPRDelDate[1].TrimStart('0'));
 
                     DateTime prDelDate = new DateTime(prDelYear, prDelMonth, prDelDay);
                     double elapsedDays = (prDelDate - poLineFirstRelDate).TotalDays;

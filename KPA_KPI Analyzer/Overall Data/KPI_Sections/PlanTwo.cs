@@ -75,8 +75,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
 
                     //string[] strPr2ndLvlRelDt = (dr["PR Fully Rel Date"].ToString()).Split('/');
                     //int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
-                    //int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0]);
-                    //int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1]);
+                    //int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
+                    //int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
 
                     #region MEXICOs TEMP FIX
 
@@ -93,8 +93,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                     else
                     {
                         pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
-                        pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0]);
-                        pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1]);
+                        pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
+                        pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
                     }
 
                     #endregion
@@ -207,8 +207,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
 
                     //string[] strPr2ndLvlRelDt = (dr["PR Fully Rel Date"].ToString()).Split('/');
                     //int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
-                    //int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0]);
-                    //int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1]);
+                    //int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
+                    //int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
 
                     #region MEXICOs TEMP FIX
 
@@ -225,8 +225,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                     else
                     {
                         pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
-                        pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0]);
-                        pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1]);
+                        pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
+                        pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
                     }
 
                     #endregion
@@ -247,21 +247,21 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                         {
                             string[] strNewCurrPlanPrDelDate = (dr["PR Delivery Date"].ToString()).Split('/');
                             origPlanYear = int.Parse(strNewCurrPlanPrDelDate[2]);
-                            origPlanMonth = int.Parse(strNewCurrPlanPrDelDate[0]);
-                            origPlanDay = int.Parse(strNewCurrPlanPrDelDate[1]);
+                            origPlanMonth = int.Parse(strNewCurrPlanPrDelDate[0].TrimStart('0'));
+                            origPlanDay = int.Parse(strNewCurrPlanPrDelDate[1].TrimStart('0'));
                         }
                         else
                         {
                             origPlanYear = int.Parse(strNewCurrPlanDelDate[2]);
-                            origPlanMonth = int.Parse(strNewCurrPlanDelDate[0]);
-                            origPlanDay = int.Parse(strNewCurrPlanDelDate[1]);
+                            origPlanMonth = int.Parse(strNewCurrPlanDelDate[0].TrimStart('0'));
+                            origPlanDay = int.Parse(strNewCurrPlanDelDate[1].TrimStart('0'));
                         }
                     }
                     else
                     {
                         origPlanYear = int.Parse(strCurrPlanDate[2]);
-                        origPlanMonth = int.Parse(strCurrPlanDate[0]);
-                        origPlanDay = int.Parse(strCurrPlanDate[1]);
+                        origPlanMonth = int.Parse(strCurrPlanDate[0].TrimStart('0'));
+                        origPlanDay = int.Parse(strCurrPlanDate[1].TrimStart('0'));
                     }
 
                     DateTime pr2ndRelDate = new DateTime(pr2ndLvlRelYear, pr2ndLvlRelMonth, pr2ndLvlRelDay);

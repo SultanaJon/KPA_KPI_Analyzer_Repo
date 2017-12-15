@@ -56,8 +56,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
 
                     string[] strDate = (dr["PR Fully Rel Date"].ToString()).Split('/');
                     int year = int.Parse(strDate[2]);
-                    int month = int.Parse(strDate[0]);
-                    int day = int.Parse(strDate[1]);
+                    int month = int.Parse(strDate[0].TrimStart('0'));
+                    int day = int.Parse(strDate[1].TrimStart('0'));
 
                     DateTime date = new DateTime(year, month, day);
 

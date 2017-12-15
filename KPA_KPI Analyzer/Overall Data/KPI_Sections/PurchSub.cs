@@ -81,8 +81,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                     {
                         prRelVsPORel.data.Total++;
                         poLineFirstRelYear = int.Parse(strPOLineFirstRelDate[2]);
-                        poLineFirstRelMonth = int.Parse(strPOLineFirstRelDate[0]);
-                        poLineFirstRelDay = int.Parse(strPOLineFirstRelDate[1]);
+                        poLineFirstRelMonth = int.Parse(strPOLineFirstRelDate[0].TrimStart('0'));
+                        poLineFirstRelDay = int.Parse(strPOLineFirstRelDate[1].TrimStart('0'));
                     }
 
                     DateTime poLineFirstRelDate = new DateTime(poLineFirstRelYear, poLineFirstRelMonth, poLineFirstRelDay);
@@ -92,8 +92,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
 
                     //string[] strPr2ndLvlRelDt = (dr["PR Fully Rel Date"].ToString()).Split('/');
                     //int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
-                    //int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0]);
-                    //int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1]);
+                    //int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
+                    //int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
 
                     #region MEXICOs TEMP FIX
 
@@ -110,8 +110,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                     else
                     {
                         pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
-                        pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0]);
-                        pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1]);
+                        pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
+                        pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
                     }
 
                     #endregion
@@ -219,8 +219,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
 
                     string[] strPOLineCreateDt = (dr["PO Line Creat#DT"].ToString()).Split('/');
                     int poLineCreateYear = int.Parse(strPOLineCreateDt[2]);
-                    int poLineCreateMonth = int.Parse(strPOLineCreateDt[0]);
-                    int poLineCreateDay = int.Parse(strPOLineCreateDt[1]);
+                    int poLineCreateMonth = int.Parse(strPOLineCreateDt[0].TrimStart('0'));
+                    int poLineCreateDay = int.Parse(strPOLineCreateDt[1].TrimStart('0'));
 
                     DateTime poLineItemCreateDate = new DateTime(poLineCreateYear, poLineCreateMonth, poLineCreateDay);
 

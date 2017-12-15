@@ -235,8 +235,8 @@ namespace KPA_KPI_Analyzer.Filters
                 else
                 {
                     poYear = int.Parse(strPoLineCreateDate[2]);
-                    poMonth = int.Parse(strPoLineCreateDate[0]);
-                    poDay = int.Parse(strPoLineCreateDate[1]);
+                    poMonth = int.Parse(strPoLineCreateDate[0].TrimStart('0'));
+                    poDay = int.Parse(strPoLineCreateDate[1].TrimStart('0'));
                 }
             }
 
@@ -263,8 +263,8 @@ namespace KPA_KPI_Analyzer.Filters
             // The user wants to filter by PR date range
             string[] requisnDate = date.Split('/');
             int reqYear = int.Parse(requisnDate[2]);
-            int reqMonth = int.Parse(requisnDate[0]);
-            int reqDay = int.Parse(requisnDate[1]);
+            int reqMonth = int.Parse(requisnDate[0].TrimStart('0'));
+            int reqDay = int.Parse(requisnDate[1].TrimStart('0'));
             DateTime reqTestDate = new DateTime(reqYear, reqMonth, reqDay);
 
             if (reqTestDate < Filters.FilterData.DateFilters.PrFromDate || reqTestDate > Filters.FilterData.DateFilters.PrToDate)
@@ -298,8 +298,8 @@ namespace KPA_KPI_Analyzer.Filters
             else
             {
                 finRecYear = int.Parse(strFinalRecDate[2]);
-                finRecMonth = int.Parse(strFinalRecDate[0]);
-                finRecDay = int.Parse(strFinalRecDate[1]);
+                finRecMonth = int.Parse(strFinalRecDate[0].TrimStart('0'));
+                finRecDay = int.Parse(strFinalRecDate[1].TrimStart('0'));
             }
 
             DateTime finalRecDate = new DateTime(finRecYear, finRecMonth, finRecDay);

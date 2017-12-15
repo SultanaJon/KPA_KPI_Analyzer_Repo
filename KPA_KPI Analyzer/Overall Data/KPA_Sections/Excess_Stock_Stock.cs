@@ -80,8 +80,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
 
                     string[] strCurrReqDate = (dr["PR Delivery Date"].ToString()).Split('/');
                     int year = int.Parse(strCurrReqDate[2]);
-                    int month = int.Parse(strCurrReqDate[0]);
-                    int day = int.Parse(strCurrReqDate[1]);
+                    int month = int.Parse(strCurrReqDate[0].TrimStart('0'));
+                    int day = int.Parse(strCurrReqDate[1].TrimStart('0'));
 
                     DateTime currReqDate = new DateTime(year, month, day);
                     DateTime today = DateTime.Now.Date;
@@ -160,8 +160,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
 
                     string[] strDate = (dr["PR Fully Rel Date"].ToString()).Split('/');
                     int year = int.Parse(strDate[2]);
-                    int month = int.Parse(strDate[0]);
-                    int day = int.Parse(strDate[1]);
+                    int month = int.Parse(strDate[0].TrimStart('0'));
+                    int day = int.Parse(strDate[1].TrimStart('0'));
 
                     DateTime date = new DateTime(year, month, day);
                     double elapsedDays = (DateTime.Now - date).TotalDays;
@@ -243,8 +243,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
 
                     string[] strDate = (dr["PO Line Creat#DT"].ToString()).Split('/');
                     int year = int.Parse(strDate[2]);
-                    int month = int.Parse(strDate[0]);
-                    int day = int.Parse(strDate[1]);
+                    int month = int.Parse(strDate[0].TrimStart('0'));
+                    int day = int.Parse(strDate[1].TrimStart('0'));
 
                     DateTime date = new DateTime(year, month, day);
                     DateTime today = DateTime.Now.Date;
