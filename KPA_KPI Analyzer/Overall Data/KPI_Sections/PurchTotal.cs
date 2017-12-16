@@ -71,6 +71,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                     if(firstConfCreateYear == 0 && firstConfCreateMonth == 0 & firstConfCreateDay == 0)
                     {
                         prRelConfEntry.data.PercentUnconfTotal++;
+                        prRelConfEntry.data.Total++;
                         continue;
                     }
                     else

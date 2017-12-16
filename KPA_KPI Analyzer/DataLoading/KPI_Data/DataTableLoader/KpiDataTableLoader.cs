@@ -2781,7 +2781,15 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                         if (firstConfCreateYear == 0 && firstConfCreateMonth == 0 & firstConfCreateDay == 0)
                         {
-                            unconfirmed.ImportRow(dr);
+                            if (tag == 10)
+                            {
+                                unconfirmed.ImportRow(dr);
+                            }
+
+                            if (tag == 0) // The user wants to view the total which also includes
+                            {
+                                prReleaseConfEntry.ImportRow(dr);
+                            }
                             continue;
                         }
                         else
