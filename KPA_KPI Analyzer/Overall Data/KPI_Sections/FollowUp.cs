@@ -89,6 +89,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                     if(firstConfYear == 0 && firstConfMonth == 0 && firstConfDay == 0)
                     {
                         currConfVsInitConf.data.PercentUnconfTotal++;
+                        currConfVsInitConf.data.Total++;
                         continue;
                     }
                     else
@@ -217,6 +218,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                     if(delConfYear == 0 && delConfMonth == 0 && delConfDay == 0)
                     {
                         finalConfDateVsFinalPlan.data.PercentUnconfTotal++;
+                        finalConfDateVsFinalPlan.data.Total++;
                         continue;
                     }
                     else
@@ -482,6 +484,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                     if (firstConfYear == 0 && firstConfMonth == 0 && firstConfDay == 0)
                     {
                         receiptDateVsOrigConfDate.data.PercentUnconfTotal++;
+                        receiptDateVsOrigConfDate.data.Total++;
                         continue;
                     }
                     else
@@ -617,6 +620,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                     if (currConfYear == 0 && currConfMonth == 0 && currConfDay == 0)
                     {
                         receiptDateVsCurrConfDate.data.PercentUnconfTotal++;
+                        receiptDateVsCurrConfDate.data.Total++;
                         continue;
                     }
                     else

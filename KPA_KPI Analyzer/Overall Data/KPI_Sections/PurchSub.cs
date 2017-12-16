@@ -194,6 +194,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                     if(poLineFirstConfCreateYear == 0 && poLineFirstConfCreateMonth == 0 && poLineFirstConfCreateDay == 0)
                     {
                         poCreateVsConfEntry.data.PercentUnconfTotal++;
+                        poCreateVsConfEntry.data.Total++;
                         continue;
                     }
                     else

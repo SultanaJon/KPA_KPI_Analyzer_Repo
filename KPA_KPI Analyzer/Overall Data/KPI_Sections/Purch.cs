@@ -68,6 +68,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                     if (firstConfYear == 0 && firstConfMonth == 0 && firstConfDay == 0)
                     {
                         initConfVsPRPlanDate.data.PercentUnconfTotal++;
+                        initConfVsPRPlanDate.data.Total++;
                         continue;
                     }
                     else

@@ -173,13 +173,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                 case 0:
                     pnl_PercentagePanel.Visible = true;
                     btn_unconfIncludedStatusButton.Visible = true;
-                    btn_unconfIncludedStatusButton.Text = "Not Including Unconfirmed!";
                     RenderOne();
                     break;
                 case 1:
                     pnl_PercentagePanel.Visible = true;
                     btn_unconfIncludedStatusButton.Visible = true;
-                    btn_unconfIncludedStatusButton.Text = "Not Including Unconfirmed!";
                     RenderTwo();
                     break;
                 case 2:
@@ -190,13 +188,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                 case 3:
                     pnl_PercentagePanel.Visible = true;
                     btn_unconfIncludedStatusButton.Visible = true;
-                    btn_unconfIncludedStatusButton.Text = "Not Including Unconfirmed!";
                     RenderFour();
                     break;
                 case 4:
                     pnl_PercentagePanel.Visible = true;
                     btn_unconfIncludedStatusButton.Visible = true;
-                    btn_unconfIncludedStatusButton.Text = "Not Including Unconfirmed!";
                     RenderFive();
                     break;
                 default:
