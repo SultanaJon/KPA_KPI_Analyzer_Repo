@@ -100,7 +100,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
 
                     DateTime firstConfDate = new DateTime(firstConfYear, firstConfMonth, firstConfDay);
 
-                    string[] strDelConfDate = (dr["Del#Conf#Date"].ToString()).Split('/');
+                    string[] strDelConfDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
                     int delConfYear = int.Parse(strDelConfDate[2]);
                     int delConfMonth = int.Parse(strDelConfDate[0].TrimStart('0'));
                     int delConfDay = int.Parse(strDelConfDate[1].TrimStart('0'));
@@ -209,7 +209,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                         continue;
                     }
 
-                    string[] strDelConfDate = (dr["Del#Conf#Date"].ToString()).Split('/');
+                    string[] strDelConfDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
                     int delConfYear = int.Parse(strDelConfDate[2]);
                     int delConfMonth = int.Parse(strDelConfDate[0]);
                     int delConfDay = int.Parse(strDelConfDate[1]);
@@ -332,10 +332,22 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                     }
 
 
+                    #region EVASO_BUT_NO_REC_DATE_CHECK
+
                     string[] strLastPORecDate = (dr["Last PO Rec#Date"].ToString()).Split('/');
                     int lastPORecDtYear = int.Parse(strLastPORecDate[2]);
                     int lastPORecDtMonth = int.Parse(strLastPORecDate[0]);
                     int lastPORecDtDay = int.Parse(strLastPORecDate[1]);
+
+
+                    if(lastPORecDtYear == 0 && lastPORecDtMonth == 0 && lastPORecDtDay == 0)
+                    {
+                        // this po line or po in general may have been deleted.
+                        continue;
+                    }
+
+                    #endregion
+
 
                     DateTime lastPORecDate = new DateTime(lastPORecDtYear, lastPORecDtMonth, lastPORecDtDay);
 
@@ -443,10 +455,22 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                         continue;
                     }
 
+                    #region EVASO_BUT_NO_REC_DATE_CHECK
+
                     string[] strLastPORecDate = (dr["Last PO Rec#Date"].ToString()).Split('/');
                     int lastPORecDtYear = int.Parse(strLastPORecDate[2]);
                     int lastPORecDtMonth = int.Parse(strLastPORecDate[0]);
                     int lastPORecDtDay = int.Parse(strLastPORecDate[1]);
+
+
+                    if (lastPORecDtYear == 0 && lastPORecDtMonth == 0 && lastPORecDtDay == 0)
+                    {
+                        // this po line or po in general may have been deleted.
+                        continue;
+                    }
+
+                    #endregion
+
 
                     DateTime lastPORecDate = new DateTime(lastPORecDtYear, lastPORecDtMonth, lastPORecDtDay);
 
@@ -566,14 +590,26 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                         continue;
                     }
 
+                    #region EVASO_BUT_NO_REC_DATE_CHECK
+
                     string[] strLastPORecDate = (dr["Last PO Rec#Date"].ToString()).Split('/');
                     int lastPORecDtYear = int.Parse(strLastPORecDate[2]);
                     int lastPORecDtMonth = int.Parse(strLastPORecDate[0]);
                     int lastPORecDtDay = int.Parse(strLastPORecDate[1]);
 
+
+                    if (lastPORecDtYear == 0 && lastPORecDtMonth == 0 && lastPORecDtDay == 0)
+                    {
+                        // this po line or po in general may have been deleted.
+                        continue;
+                    }
+
+                    #endregion
+
+
                     DateTime lastPORecDate = new DateTime(lastPORecDtYear, lastPORecDtMonth, lastPORecDtDay);
 
-                    string[] strCurrConfDate = (dr["Del#Conf#Date"].ToString()).Split('/');
+                    string[] strCurrConfDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
                     int currConfYear = int.Parse(strCurrConfDate[2]);
                     int currConfMonth = int.Parse(strCurrConfDate[0]);
                     int currConfDay = int.Parse(strCurrConfDate[1]);

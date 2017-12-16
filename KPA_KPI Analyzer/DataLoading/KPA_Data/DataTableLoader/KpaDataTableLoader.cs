@@ -263,13 +263,25 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                         }
 
 
-                        string[] strDate = (dr["PR 2° Rel# Date"].ToString()).Split('/');
-                        int year = int.Parse(strDate[2]);
-                        int month = int.Parse(strDate[0].TrimStart('0'));
-                        int day = int.Parse(strDate[1].TrimStart('0'));
+                        #region EVASO_BUT_NOT_FULLY_RELEASED_CHECK
 
-                        DateTime date = new DateTime(year, month, day);
-                        double elapsedDays = (int)(DateTime.Now - date).TotalDays;
+                        string[] strPrFullyRelDate = (dr["PR Fully Rel Date"].ToString()).Split('/');
+                        int prFullyRelYear = int.Parse(strPrFullyRelDate[2]);
+                        int prFullyRelMonth = int.Parse(strPrFullyRelDate[0]);
+                        int prFullyRelDay = int.Parse(strPrFullyRelDate[1]);
+
+
+                        if (prFullyRelYear == 0 && prFullyRelMonth == 0 && prFullyRelDay == 0)
+                        {
+                            // This PR line or PR in general might have been delted
+                            continue;
+                        }
+
+
+                        #endregion
+
+                        DateTime prFullyRelDt = new DateTime(prFullyRelYear, prFullyRelMonth, prFullyRelDay);
+                        double elapsedDays = (int)(DateTime.Now - prFullyRelDt).TotalDays;
 
                         switch (tag)
                         {
@@ -685,14 +697,26 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                         }
 
 
-                        string[] strDate = (dr["PR 2° Rel# Date"].ToString()).Split('/');
-                        int year = int.Parse(strDate[2]);
-                        int month = int.Parse(strDate[0].TrimStart('0'));
-                        int day = int.Parse(strDate[1].TrimStart('0'));
+                        #region EVASO_BUT_NOT_FULLY_RELEASED_CHECK
 
-                        DateTime date = new DateTime(year, month, day);
+                        string[] strPrFullyRelDate = (dr["PR Fully Rel Date"].ToString()).Split('/');
+                        int prFullyRelYear = int.Parse(strPrFullyRelDate[2]);
+                        int prFullyRelMonth = int.Parse(strPrFullyRelDate[0]);
+                        int prFullyRelDay = int.Parse(strPrFullyRelDate[1]);
+
+
+                        if (prFullyRelYear == 0 && prFullyRelMonth == 0 && prFullyRelDay == 0)
+                        {
+                            // This PR line or PR in general might have been delted
+                            continue;
+                        }
+
+
+                        #endregion
+
+                        DateTime prFullyRelDt = new DateTime(prFullyRelYear, prFullyRelMonth, prFullyRelDay);
                         DateTime today = DateTime.Now.Date;
-                        double elapsedDays = (int)(today - date).TotalDays;
+                        double elapsedDays = (int)(today - prFullyRelDt).TotalDays;
 
                         switch (tag)
                         {
@@ -898,14 +922,27 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                         }
 
 
-                        string[] strDate = (dr["PR 2° Rel# Date"].ToString()).Split('/');
-                        int year = int.Parse(strDate[2]);
-                        int month = int.Parse(strDate[0].TrimStart('0'));
-                        int day = int.Parse(strDate[1].TrimStart('0'));
+                        #region EVASO_BUT_NOT_FULLY_RELEASED_CHECK
 
-                        DateTime date = new DateTime(year, month, day);
+                        string[] strPrFullyRelDate = (dr["PR Fully Rel Date"].ToString()).Split('/');
+                        int prFullyRelYear = int.Parse(strPrFullyRelDate[2]);
+                        int prFullyRelMonth = int.Parse(strPrFullyRelDate[0]);
+                        int prFullyRelDay = int.Parse(strPrFullyRelDate[1]);
+
+
+                        if (prFullyRelYear == 0 && prFullyRelMonth == 0 && prFullyRelDay == 0)
+                        {
+                            // This PR line or PR in general might have been delted
+                            continue;
+                        }
+
+
+                        #endregion
+
+
+                        DateTime prFullyRelDt = new DateTime(prFullyRelYear, prFullyRelMonth, prFullyRelDay);
                         DateTime today = DateTime.Now.Date;
-                        double elapsedDays = (int)(today - date).TotalDays;
+                        double elapsedDays = (int)(today - prFullyRelDt).TotalDays;
 
                         switch (tag)
                         {
@@ -1010,7 +1047,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                         }
 
 
-                        string[] strCurrConfDate = (dr["Del#Conf#Date"].ToString()).Split('/');
+                        string[] strCurrConfDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
                         int delConfYear = int.Parse(strCurrConfDate[2]);
                         int delConfMonth = int.Parse(strCurrConfDate[0].TrimStart('0'));
                         int delConfDay = int.Parse(strCurrConfDate[1].TrimStart('0'));
@@ -1133,7 +1170,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             continue;
                         }
 
-                        string[] strDate = (dr["Del#Conf#Date"].ToString()).Split('/');
+                        string[] strDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
                         int year = int.Parse(strDate[2]);
                         int month = int.Parse(strDate[0].TrimStart('0'));
                         int day = int.Parse(strDate[1].TrimStart('0'));
@@ -1238,7 +1275,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                         }
 
 
-                        string[] strDate = (dr["Del#Conf#Date"].ToString()).Split('/');
+                        string[] strDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
                         int year = int.Parse(strDate[2]);
                         int month = int.Parse(strDate[0].TrimStart('0'));
                         int day = int.Parse(strDate[1].TrimStart('0'));
@@ -1355,14 +1392,28 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                         }
 
 
-                        string[] strDate = (dr["PR 2° Rel# Date"].ToString()).Split('/');
-                        int year = int.Parse(strDate[2]);
-                        int month = int.Parse(strDate[0].TrimStart('0'));
-                        int day = int.Parse(strDate[1].TrimStart('0'));
 
-                        DateTime secLvlRelDt = new DateTime(year, month, day);
+                        #region EVASO_BUT_NOT_FULLY_RELEASED_CHECK
+
+                        string[] strPrFullyRelDate = (dr["PR Fully Rel Date"].ToString()).Split('/');
+                        int prFullyRelYear = int.Parse(strPrFullyRelDate[2]);
+                        int prFullyRelMonth = int.Parse(strPrFullyRelDate[0]);
+                        int prFullyRelDay = int.Parse(strPrFullyRelDate[1]);
+
+
+                        if (prFullyRelYear == 0 && prFullyRelMonth == 0 && prFullyRelDay == 0)
+                        {
+                            // This PR line or PR in general might have been delted
+                            continue;
+                        }
+
+
+                        #endregion
+
+
+                        DateTime prFullyRelDt = new DateTime(prFullyRelYear, prFullyRelMonth, prFullyRelDay);
                         DateTime today = DateTime.Now.Date;
-                        double elapsedDays = (int)(today - secLvlRelDt).TotalDays;
+                        double elapsedDays = (int)(today - prFullyRelDt).TotalDays;
 
                         switch (tag)
                         {
@@ -1565,7 +1616,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             continue;
                         }
 
-                        string[] strDate = (dr["Del#Conf#Date"].ToString()).Split('/');
+                        string[] strDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
                         int year = int.Parse(strDate[2]);
                         int month = int.Parse(strDate[0].TrimStart('0'));
                         int day = int.Parse(strDate[1].TrimStart('0'));
@@ -1779,13 +1830,26 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             continue;
                         }
 
-                        string[] strDate = (dr["PR 2° Rel# Date"].ToString()).Split('/');
-                        int year = int.Parse(strDate[2]);
-                        int month = int.Parse(strDate[0].TrimStart('0'));
-                        int day = int.Parse(strDate[1].TrimStart('0'));
+                        #region EVASO_BUT_NOT_FULLY_RELEASED_CHECK
 
-                        DateTime date = new DateTime(year, month, day);
-                        double elapsedDays = (int)(DateTime.Now - date).TotalDays;
+                        string[] strPrFullyRelDate = (dr["PR Fully Rel Date"].ToString()).Split('/');
+                        int prFullyRelYear = int.Parse(strPrFullyRelDate[2]);
+                        int prFullyRelMonth = int.Parse(strPrFullyRelDate[0]);
+                        int prFullyRelDay = int.Parse(strPrFullyRelDate[1]);
+
+
+                        if (prFullyRelYear == 0 && prFullyRelMonth == 0 && prFullyRelDay == 0)
+                        {
+                            // This PR line or PR in general might have been delted
+                            continue;
+                        }
+
+
+                        #endregion
+
+
+                        DateTime prFullyRelDt = new DateTime(prFullyRelYear, prFullyRelMonth, prFullyRelDay);
+                        double elapsedDays = (int)(DateTime.Now - prFullyRelDt).TotalDays;
 
                         switch (tag)
                         {
@@ -2083,13 +2147,26 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             continue;
                         }
 
-                        string[] strDate = (dr["PR 2° Rel# Date"].ToString()).Split('/');
-                        int year = int.Parse(strDate[2]);
-                        int month = int.Parse(strDate[0].TrimStart('0'));
-                        int day = int.Parse(strDate[1].TrimStart('0'));
+                        #region EVASO_BUT_NOT_FULLY_RELEASED_CHECK
 
-                        DateTime date = new DateTime(year, month, day);
-                        double elapsedDays = (int)(DateTime.Now - date).TotalDays;
+                        string[] strPrFullyRelDate = (dr["PR Fully Rel Date"].ToString()).Split('/');
+                        int prFullyRelYear = int.Parse(strPrFullyRelDate[2]);
+                        int prFullyRelMonth = int.Parse(strPrFullyRelDate[0]);
+                        int prFullyRelDay = int.Parse(strPrFullyRelDate[1]);
+
+
+                        if (prFullyRelYear == 0 && prFullyRelMonth == 0 && prFullyRelDay == 0)
+                        {
+                            // This PR line or PR in general might have been delted
+                            continue;
+                        }
+
+
+                        #endregion
+
+
+                        DateTime prFullyRelDt = new DateTime(prFullyRelYear, prFullyRelMonth, prFullyRelDay);
+                        double elapsedDays = (int)(DateTime.Now - prFullyRelDt).TotalDays;
 
                         switch (tag)
                         {
@@ -2294,7 +2371,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             continue;
                         }
 
-                        string[] strDate = (dr["Del#Conf#Date"].ToString()).Split('/');
+                        string[] strDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
                         int year = int.Parse(strDate[2]);
                         int month = int.Parse(strDate[0].TrimStart('0'));
                         int day = int.Parse(strDate[1].TrimStart('0'));
@@ -2441,7 +2518,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             continue;
                         }
 
-                        string[] strDate = (dr["Del#Conf#Date"].ToString()).Split('/');
+                        string[] strDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
                         int year = int.Parse(strDate[2]);
                         int month = int.Parse(strDate[0].TrimStart('0'));
                         int day = int.Parse(strDate[1].TrimStart('0'));

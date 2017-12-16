@@ -346,7 +346,7 @@ namespace KPA_KPI_Analyzer.DataLoading
                 dgv_dataViewerDgv.Columns["Open PR Qty"].DisplayIndex = 11;
                 dgv_dataViewerDgv.Columns["Requisn Date"].DisplayIndex = 12;
                 dgv_dataViewerDgv.Columns["PR Delivery Date"].DisplayIndex = 13;
-                dgv_dataViewerDgv.Columns["PR 2° Rel# Date"].DisplayIndex = 14;
+                dgv_dataViewerDgv.Columns["PR Fully Rel Date"].DisplayIndex = 14;
                 dgv_dataViewerDgv.Columns["WBS Element"].DisplayIndex = 15;
                 dgv_dataViewerDgv.Columns["POPurcGroup"].DisplayIndex = 16;
                 dgv_dataViewerDgv.Columns["Purchasing Doc#"].DisplayIndex = 17;
@@ -362,13 +362,16 @@ namespace KPA_KPI_Analyzer.DataLoading
                 dgv_dataViewerDgv.Columns["PO LIne Creat#DT"].DisplayIndex = 27;
                 dgv_dataViewerDgv.Columns["PO Line 1st Rel Dt"].DisplayIndex = 28;
                 dgv_dataViewerDgv.Columns["GR Posting Date"].DisplayIndex = 29;
-                dgv_dataViewerDgv.Columns["Delivery Document"].DisplayIndex = 30;
-                dgv_dataViewerDgv.Columns["PO Sign Date"].DisplayIndex = 31;
-                dgv_dataViewerDgv.Columns["Delivery Date"].DisplayIndex = 32;
-                dgv_dataViewerDgv.Columns["Rescheduling date"].DisplayIndex = 33;
-                dgv_dataViewerDgv.Columns["Del#Conf#Date"].DisplayIndex = 34;
-                dgv_dataViewerDgv.Columns["1st Conf Date"].DisplayIndex = 35;
-                dgv_dataViewerDgv.Columns["1st Conf Creation Da"].DisplayIndex = 36;
+                
+                // Delivery Document seems to have been removed from the PRPO report.
+                //dgv_dataViewerDgv.Columns["Delivery Document"].DisplayIndex = 30;
+
+                dgv_dataViewerDgv.Columns["PO Sign Date"].DisplayIndex = 30;
+                dgv_dataViewerDgv.Columns["Delivery Date"].DisplayIndex = 31;
+                dgv_dataViewerDgv.Columns["Rescheduling date"].DisplayIndex = 32;
+                dgv_dataViewerDgv.Columns["Latest Conf#Dt"].DisplayIndex = 33;
+                dgv_dataViewerDgv.Columns["1st Conf Date"].DisplayIndex = 34;
+                dgv_dataViewerDgv.Columns["1st Conf Creation Da"].DisplayIndex = 35;
             }
             catch(Exception ex)
             {
@@ -494,43 +497,53 @@ namespace KPA_KPI_Analyzer.DataLoading
         /// </summary>
         private void OrderDataTable()
         {
-            DataViewerUtils.Data.Columns["Material Group"].SetOrdinal(0);
-            DataViewerUtils.Data.Columns["Commodity category"].SetOrdinal(1);
-            DataViewerUtils.Data.Columns["Bid Package"].SetOrdinal(2);
-            DataViewerUtils.Data.Columns["Material"].SetOrdinal(3);
-            DataViewerUtils.Data.Columns["Material Description"].SetOrdinal(4);
-            DataViewerUtils.Data.Columns["Mfr Part Number"].SetOrdinal(5);
-            DataViewerUtils.Data.Columns["Purch# Group"].SetOrdinal(6);
-            DataViewerUtils.Data.Columns["Purchase Req#"].SetOrdinal(7);
-            DataViewerUtils.Data.Columns["Deletion Ind#"].SetOrdinal(8);
-            DataViewerUtils.Data.Columns["PR Item"].SetOrdinal(9);
-            DataViewerUtils.Data.Columns["Release status"].SetOrdinal(10);
-            DataViewerUtils.Data.Columns["Open PR Qty"].SetOrdinal(11);
-            DataViewerUtils.Data.Columns["Requisn Date"].SetOrdinal(12);
-            DataViewerUtils.Data.Columns["PR Delivery Date"].SetOrdinal(13);
-            DataViewerUtils.Data.Columns["PR 2° Rel# Date"].SetOrdinal(14);
-            DataViewerUtils.Data.Columns["WBS Element"].SetOrdinal(15);
-            DataViewerUtils.Data.Columns["POPurcGroup"].SetOrdinal(16);
-            DataViewerUtils.Data.Columns["Purchasing Doc#"].SetOrdinal(17);
-            DataViewerUtils.Data.Columns["Item"].SetOrdinal(18);
-            DataViewerUtils.Data.Columns["PO Deletion"].SetOrdinal(19);
-            DataViewerUtils.Data.Columns["PO Doc# Type"].SetOrdinal(20);
-            DataViewerUtils.Data.Columns["Escaped"].SetOrdinal(21);
-            DataViewerUtils.Data.Columns["Vendor"].SetOrdinal(22);
-            DataViewerUtils.Data.Columns["Vendor Description"].SetOrdinal(23);
-            DataViewerUtils.Data.Columns["PO Qty"].SetOrdinal(24);
-            DataViewerUtils.Data.Columns["PO Unit"].SetOrdinal(25);
-            DataViewerUtils.Data.Columns["PO Date"].SetOrdinal(26);
-            DataViewerUtils.Data.Columns["PO LIne Creat#DT"].SetOrdinal(27);
-            DataViewerUtils.Data.Columns["PO Line 1st Rel Dt"].SetOrdinal(28);
-            DataViewerUtils.Data.Columns["GR Posting Date"].SetOrdinal(29);
-            DataViewerUtils.Data.Columns["Delivery Document"].SetOrdinal(30);
-            DataViewerUtils.Data.Columns["PO Sign Date"].SetOrdinal(31);
-            DataViewerUtils.Data.Columns["Delivery Date"].SetOrdinal(32);
-            DataViewerUtils.Data.Columns["Rescheduling date"].SetOrdinal(33);
-            DataViewerUtils.Data.Columns["Del#Conf#Date"].SetOrdinal(34);
-            DataViewerUtils.Data.Columns["1st Conf Date"].SetOrdinal(35);
-            DataViewerUtils.Data.Columns["1st Conf Creation Da"].SetOrdinal(36);
+            try
+            {
+                DataViewerUtils.Data.Columns["Material Group"].SetOrdinal(0);
+                DataViewerUtils.Data.Columns["Commodity category"].SetOrdinal(1);
+                DataViewerUtils.Data.Columns["Bid Package"].SetOrdinal(2);
+                DataViewerUtils.Data.Columns["Material"].SetOrdinal(3);
+                DataViewerUtils.Data.Columns["Material Description"].SetOrdinal(4);
+                DataViewerUtils.Data.Columns["Mfr Part Number"].SetOrdinal(5);
+                DataViewerUtils.Data.Columns["Purch# Group"].SetOrdinal(6);
+                DataViewerUtils.Data.Columns["Purchase Req#"].SetOrdinal(7);
+                DataViewerUtils.Data.Columns["Deletion Ind#"].SetOrdinal(8);
+                DataViewerUtils.Data.Columns["PR Item"].SetOrdinal(9);
+                DataViewerUtils.Data.Columns["Release status"].SetOrdinal(10);
+                DataViewerUtils.Data.Columns["Open PR Qty"].SetOrdinal(11);
+                DataViewerUtils.Data.Columns["Requisn Date"].SetOrdinal(12);
+                DataViewerUtils.Data.Columns["PR Delivery Date"].SetOrdinal(13);
+                DataViewerUtils.Data.Columns["PR Fully Rel Date"].SetOrdinal(14);
+                DataViewerUtils.Data.Columns["WBS Element"].SetOrdinal(15);
+                DataViewerUtils.Data.Columns["POPurcGroup"].SetOrdinal(16);
+                DataViewerUtils.Data.Columns["Purchasing Doc#"].SetOrdinal(17);
+                DataViewerUtils.Data.Columns["Item"].SetOrdinal(18);
+                DataViewerUtils.Data.Columns["PO Deletion"].SetOrdinal(19);
+                DataViewerUtils.Data.Columns["PO Doc# Type"].SetOrdinal(20);
+                DataViewerUtils.Data.Columns["Escaped"].SetOrdinal(21);
+                DataViewerUtils.Data.Columns["Vendor"].SetOrdinal(22);
+                DataViewerUtils.Data.Columns["Vendor Description"].SetOrdinal(23);
+                DataViewerUtils.Data.Columns["PO Qty"].SetOrdinal(24);
+                DataViewerUtils.Data.Columns["PO Unit"].SetOrdinal(25);
+                DataViewerUtils.Data.Columns["PO Date"].SetOrdinal(26);
+                DataViewerUtils.Data.Columns["PO LIne Creat#DT"].SetOrdinal(27);
+                DataViewerUtils.Data.Columns["PO Line 1st Rel Dt"].SetOrdinal(28);
+                DataViewerUtils.Data.Columns["GR Posting Date"].SetOrdinal(29);
+
+                // Delivery Document seems to have been removed from the PRPO report.
+                //dgv_dataViewerDgv.Columns["Delivery Document"].DisplayIndex = 30;
+
+                DataViewerUtils.Data.Columns["PO Sign Date"].SetOrdinal(30);
+                DataViewerUtils.Data.Columns["Delivery Date"].SetOrdinal(31);
+                DataViewerUtils.Data.Columns["Rescheduling date"].SetOrdinal(32);
+                DataViewerUtils.Data.Columns["Latest Conf#Dt"].SetOrdinal(33);
+                DataViewerUtils.Data.Columns["1st Conf Date"].SetOrdinal(34);
+                DataViewerUtils.Data.Columns["1st Conf Creation Da"].SetOrdinal(35);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Column Order Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 
@@ -555,8 +568,6 @@ namespace KPA_KPI_Analyzer.DataLoading
             }
             finally
             {
-                //dt.Rows.Clear();
-                //dt = null;
                 GC.Collect();
             }
         }
@@ -575,6 +586,9 @@ namespace KPA_KPI_Analyzer.DataLoading
         /// <param name="e"></param>
         private void tmr_waitTimer_Tick(object sender, EventArgs e)
         {
+            try
+            {
+
             if (IsHandleCreated)
             {
                 if(!DataViewerUtils.DataLoadProcessStarted)
@@ -591,6 +605,12 @@ namespace KPA_KPI_Analyzer.DataLoading
                     CleanUpData();
                     ms_topPanelMenuStrip.Enabled = true;
                 }
+            }
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.StackTrace, "Data Viewer Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

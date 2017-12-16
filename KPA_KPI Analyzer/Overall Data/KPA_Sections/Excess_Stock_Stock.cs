@@ -158,13 +158,26 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                         continue;
                     }
 
-                    string[] strDate = (dr["PR 2° Rel# Date"].ToString()).Split('/');
-                    int year = int.Parse(strDate[2]);
-                    int month = int.Parse(strDate[0].TrimStart('0'));
-                    int day = int.Parse(strDate[1].TrimStart('0'));
 
-                    DateTime date = new DateTime(year, month, day);
-                    double elapsedDays = (DateTime.Now - date).TotalDays;
+                    #region EVASO_BUT_NOT_FULLY_RELEASED_CHECK
+
+                    string[] strPrFullyRelDate = (dr["PR Fully Rel Date"].ToString()).Split('/');
+                    int prFullyRelYear = int.Parse(strPrFullyRelDate[2]);
+                    int prFullyRelMonth = int.Parse(strPrFullyRelDate[0]);
+                    int prFullyRelDay = int.Parse(strPrFullyRelDate[1]);
+
+
+                    if (prFullyRelYear == 0 && prFullyRelMonth == 0 && prFullyRelDay == 0)
+                    {
+                        // This PR line or PR in general might have been delted
+                        continue;
+                    }
+
+
+                    #endregion
+
+                    DateTime prFullyRelDt = new DateTime(prFullyRelYear, prFullyRelMonth, prFullyRelDay);
+                    double elapsedDays = (DateTime.Now - prFullyRelDt).TotalDays;
                     totalDays += elapsedDays;
                     elapsedDays = (int)elapsedDays;
 

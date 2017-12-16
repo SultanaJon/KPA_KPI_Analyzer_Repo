@@ -194,40 +194,28 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
 
 
 
-                    // This is a tempory fix for MEXICO
-                    // DELETE the refion below this commented code and uncomment this code.
+                    #region EVASO_BUT_NOT_FULLY_RELEASED_CHECK
 
-                    //string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
-                    //int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
-                    //int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
-                    //int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+                    string[] strPrFullyRelDate = (dr["PR Fully Rel Date"].ToString()).Split('/');
+                    int prFullyRelYear = int.Parse(strPrFullyRelDate[2]);
+                    int prFullyRelMonth = int.Parse(strPrFullyRelDate[0]);
+                    int prFullyRelDay = int.Parse(strPrFullyRelDate[1]);
 
-                    #region MEXICOs TEMP FIX
 
-                    string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
-                    int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
-                    int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0]);
-                    int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1]);
-
-                    if (pr2ndLvlRelYear == 0 && pr2ndLvlRelMonth == 0 && pr2ndLvlRelDay == 0)
+                    if (prFullyRelYear == 0 && prFullyRelMonth == 0 && prFullyRelDay == 0)
                     {
-                        // just ignore this bad Mexico data.
+                        // This PR line or PR in general might have been delted
                         continue;
                     }
-                    else
-                    {
-                        pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
-                        pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
-                        pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
-                    }
+
 
                     #endregion
 
+                    DateTime prFullyRelDt = new DateTime(prFullyRelYear, prFullyRelMonth, prFullyRelDay);
                     DateTime prPlanDate = new DateTime(delConfYear, delConfMonth, delConfDay);
-                    DateTime pr2ndRelDate = new DateTime(pr2ndLvlRelYear, pr2ndLvlRelMonth, pr2ndLvlRelDay);
                     int commCodeLeadTime = int.Parse(dr["Pl# Deliv# Time"].ToString());
 
-                    double elapsedDays = (prPlanDate - pr2ndRelDate).TotalDays;
+                    double elapsedDays = (prPlanDate - prFullyRelDt).TotalDays;
                     elapsedDays -= commCodeLeadTime;
                     totalDays += elapsedDays;
 
@@ -319,34 +307,24 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
 
 
 
-                    // This is a tempory fix for MEXICO TAG_MEXICO_FIX
-                    // DELETE the refion below this commented code and uncomment this code.
+                    #region EVASO_BUT_NOT_FULLY_RELEASED_CHECK
 
-                    //string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
-                    //int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
-                    //int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
-                    //int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
+                    string[] strPrFullyRelDate = (dr["PR Fully Rel Date"].ToString()).Split('/');
+                    int prFullyRelYear = int.Parse(strPrFullyRelDate[2]);
+                    int prFullyRelMonth = int.Parse(strPrFullyRelDate[0]);
+                    int prFullyRelDay = int.Parse(strPrFullyRelDate[1]);
 
-                    #region MEXICOs TEMP FIX
 
-                    string[] strPr2ndLvlRelDt = (dr["PR 2° Rel# Date"].ToString()).Split('/');
-                    int pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
-                    int pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0]);
-                    int pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1]);
-
-                    if (pr2ndLvlRelYear == 0 && pr2ndLvlRelMonth == 0 && pr2ndLvlRelDay == 0)
+                    if (prFullyRelYear == 0 && prFullyRelMonth == 0 && prFullyRelDay == 0)
                     {
-                        // just ignore this bad Mexico data.
+                        // This PR line or PR in general might have been delted
                         continue;
                     }
-                    else
-                    {
-                        pr2ndLvlRelYear = int.Parse(strPr2ndLvlRelDt[2]);
-                        pr2ndLvlRelMonth = int.Parse(strPr2ndLvlRelDt[0].TrimStart('0'));
-                        pr2ndLvlRelDay = int.Parse(strPr2ndLvlRelDt[1].TrimStart('0'));
-                    }
+
 
                     #endregion
+
+                    DateTime prFullyRelDt = new DateTime(prFullyRelYear, prFullyRelMonth, prFullyRelDay);
 
 
                     string[] strCurrPlanDate = (dr["Rescheduling date"].ToString()).Split('/');
@@ -382,11 +360,10 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                         currPlanDay = int.Parse(strCurrPlanDate[1].TrimStart('0'));
                     }
 
-                    DateTime pr2ndRelDate = new DateTime(pr2ndLvlRelYear, pr2ndLvlRelMonth, pr2ndLvlRelDay);
                     DateTime currPlanDate = new DateTime(currPlanYear, currPlanMonth, currPlanDay);
                     int commCodedLeadTime = int.Parse(dr["Pl# Deliv# Time"].ToString());
 
-                    double elapsedDays = (currPlanDate - pr2ndRelDate).TotalDays;
+                    double elapsedDays = (currPlanDate - prFullyRelDt).TotalDays;
                     elapsedDays -= commCodedLeadTime;
                     totalDays += elapsedDays;
 
