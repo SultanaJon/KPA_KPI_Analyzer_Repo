@@ -7,7 +7,7 @@ namespace KPA_KPI_Analyzer.Values
         /// <summary>
         /// The latest PRPO generation date that is excepted by the program because of data chanegs.
         /// </summary>
-        public static readonly DateTime LastestExceptedPrpoReportDate = new DateTime(2017, 12, 12);
+        public static readonly DateTime LastestExceptedPrpoReportDate = new DateTime(2017, 12, 15);
 
         /// <summary>
         /// 
