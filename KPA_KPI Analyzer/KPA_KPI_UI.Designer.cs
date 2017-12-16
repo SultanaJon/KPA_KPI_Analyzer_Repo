@@ -305,7 +305,7 @@
             this.toolsToolStripMenuItem});
             this.ms_applicaitonMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.ms_applicaitonMenuStrip.Name = "ms_applicaitonMenuStrip";
-            this.ms_applicaitonMenuStrip.Size = new System.Drawing.Size(243, 24);
+            this.ms_applicaitonMenuStrip.Size = new System.Drawing.Size(151, 24);
             this.ms_applicaitonMenuStrip.TabIndex = 0;
             this.ms_applicaitonMenuStrip.Text = "menuStrip1";
             // 
@@ -398,7 +398,7 @@
             // importToolStripMenuItem
             // 
             this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-            this.importToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.importToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.importToolStripMenuItem.Text = "Import";
             this.importToolStripMenuItem.Click += new System.EventHandler(this.importToolStripMenuItem_Click);
             // 
@@ -409,27 +409,27 @@
             this.toolStripMenuItem1,
             this.addVariantToolStripMenuItem});
             this.filtersToolStripMenuItem.Name = "filtersToolStripMenuItem";
-            this.filtersToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.filtersToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.filtersToolStripMenuItem.Text = "Filters";
             // 
             // viewVariantsToolStripMenuItem
             // 
             this.viewVariantsToolStripMenuItem.Enabled = false;
             this.viewVariantsToolStripMenuItem.Name = "viewVariantsToolStripMenuItem";
-            this.viewVariantsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.viewVariantsToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.viewVariantsToolStripMenuItem.Text = "View Variants";
             this.viewVariantsToolStripMenuItem.Click += new System.EventHandler(this.viewVariantsToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(140, 6);
             // 
             // addVariantToolStripMenuItem
             // 
             this.addVariantToolStripMenuItem.Enabled = false;
             this.addVariantToolStripMenuItem.Name = "addVariantToolStripMenuItem";
-            this.addVariantToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addVariantToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.addVariantToolStripMenuItem.Text = "Add Variant";
             this.addVariantToolStripMenuItem.Click += new System.EventHandler(this.addVariantToolStripMenuItem_Click);
             // 
@@ -749,7 +749,7 @@
             this.btn_kpiPurchTwo.Size = new System.Drawing.Size(228, 23);
             this.btn_kpiPurchTwo.TabIndex = 32;
             this.btn_kpiPurchTwo.Tag = "15";
-            this.btn_kpiPurchTwo.Text = "       Purch";
+            this.btn_kpiPurchTwo.Text = "       Purch II";
             this.btn_kpiPurchTwo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_kpiPurchTwo.UseVisualStyleBackColor = false;
             this.btn_kpiPurchTwo.Click += new System.EventHandler(this.sectionBtn_Click);
@@ -768,7 +768,7 @@
             this.btn_kpiPlanTwo.Size = new System.Drawing.Size(228, 23);
             this.btn_kpiPlanTwo.TabIndex = 28;
             this.btn_kpiPlanTwo.Tag = "14";
-            this.btn_kpiPlanTwo.Text = "       Plan";
+            this.btn_kpiPlanTwo.Text = "       Plan II";
             this.btn_kpiPlanTwo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_kpiPlanTwo.UseVisualStyleBackColor = false;
             this.btn_kpiPlanTwo.Click += new System.EventHandler(this.sectionBtn_Click);
