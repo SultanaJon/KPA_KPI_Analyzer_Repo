@@ -40,8 +40,8 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
         public string[] categoryNames =
         {
             "Current Plan Date vs PR Plan Date",
-            "(Original Plan Date - 2nd Lvl Release Date) vs Coded Lead-Time",
-            "(Current Plan Date - 2nd Lvl Release Date) vs Coded Lead-Time"
+            "(Original Plan Date - PR Fully Released Date) vs Coded Lead-Time",
+            "(Current Plan Date - PR Fully Released Date) vs Coded Lead-Time"
         };
 
 

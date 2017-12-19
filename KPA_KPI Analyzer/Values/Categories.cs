@@ -169,7 +169,7 @@
         public static string[][] kpiCategories =
         {
                 // Plan One
-                new string[] { "Current Plan vs PR Plan Date", "(Original Plan Date - 2nd Lvl Release Date) vs Coded Lead-Time", "(Current Plan Date - 2nd Lvl Release Date) vs Coded Lead-Time"},
+                new string[] { "Current Plan vs PR Plan Date", "(Original Plan Date - PR Fully Released Date) vs Coded Lead-Time", "(Current Plan Date - PR Fully Released Date) vs Coded Lead-Time"},
                 // Purch
                 new string[] { "Initial Confirmation Date vs PR Plan Date"},
                 // Follow Up
@@ -177,7 +177,7 @@
                 // Plan two
                 new string[] { "Material Due (Original Planned Date)", "Material Due (Final Planned Date)"},
                 // Purch Two
-                new string[] { "PR 2nd Lvl Release Date vs PO Creation Date", "PO Creation Date vs PO Release Date", "PO Release Date vs PO Confirmation Date"},
+                new string[] { "PR Fully Released Date vs PO Creation Date", "PO Creation Date vs PO Release Date", "PO Release Date vs PO Confirmation Date"},
                 // Purch Sub
                 new string[] { "PR Release Date vs PO Release Date", "PO Creation Date vs Confirmation Entry Date" },
                 // Purch Total

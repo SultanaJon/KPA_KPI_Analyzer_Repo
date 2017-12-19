@@ -37,7 +37,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
 
         public string[] categoryNames =
         {
-            "PR 2nd Lvl Release Date vs PO Creation Date",
+            "PR Fully Released Date vs PO Creation Date",
             "PO Creation Date vs PO Release Date",
             "PO Release Date vs PO Confirmation Date",
         };
