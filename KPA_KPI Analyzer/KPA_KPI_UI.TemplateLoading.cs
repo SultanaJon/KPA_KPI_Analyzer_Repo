@@ -303,7 +303,7 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         private void CreateKpiPlanTwoTemplate()
         {
-            lbl_Section.Text = "Plan";
+            lbl_Section.Text = "Plan II";
             KPIPlanTwoTemplate kpiPlanTwoTemplate = new KPIPlanTwoTemplate()
             {
                 Name = "Plan",
@@ -323,7 +323,7 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         private void CreateKpiPurchTwoTemplate()
         {
-            lbl_Section.Text = "Purch";
+            lbl_Section.Text = "Purch II";
             KPIPurchTwoTemplate kpiPurchTwoTemplate = new KPIPurchTwoTemplate()
             {
                 Name = "Purch",

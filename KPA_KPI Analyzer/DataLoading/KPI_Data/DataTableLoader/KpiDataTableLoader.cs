@@ -858,7 +858,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     finalConfDateVsFinalPlanDateDt = new DataTable();
                     unconfirmed = new DataTable();
 
-                    cmd = new OleDbCommand(Database.QueryManager.KpiQueries.GetAllPOs() + Filters.FilterData.FilterQuery, DatabaseUtils.DatabaseConnection);
+                    cmd = new OleDbCommand(QueryManager.KpiQueries.GetPoLinesReceivedComplete() + Filters.FilterData.FilterQuery, DatabaseUtils.DatabaseConnection);
                     da = new OleDbDataAdapter(cmd);
                     da.Fill(dt);
 
@@ -889,7 +889,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                                 unconfirmed.ImportRow(dr);
                             }
 
-                            if (tag == 0) // The user wants to view the total which also includes
+                            if (tag == 0) // The user wants to view the total which also includes unconfirmed
                             {
                                 finalConfDateVsFinalPlanDateDt.ImportRow(dr);
                             }
@@ -1924,7 +1924,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     foreach (DataRow dr in dt.Rows)
                     {
                         //Check if the datarow meets the conditions of any applied filters.
-                        if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
+                        if (!FilterUtils.EvaluateAgainstFilters(dr))
                         {
                             // This datarow dos not meet the conditions of the filters applied.
                             continue;
@@ -2257,7 +2257,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                         if (poLineFirstConfCreateYear == 0 && poLineFirstConfCreateMonth == 0 && poLineFirstConfCreateDay == 0)
                         {
-                            if (tag == 10)
+                            if (tag == 12)
                             {
                                 unconfirmed.ImportRow(dr);
                             }
@@ -2598,7 +2598,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                         if (poLineFirstConCreatefYear == 0 && poLineFirstConfCreateMonth == 0 && poLineFirstConfCreateDay == 0)
                         {
-                            if (tag == 10)
+                            if (tag == 12)
                             {
                                 unconfirmed.ImportRow(dr);
                             }
@@ -2781,7 +2781,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
                         if (firstConfCreateYear == 0 && firstConfCreateMonth == 0 & firstConfCreateDay == 0)
                         {
-                            if (tag == 10)
+                            if (tag == 12)
                             {
                                 unconfirmed.ImportRow(dr);
                             }

@@ -185,7 +185,6 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                         continue;
                     }
 
-                    //tempTotal = 0;
                     string[] strFirstConfCreateDate = (dr["1st Conf Creation Da"].ToString()).Split('/');
                     int poLineFirstConfCreateYear = int.Parse(strFirstConfCreateDate[2]);
                     int poLineFirstConfCreateMonth = int.Parse(strFirstConfCreateDate[0]);
