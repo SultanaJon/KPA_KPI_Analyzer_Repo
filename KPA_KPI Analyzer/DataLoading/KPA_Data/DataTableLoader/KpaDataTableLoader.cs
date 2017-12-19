@@ -277,7 +277,6 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             continue;
                         }
 
-
                         #endregion
 
                         DateTime prFullyRelDt = new DateTime(prFullyRelYear, prFullyRelMonth, prFullyRelDay);

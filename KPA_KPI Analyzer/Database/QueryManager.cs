@@ -268,21 +268,18 @@ namespace KPA_KPI_Analyzer.Database
             public static string GetPoLinesReceivedComplete()
             {
                 return "SELECT * FROM " + table + " WHERE " + "(" + table + ".[Escaped] IS NOT NULL)";
-
             }
 
 
             public static string GetUnconfirmedReceivedCompletePoLines()
             {
                 return "SELECT * FROM " + table + " WHERE " + "(" + table + ".[Escaped] IS NOT NULL AND " + table + ".[Del#Conf#Date] = '00/00/0000')";
-
             }
 
 
             public static string GetPr2ndLevelRelease()
             {
                 return "SELECT * FROM " + table + " WHERE " + "(" + table + ".[Release ind#] = 2)";
-
             }
 
             public static string GetAllData()

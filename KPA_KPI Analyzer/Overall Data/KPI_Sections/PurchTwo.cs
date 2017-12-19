@@ -89,7 +89,6 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                         continue;
                     }
 
-
                     #endregion
 
 
@@ -392,7 +391,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
 
                 try
                 {
-                    poRelVsPOConf.data.PercentUnconf = Math.Round(((double)poRelVsPOConf.data.PercentUnconfTotal / (poRelVsPOConf.data.Total + poRelVsPOConf.data.PercentUnconfTotal)) * 100, 2);
+                    poRelVsPOConf.data.PercentUnconf = Math.Round(((double)poRelVsPOConf.data.PercentUnconfTotal / poRelVsPOConf.data.Total) * 100, 2);
 
                     if (double.IsNaN(poRelVsPOConf.data.PercentUnconf))
                         poRelVsPOConf.data.PercentUnconf = 0;

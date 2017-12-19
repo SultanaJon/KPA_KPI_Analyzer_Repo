@@ -159,7 +159,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
 
                 try
                 {
-                    currConfVsInitConf.data.PercentUnconf = Math.Round(((double)currConfVsInitConf.data.PercentUnconfTotal / (currConfVsInitConf.data.Total + currConfVsInitConf.data.PercentUnconfTotal)) * 100, 2);
+                    currConfVsInitConf.data.PercentUnconf = Math.Round(((double)currConfVsInitConf.data.PercentUnconfTotal / currConfVsInitConf.data.Total) * 100, 2);
                     if (double.IsNaN(currConfVsInitConf.data.PercentUnconf))
                         currConfVsInitConf.data.PercentUnconf = 0;
 
@@ -303,7 +303,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
 
                 try
                 {
-                    finalConfDateVsFinalPlan.data.PercentUnconf = Math.Round(((double)finalConfDateVsFinalPlan.data.PercentUnconfTotal / (finalConfDateVsFinalPlan.data.Total + finalConfDateVsFinalPlan.data.PercentUnconfTotal)) * 100, 2);
+                    finalConfDateVsFinalPlan.data.PercentUnconf = Math.Round(((double)finalConfDateVsFinalPlan.data.PercentUnconfTotal / finalConfDateVsFinalPlan.data.Total) * 100, 2);
                     if (double.IsNaN(finalConfDateVsFinalPlan.data.PercentUnconf))
                         finalConfDateVsFinalPlan.data.PercentUnconf = 0;
 
@@ -562,7 +562,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
 
                 try
                 {
-                    receiptDateVsOrigConfDate.data.PercentUnconf = Math.Round(((double)receiptDateVsOrigConfDate.data.PercentUnconfTotal / (receiptDateVsOrigConfDate.data.Total + receiptDateVsOrigConfDate.data.PercentUnconfTotal)) * 100, 2);
+                    receiptDateVsOrigConfDate.data.PercentUnconf = Math.Round(((double)receiptDateVsOrigConfDate.data.PercentUnconfTotal / receiptDateVsOrigConfDate.data.Total) * 100, 2);
                     if (double.IsNaN(receiptDateVsOrigConfDate.data.PercentUnconf))
                         receiptDateVsOrigConfDate.data.PercentUnconf = 0;
 
@@ -701,7 +701,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
 
                 try
                 {
-                    receiptDateVsCurrConfDate.data.PercentUnconf = Math.Round(((double)receiptDateVsCurrConfDate.data.PercentUnconfTotal / (receiptDateVsCurrConfDate.data.Total + receiptDateVsCurrConfDate.data.PercentUnconfTotal)) * 100, 2);
+                    receiptDateVsCurrConfDate.data.PercentUnconf = Math.Round(((double)receiptDateVsCurrConfDate.data.PercentUnconfTotal / receiptDateVsCurrConfDate.data.Total) * 100, 2);
                     if (double.IsNaN(receiptDateVsCurrConfDate.data.PercentUnconf))
                         receiptDateVsCurrConfDate.data.PercentUnconf = 0;
 
