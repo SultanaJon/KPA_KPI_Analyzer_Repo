@@ -192,7 +192,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Average = string.Format("{0:n}", overallData.kpa.purchTotal.prRelConfEntry.data.Average);
 
             AnalysisOne = "- PRs fully released which are either not on a PO or on a PO (but have not been confirmed and are not delivered).";
-            AnalysisTwo = "- Difference between todays date and the date the PR was released to the 2nd level.";
+            AnalysisTwo = "- Difference between todays date and the date the PR was fully released.";
 
             dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
             dp.addLabely(lbl_xLabelTwo.Text, TimeBucketTwo);

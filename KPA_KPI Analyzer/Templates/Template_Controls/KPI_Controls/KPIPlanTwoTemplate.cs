@@ -206,8 +206,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TimeBucketTen = overallData.kpi.planTwo.materialDueOrigPlanDate.data.Fifty_FiftySix.ToString();
             TimeBucketEleven = overallData.kpi.planTwo.materialDueOrigPlanDate.data.GreaterThanEqualFiftySeven.ToString();
 
-            AnalysisOne = "- Will show if the PR has been released to the second level.";
-            AnalysisTwo = "- Difference between PR delivery date and PR 2nd lvl release date.";
+            AnalysisOne = "- Will show if the PR has been fully released.";
+            AnalysisTwo = "- Difference between PR delivery date and the date the PR was fully released.";
 
             dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
             dp.addLabely(lbl_xLabelTwo.Text, TimeBucketTwo);
@@ -270,7 +270,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TimeBucketEleven = overallData.kpi.planTwo.materialDueFinalPlanDate.data.GreaterThanEqualFiftySeven.ToString();
 
             AnalysisOne = "- Will show if the PR line item is on a PO.";
-            AnalysisTwo = "- Difference between the current planned date and the PR 2nd lvl release.";
+            AnalysisTwo = "- Difference between the current planned date and the date the PR was fully released.";
 
             dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
             dp.addLabely(lbl_xLabelTwo.Text, TimeBucketTwo);

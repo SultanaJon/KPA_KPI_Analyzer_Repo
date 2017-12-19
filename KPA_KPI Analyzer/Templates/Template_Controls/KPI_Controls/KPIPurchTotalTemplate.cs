@@ -216,7 +216,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
             AnalysisOne = "- Will show if PO line item has a confirmation date.";
-            AnalysisTwo = "- Difference between initial confirmation date creation and PR 2nd level release.";
+            AnalysisTwo = "- Difference between initial confirmation date creation and the date the PR was fully released.";
 
 
             dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);

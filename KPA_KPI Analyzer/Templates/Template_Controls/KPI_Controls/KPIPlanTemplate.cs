@@ -271,8 +271,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TimeBucketNine = overallData.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.TwentyTwo.ToString();
 
 
-            AnalysisOne = "- Will show if PR has 2nd level release.";
-            AnalysisTwo = "- (PR planned date - 2nd level release date) - commodity coded leadtime.";
+            AnalysisOne = "- Will show if the PR is fully released.";
+            AnalysisTwo = "- (PR planned date - PR fully released date) - commodity coded leadtime.";
 
 
             dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
@@ -335,8 +335,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
 
-            AnalysisOne = "- Will show if PR has 2nd level release.";
-            AnalysisTwo = "- (current planned date - 2nd level release date) - commodity coded leadtime.";
+            AnalysisOne = "- Will show if the PR is fully released.";
+            AnalysisTwo = "- (current planned date - PR fully released date) - commodity coded leadtime.";
 
 
             dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);

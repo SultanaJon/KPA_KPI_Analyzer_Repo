@@ -270,7 +270,7 @@
             this.btn_Three.BackColor = System.Drawing.SystemColors.Control;
             this.btn_Three.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_Three.BorderRadius = 0;
-            this.btn_Three.ButtonText = "(Current Plan Date - 2nd Lvl Release Date) vs coded lead-time";
+            this.btn_Three.ButtonText = "(Current Plan Date - PR Fully Released Date) vs coded lead-time";
             this.btn_Three.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Three.DisabledColor = System.Drawing.SystemColors.Control;
             this.btn_Three.Dock = System.Windows.Forms.DockStyle.Left;
@@ -297,7 +297,7 @@
             this.btn_Three.Size = new System.Drawing.Size(209, 50);
             this.btn_Three.TabIndex = 2;
             this.btn_Three.Tag = "2";
-            this.btn_Three.Text = "(Current Plan Date - 2nd Lvl Release Date) vs coded lead-time";
+            this.btn_Three.Text = "(Current Plan Date - PR Fully Released Date) vs coded lead-time";
             this.btn_Three.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btn_Three.Textcolor = System.Drawing.Color.DimGray;
             this.btn_Three.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -309,7 +309,7 @@
             this.btn_Two.BackColor = System.Drawing.SystemColors.Control;
             this.btn_Two.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_Two.BorderRadius = 0;
-            this.btn_Two.ButtonText = "(Original Plan Date - 2nd Lvl Release Date) vs coded lead-time";
+            this.btn_Two.ButtonText = "(Original Plan Date - PR Fully Released Date) vs coded lead-time";
             this.btn_Two.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Two.DisabledColor = System.Drawing.SystemColors.Control;
             this.btn_Two.Dock = System.Windows.Forms.DockStyle.Left;
@@ -336,7 +336,7 @@
             this.btn_Two.Size = new System.Drawing.Size(214, 50);
             this.btn_Two.TabIndex = 1;
             this.btn_Two.Tag = "1";
-            this.btn_Two.Text = "(Original Plan Date - 2nd Lvl Release Date) vs coded lead-time";
+            this.btn_Two.Text = "(Original Plan Date - PR Fully Released Date) vs coded lead-time";
             this.btn_Two.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btn_Two.Textcolor = System.Drawing.Color.DimGray;
             this.btn_Two.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

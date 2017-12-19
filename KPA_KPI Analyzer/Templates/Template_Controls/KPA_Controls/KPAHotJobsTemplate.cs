@@ -193,7 +193,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Average = string.Format("{0:n}", overallData.kpa.hotJobs.prsNotOnPO.data.Average);
 
             AnalysisOne = "- Will only show if PR is assigned to purchase group UHJ, is fully released and the PR has not been placed on a PO.";
-            AnalysisTwo = "- Difference between todays date and the date the PR was released to the second level.";
+            AnalysisTwo = "- Difference between todays date and the date the PR was fully released.";
 
 
             dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);

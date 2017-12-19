@@ -291,7 +291,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
             AnalysisOne = "- Count of PRs by release date.";
-            AnalysisTwo = "- Difference between PR final release date and todays date.";
+            AnalysisTwo = "- Difference between PR fully released date and todays date.";
 
 
             dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);

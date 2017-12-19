@@ -204,7 +204,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
             Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PurchSub][(int)Values.Categories.KpiCategory.PurchSub.PRReleaseDatevsPOReleaseDate];
             Globals.CurrCategory = Title;
-            Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.PurchSub];
+            Globals.CurrSection = Sections.kpiections[(int)Values.Sections.KpiSection.PurchSub];
             ChangeCategory();
 
             TimeBucketOne = overallData.kpi.purchSub.prRelVsPORel.data.LessThanZero.ToString();
@@ -220,7 +220,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TimeBucketEleven = overallData.kpi.purchSub.prRelVsPORel.data.GreaterThanEqualFiftySeven.ToString();
 
             AnalysisOne = "- Will show if PR is on a PO that has previously been released.";
-            AnalysisTwo = "- Difference between PO line initial release date and PR second level release.";
+            AnalysisTwo = "- Difference between PO line initial release date and the date the PR was fully released.";
 
 
             dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);

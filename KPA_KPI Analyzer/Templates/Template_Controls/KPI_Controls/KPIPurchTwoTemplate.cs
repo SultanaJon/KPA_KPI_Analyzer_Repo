@@ -224,7 +224,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TimeBucketEleven = overallData.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.GreaterThanEqualFiftySeven.ToString();
 
             AnalysisOne = "- Will show if PR is on PO.";
-            AnalysisTwo = "- Difference between PO line items initial creation date and PRs 2nd level release date.";
+            AnalysisTwo = "- Difference between PO line items initial creation date and the date the PR was fully released.";
 
             dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
             dp.addLabely(lbl_xLabelTwo.Text, TimeBucketTwo);

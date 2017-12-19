@@ -201,7 +201,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
 
             AnalysisOne = "- Will only show in this field if the PR is fully released AND (it is not on a PO OR it is on a PO but has never been released).";
-            AnalysisTwo = "- Difference between todays date and the date the PR was released to the 2nd level.";
+            AnalysisTwo = "- Difference between todays date and the date the PR was fully released.";
 
             dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
             dp.addLabely(lbl_xLabelTwo.Text, TimeBucketTwo);
