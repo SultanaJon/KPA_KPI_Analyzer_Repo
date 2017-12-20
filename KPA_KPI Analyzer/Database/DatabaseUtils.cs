@@ -1,12 +1,12 @@
-﻿using DataImporter.Access;
-using KPA_KPI_Analyzer.Diagnostics;
-using KPA_KPI_Analyzer.Values;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.OleDb;
-using System.IO;
-using System.Windows.Forms;
+﻿//using DataImporter.Access;
+//using KPA_KPI_Analyzer.Diagnostics;
+//using KPA_KPI_Analyzer.Values;
+//using System;
+//using System.Collections.Generic;
+//using System.Data;
+//using System.Data.OleDb;
+//using System.IO;
+//using System.Windows.Forms;
 
 namespace KPA_KPI_Analyzer.Database
 {

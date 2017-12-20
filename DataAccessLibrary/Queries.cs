@@ -38,9 +38,9 @@ namespace DataAccessLibrary
         /// Sets the target database table
         /// </summary>
         /// <param name="_country"></param>
-        public static void SetDatabaseTable(Countries.Country _country)
+        public static void SetDatabaseTable(DatabaseTables.DatabaseTable _table)
         {
-            if (_country == Countries.Country.UnitedStates)
+            if (_table == DatabaseTables.DatabaseTable.UnitedStates)
                 table = DatabaseTables.databaseTables[(int)DatabaseTables.DatabaseTable.UnitedStates];
             else
                 table = DatabaseTables.databaseTables[(int)DatabaseTables.DatabaseTable.Mexico];

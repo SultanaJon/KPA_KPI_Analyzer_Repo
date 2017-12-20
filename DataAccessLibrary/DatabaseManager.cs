@@ -119,7 +119,7 @@ namespace DataAccessLibrary
                 if (DatabaseConnection != null)
                     DatabaseConnection.Close();
 
-                File.Delete(Configuration.DbPath);
+                File.Delete(AI.FileName);
                 AccessUtils.CreateAccessDB();
                 result = true;
             }
@@ -171,13 +171,13 @@ namespace DataAccessLibrary
         /// </summary>
         /// <param name="tableName"></param>
         /// <returns></returns>
-        public static bool RemoveData(Countries.Country _country)
+        public static bool RemoveData(DatabaseTables.DatabaseTable _table)
         {
             bool result = false;
 
             try
             {
-                if (_country == Countries.Country.UnitedStates)
+                if (_table == DatabaseTables.DatabaseTable.UnitedStates)
                 {
                     OleDbCommand cmd;
                     cmd = new OleDbCommand(Queries.GetUsRemovableDataQuery(), DatabaseConnection);

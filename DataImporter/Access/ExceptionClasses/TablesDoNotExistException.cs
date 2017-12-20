@@ -4,8 +4,8 @@ namespace DataImporter.Access.ExceptionClasses
 {
     public class TablesDoNotExistException : Exception
     {
-        public TablesDoNotExistException() { }
+        //public TablesDoNotExistException() { }
 
-        public TablesDoNotExistException(string message) : base(message) { }
+        //public TablesDoNotExistException(string message) : base(message) { }
     }
 }

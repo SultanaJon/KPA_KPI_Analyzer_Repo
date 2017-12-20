@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataExporter", "DataExporte
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reporting", "Reporting\Reporting.csproj", "{2D1507E4-751C-4644-ACC7-E3CE2F91A313}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLibrary", "DataAccessLibrary\DataAccessLibrary.csproj", "{3BF2C771-F9E8-4596-B969-03A8CD251E57}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccessDatabaseLibrary", "DataAccessLibrary\AccessDatabaseLibrary.csproj", "{3BF2C771-F9E8-4596-B969-03A8CD251E57}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -638,6 +638,10 @@
     <None Include="Resources\DragDrop_Inactive_BG.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataAccessLibrary\AccessDatabaseLibrary.csproj">
+      <Project>{3bf2c771-f9e8-4596-b969-03a8cd251e57}</Project>
+      <Name>AccessDatabaseLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataExporter\DataExporter.csproj">
       <Project>{e3601d73-731a-46ee-8af0-b314580534a7}</Project>
       <Name>DataExporter</Name>
