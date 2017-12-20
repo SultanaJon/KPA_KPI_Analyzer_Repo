@@ -1,6 +1,26 @@
 ﻿namespace Reporting.KeyPerformanceActions.HotJobs
 {
-    class PrsNotOnPo
+    class PrsNotOnPo : KeyPerformanceAction
     {
+        #region KeyPerformanceAction override functions
+
+        public override void CalculateOverallReport()
+        {
+
+        }
+
+
+        public override void CalculateSelectiveReport()
+        {
+
+        }
+
+
+        public override void CalculateComparisonReport()
+        {
+
+        }
+
+        #endregion
     }
 }

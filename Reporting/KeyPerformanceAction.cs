@@ -2,6 +2,8 @@
 {
     abstract class KeyPerformanceAction
     {
-        public KeyPerformanceActionSections.Section Section { get; set; }
+        public abstract void CalculateOverallReport();
+        public abstract void CalculateSelectiveReport();
+        public abstract void CalculateComparisonReport();
     }
 }

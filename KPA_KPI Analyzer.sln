@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KPA_KPI Analyzer", "KPA_KPI Analyzer\KPA_KPI Analyzer.csproj", "{7E6D695C-BC2A-4A07-B78F-35E750342A48}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KPAKPIAnalyzer", "KPA_KPI Analyzer\KPAKPIAnalyzer.csproj", "{7E6D695C-BC2A-4A07-B78F-35E750342A48}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataImporter", "DataImporter\DataImporter.csproj", "{BE102B8A-42D8-48D2-A37E-B1D83AD9FF12}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataExporter", "DataExporter\DataExporter.csproj", "{E3601D73-731A-46EE-8AF0-B314580534A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PercentUnconfirmedUnitTest", "UnitTestProject1\PercentUnconfirmedUnitTest.csproj", "{B20F35ED-A4C6-46F3-8A3C-6BFED914795E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reporting", "Reporting\Reporting.csproj", "{2D1507E4-751C-4644-ACC7-E3CE2F91A313}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLibrary", "DataAccessLibrary\DataAccessLibrary.csproj", "{3BF2C771-F9E8-4596-B969-03A8CD251E57}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,14 +31,14 @@ Global
 		{E3601D73-731A-46EE-8AF0-B314580534A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3601D73-731A-46EE-8AF0-B314580534A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E3601D73-731A-46EE-8AF0-B314580534A7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B20F35ED-A4C6-46F3-8A3C-6BFED914795E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B20F35ED-A4C6-46F3-8A3C-6BFED914795E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B20F35ED-A4C6-46F3-8A3C-6BFED914795E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B20F35ED-A4C6-46F3-8A3C-6BFED914795E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2D1507E4-751C-4644-ACC7-E3CE2F91A313}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2D1507E4-751C-4644-ACC7-E3CE2F91A313}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D1507E4-751C-4644-ACC7-E3CE2F91A313}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D1507E4-751C-4644-ACC7-E3CE2F91A313}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BF2C771-F9E8-4596-B969-03A8CD251E57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BF2C771-F9E8-4596-B969-03A8CD251E57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BF2C771-F9E8-4596-B969-03A8CD251E57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BF2C771-F9E8-4596-B969-03A8CD251E57}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

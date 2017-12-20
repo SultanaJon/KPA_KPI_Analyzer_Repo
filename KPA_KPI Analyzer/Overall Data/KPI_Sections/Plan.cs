@@ -494,7 +494,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
             if (data.Total != 0)
             {
                 // Sum up the favorable time spans
-                double favorableTimeSpans = data.Minus_TwentyTwo + data.Minus_Fifteen_TwentyOne + data.Minus_Eight_Fourteen + data.Minus_One_Seven + data.Zero;
+                double favorableTimeSpans = data.Zero + data.One_Seven + data.Eight_Fourteen + data.Fifteen_TwentyOne + data.TwentyTwo;
 
                 // calculate the Percent Favorable
                 data.PercentFavorable = Math.Round((favorableTimeSpans / data.Total) * 100, 2);
