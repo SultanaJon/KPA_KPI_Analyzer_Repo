@@ -1,8 +1,9 @@
-﻿using KPA_KPI_Analyzer.Database;
+﻿using AccessDatabaseLibrary;
 using KPA_KPI_Analyzer.Templates;
 using System;
 using System.Data;
 using System.Windows.Forms;
+using AccessDatabaseLibrary.Exceptions;
 
 namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
 {
@@ -74,7 +75,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                 // PR Created
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////                
-                foreach (DataRow dr in DatabaseUtils.AllDt.Rows)
+                foreach (DataRow dr in DatabaseManager.AllDt.Rows)
                 {
                     //Check if the datarow meets the conditions of any applied filters.
                     if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
@@ -151,7 +152,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////                
 
-                foreach (DataRow dr in DatabaseUtils.pr2ndLvlRelDateDt.Rows)
+                foreach (DataRow dr in DatabaseManager.pr2ndLvlRelDateDt.Rows)
                 {
                     //Check if the datarow meets the conditions of any applied filters.
                     if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
@@ -242,7 +243,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////                
 
-                foreach (DataRow dr in DatabaseUtils.prsOnPOsDt.Rows)
+                foreach (DataRow dr in DatabaseManager.prsOnPOsDt.Rows)
                 {
                     //Check if the datarow meets the conditions of any applied filters.
                     if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
@@ -321,7 +322,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////                
 
-                foreach (DataRow dr in DatabaseUtils.prsOnPOsDt.Rows)
+                foreach (DataRow dr in DatabaseManager.prsOnPOsDt.Rows)
                 {
                     //Check if the datarow meets the conditions of any applied filters.
                     if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
@@ -402,7 +403,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////                
 
-                foreach (DataRow dr in DatabaseUtils.AllDt.Rows)
+                foreach (DataRow dr in DatabaseManager.AllDt.Rows)
                 {
                     //Check if the datarow meets the conditions of any applied filters.
                     if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
@@ -477,7 +478,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                 totalValue = 0;
 
 
-                DatabaseUtils.UpdateLoadProgress();
+                DatabaseManager.UpdateLoadProgress();
             }
             catch (Exception ex)
             {

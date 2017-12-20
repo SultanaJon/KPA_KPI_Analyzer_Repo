@@ -1,16 +1,14 @@
-﻿using System;
+﻿using AccessDatabaseLibrary.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DataAccessLibrary
+namespace AccessDatabaseLibrary
 {
-    class DatabaseManager
+    public static class DatabaseManager
     {
         public static DataTable prsOnPOsDt;
         public static DataTable posRecCompDt;
@@ -18,28 +16,21 @@ namespace DataAccessLibrary
         public static DataTable AllDt;
         public static DataSet ds;
 
-        private static readonly List<string> errorList = new List<string>();
-
 
         // Call back function to renew the data loader timer.
         public delegate void RenewDataLoadTimerHandler();
         public static event RenewDataLoadTimerHandler RenewDataLoadTimer;
+
+
 
         // Callback function to display the drag drop feature.
         public delegate void DisplayDragDropPageHandler();
         public static event DisplayDragDropPageHandler DisplayDragDropPage;
 
 
+
         public static volatile object _updateDataLoadLock = new object();
         public static volatile object locker = new object();
-
-
-
-
-        /// <summary>
-        /// The connection to the access database.
-        /// </summary>
-        public static OleDbConnection DatabaseConnection { get; set; }
 
 
 
@@ -51,15 +42,50 @@ namespace DataAccessLibrary
 
 
 
+
+        /// <summary>
+        /// The connection to the access database.
+        /// </summary>
+        private static OleDbConnection DatabaseConnection { get; set; }
+
+
+
+
+
+        /// <summary>
+        /// Returns the connection to the database
+        /// </summary>
+        /// <returns></returns>
+        public static OleDbConnection GetDatabaseConnection()
+        {
+            return DatabaseConnection;
+        }
+
+
+
+
+        /// <summary>
+        /// Establishes a connection to the database
+        /// </summary>
+        public static void EstablishDatabaseConnection()
+        {
+            // Create the database connection using the connection string
+            // built by the AccessInfo object.
+            DatabaseConnection = new OleDbConnection(AI.connectionString());
+        }
+
+
+
+
         /// <summary>
         /// Callback function to update the progress of a data removal process.
         /// </summary>
         public static void UpdateDataRemovalProgress()
         {
 
-            if (DatabaseUtils.ScheduledDataRemovals == DatabaseUtils.CompletedDataRemovals)
+            if (DatabaseDataRemovalUtils.ScheduledDataRemovals == DatabaseDataRemovalUtils.CompletedDataRemovals)
             {
-                DatabaseUtils.DataRemoved = true;
+                DatabaseDataRemovalUtils.DataRemoved = true;
             }
         }
 
@@ -73,10 +99,10 @@ namespace DataAccessLibrary
         {
             lock (_updateDataLoadLock)
             {
-                if (DatabaseUtils.ScheduledDataLoads == DatabaseUtils.CompletedDataLoads)
+                if (DatabaseLoadingUtils.ScheduledDataLoads == DatabaseLoadingUtils.CompletedDataLoads)
                 {
                     RenewDataLoadTimer();
-                    DatabaseUtils.DataLoaded = true;
+                    DatabaseLoadingUtils.DataLoaded = true;
                 }
             }
         }
@@ -92,7 +118,7 @@ namespace DataAccessLibrary
         {
             lock (locker)
             {
-                DatabaseUtils.CompletedDataLoads++;
+                DatabaseLoadingUtils.CompletedDataLoads++;
                 MethodInvoker del = delegate
                 {
                     UpdateDataLoadProgress();
@@ -120,7 +146,7 @@ namespace DataAccessLibrary
                     DatabaseConnection.Close();
 
                 File.Delete(AI.FileName);
-                AccessUtils.CreateAccessDB();
+                CreateAccessDB();
                 result = true;
             }
             catch (Exception ex)
@@ -183,7 +209,7 @@ namespace DataAccessLibrary
                     cmd = new OleDbCommand(Queries.GetUsRemovableDataQuery(), DatabaseConnection);
                     cmd.ExecuteNonQuery();
                     result = true;
-                    DatabaseUtils.CompletedDataRemovals++;
+                    DatabaseDataRemovalUtils.CompletedDataRemovals++;
                     UpdateDataRemovalProgress();
                 }
                 else
@@ -192,7 +218,7 @@ namespace DataAccessLibrary
                     cmd = new OleDbCommand(Queries.GetMxRemovableDataQuery(), DatabaseConnection);
                     cmd.ExecuteNonQuery();
                     result = true;
-                    DatabaseUtils.CompletedDataRemovals++;
+                    DatabaseDataRemovalUtils.CompletedDataRemovals++;
                     UpdateDataRemovalProgress();
                 }
             }
@@ -247,7 +273,7 @@ namespace DataAccessLibrary
 
 
 
-                        DatabaseUtils.KPITablesLoaded = true;
+                        DatabaseLoadingUtils.KPITablesLoaded = true;
                         UpdateLoadProgress();
                     }
                 }
@@ -281,6 +307,191 @@ namespace DataAccessLibrary
 
 
 
+
+        /// <summary>
+        /// Check the database. If the database does not exist, throw an exeption so it can be created.
+        /// If the database tables do not exist, thow an exception so the program can continue.
+        /// </summary>
+        /// <exception cref="PRPODatabaseNotFoundException"></exception>
+        public static void CheckDatabase()
+        {
+            if (!File.Exists(AI.FileName))
+            {
+                throw new PRPODatabaseNotFoundException("The PRPO Database does not exists");
+            }
+            else
+            {
+                AccessDatabaseUtils.DatabaseExists = true;
+                AccessDatabaseUtils.US_PRPO_TableExists = false;
+                AccessDatabaseUtils.MX_PRPO_TableExists = false;
+                TablesExist();
+            }
+        }
+
+
+
+
+
+        /// <summary>
+        /// Checks if the database contains a table. if it does this means that the data might be from the 
+        /// day before. If there is a table we want to delete it and create a new one with todays PRPO data.
+        /// </summary>
+        /// <exception cref="TableNameMismatchException"></exception>
+        /// <exception cref="TablesDoNotExistException"></exception>
+        /// <param name="connStr">The connection string to the access database</param>
+        /// <returns>
+        /// Returns wheather or not the access database contains a table.
+        /// </returns>
+        public static void TablesExist()
+        {
+            string[] restrictionValue = new string[4] { null, null, null, "TABLE" };
+            List<string> dbTableName = new List<string>();
+            //AccessInfo AI = new AccessInfo() { FileName = DatabasePath };
+            OleDbConnection accConn = new OleDbConnection(AI.connectionString());
+
+
+
+
+            try
+            {
+                accConn.Open();
+                DataTable schemaInformation = accConn.GetSchema("Tables", restrictionValue);
+
+
+
+                // Check if the access tables exist in the database.
+                if (schemaInformation.Rows.Count != 0)
+                {
+                    foreach (DataRow row in schemaInformation.Rows)
+                    {
+                        dbTableName.Add(row.ItemArray[2].ToString());
+                    }
+
+
+                    // Loop throught the tables within the database and make sure the names are correct.
+                    foreach (var name in dbTableName)
+                    {
+                        if (name != AccessInfo.mainTableNames[(int)AccessInfo.MainTables.US_PRPO] & name != AccessInfo.mainTableNames[(int)AccessInfo.MainTables.MX_PRPO])
+                            throw new TableNameMismatchException("The MS Access Tables are named incorrectly.");
+                        else
+                        {
+                            if (name == AccessInfo.mainTableNames[(int)AccessInfo.MainTables.US_PRPO])
+                            {
+                                AccessDatabaseUtils.US_PRPO_TableExists = true;
+                            }
+
+
+                            if (name == AccessInfo.mainTableNames[(int)AccessInfo.MainTables.MX_PRPO])
+                            {
+                                AccessDatabaseUtils.MX_PRPO_TableExists = true;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    throw new TablesDoNotExistException("The database exists but the tables do not.");
+                }
+            }
+            catch (TablesDoNotExistException)
+            {
+                throw new TablesDoNotExistException("The database exists but the tables do not.");
+            }
+            catch (TableNameMismatchException)
+            {
+                throw new TableNameMismatchException("One or more of the MS Access Table are named incorrectly.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Existing Table Check");
+            }
+            finally
+            {
+                accConn.Close();
+            }
+        }
+
+
+
+
+
+        /// <summary>
+        /// This function will drop the MS Access table that exists.
+        /// </summary>
+        /// <param name="connStr"> The conenction string to the access database file</param>
+        /// <param name="tblName"> The table name in the access file.</param>
+        /// <returns></returns>
+        public static bool DropTable(string connStr, string tableName)
+        {
+            bool result = false;
+            OleDbConnection conn = new OleDbConnection(connStr);
+            OleDbCommand cmd = new OleDbCommand() { Connection = conn };
+
+            try
+            {
+                using (conn)
+                {
+                    using (cmd)
+                    {
+                        conn.Open();
+                        cmd.CommandText = "DROP TABLE [" + tableName + "]";
+                        cmd.ExecuteNonQuery();
+                        result = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Drop Table Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return result;
+        }
+
+
+
+
+
+        /// <summary>
+        /// This function will create the database that will be used for retreiving the PRPO data.
+        /// </summary>
+        /// <exception cref="DatabaseCreationFailureException"></exception>
+        /// <returns>
+        /// A boolean value indicating whether or not he database was created.
+        /// </returns>
+        public static bool CreateAccessDB()
+        {
+            bool result = false;
+
+
+            ADOX.Catalog cat = new ADOX.Catalog();
+            //ADOX.Table table = new ADOX.Table();
+
+            if (!File.Exists(AI.FileName))
+            {
+                try
+                {
+                    cat.Create(AI.connectionString());
+                    ADODB.Connection con = cat.ActiveConnection as ADODB.Connection;
+                    if (con != null)
+                    {
+                        con.Close();
+                    }
+                    result = true;
+                    AccessDatabaseUtils.US_PRPO_TableExists = false;
+                    AccessDatabaseUtils.MX_PRPO_TableExists = false;
+                }
+                catch (Exception)
+                {
+                    throw new DatabaseCreationFailureException("There was an error while creating the MS Access Database.");
+                }
+            }
+            return result;
+        }
+
+
+
+
         /// <summary>
         /// Loads the correlation columns into a dataset.
         /// </summary>
@@ -297,7 +508,7 @@ namespace DataAccessLibrary
         //            foreach (Correlation.CorrelationHeaders.CorrelationMatrixIndexer index in Enum.GetValues(typeof(Correlation.CorrelationHeaders.CorrelationMatrixIndexer)))
         //            {
         //                tempDt = new DataTable();
-        //                cmd.CommandText = "SELECT " + Database.QueryManager.GetDatabaseTableName() + ".[" + Correlation.CorrelationHeaders.correlationQueryHeaders[(int)index] + "], " + Database.QueryManager.GetDatabaseTableName() + ".[" + Correlation.CorrelationHeaders.correlationDateRangeFilters[(int)Correlation.CorrelationHeaders.CorrelationDateRangeFilters.RequisitionDate] + "], " + Database.QueryManager.GetDatabaseTableName() + ".[" + Correlation.CorrelationHeaders.correlationDateRangeFilters[(int)Correlation.CorrelationHeaders.CorrelationDateRangeFilters.PoLineCreateDate] + "], " + Database.QueryManager.GetDatabaseTableName() + ".[" + Correlation.CorrelationHeaders.correlationDateRangeFilters[(int)Correlation.CorrelationHeaders.CorrelationDateRangeFilters.QtyOrdered] + "] FROM " + Database.QueryManager.GetDatabaseTableName();
+        //                cmd.CommandText = "SELECT " + Queries.GetDatabaseTableName() + ".[" + Correlation.CorrelationHeaders.correlationQueryHeaders[(int)index] + "], " + Queries.GetDatabaseTableName() + ".[" + Correlation.CorrelationHeaders.correlationDateRangeFilters[(int)Correlation.CorrelationHeaders.CorrelationDateRangeFilters.RequisitionDate] + "], " + Queries.GetDatabaseTableName() + ".[" + Correlation.CorrelationHeaders.correlationDateRangeFilters[(int)Correlation.CorrelationHeaders.CorrelationDateRangeFilters.PoLineCreateDate] + "], " + Queries.GetDatabaseTableName() + ".[" + Correlation.CorrelationHeaders.correlationDateRangeFilters[(int)Correlation.CorrelationHeaders.CorrelationDateRangeFilters.QtyOrdered] + "] FROM " + Queries.GetDatabaseTableName();
         //                da.SelectCommand = cmd;
         //                da.Fill(tempDt);
         //                tempDt.TableName = Correlation.CorrelationHeaders.correlationHeaders[(int)index];

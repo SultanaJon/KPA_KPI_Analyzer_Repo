@@ -1,23 +1,19 @@
-﻿using DataImporter.Access;
-using DataImporter.Access.ExceptionClasses;
+﻿using DataImporter.Access.ExceptionClasses;
 using KPA_KPI_Analyzer.Diagnostics;
 using System;
-using System.Collections.Generic;
 using System.Data.OleDb;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
+using AccessDatabaseLibrary;
 
 namespace KPA_KPI_Analyzer
 {
     public partial class SplashScreen : Form
     {
         private bool runningThread = false;
-        private OleDbConnection conn = null;
         ApplicationConfiguration.ApplicationConfig settings = new ApplicationConfiguration.ApplicationConfig();
         bool newSettings = false;
-        List<string> errorList;
-
 
 
 
@@ -87,7 +83,7 @@ namespace KPA_KPI_Analyzer
 
 
         /// <summary>
-        /// Constructor
+        /// Default Constructor
         /// </summary>
         public SplashScreen()
         {
@@ -96,11 +92,9 @@ namespace KPA_KPI_Analyzer
             CurrentStatus = CheckStatus.Checking;
             CurrentAppStatus = LoadStatus.Loading;
 
-            errorList = new List<string>();
-
-            AccessUtils.AppDirectoryPath = Configuration.AppDir;
-            AccessUtils.DatabasePath = Configuration.DbPath;
-            AccessUtils.AI = new AccessInfo { FileName = Configuration.DbPath };
+            // Supply the information regarding the access file we will use for our 
+            // datbase to the DatabaseManager.
+            DatabaseManager.AI = new AccessInfo() { FileName = Configuration.DbPath };
         }
 
 
@@ -114,54 +108,54 @@ namespace KPA_KPI_Analyzer
         /// <param name="sender">The timer</param>
         /// <param name="e">the tick event</param>
         private void timer1_Tick(object sender, EventArgs e)
-        {
-            if(runningThread == false && CurrentAppStatus != LoadStatus.Complete)
             {
-                runningThread = true;
-                if(CurrentState == State.DirectoryCheck)
+                if(runningThread == false && CurrentAppStatus != LoadStatus.Complete)
                 {
-                    new Thread(() => {
-                        CheckApplicationFolderStructure();
-                    }).Start();
-                }
-                else if(CurrentState == State.FileCheck)
-                {
-                    new Thread(() => {
-                        CheckApplicationFiles();
-                    }).Start();
-                }
-                else if(CurrentState == State.DatabaseCheck)
-                {
-                    new Thread(() => {
-                        CheckDatabase();
-                    }).Start();
-                }
-            }
-            else
-            {
-                
-                if(CurrentStatus == CheckStatus.Complete)
-                {
-                    if (CurrentState == State.DatabaseCheck)
+                    runningThread = true;
+                    if(CurrentState == State.DirectoryCheck)
                     {
-                        CurrentAppStatus = LoadStatus.Complete;
-                        Thread thrd = new Thread(() => { loadMainThread(); });
-                        thrd.SetApartmentState(ApartmentState.STA);
-                        Hide();
-                        timer1.Stop();
-                        thrd.Start();
-                        thrd.Join(); // Wait here on this thread until the application is closed.
-                        Application.Exit(); // Close the splash screen (main thread)
+                        new Thread(() => {
+                            CheckApplicationFolderStructure();
+                        }).Start();
                     }
-                    else
+                    else if(CurrentState == State.FileCheck)
                     {
-                        runningThread = false;
-                        CurrentStatus = CheckStatus.Checking;
-                        CurrentState++;
-                    }                   
+                        new Thread(() => {
+                            CheckApplicationFiles();
+                        }).Start();
+                    }
+                    else if(CurrentState == State.DatabaseCheck)
+                    {
+                        new Thread(() => {
+                            CheckDatabase();
+                        }).Start();
+                    }
+                }
+                else
+                {
+                
+                    if(CurrentStatus == CheckStatus.Complete)
+                    {
+                        if (CurrentState == State.DatabaseCheck)
+                        {
+                            CurrentAppStatus = LoadStatus.Complete;
+                            Thread thrd = new Thread(() => { loadMainThread(); });
+                            thrd.SetApartmentState(ApartmentState.STA);
+                            Hide();
+                            timer1.Stop();
+                            thrd.Start();
+                            thrd.Join(); // Wait here on this thread until the application is closed.
+                            Application.Exit(); // Close the splash screen (main thread)
+                        }
+                        else
+                        {
+                            runningThread = false;
+                            CurrentStatus = CheckStatus.Checking;
+                            CurrentState++;
+                        }                   
+                    }
                 }
             }
-        }
 
 
 
@@ -175,12 +169,12 @@ namespace KPA_KPI_Analyzer
         {
             if (CurrentAppStatus == LoadStatus.Complete)
             {
-                if (conn != null && !newSettings)
+                if (!newSettings)
                 {
                     try
                     {
                         settings.Load(ref settings);
-                        Application.Run(new KPA_KPI_UI(conn, settings));
+                        Application.Run(new KPA_KPI_UI(settings));
                     }
                     catch(Exception ex)
                     {
@@ -265,7 +259,7 @@ namespace KPA_KPI_Analyzer
                         {
                             try
                             {
-                                AccessUtils.CreateAccessDB();
+                                DatabaseManager.CreateAccessDB();
                             }
                             catch (Exception ex)
                             {
@@ -342,9 +336,8 @@ namespace KPA_KPI_Analyzer
             try
             {
                 lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Checking for a valid database..."; });
-                AccessUtils.CheckDatabase();
+                DatabaseManager.CheckDatabase();
                 lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Valid database found. Establishing a connection..."; });
-                conn = new OleDbConnection(AccessUtils.AI.connectionString());
                 CurrentStatus = CheckStatus.Complete;
             }
             catch(TablesDoNotExistException)
@@ -358,7 +351,7 @@ namespace KPA_KPI_Analyzer
                 lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Creating new database..."; });
                 try
                 {
-                    AccessUtils.CreateAccessDB();
+                    DatabaseManager.CreateAccessDB();
                 }
                 catch(DatabaseCreationFailureException ex)
                 {
@@ -375,7 +368,7 @@ namespace KPA_KPI_Analyzer
                 try
                 {
                     File.Delete(Configuration.DbPath);
-                    AccessUtils.CreateAccessDB();
+                    DatabaseManager.CreateAccessDB();
                     CurrentStatus = CheckStatus.Complete;
                 }
                 catch (DatabaseCreationFailureException ex)

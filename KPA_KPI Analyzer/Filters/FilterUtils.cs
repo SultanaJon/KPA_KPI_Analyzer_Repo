@@ -1,4 +1,5 @@
-﻿using KPA_KPI_Analyzer.Values;
+﻿using AccessDatabaseLibrary;
+using KPA_KPI_Analyzer.Values;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -97,11 +98,11 @@ namespace KPA_KPI_Analyzer.Filters
 
             if (filters == string.Empty)
             {
-                temp = "SELECT DISTINCT " + Database.QueryManager.GetDatabaseTableName() + ".[" + column + "] FROM " + Database.QueryManager.GetDatabaseTableName();
+                temp = "SELECT DISTINCT " + Queries.GetDatabaseTableName() + ".[" + column + "] FROM " + Queries.GetDatabaseTableName();
             }
             else
             {
-                temp = "SELECT DISTINCT " + Database.QueryManager.GetDatabaseTableName() + ".[" + column + "] FROM " + Database.QueryManager.GetDatabaseTableName() + " WHERE " + filters;
+                temp = "SELECT DISTINCT " + Queries.GetDatabaseTableName() + ".[" + column + "] FROM " + Queries.GetDatabaseTableName() + " WHERE " + filters;
             }
             query = temp;
         }
@@ -156,7 +157,7 @@ namespace KPA_KPI_Analyzer.Filters
                 foreach (FilterColumn col in Enum.GetValues(typeof(FilterColumn)))
                 {
                     getQuery(col, filters);
-                    cmd = new OleDbCommand(query, Database.DatabaseUtils.DatabaseConnection);
+                    cmd = new OleDbCommand(query, DatabaseManager.GetDatabaseConnection());
                     using (var reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())

@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.OleDb;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.OleDb;
 
-namespace DataAccessLibrary
+namespace AccessDatabaseLibrary
 {
-    class AccessInfo
+    public class AccessInfo
     {
         /// <summary>
         /// File path of where the data should be imported
@@ -36,8 +31,6 @@ namespace DataAccessLibrary
             US_PRPO,
             MX_PRPO,
         }
-
-
 
 
 

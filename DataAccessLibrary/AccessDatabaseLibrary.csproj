@@ -7,8 +7,8 @@
     <ProjectGuid>{3BF2C771-F9E8-4596-B969-03A8CD251E57}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DataAccessLibrary</RootNamespace>
-    <AssemblyName>DataAccessLibrary</AssemblyName>
+    <RootNamespace>AccessDatabaseLibrary</RootNamespace>
+    <AssemblyName>AccessDatabaseLibrary</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -42,17 +42,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccessInfo.cs" />
-    <Compile Include="AccessUtils.cs" />
-    <Compile Include="DatabaseCreationFailureException.cs" />
+    <Compile Include="AccessDatabaseUtils.cs" />
+    <Compile Include="DatabaseDataRemovalUtils.cs" />
+    <Compile Include="DatabaseLoadingUtils.cs" />
+    <Compile Include="Exceptions\DatabaseCreationFailureException.cs" />
     <Compile Include="DatabaseManager.cs" />
     <Compile Include="DatabaseTables.cs" />
-    <Compile Include="DatabaseUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PRPODatabaseNotFoundException.cs" />
+    <Compile Include="Exceptions\PRPODatabaseNotFoundException.cs" />
     <Compile Include="Queries.cs" />
-    <Compile Include="TableNameMismatchException.cs" />
-    <Compile Include="TablesDoNotExistException.cs" />
-    <Compile Include="ThreadInteruptedException.cs" />
+    <Compile Include="Exceptions\TableNameMismatchException.cs" />
+    <Compile Include="Exceptions\TablesDoNotExistException.cs" />
+    <Compile Include="Exceptions\ThreadInteruptedException.cs" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="ADODB">

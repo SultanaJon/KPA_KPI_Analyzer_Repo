@@ -129,9 +129,6 @@
     <Compile Include="Correlation\CorrelationControl.Designer.cs">
       <DependentUpon>CorrelationControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Database\DatabaseTables.cs" />
-    <Compile Include="Database\QueryManager.cs" />
-    <Compile Include="Database\ThreadInteruptedException.cs" />
     <Compile Include="DataLoading\DataViewerUtils.cs" />
     <Compile Include="DataLoading\ExportUtils.cs" />
     <Compile Include="DataLoading\KPA_Data\DataTableLoader\KpaDataTableLoader.cs" />
@@ -205,7 +202,6 @@
       <DependentUpon>newKPIOverall.cs</DependentUpon>
     </Compile>
     <Compile Include="Values\Constants.cs" />
-    <Compile Include="Database\DatabaseUtils.cs" />
     <Compile Include="DataComingSoon.cs">
       <SubType>UserControl</SubType>
     </Compile>

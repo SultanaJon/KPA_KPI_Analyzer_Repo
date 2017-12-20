@@ -1,10 +1,11 @@
 ﻿
-using KPA_KPI_Analyzer.Database;
+using AccessDatabaseLibrary;
 using KPA_KPI_Analyzer.Templates;
 using System;
 using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
+using AccessDatabaseLibrary.Exceptions;
 
 namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
 {
@@ -65,7 +66,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 dt = new DataTable();
-                cmd = new OleDbCommand(Database.QueryManager.KpaQueries.ExcessStockStockQueries.GetPrsAgingNotReleased() + Filters.FilterData.FilterQuery, DatabaseUtils.DatabaseConnection);
+                cmd = new OleDbCommand(Queries.KpaQueries.ExcessStockStockQueries.GetPrsAgingNotReleased() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
                 da = new OleDbDataAdapter(cmd);
                 da.Fill(dt);
 
@@ -144,7 +145,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 dt = new DataTable();
-                cmd = new OleDbCommand(Database.QueryManager.KpaQueries.ExcessStockStockQueries.GetPrsAgingReleased() + Filters.FilterData.FilterQuery, DatabaseUtils.DatabaseConnection);
+                cmd = new OleDbCommand(Queries.KpaQueries.ExcessStockStockQueries.GetPrsAgingReleased() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
                 da = new OleDbDataAdapter(cmd);
                 da.Fill(dt);
 
@@ -240,7 +241,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 dt = new DataTable();
-                cmd = new OleDbCommand(Database.QueryManager.KpaQueries.ExcessStockStockQueries.GetPoCreationThruDelivery() + Filters.FilterData.FilterQuery, DatabaseUtils.DatabaseConnection);
+                cmd = new OleDbCommand(Queries.KpaQueries.ExcessStockStockQueries.GetPoCreationThruDelivery() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
                 da = new OleDbDataAdapter(cmd);
                 da.Fill(dt);
 
@@ -309,7 +310,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                     PoCreationThruDeliv.data.Average = 0;
                 }
 
-                DatabaseUtils.UpdateLoadProgress();
+                DatabaseManager.UpdateLoadProgress();
             }
             catch (Exception ex)
             {

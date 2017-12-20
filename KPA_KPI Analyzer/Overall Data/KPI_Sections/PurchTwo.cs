@@ -1,8 +1,9 @@
-﻿using KPA_KPI_Analyzer.Database;
+﻿using AccessDatabaseLibrary;
 using KPA_KPI_Analyzer.Templates;
 using System;
 using System.Data;
 using System.Windows.Forms;
+using AccessDatabaseLibrary.Exceptions;
 
 namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
 {
@@ -59,7 +60,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                 // PR 2nd Level Release vs PO Creation
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                foreach (DataRow dr in DatabaseUtils.prsOnPOsDt.Rows)
+                foreach (DataRow dr in DatabaseManager.prsOnPOsDt.Rows)
                 {
                     //Check if the datarow meets the conditions of any applied filters.
                     if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
@@ -167,7 +168,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                 // PO Creation vs PO Release
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                foreach (DataRow dr in DatabaseUtils.prsOnPOsDt.Rows)
+                foreach (DataRow dr in DatabaseManager.prsOnPOsDt.Rows)
                 {
                     //Check if the datarow meets the conditions of any applied filters.
                     if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
@@ -276,7 +277,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                 // PO Release vs PO Confirm
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                foreach (DataRow dr in DatabaseUtils.prsOnPOsDt.Rows)
+                foreach (DataRow dr in DatabaseManager.prsOnPOsDt.Rows)
                 {
                     //Check if the datarow meets the conditions of any applied filters.
                     if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
@@ -405,7 +406,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                 }
 
 
-                DatabaseUtils.UpdateLoadProgress();
+                DatabaseManager.UpdateLoadProgress();
             }
             catch (Exception ex)
             {

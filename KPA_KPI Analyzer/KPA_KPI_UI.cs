@@ -9,6 +9,7 @@
 //          "Once you stop learning you start dying" - Albert Einstein
 //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+using AccessDatabaseLibrary;
 using DataImporter.Access;
 using KPA_KPI_Analyzer.Database;
 using KPA_KPI_Analyzer.Diagnostics;
@@ -54,7 +55,7 @@ namespace KPA_KPI_Analyzer
         {
             InitializeComponent();
             NavigationLocked = true;
-            DatabaseUtils.AI = AccessUtils.AI;
+            //DatabaseUtils.AI = AccessUtils.AI;
         }
 
 
@@ -64,12 +65,14 @@ namespace KPA_KPI_Analyzer
         /// to connect to and read data from.
         /// </summary>
         /// <param name="conn">The database connection that was established in the splash screen.</param>
-        public KPA_KPI_UI(OleDbConnection conn, ApplicationConfiguration.ApplicationConfig settingsData)
+        public KPA_KPI_UI(ApplicationConfiguration.ApplicationConfig settingsData)
         {
             InitializeComponent();
-            // Configure the database Utilities class.
-            DatabaseUtils.AI = AccessUtils.AI;
-            DatabaseUtils.DatabaseConnection = new OleDbConnection(conn.ConnectionString);
+
+            // Establish a connection to the database
+            DatabaseManager.EstablishDatabaseConnection();
+
+            // Set the settings file for the application.
             settings = settingsData;
         }
 
@@ -493,7 +496,7 @@ namespace KPA_KPI_Analyzer
         {
             lbl_Country.Text = Values.Countries.countries[(int)Values.Countries.Country.UnitedStates];
             Globals.TargetCountry = Values.Countries.Country.UnitedStates;
-            Database.QueryManager.SetDatabaseTable(Values.Countries.Country.UnitedStates);
+            Queries.SetDatabaseTable(Values.Countries.Country.UnitedStates);
         }
 
 
@@ -505,7 +508,7 @@ namespace KPA_KPI_Analyzer
         {
             lbl_Country.Text = Values.Countries.countries[(int)Values.Countries.Country.Mexico];
             Globals.TargetCountry = Values.Countries.Country.Mexico;
-            Database.QueryManager.SetDatabaseTable(Values.Countries.Country.Mexico);
+            Queries.SetDatabaseTable(Values.Countries.Country.Mexico);
         }
 
 
@@ -659,7 +662,7 @@ namespace KPA_KPI_Analyzer
         {
             CheckVariantSettings();
 
-            if (DatabaseUtils.DatabaseConnection != null && new FileInfo(AppDirectoryUtils.resourcesFiles[(int)AppDirectoryUtils.ResourceFile.Settings]).Length != 0)
+            if (DatabaseManager.GetDatabaseConnection() != null && new FileInfo(AppDirectoryUtils.resourcesFiles[(int)AppDirectoryUtils.ResourceFile.Settings]).Length != 0)
             {
                 try
                 {
