@@ -104,7 +104,7 @@
             this.pnl_topPanel.Name = "pnl_topPanel";
             this.pnl_topPanel.Size = new System.Drawing.Size(1200, 25);
             this.pnl_topPanel.TabIndex = 0;
-            this.pnl_topPanel.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pnl_TopPanel_MouseDoubleClick);
+            //this.pnl_topPanel.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pnl_TopPanel_MouseDoubleClick);
             // 
             // pnl_Minimize
             // 
@@ -115,9 +115,9 @@
             this.pnl_Minimize.Name = "pnl_Minimize";
             this.pnl_Minimize.Size = new System.Drawing.Size(50, 25);
             this.pnl_Minimize.TabIndex = 4;
-            this.pnl_Minimize.Click += new System.EventHandler(this.btn_Minimize_Click);
-            this.pnl_Minimize.MouseEnter += new System.EventHandler(this.btn_Minimize_MouseEnter);
-            this.pnl_Minimize.MouseHover += new System.EventHandler(this.btn_Minimize_MouseLeave);
+            //this.pnl_Minimize.Click += new System.EventHandler(this.btn_Minimize_Click);
+            //this.pnl_Minimize.MouseEnter += new System.EventHandler(this.btn_Minimize_MouseEnter);
+            //this.pnl_Minimize.MouseHover += new System.EventHandler(this.btn_Minimize_MouseLeave);
             // 
             // pnl_Maximize
             // 
@@ -128,9 +128,9 @@
             this.pnl_Maximize.Name = "pnl_Maximize";
             this.pnl_Maximize.Size = new System.Drawing.Size(50, 25);
             this.pnl_Maximize.TabIndex = 3;
-            this.pnl_Maximize.Click += new System.EventHandler(this.btn_Expand_Click);
-            this.pnl_Maximize.MouseLeave += new System.EventHandler(this.btn_Expand_MouseLeave);
-            this.pnl_Maximize.MouseHover += new System.EventHandler(this.btn_Expand_MouseHover);
+            //this.pnl_Maximize.Click += new System.EventHandler(this.btn_Expand_Click);
+            //this.pnl_Maximize.MouseLeave += new System.EventHandler(this.btn_Expand_MouseLeave);
+            //this.pnl_Maximize.MouseHover += new System.EventHandler(this.btn_Expand_MouseHover);
             // 
             // pnl_Close
             // 
@@ -141,9 +141,9 @@
             this.pnl_Close.Name = "pnl_Close";
             this.pnl_Close.Size = new System.Drawing.Size(50, 25);
             this.pnl_Close.TabIndex = 2;
-            this.pnl_Close.Click += new System.EventHandler(this.btn_Close_Click);
-            this.pnl_Close.MouseLeave += new System.EventHandler(this.btn_Close_MouseLeave);
-            this.pnl_Close.MouseHover += new System.EventHandler(this.btn_Close_MouseHover);
+            //this.pnl_Close.Click += new System.EventHandler(this.btn_Close_Click);
+            //this.pnl_Close.MouseLeave += new System.EventHandler(this.btn_Close_MouseLeave);
+            //this.pnl_Close.MouseHover += new System.EventHandler(this.btn_Close_MouseHover);
             // 
             // pnl_titlePanel
             // 
@@ -348,7 +348,7 @@
             // 
             // tmr_dataloader
             // 
-            this.tmr_dataloader.Tick += new System.EventHandler(this.tmr_dataloader_Tick);
+            //this.tmr_dataloader.Tick += new System.EventHandler(this.tmr_dataloader_Tick);
             // 
             // Column14
             // 
@@ -474,7 +474,7 @@
             this.Name = "CorrelationTool";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CorrelationTool";
-            this.Load += new System.EventHandler(this.CorrelationTool_Load);
+            //this.Load += new System.EventHandler(this.CorrelationTool_Load);
             this.pnl_TopUIPanel.ResumeLayout(false);
             this.pnl_topPanel.ResumeLayout(false);
             this.pnl_titlePanel.ResumeLayout(false);

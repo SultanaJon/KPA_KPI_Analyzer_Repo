@@ -169,7 +169,7 @@
             // 
             // tmr_dataloader
             // 
-            this.tmr_dataloader.Tick += new System.EventHandler(this.tmr_dataloader_Tick);
+            //this.tmr_dataloader.Tick += new System.EventHandler(this.tmr_dataloader_Tick);
             // 
             // pnl_loadingScreen
             // 
@@ -249,7 +249,7 @@
             this.Controls.Add(this.pnl_loadingScreen);
             this.Name = "CorrelationWindowcs";
             this.Size = new System.Drawing.Size(1150, 650);
-            this.Load += new System.EventHandler(this.CorrelationWindowcs_Load);
+            //this.Load += new System.EventHandler(this.CorrelationWindowcs_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tblpnl_correlationTool)).EndInit();
             this.pnl_loadingScreen.ResumeLayout(false);
             this.tableLayoutPanel9.ResumeLayout(false);

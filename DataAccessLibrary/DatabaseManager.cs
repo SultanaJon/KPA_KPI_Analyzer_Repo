@@ -65,19 +65,6 @@ namespace AccessDatabaseLibrary
 
 
         /// <summary>
-        /// Establishes a connection to the database
-        /// </summary>
-        public static void EstablishDatabaseConnection()
-        {
-            // Create the database connection using the connection string
-            // built by the AccessInfo object.
-            DatabaseConnection = new OleDbConnection(AI.connectionString());
-        }
-
-
-
-
-        /// <summary>
         /// Callback function to update the progress of a data removal process.
         /// </summary>
         public static void UpdateDataRemovalProgress()
@@ -167,6 +154,7 @@ namespace AccessDatabaseLibrary
         public static bool ConnectToDatabase()
         {
             bool result = false;
+            DatabaseConnection = new OleDbConnection(AI.connectionString());
 
             try
             {

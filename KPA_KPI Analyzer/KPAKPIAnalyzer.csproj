@@ -646,6 +646,10 @@
       <Project>{be102b8a-42d8-48d2-a37e-b1d83ad9ff12}</Project>
       <Name>DataImporter</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ExcelLibrary\ExcelLibrary.csproj">
+      <Project>{834c157d-f4eb-452d-a938-62aa7332489c}</Project>
+      <Name>ExcelLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\drag_drop_Section.png" />

@@ -14,12 +14,12 @@ namespace KPA_KPI_Analyzer.Filters
         /// <summary>
         /// The string value used to query the data.
         /// </summary>
-        private static string filters = string.Empty;
+        public static string filters = string.Empty;
 
         /// <summary>
         /// The secondary string value used to query the data when the data query is wide open.
         /// </summary>
-        private static string secFilters = string.Empty;
+        public static string secFilters = string.Empty;
 
         #endregion
 

@@ -1,12 +1,12 @@
-﻿using DataImporter.Access;
-using DataImporter.Excel;
-using DataImporter.Importing;
-using KPA_KPI_Analyzer.Filters;
+﻿using KPA_KPI_Analyzer.Filters;
 using KPA_KPI_Analyzer.Overall_Data;
 using KPA_KPI_Analyzer.Values;
 using System;
 using System.Threading;
 using System.Windows.Forms;
+using AccessDatabaseLibrary;
+using AccessDatabaseLibrary.Importing;
+using ExcelLibrary;
 
 namespace KPA_KPI_Analyzer
 {
@@ -61,7 +61,7 @@ namespace KPA_KPI_Analyzer
                     {
                         if(file is ExcelFiles.UsPrpoExcelFile)
                         {
-                            if(AccessUtils.US_PRPO_TableExists)
+                            if(AccessDatabaseUtils.US_PRPO_TableExists)
                             {
                                 DateTime dt = file.Date;
                                 settings.reportSettings.PrpoUsDate = dt.Month.ToString() + " " + dt.Day.ToString() + " " + dt.Year.ToString();
@@ -71,7 +71,7 @@ namespace KPA_KPI_Analyzer
 
                         if(file is ExcelFiles.MxPrpoExcelFile)
                         {
-                            if(AccessUtils.MX_PRPO_TableExists)
+                            if(AccessDatabaseUtils.MX_PRPO_TableExists)
                             {
                                 DateTime dt = file.Date;
                                 settings.reportSettings.PrpoMxDate = dt.Month.ToString() + " " + dt.Day.ToString() + " " + dt.Year.ToString();
@@ -97,16 +97,16 @@ namespace KPA_KPI_Analyzer
         /// <param name="e"></param>
         private void DataRemovalTimer_Tick(object sender, EventArgs e)
         {
-            if (DatabaseUtils.DataRemoved)
+            if (DatabaseDataRemovalUtils.DataRemoved)
             {
-                DatabaseUtils.DataRemoved = false;
+                DatabaseDataRemovalUtils.DataRemoved = false;
                 DataRemovalTimer.Stop();
 
-                if (AccessUtils.US_PRPO_TableExists && AccessUtils.MX_PRPO_TableExists)
+                if (AccessDatabaseUtils.US_PRPO_TableExists && AccessDatabaseUtils.MX_PRPO_TableExists)
                 {
                     ShowPage(Pages.CountrySelector);
                 }
-                else if (AccessUtils.US_PRPO_TableExists)
+                else if (AccessDatabaseUtils.US_PRPO_TableExists)
                 {
                     ConfigureToUnitedStates();
                     BeginDataLoadProcess();
@@ -130,26 +130,26 @@ namespace KPA_KPI_Analyzer
         {
             NavigationLocked = true;
 
-            if (!DatabaseUtils.DataLoadProcessStarted)
+            if (!DatabaseLoadingUtils.DataLoadProcessStarted)
             {
-                DatabaseUtils.DataLoadProcessStarted = true;
-                DatabaseUtils.KPITablesLoaded = false;
-                DatabaseUtils.ScheduledDataLoads = 19;
+                DatabaseLoadingUtils.DataLoadProcessStarted = true;
+                DatabaseLoadingUtils.KPITablesLoaded = false;
+                DatabaseLoadingUtils.ScheduledDataLoads = 19;
                 StartThreads(true, false);
             }
 
 
-            if (DatabaseUtils.KPITablesLoaded)
+            if (DatabaseLoadingUtils.KPITablesLoaded)
             {
-                DatabaseUtils.KPITablesLoaded = false;
+                DatabaseLoadingUtils.KPITablesLoaded = false;
                 StartThreads(false, true);
             }
 
-            if (DatabaseUtils.DataLoaded)
+            if (DatabaseLoadingUtils.DataLoaded)
             {
-                DatabaseUtils.DataLoaded = false;
+                DatabaseLoadingUtils.DataLoaded = false;
                 DataLoaderTimer.Stop();
-                DatabaseUtils.ReleaseKPITables();
+                DatabaseManager.ReleaseKPITables();
 
                 if (!FilterData.ColumnFilters.Applied 
                     && !FilterData.DateFilters.Applied 
@@ -242,7 +242,7 @@ namespace KPA_KPI_Analyzer
             KPA_ExcessStock_OpenOrders = new Thread(() => { try { overallData.kpa.excessStockOpenOrders.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
             KPA_CurrPlanVsActualThread = new Thread(() => { try { overallData.kpa.currPlanVsActual.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
 
-            tableLoadThread = new Thread(() => { try { DatabaseUtils.LoadKPITables(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+            tableLoadThread = new Thread(() => { try { DatabaseManager.LoadKPITables(FilterData.filters, FilterData.SecondaryFilterQuery); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
             KPI_PlanThread = new Thread(() => { try { overallData.kpi.plan.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
             KPI_PurchThread = new Thread(() => { try { overallData.kpi.purch.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
             KPI_FollowUpThread = new Thread(() => { try { overallData.kpi.followUp.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
@@ -301,10 +301,10 @@ namespace KPA_KPI_Analyzer
             lbl_topPanelNavPrpoDate.Text = "Loading...";
             overallData = new Overall_Data.Overall();
 
-            if (AccessUtils.US_PRPO_TableExists || AccessUtils.MX_PRPO_TableExists)
-                DatabaseUtils.DropCreateDb();
+            if (AccessDatabaseUtils.US_PRPO_TableExists || AccessDatabaseUtils.MX_PRPO_TableExists)
+                DatabaseManager.DropCreateDb();
             else
-                AccessUtils.CreateAccessDB();
+                DatabaseManager.CreateAccessDB();
 
             ShowPage(Pages.LoadingScreen);
             cpb_loadingScreenCircProgBar.Text = "Importing Data...";
@@ -420,10 +420,10 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         public void BeginDataRemovalProcess()
         {
-            DatabaseUtils.DataRemoved = false;
-            DatabaseUtils.CompletedDataRemovals = 0;
-            DatabaseUtils.ScheduledDataRemovals = 0;
-            DatabaseUtils.ConnectToDatabase();
+            DatabaseDataRemovalUtils.DataRemoved = false;
+            DatabaseDataRemovalUtils.CompletedDataRemovals = 0;
+            DatabaseDataRemovalUtils.ScheduledDataRemovals = 0;
+            DatabaseManager.ConnectToDatabase();
 
 
             DataRemovalTimer.Start();
@@ -436,23 +436,23 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         private void RemovePrpoData()
         {
-            if (AccessUtils.US_PRPO_TableExists)
+            if (AccessDatabaseUtils.US_PRPO_TableExists)
             {
-                DatabaseUtils.ScheduledDataRemovals++;
+                DatabaseDataRemovalUtils.ScheduledDataRemovals++;
                 usThread = new Thread(() =>
                 {
-                    DatabaseUtils.RemoveData(Values.Countries.Country.UnitedStates);
+                    DatabaseManager.RemoveData(DatabaseTables.DatabaseTable.UnitedStates);
                 });
                 usThread.Start();
             }
 
-            if (AccessUtils.MX_PRPO_TableExists)
+            if (AccessDatabaseUtils.MX_PRPO_TableExists)
             {
-                DatabaseUtils.ScheduledDataRemovals++;
+                DatabaseDataRemovalUtils.ScheduledDataRemovals++;
 
                 mxThread = new Thread(() =>
                 {
-                    DatabaseUtils.RemoveData(Values.Countries.Country.Mexico);
+                    DatabaseManager.RemoveData(DatabaseTables.DatabaseTable.Mexico);
                 });
                 mxThread.Start();
             }
@@ -468,11 +468,11 @@ namespace KPA_KPI_Analyzer
             cpb_loadingScreenCircProgBar.Text = "Loading Data...";
             ms_applicaitonMenuStrip.Enabled = false;
             overallData = new Overall();
-            DatabaseUtils.DataLoadProcessStarted = false;
-            DatabaseUtils.DataLoaded = false;
-            DatabaseUtils.KPITablesLoaded = false;
-            DatabaseUtils.CompletedDataLoads = 0;
-            DatabaseUtils.ScheduledDataLoads = 0;
+            DatabaseLoadingUtils.DataLoadProcessStarted = false;
+            DatabaseLoadingUtils.DataLoaded = false;
+            DatabaseLoadingUtils.KPITablesLoaded = false;
+            DatabaseLoadingUtils.CompletedDataLoads = 0;
+            DatabaseLoadingUtils.ScheduledDataLoads = 0;
             CreateThreads();
             RenewDataLoadTimer();
             DataLoaderTimer.Start();

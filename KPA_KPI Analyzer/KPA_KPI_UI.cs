@@ -11,7 +11,6 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 using AccessDatabaseLibrary;
 using DataImporter.Access;
-using KPA_KPI_Analyzer.Database;
 using KPA_KPI_Analyzer.Diagnostics;
 using KPA_KPI_Analyzer.Filters;
 using KPA_KPI_Analyzer.Overall_Data;
@@ -21,6 +20,7 @@ using System.Collections.Generic;
 using System.Data.OleDb;
 using System.IO;
 using System.Windows.Forms;
+using ExcelLibrary;
 
 namespace KPA_KPI_Analyzer
 {
@@ -70,7 +70,7 @@ namespace KPA_KPI_Analyzer
             InitializeComponent();
 
             // Establish a connection to the database
-            DatabaseManager.EstablishDatabaseConnection();
+            DatabaseManager.ConnectToDatabase();
 
             // Set the settings file for the application.
             settings = settingsData;
@@ -391,7 +391,7 @@ namespace KPA_KPI_Analyzer
                 {
                     Globals.CurrCountry = lbl_Country.Text;
                     // export the templates to overall.xlsx located in resources -> reports
-                    DataExporter.Exporter.ExportOverall(
+                    Exporter.ExportOverall(
                         tempKpaOneData,
                         tempKpaTwoData,
                         tempKpiThreeData,
@@ -496,7 +496,7 @@ namespace KPA_KPI_Analyzer
         {
             lbl_Country.Text = Values.Countries.countries[(int)Values.Countries.Country.UnitedStates];
             Globals.TargetCountry = Values.Countries.Country.UnitedStates;
-            Queries.SetDatabaseTable(Values.Countries.Country.UnitedStates);
+            Queries.SetDatabaseTable(DatabaseTables.DatabaseTable.UnitedStates);
         }
 
 
@@ -508,7 +508,7 @@ namespace KPA_KPI_Analyzer
         {
             lbl_Country.Text = Values.Countries.countries[(int)Values.Countries.Country.Mexico];
             Globals.TargetCountry = Values.Countries.Country.Mexico;
-            Queries.SetDatabaseTable(Values.Countries.Country.Mexico);
+            Queries.SetDatabaseTable(DatabaseTables.DatabaseTable.Mexico);
         }
 
 
@@ -522,8 +522,8 @@ namespace KPA_KPI_Analyzer
             FilterUtils.UpdateFilter += UpdateFilters;
 
             // Setup callback functions for Dataloading.
-            DatabaseUtils.RenewDataLoadTimer += RenewDataLoadTimer;
-            DatabaseUtils.DisplayDragDropPage += ShowDragDropPage;
+            DatabaseManager.RenewDataLoadTimer += RenewDataLoadTimer;
+            DatabaseManager.DisplayDragDropPage += ShowDragDropPage;
 
             // Setup callback functions for Drag & Drop screen
             FileProcessing.ExcelFileProcessor.DisplayDragDropPage += ShowDragDropPage;
@@ -666,7 +666,7 @@ namespace KPA_KPI_Analyzer
             {
                 try
                 {
-                    DatabaseUtils.ConnectToDatabase();
+                    DatabaseManager.ConnectToDatabase();
                     if (settings.reportSettings.PrpoUsReportLoaded && settings.reportSettings.PrpoMxReportLoaded)
                     {
                         NavigationLocked = true;
