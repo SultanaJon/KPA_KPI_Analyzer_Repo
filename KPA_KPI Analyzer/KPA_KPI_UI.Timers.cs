@@ -353,9 +353,8 @@ namespace KPA_KPI_Analyzer
                         HasHeaders = true,
                         SheetName = ExcelInfo.sheetName[(int)ExcelInfo.SheetNames.US_PRPO]
                     },
-                    new AccessInfo()
+                    new AccessInfo(Configuration.DbPath)
                     {
-                        FileName = Configuration.DbPath,
                         TableName = AccessInfo.mainTableNames[(int)AccessInfo.MainTables.US_PRPO]
                     }
                 );
@@ -389,9 +388,8 @@ namespace KPA_KPI_Analyzer
                         HasHeaders = true,
                         SheetName = ExcelInfo.sheetName[(int)ExcelInfo.SheetNames.MX_PRPO]
                     },
-                    new AccessInfo()
+                    new AccessInfo(Configuration.DbPath)
                     {
-                        FileName = Configuration.DbPath,
                         TableName = AccessInfo.mainTableNames[(int)AccessInfo.MainTables.MX_PRPO]
                     }
                 );
@@ -423,8 +421,6 @@ namespace KPA_KPI_Analyzer
             DatabaseDataRemovalUtils.DataRemoved = false;
             DatabaseDataRemovalUtils.CompletedDataRemovals = 0;
             DatabaseDataRemovalUtils.ScheduledDataRemovals = 0;
-            DatabaseManager.ConnectToDatabase();
-
 
             DataRemovalTimer.Start();
             RemovePrpoData();

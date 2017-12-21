@@ -130,7 +130,7 @@ namespace AccessDatabaseLibrary.Importing
                 {
                     using (OleDbCommand cmd = new OleDbCommand() { Connection = conn })
                     {
-                        cmd.CommandText = @"SELECT * INTO [MS Access;Database=" + AccessInformation.FileName + "].[" + AccessInformation.TableName + "] FROM [" + ExcelInformation.SheetName + "]";
+                        cmd.CommandText = @"SELECT * INTO [MS Access;Database=" + AccessInformation.Path + "].[" + AccessInformation.TableName + "] FROM [" + ExcelInformation.SheetName + "]";
                         conn.Open();
                         recordCount = cmd.ExecuteNonQuery();
                         CompletedImports++;

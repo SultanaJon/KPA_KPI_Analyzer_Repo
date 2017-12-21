@@ -38,7 +38,7 @@ namespace AccessDatabaseLibrary
         /// <summary>
         /// Information regarding the Access databse file.
         /// </summary>
-        public static AccessInfo AI { get; set; }
+        public static AccessInfo AI { get; private set; }
 
 
 
@@ -61,6 +61,22 @@ namespace AccessDatabaseLibrary
             return DatabaseConnection;
         }
 
+
+
+
+        /// <summary>
+        /// Accepts the passed in AccessInfo object that it uses to build a connection string
+        /// used to create an instance of an OleDbConnection.
+        /// </summary>
+        /// <param name="ai">An instance of an AccessInfo object</param>
+        public static void Configure(AccessInfo ai)
+        {
+            if(ai != null)
+            {
+                AI = ai;
+                DatabaseConnection = new OleDbConnection(AI.connectionString());
+            }
+        }
 
 
 
@@ -132,7 +148,7 @@ namespace AccessDatabaseLibrary
                 if (DatabaseConnection != null)
                     DatabaseConnection.Close();
 
-                File.Delete(AI.FileName);
+                File.Delete(AI.Path);
                 CreateAccessDB();
                 result = true;
             }
@@ -154,24 +170,28 @@ namespace AccessDatabaseLibrary
         public static bool ConnectToDatabase()
         {
             bool result = false;
-            DatabaseConnection = new OleDbConnection(AI.connectionString());
 
             try
             {
-                if (DatabaseConnection != null)
+                if(DatabaseConnection != null)
                 {
                     DatabaseConnection.Open();
+                    result = true;
                 }
                 else
                 {
-                    DatabaseConnection = new OleDbConnection(AI.connectionString());
-                    DatabaseConnection.Open();
+                    result = false;
                 }
-                result = true;
             }
-            catch (Exception)
+            catch(InvalidOperationException ex)
             {
-                result = false;
+                MessageBox.Show(ex.Message, "Invalid Operation Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
+            catch(OleDbException ex)
+            {
+                MessageBox.Show(ex.Message, "OleDbException", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
             }
 
             return result;
@@ -295,108 +315,63 @@ namespace AccessDatabaseLibrary
 
 
 
-
-        /// <summary>
-        /// Check the database. If the database does not exist, throw an exeption so it can be created.
-        /// If the database tables do not exist, thow an exception so the program can continue.
-        /// </summary>
-        /// <exception cref="PRPODatabaseNotFoundException"></exception>
-        public static void CheckDatabase()
-        {
-            if (!File.Exists(AI.FileName))
-            {
-                throw new PRPODatabaseNotFoundException("The PRPO Database does not exists");
-            }
-            else
-            {
-                AccessDatabaseUtils.DatabaseExists = true;
-                AccessDatabaseUtils.US_PRPO_TableExists = false;
-                AccessDatabaseUtils.MX_PRPO_TableExists = false;
-                TablesExist();
-            }
-        }
-
-
-
-
-
         /// <summary>
         /// Checks if the database contains a table. if it does this means that the data might be from the 
         /// day before. If there is a table we want to delete it and create a new one with todays PRPO data.
         /// </summary>
-        /// <exception cref="TableNameMismatchException"></exception>
-        /// <exception cref="TablesDoNotExistException"></exception>
-        /// <param name="connStr">The connection string to the access database</param>
         /// <returns>
         /// Returns wheather or not the access database contains a table.
         /// </returns>
-        public static void TablesExist()
+        public static bool CheckForTables()
         {
             string[] restrictionValue = new string[4] { null, null, null, "TABLE" };
             List<string> dbTableName = new List<string>();
-            //AccessInfo AI = new AccessInfo() { FileName = DatabasePath };
-            OleDbConnection accConn = new OleDbConnection(AI.connectionString());
+            bool result = false;
 
+            AccessDatabaseUtils.DatabaseExists = true;
+            AccessDatabaseUtils.US_PRPO_TableExists = false;
+            AccessDatabaseUtils.MX_PRPO_TableExists = false;
 
-
-
-            try
+            DataTable schemaInformation = DatabaseConnection.GetSchema("Tables", restrictionValue);
+              
+            // Check if the access tables exist in the database.
+            if (schemaInformation.Rows.Count != 0)
             {
-                accConn.Open();
-                DataTable schemaInformation = accConn.GetSchema("Tables", restrictionValue);
-
-
-
-                // Check if the access tables exist in the database.
-                if (schemaInformation.Rows.Count != 0)
+                foreach (DataRow row in schemaInformation.Rows)
                 {
-                    foreach (DataRow row in schemaInformation.Rows)
+                    dbTableName.Add(row.ItemArray[2].ToString());
+                }
+
+                // Loop throught the tables within the database and make sure the names are correct.
+                foreach (var name in dbTableName)
+                {
+                    if (name != AccessInfo.mainTableNames[(int)AccessInfo.MainTables.US_PRPO] & name != AccessInfo.mainTableNames[(int)AccessInfo.MainTables.MX_PRPO])
                     {
-                        dbTableName.Add(row.ItemArray[2].ToString());
+                        result = false;
                     }
-
-
-                    // Loop throught the tables within the database and make sure the names are correct.
-                    foreach (var name in dbTableName)
+                    else
                     {
-                        if (name != AccessInfo.mainTableNames[(int)AccessInfo.MainTables.US_PRPO] & name != AccessInfo.mainTableNames[(int)AccessInfo.MainTables.MX_PRPO])
-                            throw new TableNameMismatchException("The MS Access Tables are named incorrectly.");
-                        else
+                        if (name == AccessInfo.mainTableNames[(int)AccessInfo.MainTables.US_PRPO])
                         {
-                            if (name == AccessInfo.mainTableNames[(int)AccessInfo.MainTables.US_PRPO])
-                            {
-                                AccessDatabaseUtils.US_PRPO_TableExists = true;
-                            }
+                            AccessDatabaseUtils.US_PRPO_TableExists = true;
+                            result = true;
+                        }
 
 
-                            if (name == AccessInfo.mainTableNames[(int)AccessInfo.MainTables.MX_PRPO])
-                            {
-                                AccessDatabaseUtils.MX_PRPO_TableExists = true;
-                            }
+                        if (name == AccessInfo.mainTableNames[(int)AccessInfo.MainTables.MX_PRPO])
+                        {
+                            AccessDatabaseUtils.MX_PRPO_TableExists = true;
+                            result = true;
                         }
                     }
                 }
-                else
-                {
-                    throw new TablesDoNotExistException("The database exists but the tables do not.");
-                }
             }
-            catch (TablesDoNotExistException)
+            else
             {
-                throw new TablesDoNotExistException("The database exists but the tables do not.");
+                result = false;
             }
-            catch (TableNameMismatchException)
-            {
-                throw new TableNameMismatchException("One or more of the MS Access Table are named incorrectly.");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Existing Table Check");
-            }
-            finally
-            {
-                accConn.Close();
-            }
+
+            return result;
         }
 
 
@@ -455,7 +430,7 @@ namespace AccessDatabaseLibrary
             ADOX.Catalog cat = new ADOX.Catalog();
             //ADOX.Table table = new ADOX.Table();
 
-            if (!File.Exists(AI.FileName))
+            if (!File.Exists(AI.Path))
             {
                 try
                 {

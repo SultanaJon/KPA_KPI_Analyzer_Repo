@@ -55,7 +55,6 @@ namespace KPA_KPI_Analyzer
         {
             InitializeComponent();
             NavigationLocked = true;
-            //DatabaseUtils.AI = AccessUtils.AI;
         }
 
 
@@ -68,10 +67,7 @@ namespace KPA_KPI_Analyzer
         public KPA_KPI_UI(ApplicationConfiguration.ApplicationConfig settingsData)
         {
             InitializeComponent();
-
-            // Establish a connection to the database
-            DatabaseManager.ConnectToDatabase();
-
+          
             // Set the settings file for the application.
             settings = settingsData;
         }
@@ -344,22 +340,6 @@ namespace KPA_KPI_Analyzer
         {
             ShowPage(Pages.DragDropDash);
         }
-
-
-
-
-
-
-        /// <summary>
-        /// Begins the export overall data operation.
-        /// </summary>
-        /// <param name="sender">The Tools->Export->Overall Data menu item</param>
-        /// <param name="e">The click event</param>
-        private void overallDataToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
 
 
 
@@ -666,7 +646,6 @@ namespace KPA_KPI_Analyzer
             {
                 try
                 {
-                    DatabaseManager.ConnectToDatabase();
                     if (settings.reportSettings.PrpoUsReportLoaded && settings.reportSettings.PrpoMxReportLoaded)
                     {
                         NavigationLocked = true;

@@ -7,7 +7,7 @@ namespace AccessDatabaseLibrary
         /// <summary>
         /// File path of where the data should be imported
         /// </summary>
-        public string FileName { get; set; }
+        public string Path { get; set; }
 
 
 
@@ -17,6 +17,8 @@ namespace AccessDatabaseLibrary
         /// The name of the table we are importing to.
         /// </summary>
         public string TableName { get; set; }
+
+
 
 
 
@@ -47,6 +49,13 @@ namespace AccessDatabaseLibrary
 
 
 
+        public AccessInfo(string _path)
+        {
+            Path = _path;
+        }
+
+
+
 
 
         /// <summary>
@@ -58,7 +67,7 @@ namespace AccessDatabaseLibrary
             OleDbConnectionStringBuilder connStrBldr = new OleDbConnectionStringBuilder()
             {
                 Provider = "Microsoft.ACE.OLEDB.12.0",
-                DataSource = FileName
+                DataSource = Path
             };
 
             return connStrBldr.ConnectionString;

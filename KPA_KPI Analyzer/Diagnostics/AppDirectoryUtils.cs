@@ -289,5 +289,8 @@ namespace KPA_KPI_Analyzer.Diagnostics
                 File.Delete(overallFiles[(int)file]);
             }
         }
+
+
+
     }
 }
