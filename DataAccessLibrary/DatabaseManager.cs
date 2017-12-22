@@ -206,6 +206,54 @@ namespace AccessDatabaseLibrary
 
 
 
+
+
+        /// <summary>
+        /// Diconnnects the connection between the applciation and the databse.
+        /// </summary>
+        /// <returns></returns>
+        public static bool DisconnectFromDatabase()
+        {
+            bool result = false;
+
+            if (DatabaseConnection != null)
+            {
+                DatabaseConnection.Close();
+                result = true;
+            }
+            else
+            {
+                result = false;
+            }
+            return result;
+        }
+
+
+
+
+
+        /// <summary>
+        /// Diconnnects the connection between the applciation and the databse.
+        /// </summary>
+        /// <returns></returns>
+        public static bool DisconnectFromDatabase()
+        {
+            bool result = false;
+
+            if (DatabaseConnection != null)
+            {
+                DatabaseConnection.Close();
+                result = true;
+            }
+            else
+            {
+                result = false;
+            }
+            return result;
+        }
+
+
+
         /// <summary>
         /// When the data removal timer is started under KPA_KPI_UI.cs, this function will be called. This function
         /// will remove the data that is no needed and we do not want to fall into our calculations.

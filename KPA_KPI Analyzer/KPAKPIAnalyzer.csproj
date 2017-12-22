@@ -105,7 +105,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationConfiguration\ApplicationConfig.cs" />
-    <Compile Include="ApplicationConfiguration\PRPOSettings.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="Correlation\CorrelationConfiguration.cs">
       <SubType>Form</SubType>
