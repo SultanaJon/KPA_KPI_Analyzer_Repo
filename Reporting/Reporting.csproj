@@ -91,6 +91,7 @@
     <Compile Include="Report.cs" />
     <Compile Include="Selective\KpaSelectiveReport.cs" />
     <Compile Include="Selective\KpiSelectiveReport.cs" />
+    <Compile Include="Templates\SelectiveReportTemplate.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Comparison\" />
