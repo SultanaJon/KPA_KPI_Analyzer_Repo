@@ -231,7 +231,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TimeBucketEight = overallData.kpi.followUp.currConfVsInitConf.data.Fifteen_TwentyOne.ToString();
             TimeBucketNine = overallData.kpi.followUp.currConfVsInitConf.data.TwentyTwo.ToString();
 
-            AnalysisOne = "- Will show if PO line item has been confirmed.";
+            AnalysisOne = "- Will show if the PR is on a PO.";
             AnalysisTwo = "- Difference between final confirmation date and first confirmation date.";
 
 
@@ -294,7 +294,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TimeBucketEight = overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Fifteen_TwentyOne.ToString();
             TimeBucketNine = overallData.kpi.followUp.finalConfDateVsFinalPlan.data.TwentyTwo.ToString();
 
-            AnalysisOne = "- Will show if PO line item has been received complete and has confirmation date";
+            AnalysisOne = "- Will show if PO line has been received complete.";
             AnalysisTwo = "- Difference between current confirmation date and current planned date.";
 
             dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);

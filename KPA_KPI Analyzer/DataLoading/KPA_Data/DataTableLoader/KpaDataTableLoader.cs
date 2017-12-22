@@ -1729,7 +1729,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             continue;
                         }
 
-                        string[] strCurrReqDate = (dr["PR Delivery Date"].ToString()).Split('/');
+                        string[] strCurrReqDate = (dr["Requisn Date"].ToString()).Split('/');
                         int year = int.Parse(strCurrReqDate[2]);
                         int month = int.Parse(strCurrReqDate[0].TrimStart('0'));
                         int day = int.Parse(strCurrReqDate[1].TrimStart('0'));

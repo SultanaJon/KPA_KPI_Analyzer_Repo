@@ -13,8 +13,8 @@ namespace KPA_KPI_Analyzer
     {
         private bool runningThread = false;
         ApplicationConfiguration.ApplicationConfig settings = new ApplicationConfiguration.ApplicationConfig();
-        bool newSettings = false;
-
+        bool settingsCreated = false;
+        bool databaseCreated = false;
 
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace KPA_KPI_Analyzer
 
             // Supply the information regarding the access file we will use for our 
             // datbase to the DatabaseManager.
-            DatabaseManager.AI = new AccessInfo() { FileName = Configuration.DbPath };
+            DatabaseManager.Configure(new AccessInfo(Configuration.DbPath));
         }
 
 
@@ -169,7 +169,7 @@ namespace KPA_KPI_Analyzer
         {
             if (CurrentAppStatus == LoadStatus.Complete)
             {
-                if (!newSettings)
+                if (!settingsCreated)
                 {
                     try
                     {
@@ -214,15 +214,12 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         private void CheckApplicationFolderStructure()
         {
-            lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Checking Folder Structure..."; });
-
             try
             {
                 foreach (var directory in Enum.GetValues(typeof(AppDirectoryUtils.AppDirectory)))
                 {
                     if (!Directory.Exists(Path.Combine(Configuration.AppDir, AppDirectoryUtils.directories[(int)directory])))
                     {
-                        lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Creating Directory - " + AppDirectoryUtils.directories[(int)directory]; });
                         Directory.CreateDirectory(Path.Combine(Configuration.AppDir, AppDirectoryUtils.directories[(int)directory]));
                     }
                 }
@@ -246,24 +243,23 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         private void CheckApplicationFiles()
         {
-            lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Checking Application Files..."; });
             try
             {
                 foreach (AppDirectoryUtils.ResourceFile file in Enum.GetValues(typeof(AppDirectoryUtils.ResourceFile)))
                 {
                     if (!File.Exists(Path.Combine(Configuration.AppDir, AppDirectoryUtils.resourcesFiles[(int)file])))
                     {
-                        lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Creating File - " + AppDirectoryUtils.resourcesFiles[(int)file]; });
-
                         if(file == AppDirectoryUtils.ResourceFile.PRPO_Database)
                         {
                             try
                             {
                                 DatabaseManager.CreateAccessDB();
+                                databaseCreated = true;
+
                             }
                             catch (Exception ex)
                             {
-                                throw ex; // throw the exception thrown by AccesUtils
+                                throw ex;
                             }
                         }
                         else
@@ -271,7 +267,7 @@ namespace KPA_KPI_Analyzer
                             if(file == AppDirectoryUtils.ResourceFile.Settings)
                             {
                                 AppDirectoryUtils.CreateFile(file);
-                                newSettings = true;
+                                settingsCreated = true;
                             }
                         }
                     }
@@ -282,7 +278,6 @@ namespace KPA_KPI_Analyzer
                 {
                     if (!File.Exists(Path.Combine(Configuration.AppDir, AppDirectoryUtils.logFiles[(int)file])))
                     {
-                        lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Creating File - " + AppDirectoryUtils.logFiles[(int)file]; });
                         AppDirectoryUtils.CreateFile(file);
                     }
                 }
@@ -294,7 +289,6 @@ namespace KPA_KPI_Analyzer
                 {
                     if (!File.Exists(Path.Combine(Configuration.AppDir, AppDirectoryUtils.overallFiles[(int)file])))
                     {
-                        lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Creating File - " + AppDirectoryUtils.overallFiles[(int)file]; });
                         AppDirectoryUtils.CreateFile(file);
                     }
                 }
@@ -305,7 +299,6 @@ namespace KPA_KPI_Analyzer
                 {
                     if(!File.Exists(Path.Combine(Configuration.AppDir, AppDirectoryUtils.variantFiles[(int)file])))
                     {
-                        lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Creating File - " + AppDirectoryUtils.variantFiles[(int)file]; });
                         AppDirectoryUtils.CreateFile(file);
                     }
                 }
@@ -333,59 +326,36 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         private void CheckDatabase()
         {
-            try
-            {
-                lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Checking for a valid database..."; });
-                DatabaseManager.CheckDatabase();
-                lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Valid database found. Establishing a connection..."; });
-                CurrentStatus = CheckStatus.Complete;
-            }
-            catch(TablesDoNotExistException)
-            {
-                // The database exists but the tables did not. We want to keep the current database but we do not want to attempt to connect.
-                CurrentStatus = CheckStatus.Complete;
-            }
-            catch (PRPODatabaseNotFoundException)
-            {
-                // The database did not exist so create a new one before the application starts.
-                lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Creating new database..."; });
-                try
-                {
-                    DatabaseManager.CreateAccessDB();
-                }
-                catch(DatabaseCreationFailureException ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                CurrentStatus = CheckStatus.Complete;
-            }
-            catch (TableNameMismatchException)
-            {
-                // The names of the table are not correct so leta delete the database and create a new one and
-                // wait for the user to drop new files to load.
-                lbl_CheckStatus.Invoke((MethodInvoker)delegate { lbl_CheckStatus.Text = "Database error! Creating new database..."; });
+            // Connect to the database.
+            DatabaseManager.ConnectToDatabase();
 
-                try
-                {
-                    File.Delete(Configuration.DbPath);
-                    DatabaseManager.CreateAccessDB();
-                    CurrentStatus = CheckStatus.Complete;
-                }
-                catch (DatabaseCreationFailureException ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                catch (Exception ex)
-                {
-                    // Something happened while deleting the file
-                    MessageBox.Show(ex.Message);
-                }
-            }
-            catch (Exception ex)
+
+            if(databaseCreated && !settingsCreated)
             {
-                // Some other type of run-time error occured.
-                MessageBox.Show(ex.Message);
+                // The database was just creaed so we need to delete the settings
+                // file and create a new one as the settings it might contain are
+                // no longer valid for the database.
+                if(File.Exists(Path.Combine(Configuration.AppDir, AppDirectoryUtils.resourcesFiles[(int)AppDirectoryUtils.ResourceFile.Settings])))
+                {
+                    File.Delete(Path.Combine(Configuration.AppDir, AppDirectoryUtils.resourcesFiles[(int)AppDirectoryUtils.ResourceFile.Settings]));
+                    AppDirectoryUtils.CreateFile(AppDirectoryUtils.ResourceFile.Settings);
+                    settingsCreated = true;
+                }
             }
+            else
+            {
+                // Check if the database contains tables
+                if(!DatabaseManager.CheckForTables() && !settingsCreated)
+                {
+                    // The database does not contain tables so we want to reset any settings regarding the database.
+                    File.Delete(Path.Combine(Configuration.AppDir, AppDirectoryUtils.resourcesFiles[(int)AppDirectoryUtils.ResourceFile.Settings]));
+                    AppDirectoryUtils.CreateFile(AppDirectoryUtils.ResourceFile.Settings);
+                    settingsCreated = true;
+                }
+            }
+
+            // Connect to the database
+            CurrentStatus = CheckStatus.Complete;
         }
     }
 }

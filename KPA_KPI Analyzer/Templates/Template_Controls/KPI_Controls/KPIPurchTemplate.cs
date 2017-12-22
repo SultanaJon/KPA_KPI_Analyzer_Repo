@@ -205,7 +205,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TimeBucketEight = overallData.kpi.purch.initConfVsPRPlanDate.data.Fifteen_TwentyOne.ToString();
             TimeBucketNine = overallData.kpi.purch.initConfVsPRPlanDate.data.TwentyTwo.ToString();
 
-            AnalysisOne = "- Will show if PO line item has been confirmed.";
+            AnalysisOne = "- Will show if the PR is on a PO.";
             AnalysisTwo = "- Difference between first confirmed date and PR planned date.";
 
 

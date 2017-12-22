@@ -10,14 +10,12 @@
 //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 using AccessDatabaseLibrary;
-using DataImporter.Access;
 using KPA_KPI_Analyzer.Diagnostics;
 using KPA_KPI_Analyzer.Filters;
 using KPA_KPI_Analyzer.Overall_Data;
 using KPA_KPI_Analyzer.Values;
 using System;
 using System.Collections.Generic;
-using System.Data.OleDb;
 using System.IO;
 using System.Windows.Forms;
 using ExcelLibrary;
@@ -89,6 +87,7 @@ namespace KPA_KPI_Analyzer
             GetCheckBoxControls();
             GetCheckListBoxes();
             InitializeProgram();
+
         }
 
 
@@ -735,7 +734,6 @@ namespace KPA_KPI_Analyzer
             else
             {
                 settings = new ApplicationConfiguration.ApplicationConfig();
-
                 lbl_Country.Text = "Waiting...";
                 lbl_topPanelNavPrpoDate.Text = "Waiting...";
                 ShowPage(Pages.DragDropDash);

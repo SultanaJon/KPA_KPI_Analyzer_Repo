@@ -148,8 +148,15 @@ namespace AccessDatabaseLibrary
                 if (DatabaseConnection != null)
                     DatabaseConnection.Close();
 
+                // Delete the database
                 File.Delete(AI.Path);
+
+                // Create the new database
                 CreateAccessDB();
+
+                // Connect to the new database
+                ConnectToDatabase();
+
                 result = true;
             }
             catch (Exception ex)
@@ -232,8 +239,9 @@ namespace AccessDatabaseLibrary
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
-                MessageBox.Show("The data being imported seems to contain incorrect or no data. Please check to see if the data is corrupted. If the report contains corrupted data, please contact your SAP Administrator.", "Corrupted Data Detection", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Data Deletion Error");
+
+                // Recreate the database
                 DropCreateDb();
                 DisplayDragDropPage();
             }
@@ -289,7 +297,6 @@ namespace AccessDatabaseLibrary
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "KPI Data Load");
-                throw new ThreadInteruptedException();
             }
         }
 
@@ -387,20 +394,14 @@ namespace AccessDatabaseLibrary
         public static bool DropTable(string connStr, string tableName)
         {
             bool result = false;
-            OleDbConnection conn = new OleDbConnection(connStr);
-            OleDbCommand cmd = new OleDbCommand() { Connection = conn };
 
             try
             {
-                using (conn)
+                using(OleDbCommand cmd = new OleDbCommand() { Connection = DatabaseConnection })
                 {
-                    using (cmd)
-                    {
-                        conn.Open();
-                        cmd.CommandText = "DROP TABLE [" + tableName + "]";
-                        cmd.ExecuteNonQuery();
-                        result = true;
-                    }
+                    cmd.CommandText = "DROP TABLE [" + tableName + "]";
+                    cmd.ExecuteNonQuery();
+                    result = true;
                 }
             }
             catch (Exception ex)
@@ -426,9 +427,7 @@ namespace AccessDatabaseLibrary
         {
             bool result = false;
 
-
             ADOX.Catalog cat = new ADOX.Catalog();
-            //ADOX.Table table = new ADOX.Table();
 
             if (!File.Exists(AI.Path))
             {
