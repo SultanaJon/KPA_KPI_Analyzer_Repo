@@ -30,8 +30,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Bunifu_UI_v1.5.3">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Bunifu Technologies\Bunifu Framework Manager\bin\updates\Bunifu UI 1.5.3\Bunifu_UI_v1.5.3.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,7 +47,87 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Comparison\ComparisonReport.cs" />
+    <Compile Include="KeyPerformanceAction.cs" />
+    <Compile Include="KeyPerformanceActions\CurrentPlanVsActual\CurrentPlanDateVsCurrenConfirmationDate.cs" />
+    <Compile Include="KeyPerformanceActions\CurrentPlanVsActual\CurrentPlanDateVsCurrentConfrimationDateForHotJobs.cs" />
+    <Compile Include="KeyPerformanceActions\ExcessStockOpenOrders\POCreationThruDelivery.cs" />
+    <Compile Include="KeyPerformanceActions\ExcessStockOpenOrders\PRsAgingNotReleased.cs" />
+    <Compile Include="KeyPerformanceActions\ExcessStockOpenOrders\PRsAgingReleased.cs" />
+    <Compile Include="KeyPerformanceActions\ExcessStockStock\POCreationThruDelivery.cs" />
+    <Compile Include="KeyPerformanceActions\ExcessStockStock\PRsAgingNotReleased.cs" />
+    <Compile Include="KeyPerformanceActions\ExcessStockStock\PRsAgingReleased.cs" />
+    <Compile Include="KeyPerformanceActions\FollowUp\ConfirmedDateForUpcomingDeliveries.cs" />
+    <Compile Include="KeyPerformanceActions\FollowUp\ConfirmedDateVsPlanDate.cs" />
+    <Compile Include="KeyPerformanceActions\FollowUp\DueTodayOrLateToConfirmed.cs" />
+    <Compile Include="KeyPerformanceActions\HotJobs\LateToConfirmed.cs" />
+    <Compile Include="KeyPerformanceActions\HotJobs\NoConfirmations.cs" />
+    <Compile Include="KeyPerformanceActions\HotJobs\PRsNotOnPO.cs" />
+    <Compile Include="KeyPerformanceActions\Plan\MaterialDue.cs" />
+    <Compile Include="KeyPerformanceActions\Plan\PRsAgingNotReleased.cs" />
+    <Compile Include="KeyPerformanceActions\PurchSub\POCreationToConfirmationEntry.cs" />
+    <Compile Include="KeyPerformanceActions\PurchSub\PRReleaseToPORelease.cs" />
+    <Compile Include="KeyPerformanceActions\PurchTotal\PRReleaseToCofirmationEntry.cs" />
+    <Compile Include="KeyPerformanceActions\Purch\NoConfirmation.cs" />
+    <Compile Include="KeyPerformanceActions\Purch\POFirstRelease.cs" />
+    <Compile Include="KeyPerformanceActions\Purch\POPrevRelease.cs" />
+    <Compile Include="KeyPerformanceActions\Purch\PRsAgingReleased.cs" />
+    <Compile Include="KeyPerformanceIndicator.cs" />
+    <Compile Include="KeyPerformanceIndicators\FollowUp\CurrentConfirmationDateVsInitialConfirmationDate.cs" />
+    <Compile Include="KeyPerformanceIndicators\FollowUp\FinalConfirmationDateVsFinalPlanDate.cs" />
+    <Compile Include="KeyPerformanceIndicators\FollowUp\ReceiptDateVsCurrentConfirmationDate.cs" />
+    <Compile Include="KeyPerformanceIndicators\FollowUp\ReceiptDateVsOriginalConfimationDate.cs" />
+    <Compile Include="KeyPerformanceIndicators\FollowUp\ReceiptDateVsCurrentPlanDate.cs" />
+    <Compile Include="KeyPerformanceIndicators\Other\HotJobPRs.cs" />
+    <Compile Include="KeyPerformanceIndicators\Other\PRsCreated.cs" />
+    <Compile Include="KeyPerformanceIndicators\Other\PRsReleased.cs" />
+    <Compile Include="KeyPerformanceIndicators\Other\PRValueVsPOValue.cs" />
+    <Compile Include="KeyPerformanceIndicators\Other\TotalSpend.cs" />
+    <Compile Include="KeyPerformanceIndicators\PlanTwo\MaterialDueFinalPlannedDate.cs" />
+    <Compile Include="KeyPerformanceIndicators\PlanTwo\MaterialDueOriginalPlanDate.cs" />
+    <Compile Include="KeyPerformanceIndicators\Plan\CurrentPlanDateMinus2ndLvlReleaseDateVsCodedLead.cs" />
+    <Compile Include="KeyPerformanceIndicators\Plan\CurrentPlanDateVsPRPlanDate.cs" />
+    <Compile Include="KeyPerformanceIndicators\Plan\OrigPlanDateMinus2ndLvlReleaseDateVsCodedLead.cs" />
+    <Compile Include="KeyPerformanceIndicators\PurchPlan\POReleaseVsPRDeliveryDate.cs" />
+    <Compile Include="KeyPerformanceIndicators\PurchSub\POCreationDateVsConfirmationEntry.cs" />
+    <Compile Include="KeyPerformanceIndicators\PurchSub\PRReleaseDateVsPOReleaseDate.cs" />
+    <Compile Include="KeyPerformanceIndicators\PurchTotal\PRReleaseDateToConfirmationEntryDate.cs" />
+    <Compile Include="KeyPerformanceIndicators\PurchTwo\POCreationDateVsPOReleaseDate.cs" />
+    <Compile Include="KeyPerformanceIndicators\PurchTwo\POReleaseDateVsPOConfirmationDate.cs" />
+    <Compile Include="KeyPerformanceIndicators\PurchTwo\PR2ndLvlReleaseDateVsPOCreationDate.cs" />
+    <Compile Include="KeyPerformanceIndicators\Purch\InitialConfrimationDateVsPRPlanDate.cs" />
+    <Compile Include="Overall\OverallReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report.cs" />
+    <Compile Include="ReportingCategories.cs" />
+    <Compile Include="ReportingSections.cs" />
+    <Compile Include="Selective\SelectiveReport.cs" />
+    <Compile Include="Selective\SelectiveReportConig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Selective\SelectiveReportConig.Designer.cs">
+      <DependentUpon>SelectiveReportConig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Selective\SelectiveReportControlsWidget.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Selective\SelectiveReportControlsWidget.Designer.cs">
+      <DependentUpon>SelectiveReportControlsWidget.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataAccessLibrary\AccessDatabaseLibrary.csproj">
+      <Project>{3bf2c771-f9e8-4596-b969-03a8cd251e57}</Project>
+      <Name>AccessDatabaseLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Selective\SelectiveReportConig.resx">
+      <DependentUpon>SelectiveReportConig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Selective\SelectiveReportControlsWidget.resx">
+      <DependentUpon>SelectiveReportControlsWidget.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -348,7 +348,7 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         /// <param name="sender">The Tools->Export->Overall Data menu item</param>
         /// <param name="e">The click event</param>
-        private void overallDataToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void overallDataToolStripMenuItem_Click(object sender, EventArgs e)
         {
             List<List<string>> tempKpaOneData;
             List<List<string>> tempKpaTwoData;
@@ -666,7 +666,6 @@ namespace KPA_KPI_Analyzer
                                     overallData.Load(ref overallData);
 
                                     dt = GetLoadedUsPrpoReportDate();
-                                    lbl_dashboardDate.Text = dt.ToString("MMMM dd, yyyy");
                                     lbl_topPanelNavPrpoDate.Text = dt.ToString("MMMM dd, yyyy");
                                     Globals.PrpoGenerationDate = lbl_topPanelNavPrpoDate.Text;
                                     InitializeFilterLoadProcess();
@@ -703,7 +702,6 @@ namespace KPA_KPI_Analyzer
                                     overallData.Load(ref overallData);
 
                                     dt = GetLoadedMxPrpoReportDate();
-                                    lbl_dashboardDate.Text = dt.ToString("MMMM dd, yyyy");
                                     lbl_topPanelNavPrpoDate.Text = dt.ToString("MMMM dd, yyyy");
                                     Values.Globals.PrpoGenerationDate = lbl_topPanelNavPrpoDate.Text;
                                     InitializeFilterLoadProcess();
@@ -924,8 +922,12 @@ namespace KPA_KPI_Analyzer
             UpdateFilterButtons();
         }
 
+
         #endregion
 
+        private void reportingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

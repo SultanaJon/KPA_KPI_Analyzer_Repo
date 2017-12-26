@@ -173,7 +173,6 @@ namespace KPA_KPI_Analyzer
                     // Populate Dashboard with PRPO report date.
                     DateTime dt = GetLoadedUsPrpoReportDate();
                     settings.reportSettings.PrpoUsLastLoadedDate = DateTime.Now.Month.ToString() + " " + DateTime.Now.Day.ToString() + " " + DateTime.Now.Year.ToString();
-                    lbl_dashboardDate.Text = dt.ToString("MMMM dd, yyyy");
                     lbl_topPanelNavPrpoDate.Text = dt.ToString("MMMM dd, yyyy");
                     Globals.PrpoGenerationDate = lbl_topPanelNavPrpoDate.Text;
                 }
@@ -182,7 +181,6 @@ namespace KPA_KPI_Analyzer
                     // Populate Dashboard with PRPO report date
                     DateTime dt = GetLoadedMxPrpoReportDate();
                     settings.reportSettings.PrpoMxLastLoadedDate = DateTime.Now.Month.ToString() + " " + DateTime.Now.Day.ToString() + " " + DateTime.Now.Year.ToString();
-                    lbl_dashboardDate.Text = dt.ToString("MMMM dd, yyyy");
                     lbl_topPanelNavPrpoDate.Text = dt.ToString("MMMM dd, yyyy");
                     Globals.PrpoGenerationDate = lbl_topPanelNavPrpoDate.Text;
                 }
