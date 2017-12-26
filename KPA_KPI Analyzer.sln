@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccessDatabaseLibrary", "Da
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelLibrary", "ExcelLibrary\ExcelLibrary.csproj", "{834C157D-F4EB-452D-A938-62AA7332489C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reporting", "Reporting\Reporting.csproj", "{335549F2-F524-4897-9BC4-9D92BB87BB3D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{834C157D-F4EB-452D-A938-62AA7332489C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{834C157D-F4EB-452D-A938-62AA7332489C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{834C157D-F4EB-452D-A938-62AA7332489C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{335549F2-F524-4897-9BC4-9D92BB87BB3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{335549F2-F524-4897-9BC4-9D92BB87BB3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{335549F2-F524-4897-9BC4-9D92BB87BB3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{335549F2-F524-4897-9BC4-9D92BB87BB3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

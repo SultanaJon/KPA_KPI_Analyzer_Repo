@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2D1507E4-751C-4644-ACC7-E3CE2F91A313}</ProjectGuid>
+    <ProjectGuid>{335549F2-F524-4897-9BC4-9D92BB87BB3D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Reporting</RootNamespace>
@@ -40,62 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="KeyPerformanceAction.cs" />
-    <Compile Include="KeyPerformanceActions\CurrentPlanVsActual\CurrentPlanDateVsCurrentConfirmationDate.cs" />
-    <Compile Include="KeyPerformanceActions\CurrentPlanVsActual\CurrentPlanDateVsCurrentConfirmationDateForHotJobs.cs" />
-    <Compile Include="KeyPerformanceActions\ExcessStockOpenOrders\PoCreationThruDelivery.cs" />
-    <Compile Include="KeyPerformanceActions\ExcessStockOpenOrders\PrsAgingNotReleased.cs" />
-    <Compile Include="KeyPerformanceActions\ExcessStockOpenOrders\PrsAgingReleased.cs" />
-    <Compile Include="KeyPerformanceActions\ExcessStockStock\PoCreationThruDelivery.cs" />
-    <Compile Include="KeyPerformanceActions\ExcessStockStock\PrsAgingNotReleased.cs" />
-    <Compile Include="KeyPerformanceActions\ExcessStockStock\PrsAgingReleased.cs" />
-    <Compile Include="KeyPerformanceActions\FollowUp\ConfirmedDateForUpcomingDeliveries.cs" />
-    <Compile Include="KeyPerformanceActions\FollowUp\ConfrimedDateVsPlanDate.cs" />
-    <Compile Include="KeyPerformanceActions\FollowUp\DueTodayOrLateToConfirmed.cs" />
-    <Compile Include="KeyPerformanceActions\HotJobs\LateToConfirmed.cs" />
-    <Compile Include="KeyPerformanceActions\HotJobs\NoConfirmations.cs" />
-    <Compile Include="KeyPerformanceActions\HotJobs\PrsNotOnPo.cs" />
-    <Compile Include="KeyPerformanceActions\Plan\MaterialDue.cs" />
-    <Compile Include="KeyPerformanceActions\Plan\PrsAgingNotReleased.cs" />
-    <Compile Include="KeyPerformanceActions\PurchSub\PoCreationToConfirmationEntry.cs" />
-    <Compile Include="KeyPerformanceActions\PurchSub\PrReleaseToPoRelease.cs" />
-    <Compile Include="KeyPerformanceActions\PurchTotal\PrReleaseToConfirmationEntry.cs" />
-    <Compile Include="KeyPerformanceActions\Purch\NoConfirmations.cs" />
-    <Compile Include="KeyPerformanceActions\Purch\PoFirstRelease.cs" />
-    <Compile Include="KeyPerformanceActions\Purch\PoPreviousRelease.cs" />
-    <Compile Include="KeyPerformanceActions\Purch\PrsAgingReleased.cs" />
-    <Compile Include="KeyPerformanceIndicators\FollowUp\ReceiptDateVsCurrentConfirmationDate.cs" />
-    <Compile Include="KeyPerformanceIndicators\FollowUp\ReceiptDateVsOriginalConfirmationDate.cs" />
-    <Compile Include="KeyPerformanceIndicators\FollowUp\ReceiptDateVsCurrentPlanDate.cs" />
-    <Compile Include="KeyPerformanceIndicators\FollowUp\FinalConfirmationDateVsFinalPlanDate.cs" />
-    <Compile Include="KeyPerformanceIndicators\FollowUp\CurrentConfirmationDateVsInitialConfirmationDate.cs" />
-    <Compile Include="KeyPerformanceIndicators\Other\HotJobPrs.cs" />
-    <Compile Include="KeyPerformanceIndicators\Other\PrsCreated.cs" />
-    <Compile Include="KeyPerformanceIndicators\Other\PrsReleased.cs" />
-    <Compile Include="KeyPerformanceIndicators\Other\PrValueVsPoValue.cs" />
-    <Compile Include="KeyPerformanceIndicators\Other\TotalSpend.cs" />
-    <Compile Include="KeyPerformanceIndicators\PlanTwo\MaterialDueFinalPlannedDate.cs" />
-    <Compile Include="KeyPerformanceIndicators\PlanTwo\MaterialDueOriginalPlannedDate.cs" />
-    <Compile Include="KeyPerformanceIndicators\Plan\CurrentPlanDateMinusFullReleaseVsCodedLead.cs" />
-    <Compile Include="KeyPerformanceIndicators\Plan\OrigPlanDateMinusPrFullReleaseVsCodedLead.cs" />
-    <Compile Include="KeyPerformanceIndicators\Plan\PrPlanDateVsCurrentPlanDate.cs" />
-    <Compile Include="KeyPerformanceIndicators\PurchPlan\PoReleaseVsPrDeliveryDate.cs" />
-    <Compile Include="KeyPerformanceIndicators\PurchSub\PoCreationDateVsConfirmationEntryDate.cs" />
-    <Compile Include="KeyPerformanceIndicators\PurchSub\PrReleaseDateVsPoReleaseDate.cs" />
-    <Compile Include="KeyPerformanceIndicators\PurchTotal\PrReleaseDateToConfirmationEntryDate.cs" />
-    <Compile Include="KeyPerformanceIndicators\PurchTwo\PoCreationDateVsPoReleaseDate.cs" />
-    <Compile Include="KeyPerformanceIndicators\PurchTwo\PoReleaseDateVsPoConfirmationDate.cs" />
-    <Compile Include="KeyPerformanceIndicators\PurchTwo\PrFullReleaseDateVsPoCreationDate.cs" />
-    <Compile Include="KeyPerformanceIndicators\Purch\InitialConfirmationDateVsPrPlanDate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Report.cs" />
-    <Compile Include="Selective\KpaSelectiveReport.cs" />
-    <Compile Include="Selective\KpiSelectiveReport.cs" />
-    <Compile Include="Templates\SelectiveReportTemplate.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Comparison\" />
-    <Folder Include="Overall\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
