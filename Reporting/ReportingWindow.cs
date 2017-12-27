@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Reporting.Selective
+namespace Reporting
 {
-    public partial class SelectiveReportConig : Form
+    public partial class ReportingWindow : Form
     {
-        public SelectiveReportConig()
+        public ReportingWindow()
         {
             InitializeComponent();
         }

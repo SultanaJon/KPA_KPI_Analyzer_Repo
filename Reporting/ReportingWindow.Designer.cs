@@ -1,6 +1,6 @@
-﻿namespace Reporting.Selective
+﻿namespace Reporting
 {
-    partial class SelectiveReportConig
+    partial class ReportingWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,13 @@
         {
             this.SuspendLayout();
             // 
-            // SelectiveReportConig
+            // ReportingWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1072, 606);
-            this.Name = "SelectiveReportConig";
-            this.Text = "Selective Reporting";
+            this.ClientSize = new System.Drawing.Size(1012, 567);
+            this.Name = "ReportingWindow";
+            this.Text = "ReportingWindow";
             this.ResumeLayout(false);
 
         }

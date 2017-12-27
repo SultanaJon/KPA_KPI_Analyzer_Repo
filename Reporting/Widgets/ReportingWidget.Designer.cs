@@ -1,6 +1,6 @@
-﻿namespace Reporting.Selective
+﻿namespace Reporting.Widgets
 {
-    partial class SelectiveReportControlsWidget
+    partial class ReportingWidget
     {
         /// <summary> 
         /// Required designer variable.

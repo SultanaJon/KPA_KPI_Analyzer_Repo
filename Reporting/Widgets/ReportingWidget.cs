@@ -8,13 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Reporting.Selective
+namespace Reporting.Widgets
 {
-    public partial class SelectiveReportControlsWidget : UserControl
+    public partial class ReportingWidget : UserControl
     {
         List<Bunifu.Framework.UI.BunifuCheckbox> reportingCheckBoxes = new List<Bunifu.Framework.UI.BunifuCheckbox>();
         List<GroupBox> reportingGroupBoxes = new List<GroupBox>();
 
+
+
+
+        /// <summary>
+        /// The types of report that can be ran within the reports window
+        /// </summary>
         private enum ReportingType
         {
             KpaKpiReport,
@@ -22,7 +28,12 @@ namespace Reporting.Selective
         }
 
 
-        public SelectiveReportControlsWidget()
+
+
+        /// <summary>
+        /// The default forms contructor.
+        /// </summary>
+        public ReportingWidget()
         {
             InitializeComponent();
 
@@ -30,6 +41,12 @@ namespace Reporting.Selective
 
 
 
+
+        /// <summary>
+        /// The event that is fired with the main for finishes loading.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SelectiveReportControlsWidget_Load(object sender, EventArgs e)
         {
             reportingCheckBoxes.Add(chkBox_KpaKpiReporting);
