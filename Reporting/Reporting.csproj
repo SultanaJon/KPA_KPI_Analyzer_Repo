@@ -98,6 +98,11 @@
     <Compile Include="KeyPerformanceIndicators\Purch\InitialConfrimationDateVsPRPlanDate.cs" />
     <Compile Include="Overall\OverallReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Report.cs" />
     <Compile Include="ReportingCategories.cs" />
     <Compile Include="ReportingSections.cs" />
@@ -108,6 +113,24 @@
       <DependentUpon>ReportingWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Selective\SelectiveReport.cs" />
+    <Compile Include="Widgets\ComparisonReport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Widgets\ComparisonReport.Designer.cs">
+      <DependentUpon>ComparisonReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\KpaSelectiveReport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Widgets\KpaSelectiveReport.Designer.cs">
+      <DependentUpon>KpaSelectiveReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\KpiSelectiveReport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Widgets\KpiSelectiveReport.Designer.cs">
+      <DependentUpon>KpiSelectiveReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Widgets\ReportingWidget.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -122,14 +145,41 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReportingWindow.resx">
       <DependentUpon>ReportingWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Widgets\KpaSelectiveReport.resx">
+      <DependentUpon>KpaSelectiveReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Widgets\ReportingWidget.resx">
       <DependentUpon>ReportingWidget.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\Close.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Close_Hover_icon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Maximize_Hover_icon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Maximize.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Minimize_Hover_Icon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Minimize.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\comau_logo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

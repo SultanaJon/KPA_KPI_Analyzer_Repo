@@ -13,8 +13,8 @@ namespace Reporting.KeyPerformanceActions.Plan
     {
         public PRsAgingNotReleased()
         {
-            ActionSection = ReportingSections.reportingSections[(int)ReportingSections.ReportingSection.Plan];
-            ActionCategory = ReportingCategories.reportingCategories[(int)ReportingCategories.ReportingCategory.PRsAgingNotReleased];
+            ActionSection = ReportingSections.kpaReportingSections[(int)ReportingSections.KpaReportingSection.Plan];
+            ActionCategory = "PRs Aging Not Released";
         }
 
 

@@ -10,8 +10,8 @@ namespace Reporting.KeyPerformanceActions.Plan
     {
         public MaterialDue()
         {
-            ActionSection = ReportingSections.reportingSections[(int)ReportingSections.ReportingSection.Plan];
-            ActionCategory = ReportingCategories.reportingCategories[(int)ReportingCategories.ReportingCategory.PRsAgingNotReleased];
+            ActionSection = ReportingSections.kpaReportingSections[(int)ReportingSections.KpaReportingSection.Plan];
+            ActionCategory = "Material Due";
         }
 
         public override void CalculateSelectiveReport(string filter)

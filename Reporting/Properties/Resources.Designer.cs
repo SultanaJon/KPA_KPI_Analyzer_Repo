@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KPA_KPI_Analyzer.Properties {
+namespace Reporting.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace KPA_KPI_Analyzer.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("KPA_KPI_Analyzer.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Reporting.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,16 +57,6 @@ namespace KPA_KPI_Analyzer.Properties {
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap ChartsLogo {
-            get {
-                object obj = ResourceManager.GetObject("ChartsLogo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -103,66 +93,6 @@ namespace KPA_KPI_Analyzer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap DashboardLogo {
-            get {
-                object obj = ResourceManager.GetObject("DashboardLogo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap dragDropLargeCenter {
-            get {
-                object obj = ResourceManager.GetObject("dragDropLargeCenter", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap FiltersLogo {
-            get {
-                object obj = ResourceManager.GetObject("FiltersLogo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap kpaLogo {
-            get {
-                object obj = ResourceManager.GetObject("kpaLogo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap kpiLogo {
-            get {
-                object obj = ResourceManager.GetObject("kpiLogo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap logo {
-            get {
-                object obj = ResourceManager.GetObject("logo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Maximize {
             get {
                 object obj = ResourceManager.GetObject("Maximize", resourceCulture);
@@ -183,16 +113,6 @@ namespace KPA_KPI_Analyzer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Menu {
-            get {
-                object obj = ResourceManager.GetObject("Menu", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Minimize {
             get {
                 object obj = ResourceManager.GetObject("Minimize", resourceCulture);
@@ -206,16 +126,6 @@ namespace KPA_KPI_Analyzer.Properties {
         internal static System.Drawing.Bitmap Minimize_Hover_Icon {
             get {
                 object obj = ResourceManager.GetObject("Minimize_Hover_Icon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap splashscreen {
-            get {
-                object obj = ResourceManager.GetObject("splashscreen", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

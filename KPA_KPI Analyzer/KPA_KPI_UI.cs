@@ -927,7 +927,10 @@ namespace KPA_KPI_Analyzer
 
         private void reportingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            using (Reporting.ReportingWindow wind = new Reporting.ReportingWindow())
+            {
+                wind.ShowDialog();
+            }
         }
     }
 }

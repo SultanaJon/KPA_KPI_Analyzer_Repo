@@ -30,18 +30,6 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -54,21 +42,20 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.TemplateTwoValuesGrid = new Bunifu.Framework.UI.BunifuCustomDataGrid();
-            this.TemplateOneValuesGrid = new Bunifu.Framework.UI.BunifuCustomDataGrid();
-            this.Section = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.KPA_Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TimeSpanOne = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TimeSpanTwo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TimeSpanThree = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TimeSpanFour = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TimeSpanFive = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TimeSpanSix = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TimeSpanSeven = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Average = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Totals = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TempOneFavorable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.one = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.two = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.three = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -83,6 +70,19 @@
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TempTwoFavorable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TemplateOneValuesGrid = new Bunifu.Framework.UI.BunifuCustomDataGrid();
+            this.Section = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KPA_Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TimeSpanOne = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TimeSpanTwo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TimeSpanThree = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TimeSpanFour = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TimeSpanFive = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TimeSpanSix = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TimeSpanSeven = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Average = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Totals = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TempOneFavorable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TemplateTwoValuesGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TemplateOneValuesGrid)).BeginInit();
@@ -161,164 +161,6 @@
             this.TemplateTwoValuesGrid.TabIndex = 2;
             this.TemplateTwoValuesGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TemplateTwoValuesGrid_CellDoubleClick);
             this.TemplateTwoValuesGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.bunifuCustomValuesGrid2_CellFormatting);
-            // 
-            // TemplateOneValuesGrid
-            // 
-            this.TemplateOneValuesGrid.AllowUserToAddRows = false;
-            this.TemplateOneValuesGrid.AllowUserToDeleteRows = false;
-            this.TemplateOneValuesGrid.AllowUserToResizeRows = false;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.TemplateOneValuesGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle15;
-            this.TemplateOneValuesGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.TemplateOneValuesGrid.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.TemplateOneValuesGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TemplateOneValuesGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.TemplateOneValuesGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TemplateOneValuesGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
-            this.TemplateOneValuesGrid.ColumnHeadersHeight = 18;
-            this.TemplateOneValuesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.TemplateOneValuesGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Section,
-            this.KPA_Category,
-            this.TimeSpanOne,
-            this.TimeSpanTwo,
-            this.TimeSpanThree,
-            this.TimeSpanFour,
-            this.TimeSpanFive,
-            this.TimeSpanSix,
-            this.TimeSpanSeven,
-            this.Average,
-            this.Totals,
-            this.TempOneFavorable});
-            this.tableLayoutPanel1.SetColumnSpan(this.TemplateOneValuesGrid, 2);
-            this.TemplateOneValuesGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TemplateOneValuesGrid.DoubleBuffered = true;
-            this.TemplateOneValuesGrid.EnableHeadersVisualStyles = false;
-            this.TemplateOneValuesGrid.HeaderBgColor = System.Drawing.SystemColors.Control;
-            this.TemplateOneValuesGrid.HeaderForeColor = System.Drawing.Color.White;
-            this.TemplateOneValuesGrid.Location = new System.Drawing.Point(10, 10);
-            this.TemplateOneValuesGrid.Margin = new System.Windows.Forms.Padding(0);
-            this.TemplateOneValuesGrid.Name = "TemplateOneValuesGrid";
-            this.TemplateOneValuesGrid.ReadOnly = true;
-            this.TemplateOneValuesGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.TemplateOneValuesGrid.RowHeadersVisible = false;
-            this.TemplateOneValuesGrid.RowTemplate.Height = 16;
-            this.TemplateOneValuesGrid.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.TemplateOneValuesGrid.Size = new System.Drawing.Size(1130, 360);
-            this.TemplateOneValuesGrid.TabIndex = 1;
-            this.TemplateOneValuesGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TemplateOneValuesGrid_CellDoubleClick);
-            this.TemplateOneValuesGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.bunifuCustomDataGrid1_CellFormatting);
-            // 
-            // Section
-            // 
-            this.Section.HeaderText = "";
-            this.Section.Name = "Section";
-            this.Section.ReadOnly = true;
-            this.Section.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // KPA_Category
-            // 
-            this.KPA_Category.HeaderText = "";
-            this.KPA_Category.Name = "KPA_Category";
-            this.KPA_Category.ReadOnly = true;
-            this.KPA_Category.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // TimeSpanOne
-            // 
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.TimeSpanOne.DefaultCellStyle = dataGridViewCellStyle17;
-            this.TimeSpanOne.HeaderText = "<=0 Days";
-            this.TimeSpanOne.Name = "TimeSpanOne";
-            this.TimeSpanOne.ReadOnly = true;
-            this.TimeSpanOne.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // TimeSpanTwo
-            // 
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.TimeSpanTwo.DefaultCellStyle = dataGridViewCellStyle18;
-            this.TimeSpanTwo.HeaderText = "1 - 3 Days";
-            this.TimeSpanTwo.Name = "TimeSpanTwo";
-            this.TimeSpanTwo.ReadOnly = true;
-            this.TimeSpanTwo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // TimeSpanThree
-            // 
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.TimeSpanThree.DefaultCellStyle = dataGridViewCellStyle19;
-            this.TimeSpanThree.HeaderText = "4 - 7 Days";
-            this.TimeSpanThree.Name = "TimeSpanThree";
-            this.TimeSpanThree.ReadOnly = true;
-            this.TimeSpanThree.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // TimeSpanFour
-            // 
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.TimeSpanFour.DefaultCellStyle = dataGridViewCellStyle20;
-            this.TimeSpanFour.HeaderText = "8 - 14 Days";
-            this.TimeSpanFour.Name = "TimeSpanFour";
-            this.TimeSpanFour.ReadOnly = true;
-            this.TimeSpanFour.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // TimeSpanFive
-            // 
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.TimeSpanFive.DefaultCellStyle = dataGridViewCellStyle21;
-            this.TimeSpanFive.HeaderText = "15- 21 Days";
-            this.TimeSpanFive.Name = "TimeSpanFive";
-            this.TimeSpanFive.ReadOnly = true;
-            this.TimeSpanFive.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // TimeSpanSix
-            // 
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.TimeSpanSix.DefaultCellStyle = dataGridViewCellStyle22;
-            this.TimeSpanSix.HeaderText = "22 - 28 Days";
-            this.TimeSpanSix.Name = "TimeSpanSix";
-            this.TimeSpanSix.ReadOnly = true;
-            this.TimeSpanSix.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // TimeSpanSeven
-            // 
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.TimeSpanSeven.DefaultCellStyle = dataGridViewCellStyle23;
-            this.TimeSpanSeven.HeaderText = "29+ Days";
-            this.TimeSpanSeven.Name = "TimeSpanSeven";
-            this.TimeSpanSeven.ReadOnly = true;
-            this.TimeSpanSeven.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Average
-            // 
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Average.DefaultCellStyle = dataGridViewCellStyle24;
-            this.Average.HeaderText = "Average";
-            this.Average.Name = "Average";
-            this.Average.ReadOnly = true;
-            this.Average.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Totals
-            // 
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Totals.DefaultCellStyle = dataGridViewCellStyle25;
-            this.Totals.HeaderText = "Totals";
-            this.Totals.Name = "Totals";
-            this.Totals.ReadOnly = true;
-            this.Totals.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // TempOneFavorable
-            // 
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.TempOneFavorable.DefaultCellStyle = dataGridViewCellStyle26;
-            this.TempOneFavorable.HeaderText = "% Favorable";
-            this.TempOneFavorable.Name = "TempOneFavorable";
-            this.TempOneFavorable.ReadOnly = true;
-            this.TempOneFavorable.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // one
             // 
@@ -441,6 +283,165 @@
             this.TempTwoFavorable.Name = "TempTwoFavorable";
             this.TempTwoFavorable.ReadOnly = true;
             this.TempTwoFavorable.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // TemplateOneValuesGrid
+            // 
+            this.TemplateOneValuesGrid.AllowUserToAddRows = false;
+            this.TemplateOneValuesGrid.AllowUserToDeleteRows = false;
+            this.TemplateOneValuesGrid.AllowUserToResizeRows = false;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.TemplateOneValuesGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle15;
+            this.TemplateOneValuesGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.TemplateOneValuesGrid.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.TemplateOneValuesGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TemplateOneValuesGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.TemplateOneValuesGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TemplateOneValuesGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            this.TemplateOneValuesGrid.ColumnHeadersHeight = 18;
+            this.TemplateOneValuesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.TemplateOneValuesGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Section,
+            this.KPA_Category,
+            this.TimeSpanOne,
+            this.TimeSpanTwo,
+            this.TimeSpanThree,
+            this.TimeSpanFour,
+            this.TimeSpanFive,
+            this.TimeSpanSix,
+            this.TimeSpanSeven,
+            this.Average,
+            this.Totals,
+            this.TempOneFavorable});
+            this.tableLayoutPanel1.SetColumnSpan(this.TemplateOneValuesGrid, 2);
+            this.TemplateOneValuesGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TemplateOneValuesGrid.DoubleBuffered = true;
+            this.TemplateOneValuesGrid.EnableHeadersVisualStyles = false;
+            this.TemplateOneValuesGrid.HeaderBgColor = System.Drawing.SystemColors.Control;
+            this.TemplateOneValuesGrid.HeaderForeColor = System.Drawing.Color.White;
+            this.TemplateOneValuesGrid.Location = new System.Drawing.Point(10, 10);
+            this.TemplateOneValuesGrid.Margin = new System.Windows.Forms.Padding(0);
+            this.TemplateOneValuesGrid.Name = "TemplateOneValuesGrid";
+            this.TemplateOneValuesGrid.ReadOnly = true;
+            this.TemplateOneValuesGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.TemplateOneValuesGrid.RowHeadersVisible = false;
+            this.TemplateOneValuesGrid.RowTemplate.Height = 16;
+            this.TemplateOneValuesGrid.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.TemplateOneValuesGrid.Size = new System.Drawing.Size(1130, 360);
+            this.TemplateOneValuesGrid.TabIndex = 1;
+            this.TemplateOneValuesGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TemplateOneValuesGrid_CellDoubleClick);
+            this.TemplateOneValuesGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.bunifuCustomDataGrid1_CellFormatting);
+            this.TemplateOneValuesGrid.Paint += new System.Windows.Forms.PaintEventHandler(this.TemplateOneValuesGrid_Paint);
+            // 
+            // Section
+            // 
+            this.Section.HeaderText = "";
+            this.Section.Name = "Section";
+            this.Section.ReadOnly = true;
+            this.Section.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // KPA_Category
+            // 
+            this.KPA_Category.HeaderText = "";
+            this.KPA_Category.Name = "KPA_Category";
+            this.KPA_Category.ReadOnly = true;
+            this.KPA_Category.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // TimeSpanOne
+            // 
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.TimeSpanOne.DefaultCellStyle = dataGridViewCellStyle17;
+            this.TimeSpanOne.HeaderText = "<=0 Days";
+            this.TimeSpanOne.Name = "TimeSpanOne";
+            this.TimeSpanOne.ReadOnly = true;
+            this.TimeSpanOne.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // TimeSpanTwo
+            // 
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.TimeSpanTwo.DefaultCellStyle = dataGridViewCellStyle18;
+            this.TimeSpanTwo.HeaderText = "1 - 3 Days";
+            this.TimeSpanTwo.Name = "TimeSpanTwo";
+            this.TimeSpanTwo.ReadOnly = true;
+            this.TimeSpanTwo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // TimeSpanThree
+            // 
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.TimeSpanThree.DefaultCellStyle = dataGridViewCellStyle19;
+            this.TimeSpanThree.HeaderText = "4 - 7 Days";
+            this.TimeSpanThree.Name = "TimeSpanThree";
+            this.TimeSpanThree.ReadOnly = true;
+            this.TimeSpanThree.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // TimeSpanFour
+            // 
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.TimeSpanFour.DefaultCellStyle = dataGridViewCellStyle20;
+            this.TimeSpanFour.HeaderText = "8 - 14 Days";
+            this.TimeSpanFour.Name = "TimeSpanFour";
+            this.TimeSpanFour.ReadOnly = true;
+            this.TimeSpanFour.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // TimeSpanFive
+            // 
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.TimeSpanFive.DefaultCellStyle = dataGridViewCellStyle21;
+            this.TimeSpanFive.HeaderText = "15- 21 Days";
+            this.TimeSpanFive.Name = "TimeSpanFive";
+            this.TimeSpanFive.ReadOnly = true;
+            this.TimeSpanFive.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // TimeSpanSix
+            // 
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.TimeSpanSix.DefaultCellStyle = dataGridViewCellStyle22;
+            this.TimeSpanSix.HeaderText = "22 - 28 Days";
+            this.TimeSpanSix.Name = "TimeSpanSix";
+            this.TimeSpanSix.ReadOnly = true;
+            this.TimeSpanSix.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // TimeSpanSeven
+            // 
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.TimeSpanSeven.DefaultCellStyle = dataGridViewCellStyle23;
+            this.TimeSpanSeven.HeaderText = "29+ Days";
+            this.TimeSpanSeven.Name = "TimeSpanSeven";
+            this.TimeSpanSeven.ReadOnly = true;
+            this.TimeSpanSeven.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Average
+            // 
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Average.DefaultCellStyle = dataGridViewCellStyle24;
+            this.Average.HeaderText = "Average";
+            this.Average.Name = "Average";
+            this.Average.ReadOnly = true;
+            this.Average.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Totals
+            // 
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Totals.DefaultCellStyle = dataGridViewCellStyle25;
+            this.Totals.HeaderText = "Totals";
+            this.Totals.Name = "Totals";
+            this.Totals.ReadOnly = true;
+            this.Totals.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // TempOneFavorable
+            // 
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.TempOneFavorable.DefaultCellStyle = dataGridViewCellStyle26;
+            this.TempOneFavorable.HeaderText = "% Favorable";
+            this.TempOneFavorable.Name = "TempOneFavorable";
+            this.TempOneFavorable.ReadOnly = true;
+            this.TempOneFavorable.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // NewKPAOverall
             // 

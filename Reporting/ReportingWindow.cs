@@ -16,5 +16,10 @@ namespace Reporting
         {
             InitializeComponent();
         }
+
+        private void ReportingWindow_Load(object sender, EventArgs e)
+        {
+            splitContainer1.Panel2.Controls.Add(new Widgets.KpaSelectiveReport() { Dock = DockStyle.Fill });
+        }
     }
 }

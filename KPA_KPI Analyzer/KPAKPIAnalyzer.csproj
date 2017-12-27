@@ -136,6 +136,11 @@
     <Compile Include="ExcelFiles\PrpoExcelFile.cs" />
     <Compile Include="ExcelFiles\MxPrpoExcelFile.cs" />
     <Compile Include="ExcelFiles\UsPrpoExcelFile.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Values\Categories.cs" />
     <Compile Include="Correlation\CorrelationHeaders.cs" />
     <Compile Include="Values\Countries.cs" />
@@ -366,11 +371,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="SplashScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -525,19 +525,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\databaseConn_Connected_Icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\databaseConn_Disconnected_Icon.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Maximize_Hover_icon.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Maximize.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Minimize_Hover_Icon.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Close.png" />
@@ -552,85 +543,10 @@
     <None Include="Resources\MaxMin_Icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ArrowBtn_BG.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ArrowBtn__Hover_BG.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\MainNavBtn_Hover.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\House_Icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\House_Icon_Hover.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\MainNavBtn.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Charts_Icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Charts_Icon_Hover.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Filter_Icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Filter_Icon_Hover.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\SectionBtn__inactive_BG.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CategoryBtn__active_BG.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CategoryBtn__inactive_BG.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\OverrallBtn__active_BG.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\OverrallBtn__inactive_BG.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\SectionBtn__active_BG.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ArrowBtn__Active_BG.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\SectionBtn_activeClosed_BG.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\legendOne.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\legendTwo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\legendThree.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\legendFour.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\legendFive.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\legendSix.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\legendSeven.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\KPA_KPI_SplashScreen.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\DragDrop_Inactive_BG.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccessLibrary\AccessDatabaseLibrary.csproj">
@@ -649,168 +565,10 @@
       <Project>{834c157d-f4eb-452d-a938-62aa7332489c}</Project>
       <Name>ExcelLibrary</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\drag_drop_Section.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\drag_drop_Section1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Untitled-1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\navBG.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\navBG1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\test.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\KPABG_Normal.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\KPABG_Normal1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\KPIBG_Normal.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ChartsBG_Normal.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\FilterBG_Normal.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\KPABG_Normal2.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\KPABG_Normal3.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\KPIBG_Normal1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ChartsBG_HoverActive.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\DashboardBG_HoverActive.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\FilterBG_HoverActive.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\KPABG_Active.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\KPABG_Hover.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\KPIBG_Active.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\KPIBG_Hover.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\DashboardBG_Normal.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\KPABG_Hover1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\KPABG_Normal4.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\KPIBG_Hover1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\KPIBG_Normal2.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\KPABG_Normal5.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\KPIBG_Normal3.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\KPABG_Active1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\KPIBG_Active1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\KPABG_Active2.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\KPIBG_Active2.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\SectionBG.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\GreenIndicator.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\GreenIndicator1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\RedIndicator.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\YellowIndicator.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\axisColorPanelOne.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\axisColorPanelTwo.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\axisColorPanelThree.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\axisColorPanelFour.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\axisColorPanelFive.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\axisColorPanelSix.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\axisColorPanelSeven.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\axisColorPanelEight.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\axisColorPanelNine.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\axisColorPanelTen.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\TemplateFilters.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\TemplateFiltersClear.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\TemplateFilters1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\TemplateFiltersClear1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Untitled-11.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\drag &amp; drop small.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\drag &amp; drop small1.jpg" />
+    <ProjectReference Include="..\Reporting\Reporting.csproj">
+      <Project>{335549f2-f524-4897-9bc4-9d92bb87bb3d}</Project>
+      <Name>Reporting</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\drag &amp; drop Large.jpg" />
@@ -822,28 +580,21 @@
     <Content Include="lgo.ico" />
     <None Include="Resources\kpiLogo.png" />
     <None Include="Resources\kpaLogo.png" />
-    <None Include="Resources\test2.png" />
-    <None Include="Resources\test1.png" />
     <None Include="Resources\FiltersLogo1.png" />
     <None Include="Resources\ChartsLogo1.png" />
     <None Include="Resources\DashboardLogo1.png" />
     <None Include="Resources\FiltersLogo.png" />
     <None Include="Resources\ChartsLogo.png" />
     <None Include="Resources\DashboardLogo.png" />
-    <None Include="Resources\test.png" />
     <None Include="Resources\Menu1.jpg" />
     <None Include="Resources\Menu.jpg" />
     <None Include="Resources\comau_logo.png" />
     <None Include="Resources\Minimize.jpg" />
     <None Include="Resources\Minimize_Hover_Icon.jpg" />
-    <None Include="Resources\Minimize.png" />
     <None Include="Resources\Maximize_Hover_icon.jpg" />
     <None Include="Resources\Maximize.jpg" />
     <None Include="Resources\Close_Hover_icon.jpg" />
     <None Include="Resources\Close.jpg" />
-    <None Include="Resources\Minimize.bmp" />
-    <None Include="Resources\testBtnClose1.jpg" />
-    <None Include="Resources\testBtnClose.jpg" />
     <None Include="Resources\Logo-Comau-ok.png" />
     <None Include="Resources\logo.jpg" />
     <None Include="Resources\splashscreen.jpg" />
