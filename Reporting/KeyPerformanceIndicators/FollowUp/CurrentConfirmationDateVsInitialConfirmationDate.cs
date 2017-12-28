@@ -3,14 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Reporting.Interfaces;
 
 namespace Reporting.KeyPerformanceIndicators.FollowUp
 {
-    internal class CurrentConfirmationDateVsInitialConfirmationDate : KeyPerformanceIndicator
+    public sealed class CurrentConfirmationDateVsInitialConfirmationDate
     {
-        public override void CalculateSelectiveReport()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

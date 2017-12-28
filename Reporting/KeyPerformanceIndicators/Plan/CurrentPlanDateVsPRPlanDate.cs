@@ -3,14 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Reporting.Interfaces;
 
 namespace Reporting.KeyPerformanceIndicators.Plan
 {
-    internal class CurrentPlanDateVsPRPlanDate : KeyPerformanceIndicator
+    public sealed class CurrentPlanDateVsPRPlanDate
     {
-        public override void CalculateSelectiveReport()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

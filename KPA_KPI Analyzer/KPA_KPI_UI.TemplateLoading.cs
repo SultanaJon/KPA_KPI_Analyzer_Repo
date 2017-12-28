@@ -446,6 +446,7 @@ namespace KPA_KPI_Analyzer
                     case "PurchPlan":
                     case "Other":
                     case "Correlation":
+                    case "Reports":
                         pnl_activePage.Controls.Remove(ctrl);
                         break;
                     default:
@@ -464,7 +465,7 @@ namespace KPA_KPI_Analyzer
         /// <param name="e"></param>
         private void pnl_activePage_ControlAdded(object sender, ControlEventArgs e)
         {
-            if(e.Control is Correlation.CorrelationControl)
+            if(e.Control is Correlation.CorrelationControl || e.Control is Reporting.SelctiveReportingWidget)
             {
                 return;
             }
@@ -750,6 +751,38 @@ namespace KPA_KPI_Analyzer
 
             pnl_activePage.Controls.Add(correlation);
             correlation.BringToFront();
+            pnl_NavigationPanelMax.BringToFront();
+        }
+
+
+
+        /// <summary>
+        /// Loads the report page where the user can select a report to run.
+        /// </summary>
+        private void CreateReportPage()
+        {
+            lbl_Performance.Text = "N/A";
+            lbl_Section.Text = "N/A";
+            lbl_Category.Text = "N/A";
+
+            FlowLayoutPanel wrapPanel = new FlowLayoutPanel()
+            {
+                Name = "Reports",
+                Dock = DockStyle.Fill
+            };
+
+            Control[] reportingControl = new Control[]
+            {
+                new Reporting.SelctiveReportingWidget() { Margin = new Padding(10, 10, 0, 0) },
+                new Reporting.ComparisonReportingWidget() { Margin = new Padding(10, 10, 0, 0) }
+            };
+            ;
+            // Add the controls to the wrap panel
+            wrapPanel.Controls.AddRange(reportingControl);
+
+            pnl_activePage.Controls.Add(wrapPanel);
+            wrapPanel.BringToFront();
+            MenuInFront = true;
             pnl_NavigationPanelMax.BringToFront();
         }
     }

@@ -107,6 +107,9 @@ namespace KPA_KPI_Analyzer
                 case 5:
                     CreateCorrelationWindow();
                     break;
+                case 6:
+                    CreateReportPage();
+                    break;
                 default:
                     break;
             }

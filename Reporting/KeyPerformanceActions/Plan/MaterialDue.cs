@@ -3,20 +3,44 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Reporting.Interfaces;;
+
 
 namespace Reporting.KeyPerformanceActions.Plan
 {
-    internal class MaterialDue : KeyPerformanceAction
+    public sealed class MaterialDue : KeyPerformanceAction, ISelectiveVOne
     {
+        #region ISelectiveVOne Properties
+
+        /// <summary>
+        /// The Average Days for the Selective Calculation
+        /// </summary>
+        public double SelectiveAverage { get; set; }
+
+
+        /// <summary>
+        /// The total amount of records for the Selective Calculation
+        /// </summary>
+        public int SelectiveTotalRecords { get; set; }
+
+        #endregion
+
+
         public MaterialDue()
         {
-            ActionSection = ReportingSections.kpaReportingSections[(int)ReportingSections.KpaReportingSection.Plan];
-            ActionCategory = "Material Due";
+            Section = Section.Plan;
+            Name = "Material Due";
         }
 
-        public override void CalculateSelectiveReport(string filter)
+
+
+
+        /// <summary>
+        /// Calculates the selective report for this KPA
+        /// </summary>
+        public override void CalculateSelectiveReport(string uniqueFilters)
         {
-            throw new NotImplementedException();
+
         }
     }
 }
