@@ -33,12 +33,17 @@
     <Reference Include="Bunifu_UI_v1.5.3">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Bunifu Technologies\Bunifu Framework Manager\bin\updates\Bunifu UI 1.5.3\Bunifu_UI_v1.5.3.dll</HintPath>
     </Reference>
+    <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialSkin.0.2.1\lib\MaterialSkin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -106,6 +111,12 @@
     <Compile Include="Report.cs" />
     <Compile Include="ReportingCategories.cs" />
     <Compile Include="ReportingSections.cs" />
+    <Compile Include="ReportingSetupWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportingSetupWindow.Designer.cs">
+      <DependentUpon>ReportingSetupWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReportingWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,12 +142,6 @@
     <Compile Include="Widgets\KpiSelectiveReport.Designer.cs">
       <DependentUpon>KpiSelectiveReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="Widgets\ReportingWidget.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Widgets\ReportingWidget.Designer.cs">
-      <DependentUpon>ReportingWidget.cs</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccessLibrary\AccessDatabaseLibrary.csproj">
@@ -149,17 +154,18 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReportingSetupWindow.resx">
+      <DependentUpon>ReportingSetupWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReportingWindow.resx">
       <DependentUpon>ReportingWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Widgets\KpaSelectiveReport.resx">
       <DependentUpon>KpaSelectiveReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Widgets\ReportingWidget.resx">
-      <DependentUpon>ReportingWidget.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Resources\Close.jpg" />
   </ItemGroup>
   <ItemGroup>

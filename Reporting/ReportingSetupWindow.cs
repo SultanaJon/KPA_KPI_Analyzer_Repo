@@ -13,16 +13,16 @@ using MaterialSkin;
 
 namespace Reporting
 {
-    public partial class ReportingWindow : MaterialForm
+    public partial class ReportingSetupWindow : MaterialForm
     {
-        public ReportingWindow()
+        public ReportingSetupWindow()
         {
             InitializeComponent();
         }
 
-        private void ReportingWindow_Load(object sender, EventArgs e)
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //splitContainer1.Panel2.Controls.Add(new Widgets.KpaSelectiveReport() { Dock = DockStyle.Fill });
+
         }
     }
 }
