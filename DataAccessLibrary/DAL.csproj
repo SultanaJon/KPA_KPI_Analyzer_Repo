@@ -7,8 +7,8 @@
     <ProjectGuid>{3BF2C771-F9E8-4596-B969-03A8CD251E57}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AccessDatabaseLibrary</RootNamespace>
-    <AssemblyName>AccessDatabaseLibrary</AssemblyName>
+    <RootNamespace>DAL</RootNamespace>
+    <AssemblyName>DataAccessLibrary</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -46,15 +46,18 @@
     <Compile Include="DatabaseDataRemovalUtils.cs" />
     <Compile Include="DatabaseLoadingUtils.cs" />
     <Compile Include="Exceptions\DatabaseCreationFailureException.cs" />
-    <Compile Include="DatabaseManager.cs" />
+    <Compile Include="DatbaseManager.cs" />
     <Compile Include="DatabaseTables.cs" />
+    <Compile Include="FIlterColumns.cs" />
     <Compile Include="Importing\Importer.cs" />
+    <Compile Include="KpaData.cs" />
+    <Compile Include="KpiData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Exceptions\PRPODatabaseNotFoundException.cs" />
-    <Compile Include="Queries.cs" />
     <Compile Include="Exceptions\TableNameMismatchException.cs" />
     <Compile Include="Exceptions\TablesDoNotExistException.cs" />
     <Compile Include="Exceptions\ThreadInteruptedException.cs" />
+    <Compile Include="RemovableData.cs" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="ADODB">

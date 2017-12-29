@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -82,6 +83,7 @@
     <Compile Include="KeyPerformanceIndicators\PurchTwo\POReleaseDateVsPOConfirmationDate.cs" />
     <Compile Include="KeyPerformanceIndicators\PurchTwo\PR2ndLvlReleaseDateVsPOCreationDate.cs" />
     <Compile Include="KeyPerformanceIndicators\Purch\InitialConfirmationDateVsPRPlanDate.cs" />
+    <Compile Include="Report.cs" />
     <Compile Include="SelectiveReport.cs" />
     <Compile Include="KeyPerformanceActions\Plan\MaterialDue.cs" />
     <Compile Include="KeyPerformanceActions\Plan\PRsAgingNotReleased.cs" />
@@ -92,7 +94,6 @@
     <Compile Include="KeyPerformanceActions\Purch\POFirstRelease.cs" />
     <Compile Include="KeyPerformanceActions\Purch\POPrevRelease.cs" />
     <Compile Include="KeyPerformanceActions\Purch\PRsAgingReleased.cs" />
-    <Compile Include="PerformanceTrack.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

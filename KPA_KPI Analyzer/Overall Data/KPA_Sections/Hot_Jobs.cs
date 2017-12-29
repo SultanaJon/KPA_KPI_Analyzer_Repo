@@ -1,10 +1,10 @@
-﻿using AccessDatabaseLibrary;
+﻿using DAL;
 using KPA_KPI_Analyzer.Templates;
 using System;
 using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
-using AccessDatabaseLibrary.Exceptions;
+using DAL.Exceptions;
 
 
 namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
@@ -16,8 +16,6 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
         public LateToConfirmed lateToConfirmed;
         private double totalDays = 0;
         private DataTable dt;
-        private OleDbCommand cmd;
-        private OleDbDataAdapter da;
 
 
 
@@ -69,10 +67,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                 // PRs (Not on PO) - Hot Jobs Only
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                dt = new DataTable();
-                cmd = new OleDbCommand(Queries.KpaQueries.HotJobsQueries.GetPrsNotOnPo() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
-                da = new OleDbDataAdapter(cmd);
-                da.Fill(dt);
+                dt = KpaData.HotJobsQueries.GetPrsNotOnPo();
 
 
                 foreach (DataRow dr in dt.Rows)
@@ -160,10 +155,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                 // No Confirmations - Hot Jobs Only
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                dt = new DataTable();
-                cmd = new OleDbCommand(Queries.KpaQueries.HotJobsQueries.GetNoConfirmations() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
-                da = new OleDbDataAdapter(cmd);
-                da.Fill(dt);
+                dt = KpaData.HotJobsQueries.GetNoConfirmations();
 
 
 
@@ -238,11 +230,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                 // Late To Confirmed
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                dt = new DataTable();
-                cmd = new OleDbCommand(Queries.KpaQueries.HotJobsQueries.GetLateToConfirmed() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
-                da = new OleDbDataAdapter(cmd);
-                da.Fill(dt);
-
+                dt = KpaData.HotJobsQueries.GetLateToConfirmed();
 
                 foreach (DataRow dr in dt.Rows)
                 {

@@ -1,10 +1,10 @@
-﻿using AccessDatabaseLibrary;
+﻿using DAL;
 using KPA_KPI_Analyzer.Templates;
 using System;
 using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
-using AccessDatabaseLibrary.Exceptions;
+using DAL.Exceptions;
 
 namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
 {
@@ -15,8 +15,6 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
         public PoCreationThruDelivery PoCreationThruDeliv;
         private double totalDays = 0;
         private DataTable dt;
-        private OleDbCommand cmd;
-        private OleDbDataAdapter da;
 
 
 
@@ -61,10 +59,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                 // Prs Aging Not Released
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                dt = new DataTable();
-                cmd = new OleDbCommand(Queries.KpaQueries.ExcessStockOpenOrdersQueries.GetPrsAgingNotReleased() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
-                da = new OleDbDataAdapter(cmd);
-                da.Fill(dt);
+                dt = KpaData.ExcessStockOpenOrdersQueries.GetPrsAgingNotReleased();
 
                 foreach (DataRow dr in dt.Rows)
                 {
@@ -141,11 +136,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                 // Prs Aging Released
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                dt = new DataTable();
-                cmd = new OleDbCommand(Queries.KpaQueries.ExcessStockOpenOrdersQueries.GetPrsAgingReleased() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
-                da = new OleDbDataAdapter(cmd);
-                da.Fill(dt);
-
+                dt = KpaData.ExcessStockOpenOrdersQueries.GetPrsAgingReleased();
 
                 foreach (DataRow dr in dt.Rows)
                 {
@@ -238,10 +229,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                 // Po Creation Thru Delivery
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                dt = new DataTable();
-                cmd = new OleDbCommand(Queries.KpaQueries.ExcessStockOpenOrdersQueries.GetPoCreationThruDelivery() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
-                da = new OleDbDataAdapter(cmd);
-                da.Fill(dt);
+                dt = KpaData.ExcessStockOpenOrdersQueries.GetPoCreationThruDelivery();
 
 
                 foreach (DataRow dr in dt.Rows)

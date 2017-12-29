@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Reporting.Interfaces;;
+﻿using Reporting.Interfaces;
 
 
 namespace Reporting.KeyPerformanceActions.FollowUp
@@ -28,7 +23,7 @@ namespace Reporting.KeyPerformanceActions.FollowUp
 
         public ConfirmedDateForUpcomingDeliveries()
         {
-            Section = Section.FollowUp;
+            Section = "Follow Up";
             Name = "Confirmed Date for Upcoming Deliveries";
         }
 
@@ -36,7 +31,7 @@ namespace Reporting.KeyPerformanceActions.FollowUp
         /// <summary>
         /// Calculates the selective report for this KPA
         /// </summary>
-        public override void CalculateSelectiveReport(string uniqueFilters)
+        public override void RunSelectiveReport(string uniqueFilters)
         {
 
         }

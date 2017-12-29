@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Reporting.Interfaces;;
+﻿using Reporting.Interfaces;
 
 namespace Reporting.KeyPerformanceActions.PurchTotal
 {
@@ -27,7 +22,7 @@ namespace Reporting.KeyPerformanceActions.PurchTotal
 
         public PRReleaseToConfirmationEntry()
         {
-            Section = Section.PurchTotal;
+            Section = "Purch Total";
             Name = "PR Release To Confirmation Entry";
         }
 
@@ -35,7 +30,7 @@ namespace Reporting.KeyPerformanceActions.PurchTotal
         /// <summary>
         /// Calculates the selective report for this KPA
         /// </summary>
-        public override void CalculateSelectiveReport(string uniqueFilters)
+        public override void RunSelectiveReport(string uniqueFilters)
         {
 
         }

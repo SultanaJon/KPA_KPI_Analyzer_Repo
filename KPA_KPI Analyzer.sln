@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataImporter", "DataImporte
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataExporter", "DataExporter\DataExporter.csproj", "{E3601D73-731A-46EE-8AF0-B314580534A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccessDatabaseLibrary", "DataAccessLibrary\AccessDatabaseLibrary.csproj", "{3BF2C771-F9E8-4596-B969-03A8CD251E57}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DataAccessLibrary\DAL.csproj", "{3BF2C771-F9E8-4596-B969-03A8CD251E57}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelLibrary", "ExcelLibrary\ExcelLibrary.csproj", "{834C157D-F4EB-452D-A938-62AA7332489C}"
 EndProject

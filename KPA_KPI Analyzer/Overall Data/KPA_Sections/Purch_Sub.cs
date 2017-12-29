@@ -1,10 +1,10 @@
-﻿using AccessDatabaseLibrary;
+﻿using DAL;
 using KPA_KPI_Analyzer.Templates;
 using System;
 using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
-using AccessDatabaseLibrary.Exceptions;
+using DAL.Exceptions;
 
 
 
@@ -16,8 +16,6 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
         public PO_Create_Conf_Entry POCreatToConfEntry;
         private double totalDays = 0;
         private DataTable dt;
-        private OleDbCommand cmd;
-        private OleDbDataAdapter da;
 
 
 
@@ -64,10 +62,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                 // PR Release to PO Release
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                dt = new DataTable();
-                cmd = new OleDbCommand(Queries.KpaQueries.PurchSubQueries.GetPrReleaseToPoRelease() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
-                da = new OleDbDataAdapter(cmd);
-                da.Fill(dt);
+                dt = KpaData.PurchSubQueries.GetPrReleaseToPoRelease();
 
                 foreach (DataRow dr in dt.Rows)
                 {
@@ -154,10 +149,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                 // PO Creation Date to Confirmation Entry
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                dt = new DataTable();
-                cmd = new OleDbCommand(Queries.KpaQueries.PurchSubQueries.GetPoCreationToConfirmationEntry() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
-                da = new OleDbDataAdapter(cmd);
-                da.Fill(dt);
+                dt = KpaData.PurchSubQueries.GetPoCreationToConfirmationEntry();
 
 
 

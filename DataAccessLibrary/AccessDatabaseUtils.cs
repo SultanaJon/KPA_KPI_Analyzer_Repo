@@ -1,4 +1,4 @@
-﻿namespace AccessDatabaseLibrary
+﻿namespace DAL
 {
     public static class AccessDatabaseUtils
     {

@@ -1,11 +1,4 @@
-﻿using DataImporter.Access;
-using DataImporter.Excel;
-using System;
-using System.Data.OleDb;
-using System.Threading;
-using System.Windows.Forms;
-
-namespace DataImporter.Importing
+﻿namespace DataImporter.Importing
 {
     public class Importer
     {

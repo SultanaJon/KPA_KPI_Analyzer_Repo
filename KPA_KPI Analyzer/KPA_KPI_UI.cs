@@ -9,7 +9,7 @@
 //          "Once you stop learning you start dying" - Albert Einstein
 //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-using AccessDatabaseLibrary;
+using DAL;
 using KPA_KPI_Analyzer.Diagnostics;
 using KPA_KPI_Analyzer.Filters;
 using KPA_KPI_Analyzer.Overall_Data;
@@ -475,7 +475,7 @@ namespace KPA_KPI_Analyzer
         {
             lbl_Country.Text = Values.Countries.countries[(int)Values.Countries.Country.UnitedStates];
             Globals.TargetCountry = Values.Countries.Country.UnitedStates;
-            Queries.SetDatabaseTable(DatabaseTables.DatabaseTable.UnitedStates);
+            DatabaseManager.TargetTable = DatabaseTables.databaseTables[(int)DatabaseTables.DatabaseTable.UnitedStates];
         }
 
 
@@ -487,7 +487,7 @@ namespace KPA_KPI_Analyzer
         {
             lbl_Country.Text = Values.Countries.countries[(int)Values.Countries.Country.Mexico];
             Globals.TargetCountry = Values.Countries.Country.Mexico;
-            Queries.SetDatabaseTable(DatabaseTables.DatabaseTable.Mexico);
+            DatabaseManager.TargetTable = DatabaseTables.databaseTables[(int)DatabaseTables.DatabaseTable.Mexico];
         }
 
 

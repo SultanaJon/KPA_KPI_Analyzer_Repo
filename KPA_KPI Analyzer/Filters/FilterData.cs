@@ -1,4 +1,5 @@
-﻿using KPA_KPI_Analyzer.Variants;
+﻿using DAL;
+using KPA_KPI_Analyzer.Variants;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -32,7 +33,19 @@ namespace KPA_KPI_Analyzer.Filters
         public static string FilterQuery
         {
             get { return filters; }
-            set { if (value == null) filters = string.Empty; else filters = value; }
+            set
+            {
+                if (value == null)
+                {
+                    filters = string.Empty;
+                }
+                else
+                {
+                    filters = value;
+                }
+
+                DatabaseManager.Filters = filters;
+            }
         }
 
 
@@ -42,7 +55,19 @@ namespace KPA_KPI_Analyzer.Filters
         public static string SecondaryFilterQuery
         {
             get { return secFilters; }
-            set { if (value == null) secFilters = string.Empty; else secFilters = value; }
+            set
+            {
+                if (value == null)
+                {
+                    secFilters = string.Empty;
+                }
+                else
+                {
+                    secFilters = value;
+                }
+
+                DatabaseManager.SecondaryFilters = secFilters;
+            }
         }
 
         #endregion

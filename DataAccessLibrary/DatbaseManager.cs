@@ -1,4 +1,4 @@
-﻿using AccessDatabaseLibrary.Exceptions;
+﻿using DAL.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -6,15 +6,14 @@ using System.Data.OleDb;
 using System.IO;
 using System.Windows.Forms;
 
-namespace AccessDatabaseLibrary
+namespace DAL
 {
     public static class DatabaseManager
     {
         public static DataTable prsOnPOsDt;
         public static DataTable posRecCompDt;
         public static DataTable pr2ndLvlRelDateDt;
-        public static DataTable AllDt;
-        public static DataSet ds;
+        public static DataTable AllDataDt;
 
 
         // Call back function to renew the data loader timer.
@@ -33,6 +32,11 @@ namespace AccessDatabaseLibrary
         public static volatile object locker = new object();
 
 
+        public static string Filters { get; set; }
+
+
+
+        public static string SecondaryFilters { get; set; }
 
 
         /// <summary>
@@ -48,6 +52,10 @@ namespace AccessDatabaseLibrary
         /// </summary>
         private static OleDbConnection DatabaseConnection { get; set; }
 
+
+
+
+        public static string TargetTable { get; set; }
 
 
 
@@ -246,7 +254,7 @@ namespace AccessDatabaseLibrary
                 if (_table == DatabaseTables.DatabaseTable.UnitedStates)
                 {
                     OleDbCommand cmd;
-                    cmd = new OleDbCommand(Queries.GetUsRemovableDataQuery(), DatabaseConnection);
+                    cmd = new OleDbCommand(RemovableData.GetUsRemovableDataQuery(), DatabaseConnection);
                     cmd.ExecuteNonQuery();
                     result = true;
                     DatabaseDataRemovalUtils.CompletedDataRemovals++;
@@ -255,7 +263,7 @@ namespace AccessDatabaseLibrary
                 else
                 {
                     OleDbCommand cmd;
-                    cmd = new OleDbCommand(Queries.GetMxRemovableDataQuery(), DatabaseConnection);
+                    cmd = new OleDbCommand(RemovableData.GetMxRemovableDataQuery(), DatabaseConnection);
                     cmd.ExecuteNonQuery();
                     result = true;
                     DatabaseDataRemovalUtils.CompletedDataRemovals++;
@@ -278,12 +286,12 @@ namespace AccessDatabaseLibrary
         /// <summary>
         /// Loads the data that will be used in the KPI sections for data calculations
         /// </summary>
-        public static void LoadKPITables(string filters, string secondaryFilters)
+        public static void LoadKPITables()
         {
             prsOnPOsDt = new DataTable();
             posRecCompDt = new DataTable();
             pr2ndLvlRelDateDt = new DataTable();
-            AllDt = new DataTable();
+            AllDataDt = new DataTable();
 
             try
             {
@@ -291,28 +299,10 @@ namespace AccessDatabaseLibrary
                 {
                     using (OleDbDataAdapter da = new OleDbDataAdapter())
                     {
-                        cmd.CommandText = Queries.KpiQueries.GetAllPOs() + filters;
-                        da.SelectCommand = cmd;
-                        da.Fill(prsOnPOsDt);
-
-                        cmd.CommandText = Queries.KpiQueries.GetPoLinesReceivedComplete() + filters;
-                        da.SelectCommand = cmd;
-                        da.Fill(posRecCompDt);
-
-                        cmd.CommandText = Queries.KpiQueries.GetPr2ndLevelRelease() + filters;
-                        da.SelectCommand = cmd;
-                        da.Fill(pr2ndLvlRelDateDt);
-
-
-                        if (filters == string.Empty)
-                            cmd.CommandText = Queries.KpiQueries.GetAllData();
-                        else
-                            cmd.CommandText = Queries.KpiQueries.GetAllData() + " WHERE " + secondaryFilters;
-
-                        da.SelectCommand = cmd;
-                        da.Fill(AllDt);
-
-
+                        prsOnPOsDt = KpiData.KpiQueries.GetAllPOs();
+                        posRecCompDt = KpiData.KpiQueries.GetPoLinesReceivedComplete();
+                        pr2ndLvlRelDateDt = KpiData.KpiQueries.GetPr2ndLevelRelease();
+                        AllDataDt = KpiData.KpiQueries.GetAllData();
 
                         DatabaseLoadingUtils.KPITablesLoaded = true;
                         UpdateLoadProgress();
@@ -321,7 +311,7 @@ namespace AccessDatabaseLibrary
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "KPI Data Load");
+                MessageBox.Show(ex.StackTrace, "KPI Data Load");
             }
         }
 
@@ -339,8 +329,8 @@ namespace AccessDatabaseLibrary
             posRecCompDt = null;
             pr2ndLvlRelDateDt.Clear();
             pr2ndLvlRelDateDt = null;
-            AllDt.Clear();
-            AllDt = null;
+            AllDataDt.Clear();
+            AllDataDt = null;
             GC.Collect();
         }
 
@@ -495,7 +485,7 @@ namespace AccessDatabaseLibrary
         //            foreach (Correlation.CorrelationHeaders.CorrelationMatrixIndexer index in Enum.GetValues(typeof(Correlation.CorrelationHeaders.CorrelationMatrixIndexer)))
         //            {
         //                tempDt = new DataTable();
-        //                cmd.CommandText = "SELECT " + Queries.GetDatabaseTableName() + ".[" + Correlation.CorrelationHeaders.correlationQueryHeaders[(int)index] + "], " + Queries.GetDatabaseTableName() + ".[" + Correlation.CorrelationHeaders.correlationDateRangeFilters[(int)Correlation.CorrelationHeaders.CorrelationDateRangeFilters.RequisitionDate] + "], " + Queries.GetDatabaseTableName() + ".[" + Correlation.CorrelationHeaders.correlationDateRangeFilters[(int)Correlation.CorrelationHeaders.CorrelationDateRangeFilters.PoLineCreateDate] + "], " + Queries.GetDatabaseTableName() + ".[" + Correlation.CorrelationHeaders.correlationDateRangeFilters[(int)Correlation.CorrelationHeaders.CorrelationDateRangeFilters.QtyOrdered] + "] FROM " + Queries.GetDatabaseTableName();
+        //                cmd.CommandText = "SELECT " + TargetTable + ".[" + Correlation.CorrelationHeaders.correlationQueryHeaders[(int)index] + "], " + TargetTable + ".[" + Correlation.CorrelationHeaders.correlationDateRangeDatabaseManager.Filters[(int)Correlation.CorrelationHeaders.CorrelationDateRangeDatabaseManager.Filters.RequisitionDate] + "], " + TargetTable + ".[" + Correlation.CorrelationHeaders.correlationDateRangeDatabaseManager.Filters[(int)Correlation.CorrelationHeaders.CorrelationDateRangeDatabaseManager.Filters.PoLineCreateDate] + "], " + TargetTable + ".[" + Correlation.CorrelationHeaders.correlationDateRangeDatabaseManager.Filters[(int)Correlation.CorrelationHeaders.CorrelationDateRangeDatabaseManager.Filters.QtyOrdered] + "] FROM " + Table;
         //                da.SelectCommand = cmd;
         //                da.Fill(tempDt);
         //                tempDt.TableName = Correlation.CorrelationHeaders.correlationHeaders[(int)index];

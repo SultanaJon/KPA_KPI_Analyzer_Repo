@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Reporting.Interfaces;
+﻿using Reporting.Interfaces;
 
 namespace Reporting.KeyPerformanceIndicators.PurchPlan
 {
@@ -26,9 +21,19 @@ namespace Reporting.KeyPerformanceIndicators.PurchPlan
 
 
         /// <summary>
+        /// Default Constructor
+        /// </summary>
+        public POReleaseVsPRDeliveryDate()
+        {
+            Section = "Purch Plan";
+            Name = "PO Release vs PR Delivery Date";
+        }
+
+
+        /// <summary>
         /// Calculates the selective report for this KPA
         /// </summary>
-        public override void CalculateSelectiveReport(string uniqueFilters)
+        public override void RunSelectiveReport(string uniqueFilters)
         {
 
         }

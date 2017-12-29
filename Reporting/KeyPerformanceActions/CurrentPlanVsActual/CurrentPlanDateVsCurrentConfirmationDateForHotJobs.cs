@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Reporting.Interfaces;;
+﻿using Reporting.Interfaces;
 
 namespace Reporting.KeyPerformanceActions.CurrentPlanVsActual
 {
@@ -33,7 +28,7 @@ namespace Reporting.KeyPerformanceActions.CurrentPlanVsActual
 
         public CurrentPlanDateVsCurrentConfirmationDateForHotJobs()
         {
-            Section = Section.CurrentPlanVsActual;
+            Section = "Current Plan vs Actual";
             Name = "Current Plan Date vs Current Confirmation Date For Hot Jobs";
         }
 
@@ -42,7 +37,7 @@ namespace Reporting.KeyPerformanceActions.CurrentPlanVsActual
         /// <summary>
         /// Calculates the selective report for this KPA
         /// </summary>
-        public override void CalculateSelectiveReport(string uniqueFilters)
+        public override void RunSelectiveReport(string uniqueFilters)
         {
 
         }

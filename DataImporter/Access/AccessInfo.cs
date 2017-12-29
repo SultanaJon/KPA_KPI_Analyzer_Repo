@@ -1,6 +1,4 @@
-﻿using System.Data.OleDb;
-
-namespace DataImporter.Access
+﻿namespace DataImporter.Access
 {
     public class AccessInfo
     {

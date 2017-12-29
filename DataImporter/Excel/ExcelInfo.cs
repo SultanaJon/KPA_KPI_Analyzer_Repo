@@ -1,7 +1,4 @@
-﻿using System.Data.OleDb;
-using System.IO;
-
-namespace DataImporter.Excel
+﻿namespace DataImporter.Excel
 {
     public class ExcelInfo
     {

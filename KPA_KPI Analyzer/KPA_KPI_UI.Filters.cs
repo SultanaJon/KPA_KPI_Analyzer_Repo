@@ -1,4 +1,4 @@
-﻿using AccessDatabaseLibrary;
+﻿using DAL;
 using KPA_KPI_Analyzer.Filters;
 using System;
 using System.Collections.Generic;
@@ -457,7 +457,7 @@ namespace KPA_KPI_Analyzer
 
             CheckFilterStatus();
 
-
+            DatabaseManager.Filters = filters; 
 
             // Toggles the variant tools within the menu strip based on certain conditions.
             CheckActiveVariants();
@@ -1001,9 +1001,9 @@ namespace KPA_KPI_Analyzer
                         filters += "(";
 
                     if (FilterData.ColumnFilters.projectNumber[i] == "[Blanks]")
-                        filters += Queries.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.ProjectNum_WBS_Element] + "] IS NULL OR " + Queries.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.ProjectNUm_ProdOrdWbs] + "] IS NULL";
+                        filters += DatabaseManager.TargetTable + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.ProjectNum_WBS_Element] + "] IS NULL OR " + DatabaseManager.TargetTable + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.ProjectNUm_ProdOrdWbs] + "] IS NULL";
                     else
-                        filters += Queries.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.ProjectNum_WBS_Element] + "] LIKE " + "'%" + FilterData.ColumnFilters.projectNumber[i] + "%' OR " + Queries.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.ProjectNUm_ProdOrdWbs] + "] LIKE " + "'%" + FilterData.ColumnFilters.projectNumber[i] + "%'";
+                        filters += DatabaseManager.TargetTable + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.ProjectNum_WBS_Element] + "] LIKE " + "'%" + FilterData.ColumnFilters.projectNumber[i] + "%' OR " + DatabaseManager.TargetTable + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.ProjectNUm_ProdOrdWbs] + "] LIKE " + "'%" + FilterData.ColumnFilters.projectNumber[i] + "%'";
 
                     if (i != (FilterData.ColumnFilters.projectNumber.Count - 1))
                         filters += " OR ";
@@ -1027,9 +1027,9 @@ namespace KPA_KPI_Analyzer
                         filters += "(";
 
                     if (FilterData.ColumnFilters.wbsElement[i] == "[Blanks]")
-                        filters += Queries.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.WBS_Element] + "] IS NULL";
+                        filters += DatabaseManager.TargetTable + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.WBS_Element] + "] IS NULL";
                     else
-                        filters += Queries.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.WBS_Element] + "] = " + "'" + FilterData.ColumnFilters.wbsElement[i] + "'";
+                        filters += DatabaseManager.TargetTable + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.WBS_Element] + "] = " + "'" + FilterData.ColumnFilters.wbsElement[i] + "'";
 
 
                     if (i != (FilterData.ColumnFilters.wbsElement.Count - 1))
@@ -1052,9 +1052,9 @@ namespace KPA_KPI_Analyzer
                         filters += "(";
 
                     if (FilterData.ColumnFilters.material[i] == "[Blanks]")
-                        filters += Queries.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.Material] + "] IS NULL";
+                        filters += DatabaseManager.TargetTable + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.Material] + "] IS NULL";
                     else
-                        filters += Queries.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.Material] + "] = " + "'" + FilterData.ColumnFilters.material[i] + "'";
+                        filters += DatabaseManager.TargetTable + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.Material] + "] = " + "'" + FilterData.ColumnFilters.material[i] + "'";
 
                     if (i != (FilterData.ColumnFilters.material.Count - 1))
                         filters += " OR ";
@@ -1076,9 +1076,9 @@ namespace KPA_KPI_Analyzer
                         filters += "(";
 
                     if (FilterData.ColumnFilters.materialGroup[i] == "[Blanks]")
-                        filters += Queries.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.MaterialGroup] + "] IS NULL";
+                        filters += DatabaseManager.TargetTable + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.MaterialGroup] + "] IS NULL";
                     else
-                        filters += Queries.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.MaterialGroup] + "] = " + "'" + FilterData.ColumnFilters.materialGroup[i] + "'";
+                        filters += DatabaseManager.TargetTable + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.MaterialGroup] + "] = " + "'" + FilterData.ColumnFilters.materialGroup[i] + "'";
 
                     if (i != (FilterData.ColumnFilters.materialGroup.Count - 1))
                         filters += " OR ";
@@ -1100,9 +1100,9 @@ namespace KPA_KPI_Analyzer
                         filters += "(";
 
                     if (FilterData.ColumnFilters.vendor[i] == "[Blanks]")
-                        filters += Queries.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.Vendor] + "] IS NULL";
+                        filters += DatabaseManager.TargetTable + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.Vendor] + "] IS NULL";
                     else
-                        filters += Queries.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.Vendor] + "] = " + FilterData.ColumnFilters.vendor[i];
+                        filters += DatabaseManager.TargetTable + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.Vendor] + "] = " + FilterData.ColumnFilters.vendor[i];
 
                     if (i != (FilterData.ColumnFilters.vendor.Count - 1))
                         filters += " OR ";
@@ -1124,9 +1124,9 @@ namespace KPA_KPI_Analyzer
                         filters += "(";
 
                     if (FilterData.ColumnFilters.vendorDesc[i] == "[Blanks]")
-                        filters += Queries.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.VendorDescription] + "] IS NULL";
+                        filters += DatabaseManager.TargetTable + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.VendorDescription] + "] IS NULL";
                     else
-                        filters += Queries.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.VendorDescription] + "] = " + "'" + FilterData.ColumnFilters.vendorDesc[i] + "'";
+                        filters += DatabaseManager.TargetTable + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.VendorDescription] + "] = " + "'" + FilterData.ColumnFilters.vendorDesc[i] + "'";
 
                     if (i != (FilterData.ColumnFilters.vendorDesc.Count - 1))
                         filters += " OR ";
@@ -1150,9 +1150,9 @@ namespace KPA_KPI_Analyzer
 
 
                     if (FilterData.ColumnFilters.purchGroup[i] == "[Blanks]")
-                        filters += Queries.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.PurchGroup] + "] IS NULL";
+                        filters += DatabaseManager.TargetTable + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.PurchGroup] + "] IS NULL";
                     else
-                        filters += Queries.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.PurchGroup] + "] = " + "'" + FilterData.ColumnFilters.purchGroup[i] + "'";
+                        filters += DatabaseManager.TargetTable + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.PurchGroup] + "] = " + "'" + FilterData.ColumnFilters.purchGroup[i] + "'";
 
                     if (i != (FilterData.ColumnFilters.purchGroup.Count - 1))
                         filters += " OR ";
@@ -1177,9 +1177,9 @@ namespace KPA_KPI_Analyzer
 
 
                     if (FilterData.ColumnFilters.poPurchGroup[i] == "[Blanks]")
-                        filters += Queries.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.PoPurchGroup] + "] IS NULL";
+                        filters += DatabaseManager.TargetTable + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.PoPurchGroup] + "] IS NULL";
                     else
-                        filters += Queries.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.PoPurchGroup] + "] = " + "'" + FilterData.ColumnFilters.poPurchGroup[i] + "'";
+                        filters += DatabaseManager.TargetTable + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.PoPurchGroup] + "] = " + "'" + FilterData.ColumnFilters.poPurchGroup[i] + "'";
 
                     if (i != (FilterData.ColumnFilters.poPurchGroup.Count - 1))
                         filters += " OR ";
@@ -1203,9 +1203,9 @@ namespace KPA_KPI_Analyzer
 
 
                     if (FilterData.ColumnFilters.irSuppName[i] == "[Blanks]")
-                        filters += Queries.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.IRSuppName] + "] IS NULL";
+                        filters += DatabaseManager.TargetTable + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.IRSuppName] + "] IS NULL";
                     else
-                        filters += Queries.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.IRSuppName] + "] = " + "'" + FilterData.ColumnFilters.irSuppName[i] + "'";
+                        filters += DatabaseManager.TargetTable + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.IRSuppName] + "] = " + "'" + FilterData.ColumnFilters.irSuppName[i] + "'";
 
                     if (i != (FilterData.ColumnFilters.irSuppName.Count - 1))
                         filters += " OR ";
@@ -1229,9 +1229,9 @@ namespace KPA_KPI_Analyzer
 
 
                     if (FilterData.ColumnFilters.fxdSuppName[i] == "[Blanks]")
-                        filters += Queries.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.FxdSuppName] + "] IS NULL";
+                        filters += DatabaseManager.TargetTable + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.FxdSuppName] + "] IS NULL";
                     else
-                        filters += Queries.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.FxdSuppName] + "] = " + "'" + FilterData.ColumnFilters.fxdSuppName[i] + "'";
+                        filters += DatabaseManager.TargetTable + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.FxdSuppName] + "] = " + "'" + FilterData.ColumnFilters.fxdSuppName[i] + "'";
 
                     if (i != (FilterData.ColumnFilters.fxdSuppName.Count - 1))
                         filters += " OR ";
@@ -1255,9 +1255,9 @@ namespace KPA_KPI_Analyzer
 
 
                     if (FilterData.ColumnFilters.dsrdSuppName[i] == "[Blanks]")
-                        filters += Queries.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.DsrdSuppName] + "] IS NULL";
+                        filters += DatabaseManager.TargetTable + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.DsrdSuppName] + "] IS NULL";
                     else
-                        filters += Queries.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.DsrdSuppName] + "] = " + "'" + FilterData.ColumnFilters.dsrdSuppName[i] + "'";
+                        filters += DatabaseManager.TargetTable + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.DsrdSuppName] + "] = " + "'" + FilterData.ColumnFilters.dsrdSuppName[i] + "'";
 
                     if (i != (FilterData.ColumnFilters.dsrdSuppName.Count - 1))
                         filters += " OR ";
@@ -1280,9 +1280,9 @@ namespace KPA_KPI_Analyzer
 
 
                     if (FilterData.ColumnFilters.commCategory[i] == "[Blanks]")
-                        filters += Queries.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.CommCat] + "] IS NULL";
+                        filters += DatabaseManager.TargetTable + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.CommCat] + "] IS NULL";
                     else
-                        filters += Queries.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.CommCat] + "] = " + "'" + FilterData.ColumnFilters.commCategory[i] + "'";
+                        filters += DatabaseManager.TargetTable + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.CommCat] + "] = " + "'" + FilterData.ColumnFilters.commCategory[i] + "'";
 
 
                     if (i != (FilterData.ColumnFilters.commCategory.Count - 1))
@@ -1305,9 +1305,9 @@ namespace KPA_KPI_Analyzer
 
 
                     if (FilterData.ColumnFilters.escaped[i] == "[Blanks]")
-                        filters += Queries.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.Escaped] + "] IS NULL";
+                        filters += DatabaseManager.TargetTable + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.Escaped] + "] IS NULL";
                     else
-                        filters += Queries.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.Escaped] + "] = " + "'" + FilterData.ColumnFilters.escaped[i] + "'";
+                        filters += DatabaseManager.TargetTable + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.Escaped] + "] = " + "'" + FilterData.ColumnFilters.escaped[i] + "'";
 
 
                     if (i != (FilterData.ColumnFilters.escaped.Count - 1))
@@ -1331,9 +1331,9 @@ namespace KPA_KPI_Analyzer
 
 
                     if (FilterData.ColumnFilters.poDocumentType[i] == "[Blanks]")
-                        filters += Queries.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.PoDocumentType] + "] IS NULL";
+                        filters += DatabaseManager.TargetTable + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.PoDocumentType] + "] IS NULL";
                     else
-                        filters += Queries.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.PoDocumentType] + "] = " + "'" + FilterData.ColumnFilters.poDocumentType[i] + "'";
+                        filters += DatabaseManager.TargetTable + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.PoDocumentType] + "] = " + "'" + FilterData.ColumnFilters.poDocumentType[i] + "'";
 
 
                     if (i != (FilterData.ColumnFilters.poDocumentType.Count - 1))
@@ -1356,9 +1356,9 @@ namespace KPA_KPI_Analyzer
 
 
                     if (FilterData.ColumnFilters.prodOrderMat[i] == "[Blanks]")
-                        filters += Queries.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.ProdOrderMaterial] + "] IS NULL";
+                        filters += DatabaseManager.TargetTable + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.ProdOrderMaterial] + "] IS NULL";
                     else
-                        filters += Queries.GetDatabaseTableName() + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.ProdOrderMaterial] + "] = " + "'" + FilterData.ColumnFilters.prodOrderMat[i] + "'";
+                        filters += DatabaseManager.TargetTable + ".[" + FilterUtils.filterCols[(int)FilterUtils.FilterColumn.ProdOrderMaterial] + "] = " + "'" + FilterData.ColumnFilters.prodOrderMat[i] + "'";
 
 
                     if (i != (FilterData.ColumnFilters.prodOrderMat.Count - 1))

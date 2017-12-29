@@ -1,10 +1,10 @@
-﻿using AccessDatabaseLibrary;
+﻿using DAL;
 using KPA_KPI_Analyzer.Templates;
 using System;
 using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
-using AccessDatabaseLibrary.Exceptions;
+using DAL.Exceptions;
 
 namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
 {
@@ -15,8 +15,6 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
         public Late_Conf_Date LateToConfDate;
         private double totalDays = 0;
         private DataTable dt;
-        private OleDbCommand cmd;
-        private OleDbDataAdapter da;
 
 
         // Default Constructor
@@ -62,10 +60,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                 // Confirmed vs Plan Date
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                dt = new DataTable();
-                cmd = new OleDbCommand(Queries.KpaQueries.FollowUpQueries.GetConfirmedDateVsPlanDate() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
-                da = new OleDbDataAdapter(cmd);
-                da.Fill(dt);
+                dt = KpaData.FollowUpQueries.GetConfirmedDateVsPlanDate();
 
 
                 foreach (DataRow dr in dt.Rows)
@@ -162,11 +157,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                 // Confirmed Date for Upcoing Deliveries
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                dt = new DataTable();
-                cmd = new OleDbCommand(Queries.KpaQueries.FollowUpQueries.GetConfrimedDateForUpcomingDeliveries() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
-                da = new OleDbDataAdapter(cmd);
-                da.Fill(dt);
-
+                dt = KpaData.FollowUpQueries.GetConfrimedDateForUpcomingDeliveries();
 
                 foreach (DataRow dr in dt.Rows)
                 {
@@ -241,10 +232,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                 // Due Today or Late to Confrimed
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                dt = new DataTable();
-                cmd = new OleDbCommand(Queries.KpaQueries.FollowUpQueries.GetDueTodayOrLateToConfirmed() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
-                da = new OleDbDataAdapter(cmd);
-                da.Fill(dt);
+                dt = KpaData.FollowUpQueries.GetDueTodayOrLateToConfirmed();
 
 
                 foreach (DataRow dr in dt.Rows)

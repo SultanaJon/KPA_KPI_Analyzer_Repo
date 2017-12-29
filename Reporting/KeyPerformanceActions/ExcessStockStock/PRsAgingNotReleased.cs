@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Reporting.Interfaces;;
+﻿using Reporting.Interfaces;
 
 
 namespace Reporting.KeyPerformanceActions.ExcessStockStock
@@ -28,7 +23,7 @@ namespace Reporting.KeyPerformanceActions.ExcessStockStock
 
         public PRsAgingNotReleased()
         {
-            Section = Section.ExcessStockStock;
+            Section = "Excess Stock - Stock";
             Name = "PRs Aging (Not Released)";
         }
 
@@ -36,7 +31,7 @@ namespace Reporting.KeyPerformanceActions.ExcessStockStock
         /// <summary>
         /// Calculates the selective report for this KPA
         /// </summary>
-        public override void CalculateSelectiveReport(string uniqueFilters)
+        public override void RunSelectiveReport(string uniqueFilters)
         {
 
         }

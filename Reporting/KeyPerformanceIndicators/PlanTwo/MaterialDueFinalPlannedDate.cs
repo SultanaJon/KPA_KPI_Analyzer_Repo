@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Reporting.Interfaces;
+﻿using Reporting.Interfaces;
 
 namespace Reporting.KeyPerformanceIndicators.PlanTwo
 {
@@ -25,10 +20,22 @@ namespace Reporting.KeyPerformanceIndicators.PlanTwo
         #endregion
 
 
+
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
+        public MaterialDueFinalPlannedDate()
+        {
+            Section = "Plan II";
+            Name = "Material Due (Final Planned Date)";
+        }
+
+
+
         /// <summary>
         /// Calculates the selective report for this KPA
         /// </summary>
-        public override void CalculateSelectiveReport(string uniqueFilters)
+        public override void RunSelectiveReport(string uniqueFilters)
         {
 
         }

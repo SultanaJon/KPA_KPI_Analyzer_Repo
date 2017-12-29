@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AccessDatabaseLibrary.Exceptions
+namespace DAL.Exceptions
 {
     public class TablesDoNotExistException : Exception
     {

@@ -1,11 +1,4 @@
-﻿using OfficeOpenXml;
-using System.Collections.Generic;
-using System.Data;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-
-namespace DataExporter
+﻿namespace DataExporter
 {
     public class Exporter
     {

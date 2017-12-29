@@ -4,7 +4,7 @@ using System.Data.OleDb;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace AccessDatabaseLibrary.Importing
+namespace DAL.Importing
 {
     public class Importer
     {

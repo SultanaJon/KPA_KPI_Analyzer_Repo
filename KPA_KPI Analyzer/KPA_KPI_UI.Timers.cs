@@ -4,8 +4,8 @@ using KPA_KPI_Analyzer.Values;
 using System;
 using System.Threading;
 using System.Windows.Forms;
-using AccessDatabaseLibrary;
-using AccessDatabaseLibrary.Importing;
+using DAL;
+using DAL.Importing;
 using ExcelLibrary;
 
 namespace KPA_KPI_Analyzer
@@ -240,7 +240,7 @@ namespace KPA_KPI_Analyzer
             KPA_ExcessStock_OpenOrders = new Thread(() => { try { overallData.kpa.excessStockOpenOrders.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
             KPA_CurrPlanVsActualThread = new Thread(() => { try { overallData.kpa.currPlanVsActual.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
 
-            tableLoadThread = new Thread(() => { try { DatabaseManager.LoadKPITables(FilterData.filters, FilterData.SecondaryFilterQuery); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+            tableLoadThread = new Thread(() => { try { DatabaseManager.LoadKPITables(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
             KPI_PlanThread = new Thread(() => { try { overallData.kpi.plan.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
             KPI_PurchThread = new Thread(() => { try { overallData.kpi.purch.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
             KPI_FollowUpThread = new Thread(() => { try { overallData.kpi.followUp.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });

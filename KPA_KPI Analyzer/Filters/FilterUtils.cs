@@ -1,4 +1,4 @@
-﻿using AccessDatabaseLibrary;
+﻿using DAL;
 using KPA_KPI_Analyzer.Values;
 using System;
 using System.Collections.Generic;
@@ -98,11 +98,11 @@ namespace KPA_KPI_Analyzer.Filters
 
             if (filters == string.Empty)
             {
-                temp = "SELECT DISTINCT " + Queries.GetDatabaseTableName() + ".[" + column + "] FROM " + Queries.GetDatabaseTableName();
+                temp = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + column + "] FROM " + DatabaseManager.TargetTable;
             }
             else
             {
-                temp = "SELECT DISTINCT " + Queries.GetDatabaseTableName() + ".[" + column + "] FROM " + Queries.GetDatabaseTableName() + " WHERE " + filters;
+                temp = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + column + "] FROM " + DatabaseManager.TargetTable + " WHERE " + filters;
             }
             query = temp;
         }
@@ -195,7 +195,7 @@ namespace KPA_KPI_Analyzer.Filters
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.StackTrace, "Filter Utils - Load Filters Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Filter Utils - Load Filters Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {

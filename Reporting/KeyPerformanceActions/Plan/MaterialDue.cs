@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Reporting.Interfaces;;
+﻿using Reporting.Interfaces;
 
 
 namespace Reporting.KeyPerformanceActions.Plan
@@ -28,7 +23,7 @@ namespace Reporting.KeyPerformanceActions.Plan
 
         public MaterialDue()
         {
-            Section = Section.Plan;
+            Section = "Plan";
             Name = "Material Due";
         }
 
@@ -38,7 +33,7 @@ namespace Reporting.KeyPerformanceActions.Plan
         /// <summary>
         /// Calculates the selective report for this KPA
         /// </summary>
-        public override void CalculateSelectiveReport(string uniqueFilters)
+        public override void RunSelectiveReport(string uniqueFilters)
         {
 
         }

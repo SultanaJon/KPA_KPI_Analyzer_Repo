@@ -1,9 +1,9 @@
-﻿using AccessDatabaseLibrary;
+﻿using DAL;
 using KPA_KPI_Analyzer.Templates;
 using System;
 using System.Data;
 using System.Windows.Forms;
-using AccessDatabaseLibrary.Exceptions;
+using DAL.Exceptions;
 
 namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
 {

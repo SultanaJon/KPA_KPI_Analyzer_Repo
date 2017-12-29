@@ -1,10 +1,10 @@
-﻿using AccessDatabaseLibrary;
+﻿using DAL;
 using KPA_KPI_Analyzer.Templates;
 using System;
 using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
-using AccessDatabaseLibrary.Exceptions;
+using DAL.Exceptions;
 
 namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
 {
@@ -16,10 +16,6 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
         public No_Confirmation noConfirmation;
         private double totalDays = 0;
         private DataTable dt;
-        private OleDbCommand cmd;
-        private OleDbDataAdapter da;
-
-
 
 
         // Default Constructor
@@ -74,10 +70,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                 // PRs Aging Released
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                dt = new DataTable();
-                cmd = new OleDbCommand(Queries.KpaQueries.PurchQueries.GetPrsAgingReleased() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
-                da = new OleDbDataAdapter(cmd);
-                da.Fill(dt);
+                dt = KpaData.PurchQueries.GetPrsAgingReleased();
 
 
                 foreach (DataRow dr in dt.Rows)
@@ -167,11 +160,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                 // PO First Release
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                dt = new DataTable();
-                cmd = new OleDbCommand(Queries.KpaQueries.PurchQueries.GetPoFirstRelease() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
-                da = new OleDbDataAdapter(cmd);
-                da.Fill(dt);
-
+                dt = KpaData.PurchQueries.GetPoFirstRelease();
 
                 foreach (DataRow dr in dt.Rows)
                 {
@@ -247,10 +236,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                 // PO Prev Release
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                dt = new DataTable();
-                cmd = new OleDbCommand(Queries.KpaQueries.PurchQueries.GetPoPrevRelease() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
-                da = new OleDbDataAdapter(cmd);
-                da.Fill(dt);
+                dt = KpaData.PurchQueries.GetPoPrevRelease();
 
 
                 foreach (DataRow dr in dt.Rows)
@@ -328,10 +314,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                 // No Confirmation
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                dt = new DataTable();
-                cmd = new OleDbCommand(Queries.KpaQueries.PurchQueries.GetNoConfirmations() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
-                da = new OleDbDataAdapter(cmd);
-                da.Fill(dt);
+                dt = KpaData.PurchQueries.GetNoConfirmations();
 
 
                 foreach (DataRow dr in dt.Rows)

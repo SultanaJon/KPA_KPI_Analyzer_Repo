@@ -1,4 +1,4 @@
-﻿using AccessDatabaseLibrary;
+﻿using DAL;
 using KPA_KPI_Analyzer.Filters;
 using System;
 using System.Data;
@@ -10,8 +10,6 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
     public static class KpiDataTableLoader
     {
         private static DataTable dt;
-        private static OleDbCommand cmd;
-        private static OleDbDataAdapter da;
         private static DataTable unconfirmed;
 
 
@@ -30,12 +28,8 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = new DataTable();
+                    dt = KpiData.KpiQueries.GetAllData();
                     prPlanDateVsCurrPlanDt = new DataTable();
-                    cmd = new OleDbCommand(Queries.KpiQueries.GetAllPOs() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
-                    da = new OleDbDataAdapter(cmd);
-                    da.Fill(dt);
-
                     prPlanDateVsCurrPlanDt = dt.Clone();
 
 
@@ -172,14 +166,8 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = new DataTable();
+                    dt = KpiData.KpiQueries.GetPr2ndLevelRelease();
                     OrigPlan2ndLvlRel_CodedLeadTime = new DataTable();
-
-                    cmd = new OleDbCommand(Queries.KpiQueries.GetPr2ndLevelRelease() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
-                    da = new OleDbDataAdapter(cmd);
-                    da.Fill(dt);
-
-
                     OrigPlan2ndLvlRel_CodedLeadTime = dt.Clone();
 
 
@@ -324,14 +312,8 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = new DataTable();
+                    dt = KpiData.KpiQueries.GetPr2ndLevelRelease();
                     CurrPlan2ndLvlRel_CodedLeadTime = new DataTable();
-
-                    cmd = new OleDbCommand(Queries.KpiQueries.GetPr2ndLevelRelease() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
-                    da = new OleDbDataAdapter(cmd);
-                    da.Fill(dt);
-
-
                     CurrPlan2ndLvlRel_CodedLeadTime = dt.Clone();
 
 
@@ -505,13 +487,9 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = new DataTable();
+                    dt = KpiData.KpiQueries.GetAllPOs();
                     initConfVsPrPlanDateDt = new DataTable();
                     unconfirmed = new DataTable();
-                    cmd = new OleDbCommand(Queries.KpiQueries.GetAllPOs() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
-                    da = new OleDbDataAdapter(cmd);
-                    da.Fill(dt);
-
                     initConfVsPrPlanDateDt = dt.Clone();
                     unconfirmed = dt.Clone();
 
@@ -679,16 +657,9 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = new DataTable();
+                    dt = KpiData.KpiQueries.GetAllPOs();
                     initConfVsCurrConf = new DataTable();
                     unconfirmed = new DataTable();
-
-                    cmd = new OleDbCommand(Queries.KpiQueries.GetAllPOs() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
-                    da = new OleDbDataAdapter(cmd);
-                    da.Fill(dt);
-
-
-
                     initConfVsCurrConf = dt.Clone();
                     unconfirmed = dt.Clone();
 
@@ -854,15 +825,9 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = new DataTable();
+                    dt = KpiData.KpiQueries.GetPoLinesReceivedComplete();
                     finalConfDateVsFinalPlanDateDt = new DataTable();
                     unconfirmed = new DataTable();
-
-                    cmd = new OleDbCommand(Queries.KpiQueries.GetPoLinesReceivedComplete() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
-                    da = new OleDbDataAdapter(cmd);
-                    da.Fill(dt);
-
-
                     finalConfDateVsFinalPlanDateDt = dt.Clone();
                     unconfirmed = dt.Clone();
 
@@ -1027,13 +992,8 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = new DataTable();
+                    dt = KpiData.KpiQueries.GetPoLinesReceivedComplete();
                     recDateVsCurrPlanDateDt = new DataTable();
-
-                    cmd = new OleDbCommand(Queries.KpiQueries.GetPoLinesReceivedComplete() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
-                    da = new OleDbDataAdapter(cmd);
-                    da.Fill(dt);
-
                     recDateVsCurrPlanDateDt = dt.Clone();
 
                     foreach (DataRow dr in dt.Rows)
@@ -1180,14 +1140,9 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = new DataTable();
+                    dt = KpiData.KpiQueries.GetPoLinesReceivedComplete();
                     recDateVsOrigConfDateDt = new DataTable();
                     unconfirmed = new DataTable();
-
-                    cmd = new OleDbCommand(Queries.KpiQueries.GetPoLinesReceivedComplete() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
-                    da = new OleDbDataAdapter(cmd);
-                    da.Fill(dt);
-
                     recDateVsOrigConfDateDt = dt.Clone();
                     unconfirmed = dt.Clone();
 
@@ -1363,14 +1318,9 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = new DataTable();
+                    dt = KpiData.KpiQueries.GetPoLinesReceivedComplete();
                     recDateVsCurrConfDateDt = new DataTable();
                     unconfirmed = new DataTable();
-                    cmd = new OleDbCommand(Queries.KpiQueries.GetPoLinesReceivedComplete() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
-                    da = new OleDbDataAdapter(cmd);
-                    da.Fill(dt);
-
-
                     recDateVsCurrConfDateDt = dt.Clone();
                     unconfirmed = dt.Clone();
 
@@ -1554,14 +1504,8 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = new DataTable();
+                    dt = KpiData.KpiQueries.GetPr2ndLevelRelease();
                     MaterialDueOrigPlanDate = new DataTable();
-
-                    cmd = new OleDbCommand(Queries.KpiQueries.GetPr2ndLevelRelease() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
-                    da = new OleDbDataAdapter(cmd);
-                    da.Fill(dt);
-
-
                     MaterialDueOrigPlanDate = dt.Clone();
 
 
@@ -1712,14 +1656,8 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = new DataTable();
+                    dt = KpiData.KpiQueries.GetAllPOs();
                     MaterialDueFinalPlannedDate = new DataTable();
-
-                    cmd = new OleDbCommand(Queries.KpiQueries.GetAllPOs() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
-                    da = new OleDbDataAdapter(cmd);
-                    da.Fill(dt);
-
-
                     MaterialDueFinalPlannedDate = dt.Clone();
 
 
@@ -1910,13 +1848,8 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = new DataTable();
+                    dt = KpiData.KpiQueries.GetAllPOs();
                     pr2ndLvlRelVsPoCreate = new DataTable();
-                    cmd = new OleDbCommand(Queries.KpiQueries.GetAllPOs() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
-                    da = new OleDbDataAdapter(cmd);
-                    da.Fill(dt);
-
-
                     pr2ndLvlRelVsPoCreate = dt.Clone();
 
 
@@ -2061,13 +1994,8 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = new DataTable();
+                    dt = KpiData.KpiQueries.GetAllPOs();
                     poCreateVsPORel = new DataTable();
-                    cmd = new OleDbCommand(Queries.KpiQueries.GetAllPOs() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
-                    da = new OleDbDataAdapter(cmd);
-                    da.Fill(dt);
-
-
                     poCreateVsPORel = dt.Clone();
 
 
@@ -2212,13 +2140,9 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = new DataTable();
+                    dt = KpiData.KpiQueries.GetAllPOs();
                     poRelVsPoConf = new DataTable();
                     unconfirmed = new DataTable();
-                    cmd = new OleDbCommand(Queries.KpiQueries.GetAllPOs() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
-                    da = new OleDbDataAdapter(cmd);
-                    da.Fill(dt);
-
                     poRelVsPoConf = dt.Clone();
                     unconfirmed = dt.Clone();
 
@@ -2406,14 +2330,8 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = new DataTable();
+                    dt = KpiData.KpiQueries.GetAllPOs();
                     prRelVsPORel = new DataTable();
-
-                    cmd = new OleDbCommand(Queries.KpiQueries.GetAllPOs() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
-                    da = new OleDbDataAdapter(cmd);
-                    da.Fill(dt);
-
-
                     prRelVsPORel = dt.Clone();
 
 
@@ -2569,14 +2487,9 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = new DataTable();
+                    dt = KpiData.KpiQueries.GetAllPOs();
                     poCreateVsConfEntry = new DataTable();
                     unconfirmed = new DataTable();
-
-                    cmd = new OleDbCommand(Queries.KpiQueries.GetAllPOs() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
-                    da = new OleDbDataAdapter(cmd);
-                    da.Fill(dt);
-
                     poCreateVsConfEntry = dt.Clone();
                     unconfirmed = dt.Clone();
 
@@ -2752,13 +2665,9 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = new DataTable();
+                    dt = KpiData.KpiQueries.GetAllPOs();
                     prReleaseConfEntry = new DataTable();
                     unconfirmed = new DataTable();
-                    cmd = new OleDbCommand(Queries.KpiQueries.GetAllPOs() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
-                    da = new OleDbDataAdapter(cmd);
-                    da.Fill(dt);
-
                     prReleaseConfEntry = dt.Clone();
                     unconfirmed = dt.Clone();
 
@@ -2949,14 +2858,8 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = new DataTable();
+                    dt = KpiData.KpiQueries.GetAllPOs();
                     poRelVsPRDelDateDt = new DataTable();
-
-                    cmd = new OleDbCommand(Queries.KpiQueries.GetAllPOs() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
-                    da = new OleDbDataAdapter(cmd);
-                    da.Fill(dt);
-
-
                     poRelVsPRDelDateDt = dt.Clone();
 
 
@@ -3106,19 +3009,8 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = new DataTable();
+                    dt = KpiData.KpiQueries.GetAllData();
                     prsCreated = new DataTable();
-
-                    if (Filters.FilterData.FilterQuery == string.Empty)
-                        cmd = new OleDbCommand(Queries.KpiQueries.GetAllData(), DatabaseManager.GetDatabaseConnection());
-                    else
-                        cmd = new OleDbCommand(Queries.KpiQueries.GetAllData() + " WHERE " + FilterData.SecondaryFilterQuery, DatabaseManager.GetDatabaseConnection());
-
-
-                    da = new OleDbDataAdapter(cmd);
-                    da.Fill(dt);
-
-
                     prsCreated = dt.Clone();
 
 
@@ -3238,14 +3130,8 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = new DataTable();
+                    dt = KpiData.KpiQueries.GetPr2ndLevelRelease();
                     prReleased = new DataTable();
-
-                    cmd = new OleDbCommand(Queries.KpiQueries.GetPr2ndLevelRelease() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
-                    da = new OleDbDataAdapter(cmd);
-                    da.Fill(dt);
-
-
                     prReleased = dt.Clone();
 
 
@@ -3376,12 +3262,8 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = new DataTable();
+                    dt = KpiData.KpiQueries.GetAllPOs();
                     totalSpend = new DataTable();
-                    cmd = new OleDbCommand(Queries.KpiQueries.GetAllPOs() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
-                    da = new OleDbDataAdapter(cmd);
-                    da.Fill(dt);
-
                     totalSpend = dt.Clone();
 
 
@@ -3499,14 +3381,8 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = new DataTable();
+                    dt = KpiData.KpiQueries.GetAllPOs();
                     prVsPOValue = new DataTable();
-
-                    cmd = new OleDbCommand(Queries.KpiQueries.GetAllPOs() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
-                    da = new OleDbDataAdapter(cmd);
-                    da.Fill(dt);
-
-
                     prVsPOValue = dt.Clone();
 
 
@@ -3625,15 +3501,8 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = new DataTable();
+                    dt = KpiData.KpiQueries.GetAllData();
                     hotJobPRs = new DataTable();
-                    cmd = new OleDbCommand(Queries.KpiQueries.GetAllData() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
-
-
-                    da = new OleDbDataAdapter(cmd);
-                    da.Fill(dt);
-
-
                     hotJobPRs = dt.Clone();
 
 

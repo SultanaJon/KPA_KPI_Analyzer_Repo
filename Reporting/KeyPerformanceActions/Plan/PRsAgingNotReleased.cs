@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Reporting.Interfaces;;
+﻿using Reporting.Interfaces;
 
 
 namespace Reporting.KeyPerformanceActions.Plan
@@ -28,8 +23,8 @@ namespace Reporting.KeyPerformanceActions.Plan
 
         public PRsAgingNotReleased()
         {
-            Section = Section.Plan;
-            Name = "PRs Aging Not Released";
+            Section = "Plan";
+            Name = "PRs Aging (Not Released)";
         }
 
 
@@ -37,7 +32,7 @@ namespace Reporting.KeyPerformanceActions.Plan
         /// <summary>
         /// 
         /// </summary>
-        public override void CalculateSelectiveReport(string uniqueFilters)
+        public override void RunSelectiveReport(string uniqueFilters)
         {
 
         }

@@ -1,10 +1,10 @@
-﻿using AccessDatabaseLibrary;
+﻿using DAL;
 using KPA_KPI_Analyzer.Templates;
 using System;
 using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
-using AccessDatabaseLibrary.Exceptions;
+using DAL.Exceptions;
 
 namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
 {
@@ -14,8 +14,6 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
         public MaterialDueDate matDueDate;
         private double totalDays = 0;
         private DataTable dt;
-        private OleDbCommand cmd;
-        private OleDbDataAdapter da;
 
 
 
@@ -64,10 +62,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                dt = new DataTable();
-                cmd = new OleDbCommand(Queries.KpaQueries.PlanQueries.GetPrsAgingNotReleased() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
-                da = new OleDbDataAdapter(cmd);
-                da.Fill(dt);
+                dt = KpaData.PlanQueries.GetPrsAgingNotReleased();
 
                 foreach (DataRow dr in dt.Rows)
                 {
@@ -140,10 +135,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                 // Material Due
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                dt = new DataTable();
-                cmd = new OleDbCommand(Queries.KpaQueries.PlanQueries.GetMaterialDue() + Filters.FilterData.FilterQuery, DatabaseManager.GetDatabaseConnection());
-                da = new OleDbDataAdapter(cmd);
-                da.Fill(dt);
+                dt = KpaData.PlanQueries.GetMaterialDue();
 
                 foreach (DataRow dr in dt.Rows)
                 {

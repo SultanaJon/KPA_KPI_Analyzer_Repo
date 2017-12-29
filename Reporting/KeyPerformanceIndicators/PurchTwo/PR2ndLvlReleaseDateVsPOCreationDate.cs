@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Reporting.Interfaces;
+﻿using Reporting.Interfaces;
 
 namespace Reporting.KeyPerformanceIndicators.PurchTwo
 {
@@ -26,9 +21,19 @@ namespace Reporting.KeyPerformanceIndicators.PurchTwo
 
 
         /// <summary>
+        /// Default Constructor
+        /// </summary>
+        public PR2ndLvlReleaseDateVsPOCreationDate()
+        {
+            Section = "Purch II";
+            Name = "PR 2nd Lvl Release Date vs PO Creation Date";
+        }
+
+
+        /// <summary>
         /// Calculates the selective report for this KPA
         /// </summary>
-        public override void CalculateSelectiveReport(string uniqueFilters)
+        public override void RunSelectiveReport(string uniqueFilters)
         {
 
         }

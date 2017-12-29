@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Reporting;
 using Reporting.KeyPerformanceActions;
+using Reporting.KeyPerformanceIndicators;
 
 namespace KPA_KPI_Analyzer.Reporting
 {
@@ -39,9 +40,6 @@ namespace KPA_KPI_Analyzer.Reporting
 
             // Load the KPA options into the KPA option combobox.
             LoadKpaOptions();
-
-            // Configure the width of the combobox.
-            ConfigureCategoryComboBoxWidth();
         }
 
 
@@ -56,26 +54,33 @@ namespace KPA_KPI_Analyzer.Reporting
             MaterialSkin.Controls.MaterialRadioButton radioBtn = (MaterialSkin.Controls.MaterialRadioButton)sender;
             int tag = int.Parse(radioBtn.Tag.ToString());
 
+            // Clear the items in the category combobox so a new list can be added.
+            comboBox_CategoryOption.Items.Clear();
+
             switch(radioBtn.Text)
             {
                 case "KPA Report":
                     if(radioBtns[tag].Checked)
                     {
-                        label_CategoryOption.Text = "KPA Option";
+                        label_CategoryOption.Text = "KPA Option:";
+                        LoadKpaOptions();
                     }
                     else
                     {
-                        label_CategoryOption.Text = "KPI Option";
+                        label_CategoryOption.Text = "KPI Option:";
+                        LoadKpiOptions();
                     }
                     break;
                 case "KPI Report":
                     if (radioBtns[tag].Checked)
                     {
-                        label_CategoryOption.Text = "KPI Option";
+                        label_CategoryOption.Text = "KPI Option:";
+                        LoadKpiOptions();
                     }
                     else
                     {
-                        label_CategoryOption.Text = "KPA Option";
+                        label_CategoryOption.Text = "KPA Option:";
+                        LoadKpaOptions();
                     }
                     break;
             }
@@ -90,7 +95,10 @@ namespace KPA_KPI_Analyzer.Reporting
         /// <param name="e">The Click event</param>
         private void btn_GenerateReport_Click(object sender, EventArgs e)
         {
+            if(radioBtn_KpaReporting.Checked)
+            {
 
+            }
         }
 
 
@@ -113,12 +121,18 @@ namespace KPA_KPI_Analyzer.Reporting
 
         private void LoadKpaOptions()
         {
-            PerformanceTrack performanceTrack = new SelectiveReport();
-            List<KeyPerformanceAction> actions = performanceTrack.Actions;
+            //SelectiveReport kpaReport = new SelectiveReport();
+            //List<KeyPerformanceAction> actions = kpaReport.Actions;
 
-            comboBox_CategoryOption.DataSource = actions;
-            comboBox_CategoryOption.DisplayMember = "Name";
-            comboBox_CategoryOption.ValueMember = "Section";
+            //foreach(KeyPerformanceAction action in actions)
+            //{
+            //    comboBox_CategoryOption.Items.Add(action.Section + " - " + action.Name);
+            //}
+
+            //comboBox_CategoryOption.SelectedIndex = 0;
+
+            //// Configure the width of the combobox.
+            //ConfigureCategoryComboBoxWidth();
         }
 
 
@@ -129,7 +143,18 @@ namespace KPA_KPI_Analyzer.Reporting
         /// </summary>
         private void LoadKpiOptions()
         {
+            //SelectiveReport kpiReport = new SelectiveReport();
+            //List<KeyPerformanceIndicator> indicators = kpiReport.Indicators;
 
+            //foreach (KeyPerformanceIndicator indicator in indicators)
+            //{
+            //    comboBox_CategoryOption.Items.Add(indicator.Section + " - " + indicator.Name);
+            //}
+
+            //comboBox_CategoryOption.SelectedIndex = 0;
+
+            //// Configure the width of the combobox.
+            //ConfigureCategoryComboBoxWidth();
         }
 
 
