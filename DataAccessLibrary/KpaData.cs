@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Data.OleDb;
 using System.Windows.Forms;
 
-namespace DAL
+namespace DataAccessLibrary
 {
     public static class KpaData
     {

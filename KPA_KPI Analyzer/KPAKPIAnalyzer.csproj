@@ -132,8 +132,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationConfiguration\ApplicationConfig.cs" />
-    <Compile Include="Configuration.cs" />
     <Compile Include="Correlation\CorrelationConfiguration.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -164,7 +162,6 @@
     <Compile Include="ExcelFiles\PrpoExcelFile.cs" />
     <Compile Include="ExcelFiles\MxPrpoExcelFile.cs" />
     <Compile Include="ExcelFiles\UsPrpoExcelFile.cs" />
-    <Compile Include="Filters\FilterOptions.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -190,33 +187,6 @@
     <Compile Include="Values\Sections.cs" />
     <Compile Include="Diagnostics\ILoadable.cs" />
     <Compile Include="Diagnostics\IStorable.cs" />
-    <Compile Include="Variants\FilterVariants.cs" />
-    <Compile Include="Variants\Variant.cs" />
-    <Compile Include="Variants\VariantsCreationWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Variants\VariantsCreationWindow.Designer.cs">
-      <DependentUpon>VariantsCreationWindow.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Variants\VariantsDetailDisplayWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Variants\VariantsDetailDisplayWindow.Designer.cs">
-      <DependentUpon>VariantsDetailDisplayWindow.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Variants\VariantsEditWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Variants\VariantsEditWindow.Designer.cs">
-      <DependentUpon>VariantsEditWindow.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Variants\VariantsViewWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Variants\VariantsViewWindow.Designer.cs">
-      <DependentUpon>VariantsViewWindow.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Filters\FilterData.cs" />
     <Compile Include="Templates\Template_Controls\KPA_Controls\KPAExcessStockOpenOrders.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -262,9 +232,7 @@
     </Compile>
     <Compile Include="FileProcessing\Exceptions\FileProcessingExceptions.cs" />
     <Compile Include="FileProcessing\ExcelFileProcessor.cs" />
-    <Compile Include="Filters\FilterUtils.cs" />
     <Compile Include="Diagnostics\AppDirectoryUtils.cs" />
-    <Compile Include="Diagnostics\Logger.cs" />
     <Compile Include="Templates\Template_Controls\KPA_Controls\KPACurrentPlanActualTemplate.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -450,22 +418,6 @@
     <EmbeddedResource Include="Reporting\SelctiveReportingWidget.resx">
       <DependentUpon>SelctiveReportingWidget.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Variants\VariantsCreationWindow.resx">
-      <DependentUpon>VariantsCreationWindow.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Variants\VariantsDetailDisplayWindow.resx">
-      <DependentUpon>VariantsDetailDisplayWindow.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Variants\VariantsEditWindow.resx">
-      <DependentUpon>VariantsEditWindow.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Variants\VariantsViewWindow.resx">
-      <DependentUpon>VariantsViewWindow.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Templates\Template_Controls\KPA_Controls\KPAExcessStockOpenOrders.resx">
       <DependentUpon>KPAExcessStockOpenOrders.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -597,9 +549,13 @@
     <None Include="Resources\MainNavBtn.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataAccessLibrary\DAL.csproj">
+    <ProjectReference Include="..\ApplicationDirectoryLibrary\ApplicationIOLibrary.csproj">
+      <Project>{fee6da32-f237-470c-afa9-1e756b7fd3aa}</Project>
+      <Name>ApplicationIOLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataAccessLibrary\DataAccessLibrary.csproj">
       <Project>{3bf2c771-f9e8-4596-b969-03a8cd251e57}</Project>
-      <Name>DAL</Name>
+      <Name>DataAccessLibrary</Name>
     </ProjectReference>
     <ProjectReference Include="..\DataExporter\DataExporter.csproj">
       <Project>{e3601d73-731a-46ee-8af0-b314580534a7}</Project>
@@ -612,6 +568,10 @@
     <ProjectReference Include="..\ExcelLibrary\ExcelLibrary.csproj">
       <Project>{834c157d-f4eb-452d-a938-62aa7332489c}</Project>
       <Name>ExcelLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Filters\Filters.csproj">
+      <Project>{24c0b204-267f-44d4-a7f0-0cb288cf6b6f}</Project>
+      <Name>Filters</Name>
     </ProjectReference>
     <ProjectReference Include="..\Reporting\Reporting.csproj">
       <Project>{755556d3-fa2f-4605-a90e-6563928988ce}</Project>

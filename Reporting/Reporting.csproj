@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComarisonReport.cs" />
     <Compile Include="Interfaces\ISelectiveVOne.cs" />
     <Compile Include="Interfaces\ISelectiveVThree.cs" />
     <Compile Include="Interfaces\ISelectiveVTwo.cs" />
@@ -83,8 +84,9 @@
     <Compile Include="KeyPerformanceIndicators\PurchTwo\POReleaseDateVsPOConfirmationDate.cs" />
     <Compile Include="KeyPerformanceIndicators\PurchTwo\PR2ndLvlReleaseDateVsPOCreationDate.cs" />
     <Compile Include="KeyPerformanceIndicators\Purch\InitialConfirmationDateVsPRPlanDate.cs" />
+    <Compile Include="KpaReport.cs" />
+    <Compile Include="KpiReport.cs" />
     <Compile Include="Report.cs" />
-    <Compile Include="SelectiveReport.cs" />
     <Compile Include="KeyPerformanceActions\Plan\MaterialDue.cs" />
     <Compile Include="KeyPerformanceActions\Plan\PRsAgingNotReleased.cs" />
     <Compile Include="KeyPerformanceActions\PurchSub\POCreationToConfirmationEntry.cs" />
@@ -95,8 +97,14 @@
     <Compile Include="KeyPerformanceActions\Purch\POPrevRelease.cs" />
     <Compile Include="KeyPerformanceActions\Purch\PRsAgingReleased.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ISelectiveTemplateTImeSpanUtils.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\DataAccessLibrary\DataAccessLibrary.csproj">
+      <Project>{3bf2c771-f9e8-4596-b969-03a8cd251e57}</Project>
+      <Name>DataAccessLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

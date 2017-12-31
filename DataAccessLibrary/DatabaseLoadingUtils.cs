@@ -1,4 +1,4 @@
-﻿namespace DAL
+﻿namespace DataAccessLibrary
 {
     public static class DatabaseLoadingUtils
     {

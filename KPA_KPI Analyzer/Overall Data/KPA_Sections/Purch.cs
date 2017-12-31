@@ -1,4 +1,4 @@
-﻿using DAL;
+﻿using DataAccessLibrary;
 using KPA_KPI_Analyzer.Templates;
 using System;
 using System.Data;

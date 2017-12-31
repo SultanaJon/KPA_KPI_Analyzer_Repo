@@ -19,12 +19,6 @@ namespace Reporting
         {
             Actions = new List<KeyPerformanceAction>();
             Indicators = new List<KeyPerformanceIndicator>();
-
-            this.AddActions();
-            this.AddIndicators();
         }
-
-        internal abstract void AddActions();
-        internal abstract void AddIndicators();
     }
 }

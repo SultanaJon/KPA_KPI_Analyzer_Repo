@@ -1,4 +1,4 @@
-﻿using DAL.Exceptions;
+﻿using DataAccessLibrary.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -6,7 +6,7 @@ using System.Data.OleDb;
 using System.IO;
 using System.Windows.Forms;
 
-namespace DAL
+namespace DataAccessLibrary
 {
     public static class DatabaseManager
     {

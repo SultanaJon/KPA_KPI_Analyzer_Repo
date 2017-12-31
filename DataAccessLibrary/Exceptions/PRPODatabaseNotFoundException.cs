@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DAL.Exceptions
+namespace DataAccessLibrary.Exceptions
 {
     public class PRPODatabaseNotFoundException : Exception
     {

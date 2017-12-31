@@ -1,6 +1,6 @@
 ﻿using System.Data.OleDb;
 
-namespace DAL
+namespace DataAccessLibrary
 {
     public class AccessInfo
     {

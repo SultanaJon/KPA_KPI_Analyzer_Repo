@@ -5,7 +5,7 @@ using System.Data.OleDb;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
-using DAL;
+using DataAccessLibrary;
 
 namespace KPA_KPI_Analyzer
 {

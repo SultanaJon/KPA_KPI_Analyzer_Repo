@@ -9,9 +9,7 @@
 //          "Once you stop learning you start dying" - Albert Einstein
 //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-using DAL;
-using KPA_KPI_Analyzer.Diagnostics;
-using KPA_KPI_Analyzer.Filters;
+using DataAccessLibrary;
 using KPA_KPI_Analyzer.Overall_Data;
 using KPA_KPI_Analyzer.Values;
 using System;
@@ -19,6 +17,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 using ExcelLibrary;
+using Filters;
+using Filters.Variants;
+using ApplicationIOLibarary;
+using ApplicationIOLibarary.ApplicationDirectories;
+using ApplicationIOLibarary.ApplicationFiles;
 
 namespace KPA_KPI_Analyzer
 {
@@ -36,10 +39,10 @@ namespace KPA_KPI_Analyzer
         private UserControl activeTemplate = new UserControl();
         
         // The application settings.
-        private ApplicationConfiguration.ApplicationConfig settings = new ApplicationConfiguration.ApplicationConfig();
+        private ApplicationSettings settings = new ApplicationSettings();
 
         // The settings used for filter variants.
-        private Variants.FilterVariants variantSettings = new Variants.FilterVariants();
+        private FilterVariants variantSettings = new FilterVariants();
 
         #endregion
 
@@ -62,7 +65,7 @@ namespace KPA_KPI_Analyzer
         /// to connect to and read data from.
         /// </summary>
         /// <param name="conn">The database connection that was established in the splash screen.</param>
-        public KPA_KPI_UI(ApplicationConfiguration.ApplicationConfig settingsData)
+        public KPA_KPI_UI(ApplicationSettings settingsData)
         {
             InitializeComponent();
           
@@ -418,13 +421,13 @@ namespace KPA_KPI_Analyzer
         private void addVariantToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // When the user clicks this menu strip button, the add variant window will open.
-            using (Variants.VariantsCreationWindow vcw = new Variants.VariantsCreationWindow())
+            using (VariantsCreationWindow vcw = new VariantsCreationWindow())
             {
                 if (vcw.ShowDialog() == DialogResult.OK)
                 {
                     // Get the name and the description the user just entered and pass it to the constructor
                     // of the new variant.p
-                    Variants.Variant variant = new Variants.Variant(vcw.VariantName, vcw.VariantDescription, FilterData.GetSelectedFilters());
+                    Variant variant = new Variant(vcw.VariantName, vcw.VariantDescription, FilterData.GetSelectedFilters());
 
                     // Deactivate all of the variants.
                     DeactivateVariants();
@@ -452,7 +455,7 @@ namespace KPA_KPI_Analyzer
         private void viewVariantsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // When the user clicks this menu strip button, the variants view window will open.
-            using (Variants.VariantsViewWindow vvw = new Variants.VariantsViewWindow() { Variants = variantSettings.Variants })
+            using (VariantsViewWindow vvw = new VariantsViewWindow() { Variants = variantSettings.Variants })
             {
                 vvw.ShowDialog();
                 // Get the list of variants in case the user updated them and save.  
@@ -510,9 +513,9 @@ namespace KPA_KPI_Analyzer
             FileProcessing.ExcelFileProcessor.ClearUsSettings += ResetUsSettings;
 
             // Setup callback functions that update the Variants tool on the menu strip toolbar.
-            Variants.VariantsViewWindow.UpdateVariantTools += UpdateVariantTools;
-            Variants.FilterVariants.UpdateVariantTools += UpdateVariantTools;
-            Variants.VariantsViewWindow.BeginVariantLoadProcess += BeginVariantLoadProcess;
+            VariantsViewWindow.UpdateVariantTools += UpdateVariantTools;
+            FilterVariants.UpdateVariantTools += UpdateVariantTools;
+            VariantsViewWindow.BeginVariantLoadProcess += BeginVariantLoadProcess;
         }
 
 
@@ -641,7 +644,7 @@ namespace KPA_KPI_Analyzer
         {
             CheckVariantSettings();
 
-            if (DatabaseManager.GetDatabaseConnection() != null && new FileInfo(AppDirectoryUtils.resourcesFiles[(int)AppDirectoryUtils.ResourceFile.Settings]).Length != 0)
+            if (DatabaseManager.GetDatabaseConnection() != null && new FileInfo(FileUtils.resourcesFiles[(int)ResourceFile.Settings]).Length != 0)
             {
                 try
                 {
@@ -654,10 +657,10 @@ namespace KPA_KPI_Analyzer
                     {
                         ConfigureToUnitedStates();
 
-                        if (AppDirectoryUtils.DataFileExists(AppDirectoryUtils.OverallFile.US_Overall))
+                        if (FileUtils.DataFileExists(OverallFile.US_Overall))
                         {
                             // the file exists
-                            if (new FileInfo(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFile.US_Overall]).Length > 0)
+                            if (new FileInfo(FileUtils.overallFiles[(int)OverallFile.US_Overall]).Length > 0)
                             {
                                 DateTime dt = GetLastLoadedUsPrpoReportDate();
                                 if (dt == DateTime.Today.Date)
@@ -682,7 +685,7 @@ namespace KPA_KPI_Analyzer
                         }
                         else // the file does not exist
                         {
-                            AppDirectoryUtils.CreateFile(AppDirectoryUtils.OverallFile.US_Overall);
+                            FileUtils.CreateFile(OverallFile.US_Overall);
                             BeginDataLoadProcess();
                         }
                     }
@@ -690,10 +693,10 @@ namespace KPA_KPI_Analyzer
                     {
                         ConfigureToMexico();
 
-                        if (AppDirectoryUtils.DataFileExists(AppDirectoryUtils.OverallFile.MX_Overall))
+                        if (FileUtils.DataFileExists(OverallFile.MX_Overall))
                         {
                             // the file exists
-                            if (new FileInfo(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFile.MX_Overall]).Length > 0)
+                            if (new FileInfo(FileUtils.overallFiles[(int)OverallFile.MX_Overall]).Length > 0)
                             {
                                 DateTime dt = GetLastLoadedMxPrpoReportDate();
                                 if (dt == DateTime.Today.Date)
@@ -718,7 +721,7 @@ namespace KPA_KPI_Analyzer
                         }
                         else // the file does not exist
                         {
-                            AppDirectoryUtils.CreateFile(AppDirectoryUtils.OverallFile.MX_Overall);
+                            FileUtils.CreateFile(OverallFile.MX_Overall);
                             BeginDataLoadProcess();
                         }
                     }
@@ -731,7 +734,7 @@ namespace KPA_KPI_Analyzer
             }
             else
             {
-                settings = new ApplicationConfiguration.ApplicationConfig();
+                settings = new ApplicationSettings();
                 lbl_Country.Text = "Waiting...";
                 lbl_topPanelNavPrpoDate.Text = "Waiting...";
                 ShowPage(Pages.DragDropDash);
@@ -849,7 +852,7 @@ namespace KPA_KPI_Analyzer
         private void CheckVariantSettings()
         {
             // Load the variant settings
-            if (new FileInfo(AppDirectoryUtils.variantFiles[(int)AppDirectoryUtils.VariantFile.FilterVariants]).Length != 0)
+            if (new FileInfo(FileUtils.variantFiles[(int)VariantFile.FilterVariants]).Length != 0)
             {
                 variantSettings.Load(ref variantSettings);
 
