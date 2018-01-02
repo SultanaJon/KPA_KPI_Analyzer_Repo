@@ -23,6 +23,10 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         Dictionary<ReportingType, Report> reports = new Dictionary<ReportingType, Report>();
 
+
+        /// <summary>
+        /// Controller used to interact with the reporting widgets (KPA & KPI reporting widget & Comparison Reporting Widget)
+        /// </summary>
         ReportingController reportingWidgetsController;
 
 
@@ -88,6 +92,7 @@ namespace KPA_KPI_Analyzer
 
 
 
+
         /// <summary>
         /// Loads the report page where the user can select a report to run.
         /// </summary>
@@ -128,7 +133,6 @@ namespace KPA_KPI_Analyzer
 
 
 
-
         /// <summary>
         /// Event listener for when the user wants to generate a KPA or KPI report
         /// </summary>
@@ -160,9 +164,6 @@ namespace KPA_KPI_Analyzer
 
 
 
-
-
-
         /// <summary>
         /// Event listener for when the user wants to generate a Comparison report
         /// </summary>
@@ -185,7 +186,6 @@ namespace KPA_KPI_Analyzer
                     break;
             }
         }
-
 
 
 
@@ -233,7 +233,6 @@ namespace KPA_KPI_Analyzer
 
 
 
-
         /// <summary>
         /// Finishes initializing the KPA Report and begins running the report
         /// </summary>
@@ -245,8 +244,10 @@ namespace KPA_KPI_Analyzer
             // Pass the filters to the kpa report to use in the report generation
             (reports[ReportingType.KpaReport] as KpaReport).SetKpaReport(filters);
 
-        }
+            // Run the KPA Report
+            (reports[ReportingType.KpaReport] as KpaReport).RunReport();
 
+        }
 
 
 
@@ -259,8 +260,11 @@ namespace KPA_KPI_Analyzer
             // Get the filter the user want to use.
             List<string> filters = GetFilters(reportingWidgetsController.SelectiveFilterOption);
 
-            // Pass the filters to the kpi report to use in the report generation
+            // Pass the filters to the KPI report to use in the report generation
             (reports[ReportingType.KpiReport] as KpiReport).SetKpiReport(filters);
+
+            // Run the KPI Report
+            (reports[ReportingType.KpiReport] as KpiReport).RunReport();
         }
     }
 }
