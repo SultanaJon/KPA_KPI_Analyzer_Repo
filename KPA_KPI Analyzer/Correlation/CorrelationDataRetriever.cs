@@ -1,10 +1,4 @@
-﻿using Filters;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Windows.Forms;
-
-namespace KPA_KPI_Analyzer.Correlation
+﻿namespace KPA_KPI_Analyzer.Correlation
 {
     public static class CorrelationDataRetriever
     {

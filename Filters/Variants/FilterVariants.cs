@@ -1,11 +1,10 @@
-﻿using System;
+﻿using ApplicationIOLibarary.ApplicationFiles;
+using ApplicationIOLibarary.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
-
-using ApplicationIOLibarary.ApplicationFiles;
-using ApplicationIOLibarary.Interfaces;
 
 
 namespace Filters.Variants

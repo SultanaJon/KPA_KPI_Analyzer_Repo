@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ComarisonReport.cs" />
+    <Compile Include="ComparisonReport.cs" />
     <Compile Include="Interfaces\ISelectiveVOne.cs" />
     <Compile Include="Interfaces\ISelectiveVThree.cs" />
     <Compile Include="Interfaces\ISelectiveVTwo.cs" />
@@ -97,7 +97,6 @@
     <Compile Include="KeyPerformanceActions\Purch\POPrevRelease.cs" />
     <Compile Include="KeyPerformanceActions\Purch\PRsAgingReleased.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ISelectiveTemplateTImeSpanUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccessLibrary\DataAccessLibrary.csproj">

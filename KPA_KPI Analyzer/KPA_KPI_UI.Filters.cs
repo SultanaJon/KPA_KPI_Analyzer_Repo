@@ -1,9 +1,9 @@
 ﻿using DataAccessLibrary;
 using Filters;
+using Filters.Variants;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using Filters.Variants;
 
 namespace KPA_KPI_Analyzer
 {

@@ -1,9 +1,7 @@
 ﻿using DataAccessLibrary;
 using System;
 using System.Data;
-using System.Data.OleDb;
 using System.Windows.Forms;
-using DataAccessLibrary.Exceptions;
 
 namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
 {

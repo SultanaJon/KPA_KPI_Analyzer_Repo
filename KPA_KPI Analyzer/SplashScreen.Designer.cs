@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-
-namespace KPA_KPI_Analyzer
+﻿namespace KPA_KPI_Analyzer
 {
     partial class SplashScreen
     {

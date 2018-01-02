@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using ApplicationIOLibarary.ApplicationDirectories;
+using System;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using ApplicationIOLibarary.ApplicationDirectories;
 
 namespace ApplicationIOLibarary.ApplicationFiles
 {

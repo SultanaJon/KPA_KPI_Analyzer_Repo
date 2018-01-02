@@ -1,12 +1,5 @@
-﻿using DataAccessLibrary;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Data;
-using System.Data.OleDb;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Filters
 {
@@ -22,7 +15,6 @@ namespace Filters
         public static bool FiltersLoaded { get; set; }
         public static int NumThreadsStarted { get; set; }
         public static int NumThreadCompleted { get; set; }
-
 
 
 

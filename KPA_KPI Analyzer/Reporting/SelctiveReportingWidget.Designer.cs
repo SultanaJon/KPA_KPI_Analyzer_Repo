@@ -30,12 +30,12 @@
         {
             this.bunifuCards1 = new Bunifu.Framework.UI.BunifuCards();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.radioBtn_KpaReporting = new MaterialSkin.Controls.MaterialRadioButton();
-            this.radioBtn_KpiReporting = new MaterialSkin.Controls.MaterialRadioButton();
-            this.comboBox_FitlerOption = new System.Windows.Forms.ComboBox();
-            this.label_FilterOption = new MaterialSkin.Controls.MaterialLabel();
             this.btn_GenerateReport = new MaterialSkin.Controls.MaterialFlatButton();
+            this.comboBox_FitlerOption = new System.Windows.Forms.ComboBox();
+            this.radioBtn_KpiReporting = new MaterialSkin.Controls.MaterialRadioButton();
+            this.radioBtn_KpaReporting = new MaterialSkin.Controls.MaterialRadioButton();
+            this.label_FilterOption = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.bunifuCards1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -69,18 +69,47 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
-            // materialLabel1
+            // btn_GenerateReport
             // 
-            this.materialLabel1.AutoSize = true;
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(7, -3);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(144, 19);
-            this.materialLabel1.TabIndex = 0;
-            this.materialLabel1.Text = "KPA && KPI Reporting";
+            this.btn_GenerateReport.AutoSize = true;
+            this.btn_GenerateReport.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btn_GenerateReport.Depth = 0;
+            this.btn_GenerateReport.Location = new System.Drawing.Point(60, 206);
+            this.btn_GenerateReport.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btn_GenerateReport.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btn_GenerateReport.Name = "btn_GenerateReport";
+            this.btn_GenerateReport.Primary = false;
+            this.btn_GenerateReport.Size = new System.Drawing.Size(135, 36);
+            this.btn_GenerateReport.TabIndex = 3;
+            this.btn_GenerateReport.Text = "Generate Report";
+            this.btn_GenerateReport.UseVisualStyleBackColor = true;
+            this.btn_GenerateReport.Click += new System.EventHandler(this.OnGenerateReport);
+            // 
+            // comboBox_FitlerOption
+            // 
+            this.comboBox_FitlerOption.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_FitlerOption.FormattingEnabled = true;
+            this.comboBox_FitlerOption.Location = new System.Drawing.Point(25, 147);
+            this.comboBox_FitlerOption.Name = "comboBox_FitlerOption";
+            this.comboBox_FitlerOption.Size = new System.Drawing.Size(214, 21);
+            this.comboBox_FitlerOption.TabIndex = 2;
+            this.comboBox_FitlerOption.SelectedIndexChanged += new System.EventHandler(this.comboBox_FitlerOption_SelectedIndexChanged);
+            // 
+            // radioBtn_KpiReporting
+            // 
+            this.radioBtn_KpiReporting.AutoSize = true;
+            this.radioBtn_KpiReporting.Depth = 0;
+            this.radioBtn_KpiReporting.Font = new System.Drawing.Font("Roboto", 10F);
+            this.radioBtn_KpiReporting.Location = new System.Drawing.Point(142, 73);
+            this.radioBtn_KpiReporting.Margin = new System.Windows.Forms.Padding(0);
+            this.radioBtn_KpiReporting.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.radioBtn_KpiReporting.MouseState = MaterialSkin.MouseState.HOVER;
+            this.radioBtn_KpiReporting.Name = "radioBtn_KpiReporting";
+            this.radioBtn_KpiReporting.Ripple = true;
+            this.radioBtn_KpiReporting.Size = new System.Drawing.Size(95, 30);
+            this.radioBtn_KpiReporting.TabIndex = 1;
+            this.radioBtn_KpiReporting.Text = "KPI Report";
+            this.radioBtn_KpiReporting.UseVisualStyleBackColor = true;
             // 
             // radioBtn_KpaReporting
             // 
@@ -99,31 +128,7 @@
             this.radioBtn_KpaReporting.TabStop = true;
             this.radioBtn_KpaReporting.Text = "KPA Report";
             this.radioBtn_KpaReporting.UseVisualStyleBackColor = true;
-            // 
-            // radioBtn_KpiReporting
-            // 
-            this.radioBtn_KpiReporting.AutoSize = true;
-            this.radioBtn_KpiReporting.Depth = 0;
-            this.radioBtn_KpiReporting.Font = new System.Drawing.Font("Roboto", 10F);
-            this.radioBtn_KpiReporting.Location = new System.Drawing.Point(142, 73);
-            this.radioBtn_KpiReporting.Margin = new System.Windows.Forms.Padding(0);
-            this.radioBtn_KpiReporting.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.radioBtn_KpiReporting.MouseState = MaterialSkin.MouseState.HOVER;
-            this.radioBtn_KpiReporting.Name = "radioBtn_KpiReporting";
-            this.radioBtn_KpiReporting.Ripple = true;
-            this.radioBtn_KpiReporting.Size = new System.Drawing.Size(95, 30);
-            this.radioBtn_KpiReporting.TabIndex = 1;
-            this.radioBtn_KpiReporting.Text = "KPI Report";
-            this.radioBtn_KpiReporting.UseVisualStyleBackColor = true;
-            // 
-            // comboBox_FitlerOption
-            // 
-            this.comboBox_FitlerOption.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_FitlerOption.FormattingEnabled = true;
-            this.comboBox_FitlerOption.Location = new System.Drawing.Point(25, 147);
-            this.comboBox_FitlerOption.Name = "comboBox_FitlerOption";
-            this.comboBox_FitlerOption.Size = new System.Drawing.Size(214, 21);
-            this.comboBox_FitlerOption.TabIndex = 2;
+            this.radioBtn_KpaReporting.CheckedChanged += new System.EventHandler(this.PerformanceRadioBtn_CheckedChanged);
             // 
             // label_FilterOption
             // 
@@ -138,20 +143,18 @@
             this.label_FilterOption.TabIndex = 0;
             this.label_FilterOption.Text = "Filter Option:";
             // 
-            // btn_GenerateReport
+            // materialLabel1
             // 
-            this.btn_GenerateReport.AutoSize = true;
-            this.btn_GenerateReport.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btn_GenerateReport.Depth = 0;
-            this.btn_GenerateReport.Location = new System.Drawing.Point(60, 206);
-            this.btn_GenerateReport.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btn_GenerateReport.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btn_GenerateReport.Name = "btn_GenerateReport";
-            this.btn_GenerateReport.Primary = false;
-            this.btn_GenerateReport.Size = new System.Drawing.Size(135, 36);
-            this.btn_GenerateReport.TabIndex = 3;
-            this.btn_GenerateReport.Text = "Generate Report";
-            this.btn_GenerateReport.UseVisualStyleBackColor = true;
+            this.materialLabel1.AutoSize = true;
+            this.materialLabel1.Depth = 0;
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel1.Location = new System.Drawing.Point(7, -3);
+            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel1.Name = "materialLabel1";
+            this.materialLabel1.Size = new System.Drawing.Size(144, 19);
+            this.materialLabel1.TabIndex = 0;
+            this.materialLabel1.Text = "KPA && KPI Reporting";
             // 
             // SelctiveReportingWidget
             // 

@@ -1,11 +1,7 @@
-﻿using System;
+﻿using Filters.Variants;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Filters.Variants;
 using System.Windows.Forms;
-using DataAccessLibrary;
 
 namespace Filters
 {

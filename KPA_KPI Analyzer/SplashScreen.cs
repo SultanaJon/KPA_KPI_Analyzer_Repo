@@ -1,10 +1,9 @@
-﻿using DataImporter.Access.ExceptionClasses;
+﻿using DataAccessLibrary;
+using DataImporter.Access.ExceptionClasses;
 using System;
-using System.Data.OleDb;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
-using DataAccessLibrary;
 
 namespace KPA_KPI_Analyzer
 {

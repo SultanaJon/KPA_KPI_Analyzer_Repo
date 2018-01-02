@@ -1,7 +1,4 @@
 ﻿using Reporting.Interfaces;
-using System.Data;
-using DataAccessLibrary;
-using System;
 
 namespace Reporting.KeyPerformanceActions.Plan
 {

@@ -1,8 +1,6 @@
 ﻿using DataAccessLibrary;
-using Filters;
 using System;
 using System.Data;
-using System.Data.OleDb;
 using System.Windows.Forms;
 
 namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader

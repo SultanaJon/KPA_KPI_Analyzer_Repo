@@ -173,6 +173,10 @@
     <Compile Include="Reporting\ComparisonReportingWidget.Designer.cs">
       <DependentUpon>ComparisonReportingWidget.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reporting\IComparisonReportingWidgetView.cs" />
+    <Compile Include="Reporting\IReportingController.cs" />
+    <Compile Include="Reporting\ISelectiveReportingWidgetView.cs" />
+    <Compile Include="Reporting\ReportingController.cs" />
     <Compile Include="Reporting\SelctiveReportingWidget.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -293,6 +297,10 @@
     <Compile Include="Overall Data\KPI_Sections\PurchTotal.cs" />
     <Compile Include="Overall Data\KPI_Sections\PurchTwo.cs" />
     <Compile Include="Overall Data\Overall.cs" />
+    <Compile Include="KPA_KPI_UI.Reporting.cs">
+      <DependentUpon>KPA_KPI_UI.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="KPA_KPI_UI.CountrySelectorControlEvents.cs">
       <DependentUpon>KPA_KPI_UI.cs</DependentUpon>
       <SubType>Form</SubType>

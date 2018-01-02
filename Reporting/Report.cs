@@ -12,8 +12,8 @@ namespace Reporting
 
     public abstract class Report
     {
-        internal List<KeyPerformanceAction> Actions { get; set; }
-        internal List<KeyPerformanceIndicator> Indicators { get; set; }
+        public List<KeyPerformanceAction> Actions { get; set; }
+        public List<KeyPerformanceIndicator> Indicators { get; set; }
 
         public Report()
         {

@@ -1,15 +1,11 @@
 ﻿using Reporting.KeyPerformanceActions;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Reporting
 {
     public class KpaReport : Report
     {
-        Dictionary<string, List<KeyPerformanceAction>> actions;
+        Dictionary<string, List<KeyPerformanceAction>> report;
 
 
         /// <summary>
@@ -17,7 +13,7 @@ namespace Reporting
         /// </summary>
         public KpaReport()
         {
-            actions = new Dictionary<string, List<KeyPerformanceAction>>();
+            report = new Dictionary<string, List<KeyPerformanceAction>>();
 
             // Add the Key Performance Actions to the report
             AddActions();
@@ -66,7 +62,7 @@ namespace Reporting
         {
             foreach(string filter in filters)
             {
-                actions.Add(filter, Actions);
+                report.Add(filter, Actions);
             }
         }
 
@@ -79,11 +75,11 @@ namespace Reporting
         /// </summary>
         public void RunReport()
         {
-            if(actions.Count > 0)
+            if(report.Count > 0)
             {
-                foreach(string filter in actions.Keys)
+                foreach(string filter in report.Keys)
                 {
-                    foreach(KeyPerformanceAction action in actions[filter])
+                    foreach(KeyPerformanceAction action in report[filter])
                     {
                         action.RunSelectiveReport(filter);
                     }

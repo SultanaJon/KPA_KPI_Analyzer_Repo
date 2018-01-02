@@ -1,22 +1,60 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using Filters;
 using Reporting;
 using Reporting.KeyPerformanceActions;
 using Reporting.KeyPerformanceIndicators;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace KPA_KPI_Analyzer.Reporting
 {
-    public partial class ComparisonReportingWidget : UserControl
+    public partial class ComparisonReportingWidget : UserControl, IComparisonReportingWidgetView
     {
         List<MaterialSkin.Controls.MaterialRadioButton> radioBtns = new List<MaterialSkin.Controls.MaterialRadioButton>();
 
+
+        #region IComparisonReportingWidgetView Events
+
+        /// <summary>
+        /// An event for when the user clicks generate reports
+        /// </summary>
+        public event EventHandler GenerateReport;
+
+        #endregion
+
+        #region IComparisonReportingWidgetView Properties
+
+        /// <summary>
+        /// The performance the comparison report will track
+        /// </summary>
+        public ReportType PerformanceReportType { get; set; }
+
+
+        /// <summary>
+        /// The filter option the comparison report will use.
+        /// </summary>
+
+        public FilterOptions.Options FilteringOption { get; set; }
+
+
+        /// <summary>
+        /// The KPA that the user will base the report off of.
+        /// </summary>
+        public KpaOption KPAOption { get; set; }
+
+
+        /// <summary>
+        /// The KPI that the user will base the report off of.
+        /// </summary>
+        public KpiOption KPIOption { get; set; }
+
+        #endregion
+
+
+
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
         public ComparisonReportingWidget()
         {
             InitializeComponent();
@@ -88,32 +126,25 @@ namespace KPA_KPI_Analyzer.Reporting
 
 
 
-        /// <summary>
-        /// Event that fires when the user clicks the Generate Report button.
-        /// </summary>
-        /// <param name="sender">The Generate Report Button</param>
-        /// <param name="e">The Click event</param>
-        private void btn_GenerateReport_Click(object sender, EventArgs e)
-        {
-            if(radioBtn_KpaReporting.Checked)
-            {
-
-            }
-        }
-
-
-
 
         /// <summary>
         /// Loads the filter options into the filter options combobox
         /// </summary>
         private void LoadFilterOptions()
         {
-            Filters.FilterOptions filterOptions = new Filters.FilterOptions();
-            comboBox_FitlerOption.DataSource = filterOptions.GetFilterOptions();
-            comboBox_FitlerOption.DisplayMember = "Name";
-            comboBox_FitlerOption.ValueMember = "Value";
+            // Clear the contents of the combobox
+            comboBox_FitlerOption.Items.Clear();
+
+            // Get a new data source
+            List<string> filterOptions = new List<string>(Filters.FilterOptions.options);
+            
+            // Populate the combobox
+            comboBox_FitlerOption.DataSource = filterOptions;
         }
+
+
+
+
 
         /// <summary>
         /// Loads the KPA options into the Category options combobox.
@@ -121,18 +152,22 @@ namespace KPA_KPI_Analyzer.Reporting
 
         private void LoadKpaOptions()
         {
-            //SelectiveReport kpaReport = new SelectiveReport();
-            //List<KeyPerformanceAction> actions = kpaReport.Actions;
+            // Get the list of actions
+            List<string> actions = new List<string>(KeyPerformanceAction.options);
 
-            //foreach(KeyPerformanceAction action in actions)
-            //{
-            //    comboBox_CategoryOption.Items.Add(action.Section + " - " + action.Name);
-            //}
+            // Clear the content of the combobox
+            comboBox_CategoryOption.Items.Clear();
 
-            //comboBox_CategoryOption.SelectedIndex = 0;
+            // Add each action to the combobox
+            foreach(string action in actions)
+            {
+                comboBox_CategoryOption.Items.Add(action);
+            }
 
-            //// Configure the width of the combobox.
-            //ConfigureCategoryComboBoxWidth();
+            comboBox_CategoryOption.SelectedIndex = 0;
+
+            // Configure the width of the combobox.
+            ConfigureCategoryComboBoxWidth();
         }
 
 
@@ -143,18 +178,22 @@ namespace KPA_KPI_Analyzer.Reporting
         /// </summary>
         private void LoadKpiOptions()
         {
-            //SelectiveReport kpiReport = new SelectiveReport();
-            //List<KeyPerformanceIndicator> indicators = kpiReport.Indicators;
+            // Get the list of indicators
+            List<string> indicators = new List<string>(KeyPerformanceIndicator.options);
 
-            //foreach (KeyPerformanceIndicator indicator in indicators)
-            //{
-            //    comboBox_CategoryOption.Items.Add(indicator.Section + " - " + indicator.Name);
-            //}
+            // Clear the content of the combobox
+            comboBox_CategoryOption.Items.Clear();
 
-            //comboBox_CategoryOption.SelectedIndex = 0;
+            // Add each indicator to the combobox
+            foreach (string indicator in indicators)
+            {
+                comboBox_CategoryOption.Items.Add(indicator);
+            }
 
-            //// Configure the width of the combobox.
-            //ConfigureCategoryComboBoxWidth();
+            comboBox_CategoryOption.SelectedIndex = 0;
+
+            // Configure the width of the combobox.
+            ConfigureCategoryComboBoxWidth();
         }
 
 
@@ -181,6 +220,39 @@ namespace KPA_KPI_Analyzer.Reporting
             {
                 MessageBox.Show(ex.Message, "Comparison Widget Exception");
             }
+        }
+
+
+
+
+
+
+        /// <summary>
+        /// Assigns the EventHandler passed in to the GenerateReport event
+        /// </summary>
+        /// <param name="_handler"></param>
+        public void RegisterReportGenerationHandler(EventHandler _handler)
+        {
+            // Assign the method to the event handler
+            GenerateReport += _handler;
+        }
+
+
+
+
+
+
+
+
+        /// <summary>
+        /// Fires when the user clicks generate report
+        /// </summary>
+        /// <param name="sender">The generate report button</param>
+        /// <param name="e">the click event</param>
+        private void GenerateComparisonReport_Click(object sender, EventArgs e)
+        {
+            // Ivokes the callback method if it is not null
+            GenerateReport?.Invoke(sender, e);
         }
     }
 }

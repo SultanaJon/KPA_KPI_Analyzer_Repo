@@ -31,13 +31,13 @@
             this.bunifuCards1 = new Bunifu.Framework.UI.BunifuCards();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btn_GenerateReport = new MaterialSkin.Controls.MaterialFlatButton();
+            this.comboBox_CategoryOption = new System.Windows.Forms.ComboBox();
             this.comboBox_FitlerOption = new System.Windows.Forms.ComboBox();
             this.radioBtn_KpiReporting = new MaterialSkin.Controls.MaterialRadioButton();
+            this.label_CategoryOption = new MaterialSkin.Controls.MaterialLabel();
             this.radioBtn_KpaReporting = new MaterialSkin.Controls.MaterialRadioButton();
             this.label_FilterOption = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.label_CategoryOption = new MaterialSkin.Controls.MaterialLabel();
-            this.comboBox_CategoryOption = new System.Windows.Forms.ComboBox();
             this.bunifuCards1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -87,7 +87,16 @@
             this.btn_GenerateReport.TabIndex = 3;
             this.btn_GenerateReport.Text = "Generate Report";
             this.btn_GenerateReport.UseVisualStyleBackColor = true;
-            this.btn_GenerateReport.Click += new System.EventHandler(this.btn_GenerateReport_Click);
+            // 
+            // comboBox_CategoryOption
+            // 
+            this.comboBox_CategoryOption.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_CategoryOption.DropDownWidth = 400;
+            this.comboBox_CategoryOption.FormattingEnabled = true;
+            this.comboBox_CategoryOption.Location = new System.Drawing.Point(25, 169);
+            this.comboBox_CategoryOption.Name = "comboBox_CategoryOption";
+            this.comboBox_CategoryOption.Size = new System.Drawing.Size(214, 21);
+            this.comboBox_CategoryOption.TabIndex = 2;
             // 
             // comboBox_FitlerOption
             // 
@@ -115,6 +124,19 @@
             this.radioBtn_KpiReporting.Text = "KPI Report";
             this.radioBtn_KpiReporting.UseVisualStyleBackColor = true;
             this.radioBtn_KpiReporting.CheckedChanged += new System.EventHandler(this.radioBtn_Reporting_CheckedChanged);
+            // 
+            // label_CategoryOption
+            // 
+            this.label_CategoryOption.AutoSize = true;
+            this.label_CategoryOption.Depth = 0;
+            this.label_CategoryOption.Font = new System.Drawing.Font("Roboto", 11F);
+            this.label_CategoryOption.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label_CategoryOption.Location = new System.Drawing.Point(21, 147);
+            this.label_CategoryOption.MouseState = MaterialSkin.MouseState.HOVER;
+            this.label_CategoryOption.Name = "label_CategoryOption";
+            this.label_CategoryOption.Size = new System.Drawing.Size(89, 19);
+            this.label_CategoryOption.TabIndex = 0;
+            this.label_CategoryOption.Text = "KPA Option:";
             // 
             // radioBtn_KpaReporting
             // 
@@ -161,29 +183,6 @@
             this.materialLabel1.Size = new System.Drawing.Size(159, 19);
             this.materialLabel1.TabIndex = 0;
             this.materialLabel1.Text = "Comparison Reporting";
-            // 
-            // label_CategoryOption
-            // 
-            this.label_CategoryOption.AutoSize = true;
-            this.label_CategoryOption.Depth = 0;
-            this.label_CategoryOption.Font = new System.Drawing.Font("Roboto", 11F);
-            this.label_CategoryOption.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label_CategoryOption.Location = new System.Drawing.Point(21, 147);
-            this.label_CategoryOption.MouseState = MaterialSkin.MouseState.HOVER;
-            this.label_CategoryOption.Name = "label_CategoryOption";
-            this.label_CategoryOption.Size = new System.Drawing.Size(89, 19);
-            this.label_CategoryOption.TabIndex = 0;
-            this.label_CategoryOption.Text = "KPA Option:";
-            // 
-            // comboBox_CategoryOption
-            // 
-            this.comboBox_CategoryOption.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_CategoryOption.DropDownWidth = 400;
-            this.comboBox_CategoryOption.FormattingEnabled = true;
-            this.comboBox_CategoryOption.Location = new System.Drawing.Point(25, 169);
-            this.comboBox_CategoryOption.Name = "comboBox_CategoryOption";
-            this.comboBox_CategoryOption.Size = new System.Drawing.Size(214, 21);
-            this.comboBox_CategoryOption.TabIndex = 2;
             // 
             // ComparisonReportingWidget
             // 
