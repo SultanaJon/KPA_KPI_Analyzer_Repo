@@ -4,7 +4,7 @@ using System;
 using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
-using DAL.Exceptions;
+using DataAccessLibrary.Exceptions;
 
 
 namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
@@ -67,7 +67,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                 // PRs (Not on PO) - Hot Jobs Only
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                dt = KpaData.HotJobsQueries.GetPrsNotOnPo();
+                dt = KpaUtils.HotJobsQueries.GetPrsNotOnPo();
 
 
                 foreach (DataRow dr in dt.Rows)
@@ -155,7 +155,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                 // No Confirmations - Hot Jobs Only
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                dt = KpaData.HotJobsQueries.GetNoConfirmations();
+                dt = KpaUtils.HotJobsQueries.GetNoConfirmations();
 
 
 
@@ -230,7 +230,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                 // Late To Confirmed
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                dt = KpaData.HotJobsQueries.GetLateToConfirmed();
+                dt = KpaUtils.HotJobsQueries.GetLateToConfirmed();
 
                 foreach (DataRow dr in dt.Rows)
                 {

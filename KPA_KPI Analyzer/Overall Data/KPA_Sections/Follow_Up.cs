@@ -4,7 +4,7 @@ using System;
 using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
-using DAL.Exceptions;
+using DataAccessLibrary.Exceptions;
 
 namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
 {
@@ -60,7 +60,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                 // Confirmed vs Plan Date
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                dt = KpaData.FollowUpQueries.GetConfirmedDateVsPlanDate();
+                dt = KpaUtils.FollowUpQueries.GetConfirmedDateVsPlanDate();
 
 
                 foreach (DataRow dr in dt.Rows)
@@ -157,7 +157,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                 // Confirmed Date for Upcoing Deliveries
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                dt = KpaData.FollowUpQueries.GetConfrimedDateForUpcomingDeliveries();
+                dt = KpaUtils.FollowUpQueries.GetConfrimedDateForUpcomingDeliveries();
 
                 foreach (DataRow dr in dt.Rows)
                 {
@@ -232,7 +232,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                 // Due Today or Late to Confrimed
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                dt = KpaData.FollowUpQueries.GetDueTodayOrLateToConfirmed();
+                dt = KpaUtils.FollowUpQueries.GetDueTodayOrLateToConfirmed();
 
 
                 foreach (DataRow dr in dt.Rows)

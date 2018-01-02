@@ -26,53 +26,6 @@ namespace Filters
         #endregion
 
 
-        #region PROPERTIES
-
-        /// <summary>
-        /// The filters that will be applied to the database when loading the data.
-        /// </summary>
-        public static string FilterQuery
-        {
-            get { return filters; }
-            set
-            {
-                if (value == null)
-                {
-                    filters = string.Empty;
-                }
-                else
-                {
-                    filters = value;
-                }
-
-                DatabaseManager.Filters = filters;
-            }
-        }
-
-
-        /// <summary>
-        /// This string is used when there are no filters applied and the data query is wide open.
-        /// </summary>
-        public static string SecondaryFilterQuery
-        {
-            get { return secFilters; }
-            set
-            {
-                if (value == null)
-                {
-                    secFilters = string.Empty;
-                }
-                else
-                {
-                    secFilters = value;
-                }
-
-                DatabaseManager.SecondaryFilters = secFilters;
-            }
-        }
-
-        #endregion
-
 
         #region FILTER STRUCTURES
 

@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace DataAccessLibrary
 {
-    public static class KpiData
+    public static class KpiUtils
     {
         public static class KpiQueries
         {
@@ -153,7 +153,7 @@ namespace DataAccessLibrary
                     }
                     else
                     {
-                        cmdString = "SELECT * FROM " + DatabaseManager.TargetTable + " WHERE " + DatabaseManager.Filters;
+                        cmdString = "SELECT * FROM " + DatabaseManager.TargetTable + " WHERE " + DatabaseManager.SecondaryFilters;
                     }
 
 

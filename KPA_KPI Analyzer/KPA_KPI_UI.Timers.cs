@@ -1,11 +1,11 @@
-﻿using KPA_KPI_Analyzer.Filters;
+﻿using Filters;
 using KPA_KPI_Analyzer.Overall_Data;
 using KPA_KPI_Analyzer.Values;
 using System;
 using System.Threading;
 using System.Windows.Forms;
 using DataAccessLibrary;
-using DAL.Importing;
+using DataAccessLibrary.Importing;
 using ExcelLibrary;
 
 namespace KPA_KPI_Analyzer
@@ -201,15 +201,15 @@ namespace KPA_KPI_Analyzer
             {
                 FilterUtils.FilterLoadProcessStarted = true;
                 Thread filtersThread = new Thread(() => {
-                    FilterUtils.LoadFilters(filters);
+                    LoadFilters();
                 });
                 filtersThread.Start();
             }
 
 
-            if (FilterUtils.FiltersLoaded)
+            if (Filters.FilterUtils.FiltersLoaded)
             {
-                FilterUtils.FiltersLoaded = false;
+                Filters.FilterUtils.FiltersLoaded = false;
                 FiltersTimer.Stop();
 
                 // Save the settings
@@ -336,6 +336,8 @@ namespace KPA_KPI_Analyzer
         /// <param name="_excelFile"></param>
         private void ImportPrpoExcelFile(ExcelFiles.PrpoExcelFile _excelFile)
         {
+            ApplicationIOLibarary.ApplicationFiles.FileUtils fileUtils = new ApplicationIOLibarary.ApplicationFiles.FileUtils();
+
             ms_applicaitonMenuStrip.Enabled = false;
             NavigationLocked = true; // Lock the navigation bar
 
@@ -351,7 +353,7 @@ namespace KPA_KPI_Analyzer
                         HasHeaders = true,
                         SheetName = ExcelInfo.sheetName[(int)ExcelInfo.SheetNames.US_PRPO]
                     },
-                    new AccessInfo(Configuration.DbPath)
+                    new AccessInfo(fileUtils.DbPath)
                     {
                         TableName = AccessInfo.mainTableNames[(int)AccessInfo.MainTables.US_PRPO]
                     }
@@ -386,7 +388,7 @@ namespace KPA_KPI_Analyzer
                         HasHeaders = true,
                         SheetName = ExcelInfo.sheetName[(int)ExcelInfo.SheetNames.MX_PRPO]
                     },
-                    new AccessInfo(Configuration.DbPath)
+                    new AccessInfo(fileUtils.DbPath)
                     {
                         TableName = AccessInfo.mainTableNames[(int)AccessInfo.MainTables.MX_PRPO]
                     }

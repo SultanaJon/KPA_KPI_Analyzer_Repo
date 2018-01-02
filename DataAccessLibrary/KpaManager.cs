@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace DataAccessLibrary
 {
-    public static class KpaData
+    public static class KpaUtils
     {
         public static class PlanQueries
         {

@@ -299,10 +299,10 @@ namespace DataAccessLibrary
                 {
                     using (OleDbDataAdapter da = new OleDbDataAdapter())
                     {
-                        prsOnPOsDt = KpiData.KpiQueries.GetAllPOs();
-                        posRecCompDt = KpiData.KpiQueries.GetPoLinesReceivedComplete();
-                        pr2ndLvlRelDateDt = KpiData.KpiQueries.GetPr2ndLevelRelease();
-                        AllDataDt = KpiData.KpiQueries.GetAllData();
+                        prsOnPOsDt = KpiUtils.KpiQueries.GetAllPOs();
+                        posRecCompDt = KpiUtils.KpiQueries.GetPoLinesReceivedComplete();
+                        pr2ndLvlRelDateDt = KpiUtils.KpiQueries.GetPr2ndLevelRelease();
+                        AllDataDt = KpiUtils.KpiQueries.GetAllData();
 
                         DatabaseLoadingUtils.KPITablesLoaded = true;
                         UpdateLoadProgress();
@@ -465,6 +465,9 @@ namespace DataAccessLibrary
             }
             return result;
         }
+
+
+
 
 
 

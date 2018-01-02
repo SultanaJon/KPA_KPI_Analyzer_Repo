@@ -24,7 +24,9 @@ namespace ApplicationIOLibarary.ApplicationDirectories
     public static class DirectoryUtils
     {
         // The directory of the application
-        public static readonly string AppDir = AppDomain.CurrentDomain.BaseDirectory;
+        public static string AppDir = AppDomain.CurrentDomain.BaseDirectory;
+
+
 
         /// <summary>
         /// The paths of where these directories are lcoated

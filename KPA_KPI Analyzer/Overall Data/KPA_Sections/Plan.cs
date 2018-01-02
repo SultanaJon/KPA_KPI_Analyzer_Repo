@@ -4,7 +4,7 @@ using System;
 using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
-using DAL.Exceptions;
+using DataAccessLibrary.Exceptions;
 
 namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
 {
@@ -62,7 +62,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                dt = KpaData.PlanQueries.GetPrsAgingNotReleased();
+                dt = KpaUtils.PlanQueries.GetPrsAgingNotReleased();
 
                 foreach (DataRow dr in dt.Rows)
                 {
@@ -135,7 +135,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                 // Material Due
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                dt = KpaData.PlanQueries.GetMaterialDue();
+                dt = KpaUtils.PlanQueries.GetMaterialDue();
 
                 foreach (DataRow dr in dt.Rows)
                 {

@@ -3,7 +3,7 @@ using System;
 using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
-using DAL.Exceptions;
+using DataAccessLibrary.Exceptions;
 
 namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
 {
@@ -24,7 +24,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpaData.PlanQueries.GetPrsAgingNotReleased();
+                    dt = KpaUtils.PlanQueries.GetPrsAgingNotReleased();
                     prsAgingNotRelDt = new DataTable();
                     prsAgingNotRelDt = dt.Clone();
 
@@ -125,7 +125,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpaData.PlanQueries.GetMaterialDue();
+                    dt = KpaUtils.PlanQueries.GetMaterialDue();
                     MaterialDueDt = new DataTable();
                     MaterialDueDt = dt.Clone();
 
@@ -231,7 +231,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpaData.PurchQueries.GetPrsAgingReleased();
+                    dt = KpaUtils.PurchQueries.GetPrsAgingReleased();
                     prsAgingRelDt = new DataTable();
                     prsAgingRelDt = dt.Clone();
 
@@ -339,7 +339,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpaData.PurchQueries.GetPoFirstRelease();
+                    dt = KpaUtils.PurchQueries.GetPoFirstRelease();
                     poFirstRelDt = new DataTable();
                     poFirstRelDt = dt.Clone();
 
@@ -437,7 +437,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpaData.PurchQueries.GetPoPrevRelease();
+                    dt = KpaUtils.PurchQueries.GetPoPrevRelease();
                     poPrevRelDt = new DataTable();
                     poPrevRelDt = dt.Clone();
 
@@ -536,7 +536,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpaData.PurchQueries.GetNoConfirmations();
+                    dt = KpaUtils.PurchQueries.GetNoConfirmations();
                     noConfirmationsDt = new DataTable();
                     noConfirmationsDt = dt.Clone();
 
@@ -639,7 +639,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpaData.PurchSubQueries.GetPrReleaseToPoRelease();
+                    dt = KpaUtils.PurchSubQueries.GetPrReleaseToPoRelease();
                     prRelPoRelDt = new DataTable();
                     prRelPoRelDt = dt.Clone();
 
@@ -751,7 +751,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpaData.PurchSubQueries.GetPoCreationToConfirmationEntry();
+                    dt = KpaUtils.PurchSubQueries.GetPoCreationToConfirmationEntry();
                     poCreatConfEntryDt = new DataTable();
                     poCreatConfEntryDt = dt.Clone();
 
@@ -854,7 +854,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpaData.PurchTotalQueries.GetPrReleaseToConfirmationEntry();
+                    dt = KpaUtils.PurchTotalQueries.GetPrReleaseToConfirmationEntry();
                     prRelConfEntry = new DataTable();
                     prRelConfEntry = dt.Clone();
 
@@ -973,7 +973,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpaData.FollowUpQueries.GetConfirmedDateVsPlanDate();
+                    dt = KpaUtils.FollowUpQueries.GetConfirmedDateVsPlanDate();
                     confVsPlanDateDt = new DataTable();
                     confVsPlanDateDt = dt.Clone();
 
@@ -1093,7 +1093,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpaData.FollowUpQueries.GetConfrimedDateForUpcomingDeliveries();
+                    dt = KpaUtils.FollowUpQueries.GetConfrimedDateForUpcomingDeliveries();
                     poFirsconfDateUpDelDt = new DataTable();
                     poFirsconfDateUpDelDt = dt.Clone();
 
@@ -1190,7 +1190,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpaData.FollowUpQueries.GetDueTodayOrLateToConfirmed();
+                    dt = KpaUtils.FollowUpQueries.GetDueTodayOrLateToConfirmed();
                     LateConfDateDt = new DataTable();
                     LateConfDateDt = dt.Clone();
 
@@ -1301,7 +1301,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpaData.HotJobsQueries.GetPrsNotOnPo();
+                    dt = KpaUtils.HotJobsQueries.GetPrsNotOnPo();
                     prsNotonPOHotJob = new DataTable();
                     prsNotonPOHotJob = dt.Clone();
 
@@ -1416,7 +1416,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpaData.HotJobsQueries.GetNoConfirmations();
+                    dt = KpaUtils.HotJobsQueries.GetNoConfirmations();
                     noConfirmations = new DataTable();
                     noConfirmations = dt.Clone();
 
@@ -1515,7 +1515,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpaData.HotJobsQueries.GetLateToConfirmed();
+                    dt = KpaUtils.HotJobsQueries.GetLateToConfirmed();
                     lateToConfirmed = new DataTable();
                     lateToConfirmed = dt.Clone();
 
@@ -1622,7 +1622,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpaData.ExcessStockStockQueries.GetPrsAgingNotReleased();
+                    dt = KpaUtils.ExcessStockStockQueries.GetPrsAgingNotReleased();
                     prsAgingNotRelDt = new DataTable();
                     prsAgingNotRelDt = dt.Clone();
 
@@ -1719,7 +1719,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpaData.ExcessStockStockQueries.GetPrsAgingReleased();
+                    dt = KpaUtils.ExcessStockStockQueries.GetPrsAgingReleased();
                     prsAgingRelDt = new DataTable();
                     prsAgingRelDt = dt.Clone();
 
@@ -1826,7 +1826,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpaData.ExcessStockStockQueries.GetPoCreationThruDelivery();
+                    dt = KpaUtils.ExcessStockStockQueries.GetPoCreationThruDelivery();
                     poConfThruDeliv = new DataTable();
                     poConfThruDeliv = dt.Clone();
 
@@ -1926,7 +1926,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpaData.ExcessStockOpenOrdersQueries.GetPrsAgingNotReleased();
+                    dt = KpaUtils.ExcessStockOpenOrdersQueries.GetPrsAgingNotReleased();
                     prsAgingNotRelDt = new DataTable();
                     prsAgingNotRelDt = dt.Clone();
 
@@ -2020,7 +2020,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpaData.ExcessStockOpenOrdersQueries.GetPrsAgingReleased();
+                    dt = KpaUtils.ExcessStockOpenOrdersQueries.GetPrsAgingReleased();
                     prsAgingRelDt = new DataTable();
                     prsAgingRelDt = dt.Clone();
 
@@ -2127,7 +2127,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpaData.ExcessStockOpenOrdersQueries.GetPoCreationThruDelivery();
+                    dt = KpaUtils.ExcessStockOpenOrdersQueries.GetPoCreationThruDelivery();
                     poConfThruDeliv = new DataTable();
                     poConfThruDeliv = dt.Clone();
 
@@ -2231,7 +2231,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpaData.CurrentPlanVsActualQueries.GetCurrentPlanDateVsCurrentConfirmationDate();
+                    dt = KpaUtils.CurrentPlanVsActualQueries.GetCurrentPlanDateVsCurrentConfirmationDate();
                     currPlanDateVsCurrConfDateDt = new DataTable();
                     currPlanDateVsCurrConfDateDt = dt.Clone();
 
@@ -2373,7 +2373,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpaData.CurrentPlanVsActualQueries.GetCurrentPlanDateVsCurrentConfirmationDateForHotJobs();
+                    dt = KpaUtils.CurrentPlanVsActualQueries.GetCurrentPlanDateVsCurrentConfirmationDateForHotJobs();
                     currPlanDateVsCurrConfDateDtHotJobs = new DataTable();
                     currPlanDateVsCurrConfDateDtHotJobs = dt.Clone();
 

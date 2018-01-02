@@ -57,13 +57,13 @@ namespace KPA_KPI_Analyzer.FileProcessing
 
             if (usPrpoFile == null)
             {
-                Diagnostics.AppDirectoryUtils.RemoveFile(Diagnostics.AppDirectoryUtils.OverallFile.US_Overall);
+                ApplicationIOLibarary.ApplicationFiles.FileUtils.RemoveFile(ApplicationIOLibarary.ApplicationFiles.OverallFile.US_Overall);
                 ClearUsSettings();
             }
 
             if (mxPrpoFile == null)
             {
-                Diagnostics.AppDirectoryUtils.RemoveFile(Diagnostics.AppDirectoryUtils.OverallFile.MX_Overall);
+                ApplicationIOLibarary.ApplicationFiles.FileUtils.RemoveFile(ApplicationIOLibarary.ApplicationFiles.OverallFile.MX_Overall);
                 ClearMxSettings();
             }
 

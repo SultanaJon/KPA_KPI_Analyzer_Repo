@@ -60,7 +60,7 @@ namespace KPA_KPI_Analyzer
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.splashscreen;
-            this.ClientSize = new System.Drawing.Size(418, 171);
+            this.ClientSize = new System.Drawing.Size(645, 171);
             this.Controls.Add(this.bunifuCustomLabel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SplashScreen";

@@ -4,7 +4,7 @@ using System;
 using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
-using DAL.Exceptions;
+using DataAccessLibrary.Exceptions;
 
 namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
 {
@@ -59,7 +59,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                 // Prs Aging Not Released
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                dt = KpaData.ExcessStockOpenOrdersQueries.GetPrsAgingNotReleased();
+                dt = KpaUtils.ExcessStockOpenOrdersQueries.GetPrsAgingNotReleased();
 
                 foreach (DataRow dr in dt.Rows)
                 {
@@ -136,7 +136,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                 // Prs Aging Released
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                dt = KpaData.ExcessStockOpenOrdersQueries.GetPrsAgingReleased();
+                dt = KpaUtils.ExcessStockOpenOrdersQueries.GetPrsAgingReleased();
 
                 foreach (DataRow dr in dt.Rows)
                 {
@@ -229,7 +229,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                 // Po Creation Thru Delivery
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                dt = KpaData.ExcessStockOpenOrdersQueries.GetPoCreationThruDelivery();
+                dt = KpaUtils.ExcessStockOpenOrdersQueries.GetPoCreationThruDelivery();
 
 
                 foreach (DataRow dr in dt.Rows)

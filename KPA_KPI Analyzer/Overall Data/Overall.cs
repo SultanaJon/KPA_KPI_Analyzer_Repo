@@ -1,9 +1,9 @@
-﻿using KPA_KPI_Analyzer.Diagnostics;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Web.Script.Serialization;
 using System.Windows.Forms;
+using ApplicationIOLibarary.Interfaces;
 
 namespace KPA_KPI_Analyzer.Overall_Data
 {
@@ -230,9 +230,9 @@ namespace KPA_KPI_Analyzer.Overall_Data
             try
             {
                 if (Values.Globals.TargetCountry == Values.Countries.Country.UnitedStates)
-                    dataJSONString = File.ReadAllText(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFile.US_Overall]);
+                    dataJSONString = File.ReadAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.US_Overall]);
                 else
-                    dataJSONString = File.ReadAllText(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFile.MX_Overall]);
+                    dataJSONString = File.ReadAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.MX_Overall]);
 
                 overallData = ser.Deserialize<Overall>(dataJSONString);
             }
@@ -256,11 +256,11 @@ namespace KPA_KPI_Analyzer.Overall_Data
                 dataJSONString = ser.Serialize(this);
                 if (Values.Globals.TargetCountry == Values.Countries.Country.UnitedStates)
                 {
-                    File.WriteAllText(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFile.US_Overall], dataJSONString);
+                    File.WriteAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.US_Overall], dataJSONString);
                 }
                 else
                 {
-                    File.WriteAllText(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFile.MX_Overall], dataJSONString);
+                    File.WriteAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.MX_Overall], dataJSONString);
                 }
             }
             catch (Exception ex)

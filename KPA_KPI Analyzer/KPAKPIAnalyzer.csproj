@@ -16,7 +16,7 @@
     </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -185,8 +185,6 @@
     <Compile Include="Values\Countries.cs" />
     <Compile Include="Values\Performance.cs" />
     <Compile Include="Values\Sections.cs" />
-    <Compile Include="Diagnostics\ILoadable.cs" />
-    <Compile Include="Diagnostics\IStorable.cs" />
     <Compile Include="Templates\Template_Controls\KPA_Controls\KPAExcessStockOpenOrders.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -232,7 +230,6 @@
     </Compile>
     <Compile Include="FileProcessing\Exceptions\FileProcessingExceptions.cs" />
     <Compile Include="FileProcessing\ExcelFileProcessor.cs" />
-    <Compile Include="Diagnostics\AppDirectoryUtils.cs" />
     <Compile Include="Templates\Template_Controls\KPA_Controls\KPACurrentPlanActualTemplate.cs">
       <SubType>UserControl</SubType>
     </Compile>

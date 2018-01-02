@@ -4,7 +4,7 @@ using System;
 using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
-using DAL.Exceptions;
+using DataAccessLibrary.Exceptions;
 
 
 namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
@@ -61,7 +61,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                 // Current Planned Date vs Current Confirmation Date (Open POs)
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                dt = KpaData.CurrentPlanVsActualQueries.GetCurrentPlanDateVsCurrentConfirmationDate();
+                dt = KpaUtils.CurrentPlanVsActualQueries.GetCurrentPlanDateVsCurrentConfirmationDate();
 
                 foreach (DataRow dr in dt.Rows)
                 {
@@ -175,7 +175,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                 // Current Planned Date vs Current Confirmation Date (Open POs)
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                dt = KpaData.CurrentPlanVsActualQueries.GetCurrentPlanDateVsCurrentConfirmationDateForHotJobs();
+                dt = KpaUtils.CurrentPlanVsActualQueries.GetCurrentPlanDateVsCurrentConfirmationDateForHotJobs();
 
 
                 foreach (DataRow dr in dt.Rows)

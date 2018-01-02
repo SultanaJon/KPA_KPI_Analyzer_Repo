@@ -4,7 +4,7 @@ using System;
 using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
-using DAL.Exceptions;
+using DataAccessLibrary.Exceptions;
 
 namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
 {
@@ -36,7 +36,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                 // PR Release to Confirmation Entry
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                dt = KpaData.PurchTotalQueries.GetPrReleaseToConfirmationEntry();
+                dt = KpaUtils.PurchTotalQueries.GetPrReleaseToConfirmationEntry();
 
 
                 foreach (DataRow dr in dt.Rows)

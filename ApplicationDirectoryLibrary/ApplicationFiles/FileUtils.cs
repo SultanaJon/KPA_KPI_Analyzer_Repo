@@ -62,11 +62,17 @@ namespace ApplicationIOLibarary.ApplicationFiles
 
 
 
-    public static class FileUtils
+    public class FileUtils
     {
         // The file path of the database.
-        public static readonly string DbPath = Path.Combine(DirectoryUtils.AppDir, resourcesFiles[(int)ResourceFile.PRPO_Database]);
+        public string DbPath;
 
+
+
+        public FileUtils()
+        {
+           DbPath = Path.Combine(DirectoryUtils.AppDir, resourcesFiles[(int)ResourceFile.PRPO_Database]);
+        }
 
         /// <summary>
         /// The file paths of where the resource files are located.

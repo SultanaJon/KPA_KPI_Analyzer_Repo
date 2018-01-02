@@ -4,7 +4,7 @@ using System;
 using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
-using DAL.Exceptions;
+using DataAccessLibrary.Exceptions;
 
 
 
@@ -62,7 +62,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                 // PR Release to PO Release
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                dt = KpaData.PurchSubQueries.GetPrReleaseToPoRelease();
+                dt = KpaUtils.PurchSubQueries.GetPrReleaseToPoRelease();
 
                 foreach (DataRow dr in dt.Rows)
                 {
@@ -149,7 +149,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                 // PO Creation Date to Confirmation Entry
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                dt = KpaData.PurchSubQueries.GetPoCreationToConfirmationEntry();
+                dt = KpaUtils.PurchSubQueries.GetPoCreationToConfirmationEntry();
 
 
 

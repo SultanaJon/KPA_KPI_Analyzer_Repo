@@ -1,4 +1,4 @@
-﻿using KPA_KPI_Analyzer.Filters;
+﻿using Filters;
 using System;
 using System.Collections.Generic;
 using System.Data;

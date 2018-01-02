@@ -1,5 +1,4 @@
-﻿using KPA_KPI_Analyzer.Diagnostics;
-using System;
+﻿using System;
 using System.IO;
 using System.Windows.Forms;
 
@@ -53,10 +52,10 @@ namespace KPA_KPI_Analyzer
             {
                 ConfigureToUnitedStates();
 
-                if (AppDirectoryUtils.DataFileExists(AppDirectoryUtils.OverallFile.US_Overall))
+                if (ApplicationIOLibarary.ApplicationFiles.FileUtils.DataFileExists(ApplicationIOLibarary.ApplicationFiles.OverallFile.US_Overall))
                 {
                     // the file exists
-                    if (new FileInfo(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFile.US_Overall]).Length > 0)
+                    if (new FileInfo(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.US_Overall]).Length > 0)
                     {
                         DateTime dt = GetLastLoadedUsPrpoReportDate();
                         if (dt == DateTime.Today.Date)
@@ -81,7 +80,7 @@ namespace KPA_KPI_Analyzer
                 }
                 else // the file does not exist
                 {
-                    AppDirectoryUtils.CreateFile(AppDirectoryUtils.OverallFile.US_Overall);
+                    ApplicationIOLibarary.ApplicationFiles.FileUtils.CreateFile(ApplicationIOLibarary.ApplicationFiles.OverallFile.US_Overall);
                     BeginDataLoadProcess();
                 }
             }
@@ -89,10 +88,10 @@ namespace KPA_KPI_Analyzer
             {
                 ConfigureToMexico();
 
-                if (AppDirectoryUtils.DataFileExists(AppDirectoryUtils.OverallFile.MX_Overall))
+                if (ApplicationIOLibarary.ApplicationFiles.FileUtils.DataFileExists(ApplicationIOLibarary.ApplicationFiles.OverallFile.MX_Overall))
                 {
                     // the file exists
-                    if (new FileInfo(AppDirectoryUtils.overallFiles[(int)AppDirectoryUtils.OverallFile.MX_Overall]).Length > 0)
+                    if (new FileInfo(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.MX_Overall]).Length > 0)
                     {
                         DateTime dt = GetLastLoadedMxPrpoReportDate();
                         if (dt == DateTime.Today.Date)
@@ -117,7 +116,7 @@ namespace KPA_KPI_Analyzer
                 }
                 else // the file does not exist
                 {
-                    AppDirectoryUtils.CreateFile(AppDirectoryUtils.OverallFile.MX_Overall);
+                    ApplicationIOLibarary.ApplicationFiles.FileUtils.CreateFile(ApplicationIOLibarary.ApplicationFiles.OverallFile.MX_Overall);
                     BeginDataLoadProcess();
                 }
             }

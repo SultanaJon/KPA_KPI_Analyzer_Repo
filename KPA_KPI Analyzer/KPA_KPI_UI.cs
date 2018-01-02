@@ -500,9 +500,6 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         private void InitializeProgramEvents()
         {
-            // Setup callback functions for Filters loading.
-            FilterUtils.UpdateFilter += UpdateFilters;
-
             // Setup callback functions for Dataloading.
             DatabaseManager.RenewDataLoadTimer += RenewDataLoadTimer;
             DatabaseManager.DisplayDragDropPage += ShowDragDropPage;
@@ -536,8 +533,8 @@ namespace KPA_KPI_Analyzer
             ShowPage(Pages.LoadingScreen);
             ms_applicaitonMenuStrip.Enabled = false;
             cpb_loadingScreenCircProgBar.Text = "Loading Filters...";
-            FilterUtils.FiltersLoaded = false;
-            FilterUtils.FilterLoadProcessStarted = false;
+            Filters.FilterUtils.FiltersLoaded = false;
+            Filters.FilterUtils.FilterLoadProcessStarted = false;
             FiltersTimer.Start();
         }
 
@@ -909,7 +906,7 @@ namespace KPA_KPI_Analyzer
             // Pass Variant details to filters for calibration
             FilterData.CalibrateFilters(_variantDetails);
             BuildQueryFilters();
-            FilterUtils.FiltersLoaded = false;
+            Filters.FilterUtils.FiltersLoaded = false;
 
             CheckFilterStatus();
 

@@ -1,5 +1,4 @@
 ﻿using DataImporter.Access.ExceptionClasses;
-using KPA_KPI_Analyzer.Diagnostics;
 using System;
 using System.Data.OleDb;
 using System.IO;
@@ -12,7 +11,7 @@ namespace KPA_KPI_Analyzer
     public partial class SplashScreen : Form
     {
         private bool runningThread = false;
-        ApplicationConfiguration.ApplicationConfig settings = new ApplicationConfiguration.ApplicationConfig();
+        ApplicationIOLibarary.ApplicationSettings settings = new ApplicationIOLibarary.ApplicationSettings();
         bool settingsCreated = false;
         bool databaseCreated = false;
 
@@ -92,9 +91,11 @@ namespace KPA_KPI_Analyzer
             CurrentStatus = CheckStatus.Checking;
             CurrentAppStatus = LoadStatus.Loading;
 
+            ApplicationIOLibarary.ApplicationFiles.FileUtils fileUtils = new ApplicationIOLibarary.ApplicationFiles.FileUtils();
+
             // Supply the information regarding the access file we will use for our 
             // datbase to the DatabaseManager.
-            DatabaseManager.Configure(new AccessInfo(Configuration.DbPath));
+            DatabaseManager.Configure(new AccessInfo(fileUtils.DbPath));
         }
 
 
@@ -216,11 +217,11 @@ namespace KPA_KPI_Analyzer
         {
             try
             {
-                foreach (var directory in Enum.GetValues(typeof(AppDirectoryUtils.AppDirectory)))
+                foreach (var directory in Enum.GetValues(typeof(ApplicationIOLibarary.ApplicationDirectories.AppDirectory)))
                 {
-                    if (!Directory.Exists(Path.Combine(Configuration.AppDir, AppDirectoryUtils.directories[(int)directory])))
+                    if (!Directory.Exists(Path.Combine(ApplicationIOLibarary.ApplicationDirectories.DirectoryUtils.AppDir, ApplicationIOLibarary.ApplicationDirectories.DirectoryUtils.directories[(int)directory])))
                     {
-                        Directory.CreateDirectory(Path.Combine(Configuration.AppDir, AppDirectoryUtils.directories[(int)directory]));
+                        Directory.CreateDirectory(Path.Combine(ApplicationIOLibarary.ApplicationDirectories.DirectoryUtils.AppDir, ApplicationIOLibarary.ApplicationDirectories.DirectoryUtils.directories[(int)directory]));
                     }
                 }
             }
@@ -245,11 +246,11 @@ namespace KPA_KPI_Analyzer
         {
             try
             {
-                foreach (AppDirectoryUtils.ResourceFile file in Enum.GetValues(typeof(AppDirectoryUtils.ResourceFile)))
+                foreach (ApplicationIOLibarary.ApplicationFiles.ResourceFile file in Enum.GetValues(typeof(ApplicationIOLibarary.ApplicationFiles.ResourceFile)))
                 {
-                    if (!File.Exists(Path.Combine(Configuration.AppDir, AppDirectoryUtils.resourcesFiles[(int)file])))
+                    if (!File.Exists(Path.Combine(ApplicationIOLibarary.ApplicationDirectories.DirectoryUtils.AppDir, ApplicationIOLibarary.ApplicationFiles.FileUtils.resourcesFiles[(int)file])))
                     {
-                        if(file == AppDirectoryUtils.ResourceFile.PRPO_Database)
+                        if(file == ApplicationIOLibarary.ApplicationFiles.ResourceFile.PRPO_Database)
                         {
                             try
                             {
@@ -264,9 +265,9 @@ namespace KPA_KPI_Analyzer
                         }
                         else
                         {
-                            if(file == AppDirectoryUtils.ResourceFile.Settings)
+                            if(file == ApplicationIOLibarary.ApplicationFiles.ResourceFile.Settings)
                             {
-                                AppDirectoryUtils.CreateFile(file);
+                                ApplicationIOLibarary.ApplicationFiles.FileUtils.CreateFile(file);
                                 settingsCreated = true;
                             }
                         }
@@ -274,32 +275,32 @@ namespace KPA_KPI_Analyzer
                 }
 
 
-                foreach (AppDirectoryUtils.LogFile file in Enum.GetValues(typeof(AppDirectoryUtils.LogFile)))
+                foreach (ApplicationIOLibarary.ApplicationFiles.LogFile file in Enum.GetValues(typeof(ApplicationIOLibarary.ApplicationFiles.LogFile)))
                 {
-                    if (!File.Exists(Path.Combine(Configuration.AppDir, AppDirectoryUtils.logFiles[(int)file])))
+                    if (!File.Exists(Path.Combine(ApplicationIOLibarary.ApplicationDirectories.DirectoryUtils.AppDir, ApplicationIOLibarary.ApplicationFiles.FileUtils.logFiles[(int)file])))
                     {
-                        AppDirectoryUtils.CreateFile(file);
+                        ApplicationIOLibarary.ApplicationFiles.FileUtils.CreateFile(file);
                     }
                 }
 
 
 
 
-                foreach(AppDirectoryUtils.OverallFile file in Enum.GetValues(typeof(AppDirectoryUtils.OverallFile)))
+                foreach(ApplicationIOLibarary.ApplicationFiles.OverallFile file in Enum.GetValues(typeof(ApplicationIOLibarary.ApplicationFiles.OverallFile)))
                 {
-                    if (!File.Exists(Path.Combine(Configuration.AppDir, AppDirectoryUtils.overallFiles[(int)file])))
+                    if (!File.Exists(Path.Combine(ApplicationIOLibarary.ApplicationDirectories.DirectoryUtils.AppDir, ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)file])))
                     {
-                        AppDirectoryUtils.CreateFile(file);
+                        ApplicationIOLibarary.ApplicationFiles.FileUtils.CreateFile(file);
                     }
                 }
 
 
 
-                foreach(AppDirectoryUtils.VariantFile file in Enum.GetValues(typeof(AppDirectoryUtils.VariantFile)))
+                foreach(ApplicationIOLibarary.ApplicationFiles.VariantFile file in Enum.GetValues(typeof(ApplicationIOLibarary.ApplicationFiles.VariantFile)))
                 {
-                    if(!File.Exists(Path.Combine(Configuration.AppDir, AppDirectoryUtils.variantFiles[(int)file])))
+                    if(!File.Exists(Path.Combine(ApplicationIOLibarary.ApplicationDirectories.DirectoryUtils.AppDir, ApplicationIOLibarary.ApplicationFiles.FileUtils.variantFiles[(int)file])))
                     {
-                        AppDirectoryUtils.CreateFile(file);
+                        ApplicationIOLibarary.ApplicationFiles.FileUtils.CreateFile(file);
                     }
                 }
             }
@@ -335,10 +336,10 @@ namespace KPA_KPI_Analyzer
                 // The database was just creaed so we need to delete the settings
                 // file and create a new one as the settings it might contain are
                 // no longer valid for the database.
-                if(File.Exists(Path.Combine(Configuration.AppDir, AppDirectoryUtils.resourcesFiles[(int)AppDirectoryUtils.ResourceFile.Settings])))
+                if(File.Exists(Path.Combine(ApplicationIOLibarary.ApplicationDirectories.DirectoryUtils.AppDir, ApplicationIOLibarary.ApplicationFiles.FileUtils.resourcesFiles[(int)ApplicationIOLibarary.ApplicationFiles.ResourceFile.Settings])))
                 {
-                    File.Delete(Path.Combine(Configuration.AppDir, AppDirectoryUtils.resourcesFiles[(int)AppDirectoryUtils.ResourceFile.Settings]));
-                    AppDirectoryUtils.CreateFile(AppDirectoryUtils.ResourceFile.Settings);
+                    File.Delete(Path.Combine(ApplicationIOLibarary.ApplicationDirectories.DirectoryUtils.AppDir, ApplicationIOLibarary.ApplicationFiles.FileUtils.resourcesFiles[(int)ApplicationIOLibarary.ApplicationFiles.ResourceFile.Settings]));
+                    ApplicationIOLibarary.ApplicationFiles.FileUtils.CreateFile(ApplicationIOLibarary.ApplicationFiles.ResourceFile.Settings);
                     settingsCreated = true;
                 }
             }
@@ -348,8 +349,8 @@ namespace KPA_KPI_Analyzer
                 if(!DatabaseManager.CheckForTables() && !settingsCreated)
                 {
                     // The database does not contain tables so we want to reset any settings regarding the database.
-                    File.Delete(Path.Combine(Configuration.AppDir, AppDirectoryUtils.resourcesFiles[(int)AppDirectoryUtils.ResourceFile.Settings]));
-                    AppDirectoryUtils.CreateFile(AppDirectoryUtils.ResourceFile.Settings);
+                    File.Delete(Path.Combine(ApplicationIOLibarary.ApplicationDirectories.DirectoryUtils.AppDir, ApplicationIOLibarary.ApplicationFiles.FileUtils.resourcesFiles[(int)ApplicationIOLibarary.ApplicationFiles.ResourceFile.Settings]));
+                    ApplicationIOLibarary.ApplicationFiles.FileUtils.CreateFile(ApplicationIOLibarary.ApplicationFiles.ResourceFile.Settings);
                     settingsCreated = true;
                 }
             }

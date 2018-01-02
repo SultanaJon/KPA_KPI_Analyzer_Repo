@@ -4,7 +4,7 @@ using System;
 using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
-using DAL.Exceptions;
+using DataAccessLibrary.Exceptions;
 
 namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
 {
@@ -70,7 +70,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                 // PRs Aging Released
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                dt = KpaData.PurchQueries.GetPrsAgingReleased();
+                dt = KpaUtils.PurchQueries.GetPrsAgingReleased();
 
 
                 foreach (DataRow dr in dt.Rows)
@@ -160,7 +160,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                 // PO First Release
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                dt = KpaData.PurchQueries.GetPoFirstRelease();
+                dt = KpaUtils.PurchQueries.GetPoFirstRelease();
 
                 foreach (DataRow dr in dt.Rows)
                 {
@@ -236,7 +236,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                 // PO Prev Release
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                dt = KpaData.PurchQueries.GetPoPrevRelease();
+                dt = KpaUtils.PurchQueries.GetPoPrevRelease();
 
 
                 foreach (DataRow dr in dt.Rows)
@@ -314,7 +314,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
                 // No Confirmation
                 //
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                dt = KpaData.PurchQueries.GetNoConfirmations();
+                dt = KpaUtils.PurchQueries.GetNoConfirmations();
 
 
                 foreach (DataRow dr in dt.Rows)
