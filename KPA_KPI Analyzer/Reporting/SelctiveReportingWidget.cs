@@ -131,7 +131,6 @@ namespace KPA_KPI_Analyzer.Reporting
         /// <param name="e">The selected index changed event</param>
         private void comboBox_FitlerOption_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ///
             int index = comboBox_FitlerOption.SelectedIndex;
             foreach(FilterOptions.Options option in Enum.GetValues(typeof(FilterOptions.Options)))
             {

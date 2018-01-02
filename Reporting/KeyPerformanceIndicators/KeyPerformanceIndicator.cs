@@ -2,7 +2,29 @@
 {
     public enum KpiOption
     {
-
+        Plan_CurrentPlanDateVsPrPlanDate,
+        Plan_OrigPlanDateMinusPrFullReleaseDateVsCodedLead,
+        Plan_CurrentPlanDateMinusPrFullReleaseDateVsCodedLead,
+        Purch_InitialConfirmationDateVsPrPlanDate,
+        FollowUp_CurrentConfirmationDateVsPrPlanDate,
+        FollowUp_FinalConfirmationDateVsInitialConfirmationDate,
+        FollowUp_ReceiptDateVsCurrentPlanDate,
+        FollowUp_ReceiptDateVsOriginalConfirmationDate,
+        FollowUp_ReceiptDateVsCurrentConfirmationDate,
+        PlanTwo_MaterialDueOriginalPlannedDate,
+        PlanTwo_MaterialDueFinalPlannedDate,
+        PurchTwo_PrFullyReleaseDateVsPoReleaseDate,
+        PurchTwo_PoCreationDateVsPoReleaseDate,
+        PurchTwo_PoReleaseDateVsPoConfirmationDate,
+        PurchSub_PrReleaseVsPoReleaseDate,
+        PurchSub_PoCreationDateVsConfirmationEntryDate,
+        PurchTotal_PrReleaseDateToConfirmationEntryDate,
+        PurchPlan_PoReleaseVsPrDeliveryDate,
+        Other_PrsCreated,
+        Other_PrsReleased,
+        Other_TotalSpend,
+        Other_PrValueVsPoValue,
+        Other_HotJobPRs
     }
 
     public abstract class KeyPerformanceIndicator

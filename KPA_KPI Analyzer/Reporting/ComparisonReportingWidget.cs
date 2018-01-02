@@ -10,9 +10,6 @@ namespace KPA_KPI_Analyzer.Reporting
 {
     public partial class ComparisonReportingWidget : UserControl, IComparisonReportingWidgetView
     {
-        List<MaterialSkin.Controls.MaterialRadioButton> radioBtns = new List<MaterialSkin.Controls.MaterialRadioButton>();
-
-
         #region IComparisonReportingWidgetView Events
 
         /// <summary>
@@ -69,15 +66,12 @@ namespace KPA_KPI_Analyzer.Reporting
         /// <param name="e">The Load Event</param>
         private void ComparisonReportingWidget_Load(object sender, EventArgs e)
         {
-            // holding the radio buttons in a list.
-            radioBtns.Add(radioBtn_KpaReporting);
-            radioBtns.Add(radioBtn_KpiReporting);
-
             // Load the filter options into the filter option combobox.
             LoadFilterOptions();
 
             // Load the KPA options into the KPA option combobox.
             LoadKpaOptions();
+            KPAOption = default(KpaOption);
         }
 
 
@@ -89,38 +83,22 @@ namespace KPA_KPI_Analyzer.Reporting
         /// <param name="e">The CheckedChanged event</param>
         private void radioBtn_Reporting_CheckedChanged(object sender, EventArgs e)
         {
-            MaterialSkin.Controls.MaterialRadioButton radioBtn = (MaterialSkin.Controls.MaterialRadioButton)sender;
-            int tag = int.Parse(radioBtn.Tag.ToString());
-
             // Clear the items in the category combobox so a new list can be added.
             comboBox_CategoryOption.Items.Clear();
 
-            switch(radioBtn.Text)
+            if(radioBtn_KpaReporting.Checked)
             {
-                case "KPA Report":
-                    if(radioBtns[tag].Checked)
-                    {
-                        label_CategoryOption.Text = "KPA Option:";
-                        LoadKpaOptions();
-                    }
-                    else
-                    {
-                        label_CategoryOption.Text = "KPI Option:";
-                        LoadKpiOptions();
-                    }
-                    break;
-                case "KPI Report":
-                    if (radioBtns[tag].Checked)
-                    {
-                        label_CategoryOption.Text = "KPI Option:";
-                        LoadKpiOptions();
-                    }
-                    else
-                    {
-                        label_CategoryOption.Text = "KPA Option:";
-                        LoadKpaOptions();
-                    }
-                    break;
+                label_CategoryOption.Text = "KPA Option:";
+                PerformanceReportType = ReportType.KpaReport;
+                KPAOption = default(KpaOption);
+                LoadKpaOptions();
+            }
+            else
+            {
+                label_CategoryOption.Text = "KPI Option:";
+                PerformanceReportType = ReportType.KpiReport;
+                KPIOption = default(KpiOption);
+                LoadKpiOptions();
             }
         }
 
@@ -253,6 +231,82 @@ namespace KPA_KPI_Analyzer.Reporting
         {
             // Ivokes the callback method if it is not null
             GenerateReport?.Invoke(sender, e);
+        }
+
+
+
+        /// <summary>
+        /// When the checked state changes on the performance radio buttons, The Reporting
+        /// information will be updated
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PerformanceRadioBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioBtn_KpaReporting.Checked)
+            {
+                PerformanceReportType = ReportType.KpaReport;
+            }
+            else
+            {
+                PerformanceReportType = ReportType.KpiReport;
+            }
+        }
+
+
+
+
+        /// <summary>
+        /// When the user chooses a different Filter option this event will fire.
+        /// </summary>
+        /// <param name="sender">The filter option combobox</param>
+        /// <param name="e">The selected index changed event</param>
+        private void comboBox_FitlerOption_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int index = comboBox_FitlerOption.SelectedIndex;
+            foreach (FilterOptions.Options option in Enum.GetValues(typeof(FilterOptions.Options)))
+            {
+                if (index == (int)option)
+                {
+                    FilteringOption = option;
+                }
+            }
+        }
+
+
+
+
+
+        /// <summary>
+        /// When the user chooses a different category option this event will fire
+        /// </summary>
+        /// <param name="sender">The category option combobox</param>
+        /// <param name="e">The selected index changed event</param>
+        private void comboBox_CategoryOption_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int index = default(int);
+            if(PerformanceReportType == ReportType.KpaReport)
+            {
+                index = comboBox_CategoryOption.SelectedIndex;
+                foreach (KpaOption option in Enum.GetValues(typeof(KpaOption)))
+                {
+                    if (index == (int)option)
+                    {
+                        KPAOption = option;
+                    }
+                }
+            }
+            else // The Performance Report Type is KPI Report
+            {
+                index = comboBox_CategoryOption.SelectedIndex;
+                foreach(KpiOption option in Enum.GetValues(typeof(KpiOption)))
+                {
+                    if(index == (int)option)
+                    {
+                        KPIOption = option;
+                    }
+                }
+            }
         }
     }
 }

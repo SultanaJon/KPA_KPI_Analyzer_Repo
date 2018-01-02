@@ -97,6 +97,7 @@
             this.comboBox_CategoryOption.Name = "comboBox_CategoryOption";
             this.comboBox_CategoryOption.Size = new System.Drawing.Size(214, 21);
             this.comboBox_CategoryOption.TabIndex = 2;
+            this.comboBox_CategoryOption.SelectedIndexChanged += new System.EventHandler(this.comboBox_CategoryOption_SelectedIndexChanged);
             // 
             // comboBox_FitlerOption
             // 
@@ -106,6 +107,7 @@
             this.comboBox_FitlerOption.Name = "comboBox_FitlerOption";
             this.comboBox_FitlerOption.Size = new System.Drawing.Size(214, 21);
             this.comboBox_FitlerOption.TabIndex = 2;
+            this.comboBox_FitlerOption.SelectedIndexChanged += new System.EventHandler(this.comboBox_FitlerOption_SelectedIndexChanged);
             // 
             // radioBtn_KpiReporting
             // 

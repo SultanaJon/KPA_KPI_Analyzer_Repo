@@ -178,9 +178,11 @@ namespace KPA_KPI_Analyzer
             {
                 case ReportType.KpaReport:
                     // The user wants to create a KPA Comparison Report.
+                    GenerateKpaComparisonReport();
                     break;
                 case ReportType.KpiReport:
                     // The user wants to create a KPI Comparison Report
+                    GenerateKpiComparisonReport();
                     break;
                 default:
                     break;
@@ -265,6 +267,44 @@ namespace KPA_KPI_Analyzer
 
             // Run the KPI Report
             (reports[ReportingType.KpiReport] as KpiReport).RunReport();
+        }
+
+
+
+
+
+
+        /// <summary>
+        /// Creates a Comparison Report and runs it based on the KPA option selected
+        /// </summary>
+        private void GenerateKpaComparisonReport()
+        {
+            // Get the filter option that the user wants for the report
+            List<string> filters = GetFilters(reportingWidgetsController.ComparisonFilterOption);
+
+            // Run against the specific KPA option
+            switch(reportingWidgetsController.ComparisonKpaOption)
+            {
+                // All the KPA option cases
+            }
+        }
+
+
+
+
+        /// <summary>
+        /// Creates a comparison report and runs it based on the KPI option selected
+        /// </summary>
+        private void GenerateKpiComparisonReport()
+        {
+            // Get the filter option that the user wants for the report
+            List<string> filters = GetFilters(reportingWidgetsController.ComparisonFilterOption);
+            
+            // Run again the specific KPI option
+            switch(reportingWidgetsController.ComparisonKpiOption)
+            {
+                // All the KPI option cases
+            }
         }
     }
 }
