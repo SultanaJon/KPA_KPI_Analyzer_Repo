@@ -5,18 +5,50 @@ namespace Reporting
 {
     public class KpaReport : Report
     {
+        /// <summary>
+        /// Private instance of a KPA Report
+        /// </summary>
+        private static KpaReport kpaReportInstance = new KpaReport();
+
+
+        /// <summary>
+        /// Property to return the instance of the KPA Report
+        /// </summary>
+        public static KpaReport KpaReportInstance { get { return kpaReportInstance; } }
+
+
+        /// <summary>
+        /// The contents of the KPA Report
+        /// </summary>
         Dictionary<string, List<KeyPerformanceAction>> report;
 
 
         /// <summary>
-        /// Default Constructor
+        /// Default Private Constructor
         /// </summary>
-        public KpaReport()
+        private KpaReport()
         {
             report = new Dictionary<string, List<KeyPerformanceAction>>();
 
-            // Add the Key Performance Actions to the report
-            AddActions();
+            // Check if any other report have already created the actions
+            if(!ActionsSet)
+            {
+                // Add the Key Performance Actions to the report
+                AddActions();
+                ActionsSet = true;
+            }
+        }
+
+
+
+
+        /// <summary>
+        /// Creates a new instance of a KPA Report
+        /// </summary>
+        public static void CreateNewInstance()
+        {
+            // Creates a new instance of the report
+            kpaReportInstance = new KpaReport();
         }
 
 

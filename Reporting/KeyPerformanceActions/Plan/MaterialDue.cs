@@ -1,30 +1,113 @@
-﻿using Reporting.Interfaces;
-
+﻿using System;
+using Reporting.Overall.TemplateOne;
+using System.Data;
+using DataAccessLibrary;
+using Filters;
+using Reporting.Overall;
+using Reporting.Selective;
 
 namespace Reporting.KeyPerformanceActions.Plan
 {
-    public sealed class MaterialDue : KeyPerformanceAction, ISelectiveVOne
+    public sealed class MaterialDue : KeyPerformanceAction
     {
-        #region ISelectiveVOne Properties
+        /// <summary>
+        /// The Selective Strategy Context that holds the selective data for reporting
+        /// </summary>
+        private SelectiveStrategyContext selectiveContext;
+
+
 
         /// <summary>
-        /// The Average Days for the Selective Calculation
+        /// Property to return the selective data for this KPA
         /// </summary>
-        public double SelectiveAverage { get; set; }
+        public SelectiveStrategyContext SelectiveContext
+        {
+            get
+            {
+                return selectiveContext;
+            }
+            private set
+            {
+                if (value != null)
+                {
+                    this.selectiveContext = value;
+                }
+            }
+        }
+
+
 
 
         /// <summary>
-        /// The total amount of records for the Selective Calculation
+        /// The overall data that holds the overall reporting data
         /// </summary>
-        public int SelectiveTotalRecords { get; set; }
-
-        #endregion
+        private OverallDataPacket overallDataPacket;
 
 
+
+
+        /// <summary>
+        /// Propert to return the overall data for this KPA
+        /// </summary>
+        public TemplateOnePacket OverallPacket
+        {
+            get
+            {
+                // Return the overall data packet as a template one packet
+                return overallDataPacket as TemplateOnePacket;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    this.overallDataPacket = value;
+                }
+            }
+        }
+
+
+
+
+
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
         public MaterialDue()
         {
             Section = "Plan";
             Name = "Material Due";
+
+            // set the selective strategy context
+            SelectiveContext = new SelectiveStrategyContext(new SelectiveDataTypeOne());
+
+            // Create a new instance of the overall data packet
+            overallDataPacket = new TemplateOnePacket();
+        }
+
+
+
+
+        /// <summary>
+        /// Returns the number of elapsed days based on certain conditions for this KPA
+        /// </summary>
+        /// <param name="dr"></param>
+        /// <returns></returns>
+        private double GetElapsedDays(DataRow dr)
+        {
+            // Get the PR delivery date from the data row
+            string[] strCurrReqDate = (dr["PR Delivery Date"].ToString()).Split('/');
+            int year = int.Parse(strCurrReqDate[2]);
+            int month = int.Parse(strCurrReqDate[0].TrimStart('0'));
+            int day = int.Parse(strCurrReqDate[1].TrimStart('0'));
+
+
+            // Find the difference between the current Requirement date and today's date
+            DateTime currReqDate = new DateTime(year, month, day);
+            DateTime today = DateTime.Now.Date;
+            double elapsedDays = (currReqDate - today).TotalDays;
+            elapsedDays = (int)elapsedDays;
+
+            return elapsedDays;
         }
 
 
@@ -35,7 +118,69 @@ namespace Reporting.KeyPerformanceActions.Plan
         /// </summary>
         public override void RunSelectiveReport(string uniqueFilters)
         {
+            // Get the instance of the selective data for reporting
+            SelectiveDataTypeOne data = SelectiveContext.Data as SelectiveDataTypeOne;
 
+            // Get the data from the database for this KPA
+            DataTable dt = KpaUtils.PlanQueries.GetPrsAgingNotReleased();
+
+            // used for calculating the average
+            double totalDays = 0;
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                //Check if the datarow meets the conditions of any applied filters.
+                if (!FilterUtils.EvaluateAgainstFilters(dr))
+                {
+                    // This datarow dos not meet the conditions of the filters applied.
+                    continue;
+                }
+
+                // Add the elapsed days to the total number of days
+                totalDays += GetElapsedDays(dr);
+
+                // increment the total number of records for this selective KPA
+                data.TotalRecords++;
+            }
+
+            // Calculate the average for this report
+            data.CalculateAverage(totalDays);
+        }
+
+
+
+        /// <summary>
+        /// Calculates the overall report for this KPA
+        /// </summary>
+        public override void RunOverallReport()
+        {
+            // Get the data from the database for this KPA
+            DataTable dt = KpaUtils.PlanQueries.GetMaterialDue();
+
+            // used for calculating the average
+            double totalDays = 0;
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                //Check if the datarow meets the conditions of any applied filters.
+                if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
+                {
+                    // This datarow dos not meet the conditions of the filters applied.
+                    continue;
+                }
+
+                // Get the elapsed days for this KPA
+                double elapsedDays = GetElapsedDays(dr);
+
+                // Increment the total number of days
+                totalDays += elapsedDays;
+                
+                // Run the elapsed days against the timespan conditions
+                overallDataPacket.TimeSpanDump(elapsedDays);
+            }
+
+            // Calculate the average number of days
+            (overallDataPacket as TemplateOnePacket).CalculateAverage(totalDays);
         }
     }
 }

@@ -6,14 +6,14 @@
         Plan_OrigPlanDateMinusPrFullReleaseDateVsCodedLead,
         Plan_CurrentPlanDateMinusPrFullReleaseDateVsCodedLead,
         Purch_InitialConfirmationDateVsPrPlanDate,
-        FollowUp_CurrentConfirmationDateVsPrPlanDate,
+        FollowUp_CurrentConfirmationDateVsInitialConfirmationDate,
         FollowUp_FinalConfirmationDateVsInitialConfirmationDate,
         FollowUp_ReceiptDateVsCurrentPlanDate,
         FollowUp_ReceiptDateVsOriginalConfirmationDate,
         FollowUp_ReceiptDateVsCurrentConfirmationDate,
         PlanTwo_MaterialDueOriginalPlannedDate,
         PlanTwo_MaterialDueFinalPlannedDate,
-        PurchTwo_PrFullyReleaseDateVsPoReleaseDate,
+        PurchTwo_PrFullyReleaseDateVsPoCreationDate,
         PurchTwo_PoCreationDateVsPoReleaseDate,
         PurchTwo_PoReleaseDateVsPoConfirmationDate,
         PurchSub_PrReleaseVsPoReleaseDate,
@@ -27,7 +27,9 @@
         Other_HotJobPRs
     }
 
-    public abstract class KeyPerformanceIndicator
+
+
+    public abstract class KeyPerformanceIndicator : Performance
     {
         public static string[] options =
         {
@@ -75,4 +77,4 @@
         /// </summary>
         public abstract void RunSelectiveReport(string uniqueFilters);
     }
-}
+} 

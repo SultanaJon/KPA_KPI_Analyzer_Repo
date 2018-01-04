@@ -203,7 +203,7 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPA_Sections
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.StackTrace, "KPA -> Plan Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "KPA -> Plan Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw new ThreadInteruptedException();
             }
             finally

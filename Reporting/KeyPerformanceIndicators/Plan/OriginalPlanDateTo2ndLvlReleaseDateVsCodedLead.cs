@@ -1,16 +1,9 @@
-﻿using Reporting.Interfaces;
+﻿
 
 namespace Reporting.KeyPerformanceIndicators.Plan
 {
-    public sealed class OriginalPlanDateTo2ndLvlReleaseDateVsCodedLead : KeyPerformanceIndicator, ISelectiveVTwo
+    public sealed class OriginalPlanDateTo2ndLvlReleaseDateVsCodedLead : KeyPerformanceIndicator
     {
-        #region ISelectiveVTwo Properties
-
-        public double SelectiveAverage { get; set; }
-        public int SelectiveTotalRecords { get; set; }
-        public double SelectivePercentFavorable { get; set; }
-
-        #endregion
 
 
 

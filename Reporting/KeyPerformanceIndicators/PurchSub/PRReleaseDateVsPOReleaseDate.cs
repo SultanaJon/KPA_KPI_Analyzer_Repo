@@ -1,23 +1,9 @@
-﻿using Reporting.Interfaces;
+﻿
 
 namespace Reporting.KeyPerformanceIndicators.PurchSub
 {
-    public sealed class PRReleaseDateVsPOReleaseDate : KeyPerformanceIndicator, ISelectiveVOne
+    public sealed class PRReleaseDateVsPOReleaseDate : KeyPerformanceIndicator
     {
-        #region ISelectiveVOne Properties
-
-        /// <summary>
-        /// The Average Days for the Selective Calculation
-        /// </summary>
-        public double SelectiveAverage { get; set; }
-
-
-        /// <summary>
-        /// The total amount of records for the Selective Calculation
-        /// </summary>
-        public int SelectiveTotalRecords { get; set; }
-
-        #endregion
 
 
         /// <summary>

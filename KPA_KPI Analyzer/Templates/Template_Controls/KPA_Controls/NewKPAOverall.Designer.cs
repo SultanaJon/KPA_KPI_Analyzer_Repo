@@ -337,7 +337,6 @@
             this.TemplateOneValuesGrid.TabIndex = 1;
             this.TemplateOneValuesGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TemplateOneValuesGrid_CellDoubleClick);
             this.TemplateOneValuesGrid.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.bunifuCustomDataGrid1_CellFormatting);
-            this.TemplateOneValuesGrid.Paint += new System.Windows.Forms.PaintEventHandler(this.TemplateOneValuesGrid_Paint);
             // 
             // Section
             // 

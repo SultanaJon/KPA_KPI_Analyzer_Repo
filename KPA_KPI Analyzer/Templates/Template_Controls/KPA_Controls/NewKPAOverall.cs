@@ -73,10 +73,10 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             data = _data;
             Globals.CurrPerformance = "KPA";
 
-            if (Values.Globals.TargetCountry == Values.Countries.Country.UnitedStates)
-                Globals.CurrCountry = Values.Countries.countries[(int)Values.Countries.Country.UnitedStates];
+            if (Globals.TargetCountry == Countries.Country.UnitedStates)
+                Globals.CurrCountry = Countries.countries[(int)Countries.Country.UnitedStates];
             else
-                Globals.CurrCountry = Values.Countries.countries[(int)Values.Countries.Country.Mexico];
+                Globals.CurrCountry = Countries.countries[(int)Countries.Country.Mexico];
         }
 
         #region EVENTS
@@ -2013,21 +2013,5 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         }
 
         #endregion
-
-        private void TemplateOneValuesGrid_Paint(object sender, PaintEventArgs e)
-        {
-            Rectangle r1 = TemplateOneValuesGrid.GetCellDisplayRectangle(0, 0, true);
-            int h2 = TemplateOneValuesGrid.GetCellDisplayRectangle(0, 1, true).Height;
-            r1.Height = r1.Height + h2;
-           
-            e.Graphics.FillRectangle(new SolidBrush(Color.Teal), r1);
-
-            StringFormat format = new StringFormat();
-
-            format.Alignment = StringAlignment.Center;
-            format.LineAlignment = StringAlignment.Center;
-            
-            e.Graphics.DrawString("Plan", TemplateOneValuesGrid.ColumnHeadersDefaultCellStyle.Font, new SolidBrush(Color.White), r1, format);
-        }
     }
 }

@@ -6,6 +6,7 @@
         Plan_MaterialDue,
         Purch_PRsAgingReleased,
         Purch_PoFirstRelease,
+        Purch_PoPrevRelease,
         Purch_NoConfirmation,
         PurchSub_PrReleaseToPoRelease,
         PurchSub_PoCreationToConfirmationEntry,
@@ -27,7 +28,7 @@
     }
 
 
-    public abstract class KeyPerformanceAction
+    public abstract class KeyPerformanceAction : Performance
     {
         public static string[] options =
         {
@@ -56,6 +57,8 @@
             "Current Plan vs Actual - Current Plan Date vs Current Confirmation Date for Hot Jobs"
         };
 
+
+
         /// <summary>
         /// The section that this KPA belongs under
         /// </summary>
@@ -69,8 +72,14 @@
 
 
         /// <summary>
-        /// Method to calculate the selective report for this Key Performance Action KPA
+        /// Method to calculate the selective report for this Key Performance Action (KPA)
         /// </summary>
         public abstract void RunSelectiveReport(string filter);
+
+
+        /// <summary>
+        /// Method to calculate the overall report this Key Performance Action (KPA)
+        /// </summary>
+        public abstract void RunOverallReport();
     }
 }

@@ -1,6 +1,8 @@
 ﻿using DataAccessLibrary;
 using KPA_KPI_Analyzer.Reporting;
 using Reporting;
+using Reporting.KeyPerformanceActions;
+using Reporting.KeyPerformanceIndicators;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -45,7 +47,7 @@ namespace KPA_KPI_Analyzer
                     // Create the KPA Report
                     try
                     {
-                        reports.Add(_reportType, new KpaReport());
+                        reports.Add(_reportType, KpaReport.KpaReportInstance);
                     }
                     catch (ArgumentNullException)
                     {
@@ -53,14 +55,18 @@ namespace KPA_KPI_Analyzer
                     }
                     catch (ArgumentException)
                     {
-                        reports[ReportingType.KpaReport] = new KpaReport();
+                        // Create a new instance of a KPA Report
+                        KpaReport.CreateNewInstance();
+                        
+                        // Assign that instance to the list of reports
+                        reports[ReportingType.KpaReport] = KpaReport.KpaReportInstance;
                     }
                     break;
                 case ReportingType.KpiReport:
                     // Create the KPI Report
                     try
                     {
-                        reports.Add(_reportType, new KpiReport());
+                        reports.Add(_reportType, KpiReport.KpiReportInstance);
                     }
                     catch(ArgumentNullException)
                     {
@@ -68,7 +74,11 @@ namespace KPA_KPI_Analyzer
                     }
                     catch(ArgumentException)
                     {
-                        reports[ReportingType.KpiReport] = new KpiReport();
+                        // Create a new instance of a KPI Report
+                        KpiReport.CreateNewInstance();
+                        
+                        // Assign that instance to the list of reports.
+                        reports[ReportingType.KpiReport] = KpiReport.KpiReportInstance;
                     }
                     break;
                 case ReportingType.ComparisonReport:
@@ -235,6 +245,9 @@ namespace KPA_KPI_Analyzer
 
 
 
+
+
+
         /// <summary>
         /// Finishes initializing the KPA Report and begins running the report
         /// </summary>
@@ -248,7 +261,6 @@ namespace KPA_KPI_Analyzer
 
             // Run the KPA Report
             (reports[ReportingType.KpaReport] as KpaReport).RunReport();
-
         }
 
 
@@ -273,7 +285,6 @@ namespace KPA_KPI_Analyzer
 
 
 
-
         /// <summary>
         /// Creates a Comparison Report and runs it based on the KPA option selected
         /// </summary>
@@ -282,11 +293,9 @@ namespace KPA_KPI_Analyzer
             // Get the filter option that the user wants for the report
             List<string> filters = GetFilters(reportingWidgetsController.ComparisonFilterOption);
 
-            // Run against the specific KPA option
-            switch(reportingWidgetsController.ComparisonKpaOption)
-            {
-                // All the KPA option cases
-            }
+            // Finish creating the Comparison report
+            (reports[ReportingType.ComparisonReport] as ComparisonReport)
+                .CreateKpaComparisonReport(filters, reportingWidgetsController.ComparisonKpaOption);
         }
 
 
@@ -299,12 +308,10 @@ namespace KPA_KPI_Analyzer
         {
             // Get the filter option that the user wants for the report
             List<string> filters = GetFilters(reportingWidgetsController.ComparisonFilterOption);
-            
-            // Run again the specific KPI option
-            switch(reportingWidgetsController.ComparisonKpiOption)
-            {
-                // All the KPI option cases
-            }
+
+            // Finishes creating the report
+            (reports[ReportingType.ComparisonReport] as ComparisonReport)
+                .CreateKpiComparisonReport(filters, reportingWidgetsController.ComparisonKpiOption);
         }
     }
 }

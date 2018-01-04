@@ -1,16 +1,9 @@
-﻿using Reporting.Interfaces;
+﻿
 
 namespace Reporting.KeyPerformanceIndicators.FollowUp
 {
-    public sealed class CurrentConfirmationDateVsInitialConfirmationDate : KeyPerformanceIndicator, ISelectiveVTwo
+    public sealed class CurrentConfirmationDateVsInitialConfirmationDate : KeyPerformanceIndicator
     {
-        #region ISelectiveVTwo Properties
-
-        public double SelectiveAverage { get; set; }
-        public int SelectiveTotalRecords { get; set; }
-        public double SelectivePercentFavorable { get; set; }
-
-        #endregion
 
 
 

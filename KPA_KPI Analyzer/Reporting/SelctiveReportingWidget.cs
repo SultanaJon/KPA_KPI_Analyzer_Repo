@@ -124,6 +124,9 @@ namespace KPA_KPI_Analyzer.Reporting
         }
 
 
+
+
+
         /// <summary>
         /// When the selected index of the combobox changes, get the newly selected filter option.
         /// </summary>
