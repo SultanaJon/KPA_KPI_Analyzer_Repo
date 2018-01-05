@@ -2,6 +2,8 @@
 
 using DataAccessLibrary;
 using Filters;
+using Reporting.Overall;
+using Reporting.Overall.TemplateOne;
 using Reporting.Selective;
 using System;
 using System.Data;
@@ -37,6 +39,39 @@ namespace Reporting.KeyPerformanceActions.HotJobs
         }
 
 
+
+
+        /// <summary>
+        /// The overall data that holds the overall reporting data
+        /// </summary>
+        private OverallDataPacket overallDataPacket;
+
+
+
+
+        /// <summary>
+        /// Propert to return the overall data for this KPA
+        /// </summary>
+        public TemplateOnePacket OverallPacket
+        {
+            get
+            {
+                // Return the overall data packet as a template one packet
+                return overallDataPacket as TemplateOnePacket;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    this.overallDataPacket = value;
+                }
+            }
+        }
+
+
+
+
+
         /// <summary>
         /// Default Constructor
         /// </summary>
@@ -47,7 +82,11 @@ namespace Reporting.KeyPerformanceActions.HotJobs
 
             // set the selective strategy context
             SelectiveContext = new SelectiveStrategyContext(new SelectiveDataTypeOne());
+
+            // Create a new instance of the overall data packet
+            overallDataPacket = new TemplateOnePacket();
         }
+
 
 
         /// <summary>

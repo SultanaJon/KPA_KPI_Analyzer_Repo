@@ -1,6 +1,7 @@
 ﻿using DataAccessLibrary;
 using Filters;
 using Reporting.Overall;
+using Reporting.Overall.TemplateOne;
 using Reporting.Overall.TemplateTwo;
 using Reporting.Selective;
 using System;
@@ -81,6 +82,9 @@ namespace Reporting.KeyPerformanceActions.CurrentPlanVsActual
 
             // set the selective strategy context
             SelectiveContext = new SelectiveStrategyContext(new SelectiveDataTypeThree());
+
+            // Create a new instance of the overall data packet
+            overallDataPacket = new TemplateOnePacket();
         }
 
 

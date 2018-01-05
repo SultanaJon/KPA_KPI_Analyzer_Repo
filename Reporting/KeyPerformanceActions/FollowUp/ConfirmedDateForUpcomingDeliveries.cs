@@ -81,6 +81,9 @@ namespace Reporting.KeyPerformanceActions.FollowUp
 
             // set the selective strategy context
             SelectiveContext = new SelectiveStrategyContext(new SelectiveDataTypeThree());
+
+            // Create a new instance of the overall data packet
+            overallDataPacket = new TemplateOnePacket();
         }
 
 

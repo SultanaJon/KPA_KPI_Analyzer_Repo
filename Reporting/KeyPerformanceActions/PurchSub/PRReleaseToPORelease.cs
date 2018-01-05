@@ -80,6 +80,9 @@ namespace Reporting.KeyPerformanceActions.PurchSub
 
             // set the selective strategy context
             SelectiveContext = new SelectiveStrategyContext(new SelectiveDataTypeOne());
+
+            // Create a new instance of the overall data packet
+            overallDataPacket = new TemplateOnePacket();
         }
 
 

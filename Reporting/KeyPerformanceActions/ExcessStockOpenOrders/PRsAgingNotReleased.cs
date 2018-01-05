@@ -81,6 +81,9 @@ namespace Reporting.KeyPerformanceActions.ExcessStockOpenOrders
 
             // set the selective strategy context
             SelectiveContext = new SelectiveStrategyContext(new SelectiveDataTypeOne());
+
+            // Create a new instance of the overall data packet
+            overallDataPacket = new TemplateOnePacket();
         }
 
 
