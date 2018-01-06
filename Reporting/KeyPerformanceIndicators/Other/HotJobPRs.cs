@@ -1,9 +1,12 @@
 ﻿
 
+using DataAccessLibrary;
 using Reporting.Overall;
 
 
 using Reporting.Selective;
+using System;
+using System.Data;
 
 namespace Reporting.KeyPerformanceIndicators.Other
 {
@@ -147,7 +150,36 @@ namespace Reporting.KeyPerformanceIndicators.Other
         /// </summary>
         public override void RunOverallReport()
         {
+            foreach (DataRow dr in DatabaseManager.AllDataDt.Rows)
+            {
+                //Check if the datarow meets the conditions of any applied filters.
+                if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
+                {
+                    // This datarow dos not meet the conditions of the filters applied.
+                    continue;
+                }
 
+                // Check if this record is a hot job
+                if (dr["Purch# Group"].ToString() != "UHJ")
+                    continue;
+
+                string[] strPrReqDt = (dr["Requisn Date"].ToString()).Split('/');
+                int reqDateYear = int.Parse(strPrReqDt[2]);
+                int reqDateMonth = int.Parse(strPrReqDt[0].TrimStart('0'));
+                int reqDateDay = int.Parse(strPrReqDt[1].TrimStart('0'));
+
+                DateTime prReqDate = new DateTime(reqDateYear, reqDateMonth, reqDateDay);
+
+                // Get the total value for this line item
+                TotalValue += decimal.Parse(dr["PR Pos#Value"].ToString());
+
+                DateTime today = DateTime.Now.Date;
+                double elapsedDays = (prReqDate - today).TotalDays;
+                double weeks = Math.Floor(elapsedDays / 7);
+
+                // Apply the weeks against the time span conditions
+                TimeSpanDump(weeks);
+            }
         }
     }
 }

@@ -1,9 +1,12 @@
 ﻿
 
+using DataAccessLibrary;
 using Reporting.Overall;
 
 
 using Reporting.Selective;
+using System;
+using System.Data;
 
 namespace Reporting.KeyPerformanceIndicators.Other
 {
@@ -129,19 +132,6 @@ namespace Reporting.KeyPerformanceIndicators.Other
 
 
 
-
-
-        /// <summary>
-        /// Calculates the selective report for this KPA
-        /// </summary>
-        private double GetElapsedDays()
-        {
-            return 1;
-        }
-
-
-
-
         /// <summary>
         /// Calculates the selective report for this KPA
         /// </summary>
@@ -157,7 +147,31 @@ namespace Reporting.KeyPerformanceIndicators.Other
         /// </summary>
         public override void RunOverallReport()
         {
+            foreach (DataRow dr in DatabaseManager.AllDataDt.Rows)
+            {
+                //Check if the datarow meets the conditions of any applied filters.
+                if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
+                {
+                    // This datarow dos not meet the conditions of the filters applied.
+                    continue;
+                }
 
+                string[] strReqDate = (dr["Requisn Date"].ToString()).Split('/');
+                int reqDateYear = int.Parse(strReqDate[2]);
+                int reqDateMonth = int.Parse(strReqDate[0].TrimStart('0'));
+                int reqDateDay = int.Parse(strReqDate[1].TrimStart('0'));
+
+                DateTime requiDate = new DateTime(reqDateYear, reqDateMonth, reqDateDay);
+
+                TotalValue += decimal.Parse(dr["PR Pos#Value"].ToString());
+
+                DateTime today = DateTime.Now.Date;
+                double elapsedDays = (requiDate - today).TotalDays;
+                double weeks = Math.Floor(elapsedDays / 7);
+
+                // Apply the weeks against the time span dump
+                TimeSpanDump(weeks);
+            }
         }
     }
 }
