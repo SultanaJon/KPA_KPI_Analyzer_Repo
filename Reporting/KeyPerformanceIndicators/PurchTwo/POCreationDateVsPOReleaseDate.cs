@@ -1,5 +1,8 @@
-﻿using Reporting.Overall;
+﻿using DataAccessLibrary;
+using Reporting.Overall;
 using Reporting.Selective;
+using System;
+using System.Data;
 
 namespace Reporting.KeyPerformanceIndicators.PurchTwo
 {
@@ -171,7 +174,53 @@ namespace Reporting.KeyPerformanceIndicators.PurchTwo
         /// </summary>
         public override void RunOverallReport()
         {
+            double totalDays = 0;
 
+            foreach (DataRow dr in DatabaseManager.prsOnPOsDt.Rows)
+            {
+                //Check if the datarow meets the conditions of any applied filters.
+                if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
+                {
+                    // This datarow dos not meet the conditions of the filters applied.
+                    continue;
+                }
+
+                string[] strPOLine1stRelDt = (dr["PO Line 1st Rel Dt"].ToString()).Split('/');
+                int poLine1stRelDtYear = int.Parse(strPOLine1stRelDt[2]);
+                int poLine1stRelDtMonth = int.Parse(strPOLine1stRelDt[0]);
+                int poLine1stRelDtDay = int.Parse(strPOLine1stRelDt[1]);
+
+                if (poLine1stRelDtYear == 0 && poLine1stRelDtMonth == 0 && poLine1stRelDtDay == 0)
+                {
+
+                    continue;
+                }
+                else
+                {
+                    poLine1stRelDtYear = int.Parse(strPOLine1stRelDt[2]);
+                    poLine1stRelDtMonth = int.Parse(strPOLine1stRelDt[0].TrimStart('0'));
+                    poLine1stRelDtDay = int.Parse(strPOLine1stRelDt[1].TrimStart('0'));
+                }
+
+                DateTime poLine1stRelDate = new DateTime(poLine1stRelDtYear, poLine1stRelDtMonth, poLine1stRelDtDay);
+
+                string[] strPOLineCreateDt = (dr["PO Line Creat#DT"].ToString()).Split('/');
+                int poOLineCreateDtYear = int.Parse(strPOLineCreateDt[2]);
+                int poOLineCreateDtMonth = int.Parse(strPOLineCreateDt[0].TrimStart('0'));
+                int poOLineCreateDtDay = int.Parse(strPOLineCreateDt[1].TrimStart('0'));
+
+                DateTime poCreateDate = new DateTime(poOLineCreateDtYear, poOLineCreateDtMonth, poOLineCreateDtDay);
+                double elapsedDays = (poLine1stRelDate - poCreateDate).TotalDays;
+                totalDays += elapsedDays;
+                elapsedDays = (int)elapsedDays;
+
+                // Apply the elapsed days to the time span conditions
+                TimeSpanDump(elapsedDays);
+            }
+
+
+            // Calcualte the average for this KPI
+            CalculateAverage(TotalRecords);
         }
     }
 }

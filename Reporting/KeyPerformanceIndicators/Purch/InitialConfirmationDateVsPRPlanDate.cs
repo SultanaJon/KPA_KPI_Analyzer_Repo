@@ -1,6 +1,9 @@
-﻿using Reporting.Interfaces;
+﻿using DataAccessLibrary;
+using Reporting.Interfaces;
 using Reporting.Overall;
 using Reporting.Selective;
+using System;
+using System.Data;
 
 namespace Reporting.KeyPerformanceIndicators.Purch
 {
@@ -100,14 +103,6 @@ namespace Reporting.KeyPerformanceIndicators.Purch
         /// </summary>
         public void TimeSpanDump(double _elapsedDays)
         {
-            // We are dealing with both negative and positive time spand so we need to round either up or down
-            if (_elapsedDays < 0)
-                _elapsedDays = Math.Floor(_elapsedDays);
-
-            if (_elapsedDays > 0)
-                _elapsedDays = Math.Ceiling(_elapsedDays);
-
-
             // Increment the total number of records that satisfy this KPI
             TotalRecords++;
 
@@ -186,7 +181,19 @@ namespace Reporting.KeyPerformanceIndicators.Purch
         /// </summary>
         public void CalculatePercentUnconfirmed(int _unconfirmedTotal)
         {
+            try
+            {
+                PercentUnconfirmed = Math.Round(((double)_unconfirmedTotal / TotalRecords) * 100, 2);
+                if (double.IsNaN(PercentUnconfirmed))
+                    PercentUnconfirmed = 0;
 
+                if (double.IsInfinity(PercentUnconfirmed))
+                    PercentUnconfirmed = 100;
+            }
+            catch (DivideByZeroException)
+            {
+                PercentUnconfirmed = 0;
+            }
         }
 
         #endregion
@@ -225,7 +232,59 @@ namespace Reporting.KeyPerformanceIndicators.Purch
         /// </summary>
         public override void RunOverallReport()
         {
+            double totalDays = 0;
+            int percentUnconfTotal = 0;
 
+            foreach (DataRow dr in DatabaseManager.prsOnPOsDt.Rows)
+            {
+                //Check if the datarow meets the conditions of any applied filters.
+                if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
+                {
+                    // This datarow dos not meet the conditions of the filters applied.
+                    continue;
+                }
+
+                string[] strFirstConfDate = (dr["1st Conf Date"].ToString()).Split('/');
+                int firstConfYear = int.Parse(strFirstConfDate[2]);
+                int firstConfMonth = int.Parse(strFirstConfDate[0]);
+                int firstConfDay = int.Parse(strFirstConfDate[1]);
+
+                if (firstConfYear == 0 && firstConfMonth == 0 && firstConfDay == 0)
+                {
+                    percentUnconfTotal++;
+                    TotalRecords++;
+                    continue;
+                }
+                else
+                {
+                    firstConfYear = int.Parse(strFirstConfDate[2]);
+                    firstConfMonth = int.Parse(strFirstConfDate[0].TrimStart('0'));
+                    firstConfDay = int.Parse(strFirstConfDate[1].TrimStart('0'));
+                }
+
+                DateTime firstConfDate = new DateTime(firstConfYear, firstConfMonth, firstConfDay);
+
+                string[] strPRPlanDate = (dr["PR Delivery Date"].ToString()).Split('/');
+                int prDelYear = int.Parse(strPRPlanDate[2]);
+                int prDelMonth = int.Parse(strPRPlanDate[0].TrimStart('0'));
+                int prDelDay = int.Parse(strPRPlanDate[1].TrimStart('0'));
+
+                DateTime prPlanDate = new DateTime(prDelYear, prDelMonth, prDelDay);
+                double elapsedDays = (firstConfDate - prPlanDate).TotalDays;
+                totalDays += elapsedDays;
+                elapsedDays = (int)elapsedDays;
+
+                // Add the elpased days against the time span conditions
+                TimeSpanDump(elapsedDays);
+            }
+
+            // Calculate the average for this KPI
+            CalculateAverage(totalDays);
+
+            // Calculate the percent unconfirmed for this KPI
+            CalculatePercentUnconfirmed(percentUnconfTotal);
+
+            // Calculate the percent favorable
         }
     }
 }

@@ -1,5 +1,8 @@
-﻿using Reporting.Overall;
+﻿using DataAccessLibrary;
+using Reporting.Overall;
 using Reporting.Selective;
+using System;
+using System.Data;
 
 namespace Reporting.KeyPerformanceIndicators.PurchPlan
 {
@@ -171,7 +174,53 @@ namespace Reporting.KeyPerformanceIndicators.PurchPlan
         /// </summary>
         public override void RunOverallReport()
         {
+            double totalDays = 0;
 
+            foreach (DataRow dr in DatabaseManager.prsOnPOsDt.Rows)
+            {
+                //Check if the datarow meets the conditions of any applied filters.
+                if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
+                {
+                    // This datarow dos not meet the conditions of the filters applied.
+                    continue;
+                }
+
+
+                string[] strPoLineFirstRelDate = (dr["PO Line 1st Rel Dt"].ToString()).Split('/');
+                int poLineFirstRelYear = int.Parse(strPoLineFirstRelDate[2]);
+                int poLineFirstRelMonth = int.Parse(strPoLineFirstRelDate[0]);
+                int poLineFirstRelDay = int.Parse(strPoLineFirstRelDate[1]);
+
+                if (poLineFirstRelYear == 0 && poLineFirstRelMonth == 0 && poLineFirstRelDay == 0)
+                {
+                    continue;
+                }
+                else
+                {
+                    poLineFirstRelYear = int.Parse(strPoLineFirstRelDate[2]);
+                    poLineFirstRelMonth = int.Parse(strPoLineFirstRelDate[0].TrimStart('0'));
+                    poLineFirstRelDay = int.Parse(strPoLineFirstRelDate[1].TrimStart('0'));
+                }
+
+                DateTime poLineFirstRelDate = new DateTime(poLineFirstRelYear, poLineFirstRelMonth, poLineFirstRelDay);
+
+                string[] strPRDelDate = (dr["PR Delivery Date"].ToString()).Split('/');
+                int prDelYear = int.Parse(strPRDelDate[2]);
+                int prDelMonth = int.Parse(strPRDelDate[0].TrimStart('0'));
+                int prDelDay = int.Parse(strPRDelDate[1].TrimStart('0'));
+
+                DateTime prDelDate = new DateTime(prDelYear, prDelMonth, prDelDay);
+                double elapsedDays = (prDelDate - poLineFirstRelDate).TotalDays;
+                totalDays += elapsedDays;
+                elapsedDays = (int)elapsedDays;
+
+                // Apply the elapsed days against the time span conditions
+                TimeSpanDump(elapsedDays);
+            }
+
+
+            // Calculate the average for this KPI
+            CalculateAverage(totalDays);
         }
     }
 }

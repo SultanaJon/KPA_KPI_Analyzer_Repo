@@ -1,6 +1,9 @@
 ﻿using Reporting.Overall;
 using Reporting.Interfaces;
 using Reporting.Selective;
+using System;
+using System.Data;
+using DataAccessLibrary;
 
 namespace Reporting.KeyPerformanceIndicators.PurchTwo
 {
@@ -90,7 +93,20 @@ namespace Reporting.KeyPerformanceIndicators.PurchTwo
         /// </summary>
         public void CalculatePercentUnconfirmed(int _unconfirmedTotal)
         {
+            try
+            {
+                PercentUnconfirmed = Math.Round(((double)_unconfirmedTotal / TotalRecords) * 100, 2);
 
+                if (double.IsNaN(PercentUnconfirmed))
+                    PercentUnconfirmed = 0;
+
+                if (double.IsInfinity(PercentUnconfirmed))
+                    PercentUnconfirmed = 100;
+            }
+            catch (DivideByZeroException)
+            {
+                PercentUnconfirmed = 0;
+            }
         }
 
         #endregion
@@ -216,7 +232,71 @@ namespace Reporting.KeyPerformanceIndicators.PurchTwo
         /// </summary>
         public override void RunOverallReport()
         {
+            int percentUnconfTotal = 0;
+            double totalDays = 0;
 
+            foreach (DataRow dr in DatabaseManager.prsOnPOsDt.Rows)
+            {
+                //Check if the datarow meets the conditions of any applied filters.
+                if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
+                {
+                    // This datarow dos not meet the conditions of the filters applied.
+                    continue;
+                }
+
+
+                string[] strPOLineFirstRelDate = (dr["PO Line 1st Rel Dt"].ToString()).Split('/');
+                int poLineFirstRelDateYear = int.Parse(strPOLineFirstRelDate[2]);
+                int poLineFirstRelDateMonth = int.Parse(strPOLineFirstRelDate[0]);
+                int poLineFirstRelDateDay = int.Parse(strPOLineFirstRelDate[1]);
+
+                if (poLineFirstRelDateYear == 0 && poLineFirstRelDateMonth == 0 && poLineFirstRelDateDay == 0)
+                {
+                    continue;
+                }
+                else
+                {
+                    poLineFirstRelDateYear = int.Parse(strPOLineFirstRelDate[2]);
+                    poLineFirstRelDateMonth = int.Parse(strPOLineFirstRelDate[0].TrimStart('0'));
+                    poLineFirstRelDateDay = int.Parse(strPOLineFirstRelDate[1].TrimStart('0'));
+                }
+
+                DateTime poLineFirstRelDate = new DateTime(poLineFirstRelDateYear, poLineFirstRelDateMonth, poLineFirstRelDateDay);
+
+                string[] strPOLineFirstConfCreateDate = (dr["1st Conf Creation Da"].ToString()).Split('/');
+                int poLineFirstConfCreateYear = int.Parse(strPOLineFirstConfCreateDate[2]);
+                int poLineFirstConfCreateMonth = int.Parse(strPOLineFirstConfCreateDate[0]);
+                int poLineFirstConfCreateDay = int.Parse(strPOLineFirstConfCreateDate[1]);
+
+
+                if (poLineFirstConfCreateYear == 0 && poLineFirstConfCreateMonth == 0 && poLineFirstConfCreateDay == 0)
+                {
+                    percentUnconfTotal++;
+                    TotalRecords++;
+                    continue;
+                }
+                else
+                {
+                    poLineFirstConfCreateYear = int.Parse(strPOLineFirstConfCreateDate[2]);
+                    poLineFirstConfCreateMonth = int.Parse(strPOLineFirstConfCreateDate[0].TrimStart('0'));
+                    poLineFirstConfCreateDay = int.Parse(strPOLineFirstConfCreateDate[1].TrimStart('0'));
+                }
+
+                DateTime poLineFirstConfCreateDt = new DateTime(poLineFirstConfCreateYear, poLineFirstConfCreateMonth, poLineFirstConfCreateDay);
+
+                double elapsedDays = (poLineFirstConfCreateDt - poLineFirstRelDate).TotalDays;
+                totalDays += elapsedDays;
+                elapsedDays = (int)elapsedDays;
+
+                // Apply the elapsed days against the time span conditions
+                TimeSpanDump(elapsedDays);
+            }
+
+
+            // Calculate the average for this KPI
+
+            // Calcualte the percent unconfrimed for this KPI
+            CalculatePercentUnconfirmed(percentUnconfTotal);
         }
     }
 }

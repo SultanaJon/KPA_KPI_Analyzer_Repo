@@ -1,6 +1,9 @@
 ﻿using Reporting.Overall;
 using Reporting.Selective;
 using Reporting.Interfaces;
+using System;
+using System.Data;
+using DataAccessLibrary;
 
 namespace Reporting.KeyPerformanceIndicators.PurchTotal
 {
@@ -89,7 +92,19 @@ namespace Reporting.KeyPerformanceIndicators.PurchTotal
         /// </summary>
         public void CalculatePercentUnconfirmed(int _unconfirmedTotal)
         {
+            try
+            {
+                PercentUnconfirmed = Math.Round(((double)_unconfirmedTotal / TotalRecords) * 100, 2);
+                if (double.IsNaN(PercentUnconfirmed))
+                    PercentUnconfirmed = 0;
 
+                if (double.IsInfinity(PercentUnconfirmed))
+                    PercentUnconfirmed = 100;
+            }
+            catch (DivideByZeroException)
+            {
+                PercentUnconfirmed = 0;
+            }
         }
 
         #endregion
@@ -199,7 +214,71 @@ namespace Reporting.KeyPerformanceIndicators.PurchTotal
         /// </summary>
         public override void RunOverallReport()
         {
+            int percentUnconfTotal = 0;
+            double totalDays = 0;
 
+            foreach (DataRow dr in DatabaseManager.prsOnPOsDt.Rows)
+            {
+                //Check if the datarow meets the conditions of any applied filters.
+                if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
+                {
+                    // This datarow dos not meet the conditions of the filters applied.
+                    continue;
+                }
+
+                string[] strfirstConfCreateDt = (dr["1st Conf Creation Da"].ToString()).Split('/');
+                int firstConfCreateYear = int.Parse(strfirstConfCreateDt[2]);
+                int firstConfCreateMonth = int.Parse(strfirstConfCreateDt[0]);
+                int firstConfCreateDay = int.Parse(strfirstConfCreateDt[1]);
+
+                if (firstConfCreateYear == 0 && firstConfCreateMonth == 0 & firstConfCreateDay == 0)
+                {
+                    percentUnconfTotal++;
+                    TotalRecords++;
+                    continue;
+                }
+                else
+                {
+                    firstConfCreateYear = int.Parse(strfirstConfCreateDt[2]);
+                    firstConfCreateMonth = int.Parse(strfirstConfCreateDt[0].TrimStart('0'));
+                    firstConfCreateDay = int.Parse(strfirstConfCreateDt[1].TrimStart('0'));
+                }
+
+                DateTime poLineConfCreateDate = new DateTime(firstConfCreateYear, firstConfCreateMonth, firstConfCreateDay);
+
+                #region EVASO_BUT_NOT_FULLY_RELEASED_CHECK
+
+                string[] strPrFullyRelDate = (dr["PR Fully Rel Date"].ToString()).Split('/');
+                int prFullyRelYear = int.Parse(strPrFullyRelDate[2]);
+                int prFullyRelMonth = int.Parse(strPrFullyRelDate[0]);
+                int prFullyRelDay = int.Parse(strPrFullyRelDate[1]);
+
+
+                if (prFullyRelYear == 0 && prFullyRelMonth == 0 && prFullyRelDay == 0)
+                {
+                    // This PR line or PR in general might have been delted
+                    continue;
+                }
+
+
+                #endregion
+
+
+                DateTime prFullyRelDt = new DateTime(prFullyRelYear, prFullyRelMonth, prFullyRelDay);
+                double elapsedDays = (poLineConfCreateDate - prFullyRelDt).TotalDays;
+                totalDays += elapsedDays;
+                elapsedDays = (int)elapsedDays;
+
+
+                // Apply the elapsed days against the time span conditions
+
+            }
+
+            // Calculate the percent uncofirmed for this KPI
+            CalculatePercentUnconfirmed(percentUnconfTotal);
+
+            // Calculate the average for this KPI
+            CalculateAverage(totalDays);
         }
     }
 }

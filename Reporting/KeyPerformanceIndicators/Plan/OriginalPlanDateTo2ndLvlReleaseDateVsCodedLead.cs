@@ -1,6 +1,9 @@
 ﻿using Reporting.Overall;
 using Reporting.Selective;
 using Reporting.Interfaces;
+using System.Data;
+using DataAccessLibrary;
+using System;
 
 namespace Reporting.KeyPerformanceIndicators.Plan
 {
@@ -96,6 +99,7 @@ namespace Reporting.KeyPerformanceIndicators.Plan
             if (_elapsedDays > 0)
                 _elapsedDays = Math.Ceiling(_elapsedDays);
 
+            _elapsedDays = (int)_elapsedDays;
 
             // Increment the total number of records that satisfy this KPI
             TotalRecords++;
@@ -199,7 +203,57 @@ namespace Reporting.KeyPerformanceIndicators.Plan
         /// </summary>
         public override void RunOverallReport()
         {
+            double totalDays = 0;
 
+            foreach (DataRow dr in DatabaseManager.pr2ndLvlRelDateDt.Rows)
+            {
+                //Check if the datarow meets the conditions of any applied filters.
+                if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
+                {
+                    // This datarow dos not meet the conditions of the filters applied.
+                    continue;
+                }
+
+
+
+                string[] strPrPlanDate = (dr["PR Delivery Date"].ToString()).Split('/');
+                int delConfYear = int.Parse(strPrPlanDate[2]);
+                int delConfMonth = int.Parse(strPrPlanDate[0].TrimStart('0'));
+                int delConfDay = int.Parse(strPrPlanDate[1].TrimStart('0'));
+
+
+
+                #region EVASO_BUT_NOT_FULLY_RELEASED_CHECK
+
+                string[] strPrFullyRelDate = (dr["PR Fully Rel Date"].ToString()).Split('/');
+                int prFullyRelYear = int.Parse(strPrFullyRelDate[2]);
+                int prFullyRelMonth = int.Parse(strPrFullyRelDate[0]);
+                int prFullyRelDay = int.Parse(strPrFullyRelDate[1]);
+
+
+                if (prFullyRelYear == 0 && prFullyRelMonth == 0 && prFullyRelDay == 0)
+                {
+                    // This PR line or PR in general might have been delted
+                    continue;
+                }
+
+
+                #endregion
+
+                DateTime prFullyRelDt = new DateTime(prFullyRelYear, prFullyRelMonth, prFullyRelDay);
+                DateTime prPlanDate = new DateTime(delConfYear, delConfMonth, delConfDay);
+                int commCodeLeadTime = int.Parse(dr["Pl# Deliv# Time"].ToString());
+
+                double elapsedDays = (prPlanDate - prFullyRelDt).TotalDays;
+                elapsedDays -= commCodeLeadTime;
+                totalDays += elapsedDays;
+
+                // Apply the elapsed days against the time span conditions
+                TimeSpanDump(elapsedDays);
+            }
+
+            // Calculate the average for this KPI
+            CalculateAverage(totalDays);
         }
     }
 }
