@@ -477,7 +477,6 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
                 hotJobPrs.data.TotalValue = totalValue;
                 totalValue = 0;
 
-
                 DatabaseManager.UpdateLoadProgress();
             }
             catch (Exception ex)

@@ -86,6 +86,34 @@ namespace Reporting.KeyPerformanceActions.PurchSub
         }
 
 
+
+
+        /// <summary>
+        /// Returns the number of elapsed days based on certain conditions for this KPA
+        /// </summary>
+        /// <param name="dr"></param>
+        /// <returns></returns>
+        private double GetElapsedDays(DataRow dr)
+        {
+            // Get teh PO Line Creation Date from the data row
+            string[] strDate = (dr["PO Line Creat#DT"].ToString()).Split('/');
+            int year = int.Parse(strDate[2]);
+            int month = int.Parse(strDate[0].TrimStart('0'));
+            int day = int.Parse(strDate[1].TrimStart('0'));
+
+            // Find the difference between todays date and the date the po line was created
+            DateTime date = new DateTime(year, month, day);
+            DateTime today = DateTime.Now.Date;
+            double elapsedDays = (today - date).TotalDays;
+            elapsedDays = (int)elapsedDays;
+
+            // Return the calculated elapsed days
+            return elapsedDays;
+        }
+
+
+
+
         /// <summary>
         /// Calculates the selective report for this KPA
         /// </summary>
@@ -109,21 +137,10 @@ namespace Reporting.KeyPerformanceActions.PurchSub
                     continue;
                 }
 
-                // Get the requtiion date in this data row.
-                string[] reqCreationDate = (dr["Requisn Date"].ToString()).Split('/');
-                int year = int.Parse(reqCreationDate[2]);
-                int month = int.Parse(reqCreationDate[0].TrimStart('0'));
-                int day = int.Parse(reqCreationDate[1].TrimStart('0'));
+                // Add the elapsed days to the total number of days
+                totalDays += GetElapsedDays(dr);
 
-                DateTime reqDate = new DateTime(year, month, day);
-                DateTime today = DateTime.Now.Date;
-
-                // Get the difference between todays date and the date the requisition was created
-                double elapsedDays = (today - reqDate).TotalDays;
-                totalDays += elapsedDays;
-                elapsedDays = (int)elapsedDays;
-
-                // Increment the total for this selective report
+                // increment the total number of records for this selective KPA
                 data.TotalRecords++;
             }
 
@@ -138,7 +155,33 @@ namespace Reporting.KeyPerformanceActions.PurchSub
         /// </summary>
         public override void RunOverallReport()
         {
+            // Get the data from the database for this KPA
+            DataTable dt = KpaUtils.PurchSubQueries.GetPoCreationToConfirmationEntry();
 
+            // used for calculating the average
+            double totalDays = 0;
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                //Check if the datarow meets the conditions of any applied filters.
+                if (!FilterUtils.EvaluateAgainstFilters(dr))
+                {
+                    // This datarow dos not meet the conditions of the filters applied.
+                    continue;
+                }
+
+                // Get the elapsed days for this KPA
+                double elapsedDays = GetElapsedDays(dr);
+
+                // Increment the total number of days
+                totalDays += elapsedDays;
+
+                // Run the elapsed days against the timespan conditions
+                overallDataPacket.TimeSpanDump(elapsedDays);
+            }
+
+            // Calculate the average number of days
+            OverallPacket.CalculateAverage(totalDays);
         }
     }
 }

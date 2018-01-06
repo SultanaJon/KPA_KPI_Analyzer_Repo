@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Reporting.Overall.TemplateFive
 {
-    public abstract class TemplateFivePacket : OverallDataPacket
+    public class TemplateFivePacket : OverallDataPacket
     {
         public override double OverallAverage { get; set; }
         public override int OverallTotalRecords { get; set; }
@@ -23,13 +23,57 @@ namespace Reporting.Overall.TemplateFive
 
 
 
-
         /// <summary>
-        /// 
+        /// Run the supplied elspased days against the time span conditions
         /// </summary>
-        internal void TimeSpanDump()
+        /// <param name="_elapsedDays">The number of days elapsed</param>
+        internal override void TimeSpanDump(double _elapsedDays)
         {
+            double weeks = Math.Floor(_elapsedDays / 7);
 
+            OverallTotalRecords++;
+
+
+            if (weeks >= 0)
+            {
+                GreaterThanEqualToZeroWeeks++;
+            }
+            else if (weeks >= (-1) && weeks < 0)
+            {
+                GreaterThanEqualToNegOneWeek++;
+            }
+            else if (weeks >= (-2) && weeks < (-1))
+            {
+                GreaterThanEqualToNegTwoWeeks++;
+            }
+            else if (weeks >= (-3) && weeks < (-2))
+            {
+                GreaterThanEqualToNegThreeWeeks++;
+            }
+            else if (weeks >= (-4) && weeks < (-3))
+            {
+                GreaterThanEqualToNegFourWeeks++;
+            }
+            else if (weeks >= (-5) && weeks < (-4))
+            {
+                GreaterThanEqualToNegFiveWeeks++;
+            }
+            else if (weeks >= (-6) && weeks < (-5))
+            {
+                GreaterThanEqualToNegSixWeeks++;
+            }
+            else if (weeks >= (-7) && weeks < (-6))
+            {
+                GreaterThanEqualToNegSevenWeeks++;
+            }
+            else if (weeks >= (-8) && weeks < (-7))
+            {
+                GreaterThanEqualToNegEightWeeks++;
+            }
+            else if (weeks < (-8))
+            {
+                LessThanNegEightWeeks++;
+            }
         }
     }
 }

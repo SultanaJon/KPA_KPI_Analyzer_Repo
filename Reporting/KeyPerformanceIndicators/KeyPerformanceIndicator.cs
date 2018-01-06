@@ -73,8 +73,14 @@
 
 
         /// <summary>
-        /// Method to calculate the selective report for this Key Performance Indicator (KPI)
+        /// Method to calculate the selective report for this Key Performance Action (KPA)
         /// </summary>
-        public abstract void RunSelectiveReport(string uniqueFilters);
+        public abstract void RunSelectiveReport(string filter);
+
+
+        /// <summary>
+        /// Method to calculate the overall report this Key Performance Action (KPA)
+        /// </summary>
+        public abstract void RunOverallReport();
     }
 } 

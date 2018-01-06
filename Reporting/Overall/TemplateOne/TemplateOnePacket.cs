@@ -21,16 +21,6 @@ namespace Reporting.Overall.TemplateOne
 
 
 
-        /// <summary>
-        /// Default Constructor
-        /// </summary>
-        public TemplateOnePacket()
-        {
-
-        }
-
-
-
 
         /// <summary>
         /// Calculates the average for this KPA

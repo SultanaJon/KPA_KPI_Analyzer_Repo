@@ -88,6 +88,58 @@ namespace Reporting.KeyPerformanceActions.FollowUp
         }
 
 
+
+
+
+        /// <summary>
+        /// Returns the number of elapsed days based on certain conditions for this KPA
+        /// </summary>
+        /// <param name="dr"></param>
+        /// <returns></returns>
+        private double GetElapsedDays(DataRow dr)
+        {
+            // Get the latest confirmation date from the data row.
+            string[] strCurrConfDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
+            int delConfYear = int.Parse(strCurrConfDate[2]);
+            int delConfMonth = int.Parse(strCurrConfDate[0].TrimStart('0'));
+            int delConfDay = int.Parse(strCurrConfDate[1].TrimStart('0'));
+
+            DateTime delConfDate = new DateTime(delConfYear, delConfMonth, delConfDay);
+
+
+            // Get the resecheduling date from the data row.
+            string[] strCurrPlanDate = (dr["Rescheduling date"].ToString()).Split('/');
+            int currConfYear = int.Parse(strCurrPlanDate[2]);
+            int currConfMonth = int.Parse(strCurrPlanDate[0]);
+            int currConfDay = int.Parse(strCurrPlanDate[1]);
+
+            // If the rescheduling date is 00/00/0000, get the delivery confirmation date
+            if (currConfYear == 0 && currConfMonth == 0 && currConfDay == 0)
+            {
+                string[] strNewCurrConfDate = (dr["Delivery Date"].ToString()).Split('/');
+                currConfYear = int.Parse(strNewCurrConfDate[2]);
+                currConfMonth = int.Parse(strNewCurrConfDate[0].TrimStart('0'));
+                currConfDay = int.Parse(strNewCurrConfDate[1].TrimStart('0'));
+            }
+            else
+            {
+                currConfYear = int.Parse(strCurrPlanDate[2]);
+                currConfMonth = int.Parse(strCurrPlanDate[0].TrimStart('0'));
+                currConfDay = int.Parse(strCurrPlanDate[1].TrimStart('0'));
+            }
+
+            // Find the difference between the delivery confirmation date and the current plan date (rescheduling date)
+            DateTime currPlanDate = new DateTime(currConfYear, currConfMonth, currConfDay);
+            double elapsedDays = (delConfDate - currPlanDate).TotalDays;
+            elapsedDays = (int)elapsedDays;
+
+            // Return the calculated elapsed days
+            return elapsedDays;
+        }
+
+
+
+
         /// <summary>
         /// Calculates the selective report for this KPA
         /// </summary>
@@ -111,44 +163,10 @@ namespace Reporting.KeyPerformanceActions.FollowUp
                     continue;
                 }
 
+                // Add the elapsed days to the total number of days
+                totalDays += GetElapsedDays(dr);
 
-                // Get the latest confirmation date from the data row.
-                string[] strCurrConfDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
-                int delConfYear = int.Parse(strCurrConfDate[2]);
-                int delConfMonth = int.Parse(strCurrConfDate[0].TrimStart('0'));
-                int delConfDay = int.Parse(strCurrConfDate[1].TrimStart('0'));
-
-                DateTime delConfDate = new DateTime(delConfYear, delConfMonth, delConfDay);
-
-
-                // Get the resecheduling date from the data row.
-                string[] strCurrPlanDate = (dr["Rescheduling date"].ToString()).Split('/');
-                int currConfYear = int.Parse(strCurrPlanDate[2]);
-                int currConfMonth = int.Parse(strCurrPlanDate[0]);
-                int currConfDay = int.Parse(strCurrPlanDate[1]);
-
-                // If the rescheduling date is 00/00/0000, get the delivery confirmation date
-                if (currConfYear == 0 && currConfMonth == 0 && currConfDay == 0)
-                {
-                    string[] strNewCurrConfDate = (dr["Delivery Date"].ToString()).Split('/');
-                    currConfYear = int.Parse(strNewCurrConfDate[2]);
-                    currConfMonth = int.Parse(strNewCurrConfDate[0].TrimStart('0'));
-                    currConfDay = int.Parse(strNewCurrConfDate[1].TrimStart('0'));
-                }
-                else
-                {
-                    currConfYear = int.Parse(strCurrPlanDate[2]);
-                    currConfMonth = int.Parse(strCurrPlanDate[0].TrimStart('0'));
-                    currConfDay = int.Parse(strCurrPlanDate[1].TrimStart('0'));
-                }
-
-                // Find the difference between the delivery confirmation date and the current plan date (rescheduling date)
-                DateTime currPlanDate = new DateTime(currConfYear, currConfMonth, currConfDay);
-                double elapsedDays = (delConfDate - currPlanDate).TotalDays;
-                totalDays += elapsedDays;
-                elapsedDays = (int)elapsedDays;
-
-                // Increment the total for this selective report
+                // increment the total number of records for this selective KPA
                 data.TotalRecords++;
             }
 
@@ -163,7 +181,33 @@ namespace Reporting.KeyPerformanceActions.FollowUp
         /// </summary>
         public override void RunOverallReport()
         {
+            // Get the data from the database for this KPA
+            DataTable dt = KpaUtils.FollowUpQueries.GetConfirmedDateVsPlanDate();
 
+            // used for calculating the average
+            double totalDays = 0;
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                //Check if the datarow meets the conditions of any applied filters.
+                if (!FilterUtils.EvaluateAgainstFilters(dr))
+                {
+                    // This datarow dos not meet the conditions of the filters applied.
+                    continue;
+                }
+
+                // Get the elapsed days for this KPA
+                double elapsedDays = GetElapsedDays(dr);
+
+                // Increment the total number of days
+                totalDays += elapsedDays;
+
+                // Run the elapsed days against the timespan conditions
+                overallDataPacket.TimeSpanDump(elapsedDays);
+            }
+
+            // Calculate the average number of days
+            OverallPacket.CalculateAverage(totalDays);
         }
     }
 }

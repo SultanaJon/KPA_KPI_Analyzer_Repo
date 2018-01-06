@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Reporting.Overall.TemplateFour
 {
-    public abstract class TemplateFourPacket : OverallDataPacket
+    public class TemplateFourPacket : OverallDataPacket
     {
         public override double OverallAverage { get; set; }
         public override int OverallTotalRecords { get; set; }
@@ -24,13 +24,60 @@ namespace Reporting.Overall.TemplateFour
 
 
 
-
         /// <summary>
-        /// 
+        /// Run the supplied elspased days against the time span conditions
         /// </summary>
-        internal void TimeSpanDump()
+        /// <param name="_elapsedDays">The number of days elapsed</param>
+        internal override void TimeSpanDump(double _elapsedDays)
         {
+            // Increment the total number of records
+            OverallTotalRecords++;
 
+            // Increment the timespan based on the satisfying condition
+            if (_elapsedDays <= 0)
+            {
+                LessThanEqualToZeroDays++;
+            }
+            else if (_elapsedDays >= 1 && _elapsedDays <= 3)
+            {
+                OneToThreeDays++;
+            }
+            else if (_elapsedDays >= 4 && _elapsedDays <= 7)
+            {
+                FourToSevenDays++;
+            }
+            else if (_elapsedDays >= 8 && _elapsedDays <= 14)
+            {
+                EightToFourteenDays++;
+            }
+            else if (_elapsedDays >= 15 && _elapsedDays <= 21)
+            {
+                FifteenToTwentyOneDays++;
+            }
+            else if (_elapsedDays >= 22 && _elapsedDays <= 28)
+            {
+                TwentyTwoToTwentyEightDays++;
+            }
+            else if (_elapsedDays >= 29 && _elapsedDays <= 35)
+            {
+                TwentyNineToThirtyFiveDays++;
+            }
+            else if (_elapsedDays >= 36 && _elapsedDays <= 42)
+            {
+                ThirtySixtoFourtyTwoDays++;
+            }
+            else if (_elapsedDays >= 43 && _elapsedDays <= 49)
+            {
+                FourtyThreeToFourtyNineDays++;
+            }
+            else if (_elapsedDays >= 50 && _elapsedDays <= 56)
+            {
+                FiftyToFiftySixDays++;
+            }
+            else // elapsed days is >= 57
+            {
+                FiftySevenPlusDays++;
+            }
         }
     }
 }

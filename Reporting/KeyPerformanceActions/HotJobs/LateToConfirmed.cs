@@ -88,6 +88,26 @@ namespace Reporting.KeyPerformanceActions.HotJobs
         }
 
 
+
+
+        /// <summary>
+        /// Returns the number of elapsed days based on certain conditions for this KPA
+        /// </summary>
+        /// <param name="dr"></param>
+        /// <returns></returns>
+        private double GetElapsedDays(DateTime _today, DateTime _delConfDate)
+        {
+            // Find the difference between today's date and the delivery confirmation date
+            double elapsedDays = (_today - _delConfDate).TotalDays;
+            elapsedDays = (int)elapsedDays;
+
+            // Return the calculated elapsed days
+            return elapsedDays;
+        }
+
+
+
+
         /// <summary>
         /// Calculates the selective report for this KPA
         /// </summary>
@@ -121,14 +141,14 @@ namespace Reporting.KeyPerformanceActions.HotJobs
                 DateTime delConfDate = new DateTime(year, month, day);
                 DateTime today = DateTime.Now.Date;
 
+                // If the delivery confirmation date is greater than today, move onto the next record
                 if (!(delConfDate < today))
                     continue;
 
-                double elapsedDays = (today - delConfDate).TotalDays;
-                totalDays += elapsedDays;
-                elapsedDays = (int)elapsedDays;
+                // Add the elapsed days to the total number of days
+                totalDays += GetElapsedDays(today, delConfDate);
 
-                // Increment the total for this selective report
+                // increment the total number of records for this selective KPA
                 data.TotalRecords++;
             }
 
@@ -143,7 +163,47 @@ namespace Reporting.KeyPerformanceActions.HotJobs
         /// </summary>
         public override void RunOverallReport()
         {
+            // Get the data from the database for this KPA
+            DataTable dt = KpaUtils.HotJobsQueries.GetLateToConfirmed();
 
+            // used for calculating the average
+            double totalDays = 0;
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                //Check if the datarow meets the conditions of any applied filters.
+                if (!FilterUtils.EvaluateAgainstFilters(dr))
+                {
+                    // This datarow dos not meet the conditions of the filters applied.
+                    continue;
+                }
+
+                // Get the latest confirmation date from the data row.
+                string[] strDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
+                int year = int.Parse(strDate[2]);
+                int month = int.Parse(strDate[0].TrimStart('0'));
+                int day = int.Parse(strDate[1].TrimStart('0'));
+
+                // Find the difference between today's date and the delivery confirmation date.
+                DateTime delConfDate = new DateTime(year, month, day);
+                DateTime today = DateTime.Now.Date;
+
+                // If the delivery confirmation date is greater than today, move onto the next record
+                if (!(delConfDate < today))
+                    continue;
+
+                // Get the elapsed days for this KPA
+                double elapsedDays = GetElapsedDays(today, delConfDate);
+
+                // Increment the total number of days
+                totalDays += elapsedDays;
+
+                // Run the elapsed days against the timespan conditions
+                overallDataPacket.TimeSpanDump(elapsedDays);
+            }
+
+            // Calculate the average number of days
+            OverallPacket.CalculateAverage(totalDays);
         }
     }
 }

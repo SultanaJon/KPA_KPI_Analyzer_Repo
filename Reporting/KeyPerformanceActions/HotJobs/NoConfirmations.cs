@@ -88,6 +88,33 @@ namespace Reporting.KeyPerformanceActions.HotJobs
         }
 
 
+
+
+        /// <summary>
+        /// Returns the number of elapsed days based on certain conditions for this KPA
+        /// </summary>
+        /// <param name="dr"></param>
+        /// <returns></returns>
+        private double GetElapsedDays(DataRow dr)
+        {
+            // Get the PO line creation date from the data row
+            string[] strDate = (dr["PO Line Creat#DT"].ToString()).Split('/');
+            int year = int.Parse(strDate[2]);
+            int month = int.Parse(strDate[0].TrimStart('0'));
+            int day = int.Parse(strDate[1].TrimStart('0'));
+
+            // Find the difference between todays date the the date the PO line was created
+            DateTime poLineCreateDate = new DateTime(year, month, day);
+            DateTime today = DateTime.Now.Date;
+            double elapsedDays = (today - poLineCreateDate).TotalDays;
+            elapsedDays = (int)elapsedDays;
+
+            return elapsedDays;
+        }
+
+
+
+
         /// <summary>
         /// Calculates the selective report for this KPA
         /// </summary>
@@ -111,20 +138,10 @@ namespace Reporting.KeyPerformanceActions.HotJobs
                     continue;
                 }
 
-                // Get the PO line creation date from the data row
-                string[] strDate = (dr["PO Line Creat#DT"].ToString()).Split('/');
-                int year = int.Parse(strDate[2]);
-                int month = int.Parse(strDate[0].TrimStart('0'));
-                int day = int.Parse(strDate[1].TrimStart('0'));
+                // Add the elapsed days to the total number of days
+                totalDays += GetElapsedDays(dr);
 
-                // Find the difference between todays date the the date the PO line was created
-                DateTime poLineCreateDate = new DateTime(year, month, day);
-                DateTime today = DateTime.Now.Date;
-                double elapsedDays = (today - poLineCreateDate).TotalDays;
-                totalDays += elapsedDays;
-                elapsedDays = (int)elapsedDays;
-
-                // Increment the total for this selective report
+                // increment the total number of records for this selective KPA
                 data.TotalRecords++;
             }
 
@@ -139,7 +156,33 @@ namespace Reporting.KeyPerformanceActions.HotJobs
         /// </summary>
         public override void RunOverallReport()
         {
+            // Get the data from the database for this KPA
+            DataTable dt = KpaUtils.HotJobsQueries.GetNoConfirmations();
 
+            // used for calculating the average
+            double totalDays = 0;
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                //Check if the datarow meets the conditions of any applied filters.
+                if (!FilterUtils.EvaluateAgainstFilters(dr))
+                {
+                    // This datarow dos not meet the conditions of the filters applied.
+                    continue;
+                }
+
+                // Get the elapsed days for this KPA
+                double elapsedDays = GetElapsedDays(dr);
+
+                // Increment the total number of days
+                totalDays += elapsedDays;
+
+                // Run the elapsed days against the timespan conditions
+                overallDataPacket.TimeSpanDump(elapsedDays);
+            }
+
+            // Calculate the average number of days
+            OverallPacket.CalculateAverage(totalDays);
         }
     }
 }
