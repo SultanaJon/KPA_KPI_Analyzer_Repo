@@ -3,15 +3,31 @@
 using DataAccessLibrary;
 using Filters;
 using Reporting.Overall;
-using Reporting.Overall.TemplateOne;
+
 using Reporting.Selective;
 using System;
 using System.Data;
 
 namespace Reporting.KeyPerformanceActions.HotJobs
 {
-    public sealed class LateToConfirmed : KeyPerformanceAction
+    public sealed class LateToConfirmed : KeyPerformanceAction, ITemplateOne
     {
+        #region ITemplateOne Properties
+
+        public double Average { get; set; }
+        public int TotalRecords { get; set; }
+        public int LessThanEqualToZeroDays { get; set; }
+        public int OneToThreeDays { get; set; }
+        public int FourToSevenDays { get; set; }
+        public int EightToFourteenDays { get; set; }
+        public int FifteenToTwentyOneDays { get; set; }
+        public int TwentyTwoToTwentyEightDays { get; set; }
+        public int TwentyNinePlusDays { get; set; }
+
+        #endregion
+
+
+
         /// <summary>
         /// The Selective Strategy Context that holds the selective data for reporting
         /// </summary>
@@ -42,37 +58,6 @@ namespace Reporting.KeyPerformanceActions.HotJobs
 
 
         /// <summary>
-        /// The overall data that holds the overall reporting data
-        /// </summary>
-        private OverallDataPacket overallDataPacket;
-
-
-
-
-        /// <summary>
-        /// Propert to return the overall data for this KPA
-        /// </summary>
-        public TemplateOnePacket OverallPacket
-        {
-            get
-            {
-                // Return the overall data packet as a template one packet
-                return overallDataPacket as TemplateOnePacket;
-            }
-            set
-            {
-                if (value != null)
-                {
-                    this.overallDataPacket = value;
-                }
-            }
-        }
-
-
-
-
-
-        /// <summary>
         /// Default Constructor
         /// </summary>
         public LateToConfirmed()
@@ -82,28 +67,74 @@ namespace Reporting.KeyPerformanceActions.HotJobs
 
             // set the selective strategy context
             SelectiveContext = new SelectiveStrategyContext(new SelectiveDataTypeOne());
-
-            // Create a new instance of the overall data packet
-            overallDataPacket = new TemplateOnePacket();
         }
+
+
+
+        /// <summary>
+        /// Method to apply the elapsed days against the KPA or KPIs time span conditions
+        /// </summary>
+        public void TimeSpanDump(double _elapsedDays)
+        {
+            // Increment the total number of records that satisfy this KPA or KPi
+            TotalRecords++;
+
+
+            // Apply the elapsed days against the timespan conditions
+            if (_elapsedDays <= 0)
+            {
+                LessThanEqualToZeroDays++;
+            }
+            else if (_elapsedDays >= 1 && _elapsedDays <= 3)
+            {
+                OneToThreeDays++;
+            }
+            else if (_elapsedDays >= 4 && _elapsedDays <= 7)
+            {
+                FourToSevenDays++;
+            }
+            else if (_elapsedDays >= 8 && _elapsedDays <= 14)
+            {
+                EightToFourteenDays++;
+            }
+            else if (_elapsedDays >= 15 && _elapsedDays <= 21)
+            {
+                FifteenToTwentyOneDays++;
+            }
+            else if (_elapsedDays >= 22 && _elapsedDays <= 28)
+            {
+                TwentyTwoToTwentyEightDays++;
+            }
+            else // 29+
+            {
+                TwentyNinePlusDays++;
+            }
+        }
+
+
 
 
 
 
         /// <summary>
-        /// Returns the number of elapsed days based on certain conditions for this KPA
+        /// Method to calculate the averate for this KPA
         /// </summary>
-        /// <param name="dr"></param>
-        /// <returns></returns>
-        private double GetElapsedDays(DateTime _today, DateTime _delConfDate)
+        internal override void CalculateAverage(double _totalDays)
         {
-            // Find the difference between today's date and the delivery confirmation date
-            double elapsedDays = (_today - _delConfDate).TotalDays;
-            elapsedDays = (int)elapsedDays;
-
-            // Return the calculated elapsed days
-            return elapsedDays;
+            try
+            {
+                Average = Math.Round(_totalDays / TotalRecords, 2);
+                if (double.IsNaN(Average))
+                    Average = 0;
+            }
+            catch (DivideByZeroException)
+            {
+                Average = 0;
+            }
         }
+
+
+
 
 
 
@@ -113,47 +144,7 @@ namespace Reporting.KeyPerformanceActions.HotJobs
         /// </summary>
         public override void RunSelectiveReport(string uniqueFilters)
         {
-            // Get the instance of the selective data for reporting
-            SelectiveDataTypeOne data = SelectiveContext.Data as SelectiveDataTypeOne;
 
-            // Get the data from the database for this KPA
-            DataTable dt = KpaUtils.HotJobsQueries.GetLateToConfirmed();
-
-            // used for calculating the average
-            double totalDays = 0;
-
-            foreach (DataRow dr in dt.Rows)
-            {
-                //Check if the datarow meets the conditions of any applied filters.
-                if (!FilterUtils.EvaluateAgainstFilters(dr))
-                {
-                    // This datarow dos not meet the conditions of the filters applied.
-                    continue;
-                }
-
-                // Get the latest confirmation date from the data row.
-                string[] strDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
-                int year = int.Parse(strDate[2]);
-                int month = int.Parse(strDate[0].TrimStart('0'));
-                int day = int.Parse(strDate[1].TrimStart('0'));
-
-                // Find the difference between today's date and the delivery confirmation date.
-                DateTime delConfDate = new DateTime(year, month, day);
-                DateTime today = DateTime.Now.Date;
-
-                // If the delivery confirmation date is greater than today, move onto the next record
-                if (!(delConfDate < today))
-                    continue;
-
-                // Add the elapsed days to the total number of days
-                totalDays += GetElapsedDays(today, delConfDate);
-
-                // increment the total number of records for this selective KPA
-                data.TotalRecords++;
-            }
-
-            // Calculate the average for this report
-            data.CalculateAverage(totalDays);
         }
 
 
@@ -163,47 +154,40 @@ namespace Reporting.KeyPerformanceActions.HotJobs
         /// </summary>
         public override void RunOverallReport()
         {
-            // Get the data from the database for this KPA
             DataTable dt = KpaUtils.HotJobsQueries.GetLateToConfirmed();
-
-            // used for calculating the average
             double totalDays = 0;
 
             foreach (DataRow dr in dt.Rows)
             {
                 //Check if the datarow meets the conditions of any applied filters.
-                if (!FilterUtils.EvaluateAgainstFilters(dr))
+                if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
                 {
                     // This datarow dos not meet the conditions of the filters applied.
                     continue;
                 }
 
-                // Get the latest confirmation date from the data row.
                 string[] strDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
                 int year = int.Parse(strDate[2]);
                 int month = int.Parse(strDate[0].TrimStart('0'));
                 int day = int.Parse(strDate[1].TrimStart('0'));
 
-                // Find the difference between today's date and the delivery confirmation date.
                 DateTime delConfDate = new DateTime(year, month, day);
                 DateTime today = DateTime.Now.Date;
 
-                // If the delivery confirmation date is greater than today, move onto the next record
                 if (!(delConfDate < today))
                     continue;
 
-                // Get the elapsed days for this KPA
-                double elapsedDays = GetElapsedDays(today, delConfDate);
 
-                // Increment the total number of days
+                double elapsedDays = (today - delConfDate).TotalDays;
                 totalDays += elapsedDays;
+                elapsedDays = (int)elapsedDays;
 
-                // Run the elapsed days against the timespan conditions
-                overallDataPacket.TimeSpanDump(elapsedDays);
+                // Apply the elapsed days agains the time span conditions
+                TimeSpanDump(elapsedDays);
             }
 
-            // Calculate the average number of days
-            OverallPacket.CalculateAverage(totalDays);
+            // Calculate the average
+            CalculateAverage(totalDays);
         }
     }
 }

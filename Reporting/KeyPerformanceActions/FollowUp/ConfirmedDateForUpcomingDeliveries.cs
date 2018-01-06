@@ -3,15 +3,43 @@
 using DataAccessLibrary;
 using Filters;
 using Reporting.Overall;
-using Reporting.Overall.TemplateOne;
+using Reporting.Interfaces;
 using Reporting.Selective;
 using System;
 using System.Data;
 
 namespace Reporting.KeyPerformanceActions.FollowUp
 {
-    public sealed class ConfirmedDateForUpcomingDeliveries : KeyPerformanceAction
+    public sealed class ConfirmedDateForUpcomingDeliveries : KeyPerformanceAction, ITemplateOne, IFavorable
     {
+        #region IFavorable Properties
+
+        /// <summary>
+        /// The percent favorable for the KPA or KPI it is attached to.
+        /// </summary>
+        public double PercentFavorable { get; set; }
+
+        #endregion
+
+
+
+
+        #region ITemplateOne Properties
+
+        public double Average { get; set; }
+        public int TotalRecords { get; set; }
+        public int LessThanEqualToZeroDays { get; set; }
+        public int OneToThreeDays { get; set; }
+        public int FourToSevenDays { get; set; }
+        public int EightToFourteenDays { get; set; }
+        public int FifteenToTwentyOneDays { get; set; }
+        public int TwentyTwoToTwentyEightDays { get; set; }
+        public int TwentyNinePlusDays { get; set; }
+
+        #endregion
+
+
+
         /// <summary>
         /// The Selective Strategy Context that holds the selective data for reporting
         /// </summary>
@@ -40,36 +68,6 @@ namespace Reporting.KeyPerformanceActions.FollowUp
 
 
 
-        /// <summary>
-        /// The overall data that holds the overall reporting data
-        /// </summary>
-        private OverallDataPacket overallDataPacket;
-
-
-
-
-        /// <summary>
-        /// Propert to return the overall data for this KPA
-        /// </summary>
-        public TemplateOnePacket OverallPacket
-        {
-            get
-            {
-                // Return the overall data packet as a template one packet
-                return overallDataPacket as TemplateOnePacket;
-            }
-            set
-            {
-                if (value != null)
-                {
-                    this.overallDataPacket = value;
-                }
-            }
-        }
-
-
-
-
 
         /// <summary>
         /// Default Constructor
@@ -81,36 +79,97 @@ namespace Reporting.KeyPerformanceActions.FollowUp
 
             // set the selective strategy context
             SelectiveContext = new SelectiveStrategyContext(new SelectiveDataTypeThree());
-
-            // Create a new instance of the overall data packet
-            overallDataPacket = new TemplateOnePacket();
         }
+
+
+
+
+        #region IFavorable Method
+
+        /// <summary>
+        /// Calculates the percent favorable for the specific KPA or KPI it is attached to
+        /// </summary>
+        public void CalculatePercentFavorable()
+        {
+            if (TotalRecords != 0)
+            {
+                double favorableTimeSpanCounts = OneToThreeDays + FourToSevenDays + EightToFourteenDays + FifteenToTwentyOneDays + TwentyTwoToTwentyEightDays + TwentyNinePlusDays;
+                double totalFavorable = favorableTimeSpanCounts + LessThanZeroDueToday;
+
+                // calculate the Percent Favorable
+                PercentFavorable = Math.Round((totalFavorable / TotalRecords) * 100, 2);
+            }
+        }
+
+        #endregion
 
 
 
 
         /// <summary>
-        /// Returns the number of elapsed days based on certain conditions for this KPA
+        /// Method to apply the elapsed days against the KPA or KPIs time span conditions
         /// </summary>
-        /// <param name="dr"></param>
-        /// <returns></returns>
-        private double GetElapsedDays(DataRow dr)
+        public void TimeSpanDump(double _elapsedDays)
         {
-            // Get the latest confirmation date from the data row.
-            string[] strDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
-            int year = int.Parse(strDate[2]);
-            int month = int.Parse(strDate[0].TrimStart('0'));
-            int day = int.Parse(strDate[1].TrimStart('0'));
+            // Increment the total number of records that satisfy this KPA or KPi
+            TotalRecords++;
 
-            // Find the difference between the latest confirmation date and today.
-            DateTime latestConfrimationDate = new DateTime(year, month, day);
-            DateTime today = DateTime.Now.Date;
-            double elapsedDays = (latestConfrimationDate - today).TotalDays;
-            elapsedDays = (int)elapsedDays;
 
-            // Return the calculated elapsed days
-            return elapsedDays;
+            // Apply the elapsed days against the timespan conditions
+            if (_elapsedDays <= 0)
+            {
+                LessThanEqualToZeroDays++;
+            }
+            else if (_elapsedDays >= 1 && _elapsedDays <= 3)
+            {
+                OneToThreeDays++;
+            }
+            else if (_elapsedDays >= 4 && _elapsedDays <= 7)
+            {
+                FourToSevenDays++;
+            }
+            else if (_elapsedDays >= 8 && _elapsedDays <= 14)
+            {
+                EightToFourteenDays++;
+            }
+            else if (_elapsedDays >= 15 && _elapsedDays <= 21)
+            {
+                FifteenToTwentyOneDays++;
+            }
+            else if (_elapsedDays >= 22 && _elapsedDays <= 28)
+            {
+                TwentyTwoToTwentyEightDays++;
+            }
+            else // 29+
+            {
+                TwentyNinePlusDays++;
+            }
         }
+
+
+
+
+
+
+        /// <summary>
+        /// Method to calculate the averate for this KPA
+        /// </summary>
+        internal override void CalculateAverage(double _totalDays)
+        {
+            try
+            {
+                Average = Math.Round(_totalDays / TotalRecords, 2);
+                if (double.IsNaN(Average))
+                    Average = 0;
+            }
+            catch (DivideByZeroException)
+            {
+                Average = 0;
+            }
+        }
+
+
+
 
 
 
@@ -120,33 +179,7 @@ namespace Reporting.KeyPerformanceActions.FollowUp
         /// </summary>
         public override void RunSelectiveReport(string uniqueFilters)
         {
-            // Get the instance of the selective data for reporting
-            SelectiveDataTypeThree data = SelectiveContext.Data as SelectiveDataTypeThree;
 
-            // Get the data from the database for this KPA
-            DataTable dt = KpaUtils.FollowUpQueries.GetConfrimedDateForUpcomingDeliveries();
-
-            // used for calculating the average
-            double totalDays = 0;
-
-            foreach (DataRow dr in dt.Rows)
-            {
-                //Check if the datarow meets the conditions of any applied filters.
-                if (!FilterUtils.EvaluateAgainstFilters(dr))
-                {
-                    // This datarow dos not meet the conditions of the filters applied.
-                    continue;
-                }
-
-                // Add the elapsed days to the total number of days
-                totalDays += GetElapsedDays(dr);
-
-                // increment the total number of records for this selective KPA
-                data.TotalRecords++;
-            }
-
-            // Calculate the average for this report
-            data.CalculateAverage(totalDays);
         }
 
 
@@ -156,33 +189,35 @@ namespace Reporting.KeyPerformanceActions.FollowUp
         /// </summary>
         public override void RunOverallReport()
         {
-            // Get the data from the database for this KPA
             DataTable dt = KpaUtils.FollowUpQueries.GetConfrimedDateForUpcomingDeliveries();
-
-            // used for calculating the average
             double totalDays = 0;
 
             foreach (DataRow dr in dt.Rows)
             {
                 //Check if the datarow meets the conditions of any applied filters.
-                if (!FilterUtils.EvaluateAgainstFilters(dr))
+                if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
                 {
                     // This datarow dos not meet the conditions of the filters applied.
                     continue;
                 }
 
-                // Get the elapsed days for this KPA
-                double elapsedDays = GetElapsedDays(dr);
+                string[] strDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
+                int year = int.Parse(strDate[2]);
+                int month = int.Parse(strDate[0].TrimStart('0'));
+                int day = int.Parse(strDate[1].TrimStart('0'));
 
-                // Increment the total number of days
+                DateTime date = new DateTime(year, month, day);
+                DateTime today = DateTime.Now.Date;
+                double elapsedDays = (date - today).TotalDays;
                 totalDays += elapsedDays;
+                elapsedDays = (int)elapsedDays;
 
-                // Run the elapsed days against the timespan conditions
-                overallDataPacket.TimeSpanDump(elapsedDays);
+                // Apply the elapsed days against the time spand conditions
+                TimeSpanDump(elapsedDays);
             }
 
-            // Calculate the average number of days
-            OverallPacket.CalculateAverage(totalDays);
+            // Calculate the average for this KPA
+            CalculateAverage(totalDays);
         }
     }
 }

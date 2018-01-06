@@ -1,14 +1,33 @@
 ﻿
 
 using Reporting.Overall;
-using Reporting.Overall.TemplateFive;
-using Reporting.Overall.TemplateFour;
+
+
 using Reporting.Selective;
 
 namespace Reporting.KeyPerformanceIndicators.Other
 {
-    public sealed class PRsReleased : KeyPerformanceIndicator
+    public sealed class PRsReleased : KeyPerformanceIndicator, ITemplateFive
     {
+        #region ITemplateFive Properties
+
+        public decimal TotalValue { get; set; }
+        public int TotalRecords { get; set; }
+        public decimal GreaterThanEqualToZeroWeeks { get; set; }
+        public decimal GreaterThanEqualToNegOneWeek { get; set; }
+        public decimal GreaterThanEqualToNegTwoWeeks { get; set; }
+        public decimal GreaterThanEqualToNegThreeWeeks { get; set; }
+        public decimal GreaterThanEqualToNegFourWeeks { get; set; }
+        public decimal GreaterThanEqualToNegFiveWeeks { get; set; }
+        public decimal GreaterThanEqualToNegSixWeeks { get; set; }
+        public decimal GreaterThanEqualToNegSevenWeeks { get; set; }
+        public decimal GreaterThanEqualToNegEightWeeks { get; set; }
+        public decimal LessThanNegEightWeeks { get; set; }
+
+        #endregion
+
+
+
         /// <summary>
         /// The Selective Strategy Context that holds the selective data for reporting
         /// </summary>
@@ -37,36 +56,6 @@ namespace Reporting.KeyPerformanceIndicators.Other
 
 
 
-        /// <summary>
-        /// The overall data that holds the overall reporting data
-        /// </summary>
-        private OverallDataPacket overallDataPacket;
-
-
-
-
-        /// <summary>
-        /// Propert to return the overall data for this KPA
-        /// </summary>
-        public TemplateFivePacket OverallPacket
-        {
-            get
-            {
-                // Return the overall data packet as a template three packet
-                return overallDataPacket as TemplateFivePacket;
-            }
-            set
-            {
-                if (value != null)
-                {
-                    this.overallDataPacket = value;
-                }
-            }
-        }
-
-
-
-
 
         /// <summary>
         /// Default Constructor
@@ -78,23 +67,67 @@ namespace Reporting.KeyPerformanceIndicators.Other
 
             // set the selective strategy context
             SelectiveContext = new SelectiveStrategyContext(new SelectiveDataTypeOne());
-
-            // Create a new instance of the overall data packet
-            overallDataPacket = new TemplateFivePacket();
         }
+
+
+
 
 
 
 
         /// <summary>
-        /// Returns the number of elapsed days based on certain conditions for this KPA
+        /// Method to apply the elapsed days against the KPA or KPIs time span conditions
         /// </summary>
-        /// <param name="dr"></param>
-        /// <returns></returns>
-        private double GetElapsedDays()
+        public void TimeSpanDump(double _weeks)
         {
-            return 1;
+            // Increment the total number of records that satisfy this KPI
+            TotalRecords++;
+
+
+            // Apply the elapsed days agaisnt the timespan conditions
+            if (_weeks >= 0)
+            {
+                GreaterThanEqualToZeroWeeks++;
+            }
+            else if (_weeks >= (-1) && _weeks < 0)
+            {
+                GreaterThanEqualToNegOneWeek++;
+            }
+            else if (_weeks >= (-2) && _weeks < (-1))
+            {
+                GreaterThanEqualToNegTwoWeeks++;
+            }
+            else if (_weeks >= (-3) && _weeks < (-2))
+            {
+                GreaterThanEqualToNegThreeWeeks++;
+            }
+            else if (_weeks >= (-4) && _weeks < (-3))
+            {
+                GreaterThanEqualToNegFourWeeks++;
+            }
+            else if (_weeks >= (-5) && _weeks < (-4))
+            {
+                GreaterThanEqualToNegFiveWeeks++;
+            }
+            else if (_weeks >= (-6) && _weeks < (-5))
+            {
+                GreaterThanEqualToNegSixWeeks++;
+            }
+            else if (_weeks >= (-7) && _weeks < (-6))
+            {
+                GreaterThanEqualToNegSevenWeeks++;
+            }
+            else if (_weeks >= (-8) && _weeks < (-7))
+            {
+                GreaterThanEqualToNegEightWeeks++;
+            }
+            else if (_weeks < (-8))
+            {
+                LessThanNegEightWeeks++;
+            }
         }
+
+
 
 
 

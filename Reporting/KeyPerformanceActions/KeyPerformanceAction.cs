@@ -81,5 +81,12 @@
         /// Method to calculate the overall report this Key Performance Action (KPA)
         /// </summary>
         public abstract void RunOverallReport();
+
+
+
+        /// <summary>
+        /// Abstract method to calculate the average of the KPA
+        /// </summary>
+        internal abstract void CalculateAverage(double _totalDays);
     }
 }

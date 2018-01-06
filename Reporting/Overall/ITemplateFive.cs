@@ -8,17 +8,17 @@ namespace Reporting.Overall
 {
     public interface ITemplateFive
     {
-        double OverallAverage { get; set; }
-        int OverallTotalRecords { get; set; }
-        int GreaterThanEqualToZeroWeeks { get; set; }
-        int GreaterThanEqualToNegOneWeek { get; set; }
-        int GreaterThanEqualToNegTwoWeeks { get; set; }
-        int GreaterThanEqualToNegThreeWeeks { get; set; }
-        int GreaterThanEqualToNegFourWeeks { get; set; }
-        int GreaterThanEqualToNegFiveWeeks { get; set; }
-        int GreaterThanEqualToNegSixWeeks { get; set; }
-        int GreaterThanEqualToNegSevenWeeks { get; set; }
-        int GreaterThanEqualToNegEightWeeks { get; set; }
-        int LessThanNegEightWeeks { get; set; }
+        decimal TotalValue { get; set; }
+        int TotalRecords { get; set; }
+        decimal GreaterThanEqualToZeroWeeks { get; set; }
+        decimal GreaterThanEqualToNegOneWeek { get; set; }
+        decimal GreaterThanEqualToNegTwoWeeks { get; set; }
+        decimal GreaterThanEqualToNegThreeWeeks { get; set; }
+        decimal GreaterThanEqualToNegFourWeeks { get; set; }
+        decimal GreaterThanEqualToNegFiveWeeks { get; set; }
+        decimal GreaterThanEqualToNegSixWeeks { get; set; }
+        decimal GreaterThanEqualToNegSevenWeeks { get; set; }
+        decimal GreaterThanEqualToNegEightWeeks { get; set; }
+        decimal LessThanNegEightWeeks { get; set; }
     }
 }

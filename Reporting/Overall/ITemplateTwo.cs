@@ -8,8 +8,8 @@ namespace Reporting.Overall
 {
     public interface ITemplateTwo
     {
-        double OverallAverage { get; set; }
-        int OverallTotalRecords { get; set; }
+        double Average { get; set; }
+        int TotalRecords { get; set; }
         int LessthanNegThreeWeeks { get; set; }
         int GreaterThanEqualToNegThreeWeeks { get; set; }
         int GreaterThanEqualToNegTwoWeeks { get; set; }
@@ -19,5 +19,13 @@ namespace Reporting.Overall
         int LessThanEqualToTwoWeeks { get; set; }
         int LessThanEqualToThreeWeeks { get; set; }
         int GreaterThanThreeWeeks { get; set; }
+
+
+
+        /// <summary>
+        /// Method to apply the KPA or KPI against the timespan conditions
+        /// </summary>
+        /// <param name="_elapsedDays"></param>
+        void TimeSpanDump(double _elapsedDays);
     }
 }

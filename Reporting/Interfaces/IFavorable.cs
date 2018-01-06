@@ -17,6 +17,6 @@ namespace Reporting.Interfaces
         /// <summary>
         /// Calculates the percent favorable for the specific KPA or KPI it is attached to
         /// </summary>
-        void CalculatePercentFavorable(params int[] _data);
+        void CalculatePercentFavorable();
     }
 }

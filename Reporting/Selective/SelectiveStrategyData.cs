@@ -74,7 +74,7 @@ namespace Reporting.Selective
         public override double TotalRecords { get; set; }
         public double PercentFavorable { get; set; }
 
-        public void CalculatePercentFavorable(params int[] _data)
+        public void CalculatePercentFavorable()
         {
             if(TotalRecords != 0)
             {
@@ -98,7 +98,7 @@ namespace Reporting.Selective
         public double PercentUnconfirmed { get; set; }
         public double PercentFavorable { get; set; }
 
-        public void CalculatePercentFavorable(params int[] _data)
+        public void CalculatePercentFavorable()
         {
             if (TotalRecords != 0)
             {

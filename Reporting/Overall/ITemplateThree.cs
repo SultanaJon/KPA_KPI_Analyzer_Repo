@@ -8,8 +8,8 @@ namespace Reporting.Overall
 {
     public interface ITemplateThree
     {
-        double OverallAverage { get; set; }
-        int OverallTotalRecords { get; set; }
+        double Average { get; set; }
+        int TotalRecords { get; set; }
         int LessThanEqualToNegTwentyTwoDays { get; set; }
         int NegTwentyOneToNegFifteenDays { get; set; }
         int NegFourteenToNegEightDays { get; set; }

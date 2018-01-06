@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="ComparisonReport.cs" />
     <Compile Include="Interfaces\IFavorable.cs" />
+    <Compile Include="Interfaces\ITotalValue.cs" />
     <Compile Include="Interfaces\IUnconfirmed.cs" />
     <Compile Include="KeyPerformanceActions\CurrentPlanVsActual\CurrentPlanDateVsCurrentConfirmationDate.cs" />
     <Compile Include="KeyPerformanceActions\CurrentPlanVsActual\CurrentPlanDateVsCurrentConfirmationDateForHotJobs.cs" />

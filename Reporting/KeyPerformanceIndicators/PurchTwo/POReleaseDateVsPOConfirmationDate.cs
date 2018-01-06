@@ -1,13 +1,43 @@
-﻿
-
-using Reporting.Overall;
-using Reporting.Overall.TemplateFour;
+﻿using Reporting.Overall;
+using Reporting.Interfaces;
 using Reporting.Selective;
 
 namespace Reporting.KeyPerformanceIndicators.PurchTwo
 {
-    public sealed class POReleaseDateVsPOConfirmationDate : KeyPerformanceIndicator
+    public sealed class POReleaseDateVsPOConfirmationDate : KeyPerformanceIndicator, ITemplateFour, IUnconfirmed
     {
+        #region IUnconfirmed Properties
+
+        /// <summary>
+        /// The percent of unconfirmed records within the KPA or KPI
+        /// </summary>
+        public double PercentUnconfirmed { get; set; }
+
+        #endregion
+
+
+
+
+        #region ITemplateFour Properties
+
+        public double Average { get; set; }
+        public int TotalRecords { get; set; }
+        public int LessThanEqualToZeroDays { get; set; }
+        public int OneToThreeDays { get; set; }
+        public int FourToSevenDays { get; set; }
+        public int EightToFourteenDays { get; set; }
+        public int FifteenToTwentyOneDays { get; set; }
+        public int TwentyTwoToTwentyEightDays { get; set; }
+        public int TwentyNineToThirtyFiveDays { get; set; }
+        public int ThirtySixtoFourtyTwoDays { get; set; }
+        public int FourtyThreeToFourtyNineDays { get; set; }
+        public int FiftyToFiftySixDays { get; set; }
+        public int FiftySevenPlusDays { get; set; }
+
+        #endregion
+
+
+
         /// <summary>
         /// The Selective Strategy Context that holds the selective data for reporting
         /// </summary>
@@ -36,36 +66,6 @@ namespace Reporting.KeyPerformanceIndicators.PurchTwo
 
 
 
-        /// <summary>
-        /// The overall data that holds the overall reporting data
-        /// </summary>
-        private OverallDataPacket overallDataPacket;
-
-
-
-
-        /// <summary>
-        /// Propert to return the overall data for this KPA
-        /// </summary>
-        public TemplateFourPacket OverallPacket
-        {
-            get
-            {
-                // Return the overall data packet as a template three packet
-                return overallDataPacket as TemplateFourPacket;
-            }
-            set
-            {
-                if (value != null)
-                {
-                    this.overallDataPacket = value;
-                }
-            }
-        }
-
-
-
-
 
         /// <summary>
         /// Default Constructor
@@ -77,23 +77,126 @@ namespace Reporting.KeyPerformanceIndicators.PurchTwo
 
             // set the selective strategy context
             SelectiveContext = new SelectiveStrategyContext(new SelectiveDataTypeTwo());
-
-            // Create a new instance of the overall data packet
-            overallDataPacket = new TemplateFourPacket();
         }
+
+
+
+
+
+        #region IUnconfirmed Methods
+
+        /// <summary>
+        /// Calculated the percentage of unconfirmed records
+        /// </summary>
+        public void CalculatePercentUnconfirmed(int _unconfirmedTotal)
+        {
+
+        }
+
+        #endregion
+
+
+
+
+
+        #region IFavorable Method
+
+        /// <summary>
+        /// Calculates the percent favorable for the specific KPA or KPI it is attached to
+        /// </summary>
+        public void CalculatePercentFavorable()
+        {
+
+        }
+
+        #endregion
+
+
+
 
 
 
 
         /// <summary>
-        /// Returns the number of elapsed days based on certain conditions for this KPA
+        /// Method to apply the elapsed days against the KPA or KPIs time span conditions
         /// </summary>
-        /// <param name="dr"></param>
-        /// <returns></returns>
-        private double GetElapsedDays()
+        public void TimeSpanDump(double _elapsedDays)
         {
-            return 1;
+            // Increment the total number of records that satisfy this KPI
+            TotalRecords++;
+
+
+            // Apply the elapsed days against the time span conditions
+            if (_elapsedDays <= 0)
+            {
+                LessThanEqualToZeroDays++;
+            }
+            else if (_elapsedDays >= 1 && _elapsedDays <= 3)
+            {
+                OneToThreeDays++;
+            }
+            else if (_elapsedDays >= 4 && _elapsedDays <= 7)
+            {
+                FourToSevenDays++;
+            }
+            else if (_elapsedDays >= 8 && _elapsedDays <= 14)
+            {
+                EightToFourteenDays++;
+            }
+            else if (_elapsedDays >= 15 && _elapsedDays <= 21)
+            {
+                FifteenToTwentyOneDays++;
+            }
+            else if (_elapsedDays >= 22 && _elapsedDays <= 28)
+            {
+                TwentyTwoToTwentyEightDays++;
+            }
+            else if (_elapsedDays >= 29 && _elapsedDays <= 35)
+            {
+                TwentyNineToThirtyFiveDays++;
+            }
+            else if (_elapsedDays >= 36 && _elapsedDays <= 42)
+            {
+                ThirtySixtoFourtyTwoDays++;
+            }
+            else if (_elapsedDays >= 43 && _elapsedDays <= 49)
+            {
+                FourtyThreeToFourtyNineDays++;
+            }
+            else if (_elapsedDays >= 50 && _elapsedDays <= 56)
+            {
+                FiftyToFiftySixDays++;
+            }
+            else // elapsed days is >= 57
+            {
+                FiftySevenPlusDays++;
+            }
         }
+
+
+
+
+
+
+        /// <summary>
+        /// Method to calculate the averate for this KPA
+        /// </summary>
+        private void CalculateAverage(double _totalDays)
+        {
+            try
+            {
+                Average = Math.Round(_totalDays / TotalRecords, 2);
+                if (double.IsNaN(Average))
+                    Average = 0;
+            }
+            catch (DivideByZeroException)
+            {
+                Average = 0;
+            }
+        }
+
+
+
 
 
 
