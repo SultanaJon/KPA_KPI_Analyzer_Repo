@@ -85,12 +85,11 @@
     <Compile Include="KeyPerformanceIndicators\Purch\InitialConfirmationDateVsPRPlanDate.cs" />
     <Compile Include="KpaReport.cs" />
     <Compile Include="KpiReport.cs" />
-    <Compile Include="Overall\OverallDataPacket.cs" />
-    <Compile Include="Overall\TemplateFive\TemplateFivePacket.cs" />
-    <Compile Include="Overall\TemplateFour\TemplateFourPacket.cs" />
-    <Compile Include="Overall\TemplateOne\TemplateOnePacket.cs" />
-    <Compile Include="Overall\TemplateThree\TemplateThreePacket.cs" />
-    <Compile Include="Overall\TemplateTwo\TemplateTwoPacket.cs" />
+    <Compile Include="Overall\ITemplateFive.cs" />
+    <Compile Include="Overall\ITemplateFour.cs" />
+    <Compile Include="Overall\ITemplateOne.cs" />
+    <Compile Include="Overall\ITemplateThree.cs" />
+    <Compile Include="Overall\ITemplateTwo.cs" />
     <Compile Include="Performance.cs" />
     <Compile Include="Report.cs" />
     <Compile Include="KeyPerformanceActions\Plan\MaterialDue.cs" />
