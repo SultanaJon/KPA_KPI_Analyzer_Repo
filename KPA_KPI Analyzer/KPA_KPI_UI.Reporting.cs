@@ -11,7 +11,8 @@ namespace KPA_KPI_Analyzer
 {
     public enum ReportingType
     {
-        Overall,
+        KpaOverall,
+        KpiOverall,
         KpaReport,
         KpiReport,
         ComparisonReport
@@ -40,8 +41,45 @@ namespace KPA_KPI_Analyzer
         {
             switch (_reportType)
             {
-                case ReportingType.Overall:
-                    //reports.Add(ReportingType.KpaReport, new OverallReport());
+                case ReportingType.KpaOverall:
+                    // Create the KPA Overall Report
+                    try
+                    {
+
+                        reports.Add(_reportType, KpaOverallReport.KpaOverallReportInstance);
+                    }
+                    catch (ArgumentNullException)
+                    {
+                        MessageBox.Show("Argumment Null Exception was thrown.", "KPA Report Creation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    catch (ArgumentException)
+                    {
+                        // Create a new instance of a KPA Overall Report
+                        KpaOverallReport.CreateNewInstance();
+
+                        // Assign that instance to the list of reports
+                        reports[ReportingType.KpaOverall] = KpaOverallReport.KpaOverallReportInstance;
+                    }
+                    break;
+                case ReportingType.KpiOverall:
+                    // Create the KPI Overall Report
+                    try
+                    {
+
+                        reports.Add(_reportType, KpiOverallReport.KpiOverallReportInstance);
+                    }
+                    catch (ArgumentNullException)
+                    {
+                        MessageBox.Show("Argumment Null Exception was thrown.", "KPI Report Creation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    catch (ArgumentException)
+                    {
+                        // Create a new instance of a KPI Overall Report
+                        KpiOverallReport.CreateNewInstance();
+
+                        // Assign that instance to the list of reports
+                        reports[ReportingType.KpiOverall] = KpiOverallReport.KpiOverallReportInstance;
+                    }
                     break;
                 case ReportingType.KpaReport:
                     // Create the KPA Report
@@ -257,7 +295,7 @@ namespace KPA_KPI_Analyzer
             List<string> filters = GetFilters(reportingWidgetsController.SelectiveFilterOption);
 
             // Pass the filters to the kpa report to use in the report generation
-            (reports[ReportingType.KpaReport] as KpaReport).SetKpaReport(filters);
+            (reports[ReportingType.KpaReport] as KpaReport).CreateReport(filters);
 
             // Run the KPA Report
             (reports[ReportingType.KpaReport] as KpaReport).RunReport();
@@ -275,7 +313,7 @@ namespace KPA_KPI_Analyzer
             List<string> filters = GetFilters(reportingWidgetsController.SelectiveFilterOption);
 
             // Pass the filters to the KPI report to use in the report generation
-            (reports[ReportingType.KpiReport] as KpiReport).SetKpiReport(filters);
+            (reports[ReportingType.KpiReport] as KpiReport).CreateReport(filters);
 
             // Run the KPI Report
             (reports[ReportingType.KpiReport] as KpiReport).RunReport();

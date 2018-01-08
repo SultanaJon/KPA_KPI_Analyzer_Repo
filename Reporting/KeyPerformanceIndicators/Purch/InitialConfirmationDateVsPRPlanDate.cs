@@ -205,11 +205,18 @@ namespace Reporting.KeyPerformanceIndicators.Purch
         #region IFavorable Method
 
         /// <summary>
-        /// Calculates the percent favorable for the specific KPA or KPI it is attached to
+        /// Calculat    es the percent favorable for the specific KPA or KPI it is attached to
         /// </summary>
         public void CalculatePercentFavorable()
         {
+            if (TotalRecords != 0)
+            {
+                // Sum up the favorable time spans
+                double favorableTimeSpans = LessThanEqualToNegTwentyTwoDays + NegTwentyOneToNegFifteenDays + NegFourteenToNegEightDays + NegSevenToNegOneDays + ZeroDays;
 
+                // calculate the Percent Favorable
+                PercentFavorable = Math.Round((favorableTimeSpans / TotalRecords) * 100, 2);
+            }
         }
 
         #endregion
@@ -285,6 +292,7 @@ namespace Reporting.KeyPerformanceIndicators.Purch
             CalculatePercentUnconfirmed(percentUnconfTotal);
 
             // Calculate the percent favorable
+            CalculatePercentFavorable();
         }
     }
 }

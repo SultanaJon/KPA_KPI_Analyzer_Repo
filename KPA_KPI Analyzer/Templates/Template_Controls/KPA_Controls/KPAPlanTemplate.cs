@@ -97,7 +97,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             btn_One.Textcolor = System.Drawing.Color.Coral;
             RenderPRsAgingNotRel();
             DatavizLoaded = false;
-            ActiveCategory = 1;
+            ActiveCategory = 0;
             datavizLoadTimer.Start();
             Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.Plan][(int)Values.Categories.KpaCategory.Plan.PRsAgingNotRel];
             ChangeCategory();

@@ -271,6 +271,7 @@ namespace Reporting.KeyPerformanceIndicators.PurchTotal
 
 
                 // Apply the elapsed days against the time span conditions
+                TimeSpanDump(elapsedDays);
 
             }
 

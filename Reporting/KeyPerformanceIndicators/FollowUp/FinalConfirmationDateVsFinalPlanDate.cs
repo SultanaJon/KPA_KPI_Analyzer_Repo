@@ -231,16 +231,6 @@ namespace Reporting.KeyPerformanceIndicators.FollowUp
 
 
 
-        /// <summary>
-        /// Returns the number of elapsed days based on certain conditions for this KPA
-        /// </summary>
-        private double GetElapsedDays()
-        {
-            return 1;
-        }
-
-
-
 
         /// <summary>
         /// Calculates the selective report for this KPA
@@ -310,6 +300,9 @@ namespace Reporting.KeyPerformanceIndicators.FollowUp
 
             // Calculate the average for this KPI
             CalculateAverage(totalDays);
+
+            // Calculate percent favorable
+            CalculatePercentFavorable();
         }
     }
 }

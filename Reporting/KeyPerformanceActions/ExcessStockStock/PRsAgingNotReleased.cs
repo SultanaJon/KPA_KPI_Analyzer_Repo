@@ -7,6 +7,7 @@ using Reporting.Overall;
 using Reporting.Selective;
 using System;
 using System.Data;
+using System.Windows.Forms;
 
 namespace Reporting.KeyPerformanceActions.ExcessStockStock
 {
@@ -128,6 +129,11 @@ namespace Reporting.KeyPerformanceActions.ExcessStockStock
                 if (double.IsNaN(Average))
                     Average = 0;
             }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("An argument out of range exception was thrown", "Excess Stock - Stock -> PRs Aging (Not Released) - Average Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
             catch (DivideByZeroException)
             {
                 Average = 0;
@@ -154,36 +160,44 @@ namespace Reporting.KeyPerformanceActions.ExcessStockStock
         /// </summary>
         public override void RunOverallReport()
         {
-            DataTable dt = KpaUtils.ExcessStockStockQueries.GetPrsAgingNotReleased();
-            double totalDays = 0;
-
-            foreach (DataRow dr in dt.Rows)
+            try
             {
-                //Check if the datarow meets the conditions of any applied filters.
-                if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
+                DataTable dt = KpaUtils.ExcessStockStockQueries.GetPrsAgingNotReleased();
+                double totalDays = 0;
+
+                foreach (DataRow dr in dt.Rows)
                 {
-                    // This datarow dos not meet the conditions of the filters applied.
-                    continue;
+                    //Check if the datarow meets the conditions of any applied filters.
+                    if (!FilterUtils.EvaluateAgainstFilters(dr))
+                    {
+                        // This datarow dos not meet the conditions of the filters applied.
+                        continue;
+                    }
+
+                    string[] reqCreationDate = (dr["Requisn Date"].ToString()).Split('/');
+                    int year = int.Parse(reqCreationDate[2]);
+                    int month = int.Parse(reqCreationDate[0].TrimStart('0'));
+                    int day = int.Parse(reqCreationDate[1].TrimStart('0'));
+
+                    DateTime reqDate = new DateTime(year, month, day);
+                    DateTime today = DateTime.Now.Date;
+                    double elapsedDays = (today - reqDate).TotalDays;
+                    totalDays += elapsedDays;
+                    elapsedDays = (int)elapsedDays;
+
+                    // Apply the elapsed days against the time span conditions
+                    TimeSpanDump(elapsedDays);
                 }
 
-                string[] reqCreationDate = (dr["Requisn Date"].ToString()).Split('/');
-                int year = int.Parse(reqCreationDate[2]);
-                int month = int.Parse(reqCreationDate[0].TrimStart('0'));
-                int day = int.Parse(reqCreationDate[1].TrimStart('0'));
 
-                DateTime reqDate = new DateTime(year, month, day);
-                DateTime today = DateTime.Now.Date;
-                double elapsedDays = (today - reqDate).TotalDays;
-                totalDays += elapsedDays;
-                elapsedDays = (int)elapsedDays;
-
-                // Apply the elapsed days against the time span conditions
-                TimeSpanDump(elapsedDays);
+                // Calculate the average for this KPA
+                CalculateAverage(totalDays);
             }
-
-
-            // Calculate the average for this KPA
-            CalculateAverage(totalDays);
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("An argument out of range exception was thrown", "Excess Stock - Stock -> PRs Aging (Not Released) - Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
         }
     }
 }

@@ -68,49 +68,19 @@ namespace Reporting.Selective
     }
 
 
-    public sealed class SelectiveDataTypeThree : SelectiveStrategyData, IFavorable 
+    public sealed class SelectiveDataTypeThree : SelectiveStrategyData 
     {
         public override double Average { get; set; }
         public override double TotalRecords { get; set; }
         public double PercentFavorable { get; set; }
-
-        public void CalculatePercentFavorable()
-        {
-            if(TotalRecords != 0)
-            {
-                double favorableTimeSpanCounts = 0;
-
-                foreach(int i in _data)
-                {
-                    favorableTimeSpanCounts += i;
-                }
-                // calculate the Percent Favorable
-                this.PercentFavorable = Math.Round((favorableTimeSpanCounts / this.TotalRecords) * 100, 2);
-            }
-        }
     }
 
 
-    public sealed class SelectiveDataTypeFour : SelectiveStrategyData, IFavorable
+    public sealed class SelectiveDataTypeFour : SelectiveStrategyData
     {
         public override double Average { get; set; }
         public override double TotalRecords { get; set; }
         public double PercentUnconfirmed { get; set; }
         public double PercentFavorable { get; set; }
-
-        public void CalculatePercentFavorable()
-        {
-            if (TotalRecords != 0)
-            {
-                double favorableTimeSpanCounts = 0;
-
-                foreach (int i in _data)
-                {
-                    favorableTimeSpanCounts += i;
-                }
-                // calculate the Percent Favorable
-                this.PercentFavorable = Math.Round((favorableTimeSpanCounts / this.TotalRecords) * 100, 2);
-            }
-        }
     }
 }

@@ -5,6 +5,7 @@ using Reporting.Overall;
 using Reporting.Selective;
 using System;
 using System.Data;
+using System.Windows.Forms;
 
 namespace Reporting.KeyPerformanceActions.PurchTotal
 {
@@ -127,6 +128,11 @@ namespace Reporting.KeyPerformanceActions.PurchTotal
                 if (double.IsNaN(Average))
                     Average = 0;
             }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("An argument out of range exception was thrown", "Purch Total -> PR Release To Confirmation Entry - Average Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
             catch (DivideByZeroException)
             {
                 Average = 0;
@@ -154,48 +160,56 @@ namespace Reporting.KeyPerformanceActions.PurchTotal
         /// </summary>
         public override void RunOverallReport()
         {
-            DataTable dt = KpaUtils.PurchTotalQueries.GetPrReleaseToConfirmationEntry();
-            double totalDays = 0;
-
-            foreach (DataRow dr in dt.Rows)
+            try
             {
-                //Check if the datarow meets the conditions of any applied filters.
-                if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
+                DataTable dt = KpaUtils.PurchTotalQueries.GetPrReleaseToConfirmationEntry();
+                double totalDays = 0;
+
+                foreach (DataRow dr in dt.Rows)
                 {
-                    // This datarow dos not meet the conditions of the filters applied.
-                    continue;
+                    //Check if the datarow meets the conditions of any applied filters.
+                    if (!FilterUtils.EvaluateAgainstFilters(dr))
+                    {
+                        // This datarow dos not meet the conditions of the filters applied.
+                        continue;
+                    }
+
+
+                    #region EVASO_BUT_NOT_FULLY_RELEASED_CHECK
+
+                    string[] strPrFullyRelDate = (dr["PR Fully Rel Date"].ToString()).Split('/');
+                    int prFullyRelYear = int.Parse(strPrFullyRelDate[2]);
+                    int prFullyRelMonth = int.Parse(strPrFullyRelDate[0]);
+                    int prFullyRelDay = int.Parse(strPrFullyRelDate[1]);
+
+
+                    if (prFullyRelYear == 0 && prFullyRelMonth == 0 && prFullyRelDay == 0)
+                    {
+                        // This PR line or PR in general might have been delted
+                        continue;
+                    }
+
+
+                    #endregion
+
+                    DateTime prFullyRelDt = new DateTime(prFullyRelYear, prFullyRelMonth, prFullyRelDay);
+
+                    DateTime today = DateTime.Now.Date;
+                    double elapsedDays = (today - prFullyRelDt).TotalDays;
+                    totalDays += elapsedDays;
+                    elapsedDays = (int)elapsedDays;
+
+                    // Apply the elapsed days against the time spand conditions
+                    TimeSpanDump(elapsedDays);
                 }
 
-
-                #region EVASO_BUT_NOT_FULLY_RELEASED_CHECK
-
-                string[] strPrFullyRelDate = (dr["PR Fully Rel Date"].ToString()).Split('/');
-                int prFullyRelYear = int.Parse(strPrFullyRelDate[2]);
-                int prFullyRelMonth = int.Parse(strPrFullyRelDate[0]);
-                int prFullyRelDay = int.Parse(strPrFullyRelDate[1]);
-
-
-                if (prFullyRelYear == 0 && prFullyRelMonth == 0 && prFullyRelDay == 0)
-                {
-                    // This PR line or PR in general might have been delted
-                    continue;
-                }
-
-
-                #endregion
-
-                DateTime prFullyRelDt = new DateTime(prFullyRelYear, prFullyRelMonth, prFullyRelDay);
-
-                DateTime today = DateTime.Now.Date;
-                double elapsedDays = (today - prFullyRelDt).TotalDays;
-                totalDays += elapsedDays;
-                elapsedDays = (int)elapsedDays;
-
-                // Apply the elapsed days against the time spand conditions
-                TimeSpanDump(elapsedDays);
+                CalculateAverage(totalDays);
             }
-
-            CalculateAverage(totalDays);
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("An argument out of range exception was thrown", "Purch Total -> PR Release To Confirmation Entry - Average Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
         }
     }
 }

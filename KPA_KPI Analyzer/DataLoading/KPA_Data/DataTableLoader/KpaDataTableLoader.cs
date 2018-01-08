@@ -37,8 +37,6 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                             continue;
                         }
 
-
-
                         string[] reqCreationDate = (dr["Requisn Date"].ToString()).Split('/');
                         int year = int.Parse(reqCreationDate[2]);
                         int month = int.Parse(reqCreationDate[0].TrimStart('0'));
@@ -57,45 +55,45 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
                                 {
                                     prsAgingNotRelDt.ImportRow(dr);
                                 }
-                                continue;
+                                break;
                             case 2:
                                 if (elapsedDays >= 1 && elapsedDays <= 3)
                                 {
                                     prsAgingNotRelDt.ImportRow(dr);
                                 }
-                                continue;
+                                break;
                             case 3:
                                 if (elapsedDays >= 4 && elapsedDays <= 7)
                                 {
                                     prsAgingNotRelDt.ImportRow(dr);
                                 }
-                                continue;
+                                break;
                             case 4:
                                 if (elapsedDays >= 8 && elapsedDays <= 14)
                                 {
                                     prsAgingNotRelDt.ImportRow(dr);
                                 }
-                                continue;
+                                break;
                             case 5:
                                 if (elapsedDays >= 15 && elapsedDays <= 21)
                                 {
                                     prsAgingNotRelDt.ImportRow(dr);
                                 }
-                                continue;
+                                break;
                             case 6:
                                 if (elapsedDays >= 22 && elapsedDays <= 28)
                                 {
                                     prsAgingNotRelDt.ImportRow(dr);
                                 }
-                                continue;
+                                break;
                             case 7:
                                 if (elapsedDays >= 29)
                                 {
                                     prsAgingNotRelDt.ImportRow(dr);
                                 }
-                                continue;
+                                break;
                             default:
-                                continue;
+                                break;
                         }
                     }
                     DataViewerUtils.Data = prsAgingNotRelDt.Copy();

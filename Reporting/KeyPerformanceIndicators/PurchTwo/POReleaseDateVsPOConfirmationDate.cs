@@ -292,8 +292,8 @@ namespace Reporting.KeyPerformanceIndicators.PurchTwo
                 TimeSpanDump(elapsedDays);
             }
 
-
             // Calculate the average for this KPI
+            CalculateAverage(totalDays);
 
             // Calcualte the percent unconfrimed for this KPI
             CalculatePercentUnconfirmed(percentUnconfTotal);

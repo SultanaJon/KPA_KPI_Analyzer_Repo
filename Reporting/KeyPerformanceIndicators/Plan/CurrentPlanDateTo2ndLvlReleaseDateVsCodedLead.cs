@@ -180,7 +180,15 @@ namespace Reporting.KeyPerformanceIndicators.Plan
         /// </summary>
         public void CalculatePercentFavorable()
         {
+            if (TotalRecords != 0)
+            {
+                // Get the favorable timespans
+                double favorableTimeSpans = ZeroDays + OneToSevenDays + EightToFourteenDays + FifteenToTwentyOneDays + GreaterThanEqualToTwentyTwoDays;
 
+
+                // calculate the Percent Favorable
+                PercentFavorable = Math.Round((favorableTimeSpans / TotalRecords) * 100, 2);
+            }
         }
 
         #endregion

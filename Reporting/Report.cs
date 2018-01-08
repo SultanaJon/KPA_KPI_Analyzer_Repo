@@ -41,11 +41,18 @@ namespace Reporting
         /// </summary>
         public Report()
         {
-            if(Actions != null && Indicators != null)
+            if(Actions == null && Indicators == null)
             {
                 Actions = new List<KeyPerformanceAction>();
                 Indicators = new List<KeyPerformanceIndicator>();
             }
         }
+
+
+
+        /// <summary>
+        /// Abstract method to run the specific report
+        /// </summary>
+        public abstract void RunReport();
     }
 }

@@ -275,5 +275,15 @@ namespace Reporting
                     throw new Exception();
             }
         }
+
+
+
+        /// <summary>
+        /// Method that generates the overall report.
+        /// </summary>
+        public override void RunReport()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

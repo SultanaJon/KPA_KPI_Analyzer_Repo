@@ -178,7 +178,7 @@ namespace KPA_KPI_Analyzer
                     }
                     catch(Exception ex)
                     {
-                        MessageBox.Show(ex.Message);
+                        MessageBox.Show(ex.InnerException.Message);
                     }
                 }
                 else

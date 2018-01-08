@@ -304,9 +304,11 @@ namespace Reporting.KeyPerformanceIndicators.FollowUp
             // Caclualte the percent unconfirmed
             CalculatePercentUnconfirmed(percentUnconfTotal);
 
-
             // Calculate the average for this KPI
             CalculateAverage(totalDays);
+
+            // Calculate percent favorable
+            CalculatePercentFavorable();
         }
     }
 }

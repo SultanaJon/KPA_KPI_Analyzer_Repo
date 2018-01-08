@@ -11,6 +11,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
     {
         Overall overallData = new Overall();
 
+
+
         public delegate void UpdateCategoryHandler();
         public static event UpdateCategoryHandler ChangeCategory;
 

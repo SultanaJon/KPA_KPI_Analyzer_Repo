@@ -279,6 +279,9 @@ namespace Reporting.KeyPerformanceIndicators.FollowUp
 
             // Calculate the average for this KPI
             CalculateAverage(totalDays);
+
+            // Calculate the percent favorable
+            CalculatePercentFavorable();
         }
     }
 }

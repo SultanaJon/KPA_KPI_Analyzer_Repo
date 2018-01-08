@@ -1,37 +1,55 @@
 ﻿using Reporting.KeyPerformanceActions;
+using Reporting.KeyPerformanceActions.FollowUp;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Reporting
 {
-    public class KpaReport : Report
+    public class KpaOverallReport : Report
     {
         /// <summary>
         /// Private instance of a KPA Report
         /// </summary>
-        private static KpaReport kpaReportInstance = new KpaReport();
+        private static KpaOverallReport kpaOverallReportInstance;
 
 
         /// <summary>
         /// Property to return the instance of the KPA Report
         /// </summary>
-        public static KpaReport KpaReportInstance { get { return kpaReportInstance; } }
+        public static KpaOverallReport KpaOverallReportInstance
+        {
+            get
+            {
+                // Create a new instance if one does not exist
+                if(kpaOverallReportInstance == null)
+                {
+                    kpaOverallReportInstance = new KpaOverallReport();
+                }
+
+                // Return the instance of the object
+                return kpaOverallReportInstance;
+            }
+        }
 
 
         /// <summary>
         /// The contents of the KPA Report
         /// </summary>
-        Dictionary<string, List<KeyPerformanceAction>> report;
+        List<KeyPerformanceAction> kpaOverallReport;
 
 
         /// <summary>
         /// Default Private Constructor
         /// </summary>
-        private KpaReport()
+        private KpaOverallReport()
         {
-            report = new Dictionary<string, List<KeyPerformanceAction>>();
+            kpaOverallReport = new List<KeyPerformanceAction>();
 
             // Check if any other report have already created the actions
-            if(!ActionsSet)
+            if (!ActionsSet)
             {
                 // Add the Key Performance Actions to the report
                 AddActions();
@@ -42,13 +60,14 @@ namespace Reporting
 
 
 
+
         /// <summary>
         /// Creates a new instance of a KPA Report
         /// </summary>
         public static void CreateNewInstance()
         {
             // Creates a new instance of the report
-            kpaReportInstance = new KpaReport();
+            kpaOverallReportInstance = new KpaOverallReport();
         }
 
 
@@ -58,7 +77,8 @@ namespace Reporting
         /// </summary>
         private void AddActions()
         {
-            Actions.Add(new KeyPerformanceActions.Plan.PRsAgingNotReleased());
+            KeyPerformanceAction action = new KeyPerformanceActions.Plan.PRsAgingNotReleased();
+            Actions.Add(action);
             Actions.Add(new KeyPerformanceActions.Plan.MaterialDue());
             Actions.Add(new KeyPerformanceActions.Purch.PRsAgingReleased());
             Actions.Add(new KeyPerformanceActions.Purch.POFirstRelease());
@@ -87,36 +107,47 @@ namespace Reporting
 
 
         /// <summary>
-        /// Creates the KPA Report
+        /// Creates the overall report
         /// </summary>
-        /// <param name="filters"></param>
-        public void CreateReport(List<string> filters)
+        public void CreateReport()
         {
-            foreach(string filter in filters)
-            {
-                report.Add(filter, Actions);
-            }
+            // Clear the report and add the actions to it
+            kpaOverallReport.Clear();
+            kpaOverallReport.AddRange(Actions);
         }
 
 
 
 
-
         /// <summary>
-        /// Runs the report based on the filter given
+        /// Runs the overall report for all the Key Performance Actions (KPA)
         /// </summary>
         public override void RunReport()
         {
-            if(report.Count > 0)
+            foreach (KeyPerformanceAction action in kpaOverallReport)
             {
-                foreach(string filter in report.Keys)
-                {
-                    foreach(KeyPerformanceAction action in report[filter])
-                    {
-                        action.RunSelectiveReport(filter);
-                    }
-                }
+                // We want to run each kpa in an asyncronous method
+                Task task = new Task(action.RunOverallReport);
+
+                // This KPA needs information from another KPA.
+                if (action is ConfirmedDateForUpcomingDeliveries)
+                    continue;
+
+                // Start running the method in the thread pool
+                task.Start();
             }
+
+            // Get the lessThanZero data from Due Today or Late to confirmed
+            int lessThanEqualToZero = (kpaOverallReport[(int)KpaOption.FollowUp_DueTodayOrLateToConfirmed] as DueTodayOrLateToConfirmed).LessThanEqualToZeroDays;
+
+            // supply Confirmed date for upcoming deliveries the above data
+            (kpaOverallReport[(int)KpaOption.FollowUp_ConfirmedDateForUpcomingDeliveries] as ConfirmedDateForUpcomingDeliveries).DueTodayLateToConfirmedLessThanZeroDueToday = lessThanEqualToZero;
+
+            // apply the method in the thread pool
+            Task taskTwo = new Task(kpaOverallReport[(int)KpaOption.FollowUp_ConfirmedDateForUpcomingDeliveries].RunOverallReport);
+
+            // Run the report for upcoming deliveries
+            taskTwo.Start();
         }
     }
 }

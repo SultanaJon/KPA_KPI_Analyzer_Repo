@@ -17,10 +17,13 @@ using Filters;
 using Filters.Variants;
 using KPA_KPI_Analyzer.Overall_Data;
 using KPA_KPI_Analyzer.Values;
+using Reporting;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
+using Reporting.KeyPerformanceActions;
+using Reporting.KeyPerformanceActions.Plan;
 
 namespace KPA_KPI_Analyzer
 {
@@ -32,6 +35,7 @@ namespace KPA_KPI_Analyzer
         private FormData frmData = new FormData();
 
         // The overall data calculated.
+
         private Overall overallData = new Overall();
 
         // The current active user controls visible.
@@ -927,6 +931,27 @@ namespace KPA_KPI_Analyzer
         private void reportingToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // Create the KPA Overall Report
+            CreateReport(ReportingType.KpaOverall);
+
+            // Create the KPI Overall Report
+            CreateReport(ReportingType.KpiOverall);
+
+            // Setup the KPA Report
+            (reports[ReportingType.KpaOverall] as KpaOverallReport).CreateReport();
+
+            // Setup the KPI Report
+            (reports[ReportingType.KpiOverall] as KpiOverallReport).CreateReport();
+
+            // Run the KPA Overall Report
+            reports[ReportingType.KpaOverall].RunReport();
+
+            // Run the KPI Overall Reprot
+            reports[ReportingType.KpiOverall].RunReport();
         }
     }
 }

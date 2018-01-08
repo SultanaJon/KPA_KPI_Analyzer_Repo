@@ -71,6 +71,19 @@
         public string Name { get; set; }
 
 
+
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
+        public KeyPerformanceAction()
+        {
+            if(1 == 1)
+            {
+                ;
+            }
+        }
+
+
         /// <summary>
         /// Method to calculate the selective report for this Key Performance Action (KPA)
         /// </summary>

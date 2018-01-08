@@ -1,36 +1,51 @@
 ﻿using Reporting.KeyPerformanceIndicators;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Reporting
 {
-    public class KpiReport : Report
+    public class KpiOverallReport : Report
     {
         /// <summary>
-        /// A private instance of a KPI Report
+        /// Private instance of a KPA Report
         /// </summary>
-        private static KpiReport kpiReportInstance = new KpiReport();
+        private static KpiOverallReport kpiOverallReportInstance;
 
 
         /// <summary>
-        /// A public property to get the instance of the KPI Report.
+        /// Property to return the instance of the KPA Report
         /// </summary>
-        public static KpiReport KpiReportInstance { get { return kpiReportInstance; } }
+        public static KpiOverallReport KpiOverallReportInstance
+        {
+            get
+            {
+                if(kpiOverallReportInstance == null)
+                {
+                    kpiOverallReportInstance = new KpiOverallReport();
+                }
+                return kpiOverallReportInstance;
+            }
+        }
 
 
         /// <summary>
-        /// The contents of the KPI Report
+        /// The contents of the KPA Report
         /// </summary>
-        Dictionary<string, List<KeyPerformanceIndicator>> report;
+        List<KeyPerformanceIndicator> kpiOverallReport;
 
 
         /// <summary>
         /// Default Private Constructor
         /// </summary>
-        private KpiReport()
+        private KpiOverallReport()
         {
-            report = new Dictionary<string, List<KeyPerformanceIndicator>>();
+            kpiOverallReport = new List<KeyPerformanceIndicator>();
 
-            if(!IndicatorsSet)
+            // Check if any other report have already created the actions
+            if (!IndicatorsSet)
             {
                 // Add the Key Performance Actions to the report
                 AddIndicators();
@@ -40,14 +55,17 @@ namespace Reporting
 
 
 
+
+
         /// <summary>
         /// Creates a new instance of a KPA Report
         /// </summary>
         public static void CreateNewInstance()
         {
             // Creates a new instance of the report
-            kpiReportInstance = new KpiReport();
+            kpiOverallReportInstance = new KpiOverallReport();
         }
+
 
 
         /// <summary>
@@ -58,11 +76,11 @@ namespace Reporting
             Indicators.Add(new KeyPerformanceIndicators.Plan.CurrentPlanDateVsPRPlanDate());
             Indicators.Add(new KeyPerformanceIndicators.Plan.OriginalPlanDateTo2ndLvlReleaseDateVsCodedLead());
             Indicators.Add(new KeyPerformanceIndicators.Plan.CurrentPlanDateTo2ndLvlReleaseDateVsCodedLead());
-            Indicators.Add(new KeyPerformanceIndicators.Purch.InitialConfirmationDateVsPRPlanDate());
             Indicators.Add(new KeyPerformanceIndicators.FollowUp.CurrentConfirmationDateVsInitialConfirmationDate());
             Indicators.Add(new KeyPerformanceIndicators.FollowUp.FinalConfirmationDateVsFinalPlanDate());
             Indicators.Add(new KeyPerformanceIndicators.FollowUp.ReceiptDateVsCurrentPlanDate());
             Indicators.Add(new KeyPerformanceIndicators.FollowUp.ReceiptDateVsOriginalConfirmationDate());
+            Indicators.Add(new KeyPerformanceIndicators.Purch.InitialConfirmationDateVsPRPlanDate());
             Indicators.Add(new KeyPerformanceIndicators.FollowUp.ReceiptDateVsCurrentConfirmationDate());
             Indicators.Add(new KeyPerformanceIndicators.PlanTwo.MaterialDueOriginalPlannedDate());
             Indicators.Add(new KeyPerformanceIndicators.PlanTwo.MaterialDueFinalPlannedDate());
@@ -84,35 +102,30 @@ namespace Reporting
 
 
         /// <summary>
-        /// Creates the KPA Report
+        /// Creates the overall report
         /// </summary>
-        /// <param name="filters"></param>
-        public void CreateReport(List<string> filters)
+        public void CreateReport()
         {
-            foreach (string filter in filters)
-            {
-                report.Add(filter, Indicators);
-            }
+            // Clear the report and add the actions to it
+            kpiOverallReport.Clear();
+            kpiOverallReport.AddRange(Indicators);
         }
 
 
 
 
-
         /// <summary>
-        /// Runs the report based on the filter given
+        /// Runs the overall report for all the Key Performance Actions (KPA)
         /// </summary>
         public override void RunReport()
         {
-            if (report.Count > 0)
+            foreach (KeyPerformanceIndicator indicator in kpiOverallReport)
             {
-                foreach (string filter in report.Keys)
-                {
-                    foreach (KeyPerformanceIndicator action in report[filter])
-                    {
-                        action.RunSelectiveReport(filter);
-                    }
-                }
+                // We want to run each kpa in an asyncronous method
+                Task task = new Task(indicator.RunOverallReport);
+
+                // Start running the method in the thread pool
+                task.Start();
             }
         }
     }

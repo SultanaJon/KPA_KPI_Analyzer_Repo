@@ -4,6 +4,7 @@ using ExcelLibrary;
 using Filters;
 using KPA_KPI_Analyzer.Overall_Data;
 using KPA_KPI_Analyzer.Values;
+using Reporting;
 using System;
 using System.Threading;
 using System.Windows.Forms;
@@ -136,13 +137,23 @@ namespace KPA_KPI_Analyzer
                 DatabaseLoadingUtils.KPITablesLoaded = false;
                 DatabaseLoadingUtils.ScheduledDataLoads = 19;
                 StartThreads(true, false);
+
+
+                #region OVERALL REPLACEMENT
+                (reports[ReportingType.KpaOverall] as KpaOverallReport).RunReport();
+                #endregion
             }
 
 
             if (DatabaseLoadingUtils.KPITablesLoaded)
             {
                 DatabaseLoadingUtils.KPITablesLoaded = false;
+
                 StartThreads(false, true);
+
+                #region OVERALL REPLACEMENT
+                (reports[ReportingType.KpiOverall] as KpiOverallReport).RunReport();
+                #endregion
             }
 
             if (DatabaseLoadingUtils.DataLoaded)
@@ -299,6 +310,13 @@ namespace KPA_KPI_Analyzer
             lbl_topPanelNavPrpoDate.Text = "Loading...";
             overallData = new Overall_Data.Overall();
 
+            #region OVERALL REPLACEMENT
+            CreateReport(ReportingType.KpaOverall);
+            CreateReport(ReportingType.KpiOverall);
+
+            (reports[ReportingType.KpaOverall] as KpaOverallReport).CreateReport();
+            (reports[ReportingType.KpiOverall] as KpiOverallReport).CreateReport();
+            #endregion
             if (AccessDatabaseUtils.US_PRPO_TableExists || AccessDatabaseUtils.MX_PRPO_TableExists)
                 DatabaseManager.DropCreateDb();
             else
@@ -464,6 +482,16 @@ namespace KPA_KPI_Analyzer
             cpb_loadingScreenCircProgBar.Text = "Loading Data...";
             ms_applicaitonMenuStrip.Enabled = false;
             overallData = new Overall();
+
+            #region OVERALL REPLACEMENT
+            CreateReport(ReportingType.KpaOverall);
+            CreateReport(ReportingType.KpiOverall);
+
+            (reports[ReportingType.KpaOverall] as KpaOverallReport).CreateReport();
+            (reports[ReportingType.KpiOverall] as KpiOverallReport).CreateReport();
+            #endregion
+
+
             DatabaseLoadingUtils.DataLoadProcessStarted = false;
             DatabaseLoadingUtils.DataLoaded = false;
             DatabaseLoadingUtils.KPITablesLoaded = false;

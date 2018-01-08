@@ -7,6 +7,7 @@ using Reporting.Interfaces;
 using Reporting.Selective;
 using System;
 using System.Data;
+using System.Windows.Forms;
 
 namespace Reporting.KeyPerformanceActions.FollowUp
 {
@@ -160,6 +161,11 @@ namespace Reporting.KeyPerformanceActions.FollowUp
                 if (double.IsNaN(Average))
                     Average = 0;
             }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("An argument out of range exception was thrown", "Folow Up -> Confirmed Date vs Plan Date - Average Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
             catch (DivideByZeroException)
             {
                 Average = 0;
@@ -187,56 +193,64 @@ namespace Reporting.KeyPerformanceActions.FollowUp
         /// </summary>
         public override void RunOverallReport()
         {
-            DataTable dt = KpaUtils.FollowUpQueries.GetConfirmedDateVsPlanDate();
-            double totalDays = 0;
-
-            foreach (DataRow dr in dt.Rows)
+            try
             {
-                //Check if the datarow meets the conditions of any applied filters.
-                if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
+                DataTable dt = KpaUtils.FollowUpQueries.GetConfirmedDateVsPlanDate();
+                double totalDays = 0;
+
+                foreach (DataRow dr in dt.Rows)
                 {
-                    // This datarow dos not meet the conditions of the filters applied.
-                    continue;
+                    //Check if the datarow meets the conditions of any applied filters.
+                    if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
+                    {
+                        // This datarow dos not meet the conditions of the filters applied.
+                        continue;
+                    }
+
+
+                    string[] strCurrConfDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
+                    int delConfYear = int.Parse(strCurrConfDate[2]);
+                    int delConfMonth = int.Parse(strCurrConfDate[0].TrimStart('0'));
+                    int delConfDay = int.Parse(strCurrConfDate[1].TrimStart('0'));
+
+                    DateTime delConfDate = new DateTime(delConfYear, delConfMonth, delConfDay);
+
+                    string[] strCurrPlanDate = (dr["Rescheduling date"].ToString()).Split('/');
+                    int currConfYear = int.Parse(strCurrPlanDate[2]);
+                    int currConfMonth = int.Parse(strCurrPlanDate[0]);
+                    int currConfDay = int.Parse(strCurrPlanDate[1]);
+
+                    if (currConfYear == 0 && currConfMonth == 0 && currConfDay == 0)
+                    {
+                        string[] strNewCurrConfDate = (dr["Delivery Date"].ToString()).Split('/');
+                        currConfYear = int.Parse(strNewCurrConfDate[2]);
+                        currConfMonth = int.Parse(strNewCurrConfDate[0].TrimStart('0'));
+                        currConfDay = int.Parse(strNewCurrConfDate[1].TrimStart('0'));
+                    }
+                    else
+                    {
+                        currConfYear = int.Parse(strCurrPlanDate[2]);
+                        currConfMonth = int.Parse(strCurrPlanDate[0].TrimStart('0'));
+                        currConfDay = int.Parse(strCurrPlanDate[1].TrimStart('0'));
+                    }
+
+                    DateTime currPlanDate = new DateTime(currConfYear, currConfMonth, currConfDay);
+                    double elapsedDays = (delConfDate - currPlanDate).TotalDays;
+                    totalDays += elapsedDays;
+                    elapsedDays = (int)elapsedDays;
+
+                    // Apply the elapsed days against the time spand conditions
+                    TimeSpanDump(elapsedDays);
                 }
 
-
-                string[] strCurrConfDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
-                int delConfYear = int.Parse(strCurrConfDate[2]);
-                int delConfMonth = int.Parse(strCurrConfDate[0].TrimStart('0'));
-                int delConfDay = int.Parse(strCurrConfDate[1].TrimStart('0'));
-
-                DateTime delConfDate = new DateTime(delConfYear, delConfMonth, delConfDay);
-
-                string[] strCurrPlanDate = (dr["Rescheduling date"].ToString()).Split('/');
-                int currConfYear = int.Parse(strCurrPlanDate[2]);
-                int currConfMonth = int.Parse(strCurrPlanDate[0]);
-                int currConfDay = int.Parse(strCurrPlanDate[1]);
-
-                if (currConfYear == 0 && currConfMonth == 0 && currConfDay == 0)
-                {
-                    string[] strNewCurrConfDate = (dr["Delivery Date"].ToString()).Split('/');
-                    currConfYear = int.Parse(strNewCurrConfDate[2]);
-                    currConfMonth = int.Parse(strNewCurrConfDate[0].TrimStart('0'));
-                    currConfDay = int.Parse(strNewCurrConfDate[1].TrimStart('0'));
-                }
-                else
-                {
-                    currConfYear = int.Parse(strCurrPlanDate[2]);
-                    currConfMonth = int.Parse(strCurrPlanDate[0].TrimStart('0'));
-                    currConfDay = int.Parse(strCurrPlanDate[1].TrimStart('0'));
-                }
-
-                DateTime currPlanDate = new DateTime(currConfYear, currConfMonth, currConfDay);
-                double elapsedDays = (delConfDate - currPlanDate).TotalDays;
-                totalDays += elapsedDays;
-                elapsedDays = (int)elapsedDays;
-
-                // Apply the elapsed days against the time spand conditions
-                TimeSpanDump(elapsedDays);
+                // Calculate the average for this KPA
+                CalculateAverage(totalDays);
             }
-
-            // Calculate the average for this KPA
-            CalculateAverage(totalDays);
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("An argument out of range exception was thrown", "Folow Up -> Confirmed Date vs Plan Date - Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
         }
     }
 }

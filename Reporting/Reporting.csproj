@@ -84,7 +84,9 @@
     <Compile Include="KeyPerformanceIndicators\PurchTwo\POReleaseDateVsPOConfirmationDate.cs" />
     <Compile Include="KeyPerformanceIndicators\PurchTwo\PR2ndLvlReleaseDateVsPOCreationDate.cs" />
     <Compile Include="KeyPerformanceIndicators\Purch\InitialConfirmationDateVsPRPlanDate.cs" />
+    <Compile Include="KpaOverallReport.cs" />
     <Compile Include="KpaReport.cs" />
+    <Compile Include="KpiOverallReport.cs" />
     <Compile Include="KpiReport.cs" />
     <Compile Include="Overall\ITemplateFive.cs" />
     <Compile Include="Overall\ITemplateFour.cs" />

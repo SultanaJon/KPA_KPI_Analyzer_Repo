@@ -5,6 +5,7 @@ using Reporting.Selective;
 using System;
 using System.Data;
 using Reporting.Interfaces;
+using System.Windows.Forms;
 
 namespace Reporting.KeyPerformanceActions.CurrentPlanVsActual
 {
@@ -152,12 +153,20 @@ namespace Reporting.KeyPerformanceActions.CurrentPlanVsActual
         /// </summary>
         public void CalculatePercentFavorable()
         {
-            if (TotalRecords != 0)
+            try
             {
-                double favorableTimeSpanCounts = LessthanNegThreeWeeks + GreaterThanEqualToNegThreeWeeks + GreaterThanEqualToNegTwoWeeks + GreaterThanEqualNegOneWeek + ZeroWeeks;
+                if (TotalRecords != 0)
+                {
+                    double favorableTimeSpanCounts = LessthanNegThreeWeeks + GreaterThanEqualToNegThreeWeeks + GreaterThanEqualToNegTwoWeeks + GreaterThanEqualNegOneWeek + ZeroWeeks;
 
-                // calculate the Percent Favorable
-                PercentFavorable = Math.Round((favorableTimeSpanCounts / TotalRecords) * 100, 2);
+                    // calculate the Percent Favorable
+                    PercentFavorable = Math.Round((favorableTimeSpanCounts / TotalRecords) * 100, 2);
+                }
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("An argument out of range exception was thrown", "Current Plan Date vs Curren Confirmation date for Hot Jobs Favorable Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
             }
         }
 
@@ -178,6 +187,11 @@ namespace Reporting.KeyPerformanceActions.CurrentPlanVsActual
                 Average = Math.Round(_totalDays / TotalRecords, 2);
                 if (double.IsNaN(Average))
                     Average = 0;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("An argument out of range exception was thrown", "Current Plan Date vs Curren Confirmation date Average Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
             }
             catch (DivideByZeroException)
             {
@@ -209,62 +223,70 @@ namespace Reporting.KeyPerformanceActions.CurrentPlanVsActual
         /// </summary>
         public override void RunOverallReport()
         {
-            DataTable dt = KpaUtils.CurrentPlanVsActualQueries.GetCurrentPlanDateVsCurrentConfirmationDate();
-            double totalDays = 0;
-
-            foreach (DataRow dr in dt.Rows)
+            try
             {
-                //Check if the datarow meets the conditions of any applied filters.
-                if (!FilterUtils.EvaluateAgainstFilters(dr))
+                DataTable dt = KpaUtils.CurrentPlanVsActualQueries.GetCurrentPlanDateVsCurrentConfirmationDate();
+                double totalDays = 0;
+
+                foreach (DataRow dr in dt.Rows)
                 {
-                    // This datarow dos not meet the conditions of the filters applied.
-                    continue;
+                    //Check if the datarow meets the conditions of any applied filters.
+                    if (!FilterUtils.EvaluateAgainstFilters(dr))
+                    {
+                        // This datarow dos not meet the conditions of the filters applied.
+                        continue;
+                    }
+
+                    string[] strDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
+                    int year = int.Parse(strDate[2]);
+                    int month = int.Parse(strDate[0].TrimStart('0'));
+                    int day = int.Parse(strDate[1].TrimStart('0'));
+
+                    DateTime confDate = new DateTime(year, month, day);
+
+
+                    string[] strCurrPlanDate = (dr["Rescheduling date"].ToString()).Split('/');
+                    int currConfYear = int.Parse(strCurrPlanDate[2]);
+                    int currConfMonth = int.Parse(strCurrPlanDate[0]);
+                    int currConfDay = int.Parse(strCurrPlanDate[1]);
+
+                    if (currConfYear == 0 && currConfMonth == 0 && currConfDay == 0)
+                    {
+                        string[] strNewCurrConfDate = (dr["Delivery Date"].ToString()).Split('/');
+                        currConfYear = int.Parse(strNewCurrConfDate[2]);
+                        currConfMonth = int.Parse(strNewCurrConfDate[0].TrimStart('0'));
+                        currConfDay = int.Parse(strNewCurrConfDate[1].TrimStart('0'));
+                    }
+                    else
+                    {
+                        currConfYear = int.Parse(strCurrPlanDate[2]);
+                        currConfMonth = int.Parse(strCurrPlanDate[0].TrimStart('0'));
+                        currConfDay = int.Parse(strCurrPlanDate[1].TrimStart('0'));
+                    }
+
+                    DateTime currPlanDate = new DateTime(currConfYear, currConfMonth, currConfDay);
+                    double elapsedDays = (confDate - currPlanDate).TotalDays;
+
+                    // Our time spans are in weeks but we want to catch the average amount of days.
+                    totalDays += elapsedDays;
+                    elapsedDays = (int)elapsedDays;
+
+
+                    // Apply the elapsed days against the time span conditions
+                    TimeSpanDump(elapsedDays);
                 }
 
-                string[] strDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
-                int year = int.Parse(strDate[2]);
-                int month = int.Parse(strDate[0].TrimStart('0'));
-                int day = int.Parse(strDate[1].TrimStart('0'));
+                // Calculate the average for this KPA
+                CalculateAverage(totalDays);
 
-                DateTime confDate = new DateTime(year, month, day);
-
-
-                string[] strCurrPlanDate = (dr["Rescheduling date"].ToString()).Split('/');
-                int currConfYear = int.Parse(strCurrPlanDate[2]);
-                int currConfMonth = int.Parse(strCurrPlanDate[0]);
-                int currConfDay = int.Parse(strCurrPlanDate[1]);
-
-                if (currConfYear == 0 && currConfMonth == 0 && currConfDay == 0)
-                {
-                    string[] strNewCurrConfDate = (dr["Delivery Date"].ToString()).Split('/');
-                    currConfYear = int.Parse(strNewCurrConfDate[2]);
-                    currConfMonth = int.Parse(strNewCurrConfDate[0].TrimStart('0'));
-                    currConfDay = int.Parse(strNewCurrConfDate[1].TrimStart('0'));
-                }
-                else
-                {
-                    currConfYear = int.Parse(strCurrPlanDate[2]);
-                    currConfMonth = int.Parse(strCurrPlanDate[0].TrimStart('0'));
-                    currConfDay = int.Parse(strCurrPlanDate[1].TrimStart('0'));
-                }
-
-                DateTime currPlanDate = new DateTime(currConfYear, currConfMonth, currConfDay);
-                double elapsedDays = (confDate - currPlanDate).TotalDays;
-
-                // Our time spans are in weeks but we want to catch the average amount of days.
-                totalDays += elapsedDays;
-                elapsedDays = (int)elapsedDays;
-
-
-                // Apply the elapsed days against the time span conditions
-                TimeSpanDump(elapsedDays);
+                // Calcualte the Percent Favorable for this KPA
+                CalculatePercentFavorable();
             }
-
-            // Calculate the average for this KPA
-            CalculateAverage(totalDays);
-
-            // Calcualte the Percent Favorable for this KPA
-            CalculatePercentFavorable();
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("An argument out of range exception was thrown", "Current Plan Date vs Curren Confirmation date Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
         }
     }
 }
