@@ -14,6 +14,13 @@ namespace Reporting.Interfaces
         double PercentUnconfirmed { get; set; }
 
 
+
+        /// <summary>
+        /// The total of records that are unconfirmed
+        /// </summary>
+        int UnconfirmedTotal { get; set; }
+
+
         /// <summary>
         /// Calculated the percentage of unconfirmed records
         /// </summary>

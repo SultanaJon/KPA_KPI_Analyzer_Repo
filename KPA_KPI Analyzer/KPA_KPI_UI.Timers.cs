@@ -167,7 +167,8 @@ namespace KPA_KPI_Analyzer
                     && !FilterData.AdvancedFilters.Applied)
                 {
                     // Save the overall data to a JSON file.
-                    overallData.Save();
+                    (reports[ReportingType.KpaOverall] as KpaOverallReport).Save();
+                    (reports[ReportingType.KpiOverall] as KpiOverallReport).Save();
 
                     InitializeFilterLoadProcess();
                 }
@@ -179,7 +180,7 @@ namespace KPA_KPI_Analyzer
                     ms_applicaitonMenuStrip.Enabled = true;
                 }
 
-                if (Globals.TargetCountry == Values.Countries.Country.UnitedStates)
+                if (ReportingCountry.TargetCountry == Country.UnitedStates)
                 {
                     // Populate Dashboard with PRPO report date.
                     DateTime dt = GetLoadedUsPrpoReportDate();
@@ -308,15 +309,15 @@ namespace KPA_KPI_Analyzer
         {
             lbl_Country.Text = "Loading...";
             lbl_topPanelNavPrpoDate.Text = "Loading...";
-            overallData = new Overall_Data.Overall();
 
-            #region OVERALL REPLACEMENT
+            // Create a new instance of the overall reports
             CreateReport(ReportingType.KpaOverall);
             CreateReport(ReportingType.KpiOverall);
 
             (reports[ReportingType.KpaOverall] as KpaOverallReport).CreateReport();
             (reports[ReportingType.KpiOverall] as KpiOverallReport).CreateReport();
-            #endregion
+
+
             if (AccessDatabaseUtils.US_PRPO_TableExists || AccessDatabaseUtils.MX_PRPO_TableExists)
                 DatabaseManager.DropCreateDb();
             else
@@ -481,22 +482,22 @@ namespace KPA_KPI_Analyzer
             ShowPage(Pages.LoadingScreen);
             cpb_loadingScreenCircProgBar.Text = "Loading Data...";
             ms_applicaitonMenuStrip.Enabled = false;
-            overallData = new Overall();
 
-            #region OVERALL REPLACEMENT
+            // Create the report or recreate the overall report
             CreateReport(ReportingType.KpaOverall);
             CreateReport(ReportingType.KpiOverall);
 
+            // Setup the reports with KPAs & KPIs
             (reports[ReportingType.KpaOverall] as KpaOverallReport).CreateReport();
             (reports[ReportingType.KpiOverall] as KpiOverallReport).CreateReport();
-            #endregion
-
-
+           
+            // Start the data load process
             DatabaseLoadingUtils.DataLoadProcessStarted = false;
             DatabaseLoadingUtils.DataLoaded = false;
             DatabaseLoadingUtils.KPITablesLoaded = false;
             DatabaseLoadingUtils.CompletedDataLoads = 0;
             DatabaseLoadingUtils.ScheduledDataLoads = 0;
+
             CreateThreads();
             RenewDataLoadTimer();
             DataLoaderTimer.Start();

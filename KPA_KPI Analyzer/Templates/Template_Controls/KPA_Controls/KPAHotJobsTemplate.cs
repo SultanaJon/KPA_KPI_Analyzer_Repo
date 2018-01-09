@@ -2,6 +2,9 @@
 using KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader;
 using KPA_KPI_Analyzer.Overall_Data;
 using KPA_KPI_Analyzer.Values;
+using Reporting;
+using Reporting.KeyPerformanceActions;
+using Reporting.Overall;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -10,7 +13,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 {
     public partial class KPAHotJobsTemplate : UserControl
     {
-        Overall overallData = new Overall();
+        
 
 
 
@@ -76,9 +79,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// <summary>
         /// This function will always load the default state of the control and set the color of the graph.
         /// </summary>
-        public void LoadPanel(Overall data)
+        public void LoadPanel()
         {
-            overallData = data;
+            
             SetGraphColor();
             DefaultButtonTextColor = System.Drawing.Color.DarkGray;
             RenderPRsNotOnPO();
@@ -181,39 +184,34 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.HotJobs];
             ChangeCategory();
 
-            TimeBucketOne = overallData.kpa.hotJobs.prsNotOnPO.data.LessThanZero.ToString();
-            TimeBucketTwo = overallData.kpa.hotJobs.prsNotOnPO.data.One_Three.ToString();
-            TimeBucketThree = overallData.kpa.hotJobs.prsNotOnPO.data.Four_Seven.ToString();
-            TimeBucketFour = overallData.kpa.hotJobs.prsNotOnPO.data.Eight_Fourteen.ToString();
-            TimeBucketFive = overallData.kpa.hotJobs.prsNotOnPO.data.Fifteen_TwentyOne.ToString();
-            TimeBucketSix = overallData.kpa.hotJobs.prsNotOnPO.data.TwentyTwo_TwentyEight.ToString();
-            TimeBucketSeven = overallData.kpa.hotJobs.prsNotOnPO.data.TwentyNinePlus.ToString();
-
-            TotalOrders = string.Format("{0:n0}", overallData.kpa.hotJobs.prsNotOnPO.data.Total);
-            Average = string.Format("{0:n}", overallData.kpa.hotJobs.prsNotOnPO.data.Average);
-
             AnalysisOne = "- Will only show if PR is assigned to purchase group UHJ, is fully released and the PR has not been placed on a PO.";
             AnalysisTwo = "- Difference between todays date and the date the PR was fully released.";
 
-
-            dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
-            dp.addLabely(lbl_xLabelTwo.Text, TimeBucketTwo);
-            dp.addLabely(lbl_xLabelThree.Text, TimeBucketThree);
-            dp.addLabely(lbl_xLabelFour.Text, TimeBucketFour);
-            dp.addLabely(lbl_xLabelFive.Text, TimeBucketFive);
-            dp.addLabely(lbl_xLabelSix.Text, TimeBucketSix);
-            dp.addLabely(lbl_xLabelSeven.Text, TimeBucketSeven);
+            ITemplateOne tempOne = (Report.Actions[(int)KpaOption.HotJobs_PrsNoOnPo]
+                                as Reporting.KeyPerformanceActions.HotJobs.PRsNotOnPO).Template;
 
 
+            // Add the data to the column chart
+            dp.addLabely(lbl_xLabelOne.Text, tempOne.LessThanEqualToZeroDays.ToString());
+            dp.addLabely(lbl_xLabelTwo.Text, tempOne.OneToThreeDays.ToString());
+            dp.addLabely(lbl_xLabelThree.Text, tempOne.FourToSevenDays.ToString());
+            dp.addLabely(lbl_xLabelFour.Text, tempOne.EightToFourteenDays.ToString());
+            dp.addLabely(lbl_xLabelFive.Text, tempOne.FifteenToTwentyOneDays.ToString());
+            dp.addLabely(lbl_xLabelSix.Text, tempOne.TwentyTwoToTwentyEightDays.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempOne.TwentyNinePlusDays.ToString());
 
-            TimeBucketOne = string.Format("{0:n0}", overallData.kpa.hotJobs.prsNotOnPO.data.LessThanZero);
-            TimeBucketTwo = string.Format("{0:n0}", overallData.kpa.hotJobs.prsNotOnPO.data.One_Three);
-            TimeBucketThree = string.Format("{0:n0}", overallData.kpa.hotJobs.prsNotOnPO.data.Four_Seven);
-            TimeBucketFour = string.Format("{0:n0}", overallData.kpa.hotJobs.prsNotOnPO.data.Eight_Fourteen);
-            TimeBucketFive = string.Format("{0:n0}", overallData.kpa.hotJobs.prsNotOnPO.data.Fifteen_TwentyOne);
-            TimeBucketSix = string.Format("{0:n0}", overallData.kpa.hotJobs.prsNotOnPO.data.TwentyTwo_TwentyEight);
-            TimeBucketSeven = string.Format("{0:n0}", overallData.kpa.hotJobs.prsNotOnPO.data.TwentyNinePlus);
+            // Add the values to the time spans
+            Average = string.Format("{0:n}", tempOne.Average);
+            TimeBucketOne = string.Format("{0:n0}", tempOne.LessThanEqualToZeroDays);
+            TimeBucketTwo = string.Format("{0:n0}", tempOne.OneToThreeDays);
+            TimeBucketThree = string.Format("{0:n0}", tempOne.FourToSevenDays);
+            TimeBucketFour = string.Format("{0:n0}", tempOne.EightToFourteenDays);
+            TimeBucketFive = string.Format("{0:n0}", tempOne.FifteenToTwentyOneDays);
+            TimeBucketSix = string.Format("{0:n0}", tempOne.TwentyTwoToTwentyEightDays);
+            TimeBucketSeven = string.Format("{0:n0}", tempOne.TwentyNinePlusDays);
+            TotalOrders = string.Format("{0:n0}", tempOne.TotalRecords);
 
+            // Render the column chart
             canvas.addData(dp);
             dataviz.Render(canvas);
         }
@@ -235,38 +233,35 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.HotJobs];
             ChangeCategory();
 
-            TimeBucketOne = overallData.kpa.hotJobs.noConfirmation.data.LessThanZero.ToString();
-            TimeBucketTwo = overallData.kpa.hotJobs.noConfirmation.data.One_Three.ToString();
-            TimeBucketThree = overallData.kpa.hotJobs.noConfirmation.data.Four_Seven.ToString();
-            TimeBucketFour = overallData.kpa.hotJobs.noConfirmation.data.Eight_Fourteen.ToString();
-            TimeBucketFive = overallData.kpa.hotJobs.noConfirmation.data.Fifteen_TwentyOne.ToString();
-            TimeBucketSix = overallData.kpa.hotJobs.noConfirmation.data.TwentyTwo_TwentyEight.ToString();
-            TimeBucketSeven = overallData.kpa.hotJobs.noConfirmation.data.TwentyNinePlus.ToString();
-
-            TotalOrders = string.Format("{0:n0}", overallData.kpa.hotJobs.noConfirmation.data.Total);
-            Average = string.Format("{0:n}", overallData.kpa.hotJobs.noConfirmation.data.Average);
 
             AnalysisOne = "- Will only show for PO line items with purchase group UHJ that do not have a confirmation date and are not received complete.";
             AnalysisTwo = "- Difference between todays date and the date the PO line was created.";
 
-
-            dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
-            dp.addLabely(lbl_xLabelTwo.Text, TimeBucketTwo);
-            dp.addLabely(lbl_xLabelThree.Text, TimeBucketThree);
-            dp.addLabely(lbl_xLabelFour.Text, TimeBucketFour);
-            dp.addLabely(lbl_xLabelFive.Text, TimeBucketFive);
-            dp.addLabely(lbl_xLabelSix.Text, TimeBucketSix);
-            dp.addLabely(lbl_xLabelSeven.Text, TimeBucketSeven);
+            ITemplateOne tempOne = (Report.Actions[(int)KpaOption.HotJobs_NoConfirmations]
+                                as Reporting.KeyPerformanceActions.HotJobs.NoConfirmations).Template;
 
 
-            TimeBucketOne = string.Format("{0:n0}", overallData.kpa.hotJobs.noConfirmation.data.LessThanZero);
-            TimeBucketTwo = string.Format("{0:n0}", overallData.kpa.hotJobs.noConfirmation.data.One_Three);
-            TimeBucketThree = string.Format("{0:n0}", overallData.kpa.hotJobs.noConfirmation.data.Four_Seven);
-            TimeBucketFour = string.Format("{0:n0}", overallData.kpa.hotJobs.noConfirmation.data.Eight_Fourteen);
-            TimeBucketFive = string.Format("{0:n0}", overallData.kpa.hotJobs.noConfirmation.data.Fifteen_TwentyOne);
-            TimeBucketSix = string.Format("{0:n0}", overallData.kpa.hotJobs.noConfirmation.data.TwentyTwo_TwentyEight);
-            TimeBucketSeven = string.Format("{0:n0}", overallData.kpa.hotJobs.noConfirmation.data.TwentyNinePlus);
+            // Add the data to the column chart
+            dp.addLabely(lbl_xLabelOne.Text, tempOne.LessThanEqualToZeroDays.ToString());
+            dp.addLabely(lbl_xLabelTwo.Text, tempOne.OneToThreeDays.ToString());
+            dp.addLabely(lbl_xLabelThree.Text, tempOne.FourToSevenDays.ToString());
+            dp.addLabely(lbl_xLabelFour.Text, tempOne.EightToFourteenDays.ToString());
+            dp.addLabely(lbl_xLabelFive.Text, tempOne.FifteenToTwentyOneDays.ToString());
+            dp.addLabely(lbl_xLabelSix.Text, tempOne.TwentyTwoToTwentyEightDays.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempOne.TwentyNinePlusDays.ToString());
 
+            // Add the values to the time spans
+            Average = string.Format("{0:n}", tempOne.Average);
+            TimeBucketOne = string.Format("{0:n0}", tempOne.LessThanEqualToZeroDays);
+            TimeBucketTwo = string.Format("{0:n0}", tempOne.OneToThreeDays);
+            TimeBucketThree = string.Format("{0:n0}", tempOne.FourToSevenDays);
+            TimeBucketFour = string.Format("{0:n0}", tempOne.EightToFourteenDays);
+            TimeBucketFive = string.Format("{0:n0}", tempOne.FifteenToTwentyOneDays);
+            TimeBucketSix = string.Format("{0:n0}", tempOne.TwentyTwoToTwentyEightDays);
+            TimeBucketSeven = string.Format("{0:n0}", tempOne.TwentyNinePlusDays);
+            TotalOrders = string.Format("{0:n0}", tempOne.TotalRecords);
+
+            // Render the column chart
             canvas.addData(dp);
             dataviz.Render(canvas);
         }
@@ -288,38 +283,35 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.HotJobs];
             ChangeCategory();
 
-            TimeBucketOne = overallData.kpa.hotJobs.lateToConfirmed.data.LessThanZero.ToString();
-            TimeBucketTwo = overallData.kpa.hotJobs.lateToConfirmed.data.One_Three.ToString();
-            TimeBucketThree = overallData.kpa.hotJobs.lateToConfirmed.data.Four_Seven.ToString();
-            TimeBucketFour = overallData.kpa.hotJobs.lateToConfirmed.data.Eight_Fourteen.ToString();
-            TimeBucketFive = overallData.kpa.hotJobs.lateToConfirmed.data.Fifteen_TwentyOne.ToString();
-            TimeBucketSix = overallData.kpa.hotJobs.lateToConfirmed.data.TwentyTwo_TwentyEight.ToString();
-            TimeBucketSeven = overallData.kpa.hotJobs.lateToConfirmed.data.TwentyNinePlus.ToString();
-
-            TotalOrders = string.Format("{0:n0}", overallData.kpa.hotJobs.lateToConfirmed.data.Total);
-            Average = string.Format("{0:n}", overallData.kpa.hotJobs.lateToConfirmed.data.Average);
 
             AnalysisOne = "- Will only show for PO line items with purchase group UHJ that have confirmation dates less than today and have not been received complete.";
             AnalysisTwo = "- Difference between todays date and the first confirmation date.";
 
-
-            dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
-            dp.addLabely(lbl_xLabelTwo.Text, TimeBucketTwo);
-            dp.addLabely(lbl_xLabelThree.Text, TimeBucketThree);
-            dp.addLabely(lbl_xLabelFour.Text, TimeBucketFour);
-            dp.addLabely(lbl_xLabelFive.Text, TimeBucketFive);
-            dp.addLabely(lbl_xLabelSix.Text, TimeBucketSix);
-            dp.addLabely(lbl_xLabelSeven.Text, TimeBucketSeven);
+            ITemplateOne tempOne = (Report.Actions[(int)KpaOption.HotJobs_LateToConfirmed]
+                                as Reporting.KeyPerformanceActions.HotJobs.LateToConfirmed).Template;
 
 
-            TimeBucketOne = string.Format("{0:n0}", overallData.kpa.hotJobs.lateToConfirmed.data.LessThanZero);
-            TimeBucketTwo = string.Format("{0:n0}", overallData.kpa.hotJobs.lateToConfirmed.data.One_Three);
-            TimeBucketThree = string.Format("{0:n0}", overallData.kpa.hotJobs.lateToConfirmed.data.Four_Seven);
-            TimeBucketFour = string.Format("{0:n0}", overallData.kpa.hotJobs.lateToConfirmed.data.Eight_Fourteen);
-            TimeBucketFive = string.Format("{0:n0}", overallData.kpa.hotJobs.lateToConfirmed.data.Fifteen_TwentyOne);
-            TimeBucketSix = string.Format("{0:n0}", overallData.kpa.hotJobs.lateToConfirmed.data.TwentyTwo_TwentyEight);
-            TimeBucketSeven = string.Format("{0:n0}", overallData.kpa.hotJobs.lateToConfirmed.data.TwentyNinePlus);
+            // Add the data to the column chart
+            dp.addLabely(lbl_xLabelOne.Text, tempOne.LessThanEqualToZeroDays.ToString());
+            dp.addLabely(lbl_xLabelTwo.Text, tempOne.OneToThreeDays.ToString());
+            dp.addLabely(lbl_xLabelThree.Text, tempOne.FourToSevenDays.ToString());
+            dp.addLabely(lbl_xLabelFour.Text, tempOne.EightToFourteenDays.ToString());
+            dp.addLabely(lbl_xLabelFive.Text, tempOne.FifteenToTwentyOneDays.ToString());
+            dp.addLabely(lbl_xLabelSix.Text, tempOne.TwentyTwoToTwentyEightDays.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempOne.TwentyNinePlusDays.ToString());
 
+            // Add the values to the time spans
+            Average = string.Format("{0:n}", tempOne.Average);
+            TimeBucketOne = string.Format("{0:n0}", tempOne.LessThanEqualToZeroDays);
+            TimeBucketTwo = string.Format("{0:n0}", tempOne.OneToThreeDays);
+            TimeBucketThree = string.Format("{0:n0}", tempOne.FourToSevenDays);
+            TimeBucketFour = string.Format("{0:n0}", tempOne.EightToFourteenDays);
+            TimeBucketFive = string.Format("{0:n0}", tempOne.FifteenToTwentyOneDays);
+            TimeBucketSix = string.Format("{0:n0}", tempOne.TwentyTwoToTwentyEightDays);
+            TimeBucketSeven = string.Format("{0:n0}", tempOne.TwentyNinePlusDays);
+            TotalOrders = string.Format("{0:n0}", tempOne.TotalRecords);
+
+            // Render the column chart
             canvas.addData(dp);
             dataviz.Render(canvas);
         }

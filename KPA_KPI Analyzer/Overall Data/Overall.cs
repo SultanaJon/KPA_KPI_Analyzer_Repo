@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace KPA_KPI_Analyzer.Overall_Data
 {
-    public class Overall : IStorable, ILoadable<Overall>
+    public class Overall : IStorable
     {
         public KPA kpa;
         public KPI kpi;
@@ -224,22 +224,21 @@ namespace KPA_KPI_Analyzer.Overall_Data
         /// <summary>
         /// Loads the Overall object from JSON file.kpa 
         /// </summary>
-        /// <returns>Boolean value indicating whether or not he load operation was successful.</returns>
         public void Load(ref Overall overallData)
         {
-            try
-            {
-                if (Values.Globals.TargetCountry == Values.Countries.Country.UnitedStates)
-                    dataJSONString = File.ReadAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.US_Overall]);
-                else
-                    dataJSONString = File.ReadAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.MX_Overall]);
+            //try
+            //{
+            //    if (Values.Globals.TargetCountry == Values.Countries.Country.UnitedStates)
+            //        dataJSONString = File.ReadAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.US_Overall]);
+            //    else
+            //        dataJSONString = File.ReadAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.MX_Overall]);
 
-                overallData = ser.Deserialize<Overall>(dataJSONString);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString(), "Overall DataReader Loading Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //    overallData = ser.Deserialize<Overall>(dataJSONString);
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message.ToString(), "Overall DataReader Loading Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
 
@@ -248,25 +247,24 @@ namespace KPA_KPI_Analyzer.Overall_Data
         /// <summary>
         /// Saves the overall data to a JSON file.
         /// </summary>
-        /// <returns>A boolean value indicating whether or not the save operation was successful.</returns>
         public void Save()
         {
-            try
-            {
-                dataJSONString = ser.Serialize(this);
-                if (Values.Globals.TargetCountry == Values.Countries.Country.UnitedStates)
-                {
-                    File.WriteAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.US_Overall], dataJSONString);
-                }
-                else
-                {
-                    File.WriteAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.MX_Overall], dataJSONString);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Overall DataReader Saving Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //try
+            //{
+            //    dataJSONString = ser.Serialize(this);
+            //    if (Values.Globals.TargetCountry == Values.Countries.Country.UnitedStates)
+            //    {
+            //        File.WriteAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.US_Overall], dataJSONString);
+            //    }
+            //    else
+            //    {
+            //        File.WriteAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.MX_Overall], dataJSONString);
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "Overall DataReader Saving Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
     }
 }

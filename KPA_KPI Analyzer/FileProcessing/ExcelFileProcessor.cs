@@ -1,6 +1,7 @@
 ﻿using KPA_KPI_Analyzer.ExcelFiles;
 using KPA_KPI_Analyzer.FileProcessing.Exceptions;
 using KPA_KPI_Analyzer.Values;
+using Reporting;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,6 +24,8 @@ namespace KPA_KPI_Analyzer.FileProcessing
 
 
         private static List<PrpoExcelFile> files;
+
+
         public static PrpoExcelFile usPrpoFile = null;
         public static PrpoExcelFile mxPrpoFile = null;
 
@@ -57,13 +60,16 @@ namespace KPA_KPI_Analyzer.FileProcessing
 
             if (usPrpoFile == null)
             {
-                ApplicationIOLibarary.ApplicationFiles.FileUtils.RemoveFile(ApplicationIOLibarary.ApplicationFiles.OverallFile.US_Overall);
+                ApplicationIOLibarary.ApplicationFiles.FileUtils.RemoveFile(ApplicationIOLibarary.ApplicationFiles.OverallFile.US_KPA_Overall);
+                ApplicationIOLibarary.ApplicationFiles.FileUtils.RemoveFile(ApplicationIOLibarary.ApplicationFiles.OverallFile.US_KPI_Overall);
                 ClearUsSettings();
             }
 
             if (mxPrpoFile == null)
             {
-                ApplicationIOLibarary.ApplicationFiles.FileUtils.RemoveFile(ApplicationIOLibarary.ApplicationFiles.OverallFile.MX_Overall);
+                ApplicationIOLibarary.ApplicationFiles.FileUtils.RemoveFile(ApplicationIOLibarary.ApplicationFiles.OverallFile.MX_KPA_Overall);
+                ApplicationIOLibarary.ApplicationFiles.FileUtils.RemoveFile(ApplicationIOLibarary.ApplicationFiles.OverallFile.MX_KPI_Overall);
+
                 ClearMxSettings();
             }
 
@@ -167,7 +173,7 @@ namespace KPA_KPI_Analyzer.FileProcessing
                 {
                     usPrpoFile = new UsPrpoExcelFile();
                     usPrpoFile.Path = _file;
-                    usPrpoFile.AssociatedCountry = Values.Countries.Country.UnitedStates;
+                    usPrpoFile.AssociatedCountry = Country.UnitedStates;
 
                     // Get and store the file
                     GetPrpoDate(usPrpoFile);                    
@@ -186,7 +192,7 @@ namespace KPA_KPI_Analyzer.FileProcessing
                 {
                     mxPrpoFile = new MxPrpoExcelFile();
                     mxPrpoFile.Path = _file;
-                    mxPrpoFile.AssociatedCountry = Values.Countries.Country.Mexico;
+                    mxPrpoFile.AssociatedCountry = Country.Mexico;
 
                     // Get and store the file
                     GetPrpoDate(mxPrpoFile);

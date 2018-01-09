@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace KPA_KPI_Analyzer.Reporting
+namespace KPA_KPI_Analyzer.PerformanceReporting
 {
     public partial class SelctiveReportingWidget : UserControl, ISelectiveReportingWidgetView
     {

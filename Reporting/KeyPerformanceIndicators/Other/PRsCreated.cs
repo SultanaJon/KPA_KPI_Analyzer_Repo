@@ -6,6 +6,7 @@ using Reporting.Overall;
 
 using Reporting.Selective;
 using System;
+using System.Collections.Generic;
 using System.Data;
 
 namespace Reporting.KeyPerformanceIndicators.Other
@@ -28,6 +29,25 @@ namespace Reporting.KeyPerformanceIndicators.Other
         public decimal LessThanNegEightWeeks { get; set; }
 
         #endregion
+
+
+
+
+
+        /// <summary>
+        /// Returns the template that this KPA or KPI fall under
+        /// </summary>
+        public ITemplateFive Template
+        {
+            get
+            {
+                return this;
+            }
+        }
+
+
+
+
 
 
         /// <summary>
@@ -73,6 +93,34 @@ namespace Reporting.KeyPerformanceIndicators.Other
 
 
 
+
+        /// <summary>
+        /// Returns the template one data for this KPA
+        /// </summary>
+        /// <returns></returns>
+        public List<string> GetTemplateData()
+        {
+            List<string> row = new List<string>();
+
+            // Add the Template three data
+            row.Add(Section);
+            row.Add(Name);
+            row.Add(string.Format("{0:n}", "$" + TotalValue));
+            row.Add(string.Format("{0:n0}", GreaterThanEqualToZeroWeeks));
+            row.Add(string.Format("{0:n0}", GreaterThanEqualToNegOneWeek));
+            row.Add(string.Format("{0:n0}", GreaterThanEqualToNegTwoWeeks));
+            row.Add(string.Format("{0:n0}", GreaterThanEqualToNegThreeWeeks));
+            row.Add(string.Format("{0:n0}", GreaterThanEqualToNegFourWeeks));
+            row.Add(string.Format("{0:n0}", GreaterThanEqualToNegFiveWeeks));
+            row.Add(string.Format("{0:n0}", GreaterThanEqualToNegSixWeeks));
+            row.Add(string.Format("{0:n0}", GreaterThanEqualToNegSevenWeeks));
+            row.Add(string.Format("{0:n0}", GreaterThanEqualToNegEightWeeks));
+            row.Add(string.Format("{0:n0}", LessThanNegEightWeeks));
+            row.Add(string.Format("{0:n0}", TotalRecords));
+
+            //return the template one data for this KPA
+            return row;
+        }
 
 
 

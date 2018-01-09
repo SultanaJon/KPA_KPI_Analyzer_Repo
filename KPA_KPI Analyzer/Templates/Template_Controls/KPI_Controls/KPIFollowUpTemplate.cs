@@ -2,6 +2,10 @@
 using KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader;
 using KPA_KPI_Analyzer.Overall_Data;
 using KPA_KPI_Analyzer.Values;
+using Reporting;
+using Reporting.Interfaces;
+using Reporting.KeyPerformanceIndicators;
+using Reporting.Overall;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -10,7 +14,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 {
     public partial class KPIFollowUpTemplate : UserControl
     {
-        Overall overallData;
+        
 
 
         public delegate void UpdateCategoryHandler();
@@ -87,9 +91,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// <summary>
         /// This function will always load the default state of the control and set the color of the graph.
         /// </summary>
-        public void LoadPanel(Overall data)
+        public void LoadPanel()
         {
-            overallData = data;
             SetGraphColor();
             pnl_PercentagePanel.Visible = true;
             DefaultButtonTextColor = System.Drawing.Color.DarkGray;
@@ -218,46 +221,44 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.FollowUp];
             ChangeCategory();
 
-            TotalOrders = overallData.kpi.followUp.currConfVsInitConf.data.Total.ToString();
-            Average = overallData.kpi.followUp.currConfVsInitConf.data.Average.ToString();
-            PercNoConf = overallData.kpi.followUp.currConfVsInitConf.data.PercentUnconf.ToString();
-            TimeBucketOne = overallData.kpi.followUp.currConfVsInitConf.data.Minus_TwentyTwo.ToString();
-            TimeBucketTwo = overallData.kpi.followUp.currConfVsInitConf.data.Minus_Fifteen_TwentyOne.ToString();
-            TimeBucketThree = overallData.kpi.followUp.currConfVsInitConf.data.Minus_Eight_Fourteen.ToString();
-            TimeBucketFour = overallData.kpi.followUp.currConfVsInitConf.data.Minus_One_Seven.ToString();
-            TimeBucketFive = overallData.kpi.followUp.currConfVsInitConf.data.Zero.ToString();
-            TimeBucketSix = overallData.kpi.followUp.currConfVsInitConf.data.One_Seven.ToString();
-            TimeBucketSeven = overallData.kpi.followUp.currConfVsInitConf.data.Eight_Fourteen.ToString();
-            TimeBucketEight = overallData.kpi.followUp.currConfVsInitConf.data.Fifteen_TwentyOne.ToString();
-            TimeBucketNine = overallData.kpi.followUp.currConfVsInitConf.data.TwentyTwo.ToString();
-
             AnalysisOne = "- Will show if the PR is on a PO.";
             AnalysisTwo = "- Difference between final confirmation date and first confirmation date.";
 
+            ITemplateThree tempThree = (Report.Indicators[(int)KpiOption.FollowUp_CurrentConfirmationDateVsInitialConfirmationDate]
+                    as Reporting.KeyPerformanceIndicators.FollowUp.CurrentConfirmationDateVsInitialConfirmationDate).Template;
 
-            dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
-            dp.addLabely(lbl_xLabelTwo.Text, TimeBucketTwo);
-            dp.addLabely(lbl_xLabelThree.Text, TimeBucketThree);
-            dp.addLabely(lbl_xLabelFour.Text, TimeBucketFour);
-            dp.addLabely(lbl_xLabelFive.Text, TimeBucketFive);
-            dp.addLabely(lbl_xLabelSix.Text, TimeBucketSix);
-            dp.addLabely(lbl_xLabelSeven.Text, TimeBucketSeven);
-            dp.addLabely(lbl_xLabelEight.Text, TimeBucketEight);
-            dp.addLabely(lbl_xLabelNine.Text, TimeBucketNine);
 
-            TotalOrders = string.Format("{0:n0}", overallData.kpi.followUp.currConfVsInitConf.data.Total);
-            Average = string.Format("{0:n}", overallData.kpi.followUp.currConfVsInitConf.data.Average);
-            PercNoConf = string.Format("{0:n}", overallData.kpi.followUp.currConfVsInitConf.data.PercentUnconf);
-            PercNoConfTotal = string.Format("{0:n0}", overallData.kpi.followUp.currConfVsInitConf.data.PercentUnconfTotal);
-            TimeBucketOne = string.Format("{0:n0}", overallData.kpi.followUp.currConfVsInitConf.data.Minus_TwentyTwo);
-            TimeBucketTwo = string.Format("{0:n0}", overallData.kpi.followUp.currConfVsInitConf.data.Minus_Fifteen_TwentyOne);
-            TimeBucketThree = string.Format("{0:n0}", overallData.kpi.followUp.currConfVsInitConf.data.Minus_Eight_Fourteen);
-            TimeBucketFour = string.Format("{0:n0}", overallData.kpi.followUp.currConfVsInitConf.data.Minus_One_Seven);
-            TimeBucketFive = string.Format("{0:n0}", overallData.kpi.followUp.currConfVsInitConf.data.Zero);
-            TimeBucketSix = string.Format("{0:n0}", overallData.kpi.followUp.currConfVsInitConf.data.One_Seven);
-            TimeBucketSeven = string.Format("{0:n0}", overallData.kpi.followUp.currConfVsInitConf.data.Eight_Fourteen);
-            TimeBucketEight = string.Format("{0:n0}", overallData.kpi.followUp.currConfVsInitConf.data.Fifteen_TwentyOne);
-            TimeBucketNine = string.Format("{0:n0}", overallData.kpi.followUp.currConfVsInitConf.data.TwentyTwo);
+            // Add the data to the column chart
+            dp.addLabely(lbl_xLabelOne.Text, tempThree.LessThanEqualToNegTwentyTwoDays.ToString());
+            dp.addLabely(lbl_xLabelTwo.Text, tempThree.NegTwentyOneToNegFifteenDays.ToString());
+            dp.addLabely(lbl_xLabelThree.Text, tempThree.NegFourteenToNegEightDays.ToString());
+            dp.addLabely(lbl_xLabelFour.Text, tempThree.NegSevenToNegOneDays.ToString());
+            dp.addLabely(lbl_xLabelFive.Text, tempThree.ZeroDays.ToString());
+            dp.addLabely(lbl_xLabelSix.Text, tempThree.OneToSevenDays.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempThree.EightToFourteenDays.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempThree.FifteenToTwentyOneDays.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempThree.GreaterThanEqualToTwentyTwoDays.ToString());
+
+
+            Average = string.Format("{0:n}", tempThree.Average);
+            TimeBucketOne = string.Format("{0:n0}", tempThree.LessThanEqualToNegTwentyTwoDays);
+            TimeBucketTwo = string.Format("{0:n0}", tempThree.NegTwentyOneToNegFifteenDays);
+            TimeBucketThree = string.Format("{0:n0}", tempThree.NegFourteenToNegEightDays);
+            TimeBucketFour = string.Format("{0:n0}", tempThree.NegSevenToNegOneDays);
+            TimeBucketFive = string.Format("{0:n0}", tempThree.ZeroDays);
+            TimeBucketSix = string.Format("{0:n0}", tempThree.OneToSevenDays);
+            TimeBucketSeven = string.Format("{0:n0}", tempThree.EightToFourteenDays);
+            TimeBucketEight = string.Format("{0:n0}", tempThree.FifteenToTwentyOneDays);
+            TimeBucketNine = string.Format("{0:n0}", tempThree.GreaterThanEqualToTwentyTwoDays);
+            TotalOrders = string.Format("{0:n0}", tempThree.TotalRecords);
+
+
+            IUnconfirmed unconfirmedInfo = (Report.Indicators[(int)KpiOption.FollowUp_CurrentConfirmationDateVsInitialConfirmationDate]
+                    as Reporting.KeyPerformanceIndicators.FollowUp.CurrentConfirmationDateVsInitialConfirmationDate).Unconfirmed;
+
+            // Get the uncofnrimed information
+            PercNoConf = string.Format("{0:n}", unconfirmedInfo.PercentUnconfirmed);
+            PercNoConfTotal = string.Format("{0:n0}", unconfirmedInfo.UnconfirmedTotal);
 
             canvas.addData(dp);
             dataviz.Render(canvas);
@@ -281,45 +282,44 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.FollowUp];
             ChangeCategory();
 
-            TotalOrders = overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Total.ToString();
-            Average = overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Average.ToString();
-            PercNoConf = overallData.kpi.followUp.finalConfDateVsFinalPlan.data.PercentUnconf.ToString();
-            TimeBucketOne = overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Minus_TwentyTwo.ToString();
-            TimeBucketTwo = overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Minus_Fifteen_TwentyOne.ToString();
-            TimeBucketThree = overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Minus_Eight_Fourteen.ToString();
-            TimeBucketFour = overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Minus_One_Seven.ToString();
-            TimeBucketFive = overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Zero.ToString();
-            TimeBucketSix = overallData.kpi.followUp.finalConfDateVsFinalPlan.data.One_Seven.ToString();
-            TimeBucketSeven = overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Eight_Fourteen.ToString();
-            TimeBucketEight = overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Fifteen_TwentyOne.ToString();
-            TimeBucketNine = overallData.kpi.followUp.finalConfDateVsFinalPlan.data.TwentyTwo.ToString();
-
             AnalysisOne = "- Will show if PO line has been received complete.";
             AnalysisTwo = "- Difference between current confirmation date and current planned date.";
 
-            dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
-            dp.addLabely(lbl_xLabelTwo.Text, TimeBucketTwo);
-            dp.addLabely(lbl_xLabelThree.Text, TimeBucketThree);
-            dp.addLabely(lbl_xLabelFour.Text, TimeBucketFour);
-            dp.addLabely(lbl_xLabelFive.Text, TimeBucketFive);
-            dp.addLabely(lbl_xLabelSix.Text, TimeBucketSix);
-            dp.addLabely(lbl_xLabelSeven.Text, TimeBucketSeven);
-            dp.addLabely(lbl_xLabelEight.Text, TimeBucketEight);
-            dp.addLabely(lbl_xLabelNine.Text, TimeBucketNine);
+            ITemplateThree tempThree = (Report.Indicators[(int)KpiOption.FollowUp_FinalConfirmationDateVsInitialConfirmationDate]
+                    as Reporting.KeyPerformanceIndicators.FollowUp.FinalConfirmationDateVsFinalPlanDate).Template;
 
-            TotalOrders = string.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Total);
-            Average = string.Format("{0:n}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Average);
-            PercNoConf = string.Format("{0:n}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.PercentUnconf);
-            PercNoConfTotal = string.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.PercentUnconfTotal);
-            TimeBucketOne = string.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Minus_TwentyTwo);
-            TimeBucketTwo = string.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Minus_Fifteen_TwentyOne);
-            TimeBucketThree = string.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Minus_Eight_Fourteen);
-            TimeBucketFour = string.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Minus_One_Seven);
-            TimeBucketFive = string.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Zero);
-            TimeBucketSix = string.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.One_Seven);
-            TimeBucketSeven = string.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Eight_Fourteen);
-            TimeBucketEight = string.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.Fifteen_TwentyOne);
-            TimeBucketNine = string.Format("{0:n0}", overallData.kpi.followUp.finalConfDateVsFinalPlan.data.TwentyTwo);
+
+            // Add the data to the column chart
+            dp.addLabely(lbl_xLabelOne.Text, tempThree.LessThanEqualToNegTwentyTwoDays.ToString());
+            dp.addLabely(lbl_xLabelTwo.Text, tempThree.NegTwentyOneToNegFifteenDays.ToString());
+            dp.addLabely(lbl_xLabelThree.Text, tempThree.NegFourteenToNegEightDays.ToString());
+            dp.addLabely(lbl_xLabelFour.Text, tempThree.NegSevenToNegOneDays.ToString());
+            dp.addLabely(lbl_xLabelFive.Text, tempThree.ZeroDays.ToString());
+            dp.addLabely(lbl_xLabelSix.Text, tempThree.OneToSevenDays.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempThree.EightToFourteenDays.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempThree.FifteenToTwentyOneDays.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempThree.GreaterThanEqualToTwentyTwoDays.ToString());
+
+
+            Average = string.Format("{0:n}", tempThree.Average);
+            TimeBucketOne = string.Format("{0:n0}", tempThree.LessThanEqualToNegTwentyTwoDays);
+            TimeBucketTwo = string.Format("{0:n0}", tempThree.NegTwentyOneToNegFifteenDays);
+            TimeBucketThree = string.Format("{0:n0}", tempThree.NegFourteenToNegEightDays);
+            TimeBucketFour = string.Format("{0:n0}", tempThree.NegSevenToNegOneDays);
+            TimeBucketFive = string.Format("{0:n0}", tempThree.ZeroDays);
+            TimeBucketSix = string.Format("{0:n0}", tempThree.OneToSevenDays);
+            TimeBucketSeven = string.Format("{0:n0}", tempThree.EightToFourteenDays);
+            TimeBucketEight = string.Format("{0:n0}", tempThree.FifteenToTwentyOneDays);
+            TimeBucketNine = string.Format("{0:n0}", tempThree.GreaterThanEqualToTwentyTwoDays);
+            TotalOrders = string.Format("{0:n0}", tempThree.TotalRecords);
+
+
+            IUnconfirmed unconfirmedInfo = (Report.Indicators[(int)KpiOption.FollowUp_FinalConfirmationDateVsInitialConfirmationDate]
+                    as Reporting.KeyPerformanceIndicators.FollowUp.FinalConfirmationDateVsFinalPlanDate).Unconfirmed;
+
+            // Get the uncofnrimed information
+            PercNoConf = string.Format("{0:n}", unconfirmedInfo.PercentUnconfirmed);
+            PercNoConfTotal = string.Format("{0:n0}", unconfirmedInfo.UnconfirmedTotal);
 
             canvas.addData(dp);
             dataviz.Render(canvas);
@@ -344,42 +344,35 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.FollowUp];
             ChangeCategory();
 
-            TotalOrders = overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Total.ToString();
-            Average = overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Average.ToString();
-            TimeBucketOne = overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Minus_TwentyTwo.ToString();
-            TimeBucketTwo = overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Minus_Fifteen_TwentyOne.ToString();
-            TimeBucketThree = overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Minus_Eight_Fourteen.ToString();
-            TimeBucketFour = overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Minus_One_Seven.ToString();
-            TimeBucketFive = overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Zero.ToString();
-            TimeBucketSix = overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.One_Seven.ToString();
-            TimeBucketSeven = overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Eight_Fourteen.ToString();
-            TimeBucketEight = overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Fifteen_TwentyOne.ToString();
-            TimeBucketNine = overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.TwentyTwo.ToString();
-
             AnalysisOne = "- Will show if PO line has been received complete.";
             AnalysisTwo = "- Difference between final receipt date and current planned date.";
 
-            dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
-            dp.addLabely(lbl_xLabelTwo.Text, TimeBucketTwo);
-            dp.addLabely(lbl_xLabelThree.Text, TimeBucketThree);
-            dp.addLabely(lbl_xLabelFour.Text, TimeBucketFour);
-            dp.addLabely(lbl_xLabelFive.Text, TimeBucketFive);
-            dp.addLabely(lbl_xLabelSix.Text, TimeBucketSix);
-            dp.addLabely(lbl_xLabelSeven.Text, TimeBucketSeven);
-            dp.addLabely(lbl_xLabelEight.Text, TimeBucketEight);
-            dp.addLabely(lbl_xLabelNine.Text, TimeBucketNine);
+            ITemplateThree tempThree = (Report.Indicators[(int)KpiOption.FollowUp_ReceiptDateVsCurrentPlanDate]
+                    as Reporting.KeyPerformanceIndicators.FollowUp.ReceiptDateVsCurrentPlanDate).Template;
 
-            TotalOrders = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Total);
-            Average = string.Format("{0:n}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Average);
-            TimeBucketOne = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Minus_TwentyTwo);
-            TimeBucketTwo = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Minus_Fifteen_TwentyOne);
-            TimeBucketThree = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Minus_Eight_Fourteen);
-            TimeBucketFour = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Minus_One_Seven);
-            TimeBucketFive = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Zero);
-            TimeBucketSix = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.One_Seven);
-            TimeBucketSeven = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Eight_Fourteen);
-            TimeBucketEight = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.Fifteen_TwentyOne);
-            TimeBucketNine = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrPlanDate.data.TwentyTwo);
+            // Add the data to the column chart
+            dp.addLabely(lbl_xLabelOne.Text, tempThree.LessThanEqualToNegTwentyTwoDays.ToString());
+            dp.addLabely(lbl_xLabelTwo.Text, tempThree.NegTwentyOneToNegFifteenDays.ToString());
+            dp.addLabely(lbl_xLabelThree.Text, tempThree.NegFourteenToNegEightDays.ToString());
+            dp.addLabely(lbl_xLabelFour.Text, tempThree.NegSevenToNegOneDays.ToString());
+            dp.addLabely(lbl_xLabelFive.Text, tempThree.ZeroDays.ToString());
+            dp.addLabely(lbl_xLabelSix.Text, tempThree.OneToSevenDays.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempThree.EightToFourteenDays.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempThree.FifteenToTwentyOneDays.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempThree.GreaterThanEqualToTwentyTwoDays.ToString());
+
+
+            Average = string.Format("{0:n}", tempThree.Average);
+            TimeBucketOne = string.Format("{0:n0}", tempThree.LessThanEqualToNegTwentyTwoDays);
+            TimeBucketTwo = string.Format("{0:n0}", tempThree.NegTwentyOneToNegFifteenDays);
+            TimeBucketThree = string.Format("{0:n0}", tempThree.NegFourteenToNegEightDays);
+            TimeBucketFour = string.Format("{0:n0}", tempThree.NegSevenToNegOneDays);
+            TimeBucketFive = string.Format("{0:n0}", tempThree.ZeroDays);
+            TimeBucketSix = string.Format("{0:n0}", tempThree.OneToSevenDays);
+            TimeBucketSeven = string.Format("{0:n0}", tempThree.EightToFourteenDays);
+            TimeBucketEight = string.Format("{0:n0}", tempThree.FifteenToTwentyOneDays);
+            TimeBucketNine = string.Format("{0:n0}", tempThree.GreaterThanEqualToTwentyTwoDays);
+            TotalOrders = string.Format("{0:n0}", tempThree.TotalRecords);
 
             canvas.addData(dp);
             dataviz.Render(canvas);
@@ -403,45 +396,44 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.FollowUp];
             ChangeCategory();
 
-            TotalOrders = overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Total.ToString();
-            Average = overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Average.ToString();
-            PercNoConf = overallData.kpi.followUp.receiptDateVsOrigConfDate.data.PercentUnconf.ToString();
-            TimeBucketOne = overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Minus_TwentyTwo.ToString();
-            TimeBucketTwo = overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Minus_Fifteen_TwentyOne.ToString();
-            TimeBucketThree = overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Minus_Eight_Fourteen.ToString();
-            TimeBucketFour = overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Minus_One_Seven.ToString();
-            TimeBucketFive = overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Zero.ToString();
-            TimeBucketSix = overallData.kpi.followUp.receiptDateVsOrigConfDate.data.One_Seven.ToString();
-            TimeBucketSeven = overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Eight_Fourteen.ToString();
-            TimeBucketEight = overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Fifteen_TwentyOne.ToString();
-            TimeBucketNine = overallData.kpi.followUp.receiptDateVsOrigConfDate.data.TwentyTwo.ToString();
-
             AnalysisOne = "- Will show if PO line has been received complete.";
             AnalysisTwo = "- Difference between final receipt date and the original confirmation date.";
 
-            dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
-            dp.addLabely(lbl_xLabelTwo.Text, TimeBucketTwo);
-            dp.addLabely(lbl_xLabelThree.Text, TimeBucketThree);
-            dp.addLabely(lbl_xLabelFour.Text, TimeBucketFour);
-            dp.addLabely(lbl_xLabelFive.Text, TimeBucketFive);
-            dp.addLabely(lbl_xLabelSix.Text, TimeBucketSix);
-            dp.addLabely(lbl_xLabelSeven.Text, TimeBucketSeven);
-            dp.addLabely(lbl_xLabelEight.Text, TimeBucketEight);
-            dp.addLabely(lbl_xLabelNine.Text, TimeBucketNine);
+            ITemplateThree tempThree = (Report.Indicators[(int)KpiOption.FollowUp_ReceiptDateVsOriginalConfirmationDate]
+                    as Reporting.KeyPerformanceIndicators.FollowUp.ReceiptDateVsOriginalConfirmationDate).Template;
 
-            TotalOrders = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Total);
-            Average = string.Format("{0:n}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Average);
-            PercNoConf = string.Format("{0:n}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.PercentUnconf);
-            PercNoConfTotal = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.PercentUnconfTotal);
-            TimeBucketOne = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Minus_TwentyTwo);
-            TimeBucketTwo = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Minus_Fifteen_TwentyOne);
-            TimeBucketThree = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Minus_Eight_Fourteen);
-            TimeBucketFour = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Minus_One_Seven);
-            TimeBucketFive = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Zero);
-            TimeBucketSix = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.One_Seven);
-            TimeBucketSeven = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Eight_Fourteen);
-            TimeBucketEight = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.Fifteen_TwentyOne);
-            TimeBucketNine = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsOrigConfDate.data.TwentyTwo);
+
+            // Add the data to the column chart
+            dp.addLabely(lbl_xLabelOne.Text, tempThree.LessThanEqualToNegTwentyTwoDays.ToString());
+            dp.addLabely(lbl_xLabelTwo.Text, tempThree.NegTwentyOneToNegFifteenDays.ToString());
+            dp.addLabely(lbl_xLabelThree.Text, tempThree.NegFourteenToNegEightDays.ToString());
+            dp.addLabely(lbl_xLabelFour.Text, tempThree.NegSevenToNegOneDays.ToString());
+            dp.addLabely(lbl_xLabelFive.Text, tempThree.ZeroDays.ToString());
+            dp.addLabely(lbl_xLabelSix.Text, tempThree.OneToSevenDays.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempThree.EightToFourteenDays.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempThree.FifteenToTwentyOneDays.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempThree.GreaterThanEqualToTwentyTwoDays.ToString());
+
+
+            Average = string.Format("{0:n}", tempThree.Average);
+            TimeBucketOne = string.Format("{0:n0}", tempThree.LessThanEqualToNegTwentyTwoDays);
+            TimeBucketTwo = string.Format("{0:n0}", tempThree.NegTwentyOneToNegFifteenDays);
+            TimeBucketThree = string.Format("{0:n0}", tempThree.NegFourteenToNegEightDays);
+            TimeBucketFour = string.Format("{0:n0}", tempThree.NegSevenToNegOneDays);
+            TimeBucketFive = string.Format("{0:n0}", tempThree.ZeroDays);
+            TimeBucketSix = string.Format("{0:n0}", tempThree.OneToSevenDays);
+            TimeBucketSeven = string.Format("{0:n0}", tempThree.EightToFourteenDays);
+            TimeBucketEight = string.Format("{0:n0}", tempThree.FifteenToTwentyOneDays);
+            TimeBucketNine = string.Format("{0:n0}", tempThree.GreaterThanEqualToTwentyTwoDays);
+            TotalOrders = string.Format("{0:n0}", tempThree.TotalRecords);
+
+
+            IUnconfirmed unconfirmedInfo = (Report.Indicators[(int)KpiOption.FollowUp_ReceiptDateVsOriginalConfirmationDate]
+                    as Reporting.KeyPerformanceIndicators.FollowUp.ReceiptDateVsOriginalConfirmationDate).Unconfirmed;
+
+            // Get the uncofnrimed information
+            PercNoConf = string.Format("{0:n}", unconfirmedInfo.PercentUnconfirmed);
+            PercNoConfTotal = string.Format("{0:n0}", unconfirmedInfo.UnconfirmedTotal);
 
             canvas.addData(dp);
             dataviz.Render(canvas);
@@ -466,45 +458,44 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.FollowUp];
             ChangeCategory();
 
-            TotalOrders = overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Total.ToString();
-            Average = overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Average.ToString();
-            PercNoConf = overallData.kpi.followUp.receiptDateVsCurrConfDate.data.PercentUnconf.ToString();
-            TimeBucketOne = overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Minus_TwentyTwo.ToString();
-            TimeBucketTwo = overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Minus_Fifteen_TwentyOne.ToString();
-            TimeBucketThree = overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Minus_Eight_Fourteen.ToString();
-            TimeBucketFour = overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Minus_One_Seven.ToString();
-            TimeBucketFive = overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Zero.ToString();
-            TimeBucketSix = overallData.kpi.followUp.receiptDateVsCurrConfDate.data.One_Seven.ToString();
-            TimeBucketSeven = overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Eight_Fourteen.ToString();
-            TimeBucketEight = overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Fifteen_TwentyOne.ToString();
-            TimeBucketNine = overallData.kpi.followUp.receiptDateVsCurrConfDate.data.TwentyTwo.ToString();
-
             AnalysisOne = "- Will show if PO line has been received complete.";
             AnalysisTwo = "- Difference between final receipt date and the current confirmation date.";
 
-            dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
-            dp.addLabely(lbl_xLabelTwo.Text, TimeBucketTwo);
-            dp.addLabely(lbl_xLabelThree.Text, TimeBucketThree);
-            dp.addLabely(lbl_xLabelFour.Text, TimeBucketFour);
-            dp.addLabely(lbl_xLabelFive.Text, TimeBucketFive);
-            dp.addLabely(lbl_xLabelSix.Text, TimeBucketSix);
-            dp.addLabely(lbl_xLabelSeven.Text, TimeBucketSeven);
-            dp.addLabely(lbl_xLabelEight.Text, TimeBucketEight);
-            dp.addLabely(lbl_xLabelNine.Text, TimeBucketNine);
+            ITemplateThree tempThree = (Report.Indicators[(int)KpiOption.FollowUp_ReceiptDateVsCurrentConfirmationDate]
+                    as Reporting.KeyPerformanceIndicators.FollowUp.ReceiptDateVsCurrentConfirmationDate).Template;
 
-            TotalOrders = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Total);
-            Average = string.Format("{0:n}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Average);
-            PercNoConf = string.Format("{0:n}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.PercentUnconf);
-            PercNoConfTotal = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.PercentUnconfTotal);
-            TimeBucketOne = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Minus_TwentyTwo);
-            TimeBucketTwo = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Minus_Fifteen_TwentyOne);
-            TimeBucketThree = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Minus_Eight_Fourteen);
-            TimeBucketFour = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Minus_One_Seven);
-            TimeBucketFive = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Zero);
-            TimeBucketSix = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.One_Seven);
-            TimeBucketSeven = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Eight_Fourteen);
-            TimeBucketEight = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.Fifteen_TwentyOne);
-            TimeBucketNine = string.Format("{0:n0}", overallData.kpi.followUp.receiptDateVsCurrConfDate.data.TwentyTwo);
+
+            // Add the data to the column chart
+            dp.addLabely(lbl_xLabelOne.Text, tempThree.LessThanEqualToNegTwentyTwoDays.ToString());
+            dp.addLabely(lbl_xLabelTwo.Text, tempThree.NegTwentyOneToNegFifteenDays.ToString());
+            dp.addLabely(lbl_xLabelThree.Text, tempThree.NegFourteenToNegEightDays.ToString());
+            dp.addLabely(lbl_xLabelFour.Text, tempThree.NegSevenToNegOneDays.ToString());
+            dp.addLabely(lbl_xLabelFive.Text, tempThree.ZeroDays.ToString());
+            dp.addLabely(lbl_xLabelSix.Text, tempThree.OneToSevenDays.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempThree.EightToFourteenDays.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempThree.FifteenToTwentyOneDays.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempThree.GreaterThanEqualToTwentyTwoDays.ToString());
+
+
+            Average = string.Format("{0:n}", tempThree.Average);
+            TimeBucketOne = string.Format("{0:n0}", tempThree.LessThanEqualToNegTwentyTwoDays);
+            TimeBucketTwo = string.Format("{0:n0}", tempThree.NegTwentyOneToNegFifteenDays);
+            TimeBucketThree = string.Format("{0:n0}", tempThree.NegFourteenToNegEightDays);
+            TimeBucketFour = string.Format("{0:n0}", tempThree.NegSevenToNegOneDays);
+            TimeBucketFive = string.Format("{0:n0}", tempThree.ZeroDays);
+            TimeBucketSix = string.Format("{0:n0}", tempThree.OneToSevenDays);
+            TimeBucketSeven = string.Format("{0:n0}", tempThree.EightToFourteenDays);
+            TimeBucketEight = string.Format("{0:n0}", tempThree.FifteenToTwentyOneDays);
+            TimeBucketNine = string.Format("{0:n0}", tempThree.GreaterThanEqualToTwentyTwoDays);
+            TotalOrders = string.Format("{0:n0}", tempThree.TotalRecords);
+
+
+            IUnconfirmed unconfirmedInfo = (Report.Indicators[(int)KpiOption.FollowUp_ReceiptDateVsCurrentConfirmationDate]
+                    as Reporting.KeyPerformanceIndicators.FollowUp.ReceiptDateVsCurrentConfirmationDate).Unconfirmed;
+
+            // Get the uncofnrimed information
+            PercNoConf = string.Format("{0:n}", unconfirmedInfo.PercentUnconfirmed);
+            PercNoConfTotal = string.Format("{0:n0}", unconfirmedInfo.UnconfirmedTotal);
 
             canvas.addData(dp);
             dataviz.Render(canvas);

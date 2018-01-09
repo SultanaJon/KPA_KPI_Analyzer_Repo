@@ -6,6 +6,7 @@ using System;
 using System.Data;
 using Reporting.Interfaces;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace Reporting.KeyPerformanceActions.CurrentPlanVsActual
 {
@@ -38,6 +39,25 @@ namespace Reporting.KeyPerformanceActions.CurrentPlanVsActual
         public int GreaterThanThreeWeeks { get; set; }
 
         #endregion
+
+
+
+
+
+        /// <summary>
+        /// Returns the template that this KPA or KPI fall under
+        /// </summary>
+        public ITemplateTwo Template
+        {
+            get
+            {
+                return this;
+            }
+        }
+
+
+
+
 
 
         /// <summary>
@@ -81,6 +101,42 @@ namespace Reporting.KeyPerformanceActions.CurrentPlanVsActual
             // set the selective strategy context
             SelectiveContext = new SelectiveStrategyContext(new SelectiveDataTypeThree());
         }
+
+
+
+
+
+
+        /// <summary>
+        /// Returns the template one data for this KPA
+        /// </summary>
+        /// <returns></returns>
+        public List<string> GetTemplateData()
+        {
+            List<string> row = new List<string>();
+
+            // Add the Template one data
+            row.Add(Section);
+            row.Add(Name);
+            row.Add(string.Format("{0:n}", Average));
+            row.Add(string.Format("{0:n0}", LessthanNegThreeWeeks));
+            row.Add(string.Format("{0:n0}", GreaterThanEqualToNegThreeWeeks));
+            row.Add(string.Format("{0:n0}", GreaterThanEqualToNegTwoWeeks));
+            row.Add(string.Format("{0:n0}", GreaterThanEqualNegOneWeek));
+            row.Add(string.Format("{0:n0}", ZeroWeeks));
+            row.Add(string.Format("{0:n0}", LessThanEqualToOneWeek));
+            row.Add(string.Format("{0:n0}", LessThanEqualToTwoWeeks));
+            row.Add(string.Format("{0:n0}", LessThanEqualToThreeWeeks));
+            row.Add(string.Format("{0:n0}", GreaterThanThreeWeeks));
+            row.Add(string.Format("{0:n0}", TotalRecords));
+            row.Add(string.Format("{0:n0}", PercentFavorable + "%"));
+
+            //return the template one data for this KPA
+            return row;
+        }
+
+
+
 
 
 

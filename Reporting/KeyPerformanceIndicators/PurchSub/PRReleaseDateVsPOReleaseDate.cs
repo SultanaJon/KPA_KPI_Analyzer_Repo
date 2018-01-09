@@ -5,6 +5,7 @@ using System.Data;
 using DataAccessLibrary;
 using Filters;
 using System;
+using System.Collections.Generic;
 
 namespace Reporting.KeyPerformanceIndicators.PurchSub
 {
@@ -27,6 +28,24 @@ namespace Reporting.KeyPerformanceIndicators.PurchSub
         public int FiftySevenPlusDays { get; set; }
 
         #endregion
+
+
+
+
+
+        /// <summary>
+        /// Returns the template that this KPA or KPI fall under
+        /// </summary>
+        public ITemplateFour Template
+        {
+            get
+            {
+                return this;
+            }
+        }
+
+
+
 
 
 
@@ -72,6 +91,36 @@ namespace Reporting.KeyPerformanceIndicators.PurchSub
         }
 
 
+
+
+        /// <summary>
+        /// Returns the template one data for this KPA
+        /// </summary>
+        /// <returns></returns>
+        public List<string> GetTemplateData()
+        {
+            List<string> row = new List<string>();
+
+            // Create template row data
+            row.Add(Section);
+            row.Add(Name);
+            row.Add(string.Format("{0:n}", Average));
+            row.Add(string.Format("{0:n0}", LessThanEqualToZeroDays));
+            row.Add(string.Format("{0:n0}", OneToThreeDays));
+            row.Add(string.Format("{0:n0}", FourToSevenDays));
+            row.Add(string.Format("{0:n0}", EightToFourteenDays));
+            row.Add(string.Format("{0:n0}", FifteenToTwentyOneDays));
+            row.Add(string.Format("{0:n0}", TwentyTwoToTwentyEightDays));
+            row.Add(string.Format("{0:n0}", TwentyNineToThirtyFiveDays));
+            row.Add(string.Format("{0:n0}", ThirtySixtoFourtyTwoDays));
+            row.Add(string.Format("{0:n0}", FourtyThreeToFourtyNineDays));
+            row.Add(string.Format("{0:n0}", FiftyToFiftySixDays));
+            row.Add(string.Format("{0:n0}", FiftySevenPlusDays));
+            row.Add(string.Format("{0:n0}", TotalRecords));
+
+            //return the template data for this KPA
+            return row;
+        }
 
 
 

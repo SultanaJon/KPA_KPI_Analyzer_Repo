@@ -1,4 +1,5 @@
 ﻿using System;
+using Reporting;
 
 namespace KPA_KPI_Analyzer.ExcelFiles
 {
@@ -17,6 +18,6 @@ namespace KPA_KPI_Analyzer.ExcelFiles
         /// <summary>
         /// The country that this excel file is associated with.
         /// </summary>
-        public Values.Countries.Country AssociatedCountry { get; set; }
+        public Country AssociatedCountry { get; set; }
     }
 }

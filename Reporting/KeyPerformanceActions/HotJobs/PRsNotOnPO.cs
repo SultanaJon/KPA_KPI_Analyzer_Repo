@@ -6,6 +6,7 @@ using Reporting.Overall;
 
 using Reporting.Selective;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 
@@ -26,6 +27,25 @@ namespace Reporting.KeyPerformanceActions.HotJobs
         public int TwentyNinePlusDays { get; set; }
 
         #endregion
+
+
+
+
+
+        /// <summary>
+        /// Returns the template that this KPA or KPI fall under
+        /// </summary>
+        public ITemplateOne Template
+        {
+            get
+            {
+                return this;
+            }
+        }
+
+
+
+
 
 
 
@@ -69,6 +89,33 @@ namespace Reporting.KeyPerformanceActions.HotJobs
 
             // set the selective strategy context
             SelectiveContext = new SelectiveStrategyContext(new SelectiveDataTypeOne());
+        }
+
+
+
+        /// <summary>
+        /// Returns the template one data for this KPA
+        /// </summary>
+        /// <returns></returns>
+        public List<string> GetTemplateData()
+        {
+            List<string> row = new List<string>();
+
+            // Add the Template one data
+            row.Add(Section);
+            row.Add(Name);
+            row.Add(string.Format("{0:n0}", LessThanEqualToZeroDays));
+            row.Add(string.Format("{0:n0}", OneToThreeDays));
+            row.Add(string.Format("{0:n0}", FourToSevenDays));
+            row.Add(string.Format("{0:n0}", EightToFourteenDays));
+            row.Add(string.Format("{0:n0}", FifteenToTwentyOneDays));
+            row.Add(string.Format("{0:n0}", TwentyTwoToTwentyEightDays));
+            row.Add(string.Format("{0:n0}", TwentyNinePlusDays));
+            row.Add(string.Format("{0:n}", Average));
+            row.Add(string.Format("{0:n0}", TotalRecords));
+
+            //return the template one data for this KPA
+            return row;
         }
 
 

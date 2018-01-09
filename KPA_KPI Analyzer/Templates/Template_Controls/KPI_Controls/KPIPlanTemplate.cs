@@ -2,7 +2,11 @@
 using KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader;
 using KPA_KPI_Analyzer.Overall_Data;
 using KPA_KPI_Analyzer.Values;
+using Reporting;
+using Reporting.KeyPerformanceIndicators;
+using Reporting.Overall;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -10,7 +14,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 {
     public partial class KPIPlanTemplate : UserControl
     {
-        Overall overallData;
+        
 
 
 
@@ -84,9 +88,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// <summary>
         /// This function will always load the default state of the control and set the color of the graph.
         /// </summary>
-        public void LoadPanel(Overall data)
+        public void LoadPanel()
         {
-            overallData = data;
+            
             SetGraphColor();
             DefaultButtonTextColor = System.Drawing.Color.DarkGray;
             RenderOne();
@@ -195,46 +199,37 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.Plan];
             ChangeCategory();
 
-            Average = overallData.kpi.plan.currPlanDateVsPrPlanDate.data.Average.ToString();
-            TotalOrders = overallData.kpi.plan.currPlanDateVsPrPlanDate.data.Total.ToString();
-            TimeBucketOne = overallData.kpi.plan.currPlanDateVsPrPlanDate.data.Minus_TwentyTwo.ToString();
-            TimeBucketTwo = overallData.kpi.plan.currPlanDateVsPrPlanDate.data.Minus_Fifteen_TwentyOne.ToString();
-            TimeBucketThree = overallData.kpi.plan.currPlanDateVsPrPlanDate.data.Minus_Eight_Fourteen.ToString();
-            TimeBucketFour = overallData.kpi.plan.currPlanDateVsPrPlanDate.data.Minus_One_Seven.ToString();
-            TimeBucketFive = overallData.kpi.plan.currPlanDateVsPrPlanDate.data.Zero.ToString();
-            TimeBucketSix = overallData.kpi.plan.currPlanDateVsPrPlanDate.data.One_Seven.ToString();
-            TimeBucketSeven = overallData.kpi.plan.currPlanDateVsPrPlanDate.data.Eight_Fourteen.ToString();
-            TimeBucketEight = overallData.kpi.plan.currPlanDateVsPrPlanDate.data.Fifteen_TwentyOne.ToString();
-            TimeBucketNine = overallData.kpi.plan.currPlanDateVsPrPlanDate.data.TwentyTwo.ToString();
-
 
 
             AnalysisOne = "- Will show for PRs that are on a PO.";
             AnalysisTwo = "- Difference between current planned date and PR planned date.";
 
 
-            dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
-            dp.addLabely(lbl_xLabelTwo.Text, TimeBucketTwo);
-            dp.addLabely(lbl_xLabelThree.Text, TimeBucketThree);
-            dp.addLabely(lbl_xLabelFour.Text, TimeBucketFour);
-            dp.addLabely(lbl_xLabelFive.Text, TimeBucketFive);
-            dp.addLabely(lbl_xLabelSix.Text, TimeBucketSix);
-            dp.addLabely(lbl_xLabelSeven.Text, TimeBucketSeven);
-            dp.addLabely(lbl_xLabelEight.Text, TimeBucketEight);
-            dp.addLabely(lbl_xLabelNine.Text, TimeBucketNine);
+            ITemplateThree tempThree = (Report.Indicators[(int)KpiOption.Plan_CurrentPlanDateVsPrPlanDate]
+                    as Reporting.KeyPerformanceIndicators.Plan.CurrentPlanDateVsPRPlanDate).Template;
 
-            Average = string.Format("{0:n}", overallData.kpi.plan.currPlanDateVsPrPlanDate.data.Average);
-            TotalOrders = string.Format("{0:n0}", overallData.kpi.plan.currPlanDateVsPrPlanDate.data.Total);
-            TimeBucketOne = string.Format("{0:n0}", overallData.kpi.plan.currPlanDateVsPrPlanDate.data.Minus_TwentyTwo);
-            TimeBucketTwo = string.Format("{0:n0}", overallData.kpi.plan.currPlanDateVsPrPlanDate.data.Minus_Fifteen_TwentyOne);
-            TimeBucketThree = string.Format("{0:n0}", overallData.kpi.plan.currPlanDateVsPrPlanDate.data.Minus_Eight_Fourteen);
-            TimeBucketFour = string.Format("{0:n0}", overallData.kpi.plan.currPlanDateVsPrPlanDate.data.Minus_One_Seven);
-            TimeBucketFive = string.Format("{0:n0}", overallData.kpi.plan.currPlanDateVsPrPlanDate.data.Zero);
-            TimeBucketSix = string.Format("{0:n0}", overallData.kpi.plan.currPlanDateVsPrPlanDate.data.One_Seven);
-            TimeBucketSeven = string.Format("{0:n0}", overallData.kpi.plan.currPlanDateVsPrPlanDate.data.Eight_Fourteen);
-            TimeBucketEight = string.Format("{0:n0}", overallData.kpi.plan.currPlanDateVsPrPlanDate.data.Fifteen_TwentyOne);
-            TimeBucketNine = string.Format("{0:n0}", overallData.kpi.plan.currPlanDateVsPrPlanDate.data.TwentyTwo);
+            // Add the data to the column chart
+            dp.addLabely(lbl_xLabelOne.Text, tempThree.LessThanEqualToNegTwentyTwoDays.ToString());
+            dp.addLabely(lbl_xLabelTwo.Text, tempThree.NegTwentyOneToNegFifteenDays.ToString());
+            dp.addLabely(lbl_xLabelThree.Text, tempThree.NegFourteenToNegEightDays.ToString());
+            dp.addLabely(lbl_xLabelFour.Text, tempThree.NegSevenToNegOneDays.ToString());
+            dp.addLabely(lbl_xLabelFive.Text, tempThree.ZeroDays.ToString());
+            dp.addLabely(lbl_xLabelSix.Text, tempThree.OneToSevenDays.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempThree.EightToFourteenDays.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempThree.FifteenToTwentyOneDays.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempThree.GreaterThanEqualToTwentyTwoDays.ToString());
 
+            Average = string.Format("{0:n}", tempThree.Average);
+            TimeBucketOne = string.Format("{0:n0}", tempThree.LessThanEqualToNegTwentyTwoDays);
+            TimeBucketTwo = string.Format("{0:n0}", tempThree.NegTwentyOneToNegFifteenDays);
+            TimeBucketThree = string.Format("{0:n0}", tempThree.NegFourteenToNegEightDays);
+            TimeBucketFour = string.Format("{0:n0}", tempThree.NegSevenToNegOneDays);
+            TimeBucketFive = string.Format("{0:n0}", tempThree.ZeroDays);
+            TimeBucketSix = string.Format("{0:n0}", tempThree.OneToSevenDays);
+            TimeBucketSeven = string.Format("{0:n0}", tempThree.EightToFourteenDays);
+            TimeBucketEight = string.Format("{0:n0}", tempThree.FifteenToTwentyOneDays);
+            TimeBucketNine = string.Format("{0:n0}", tempThree.GreaterThanEqualToTwentyTwoDays);
+            TotalOrders = string.Format("{0:n0}", tempThree.TotalRecords);
 
             canvas.addData(dp);
             dataviz.Render(canvas);
@@ -258,45 +253,35 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.Plan];
             ChangeCategory();
 
-            Average = overallData.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Average.ToString();
-            TotalOrders = overallData.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Total.ToString();
-            TimeBucketOne = overallData.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Minus_TwentyTwo.ToString();
-            TimeBucketTwo = overallData.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Minus_Fifteen_TwentyOne.ToString();
-            TimeBucketThree = overallData.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Minus_Eight_Fourteen.ToString();
-            TimeBucketFour = overallData.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Minus_One_Seven.ToString();
-            TimeBucketFive = overallData.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Zero.ToString();
-            TimeBucketSix = overallData.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.One_Seven.ToString();
-            TimeBucketSeven = overallData.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Eight_Fourteen.ToString();
-            TimeBucketEight = overallData.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Fifteen_TwentyOne.ToString();
-            TimeBucketNine = overallData.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.TwentyTwo.ToString();
-
 
             AnalysisOne = "- Will show if the PR is fully released.";
             AnalysisTwo = "- (PR planned date - PR fully released date) - commodity coded leadtime.";
 
+            ITemplateThree tempThree = (Report.Indicators[(int)KpiOption.Plan_OrigPlanDateMinusPrFullReleaseDateVsCodedLead]
+                    as Reporting.KeyPerformanceIndicators.Plan.OriginalPlanDateTo2ndLvlReleaseDateVsCodedLead).Template;
 
-            dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
-            dp.addLabely(lbl_xLabelTwo.Text, TimeBucketTwo);
-            dp.addLabely(lbl_xLabelThree.Text, TimeBucketThree);
-            dp.addLabely(lbl_xLabelFour.Text, TimeBucketFour);
-            dp.addLabely(lbl_xLabelFive.Text, TimeBucketFive);
-            dp.addLabely(lbl_xLabelSix.Text, TimeBucketSix);
-            dp.addLabely(lbl_xLabelSeven.Text, TimeBucketSeven);
-            dp.addLabely(lbl_xLabelEight.Text, TimeBucketEight);
-            dp.addLabely(lbl_xLabelNine.Text, TimeBucketNine);
+            // Add the data to the column chart
+            dp.addLabely(lbl_xLabelOne.Text, tempThree.LessThanEqualToNegTwentyTwoDays.ToString());
+            dp.addLabely(lbl_xLabelTwo.Text, tempThree.NegTwentyOneToNegFifteenDays.ToString());
+            dp.addLabely(lbl_xLabelThree.Text, tempThree.NegFourteenToNegEightDays.ToString());
+            dp.addLabely(lbl_xLabelFour.Text, tempThree.NegSevenToNegOneDays.ToString());
+            dp.addLabely(lbl_xLabelFive.Text, tempThree.ZeroDays.ToString());
+            dp.addLabely(lbl_xLabelSix.Text, tempThree.OneToSevenDays.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempThree.EightToFourteenDays.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempThree.FifteenToTwentyOneDays.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempThree.GreaterThanEqualToTwentyTwoDays.ToString());
 
-            Average = string.Format("{0:n}", overallData.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Average);
-            TotalOrders = string.Format("{0:n0}", overallData.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Total);
-            TimeBucketOne = string.Format("{0:n0}", overallData.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Minus_TwentyTwo);
-            TimeBucketTwo = string.Format("{0:n0}", overallData.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Minus_Fifteen_TwentyOne);
-            TimeBucketThree = string.Format("{0:n0}", overallData.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Minus_Eight_Fourteen);
-            TimeBucketFour = string.Format("{0:n0}", overallData.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Minus_One_Seven);
-            TimeBucketFive = string.Format("{0:n0}", overallData.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Zero);
-            TimeBucketSix = string.Format("{0:n0}", overallData.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.One_Seven);
-            TimeBucketSeven = string.Format("{0:n0}", overallData.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Eight_Fourteen);
-            TimeBucketEight = string.Format("{0:n0}", overallData.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Fifteen_TwentyOne);
-            TimeBucketNine = string.Format("{0:n0}", overallData.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.TwentyTwo);
-
+            Average = string.Format("{0:n}", tempThree.Average);
+            TimeBucketOne = string.Format("{0:n0}", tempThree.LessThanEqualToNegTwentyTwoDays);
+            TimeBucketTwo = string.Format("{0:n0}", tempThree.NegTwentyOneToNegFifteenDays);
+            TimeBucketThree = string.Format("{0:n0}", tempThree.NegFourteenToNegEightDays);
+            TimeBucketFour = string.Format("{0:n0}", tempThree.NegSevenToNegOneDays);
+            TimeBucketFive = string.Format("{0:n0}", tempThree.ZeroDays);
+            TimeBucketSix = string.Format("{0:n0}", tempThree.OneToSevenDays);
+            TimeBucketSeven = string.Format("{0:n0}", tempThree.EightToFourteenDays);
+            TimeBucketEight = string.Format("{0:n0}", tempThree.FifteenToTwentyOneDays);
+            TimeBucketNine = string.Format("{0:n0}", tempThree.GreaterThanEqualToTwentyTwoDays);
+            TotalOrders = string.Format("{0:n0}", tempThree.TotalRecords);
 
             canvas.addData(dp);
             dataviz.Render(canvas);
@@ -321,46 +306,35 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.Plan];
             ChangeCategory();
 
-            Average = overallData.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Average.ToString();
-            TotalOrders = overallData.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Total.ToString();
-            TimeBucketOne = overallData.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Minus_TwentyTwo.ToString();
-            TimeBucketTwo = overallData.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Minus_Fifteen_TwentyOne.ToString();
-            TimeBucketThree = overallData.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Minus_Eight_Fourteen.ToString();
-            TimeBucketFour = overallData.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Minus_One_Seven.ToString();
-            TimeBucketFive = overallData.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Zero.ToString();
-            TimeBucketSix = overallData.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.One_Seven.ToString();
-            TimeBucketSeven = overallData.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Eight_Fourteen.ToString();
-            TimeBucketEight = overallData.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Fifteen_TwentyOne.ToString();
-            TimeBucketNine = overallData.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.TwentyTwo.ToString();
-
-
 
             AnalysisOne = "- Will show if the PR is fully released.";
             AnalysisTwo = "- (current planned date - PR fully released date) - commodity coded leadtime.";
 
+            ITemplateThree tempThree = (Report.Indicators[(int)KpiOption.Plan_CurrentPlanDateMinusPrFullReleaseDateVsCodedLead]
+                    as Reporting.KeyPerformanceIndicators.Plan.CurrentPlanDateTo2ndLvlReleaseDateVsCodedLead).Template;
 
-            dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
-            dp.addLabely(lbl_xLabelTwo.Text, TimeBucketTwo);
-            dp.addLabely(lbl_xLabelThree.Text, TimeBucketThree);
-            dp.addLabely(lbl_xLabelFour.Text, TimeBucketFour);
-            dp.addLabely(lbl_xLabelFive.Text, TimeBucketFive);
-            dp.addLabely(lbl_xLabelSix.Text, TimeBucketSix);
-            dp.addLabely(lbl_xLabelSeven.Text, TimeBucketSeven);
-            dp.addLabely(lbl_xLabelEight.Text, TimeBucketEight);
-            dp.addLabely(lbl_xLabelNine.Text, TimeBucketNine);
+            // Add the data to the column chart
+            dp.addLabely(lbl_xLabelOne.Text, tempThree.LessThanEqualToNegTwentyTwoDays.ToString());
+            dp.addLabely(lbl_xLabelTwo.Text, tempThree.NegTwentyOneToNegFifteenDays.ToString());
+            dp.addLabely(lbl_xLabelThree.Text, tempThree.NegFourteenToNegEightDays.ToString());
+            dp.addLabely(lbl_xLabelFour.Text, tempThree.NegSevenToNegOneDays.ToString());
+            dp.addLabely(lbl_xLabelFive.Text, tempThree.ZeroDays.ToString());
+            dp.addLabely(lbl_xLabelSix.Text, tempThree.OneToSevenDays.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempThree.EightToFourteenDays.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempThree.FifteenToTwentyOneDays.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempThree.GreaterThanEqualToTwentyTwoDays.ToString());
 
-            Average = string.Format("{0:n}", overallData.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Average);
-            TotalOrders = string.Format("{0:n0}", overallData.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Total);
-            TimeBucketOne = string.Format("{0:n0}", overallData.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Minus_TwentyTwo);
-            TimeBucketTwo = string.Format("{0:n0}", overallData.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Minus_Fifteen_TwentyOne);
-            TimeBucketThree = string.Format("{0:n0}", overallData.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Minus_Eight_Fourteen);
-            TimeBucketFour = string.Format("{0:n0}", overallData.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Minus_One_Seven);
-            TimeBucketFive = string.Format("{0:n0}", overallData.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Zero);
-            TimeBucketSix = string.Format("{0:n0}", overallData.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.One_Seven);
-            TimeBucketSeven = string.Format("{0:n0}", overallData.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Eight_Fourteen);
-            TimeBucketEight = string.Format("{0:n0}", overallData.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Fifteen_TwentyOne);
-            TimeBucketNine = string.Format("{0:n0}", overallData.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.TwentyTwo);
-
+            Average = string.Format("{0:n}", tempThree.Average);
+            TimeBucketOne = string.Format("{0:n0}", tempThree.LessThanEqualToNegTwentyTwoDays);
+            TimeBucketTwo = string.Format("{0:n0}", tempThree.NegTwentyOneToNegFifteenDays);
+            TimeBucketThree = string.Format("{0:n0}", tempThree.NegFourteenToNegEightDays);
+            TimeBucketFour = string.Format("{0:n0}", tempThree.NegSevenToNegOneDays);
+            TimeBucketFive = string.Format("{0:n0}", tempThree.ZeroDays);
+            TimeBucketSix = string.Format("{0:n0}", tempThree.OneToSevenDays);
+            TimeBucketSeven = string.Format("{0:n0}", tempThree.EightToFourteenDays);
+            TimeBucketEight = string.Format("{0:n0}", tempThree.FifteenToTwentyOneDays);
+            TimeBucketNine = string.Format("{0:n0}", tempThree.GreaterThanEqualToTwentyTwoDays);
+            TotalOrders = string.Format("{0:n0}", tempThree.TotalRecords);
 
             canvas.addData(dp);
             dataviz.Render(canvas);

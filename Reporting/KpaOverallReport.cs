@@ -2,13 +2,16 @@
 using Reporting.KeyPerformanceActions.FollowUp;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using ApplicationIOLibarary.Interfaces;
 
 namespace Reporting
 {
-    public class KpaOverallReport : Report
+    public class KpaOverallReport : Report, IStorable, ILoadable
     {
         /// <summary>
         /// Private instance of a KPA Report
@@ -39,6 +42,8 @@ namespace Reporting
         /// The contents of the KPA Report
         /// </summary>
         List<KeyPerformanceAction> kpaOverallReport;
+
+
 
 
         /// <summary>
@@ -148,6 +153,54 @@ namespace Reporting
 
             // Run the report for upcoming deliveries
             taskTwo.Start();
+        }
+
+
+
+
+        /// <summary>
+        /// Loads the KPA Overall Report for either the United States or Mexico from external file to application
+        /// </summary>
+        /// <param name="_report">The report that needs to be loaded</param>
+        public void Load()
+        {
+            try
+            {
+                if (ReportingCountry.TargetCountry == Country.UnitedStates)
+                    dataJSONString = File.ReadAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.US_KPA_Overall]);
+                else
+                    dataJSONString = File.ReadAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.MX_KPA_Overall]);
+
+                kpaOverallReportInstance = ser.Deserialize<KpaOverallReport>(dataJSONString);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString(), "Overall DataReader Loading Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        /// <summary>
+        /// Saves the report to a local directory
+        /// </summary>
+        public void Save()
+        {
+            try
+            {
+                dataJSONString = ser.Serialize(this);
+                if (ReportingCountry.TargetCountry == Country.UnitedStates)
+                {
+                    File.WriteAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.US_KPA_Overall], dataJSONString);
+                }
+                else
+                {
+                    File.WriteAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.MX_KPA_Overall], dataJSONString);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Overall DataReader Saving Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

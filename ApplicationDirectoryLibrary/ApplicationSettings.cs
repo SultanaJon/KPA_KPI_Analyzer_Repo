@@ -7,17 +7,56 @@ using System.Windows.Forms;
 
 namespace ApplicationIOLibarary
 {
-    public class ApplicationSettings : IStorable, ILoadable<ApplicationSettings>
+    public class ApplicationSettings : IStorable, ILoadable
     {
+        /// <summary>
+        /// The instance of the application settings
+        /// </summary>
+        private static ApplicationSettings appSettingsInstance;
+
+        /// <summary>
+        /// The settings for the report
+        /// </summary>
         public ReportSettings reportSettings;
+
+
+
+        /// <summary>
+        /// The settings for the correlation feature
+        /// </summary>
         public CorrelationSettings correlationSettings;
 
 
 
         /// <summary>
-        /// JavaScript serializer used to serialize and deserializer ApplicationConfig objects
+        /// Property to return the instance of the application settings
+        /// </summary>
+        public static ApplicationSettings AppSettingsInstance
+        {
+            get
+            {
+                if(appSettingsInstance == null)
+                {
+                    appSettingsInstance = new ApplicationSettings();
+                }
+
+                // return the instance of the application settings
+                return appSettingsInstance;
+            }
+        }
+
+
+
+
+        /// <summary>
+        /// JavaScriptSerializer to serialize and deserialize the application settings
         /// </summary>
         private JavaScriptSerializer ser;
+
+
+        /// <summary>
+        /// string to hold the contents of the object after serialization
+        /// </summary>
         private string dataJSONString;
 
 
@@ -25,13 +64,28 @@ namespace ApplicationIOLibarary
         /// <summary>
         /// Default Constructor
         /// </summary>
-        public ApplicationSettings()
+        private ApplicationSettings()
         {
             reportSettings = new ReportSettings();
             correlationSettings = new CorrelationSettings();
 
             ser = new JavaScriptSerializer();
             dataJSONString = string.Empty;
+        }
+
+
+
+
+        /// <summary>
+        /// Allows the user to create a new instance of the settings file
+        /// </summary>
+        public static ApplicationSettings CreateNewSettingsInstance()
+        {
+            // Create a new settings instance
+            appSettingsInstance = new ApplicationSettings();
+
+            // Return the newly created instance
+            return appSettingsInstance;
         }
 
 
@@ -136,12 +190,12 @@ namespace ApplicationIOLibarary
         /// Loads the setting from a tempory storage location in JSON format.
         /// </summary>
         /// <returns>Boolean value indicating whether or not the Load operation was successful.</returns>
-        public void Load(ref ApplicationSettings settings)
+        public void Load()
         {
             try
             {
                 dataJSONString = File.ReadAllText(FileUtils.resourcesFiles[(int)ResourceFile.Settings]);
-                settings = ser.Deserialize<ApplicationSettings>(dataJSONString);
+                appSettingsInstance = ser.Deserialize<ApplicationSettings>(dataJSONString);
             }
             catch (Exception ex)
             {

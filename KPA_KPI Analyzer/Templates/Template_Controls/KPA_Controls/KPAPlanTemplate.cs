@@ -2,7 +2,11 @@
 using KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader;
 using KPA_KPI_Analyzer.Overall_Data;
 using KPA_KPI_Analyzer.Values;
+using Reporting;
+using Reporting.KeyPerformanceActions;
+using Reporting.Overall;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -13,7 +17,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
         Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-        Overall overallData = new Overall();
+        
 
 
 
@@ -88,9 +92,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// <summary>
         /// This function will always load the default state of the control and set the color of the graph.
         /// </summary>
-        public void LoadPanel(Overall overall)
+        public void LoadPanel()
         {
-            overallData = overall;
             SetGraphColor();
             DefaultButtonTextColor = System.Drawing.Color.DarkGray;
             btn_One.selected = true;
@@ -99,7 +102,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             DatavizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.Plan][(int)Values.Categories.KpaCategory.Plan.PRsAgingNotRel];
+            Globals.CurrCategory = Categories.kpaCategories[(int)Sections.KpaSection.Plan][(int)Categories.KpaCategory.Plan.PRsAgingNotRel];
             ChangeCategory();
         }
 
@@ -189,39 +192,37 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.Plan];
             ChangeCategory();
 
-            TimeBucketOne = overallData.kpa.plan.prsAgingNotRel.data.LessThanZero.ToString();
-            TimeBucketTwo = overallData.kpa.plan.prsAgingNotRel.data.One_Three.ToString();
-            TimeBucketThree = overallData.kpa.plan.prsAgingNotRel.data.Four_Seven.ToString();
-            TimeBucketFour = overallData.kpa.plan.prsAgingNotRel.data.Eight_Fourteen.ToString();
-            TimeBucketFive = overallData.kpa.plan.prsAgingNotRel.data.Fifteen_TwentyOne.ToString();
-            TimeBucketSix = overallData.kpa.plan.prsAgingNotRel.data.TwentyTwo_TwentyEight.ToString();
-            TimeBucketSeven = overallData.kpa.plan.prsAgingNotRel.data.TwentyNinePlus.ToString();
-
-            Average = string.Format("{0:n}", overallData.kpa.plan.prsAgingNotRel.data.Average);
-            TotalOrders = string.Format("{0:n0}", overallData.kpa.plan.prsAgingNotRel.data.Total);
-
             AnalysisOne = "- Will only show in this field if the PR is not fully released and the PR Open Qty > 0.";
             AnalysisTwo = "- Difference between todays date and the date the PR was created.";
 
-            dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
-            dp.addLabely(lbl_xLabelTwo.Text, TimeBucketTwo);
-            dp.addLabely(lbl_xLabelThree.Text, TimeBucketThree);
-            dp.addLabely(lbl_xLabelFour.Text, TimeBucketFour);
-            dp.addLabely(lbl_xLabelFive.Text, TimeBucketFive);
-            dp.addLabely(lbl_xLabelSix.Text, TimeBucketSix);
-            dp.addLabely(lbl_xLabelSeven.Text, TimeBucketSeven);
 
+            ITemplateOne tempOne = (Report.Actions[(int)KpaOption.Plan_PrsAgingNotReleased]
+                                as Reporting.KeyPerformanceActions.Plan.PRsAgingNotReleased).Template;
+
+
+            // Add the data to the column chart
+            dp.addLabely(lbl_xLabelOne.Text, tempOne.LessThanEqualToZeroDays.ToString());
+            dp.addLabely(lbl_xLabelTwo.Text, tempOne.OneToThreeDays.ToString());
+            dp.addLabely(lbl_xLabelThree.Text, tempOne.FourToSevenDays.ToString());
+            dp.addLabely(lbl_xLabelFour.Text, tempOne.EightToFourteenDays.ToString());
+            dp.addLabely(lbl_xLabelFive.Text, tempOne.FifteenToTwentyOneDays.ToString());
+            dp.addLabely(lbl_xLabelSix.Text, tempOne.TwentyTwoToTwentyEightDays.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempOne.TwentyNinePlusDays.ToString());
+
+            // Add the values to the time spans
+            Average = string.Format("{0:n}", tempOne.Average);
+            TimeBucketOne = string.Format("{0:n0}", tempOne.LessThanEqualToZeroDays);
+            TimeBucketTwo = string.Format("{0:n0}", tempOne.OneToThreeDays);
+            TimeBucketThree = string.Format("{0:n0}", tempOne.FourToSevenDays);
+            TimeBucketFour = string.Format("{0:n0}", tempOne.EightToFourteenDays);
+            TimeBucketFive = string.Format("{0:n0}", tempOne.FifteenToTwentyOneDays);
+            TimeBucketSix = string.Format("{0:n0}", tempOne.TwentyTwoToTwentyEightDays);
+            TimeBucketSeven = string.Format("{0:n0}", tempOne.TwentyNinePlusDays);
+            TotalOrders = string.Format("{0:n0}", tempOne.TotalRecords);
+
+            // Render the column chart
             canvas.addData(dp);
             dataviz.Render(canvas);
-
-            TimeBucketOne = string.Format("{0:n0}", overallData.kpa.plan.prsAgingNotRel.data.LessThanZero);
-            TimeBucketTwo = string.Format("{0:n0}", overallData.kpa.plan.prsAgingNotRel.data.One_Three);
-            TimeBucketThree = string.Format("{0:n0}", overallData.kpa.plan.prsAgingNotRel.data.Four_Seven);
-            TimeBucketFour = string.Format("{0:n0}", overallData.kpa.plan.prsAgingNotRel.data.Eight_Fourteen);
-            TimeBucketFive = string.Format("{0:n0}", overallData.kpa.plan.prsAgingNotRel.data.Fifteen_TwentyOne);
-            TimeBucketSix = string.Format("{0:n0}", overallData.kpa.plan.prsAgingNotRel.data.TwentyTwo_TwentyEight);
-            TimeBucketSeven = string.Format("{0:n0}", overallData.kpa.plan.prsAgingNotRel.data.TwentyNinePlus);
-
         }
 
 
@@ -237,43 +238,41 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         {
             canvas = new Bunifu.DataViz.Canvas();
             dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
-            Title = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.Plan][(int)Values.Categories.KpaCategory.Plan.MaterialDue];
+            Title = Categories.kpaCategories[(int)Sections.KpaSection.Plan][(int)Categories.KpaCategory.Plan.MaterialDue];
             Globals.CurrCategory = Title;
-            Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.Plan];
+            Globals.CurrSection = Sections.kpaSections[(int)Sections.KpaSection.Plan];
             ChangeCategory();
-
-            TimeBucketOne = overallData.kpa.plan.matDueDate.data.LessThanZero.ToString();
-            TimeBucketTwo = overallData.kpa.plan.matDueDate.data.One_Three.ToString();
-            TimeBucketThree = overallData.kpa.plan.matDueDate.data.Four_Seven.ToString();
-            TimeBucketFour = overallData.kpa.plan.matDueDate.data.Eight_Fourteen.ToString();
-            TimeBucketFive = overallData.kpa.plan.matDueDate.data.Fifteen_TwentyOne.ToString();
-            TimeBucketSix = overallData.kpa.plan.matDueDate.data.TwentyTwo_TwentyEight.ToString();
-            TimeBucketSeven = overallData.kpa.plan.matDueDate.data.TwentyNinePlus.ToString();
-
-            Average = string.Format("{0:n}", overallData.kpa.plan.matDueDate.data.Average);
-            TotalOrders = string.Format("{0:n0}", overallData.kpa.plan.matDueDate.data.Total);
 
             AnalysisOne = "- Will only show in this field if PR is fully released and the PR Open Qty > 0.";
             AnalysisTwo = "- Difference between the current requirement date and todays date.";
 
-            dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
-            dp.addLabely(lbl_xLabelTwo.Text, TimeBucketTwo);
-            dp.addLabely(lbl_xLabelThree.Text, TimeBucketThree);
-            dp.addLabely(lbl_xLabelFour.Text, TimeBucketFour);
-            dp.addLabely(lbl_xLabelFive.Text, TimeBucketFive);
-            dp.addLabely(lbl_xLabelSix.Text, TimeBucketSix);
-            dp.addLabely(lbl_xLabelSeven.Text, TimeBucketSeven);
+            ITemplateOne tempOne = (Report.Actions[(int)KpaOption.Plan_MaterialDue]
+                                as Reporting.KeyPerformanceActions.Plan.MaterialDue).Template;
 
+
+            // Add the data to the column chart
+            dp.addLabely(lbl_xLabelOne.Text, tempOne.LessThanEqualToZeroDays.ToString());
+            dp.addLabely(lbl_xLabelTwo.Text, tempOne.OneToThreeDays.ToString());
+            dp.addLabely(lbl_xLabelThree.Text, tempOne.FourToSevenDays.ToString());
+            dp.addLabely(lbl_xLabelFour.Text, tempOne.EightToFourteenDays.ToString());
+            dp.addLabely(lbl_xLabelFive.Text, tempOne.FifteenToTwentyOneDays.ToString());
+            dp.addLabely(lbl_xLabelSix.Text, tempOne.TwentyTwoToTwentyEightDays.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempOne.TwentyNinePlusDays.ToString());
+
+            // Add the values to the time spans
+            Average = string.Format("{0:n}", tempOne.Average);
+            TimeBucketOne = string.Format("{0:n0}", tempOne.LessThanEqualToZeroDays);
+            TimeBucketTwo = string.Format("{0:n0}", tempOne.OneToThreeDays);
+            TimeBucketThree = string.Format("{0:n0}", tempOne.FourToSevenDays);
+            TimeBucketFour = string.Format("{0:n0}", tempOne.EightToFourteenDays);
+            TimeBucketFive = string.Format("{0:n0}", tempOne.FifteenToTwentyOneDays);
+            TimeBucketSix = string.Format("{0:n0}", tempOne.TwentyTwoToTwentyEightDays);
+            TimeBucketSeven = string.Format("{0:n0}", tempOne.TwentyNinePlusDays);
+            TotalOrders = string.Format("{0:n0}", tempOne.TotalRecords);
+
+            // Render the column chart
             canvas.addData(dp);
             dataviz.Render(canvas);
-
-            TimeBucketOne = string.Format("{0:n0}", overallData.kpa.plan.matDueDate.data.LessThanZero);
-            TimeBucketTwo = string.Format("{0:n0}", overallData.kpa.plan.matDueDate.data.One_Three);
-            TimeBucketThree = string.Format("{0:n0}", overallData.kpa.plan.matDueDate.data.Four_Seven);
-            TimeBucketFour = string.Format("{0:n0}", overallData.kpa.plan.matDueDate.data.Eight_Fourteen);
-            TimeBucketFive = string.Format("{0:n0}", overallData.kpa.plan.matDueDate.data.Fifteen_TwentyOne);
-            TimeBucketSix = string.Format("{0:n0}", overallData.kpa.plan.matDueDate.data.TwentyTwo_TwentyEight);
-            TimeBucketSeven = string.Format("{0:n0}", overallData.kpa.plan.matDueDate.data.TwentyNinePlus);
 
         }
 

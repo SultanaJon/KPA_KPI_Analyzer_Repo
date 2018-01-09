@@ -4,7 +4,7 @@ using Reporting.KeyPerformanceActions;
 using Reporting.KeyPerformanceIndicators;
 using System;
 
-namespace KPA_KPI_Analyzer.Reporting
+namespace KPA_KPI_Analyzer.PerformanceReporting
 {
     class ReportingController : IReportingController
     {

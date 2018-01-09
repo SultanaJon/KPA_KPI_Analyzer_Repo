@@ -9,10 +9,7 @@ namespace KPA_KPI_Analyzer.Values
         /// </summary>
         public static readonly DateTime LastestExceptedPrpoReportDate = new DateTime(2017, 12, 15);
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public static Countries.Country TargetCountry { get; set; }
+
         /// <summary>
         /// Current selected country to display in the data viewer
         /// </summary>

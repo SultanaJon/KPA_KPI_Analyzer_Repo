@@ -5,6 +5,10 @@ using KPA_KPI_Analyzer.Values;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using Reporting;
+using Reporting.KeyPerformanceActions;
+using Reporting.Overall;
+using System.Collections.Generic;
 
 namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 {
@@ -13,7 +17,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
         Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-        Overall overallData = new Overall();
+        
 
 
 
@@ -89,9 +93,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// <summary>
         /// This function will always load the default state of the control and set the color of the graph.
         /// </summary>
-        public void LoadPanel(Overall overall)
+        public void LoadPanel()
         {
-            overallData = overall;
+            
             SetGraphColor();
             DefaultButtonTextColor = System.Drawing.Color.DarkGray;
             btn_One.selected = true;
@@ -189,44 +193,41 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             canvas = new Bunifu.DataViz.Canvas();
             dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.ExcessStock_Stock][(int)Values.Categories.KpaCategory.ExcessStockStock.PrsAgingNotRel];
+            Title = Categories.kpaCategories[(int)Sections.KpaSection.ExcessStock_Stock][(int)Categories.KpaCategory.ExcessStockStock.PrsAgingNotRel];
             Globals.CurrCategory = Title;
-            Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.ExcessStock_Stock];
+            Globals.CurrSection = Sections.kpaSections[(int)Sections.KpaSection.ExcessStock_Stock];
             ChangeCategory();
-
-            TimeBucketOne = overallData.kpa.excessStockStock.prsAgingNotRel.data.LessThanZero.ToString();
-            TimeBucketTwo = overallData.kpa.excessStockStock.prsAgingNotRel.data.One_Three.ToString();
-            TimeBucketThree = overallData.kpa.excessStockStock.prsAgingNotRel.data.Four_Seven.ToString();
-            TimeBucketFour = overallData.kpa.excessStockStock.prsAgingNotRel.data.Eight_Fourteen.ToString();
-            TimeBucketFive = overallData.kpa.excessStockStock.prsAgingNotRel.data.Fifteen_TwentyOne.ToString();
-            TimeBucketSix = overallData.kpa.excessStockStock.prsAgingNotRel.data.TwentyTwo_TwentyEight.ToString();
-            TimeBucketSeven = overallData.kpa.excessStockStock.prsAgingNotRel.data.TwentyNinePlus.ToString();
-
-            Average = string.Format("{0:n}", overallData.kpa.excessStockStock.prsAgingNotRel.data.Average);
-            TotalOrders = string.Format("{0:n0}", overallData.kpa.excessStockStock.prsAgingNotRel.data.Total);
 
             AnalysisOne = "- Will only show in this field if the PR is not fully released, the PR Open Qty > 0, General Stock On Hand > 0 and Project Stock On Hand > 0.";
             AnalysisTwo = "- Difference between todays date and the date the PR was created.";
 
-            dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
-            dp.addLabely(lbl_xLabelTwo.Text, TimeBucketTwo);
-            dp.addLabely(lbl_xLabelThree.Text, TimeBucketThree);
-            dp.addLabely(lbl_xLabelFour.Text, TimeBucketFour);
-            dp.addLabely(lbl_xLabelFive.Text, TimeBucketFive);
-            dp.addLabely(lbl_xLabelSix.Text, TimeBucketSix);
-            dp.addLabely(lbl_xLabelSeven.Text, TimeBucketSeven);
+            ITemplateOne tempOne = (Report.Actions[(int)KpaOption.ExcessStockStock_PrsAgingNotReleased]
+                                as Reporting.KeyPerformanceActions.ExcessStockStock.PRsAgingNotReleased).Template;
 
+
+            // Add the data to the column chart
+            dp.addLabely(lbl_xLabelOne.Text, tempOne.LessThanEqualToZeroDays.ToString());
+            dp.addLabely(lbl_xLabelTwo.Text, tempOne.OneToThreeDays.ToString());
+            dp.addLabely(lbl_xLabelThree.Text, tempOne.FourToSevenDays.ToString());
+            dp.addLabely(lbl_xLabelFour.Text, tempOne.EightToFourteenDays.ToString());
+            dp.addLabely(lbl_xLabelFive.Text, tempOne.FifteenToTwentyOneDays.ToString());
+            dp.addLabely(lbl_xLabelSix.Text, tempOne.TwentyTwoToTwentyEightDays.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempOne.TwentyNinePlusDays.ToString());
+
+            // Add the values to the time spans
+            Average = string.Format("{0:n}", tempOne.Average);
+            TimeBucketOne = string.Format("{0:n0}", tempOne.LessThanEqualToZeroDays);
+            TimeBucketTwo = string.Format("{0:n0}", tempOne.OneToThreeDays);
+            TimeBucketThree = string.Format("{0:n0}", tempOne.FourToSevenDays);
+            TimeBucketFour = string.Format("{0:n0}", tempOne.EightToFourteenDays);
+            TimeBucketFive = string.Format("{0:n0}", tempOne.FifteenToTwentyOneDays);
+            TimeBucketSix = string.Format("{0:n0}", tempOne.TwentyTwoToTwentyEightDays);
+            TimeBucketSeven = string.Format("{0:n0}", tempOne.TwentyNinePlusDays);
+            TotalOrders = string.Format("{0:n0}", tempOne.TotalRecords);
+
+            // Render the column chart
             canvas.addData(dp);
             dataviz.Render(canvas);
-
-            TimeBucketOne = string.Format("{0:n0}", overallData.kpa.excessStockStock.prsAgingNotRel.data.LessThanZero);
-            TimeBucketTwo = string.Format("{0:n0}", overallData.kpa.excessStockStock.prsAgingNotRel.data.One_Three);
-            TimeBucketThree = string.Format("{0:n0}", overallData.kpa.excessStockStock.prsAgingNotRel.data.Four_Seven);
-            TimeBucketFour = string.Format("{0:n0}", overallData.kpa.excessStockStock.prsAgingNotRel.data.Eight_Fourteen);
-            TimeBucketFive = string.Format("{0:n0}", overallData.kpa.excessStockStock.prsAgingNotRel.data.Fifteen_TwentyOne);
-            TimeBucketSix = string.Format("{0:n0}", overallData.kpa.excessStockStock.prsAgingNotRel.data.TwentyTwo_TwentyEight);
-            TimeBucketSeven = string.Format("{0:n0}", overallData.kpa.excessStockStock.prsAgingNotRel.data.TwentyNinePlus);
-
         }
 
 
@@ -247,38 +248,35 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.ExcessStock_Stock];
             ChangeCategory();
 
-            TimeBucketOne = overallData.kpa.excessStockStock.prsAgingRel.data.LessThanZero.ToString();
-            TimeBucketTwo = overallData.kpa.excessStockStock.prsAgingRel.data.One_Three.ToString();
-            TimeBucketThree = overallData.kpa.excessStockStock.prsAgingRel.data.Four_Seven.ToString();
-            TimeBucketFour = overallData.kpa.excessStockStock.prsAgingRel.data.Eight_Fourteen.ToString();
-            TimeBucketFive = overallData.kpa.excessStockStock.prsAgingRel.data.Fifteen_TwentyOne.ToString();
-            TimeBucketSix = overallData.kpa.excessStockStock.prsAgingRel.data.TwentyTwo_TwentyEight.ToString();
-            TimeBucketSeven = overallData.kpa.excessStockStock.prsAgingRel.data.TwentyNinePlus.ToString();
-
-            Average = string.Format("{0:n}", overallData.kpa.excessStockStock.prsAgingRel.data.Average);
-            TotalOrders = string.Format("{0:n0}", overallData.kpa.excessStockStock.prsAgingRel.data.Total);
-
             AnalysisOne = "- Will only show in this field if the PR is fully released, the PR open Qty > 0, General Stock On Hand > 0 and Project Stock On Hand > 0.";
             AnalysisTwo = "- Difference between todays date and the date the PR was fully released.";
 
-            dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
-            dp.addLabely(lbl_xLabelTwo.Text, TimeBucketTwo);
-            dp.addLabely(lbl_xLabelThree.Text, TimeBucketThree);
-            dp.addLabely(lbl_xLabelFour.Text, TimeBucketFour);
-            dp.addLabely(lbl_xLabelFive.Text, TimeBucketFive);
-            dp.addLabely(lbl_xLabelSix.Text, TimeBucketSix);
-            dp.addLabely(lbl_xLabelSeven.Text, TimeBucketSeven);
+            ITemplateOne tempOne = (Report.Actions[(int)KpaOption.ExcessStockStock_PrsAgingReleased]
+                                as Reporting.KeyPerformanceActions.ExcessStockStock.PRsAgingReleased).Template;
 
+            // Add the data to the column chart
+            dp.addLabely(lbl_xLabelOne.Text, tempOne.LessThanEqualToZeroDays.ToString());
+            dp.addLabely(lbl_xLabelTwo.Text, tempOne.OneToThreeDays.ToString());
+            dp.addLabely(lbl_xLabelThree.Text, tempOne.FourToSevenDays.ToString());
+            dp.addLabely(lbl_xLabelFour.Text, tempOne.EightToFourteenDays.ToString());
+            dp.addLabely(lbl_xLabelFive.Text, tempOne.FifteenToTwentyOneDays.ToString());
+            dp.addLabely(lbl_xLabelSix.Text, tempOne.TwentyTwoToTwentyEightDays.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempOne.TwentyNinePlusDays.ToString());
+
+            // Add the values to the time spans
+            Average = string.Format("{0:n}", tempOne.Average);
+            TimeBucketOne = string.Format("{0:n0}", tempOne.LessThanEqualToZeroDays);
+            TimeBucketTwo = string.Format("{0:n0}", tempOne.OneToThreeDays);
+            TimeBucketThree = string.Format("{0:n0}", tempOne.FourToSevenDays);
+            TimeBucketFour = string.Format("{0:n0}", tempOne.EightToFourteenDays);
+            TimeBucketFive = string.Format("{0:n0}", tempOne.FifteenToTwentyOneDays);
+            TimeBucketSix = string.Format("{0:n0}", tempOne.TwentyTwoToTwentyEightDays);
+            TimeBucketSeven = string.Format("{0:n0}", tempOne.TwentyNinePlusDays);
+            TotalOrders = string.Format("{0:n0}", tempOne.TotalRecords);
+
+            // Render the column chart
             canvas.addData(dp);
             dataviz.Render(canvas);
-
-            TimeBucketOne = string.Format("{0:n0}", overallData.kpa.excessStockStock.prsAgingRel.data.LessThanZero);
-            TimeBucketTwo = string.Format("{0:n0}", overallData.kpa.excessStockStock.prsAgingRel.data.One_Three);
-            TimeBucketThree = string.Format("{0:n0}", overallData.kpa.excessStockStock.prsAgingRel.data.Four_Seven);
-            TimeBucketFour = string.Format("{0:n0}", overallData.kpa.excessStockStock.prsAgingRel.data.Eight_Fourteen);
-            TimeBucketFive = string.Format("{0:n0}", overallData.kpa.excessStockStock.prsAgingRel.data.Fifteen_TwentyOne);
-            TimeBucketSix = string.Format("{0:n0}", overallData.kpa.excessStockStock.prsAgingRel.data.TwentyTwo_TwentyEight);
-            TimeBucketSeven = string.Format("{0:n0}", overallData.kpa.excessStockStock.prsAgingRel.data.TwentyNinePlus);
 
         }
 
@@ -297,38 +295,36 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.ExcessStock_Stock];
             ChangeCategory();
 
-            TimeBucketOne = overallData.kpa.excessStockStock.PoCreationThruDeliv.data.LessThanZero.ToString();
-            TimeBucketTwo = overallData.kpa.excessStockStock.PoCreationThruDeliv.data.One_Three.ToString();
-            TimeBucketThree = overallData.kpa.excessStockStock.PoCreationThruDeliv.data.Four_Seven.ToString();
-            TimeBucketFour = overallData.kpa.excessStockStock.PoCreationThruDeliv.data.Eight_Fourteen.ToString();
-            TimeBucketFive = overallData.kpa.excessStockStock.PoCreationThruDeliv.data.Fifteen_TwentyOne.ToString();
-            TimeBucketSix = overallData.kpa.excessStockStock.PoCreationThruDeliv.data.TwentyTwo_TwentyEight.ToString();
-            TimeBucketSeven = overallData.kpa.excessStockStock.PoCreationThruDeliv.data.TwentyNinePlus.ToString();
-
-            Average = string.Format("{0:n}", overallData.kpa.excessStockStock.PoCreationThruDeliv.data.Average);
-            TotalOrders = string.Format("{0:n0}", overallData.kpa.excessStockStock.PoCreationThruDeliv.data.Total);
-
             AnalysisOne = "- Will only show in this field if PR is on PO, PO line item does not have a confirmation date, PO line is not received complete, General Stock On Hand > 0 and Project Stock On Hand > 0.";
             AnalysisTwo = "- Difference between todays date and the date the PR was added to the PO.";
 
-            dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
-            dp.addLabely(lbl_xLabelTwo.Text, TimeBucketTwo);
-            dp.addLabely(lbl_xLabelThree.Text, TimeBucketThree);
-            dp.addLabely(lbl_xLabelFour.Text, TimeBucketFour);
-            dp.addLabely(lbl_xLabelFive.Text, TimeBucketFive);
-            dp.addLabely(lbl_xLabelSix.Text, TimeBucketSix);
-            dp.addLabely(lbl_xLabelSeven.Text, TimeBucketSeven);
+            ITemplateOne tempOne = (Report.Actions[(int)KpaOption.ExcessStockStock_PoCreationTruDelivery]
+                                as Reporting.KeyPerformanceActions.ExcessStockStock.POCreationThruDelivery).Template;
 
+
+            // Add the data to the column chart
+            dp.addLabely(lbl_xLabelOne.Text, tempOne.LessThanEqualToZeroDays.ToString());
+            dp.addLabely(lbl_xLabelTwo.Text, tempOne.OneToThreeDays.ToString());
+            dp.addLabely(lbl_xLabelThree.Text, tempOne.FourToSevenDays.ToString());
+            dp.addLabely(lbl_xLabelFour.Text, tempOne.EightToFourteenDays.ToString());
+            dp.addLabely(lbl_xLabelFive.Text, tempOne.FifteenToTwentyOneDays.ToString());
+            dp.addLabely(lbl_xLabelSix.Text, tempOne.TwentyTwoToTwentyEightDays.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempOne.TwentyNinePlusDays.ToString());
+
+            // Add the values to the time spans
+            Average = string.Format("{0:n}", tempOne.Average);
+            TimeBucketOne = string.Format("{0:n0}", tempOne.LessThanEqualToZeroDays);
+            TimeBucketTwo = string.Format("{0:n0}", tempOne.OneToThreeDays);
+            TimeBucketThree = string.Format("{0:n0}", tempOne.FourToSevenDays);
+            TimeBucketFour = string.Format("{0:n0}", tempOne.EightToFourteenDays);
+            TimeBucketFive = string.Format("{0:n0}", tempOne.FifteenToTwentyOneDays);
+            TimeBucketSix = string.Format("{0:n0}", tempOne.TwentyTwoToTwentyEightDays);
+            TimeBucketSeven = string.Format("{0:n0}", tempOne.TwentyNinePlusDays);
+            TotalOrders = string.Format("{0:n0}", tempOne.TotalRecords);
+
+            // Render the column chart
             canvas.addData(dp);
             dataviz.Render(canvas);
-
-            TimeBucketOne = string.Format("{0:n0}", overallData.kpa.excessStockStock.PoCreationThruDeliv.data.LessThanZero);
-            TimeBucketTwo = string.Format("{0:n0}", overallData.kpa.excessStockStock.PoCreationThruDeliv.data.One_Three);
-            TimeBucketThree = string.Format("{0:n0}", overallData.kpa.excessStockStock.PoCreationThruDeliv.data.Four_Seven);
-            TimeBucketFour = string.Format("{0:n0}", overallData.kpa.excessStockStock.PoCreationThruDeliv.data.Eight_Fourteen);
-            TimeBucketFive = string.Format("{0:n0}", overallData.kpa.excessStockStock.PoCreationThruDeliv.data.Fifteen_TwentyOne);
-            TimeBucketSix = string.Format("{0:n0}", overallData.kpa.excessStockStock.PoCreationThruDeliv.data.TwentyTwo_TwentyEight);
-            TimeBucketSeven = string.Format("{0:n0}", overallData.kpa.excessStockStock.PoCreationThruDeliv.data.TwentyNinePlus);
         }
 
 

@@ -1,4 +1,5 @@
-﻿using KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls;
+﻿using KPA_KPI_Analyzer.PerformanceReporting;
+using KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls;
 using KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls;
 using System.Windows.Forms;
 
@@ -16,7 +17,7 @@ namespace KPA_KPI_Analyzer
             lbl_Section.Text = "All";
             lbl_Category.Text = "All";
             MenuInFront = true;
-            NewKPAOverall kpaOverall = new NewKPAOverall(overallData)
+            NewKPAOverall kpaOverall = new NewKPAOverall()
             {
                 Name = "Overall",
                 Dock = DockStyle.Fill
@@ -224,7 +225,7 @@ namespace KPA_KPI_Analyzer
             lbl_Performance.Text = "KPI";
             lbl_Section.Text = "All";
             lbl_Category.Text = "All";
-            NewKPIOverall kpiOverall = new NewKPIOverall(overallData)
+            NewKPIOverall kpiOverall = new NewKPIOverall()
             {
                 Name = "Overall",
                 Dock = DockStyle.Fill
@@ -465,7 +466,7 @@ namespace KPA_KPI_Analyzer
         /// <param name="e"></param>
         private void pnl_activePage_ControlAdded(object sender, ControlEventArgs e)
         {
-            if(e.Control is Correlation.CorrelationControl || e.Control is Reporting.SelctiveReportingWidget)
+            if(e.Control is Correlation.CorrelationControl || e.Control is SelctiveReportingWidget)
             {
                 return;
             }
@@ -479,92 +480,92 @@ namespace KPA_KPI_Analyzer
                 {
                     case 1:
                         KPAPlanTemplate kpaPlan = (KPAPlanTemplate)e.Control;
-                        kpaPlan.LoadPanel(overallData);
+                        kpaPlan.LoadPanel();
                         activeTemplate = kpaPlan;
                         break;
                     case 2:
                         KPAPurchTemplate kpaPurch = (KPAPurchTemplate)e.Control;
-                        kpaPurch.LoadPanel(overallData);
+                        kpaPurch.LoadPanel();
                         activeTemplate = kpaPurch;
                         break;
                     case 3:
                         KPAPurchSubTemplate kpaPurchSub = (KPAPurchSubTemplate)e.Control;
-                        kpaPurchSub.LoadPanel(overallData);
+                        kpaPurchSub.LoadPanel();
                         activeTemplate = kpaPurchSub;
                         break;
                     case 4:
                         KPAPurchTotalTemplate kpaPurchTotal = (KPAPurchTotalTemplate)e.Control;
-                        kpaPurchTotal.LoadPanel(overallData);
+                        kpaPurchTotal.LoadPanel();
                         activeTemplate = kpaPurchTotal;
                         break;
                     case 5:
                         KPAFollowUpTemplate kpaFollowUp = (KPAFollowUpTemplate)e.Control;
-                        kpaFollowUp.LoadPanel(overallData);
+                        kpaFollowUp.LoadPanel();
                         activeTemplate = kpaFollowUp;
                         break;
                     case 6:
                         KPAHotJobsTemplate kpaHotJobs = (KPAHotJobsTemplate)e.Control;
-                        kpaHotJobs.LoadPanel(overallData);
+                        kpaHotJobs.LoadPanel();
                         activeTemplate = kpaHotJobs;
                         break;
                     case 7:
                         KPAExcessStockStock kpaExcessStockStock = (KPAExcessStockStock)e.Control;
-                        kpaExcessStockStock.LoadPanel(overallData);
+                        kpaExcessStockStock.LoadPanel();
                         activeTemplate = kpaExcessStockStock;
                         break;
                     case 8:
                         KPAExcessStockOpenOrders kpaExcessStockOpenOrders = (KPAExcessStockOpenOrders)e.Control;
-                        kpaExcessStockOpenOrders.LoadPanel(overallData);
+                        kpaExcessStockOpenOrders.LoadPanel();
                         activeTemplate = kpaExcessStockOpenOrders;
                         break;
                     case 9:
                         KPACurrentPlanActualTemplate kpaCurrPlanActual = (KPACurrentPlanActualTemplate)e.Control;
-                        kpaCurrPlanActual.LoadPanel(overallData);
+                        kpaCurrPlanActual.LoadPanel();
                         activeTemplate = kpaCurrPlanActual;
                         break;
                     case 11:
                         KPIPlanTemplate kpiPlan = (KPIPlanTemplate)e.Control;
-                        kpiPlan.LoadPanel(overallData);
+                        kpiPlan.LoadPanel();
                         activeTemplate = kpiPlan;
                         break;
                     case 12:
                         KPIPurchTemplate kpiPurch = (KPIPurchTemplate)e.Control;
-                        kpiPurch.LoadPanel(overallData);
+                        kpiPurch.LoadPanel();
                         activeTemplate = kpiPurch;
                         break;
                     case 13:
                         KPIFollowUpTemplate kpiFollowUp = (KPIFollowUpTemplate)e.Control;
-                        kpiFollowUp.LoadPanel(overallData);
+                        kpiFollowUp.LoadPanel();
                         activeTemplate = kpiFollowUp;
                         break;
                     case 14:
                         KPIPlanTwoTemplate kpiPlanTwo  = (KPIPlanTwoTemplate)e.Control;
-                        kpiPlanTwo.LoadPanel(overallData);
+                        kpiPlanTwo.LoadPanel();
                         activeTemplate = kpiPlanTwo;
                         break;
                     case 15:
                         KPIPurchTwoTemplate kpiPurchTwo = (KPIPurchTwoTemplate)e.Control;
-                        kpiPurchTwo.LoadPanel(overallData);
+                        kpiPurchTwo.LoadPanel();
                         activeTemplate = kpiPurchTwo;
                         break;
                     case 16:
                         KPIPurchSubTemplate kpiPurchSub = (KPIPurchSubTemplate)e.Control;
-                        kpiPurchSub.LoadPanel(overallData);
+                        kpiPurchSub.LoadPanel();
                         activeTemplate = kpiPurchSub;
                         break;
                     case 17:
                         KPIPurchTotalTemplate kpiPurchTotal = (KPIPurchTotalTemplate)e.Control;
-                        kpiPurchTotal.LoadPanel(overallData);
+                        kpiPurchTotal.LoadPanel();
                         activeTemplate = kpiPurchTotal;
                         break;
                     case 18:
                         KPIPurchPlanTemplate kpiPurchPlan = (KPIPurchPlanTemplate)e.Control;
-                        kpiPurchPlan.LoadPanel(overallData);
+                        kpiPurchPlan.LoadPanel();
                         activeTemplate = kpiPurchPlan;
                         break;
                     case 19:
                         KPIOtherTemplate kpiOther = (KPIOtherTemplate)e.Control;
-                        kpiOther.LoadPanel(overallData);
+                        kpiOther.LoadPanel();
                         activeTemplate = kpiOther;
                         break;
                     default:
@@ -682,7 +683,7 @@ namespace KPA_KPI_Analyzer
                 lbl_Section.Text = "All";
                 lbl_Category.Text = "All";
                 MenuInFront = true;
-                NewKPAOverall kpaOverall = new NewKPAOverall(overallData)
+                NewKPAOverall kpaOverall = new NewKPAOverall()
                 {
                     Name = "Overall",
                     Dock = DockStyle.Fill
@@ -700,7 +701,7 @@ namespace KPA_KPI_Analyzer
                 lbl_Section.Text = "All";
                 lbl_Category.Text = "All";
                 MenuInFront = true;
-                NewKPIOverall kpiOverall = new NewKPIOverall(overallData)
+                NewKPIOverall kpiOverall = new NewKPIOverall()
                 {
                     Name = "Overall",
                     Dock = DockStyle.Fill

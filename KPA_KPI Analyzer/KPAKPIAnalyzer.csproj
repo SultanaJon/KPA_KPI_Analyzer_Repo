@@ -167,26 +167,25 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Reporting\ComparisonReportingWidget.cs">
+    <Compile Include="PerformanceReporting\ComparisonReportingWidget.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Reporting\ComparisonReportingWidget.Designer.cs">
+    <Compile Include="PerformanceReporting\ComparisonReportingWidget.Designer.cs">
       <DependentUpon>ComparisonReportingWidget.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reporting\IComparisonReportingWidgetView.cs" />
-    <Compile Include="Reporting\IReportingController.cs" />
-    <Compile Include="Reporting\ISelectiveReportingWidgetView.cs" />
-    <Compile Include="Reporting\ReportingController.cs" />
-    <Compile Include="Reporting\SelctiveReportingWidget.cs">
+    <Compile Include="PerformanceReporting\IComparisonReportingWidgetView.cs" />
+    <Compile Include="PerformanceReporting\IReportingController.cs" />
+    <Compile Include="PerformanceReporting\ISelectiveReportingWidgetView.cs" />
+    <Compile Include="PerformanceReporting\ReportingController.cs" />
+    <Compile Include="PerformanceReporting\SelctiveReportingWidget.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Reporting\SelctiveReportingWidget.Designer.cs">
+    <Compile Include="PerformanceReporting\SelctiveReportingWidget.Designer.cs">
       <DependentUpon>SelctiveReportingWidget.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Values\Categories.cs" />
     <Compile Include="Correlation\CorrelationHeaders.cs" />
-    <Compile Include="Values\Countries.cs" />
     <Compile Include="Values\Performance.cs" />
     <Compile Include="Values\Sections.cs" />
     <Compile Include="Templates\Template_Controls\KPA_Controls\KPAExcessStockOpenOrders.cs">
@@ -417,10 +416,10 @@
       <DependentUpon>DataViewer.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reporting\ComparisonReportingWidget.resx">
+    <EmbeddedResource Include="PerformanceReporting\ComparisonReportingWidget.resx">
       <DependentUpon>ComparisonReportingWidget.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reporting\SelctiveReportingWidget.resx">
+    <EmbeddedResource Include="PerformanceReporting\SelctiveReportingWidget.resx">
       <DependentUpon>SelctiveReportingWidget.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Templates\Template_Controls\KPA_Controls\KPAExcessStockOpenOrders.resx">

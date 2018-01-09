@@ -2,6 +2,9 @@
 using KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader;
 using KPA_KPI_Analyzer.Overall_Data;
 using KPA_KPI_Analyzer.Values;
+using Reporting;
+using Reporting.KeyPerformanceIndicators;
+using Reporting.Overall;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -10,7 +13,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 {
     public partial class KPIOtherTemplate : UserControl
     {
-        Overall overallData;
+        
 
 
 
@@ -93,9 +96,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// <summary>
         /// This function will always load the default state of the control and set the color of the graph.
         /// </summary>
-        public void LoadPanel(Overall data)
+        public void LoadPanel()
         {
-            overallData = data;
+            
             SetGraphColor();
             DefaultButtonTextColor = System.Drawing.Color.DarkGray;
             RenderOne();
@@ -213,47 +216,39 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.Other];
             ChangeCategory();
 
-            TimeBucketOne = ((int)overallData.kpi.other.prsCreated.data.GreaterThanZeroWeeks).ToString();
-            TimeBucketTwo = ((int)overallData.kpi.other.prsCreated.data.GreaterThanMinusOneWeeks).ToString();
-            TimeBucketThree = ((int)overallData.kpi.other.prsCreated.data.GreaterThanMinusTwoWeeks).ToString();
-            TimeBucketFour = ((int)overallData.kpi.other.prsCreated.data.GreaterThanMinusThreeWeeks).ToString();
-            TimeBucketFive = ((int)overallData.kpi.other.prsCreated.data.GreaterThanMinusFourWeeks).ToString();
-            TimeBucketSix = ((int)overallData.kpi.other.prsCreated.data.GreaterThanMinusFiveWeeks).ToString();
-            TimeBucketSeven = ((int)overallData.kpi.other.prsCreated.data.GreaterThanMinusSixWeeks).ToString();
-            TimeBucketEight = ((int)overallData.kpi.other.prsCreated.data.GreaterThanMinusSevenWeeks).ToString();
-            TimeBucketNine = ((int)overallData.kpi.other.prsCreated.data.GreaterThanMinusEightWeeks).ToString();
-            TimeBucketTen = ((int)overallData.kpi.other.prsCreated.data.LessThanEightWeeks).ToString();
-
 
             AnalysisOne = "- Count of PRs by creation date.";
             AnalysisTwo = "- Difference between the date the PR was created and the todays date.";
 
 
-            dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
-            dp.addLabely(lbl_xLabelTwo.Text, TimeBucketTwo);
-            dp.addLabely(lbl_xLabelThree.Text, TimeBucketThree);
-            dp.addLabely(lbl_xLabelFour.Text, TimeBucketFour);
-            dp.addLabely(lbl_xLabelFive.Text, TimeBucketFive);
-            dp.addLabely(lbl_xLabelSix.Text, TimeBucketSix);
-            dp.addLabely(lbl_xLabelSeven.Text, TimeBucketSeven);
-            dp.addLabely(lbl_xLabelEight.Text, TimeBucketEight);
-            dp.addLabely(lbl_xLabelNine.Text, TimeBucketNine);
-            dp.addLabely(lbl_xLabelTen.Text, TimeBucketTen);
-            
-            TotalOrders = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.Total);
-            TotalValue = string.Format("{0:n}", overallData.kpi.other.prsCreated.data.TotalValue);
-            TimeBucketOne = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.GreaterThanZeroWeeks);
-            TimeBucketTwo = string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.GreaterThanMinusOneWeeks);
-            TimeBucketThree =  string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.GreaterThanMinusTwoWeeks);
-            TimeBucketFour =  string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.GreaterThanMinusThreeWeeks);
-            TimeBucketFive =  string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.GreaterThanMinusFourWeeks);
-            TimeBucketSix =  string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.GreaterThanMinusFiveWeeks);
-            TimeBucketSeven =  string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.GreaterThanMinusSixWeeks);
-            TimeBucketEight =  string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.GreaterThanMinusSevenWeeks);
-            TimeBucketNine =  string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.GreaterThanMinusEightWeeks);
-            TimeBucketTen =  string.Format("{0:n0}", overallData.kpi.other.prsCreated.data.LessThanEightWeeks);
+            ITemplateFive tempFive = (Report.Indicators[(int)KpiOption.Other_PrsCreated]
+                as Reporting.KeyPerformanceIndicators.Other.PRsCreated).Template;
 
+            // Add the data to the column chart
+            dp.addLabely(lbl_xLabelOne.Text, tempFive.GreaterThanEqualToZeroWeeks.ToString());
+            dp.addLabely(lbl_xLabelTwo.Text, tempFive.GreaterThanEqualToNegOneWeek.ToString());
+            dp.addLabely(lbl_xLabelThree.Text, tempFive.GreaterThanEqualToNegTwoWeeks.ToString());
+            dp.addLabely(lbl_xLabelFour.Text, tempFive.GreaterThanEqualToNegThreeWeeks.ToString());
+            dp.addLabely(lbl_xLabelFive.Text, tempFive.GreaterThanEqualToNegFourWeeks.ToString());
+            dp.addLabely(lbl_xLabelSix.Text, tempFive.GreaterThanEqualToNegFiveWeeks.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempFive.GreaterThanEqualToNegSixWeeks.ToString());
+            dp.addLabely(lbl_xLabelEight.Text, tempFive.GreaterThanEqualToNegSevenWeeks.ToString());
+            dp.addLabely(lbl_xLabelNine.Text, tempFive.GreaterThanEqualToNegEightWeeks.ToString());
+            dp.addLabely(lbl_xLabelTen.Text, tempFive.LessThanNegEightWeeks.ToString());
 
+            // Add the data to the time spans
+            TotalValue = string.Format("{0:n}", tempFive.TotalValue);
+            TimeBucketOne = string.Format("{0:n0}", tempFive.GreaterThanEqualToZeroWeeks);
+            TimeBucketTwo = string.Format("{0:n0}", tempFive.GreaterThanEqualToNegOneWeek);
+            TimeBucketThree = string.Format("{0:n0}", tempFive.GreaterThanEqualToNegTwoWeeks);
+            TimeBucketFour = string.Format("{0:n0}", tempFive.GreaterThanEqualToNegThreeWeeks);
+            TimeBucketFive = string.Format("{0:n0}", tempFive.GreaterThanEqualToNegFourWeeks);
+            TimeBucketSix = string.Format("{0:n0}", tempFive.GreaterThanEqualToNegFiveWeeks);
+            TimeBucketSeven = string.Format("{0:n0}", tempFive.GreaterThanEqualToNegSixWeeks);
+            TimeBucketEight = string.Format("{0:n0}", tempFive.GreaterThanEqualToNegSevenWeeks);
+            TimeBucketNine = string.Format("{0:n0}", tempFive.GreaterThanEqualToNegEightWeeks);
+            TimeBucketTen = string.Format("{0:n0}", tempFive.LessThanNegEightWeeks);
+            TotalOrders = string.Format("{0:n0}", tempFive.TotalRecords);
 
             canvas.addData(dp);
             dataviz.Render(canvas);
@@ -276,48 +271,38 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Globals.CurrCategory = Title;
             Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.Other];
             ChangeCategory();
-
-            TimeBucketOne = ((int)overallData.kpi.other.prsReleased.data.GreaterThanZeroWeeks).ToString();
-            TimeBucketTwo = ((int)overallData.kpi.other.prsReleased.data.GreaterThanMinusOneWeeks).ToString();
-            TimeBucketThree = ((int)overallData.kpi.other.prsReleased.data.GreaterThanMinusTwoWeeks).ToString();
-            TimeBucketFour = ((int)overallData.kpi.other.prsReleased.data.GreaterThanMinusThreeWeeks).ToString();
-            TimeBucketFive = ((int)overallData.kpi.other.prsReleased.data.GreaterThanMinusFourWeeks).ToString();
-            TimeBucketSix = ((int)overallData.kpi.other.prsReleased.data.GreaterThanMinusFiveWeeks).ToString();
-            TimeBucketSeven = ((int)overallData.kpi.other.prsReleased.data.GreaterThanMinusSixWeeks).ToString();
-            TimeBucketEight = ((int)overallData.kpi.other.prsReleased.data.GreaterThanMinusSevenWeeks).ToString();
-            TimeBucketNine = ((int)overallData.kpi.other.prsReleased.data.GreaterThanMinusEightWeeks).ToString();
-            TimeBucketTen = ((int)overallData.kpi.other.prsReleased.data.LessThanEightWeeks).ToString();
-
-
-
+            
             AnalysisOne = "- Count of PRs by release date.";
             AnalysisTwo = "- Difference between PR fully released date and todays date.";
 
+            ITemplateFive tempFive = (Report.Indicators[(int)KpiOption.Other_PrsReleased]
+                as Reporting.KeyPerformanceIndicators.Other.PRsReleased).Template;
 
-            dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
-            dp.addLabely(lbl_xLabelTwo.Text, TimeBucketTwo);
-            dp.addLabely(lbl_xLabelThree.Text, TimeBucketThree);
-            dp.addLabely(lbl_xLabelFour.Text, TimeBucketFour);
-            dp.addLabely(lbl_xLabelFive.Text, TimeBucketFive);
-            dp.addLabely(lbl_xLabelSix.Text, TimeBucketSix);
-            dp.addLabely(lbl_xLabelSeven.Text, TimeBucketSeven);
-            dp.addLabely(lbl_xLabelEight.Text, TimeBucketEight);
-            dp.addLabely(lbl_xLabelNine.Text, TimeBucketNine);
-            dp.addLabely(lbl_xLabelTen.Text, TimeBucketTen);
+            // Add the data to the column chart
+            dp.addLabely(lbl_xLabelOne.Text, tempFive.GreaterThanEqualToZeroWeeks.ToString());
+            dp.addLabely(lbl_xLabelTwo.Text, tempFive.GreaterThanEqualToNegOneWeek.ToString());
+            dp.addLabely(lbl_xLabelThree.Text, tempFive.GreaterThanEqualToNegTwoWeeks.ToString());
+            dp.addLabely(lbl_xLabelFour.Text, tempFive.GreaterThanEqualToNegThreeWeeks.ToString());
+            dp.addLabely(lbl_xLabelFive.Text, tempFive.GreaterThanEqualToNegFourWeeks.ToString());
+            dp.addLabely(lbl_xLabelSix.Text, tempFive.GreaterThanEqualToNegFiveWeeks.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempFive.GreaterThanEqualToNegSixWeeks.ToString());
+            dp.addLabely(lbl_xLabelEight.Text, tempFive.GreaterThanEqualToNegSevenWeeks.ToString());
+            dp.addLabely(lbl_xLabelNine.Text, tempFive.GreaterThanEqualToNegEightWeeks.ToString());
+            dp.addLabely(lbl_xLabelTen.Text, tempFive.LessThanNegEightWeeks.ToString());
 
-
-            TotalOrders = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.Total);
-            TotalValue = string.Format("{0:n}", overallData.kpi.other.prsReleased.data.TotalValue);
-            TimeBucketOne = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.GreaterThanZeroWeeks);
-            TimeBucketTwo = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.GreaterThanMinusOneWeeks);
-            TimeBucketThree = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.GreaterThanMinusTwoWeeks);
-            TimeBucketFour = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.GreaterThanMinusThreeWeeks);
-            TimeBucketFive = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.GreaterThanMinusFourWeeks);
-            TimeBucketSix = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.GreaterThanMinusFiveWeeks);
-            TimeBucketSeven = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.GreaterThanMinusSixWeeks);
-            TimeBucketEight = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.GreaterThanMinusSevenWeeks);
-            TimeBucketNine = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.GreaterThanMinusEightWeeks);
-            TimeBucketTen = string.Format("{0:n0}", overallData.kpi.other.prsReleased.data.LessThanEightWeeks);
+            // Add the data to the time spans
+            TotalValue = string.Format("{0:n}", tempFive.TotalValue);
+            TimeBucketOne = string.Format("{0:n0}", tempFive.GreaterThanEqualToZeroWeeks);
+            TimeBucketTwo = string.Format("{0:n0}", tempFive.GreaterThanEqualToNegOneWeek);
+            TimeBucketThree = string.Format("{0:n0}", tempFive.GreaterThanEqualToNegTwoWeeks);
+            TimeBucketFour = string.Format("{0:n0}", tempFive.GreaterThanEqualToNegThreeWeeks);
+            TimeBucketFive = string.Format("{0:n0}", tempFive.GreaterThanEqualToNegFourWeeks);
+            TimeBucketSix = string.Format("{0:n0}", tempFive.GreaterThanEqualToNegFiveWeeks);
+            TimeBucketSeven = string.Format("{0:n0}", tempFive.GreaterThanEqualToNegSixWeeks);
+            TimeBucketEight = string.Format("{0:n0}", tempFive.GreaterThanEqualToNegSevenWeeks);
+            TimeBucketNine = string.Format("{0:n0}", tempFive.GreaterThanEqualToNegEightWeeks);
+            TimeBucketTen = string.Format("{0:n0}", tempFive.LessThanNegEightWeeks);
+            TotalOrders = string.Format("{0:n0}", tempFive.TotalRecords);
 
             canvas.addData(dp);
             dataviz.Render(canvas);
@@ -341,45 +326,40 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.Other];
             ChangeCategory();
 
-            TimeBucketOne = ((int)overallData.kpi.other.totalSpend.data.GreaterThanZeroWeeks).ToString();
-            TimeBucketTwo = ((int)overallData.kpi.other.totalSpend.data.GreaterThanMinusOneWeeks).ToString();
-            TimeBucketThree = ((int)overallData.kpi.other.totalSpend.data.GreaterThanMinusTwoWeeks).ToString();
-            TimeBucketFour = ((int)overallData.kpi.other.totalSpend.data.GreaterThanMinusThreeWeeks).ToString();
-            TimeBucketFive = ((int)overallData.kpi.other.totalSpend.data.GreaterThanMinusFourWeeks).ToString();
-            TimeBucketSix = ((int)overallData.kpi.other.totalSpend.data.GreaterThanMinusFiveWeeks).ToString();
-            TimeBucketSeven = ((int)overallData.kpi.other.totalSpend.data.GreaterThanMinusSixWeeks).ToString();
-            TimeBucketEight = ((int)overallData.kpi.other.totalSpend.data.GreaterThanMinusSevenWeeks).ToString();
-            TimeBucketNine = ((int)overallData.kpi.other.totalSpend.data.GreaterThanMinusEightWeeks).ToString();
-            TimeBucketTen = ((int)overallData.kpi.other.totalSpend.data.LessThanEightWeeks).ToString();
-
 
             AnalysisOne = "- Value of PO Lines based on PO line Creation Date.";
             AnalysisTwo = "";
 
+            ITemplateFive tempFive = (Report.Indicators[(int)KpiOption.Other_PrsCreated]
+                as Reporting.KeyPerformanceIndicators.Other.PRsCreated).Template;
 
-            dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
-            dp.addLabely(lbl_xLabelTwo.Text, TimeBucketTwo);
-            dp.addLabely(lbl_xLabelThree.Text, TimeBucketThree);
-            dp.addLabely(lbl_xLabelFour.Text, TimeBucketFour);
-            dp.addLabely(lbl_xLabelFive.Text, TimeBucketFive);
-            dp.addLabely(lbl_xLabelSix.Text, TimeBucketSix);
-            dp.addLabely(lbl_xLabelSeven.Text, TimeBucketSeven);
-            dp.addLabely(lbl_xLabelEight.Text, TimeBucketEight);
-            dp.addLabely(lbl_xLabelNine.Text, TimeBucketNine);
-            dp.addLabely(lbl_xLabelTen.Text, TimeBucketTen);
+            // Add the data to the column chart
+            dp.addLabely(lbl_xLabelOne.Text, tempFive.GreaterThanEqualToZeroWeeks.ToString());
+            dp.addLabely(lbl_xLabelTwo.Text, tempFive.GreaterThanEqualToNegOneWeek.ToString());
+            dp.addLabely(lbl_xLabelThree.Text, tempFive.GreaterThanEqualToNegTwoWeeks.ToString());
+            dp.addLabely(lbl_xLabelFour.Text, tempFive.GreaterThanEqualToNegThreeWeeks.ToString());
+            dp.addLabely(lbl_xLabelFive.Text, tempFive.GreaterThanEqualToNegFourWeeks.ToString());
+            dp.addLabely(lbl_xLabelSix.Text, tempFive.GreaterThanEqualToNegFiveWeeks.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempFive.GreaterThanEqualToNegSixWeeks.ToString());
+            dp.addLabely(lbl_xLabelEight.Text, tempFive.GreaterThanEqualToNegSevenWeeks.ToString());
+            dp.addLabely(lbl_xLabelNine.Text, tempFive.GreaterThanEqualToNegEightWeeks.ToString());
+            dp.addLabely(lbl_xLabelTen.Text, tempFive.LessThanNegEightWeeks.ToString());
 
-            TotalOrders = string.Format("{0:n0}", overallData.kpi.other.totalSpend.data.Total);
-            TotalValue = string.Format("{0:n}", overallData.kpi.other.totalSpend.data.TotalValue);
-            TimeBucketOne = "$" + string.Format("{0:n}", overallData.kpi.other.totalSpend.data.GreaterThanZeroWeeks);
-            TimeBucketTwo = "$" + string.Format("{0:n}", overallData.kpi.other.totalSpend.data.GreaterThanMinusOneWeeks);
-            TimeBucketThree = "$" + string.Format("{0:n}", overallData.kpi.other.totalSpend.data.GreaterThanMinusTwoWeeks);
-            TimeBucketFour = "$" + string.Format("{0:n}", overallData.kpi.other.totalSpend.data.GreaterThanMinusThreeWeeks);
-            TimeBucketFive = "$" + string.Format("{0:n}", overallData.kpi.other.totalSpend.data.GreaterThanMinusFourWeeks);
-            TimeBucketSix = "$" + string.Format("{0:n}", overallData.kpi.other.totalSpend.data.GreaterThanMinusFiveWeeks);
-            TimeBucketSeven = "$" + string.Format("{0:n}", overallData.kpi.other.totalSpend.data.GreaterThanMinusSixWeeks);
-            TimeBucketEight = "$" + string.Format("{0:n}", overallData.kpi.other.totalSpend.data.GreaterThanMinusSevenWeeks);
-            TimeBucketNine = "$" + string.Format("{0:n}", overallData.kpi.other.totalSpend.data.GreaterThanMinusEightWeeks);
-            TimeBucketTen = "$" + string.Format("{0:n}", overallData.kpi.other.totalSpend.data.LessThanEightWeeks);
+
+            // Add the data to the time spans
+
+            TotalOrders = string.Format("{0:n0}", tempFive.TotalValue);
+            TotalValue = string.Format("{0:n}", tempFive.GreaterThanEqualToZeroWeeks);
+            TimeBucketOne = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegOneWeek);
+            TimeBucketTwo = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegTwoWeeks);
+            TimeBucketThree = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegThreeWeeks);
+            TimeBucketFour = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegFourWeeks);
+            TimeBucketFive = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegFiveWeeks);
+            TimeBucketSix = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegSixWeeks);
+            TimeBucketSeven = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegSevenWeeks);
+            TimeBucketEight = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegEightWeeks);
+            TimeBucketNine = "$" + string.Format("{0:n}", tempFive.LessThanNegEightWeeks);
+            TimeBucketTen = "$" + string.Format("{0:n}", tempFive.TotalRecords);
 
 
             canvas.addData(dp);
@@ -404,46 +384,40 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.Other];
             ChangeCategory();
 
-            TimeBucketOne = ((int)overallData.kpi.other.prVsPOValue.data.GreaterThanZeroWeeks).ToString();
-            TimeBucketTwo = ((int)overallData.kpi.other.prVsPOValue.data.GreaterThanMinusOneWeeks).ToString();
-            TimeBucketThree = ((int)overallData.kpi.other.prVsPOValue.data.GreaterThanMinusTwoWeeks).ToString();
-            TimeBucketFour = ((int)overallData.kpi.other.prVsPOValue.data.GreaterThanMinusThreeWeeks).ToString();
-            TimeBucketFive = ((int)overallData.kpi.other.prVsPOValue.data.GreaterThanMinusFourWeeks).ToString();
-            TimeBucketSix = ((int)overallData.kpi.other.prVsPOValue.data.GreaterThanMinusFiveWeeks).ToString();
-            TimeBucketSeven = ((int)overallData.kpi.other.prVsPOValue.data.GreaterThanMinusSixWeeks).ToString();
-            TimeBucketEight = ((int)overallData.kpi.other.prVsPOValue.data.GreaterThanMinusSevenWeeks).ToString();
-            TimeBucketNine = ((int)overallData.kpi.other.prVsPOValue.data.GreaterThanMinusSevenWeeks).ToString();
-            TimeBucketTen = ((int)overallData.kpi.other.prVsPOValue.data.LessThanEightWeeks).ToString();
-
-
             AnalysisOne = "- Based on PO line Creation Date.";
             AnalysisTwo = "- Variance of PO line value vs PR line value over time.";
 
 
-            dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
-            dp.addLabely(lbl_xLabelTwo.Text, TimeBucketTwo);
-            dp.addLabely(lbl_xLabelThree.Text, TimeBucketThree);
-            dp.addLabely(lbl_xLabelFour.Text, TimeBucketFour);
-            dp.addLabely(lbl_xLabelFive.Text, TimeBucketFive);
-            dp.addLabely(lbl_xLabelSix.Text, TimeBucketSix);
-            dp.addLabely(lbl_xLabelSeven.Text, TimeBucketSeven);
-            dp.addLabely(lbl_xLabelEight.Text, TimeBucketEight);
-            dp.addLabely(lbl_xLabelNine.Text, TimeBucketNine);
-            dp.addLabely(lbl_xLabelTen.Text, TimeBucketTen);
+            ITemplateFive tempFive = (Report.Indicators[(int)KpiOption.Other_PrsCreated]
+                as Reporting.KeyPerformanceIndicators.Other.PRsCreated).Template;
+
+            // Add the data to the column chart
+            dp.addLabely(lbl_xLabelOne.Text, tempFive.GreaterThanEqualToZeroWeeks.ToString());
+            dp.addLabely(lbl_xLabelTwo.Text, tempFive.GreaterThanEqualToNegOneWeek.ToString());
+            dp.addLabely(lbl_xLabelThree.Text, tempFive.GreaterThanEqualToNegTwoWeeks.ToString());
+            dp.addLabely(lbl_xLabelFour.Text, tempFive.GreaterThanEqualToNegThreeWeeks.ToString());
+            dp.addLabely(lbl_xLabelFive.Text, tempFive.GreaterThanEqualToNegFourWeeks.ToString());
+            dp.addLabely(lbl_xLabelSix.Text, tempFive.GreaterThanEqualToNegFiveWeeks.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempFive.GreaterThanEqualToNegSixWeeks.ToString());
+            dp.addLabely(lbl_xLabelEight.Text, tempFive.GreaterThanEqualToNegSevenWeeks.ToString());
+            dp.addLabely(lbl_xLabelNine.Text, tempFive.GreaterThanEqualToNegEightWeeks.ToString());
+            dp.addLabely(lbl_xLabelTen.Text, tempFive.LessThanNegEightWeeks.ToString());
 
 
-            TotalOrders = string.Format("{0:n0}", overallData.kpi.other.prVsPOValue.data.Total);
-            TotalValue = string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.TotalValue);
-            TimeBucketOne = "$" + string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.GreaterThanZeroWeeks);
-            TimeBucketTwo = "$" + string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.GreaterThanMinusOneWeeks);
-            TimeBucketThree = "$" + string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.GreaterThanMinusTwoWeeks);
-            TimeBucketFour = "$" + string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.GreaterThanMinusThreeWeeks);
-            TimeBucketFive = "$" + string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.GreaterThanMinusFourWeeks);
-            TimeBucketSix = "$" + string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.GreaterThanMinusFiveWeeks);
-            TimeBucketSeven = "$" + string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.GreaterThanMinusSixWeeks);
-            TimeBucketEight = "$" + string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.GreaterThanMinusSevenWeeks);
-            TimeBucketNine = "$" + string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.GreaterThanMinusEightWeeks);
-            TimeBucketTen = "$" + string.Format("{0:n}", overallData.kpi.other.prVsPOValue.data.LessThanEightWeeks);
+            // Add the data to the time spans
+
+            TotalOrders = string.Format("{0:n0}", tempFive.TotalValue);
+            TotalValue = string.Format("{0:n}", tempFive.GreaterThanEqualToZeroWeeks);
+            TimeBucketOne = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegOneWeek);
+            TimeBucketTwo = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegTwoWeeks);
+            TimeBucketThree = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegThreeWeeks);
+            TimeBucketFour = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegFourWeeks);
+            TimeBucketFive = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegFiveWeeks);
+            TimeBucketSix = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegSixWeeks);
+            TimeBucketSeven = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegSevenWeeks);
+            TimeBucketEight = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegEightWeeks);
+            TimeBucketNine = "$" + string.Format("{0:n}", tempFive.LessThanNegEightWeeks);
+            TimeBucketTen = "$" + string.Format("{0:n}", tempFive.TotalRecords);
 
 
             canvas.addData(dp);
@@ -468,47 +442,37 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.Other];
             ChangeCategory();
 
-            TimeBucketOne = ((int)overallData.kpi.other.hotJobPrs.data.GreaterThanZeroWeeks).ToString();
-            TimeBucketTwo = ((int)overallData.kpi.other.hotJobPrs.data.GreaterThanMinusOneWeeks).ToString();
-            TimeBucketThree = ((int)overallData.kpi.other.hotJobPrs.data.GreaterThanMinusTwoWeeks).ToString();
-            TimeBucketFour = ((int)overallData.kpi.other.hotJobPrs.data.GreaterThanMinusThreeWeeks).ToString();
-            TimeBucketFive = ((int)overallData.kpi.other.hotJobPrs.data.GreaterThanMinusFourWeeks).ToString();
-            TimeBucketSix = ((int)overallData.kpi.other.hotJobPrs.data.GreaterThanMinusFiveWeeks).ToString();
-            TimeBucketSeven = ((int)overallData.kpi.other.hotJobPrs.data.GreaterThanMinusSixWeeks).ToString();
-            TimeBucketEight = ((int)overallData.kpi.other.hotJobPrs.data.GreaterThanMinusSevenWeeks).ToString();
-            TimeBucketNine = ((int)overallData.kpi.other.hotJobPrs.data.GreaterThanMinusEightWeeks).ToString();
-            TimeBucketTen = ((int)overallData.kpi.other.hotJobPrs.data.LessThanEightWeeks).ToString();
-
-
             AnalysisOne = "- Will show for PRs which have Purchase Group of 'UHJ'.";
             AnalysisTwo = "- Difference between the date the PR was created and todays date.";
 
+            ITemplateFive tempFive = (Report.Indicators[(int)KpiOption.Other_HotJobPRs]
+                as Reporting.KeyPerformanceIndicators.Other.HotJobPRs).Template;
 
-            dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
-            dp.addLabely(lbl_xLabelTwo.Text, TimeBucketTwo);
-            dp.addLabely(lbl_xLabelThree.Text, TimeBucketThree);
-            dp.addLabely(lbl_xLabelFour.Text, TimeBucketFour);
-            dp.addLabely(lbl_xLabelFive.Text, TimeBucketFive);
-            dp.addLabely(lbl_xLabelSix.Text, TimeBucketSix);
-            dp.addLabely(lbl_xLabelSeven.Text, TimeBucketSeven);
-            dp.addLabely(lbl_xLabelEight.Text, TimeBucketEight);
-            dp.addLabely(lbl_xLabelNine.Text, TimeBucketNine);
-            dp.addLabely(lbl_xLabelTen.Text, TimeBucketTen);
+            // Add the data to the column chart
+            dp.addLabely(lbl_xLabelOne.Text, tempFive.GreaterThanEqualToZeroWeeks.ToString());
+            dp.addLabely(lbl_xLabelTwo.Text, tempFive.GreaterThanEqualToNegOneWeek.ToString());
+            dp.addLabely(lbl_xLabelThree.Text, tempFive.GreaterThanEqualToNegTwoWeeks.ToString());
+            dp.addLabely(lbl_xLabelFour.Text, tempFive.GreaterThanEqualToNegThreeWeeks.ToString());
+            dp.addLabely(lbl_xLabelFive.Text, tempFive.GreaterThanEqualToNegFourWeeks.ToString());
+            dp.addLabely(lbl_xLabelSix.Text, tempFive.GreaterThanEqualToNegFiveWeeks.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempFive.GreaterThanEqualToNegSixWeeks.ToString());
+            dp.addLabely(lbl_xLabelEight.Text, tempFive.GreaterThanEqualToNegSevenWeeks.ToString());
+            dp.addLabely(lbl_xLabelNine.Text, tempFive.GreaterThanEqualToNegEightWeeks.ToString());
+            dp.addLabely(lbl_xLabelTen.Text, tempFive.LessThanNegEightWeeks.ToString());
 
-
-            TotalOrders = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.Total);
-            TotalValue = string.Format("{0:n}", overallData.kpi.other.hotJobPrs.data.TotalValue);
-            TimeBucketOne =string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.GreaterThanZeroWeeks);
-            TimeBucketTwo =string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusOneWeeks);
-            TimeBucketThree = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusTwoWeeks);
-            TimeBucketFour = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusThreeWeeks);
-            TimeBucketFive = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusFourWeeks);
-            TimeBucketSix = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusFiveWeeks);
-            TimeBucketSeven = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusSixWeeks);
-            TimeBucketEight = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusSevenWeeks);
-            TimeBucketNine = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.GreaterThanMinusEightWeeks);
-            TimeBucketTen = string.Format("{0:n0}", overallData.kpi.other.hotJobPrs.data.LessThanEightWeeks);
-
+            // Add the data to the time spans
+            TotalValue = string.Format("{0:n}", tempFive.TotalValue);
+            TimeBucketOne = string.Format("{0:n0}", tempFive.GreaterThanEqualToZeroWeeks);
+            TimeBucketTwo = string.Format("{0:n0}", tempFive.GreaterThanEqualToNegOneWeek);
+            TimeBucketThree = string.Format("{0:n0}", tempFive.GreaterThanEqualToNegTwoWeeks);
+            TimeBucketFour = string.Format("{0:n0}", tempFive.GreaterThanEqualToNegThreeWeeks);
+            TimeBucketFive = string.Format("{0:n0}", tempFive.GreaterThanEqualToNegFourWeeks);
+            TimeBucketSix = string.Format("{0:n0}", tempFive.GreaterThanEqualToNegFiveWeeks);
+            TimeBucketSeven = string.Format("{0:n0}", tempFive.GreaterThanEqualToNegSixWeeks);
+            TimeBucketEight = string.Format("{0:n0}", tempFive.GreaterThanEqualToNegSevenWeeks);
+            TimeBucketNine = string.Format("{0:n0}", tempFive.GreaterThanEqualToNegEightWeeks);
+            TimeBucketTen = string.Format("{0:n0}", tempFive.LessThanNegEightWeeks);
+            TotalOrders = string.Format("{0:n0}", tempFive.TotalRecords);
 
             canvas.addData(dp);
             dataviz.Render(canvas);

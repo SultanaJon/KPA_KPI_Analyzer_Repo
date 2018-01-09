@@ -1,21 +1,36 @@
 ﻿using Filters;
 using Reporting;
+using Reporting.KeyPerformanceActions;
+using Reporting.KeyPerformanceIndicators;
 using System;
 
-namespace KPA_KPI_Analyzer.Reporting
+namespace KPA_KPI_Analyzer.PerformanceReporting
 {
-    public interface ISelectiveReportingWidgetView
+    public interface IComparisonReportingWidgetView
     {
         /// <summary>
-        /// The Performance the comparison report will track
+        /// The performance the comparison report will track
         /// </summary>
         ReportType PerformanceReportType { get; set; }
 
 
         /// <summary>
-        /// The filter option nthe comparison report will use.
+        /// The filter option the comparison report will use.
         /// </summary>
+
         FilterOptions.Options FilteringOption { get; set; }
+
+
+        /// <summary>
+        /// The KPA that the user will base the report off of.
+        /// </summary>
+        KpaOption KPAOption { get; set; }
+
+
+        /// <summary>
+        /// The KPI that the user will base the report off of.
+        /// </summary>
+        KpiOption KPIOption { get; set; }
 
 
         /// <summary>

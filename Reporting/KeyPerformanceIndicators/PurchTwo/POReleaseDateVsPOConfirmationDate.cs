@@ -4,12 +4,20 @@ using Reporting.Selective;
 using System;
 using System.Data;
 using DataAccessLibrary;
+using System.Collections.Generic;
 
 namespace Reporting.KeyPerformanceIndicators.PurchTwo
 {
     public sealed class POReleaseDateVsPOConfirmationDate : KeyPerformanceIndicator, ITemplateFour, IUnconfirmed
     {
         #region IUnconfirmed Properties
+
+        /// <summary>
+        /// The total of records that are unconfirmed
+        /// </summary>
+        public int UnconfirmedTotal { get; set; }
+
+
 
         /// <summary>
         /// The percent of unconfirmed records within the KPA or KPI
@@ -38,6 +46,41 @@ namespace Reporting.KeyPerformanceIndicators.PurchTwo
         public int FiftySevenPlusDays { get; set; }
 
         #endregion
+
+
+
+
+
+
+
+        /// <summary>
+        /// Returns this object as a IUnconfirmed interface
+        /// </summary>
+        public IUnconfirmed Unconfirmed
+        {
+            get
+            {
+                return this;
+            }
+        }
+
+
+
+
+
+        /// <summary>
+        /// Returns the template that this KPA or KPI fall under
+        /// </summary>
+        public ITemplateFour Template
+        {
+            get
+            {
+                return this;
+            }
+        }
+
+
+
 
 
 
@@ -80,6 +123,40 @@ namespace Reporting.KeyPerformanceIndicators.PurchTwo
 
             // set the selective strategy context
             SelectiveContext = new SelectiveStrategyContext(new SelectiveDataTypeTwo());
+        }
+
+
+
+
+        /// <summary>
+        /// Returns the template one data for this KPA
+        /// </summary>
+        /// <returns></returns>
+        public List<string> GetTemplateData()
+        {
+            List<string> row = new List<string>();
+
+            // Create template row data
+            row.Add(Section);
+            row.Add(Name);
+            row.Add(string.Format("{0:n}", Average));
+            row.Add(string.Format("{0:n0}", LessThanEqualToZeroDays));
+            row.Add(string.Format("{0:n0}", OneToThreeDays));
+            row.Add(string.Format("{0:n0}", FourToSevenDays));
+            row.Add(string.Format("{0:n0}", EightToFourteenDays));
+            row.Add(string.Format("{0:n0}", FifteenToTwentyOneDays));
+            row.Add(string.Format("{0:n0}", TwentyTwoToTwentyEightDays));
+            row.Add(string.Format("{0:n0}", TwentyNineToThirtyFiveDays));
+            row.Add(string.Format("{0:n0}", ThirtySixtoFourtyTwoDays));
+            row.Add(string.Format("{0:n0}", FourtyThreeToFourtyNineDays));
+            row.Add(string.Format("{0:n0}", FiftyToFiftySixDays));
+            row.Add(string.Format("{0:n0}", FiftySevenPlusDays));
+            row.Add(string.Format("{0:n0}", TotalRecords));
+            row.Add(string.Format("{0:n0}", PercentUnconfirmed + "%"));
+
+
+            //return the template data for this KPA
+            return row;
         }
 
 
@@ -232,7 +309,6 @@ namespace Reporting.KeyPerformanceIndicators.PurchTwo
         /// </summary>
         public override void RunOverallReport()
         {
-            int percentUnconfTotal = 0;
             double totalDays = 0;
 
             foreach (DataRow dr in DatabaseManager.prsOnPOsDt.Rows)
@@ -271,7 +347,7 @@ namespace Reporting.KeyPerformanceIndicators.PurchTwo
 
                 if (poLineFirstConfCreateYear == 0 && poLineFirstConfCreateMonth == 0 && poLineFirstConfCreateDay == 0)
                 {
-                    percentUnconfTotal++;
+                    UnconfirmedTotal++;
                     TotalRecords++;
                     continue;
                 }
@@ -296,7 +372,7 @@ namespace Reporting.KeyPerformanceIndicators.PurchTwo
             CalculateAverage(totalDays);
 
             // Calcualte the percent unconfrimed for this KPI
-            CalculatePercentUnconfirmed(percentUnconfTotal);
+            CalculatePercentUnconfirmed(UnconfirmedTotal);
         }
     }
 }

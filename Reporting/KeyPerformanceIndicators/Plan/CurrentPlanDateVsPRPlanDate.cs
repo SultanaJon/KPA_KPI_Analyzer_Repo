@@ -4,6 +4,7 @@ using Reporting.Interfaces;
 using System.Data;
 using DataAccessLibrary;
 using System;
+using System.Collections.Generic;
 
 namespace Reporting.KeyPerformanceIndicators.Plan
 {
@@ -36,6 +37,23 @@ namespace Reporting.KeyPerformanceIndicators.Plan
         public int GreaterThanEqualToTwentyTwoDays { get; set; }
 
         #endregion
+
+
+
+
+
+        /// <summary>
+        /// Returns the template that this KPA or KPI fall under
+        /// </summary>
+        public ITemplateThree Template
+        {
+            get
+            {
+                return this;
+            }
+        }
+
+
 
 
 
@@ -83,6 +101,35 @@ namespace Reporting.KeyPerformanceIndicators.Plan
 
 
 
+
+        /// <summary>
+        /// Returns the template one data for this KPA
+        /// </summary>
+        /// <returns></returns>
+        public List<string> GetTemplateData()
+        {
+            List<string> row = new List<string>();
+
+            // Add the Template three data
+            row.Add(Section);
+            row.Add(Name);
+            row.Add(string.Format("{0:n}", Average));
+            row.Add(string.Format("{0:n0}", LessThanEqualToNegTwentyTwoDays));
+            row.Add(string.Format("{0:n0}", NegTwentyOneToNegFifteenDays));
+            row.Add(string.Format("{0:n0}", NegFourteenToNegEightDays));
+            row.Add(string.Format("{0:n0}", NegSevenToNegOneDays));
+            row.Add(string.Format("{0:n0}", ZeroDays));
+            row.Add(string.Format("{0:n0}", OneToSevenDays));
+            row.Add(string.Format("{0:n0}", EightToFourteenDays));
+            row.Add(string.Format("{0:n0}", FifteenToTwentyOneDays));
+            row.Add(string.Format("{0:n0}", GreaterThanEqualToTwentyTwoDays));
+            row.Add(string.Format("{0:n0}", TotalRecords));
+            row.Add("");
+            row.Add(string.Format("{0:n0}", PercentFavorable + "%"));
+
+            //return the template one data for this KPA
+            return row;
+        }
 
 
 

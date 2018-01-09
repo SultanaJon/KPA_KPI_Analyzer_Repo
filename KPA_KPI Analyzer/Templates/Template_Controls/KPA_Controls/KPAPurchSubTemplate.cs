@@ -2,7 +2,11 @@
 using KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader;
 using KPA_KPI_Analyzer.Overall_Data;
 using KPA_KPI_Analyzer.Values;
+using Reporting;
+using Reporting.KeyPerformanceActions;
+using Reporting.Overall;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -10,7 +14,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 {
     public partial class KPAPurchSubTemplate : UserControl
     {
-        Overall overallData = new Overall();
+        
 
 
 
@@ -85,9 +89,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// <summary>
         /// This function will always load the default state of the control and set the color of the graph.
         /// </summary>
-        public void LoadPanel(Overall data)
+        public void LoadPanel()
         {
-            overallData = data;
+            
             SetGraphColor();
             DefaultButtonTextColor = System.Drawing.Color.DarkGray;
             RenderPRRelToPORel();
@@ -187,41 +191,35 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.PurchSub];
             ChangeCategory();
 
-            TimeBucketOne = overallData.kpa.purchSub.prRelToPORel.data.LessThanZero.ToString();
-            TimeBucketTwo = overallData.kpa.purchSub.prRelToPORel.data.One_Three.ToString();
-            TimeBucketThree = overallData.kpa.purchSub.prRelToPORel.data.Four_Seven.ToString();
-            TimeBucketFour = overallData.kpa.purchSub.prRelToPORel.data.Eight_Fourteen.ToString();
-            TimeBucketFive = overallData.kpa.purchSub.prRelToPORel.data.Fifteen_TwentyOne.ToString();
-            TimeBucketSix = overallData.kpa.purchSub.prRelToPORel.data.TwentyTwo_TwentyEight.ToString();
-            TimeBucketSeven = overallData.kpa.purchSub.prRelToPORel.data.TwentyNinePlus.ToString();
-
-
-            TotalOrders = string.Format("{0:n0}", overallData.kpa.purchSub.prRelToPORel.data.Total);
-            Average = string.Format("{0:n}", overallData.kpa.purchSub.prRelToPORel.data.Average);
-
-
             AnalysisOne = "- Will only show in this field if the PR is fully released AND (it is not on a PO OR it is on a PO but has never been released).";
             AnalysisTwo = "- Difference between todays date and the date the PR was fully released.";
 
-            dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
-            dp.addLabely(lbl_xLabelTwo.Text, TimeBucketTwo);
-            dp.addLabely(lbl_xLabelThree.Text, TimeBucketThree);
-            dp.addLabely(lbl_xLabelFour.Text, TimeBucketFour);
-            dp.addLabely(lbl_xLabelFive.Text, TimeBucketFive);
-            dp.addLabely(lbl_xLabelSix.Text, TimeBucketSix);
-            dp.addLabely(lbl_xLabelSeven.Text, TimeBucketSeven);
-
-            TimeBucketOne = string.Format("{0:n0}", overallData.kpa.purchSub.prRelToPORel.data.LessThanZero);
-            TimeBucketTwo = string.Format("{0:n0}", overallData.kpa.purchSub.prRelToPORel.data.One_Three);
-            TimeBucketThree = string.Format("{0:n0}", overallData.kpa.purchSub.prRelToPORel.data.Four_Seven);
-            TimeBucketFour = string.Format("{0:n0}", overallData.kpa.purchSub.prRelToPORel.data.Eight_Fourteen);
-            TimeBucketFive = string.Format("{0:n0}", overallData.kpa.purchSub.prRelToPORel.data.Fifteen_TwentyOne);
-            TimeBucketSix = string.Format("{0:n0}", overallData.kpa.purchSub.prRelToPORel.data.TwentyTwo_TwentyEight);
-            TimeBucketSeven = string.Format("{0:n0}", overallData.kpa.purchSub.prRelToPORel.data.TwentyNinePlus);
+            // Get the template data
+            ITemplateOne tempOne = (Report.Actions[(int)KpaOption.PurchSub_PrReleaseToPoRelease]
+                                as Reporting.KeyPerformanceActions.PurchSub.PRReleaseToPORelease).Template;
 
 
+            // Add the data to the column chart
+            dp.addLabely(lbl_xLabelOne.Text, tempOne.LessThanEqualToZeroDays.ToString());
+            dp.addLabely(lbl_xLabelTwo.Text, tempOne.OneToThreeDays.ToString());
+            dp.addLabely(lbl_xLabelThree.Text, tempOne.FourToSevenDays.ToString());
+            dp.addLabely(lbl_xLabelFour.Text, tempOne.EightToFourteenDays.ToString());
+            dp.addLabely(lbl_xLabelFive.Text, tempOne.FifteenToTwentyOneDays.ToString());
+            dp.addLabely(lbl_xLabelSix.Text, tempOne.TwentyTwoToTwentyEightDays.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempOne.TwentyNinePlusDays.ToString());
 
+            // Add the values to the time spans
+            Average = string.Format("{0:n}", tempOne.Average);
+            TimeBucketOne = string.Format("{0:n0}", tempOne.LessThanEqualToZeroDays);
+            TimeBucketTwo = string.Format("{0:n0}", tempOne.OneToThreeDays);
+            TimeBucketThree = string.Format("{0:n0}", tempOne.FourToSevenDays);
+            TimeBucketFour = string.Format("{0:n0}", tempOne.EightToFourteenDays);
+            TimeBucketFive = string.Format("{0:n0}", tempOne.FifteenToTwentyOneDays);
+            TimeBucketSix = string.Format("{0:n0}", tempOne.TwentyTwoToTwentyEightDays);
+            TimeBucketSeven = string.Format("{0:n0}", tempOne.TwentyNinePlusDays);
+            TotalOrders = string.Format("{0:n0}", tempOne.TotalRecords);
 
+            // Render the column chart
             canvas.addData(dp);
             dataviz.Render(canvas);
         }
@@ -243,43 +241,35 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.PurchSub];
             ChangeCategory();
 
-            TimeBucketOne = overallData.kpa.purchSub.POCreatToConfEntry.data.LessThanZero.ToString();
-            TimeBucketTwo = overallData.kpa.purchSub.POCreatToConfEntry.data.One_Three.ToString();
-            TimeBucketThree = overallData.kpa.purchSub.POCreatToConfEntry.data.Four_Seven.ToString();
-            TimeBucketFour = overallData.kpa.purchSub.POCreatToConfEntry.data.Eight_Fourteen.ToString();
-            TimeBucketFive = overallData.kpa.purchSub.POCreatToConfEntry.data.Fifteen_TwentyOne.ToString();
-            TimeBucketSix = overallData.kpa.purchSub.POCreatToConfEntry.data.TwentyTwo_TwentyEight.ToString();
-            TimeBucketSeven = overallData.kpa.purchSub.POCreatToConfEntry.data.TwentyNinePlus.ToString();
-
-
-
-            TotalOrders = string.Format("{0:n0}", overallData.kpa.purchSub.POCreatToConfEntry.data.Total);
-            Average = string.Format("{0:n}", overallData.kpa.purchSub.POCreatToConfEntry.data.Average);
-
-
-
             AnalysisOne = "- Will only show in this field if PR is on PO, PO line item does not have a confirmation date and PO line is not received complete.";
             AnalysisTwo = "- Difference between todays date and the date the PR was added to the PO.";
 
 
-            dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
-            dp.addLabely(lbl_xLabelTwo.Text, TimeBucketTwo);
-            dp.addLabely(lbl_xLabelThree.Text, TimeBucketThree);
-            dp.addLabely(lbl_xLabelFour.Text, TimeBucketFour);
-            dp.addLabely(lbl_xLabelFive.Text, TimeBucketFive);
-            dp.addLabely(lbl_xLabelSix.Text, TimeBucketSix);
-            dp.addLabely(lbl_xLabelSeven.Text, TimeBucketSeven);
+            // Get the template data
+            ITemplateOne tempOne = (Report.Actions[(int)KpaOption.PurchSub_PoCreationToConfirmationEntry]
+                                as Reporting.KeyPerformanceActions.PurchSub.POCreationToConfirmationEntry).Template;
 
-            TimeBucketOne = string.Format("{0:n0}", overallData.kpa.purchSub.POCreatToConfEntry.data.LessThanZero);
-            TimeBucketTwo = string.Format("{0:n0}", overallData.kpa.purchSub.POCreatToConfEntry.data.One_Three);
-            TimeBucketThree = string.Format("{0:n0}", overallData.kpa.purchSub.POCreatToConfEntry.data.Four_Seven);
-            TimeBucketFour = string.Format("{0:n0}", overallData.kpa.purchSub.POCreatToConfEntry.data.Eight_Fourteen);
-            TimeBucketFive = string.Format("{0:n0}", overallData.kpa.purchSub.POCreatToConfEntry.data.Fifteen_TwentyOne);
-            TimeBucketSix = string.Format("{0:n0}", overallData.kpa.purchSub.POCreatToConfEntry.data.TwentyTwo_TwentyEight);
-            TimeBucketSeven = string.Format("{0:n0}", overallData.kpa.purchSub.POCreatToConfEntry.data.TwentyNinePlus);
+            // Add the data to the column chart
+            dp.addLabely(lbl_xLabelOne.Text, tempOne.LessThanEqualToZeroDays.ToString());
+            dp.addLabely(lbl_xLabelTwo.Text, tempOne.OneToThreeDays.ToString());
+            dp.addLabely(lbl_xLabelThree.Text, tempOne.FourToSevenDays.ToString());
+            dp.addLabely(lbl_xLabelFour.Text, tempOne.EightToFourteenDays.ToString());
+            dp.addLabely(lbl_xLabelFive.Text, tempOne.FifteenToTwentyOneDays.ToString());
+            dp.addLabely(lbl_xLabelSix.Text, tempOne.TwentyTwoToTwentyEightDays.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempOne.TwentyNinePlusDays.ToString());
 
+            // Add the values to the time spans
+            Average = string.Format("{0:n}", tempOne.Average);
+            TimeBucketOne = string.Format("{0:n0}", tempOne.LessThanEqualToZeroDays);
+            TimeBucketTwo = string.Format("{0:n0}", tempOne.OneToThreeDays);
+            TimeBucketThree = string.Format("{0:n0}", tempOne.FourToSevenDays);
+            TimeBucketFour = string.Format("{0:n0}", tempOne.EightToFourteenDays);
+            TimeBucketFive = string.Format("{0:n0}", tempOne.FifteenToTwentyOneDays);
+            TimeBucketSix = string.Format("{0:n0}", tempOne.TwentyTwoToTwentyEightDays);
+            TimeBucketSeven = string.Format("{0:n0}", tempOne.TwentyNinePlusDays);
+            TotalOrders = string.Format("{0:n0}", tempOne.TotalRecords);
 
-
+            // Render the column chart
             canvas.addData(dp);
             dataviz.Render(canvas);
         }

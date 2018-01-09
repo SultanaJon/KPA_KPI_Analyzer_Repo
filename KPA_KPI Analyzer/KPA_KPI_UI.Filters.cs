@@ -1,6 +1,7 @@
 ﻿using DataAccessLibrary;
 using Filters;
 using Filters.Variants;
+using Reporting;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -538,8 +539,13 @@ namespace KPA_KPI_Analyzer
             UpdateFilterButtons();
 
 
-            // Load the overall data
-            overallData.Load(ref overallData);
+            // Load the KPA Overall data from local file
+            (reports[ReportingType.KpaOverall] as KpaOverallReport).Load();
+
+            // Load the KPA Overall data from local file
+            (reports[ReportingType.KpiOverall] as KpiOverallReport).Load();
+
+
 
             // Dactivate all of the variants.
             DeactivateVariants();

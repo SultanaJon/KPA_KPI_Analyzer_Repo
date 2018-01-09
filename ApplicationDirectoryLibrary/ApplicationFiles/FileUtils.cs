@@ -40,8 +40,10 @@ namespace ApplicationIOLibarary.ApplicationFiles
     /// </summary>
     public enum OverallFile
     {
-        US_Overall,
-        MX_Overall
+        US_KPA_Overall,
+        US_KPI_Overall,
+        MX_KPA_Overall,
+        MX_KPI_Overall
     }
 
 
@@ -101,8 +103,10 @@ namespace ApplicationIOLibarary.ApplicationFiles
         /// </summary>
         public static string[] overallFiles =
         {
-            @"Resources\Overall\US_Overall.json",
-            @"Resources\Overall\MX_Overall.json"
+            @"Resources\Overall\US_KPA_Overall.json",
+            @"Resources\Overall\US_KPI_Overall.json",
+            @"Resources\Overall\MX_KPA_Overall.json",
+            @"Resources\Overall\MX_KPI_Overall.json"
         };
 
         

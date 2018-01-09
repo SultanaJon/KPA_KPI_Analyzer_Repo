@@ -4,10 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ApplicationIOLibarary.Interfaces;
+using System.IO;
+using System.Windows.Forms;
 
 namespace Reporting
 {
-    public class KpiOverallReport : Report
+    public class KpiOverallReport : Report, IStorable, ILoadable
     {
         /// <summary>
         /// Private instance of a KPA Report
@@ -126,6 +129,54 @@ namespace Reporting
 
                 // Start running the method in the thread pool
                 task.Start();
+            }
+        }
+
+
+
+
+        /// <summary>
+        /// Loads the KPI Overall Report for either the United States or Mexico from external file to application
+        /// </summary>
+        /// <param name="_report">The report that needs to be loaded</param>
+        public void Load()
+        {
+            try
+            {
+                if (ReportingCountry.TargetCountry == Country.UnitedStates)
+                    dataJSONString = File.ReadAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.US_KPI_Overall]);
+                else
+                    dataJSONString = File.ReadAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.MX_KPI_Overall]);
+
+                kpiOverallReportInstance = ser.Deserialize<KpiOverallReport>(dataJSONString);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString(), "Overall DataReader Loading Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        /// <summary>
+        /// Saves the report to a local directory
+        /// </summary>
+        public void Save()
+        {
+            try
+            {
+                dataJSONString = ser.Serialize(this);
+                if (ReportingCountry.TargetCountry == Country.UnitedStates)
+                {
+                    File.WriteAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.US_KPI_Overall], dataJSONString);
+                }
+                else
+                {
+                    File.WriteAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.MX_KPI_Overall], dataJSONString);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Overall DataReader Saving Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

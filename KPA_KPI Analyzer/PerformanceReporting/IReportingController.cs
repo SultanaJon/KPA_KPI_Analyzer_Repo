@@ -1,7 +1,7 @@
 ﻿using Filters;
 using Reporting;
 
-namespace KPA_KPI_Analyzer.Reporting
+namespace KPA_KPI_Analyzer.PerformanceReporting
 {
     public interface IReportingController
     {

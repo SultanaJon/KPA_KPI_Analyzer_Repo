@@ -1,9 +1,10 @@
 ﻿using KPA_KPI_Analyzer.DataLoading;
 using KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader;
-using KPA_KPI_Analyzer.Overall_Data;
-using KPA_KPI_Analyzer.Overall_Data.KPA_Sections;
 using KPA_KPI_Analyzer.Values;
+using Reporting;
+using Reporting.KeyPerformanceActions;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -12,9 +13,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
     public partial class NewKPAOverall : UserControl
     {
         #region FIELD DATA
-
-        private Overall data;
-
 
         /// <summary>
         /// Indexers for template one's header position
@@ -65,18 +63,18 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// <summary>
         /// Custom Constructor
         /// </summary>
-        /// <param name="_data"></param>
-        public NewKPAOverall(Overall _data)
+        /// <param name="_data">The Kpa Overall Report</param>
+        public NewKPAOverall()
         {
             InitializeComponent();
             ApplyValuesGridStyles();
-            data = _data;
+
             Globals.CurrPerformance = "KPA";
 
-            if (Globals.TargetCountry == Countries.Country.UnitedStates)
-                Globals.CurrCountry = Countries.countries[(int)Countries.Country.UnitedStates];
+            if (ReportingCountry.TargetCountry == Country.UnitedStates)
+                Globals.CurrCountry = ReportingCountry.countries[(int)Country.UnitedStates];
             else
-                Globals.CurrCountry = Countries.countries[(int)Countries.Country.Mexico];
+                Globals.CurrCountry = ReportingCountry.countries[(int)Country.Mexico];
         }
 
         #region EVENTS
@@ -430,36 +428,20 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// </summary>
         private void LoadPlan()
         {
-            string[] row = new string[]{
-                Values.Sections.kpaSections[(int)Values.Sections.KpaSection.Plan],
-                Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.Plan][(int)Values.Categories.KpaCategory.Plan.PRsAgingNotRel],
-                string.Format("{0:n0}", data.kpa.plan.prsAgingNotRel.data.LessThanZero),
-                string.Format("{0:n0}", data.kpa.plan.prsAgingNotRel.data.One_Three),
-                string.Format("{0:n0}", data.kpa.plan.prsAgingNotRel.data.Four_Seven),
-                string.Format("{0:n0}", data.kpa.plan.prsAgingNotRel.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpa.plan.prsAgingNotRel.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpa.plan.prsAgingNotRel.data.TwentyTwo_TwentyEight),
-                string.Format("{0:n0}", data.kpa.plan.prsAgingNotRel.data.TwentyNinePlus),
-                string.Format("{0:n}", data.kpa.plan.prsAgingNotRel.data.Average),
-                string.Format("{0:n0}", data.kpa.plan.prsAgingNotRel.data.Total)
-            };
-            TemplateOneValuesGrid.Rows.Add(row);
+            // Get List of template one data for this KPA
+            List<string> rowData = new List<string>((Report.Actions[(int)KpaOption.Plan_PrsAgingNotReleased] 
+                as Reporting.KeyPerformanceActions.Plan.PRsAgingNotReleased).GetTemplateData());
+
+            // Add the row to the data grid view control
+            TemplateOneValuesGrid.Rows.Add(rowData);
 
 
-            row = new string[]{
-                data.kpa.plan.Name,
-                data.kpa.plan.categoryNames[(int)Plan.CategorNames.MaterialDue],
-                string.Format("{0:n0}", data.kpa.plan.matDueDate.data.LessThanZero),
-                string.Format("{0:n0}", data.kpa.plan.matDueDate.data.One_Three),
-                string.Format("{0:n0}", data.kpa.plan.matDueDate.data.Four_Seven),
-                string.Format("{0:n0}", data.kpa.plan.matDueDate.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpa.plan.matDueDate.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpa.plan.matDueDate.data.TwentyTwo_TwentyEight),
-                string.Format("{0:n0}", data.kpa.plan.matDueDate.data.TwentyNinePlus),
-                string.Format("{0:n}", data.kpa.plan.matDueDate.data.Average),
-                string.Format("{0:n0}", data.kpa.plan.matDueDate.data.Total)
-            };
-            TemplateOneValuesGrid.Rows.Add(row);
+            // Get List of template one data for this KPA
+            rowData = new List<string>((Report.Actions[(int)KpaOption.Plan_PrsAgingNotReleased] 
+                as Reporting.KeyPerformanceActions.Plan.MaterialDue).GetTemplateData());
+
+            // Add the row to the data grid view control
+            TemplateOneValuesGrid.Rows.Add(rowData);
         }
 
 
@@ -472,68 +454,36 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// </summary>
         private void LoadPurch()
         {
-            string[] row = {
-                data.kpa.purch.Name,
-                data.kpa.purch.categoryNames[(int)Purch.CategorNames.PRsAgingReleased],
-                string.Format("{0:n0}", data.kpa.purch.prsAgingRel.data.LessThanZero),
-                string.Format("{0:n0}", data.kpa.purch.prsAgingRel.data.One_Three),
-                string.Format("{0:n0}", data.kpa.purch.prsAgingRel.data.Four_Seven),
-                string.Format("{0:n0}", data.kpa.purch.prsAgingRel.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpa.purch.prsAgingRel.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpa.purch.prsAgingRel.data.TwentyTwo_TwentyEight),
-                string.Format("{0:n0}", data.kpa.purch.prsAgingRel.data.TwentyNinePlus),
-                string.Format("{0:n}", data.kpa.purch.prsAgingRel.data.Average),
-                string.Format("{0:n0}", data.kpa.purch.prsAgingRel.data.Total)
-            };
-            TemplateOneValuesGrid.Rows.Add(row);
+            // Get List of template one data for this KPA
+            List<string> rowData = new List<string>((Report.Actions[(int)KpaOption.Purch_PRsAgingReleased]
+                as Reporting.KeyPerformanceActions.Purch.PRsAgingReleased).GetTemplateData());
+
+            // Add the row to the data grid view control
+            TemplateOneValuesGrid.Rows.Add(rowData);
 
 
-            row = new string[]{
-                data.kpa.purch.Name,
-                data.kpa.purch.categoryNames[(int)Purch.CategorNames.POFirstRelease],
-                string.Format("{0:n0}", data.kpa.purch.poFirstRel.data.LessThanZero),
-                string.Format("{0:n0}", data.kpa.purch.poFirstRel.data.One_Three),
-                string.Format("{0:n0}", data.kpa.purch.poFirstRel.data.Four_Seven),
-                string.Format("{0:n0}", data.kpa.purch.poFirstRel.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpa.purch.poFirstRel.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpa.purch.poFirstRel.data.TwentyTwo_TwentyEight),
-                string.Format("{0:n0}", data.kpa.purch.poFirstRel.data.TwentyNinePlus),
-                string.Format("{0:n}", data.kpa.purch.poFirstRel.data.Average),
-                string.Format("{0:n0}", data.kpa.purch.poFirstRel.data.Total)
-            };
-            TemplateOneValuesGrid.Rows.Add(row);
+            // Get List of template one data for this KPA
+            rowData = new List<string>((Report.Actions[(int)KpaOption.Purch_PoFirstRelease]
+                as Reporting.KeyPerformanceActions.Purch.POFirstRelease).GetTemplateData());
+
+            // Add the row to the data grid view control
+            TemplateOneValuesGrid.Rows.Add(rowData);
 
 
-            row = new string[]{
-                data.kpa.purch.Name,
-                data.kpa.purch.categoryNames[(int)Purch.CategorNames.POPrevRelease],
-                string.Format("{0:n0}", data.kpa.purch.poPrevRel.data.LessThanZero),
-                string.Format("{0:n0}", data.kpa.purch.poPrevRel.data.One_Three),
-                string.Format("{0:n0}", data.kpa.purch.poPrevRel.data.Four_Seven),
-                string.Format("{0:n0}", data.kpa.purch.poPrevRel.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpa.purch.poPrevRel.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpa.purch.poPrevRel.data.TwentyTwo_TwentyEight),
-                string.Format("{0:n0}", data.kpa.purch.poPrevRel.data.TwentyNinePlus),
-                string.Format("{0:n}", data.kpa.purch.poPrevRel.data.Average),
-                string.Format("{0:n0}", data.kpa.purch.poPrevRel.data.Total)
-            };
-            TemplateOneValuesGrid.Rows.Add(row);
+            // Get List of template one data for this KPA
+            rowData = new List<string>((Report.Actions[(int)KpaOption.Purch_PoPrevRelease]
+                as Reporting.KeyPerformanceActions.Purch.POPrevRelease).GetTemplateData());
+
+            // Add the row to the data grid view control
+            TemplateOneValuesGrid.Rows.Add(rowData);
 
 
-            row = new string[]{
-                data.kpa.purch.Name,
-                data.kpa.purch.categoryNames[(int)Purch.CategorNames.NoConfirmation],
-                string.Format("{0:n0}", data.kpa.purch.noConfirmation.data.LessThanZero),
-                string.Format("{0:n0}", data.kpa.purch.noConfirmation.data.One_Three),
-                string.Format("{0:n0}", data.kpa.purch.noConfirmation.data.Four_Seven),
-                string.Format("{0:n0}", data.kpa.purch.noConfirmation.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpa.purch.noConfirmation.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpa.purch.noConfirmation.data.TwentyTwo_TwentyEight),
-                string.Format("{0:n0}", data.kpa.purch.noConfirmation.data.TwentyNinePlus),
-                string.Format("{0:n}", data.kpa.purch.noConfirmation.data.Average),
-                string.Format("{0:n0}", data.kpa.purch.noConfirmation.data.Total)
-            };
-            TemplateOneValuesGrid.Rows.Add(row);
+            // Get List of template one data for this KPA
+            rowData = new List<string>((Report.Actions[(int)KpaOption.Purch_NoConfirmation]
+                as Reporting.KeyPerformanceActions.Purch.NoConfirmations).GetTemplateData());
+
+            // Add the row to the data grid view control
+            TemplateOneValuesGrid.Rows.Add(rowData);
         }
 
 
@@ -546,36 +496,20 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// </summary>
         private void LoadPurchSub()
         {
-            string[] row = {
-                data.kpa.purchSub.Name,
-                data.kpa.purchSub.categoryNames[(int)Purch_Sub.CategorNames.PrReleasePoRelease],
-                string.Format("{0:n0}", data.kpa.purchSub.prRelToPORel.data.LessThanZero),
-                string.Format("{0:n0}", data.kpa.purchSub.prRelToPORel.data.One_Three),
-                string.Format("{0:n0}", data.kpa.purchSub.prRelToPORel.data.Four_Seven),
-                string.Format("{0:n0}", data.kpa.purchSub.prRelToPORel.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpa.purchSub.prRelToPORel.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpa.purchSub.prRelToPORel.data.TwentyTwo_TwentyEight),
-                string.Format("{0:n0}", data.kpa.purchSub.prRelToPORel.data.TwentyNinePlus),
-                string.Format("{0:n}", data.kpa.purchSub.prRelToPORel.data.Average),
-                string.Format("{0:n0}", data.kpa.purchSub.prRelToPORel.data.Total)
-            };
-            TemplateOneValuesGrid.Rows.Add(row);
+            // Get List of template one data for this KPA
+            List<string> rowData = new List<string>((Report.Actions[(int)KpaOption.PurchSub_PrReleaseToPoRelease]
+                as Reporting.KeyPerformanceActions.PurchSub.PRReleaseToPORelease).GetTemplateData());
+
+            // Add the row to the data grid view control
+            TemplateOneValuesGrid.Rows.Add(rowData);
 
 
-            row = new string[]{
-                data.kpa.purchSub.Name,
-                data.kpa.purchSub.categoryNames[(int)Purch_Sub.CategorNames.PoCreationConfirmationEntry],
-                string.Format("{0:n0}", data.kpa.purchSub.POCreatToConfEntry.data.LessThanZero),
-                string.Format("{0:n0}", data.kpa.purchSub.POCreatToConfEntry.data.One_Three),
-                string.Format("{0:n0}", data.kpa.purchSub.POCreatToConfEntry.data.Four_Seven),
-                string.Format("{0:n0}", data.kpa.purchSub.POCreatToConfEntry.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpa.purchSub.POCreatToConfEntry.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpa.purchSub.POCreatToConfEntry.data.TwentyTwo_TwentyEight),
-                string.Format("{0:n0}", data.kpa.purchSub.POCreatToConfEntry.data.TwentyNinePlus),
-                string.Format("{0:n}", data.kpa.purchSub.POCreatToConfEntry.data.Average),
-                string.Format("{0:n0}", data.kpa.purchSub.POCreatToConfEntry.data.Total)
-            };
-            TemplateOneValuesGrid.Rows.Add(row);
+            // Get List of template one data for this KPA
+            rowData = new List<string>((Report.Actions[(int)KpaOption.PurchSub_PoCreationToConfirmationEntry]
+                as Reporting.KeyPerformanceActions.PurchSub.POCreationToConfirmationEntry).GetTemplateData());
+
+            // Add the row to the data grid view control
+            TemplateOneValuesGrid.Rows.Add(rowData);
         }
 
 
@@ -588,20 +522,12 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// </summary>
         private void LoadPurchTotal()
         {
-            string[] row = {
-                Values.Sections.kpaSections[(int)Values.Sections.KpaSection.PurchTotal],
-                Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.PurchTotal][(int)Values.Categories.KpaCategory.PurchTotal.PRRelConfEntry],
-                string.Format("{0:n0}", data.kpa.purchTotal.prRelConfEntry.data.LessThanZero),
-                string.Format("{0:n0}", data.kpa.purchTotal.prRelConfEntry.data.One_Three),
-                string.Format("{0:n0}", data.kpa.purchTotal.prRelConfEntry.data.Four_Seven),
-                string.Format("{0:n0}", data.kpa.purchTotal.prRelConfEntry.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpa.purchTotal.prRelConfEntry.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpa.purchTotal.prRelConfEntry.data.TwentyTwo_TwentyEight),
-                string.Format("{0:n0}", data.kpa.purchTotal.prRelConfEntry.data.TwentyNinePlus),
-                string.Format("{0:n}", data.kpa.purchTotal.prRelConfEntry.data.Average),
-                string.Format("{0:n0}", data.kpa.purchTotal.prRelConfEntry.data.Total)
-            };
-            TemplateOneValuesGrid.Rows.Add(row);
+            // Get List of template one data for this KPA
+            List<string> rowData = new List<string>((Report.Actions[(int)KpaOption.PurchTotal_PrReleaseToConfirmationEntry]
+                as Reporting.KeyPerformanceActions.PurchTotal.PRReleaseToConfirmationEntry).GetTemplateData());
+
+            // Add the row to the data grid view control
+            TemplateOneValuesGrid.Rows.Add(rowData);
         }
 
 
@@ -614,52 +540,26 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// </summary>
         private void LoadFollowUp()
         {
-            string[] row = {
-                data.kpa.followUp.Name,
-                data.kpa.followUp.categoryNames[(int)Follow_Up.CategorNames.ConfirmedDateVsPlanDate],
-                string.Format("{0:n0}", data.kpa.followUp.confDateVsPlanDate.data.LessThanZero),
-                string.Format("{0:n0}", data.kpa.followUp.confDateVsPlanDate.data.One_Three),
-                string.Format("{0:n0}", data.kpa.followUp.confDateVsPlanDate.data.Four_Seven),
-                string.Format("{0:n0}", data.kpa.followUp.confDateVsPlanDate.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpa.followUp.confDateVsPlanDate.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpa.followUp.confDateVsPlanDate.data.TwentyTwo_TwentyEight),
-                string.Format("{0:n0}", data.kpa.followUp.confDateVsPlanDate.data.TwentyNinePlus),
-                string.Format("{0:n}", data.kpa.followUp.confDateVsPlanDate.data.Average),
-                string.Format("{0:n0}", data.kpa.followUp.confDateVsPlanDate.data.Total),
-                string.Format("{0:n0}", data.kpa.followUp.confDateVsPlanDate.data.PercentFavorable + "%")
-            };
-            TemplateOneValuesGrid.Rows.Add(row);
+            // Get List of template one data for this KPA
+            List<string> rowData = new List<string>((Report.Actions[(int)KpaOption.FollowUp_ConfirmedDateVsPlanDate]
+                as Reporting.KeyPerformanceActions.FollowUp.ConfirmedDateVsPlanDate).GetTemplateData());
 
-            row = new string[]{
-                data.kpa.followUp.Name,
-                data.kpa.followUp.categoryNames[(int)Follow_Up.CategorNames.ConfirmedDateForUpcomingDel],
-                string.Format("{0:n0}", data.kpa.followUp.ConfDateForUpcomingDel.data.LessThanZero),
-                string.Format("{0:n0}", data.kpa.followUp.ConfDateForUpcomingDel.data.One_Three),
-                string.Format("{0:n0}", data.kpa.followUp.ConfDateForUpcomingDel.data.Four_Seven),
-                string.Format("{0:n0}", data.kpa.followUp.ConfDateForUpcomingDel.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpa.followUp.ConfDateForUpcomingDel.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpa.followUp.ConfDateForUpcomingDel.data.TwentyTwo_TwentyEight),
-                string.Format("{0:n0}", data.kpa.followUp.ConfDateForUpcomingDel.data.TwentyNinePlus),
-                string.Format("{0:n}", data.kpa.followUp.ConfDateForUpcomingDel.data.Average),
-                string.Format("{0:n0}", data.kpa.followUp.ConfDateForUpcomingDel.data.Total),
-                string.Format("{0:n0}", data.kpa.followUp.ConfDateForUpcomingDel.data.PercentFavorable + "%")
-            };
-            TemplateOneValuesGrid.Rows.Add(row);
+            // Add the row to the data grid view control
+            TemplateOneValuesGrid.Rows.Add(rowData);
 
-            row = new string[]{
-                data.kpa.followUp.Name,
-                data.kpa.followUp.categoryNames[(int)Follow_Up.CategorNames.LateToConfirmed],
-                string.Format("{0:n0}", data.kpa.followUp.LateToConfDate.data.LessThanZero),
-                string.Format("{0:n0}", data.kpa.followUp.LateToConfDate.data.One_Three),
-                string.Format("{0:n0}", data.kpa.followUp.LateToConfDate.data.Four_Seven),
-                string.Format("{0:n0}", data.kpa.followUp.LateToConfDate.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpa.followUp.LateToConfDate.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpa.followUp.LateToConfDate.data.TwentyTwo_TwentyEight),
-                string.Format("{0:n0}", data.kpa.followUp.LateToConfDate.data.TwentyNinePlus),
-                string.Format("{0:n}", data.kpa.followUp.LateToConfDate.data.Average),
-                string.Format("{0:n0}", data.kpa.followUp.LateToConfDate.data.Total)
-            };
-            TemplateOneValuesGrid.Rows.Add(row);
+            // Get List of template one data for this KPA
+            rowData = new List<string>((Report.Actions[(int)KpaOption.FollowUp_ConfirmedDateForUpcomingDeliveries]
+                as Reporting.KeyPerformanceActions.FollowUp.ConfirmedDateForUpcomingDeliveries).GetTemplateData());
+
+            // Add the row to the data grid view control
+            TemplateOneValuesGrid.Rows.Add(rowData);
+
+            // Get List of template one data for this KPA
+            rowData = new List<string>((Report.Actions[(int)KpaOption.FollowUp_DueTodayOrLateToConfirmed]
+                as Reporting.KeyPerformanceActions.FollowUp.DueTodayOrLateToConfirmed).GetTemplateData());
+
+            // Add the row to the data grid view control
+            TemplateOneValuesGrid.Rows.Add(rowData);
         }
 
 
@@ -672,50 +572,28 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// </summary>
         private void LoadHotJobs()
         {
-            string[] row = {
-                data.kpa.hotJobs.Name,
-                data.kpa.hotJobs.categoryNames[(int)Hot_Jobs.CategorNames.PrsNotOnPo],
-                string.Format("{0:n0}", data.kpa.hotJobs.prsNotOnPO.data.LessThanZero),
-                string.Format("{0:n0}", data.kpa.hotJobs.prsNotOnPO.data.One_Three),
-                string.Format("{0:n0}", data.kpa.hotJobs.prsNotOnPO.data.Four_Seven),
-                string.Format("{0:n0}", data.kpa.hotJobs.prsNotOnPO.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpa.hotJobs.prsNotOnPO.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpa.hotJobs.prsNotOnPO.data.TwentyTwo_TwentyEight),
-                string.Format("{0:n0}", data.kpa.hotJobs.prsNotOnPO.data.TwentyNinePlus),
-                string.Format("{0:n}", data.kpa.hotJobs.prsNotOnPO.data.Average),
-                string.Format("{0:n0}", data.kpa.hotJobs.prsNotOnPO.data.Total)
-            };
-            TemplateOneValuesGrid.Rows.Add(row);
+            // Get List of template one data for this KPA
+            List<string> rowData = new List<string>((Report.Actions[(int)KpaOption.HotJobs_PrsNoOnPo]
+                as Reporting.KeyPerformanceActions.HotJobs.PRsNotOnPO).GetTemplateData());
 
-            row = new string[]{
-                data.kpa.hotJobs.Name,
-                data.kpa.hotJobs.categoryNames[(int)Hot_Jobs.CategorNames.NoConfirmation],
-                string.Format("{0:n0}", data.kpa.hotJobs.noConfirmation.data.LessThanZero),
-                string.Format("{0:n0}", data.kpa.hotJobs.noConfirmation.data.One_Three),
-                string.Format("{0:n0}", data.kpa.hotJobs.noConfirmation.data.Four_Seven),
-                string.Format("{0:n0}", data.kpa.hotJobs.noConfirmation.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpa.hotJobs.noConfirmation.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpa.hotJobs.noConfirmation.data.TwentyTwo_TwentyEight),
-                string.Format("{0:n0}", data.kpa.hotJobs.noConfirmation.data.TwentyNinePlus),
-                string.Format("{0:n}", data.kpa.hotJobs.noConfirmation.data.Average),
-                string.Format("{0:n0}", data.kpa.hotJobs.noConfirmation.data.Total)
-            };
-            TemplateOneValuesGrid.Rows.Add(row);
+            // Add the row to the data grid view control
+            TemplateOneValuesGrid.Rows.Add(rowData);
 
-            row = new string[]{
-                data.kpa.hotJobs.Name,
-                data.kpa.hotJobs.categoryNames[(int)Hot_Jobs.CategorNames.LateToConfirmed],
-                string.Format("{0:n0}", data.kpa.hotJobs.lateToConfirmed.data.LessThanZero),
-                string.Format("{0:n0}", data.kpa.hotJobs.lateToConfirmed.data.One_Three),
-                string.Format("{0:n0}", data.kpa.hotJobs.lateToConfirmed.data.Four_Seven),
-                string.Format("{0:n0}", data.kpa.hotJobs.lateToConfirmed.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpa.hotJobs.lateToConfirmed.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpa.hotJobs.lateToConfirmed.data.TwentyTwo_TwentyEight),
-                string.Format("{0:n0}", data.kpa.hotJobs.lateToConfirmed.data.TwentyNinePlus),
-                string.Format("{0:n}", data.kpa.hotJobs.lateToConfirmed.data.Average),
-                string.Format("{0:n0}", data.kpa.hotJobs.lateToConfirmed.data.Total)
-            };
-            TemplateOneValuesGrid.Rows.Add(row);
+
+            // Get List of template one data for this KPA
+            rowData = new List<string>((Report.Actions[(int)KpaOption.HotJobs_NoConfirmations]
+                as Reporting.KeyPerformanceActions.HotJobs.NoConfirmations).GetTemplateData());
+
+            // Add the row to the data grid view control
+            TemplateOneValuesGrid.Rows.Add(rowData);
+
+
+            // Get List of template one data for this KPA
+            rowData = new List<string>((Report.Actions[(int)KpaOption.HotJobs_LateToConfirmed]
+                as Reporting.KeyPerformanceActions.HotJobs.LateToConfirmed).GetTemplateData());
+
+            // Add the row to the data grid view control
+            TemplateOneValuesGrid.Rows.Add(rowData);
         }
 
 
@@ -728,50 +606,28 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// </summary>
         private void LoadExcessStockStock()
         {
-            string[] row = {
-                data.kpa.excessStockStock.Name,
-                data.kpa.excessStockStock.catNames[(int)Excess_Stock_Stock.CategorNames.PrsAgingNotReleased],
-                string.Format("{0:n0}", data.kpa.excessStockStock.prsAgingNotRel.data.LessThanZero),
-                string.Format("{0:n0}", data.kpa.excessStockStock.prsAgingNotRel.data.One_Three),
-                string.Format("{0:n0}", data.kpa.excessStockStock.prsAgingNotRel.data.Four_Seven),
-                string.Format("{0:n0}", data.kpa.excessStockStock.prsAgingNotRel.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpa.excessStockStock.prsAgingNotRel.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpa.excessStockStock.prsAgingNotRel.data.TwentyTwo_TwentyEight),
-                string.Format("{0:n0}", data.kpa.excessStockStock.prsAgingNotRel.data.TwentyNinePlus),
-                string.Format("{0:n}", data.kpa.excessStockStock.prsAgingNotRel.data.Average),
-                string.Format("{0:n0}", data.kpa.excessStockStock.prsAgingNotRel.data.Total)
-            };
-            TemplateOneValuesGrid.Rows.Add(row);
+            // Get List of template one data for this KPA
+            List<string> rowData = new List<string>((Report.Actions[(int)KpaOption.ExcessStockStock_PrsAgingNotReleased]
+                as Reporting.KeyPerformanceActions.ExcessStockStock.PRsAgingNotReleased).GetTemplateData());
 
-            row = new string[]{
-                data.kpa.excessStockStock.Name,
-                data.kpa.excessStockStock.catNames[(int)Excess_Stock_Stock.CategorNames.PrsAgingReleased],
-                string.Format("{0:n0}", data.kpa.excessStockStock.prsAgingRel.data.LessThanZero),
-                string.Format("{0:n0}", data.kpa.excessStockStock.prsAgingRel.data.One_Three),
-                string.Format("{0:n0}", data.kpa.excessStockStock.prsAgingRel.data.Four_Seven),
-                string.Format("{0:n0}", data.kpa.excessStockStock.prsAgingRel.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpa.excessStockStock.prsAgingRel.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpa.excessStockStock.prsAgingRel.data.TwentyTwo_TwentyEight),
-                string.Format("{0:n0}", data.kpa.excessStockStock.prsAgingRel.data.TwentyNinePlus),
-                string.Format("{0:n}", data.kpa.excessStockStock.prsAgingRel.data.Average),
-                string.Format("{0:n0}", data.kpa.excessStockStock.prsAgingRel.data.Total)
-            };
-            TemplateOneValuesGrid.Rows.Add(row);
+            // Add the row to the data grid view control
+            TemplateOneValuesGrid.Rows.Add(rowData);
 
-            row = new string[]{
-                data.kpa.excessStockStock.Name,
-                data.kpa.excessStockStock.catNames[(int)Excess_Stock_Stock.CategorNames.PoCreationThruDelivery],
-                string.Format("{0:n0}", data.kpa.excessStockStock.PoCreationThruDeliv.data.LessThanZero),
-                string.Format("{0:n0}", data.kpa.excessStockStock.PoCreationThruDeliv.data.One_Three),
-                string.Format("{0:n0}", data.kpa.excessStockStock.PoCreationThruDeliv.data.Four_Seven),
-                string.Format("{0:n0}", data.kpa.excessStockStock.PoCreationThruDeliv.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpa.excessStockStock.PoCreationThruDeliv.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpa.excessStockStock.PoCreationThruDeliv.data.TwentyTwo_TwentyEight),
-                string.Format("{0:n0}", data.kpa.excessStockStock.PoCreationThruDeliv.data.TwentyNinePlus),
-                string.Format("{0:n}", data.kpa.excessStockStock.PoCreationThruDeliv.data.Average),
-                string.Format("{0:n0}", data.kpa.excessStockStock.PoCreationThruDeliv.data.Total)
-            };
-            TemplateOneValuesGrid.Rows.Add(row);
+
+            // Get List of template one data for this KPA
+            rowData = new List<string>((Report.Actions[(int)KpaOption.ExcessStockStock_PrsAgingReleased]
+                as Reporting.KeyPerformanceActions.ExcessStockStock.PRsAgingReleased).GetTemplateData());
+
+            // Add the row to the data grid view control
+            TemplateOneValuesGrid.Rows.Add(rowData);
+
+
+            // Get List of template one data for this KPA
+            rowData = new List<string>((Report.Actions[(int)KpaOption.ExcessStockStock_PoCreationTruDelivery]
+                as Reporting.KeyPerformanceActions.ExcessStockStock.POCreationThruDelivery).GetTemplateData());
+
+            // Add the row to the data grid view control
+            TemplateOneValuesGrid.Rows.Add(rowData);
         }
 
 
@@ -784,50 +640,28 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// </summary>
         private void LoadExcessStockOpenOrders()
         {
-            string[] row = {
-                data.kpa.excessStockOpenOrders.Name,
-                data.kpa.excessStockOpenOrders.categoryNames[(int)Excess_Stock_Stock.CategorNames.PrsAgingNotReleased],
-                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.prsAgingNotRel.data.LessThanZero),
-                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.prsAgingNotRel.data.One_Three),
-                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.prsAgingNotRel.data.Four_Seven),
-                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.prsAgingNotRel.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.prsAgingNotRel.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.prsAgingNotRel.data.TwentyTwo_TwentyEight),
-                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.prsAgingNotRel.data.TwentyNinePlus),
-                string.Format("{0:n}", data.kpa.excessStockOpenOrders.prsAgingNotRel.data.Average),
-                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.prsAgingNotRel.data.Total)
-            };
-            TemplateOneValuesGrid.Rows.Add(row);
+            // Get List of template one data for this KPA
+            List<string> rowData = new List<string>((Report.Actions[(int)KpaOption.ExcessStockOpenOrders_PrsAgingNotReleased]
+                as Reporting.KeyPerformanceActions.ExcessStockOpenOrders.PRsAgingNotReleased).GetTemplateData());
 
-            row = new string[]{
-                data.kpa.excessStockOpenOrders.Name,
-                data.kpa.excessStockOpenOrders.categoryNames[(int)Excess_Stock_Stock.CategorNames.PrsAgingReleased],
-                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.prsAgingRel.data.LessThanZero),
-                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.prsAgingRel.data.One_Three),
-                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.prsAgingRel.data.Four_Seven),
-                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.prsAgingRel.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.prsAgingRel.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.prsAgingRel.data.TwentyTwo_TwentyEight),
-                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.prsAgingRel.data.TwentyNinePlus),
-                string.Format("{0:n}", data.kpa.excessStockOpenOrders.prsAgingRel.data.Average),
-                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.prsAgingRel.data.Total)
-            };
-            TemplateOneValuesGrid.Rows.Add(row);
+            // Add the row to the data grid view control
+            TemplateOneValuesGrid.Rows.Add(rowData);
 
-            row = new string[]{
-                data.kpa.excessStockOpenOrders.Name,
-                data.kpa.excessStockOpenOrders.categoryNames[(int)Excess_Stock_Stock.CategorNames.PoCreationThruDelivery],
-                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.PoCreationThruDeliv.data.LessThanZero),
-                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.PoCreationThruDeliv.data.One_Three),
-                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.PoCreationThruDeliv.data.Four_Seven),
-                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.PoCreationThruDeliv.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.PoCreationThruDeliv.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.PoCreationThruDeliv.data.TwentyTwo_TwentyEight),
-                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.PoCreationThruDeliv.data.TwentyNinePlus),
-                string.Format("{0:n}", data.kpa.excessStockOpenOrders.PoCreationThruDeliv.data.Average),
-                string.Format("{0:n0}", data.kpa.excessStockOpenOrders.PoCreationThruDeliv.data.Total)
-            };
-            TemplateOneValuesGrid.Rows.Add(row);
+
+            // Get List of template one data for this KPA
+            rowData = new List<string>((Report.Actions[(int)KpaOption.ExcessStockOpenOrders_PrsAgingReleased]
+                as Reporting.KeyPerformanceActions.ExcessStockOpenOrders.PRsAgingReleased).GetTemplateData());
+
+            // Add the row to the data grid view control
+            TemplateOneValuesGrid.Rows.Add(rowData);
+
+
+            // Get List of template one data for this KPA
+            rowData = new List<string>((Report.Actions[(int)KpaOption.ExcessStockOpenOrders_PoCreationTruDelivery]
+                as Reporting.KeyPerformanceActions.ExcessStockOpenOrders.POCreationThruDelivery).GetTemplateData());
+
+            // Add the row to the data grid view control
+            TemplateOneValuesGrid.Rows.Add(rowData);
         }
 
 
@@ -840,41 +674,19 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// </summary>
         private void LoadCurrentPlanVsActual()
         {
-            string[] row = {
-                data.kpa.currPlanVsActual.Name,
-                data.kpa.currPlanVsActual.categoryNames[(int)Current_Plan_vs_Actual.CategorNames.CurrPlanDateVsCurrConfDate],
-                string.Format("{0:n}", data.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.Average),
-                string.Format("{0:n0}", data.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.LessThanMinusThree),
-                string.Format("{0:n0}", data.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.GreaterThanEqualMinusThree),
-                string.Format("{0:n0}", data.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.GreaterThanEqualMinusTwo),
-                string.Format("{0:n0}", data.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.GreaterThanEqualMinusOne),
-                string.Format("{0:n0}", data.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.ZeroWeeks),
-                string.Format("{0:n0}", data.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.LessThanEqualOneWeek),
-                string.Format("{0:n0}", data.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.LessThanEqualTwoWeeks),
-                string.Format("{0:n0}", data.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.LessThanEqualThreeWeeks),
-                string.Format("{0:n0}", data.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.GreaterThanThreeWeeks),
-                string.Format("{0:n0}", data.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.Total),
-                string.Format("{0:n0}", data.kpa.currPlanVsActual.currPlanDateCurrConfDate.data.PercentFavorable + "%")
-            };
-            TemplateTwoValuesGrid.Rows.Add(row);
+            // Get List of template two data for this KPA
+            List<string> rowData = new List<string>((Report.Actions[(int)KpaOption.CurrentPlanVsActual_CurrentPlanDateVsCurrentConfirmationDate]
+                as Reporting.KeyPerformanceActions.CurrentPlanVsActual.CurrentPlanDateVsCurrentConfirmationDate).GetTemplateData());
 
-            row = new string[]{
-                data.kpa.currPlanVsActual.Name,
-                data.kpa.currPlanVsActual.categoryNames[(int)Current_Plan_vs_Actual.CategorNames.CurrPlanDateVsCurrConfDate_HJsOnly],
-                string.Format("{0:n}", data.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.Average),
-                string.Format("{0:n0}", data.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.LessThanMinusThree),
-                string.Format("{0:n0}", data.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.GreaterThanEqualMinusThree),
-                string.Format("{0:n0}", data.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.GreaterThanEqualMinusTwo),
-                string.Format("{0:n0}", data.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.GreaterThanEqualMinusOne),
-                string.Format("{0:n0}", data.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.ZeroWeeks),
-                string.Format("{0:n0}", data.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.LessThanEqualOneWeek),
-                string.Format("{0:n0}", data.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.LessThanEqualTwoWeeks),
-                string.Format("{0:n0}", data.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.LessThanEqualThreeWeeks),
-                string.Format("{0:n0}", data.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.GreaterThanThreeWeeks),
-                string.Format("{0:n0}", data.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.Total),
-                string.Format("{0:n0}", data.kpa.currPlanVsActual.currPlanDateCurrConfDateHotJobs.data.PercentFavorable + "%")
-            };
-            TemplateTwoValuesGrid.Rows.Add(row);
+            // Add the row to the data grid view control
+            TemplateOneValuesGrid.Rows.Add(rowData);
+
+            // Get List of template two data for this KPA
+            rowData = new List<string>((Report.Actions[(int)KpaOption.CurrentPlanVsActual_CurrentPlanDateVsCurrentConfirmationDateForHotJobs]
+                as Reporting.KeyPerformanceActions.CurrentPlanVsActual.CurrentPlanDateVsCurrentConfirmationDateForHotJobs).GetTemplateData());
+
+            // Add the row to the data grid view control
+            TemplateOneValuesGrid.Rows.Add(rowData);
         }
 
 

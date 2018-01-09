@@ -1,4 +1,7 @@
-﻿using System;
+﻿using ApplicationIOLibarary.ApplicationFiles;
+using KPA_KPI_Analyzer.Values;
+using Reporting;
+using System;
 using System.IO;
 using System.Windows.Forms;
 
@@ -52,20 +55,24 @@ namespace KPA_KPI_Analyzer
             {
                 ConfigureToUnitedStates();
 
-                if (ApplicationIOLibarary.ApplicationFiles.FileUtils.DataFileExists(ApplicationIOLibarary.ApplicationFiles.OverallFile.US_Overall))
+                if (FileUtils.DataFileExists(OverallFile.US_KPA_Overall) || FileUtils.DataFileExists(OverallFile.US_KPI_Overall))
                 {
                     // the file exists
-                    if (new FileInfo(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.US_Overall]).Length > 0)
+                    if (new FileInfo(FileUtils.overallFiles[(int)OverallFile.US_KPA_Overall]).Length > 0 && new FileInfo(FileUtils.overallFiles[(int)OverallFile.US_KPI_Overall]).Length > 0)
                     {
                         DateTime dt = GetLastLoadedUsPrpoReportDate();
                         if (dt == DateTime.Today.Date)
                         {
-                            // Load the overall data
-                            overallData.Load(ref overallData);
+                            // Load the KPA Overall data from local file
+                            (reports[ReportingType.KpaOverall] as KpaOverallReport).Load();
+
+                            // Load the KPA Overall data from local file
+                            (reports[ReportingType.KpiOverall] as KpiOverallReport).Load();
+
 
                             dt = GetLoadedUsPrpoReportDate();
                             lbl_topPanelNavPrpoDate.Text = dt.ToString("MMMM dd, yyyy");
-                            Values.Globals.PrpoGenerationDate = lbl_topPanelNavPrpoDate.Text;
+                            Globals.PrpoGenerationDate = lbl_topPanelNavPrpoDate.Text;
                             InitializeFilterLoadProcess();
                         }
                         else
@@ -80,7 +87,16 @@ namespace KPA_KPI_Analyzer
                 }
                 else // the file does not exist
                 {
-                    ApplicationIOLibarary.ApplicationFiles.FileUtils.CreateFile(ApplicationIOLibarary.ApplicationFiles.OverallFile.US_Overall);
+                    if (!FileUtils.DataFileExists(OverallFile.US_KPA_Overall))
+                    {
+                        FileUtils.CreateFile(OverallFile.US_KPA_Overall);
+                    }
+
+                    if (!FileUtils.DataFileExists(OverallFile.US_KPI_Overall))
+                    {
+                        FileUtils.CreateFile(OverallFile.US_KPI_Overall);
+                    }
+
                     BeginDataLoadProcess();
                 }
             }
@@ -88,16 +104,19 @@ namespace KPA_KPI_Analyzer
             {
                 ConfigureToMexico();
 
-                if (ApplicationIOLibarary.ApplicationFiles.FileUtils.DataFileExists(ApplicationIOLibarary.ApplicationFiles.OverallFile.MX_Overall))
+                if (FileUtils.DataFileExists(OverallFile.MX_KPA_Overall) && FileUtils.DataFileExists(OverallFile.MX_KPI_Overall))
                 {
                     // the file exists
-                    if (new FileInfo(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.MX_Overall]).Length > 0)
+                    if (new FileInfo(FileUtils.overallFiles[(int)OverallFile.MX_KPA_Overall]).Length > 0 && new FileInfo(FileUtils.overallFiles[(int)OverallFile.MX_KPI_Overall]).Length > 0)
                     {
                         DateTime dt = GetLastLoadedMxPrpoReportDate();
                         if (dt == DateTime.Today.Date)
                         {
-                            // Load the overall data
-                            overallData.Load(ref overallData);
+                            // Load the KPA Overall data from local file
+                            (reports[ReportingType.KpaOverall] as KpaOverallReport).Load();
+
+                            // Load the KPA Overall data from local file
+                            (reports[ReportingType.KpiOverall] as KpiOverallReport).Load();
 
                             dt = GetLoadedMxPrpoReportDate();
                             lbl_topPanelNavPrpoDate.Text = dt.ToString("MMMM dd, yyyy");
@@ -116,7 +135,17 @@ namespace KPA_KPI_Analyzer
                 }
                 else // the file does not exist
                 {
-                    ApplicationIOLibarary.ApplicationFiles.FileUtils.CreateFile(ApplicationIOLibarary.ApplicationFiles.OverallFile.MX_Overall);
+                    if (!FileUtils.DataFileExists(OverallFile.MX_KPA_Overall))
+                    {
+                        FileUtils.CreateFile(OverallFile.MX_KPA_Overall);
+                    }
+
+                    if (!FileUtils.DataFileExists(OverallFile.MX_KPI_Overall))
+                    {
+                        FileUtils.CreateFile(OverallFile.MX_KPI_Overall);
+                    }
+
+
                     BeginDataLoadProcess();
                 }
             }

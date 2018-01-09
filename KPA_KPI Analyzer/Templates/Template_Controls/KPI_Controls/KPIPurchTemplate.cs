@@ -2,7 +2,12 @@
 using KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader;
 using KPA_KPI_Analyzer.Overall_Data;
 using KPA_KPI_Analyzer.Values;
+using Reporting;
+using Reporting.Interfaces;
+using Reporting.KeyPerformanceIndicators;
+using Reporting.Overall;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -11,7 +16,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 {
     public partial class KPIPurchTemplate : UserControl
     {
-        Overall overallData;
+        
 
 
 
@@ -86,18 +91,17 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// <summary>
         /// This function will always load the default state of the control and set the color of the graph.
         /// </summary>
-        public void LoadPanel(Overall data)
+        public void LoadPanel()
         {
-            overallData = data;
             SetGraphColor();
-            DefaultButtonTextColor = System.Drawing.Color.DarkGray;
+            DefaultButtonTextColor = Color.DarkGray;
             RenderOne();
             btn_One.selected = true;
-            btn_One.Textcolor = System.Drawing.Color.Coral;
+            btn_One.Textcolor = Color.Coral;
             DatavizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            Globals.CurrCategory = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.Purch][(int)Values.Categories.KpiCategory.Purch.InitialConfirmationDatevsPRPlanDate];
+            Globals.CurrCategory = Categories.kpiCategories[(int)Sections.KpiSection.Purch][(int)Categories.KpiCategory.Purch.InitialConfirmationDatevsPRPlanDate];
             ChangeCategory();
         }
 
@@ -157,8 +161,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             btn_One.selected = false;
 
             btn.selected = true;
-            DefaultButtonTextColor = System.Drawing.Color.DarkGray;
-            btn.Textcolor = System.Drawing.Color.Coral;
+            DefaultButtonTextColor = Color.DarkGray;
+            btn.Textcolor = Color.Coral;
 
 
             int tag = int.Parse(btn.Tag.ToString());
@@ -195,44 +199,45 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.Purch];
             ChangeCategory();
 
-            TimeBucketOne = overallData.kpi.purch.initConfVsPRPlanDate.data.Minus_TwentyTwo.ToString();
-            TimeBucketTwo = overallData.kpi.purch.initConfVsPRPlanDate.data.Minus_Fifteen_TwentyOne.ToString();
-            TimeBucketThree = overallData.kpi.purch.initConfVsPRPlanDate.data.Minus_Eight_Fourteen.ToString();
-            TimeBucketFour = overallData.kpi.purch.initConfVsPRPlanDate.data.Minus_One_Seven.ToString();
-            TimeBucketFive = overallData.kpi.purch.initConfVsPRPlanDate.data.Zero.ToString();
-            TimeBucketSix = overallData.kpi.purch.initConfVsPRPlanDate.data.One_Seven.ToString();
-            TimeBucketSeven = overallData.kpi.purch.initConfVsPRPlanDate.data.Eight_Fourteen.ToString();
-            TimeBucketEight = overallData.kpi.purch.initConfVsPRPlanDate.data.Fifteen_TwentyOne.ToString();
-            TimeBucketNine = overallData.kpi.purch.initConfVsPRPlanDate.data.TwentyTwo.ToString();
-
             AnalysisOne = "- Will show if the PR is on a PO.";
             AnalysisTwo = "- Difference between first confirmed date and PR planned date.";
 
 
-            dp.addLabely(lbl_xLabelOne.Text, TimeBucketOne);
-            dp.addLabely(lbl_xLabelTwo.Text, TimeBucketTwo);
-            dp.addLabely(lbl_xLabelThree.Text, TimeBucketThree);
-            dp.addLabely(lbl_xLabelFour.Text, TimeBucketFour);
-            dp.addLabely(lbl_xLabelFive.Text, TimeBucketFive);
-            dp.addLabely(lbl_xLabelSix.Text, TimeBucketSix);
-            dp.addLabely(lbl_xLabelSeven.Text, TimeBucketSeven);
-            dp.addLabely(lbl_xLabelEight.Text, TimeBucketEight);
-            dp.addLabely(lbl_xLabelNine.Text, TimeBucketNine);
+            ITemplateThree tempThree = (Report.Indicators[(int)KpiOption.Purch_InitialConfirmationDateVsPrPlanDate]
+                    as Reporting.KeyPerformanceIndicators.Purch.InitialConfirmationDateVsPRPlanDate).Template;
 
-            TotalOrders = string.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.Total);
-            Average = string.Format("{0:n}", overallData.kpi.purch.initConfVsPRPlanDate.data.Average);
-            PercNoConf = string.Format("{0:n}", overallData.kpi.purch.initConfVsPRPlanDate.data.PercentUnconf);
-            PercNoConfTotal = string.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.PercentUnconfTotal);
-            TimeBucketOne = string.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.Minus_TwentyTwo);
-            TimeBucketTwo = string.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.Minus_Fifteen_TwentyOne);
-            TimeBucketThree = string.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.Minus_Eight_Fourteen);
-            TimeBucketFour = string.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.Minus_One_Seven);
-            TimeBucketFive = string.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.Zero);
-            TimeBucketSix = string.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.One_Seven);
-            TimeBucketSeven = string.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.Eight_Fourteen);
-            TimeBucketEight = string.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.Fifteen_TwentyOne);
-            TimeBucketNine = string.Format("{0:n0}", overallData.kpi.purch.initConfVsPRPlanDate.data.TwentyTwo);
 
+            // Add the data to the column chart
+            dp.addLabely(lbl_xLabelOne.Text, tempThree.LessThanEqualToNegTwentyTwoDays.ToString());
+            dp.addLabely(lbl_xLabelTwo.Text, tempThree.NegTwentyOneToNegFifteenDays.ToString());
+            dp.addLabely(lbl_xLabelThree.Text, tempThree.NegFourteenToNegEightDays.ToString());
+            dp.addLabely(lbl_xLabelFour.Text, tempThree.NegSevenToNegOneDays.ToString());
+            dp.addLabely(lbl_xLabelFive.Text, tempThree.ZeroDays.ToString());
+            dp.addLabely(lbl_xLabelSix.Text, tempThree.OneToSevenDays.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempThree.EightToFourteenDays.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempThree.FifteenToTwentyOneDays.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempThree.GreaterThanEqualToTwentyTwoDays.ToString());
+
+
+            Average = string.Format("{0:n}", tempThree.Average);
+            TimeBucketOne = string.Format("{0:n0}", tempThree.LessThanEqualToNegTwentyTwoDays);
+            TimeBucketTwo = string.Format("{0:n0}", tempThree.NegTwentyOneToNegFifteenDays);
+            TimeBucketThree = string.Format("{0:n0}", tempThree.NegFourteenToNegEightDays);
+            TimeBucketFour = string.Format("{0:n0}", tempThree.NegSevenToNegOneDays);
+            TimeBucketFive = string.Format("{0:n0}", tempThree.ZeroDays);
+            TimeBucketSix = string.Format("{0:n0}", tempThree.OneToSevenDays);
+            TimeBucketSeven = string.Format("{0:n0}", tempThree.EightToFourteenDays);
+            TimeBucketEight = string.Format("{0:n0}", tempThree.FifteenToTwentyOneDays);
+            TimeBucketNine = string.Format("{0:n0}", tempThree.GreaterThanEqualToTwentyTwoDays);
+            TotalOrders = string.Format("{0:n0}", tempThree.TotalRecords);
+
+
+            IUnconfirmed unconfirmedInfo = (Report.Indicators[(int)KpiOption.Purch_InitialConfirmationDateVsPrPlanDate]
+                    as Reporting.KeyPerformanceIndicators.Purch.InitialConfirmationDateVsPRPlanDate).Unconfirmed;
+
+            // Get the uncofnrimed information
+            PercNoConf = string.Format("{0:n}", unconfirmedInfo.PercentUnconfirmed);
+            PercNoConfTotal = string.Format("{0:n0}", unconfirmedInfo.UnconfirmedTotal);
 
             canvas.addData(dp);
             dataviz.Render(canvas);

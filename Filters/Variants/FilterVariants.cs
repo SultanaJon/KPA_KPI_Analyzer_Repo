@@ -9,15 +9,31 @@ using System.Windows.Forms;
 
 namespace Filters.Variants
 {
-    public class FilterVariants : IStorable, ILoadable<FilterVariants>
+    public class FilterVariants : IStorable, ILoadable
     {
+        /// <summary>
+        /// The instance of the filter variants
+        /// </summary>
+        private static FilterVariants filterVariantsInstance;
+
+
+
+        /// <summary>
+        /// The saved variants
+        /// </summary>
         private List<Variant> variants;
 
 
         /// <summary>
-        /// JavaScript serializer used to serialize and deserializer ApplicationConfig objects
+        /// Used to serialize and deserialize the Filter Variants object
         /// </summary>
         private JavaScriptSerializer ser;
+
+
+
+        /// <summary>
+        /// A string to hold the contents of the object after being serialized and deserialized
+        /// </summary>
         private string dataJSONString;
 
 
@@ -39,6 +55,28 @@ namespace Filters.Variants
                 variants = value;
             }
         }
+
+
+
+
+        /// <summary>
+        /// Property to get the instance of the Filter Variants object
+        /// </summary>
+        public static FilterVariants FilterVariantsInstance
+        {
+            get
+            {
+                // Create a new instance if not already created
+                if(filterVariantsInstance == null)
+                {
+                    filterVariantsInstance = new FilterVariants();
+                }
+
+                // Return the instance of the filter variants
+                return filterVariantsInstance;
+            }
+        }
+
 
 
 
@@ -104,11 +142,29 @@ namespace Filters.Variants
         /// <summary>
         /// Default Constructor
         /// </summary>
-        public FilterVariants()
+        private FilterVariants()
         {
             variants = new List<Variant>();
             ser = new JavaScriptSerializer();
         }
+
+
+
+
+
+        /// <summary>
+        /// Creates a new instance of the Filter Variants
+        /// </summary>
+        /// <returns>The newly created filter variants</returns>
+        public FilterVariants CreateNewFilterVariantsInstance()
+        {
+            // Create new instance
+            filterVariantsInstance = new FilterVariants();
+
+            // return the instance
+            return filterVariantsInstance;
+        }
+
 
 
 
@@ -147,12 +203,12 @@ namespace Filters.Variants
         /// Loads the filter variant from a JSON file.
         /// </summary>
         /// <returns></returns>
-        public void Load(ref FilterVariants variants)
+        public void Load()
         {
             try
             {
                 dataJSONString = File.ReadAllText(FileUtils.variantFiles[(int)VariantFile.FilterVariants]);
-                variants = ser.Deserialize<FilterVariants>(dataJSONString);
+                filterVariantsInstance = ser.Deserialize<FilterVariants>(dataJSONString);
             }
             catch(Exception ex)
             {

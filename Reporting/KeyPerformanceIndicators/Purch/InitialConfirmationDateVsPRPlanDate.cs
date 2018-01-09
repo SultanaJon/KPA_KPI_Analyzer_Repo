@@ -3,6 +3,7 @@ using Reporting.Interfaces;
 using Reporting.Overall;
 using Reporting.Selective;
 using System;
+using System.Collections.Generic;
 using System.Data;
 
 namespace Reporting.KeyPerformanceIndicators.Purch
@@ -22,6 +23,13 @@ namespace Reporting.KeyPerformanceIndicators.Purch
 
 
         #region IUnconfirmed Properties
+
+        /// <summary>
+        /// The total of records that are unconfirmed
+        /// </summary>
+        public int UnconfirmedTotal { get; set; }
+
+
 
         /// <summary>
         /// The percent of unconfirmed records within the KPA or KPI
@@ -48,6 +56,39 @@ namespace Reporting.KeyPerformanceIndicators.Purch
         public int GreaterThanEqualToTwentyTwoDays { get; set; }
 
         #endregion
+
+
+
+
+
+
+        /// <summary>
+        /// Returns this object as a IUnconfirmed interface
+        /// </summary>
+        public IUnconfirmed Unconfirmed
+        {
+            get
+            {
+                return this;
+            }
+        }
+
+
+
+
+
+        /// <summary>
+        /// Returns the template that this KPA or KPI fall under
+        /// </summary>
+        public ITemplateThree Template
+        {
+            get
+            {
+                return this;
+            }
+        }
+
+
 
 
 
@@ -94,6 +135,35 @@ namespace Reporting.KeyPerformanceIndicators.Purch
 
 
 
+
+        /// <summary>
+        /// Returns the template one data for this KPA
+        /// </summary>
+        /// <returns></returns>
+        public List<string> GetTemplateData()
+        {
+            List<string> row = new List<string>();
+            
+            // Create template row data
+            row.Add(Section);
+            row.Add(Name);
+            row.Add(string.Format("{0:n}", Average));
+            row.Add(string.Format("{0:n0}", LessThanEqualToNegTwentyTwoDays));
+            row.Add(string.Format("{0:n0}", NegTwentyOneToNegFifteenDays));
+            row.Add(string.Format("{0:n0}", NegFourteenToNegEightDays));
+            row.Add(string.Format("{0:n0}", NegSevenToNegOneDays));
+            row.Add(string.Format("{0:n0}", ZeroDays));
+            row.Add(string.Format("{0:n0}", OneToSevenDays));
+            row.Add(string.Format("{0:n0}", EightToFourteenDays));
+            row.Add(string.Format("{0:n0}", FifteenToTwentyOneDays));
+            row.Add(string.Format("{0:n0}", GreaterThanEqualToTwentyTwoDays));
+            row.Add(string.Format("{0:n0}", TotalRecords));
+            row.Add(string.Format("{0:n0}", PercentUnconfirmed + "%"));
+            row.Add(string.Format("{0:n0}", PercentFavorable + "%"));
+
+            //return the template data for this KPA
+            return row;
+        }
 
 
 
@@ -240,7 +310,6 @@ namespace Reporting.KeyPerformanceIndicators.Purch
         public override void RunOverallReport()
         {
             double totalDays = 0;
-            int percentUnconfTotal = 0;
 
             foreach (DataRow dr in DatabaseManager.prsOnPOsDt.Rows)
             {
@@ -258,7 +327,7 @@ namespace Reporting.KeyPerformanceIndicators.Purch
 
                 if (firstConfYear == 0 && firstConfMonth == 0 && firstConfDay == 0)
                 {
-                    percentUnconfTotal++;
+                    UnconfirmedTotal++;
                     TotalRecords++;
                     continue;
                 }
@@ -289,7 +358,7 @@ namespace Reporting.KeyPerformanceIndicators.Purch
             CalculateAverage(totalDays);
 
             // Calculate the percent unconfirmed for this KPI
-            CalculatePercentUnconfirmed(percentUnconfTotal);
+            CalculatePercentUnconfirmed(UnconfirmedTotal);
 
             // Calculate the percent favorable
             CalculatePercentFavorable();

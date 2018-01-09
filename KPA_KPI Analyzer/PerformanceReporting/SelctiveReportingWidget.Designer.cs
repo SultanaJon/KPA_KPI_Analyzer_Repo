@@ -1,4 +1,4 @@
-﻿namespace KPA_KPI_Analyzer.Reporting
+﻿namespace KPA_KPI_Analyzer.PerformanceReporting
 {
     partial class SelctiveReportingWidget
     {

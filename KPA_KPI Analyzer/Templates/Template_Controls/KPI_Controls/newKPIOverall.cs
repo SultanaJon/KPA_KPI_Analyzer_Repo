@@ -3,7 +3,10 @@ using KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader;
 using KPA_KPI_Analyzer.Overall_Data;
 using KPA_KPI_Analyzer.Overall_Data.KPI_Sections;
 using KPA_KPI_Analyzer.Values;
+using Reporting;
+using Reporting.KeyPerformanceIndicators;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -11,8 +14,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 {
     public partial class NewKPIOverall : UserControl
     {
-        private Overall data;
-
 
         /// <summary>
         /// 
@@ -87,19 +88,18 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// 
         /// </summary>
         /// <param name="_data"></param>
-        public NewKPIOverall(Overall _data)
+        public NewKPIOverall()
         {
             InitializeComponent();
             ApplyDataGridStyles();
-            data = _data;
 
 
             Globals.CurrPerformance = "KPI";
 
-            if (Globals.TargetCountry == Values.Countries.Country.UnitedStates)
-                Globals.CurrCountry = Values.Countries.countries[(int)Values.Countries.Country.UnitedStates];
+            if (ReportingCountry.TargetCountry == Country.UnitedStates)
+                Globals.CurrCountry = ReportingCountry.countries[(int)Country.UnitedStates];
             else
-                Globals.CurrCountry = Values.Countries.countries[(int)Values.Countries.Country.Mexico];
+                Globals.CurrCountry = ReportingCountry.countries[(int)Country.Mexico];
         }
 
 
@@ -364,65 +364,30 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// </summary>
         private void LoadPlan()
         {
-            string[] row = new string[]{
-                data.kpi.plan.Name,
-                data.kpi.plan.categoryNames[(int)Plan.CategorNames.currPlanVsPrPlanDate],
-                string.Format("{0:n}", data.kpi.plan.currPlanDateVsPrPlanDate.data.Average),
-                string.Format("{0:n0}", data.kpi.plan.currPlanDateVsPrPlanDate.data.Minus_TwentyTwo),
-                string.Format("{0:n0}", data.kpi.plan.currPlanDateVsPrPlanDate.data.Minus_Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpi.plan.currPlanDateVsPrPlanDate.data.Minus_Eight_Fourteen),
-                string.Format("{0:n0}", data.kpi.plan.currPlanDateVsPrPlanDate.data.Minus_One_Seven),
-                string.Format("{0:n0}", data.kpi.plan.currPlanDateVsPrPlanDate.data.Zero),
-                string.Format("{0:n0}", data.kpi.plan.currPlanDateVsPrPlanDate.data.One_Seven),
-                string.Format("{0:n0}", data.kpi.plan.currPlanDateVsPrPlanDate.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpi.plan.currPlanDateVsPrPlanDate.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpi.plan.currPlanDateVsPrPlanDate.data.TwentyTwo),
-                string.Format("{0:n0}", data.kpi.plan.currPlanDateVsPrPlanDate.data.Total),
-                "",
-                string.Format("{0:n0}", data.kpi.plan.currPlanDateVsPrPlanDate.data.PercentFavorable + "%")
-            };
-            TemplateThreeDataGrid.Rows.Add(row);
+            // Get List of template one data for this KPA
+            List<string> rowData = new List<string>((Report.Indicators[(int)KpiOption.Plan_CurrentPlanDateVsPrPlanDate]
+                as Reporting.KeyPerformanceIndicators.Plan.CurrentPlanDateVsPRPlanDate).GetTemplateData());
+
+            // Add the row to the data grid view control
+            TemplateThreeDataGrid.Rows.Add(rowData);
 
 
 
-            row = new string[]{
-                data.kpi.plan.Name,
-                data.kpi.plan.categoryNames[(int)Plan.CategorNames.origPlanDateMinus2ndLvlRelDateVsCodedLead],
-                string.Format("{0:n}", data.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Average),
-                string.Format("{0:n0}", data.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Minus_TwentyTwo),
-                string.Format("{0:n0}", data.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Minus_Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Minus_Eight_Fourteen),
-                string.Format("{0:n0}", data.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Minus_One_Seven),
-                string.Format("{0:n0}", data.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Zero),
-                string.Format("{0:n0}", data.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.One_Seven),
-                string.Format("{0:n0}", data.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.TwentyTwo),
-                string.Format("{0:n0}", data.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.Total),
-                "",
-                string.Format("{0:n0}", data.kpi.plan.origPlanDateMinus2ndLvlRelDateVsCodedLead.data.PercentFavorable + "%")
-            };
-            TemplateThreeDataGrid.Rows.Add(row);
+            // Get List of template one data for this KPA
+            rowData = new List<string>((Report.Indicators[(int)KpiOption.Plan_OrigPlanDateMinusPrFullReleaseDateVsCodedLead]
+                as Reporting.KeyPerformanceIndicators.Plan.OriginalPlanDateTo2ndLvlReleaseDateVsCodedLead).GetTemplateData());
+
+            // Add the row to the data grid view control
+            TemplateThreeDataGrid.Rows.Add(rowData);
 
 
-            row = new string[]{
-                data.kpi.plan.Name,
-                data.kpi.plan.categoryNames[(int)Plan.CategorNames.currPlanDateMinus2ndLvlRelDateVsCodedLead],
-                string.Format("{0:n}", data.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Average),
-                string.Format("{0:n0}", data.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Minus_TwentyTwo),
-                string.Format("{0:n0}", data.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Minus_Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Minus_Eight_Fourteen),
-                string.Format("{0:n0}", data.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Minus_One_Seven),
-                string.Format("{0:n0}", data.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Zero),
-                string.Format("{0:n0}", data.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.One_Seven),
-                string.Format("{0:n0}", data.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.TwentyTwo),
-                string.Format("{0:n0}", data.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.Total),
-                "",
-                string.Format("{0:n0}", data.kpi.plan.currPlanDateMinus2ndLvlRelDateVsCodedLead.data.PercentFavorable + "%")
-            };
-            TemplateThreeDataGrid.Rows.Add(row);
+
+            // Get List of template one data for this KPA
+            rowData = new List<string>((Report.Indicators[(int)KpiOption.Plan_CurrentPlanDateMinusPrFullReleaseDateVsCodedLead]
+                as Reporting.KeyPerformanceIndicators.Plan.CurrentPlanDateTo2ndLvlReleaseDateVsCodedLead).GetTemplateData());
+
+            // Add the row to the data grid view control
+            TemplateThreeDataGrid.Rows.Add(rowData);
         }
 
 
@@ -436,24 +401,12 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// </summary>
         private void LoadPurch()
         {
-            string[] row = new string[]{
-                data.kpi.purch.Name,
-                data.kpi.purch.categoryNames[(int)Purch.CategorNames.initConfVsPRPlanDate],
-                string.Format("{0:n}", data.kpi.purch.initConfVsPRPlanDate.data.Average),
-                string.Format("{0:n0}", data.kpi.purch.initConfVsPRPlanDate.data.Minus_TwentyTwo),
-                string.Format("{0:n0}", data.kpi.purch.initConfVsPRPlanDate.data.Minus_Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpi.purch.initConfVsPRPlanDate.data.Minus_Eight_Fourteen),
-                string.Format("{0:n0}", data.kpi.purch.initConfVsPRPlanDate.data.Minus_One_Seven),
-                string.Format("{0:n0}", data.kpi.purch.initConfVsPRPlanDate.data.Zero),
-                string.Format("{0:n0}", data.kpi.purch.initConfVsPRPlanDate.data.One_Seven),
-                string.Format("{0:n0}", data.kpi.purch.initConfVsPRPlanDate.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpi.purch.initConfVsPRPlanDate.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpi.purch.initConfVsPRPlanDate.data.TwentyTwo),
-                string.Format("{0:n0}", data.kpi.purch.initConfVsPRPlanDate.data.Total),
-                string.Format("{0:n}", data.kpi.purch.initConfVsPRPlanDate.data.PercentUnconf + "%"),
-                string.Format("{0:n0}", data.kpi.purch.initConfVsPRPlanDate.data.PercentFavorable + "%")
-            };
-            TemplateThreeDataGrid.Rows.Add(row);
+            // Get List of template one data for this KPA
+            List<string> rowData = new List<string>((Report.Indicators[(int)KpiOption.Purch_InitialConfirmationDateVsPrPlanDate]
+                as Reporting.KeyPerformanceIndicators.Purch.InitialConfirmationDateVsPRPlanDate).GetTemplateData());
+
+            // Add the row to the data grid view control
+            TemplateThreeDataGrid.Rows.Add(rowData);        
         }
 
 
@@ -467,103 +420,40 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// </summary>
         private void LoadFollowUp()
         {
-            string[] row = new string[]{
-                data.kpi.followUp.Name,
-                data.kpi.followUp.categoryNames[(int)FollowUp.CategorNames.CurrConfVsInitConf],
-                string.Format("{0:n}", data.kpi.followUp.currConfVsInitConf.data.Average),
-                string.Format("{0:n0}", data.kpi.followUp.currConfVsInitConf.data.Minus_TwentyTwo),
-                string.Format("{0:n0}", data.kpi.followUp.currConfVsInitConf.data.Minus_Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpi.followUp.currConfVsInitConf.data.Minus_Eight_Fourteen),
-                string.Format("{0:n0}", data.kpi.followUp.currConfVsInitConf.data.Minus_One_Seven),
-                string.Format("{0:n0}", data.kpi.followUp.currConfVsInitConf.data.Zero),
-                string.Format("{0:n0}", data.kpi.followUp.currConfVsInitConf.data.One_Seven),
-                string.Format("{0:n0}", data.kpi.followUp.currConfVsInitConf.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpi.followUp.currConfVsInitConf.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpi.followUp.currConfVsInitConf.data.TwentyTwo),
-                string.Format("{0:n0}", data.kpi.followUp.currConfVsInitConf.data.Total),
-                string.Format("{0:n}", data.kpi.followUp.currConfVsInitConf.data.PercentUnconf + "%"),
-                string.Format("{0:n0}", data.kpi.followUp.currConfVsInitConf.data.PercentFavorable + "%")
-            };
-            TemplateThreeDataGrid.Rows.Add(row);
+            // Get List of template one data for this KPA
+            List<string> rowData = new List<string>((Report.Indicators[(int)KpiOption.FollowUp_CurrentConfirmationDateVsInitialConfirmationDate]
+                as Reporting.KeyPerformanceIndicators.FollowUp.CurrentConfirmationDateVsInitialConfirmationDate).GetTemplateData());
 
-            row = new string[]{
-                data.kpi.followUp.Name,
-                data.kpi.followUp.categoryNames[(int)FollowUp.CategorNames.finalConfDateVsFinalPlan],
-                string.Format("{0:n}", data.kpi.followUp.finalConfDateVsFinalPlan.data.Average),
-                string.Format("{0:n0}", data.kpi.followUp.finalConfDateVsFinalPlan.data.Minus_TwentyTwo),
-                string.Format("{0:n0}", data.kpi.followUp.finalConfDateVsFinalPlan.data.Minus_Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpi.followUp.finalConfDateVsFinalPlan.data.Minus_Eight_Fourteen),
-                string.Format("{0:n0}", data.kpi.followUp.finalConfDateVsFinalPlan.data.Minus_One_Seven),
-                string.Format("{0:n0}", data.kpi.followUp.finalConfDateVsFinalPlan.data.Zero),
-                string.Format("{0:n0}", data.kpi.followUp.finalConfDateVsFinalPlan.data.One_Seven),
-                string.Format("{0:n0}", data.kpi.followUp.finalConfDateVsFinalPlan.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpi.followUp.finalConfDateVsFinalPlan.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpi.followUp.finalConfDateVsFinalPlan.data.TwentyTwo),
-                string.Format("{0:n0}", data.kpi.followUp.finalConfDateVsFinalPlan.data.Total),
-                string.Format("{0:n}", data.kpi.followUp.finalConfDateVsFinalPlan.data.PercentUnconf + "%"),
-                string.Format("{0:n0}", data.kpi.followUp.finalConfDateVsFinalPlan.data.PercentFavorable + "%")
+            // Add the row to the data grid view control
+            TemplateThreeDataGrid.Rows.Add(rowData);
 
-            };
-            TemplateThreeDataGrid.Rows.Add(row);
+            // Get List of template one data for this KPA
+            rowData = new List<string>((Report.Indicators[(int)KpiOption.FollowUp_FinalConfirmationDateVsInitialConfirmationDate]
+                as Reporting.KeyPerformanceIndicators.FollowUp.FinalConfirmationDateVsFinalPlanDate).GetTemplateData());
 
-            row = new string[]{
-                data.kpi.followUp.Name,
-                data.kpi.followUp.categoryNames[(int)FollowUp.CategorNames.receiptDateVsCurrPlanDate],
-                string.Format("{0:n}", data.kpi.followUp.receiptDateVsCurrPlanDate.data.Average),
-                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsCurrPlanDate.data.Minus_TwentyTwo),
-                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsCurrPlanDate.data.Minus_Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsCurrPlanDate.data.Minus_Eight_Fourteen),
-                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsCurrPlanDate.data.Minus_One_Seven),
-                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsCurrPlanDate.data.Zero),
-                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsCurrPlanDate.data.One_Seven),
-                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsCurrPlanDate.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsCurrPlanDate.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsCurrPlanDate.data.TwentyTwo),
-                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsCurrPlanDate.data.Total),
-                "",
-                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsCurrPlanDate.data.PercentFavorable + "%")
+            // Add the row to the data grid view control
+            TemplateThreeDataGrid.Rows.Add(rowData);
 
-            };
-            TemplateThreeDataGrid.Rows.Add(row);
+            // Get List of template one data for this KPA
+            rowData = new List<string>((Report.Indicators[(int)KpiOption.FollowUp_ReceiptDateVsCurrentPlanDate]
+                as Reporting.KeyPerformanceIndicators.FollowUp.ReceiptDateVsCurrentPlanDate).GetTemplateData());
 
-            row = new string[]{
-                data.kpi.followUp.Name,
-                data.kpi.followUp.categoryNames[(int)FollowUp.CategorNames.receiptDateVsOrigConfDate],
-                string.Format("{0:n}", data.kpi.followUp.receiptDateVsOrigConfDate.data.Average),
-                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsOrigConfDate.data.Minus_TwentyTwo),
-                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsOrigConfDate.data.Minus_Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsOrigConfDate.data.Minus_Eight_Fourteen),
-                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsOrigConfDate.data.Minus_One_Seven),
-                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsOrigConfDate.data.Zero),
-                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsOrigConfDate.data.One_Seven),
-                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsOrigConfDate.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsOrigConfDate.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsOrigConfDate.data.TwentyTwo),
-                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsOrigConfDate.data.Total),
-                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsOrigConfDate.data.PercentUnconf + "%"),
-                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsOrigConfDate.data.PercentFavorable + "%")
-            };
-            TemplateThreeDataGrid.Rows.Add(row);
+            // Add the row to the data grid view control
+            TemplateThreeDataGrid.Rows.Add(rowData);
 
-            row = new string[]{
-                data.kpi.followUp.Name,
-                data.kpi.followUp.categoryNames[(int)FollowUp.CategorNames.receiptDateVsCurrConfDate],
-                string.Format("{0:n}", data.kpi.followUp.receiptDateVsCurrConfDate.data.Average),
-                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsCurrConfDate.data.Minus_TwentyTwo),
-                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsCurrConfDate.data.Minus_Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsCurrConfDate.data.Minus_Eight_Fourteen),
-                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsCurrConfDate.data.Minus_One_Seven),
-                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsCurrConfDate.data.Zero),
-                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsCurrConfDate.data.One_Seven),
-                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsCurrConfDate.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsCurrConfDate.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsCurrConfDate.data.TwentyTwo),
-                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsCurrConfDate.data.Total),
-                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsCurrConfDate.data.PercentUnconf + "%"),
-                string.Format("{0:n0}", data.kpi.followUp.receiptDateVsCurrConfDate.data.PercentFavorable + "%")
+            // Get List of template one data for this KPA
+            rowData = new List<string>((Report.Indicators[(int)KpiOption.FollowUp_ReceiptDateVsOriginalConfirmationDate]
+                as Reporting.KeyPerformanceIndicators.FollowUp.ReceiptDateVsOriginalConfirmationDate).GetTemplateData());
 
-            };
-            TemplateThreeDataGrid.Rows.Add(row);
+            // Add the row to the data grid view control
+            TemplateThreeDataGrid.Rows.Add(rowData);
+
+            // Get List of template one data for this KPA
+            rowData = new List<string>((Report.Indicators[(int)KpiOption.FollowUp_ReceiptDateVsCurrentConfirmationDate]
+                as Reporting.KeyPerformanceIndicators.FollowUp.ReceiptDateVsCurrentConfirmationDate).GetTemplateData());
+
+            // Add the row to the data grid view control
+            TemplateThreeDataGrid.Rows.Add(rowData);
         }
 
 
@@ -575,44 +465,19 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// </summary>
         private void LoadPlanTwo()
         {
+            // Get List of template one data for this KPA
+            List<string> rowData = new List<string>((Report.Indicators[(int)KpiOption.PlanTwo_MaterialDueOriginalPlannedDate]
+                as Reporting.KeyPerformanceIndicators.PlanTwo.MaterialDueOriginalPlannedDate).GetTemplateData());
 
-            string[] row = new string[]{
-                data.kpi.planTwo.Name,
-                data.kpi.planTwo.categoryNames[(int)PlanTwo.CategoryNames.materialDueOrigPlanDate],
-                string.Format("{0:n}", data.kpi.planTwo.materialDueOrigPlanDate.data.Average),
-                string.Format("{0:n0}", data.kpi.planTwo.materialDueOrigPlanDate.data.LessThanZero),
-                string.Format("{0:n0}", data.kpi.planTwo.materialDueOrigPlanDate.data.One_Three),
-                string.Format("{0:n0}", data.kpi.planTwo.materialDueOrigPlanDate.data.Four_Seven),
-                string.Format("{0:n0}", data.kpi.planTwo.materialDueOrigPlanDate.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpi.planTwo.materialDueOrigPlanDate.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpi.planTwo.materialDueOrigPlanDate.data.TwentyTwo_TwentyEight),
-                string.Format("{0:n0}", data.kpi.planTwo.materialDueOrigPlanDate.data.TwentyNine_ThirtyFive),
-                string.Format("{0:n0}", data.kpi.planTwo.materialDueOrigPlanDate.data.ThirtySix_FourtyTwo),
-                string.Format("{0:n0}", data.kpi.planTwo.materialDueOrigPlanDate.data.FourtyThree_FourtyNine),
-                string.Format("{0:n0}", data.kpi.planTwo.materialDueOrigPlanDate.data.Fifty_FiftySix),
-                string.Format("{0:n0}", data.kpi.planTwo.materialDueOrigPlanDate.data.GreaterThanEqualFiftySeven),
-                string.Format("{0:n0}", data.kpi.planTwo.materialDueOrigPlanDate.data.Total)
-            };
-            TemplateFourDataGrid.Rows.Add(row);
+            // Add the row to the data grid view control
+            TemplateFourDataGrid.Rows.Add(rowData);
 
-            row = new string[]{
-                data.kpi.planTwo.Name,
-                data.kpi.planTwo.categoryNames[(int)PlanTwo.CategoryNames.materialDueFinalPlanDate],
-                string.Format("{0:n}", data.kpi.planTwo.materialDueFinalPlanDate.data.Average),
-                string.Format("{0:n0}", data.kpi.planTwo.materialDueFinalPlanDate.data.LessThanZero),
-                string.Format("{0:n0}", data.kpi.planTwo.materialDueFinalPlanDate.data.One_Three),
-                string.Format("{0:n0}", data.kpi.planTwo.materialDueFinalPlanDate.data.Four_Seven),
-                string.Format("{0:n0}", data.kpi.planTwo.materialDueFinalPlanDate.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpi.planTwo.materialDueFinalPlanDate.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpi.planTwo.materialDueFinalPlanDate.data.TwentyTwo_TwentyEight),
-                string.Format("{0:n0}", data.kpi.planTwo.materialDueFinalPlanDate.data.TwentyNine_ThirtyFive),
-                string.Format("{0:n0}", data.kpi.planTwo.materialDueFinalPlanDate.data.ThirtySix_FourtyTwo),
-                string.Format("{0:n0}", data.kpi.planTwo.materialDueFinalPlanDate.data.FourtyThree_FourtyNine),
-                string.Format("{0:n0}", data.kpi.planTwo.materialDueFinalPlanDate.data.Fifty_FiftySix),
-                string.Format("{0:n0}", data.kpi.planTwo.materialDueFinalPlanDate.data.GreaterThanEqualFiftySeven),
-                string.Format("{0:n0}", data.kpi.planTwo.materialDueFinalPlanDate.data.Total)
-            };
-            TemplateFourDataGrid.Rows.Add(row);
+            // Get List of template one data for this KPA
+            rowData = new List<string>((Report.Indicators[(int)KpiOption.PlanTwo_MaterialDueFinalPlannedDate]
+                as Reporting.KeyPerformanceIndicators.PlanTwo.MaterialDueFinalPlannedDate).GetTemplateData());
+
+            // Add the row to the data grid view control
+            TemplateFourDataGrid.Rows.Add(rowData);
         }
 
 
@@ -624,63 +489,26 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// </summary>
         private void LoadPurchTwo()
         {
-            string[] row = new string[]{
-                data.kpi.purchTwo.Name,
-                data.kpi.purchTwo.categoryNames[(int)PurchTwo.CategorNames.pr2ndLvlRelVsPOCreation],
-                string.Format("{0:n}", data.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.Average),
-                string.Format("{0:n0}", data.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.LessThanZero),
-                string.Format("{0:n0}", data.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.One_Three),
-                string.Format("{0:n0}", data.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.Four_Seven),
-                string.Format("{0:n0}", data.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.TwentyTwo_TwentyEight),
-                string.Format("{0:n0}", data.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.TwentyNine_ThirtyFive),
-                string.Format("{0:n0}", data.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.ThirtySix_FourtyTwo),
-                string.Format("{0:n0}", data.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.FourtyThree_FourtyNine),
-                string.Format("{0:n0}", data.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.Fifty_FiftySix),
-                string.Format("{0:n0}", data.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.GreaterThanEqualFiftySeven),
-                string.Format("{0:n0}", data.kpi.purchTwo.pr2ndLvlRelVsPOCreation.data.Total)
-            };
-            TemplateFourDataGrid.Rows.Add(row);
+            // Get List of template one data for this KPA
+            List<string> rowData = new List<string>((Report.Indicators[(int)KpiOption.PurchTwo_PrFullyReleaseDateVsPoCreationDate]
+                as Reporting.KeyPerformanceIndicators.PurchTwo.PR2ndLvlReleaseDateVsPOCreationDate).GetTemplateData());
 
-            row = new string[]{
-                data.kpi.purchTwo.Name,
-                data.kpi.purchTwo.categoryNames[(int)PurchTwo.CategorNames.poCreationVsPORel],
-                string.Format("{0:n}", data.kpi.purchTwo.poCreationVsPORel.data.Average),
-                string.Format("{0:n0}", data.kpi.purchTwo.poCreationVsPORel.data.LessThanZero),
-                string.Format("{0:n0}", data.kpi.purchTwo.poCreationVsPORel.data.One_Three),
-                string.Format("{0:n0}", data.kpi.purchTwo.poCreationVsPORel.data.Four_Seven),
-                string.Format("{0:n0}", data.kpi.purchTwo.poCreationVsPORel.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpi.purchTwo.poCreationVsPORel.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpi.purchTwo.poCreationVsPORel.data.TwentyTwo_TwentyEight),
-                string.Format("{0:n0}", data.kpi.purchTwo.poCreationVsPORel.data.TwentyNine_ThirtyFive),
-                string.Format("{0:n0}", data.kpi.purchTwo.poCreationVsPORel.data.ThirtySix_FourtyTwo),
-                string.Format("{0:n0}", data.kpi.purchTwo.poCreationVsPORel.data.FourtyThree_FourtyNine),
-                string.Format("{0:n0}", data.kpi.purchTwo.poCreationVsPORel.data.Fifty_FiftySix),
-                string.Format("{0:n0}", data.kpi.purchTwo.poCreationVsPORel.data.GreaterThanEqualFiftySeven),
-                string.Format("{0:n0}", data.kpi.purchTwo.poCreationVsPORel.data.Total)
-            };
-            TemplateFourDataGrid.Rows.Add(row);
+            // Add the row to the data grid view control
+            TemplateFourDataGrid.Rows.Add(rowData);
 
-            row = new string[]{
-                data.kpi.purchTwo.Name,
-                data.kpi.purchTwo.categoryNames[(int)PurchTwo.CategorNames.poRelVsPOConf],
-                string.Format("{0:n}", data.kpi.purchTwo.poRelVsPOConf.data.Average),
-                string.Format("{0:n0}", data.kpi.purchTwo.poRelVsPOConf.data.LessThanZero),
-                string.Format("{0:n0}", data.kpi.purchTwo.poRelVsPOConf.data.One_Three),
-                string.Format("{0:n0}", data.kpi.purchTwo.poRelVsPOConf.data.Four_Seven),
-                string.Format("{0:n0}", data.kpi.purchTwo.poRelVsPOConf.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpi.purchTwo.poRelVsPOConf.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpi.purchTwo.poRelVsPOConf.data.TwentyTwo_TwentyEight),
-                string.Format("{0:n0}", data.kpi.purchTwo.poRelVsPOConf.data.TwentyNine_ThirtyFive),
-                string.Format("{0:n0}", data.kpi.purchTwo.poRelVsPOConf.data.ThirtySix_FourtyTwo),
-                string.Format("{0:n0}", data.kpi.purchTwo.poRelVsPOConf.data.FourtyThree_FourtyNine),
-                string.Format("{0:n0}", data.kpi.purchTwo.poRelVsPOConf.data.Fifty_FiftySix),
-                string.Format("{0:n0}", data.kpi.purchTwo.poRelVsPOConf.data.GreaterThanEqualFiftySeven),
-                string.Format("{0:n0}", data.kpi.purchTwo.poRelVsPOConf.data.Total),
-                string.Format("{0:n0}", data.kpi.purchTwo.poRelVsPOConf.data.PercentUnconf + "%")
-            };
-            TemplateFourDataGrid.Rows.Add(row);
+            // Get List of template one data for this KPA
+            rowData = new List<string>((Report.Indicators[(int)KpiOption.PurchTwo_PoCreationDateVsPoReleaseDate]
+                as Reporting.KeyPerformanceIndicators.PurchTwo.POCreationDateVsPOReleaseDate).GetTemplateData());
+
+            // Add the row to the data grid view control
+            TemplateFourDataGrid.Rows.Add(rowData);
+
+            // Get List of template one data for this KPA
+            rowData = new List<string>((Report.Indicators[(int)KpiOption.PurchTwo_PoReleaseDateVsPoConfirmationDate]
+                as Reporting.KeyPerformanceIndicators.PurchTwo.POReleaseDateVsPOConfirmationDate).GetTemplateData());
+
+            // Add the row to the data grid view control
+            TemplateFourDataGrid.Rows.Add(rowData);
         }
 
 
@@ -692,44 +520,19 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// </summary>
         private void LoadPurchSub()
         {
-            string[] row = new string[]{
-                data.kpi.purchSub.Name,
-                data.kpi.purchSub.categoryNames[(int)PurchSub.CategorNames.prRelVsPORel],
-                string.Format("{0:n}", data.kpi.purchSub.prRelVsPORel.data.Average),
-                string.Format("{0:n0}", data.kpi.purchSub.prRelVsPORel.data.LessThanZero),
-                string.Format("{0:n0}", data.kpi.purchSub.prRelVsPORel.data.One_Three),
-                string.Format("{0:n0}", data.kpi.purchSub.prRelVsPORel.data.Four_Seven),
-                string.Format("{0:n0}", data.kpi.purchSub.prRelVsPORel.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpi.purchSub.prRelVsPORel.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpi.purchSub.prRelVsPORel.data.TwentyTwo_TwentyEight),
-                string.Format("{0:n0}", data.kpi.purchSub.prRelVsPORel.data.TwentyNine_ThirtyFive),
-                string.Format("{0:n0}", data.kpi.purchSub.prRelVsPORel.data.ThirtySix_FourtyTwo),
-                string.Format("{0:n0}", data.kpi.purchSub.prRelVsPORel.data.FourtyThree_FourtyNine),
-                string.Format("{0:n0}", data.kpi.purchSub.prRelVsPORel.data.Fifty_FiftySix),
-                string.Format("{0:n0}", data.kpi.purchSub.prRelVsPORel.data.GreaterThanEqualFiftySeven),
-                string.Format("{0:n0}", data.kpi.purchSub.prRelVsPORel.data.Total)
-            };
-            TemplateFourDataGrid.Rows.Add(row);
+            // Get List of template one data for this KPA
+            List<string> rowData = new List<string>((Report.Indicators[(int)KpiOption.PurchSub_PrReleaseVsPoReleaseDate]
+                as Reporting.KeyPerformanceIndicators.PurchSub.PRReleaseDateVsPOReleaseDate).GetTemplateData());
 
-            row = new string[]{
-                data.kpi.purchSub.Name,
-                data.kpi.purchSub.categoryNames[(int)PurchSub.CategorNames.poCreateVsConfEntry],
-                string.Format("{0:n}", data.kpi.purchSub.poCreateVsConfEntry.data.Average),
-                string.Format("{0:n0}", data.kpi.purchSub.poCreateVsConfEntry.data.LessThanZero),
-                string.Format("{0:n0}", data.kpi.purchSub.poCreateVsConfEntry.data.One_Three),
-                string.Format("{0:n0}", data.kpi.purchSub.poCreateVsConfEntry.data.Four_Seven),
-                string.Format("{0:n0}", data.kpi.purchSub.poCreateVsConfEntry.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpi.purchSub.poCreateVsConfEntry.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpi.purchSub.poCreateVsConfEntry.data.TwentyTwo_TwentyEight),
-                string.Format("{0:n0}", data.kpi.purchSub.poCreateVsConfEntry.data.TwentyNine_ThirtyFive),
-                string.Format("{0:n0}", data.kpi.purchSub.poCreateVsConfEntry.data.ThirtySix_FourtyTwo),
-                string.Format("{0:n0}", data.kpi.purchSub.poCreateVsConfEntry.data.FourtyThree_FourtyNine),
-                string.Format("{0:n0}", data.kpi.purchSub.poCreateVsConfEntry.data.Fifty_FiftySix),
-                string.Format("{0:n0}", data.kpi.purchSub.poCreateVsConfEntry.data.GreaterThanEqualFiftySeven),
-                string.Format("{0:n0}", data.kpi.purchSub.poCreateVsConfEntry.data.Total),
-                string.Format("{0:n0}", data.kpi.purchSub.poCreateVsConfEntry.data.PercentUnconf + "%")
-            };
-            TemplateFourDataGrid.Rows.Add(row);
+            // Add the row to the data grid view control
+            TemplateFourDataGrid.Rows.Add(rowData);
+
+            // Get List of template one data for this KPA
+            rowData = new List<string>((Report.Indicators[(int)KpiOption.PurchSub_PoCreationDateVsConfirmationEntryDate]
+                as Reporting.KeyPerformanceIndicators.PurchSub.POCreationDateVsConfirmationEntry).GetTemplateData());
+
+            // Add the row to the data grid view control
+            TemplateFourDataGrid.Rows.Add(rowData);
         }
 
 
@@ -741,25 +544,12 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// </summary>
         private void LoadPurchTotal()
         {
-            string[] row = new string[]{
-                data.kpi.purchTotal.Name,
-                data.kpi.purchTotal.categoryNames[(int)PurchTotal.CategorNames.prRelConfEntry],
-                string.Format("{0:n}", data.kpi.purchTotal.prRelConfEntry.data.Average),
-                string.Format("{0:n0}", data.kpi.purchTotal.prRelConfEntry.data.LessThanZero),
-                string.Format("{0:n0}", data.kpi.purchTotal.prRelConfEntry.data.One_Three),
-                string.Format("{0:n0}", data.kpi.purchTotal.prRelConfEntry.data.Four_Seven),
-                string.Format("{0:n0}", data.kpi.purchTotal.prRelConfEntry.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpi.purchTotal.prRelConfEntry.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpi.purchTotal.prRelConfEntry.data.TwentyTwo_TwentyEight),
-                string.Format("{0:n0}", data.kpi.purchTotal.prRelConfEntry.data.TwentyNine_ThirtyFive),
-                string.Format("{0:n0}", data.kpi.purchTotal.prRelConfEntry.data.ThirtySix_FourtyTwo),
-                string.Format("{0:n0}", data.kpi.purchTotal.prRelConfEntry.data.FourtyThree_FourtyNine),
-                string.Format("{0:n0}", data.kpi.purchTotal.prRelConfEntry.data.Fifty_FiftySix),
-                string.Format("{0:n0}", data.kpi.purchTotal.prRelConfEntry.data.GreaterThanEqualFiftySeven),
-                string.Format("{0:n0}", data.kpi.purchTotal.prRelConfEntry.data.Total),
-                string.Format("{0:n0}", data.kpi.purchTotal.prRelConfEntry.data.PercentUnconf + "%")
-            };
-            TemplateFourDataGrid.Rows.Add(row);
+            // Get List of template one data for this KPA
+            List<string> rowData = new List<string>((Report.Indicators[(int)KpiOption.PurchTotal_PrReleaseDateToConfirmationEntryDate]
+                as Reporting.KeyPerformanceIndicators.PurchTotal.PRReleaseDateToConfirmationEntry).GetTemplateData());
+
+            // Add the row to the data grid view control
+            TemplateFourDataGrid.Rows.Add(rowData);
         }
 
 
@@ -771,24 +561,12 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// </summary>
         private void LoadPurchPlan()
         {
-            string[] row = new string[]{
-                data.kpi.purchPlan.Name,
-                data.kpi.purchPlan.categoryNames[(int)PurchPlan.CategorNames.poRelVsPRDelDate],
-                string.Format("{0:n}", data.kpi.purchPlan.poRelVsPRDelDate.data.Average),
-                string.Format("{0:n0}", data.kpi.purchPlan.poRelVsPRDelDate.data.LessThanZero),
-                string.Format("{0:n0}", data.kpi.purchPlan.poRelVsPRDelDate.data.One_Three),
-                string.Format("{0:n0}", data.kpi.purchPlan.poRelVsPRDelDate.data.Four_Seven),
-                string.Format("{0:n0}", data.kpi.purchPlan.poRelVsPRDelDate.data.Eight_Fourteen),
-                string.Format("{0:n0}", data.kpi.purchPlan.poRelVsPRDelDate.data.Fifteen_TwentyOne),
-                string.Format("{0:n0}", data.kpi.purchPlan.poRelVsPRDelDate.data.TwentyTwo_TwentyEight),
-                string.Format("{0:n0}", data.kpi.purchPlan.poRelVsPRDelDate.data.TwentyNine_ThirtyFive),
-                string.Format("{0:n0}", data.kpi.purchPlan.poRelVsPRDelDate.data.ThirtySix_FourtyTwo),
-                string.Format("{0:n0}", data.kpi.purchPlan.poRelVsPRDelDate.data.FourtyThree_FourtyNine),
-                string.Format("{0:n0}", data.kpi.purchPlan.poRelVsPRDelDate.data.Fifty_FiftySix),
-                string.Format("{0:n0}", data.kpi.purchPlan.poRelVsPRDelDate.data.GreaterThanEqualFiftySeven),
-                string.Format("{0:n0}", data.kpi.purchPlan.poRelVsPRDelDate.data.Total)
-            };
-            TemplateFourDataGrid.Rows.Add(row);
+            // Get List of template one data for this KPA
+            List<string> rowData = new List<string>((Report.Indicators[(int)KpiOption.PurchPlan_PoReleaseVsPrDeliveryDate]
+                as Reporting.KeyPerformanceIndicators.PurchPlan.POReleaseVsPRDeliveryDate).GetTemplateData());
+
+            // Add the row to the data grid view control
+            TemplateFourDataGrid.Rows.Add(rowData);
         }
 
 
@@ -800,95 +578,36 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// </summary>
         private void LoadOther()
         {
-            string[] row = new string[]{
-                data.kpi.other.Name,
-                data.kpi.other.categoryNames[(int)Other.CategorNames.prsCreated],
-                "$" + string.Format("{0:n}", data.kpi.other.prsCreated.data.TotalValue),
-                string.Format("{0:n0}", data.kpi.other.prsCreated.data.GreaterThanZeroWeeks),
-                string.Format("{0:n0}", data.kpi.other.prsCreated.data.GreaterThanMinusOneWeeks),
-                string.Format("{0:n0}", data.kpi.other.prsCreated.data.GreaterThanMinusTwoWeeks),
-                string.Format("{0:n0}", data.kpi.other.prsCreated.data.GreaterThanMinusThreeWeeks),
-                string.Format("{0:n0}", data.kpi.other.prsCreated.data.GreaterThanMinusFourWeeks),
-                string.Format("{0:n0}", data.kpi.other.prsCreated.data.GreaterThanMinusFiveWeeks),
-                string.Format("{0:n0}", data.kpi.other.prsCreated.data.GreaterThanMinusSixWeeks),
-                string.Format("{0:n0}", data.kpi.other.prsCreated.data.GreaterThanMinusSevenWeeks),
-                string.Format("{0:n0}", data.kpi.other.prsCreated.data.GreaterThanMinusEightWeeks),
-                string.Format("{0:n0}", data.kpi.other.prsCreated.data.LessThanEightWeeks),
-                string.Format("{0:n0}", data.kpi.other.prsCreated.data.Total)
-            };
-            TemplateFiveDataGrid.Rows.Add(row);
+            // Get List of template one data for this KPA
+            List<string> rowData = new List<string>((Report.Indicators[(int)KpiOption.Other_PrsCreated]
+                as Reporting.KeyPerformanceIndicators.Other.PRsCreated).GetTemplateData());
 
-            row = new string[]{
-                data.kpi.other.Name,
-                data.kpi.other.categoryNames[(int)Other.CategorNames.prsReleased],
-                "$" + string.Format("{0:n}", data.kpi.other.prsReleased.data.TotalValue),
-                string.Format("{0:n0}", data.kpi.other.prsReleased.data.GreaterThanZeroWeeks),
-                string.Format("{0:n0}", data.kpi.other.prsReleased.data.GreaterThanMinusOneWeeks),
-                string.Format("{0:n0}", data.kpi.other.prsReleased.data.GreaterThanMinusTwoWeeks),
-                string.Format("{0:n0}", data.kpi.other.prsReleased.data.GreaterThanMinusThreeWeeks),
-                string.Format("{0:n0}", data.kpi.other.prsReleased.data.GreaterThanMinusFourWeeks),
-                string.Format("{0:n0}", data.kpi.other.prsReleased.data.GreaterThanMinusFiveWeeks),
-                string.Format("{0:n0}", data.kpi.other.prsReleased.data.GreaterThanMinusSixWeeks),
-                string.Format("{0:n0}", data.kpi.other.prsReleased.data.GreaterThanMinusSevenWeeks),
-                string.Format("{0:n0}", data.kpi.other.prsReleased.data.GreaterThanMinusEightWeeks),
-                string.Format("{0:n0}", data.kpi.other.prsReleased.data.LessThanEightWeeks),
-                string.Format("{0:n0}", data.kpi.other.prsReleased.data.Total)
-            };
-            TemplateFiveDataGrid.Rows.Add(row);
+            // Add the row to the data grid view control
+            TemplateFourDataGrid.Rows.Add(rowData);
 
-            row = new string[]{
-                data.kpi.other.Name,
-                data.kpi.other.categoryNames[(int)Other.CategorNames.totalSpend],
-                "$" + string.Format("{0:n}", data.kpi.other.totalSpend.data.TotalValue),
-                "$" + string.Format("{0:n}", data.kpi.other.totalSpend.data.GreaterThanZeroWeeks),
-                "$" + string.Format("{0:n}", data.kpi.other.totalSpend.data.GreaterThanMinusOneWeeks),
-                "$" + string.Format("{0:n}", data.kpi.other.totalSpend.data.GreaterThanMinusTwoWeeks),
-                "$" + string.Format("{0:n}", data.kpi.other.totalSpend.data.GreaterThanMinusThreeWeeks),
-                "$" + string.Format("{0:n}", data.kpi.other.totalSpend.data.GreaterThanMinusFourWeeks),
-                "$" + string.Format("{0:n}", data.kpi.other.totalSpend.data.GreaterThanMinusFiveWeeks),
-                "$" + string.Format("{0:n}", data.kpi.other.totalSpend.data.GreaterThanMinusSixWeeks),
-                "$" + string.Format("{0:n}", data.kpi.other.totalSpend.data.GreaterThanMinusSevenWeeks),
-                "$" + string.Format("{0:n}", data.kpi.other.totalSpend.data.GreaterThanMinusEightWeeks),
-                "$" + string.Format("{0:n}", data.kpi.other.totalSpend.data.LessThanEightWeeks),
-                string.Format("{0:n0}", data.kpi.other.totalSpend.data.Total)
-            };
-            TemplateFiveDataGrid.Rows.Add(row);
+            rowData = new List<string>((Report.Indicators[(int)KpiOption.Other_PrsReleased]
+                as Reporting.KeyPerformanceIndicators.Other.PRsReleased).GetTemplateData());
 
-            row = new string[]{
-                data.kpi.other.Name,
-                data.kpi.other.categoryNames[(int)Other.CategorNames.prVsPOValue],
-                "$" + string.Format("{0:n}", data.kpi.other.prVsPOValue.data.TotalValue),
-                "$" + string.Format("{0:n}", data.kpi.other.prVsPOValue.data.GreaterThanZeroWeeks),
-                "$" + string.Format("{0:n}", data.kpi.other.prVsPOValue.data.GreaterThanMinusOneWeeks),
-                "$" + string.Format("{0:n}", data.kpi.other.prVsPOValue.data.GreaterThanMinusTwoWeeks),
-                "$" + string.Format("{0:n}", data.kpi.other.prVsPOValue.data.GreaterThanMinusThreeWeeks),
-                "$" + string.Format("{0:n}", data.kpi.other.prVsPOValue.data.GreaterThanMinusFourWeeks),
-                "$" + string.Format("{0:n}", data.kpi.other.prVsPOValue.data.GreaterThanMinusFiveWeeks),
-                "$" + string.Format("{0:n}", data.kpi.other.prVsPOValue.data.GreaterThanMinusSixWeeks),
-                "$" + string.Format("{0:n}", data.kpi.other.prVsPOValue.data.GreaterThanMinusSevenWeeks),
-                "$" + string.Format("{0:n}", data.kpi.other.prVsPOValue.data.GreaterThanMinusEightWeeks),
-                "$" + string.Format("{0:n}", data.kpi.other.prVsPOValue.data.LessThanEightWeeks),
-                string.Format("{0:n0}", data.kpi.other.prVsPOValue.data.Total)
-            };
-            TemplateFiveDataGrid.Rows.Add(row);
+            // Add the row to the data grid view control
+            TemplateFourDataGrid.Rows.Add(rowData);
 
-            row = new string[]{
-                data.kpi.other.Name,
-                data.kpi.other.categoryNames[(int)Other.CategorNames.hotJobPrs],
-                "$" + string.Format("{0:n}", data.kpi.other.hotJobPrs.data.TotalValue),
-                string.Format("{0:n0}", data.kpi.other.hotJobPrs.data.GreaterThanZeroWeeks),
-                string.Format("{0:n0}", data.kpi.other.hotJobPrs.data.GreaterThanMinusOneWeeks),
-                string.Format("{0:n0}", data.kpi.other.hotJobPrs.data.GreaterThanMinusTwoWeeks),
-                string.Format("{0:n0}", data.kpi.other.hotJobPrs.data.GreaterThanMinusThreeWeeks),
-                string.Format("{0:n0}", data.kpi.other.hotJobPrs.data.GreaterThanMinusFourWeeks),
-                string.Format("{0:n0}", data.kpi.other.hotJobPrs.data.GreaterThanMinusFiveWeeks),
-                string.Format("{0:n0}", data.kpi.other.hotJobPrs.data.GreaterThanMinusSixWeeks),
-                string.Format("{0:n0}", data.kpi.other.hotJobPrs.data.GreaterThanMinusSevenWeeks),
-                string.Format("{0:n0}", data.kpi.other.hotJobPrs.data.GreaterThanMinusEightWeeks),
-                string.Format("{0:n0}", data.kpi.other.hotJobPrs.data.LessThanEightWeeks),
-                string.Format("{0:n0}", data.kpi.other.hotJobPrs.data.Total)
-            };
-            TemplateFiveDataGrid.Rows.Add(row);
+            rowData = new List<string>((Report.Indicators[(int)KpiOption.Other_TotalSpend]
+                as Reporting.KeyPerformanceIndicators.Other.TotalSpend).GetTemplateData());
+
+            // Add the row to the data grid view control
+            TemplateFourDataGrid.Rows.Add(rowData);
+
+            rowData = new List<string>((Report.Indicators[(int)KpiOption.Other_PrValueVsPoValue]
+                as Reporting.KeyPerformanceIndicators.Other.PRValueVsPOValue).GetTemplateData());
+
+            // Add the row to the data grid view control
+            TemplateFourDataGrid.Rows.Add(rowData);
+
+            rowData = new List<string>((Report.Indicators[(int)KpiOption.Other_HotJobPRs]
+                 as Reporting.KeyPerformanceIndicators.Other.HotJobPRs).GetTemplateData());
+
+            // Add the row to the data grid view control
+            TemplateFourDataGrid.Rows.Add(rowData);
         }
 
 

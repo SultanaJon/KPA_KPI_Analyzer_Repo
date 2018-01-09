@@ -10,7 +10,7 @@ namespace KPA_KPI_Analyzer
     public partial class SplashScreen : Form
     {
         private bool runningThread = false;
-        ApplicationIOLibarary.ApplicationSettings settings = new ApplicationIOLibarary.ApplicationSettings();
+        ApplicationIOLibarary.ApplicationSettings settings = ApplicationIOLibarary.ApplicationSettings.AppSettingsInstance;
         bool settingsCreated = false;
         bool databaseCreated = false;
 
@@ -173,7 +173,7 @@ namespace KPA_KPI_Analyzer
                 {
                     try
                     {
-                        settings.Load(ref settings);
+                        settings.Load();
                         Application.Run(new KPA_KPI_UI(settings));
                     }
                     catch(Exception ex)
