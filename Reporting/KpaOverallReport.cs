@@ -158,6 +158,9 @@ namespace Reporting
         /// <param name="_report">The report that needs to be loaded</param>
         public void Load()
         {
+            dataJSONString = string.Empty;
+            ser = new System.Web.Script.Serialization.JavaScriptSerializer();
+
             try
             {
                 if (ReportingCountry.TargetCountry == Country.UnitedStates)
@@ -165,11 +168,11 @@ namespace Reporting
                 else
                     dataJSONString = File.ReadAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.MX_KPA_Overall]);
 
-                kpaOverallReportInstance = ser.Deserialize<KpaOverallReport>(dataJSONString);
+                kpaOverallReport = ser.Deserialize<List<KeyPerformanceAction>>(dataJSONString);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString(), "Overall DataReader Loading Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message.ToString(), "Overall Loading Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -179,9 +182,13 @@ namespace Reporting
         /// </summary>
         public void Save()
         {
+            dataJSONString = string.Empty;
+            ser = new System.Web.Script.Serialization.JavaScriptSerializer();
+
             try
             {
-                dataJSONString = ser.Serialize(this);
+                // Store the contents of the KPA Overall Report Instance
+                dataJSONString = ser.Serialize(kpaOverallReport);
                 if (ReportingCountry.TargetCountry == Country.UnitedStates)
                 {
                     File.WriteAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.US_KPA_Overall], dataJSONString);
@@ -193,7 +200,7 @@ namespace Reporting
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Overall DataReader Saving Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Overall Saving Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
