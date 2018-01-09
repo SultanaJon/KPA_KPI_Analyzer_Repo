@@ -208,6 +208,7 @@
             this.lbl_Performance = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel17 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.pnl_CategorySelectorButton = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.lbl_Category = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel29 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.panel8 = new System.Windows.Forms.Panel();
@@ -215,13 +216,11 @@
             this.bunifuCustomLabel21 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.FiltersTimer = new System.Windows.Forms.Timer(this.components);
             this.pnl_TopUIPanel = new System.Windows.Forms.Panel();
-            this.DataLoaderTimer = new System.Windows.Forms.Timer(this.components);
             this.dc_logo = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.dc_title = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.dc_titlePanel = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.be_mainUI = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.be_note = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.button2 = new System.Windows.Forms.Button();
             this.pnl_menuStrip.SuspendLayout();
             this.ms_applicaitonMenuStrip.SuspendLayout();
             this.pnl_topPanel.SuspendLayout();
@@ -2999,6 +2998,16 @@
             this.pnl_CategorySelectorButton.TabIndex = 0;
             this.pnl_CategorySelectorButton.Tag = "4";
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(345, 14);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // lbl_Category
             // 
             this.lbl_Category.AutoSize = true;
@@ -3067,10 +3076,6 @@
             this.pnl_TopUIPanel.Size = new System.Drawing.Size(1200, 26);
             this.pnl_TopUIPanel.TabIndex = 56;
             // 
-            // DataLoaderTimer
-            // 
-            this.DataLoaderTimer.Tick += new System.EventHandler(this.DataLoaderTimer_Tick);
-            // 
             // dc_logo
             // 
             this.dc_logo.Fixed = true;
@@ -3101,16 +3106,6 @@
             // 
             this.be_note.ElipseRadius = 5;
             this.be_note.TargetControl = this.pnl_note;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(345, 14);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // KPA_KPI_UI
             // 
@@ -3295,7 +3290,6 @@
         private Bunifu.Framework.UI.BunifuFlatButton btn_KPA;
         private Bunifu.Framework.UI.BunifuFlatButton btn_KPI;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Timer DataLoaderTimer;
         private CircularProgressBar.CircularProgressBar cpb_loadingScreenCircProgBar;
         private System.Windows.Forms.Panel panel8;
         private Bunifu.Framework.UI.BunifuCustomLabel lbl_topPanelNavPrpoDate;

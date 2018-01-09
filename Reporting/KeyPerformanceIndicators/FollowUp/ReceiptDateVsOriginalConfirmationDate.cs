@@ -5,6 +5,7 @@ using System.Data;
 using DataAccessLibrary;
 using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace Reporting.KeyPerformanceIndicators.FollowUp
 {
@@ -318,70 +319,78 @@ namespace Reporting.KeyPerformanceIndicators.FollowUp
         {
             double totalDays = 0;
 
-            foreach (DataRow dr in DatabaseManager.posRecCompDt.Rows)
+            try
             {
-                //Check if the datarow meets the conditions of any applied filters.
-                if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
+                foreach (DataRow dr in DatabaseManager.posRecCompDt.Rows)
                 {
-                    // This datarow dos not meet the conditions of the filters applied.
-                    continue;
+                    //Check if the datarow meets the conditions of any applied filters.
+                    if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
+                    {
+                        // This datarow dos not meet the conditions of the filters applied.
+                        continue;
+                    }
+
+                    #region EVASO_BUT_NO_REC_DATE_CHECK
+
+                    string[] strLastPORecDate = (dr["Last PO Rec#Date"].ToString()).Split('/');
+                    int lastPORecDtYear = int.Parse(strLastPORecDate[2]);
+                    int lastPORecDtMonth = int.Parse(strLastPORecDate[0]);
+                    int lastPORecDtDay = int.Parse(strLastPORecDate[1]);
+
+
+                    if (lastPORecDtYear == 0 && lastPORecDtMonth == 0 && lastPORecDtDay == 0)
+                    {
+                        // this po line or po in general may have been deleted.
+                        continue;
+                    }
+
+                    #endregion
+
+
+                    DateTime lastPORecDate = new DateTime(lastPORecDtYear, lastPORecDtMonth, lastPORecDtDay);
+
+                    string[] strFirstConfDate = (dr["1st Conf Date"].ToString()).Split('/');
+                    int firstConfYear = int.Parse(strFirstConfDate[2]);
+                    int firstConfMonth = int.Parse(strFirstConfDate[0]);
+                    int firstConfDay = int.Parse(strFirstConfDate[1]);
+
+                    if (firstConfYear == 0 && firstConfMonth == 0 && firstConfDay == 0)
+                    {
+                        UnconfirmedTotal++;
+                        TotalRecords++;
+                        continue;
+                    }
+                    else
+                    {
+                        firstConfYear = int.Parse(strFirstConfDate[2]);
+                        firstConfMonth = int.Parse(strFirstConfDate[0].TrimStart('0'));
+                        firstConfDay = int.Parse(strFirstConfDate[1].TrimStart('0'));
+                    }
+
+                    DateTime firstConfDate = new DateTime(firstConfYear, firstConfMonth, firstConfDay);
+                    double elapsedDays = (lastPORecDate - firstConfDate).TotalDays;
+                    totalDays += elapsedDays;
+
+                    // Apply the elpased days against the time span conditions
+                    TimeSpanDump(elapsedDays);
                 }
 
-                #region EVASO_BUT_NO_REC_DATE_CHECK
 
-                string[] strLastPORecDate = (dr["Last PO Rec#Date"].ToString()).Split('/');
-                int lastPORecDtYear = int.Parse(strLastPORecDate[2]);
-                int lastPORecDtMonth = int.Parse(strLastPORecDate[0]);
-                int lastPORecDtDay = int.Parse(strLastPORecDate[1]);
+                // Caclualte the percent unconfirmed
+                CalculatePercentUnconfirmed(UnconfirmedTotal);
 
 
-                if (lastPORecDtYear == 0 && lastPORecDtMonth == 0 && lastPORecDtDay == 0)
-                {
-                    // this po line or po in general may have been deleted.
-                    continue;
-                }
+                // Calculate the average for this KPI
+                CalculateAverage(totalDays);
 
-                #endregion
-
-
-                DateTime lastPORecDate = new DateTime(lastPORecDtYear, lastPORecDtMonth, lastPORecDtDay);
-
-                string[] strFirstConfDate = (dr["1st Conf Date"].ToString()).Split('/');
-                int firstConfYear = int.Parse(strFirstConfDate[2]);
-                int firstConfMonth = int.Parse(strFirstConfDate[0]);
-                int firstConfDay = int.Parse(strFirstConfDate[1]);
-
-                if (firstConfYear == 0 && firstConfMonth == 0 && firstConfDay == 0)
-                {
-                    UnconfirmedTotal++;
-                    TotalRecords++;
-                    continue;
-                }
-                else
-                {
-                    firstConfYear = int.Parse(strFirstConfDate[2]);
-                    firstConfMonth = int.Parse(strFirstConfDate[0].TrimStart('0'));
-                    firstConfDay = int.Parse(strFirstConfDate[1].TrimStart('0'));
-                }
-
-                DateTime firstConfDate = new DateTime(firstConfYear, firstConfMonth, firstConfDay);
-                double elapsedDays = (lastPORecDate - firstConfDate).TotalDays;
-                totalDays += elapsedDays;
-
-                // Apply the elpased days against the time span conditions
-                TimeSpanDump(elapsedDays);
+                // Calculate the percent favorable
+                CalculatePercentFavorable();
             }
-
-
-            // Caclualte the percent unconfirmed
-            CalculatePercentUnconfirmed(UnconfirmedTotal);
-
-
-            // Calculate the average for this KPI
-            CalculateAverage(totalDays);
-
-            // Calculate the percent favorable
-            CalculatePercentFavorable();
+            catch (Exception)
+            {
+                MessageBox.Show("An argument out of range exception was thrown", "Follow Up -> Receipt Date vs Original Confirmation Date - Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
         }
     }
 }

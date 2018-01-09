@@ -7,37 +7,13 @@ using KPA_KPI_Analyzer.Values;
 using Reporting;
 using System;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KPA_KPI_Analyzer
 {
     public partial class KPA_KPI_UI : Form
     {
-        #region FIELD DATA
-
-        Thread KPA_PlanThread;
-        Thread KPA_PurchThread;
-        Thread KPA_PurchSubThread;
-        Thread KPA_PurchTotalThread;
-        Thread KPA_FollowUpThread;
-        Thread KPA_HotJobs;
-        Thread KPA_ExcessStock_Stock;
-        Thread KPA_ExcessStock_OpenOrders;
-        Thread KPA_CurrPlanVsActualThread;
-        Thread tableLoadThread;
-        Thread KPI_PlanThread;
-        Thread KPI_PurchThread;
-        Thread KPI_FollowUpThread;
-        Thread KPI_PlanTwoThread;
-        Thread KPI_PurchTwoThread;
-        Thread KPI_PurchSubThread;
-        Thread KPI_PurchTotalThread;
-        Thread KPI_PurchPlanThread;
-        Thread KPI_OtherThread;
-
-        #endregion
-
-
         #region EVENTS
 
         /// <summary>
@@ -122,83 +98,149 @@ namespace KPA_KPI_Analyzer
 
 
 
-        /// <summary>
-        /// Once an import, filter apply and filter removal occur, this timer will initiate. The data contained within
-        /// the access database will then be loaded into the application where calculations will occur.        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void DataLoaderTimer_Tick(object sender, EventArgs e)
+
+        private async void LoadOverallData()
         {
             NavigationLocked = true;
 
-            if (!DatabaseLoadingUtils.DataLoadProcessStarted)
+            DatabaseLoadingUtils.DataLoadProcessStarted = true;
+            DatabaseLoadingUtils.KPITablesLoaded = false;
+            DatabaseLoadingUtils.ScheduledDataLoads = 19;
+
+            // A task to load the KPA Overall Data
+            Task kpaTask = new Task((reports[ReportingType.KpaOverall] as KpaOverallReport).RunReport);
+
+            // A task to load the KPA 
+            Task kpiTask = new Task((reports[ReportingType.KpiOverall] as KpiOverallReport).RunReport);
+
+            // A task to load the KPI tables
+            Task kpiTableTask = new Task(DatabaseManager.LoadKPITables);
+
+            // Start the KPA Overall Report calculations
+            kpaTask.Start();
+
+            // Start loading the KPI Tables
+            kpiTableTask.Start();
+
+
+            // Wait until the KPI Tables have been loaded then start loading the KPI Overall Data
+            await kpiTableTask;
+
+            // Start loading the KPI Overall Data
+            kpiTask.Start();
+
+            // Wait until the KPI Overall Data has been loaded.
+            await kpiTask;
+
+
+            DatabaseLoadingUtils.DataLoaded = false;
+            DatabaseManager.ReleaseKPITables();
+
+            if (!FilterData.ColumnFilters.Applied && !FilterData.DateFilters.Applied && !FilterData.AdvancedFilters.Applied)
             {
-                DatabaseLoadingUtils.DataLoadProcessStarted = true;
-                DatabaseLoadingUtils.KPITablesLoaded = false;
-                DatabaseLoadingUtils.ScheduledDataLoads = 19;
-                StartThreads(true, false);
+                // Save the overall data to a JSON file.
+                (reports[ReportingType.KpaOverall] as KpaOverallReport).Save();
+                (reports[ReportingType.KpiOverall] as KpiOverallReport).Save();
 
-
-                #region OVERALL REPLACEMENT
-                (reports[ReportingType.KpaOverall] as KpaOverallReport).RunReport();
-                #endregion
+                InitializeFilterLoadProcess();
+            }
+            else
+            {
+                ShowPage(Pages.Filters);
+                EnableClearFiltersButton();
+                NavigationLocked = false;
+                ms_applicaitonMenuStrip.Enabled = true;
             }
 
-
-            if (DatabaseLoadingUtils.KPITablesLoaded)
+            if (ReportingCountry.TargetCountry == Country.UnitedStates)
             {
-                DatabaseLoadingUtils.KPITablesLoaded = false;
-
-                StartThreads(false, true);
-
-                #region OVERALL REPLACEMENT
-                (reports[ReportingType.KpiOverall] as KpiOverallReport).RunReport();
-                #endregion
+                // Populate Dashboard with PRPO report date.
+                DateTime dt = GetLoadedUsPrpoReportDate();
+                settings.reportSettings.PrpoUsLastLoadedDate = DateTime.Now.Month.ToString() + " " + DateTime.Now.Day.ToString() + " " + DateTime.Now.Year.ToString();
+                lbl_topPanelNavPrpoDate.Text = dt.ToString("MMMM dd, yyyy");
+                Globals.PrpoGenerationDate = lbl_topPanelNavPrpoDate.Text;
             }
-
-            if (DatabaseLoadingUtils.DataLoaded)
+            else
             {
-                DatabaseLoadingUtils.DataLoaded = false;
-                DataLoaderTimer.Stop();
-                DatabaseManager.ReleaseKPITables();
-
-                if (!FilterData.ColumnFilters.Applied 
-                    && !FilterData.DateFilters.Applied 
-                    && !FilterData.AdvancedFilters.Applied)
-                {
-                    // Save the overall data to a JSON file.
-                    (reports[ReportingType.KpaOverall] as KpaOverallReport).Save();
-                    (reports[ReportingType.KpiOverall] as KpiOverallReport).Save();
-
-                    InitializeFilterLoadProcess();
-                }
-                else
-                {
-                    ShowPage(Pages.Filters);
-                    EnableClearFiltersButton();
-                    NavigationLocked = false;
-                    ms_applicaitonMenuStrip.Enabled = true;
-                }
-
-                if (ReportingCountry.TargetCountry == Country.UnitedStates)
-                {
-                    // Populate Dashboard with PRPO report date.
-                    DateTime dt = GetLoadedUsPrpoReportDate();
-                    settings.reportSettings.PrpoUsLastLoadedDate = DateTime.Now.Month.ToString() + " " + DateTime.Now.Day.ToString() + " " + DateTime.Now.Year.ToString();
-                    lbl_topPanelNavPrpoDate.Text = dt.ToString("MMMM dd, yyyy");
-                    Globals.PrpoGenerationDate = lbl_topPanelNavPrpoDate.Text;
-                }
-                else
-                {
-                    // Populate Dashboard with PRPO report date
-                    DateTime dt = GetLoadedMxPrpoReportDate();
-                    settings.reportSettings.PrpoMxLastLoadedDate = DateTime.Now.Month.ToString() + " " + DateTime.Now.Day.ToString() + " " + DateTime.Now.Year.ToString();
-                    lbl_topPanelNavPrpoDate.Text = dt.ToString("MMMM dd, yyyy");
-                    Globals.PrpoGenerationDate = lbl_topPanelNavPrpoDate.Text;
-                }
+                // Populate Dashboard with PRPO report date
+                DateTime dt = GetLoadedMxPrpoReportDate();
+                settings.reportSettings.PrpoMxLastLoadedDate = DateTime.Now.Month.ToString() + " " + DateTime.Now.Day.ToString() + " " + DateTime.Now.Year.ToString();
+                lbl_topPanelNavPrpoDate.Text = dt.ToString("MMMM dd, yyyy");
+                Globals.PrpoGenerationDate = lbl_topPanelNavPrpoDate.Text;
             }
         }
-        
+
+
+
+        ///// <summary>
+        ///// Once an import, filter apply and filter removal occur, this timer will initiate. The data contained within
+        ///// the access database will then be loaded into the application where calculations will occur.        /// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private void DataLoaderTimer_Tick(object sender, EventArgs e)
+        //{
+        //    NavigationLocked = true;
+
+        //    if (!DatabaseLoadingUtils.DataLoadProcessStarted)
+        //    {
+        //        DatabaseLoadingUtils.DataLoadProcessStarted = true;
+        //        DatabaseLoadingUtils.KPITablesLoaded = false;
+        //        DatabaseLoadingUtils.ScheduledDataLoads = 19;
+
+        //        (reports[ReportingType.KpaOverall] as KpaOverallReport).RunReport();
+        //    }
+
+
+        //    if (DatabaseLoadingUtils.KPITablesLoaded)
+        //    {
+        //        DatabaseLoadingUtils.KPITablesLoaded = false;
+
+        //        (reports[ReportingType.KpiOverall] as KpiOverallReport).RunReport();
+        //    }
+
+        //    if (DatabaseLoadingUtils.DataLoaded)
+        //    {
+        //        DatabaseLoadingUtils.DataLoaded = false;
+        //        DataLoaderTimer.Stop();
+        //        DatabaseManager.ReleaseKPITables();
+
+        //        if (!FilterData.ColumnFilters.Applied
+        //            && !FilterData.DateFilters.Applied
+        //            && !FilterData.AdvancedFilters.Applied)
+        //        {
+        //            // Save the overall data to a JSON file.
+        //            (reports[ReportingType.KpaOverall] as KpaOverallReport).Save();
+        //            (reports[ReportingType.KpiOverall] as KpiOverallReport).Save();
+
+        //            InitializeFilterLoadProcess();
+        //        }
+        //        else
+        //        {
+        //            ShowPage(Pages.Filters);
+        //            EnableClearFiltersButton();
+        //            NavigationLocked = false;
+        //            ms_applicaitonMenuStrip.Enabled = true;
+        //        }
+
+        //        if (ReportingCountry.TargetCountry == Country.UnitedStates)
+        //        {
+        //            // Populate Dashboard with PRPO report date.
+        //            DateTime dt = GetLoadedUsPrpoReportDate();
+        //            settings.reportSettings.PrpoUsLastLoadedDate = DateTime.Now.Month.ToString() + " " + DateTime.Now.Day.ToString() + " " + DateTime.Now.Year.ToString();
+        //            lbl_topPanelNavPrpoDate.Text = dt.ToString("MMMM dd, yyyy");
+        //            Globals.PrpoGenerationDate = lbl_topPanelNavPrpoDate.Text;
+        //        }
+        //        else
+        //        {
+        //            // Populate Dashboard with PRPO report date
+        //            DateTime dt = GetLoadedMxPrpoReportDate();
+        //            settings.reportSettings.PrpoMxLastLoadedDate = DateTime.Now.Month.ToString() + " " + DateTime.Now.Day.ToString() + " " + DateTime.Now.Year.ToString();
+        //            lbl_topPanelNavPrpoDate.Text = dt.ToString("MMMM dd, yyyy");
+        //            Globals.PrpoGenerationDate = lbl_topPanelNavPrpoDate.Text;
+        //        }
+        //    }
+        //}
+
 
 
         /// <summary>
@@ -237,69 +279,69 @@ namespace KPA_KPI_Analyzer
 
         #region HELPER FUNCTIONS
 
-        /// <summary>
-        /// Create the threads that will load the data into the application
-        /// </summary>
-        private void CreateThreads()
-        {
-            KPA_PlanThread = new Thread(() => { try { overallData.kpa.plan.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPA_PurchThread = new Thread(() => { try { overallData.kpa.purch.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPA_PurchSubThread = new Thread(() => { try { overallData.kpa.purchSub.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPA_PurchTotalThread = new Thread(() => { try { overallData.kpa.purchTotal.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPA_FollowUpThread = new Thread(() => { try { overallData.kpa.followUp.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPA_HotJobs = new Thread(() => { try { overallData.kpa.hotJobs.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPA_ExcessStock_Stock = new Thread(() => { try { overallData.kpa.excessStockStock.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPA_ExcessStock_OpenOrders = new Thread(() => { try { overallData.kpa.excessStockOpenOrders.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPA_CurrPlanVsActualThread = new Thread(() => { try { overallData.kpa.currPlanVsActual.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+        ///// <summary>
+        ///// Create the threads that will load the data into the application
+        ///// </summary>
+        //private void CreateThreads()
+        //{
+        //    KPA_PlanThread = new Thread(() => { try { overallData.kpa.plan.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+        //    KPA_PurchThread = new Thread(() => { try { overallData.kpa.purch.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+        //    KPA_PurchSubThread = new Thread(() => { try { overallData.kpa.purchSub.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+        //    KPA_PurchTotalThread = new Thread(() => { try { overallData.kpa.purchTotal.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+        //    KPA_FollowUpThread = new Thread(() => { try { overallData.kpa.followUp.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+        //    KPA_HotJobs = new Thread(() => { try { overallData.kpa.hotJobs.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+        //    KPA_ExcessStock_Stock = new Thread(() => { try { overallData.kpa.excessStockStock.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+        //    KPA_ExcessStock_OpenOrders = new Thread(() => { try { overallData.kpa.excessStockOpenOrders.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+        //    KPA_CurrPlanVsActualThread = new Thread(() => { try { overallData.kpa.currPlanVsActual.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
 
-            tableLoadThread = new Thread(() => { try { DatabaseManager.LoadKPITables(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPI_PlanThread = new Thread(() => { try { overallData.kpi.plan.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPI_PurchThread = new Thread(() => { try { overallData.kpi.purch.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPI_FollowUpThread = new Thread(() => { try { overallData.kpi.followUp.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPI_PlanTwoThread = new Thread(() => { try { overallData.kpi.planTwo.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPI_PurchTwoThread = new Thread(() => { try { overallData.kpi.purchTwo.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPI_PurchSubThread = new Thread(() => { try { overallData.kpi.purchSub.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPI_PurchTotalThread = new Thread(() => { try { overallData.kpi.purchTotal.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPI_PurchPlanThread = new Thread(() => { try { overallData.kpi.purchPlan.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-            KPI_OtherThread = new Thread(() => { try { overallData.kpi.other.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
-        }
+        //    tableLoadThread = new Thread(() => { try { DatabaseManager.LoadKPITables(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+        //    KPI_PlanThread = new Thread(() => { try { overallData.kpi.plan.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+        //    KPI_PurchThread = new Thread(() => { try { overallData.kpi.purch.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+        //    KPI_FollowUpThread = new Thread(() => { try { overallData.kpi.followUp.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+        //    KPI_PlanTwoThread = new Thread(() => { try { overallData.kpi.planTwo.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+        //    KPI_PurchTwoThread = new Thread(() => { try { overallData.kpi.purchTwo.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+        //    KPI_PurchSubThread = new Thread(() => { try { overallData.kpi.purchSub.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+        //    KPI_PurchTotalThread = new Thread(() => { try { overallData.kpi.purchTotal.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+        //    KPI_PurchPlanThread = new Thread(() => { try { overallData.kpi.purchPlan.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+        //    KPI_OtherThread = new Thread(() => { try { overallData.kpi.other.LoadData(); } catch (Exception) { ShowPage(Pages.DragDropDash); } });
+        //}
 
         
-        /// <summary>
-        /// Starts the threads that will load perform the calculations on the data.
-        /// </summary>
-        /// <param name="_startKpaThreads">Indicates whether or not the KPA threads should be started.</param>
-        /// <param name="_startKpiThreads">Indicates whether or not the KPI threads should be started.</param>
-        private void StartThreads(bool _startKpaThreads, bool _startKpiThreads)
-        {
-            if (_startKpaThreads)
-            {
-                KPA_PlanThread.Start();
-                KPA_PurchThread.Start();
-                KPA_PurchSubThread.Start();
-                KPA_PurchTotalThread.Start();
-                KPA_FollowUpThread.Start();
-                KPA_HotJobs.Start();
-                KPA_ExcessStock_Stock.Start();
-                KPA_ExcessStock_OpenOrders.Start();
-                KPA_CurrPlanVsActualThread.Start();
-                tableLoadThread.Start();
-            }
+        ///// <summary>
+        ///// Starts the threads that will load perform the calculations on the data.
+        ///// </summary>
+        ///// <param name="_startKpaThreads">Indicates whether or not the KPA threads should be started.</param>
+        ///// <param name="_startKpiThreads">Indicates whether or not the KPI threads should be started.</param>
+        //private void StartThreads(bool _startKpaThreads, bool _startKpiThreads)
+        //{
+        //    if (_startKpaThreads)
+        //    {
+        //        KPA_PlanThread.Start();
+        //        KPA_PurchThread.Start();
+        //        KPA_PurchSubThread.Start();
+        //        KPA_PurchTotalThread.Start();
+        //        KPA_FollowUpThread.Start();
+        //        KPA_HotJobs.Start();
+        //        KPA_ExcessStock_Stock.Start();
+        //        KPA_ExcessStock_OpenOrders.Start();
+        //        KPA_CurrPlanVsActualThread.Start();
+        //        tableLoadThread.Start();
+        //    }
 
 
-            if (_startKpiThreads)
-            {
-                KPI_PlanThread.Start();
-                KPI_PurchThread.Start();
-                KPI_FollowUpThread.Start();
-                KPI_PlanTwoThread.Start();
-                KPI_PurchTwoThread.Start();
-                KPI_PurchSubThread.Start();
-                KPI_PurchTotalThread.Start();
-                KPI_PurchPlanThread.Start();
-                KPI_OtherThread.Start();
-            }
-        }
+        //    if (_startKpiThreads)
+        //    {
+        //        KPI_PlanThread.Start();
+        //        KPI_PurchThread.Start();
+        //        KPI_FollowUpThread.Start();
+        //        KPI_PlanTwoThread.Start();
+        //        KPI_PurchTwoThread.Start();
+        //        KPI_PurchSubThread.Start();
+        //        KPI_PurchTotalThread.Start();
+        //        KPI_PurchPlanThread.Start();
+        //        KPI_OtherThread.Start();
+        //    }
+        //}
 
 
         /// <summary>
@@ -498,9 +540,10 @@ namespace KPA_KPI_Analyzer
             DatabaseLoadingUtils.CompletedDataLoads = 0;
             DatabaseLoadingUtils.ScheduledDataLoads = 0;
 
-            CreateThreads();
-            RenewDataLoadTimer();
-            DataLoaderTimer.Start();
+            //RenewDataLoadTimer();
+
+            // Start loading the overall data
+            LoadOverallData();
         }
 
         #endregion

@@ -5,6 +5,7 @@ using System.Data;
 using DataAccessLibrary;
 using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace Reporting.KeyPerformanceIndicators.FollowUp
 {
@@ -267,68 +268,76 @@ namespace Reporting.KeyPerformanceIndicators.FollowUp
         {
             double totalDays = 0;
 
-            foreach (DataRow dr in DatabaseManager.posRecCompDt.Rows)
+            try
             {
-                //Check if the datarow meets the conditions of any applied filters.
-                if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
+                foreach (DataRow dr in DatabaseManager.posRecCompDt.Rows)
                 {
-                    // This datarow dos not meet the conditions of the filters applied.
-                    continue;
+                    //Check if the datarow meets the conditions of any applied filters.
+                    if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
+                    {
+                        // This datarow dos not meet the conditions of the filters applied.
+                        continue;
+                    }
+
+
+                    #region EVASO_BUT_NO_REC_DATE_CHECK
+
+                    string[] strLastPORecDate = (dr["Last PO Rec#Date"].ToString()).Split('/');
+                    int lastPORecDtYear = int.Parse(strLastPORecDate[2]);
+                    int lastPORecDtMonth = int.Parse(strLastPORecDate[0]);
+                    int lastPORecDtDay = int.Parse(strLastPORecDate[1]);
+
+
+                    if (lastPORecDtYear == 0 && lastPORecDtMonth == 0 && lastPORecDtDay == 0)
+                    {
+                        // this po line or po in general may have been deleted.
+                        continue;
+                    }
+
+                    #endregion
+
+
+                    DateTime lastPORecDate = new DateTime(lastPORecDtYear, lastPORecDtMonth, lastPORecDtDay);
+
+                    string[] strCurrPlanDate = (dr["Rescheduling date"].ToString()).Split('/');
+                    int currConfYear = int.Parse(strCurrPlanDate[2]);
+                    int currConfMonth = int.Parse(strCurrPlanDate[0]);
+                    int currConfDay = int.Parse(strCurrPlanDate[1]);
+
+                    if (currConfYear == 0 && currConfMonth == 0 && currConfDay == 0)
+                    {
+                        string[] strNewCurrConfDate = (dr["Delivery Date"].ToString()).Split('/');
+                        currConfYear = int.Parse(strNewCurrConfDate[2]);
+                        currConfMonth = int.Parse(strNewCurrConfDate[0].TrimStart('0'));
+                        currConfDay = int.Parse(strNewCurrConfDate[1].TrimStart('0'));
+                    }
+                    else
+                    {
+                        currConfYear = int.Parse(strCurrPlanDate[2]);
+                        currConfMonth = int.Parse(strCurrPlanDate[0].TrimStart('0'));
+                        currConfDay = int.Parse(strCurrPlanDate[1].TrimStart('0'));
+                    }
+
+                    DateTime currPlanDate = new DateTime(currConfYear, currConfMonth, currConfDay);
+
+                    double elapsedDays = (lastPORecDate - currPlanDate).TotalDays;
+                    totalDays += elapsedDays;
+
+                    // Apply the elpased days against the time span conditions
+                    TimeSpanDump(elapsedDays);
                 }
 
+                // Calculate the average for this KPI
+                CalculateAverage(totalDays);
 
-                #region EVASO_BUT_NO_REC_DATE_CHECK
-
-                string[] strLastPORecDate = (dr["Last PO Rec#Date"].ToString()).Split('/');
-                int lastPORecDtYear = int.Parse(strLastPORecDate[2]);
-                int lastPORecDtMonth = int.Parse(strLastPORecDate[0]);
-                int lastPORecDtDay = int.Parse(strLastPORecDate[1]);
-
-
-                if (lastPORecDtYear == 0 && lastPORecDtMonth == 0 && lastPORecDtDay == 0)
-                {
-                    // this po line or po in general may have been deleted.
-                    continue;
-                }
-
-                #endregion
-
-
-                DateTime lastPORecDate = new DateTime(lastPORecDtYear, lastPORecDtMonth, lastPORecDtDay);
-
-                string[] strCurrPlanDate = (dr["Rescheduling date"].ToString()).Split('/');
-                int currConfYear = int.Parse(strCurrPlanDate[2]);
-                int currConfMonth = int.Parse(strCurrPlanDate[0]);
-                int currConfDay = int.Parse(strCurrPlanDate[1]);
-
-                if (currConfYear == 0 && currConfMonth == 0 && currConfDay == 0)
-                {
-                    string[] strNewCurrConfDate = (dr["Delivery Date"].ToString()).Split('/');
-                    currConfYear = int.Parse(strNewCurrConfDate[2]);
-                    currConfMonth = int.Parse(strNewCurrConfDate[0].TrimStart('0'));
-                    currConfDay = int.Parse(strNewCurrConfDate[1].TrimStart('0'));
-                }
-                else
-                {
-                    currConfYear = int.Parse(strCurrPlanDate[2]);
-                    currConfMonth = int.Parse(strCurrPlanDate[0].TrimStart('0'));
-                    currConfDay = int.Parse(strCurrPlanDate[1].TrimStart('0'));
-                }
-
-                DateTime currPlanDate = new DateTime(currConfYear, currConfMonth, currConfDay);
-
-                double elapsedDays = (lastPORecDate - currPlanDate).TotalDays;
-                totalDays += elapsedDays;
-
-                // Apply the elpased days against the time span conditions
-                TimeSpanDump(elapsedDays);
+                // Calculate the percent favorable
+                CalculatePercentFavorable();
             }
-
-            // Calculate the average for this KPI
-            CalculateAverage(totalDays);
-
-            // Calculate the percent favorable
-            CalculatePercentFavorable();
+            catch (Exception)
+            {
+                MessageBox.Show("An argument out of range exception was thrown", "Follow Up -> Receipt Date vs Current Plan Date - Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
         }
     }
 }

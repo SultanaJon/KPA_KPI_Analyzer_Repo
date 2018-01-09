@@ -131,15 +131,12 @@ namespace Reporting
         {
             foreach (KeyPerformanceAction action in kpaOverallReport)
             {
-                // We want to run each kpa in an asyncronous method
-                Task task = new Task(action.RunOverallReport);
-
                 // This KPA needs information from another KPA.
                 if (action is ConfirmedDateForUpcomingDeliveries)
                     continue;
 
-                // Start running the method in the thread pool
-                task.Start();
+                // Run the KPAs Overall Report
+                action.RunOverallReport();
             }
 
             // Get the lessThanZero data from Due Today or Late to confirmed
@@ -148,11 +145,8 @@ namespace Reporting
             // supply Confirmed date for upcoming deliveries the above data
             (kpaOverallReport[(int)KpaOption.FollowUp_ConfirmedDateForUpcomingDeliveries] as ConfirmedDateForUpcomingDeliveries).DueTodayLateToConfirmedLessThanZeroDueToday = lessThanEqualToZero;
 
-            // apply the method in the thread pool
-            Task taskTwo = new Task(kpaOverallReport[(int)KpaOption.FollowUp_ConfirmedDateForUpcomingDeliveries].RunOverallReport);
-
-            // Run the report for upcoming deliveries
-            taskTwo.Start();
+            // Run the overall report for Follow up -> Confirmed Date for upcoming deliveries
+            kpaOverallReport[(int)KpaOption.FollowUp_ConfirmedDateForUpcomingDeliveries].RunOverallReport();
         }
 
 

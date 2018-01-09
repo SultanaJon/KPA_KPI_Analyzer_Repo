@@ -504,7 +504,7 @@ namespace KPA_KPI_Analyzer
         private void InitializeProgramEvents()
         {
             // Setup callback functions for Dataloading.
-            DatabaseManager.RenewDataLoadTimer += RenewDataLoadTimer;
+            //DatabaseManager.RenewDataLoadTimer += RenewDataLoadTimer;
             DatabaseManager.DisplayDragDropPage += ShowDragDropPage;
 
             // Setup callback functions for Drag & Drop screen
@@ -859,17 +859,17 @@ namespace KPA_KPI_Analyzer
 
 
 
-        /// <summary>
-        /// This event will resubscribe the DataLoaderTimer.Tick event.
-        /// </summary>
-        /// <remarks>
-        /// This had to be done because after the DataLoaderTimer would run a couple of times its event would no longer fire as if it was unsubscribed somehow.
-        /// </remarks>
-        public void RenewDataLoadTimer()
-        {
-            DataLoaderTimer.Tick -= DataLoaderTimer_Tick;
-            DataLoaderTimer.Tick += DataLoaderTimer_Tick;
-        }
+        ///// <summary>
+        ///// This event will resubscribe the DataLoaderTimer.Tick event.
+        ///// </summary>
+        ///// <remarks>
+        ///// This had to be done because after the DataLoaderTimer would run a couple of times its event would no longer fire as if it was unsubscribed somehow.
+        ///// </remarks>
+        //public void RenewDataLoadTimer()
+        //{
+        //    DataLoaderTimer.Tick -= DataLoaderTimer_Tick;
+        //    DataLoaderTimer.Tick += DataLoaderTimer_Tick;
+        //}
 
 
 

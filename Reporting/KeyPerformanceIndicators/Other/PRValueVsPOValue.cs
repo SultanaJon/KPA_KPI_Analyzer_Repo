@@ -8,6 +8,7 @@ using Reporting.Selective;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Windows.Forms;
 
 namespace Reporting.KeyPerformanceIndicators.Other
 {
@@ -196,31 +197,39 @@ namespace Reporting.KeyPerformanceIndicators.Other
         /// </summary>
         public override void RunOverallReport()
         {
-            foreach (DataRow dr in DatabaseManager.prsOnPOsDt.Rows)
+            try
             {
-                //Check if the datarow meets the conditions of any applied filters.
-                if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
+                foreach (DataRow dr in DatabaseManager.prsOnPOsDt.Rows)
                 {
-                    // This datarow dos not meet the conditions of the filters applied.
-                    continue;
+                    //Check if the datarow meets the conditions of any applied filters.
+                    if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
+                    {
+                        // This datarow dos not meet the conditions of the filters applied.
+                        continue;
+                    }
+
+                    string[] strPoCreateDt = (dr["PO Line Creat#DT"].ToString()).Split('/');
+                    int poCreateDtYear = int.Parse(strPoCreateDt[2]);
+                    int poCreateDtMonth = int.Parse(strPoCreateDt[0].TrimStart('0'));
+                    int poCreateDtDay = int.Parse(strPoCreateDt[1].TrimStart('0'));
+
+                    DateTime poCreateDate = new DateTime(poCreateDtYear, poCreateDtMonth, poCreateDtDay);
+
+                    TotalValue += (decimal.Parse(dr["PO Value"].ToString()) - decimal.Parse(dr["PR Pos#Value"].ToString()));
+
+                    DateTime today = DateTime.Now.Date;
+                    double elapsedDays = (poCreateDate - today).TotalDays;
+                    double weeks = Math.Floor(elapsedDays / 7);
+
+
+                    // Apply the weeks against the time span conditions
+                    TimeSpanDump(weeks, dr);
                 }
-
-                string[] strPoCreateDt = (dr["PO Line Creat#DT"].ToString()).Split('/');
-                int poCreateDtYear = int.Parse(strPoCreateDt[2]);
-                int poCreateDtMonth = int.Parse(strPoCreateDt[0].TrimStart('0'));
-                int poCreateDtDay = int.Parse(strPoCreateDt[1].TrimStart('0'));
-
-                DateTime poCreateDate = new DateTime(poCreateDtYear, poCreateDtMonth, poCreateDtDay);
-
-                TotalValue += (decimal.Parse(dr["PO Value"].ToString()) - decimal.Parse(dr["PR Pos#Value"].ToString()));
-
-                DateTime today = DateTime.Now.Date;
-                double elapsedDays = (poCreateDate - today).TotalDays;
-                double weeks = Math.Floor(elapsedDays / 7);
-
-
-                // Apply the weeks against the time span conditions
-                TimeSpanDump(weeks, dr);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("An argument out of range exception was thrown", "Other -> PR Value vs PO Value- Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
             }
         }
     }

@@ -247,9 +247,14 @@ namespace Reporting.KeyPerformanceActions.PurchTotal
                     TimeSpanDump(elapsedDays);
                 }
 
+                // Calculate the average for this KPA
                 CalculateAverage(totalDays);
+
+                dt.Rows.Clear();
+                dt = null;
+                GC.Collect();
             }
-            catch (ArgumentOutOfRangeException)
+            catch (Exception)
             {
                 MessageBox.Show("An argument out of range exception was thrown", "Purch Total -> PR Release To Confirmation Entry - Average Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();

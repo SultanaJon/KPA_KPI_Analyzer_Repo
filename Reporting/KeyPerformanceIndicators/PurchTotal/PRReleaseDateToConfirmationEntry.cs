@@ -5,6 +5,7 @@ using System;
 using System.Data;
 using DataAccessLibrary;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace Reporting.KeyPerformanceIndicators.PurchTotal
 {
@@ -292,69 +293,77 @@ namespace Reporting.KeyPerformanceIndicators.PurchTotal
         {
             double totalDays = 0;
 
-            foreach (DataRow dr in DatabaseManager.prsOnPOsDt.Rows)
+            try
             {
-                //Check if the datarow meets the conditions of any applied filters.
-                if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
+                foreach (DataRow dr in DatabaseManager.prsOnPOsDt.Rows)
                 {
-                    // This datarow dos not meet the conditions of the filters applied.
-                    continue;
+                    //Check if the datarow meets the conditions of any applied filters.
+                    if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
+                    {
+                        // This datarow dos not meet the conditions of the filters applied.
+                        continue;
+                    }
+
+                    string[] strfirstConfCreateDt = (dr["1st Conf Creation Da"].ToString()).Split('/');
+                    int firstConfCreateYear = int.Parse(strfirstConfCreateDt[2]);
+                    int firstConfCreateMonth = int.Parse(strfirstConfCreateDt[0]);
+                    int firstConfCreateDay = int.Parse(strfirstConfCreateDt[1]);
+
+                    if (firstConfCreateYear == 0 && firstConfCreateMonth == 0 & firstConfCreateDay == 0)
+                    {
+                        UnconfirmedTotal++;
+                        TotalRecords++;
+                        continue;
+                    }
+                    else
+                    {
+                        firstConfCreateYear = int.Parse(strfirstConfCreateDt[2]);
+                        firstConfCreateMonth = int.Parse(strfirstConfCreateDt[0].TrimStart('0'));
+                        firstConfCreateDay = int.Parse(strfirstConfCreateDt[1].TrimStart('0'));
+                    }
+
+                    DateTime poLineConfCreateDate = new DateTime(firstConfCreateYear, firstConfCreateMonth, firstConfCreateDay);
+
+                    #region EVASO_BUT_NOT_FULLY_RELEASED_CHECK
+
+                    string[] strPrFullyRelDate = (dr["PR Fully Rel Date"].ToString()).Split('/');
+                    int prFullyRelYear = int.Parse(strPrFullyRelDate[2]);
+                    int prFullyRelMonth = int.Parse(strPrFullyRelDate[0]);
+                    int prFullyRelDay = int.Parse(strPrFullyRelDate[1]);
+
+
+                    if (prFullyRelYear == 0 && prFullyRelMonth == 0 && prFullyRelDay == 0)
+                    {
+                        // This PR line or PR in general might have been delted
+                        continue;
+                    }
+
+
+                    #endregion
+
+
+                    DateTime prFullyRelDt = new DateTime(prFullyRelYear, prFullyRelMonth, prFullyRelDay);
+                    double elapsedDays = (poLineConfCreateDate - prFullyRelDt).TotalDays;
+                    totalDays += elapsedDays;
+                    elapsedDays = (int)elapsedDays;
+
+
+                    // Apply the elapsed days against the time span conditions
+                    TimeSpanDump(elapsedDays);
+
                 }
 
-                string[] strfirstConfCreateDt = (dr["1st Conf Creation Da"].ToString()).Split('/');
-                int firstConfCreateYear = int.Parse(strfirstConfCreateDt[2]);
-                int firstConfCreateMonth = int.Parse(strfirstConfCreateDt[0]);
-                int firstConfCreateDay = int.Parse(strfirstConfCreateDt[1]);
+                // Calculate the percent uncofirmed for this KPI
+                CalculatePercentUnconfirmed(UnconfirmedTotal);
 
-                if (firstConfCreateYear == 0 && firstConfCreateMonth == 0 & firstConfCreateDay == 0)
-                {
-                    UnconfirmedTotal++;
-                    TotalRecords++;
-                    continue;
-                }
-                else
-                {
-                    firstConfCreateYear = int.Parse(strfirstConfCreateDt[2]);
-                    firstConfCreateMonth = int.Parse(strfirstConfCreateDt[0].TrimStart('0'));
-                    firstConfCreateDay = int.Parse(strfirstConfCreateDt[1].TrimStart('0'));
-                }
-
-                DateTime poLineConfCreateDate = new DateTime(firstConfCreateYear, firstConfCreateMonth, firstConfCreateDay);
-
-                #region EVASO_BUT_NOT_FULLY_RELEASED_CHECK
-
-                string[] strPrFullyRelDate = (dr["PR Fully Rel Date"].ToString()).Split('/');
-                int prFullyRelYear = int.Parse(strPrFullyRelDate[2]);
-                int prFullyRelMonth = int.Parse(strPrFullyRelDate[0]);
-                int prFullyRelDay = int.Parse(strPrFullyRelDate[1]);
-
-
-                if (prFullyRelYear == 0 && prFullyRelMonth == 0 && prFullyRelDay == 0)
-                {
-                    // This PR line or PR in general might have been delted
-                    continue;
-                }
-
-
-                #endregion
-
-
-                DateTime prFullyRelDt = new DateTime(prFullyRelYear, prFullyRelMonth, prFullyRelDay);
-                double elapsedDays = (poLineConfCreateDate - prFullyRelDt).TotalDays;
-                totalDays += elapsedDays;
-                elapsedDays = (int)elapsedDays;
-
-
-                // Apply the elapsed days against the time span conditions
-                TimeSpanDump(elapsedDays);
-
+                // Calculate the average for this KPI
+                CalculateAverage(totalDays);
             }
-
-            // Calculate the percent uncofirmed for this KPI
-            CalculatePercentUnconfirmed(UnconfirmedTotal);
-
-            // Calculate the average for this KPI
-            CalculateAverage(totalDays);
+            catch (Exception)
+            {
+                MessageBox.Show("An argument out of range exception was thrown", "KPI - Purch Total -> PR Release to Confirmed Entry Date - Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
         }
     }
 }

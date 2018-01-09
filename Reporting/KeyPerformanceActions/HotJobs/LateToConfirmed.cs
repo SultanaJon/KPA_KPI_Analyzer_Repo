@@ -242,6 +242,10 @@ namespace Reporting.KeyPerformanceActions.HotJobs
 
                 // Calculate the average
                 CalculateAverage(totalDays);
+
+                dt.Rows.Clear();
+                dt = null;
+                GC.Collect();
             }
             catch (ArgumentOutOfRangeException)
             {

@@ -239,8 +239,12 @@ namespace Reporting.KeyPerformanceActions.ExcessStockStock
 
                 // Caclulate the average for this KPA
                 CalculateAverage(totalDays);
+
+                dt.Rows.Clear();
+                dt = null;
+                GC.Collect();
             }
-            catch (ArgumentOutOfRangeException)
+            catch (Exception)
             {
                 MessageBox.Show("An argument out of range exception was thrown", "Excess Stock - Stock -> PO Creation Thru Delivery - Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();

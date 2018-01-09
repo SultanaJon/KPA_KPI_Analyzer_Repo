@@ -5,6 +5,7 @@ using System;
 using System.Data;
 using DataAccessLibrary;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace Reporting.KeyPerformanceIndicators.PurchSub
 {
@@ -291,57 +292,65 @@ namespace Reporting.KeyPerformanceIndicators.PurchSub
         {
             double totalDays = 0;
 
-            foreach (DataRow dr in DatabaseManager.prsOnPOsDt.Rows)
+            try
             {
-                //Check if the datarow meets the conditions of any applied filters.
-                if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
+                foreach (DataRow dr in DatabaseManager.prsOnPOsDt.Rows)
                 {
-                    // This datarow dos not meet the conditions of the filters applied.
-                    continue;
+                    //Check if the datarow meets the conditions of any applied filters.
+                    if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
+                    {
+                        // This datarow dos not meet the conditions of the filters applied.
+                        continue;
+                    }
+
+                    string[] strFirstConfCreateDate = (dr["1st Conf Creation Da"].ToString()).Split('/');
+                    int poLineFirstConfCreateYear = int.Parse(strFirstConfCreateDate[2]);
+                    int poLineFirstConfCreateMonth = int.Parse(strFirstConfCreateDate[0]);
+                    int poLineFirstConfCreateDay = int.Parse(strFirstConfCreateDate[1]);
+
+                    if (poLineFirstConfCreateYear == 0 && poLineFirstConfCreateMonth == 0 && poLineFirstConfCreateDay == 0)
+                    {
+                        UnconfirmedTotal++;
+                        TotalRecords++;
+                        continue;
+                    }
+                    else
+                    {
+                        poLineFirstConfCreateYear = int.Parse(strFirstConfCreateDate[2]);
+                        poLineFirstConfCreateMonth = int.Parse(strFirstConfCreateDate[0]);
+                        poLineFirstConfCreateDay = int.Parse(strFirstConfCreateDate[1]);
+                    }
+
+
+                    DateTime initialConfCreateDate = new DateTime(poLineFirstConfCreateYear, poLineFirstConfCreateMonth, poLineFirstConfCreateDay);
+
+                    string[] strPOLineCreateDt = (dr["PO Line Creat#DT"].ToString()).Split('/');
+                    int poLineCreateYear = int.Parse(strPOLineCreateDt[2]);
+                    int poLineCreateMonth = int.Parse(strPOLineCreateDt[0].TrimStart('0'));
+                    int poLineCreateDay = int.Parse(strPOLineCreateDt[1].TrimStart('0'));
+
+                    DateTime poLineItemCreateDate = new DateTime(poLineCreateYear, poLineCreateMonth, poLineCreateDay);
+
+                    double elapsedDays = (initialConfCreateDate - poLineItemCreateDate).TotalDays;
+                    totalDays += elapsedDays;
+                    elapsedDays = (int)elapsedDays;
+
+                    // Apply the elapsed days against the time span conditions
+                    TimeSpanDump(elapsedDays);
                 }
 
-                string[] strFirstConfCreateDate = (dr["1st Conf Creation Da"].ToString()).Split('/');
-                int poLineFirstConfCreateYear = int.Parse(strFirstConfCreateDate[2]);
-                int poLineFirstConfCreateMonth = int.Parse(strFirstConfCreateDate[0]);
-                int poLineFirstConfCreateDay = int.Parse(strFirstConfCreateDate[1]);
 
-                if (poLineFirstConfCreateYear == 0 && poLineFirstConfCreateMonth == 0 && poLineFirstConfCreateDay == 0)
-                {
-                    UnconfirmedTotal++;
-                    TotalRecords++;
-                    continue;
-                }
-                else
-                {
-                    poLineFirstConfCreateYear = int.Parse(strFirstConfCreateDate[2]);
-                    poLineFirstConfCreateMonth = int.Parse(strFirstConfCreateDate[0]);
-                    poLineFirstConfCreateDay = int.Parse(strFirstConfCreateDate[1]);
-                }
+                // Calculate the average for this KPI
+                CalculateAverage(totalDays);
 
-
-                DateTime initialConfCreateDate = new DateTime(poLineFirstConfCreateYear, poLineFirstConfCreateMonth, poLineFirstConfCreateDay);
-
-                string[] strPOLineCreateDt = (dr["PO Line Creat#DT"].ToString()).Split('/');
-                int poLineCreateYear = int.Parse(strPOLineCreateDt[2]);
-                int poLineCreateMonth = int.Parse(strPOLineCreateDt[0].TrimStart('0'));
-                int poLineCreateDay = int.Parse(strPOLineCreateDt[1].TrimStart('0'));
-
-                DateTime poLineItemCreateDate = new DateTime(poLineCreateYear, poLineCreateMonth, poLineCreateDay);
-
-                double elapsedDays = (initialConfCreateDate - poLineItemCreateDate).TotalDays;
-                totalDays += elapsedDays;
-                elapsedDays = (int)elapsedDays;
-
-                // Apply the elapsed days against the time span conditions
-                TimeSpanDump(elapsedDays);
+                // Calculate the percent unconfirmed for this KPI
+                CalculatePercentUnconfirmed(UnconfirmedTotal);
             }
-
-
-            // Calculate the average for this KPI
-            CalculateAverage(totalDays);
-
-            // Calculate the percent unconfirmed for this KPI
-            CalculatePercentUnconfirmed(UnconfirmedTotal);
+            catch (Exception)
+            {
+                MessageBox.Show("An argument out of range exception was thrown", "KPI - Purch Sub -> PO Creation vs Confirmation Entry - Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
         }
     }
 }

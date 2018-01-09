@@ -241,8 +241,12 @@ namespace Reporting.KeyPerformanceActions.HotJobs
 
                 // Calculate the average
                 CalculateAverage(totalDays);
+
+                dt.Rows.Clear();
+                dt = null;
+                GC.Collect();
             }
-            catch (ArgumentOutOfRangeException)
+            catch (Exception)
             {
                 MessageBox.Show("An argument out of range exception was thrown", "Hot Jobs -> No Confirmations - Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();

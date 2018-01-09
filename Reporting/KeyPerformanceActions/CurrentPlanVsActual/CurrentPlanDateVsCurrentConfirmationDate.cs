@@ -215,7 +215,7 @@ namespace Reporting.KeyPerformanceActions.CurrentPlanVsActual
                     PercentFavorable = Math.Round((favorableTimeSpanCounts / TotalRecords) * 100, 2);
                 }
             }
-            catch (ArgumentOutOfRangeException)
+            catch (Exception)
             {
                 MessageBox.Show("An argument out of range exception was thrown", "Current Plan Date vs Curren Confirmation date for Hot Jobs Favorable Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
@@ -296,7 +296,6 @@ namespace Reporting.KeyPerformanceActions.CurrentPlanVsActual
 
                     DateTime confDate = new DateTime(year, month, day);
 
-
                     string[] strCurrPlanDate = (dr["Rescheduling date"].ToString()).Split('/');
                     int currConfYear = int.Parse(strCurrPlanDate[2]);
                     int currConfMonth = int.Parse(strCurrPlanDate[0]);
@@ -333,8 +332,12 @@ namespace Reporting.KeyPerformanceActions.CurrentPlanVsActual
 
                 // Calcualte the Percent Favorable for this KPA
                 CalculatePercentFavorable();
+
+                dt.Rows.Clear();
+                dt = null;
+                GC.Collect();
             }
-            catch (ArgumentOutOfRangeException)
+            catch (Exception)
             {
                 MessageBox.Show("An argument out of range exception was thrown", "Current Plan Date vs Curren Confirmation date Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();

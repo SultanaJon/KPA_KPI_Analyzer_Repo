@@ -5,6 +5,7 @@ using System.Data;
 using DataAccessLibrary;
 using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace Reporting.KeyPerformanceIndicators.FollowUp
 {
@@ -323,58 +324,66 @@ namespace Reporting.KeyPerformanceIndicators.FollowUp
         {
             double totalDays = 0;
 
-            foreach (DataRow dr in DatabaseManager.prsOnPOsDt.Rows)
+            try
             {
-                //Check if the datarow meets the conditions of any applied filters.
-                if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
+                foreach (DataRow dr in DatabaseManager.prsOnPOsDt.Rows)
                 {
-                    // This datarow dos not meet the conditions of the filters applied.
-                    continue;
+                    //Check if the datarow meets the conditions of any applied filters.
+                    if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
+                    {
+                        // This datarow dos not meet the conditions of the filters applied.
+                        continue;
+                    }
+
+                    string[] strFirstConfDate = (dr["1st Conf Date"].ToString()).Split('/');
+                    int firstConfYear = int.Parse(strFirstConfDate[2]);
+                    int firstConfMonth = int.Parse(strFirstConfDate[0]);
+                    int firstConfDay = int.Parse(strFirstConfDate[1]);
+
+
+                    if (firstConfYear == 0 && firstConfMonth == 0 && firstConfDay == 0)
+                    {
+                        UnconfirmedTotal++;
+                        TotalRecords++;
+                        continue;
+                    }
+                    else
+                    {
+                        firstConfYear = int.Parse(strFirstConfDate[2]);
+                        firstConfMonth = int.Parse(strFirstConfDate[0].TrimStart('0'));
+                        firstConfDay = int.Parse(strFirstConfDate[1].TrimStart('0'));
+                    }
+
+                    DateTime firstConfDate = new DateTime(firstConfYear, firstConfMonth, firstConfDay);
+
+                    string[] strDelConfDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
+                    int delConfYear = int.Parse(strDelConfDate[2]);
+                    int delConfMonth = int.Parse(strDelConfDate[0].TrimStart('0'));
+                    int delConfDay = int.Parse(strDelConfDate[1].TrimStart('0'));
+
+                    DateTime delConfDate = new DateTime(delConfYear, delConfMonth, delConfDay);
+                    double elapsedDays = (delConfDate - firstConfDate).TotalDays;
+                    totalDays += elapsedDays;
+
+                    // Apply the elpased days against the time span conditions
+                    TimeSpanDump(elapsedDays);
                 }
 
-                string[] strFirstConfDate = (dr["1st Conf Date"].ToString()).Split('/');
-                int firstConfYear = int.Parse(strFirstConfDate[2]);
-                int firstConfMonth = int.Parse(strFirstConfDate[0]);
-                int firstConfDay = int.Parse(strFirstConfDate[1]);
 
+                // Caclualte the percent unconfirmed
+                CalculatePercentUnconfirmed(UnconfirmedTotal);
 
-                if (firstConfYear == 0 && firstConfMonth == 0 && firstConfDay == 0)
-                {
-                    UnconfirmedTotal++;
-                    TotalRecords++;
-                    continue;
-                }
-                else
-                {
-                    firstConfYear = int.Parse(strFirstConfDate[2]);
-                    firstConfMonth = int.Parse(strFirstConfDate[0].TrimStart('0'));
-                    firstConfDay = int.Parse(strFirstConfDate[1].TrimStart('0'));
-                }
+                // Calculate the average for this KPI
+                CalculateAverage(totalDays);
 
-                DateTime firstConfDate = new DateTime(firstConfYear, firstConfMonth, firstConfDay);
-
-                string[] strDelConfDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
-                int delConfYear = int.Parse(strDelConfDate[2]);
-                int delConfMonth = int.Parse(strDelConfDate[0].TrimStart('0'));
-                int delConfDay = int.Parse(strDelConfDate[1].TrimStart('0'));
-
-                DateTime delConfDate = new DateTime(delConfYear, delConfMonth, delConfDay);
-                double elapsedDays = (delConfDate - firstConfDate).TotalDays;
-                totalDays += elapsedDays;
-
-                // Apply the elpased days against the time span conditions
-                TimeSpanDump(elapsedDays);
+                // Calculate percent favorable
+                CalculatePercentFavorable();
             }
-
-
-            // Caclualte the percent unconfirmed
-            CalculatePercentUnconfirmed(UnconfirmedTotal);
-
-            // Calculate the average for this KPI
-            CalculateAverage(totalDays);
-
-            // Calculate percent favorable
-            CalculatePercentFavorable();
+            catch (Exception)
+            {
+                MessageBox.Show("An argument out of range exception was thrown", "Follow Up -> Current Confirmation Date vs Initial Confirmation Date - Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
         }
     }
 }

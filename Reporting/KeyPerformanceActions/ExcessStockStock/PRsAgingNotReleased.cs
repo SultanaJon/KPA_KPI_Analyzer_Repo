@@ -240,6 +240,10 @@ namespace Reporting.KeyPerformanceActions.ExcessStockStock
 
                 // Calculate the average for this KPA
                 CalculateAverage(totalDays);
+
+                dt.Rows.Clear();
+                dt = null;
+                GC.Collect();
             }
             catch (ArgumentOutOfRangeException)
             {

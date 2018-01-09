@@ -58,14 +58,9 @@ namespace KPA_KPI_Analyzer.Overall_Data.KPI_Sections
 
 
 
-
-
-
-
         /// <summary>
         /// Loads the data of a specific KPI
         /// </summary>
-        /// <param name="SelectedCountry"></param>
         public void LoadData()
         {
             try

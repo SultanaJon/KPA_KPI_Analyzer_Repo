@@ -247,8 +247,12 @@ namespace Reporting.KeyPerformanceActions.PurchSub
 
                 // Calculate the average for this KPA
                 CalculateAverage(totalDays);
+
+                dt.Rows.Clear();
+                dt = null;
+                GC.Collect();
             }
-            catch (ArgumentOutOfRangeException)
+            catch (Exception)
             {
                 MessageBox.Show("An argument out of range exception was thrown", "Purch Sub -> PR Release to PO Release - Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();

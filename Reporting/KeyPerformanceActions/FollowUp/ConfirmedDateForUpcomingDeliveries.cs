@@ -153,7 +153,7 @@ namespace Reporting.KeyPerformanceActions.FollowUp
                     PercentFavorable = Math.Round((totalFavorable / TotalRecords) * 100, 2);
                 }
             }
-            catch (ArgumentOutOfRangeException)
+            catch (Exception)
             {
                 MessageBox.Show("An argument out of range exception was thrown", "Folow Up -> Confirmed Date for Upcoming Deliveries - Favorable Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
@@ -287,8 +287,12 @@ namespace Reporting.KeyPerformanceActions.FollowUp
 
                 // Calculate the favorable percentage for this KPA
                 CalculatePercentFavorable();
+
+                dt.Rows.Clear();
+                dt = null;
+                GC.Collect();
             }
-            catch (ArgumentOutOfRangeException)
+            catch (Exception)
             {
                 MessageBox.Show("An argument out of range exception was thrown", "Folow Up -> Due Today or Late to Confirmed - Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();

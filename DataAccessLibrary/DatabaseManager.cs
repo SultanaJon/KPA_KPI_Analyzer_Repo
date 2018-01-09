@@ -311,7 +311,7 @@ namespace DataAccessLibrary
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.StackTrace, "KPI Data Load");
+                MessageBox.Show(ex.InnerException.Message, "KPI Data Load");
             }
         }
 
