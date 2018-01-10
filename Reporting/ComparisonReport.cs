@@ -184,8 +184,8 @@ namespace Reporting
                     return Actions[(int)KpaOption.FollowUp_ConfirmedDateForUpcomingDeliveries];
                 case KpaOption.FollowUp_DueTodayOrLateToConfirmed:
                     return Actions[(int)KpaOption.FollowUp_DueTodayOrLateToConfirmed];
-                case KpaOption.HotJobs_PrsNoOnPo:
-                    return Actions[(int)KpaOption.HotJobs_PrsNoOnPo];
+                case KpaOption.HotJobs_PrsNotOnPo:
+                    return Actions[(int)KpaOption.HotJobs_PrsNotOnPo];
                 case KpaOption.HotJobs_NoConfirmations:
                     return Actions[(int)KpaOption.HotJobs_NoConfirmations];
                 case KpaOption.HotJobs_LateToConfirmed:

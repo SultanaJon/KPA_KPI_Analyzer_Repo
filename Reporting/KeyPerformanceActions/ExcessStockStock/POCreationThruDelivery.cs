@@ -88,6 +88,8 @@ namespace Reporting.KeyPerformanceActions.ExcessStockStock
             List<string> row = new List<string>();
 
             // Add the Template one data
+            row.Add(Section);
+            row.Add(Name);
             row.Add(string.Format("{0:n0}", LessThanEqualToZeroDays));
             row.Add(string.Format("{0:n0}", OneToThreeDays));
             row.Add(string.Format("{0:n0}", FourToSevenDays));

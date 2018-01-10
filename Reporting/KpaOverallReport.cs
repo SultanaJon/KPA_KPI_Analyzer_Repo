@@ -168,7 +168,7 @@ namespace Reporting
                 else
                     jsonString = File.ReadAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.MX_KPA_Overall]);
 
-                kpaOverallReportInstance = JsonConvert.DeserializeObject<KpaOverallReport>(jsonString);
+                kpaOverallReport = JsonConvert.DeserializeObject<List<KeyPerformanceAction>>(jsonString);
             }
             catch (Exception ex)
             {
@@ -185,7 +185,7 @@ namespace Reporting
             try
             {
                 // Store the contents of the KPA Overall Report into a JSON string
-                var jsonString = JsonConvert.SerializeObject(KpaOverallReportInstance);
+                var jsonString = JsonConvert.SerializeObject(kpaOverallReport);
 
                 if (ReportingCountry.TargetCountry == Country.UnitedStates)
                 {

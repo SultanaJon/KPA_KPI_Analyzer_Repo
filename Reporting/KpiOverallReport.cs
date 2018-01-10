@@ -148,7 +148,7 @@ namespace Reporting
                 else
                     jsonString = File.ReadAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.MX_KPI_Overall]);
 
-                kpiOverallReportInstance = JsonConvert.DeserializeObject<KpiOverallReport>(jsonString);
+                kpiOverallReport = JsonConvert.DeserializeObject<List<KeyPerformanceIndicator>>(jsonString);
             }
             catch (Exception ex)
             {
@@ -165,7 +165,7 @@ namespace Reporting
             try
             {
                 // store the contents of the KPI Overall Report into a JSON string
-                var jsonString = JsonConvert.SerializeObject(KpiOverallReportInstance);
+                var jsonString = JsonConvert.SerializeObject(kpiOverallReport);
 
                 if (ReportingCountry.TargetCountry == Country.UnitedStates)
                 {

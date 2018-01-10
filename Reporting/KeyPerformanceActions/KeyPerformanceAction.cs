@@ -14,7 +14,7 @@
         FollowUp_ConfirmedDateVsPlanDate,
         FollowUp_ConfirmedDateForUpcomingDeliveries,
         FollowUp_DueTodayOrLateToConfirmed,
-        HotJobs_PrsNoOnPo,
+        HotJobs_PrsNotOnPo,
         HotJobs_NoConfirmations,
         HotJobs_LateToConfirmed,
         ExcessStockStock_PrsAgingNotReleased,

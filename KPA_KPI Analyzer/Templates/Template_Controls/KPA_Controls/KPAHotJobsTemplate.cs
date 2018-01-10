@@ -187,7 +187,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             AnalysisOne = "- Will only show if PR is assigned to purchase group UHJ, is fully released and the PR has not been placed on a PO.";
             AnalysisTwo = "- Difference between todays date and the date the PR was fully released.";
 
-            ITemplateOne tempOne = (Report.Actions[(int)KpaOption.HotJobs_PrsNoOnPo]
+            ITemplateOne tempOne = (Report.Actions[(int)KpaOption.HotJobs_PrsNotOnPo]
                                 as Reporting.KeyPerformanceActions.HotJobs.PRsNotOnPO);
 
 

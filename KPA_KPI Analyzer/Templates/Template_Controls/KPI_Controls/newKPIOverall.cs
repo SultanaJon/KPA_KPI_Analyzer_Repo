@@ -369,7 +369,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                 as Reporting.KeyPerformanceIndicators.Plan.CurrentPlanDateVsPRPlanDate).GetTemplateData());
 
             // Add the row to the data grid view control
-            TemplateThreeDataGrid.Rows.Add(rowData);
+            TemplateThreeDataGrid.Rows.Add(rowData.ToArray());
 
 
 
@@ -378,7 +378,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                 as Reporting.KeyPerformanceIndicators.Plan.OriginalPlanDateTo2ndLvlReleaseDateVsCodedLead).GetTemplateData());
 
             // Add the row to the data grid view control
-            TemplateThreeDataGrid.Rows.Add(rowData);
+            TemplateThreeDataGrid.Rows.Add(rowData.ToArray());
 
 
 
@@ -387,7 +387,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                 as Reporting.KeyPerformanceIndicators.Plan.CurrentPlanDateTo2ndLvlReleaseDateVsCodedLead).GetTemplateData());
 
             // Add the row to the data grid view control
-            TemplateThreeDataGrid.Rows.Add(rowData);
+            TemplateThreeDataGrid.Rows.Add(rowData.ToArray());
         }
 
 
@@ -406,7 +406,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                 as Reporting.KeyPerformanceIndicators.Purch.InitialConfirmationDateVsPRPlanDate).GetTemplateData());
 
             // Add the row to the data grid view control
-            TemplateThreeDataGrid.Rows.Add(rowData);        
+            TemplateThreeDataGrid.Rows.Add(rowData.ToArray());        
         }
 
 
@@ -425,35 +425,35 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                 as Reporting.KeyPerformanceIndicators.FollowUp.CurrentConfirmationDateVsInitialConfirmationDate).GetTemplateData());
 
             // Add the row to the data grid view control
-            TemplateThreeDataGrid.Rows.Add(rowData);
+            TemplateThreeDataGrid.Rows.Add(rowData.ToArray());
 
             // Get List of template one data for this KPA
             rowData = new List<string>((Report.Indicators[(int)KpiOption.FollowUp_FinalConfirmationDateVsInitialConfirmationDate]
                 as Reporting.KeyPerformanceIndicators.FollowUp.FinalConfirmationDateVsFinalPlanDate).GetTemplateData());
 
             // Add the row to the data grid view control
-            TemplateThreeDataGrid.Rows.Add(rowData);
+            TemplateThreeDataGrid.Rows.Add(rowData.ToArray());
 
             // Get List of template one data for this KPA
             rowData = new List<string>((Report.Indicators[(int)KpiOption.FollowUp_ReceiptDateVsCurrentPlanDate]
                 as Reporting.KeyPerformanceIndicators.FollowUp.ReceiptDateVsCurrentPlanDate).GetTemplateData());
 
             // Add the row to the data grid view control
-            TemplateThreeDataGrid.Rows.Add(rowData);
+            TemplateThreeDataGrid.Rows.Add(rowData.ToArray());
 
             // Get List of template one data for this KPA
             rowData = new List<string>((Report.Indicators[(int)KpiOption.FollowUp_ReceiptDateVsOriginalConfirmationDate]
                 as Reporting.KeyPerformanceIndicators.FollowUp.ReceiptDateVsOriginalConfirmationDate).GetTemplateData());
 
             // Add the row to the data grid view control
-            TemplateThreeDataGrid.Rows.Add(rowData);
+            TemplateThreeDataGrid.Rows.Add(rowData.ToArray());
 
             // Get List of template one data for this KPA
             rowData = new List<string>((Report.Indicators[(int)KpiOption.FollowUp_ReceiptDateVsCurrentConfirmationDate]
                 as Reporting.KeyPerformanceIndicators.FollowUp.ReceiptDateVsCurrentConfirmationDate).GetTemplateData());
 
             // Add the row to the data grid view control
-            TemplateThreeDataGrid.Rows.Add(rowData);
+            TemplateThreeDataGrid.Rows.Add(rowData.ToArray());
         }
 
 
@@ -470,14 +470,14 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                 as Reporting.KeyPerformanceIndicators.PlanTwo.MaterialDueOriginalPlannedDate).GetTemplateData());
 
             // Add the row to the data grid view control
-            TemplateFourDataGrid.Rows.Add(rowData);
+            TemplateFourDataGrid.Rows.Add(rowData.ToArray());
 
             // Get List of template one data for this KPA
             rowData = new List<string>((Report.Indicators[(int)KpiOption.PlanTwo_MaterialDueFinalPlannedDate]
                 as Reporting.KeyPerformanceIndicators.PlanTwo.MaterialDueFinalPlannedDate).GetTemplateData());
 
             // Add the row to the data grid view control
-            TemplateFourDataGrid.Rows.Add(rowData);
+            TemplateFourDataGrid.Rows.Add(rowData.ToArray());
         }
 
 
@@ -494,21 +494,21 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                 as Reporting.KeyPerformanceIndicators.PurchTwo.PR2ndLvlReleaseDateVsPOCreationDate).GetTemplateData());
 
             // Add the row to the data grid view control
-            TemplateFourDataGrid.Rows.Add(rowData);
+            TemplateFourDataGrid.Rows.Add(rowData.ToArray());
 
             // Get List of template one data for this KPA
             rowData = new List<string>((Report.Indicators[(int)KpiOption.PurchTwo_PoCreationDateVsPoReleaseDate]
                 as Reporting.KeyPerformanceIndicators.PurchTwo.POCreationDateVsPOReleaseDate).GetTemplateData());
 
             // Add the row to the data grid view control
-            TemplateFourDataGrid.Rows.Add(rowData);
+            TemplateFourDataGrid.Rows.Add(rowData.ToArray());
 
             // Get List of template one data for this KPA
             rowData = new List<string>((Report.Indicators[(int)KpiOption.PurchTwo_PoReleaseDateVsPoConfirmationDate]
                 as Reporting.KeyPerformanceIndicators.PurchTwo.POReleaseDateVsPOConfirmationDate).GetTemplateData());
 
             // Add the row to the data grid view control
-            TemplateFourDataGrid.Rows.Add(rowData);
+            TemplateFourDataGrid.Rows.Add(rowData.ToArray());
         }
 
 
@@ -525,14 +525,14 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                 as Reporting.KeyPerformanceIndicators.PurchSub.PRReleaseDateVsPOReleaseDate).GetTemplateData());
 
             // Add the row to the data grid view control
-            TemplateFourDataGrid.Rows.Add(rowData);
+            TemplateFourDataGrid.Rows.Add(rowData.ToArray());
 
             // Get List of template one data for this KPA
             rowData = new List<string>((Report.Indicators[(int)KpiOption.PurchSub_PoCreationDateVsConfirmationEntryDate]
                 as Reporting.KeyPerformanceIndicators.PurchSub.POCreationDateVsConfirmationEntry).GetTemplateData());
 
             // Add the row to the data grid view control
-            TemplateFourDataGrid.Rows.Add(rowData);
+            TemplateFourDataGrid.Rows.Add(rowData.ToArray());
         }
 
 
@@ -549,7 +549,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                 as Reporting.KeyPerformanceIndicators.PurchTotal.PRReleaseDateToConfirmationEntry).GetTemplateData());
 
             // Add the row to the data grid view control
-            TemplateFourDataGrid.Rows.Add(rowData);
+            TemplateFourDataGrid.Rows.Add(rowData.ToArray());
         }
 
 
@@ -566,7 +566,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                 as Reporting.KeyPerformanceIndicators.PurchPlan.POReleaseVsPRDeliveryDate).GetTemplateData());
 
             // Add the row to the data grid view control
-            TemplateFourDataGrid.Rows.Add(rowData);
+            TemplateFourDataGrid.Rows.Add(rowData.ToArray());
         }
 
 
@@ -583,31 +583,31 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                 as Reporting.KeyPerformanceIndicators.Other.PRsCreated).GetTemplateData());
 
             // Add the row to the data grid view control
-            TemplateFourDataGrid.Rows.Add(rowData);
+            TemplateFourDataGrid.Rows.Add(rowData.ToArray());
 
             rowData = new List<string>((Report.Indicators[(int)KpiOption.Other_PrsReleased]
                 as Reporting.KeyPerformanceIndicators.Other.PRsReleased).GetTemplateData());
 
             // Add the row to the data grid view control
-            TemplateFourDataGrid.Rows.Add(rowData);
+            TemplateFourDataGrid.Rows.Add(rowData.ToArray());
 
             rowData = new List<string>((Report.Indicators[(int)KpiOption.Other_TotalSpend]
                 as Reporting.KeyPerformanceIndicators.Other.TotalSpend).GetTemplateData());
 
             // Add the row to the data grid view control
-            TemplateFourDataGrid.Rows.Add(rowData);
+            TemplateFourDataGrid.Rows.Add(rowData.ToArray());
 
             rowData = new List<string>((Report.Indicators[(int)KpiOption.Other_PrValueVsPoValue]
                 as Reporting.KeyPerformanceIndicators.Other.PRValueVsPOValue).GetTemplateData());
 
             // Add the row to the data grid view control
-            TemplateFourDataGrid.Rows.Add(rowData);
+            TemplateFourDataGrid.Rows.Add(rowData.ToArray());
 
             rowData = new List<string>((Report.Indicators[(int)KpiOption.Other_HotJobPRs]
                  as Reporting.KeyPerformanceIndicators.Other.HotJobPRs).GetTemplateData());
 
             // Add the row to the data grid view control
-            TemplateFourDataGrid.Rows.Add(rowData);
+            TemplateFourDataGrid.Rows.Add(rowData.ToArray());
         }
 
 
