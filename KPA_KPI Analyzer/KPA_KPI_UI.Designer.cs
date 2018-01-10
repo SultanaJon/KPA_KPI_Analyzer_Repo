@@ -47,7 +47,6 @@
             this.viewVariantsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.addVariantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reportingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnl_topPanel = new System.Windows.Forms.Panel();
             this.pnl_Minimize = new System.Windows.Forms.Panel();
             this.pnl_Maximize = new System.Windows.Forms.Panel();
@@ -208,7 +207,6 @@
             this.lbl_Performance = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel17 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.pnl_CategorySelectorButton = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
             this.lbl_Category = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel29 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.panel8 = new System.Windows.Forms.Panel();
@@ -295,11 +293,10 @@
             this.ms_applicaitonMenuStrip.Dock = System.Windows.Forms.DockStyle.None;
             this.ms_applicaitonMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.toolsToolStripMenuItem,
-            this.reportingToolStripMenuItem});
+            this.toolsToolStripMenuItem});
             this.ms_applicaitonMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.ms_applicaitonMenuStrip.Name = "ms_applicaitonMenuStrip";
-            this.ms_applicaitonMenuStrip.Size = new System.Drawing.Size(163, 24);
+            this.ms_applicaitonMenuStrip.Size = new System.Drawing.Size(92, 24);
             this.ms_applicaitonMenuStrip.TabIndex = 0;
             this.ms_applicaitonMenuStrip.Text = "menuStrip1";
             // 
@@ -319,7 +316,7 @@
             this.newAnalysisToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.analysisToolStripMenuItem});
             this.newAnalysisToolStripMenuItem.Name = "newAnalysisToolStripMenuItem";
-            this.newAnalysisToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.newAnalysisToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.newAnalysisToolStripMenuItem.Text = "New";
             // 
             // analysisToolStripMenuItem
@@ -332,13 +329,13 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(95, 6);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(149, 6);
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem1
             // 
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(98, 22);
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem1.Text = "Exit";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -411,14 +408,6 @@
             this.addVariantToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.addVariantToolStripMenuItem.Text = "Add Variant";
             this.addVariantToolStripMenuItem.Click += new System.EventHandler(this.addVariantToolStripMenuItem_Click);
-            // 
-            // reportingToolStripMenuItem
-            // 
-            this.reportingToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
-            this.reportingToolStripMenuItem.Name = "reportingToolStripMenuItem";
-            this.reportingToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
-            this.reportingToolStripMenuItem.Text = "Reporting";
-            this.reportingToolStripMenuItem.Click += new System.EventHandler(this.reportingToolStripMenuItem_Click);
             // 
             // pnl_topPanel
             // 
@@ -2988,7 +2977,6 @@
             this.pnl_CategorySelectorButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnl_CategorySelectorButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
-            this.pnl_CategorySelectorButton.Controls.Add(this.button2);
             this.pnl_CategorySelectorButton.Controls.Add(this.lbl_Category);
             this.pnl_CategorySelectorButton.Controls.Add(this.bunifuCustomLabel29);
             this.pnl_CategorySelectorButton.Location = new System.Drawing.Point(755, 0);
@@ -2997,16 +2985,6 @@
             this.pnl_CategorySelectorButton.Size = new System.Drawing.Size(445, 50);
             this.pnl_CategorySelectorButton.TabIndex = 0;
             this.pnl_CategorySelectorButton.Tag = "4";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(345, 14);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // lbl_Category
             // 
@@ -3404,9 +3382,7 @@
         private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem overallDataToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem reportingToolStripMenuItem;
         private Bunifu.Framework.UI.BunifuFlatButton btn_reports;
-        private System.Windows.Forms.Button button2;
     }
 }
 

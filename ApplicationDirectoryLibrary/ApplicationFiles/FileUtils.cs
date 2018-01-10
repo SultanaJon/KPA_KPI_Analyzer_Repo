@@ -11,7 +11,8 @@ namespace ApplicationIOLibarary.ApplicationFiles
     public enum ResourceFile
     {
         PRPO_Database,
-        Settings
+        ReportingSettings,
+        CorrelationSettings
     }
 
 
@@ -78,7 +79,9 @@ namespace ApplicationIOLibarary.ApplicationFiles
         public static string[] resourcesFiles =
         {
             @"Resources\PRPODB.accdb",
-            @"Resources\Settings.json"
+            @"Resources\ReportingSettings.json",
+            @"Resources\CorrelationSettings.json"
+
         };
 
 

@@ -1,5 +1,6 @@
 ﻿using ApplicationIOLibarary.ApplicationFiles;
 using ApplicationIOLibarary.Interfaces;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Filters.Variants
 {
-    public class FilterVariants : IStorable, ILoadable
+    public class FilterVariants : IStorable<FilterVariants>, ILoadable<FilterVariants>
     {
         /// <summary>
         /// The instance of the filter variants
@@ -23,18 +24,6 @@ namespace Filters.Variants
         /// </summary>
         private List<Variant> variants;
 
-
-        /// <summary>
-        /// Used to serialize and deserialize the Filter Variants object
-        /// </summary>
-        private JavaScriptSerializer ser;
-
-
-
-        /// <summary>
-        /// A string to hold the contents of the object after being serialized and deserialized
-        /// </summary>
-        private string dataJSONString;
 
 
         // Call-back functions to update variants tools.
@@ -145,7 +134,6 @@ namespace Filters.Variants
         private FilterVariants()
         {
             variants = new List<Variant>();
-            ser = new JavaScriptSerializer();
         }
 
 
@@ -191,9 +179,6 @@ namespace Filters.Variants
         {
             foreach (Variant variant in variants)
                 variant.Active = false;
-
-            // Save the update variants
-            Save();
         }
 
 
@@ -207,8 +192,8 @@ namespace Filters.Variants
         {
             try
             {
-                dataJSONString = File.ReadAllText(FileUtils.variantFiles[(int)VariantFile.FilterVariants]);
-                filterVariantsInstance = ser.Deserialize<FilterVariants>(dataJSONString);
+                var jsonString = File.ReadAllText(FileUtils.variantFiles[(int)VariantFile.FilterVariants]);
+                filterVariantsInstance = JsonConvert.DeserializeObject<FilterVariants>(jsonString);
             }
             catch(Exception ex)
             {
@@ -227,8 +212,8 @@ namespace Filters.Variants
         {
             try
             {
-                dataJSONString = ser.Serialize(this);
-                File.WriteAllText(FileUtils.variantFiles[(int)VariantFile.FilterVariants], dataJSONString);   
+                var jsonString = JsonConvert.SerializeObject(this);
+                File.WriteAllText(FileUtils.variantFiles[(int)VariantFile.FilterVariants], jsonString);   
             }
             catch(Exception ex)
             {

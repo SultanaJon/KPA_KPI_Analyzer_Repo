@@ -9,9 +9,27 @@ namespace KPA_KPI_Analyzer
 {
     public partial class SplashScreen : Form
     {
+        /// <summary>
+        /// An instance of the report settings
+        /// </summary>
+        Settings.ReportSettings reportSettings = Settings.ReportSettings.Instance;
+
+
+        /// <summary>
+        /// Boolean indicating whether or not a seperate thread is running
+        /// </summary>
         private bool runningThread = false;
-        ApplicationIOLibarary.ApplicationSettings settings = ApplicationIOLibarary.ApplicationSettings.AppSettingsInstance;
+
+        /// <summary>
+        /// Boolean indicating whether or not the settings file was created
+        /// </summary>
         bool settingsCreated = false;
+
+
+
+        /// <summary>
+        /// Boolean value indicating whether or not the database was created
+        /// </summary>
         bool databaseCreated = false;
 
 
@@ -173,16 +191,23 @@ namespace KPA_KPI_Analyzer
                 {
                     try
                     {
-                        settings.Load();
-                        Application.Run(new KPA_KPI_UI(settings));
+                        // Load the report settings
+                        reportSettings.Load();
+
+                        // Get the updated report settings after loading
+                        reportSettings = Settings.ReportSettings.Instance;
+
+                        // Run the Main application
+                        Application.Run(new KPA_KPI_UI(reportSettings));
                     }
                     catch(Exception ex)
                     {
-                        MessageBox.Show(ex.InnerException.Message);
+                        MessageBox.Show(ex.Message);
                     }
                 }
                 else
                 {
+                    // Run the main application
                     Application.Run(new KPA_KPI_UI());
                 }
             }
@@ -264,7 +289,7 @@ namespace KPA_KPI_Analyzer
                         }
                         else
                         {
-                            if(file == ApplicationIOLibarary.ApplicationFiles.ResourceFile.Settings)
+                            if(file == ApplicationIOLibarary.ApplicationFiles.ResourceFile.ReportingSettings)
                             {
                                 ApplicationIOLibarary.ApplicationFiles.FileUtils.CreateFile(file);
                                 settingsCreated = true;
@@ -335,10 +360,10 @@ namespace KPA_KPI_Analyzer
                 // The database was just creaed so we need to delete the settings
                 // file and create a new one as the settings it might contain are
                 // no longer valid for the database.
-                if(File.Exists(Path.Combine(ApplicationIOLibarary.ApplicationDirectories.DirectoryUtils.AppDir, ApplicationIOLibarary.ApplicationFiles.FileUtils.resourcesFiles[(int)ApplicationIOLibarary.ApplicationFiles.ResourceFile.Settings])))
+                if(File.Exists(Path.Combine(ApplicationIOLibarary.ApplicationDirectories.DirectoryUtils.AppDir, ApplicationIOLibarary.ApplicationFiles.FileUtils.resourcesFiles[(int)ApplicationIOLibarary.ApplicationFiles.ResourceFile.ReportingSettings])))
                 {
-                    File.Delete(Path.Combine(ApplicationIOLibarary.ApplicationDirectories.DirectoryUtils.AppDir, ApplicationIOLibarary.ApplicationFiles.FileUtils.resourcesFiles[(int)ApplicationIOLibarary.ApplicationFiles.ResourceFile.Settings]));
-                    ApplicationIOLibarary.ApplicationFiles.FileUtils.CreateFile(ApplicationIOLibarary.ApplicationFiles.ResourceFile.Settings);
+                    File.Delete(Path.Combine(ApplicationIOLibarary.ApplicationDirectories.DirectoryUtils.AppDir, ApplicationIOLibarary.ApplicationFiles.FileUtils.resourcesFiles[(int)ApplicationIOLibarary.ApplicationFiles.ResourceFile.ReportingSettings]));
+                    ApplicationIOLibarary.ApplicationFiles.FileUtils.CreateFile(ApplicationIOLibarary.ApplicationFiles.ResourceFile.ReportingSettings);
                     settingsCreated = true;
                 }
             }
@@ -348,8 +373,8 @@ namespace KPA_KPI_Analyzer
                 if(!DatabaseManager.CheckForTables() && !settingsCreated)
                 {
                     // The database does not contain tables so we want to reset any settings regarding the database.
-                    File.Delete(Path.Combine(ApplicationIOLibarary.ApplicationDirectories.DirectoryUtils.AppDir, ApplicationIOLibarary.ApplicationFiles.FileUtils.resourcesFiles[(int)ApplicationIOLibarary.ApplicationFiles.ResourceFile.Settings]));
-                    ApplicationIOLibarary.ApplicationFiles.FileUtils.CreateFile(ApplicationIOLibarary.ApplicationFiles.ResourceFile.Settings);
+                    File.Delete(Path.Combine(ApplicationIOLibarary.ApplicationDirectories.DirectoryUtils.AppDir, ApplicationIOLibarary.ApplicationFiles.FileUtils.resourcesFiles[(int)ApplicationIOLibarary.ApplicationFiles.ResourceFile.ReportingSettings]));
+                    ApplicationIOLibarary.ApplicationFiles.FileUtils.CreateFile(ApplicationIOLibarary.ApplicationFiles.ResourceFile.ReportingSettings);
                     settingsCreated = true;
                 }
             }

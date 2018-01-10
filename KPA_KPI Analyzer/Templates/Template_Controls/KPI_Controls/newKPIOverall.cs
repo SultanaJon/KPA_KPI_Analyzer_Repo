@@ -583,31 +583,31 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                 as Reporting.KeyPerformanceIndicators.Other.PRsCreated).GetTemplateData());
 
             // Add the row to the data grid view control
-            TemplateFourDataGrid.Rows.Add(rowData.ToArray());
+            TemplateFiveDataGrid.Rows.Add(rowData.ToArray());
 
             rowData = new List<string>((Report.Indicators[(int)KpiOption.Other_PrsReleased]
                 as Reporting.KeyPerformanceIndicators.Other.PRsReleased).GetTemplateData());
 
             // Add the row to the data grid view control
-            TemplateFourDataGrid.Rows.Add(rowData.ToArray());
+            TemplateFiveDataGrid.Rows.Add(rowData.ToArray());
 
             rowData = new List<string>((Report.Indicators[(int)KpiOption.Other_TotalSpend]
                 as Reporting.KeyPerformanceIndicators.Other.TotalSpend).GetTemplateData());
 
             // Add the row to the data grid view control
-            TemplateFourDataGrid.Rows.Add(rowData.ToArray());
+            TemplateFiveDataGrid.Rows.Add(rowData.ToArray());
 
             rowData = new List<string>((Report.Indicators[(int)KpiOption.Other_PrValueVsPoValue]
                 as Reporting.KeyPerformanceIndicators.Other.PRValueVsPOValue).GetTemplateData());
 
             // Add the row to the data grid view control
-            TemplateFourDataGrid.Rows.Add(rowData.ToArray());
+            TemplateFiveDataGrid.Rows.Add(rowData.ToArray());
 
             rowData = new List<string>((Report.Indicators[(int)KpiOption.Other_HotJobPRs]
                  as Reporting.KeyPerformanceIndicators.Other.HotJobPRs).GetTemplateData());
 
             // Add the row to the data grid view control
-            TemplateFourDataGrid.Rows.Add(rowData.ToArray());
+            TemplateFiveDataGrid.Rows.Add(rowData.ToArray());
         }
 
 

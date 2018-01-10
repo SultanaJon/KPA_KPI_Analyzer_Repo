@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 
 namespace Reporting
 {
-    public class KpiOverallReport : Report, IStorable, ILoadable
+    public class KpiOverallReport : Report, IStorable<KpiOverallReport>, ILoadable<KpiOverallReport>
     {
         /// <summary>
         /// Private instance of a KPA Report
@@ -36,18 +36,10 @@ namespace Reporting
 
 
         /// <summary>
-        /// The contents of the KPA Report
-        /// </summary>
-        List<KeyPerformanceIndicator> kpiOverallReport;
-
-
-        /// <summary>
         /// Default Private Constructor
         /// </summary>
         private KpiOverallReport()
         {
-            kpiOverallReport = new List<KeyPerformanceIndicator>();
-
             // Check if any other report have already created the actions
             if (!IndicatorsSet)
             {
@@ -80,11 +72,11 @@ namespace Reporting
             Indicators.Add(new KeyPerformanceIndicators.Plan.CurrentPlanDateVsPRPlanDate());
             Indicators.Add(new KeyPerformanceIndicators.Plan.OriginalPlanDateTo2ndLvlReleaseDateVsCodedLead());
             Indicators.Add(new KeyPerformanceIndicators.Plan.CurrentPlanDateTo2ndLvlReleaseDateVsCodedLead());
+            Indicators.Add(new KeyPerformanceIndicators.Purch.InitialConfirmationDateVsPRPlanDate());
             Indicators.Add(new KeyPerformanceIndicators.FollowUp.CurrentConfirmationDateVsInitialConfirmationDate());
             Indicators.Add(new KeyPerformanceIndicators.FollowUp.FinalConfirmationDateVsFinalPlanDate());
             Indicators.Add(new KeyPerformanceIndicators.FollowUp.ReceiptDateVsCurrentPlanDate());
             Indicators.Add(new KeyPerformanceIndicators.FollowUp.ReceiptDateVsOriginalConfirmationDate());
-            Indicators.Add(new KeyPerformanceIndicators.Purch.InitialConfirmationDateVsPRPlanDate());
             Indicators.Add(new KeyPerformanceIndicators.FollowUp.ReceiptDateVsCurrentConfirmationDate());
             Indicators.Add(new KeyPerformanceIndicators.PlanTwo.MaterialDueOriginalPlannedDate());
             Indicators.Add(new KeyPerformanceIndicators.PlanTwo.MaterialDueFinalPlannedDate());
@@ -103,27 +95,12 @@ namespace Reporting
         }
 
 
-
-
-        /// <summary>
-        /// Creates the overall report
-        /// </summary>
-        public void CreateReport()
-        {
-            // Clear the report and add the actions to it
-            kpiOverallReport.Clear();
-            kpiOverallReport.AddRange(Indicators);
-        }
-
-
-
-
         /// <summary>
         /// Runs the overall report for all the Key Performance Actions (KPA)
         /// </summary>
         public override void RunReport()
         {
-            foreach (KeyPerformanceIndicator indicator in kpiOverallReport)
+            foreach (KeyPerformanceIndicator indicator in Indicators)
             {
                 // The the KPIs Overall Report
                 indicator.RunOverallReport();
@@ -148,11 +125,11 @@ namespace Reporting
                 else
                     jsonString = File.ReadAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.MX_KPI_Overall]);
 
-                kpiOverallReport = JsonConvert.DeserializeObject<List<KeyPerformanceIndicator>>(jsonString);
+                kpiOverallReportInstance = JsonConvert.DeserializeObject<KpiOverallReport>(jsonString);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString(), "Overall DataReader Loading Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Overall DataReader Loading Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -165,7 +142,7 @@ namespace Reporting
             try
             {
                 // store the contents of the KPI Overall Report into a JSON string
-                var jsonString = JsonConvert.SerializeObject(kpiOverallReport);
+                var jsonString = JsonConvert.SerializeObject(this);
 
                 if (ReportingCountry.TargetCountry == Country.UnitedStates)
                 {

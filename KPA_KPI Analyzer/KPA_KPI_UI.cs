@@ -22,8 +22,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
-using Reporting.KeyPerformanceActions;
-using Reporting.KeyPerformanceActions.Plan;
 
 namespace KPA_KPI_Analyzer
 {
@@ -41,8 +39,12 @@ namespace KPA_KPI_Analyzer
         // The current active user controls visible.
         private UserControl activeTemplate = new UserControl();
 
-        // The application settings.
-        private ApplicationSettings settings = ApplicationSettings.AppSettingsInstance;
+        // The report settings
+        Settings.ReportSettings reportSettings = Settings.ReportSettings.Instance;
+
+        // The Correlation Settings
+        Settings.CorrelationSettings correlationSettings = Settings.CorrelationSettings.Instance;
+        
 
         // The settings used for filter variants.
         private FilterVariants variantSettings = FilterVariants.FilterVariantsInstance;
@@ -68,12 +70,12 @@ namespace KPA_KPI_Analyzer
         /// to connect to and read data from.
         /// </summary>
         /// <param name="conn">The database connection that was established in the splash screen.</param>
-        public KPA_KPI_UI(ApplicationSettings settingsData)
+        public KPA_KPI_UI(Settings.ReportSettings settingsData)
         {
             InitializeComponent();
           
             // Set the settings file for the application.
-            settings = settingsData;
+            reportSettings = settingsData;
         }
 
         #endregion
@@ -236,6 +238,9 @@ namespace KPA_KPI_Analyzer
             // Deactivate and save the variants.
             variantSettings.DeactivateVariants();
 
+            // Save the variants
+            variantSettings.Save();
+
             // Close the application.
             Application.Exit();
         }
@@ -311,6 +316,9 @@ namespace KPA_KPI_Analyzer
         {
             // Deactivate and save the variants.
             variantSettings.DeactivateVariants();
+
+            // Save the variants
+            variantSettings.Save();
 
             // Close the application
             Application.Exit();
@@ -437,6 +445,8 @@ namespace KPA_KPI_Analyzer
 
                     // add the variant to the list of variants and save them.
                     variantSettings.AddVariant(variant);
+
+                    // Save the Variants
                     variantSettings.Save();
 
                     // The user must apply the filters in order to add them.
@@ -461,8 +471,11 @@ namespace KPA_KPI_Analyzer
             using (VariantsViewWindow vvw = new VariantsViewWindow() { Variants = variantSettings.Variants })
             {
                 vvw.ShowDialog();
+
                 // Get the list of variants in case the user updated them and save.  
                 variantSettings.Variants = vvw.Variants;
+
+                // Save the Variants
                 variantSettings.Save();
             }
         }
@@ -549,7 +562,7 @@ namespace KPA_KPI_Analyzer
         /// <returns></returns>
         public DateTime GetLastLoadedUsPrpoReportDate()
         {
-            string[] date = settings.reportSettings.PrpoUsLastLoadedDate.Split(' ');
+            string[] date = reportSettings.PrpoUsLastLoadedDate.Split(' ');
             int month = int.Parse(date[0].ToString());
             int day = int.Parse(date[1].ToString());
             int year = int.Parse(date[2].ToString());
@@ -566,8 +579,7 @@ namespace KPA_KPI_Analyzer
         /// <returns></returns>
         public DateTime GetLastLoadedMxPrpoReportDate()
         {
-
-            string[] date = settings.reportSettings.PrpoMxLastLoadedDate.Split(' ');
+            string[] date = reportSettings.PrpoMxLastLoadedDate.Split(' ');
             int month = int.Parse(date[0].ToString());
             int day = int.Parse(date[1].ToString());
             int year = int.Parse(date[2].ToString());
@@ -584,7 +596,7 @@ namespace KPA_KPI_Analyzer
         /// <returns></returns>
         public DateTime GetLoadedUsPrpoReportDate()
         {
-            string[] date = settings.reportSettings.PrpoUsDate.Split(' ');
+            string[] date = reportSettings.PrpoUsDate.Split(' ');
             int month = int.Parse(date[0].ToString());
             int day = int.Parse(date[1].ToString());
             int year = int.Parse(date[2].ToString());
@@ -600,7 +612,7 @@ namespace KPA_KPI_Analyzer
         /// <returns></returns>
         public DateTime GetLoadedMxPrpoReportDate()
         {
-            string[] date = settings.reportSettings.PrpoMxDate.Split(' ');
+            string[] date = reportSettings.PrpoMxDate.Split(' ');
             int month = int.Parse(date[0].ToString());
             int day = int.Parse(date[1].ToString());
             int year = int.Parse(date[2].ToString());
@@ -616,10 +628,10 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         public void ResetUsSettings()
         {
-            settings.reportSettings.PrpoUsReportLoaded = false;
-            settings.reportSettings.PrpoUsReportFileName = string.Empty;
-            settings.reportSettings.PrpoUsLastLoadedDate = string.Empty;
-            settings.reportSettings.PrpoUsDate = string.Empty;
+            reportSettings.PrpoUsReportLoaded = false;
+            reportSettings.PrpoUsReportFileName = string.Empty;
+            reportSettings.PrpoUsLastLoadedDate = string.Empty;
+            reportSettings.PrpoUsDate = string.Empty;
         }
 
 
@@ -629,10 +641,10 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         public void ResetMxSettings()
         {
-            settings.reportSettings.PrpoMxReportLoaded = false;
-            settings.reportSettings.PrpoMxReportFileName = string.Empty;
-            settings.reportSettings.PrpoMxLastLoadedDate = string.Empty;
-            settings.reportSettings.PrpoMxDate = string.Empty;
+            reportSettings.PrpoMxReportLoaded = false;
+            reportSettings.PrpoMxReportFileName = string.Empty;
+            reportSettings.PrpoMxLastLoadedDate = string.Empty;
+            reportSettings.PrpoMxDate = string.Empty;
         }
 
 
@@ -644,16 +656,16 @@ namespace KPA_KPI_Analyzer
         {
             CheckVariantSettings();
 
-            if (DatabaseManager.GetDatabaseConnection() != null && new FileInfo(FileUtils.resourcesFiles[(int)ResourceFile.Settings]).Length != 0)
+            if (DatabaseManager.GetDatabaseConnection() != null && new FileInfo(FileUtils.resourcesFiles[(int)ResourceFile.ReportingSettings]).Length != 0)
             {
                 try
                 {
-                    if (settings.reportSettings.PrpoUsReportLoaded && settings.reportSettings.PrpoMxReportLoaded)
+                    if (reportSettings.PrpoUsReportLoaded && reportSettings.PrpoMxReportLoaded)
                     {
                         NavigationLocked = true;
                         ShowPage(Pages.CountrySelector);
                     }
-                    else if (settings.reportSettings.PrpoUsReportLoaded)
+                    else if (reportSettings.PrpoUsReportLoaded)
                     {
                         ConfigureToUnitedStates();
 
@@ -664,7 +676,11 @@ namespace KPA_KPI_Analyzer
                             {
                                 DateTime dt = GetLastLoadedUsPrpoReportDate();
                                 if (dt == DateTime.Today.Date)
-                                {                                  
+                                {
+                                    // The overall data exists so lets create the reports to hold that data
+                                    CreateReport(ReportingType.KpaOverall);
+                                    CreateReport(ReportingType.KpiOverall);
+                                                      
                                     // Load the KPA Overall data from local file
                                     (reports[ReportingType.KpaOverall] as KpaOverallReport).Load();
 
@@ -702,7 +718,7 @@ namespace KPA_KPI_Analyzer
                             BeginDataLoadProcess();
                         }
                     }
-                    else if(settings.reportSettings.PrpoMxReportLoaded)
+                    else if(reportSettings.PrpoMxReportLoaded)
                     {
                         ConfigureToMexico();
 
@@ -714,6 +730,11 @@ namespace KPA_KPI_Analyzer
                                 DateTime dt = GetLastLoadedMxPrpoReportDate();
                                 if (dt == DateTime.Today.Date)
                                 {
+                                    // The overall data exists so lets create the reports to hold that data
+                                    CreateReport(ReportingType.KpaOverall);
+                                    CreateReport(ReportingType.KpiOverall);
+
+
                                     // Load the KPA Overall data from local file
                                     (reports[ReportingType.KpaOverall] as KpaOverallReport).Load();
 
@@ -751,6 +772,15 @@ namespace KPA_KPI_Analyzer
                             BeginDataLoadProcess();
                         }
                     }
+                    else
+                    {
+                        // Create a new instance of the settings file
+                        Settings.ReportSettings.Clear();
+
+                        lbl_Country.Text = "Waiting...";
+                        lbl_topPanelNavPrpoDate.Text = "Waiting...";
+                        ShowPage(Pages.DragDropDash);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -760,8 +790,8 @@ namespace KPA_KPI_Analyzer
             }
             else
             {
-                // Create a new instance of the settings file get that instance
-                settings = ApplicationSettings.CreateNewSettingsInstance();
+                // Create a new instance of the settings file
+                Settings.ReportSettings.Clear();
 
                 lbl_Country.Text = "Waiting...";
                 lbl_topPanelNavPrpoDate.Text = "Waiting...";
@@ -959,27 +989,6 @@ namespace KPA_KPI_Analyzer
         private void reportingToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            // Create the KPA Overall Report
-            CreateReport(ReportingType.KpaOverall);
-
-            // Create the KPI Overall Report
-            CreateReport(ReportingType.KpiOverall);
-
-            // Setup the KPA Report
-            (reports[ReportingType.KpaOverall] as KpaOverallReport).CreateReport();
-
-            // Setup the KPI Report
-            (reports[ReportingType.KpiOverall] as KpiOverallReport).CreateReport();
-
-            // Run the KPA Overall Report
-            reports[ReportingType.KpaOverall].RunReport();
-
-            // Run the KPI Overall Reprot
-            reports[ReportingType.KpiOverall].RunReport();
         }
     }
 }

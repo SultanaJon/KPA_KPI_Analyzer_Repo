@@ -1,12 +1,11 @@
 ﻿namespace ApplicationIOLibarary.Interfaces
 {
-    public interface IStorable
+    public interface IStorable<T>
     {
         /// <summary>
         /// Saves the object T to a JSON file.
         /// </summary>
-        /// <param name="obj">The object to tbe saved</param>
-        /// <returns>Boolean value indicating whether or not the Save operation was successful.</returns>
+        /// <param name="obj">The object to save into</param>
         void Save();
     }
 }

@@ -12,7 +12,7 @@ using Newtonsoft.Json;
 
 namespace Reporting
 {
-    public class KpaOverallReport : Report, IStorable, ILoadable
+    public class KpaOverallReport : Report, IStorable<KpaOverallReport>, ILoadable<KpaOverallReport>
     {
         /// <summary>
         /// Private instance of a KPA Report
@@ -39,21 +39,12 @@ namespace Reporting
         }
 
 
-        /// <summary>
-        /// The contents of the KPA Report
-        /// </summary>
-        List<KeyPerformanceAction> kpaOverallReport;
-
-
-
 
         /// <summary>
         /// Default Private Constructor
         /// </summary>
         private KpaOverallReport()
         {
-            kpaOverallReport = new List<KeyPerformanceAction>();
-
             // Check if any other report have already created the actions
             if (!ActionsSet)
             {
@@ -112,25 +103,13 @@ namespace Reporting
 
 
 
-        /// <summary>
-        /// Creates the overall report
-        /// </summary>
-        public void CreateReport()
-        {
-            // Clear the report and add the actions to it
-            kpaOverallReport.Clear();
-            kpaOverallReport.AddRange(Actions);
-        }
-
-
-
 
         /// <summary>
         /// Runs the overall report for all the Key Performance Actions (KPA)
         /// </summary>
         public override void RunReport()
         {
-            foreach (KeyPerformanceAction action in kpaOverallReport)
+            foreach (KeyPerformanceAction action in Actions)
             {
                 // This KPA needs information from another KPA.
                 if (action is ConfirmedDateForUpcomingDeliveries)
@@ -141,13 +120,13 @@ namespace Reporting
             }
 
             // Get the lessThanZero data from Due Today or Late to confirmed
-            int lessThanEqualToZero = (kpaOverallReport[(int)KpaOption.FollowUp_DueTodayOrLateToConfirmed] as DueTodayOrLateToConfirmed).LessThanEqualToZeroDays;
+            int lessThanEqualToZero = (Actions[(int)KpaOption.FollowUp_DueTodayOrLateToConfirmed] as DueTodayOrLateToConfirmed).LessThanEqualToZeroDays;
 
             // supply Confirmed date for upcoming deliveries the above data
-            (kpaOverallReport[(int)KpaOption.FollowUp_ConfirmedDateForUpcomingDeliveries] as ConfirmedDateForUpcomingDeliveries).DueTodayLateToConfirmedLessThanZeroDueToday = lessThanEqualToZero;
+            (Actions[(int)KpaOption.FollowUp_ConfirmedDateForUpcomingDeliveries] as ConfirmedDateForUpcomingDeliveries).DueTodayLateToConfirmedLessThanZeroDueToday = lessThanEqualToZero;
 
             // Run the overall report for Follow up -> Confirmed Date for upcoming deliveries
-            kpaOverallReport[(int)KpaOption.FollowUp_ConfirmedDateForUpcomingDeliveries].RunOverallReport();
+            Actions[(int)KpaOption.FollowUp_ConfirmedDateForUpcomingDeliveries].RunOverallReport();
         }
 
 
@@ -168,11 +147,12 @@ namespace Reporting
                 else
                     jsonString = File.ReadAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.MX_KPA_Overall]);
 
-                kpaOverallReport = JsonConvert.DeserializeObject<List<KeyPerformanceAction>>(jsonString);
+                // Load the JSON data into the reporting Actions
+                kpaOverallReportInstance = JsonConvert.DeserializeObject<KpaOverallReport>(jsonString);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message.ToString(), "Overall Loading Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Overall Loading Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -185,7 +165,7 @@ namespace Reporting
             try
             {
                 // Store the contents of the KPA Overall Report into a JSON string
-                var jsonString = JsonConvert.SerializeObject(kpaOverallReport);
+                var jsonString = JsonConvert.SerializeObject(this);
 
                 if (ReportingCountry.TargetCountry == Country.UnitedStates)
                 {

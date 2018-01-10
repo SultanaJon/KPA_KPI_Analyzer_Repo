@@ -41,8 +41,8 @@ namespace KPA_KPI_Analyzer
                             if(AccessDatabaseUtils.US_PRPO_TableExists)
                             {
                                 DateTime dt = file.Date;
-                                settings.reportSettings.PrpoUsDate = dt.Month.ToString() + " " + dt.Day.ToString() + " " + dt.Year.ToString();
-                                settings.reportSettings.PrpoUsReportLoaded = true;
+                                reportSettings.PrpoUsDate = dt.Month.ToString() + " " + dt.Day.ToString() + " " + dt.Year.ToString();
+                                reportSettings.PrpoUsReportLoaded = true;
                             }
                         }
 
@@ -51,10 +51,13 @@ namespace KPA_KPI_Analyzer
                             if(AccessDatabaseUtils.MX_PRPO_TableExists)
                             {
                                 DateTime dt = file.Date;
-                                settings.reportSettings.PrpoMxDate = dt.Month.ToString() + " " + dt.Day.ToString() + " " + dt.Year.ToString();
-                                settings.reportSettings.PrpoMxReportLoaded = true;
+                                reportSettings.PrpoMxDate = dt.Month.ToString() + " " + dt.Day.ToString() + " " + dt.Year.ToString();
+                                reportSettings.PrpoMxReportLoaded = true;
                             }
                         }
+
+                        // Save the report settings
+                        reportSettings.Save();
                     }
                 }
             }
@@ -156,7 +159,7 @@ namespace KPA_KPI_Analyzer
             {
                 // Populate Dashboard with PRPO report date.
                 DateTime dt = GetLoadedUsPrpoReportDate();
-                settings.reportSettings.PrpoUsLastLoadedDate = DateTime.Now.Month.ToString() + " " + DateTime.Now.Day.ToString() + " " + DateTime.Now.Year.ToString();
+                reportSettings.PrpoUsLastLoadedDate = DateTime.Now.Month.ToString() + " " + DateTime.Now.Day.ToString() + " " + DateTime.Now.Year.ToString();
                 lbl_topPanelNavPrpoDate.Text = dt.ToString("MMMM dd, yyyy");
                 Globals.PrpoGenerationDate = lbl_topPanelNavPrpoDate.Text;
             }
@@ -164,7 +167,7 @@ namespace KPA_KPI_Analyzer
             {
                 // Populate Dashboard with PRPO report date
                 DateTime dt = GetLoadedMxPrpoReportDate();
-                settings.reportSettings.PrpoMxLastLoadedDate = DateTime.Now.Month.ToString() + " " + DateTime.Now.Day.ToString() + " " + DateTime.Now.Year.ToString();
+                reportSettings.PrpoMxLastLoadedDate = DateTime.Now.Month.ToString() + " " + DateTime.Now.Day.ToString() + " " + DateTime.Now.Year.ToString();
                 lbl_topPanelNavPrpoDate.Text = dt.ToString("MMMM dd, yyyy");
                 Globals.PrpoGenerationDate = lbl_topPanelNavPrpoDate.Text;
             }
@@ -196,7 +199,9 @@ namespace KPA_KPI_Analyzer
                 FiltersTimer.Stop();
 
                 // Save the settings
-                settings.Save();
+                reportSettings.Save();
+
+                // Show the dashboard
                 ShowPage(Pages.Dashboard);
                 ms_applicaitonMenuStrip.Enabled = true;
                 NavigationLocked = false;
@@ -219,9 +224,6 @@ namespace KPA_KPI_Analyzer
             // Create a new instance of the overall reports
             CreateReport(ReportingType.KpaOverall);
             CreateReport(ReportingType.KpiOverall);
-
-            (reports[ReportingType.KpaOverall] as KpaOverallReport).CreateReport();
-            (reports[ReportingType.KpiOverall] as KpiOverallReport).CreateReport();
 
 
             if (AccessDatabaseUtils.US_PRPO_TableExists || AccessDatabaseUtils.MX_PRPO_TableExists)
@@ -268,7 +270,7 @@ namespace KPA_KPI_Analyzer
 
             if (_excelFile is ExcelFiles.UsPrpoExcelFile)
             {
-                settings.reportSettings.PrpoUsReportFileName = _excelFile.Path;
+                reportSettings.PrpoUsReportFileName = _excelFile.Path;
 
                 // import only the US PRPO file
                 Importer usImport = new Importer(
@@ -303,7 +305,7 @@ namespace KPA_KPI_Analyzer
 
             if (_excelFile is ExcelFiles.MxPrpoExcelFile)
             {
-                settings.reportSettings.PrpoMxReportFileName = _excelFile.Path;
+                reportSettings.PrpoMxReportFileName = _excelFile.Path;
 
                 // Import only the MX PRPO file.
                 Importer mxImport = new Importer(
@@ -393,9 +395,6 @@ namespace KPA_KPI_Analyzer
             CreateReport(ReportingType.KpaOverall);
             CreateReport(ReportingType.KpiOverall);
 
-            // Setup the reports with KPAs & KPIs
-            (reports[ReportingType.KpaOverall] as KpaOverallReport).CreateReport();
-            (reports[ReportingType.KpiOverall] as KpiOverallReport).CreateReport();
            
             // Start the data load process
             DatabaseLoadingUtils.DataLoadProcessStarted = false;

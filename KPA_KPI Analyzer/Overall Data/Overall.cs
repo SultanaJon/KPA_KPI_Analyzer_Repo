@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace KPA_KPI_Analyzer.Overall_Data
 {
-    public class Overall : IStorable
+    public class Overall
     {
         public KPA kpa;
         public KPI kpi;
@@ -229,7 +229,7 @@ namespace KPA_KPI_Analyzer.Overall_Data
             //}
             //catch (Exception ex)
             //{
-            //    MessageBox.Show(ex.Message.ToString(), "Overall DataReader Loading Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    MessageBox.Show(ex.Message, "Overall DataReader Loading Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             //}
         }
 
