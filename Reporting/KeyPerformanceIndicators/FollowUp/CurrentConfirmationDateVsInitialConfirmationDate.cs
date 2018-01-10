@@ -56,38 +56,7 @@ namespace Reporting.KeyPerformanceIndicators.FollowUp
         public int GreaterThanEqualToTwentyTwoDays { get; set; }
 
         #endregion
-
-
-
-
-
-        /// <summary>
-        /// Returns the template that this KPA or KPI fall under
-        /// </summary>
-        public IUnconfirmed Unconfirmed
-        {
-            get
-            {
-                return this;
-            }
-        }
-
-
-
-
-        /// <summary>
-        /// Returns the template that this KPA or KPI fall under
-        /// </summary>
-        public ITemplateThree Template
-        {
-            get
-            {
-                return this;
-            }
-        }
-
-
-
+     
 
 
 

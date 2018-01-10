@@ -202,7 +202,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             AnalysisTwo = "- Difference between todays date and the date the PR was created.";
 
             ITemplateOne tempOne = (Report.Actions[(int)KpaOption.ExcessStockStock_PrsAgingNotReleased]
-                                as Reporting.KeyPerformanceActions.ExcessStockStock.PRsAgingNotReleased).Template;
+                                as Reporting.KeyPerformanceActions.ExcessStockStock.PRsAgingNotReleased);
 
 
             // Add the data to the column chart
@@ -252,7 +252,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             AnalysisTwo = "- Difference between todays date and the date the PR was fully released.";
 
             ITemplateOne tempOne = (Report.Actions[(int)KpaOption.ExcessStockStock_PrsAgingReleased]
-                                as Reporting.KeyPerformanceActions.ExcessStockStock.PRsAgingReleased).Template;
+                                as Reporting.KeyPerformanceActions.ExcessStockStock.PRsAgingReleased);
 
             // Add the data to the column chart
             dp.addLabely(lbl_xLabelOne.Text, tempOne.LessThanEqualToZeroDays.ToString());
@@ -299,7 +299,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             AnalysisTwo = "- Difference between todays date and the date the PR was added to the PO.";
 
             ITemplateOne tempOne = (Report.Actions[(int)KpaOption.ExcessStockStock_PoCreationTruDelivery]
-                                as Reporting.KeyPerformanceActions.ExcessStockStock.POCreationThruDelivery).Template;
+                                as Reporting.KeyPerformanceActions.ExcessStockStock.POCreationThruDelivery);
 
 
             // Add the data to the column chart

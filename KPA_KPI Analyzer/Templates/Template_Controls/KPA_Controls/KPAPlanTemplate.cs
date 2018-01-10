@@ -197,7 +197,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
 
             ITemplateOne tempOne = (Report.Actions[(int)KpaOption.Plan_PrsAgingNotReleased]
-                                as Reporting.KeyPerformanceActions.Plan.PRsAgingNotReleased).Template;
+                                as Reporting.KeyPerformanceActions.Plan.PRsAgingNotReleased);
 
 
             // Add the data to the column chart
@@ -247,7 +247,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             AnalysisTwo = "- Difference between the current requirement date and todays date.";
 
             ITemplateOne tempOne = (Report.Actions[(int)KpaOption.Plan_MaterialDue]
-                                as Reporting.KeyPerformanceActions.Plan.MaterialDue).Template;
+                                as Reporting.KeyPerformanceActions.Plan.MaterialDue);
 
 
             // Add the data to the column chart

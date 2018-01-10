@@ -179,7 +179,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
 
             ITemplateOne tempOne = (Report.Actions[(int)KpaOption.FollowUp_ConfirmedDateVsPlanDate]
-                                as Reporting.KeyPerformanceActions.FollowUp.ConfirmedDateVsPlanDate).Template;
+                                as Reporting.KeyPerformanceActions.FollowUp.ConfirmedDateVsPlanDate);
 
 
             // Add the data to the column chart
@@ -229,7 +229,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
 
             ITemplateOne tempOne = (Report.Actions[(int)KpaOption.FollowUp_ConfirmedDateForUpcomingDeliveries]
-                                as Reporting.KeyPerformanceActions.FollowUp.ConfirmedDateForUpcomingDeliveries).Template;
+                                as Reporting.KeyPerformanceActions.FollowUp.ConfirmedDateForUpcomingDeliveries);
 
 
             // Add the data to the column chart
@@ -278,7 +278,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             AnalysisTwo = "- Difference between todays date and the current confirmation date.";
 
             ITemplateOne tempOne = (Report.Actions[(int)KpaOption.FollowUp_DueTodayOrLateToConfirmed]
-                                as Reporting.KeyPerformanceActions.FollowUp.DueTodayOrLateToConfirmed).Template;
+                                as Reporting.KeyPerformanceActions.FollowUp.DueTodayOrLateToConfirmed);
 
 
             // Add the data to the column chart

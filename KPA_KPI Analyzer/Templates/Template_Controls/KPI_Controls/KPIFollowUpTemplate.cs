@@ -225,7 +225,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             AnalysisTwo = "- Difference between final confirmation date and first confirmation date.";
 
             ITemplateThree tempThree = (Report.Indicators[(int)KpiOption.FollowUp_CurrentConfirmationDateVsInitialConfirmationDate]
-                    as Reporting.KeyPerformanceIndicators.FollowUp.CurrentConfirmationDateVsInitialConfirmationDate).Template;
+                    as Reporting.KeyPerformanceIndicators.FollowUp.CurrentConfirmationDateVsInitialConfirmationDate);
 
 
             // Add the data to the column chart
@@ -254,7 +254,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
             IUnconfirmed unconfirmedInfo = (Report.Indicators[(int)KpiOption.FollowUp_CurrentConfirmationDateVsInitialConfirmationDate]
-                    as Reporting.KeyPerformanceIndicators.FollowUp.CurrentConfirmationDateVsInitialConfirmationDate).Unconfirmed;
+                    as Reporting.KeyPerformanceIndicators.FollowUp.CurrentConfirmationDateVsInitialConfirmationDate);
 
             // Get the uncofnrimed information
             PercNoConf = string.Format("{0:n}", unconfirmedInfo.PercentUnconfirmed);
@@ -286,7 +286,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             AnalysisTwo = "- Difference between current confirmation date and current planned date.";
 
             ITemplateThree tempThree = (Report.Indicators[(int)KpiOption.FollowUp_FinalConfirmationDateVsInitialConfirmationDate]
-                    as Reporting.KeyPerformanceIndicators.FollowUp.FinalConfirmationDateVsFinalPlanDate).Template;
+                    as Reporting.KeyPerformanceIndicators.FollowUp.FinalConfirmationDateVsFinalPlanDate);
 
 
             // Add the data to the column chart
@@ -315,7 +315,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
             IUnconfirmed unconfirmedInfo = (Report.Indicators[(int)KpiOption.FollowUp_FinalConfirmationDateVsInitialConfirmationDate]
-                    as Reporting.KeyPerformanceIndicators.FollowUp.FinalConfirmationDateVsFinalPlanDate).Unconfirmed;
+                    as Reporting.KeyPerformanceIndicators.FollowUp.FinalConfirmationDateVsFinalPlanDate);
 
             // Get the uncofnrimed information
             PercNoConf = string.Format("{0:n}", unconfirmedInfo.PercentUnconfirmed);
@@ -348,7 +348,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             AnalysisTwo = "- Difference between final receipt date and current planned date.";
 
             ITemplateThree tempThree = (Report.Indicators[(int)KpiOption.FollowUp_ReceiptDateVsCurrentPlanDate]
-                    as Reporting.KeyPerformanceIndicators.FollowUp.ReceiptDateVsCurrentPlanDate).Template;
+                    as Reporting.KeyPerformanceIndicators.FollowUp.ReceiptDateVsCurrentPlanDate);
 
             // Add the data to the column chart
             dp.addLabely(lbl_xLabelOne.Text, tempThree.LessThanEqualToNegTwentyTwoDays.ToString());
@@ -400,7 +400,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             AnalysisTwo = "- Difference between final receipt date and the original confirmation date.";
 
             ITemplateThree tempThree = (Report.Indicators[(int)KpiOption.FollowUp_ReceiptDateVsOriginalConfirmationDate]
-                    as Reporting.KeyPerformanceIndicators.FollowUp.ReceiptDateVsOriginalConfirmationDate).Template;
+                    as Reporting.KeyPerformanceIndicators.FollowUp.ReceiptDateVsOriginalConfirmationDate);
 
 
             // Add the data to the column chart
@@ -429,7 +429,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
             IUnconfirmed unconfirmedInfo = (Report.Indicators[(int)KpiOption.FollowUp_ReceiptDateVsOriginalConfirmationDate]
-                    as Reporting.KeyPerformanceIndicators.FollowUp.ReceiptDateVsOriginalConfirmationDate).Unconfirmed;
+                    as Reporting.KeyPerformanceIndicators.FollowUp.ReceiptDateVsOriginalConfirmationDate);
 
             // Get the uncofnrimed information
             PercNoConf = string.Format("{0:n}", unconfirmedInfo.PercentUnconfirmed);
@@ -462,7 +462,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             AnalysisTwo = "- Difference between final receipt date and the current confirmation date.";
 
             ITemplateThree tempThree = (Report.Indicators[(int)KpiOption.FollowUp_ReceiptDateVsCurrentConfirmationDate]
-                    as Reporting.KeyPerformanceIndicators.FollowUp.ReceiptDateVsCurrentConfirmationDate).Template;
+                    as Reporting.KeyPerformanceIndicators.FollowUp.ReceiptDateVsCurrentConfirmationDate);
 
 
             // Add the data to the column chart
@@ -491,7 +491,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
             IUnconfirmed unconfirmedInfo = (Report.Indicators[(int)KpiOption.FollowUp_ReceiptDateVsCurrentConfirmationDate]
-                    as Reporting.KeyPerformanceIndicators.FollowUp.ReceiptDateVsCurrentConfirmationDate).Unconfirmed;
+                    as Reporting.KeyPerformanceIndicators.FollowUp.ReceiptDateVsCurrentConfirmationDate);
 
             // Get the uncofnrimed information
             PercNoConf = string.Format("{0:n}", unconfirmedInfo.PercentUnconfirmed);

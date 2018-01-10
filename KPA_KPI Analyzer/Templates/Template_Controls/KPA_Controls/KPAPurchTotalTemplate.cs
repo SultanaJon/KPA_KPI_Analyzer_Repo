@@ -184,7 +184,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
 
             ITemplateOne tempOne = (Report.Actions[(int)KpaOption.PurchTotal_PrReleaseToConfirmationEntry]
-                                as Reporting.KeyPerformanceActions.PurchTotal.PRReleaseToConfirmationEntry).Template;
+                                as Reporting.KeyPerformanceActions.PurchTotal.PRReleaseToConfirmationEntry);
 
 
             // Add the data to the column chart

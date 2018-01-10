@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ApplicationIOLibarary.Interfaces;
+using Newtonsoft.Json;
 
 namespace Reporting
 {
@@ -158,17 +159,16 @@ namespace Reporting
         /// <param name="_report">The report that needs to be loaded</param>
         public void Load()
         {
-            dataJSONString = string.Empty;
-            ser = new System.Web.Script.Serialization.JavaScriptSerializer();
+            string jsonString = string.Empty;
 
             try
             {
                 if (ReportingCountry.TargetCountry == Country.UnitedStates)
-                    dataJSONString = File.ReadAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.US_KPA_Overall]);
+                    jsonString = File.ReadAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.US_KPA_Overall]);
                 else
-                    dataJSONString = File.ReadAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.MX_KPA_Overall]);
+                    jsonString = File.ReadAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.MX_KPA_Overall]);
 
-                kpaOverallReport = ser.Deserialize<List<KeyPerformanceAction>>(dataJSONString);
+                kpaOverallReportInstance = JsonConvert.DeserializeObject<KpaOverallReport>(jsonString);
             }
             catch (Exception ex)
             {
@@ -182,20 +182,18 @@ namespace Reporting
         /// </summary>
         public void Save()
         {
-            dataJSONString = string.Empty;
-            ser = new System.Web.Script.Serialization.JavaScriptSerializer();
-
             try
             {
-                // Store the contents of the KPA Overall Report Instance
-                dataJSONString = ser.Serialize(kpaOverallReport);
+                // Store the contents of the KPA Overall Report into a JSON string
+                var jsonString = JsonConvert.SerializeObject(KpaOverallReportInstance);
+
                 if (ReportingCountry.TargetCountry == Country.UnitedStates)
                 {
-                    File.WriteAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.US_KPA_Overall], dataJSONString);
+                    File.WriteAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.US_KPA_Overall], jsonString);
                 }
                 else
                 {
-                    File.WriteAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.MX_KPA_Overall], dataJSONString);
+                    File.WriteAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.MX_KPA_Overall], jsonString);
                 }
             }
             catch (Exception ex)

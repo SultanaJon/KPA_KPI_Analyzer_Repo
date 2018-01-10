@@ -222,7 +222,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
             ITemplateFive tempFive = (Report.Indicators[(int)KpiOption.Other_PrsCreated]
-                as Reporting.KeyPerformanceIndicators.Other.PRsCreated).Template;
+                as Reporting.KeyPerformanceIndicators.Other.PRsCreated);
 
             // Add the data to the column chart
             dp.addLabely(lbl_xLabelOne.Text, tempFive.GreaterThanEqualToZeroWeeks.ToString());
@@ -276,7 +276,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             AnalysisTwo = "- Difference between PR fully released date and todays date.";
 
             ITemplateFive tempFive = (Report.Indicators[(int)KpiOption.Other_PrsReleased]
-                as Reporting.KeyPerformanceIndicators.Other.PRsReleased).Template;
+                as Reporting.KeyPerformanceIndicators.Other.PRsReleased);
 
             // Add the data to the column chart
             dp.addLabely(lbl_xLabelOne.Text, tempFive.GreaterThanEqualToZeroWeeks.ToString());
@@ -331,7 +331,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             AnalysisTwo = "";
 
             ITemplateFive tempFive = (Report.Indicators[(int)KpiOption.Other_PrsCreated]
-                as Reporting.KeyPerformanceIndicators.Other.PRsCreated).Template;
+                as Reporting.KeyPerformanceIndicators.Other.PRsCreated);
 
             // Add the data to the column chart
             dp.addLabely(lbl_xLabelOne.Text, tempFive.GreaterThanEqualToZeroWeeks.ToString());
@@ -389,7 +389,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
             ITemplateFive tempFive = (Report.Indicators[(int)KpiOption.Other_PrsCreated]
-                as Reporting.KeyPerformanceIndicators.Other.PRsCreated).Template;
+                as Reporting.KeyPerformanceIndicators.Other.PRsCreated);
 
             // Add the data to the column chart
             dp.addLabely(lbl_xLabelOne.Text, tempFive.GreaterThanEqualToZeroWeeks.ToString());
@@ -446,7 +446,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             AnalysisTwo = "- Difference between the date the PR was created and todays date.";
 
             ITemplateFive tempFive = (Report.Indicators[(int)KpiOption.Other_HotJobPRs]
-                as Reporting.KeyPerformanceIndicators.Other.HotJobPRs).Template;
+                as Reporting.KeyPerformanceIndicators.Other.HotJobPRs);
 
             // Add the data to the column chart
             dp.addLabely(lbl_xLabelOne.Text, tempFive.GreaterThanEqualToZeroWeeks.ToString());

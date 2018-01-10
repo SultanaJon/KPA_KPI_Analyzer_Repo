@@ -34,20 +34,6 @@ namespace Reporting.KeyPerformanceIndicators.PurchSub
 
 
 
-        /// <summary>
-        /// Returns the template that this KPA or KPI fall under
-        /// </summary>
-        public ITemplateFour Template
-        {
-            get
-            {
-                return this;
-            }
-        }
-
-
-
-
 
 
         /// <summary>

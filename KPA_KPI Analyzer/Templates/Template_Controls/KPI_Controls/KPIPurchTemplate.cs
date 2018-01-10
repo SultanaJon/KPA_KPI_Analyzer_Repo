@@ -204,7 +204,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
             ITemplateThree tempThree = (Report.Indicators[(int)KpiOption.Purch_InitialConfirmationDateVsPrPlanDate]
-                    as Reporting.KeyPerformanceIndicators.Purch.InitialConfirmationDateVsPRPlanDate).Template;
+                    as Reporting.KeyPerformanceIndicators.Purch.InitialConfirmationDateVsPRPlanDate);
 
 
             // Add the data to the column chart
@@ -233,7 +233,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
             IUnconfirmed unconfirmedInfo = (Report.Indicators[(int)KpiOption.Purch_InitialConfirmationDateVsPrPlanDate]
-                    as Reporting.KeyPerformanceIndicators.Purch.InitialConfirmationDateVsPRPlanDate).Unconfirmed;
+                    as Reporting.KeyPerformanceIndicators.Purch.InitialConfirmationDateVsPRPlanDate);
 
             // Get the uncofnrimed information
             PercNoConf = string.Format("{0:n}", unconfirmedInfo.PercentUnconfirmed);

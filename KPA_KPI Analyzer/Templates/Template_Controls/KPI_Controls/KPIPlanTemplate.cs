@@ -206,7 +206,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
             ITemplateThree tempThree = (Report.Indicators[(int)KpiOption.Plan_CurrentPlanDateVsPrPlanDate]
-                    as Reporting.KeyPerformanceIndicators.Plan.CurrentPlanDateVsPRPlanDate).Template;
+                    as Reporting.KeyPerformanceIndicators.Plan.CurrentPlanDateVsPRPlanDate);
 
             // Add the data to the column chart
             dp.addLabely(lbl_xLabelOne.Text, tempThree.LessThanEqualToNegTwentyTwoDays.ToString());
@@ -258,7 +258,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             AnalysisTwo = "- (PR planned date - PR fully released date) - commodity coded leadtime.";
 
             ITemplateThree tempThree = (Report.Indicators[(int)KpiOption.Plan_OrigPlanDateMinusPrFullReleaseDateVsCodedLead]
-                    as Reporting.KeyPerformanceIndicators.Plan.OriginalPlanDateTo2ndLvlReleaseDateVsCodedLead).Template;
+                    as Reporting.KeyPerformanceIndicators.Plan.OriginalPlanDateTo2ndLvlReleaseDateVsCodedLead);
 
             // Add the data to the column chart
             dp.addLabely(lbl_xLabelOne.Text, tempThree.LessThanEqualToNegTwentyTwoDays.ToString());
@@ -311,7 +311,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             AnalysisTwo = "- (current planned date - PR fully released date) - commodity coded leadtime.";
 
             ITemplateThree tempThree = (Report.Indicators[(int)KpiOption.Plan_CurrentPlanDateMinusPrFullReleaseDateVsCodedLead]
-                    as Reporting.KeyPerformanceIndicators.Plan.CurrentPlanDateTo2ndLvlReleaseDateVsCodedLead).Template;
+                    as Reporting.KeyPerformanceIndicators.Plan.CurrentPlanDateTo2ndLvlReleaseDateVsCodedLead);
 
             // Add the data to the column chart
             dp.addLabely(lbl_xLabelOne.Text, tempThree.LessThanEqualToNegTwentyTwoDays.ToString());

@@ -203,7 +203,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
             // Get the template data
             ITemplateOne tempOne = (Report.Actions[(int)KpaOption.Purch_PRsAgingReleased]
-                    as Reporting.KeyPerformanceActions.Purch.PRsAgingReleased).Template;
+                    as Reporting.KeyPerformanceActions.Purch.PRsAgingReleased);
 
 
             // Add the data to the column chart
@@ -253,7 +253,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
             // Get the template data
             ITemplateOne tempOne = (Report.Actions[(int)KpaOption.Purch_PoFirstRelease]
-                    as Reporting.KeyPerformanceActions.Purch.POFirstRelease).Template;
+                    as Reporting.KeyPerformanceActions.Purch.POFirstRelease);
 
 
             // Add the data to the column chart
@@ -304,7 +304,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
             // Get the template data
             ITemplateOne tempOne = (Report.Actions[(int)KpaOption.Purch_PoPrevRelease]
-                    as Reporting.KeyPerformanceActions.Purch.POPrevRelease).Template;
+                    as Reporting.KeyPerformanceActions.Purch.POPrevRelease);
 
 
             // Add the data to the column chart
@@ -355,7 +355,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
             // Get the template data
             ITemplateOne tempOne = (Report.Actions[(int)KpaOption.Purch_NoConfirmation]
-                    as Reporting.KeyPerformanceActions.Purch.NoConfirmations).Template;
+                    as Reporting.KeyPerformanceActions.Purch.NoConfirmations);
 
 
             // Add the data to the column chart

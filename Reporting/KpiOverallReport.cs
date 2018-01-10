@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using ApplicationIOLibarary.Interfaces;
 using System.IO;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace Reporting
 {
@@ -138,17 +139,16 @@ namespace Reporting
         /// <param name="_report">The report that needs to be loaded</param>
         public void Load()
         {
-            dataJSONString = string.Empty;
-            ser = new System.Web.Script.Serialization.JavaScriptSerializer();
+            string jsonString = string.Empty;
 
             try
             {
                 if (ReportingCountry.TargetCountry == Country.UnitedStates)
-                    dataJSONString = File.ReadAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.US_KPI_Overall]);
+                    jsonString = File.ReadAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.US_KPI_Overall]);
                 else
-                    dataJSONString = File.ReadAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.MX_KPI_Overall]);
+                    jsonString = File.ReadAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.MX_KPI_Overall]);
 
-                kpiOverallReport = ser.Deserialize<List<KeyPerformanceIndicator>>(dataJSONString);
+                kpiOverallReportInstance = JsonConvert.DeserializeObject<KpiOverallReport>(jsonString);
             }
             catch (Exception ex)
             {
@@ -162,19 +162,18 @@ namespace Reporting
         /// </summary>
         public void Save()
         {
-            dataJSONString = string.Empty;
-            ser = new System.Web.Script.Serialization.JavaScriptSerializer();
-
             try
             {
-                dataJSONString = ser.Serialize(kpiOverallReport);
+                // store the contents of the KPI Overall Report into a JSON string
+                var jsonString = JsonConvert.SerializeObject(KpiOverallReportInstance);
+
                 if (ReportingCountry.TargetCountry == Country.UnitedStates)
                 {
-                    File.WriteAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.US_KPI_Overall], dataJSONString);
+                    File.WriteAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.US_KPI_Overall], jsonString);
                 }
                 else
                 {
-                    File.WriteAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.MX_KPI_Overall], dataJSONString);
+                    File.WriteAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.MX_KPI_Overall], jsonString);
                 }
             }
             catch (Exception ex)

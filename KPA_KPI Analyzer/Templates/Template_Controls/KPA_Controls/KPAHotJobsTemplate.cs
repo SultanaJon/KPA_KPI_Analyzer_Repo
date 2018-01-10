@@ -188,7 +188,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             AnalysisTwo = "- Difference between todays date and the date the PR was fully released.";
 
             ITemplateOne tempOne = (Report.Actions[(int)KpaOption.HotJobs_PrsNoOnPo]
-                                as Reporting.KeyPerformanceActions.HotJobs.PRsNotOnPO).Template;
+                                as Reporting.KeyPerformanceActions.HotJobs.PRsNotOnPO);
 
 
             // Add the data to the column chart
@@ -238,7 +238,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             AnalysisTwo = "- Difference between todays date and the date the PO line was created.";
 
             ITemplateOne tempOne = (Report.Actions[(int)KpaOption.HotJobs_NoConfirmations]
-                                as Reporting.KeyPerformanceActions.HotJobs.NoConfirmations).Template;
+                                as Reporting.KeyPerformanceActions.HotJobs.NoConfirmations);
 
 
             // Add the data to the column chart
@@ -288,7 +288,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             AnalysisTwo = "- Difference between todays date and the first confirmation date.";
 
             ITemplateOne tempOne = (Report.Actions[(int)KpaOption.HotJobs_LateToConfirmed]
-                                as Reporting.KeyPerformanceActions.HotJobs.LateToConfirmed).Template;
+                                as Reporting.KeyPerformanceActions.HotJobs.LateToConfirmed);
 
 
             // Add the data to the column chart

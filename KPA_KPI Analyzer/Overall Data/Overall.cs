@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Web.Script.Serialization;
 using System.Windows.Forms;
 
 namespace KPA_KPI_Analyzer.Overall_Data
@@ -14,11 +13,6 @@ namespace KPA_KPI_Analyzer.Overall_Data
 
 
 
-        private JavaScriptSerializer ser;
-        private string dataJSONString;
-
-
-
         /// <summary>
         /// Default Overall Constructor
         /// </summary>
@@ -26,8 +20,6 @@ namespace KPA_KPI_Analyzer.Overall_Data
         {
             kpa = new KPA();
             kpi = new KPI();
-            ser = new JavaScriptSerializer();
-            dataJSONString = string.Empty;
         }
 
 

@@ -216,7 +216,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
             ITemplateFour tempFour = (Report.Indicators[(int)KpiOption.PurchSub_PrReleaseVsPoReleaseDate]
-                    as Reporting.KeyPerformanceIndicators.PurchSub.PRReleaseDateVsPOReleaseDate).Template;
+                    as Reporting.KeyPerformanceIndicators.PurchSub.PRReleaseDateVsPOReleaseDate);
 
             // Add the data to the column chart
             dp.addLabely(lbl_xLabelOne.Text, tempFour.LessThanEqualToZeroDays.ToString());
@@ -275,7 +275,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
             ITemplateFour tempFour = (Report.Indicators[(int)KpiOption.PurchSub_PoCreationDateVsConfirmationEntryDate]
-                    as Reporting.KeyPerformanceIndicators.PurchSub.POCreationDateVsConfirmationEntry).Template;
+                    as Reporting.KeyPerformanceIndicators.PurchSub.POCreationDateVsConfirmationEntry);
 
             // Add the data to the column chart
             dp.addLabely(lbl_xLabelOne.Text, tempFour.LessThanEqualToZeroDays.ToString());
@@ -307,7 +307,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
             IUnconfirmed unconfirmedInfo = (Report.Indicators[(int)KpiOption.PurchSub_PoCreationDateVsConfirmationEntryDate]
-                     as Reporting.KeyPerformanceIndicators.PurchSub.POCreationDateVsConfirmationEntry).Unconfirmed;
+                     as Reporting.KeyPerformanceIndicators.PurchSub.POCreationDateVsConfirmationEntry);
 
             // Get the uncofnrimed information
             PercNoConf = string.Format("{0:n}", unconfirmedInfo.PercentUnconfirmed);

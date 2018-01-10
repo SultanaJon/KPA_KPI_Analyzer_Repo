@@ -1,7 +1,6 @@
 ﻿using Reporting.KeyPerformanceActions;
 using Reporting.KeyPerformanceIndicators;
 using System.Collections.Generic;
-using System.Web.Script.Serialization;
 
 namespace Reporting
 {
@@ -35,18 +34,6 @@ namespace Reporting
         /// Boolean indicating whether or not the Indicators have been set (created)
         /// </summary>
         public static bool IndicatorsSet { get; set; }
-
-
-        /// <summary>
-        /// The JavaScript Serializer to serialize and deserialize a report object
-        /// </summary>
-        internal JavaScriptSerializer ser;
-
-
-        /// <summary>
-        /// The string to hold the data contained within the obeject
-        /// </summary>
-        internal string dataJSONString;
 
 
         /// <summary>

@@ -53,37 +53,6 @@ namespace Reporting.KeyPerformanceIndicators.PurchTotal
 
 
         /// <summary>
-        /// Returns this object as a IUnconfirmed interface
-        /// </summary>
-        public IUnconfirmed Unconfirmed
-        {
-            get
-            {
-                return this;
-            }
-        }
-
-
-
-
-
-        /// <summary>
-        /// Returns the template that this KPA or KPI fall under
-        /// </summary>
-        public ITemplateFour Template
-        {
-            get
-            {
-                return this;
-            }
-        }
-
-
-
-
-
-
-        /// <summary>
         /// The Selective Strategy Context that holds the selective data for reporting
         /// </summary>
         private SelectiveStrategyContext selectiveContext;

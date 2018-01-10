@@ -36,22 +36,6 @@ namespace Reporting.KeyPerformanceIndicators.Other
 
 
         /// <summary>
-        /// Returns the template that this KPA or KPI fall under
-        /// </summary>
-        public ITemplateFive Template
-        {
-            get
-            {
-                return this;
-            }
-        }
-
-
-
-
-
-
-        /// <summary>
         /// The Selective Strategy Context that holds the selective data for reporting
         /// </summary>
         private SelectiveStrategyContext selectiveContext;

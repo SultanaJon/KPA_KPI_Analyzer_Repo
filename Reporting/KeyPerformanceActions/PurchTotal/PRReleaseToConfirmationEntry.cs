@@ -25,21 +25,7 @@ namespace Reporting.KeyPerformanceActions.PurchTotal
         public int TwentyNinePlusDays { get; set; }
 
         #endregion
-
-
-
-
-
-        /// <summary>
-        /// Returns the template that this KPA or KPI fall under
-        /// </summary>
-        public ITemplateOne Template
-        {
-            get
-            {
-                return this;
-            }
-        }
+       
 
 
 

@@ -57,37 +57,7 @@ namespace Reporting.KeyPerformanceIndicators.FollowUp
 
         #endregion
 
-
-
-
-
-
-        /// <summary>
-        /// Returns this object as a IUnconfirmed interface
-        /// </summary>
-        public IUnconfirmed Unconfirmed
-        {
-            get
-            {
-                return this;
-            }
-        }
-
-
-
-
-
-        /// <summary>
-        /// Returns the template that this KPA or KPI fall under
-        /// </summary>
-        public ITemplateThree Template
-        {
-            get
-            {
-                return this;
-            }
-        }
-
+        
 
 
 

@@ -30,22 +30,6 @@ namespace Reporting.KeyPerformanceActions.Plan
 
 
 
-        /// <summary>
-        /// Returns the template that this KPA or KPI fall under
-        /// </summary>
-        public ITemplateOne Template
-        {
-            get
-            {
-                return this;
-            }
-        }
-
-
-
-
-
-
 
         /// <summary>
         /// The Selective Strategy Context that holds the selective data for reporting

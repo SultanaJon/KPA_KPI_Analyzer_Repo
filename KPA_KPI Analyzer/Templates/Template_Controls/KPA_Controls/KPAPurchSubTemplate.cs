@@ -196,7 +196,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
             // Get the template data
             ITemplateOne tempOne = (Report.Actions[(int)KpaOption.PurchSub_PrReleaseToPoRelease]
-                                as Reporting.KeyPerformanceActions.PurchSub.PRReleaseToPORelease).Template;
+                                as Reporting.KeyPerformanceActions.PurchSub.PRReleaseToPORelease);
 
 
             // Add the data to the column chart
@@ -247,7 +247,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
             // Get the template data
             ITemplateOne tempOne = (Report.Actions[(int)KpaOption.PurchSub_PoCreationToConfirmationEntry]
-                                as Reporting.KeyPerformanceActions.PurchSub.POCreationToConfirmationEntry).Template;
+                                as Reporting.KeyPerformanceActions.PurchSub.POCreationToConfirmationEntry);
 
             // Add the data to the column chart
             dp.addLabely(lbl_xLabelOne.Text, tempOne.LessThanEqualToZeroDays.ToString());
