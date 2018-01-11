@@ -16,11 +16,6 @@ namespace DataAccessLibrary
         public static DataTable AllDataDt;
 
 
-        // Call back function to renew the data loader timer.
-        public delegate void RenewDataLoadTimerHandler();
-        public static event RenewDataLoadTimerHandler RenewDataLoadTimer;
-
-
 
         // Callback function to display the drag drop feature.
         public delegate void DisplayDragDropPageHandler();
@@ -99,46 +94,6 @@ namespace DataAccessLibrary
                 DatabaseDataRemovalUtils.DataRemoved = true;
             }
         }
-
-
-
-
-        /// <summary>
-        /// Callback funcion to update the progress of a data load process.
-        /// </summary>
-        public static void UpdateDataLoadProgress()
-        {
-            lock (_updateDataLoadLock)
-            {
-                if (DatabaseLoadingUtils.ScheduledDataLoads == DatabaseLoadingUtils.CompletedDataLoads)
-                {
-                    RenewDataLoadTimer();
-                    DatabaseLoadingUtils.DataLoaded = true;
-                }
-            }
-        }
-
-
-
-
-
-        /// <summary>
-        /// Checks the status of the data loading.
-        /// </summary>
-        public static void UpdateLoadProgress()
-        {
-            lock (locker)
-            {
-                DatabaseLoadingUtils.CompletedDataLoads++;
-                MethodInvoker del = delegate
-                {
-                    UpdateDataLoadProgress();
-                };
-                del.Invoke();
-            }
-        }
-
-
 
 
 
@@ -303,9 +258,6 @@ namespace DataAccessLibrary
                         posRecCompDt = KpiUtils.KpiQueries.GetPoLinesReceivedComplete();
                         pr2ndLvlRelDateDt = KpiUtils.KpiQueries.GetPr2ndLevelRelease();
                         AllDataDt = KpiUtils.KpiQueries.GetAllData();
-
-                        DatabaseLoadingUtils.KPITablesLoaded = true;
-                        UpdateLoadProgress();
                     }
                 }
             }

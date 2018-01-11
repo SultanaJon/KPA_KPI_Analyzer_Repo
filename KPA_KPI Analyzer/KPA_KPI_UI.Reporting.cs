@@ -293,7 +293,7 @@ namespace KPA_KPI_Analyzer
             List<string> filters = GetFilters(reportingWidgetsController.SelectiveFilterOption);
 
             // Pass the filters to the kpa report to use in the report generation
-            (reports[ReportingType.KpaReport] as KpaReport).CreateReport(filters);
+            (reports[ReportingType.KpaReport] as KpaReport).SetupReport(filters);
 
             // Run the KPA Report
             (reports[ReportingType.KpaReport] as KpaReport).RunReport();
@@ -311,7 +311,7 @@ namespace KPA_KPI_Analyzer
             List<string> filters = GetFilters(reportingWidgetsController.SelectiveFilterOption);
 
             // Pass the filters to the KPI report to use in the report generation
-            (reports[ReportingType.KpiReport] as KpiReport).CreateReport(filters);
+            (reports[ReportingType.KpiReport] as KpiReport).SetupReport(filters);
 
             // Run the KPI Report
             (reports[ReportingType.KpiReport] as KpiReport).RunReport();

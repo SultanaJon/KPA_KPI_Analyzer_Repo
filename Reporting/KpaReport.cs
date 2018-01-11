@@ -1,5 +1,6 @@
 ﻿using Reporting.KeyPerformanceActions;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace Reporting
 {
@@ -17,6 +18,14 @@ namespace Reporting
         public static KpaReport KpaReportInstance { get { return kpaReportInstance; } }
 
 
+
+        /// <summary>
+        /// Indicator of whether or not the report has been setup. This will make sure the
+        /// report is not ran without it being setup.
+        /// </summary>
+        private bool ReportSetup { get; set; }
+
+
         /// <summary>
         /// The contents of the KPA Report
         /// </summary>
@@ -29,14 +38,6 @@ namespace Reporting
         private KpaReport()
         {
             report = new Dictionary<string, List<KeyPerformanceAction>>();
-
-            // Check if any other report have already created the actions
-            if(!ActionsSet)
-            {
-                // Add the Key Performance Actions to the report
-                AddActions();
-                ActionsSet = true;
-            }
         }
 
 
@@ -54,48 +55,18 @@ namespace Reporting
 
 
         /// <summary>
-        /// Builds the KPA report so it can be created (calculated)
-        /// </summary>
-        private void AddActions()
-        {
-            Actions.Add(new KeyPerformanceActions.Plan.PRsAgingNotReleased());
-            Actions.Add(new KeyPerformanceActions.Plan.MaterialDue());
-            Actions.Add(new KeyPerformanceActions.Purch.PRsAgingReleased());
-            Actions.Add(new KeyPerformanceActions.Purch.POFirstRelease());
-            Actions.Add(new KeyPerformanceActions.Purch.POPrevRelease());
-            Actions.Add(new KeyPerformanceActions.Purch.NoConfirmations());
-            Actions.Add(new KeyPerformanceActions.PurchSub.PRReleaseToPORelease());
-            Actions.Add(new KeyPerformanceActions.PurchSub.POCreationToConfirmationEntry());
-            Actions.Add(new KeyPerformanceActions.PurchTotal.PRReleaseToConfirmationEntry());
-            Actions.Add(new KeyPerformanceActions.FollowUp.ConfirmedDateVsPlanDate());
-            Actions.Add(new KeyPerformanceActions.FollowUp.ConfirmedDateForUpcomingDeliveries());
-            Actions.Add(new KeyPerformanceActions.FollowUp.DueTodayOrLateToConfirmed());
-            Actions.Add(new KeyPerformanceActions.HotJobs.PRsNotOnPO());
-            Actions.Add(new KeyPerformanceActions.HotJobs.NoConfirmations());
-            Actions.Add(new KeyPerformanceActions.HotJobs.LateToConfirmed());
-            Actions.Add(new KeyPerformanceActions.ExcessStockStock.PRsAgingNotReleased());
-            Actions.Add(new KeyPerformanceActions.ExcessStockStock.PRsAgingReleased());
-            Actions.Add(new KeyPerformanceActions.ExcessStockStock.POCreationThruDelivery());
-            Actions.Add(new KeyPerformanceActions.ExcessStockOpenOrders.PRsAgingNotReleased());
-            Actions.Add(new KeyPerformanceActions.ExcessStockOpenOrders.PRsAgingReleased());
-            Actions.Add(new KeyPerformanceActions.ExcessStockOpenOrders.POCreationThruDelivery());
-            Actions.Add(new KeyPerformanceActions.CurrentPlanVsActual.CurrentPlanDateVsCurrentConfirmationDate());
-            Actions.Add(new KeyPerformanceActions.CurrentPlanVsActual.CurrentPlanDateVsCurrentConfirmationDateForHotJobs());
-        }
-
-
-
-
-        /// <summary>
         /// Creates the KPA Report
         /// </summary>
         /// <param name="filters"></param>
-        public void CreateReport(List<string> filters)
+        public void SetupReport(List<string> filters)
         {
             foreach(string filter in filters)
             {
                 report.Add(filter, Actions);
             }
+
+            // Mark the report as being setup.
+            ReportSetup = true;
         }
 
 
@@ -107,15 +78,22 @@ namespace Reporting
         /// </summary>
         public override void RunReport()
         {
-            if(report.Count > 0)
+            if(ReportSetup)
             {
-                foreach(string filter in report.Keys)
+                if (report.Count > 0)
                 {
-                    foreach(KeyPerformanceAction action in report[filter])
+                    foreach (string filter in report.Keys)
                     {
-                        action.RunSelectiveReport(filter);
+                        foreach (KeyPerformanceAction action in report[filter])
+                        {
+                            action.RunSelectiveReport(filter);
+                        }
                     }
                 }
+            }
+            else
+            {
+                MessageBox.Show("The KPA Report has not been set and cannot run.", "Report Setup Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

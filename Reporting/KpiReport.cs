@@ -1,5 +1,6 @@
 ﻿using Reporting.KeyPerformanceIndicators;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace Reporting
 {
@@ -18,6 +19,13 @@ namespace Reporting
 
 
         /// <summary>
+        /// Indicator of whether or not the report has been setup. This will make sure the
+        /// report is not ran without it being setup.
+        /// </summary>
+        private bool ReportSetup { get; set; }
+
+
+        /// <summary>
         /// The contents of the KPI Report
         /// </summary>
         Dictionary<string, List<KeyPerformanceIndicator>> report;
@@ -29,13 +37,6 @@ namespace Reporting
         private KpiReport()
         {
             report = new Dictionary<string, List<KeyPerformanceIndicator>>();
-
-            if(!IndicatorsSet)
-            {
-                // Add the Key Performance Actions to the report
-                AddIndicators();
-                IndicatorsSet = true;
-            }
         }
 
 
@@ -50,49 +51,21 @@ namespace Reporting
         }
 
 
-        /// <summary>
-        /// Builds the KPA report so it can be created (calculated)
-        /// </summary>
-        private void AddIndicators()
-        {
-            Indicators.Add(new KeyPerformanceIndicators.Plan.CurrentPlanDateVsPRPlanDate());
-            Indicators.Add(new KeyPerformanceIndicators.Plan.OriginalPlanDateTo2ndLvlReleaseDateVsCodedLead());
-            Indicators.Add(new KeyPerformanceIndicators.Plan.CurrentPlanDateTo2ndLvlReleaseDateVsCodedLead());
-            Indicators.Add(new KeyPerformanceIndicators.Purch.InitialConfirmationDateVsPRPlanDate());
-            Indicators.Add(new KeyPerformanceIndicators.FollowUp.CurrentConfirmationDateVsInitialConfirmationDate());
-            Indicators.Add(new KeyPerformanceIndicators.FollowUp.FinalConfirmationDateVsFinalPlanDate());
-            Indicators.Add(new KeyPerformanceIndicators.FollowUp.ReceiptDateVsCurrentPlanDate());
-            Indicators.Add(new KeyPerformanceIndicators.FollowUp.ReceiptDateVsOriginalConfirmationDate());
-            Indicators.Add(new KeyPerformanceIndicators.FollowUp.ReceiptDateVsCurrentConfirmationDate());
-            Indicators.Add(new KeyPerformanceIndicators.PlanTwo.MaterialDueOriginalPlannedDate());
-            Indicators.Add(new KeyPerformanceIndicators.PlanTwo.MaterialDueFinalPlannedDate());
-            Indicators.Add(new KeyPerformanceIndicators.PurchTwo.PR2ndLvlReleaseDateVsPOCreationDate());
-            Indicators.Add(new KeyPerformanceIndicators.PurchTwo.POCreationDateVsPOReleaseDate());
-            Indicators.Add(new KeyPerformanceIndicators.PurchTwo.POReleaseDateVsPOConfirmationDate());
-            Indicators.Add(new KeyPerformanceIndicators.PurchSub.PRReleaseDateVsPOReleaseDate());
-            Indicators.Add(new KeyPerformanceIndicators.PurchSub.POCreationDateVsConfirmationEntry());
-            Indicators.Add(new KeyPerformanceIndicators.PurchTotal.PRReleaseDateToConfirmationEntry());
-            Indicators.Add(new KeyPerformanceIndicators.PurchPlan.POReleaseVsPRDeliveryDate());
-            Indicators.Add(new KeyPerformanceIndicators.Other.PRsCreated());
-            Indicators.Add(new KeyPerformanceIndicators.Other.PRsReleased());
-            Indicators.Add(new KeyPerformanceIndicators.Other.TotalSpend());
-            Indicators.Add(new KeyPerformanceIndicators.Other.PRValueVsPOValue());
-            Indicators.Add(new KeyPerformanceIndicators.Other.HotJobPRs());
-        }
-
-
 
 
         /// <summary>
         /// Creates the KPA Report
         /// </summary>
         /// <param name="filters"></param>
-        public void CreateReport(List<string> filters)
+        public void SetupReport(List<string> filters)
         {
             foreach (string filter in filters)
             {
                 report.Add(filter, Indicators);
             }
+
+            // Mark the report as being setup.
+            ReportSetup = true;
         }
 
 
@@ -104,15 +77,22 @@ namespace Reporting
         /// </summary>
         public override void RunReport()
         {
-            if (report.Count > 0)
+            if (ReportSetup)
             {
-                foreach (string filter in report.Keys)
+                if (report.Count > 0)
                 {
-                    foreach (KeyPerformanceIndicator action in report[filter])
+                    foreach (string filter in report.Keys)
                     {
-                        action.RunSelectiveReport(filter);
+                        foreach (KeyPerformanceIndicator action in report[filter])
+                        {
+                            action.RunSelectiveReport(filter);
+                        }
                     }
                 }
+            }
+            else
+            {
+                MessageBox.Show("The KPI Report has not been set and cannot run.", "Report Setup Required", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

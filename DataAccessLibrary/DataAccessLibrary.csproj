@@ -45,7 +45,6 @@
     <Compile Include="AccessInfo.cs" />
     <Compile Include="AccessDatabaseUtils.cs" />
     <Compile Include="DatabaseDataRemovalUtils.cs" />
-    <Compile Include="DatabaseLoadingUtils.cs" />
     <Compile Include="Exceptions\DatabaseCreationFailureException.cs" />
     <Compile Include="DatabaseManager.cs" />
     <Compile Include="DatabaseTables.cs" />

@@ -105,10 +105,6 @@ namespace KPA_KPI_Analyzer
         {
             NavigationLocked = true;
 
-            DatabaseLoadingUtils.DataLoadProcessStarted = true;
-            DatabaseLoadingUtils.KPITablesLoaded = false;
-            DatabaseLoadingUtils.ScheduledDataLoads = 19;
-
             // A task to load the KPA Overall Data
             Task kpaTask = new Task((reports[ReportingType.KpaOverall] as KpaOverallReport).RunReport);
 
@@ -118,11 +114,11 @@ namespace KPA_KPI_Analyzer
             // A task to load the KPI tables
             Task kpiTableTask = new Task(DatabaseManager.LoadKPITables);
 
-            // Start the KPA Overall Report calculations
-            kpaTask.Start();
-
             // Start loading the KPI Tables
             kpiTableTask.Start();
+
+            // Start the KPA Overall Report calculations
+            kpaTask.Start();
 
 
             // Wait until the KPI Tables have been loaded then start loading the KPI Overall Data
@@ -135,7 +131,6 @@ namespace KPA_KPI_Analyzer
             await kpiTask;
 
 
-            DatabaseLoadingUtils.DataLoaded = false;
             DatabaseManager.ReleaseKPITables();
 
             if (!FilterData.ColumnFilters.Applied && !FilterData.DateFilters.Applied && !FilterData.AdvancedFilters.Applied)
@@ -393,16 +388,6 @@ namespace KPA_KPI_Analyzer
             // Create the report or recreate the overall report
             CreateReport(ReportingType.KpaOverall);
             CreateReport(ReportingType.KpiOverall);
-
-           
-            // Start the data load process
-            DatabaseLoadingUtils.DataLoadProcessStarted = false;
-            DatabaseLoadingUtils.DataLoaded = false;
-            DatabaseLoadingUtils.KPITablesLoaded = false;
-            DatabaseLoadingUtils.CompletedDataLoads = 0;
-            DatabaseLoadingUtils.ScheduledDataLoads = 0;
-
-            //RenewDataLoadTimer();
 
             // Start loading the overall data
             LoadOverallData();
