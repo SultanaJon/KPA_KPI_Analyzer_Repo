@@ -23,14 +23,14 @@ namespace DataExporter
         /// <summary>
         /// The name of the sheet within the excel file
         /// </summary>
-        public string[] SheetNames { get; set; }
+        public string SheetName { get; set; }
 
 
 
         /// <summary>
         /// An indicator of whether or not the excel file should include headers
         /// </summary>
-        public bool[] ContainsHeaders { get; set; }
+        public bool ContainsHeaders { get; set; }
 
 
 

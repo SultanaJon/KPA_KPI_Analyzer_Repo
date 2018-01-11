@@ -1,4 +1,6 @@
-﻿namespace Reporting.Overall
+﻿using System.Collections.Generic;
+
+namespace Reporting.Overall
 {
     public interface ITemplateThree
     {
@@ -13,5 +15,13 @@
         int EightToFourteenDays { get; set; }
         int FifteenToTwentyOneDays { get; set; }
         int GreaterThanEqualToTwentyTwoDays { get; set; }
+
+
+
+        /// <summary>
+        /// Method to return the template data of the function
+        /// </summary>
+        /// <returns></returns>
+        List<string> GetTemplateData();
     }
 }

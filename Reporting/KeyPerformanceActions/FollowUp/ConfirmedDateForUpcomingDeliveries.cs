@@ -110,7 +110,7 @@ namespace Reporting.KeyPerformanceActions.FollowUp
             row.Add(string.Format("{0:n0}", TwentyNinePlusDays));
             row.Add(string.Format("{0:n}", Average));
             row.Add(string.Format("{0:n0}", TotalRecords));
-
+            row.Add(string.Format("{0:n0}", PercentFavorable + "%"));
             //return the template one data for this KPA
             return row;
         }

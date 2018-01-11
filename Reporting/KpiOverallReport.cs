@@ -38,13 +38,8 @@ namespace Reporting
         /// </summary>
         private KpiOverallReport()
         {
-            // Check if any other report have already created the actions
-            if (!IndicatorsSet)
-            {
-                // Add the Key Performance Actions to the report
-                AddIndicators();
-                IndicatorsSet = true;
-            }
+            // Add the Key Performance Actions to the report
+            AddIndicators();
         }
 
 
@@ -67,6 +62,10 @@ namespace Reporting
         /// </summary>
         private void AddIndicators()
         {
+            // Clear any Key Performance Indicators the report might have
+            Indicators.Clear();
+
+            // Add the indicators
             Indicators.Add(new KeyPerformanceIndicators.Plan.CurrentPlanDateVsPRPlanDate());
             Indicators.Add(new KeyPerformanceIndicators.Plan.OriginalPlanDateTo2ndLvlReleaseDateVsCodedLead());
             Indicators.Add(new KeyPerformanceIndicators.Plan.CurrentPlanDateTo2ndLvlReleaseDateVsCodedLead());

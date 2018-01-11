@@ -1,4 +1,6 @@
-﻿namespace Reporting.Overall
+﻿using System.Collections.Generic;
+
+namespace Reporting.Overall
 {
     public interface ITemplateFour
     {
@@ -15,5 +17,13 @@
         int FourtyThreeToFourtyNineDays { get; set; }
         int FiftyToFiftySixDays { get; set; }
         int FiftySevenPlusDays { get; set; }
+
+
+
+        /// <summary>
+        /// Method to return the template data of the function
+        /// </summary>
+        /// <returns></returns>
+        List<string> GetTemplateData();
     }
 }

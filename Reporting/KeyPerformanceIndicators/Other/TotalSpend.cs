@@ -163,16 +163,6 @@ namespace Reporting.KeyPerformanceIndicators.Other
 
 
 
-        /// <summary>
-        /// Calculates the selective report for this KPA
-        /// </summary>
-        private double GetElapsedDays()
-        {
-            return 1;
-        }
-
-
-
 
         /// <summary>
         /// Calculates the selective report for this KPA

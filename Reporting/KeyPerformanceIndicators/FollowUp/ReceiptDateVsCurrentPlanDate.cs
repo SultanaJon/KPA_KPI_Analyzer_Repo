@@ -225,15 +225,6 @@ namespace Reporting.KeyPerformanceIndicators.FollowUp
 
 
 
-        /// <summary>
-        /// Returns the number of elapsed days based on certain conditions for this KPA
-        /// </summary>
-        private double GetElapsedDays()
-        {
-            return 1;
-        }
-
-
 
 
         /// <summary>

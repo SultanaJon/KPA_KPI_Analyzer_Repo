@@ -1,4 +1,6 @@
-﻿namespace Reporting.Overall
+﻿using System.Collections.Generic;
+
+namespace Reporting.Overall
 {
     public interface ITemplateTwo
     {
@@ -17,9 +19,9 @@
 
 
         /// <summary>
-        /// Method to apply the KPA or KPI against the timespan conditions
+        /// Method to return the template data of the function
         /// </summary>
-        /// <param name="_elapsedDays"></param>
-        void TimeSpanDump(double _elapsedDays);
+        /// <returns></returns>
+        List<string> GetTemplateData();
     }
 }

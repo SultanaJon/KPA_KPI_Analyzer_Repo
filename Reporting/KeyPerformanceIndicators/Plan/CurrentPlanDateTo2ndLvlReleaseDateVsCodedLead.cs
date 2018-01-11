@@ -328,6 +328,9 @@ namespace Reporting.KeyPerformanceIndicators.Plan
 
                 // Calculate the average for this KPI
                 CalculateAverage(totalDays);
+
+                // Calculate the percent favorable for this KPI
+                CalculatePercentFavorable();
             }
             catch (Exception)
             {

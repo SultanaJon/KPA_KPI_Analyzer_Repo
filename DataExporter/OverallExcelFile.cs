@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DataExporter
+﻿namespace DataExporter
 {
 
     /// <summary>
@@ -30,7 +24,7 @@ namespace DataExporter
         /// <summary>
         /// The path of the overall excel file where the overall data will be outputed and the file that will be presented
         /// </summary>
-        private static string tempOverallFilePath = @"Resources\Reports\Overall.xlsx";
+        private static string temporaryOverallFilePath = @"Resources\Reports\Overall.xlsx";
 
 
 
@@ -44,7 +38,7 @@ namespace DataExporter
         /// <summary>
         /// The path of the viewable overall file.
         /// </summary>
-        public static string TempOverallFilePath { get { return tempOverallFilePath; } }
+        public static string TemporaryOverallFilePath { get { return temporaryOverallFilePath; } }
 
 
 

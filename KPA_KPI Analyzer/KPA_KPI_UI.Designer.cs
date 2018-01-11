@@ -316,7 +316,7 @@
             this.newAnalysisToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.analysisToolStripMenuItem});
             this.newAnalysisToolStripMenuItem.Name = "newAnalysisToolStripMenuItem";
-            this.newAnalysisToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newAnalysisToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
             this.newAnalysisToolStripMenuItem.Text = "New";
             // 
             // analysisToolStripMenuItem
@@ -329,13 +329,13 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(149, 6);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(95, 6);
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem1
             // 
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(98, 22);
             this.exitToolStripMenuItem1.Text = "Exit";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -503,10 +503,10 @@
             // 
             // pnl_activePage
             // 
+            this.pnl_activePage.Controls.Add(this.tblpnl_Filters);
             this.pnl_activePage.Controls.Add(this.tblpnl_DashbaordPage);
             this.pnl_activePage.Controls.Add(this.pnl_NavigationPanelMax);
             this.pnl_activePage.Controls.Add(this.pnl_loadingScreen);
-            this.pnl_activePage.Controls.Add(this.tblpnl_Filters);
             this.pnl_activePage.Controls.Add(this.pnl_CountrySelector);
             this.pnl_activePage.Controls.Add(this.tblpnl_DragDrop);
             this.pnl_activePage.Dock = System.Windows.Forms.DockStyle.Fill;

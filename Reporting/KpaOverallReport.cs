@@ -43,13 +43,8 @@ namespace Reporting
         /// </summary>
         private KpaOverallReport()
         {
-            // Check if any other report have already created the actions
-            if (!ActionsSet)
-            {
-                // Add the Key Performance Actions to the report
-                AddActions();
-                ActionsSet = true;
-            }
+            // Add the Key Performance Actions to the report
+            AddActions();
         }
 
 
@@ -72,6 +67,10 @@ namespace Reporting
         /// </summary>
         private void AddActions()
         {
+            // Clear any Key Performance Actions (KPAs) the report might have
+            Actions.Clear();
+
+            // Add the actions to the report
             Actions.Add(new KeyPerformanceActions.Plan.PRsAgingNotReleased());
             Actions.Add(new KeyPerformanceActions.Plan.MaterialDue());
             Actions.Add(new KeyPerformanceActions.Purch.PRsAgingReleased());

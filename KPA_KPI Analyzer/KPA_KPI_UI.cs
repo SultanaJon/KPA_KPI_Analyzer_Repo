@@ -23,7 +23,7 @@ using System.Windows.Forms;
 
 namespace KPA_KPI_Analyzer
 {
-	public partial class KPA_KPI_UI : Form
+    public partial class KPA_KPI_UI : Form
 	{
 		#region FIELD DATA
 
@@ -379,8 +379,16 @@ namespace KPA_KPI_Analyzer
             // Get the current country loaded into the application
             Globals.CurrCountry = lbl_Country.Text;
 
-            // Export the overall data into excel
-            Exporter.ExportOverall();
+            // Create a new exporter object
+            Exporter exporter = new Exporter();
+            
+            // Create a new overall excel file and export the overall data
+            exporter.ExportOverall(new OverallExcelFile()
+            {
+                    Country = lbl_Country.Text,
+                    PrpoGenerationDate = lbl_topPanelNavPrpoDate.Text,
+                    ContainsHeaders = true
+            });
         }
 
 

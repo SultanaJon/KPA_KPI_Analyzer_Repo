@@ -1,4 +1,6 @@
-﻿namespace Reporting.Overall
+﻿using System.Collections.Generic;
+
+namespace Reporting.Overall
 {
     public interface ITemplateFive
     {
@@ -14,5 +16,13 @@
         decimal GreaterThanEqualToNegSevenWeeks { get; set; }
         decimal GreaterThanEqualToNegEightWeeks { get; set; }
         decimal LessThanNegEightWeeks { get; set; }
+
+
+
+        /// <summary>
+        /// Method to return the template data of the function
+        /// </summary>
+        /// <returns></returns>
+        List<string> GetTemplateData();
     }
 }
