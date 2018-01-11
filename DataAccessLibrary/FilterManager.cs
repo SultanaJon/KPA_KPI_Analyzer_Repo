@@ -92,6 +92,12 @@ namespace DataAccessLibrary
 
 
 
+
+        /// <summary>
+        /// Get the unique project numbers. This function will get both the project number and the WBS Element. This function will then clean them up by only gettings
+        /// the unique project number contained in both fields.
+        /// </summary>
+        /// <returns></returns>
         public static HashSet<string> GetUniqueProjectNumber()
         {
             HashSet<string> strData = new HashSet<string>();
@@ -100,16 +106,7 @@ namespace DataAccessLibrary
             {
                 OleDbConnection conn = DatabaseManager.GetDatabaseConnection();
 
-                string cmdString;
-
-                if (DatabaseManager.Filters == string.Empty || DatabaseManager.Filters == null)
-                {
-                    cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.ProjectNUm_ProdOrdWbs] + "] FROM " + DatabaseManager.TargetTable;
-                }
-                else
-                {
-                    cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.ProjectNUm_ProdOrdWbs] + "] FROM " + DatabaseManager.TargetTable + " WHERE " + DatabaseManager.Filters;
-                }
+                string cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.ProjectNUm_ProdOrdWbs] + "] FROM " + DatabaseManager.TargetTable;
 
                 OleDbCommand cmd = new OleDbCommand(cmdString, conn);
                 using (var reader = cmd.ExecuteReader())
@@ -132,14 +129,7 @@ namespace DataAccessLibrary
 
 
 
-                if (DatabaseManager.Filters == string.Empty || DatabaseManager.Filters == null)
-                {
-                    cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.ProjectNum_WBS_Element] + "] FROM " + DatabaseManager.TargetTable;
-                }
-                else
-                {
-                    cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.ProjectNum_WBS_Element] + "] FROM " + DatabaseManager.TargetTable + " WHERE " + DatabaseManager.Filters;
-                }
+                cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.ProjectNum_WBS_Element] + "] FROM " + DatabaseManager.TargetTable;
 
                 cmd = new OleDbCommand(cmdString, conn);
                 using (var reader = cmd.ExecuteReader())
@@ -179,16 +169,7 @@ namespace DataAccessLibrary
             {
                 OleDbConnection conn = DatabaseManager.GetDatabaseConnection();
 
-                string cmdString;
-
-                if (DatabaseManager.Filters == string.Empty || DatabaseManager.Filters == null)
-                {
-                    cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.ProjectNum_WBS_Element] + "] FROM " + DatabaseManager.TargetTable;
-                }
-                else
-                {
-                    cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.ProjectNum_WBS_Element] + "] FROM " + DatabaseManager.TargetTable + " WHERE " + DatabaseManager.Filters;
-                }
+                string cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.ProjectNum_WBS_Element] + "] FROM " + DatabaseManager.TargetTable;
 
                 OleDbCommand cmd = new OleDbCommand(cmdString, conn);
                 using (var reader = cmd.ExecuteReader())
@@ -225,16 +206,8 @@ namespace DataAccessLibrary
             {
                 OleDbConnection conn = DatabaseManager.GetDatabaseConnection();
 
-                string cmdString;
+                string cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.Material] + "] FROM " + DatabaseManager.TargetTable;
 
-                if (DatabaseManager.Filters == string.Empty || DatabaseManager.Filters == null)
-                {
-                    cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.Material] + "] FROM " + DatabaseManager.TargetTable;
-                }
-                else
-                {
-                    cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.Material] + "] FROM " + DatabaseManager.TargetTable + " WHERE " + DatabaseManager.Filters;
-                }
 
                 OleDbCommand cmd = new OleDbCommand(cmdString, conn);
                 using (var reader = cmd.ExecuteReader())
@@ -271,16 +244,8 @@ namespace DataAccessLibrary
             {
                 OleDbConnection conn = DatabaseManager.GetDatabaseConnection();
 
-                string cmdString;
+                string cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.MaterialGroup] + "] FROM " + DatabaseManager.TargetTable;
 
-                if (DatabaseManager.Filters == string.Empty || DatabaseManager.Filters == null)
-                {
-                    cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.MaterialGroup] + "] FROM " + DatabaseManager.TargetTable;
-                }
-                else
-                {
-                    cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.MaterialGroup] + "] FROM " + DatabaseManager.TargetTable + " WHERE " + DatabaseManager.Filters;
-                }
 
                 OleDbCommand cmd = new OleDbCommand(cmdString, conn);
                 using (var reader = cmd.ExecuteReader())
@@ -317,16 +282,7 @@ namespace DataAccessLibrary
             {
                 OleDbConnection conn = DatabaseManager.GetDatabaseConnection();
 
-                string cmdString;
-
-                if (DatabaseManager.Filters == string.Empty || DatabaseManager.Filters == null)
-                {
-                    cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.Vendor] + "] FROM " + DatabaseManager.TargetTable;
-                }
-                else
-                {
-                    cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.Vendor] + "] FROM " + DatabaseManager.TargetTable + " WHERE " + DatabaseManager.Filters;
-                }
+                string cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.Vendor] + "] FROM " + DatabaseManager.TargetTable;
 
                 OleDbCommand cmd = new OleDbCommand(cmdString, conn);
                 using (var reader = cmd.ExecuteReader())
@@ -363,16 +319,8 @@ namespace DataAccessLibrary
             {
                 OleDbConnection conn = DatabaseManager.GetDatabaseConnection();
 
-                string cmdString;
+                string cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.VendorDescription] + "] FROM " + DatabaseManager.TargetTable;
 
-                if (DatabaseManager.Filters == string.Empty || DatabaseManager.Filters == null)
-                {
-                    cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.VendorDescription] + "] FROM " + DatabaseManager.TargetTable;
-                }
-                else
-                {
-                    cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.VendorDescription] + "] FROM " + DatabaseManager.TargetTable + " WHERE " + DatabaseManager.Filters;
-                }
 
                 OleDbCommand cmd = new OleDbCommand(cmdString, conn);
                 using (var reader = cmd.ExecuteReader())
@@ -410,16 +358,8 @@ namespace DataAccessLibrary
             {
                 OleDbConnection conn = DatabaseManager.GetDatabaseConnection();
 
-                string cmdString;
+                string cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.PurchGroup] + "] FROM " + DatabaseManager.TargetTable;
 
-                if (DatabaseManager.Filters == string.Empty || DatabaseManager.Filters == null)
-                {
-                    cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.PurchGroup] + "] FROM " + DatabaseManager.TargetTable;
-                }
-                else
-                {
-                    cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.PurchGroup] + "] FROM " + DatabaseManager.TargetTable + " WHERE " + DatabaseManager.Filters;
-                }
 
                 OleDbCommand cmd = new OleDbCommand(cmdString, conn);
                 using (var reader = cmd.ExecuteReader())
@@ -456,16 +396,8 @@ namespace DataAccessLibrary
             {
                 OleDbConnection conn = DatabaseManager.GetDatabaseConnection();
 
-                string cmdString;
+                string cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.PoPurchGroup] + "] FROM " + DatabaseManager.TargetTable;
 
-                if (DatabaseManager.Filters == string.Empty || DatabaseManager.Filters == null)
-                {
-                    cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.PoPurchGroup] + "] FROM " + DatabaseManager.TargetTable;
-                }
-                else
-                {
-                    cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.PoPurchGroup] + "] FROM " + DatabaseManager.TargetTable + " WHERE " + DatabaseManager.Filters;
-                }
 
                 OleDbCommand cmd = new OleDbCommand(cmdString, conn);
                 using (var reader = cmd.ExecuteReader())
@@ -503,16 +435,7 @@ namespace DataAccessLibrary
             {
                 OleDbConnection conn = DatabaseManager.GetDatabaseConnection();
 
-                string cmdString;
-
-                if (DatabaseManager.Filters == string.Empty || DatabaseManager.Filters == null)
-                {
-                    cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.IRSuppName] + "] FROM " + DatabaseManager.TargetTable;
-                }
-                else
-                {
-                    cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.IRSuppName] + "] FROM " + DatabaseManager.TargetTable + " WHERE " + DatabaseManager.Filters;
-                }
+                string cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.IRSuppName] + "] FROM " + DatabaseManager.TargetTable;
 
                 OleDbCommand cmd = new OleDbCommand(cmdString, conn);
                 using (var reader = cmd.ExecuteReader())
@@ -549,16 +472,8 @@ namespace DataAccessLibrary
             {
                 OleDbConnection conn = DatabaseManager.GetDatabaseConnection();
 
-                string cmdString;
+                string cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.FxdSuppName] + "] FROM " + DatabaseManager.TargetTable;
 
-                if (DatabaseManager.Filters == string.Empty || DatabaseManager.Filters == null)
-                {
-                    cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.FxdSuppName] + "] FROM " + DatabaseManager.TargetTable;
-                }
-                else
-                {
-                    cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.FxdSuppName] + "] FROM " + DatabaseManager.TargetTable + " WHERE " + DatabaseManager.Filters;
-                }
 
                 OleDbCommand cmd = new OleDbCommand(cmdString, conn);
                 using (var reader = cmd.ExecuteReader())
@@ -595,16 +510,7 @@ namespace DataAccessLibrary
             {
                 OleDbConnection conn = DatabaseManager.GetDatabaseConnection();
 
-                string cmdString;
-
-                if (DatabaseManager.Filters == string.Empty || DatabaseManager.Filters == null)
-                {
-                    cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.DsrdSuppName] + "] FROM " + DatabaseManager.TargetTable;
-                }
-                else
-                {
-                    cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.DsrdSuppName] + "] FROM " + DatabaseManager.TargetTable + " WHERE " + DatabaseManager.Filters;
-                }
+                string cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.DsrdSuppName] + "] FROM " + DatabaseManager.TargetTable;
 
                 OleDbCommand cmd = new OleDbCommand(cmdString, conn);
                 using (var reader = cmd.ExecuteReader())
@@ -640,16 +546,7 @@ namespace DataAccessLibrary
             {
                 OleDbConnection conn = DatabaseManager.GetDatabaseConnection();
 
-                string cmdString;
-
-                if (DatabaseManager.Filters == string.Empty || DatabaseManager.Filters == null)
-                {
-                    cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.CommCat] + "] FROM " + DatabaseManager.TargetTable;
-                }
-                else
-                {
-                    cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.CommCat] + "] FROM " + DatabaseManager.TargetTable + " WHERE " + DatabaseManager.Filters;
-                }
+                string cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.CommCat] + "] FROM " + DatabaseManager.TargetTable;
 
                 OleDbCommand cmd = new OleDbCommand(cmdString, conn);
                 using (var reader = cmd.ExecuteReader())
@@ -686,16 +583,7 @@ namespace DataAccessLibrary
             {
                 OleDbConnection conn = DatabaseManager.GetDatabaseConnection();
 
-                string cmdString;
-
-                if (DatabaseManager.Filters == string.Empty || DatabaseManager.Filters == null)
-                {
-                    cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.Escaped] + "] FROM " + DatabaseManager.TargetTable;
-                }
-                else
-                {
-                    cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.Escaped] + "] FROM " + DatabaseManager.TargetTable + " WHERE " + DatabaseManager.Filters;
-                }
+                string cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.Escaped] + "] FROM " + DatabaseManager.TargetTable;
 
                 OleDbCommand cmd = new OleDbCommand(cmdString, conn);
                 using (var reader = cmd.ExecuteReader())
@@ -732,16 +620,7 @@ namespace DataAccessLibrary
             {
                 OleDbConnection conn = DatabaseManager.GetDatabaseConnection();
 
-                string cmdString;
-
-                if (DatabaseManager.Filters == string.Empty || DatabaseManager.Filters == null)
-                {
-                    cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.PoDocumentType] + "] FROM " + DatabaseManager.TargetTable;
-                }
-                else
-                {
-                    cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.PoDocumentType] + "] FROM " + DatabaseManager.TargetTable + " WHERE " + DatabaseManager.Filters;
-                }
+                string cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.PoDocumentType] + "] FROM " + DatabaseManager.TargetTable;
 
                 OleDbCommand cmd = new OleDbCommand(cmdString, conn);
                 using (var reader = cmd.ExecuteReader())
@@ -778,16 +657,7 @@ namespace DataAccessLibrary
             {
                 OleDbConnection conn = DatabaseManager.GetDatabaseConnection();
 
-                string cmdString;
-
-                if (DatabaseManager.Filters == string.Empty || DatabaseManager.Filters == null)
-                {
-                    cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.ProdOrderMaterial] + "] FROM " + DatabaseManager.TargetTable;
-                }
-                else
-                {
-                    cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.ProdOrderMaterial] + "] FROM " + DatabaseManager.TargetTable + " WHERE " + DatabaseManager.Filters;
-                }
+                string cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.ProdOrderMaterial] + "] FROM " + DatabaseManager.TargetTable;
 
                 OleDbCommand cmd = new OleDbCommand(cmdString, conn);
                 using (var reader = cmd.ExecuteReader())
