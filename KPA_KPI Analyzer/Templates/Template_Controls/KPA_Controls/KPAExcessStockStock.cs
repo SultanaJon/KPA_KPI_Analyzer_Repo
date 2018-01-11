@@ -1,14 +1,12 @@
 ﻿using KPA_KPI_Analyzer.DataLoading;
 using KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader;
-using KPA_KPI_Analyzer.Overall_Data;
 using KPA_KPI_Analyzer.Values;
-using System;
-using System.Drawing;
-using System.Windows.Forms;
 using Reporting;
 using Reporting.KeyPerformanceActions;
 using Reporting.Overall;
-using System.Collections.Generic;
+using System;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 {

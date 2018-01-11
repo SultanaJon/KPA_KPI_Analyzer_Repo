@@ -1,7 +1,5 @@
 ﻿using KPA_KPI_Analyzer.DataLoading;
 using KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader;
-using KPA_KPI_Analyzer.Overall_Data;
-using KPA_KPI_Analyzer.Overall_Data.KPI_Sections;
 using KPA_KPI_Analyzer.Values;
 using Reporting;
 using Reporting.KeyPerformanceIndicators;

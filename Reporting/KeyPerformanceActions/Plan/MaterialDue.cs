@@ -1,12 +1,10 @@
-﻿using System;
-
-using System.Data;
-using DataAccessLibrary;
-using Filters;
+﻿using DataAccessLibrary;
 using Reporting.Overall;
 using Reporting.Selective;
-using System.Windows.Forms;
+using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Windows.Forms;
 
 namespace Reporting.KeyPerformanceActions.Plan
 {
@@ -71,6 +69,9 @@ namespace Reporting.KeyPerformanceActions.Plan
             // set the selective strategy context
             SelectiveContext = new SelectiveStrategyContext(new SelectiveDataTypeOne());
         }
+
+
+
 
 
 

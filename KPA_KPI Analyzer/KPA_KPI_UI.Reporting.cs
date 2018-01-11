@@ -1,8 +1,6 @@
 ﻿using DataAccessLibrary;
 using KPA_KPI_Analyzer.PerformanceReporting;
 using Reporting;
-using Reporting.KeyPerformanceActions;
-using Reporting.KeyPerformanceIndicators;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;

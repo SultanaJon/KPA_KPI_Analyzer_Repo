@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using Reporting.KeyPerformanceActions;
+﻿using Reporting.KeyPerformanceActions;
 using Reporting.KeyPerformanceIndicators;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Reporting

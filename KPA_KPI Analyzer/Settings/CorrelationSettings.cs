@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ApplicationIOLibarary.ApplicationFiles;
 using ApplicationIOLibarary.Interfaces;
-using System.IO;
-using ApplicationIOLibarary.ApplicationFiles;
 using Newtonsoft.Json;
+using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace KPA_KPI_Analyzer.Settings

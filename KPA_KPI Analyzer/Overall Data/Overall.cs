@@ -1,7 +1,5 @@
-﻿using ApplicationIOLibarary.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Windows.Forms;
 
 namespace KPA_KPI_Analyzer.Overall_Data

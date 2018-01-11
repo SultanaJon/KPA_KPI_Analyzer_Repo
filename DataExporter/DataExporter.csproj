@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="ExcelFile.cs" />
     <Compile Include="Exporter.cs" />
+    <Compile Include="OverallExcelFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

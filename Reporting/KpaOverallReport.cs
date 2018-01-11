@@ -1,14 +1,12 @@
-﻿using Reporting.KeyPerformanceActions;
+﻿using ApplicationIOLibarary.Interfaces;
+using Newtonsoft.Json;
+using Reporting.KeyPerformanceActions;
 using Reporting.KeyPerformanceActions.FollowUp;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using ApplicationIOLibarary.Interfaces;
-using Newtonsoft.Json;
 
 namespace Reporting
 {
@@ -74,8 +72,7 @@ namespace Reporting
         /// </summary>
         private void AddActions()
         {
-            KeyPerformanceAction action = new KeyPerformanceActions.Plan.PRsAgingNotReleased();
-            Actions.Add(action);
+            Actions.Add(new KeyPerformanceActions.Plan.PRsAgingNotReleased());
             Actions.Add(new KeyPerformanceActions.Plan.MaterialDue());
             Actions.Add(new KeyPerformanceActions.Purch.PRsAgingReleased());
             Actions.Add(new KeyPerformanceActions.Purch.POFirstRelease());
@@ -133,6 +130,92 @@ namespace Reporting
 
 
         /// <summary>
+        /// Deserializes the list of actions(strings) back into the list of actions for the report
+        /// </summary>
+        /// <param name="results">the list of action parsed from the json  file</param>
+        private void DeserializeActions(string[] results)
+        {
+            foreach(KpaOption option in Enum.GetValues(typeof(KpaOption)))
+            {
+                switch (option)
+                {
+                    case KpaOption.Plan_PrsAgingNotReleased:
+                        Actions[(int)option] = JsonConvert.DeserializeObject<KeyPerformanceActions.Plan.PRsAgingNotReleased>(results[(int)option]);
+                        break;
+                    case KpaOption.Plan_MaterialDue:
+                        Actions[(int)option] = JsonConvert.DeserializeObject<KeyPerformanceActions.Plan.MaterialDue>(results[(int)option]);
+                        break;
+                    case KpaOption.Purch_PRsAgingReleased:
+                        Actions[(int)option] = JsonConvert.DeserializeObject<KeyPerformanceActions.Purch.PRsAgingReleased>(results[(int)option]);
+                        break;
+                    case KpaOption.Purch_PoFirstRelease:
+                        Actions[(int)option] = JsonConvert.DeserializeObject<KeyPerformanceActions.Purch.POFirstRelease>(results[(int)option]);
+                        break;
+                    case KpaOption.Purch_PoPrevRelease:
+                        Actions[(int)option] = JsonConvert.DeserializeObject<KeyPerformanceActions.Purch.POPrevRelease>(results[(int)option]);
+                        break;
+                    case KpaOption.Purch_NoConfirmation:
+                        Actions[(int)option] = JsonConvert.DeserializeObject<KeyPerformanceActions.Purch.NoConfirmations>(results[(int)option]);
+                        break;
+                    case KpaOption.PurchSub_PrReleaseToPoRelease:
+                        Actions[(int)option] = JsonConvert.DeserializeObject<KeyPerformanceActions.PurchSub.PRReleaseToPORelease>(results[(int)option]);
+                        break;
+                    case KpaOption.PurchSub_PoCreationToConfirmationEntry:
+                        Actions[(int)option] = JsonConvert.DeserializeObject<KeyPerformanceActions.PurchSub.POCreationToConfirmationEntry>(results[(int)option]);
+                        break;
+                    case KpaOption.PurchTotal_PrReleaseToConfirmationEntry:
+                        Actions[(int)option] = JsonConvert.DeserializeObject<KeyPerformanceActions.PurchTotal.PRReleaseToConfirmationEntry>(results[(int)option]);
+                        break;
+                    case KpaOption.FollowUp_ConfirmedDateVsPlanDate:
+                        Actions[(int)option] = JsonConvert.DeserializeObject<KeyPerformanceActions.FollowUp.ConfirmedDateVsPlanDate>(results[(int)option]);
+                        break;
+                    case KpaOption.FollowUp_ConfirmedDateForUpcomingDeliveries:
+                        Actions[(int)option] = JsonConvert.DeserializeObject<KeyPerformanceActions.FollowUp.ConfirmedDateForUpcomingDeliveries>(results[(int)option]);
+                        break;
+                    case KpaOption.FollowUp_DueTodayOrLateToConfirmed:
+                        Actions[(int)option] = JsonConvert.DeserializeObject<KeyPerformanceActions.FollowUp.DueTodayOrLateToConfirmed>(results[(int)option]);
+                        break;
+                    case KpaOption.HotJobs_PrsNotOnPo:
+                        Actions[(int)option] = JsonConvert.DeserializeObject<KeyPerformanceActions.HotJobs.PRsNotOnPO>(results[(int)option]);
+                        break;
+                    case KpaOption.HotJobs_NoConfirmations:
+                        Actions[(int)option] = JsonConvert.DeserializeObject<KeyPerformanceActions.HotJobs.NoConfirmations>(results[(int)option]);
+                        break;
+                    case KpaOption.HotJobs_LateToConfirmed:
+                        Actions[(int)option] = JsonConvert.DeserializeObject<KeyPerformanceActions.HotJobs.LateToConfirmed>(results[(int)option]);
+                        break;
+                    case KpaOption.ExcessStockStock_PrsAgingNotReleased:
+                        Actions[(int)option] = JsonConvert.DeserializeObject<KeyPerformanceActions.ExcessStockStock.PRsAgingNotReleased>(results[(int)option]);
+                        break;
+                    case KpaOption.ExcessStockStock_PrsAgingReleased:
+                        Actions[(int)option] = JsonConvert.DeserializeObject<KeyPerformanceActions.ExcessStockStock.PRsAgingReleased>(results[(int)option]);
+                        break;
+                    case KpaOption.ExcessStockStock_PoCreationTruDelivery:
+                        Actions[(int)option] = JsonConvert.DeserializeObject<KeyPerformanceActions.ExcessStockStock.POCreationThruDelivery>(results[(int)option]);
+                        break;
+                    case KpaOption.ExcessStockOpenOrders_PrsAgingNotReleased:
+                        Actions[(int)option] = JsonConvert.DeserializeObject<KeyPerformanceActions.ExcessStockOpenOrders.PRsAgingNotReleased>(results[(int)option]);
+                        break;
+                    case KpaOption.ExcessStockOpenOrders_PrsAgingReleased:
+                        Actions[(int)option] = JsonConvert.DeserializeObject<KeyPerformanceActions.ExcessStockOpenOrders.PRsAgingReleased>(results[(int)option]);
+                        break;
+                    case KpaOption.ExcessStockOpenOrders_PoCreationTruDelivery:
+                        Actions[(int)option] = JsonConvert.DeserializeObject<KeyPerformanceActions.ExcessStockOpenOrders.POCreationThruDelivery>(results[(int)option]);
+                        break;
+                    case KpaOption.CurrentPlanVsActual_CurrentPlanDateVsCurrentConfirmationDate:
+                        Actions[(int)option] = JsonConvert.DeserializeObject<KeyPerformanceActions.CurrentPlanVsActual.CurrentPlanDateVsCurrentConfirmationDate>(results[(int)option]);
+                        break;
+                    case KpaOption.CurrentPlanVsActual_CurrentPlanDateVsCurrentConfirmationDateForHotJobs:
+                        Actions[(int)option] = JsonConvert.DeserializeObject<KeyPerformanceActions.CurrentPlanVsActual.CurrentPlanDateVsCurrentConfirmationDateForHotJobs>(results[(int)option]);
+                        break;
+                }
+            }
+        }
+
+
+
+
+        /// <summary>
         /// Loads the KPA Overall Report for either the United States or Mexico from external file to application
         /// </summary>
         /// <param name="_report">The report that needs to be loaded</param>
@@ -147,12 +230,18 @@ namespace Reporting
                 else
                     jsonString = File.ReadAllText(ApplicationIOLibarary.ApplicationFiles.FileUtils.overallFiles[(int)ApplicationIOLibarary.ApplicationFiles.OverallFile.MX_KPA_Overall]);
 
-                // Load the JSON data into the reporting Actions
-                kpaOverallReportInstance = JsonConvert.DeserializeObject<KpaOverallReport>(jsonString);
+                // Because the Actions are a list of Key Performance Actions, we cannot deserialize into
+                // the list because KeyPerformanceAction is an abstract class and cannot be instantiated. 
+                // We must get a list of objects and individually create the derived Key Performance Actions.
+                var objects = JsonConvert.DeserializeObject<List<object>>(jsonString);
+                var results = objects.Select(obj => JsonConvert.SerializeObject(obj)).ToArray();
+
+                // Send the list of strings (action) to get deserialized back into the list of actions
+                DeserializeActions(results);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Overall Loading Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Overall KPA Loading Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -165,7 +254,7 @@ namespace Reporting
             try
             {
                 // Store the contents of the KPA Overall Report into a JSON string
-                var jsonString = JsonConvert.SerializeObject(this);
+                var jsonString = JsonConvert.SerializeObject(Actions);
 
                 if (ReportingCountry.TargetCountry == Country.UnitedStates)
                 {
