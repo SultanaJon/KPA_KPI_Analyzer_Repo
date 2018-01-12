@@ -131,6 +131,8 @@ namespace KPA_KPI_Analyzer
             await kpiTask;
 
 
+
+            // Release the KPI table back to the free store
             DatabaseManager.ReleaseKPITables();
 
             if (!FilterData.ColumnFilters.Applied && !FilterData.DateFilters.Applied && !FilterData.AdvancedFilters.Applied)

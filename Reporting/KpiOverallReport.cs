@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Reporting
@@ -15,6 +16,9 @@ namespace Reporting
         /// Private instance of a KPA Report
         /// </summary>
         private static KpiOverallReport kpiOverallReportInstance;
+
+
+
 
 
         /// <summary>
@@ -44,16 +48,14 @@ namespace Reporting
 
 
 
-
         /// <summary>
         /// Default Private Constructor
         /// </summary>
         private KpiOverallReport()
         {
-            // Get the indicators for the report
+            // Get the actions for the report
             Indicators = GetIndicators();
         }
-
 
 
 
@@ -71,16 +73,33 @@ namespace Reporting
 
 
 
-
         /// <summary>
         /// Runs the overall report for all the Key Performance Actions (KPA)
         /// </summary>
         public override void RunReport()
         {
-            foreach (KeyPerformanceIndicator indicator in Indicators)
+            try
             {
-                // The the KPIs Overall Report
-                indicator.RunOverallReport();
+                foreach (KeyPerformanceIndicator indicator in Indicators)
+                {
+                    indicator.RunOverallReport();
+                }
+            }
+            catch(ObjectDisposedException)
+            {
+                MessageBox.Show("Object Disposed Exception Thrown", "KPI Overall Run Report Report", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch(InvalidOperationException)
+            {
+                MessageBox.Show("Invalid Operation Exception Thrown", "KPI Overall Run Report Report", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (ArgumentNullException)
+            {
+                MessageBox.Show("Argument Null Exception Thrown", "KPI Overall Run Report Report", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (AggregateException)
+            {
+                MessageBox.Show("Aggregate Exception Thrown", "KPI Overall Run Report Report", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -205,6 +224,8 @@ namespace Reporting
                 MessageBox.Show(ex.Message, "Overall KPI Loading Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
 
 
         /// <summary>

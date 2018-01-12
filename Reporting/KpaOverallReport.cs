@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Reporting
@@ -16,6 +17,7 @@ namespace Reporting
         /// Private instance of a KPA Report
         /// </summary>
         private static KpaOverallReport kpaOverallReportInstance;
+
 
 
         /// <summary>
@@ -57,7 +59,6 @@ namespace Reporting
 
 
 
-
         /// <summary>
         /// Creates a new instance of a KPA Report
         /// </summary>
@@ -71,33 +72,50 @@ namespace Reporting
 
 
 
-
-
-
-
         /// <summary>
         /// Runs the overall report for all the Key Performance Actions (KPA)
         /// </summary>
         public override void RunReport()
         {
-            foreach (KeyPerformanceAction action in Actions)
+            try
             {
-                // This KPA needs information from another KPA.
-                if (action is ConfirmedDateForUpcomingDeliveries)
-                    continue;
+                foreach(KeyPerformanceAction action in Actions)
+                {
+                    if (action is ConfirmedDateForUpcomingDeliveries)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        action.RunOverallReport();
+                    }
+                }
 
-                // Run the KPAs Overall Report
-                action.RunOverallReport();
+                // Get the lessThanZero data from Due Today or Late to confirmed
+                int lessThanEqualToZero = (Actions[(int)KpaOption.FollowUp_DueTodayOrLateToConfirmed] as DueTodayOrLateToConfirmed).LessThanEqualToZeroDays;
+
+                // supply Confirmed date for upcoming deliveries the above data
+                (Actions[(int)KpaOption.FollowUp_ConfirmedDateForUpcomingDeliveries] as ConfirmedDateForUpcomingDeliveries).DueTodayLateToConfirmedLessThanZeroDueToday = lessThanEqualToZero;
+
+                // Run the overall report for Follow up -> Confirmed Date for upcoming deliveries
+                Actions[(int)KpaOption.FollowUp_ConfirmedDateForUpcomingDeliveries].RunOverallReport();
             }
-
-            // Get the lessThanZero data from Due Today or Late to confirmed
-            int lessThanEqualToZero = (Actions[(int)KpaOption.FollowUp_DueTodayOrLateToConfirmed] as DueTodayOrLateToConfirmed).LessThanEqualToZeroDays;
-
-            // supply Confirmed date for upcoming deliveries the above data
-            (Actions[(int)KpaOption.FollowUp_ConfirmedDateForUpcomingDeliveries] as ConfirmedDateForUpcomingDeliveries).DueTodayLateToConfirmedLessThanZeroDueToday = lessThanEqualToZero;
-
-            // Run the overall report for Follow up -> Confirmed Date for upcoming deliveries
-            Actions[(int)KpaOption.FollowUp_ConfirmedDateForUpcomingDeliveries].RunOverallReport();
+            catch(ObjectDisposedException)
+            {
+                MessageBox.Show("Object Disposed Exception Thrown", "KPI Overall Run Report Report", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch(InvalidOperationException)
+            {
+                MessageBox.Show("Invalid Operation Exception Thrown", "KPI Overall Run Report Report", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (ArgumentNullException)
+            {
+                MessageBox.Show("Argument Null Exception Thrown", "KPI Overall Run Report Report", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (AggregateException)
+            {
+                MessageBox.Show("Aggregate Exception Thrown", "KPI Overall Run Report Report", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 
@@ -218,6 +236,8 @@ namespace Reporting
                 MessageBox.Show(ex.Message, "Overall KPA Loading Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
 
 
         /// <summary>

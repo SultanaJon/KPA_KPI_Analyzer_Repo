@@ -31,6 +31,7 @@ namespace Reporting
         Dictionary<string, List<KeyPerformanceIndicator>> report;
 
 
+
         /// <summary>
         /// Default Private Constructor
         /// </summary>
@@ -38,6 +39,7 @@ namespace Reporting
         {
             report = new Dictionary<string, List<KeyPerformanceIndicator>>();
         }
+
 
 
 
