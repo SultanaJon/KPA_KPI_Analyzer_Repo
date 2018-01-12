@@ -7,16 +7,6 @@ using System.Windows.Forms;
 
 namespace KPA_KPI_Analyzer
 {
-    public enum ReportingType
-    {
-        KpaOverall,
-        KpiOverall,
-        KpaReport,
-        KpiReport,
-        ComparisonReport
-    }
-
-
     public partial class KPA_KPI_UI : Form
     {
         /// <summary>
@@ -117,20 +107,6 @@ namespace KPA_KPI_Analyzer
                         reports[ReportingType.KpiReport] = KpiReport.KpiReportInstance;
                     }
                     break;
-                case ReportingType.ComparisonReport:
-                    try
-                    {
-                        reports.Add(_reportType, new ComparisonReport());
-                    }
-                    catch (ArgumentNullException)
-                    {
-                        MessageBox.Show("Argumment Null Exception was thrown.", "Comparison Report Creation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    catch (ArgumentException)
-                    {
-                        reports[ReportingType.ComparisonReport] = new ComparisonReport();
-                    }
-                    break;
                 default:
                     break;
             }
@@ -188,14 +164,14 @@ namespace KPA_KPI_Analyzer
         {
             switch (reportingWidgetsController.SelectiveReportingType)
             {
-                case ReportType.KpaReport:
+                case ReportingType.KpaReport:
                     // Create a KPA Report
                     CreateReport(ReportingType.KpaReport);
 
                     // Generate the rest of the report and build it
                     GenerateKpaReport();
                     break;
-                case ReportType.KpiReport:
+                case ReportingType.KpiReport:
                     // Create a KPI Report
                     CreateReport(ReportingType.KpiReport);
 
@@ -222,11 +198,11 @@ namespace KPA_KPI_Analyzer
 
             switch (reportingWidgetsController.SelectiveReportingType)
             {
-                case ReportType.KpaReport:
+                case ReportingType.KpaReport:
                     // The user wants to create a KPA Comparison Report.
                     GenerateKpaComparisonReport();
                     break;
-                case ReportType.KpiReport:
+                case ReportingType.KpiReport:
                     // The user wants to create a KPI Comparison Report
                     GenerateKpiComparisonReport();
                     break;
@@ -326,12 +302,12 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         private void GenerateKpaComparisonReport()
         {
-            // Get the filter option that the user wants for the report
-            List<string> filters = GetFilters(reportingWidgetsController.ComparisonFilterOption);
+            //// Get the filter option that the user wants for the report
+            //List<string> filters = GetFilters(reportingWidgetsController.ComparisonFilterOption);
 
-            // Finish creating the Comparison report
-            (reports[ReportingType.ComparisonReport] as ComparisonReport)
-                .CreateKpaComparisonReport(filters, reportingWidgetsController.ComparisonKpaOption);
+            //// Finish creating the Comparison report
+            //(reports[ReportingType.ComparisonReport] as ComparisonReport)
+            //    .CreateKpaComparisonReport(filters, reportingWidgetsController.ComparisonKpaOption);
         }
 
 
@@ -342,12 +318,12 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         private void GenerateKpiComparisonReport()
         {
-            // Get the filter option that the user wants for the report
-            List<string> filters = GetFilters(reportingWidgetsController.ComparisonFilterOption);
+            //// Get the filter option that the user wants for the report
+            //List<string> filters = GetFilters(reportingWidgetsController.ComparisonFilterOption);
 
-            // Finishes creating the report
-            (reports[ReportingType.ComparisonReport] as ComparisonReport)
-                .CreateKpiComparisonReport(filters, reportingWidgetsController.ComparisonKpiOption);
+            //// Finishes creating the report
+            //(reports[ReportingType.ComparisonReport] as ComparisonReport)
+            //    .CreateKpiComparisonReport(filters, reportingWidgetsController.ComparisonKpiOption);
         }
     }
 }

@@ -220,7 +220,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             AnalysisTwo = "- Difference between the date the PR was created and the todays date.";
 
 
-            ITemplateFive tempFive = (Report.Indicators[(int)KpiOption.Other_PrsCreated]
+            ITemplateFive tempFive = (KpiOverallReport.Indicators[(int)KpiOption.Other_PrsCreated]
                 as Reporting.KeyPerformanceIndicators.Other.PRsCreated);
 
             // Add the data to the column chart
@@ -274,7 +274,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             AnalysisOne = "- Count of PRs by release date.";
             AnalysisTwo = "- Difference between PR fully released date and todays date.";
 
-            ITemplateFive tempFive = (Report.Indicators[(int)KpiOption.Other_PrsReleased]
+            ITemplateFive tempFive = (KpiOverallReport.Indicators[(int)KpiOption.Other_PrsReleased]
                 as Reporting.KeyPerformanceIndicators.Other.PRsReleased);
 
             // Add the data to the column chart
@@ -329,7 +329,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             AnalysisOne = "- Value of PO Lines based on PO line Creation Date.";
             AnalysisTwo = "";
 
-            ITemplateFive tempFive = (Report.Indicators[(int)KpiOption.Other_PrsCreated]
+            ITemplateFive tempFive = (KpiOverallReport.Indicators[(int)KpiOption.Other_PrsCreated]
                 as Reporting.KeyPerformanceIndicators.Other.PRsCreated);
 
             // Add the data to the column chart
@@ -387,7 +387,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             AnalysisTwo = "- Variance of PO line value vs PR line value over time.";
 
 
-            ITemplateFive tempFive = (Report.Indicators[(int)KpiOption.Other_PrsCreated]
+            ITemplateFive tempFive = (KpiOverallReport.Indicators[(int)KpiOption.Other_PrsCreated]
                 as Reporting.KeyPerformanceIndicators.Other.PRsCreated);
 
             // Add the data to the column chart
@@ -444,7 +444,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             AnalysisOne = "- Will show for PRs which have Purchase Group of 'UHJ'.";
             AnalysisTwo = "- Difference between the date the PR was created and todays date.";
 
-            ITemplateFive tempFive = (Report.Indicators[(int)KpiOption.Other_HotJobPRs]
+            ITemplateFive tempFive = (KpiOverallReport.Indicators[(int)KpiOption.Other_HotJobPRs]
                 as Reporting.KeyPerformanceIndicators.Other.HotJobPRs);
 
             // Add the data to the column chart

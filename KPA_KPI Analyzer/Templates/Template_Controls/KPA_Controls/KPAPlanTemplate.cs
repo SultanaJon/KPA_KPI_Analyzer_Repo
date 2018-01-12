@@ -194,7 +194,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             AnalysisTwo = "- Difference between todays date and the date the PR was created.";
 
 
-            ITemplateOne tempOne = (Report.Actions[(int)KpaOption.Plan_PrsAgingNotReleased]
+            ITemplateOne tempOne = (KpaOverallReport.Actions[(int)KpaOption.Plan_PrsAgingNotReleased]
                                 as Reporting.KeyPerformanceActions.Plan.PRsAgingNotReleased);
 
 
@@ -244,7 +244,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             AnalysisOne = "- Will only show in this field if PR is fully released and the PR Open Qty > 0.";
             AnalysisTwo = "- Difference between the current requirement date and todays date.";
 
-            ITemplateOne tempOne = (Report.Actions[(int)KpaOption.Plan_MaterialDue]
+            ITemplateOne tempOne = (KpaOverallReport.Actions[(int)KpaOption.Plan_MaterialDue]
                                 as Reporting.KeyPerformanceActions.Plan.MaterialDue);
 
 

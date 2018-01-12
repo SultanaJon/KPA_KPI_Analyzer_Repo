@@ -19,7 +19,7 @@ namespace KPA_KPI_Analyzer.PerformanceReporting
         /// <summary>
         /// The Performance the comparison report will track
         /// </summary>
-        public ReportType PerformanceReportType { get; set; }
+        public ReportingType PerformanceReportType { get; set; }
 
 
 
@@ -115,11 +115,11 @@ namespace KPA_KPI_Analyzer.PerformanceReporting
         {
             if(radioBtn_KpaReporting.Checked)
             {
-                PerformanceReportType = ReportType.KpaReport;
+                PerformanceReportType = ReportingType.KpaReport;
             }
             else
             {
-                PerformanceReportType = ReportType.KpiReport;
+                PerformanceReportType = ReportingType.KpiReport;
             }
         }
 

@@ -8,7 +8,7 @@ namespace KPA_KPI_Analyzer.PerformanceReporting
         /// <summary>
         /// The type of performance to track in the selective report
         /// </summary>
-        ReportType SelectiveReportingType { get; }
+        ReportingType SelectiveReportingType { get; }
 
 
         /// <summary>
@@ -20,7 +20,7 @@ namespace KPA_KPI_Analyzer.PerformanceReporting
         /// <summary>
         /// The type of performance to track in the comparison report
         /// </summary>
-        ReportType ComparisonReportingType { get; }
+        ReportingType ComparisonReportingType { get; }
 
 
 

@@ -1,8 +1,7 @@
 ﻿using DataAccessLibrary;
 using Filters;
+using Reporting.Interfaces;
 using Reporting.Overall;
-
-using Reporting.Selective;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Reporting.KeyPerformanceActions.PurchSub
 {
-    public sealed class POCreationToConfirmationEntry : KeyPerformanceAction, ITemplateOne
+    public sealed class POCreationToConfirmationEntry : KeyPerformanceAction, ISelective,  ITemplateOne
     {
         #region ITemplateOne Properties
 
@@ -30,34 +29,19 @@ namespace Reporting.KeyPerformanceActions.PurchSub
 
 
 
-
-
-        /// <summary>
-        /// The Selective Strategy Context that holds the selective data for reporting
-        /// </summary>
-        private SelectiveStrategyContext selectiveContext;
-
-
-
+        #region ISelective Properties
 
         /// <summary>
-        /// Property to return the selective data for this KPA
+        /// The selective average for the filter applied against the specific KPA or KPI
         /// </summary>
-        public SelectiveStrategyContext SelectiveContext
-        {
-            get
-            {
-                return selectiveContext;
-            }
-            private set
-            {
-                if (value != null)
-                {
-                    this.selectiveContext = value;
-                }
-            }
-        }
+        public double SelectiveAverage { get; set; }
 
+        /// <summary>
+        /// The selective total fo the filter applied against the specific KPA or KPI
+        /// </summary>
+        public int SelectiveTotal { get; set; }
+
+        #endregion
 
 
 
@@ -69,9 +53,6 @@ namespace Reporting.KeyPerformanceActions.PurchSub
         {
             Section = "Purch Sub";
             Name = "PO Creation To Confirmation Entry";
-
-            // set the selective strategy context
-            SelectiveContext = new SelectiveStrategyContext(new SelectiveDataTypeOne());
         }
 
 

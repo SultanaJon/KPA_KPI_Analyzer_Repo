@@ -61,7 +61,8 @@ namespace Reporting
         {
             foreach (string filter in filters)
             {
-                report.Add(filter, Indicators);
+                // Add the filter to the report and add a set of actions for it.
+                report.Add(filter, GetIndicators());
             }
 
             // Mark the report as being setup.

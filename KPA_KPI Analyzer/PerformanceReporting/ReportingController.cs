@@ -20,7 +20,7 @@ namespace KPA_KPI_Analyzer.PerformanceReporting
         /// <summary>
         /// Returns the type of report the user would like to base the selective report off of.
         /// </summary>
-        public ReportType SelectiveReportingType
+        public ReportingType SelectiveReportingType
         {
             get { return selectiveReportingView.PerformanceReportType; }
         }
@@ -43,7 +43,7 @@ namespace KPA_KPI_Analyzer.PerformanceReporting
         /// <summary>
         /// Returns the type of report the user would like to base the comparison report off of.
         /// </summary>
-        public ReportType ComparisonReportingType
+        public ReportingType ComparisonReportingType
         {
             get { return comparisonReportingView.PerformanceReportType; }
         }

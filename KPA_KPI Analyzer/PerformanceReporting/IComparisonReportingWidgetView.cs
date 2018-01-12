@@ -11,7 +11,7 @@ namespace KPA_KPI_Analyzer.PerformanceReporting
         /// <summary>
         /// The performance the comparison report will track
         /// </summary>
-        ReportType PerformanceReportType { get; set; }
+        ReportingType PerformanceReportType { get; set; }
 
 
         /// <summary>

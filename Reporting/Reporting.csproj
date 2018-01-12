@@ -46,8 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ComparisonReport.cs" />
     <Compile Include="Interfaces\IFavorable.cs" />
+    <Compile Include="Interfaces\ISelective.cs" />
     <Compile Include="Interfaces\ITotalValue.cs" />
     <Compile Include="Interfaces\IUnconfirmed.cs" />
     <Compile Include="KeyPerformanceActions\CurrentPlanVsActual\CurrentPlanDateVsCurrentConfirmationDate.cs" />
@@ -111,8 +111,6 @@
     <Compile Include="KeyPerformanceActions\Purch\PRsAgingReleased.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReportingCountry.cs" />
-    <Compile Include="Selective\SelectiveStrategyContext.cs" />
-    <Compile Include="Selective\SelectiveStrategyData.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ApplicationDirectoryLibrary\ApplicationIOLibrary.csproj">

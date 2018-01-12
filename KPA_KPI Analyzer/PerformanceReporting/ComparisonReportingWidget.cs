@@ -24,7 +24,7 @@ namespace KPA_KPI_Analyzer.PerformanceReporting
         /// <summary>
         /// The performance the comparison report will track
         /// </summary>
-        public ReportType PerformanceReportType { get; set; }
+        public ReportingType PerformanceReportType { get; set; }
 
 
         /// <summary>
@@ -89,14 +89,14 @@ namespace KPA_KPI_Analyzer.PerformanceReporting
             if(radioBtn_KpaReporting.Checked)
             {
                 label_CategoryOption.Text = "KPA Option:";
-                PerformanceReportType = ReportType.KpaReport;
+                PerformanceReportType = ReportingType.KpaReport;
                 KPAOption = default(KpaOption);
                 LoadKpaOptions();
             }
             else
             {
                 label_CategoryOption.Text = "KPI Option:";
-                PerformanceReportType = ReportType.KpiReport;
+                PerformanceReportType = ReportingType.KpiReport;
                 KPIOption = default(KpiOption);
                 LoadKpiOptions();
             }
@@ -245,11 +245,11 @@ namespace KPA_KPI_Analyzer.PerformanceReporting
         {
             if (radioBtn_KpaReporting.Checked)
             {
-                PerformanceReportType = ReportType.KpaReport;
+                PerformanceReportType = ReportingType.KpaReport;
             }
             else
             {
-                PerformanceReportType = ReportType.KpiReport;
+                PerformanceReportType = ReportingType.KpiReport;
             }
         }
 
@@ -285,7 +285,7 @@ namespace KPA_KPI_Analyzer.PerformanceReporting
         private void comboBox_CategoryOption_SelectedIndexChanged(object sender, EventArgs e)
         {
             int index = default(int);
-            if(PerformanceReportType == ReportType.KpaReport)
+            if(PerformanceReportType == ReportingType.KpaReport)
             {
                 index = comboBox_CategoryOption.SelectedIndex;
                 foreach (KpaOption option in Enum.GetValues(typeof(KpaOption)))

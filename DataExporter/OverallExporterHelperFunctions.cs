@@ -80,7 +80,7 @@ namespace DataExporter
             int col = colStart;
 
 
-            foreach (KeyPerformanceAction action in Report.Actions)
+            foreach (KeyPerformanceAction action in KpaOverallReport.Actions)
             {
                 // Make sure the action is from template one.
                 if(action is ITemplateOne)
@@ -138,7 +138,7 @@ namespace DataExporter
             int col = colStart;
 
 
-            foreach (KeyPerformanceAction action in Report.Actions)
+            foreach (KeyPerformanceAction action in KpaOverallReport.Actions)
             {
                 // Make sure the action is from template one.
                 if (action is ITemplateTwo)
@@ -196,7 +196,7 @@ namespace DataExporter
             int col = colStart;
 
 
-            foreach(KeyPerformanceIndicator indicator in Report.Indicators)
+            foreach(KeyPerformanceIndicator indicator in KpiOverallReport.Indicators)
             {
                 // Make sure the indicator is from template one.
                 if (indicator is ITemplateThree)
@@ -254,7 +254,7 @@ namespace DataExporter
             int col = colStart;
 
 
-            foreach (KeyPerformanceIndicator indicator in Report.Indicators)
+            foreach (KeyPerformanceIndicator indicator in KpiOverallReport.Indicators)
             {
                 // Make sure the indicator is from template one.
                 if (indicator is ITemplateFour)
@@ -310,7 +310,7 @@ namespace DataExporter
             int col = colStart;
 
 
-            foreach (KeyPerformanceIndicator indicator in Report.Indicators)
+            foreach (KeyPerformanceIndicator indicator in KpiOverallReport.Indicators)
             {
                 // Make sure the indicator is from template one.
                 if (indicator is ITemplateFive)

@@ -186,7 +186,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             AnalysisOne = "- Will only show if PR is assigned to purchase group UHJ, is fully released and the PR has not been placed on a PO.";
             AnalysisTwo = "- Difference between todays date and the date the PR was fully released.";
 
-            ITemplateOne tempOne = (Report.Actions[(int)KpaOption.HotJobs_PrsNotOnPo]
+            ITemplateOne tempOne = (KpaOverallReport.Actions[(int)KpaOption.HotJobs_PrsNotOnPo]
                                 as Reporting.KeyPerformanceActions.HotJobs.PRsNotOnPO);
 
 
@@ -236,7 +236,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             AnalysisOne = "- Will only show for PO line items with purchase group UHJ that do not have a confirmation date and are not received complete.";
             AnalysisTwo = "- Difference between todays date and the date the PO line was created.";
 
-            ITemplateOne tempOne = (Report.Actions[(int)KpaOption.HotJobs_NoConfirmations]
+            ITemplateOne tempOne = (KpaOverallReport.Actions[(int)KpaOption.HotJobs_NoConfirmations]
                                 as Reporting.KeyPerformanceActions.HotJobs.NoConfirmations);
 
 
@@ -286,7 +286,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             AnalysisOne = "- Will only show for PO line items with purchase group UHJ that have confirmation dates less than today and have not been received complete.";
             AnalysisTwo = "- Difference between todays date and the first confirmation date.";
 
-            ITemplateOne tempOne = (Report.Actions[(int)KpaOption.HotJobs_LateToConfirmed]
+            ITemplateOne tempOne = (KpaOverallReport.Actions[(int)KpaOption.HotJobs_LateToConfirmed]
                                 as Reporting.KeyPerformanceActions.HotJobs.LateToConfirmed);
 
 

@@ -33,13 +33,25 @@ namespace Reporting
         }
 
 
+
+
+
+
+        /// <summary>
+        /// A list of Key Performance Indicators (KPIs) used by report
+        /// </summary>
+        public static List<KeyPerformanceIndicator> Indicators { get; private set; }
+
+
+
+
         /// <summary>
         /// Default Private Constructor
         /// </summary>
         private KpiOverallReport()
         {
-            // Add the Key Performance Actions to the report
-            AddIndicators();
+            // Get the indicators for the report
+            Indicators = GetIndicators();
         }
 
 
@@ -57,39 +69,7 @@ namespace Reporting
 
 
 
-        /// <summary>
-        /// Builds the KPA report so it can be created (calculated)
-        /// </summary>
-        private void AddIndicators()
-        {
-            // Clear any Key Performance Indicators the report might have
-            Indicators.Clear();
 
-            // Add the indicators
-            Indicators.Add(new KeyPerformanceIndicators.Plan.CurrentPlanDateVsPRPlanDate());
-            Indicators.Add(new KeyPerformanceIndicators.Plan.OriginalPlanDateTo2ndLvlReleaseDateVsCodedLead());
-            Indicators.Add(new KeyPerformanceIndicators.Plan.CurrentPlanDateTo2ndLvlReleaseDateVsCodedLead());
-            Indicators.Add(new KeyPerformanceIndicators.Purch.InitialConfirmationDateVsPRPlanDate());
-            Indicators.Add(new KeyPerformanceIndicators.FollowUp.CurrentConfirmationDateVsInitialConfirmationDate());
-            Indicators.Add(new KeyPerformanceIndicators.FollowUp.FinalConfirmationDateVsFinalPlanDate());
-            Indicators.Add(new KeyPerformanceIndicators.FollowUp.ReceiptDateVsCurrentPlanDate());
-            Indicators.Add(new KeyPerformanceIndicators.FollowUp.ReceiptDateVsOriginalConfirmationDate());
-            Indicators.Add(new KeyPerformanceIndicators.FollowUp.ReceiptDateVsCurrentConfirmationDate());
-            Indicators.Add(new KeyPerformanceIndicators.PlanTwo.MaterialDueOriginalPlannedDate());
-            Indicators.Add(new KeyPerformanceIndicators.PlanTwo.MaterialDueFinalPlannedDate());
-            Indicators.Add(new KeyPerformanceIndicators.PurchTwo.PR2ndLvlReleaseDateVsPOCreationDate());
-            Indicators.Add(new KeyPerformanceIndicators.PurchTwo.POCreationDateVsPOReleaseDate());
-            Indicators.Add(new KeyPerformanceIndicators.PurchTwo.POReleaseDateVsPOConfirmationDate());
-            Indicators.Add(new KeyPerformanceIndicators.PurchSub.PRReleaseDateVsPOReleaseDate());
-            Indicators.Add(new KeyPerformanceIndicators.PurchSub.POCreationDateVsConfirmationEntry());
-            Indicators.Add(new KeyPerformanceIndicators.PurchTotal.PRReleaseDateToConfirmationEntry());
-            Indicators.Add(new KeyPerformanceIndicators.PurchPlan.POReleaseVsPRDeliveryDate());
-            Indicators.Add(new KeyPerformanceIndicators.Other.PRsCreated());
-            Indicators.Add(new KeyPerformanceIndicators.Other.PRsReleased());
-            Indicators.Add(new KeyPerformanceIndicators.Other.TotalSpend());
-            Indicators.Add(new KeyPerformanceIndicators.Other.PRValueVsPOValue());
-            Indicators.Add(new KeyPerformanceIndicators.Other.HotJobPRs());
-        }
 
 
         /// <summary>

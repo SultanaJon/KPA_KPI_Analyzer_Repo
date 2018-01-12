@@ -182,7 +182,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             AnalysisTwo = "- Difference between todays date and the date the PR was fully released.";
 
 
-            ITemplateOne tempOne = (Report.Actions[(int)KpaOption.PurchTotal_PrReleaseToConfirmationEntry]
+            ITemplateOne tempOne = (KpaOverallReport.Actions[(int)KpaOption.PurchTotal_PrReleaseToConfirmationEntry]
                                 as Reporting.KeyPerformanceActions.PurchTotal.PRReleaseToConfirmationEntry);
 
 

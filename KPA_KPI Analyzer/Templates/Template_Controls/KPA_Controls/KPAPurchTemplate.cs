@@ -200,7 +200,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             AnalysisTwo = "- Difference between todays date and the date the PR was fully released.";
 
             // Get the template data
-            ITemplateOne tempOne = (Report.Actions[(int)KpaOption.Purch_PRsAgingReleased]
+            ITemplateOne tempOne = (KpaOverallReport.Actions[(int)KpaOption.Purch_PRsAgingReleased]
                     as Reporting.KeyPerformanceActions.Purch.PRsAgingReleased);
 
 
@@ -250,7 +250,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             AnalysisTwo = "- Difference between todays date and the date the PR was added to the PO.";
 
             // Get the template data
-            ITemplateOne tempOne = (Report.Actions[(int)KpaOption.Purch_PoFirstRelease]
+            ITemplateOne tempOne = (KpaOverallReport.Actions[(int)KpaOption.Purch_PoFirstRelease]
                     as Reporting.KeyPerformanceActions.Purch.POFirstRelease);
 
 
@@ -301,7 +301,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
 
             // Get the template data
-            ITemplateOne tempOne = (Report.Actions[(int)KpaOption.Purch_PoPrevRelease]
+            ITemplateOne tempOne = (KpaOverallReport.Actions[(int)KpaOption.Purch_PoPrevRelease]
                     as Reporting.KeyPerformanceActions.Purch.POPrevRelease);
 
 
@@ -352,7 +352,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
 
             // Get the template data
-            ITemplateOne tempOne = (Report.Actions[(int)KpaOption.Purch_NoConfirmation]
+            ITemplateOne tempOne = (KpaOverallReport.Actions[(int)KpaOption.Purch_NoConfirmation]
                     as Reporting.KeyPerformanceActions.Purch.NoConfirmations);
 
 

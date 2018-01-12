@@ -218,7 +218,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             AnalysisTwo = "- Difference between PO line items initial creation date and the date the PR was fully released.";
 
 
-            ITemplateFour tempFour = (Report.Indicators[(int)KpiOption.PurchTwo_PrFullyReleaseDateVsPoCreationDate]
+            ITemplateFour tempFour = (KpiOverallReport.Indicators[(int)KpiOption.PurchTwo_PrFullyReleaseDateVsPoCreationDate]
                     as Reporting.KeyPerformanceIndicators.PurchTwo.PR2ndLvlReleaseDateVsPOCreationDate);
 
             // Add the data to the column chart
@@ -274,7 +274,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             AnalysisOne = "- Will show if PO line item has an initial release date.";
             AnalysisTwo = "- Difference between PO line initial release date and PO line creation date.";
 
-            ITemplateFour tempFour = (Report.Indicators[(int)KpiOption.PurchTwo_PoCreationDateVsPoReleaseDate]
+            ITemplateFour tempFour = (KpiOverallReport.Indicators[(int)KpiOption.PurchTwo_PoCreationDateVsPoReleaseDate]
                     as Reporting.KeyPerformanceIndicators.PurchTwo.POCreationDateVsPOReleaseDate);
 
             // Add the data to the column chart
@@ -334,7 +334,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             AnalysisOne = "- Will show if PO line item is confirmed and has been previously released.";
             AnalysisTwo = "- Difference between date the initial confirmation was created and the PO line items first release date.";
 
-            ITemplateFour tempFour = (Report.Indicators[(int)KpiOption.PurchTwo_PoReleaseDateVsPoConfirmationDate]
+            ITemplateFour tempFour = (KpiOverallReport.Indicators[(int)KpiOption.PurchTwo_PoReleaseDateVsPoConfirmationDate]
                     as Reporting.KeyPerformanceIndicators.PurchTwo.POReleaseDateVsPOConfirmationDate);
 
             // Add the data to the column chart
@@ -366,7 +366,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TotalOrders = string.Format("{0:n0}", tempFour.TotalRecords);
 
 
-            IUnconfirmed unconfirmedInfo = (Report.Indicators[(int)KpiOption.PurchTwo_PoReleaseDateVsPoConfirmationDate]
+            IUnconfirmed unconfirmedInfo = (KpiOverallReport.Indicators[(int)KpiOption.PurchTwo_PoReleaseDateVsPoConfirmationDate]
                      as Reporting.KeyPerformanceIndicators.PurchTwo.POReleaseDateVsPOConfirmationDate);
 
             // Get the uncofnrimed information

@@ -1,9 +1,8 @@
 ﻿
 
 using DataAccessLibrary;
+using Reporting.Interfaces;
 using Reporting.Overall;
-
-using Reporting.Selective;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Reporting.KeyPerformanceActions.HotJobs
 {
-    public sealed class NoConfirmations : KeyPerformanceAction, ITemplateOne
+    public sealed class NoConfirmations : KeyPerformanceAction, ISelective,  ITemplateOne
     {
         #region ITemplateOne Properties
 
@@ -31,33 +30,19 @@ namespace Reporting.KeyPerformanceActions.HotJobs
 
 
 
+        #region ISelective Properties
 
         /// <summary>
-        /// The Selective Strategy Context that holds the selective data for reporting
+        /// The selective average for the filter applied against the specific KPA or KPI
         /// </summary>
-        private SelectiveStrategyContext selectiveContext;
-
-
-
+        public double SelectiveAverage { get; set; }
 
         /// <summary>
-        /// Property to return the selective data for this KPA
+        /// The selective total fo the filter applied against the specific KPA or KPI
         /// </summary>
-        public SelectiveStrategyContext SelectiveContext
-        {
-            get
-            {
-                return selectiveContext;
-            }
-            private set
-            {
-                if (value != null)
-                {
-                    this.selectiveContext = value;
-                }
-            }
-        }
+        public int SelectiveTotal { get; set; }
 
+        #endregion
 
 
 
@@ -69,9 +54,6 @@ namespace Reporting.KeyPerformanceActions.HotJobs
         {
             Section = "Hot Jobs";
             Name = "No Confirmations";
-
-            // set the selective strategy context
-            SelectiveContext = new SelectiveStrategyContext(new SelectiveDataTypeOne());
         }
 
 

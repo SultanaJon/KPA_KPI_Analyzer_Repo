@@ -1,7 +1,7 @@
 ﻿using DataAccessLibrary;
 using Filters;
+using Reporting.Interfaces;
 using Reporting.Overall;
-using Reporting.Selective;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Reporting.KeyPerformanceIndicators.PurchSub
 {
-    public sealed class PRReleaseDateVsPOReleaseDate : KeyPerformanceIndicator, ITemplateFour
+    public sealed class PRReleaseDateVsPOReleaseDate : KeyPerformanceIndicator, ISelective,  ITemplateFour
     {
         #region ITemplateFour Properties
 
@@ -33,33 +33,19 @@ namespace Reporting.KeyPerformanceIndicators.PurchSub
 
 
 
-
-
-        /// <summary>
-        /// The Selective Strategy Context that holds the selective data for reporting
-        /// </summary>
-        private SelectiveStrategyContext selectiveContext;
-
-
+        #region ISelective Properties
 
         /// <summary>
-        /// Property to return the selective data for this KPA
+        /// The selective average for the filter applied against the specific KPA or KPI
         /// </summary>
-        public SelectiveStrategyContext SelectiveContext
-        {
-            get
-            {
-                return selectiveContext;
-            }
-            private set
-            {
-                if (value != null)
-                {
-                    this.selectiveContext = value;
-                }
-            }
-        }
+        public double SelectiveAverage { get; set; }
 
+        /// <summary>
+        /// The selective total fo the filter applied against the specific KPA or KPI
+        /// </summary>
+        public int SelectiveTotal { get; set; }
+
+        #endregion
 
 
 
@@ -71,9 +57,6 @@ namespace Reporting.KeyPerformanceIndicators.PurchSub
         {
             Section = "Purch Sub";
             Name = "PR Release Date vs PO Release Date";
-
-            // set the selective strategy context
-            SelectiveContext = new SelectiveStrategyContext(new SelectiveDataTypeOne());
         }
 
 

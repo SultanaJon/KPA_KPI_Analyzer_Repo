@@ -3,7 +3,6 @@
 using DataAccessLibrary;
 using Reporting.Interfaces;
 using Reporting.Overall;
-using Reporting.Selective;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Reporting.KeyPerformanceActions.FollowUp
 {
-    public sealed class ConfirmedDateForUpcomingDeliveries : KeyPerformanceAction, ITemplateOne, IFavorable
+    public sealed class ConfirmedDateForUpcomingDeliveries : KeyPerformanceAction, ISelective,  ITemplateOne, IFavorable
     {
         #region IFavorable Properties
 
@@ -43,34 +42,27 @@ namespace Reporting.KeyPerformanceActions.FollowUp
 
 
 
+        #region ISelective Properties
 
+        /// <summary>
+        /// The selective average for the filter applied against the specific KPA or KPI
+        /// </summary>
+        public double SelectiveAverage { get; set; }
+
+        /// <summary>
+        /// The selective total fo the filter applied against the specific KPA or KPI
+        /// </summary>
+        public int SelectiveTotal { get; set; }
+
+        #endregion
+
+
+
+
+        /// <summary>
+        /// Data from another KPA. Needed in this KPA to calculate percent favorable
+        /// </summary>
         public int DueTodayLateToConfirmedLessThanZeroDueToday { get; set; }
-
-
-        /// <summary>
-        /// The Selective Strategy Context that holds the selective data for reporting
-        /// </summary>
-        private SelectiveStrategyContext selectiveContext;
-
-
-
-        /// <summary>
-        /// Property to return the selective data for this KPA
-        /// </summary>
-        public SelectiveStrategyContext SelectiveContext
-        {
-            get
-            {
-                return selectiveContext;
-            }
-            private set
-            {
-                if (value != null)
-                {
-                    this.selectiveContext = value;
-                }
-            }
-        }
 
 
 
@@ -83,9 +75,6 @@ namespace Reporting.KeyPerformanceActions.FollowUp
         {
             Section = "Follow Up";
             Name = "Confirmed Date for Upcoming Deliveries";
-
-            // set the selective strategy context
-            SelectiveContext = new SelectiveStrategyContext(new SelectiveDataTypeThree());
         }
 
 

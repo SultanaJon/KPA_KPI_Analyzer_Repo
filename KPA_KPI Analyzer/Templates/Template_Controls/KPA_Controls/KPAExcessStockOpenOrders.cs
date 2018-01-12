@@ -199,7 +199,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             AnalysisOne = "- Will only show in this field if the PR is not fully released, the PR Open Qty > 0, General Stock On Order > 0 and Project Stock On Order > 0.";
             AnalysisTwo = "- Difference between todays date and the date the PR was created.";
 
-            ITemplateOne tempOne = (Report.Actions[(int)KpaOption.ExcessStockOpenOrders_PrsAgingNotReleased]
+            ITemplateOne tempOne = (KpaOverallReport.Actions[(int)KpaOption.ExcessStockOpenOrders_PrsAgingNotReleased]
                                 as Reporting.KeyPerformanceActions.ExcessStockOpenOrders.PRsAgingNotReleased);
 
 
@@ -249,7 +249,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             AnalysisOne = "- Will only show in this field if the PR is fully released, the PR open Qty > 0, General Stock On Order > 0 and Project Stock On Order > 0.";
             AnalysisTwo = "- Difference between todays date and the date the PR was fully released.";
 
-            ITemplateOne tempOne = (Report.Actions[(int)KpaOption.ExcessStockStock_PrsAgingReleased]
+            ITemplateOne tempOne = (KpaOverallReport.Actions[(int)KpaOption.ExcessStockStock_PrsAgingReleased]
                                 as Reporting.KeyPerformanceActions.ExcessStockOpenOrders.PRsAgingReleased);
 
             // Add the data to the column chart
@@ -295,7 +295,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             AnalysisOne = "- Will only show in this field if PR is on PO, PO line item does not have a confirmation date, PO line is not received complete, General Stock On Order > 0 and Project Stock On Order > 0.";
             AnalysisTwo = "- Difference between todays date and the date the PR was added to the PO.";
 
-            ITemplateOne tempOne = (Report.Actions[(int)KpaOption.ExcessStockStock_PoCreationTruDelivery]
+            ITemplateOne tempOne = (KpaOverallReport.Actions[(int)KpaOption.ExcessStockStock_PoCreationTruDelivery]
                                 as Reporting.KeyPerformanceActions.ExcessStockOpenOrders.POCreationThruDelivery);
 
 

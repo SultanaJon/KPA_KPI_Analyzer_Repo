@@ -210,7 +210,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             AnalysisTwo = "- Difference between initial confirmation date creation and the date the PR was fully released.";
 
 
-            ITemplateFour tempFour = (Report.Indicators[(int)KpiOption.PurchTotal_PrReleaseDateToConfirmationEntryDate]
+            ITemplateFour tempFour = (KpiOverallReport.Indicators[(int)KpiOption.PurchTotal_PrReleaseDateToConfirmationEntryDate]
                 as Reporting.KeyPerformanceIndicators.PurchTotal.PRReleaseDateToConfirmationEntry);
 
             // Add the data to the column chart
@@ -242,7 +242,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TotalOrders = string.Format("{0:n0}", tempFour.TotalRecords);
 
 
-            IUnconfirmed unconfirmedInfo = (Report.Indicators[(int)KpiOption.PurchTotal_PrReleaseDateToConfirmationEntryDate]
+            IUnconfirmed unconfirmedInfo = (KpiOverallReport.Indicators[(int)KpiOption.PurchTotal_PrReleaseDateToConfirmationEntryDate]
                      as Reporting.KeyPerformanceIndicators.PurchTotal.PRReleaseDateToConfirmationEntry);
 
             // Get the uncofnrimed information

@@ -1,6 +1,6 @@
 ﻿using DataAccessLibrary;
+using Reporting.Interfaces;
 using Reporting.Overall;
-using Reporting.Selective;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Reporting.KeyPerformanceIndicators.PurchPlan
 {
-    public sealed class POReleaseVsPRDeliveryDate : KeyPerformanceIndicator, ITemplateFour
+    public sealed class POReleaseVsPRDeliveryDate : KeyPerformanceIndicator, ISelective,  ITemplateFour
     {
         #region ITemplateFour Properties
 
@@ -32,33 +32,19 @@ namespace Reporting.KeyPerformanceIndicators.PurchPlan
 
 
 
-
-
-        /// <summary>
-        /// The Selective Strategy Context that holds the selective data for reporting
-        /// </summary>
-        private SelectiveStrategyContext selectiveContext;
-
-
+        #region ISelective Properties
 
         /// <summary>
-        /// Property to return the selective data for this KPA
+        /// The selective average for the filter applied against the specific KPA or KPI
         /// </summary>
-        public SelectiveStrategyContext SelectiveContext
-        {
-            get
-            {
-                return selectiveContext;
-            }
-            private set
-            {
-                if (value != null)
-                {
-                    this.selectiveContext = value;
-                }
-            }
-        }
+        public double SelectiveAverage { get; set; }
 
+        /// <summary>
+        /// The selective total fo the filter applied against the specific KPA or KPI
+        /// </summary>
+        public int SelectiveTotal { get; set; }
+
+        #endregion
 
 
 
@@ -70,9 +56,6 @@ namespace Reporting.KeyPerformanceIndicators.PurchPlan
         {
             Section = "Purch Plan";
             Name = "PO Release vs PR Delivery Date";
-
-            // set the selective strategy context
-            SelectiveContext = new SelectiveStrategyContext(new SelectiveDataTypeOne());
         }
 
 

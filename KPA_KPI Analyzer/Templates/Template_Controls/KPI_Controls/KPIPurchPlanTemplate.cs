@@ -198,7 +198,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
 
-            ITemplateFour tempFour = (Report.Indicators[(int)KpiOption.PurchPlan_PoReleaseVsPrDeliveryDate]
+            ITemplateFour tempFour = (KpiOverallReport.Indicators[(int)KpiOption.PurchPlan_PoReleaseVsPrDeliveryDate]
                 as Reporting.KeyPerformanceIndicators.PurchPlan.POReleaseVsPRDeliveryDate);
 
             // Add the data to the column chart

@@ -209,7 +209,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             AnalysisTwo = "- Difference between the confirmation date and the current planned date.";
 
 
-            ITemplateTwo tempTwo = (Report.Actions[(int)KpaOption.CurrentPlanVsActual_CurrentPlanDateVsCurrentConfirmationDate]
+            ITemplateTwo tempTwo = (KpaOverallReport.Actions[(int)KpaOption.CurrentPlanVsActual_CurrentPlanDateVsCurrentConfirmationDate]
                                 as Reporting.KeyPerformanceActions.CurrentPlanVsActual.CurrentPlanDateVsCurrentConfirmationDate);
 
 
@@ -265,7 +265,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             AnalysisTwo = "- Difference between confirmation date and the current planned date.";
 
 
-            ITemplateTwo tempTwo = (Report.Actions[(int)KpaOption.CurrentPlanVsActual_CurrentPlanDateVsCurrentConfirmationDateForHotJobs]
+            ITemplateTwo tempTwo = (KpaOverallReport.Actions[(int)KpaOption.CurrentPlanVsActual_CurrentPlanDateVsCurrentConfirmationDateForHotJobs]
                                 as Reporting.KeyPerformanceActions.CurrentPlanVsActual.CurrentPlanDateVsCurrentConfirmationDateForHotJobs);
 
             // Add the data to the column chart

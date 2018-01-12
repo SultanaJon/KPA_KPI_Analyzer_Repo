@@ -176,7 +176,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             AnalysisTwo = "- Difference between current confirmed date and current plan date.";
 
 
-            ITemplateOne tempOne = (Report.Actions[(int)KpaOption.FollowUp_ConfirmedDateVsPlanDate]
+            ITemplateOne tempOne = (KpaOverallReport.Actions[(int)KpaOption.FollowUp_ConfirmedDateVsPlanDate]
                                 as Reporting.KeyPerformanceActions.FollowUp.ConfirmedDateVsPlanDate);
 
 
@@ -226,7 +226,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             AnalysisTwo = "- Difference between the confirmation date and todays date.";
 
 
-            ITemplateOne tempOne = (Report.Actions[(int)KpaOption.FollowUp_ConfirmedDateForUpcomingDeliveries]
+            ITemplateOne tempOne = (KpaOverallReport.Actions[(int)KpaOption.FollowUp_ConfirmedDateForUpcomingDeliveries]
                                 as Reporting.KeyPerformanceActions.FollowUp.ConfirmedDateForUpcomingDeliveries);
 
 
@@ -275,7 +275,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             AnalysisOne = "- Open PO line which is confirmed for today or in the past.";
             AnalysisTwo = "- Difference between todays date and the current confirmation date.";
 
-            ITemplateOne tempOne = (Report.Actions[(int)KpaOption.FollowUp_DueTodayOrLateToConfirmed]
+            ITemplateOne tempOne = (KpaOverallReport.Actions[(int)KpaOption.FollowUp_DueTodayOrLateToConfirmed]
                                 as Reporting.KeyPerformanceActions.FollowUp.DueTodayOrLateToConfirmed);
 
 

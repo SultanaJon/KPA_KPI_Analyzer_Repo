@@ -223,7 +223,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             AnalysisOne = "- Will show if the PR is on a PO.";
             AnalysisTwo = "- Difference between final confirmation date and first confirmation date.";
 
-            ITemplateThree tempThree = (Report.Indicators[(int)KpiOption.FollowUp_CurrentConfirmationDateVsInitialConfirmationDate]
+            ITemplateThree tempThree = (KpiOverallReport.Indicators[(int)KpiOption.FollowUp_CurrentConfirmationDateVsInitialConfirmationDate]
                     as Reporting.KeyPerformanceIndicators.FollowUp.CurrentConfirmationDateVsInitialConfirmationDate);
 
 
@@ -252,7 +252,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TotalOrders = string.Format("{0:n0}", tempThree.TotalRecords);
 
 
-            IUnconfirmed unconfirmedInfo = (Report.Indicators[(int)KpiOption.FollowUp_CurrentConfirmationDateVsInitialConfirmationDate]
+            IUnconfirmed unconfirmedInfo = (KpiOverallReport.Indicators[(int)KpiOption.FollowUp_CurrentConfirmationDateVsInitialConfirmationDate]
                     as Reporting.KeyPerformanceIndicators.FollowUp.CurrentConfirmationDateVsInitialConfirmationDate);
 
             // Get the uncofnrimed information
@@ -284,7 +284,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             AnalysisOne = "- Will show if PO line has been received complete.";
             AnalysisTwo = "- Difference between current confirmation date and current planned date.";
 
-            ITemplateThree tempThree = (Report.Indicators[(int)KpiOption.FollowUp_FinalConfirmationDateVsInitialConfirmationDate]
+            ITemplateThree tempThree = (KpiOverallReport.Indicators[(int)KpiOption.FollowUp_FinalConfirmationDateVsInitialConfirmationDate]
                     as Reporting.KeyPerformanceIndicators.FollowUp.FinalConfirmationDateVsFinalPlanDate);
 
 
@@ -313,7 +313,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TotalOrders = string.Format("{0:n0}", tempThree.TotalRecords);
 
 
-            IUnconfirmed unconfirmedInfo = (Report.Indicators[(int)KpiOption.FollowUp_FinalConfirmationDateVsInitialConfirmationDate]
+            IUnconfirmed unconfirmedInfo = (KpiOverallReport.Indicators[(int)KpiOption.FollowUp_FinalConfirmationDateVsInitialConfirmationDate]
                     as Reporting.KeyPerformanceIndicators.FollowUp.FinalConfirmationDateVsFinalPlanDate);
 
             // Get the uncofnrimed information
@@ -346,7 +346,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             AnalysisOne = "- Will show if PO line has been received complete.";
             AnalysisTwo = "- Difference between final receipt date and current planned date.";
 
-            ITemplateThree tempThree = (Report.Indicators[(int)KpiOption.FollowUp_ReceiptDateVsCurrentPlanDate]
+            ITemplateThree tempThree = (KpiOverallReport.Indicators[(int)KpiOption.FollowUp_ReceiptDateVsCurrentPlanDate]
                     as Reporting.KeyPerformanceIndicators.FollowUp.ReceiptDateVsCurrentPlanDate);
 
             // Add the data to the column chart
@@ -398,7 +398,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             AnalysisOne = "- Will show if PO line has been received complete.";
             AnalysisTwo = "- Difference between final receipt date and the original confirmation date.";
 
-            ITemplateThree tempThree = (Report.Indicators[(int)KpiOption.FollowUp_ReceiptDateVsOriginalConfirmationDate]
+            ITemplateThree tempThree = (KpiOverallReport.Indicators[(int)KpiOption.FollowUp_ReceiptDateVsOriginalConfirmationDate]
                     as Reporting.KeyPerformanceIndicators.FollowUp.ReceiptDateVsOriginalConfirmationDate);
 
 
@@ -427,7 +427,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TotalOrders = string.Format("{0:n0}", tempThree.TotalRecords);
 
 
-            IUnconfirmed unconfirmedInfo = (Report.Indicators[(int)KpiOption.FollowUp_ReceiptDateVsOriginalConfirmationDate]
+            IUnconfirmed unconfirmedInfo = (KpiOverallReport.Indicators[(int)KpiOption.FollowUp_ReceiptDateVsOriginalConfirmationDate]
                     as Reporting.KeyPerformanceIndicators.FollowUp.ReceiptDateVsOriginalConfirmationDate);
 
             // Get the uncofnrimed information
@@ -460,7 +460,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             AnalysisOne = "- Will show if PO line has been received complete.";
             AnalysisTwo = "- Difference between final receipt date and the current confirmation date.";
 
-            ITemplateThree tempThree = (Report.Indicators[(int)KpiOption.FollowUp_ReceiptDateVsCurrentConfirmationDate]
+            ITemplateThree tempThree = (KpiOverallReport.Indicators[(int)KpiOption.FollowUp_ReceiptDateVsCurrentConfirmationDate]
                     as Reporting.KeyPerformanceIndicators.FollowUp.ReceiptDateVsCurrentConfirmationDate);
 
 
@@ -489,7 +489,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TotalOrders = string.Format("{0:n0}", tempThree.TotalRecords);
 
 
-            IUnconfirmed unconfirmedInfo = (Report.Indicators[(int)KpiOption.FollowUp_ReceiptDateVsCurrentConfirmationDate]
+            IUnconfirmed unconfirmedInfo = (KpiOverallReport.Indicators[(int)KpiOption.FollowUp_ReceiptDateVsCurrentConfirmationDate]
                     as Reporting.KeyPerformanceIndicators.FollowUp.ReceiptDateVsCurrentConfirmationDate);
 
             // Get the uncofnrimed information
