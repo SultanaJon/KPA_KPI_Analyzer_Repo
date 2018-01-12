@@ -198,11 +198,11 @@ namespace Reporting.KeyPerformanceActions.CurrentPlanVsActual
         /// <summary>
         /// Method to calculate the averate for this KPA
         /// </summary>
-        internal override void CalculateAverage(double _totalDays)
+        internal override void CalculateAverage(double _totalDays, int _totalRecords)
         {
             try
             {
-                Average = Math.Round(_totalDays / TotalRecords, 2);
+                Average = Math.Round(_totalDays / _totalRecords, 2);
                 if (double.IsNaN(Average))
                     Average = 0;
             }
@@ -226,9 +226,75 @@ namespace Reporting.KeyPerformanceActions.CurrentPlanVsActual
         /// <summary>
         /// Calculates the selective report for this KPA
         /// </summary>
-        public override void RunSelectiveReport(string uniqueFilters)
+        public override void RunSelectiveReport(string uniqueFilter)
         {
+            try
+            {
+                DataTable dt = KpaUtils.CurrentPlanVsActualQueries.GetCurrentPlanDateVsCurrentConfirmationDate();
+                double totalDays = 0;
 
+                foreach (DataRow dr in dt.Rows)
+                {
+                    //Check if the datarow meets the conditions of any applied filters.
+                    if (!FilterUtils.EvaluateAgainstFilters(dr))
+                    {
+                        // This datarow dos not meet the conditions of the filters applied.
+                        continue;
+                    }
+
+                    string[] strDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
+                    int year = int.Parse(strDate[2]);
+                    int month = int.Parse(strDate[0].TrimStart('0'));
+                    int day = int.Parse(strDate[1].TrimStart('0'));
+
+                    DateTime confDate = new DateTime(year, month, day);
+
+                    string[] strCurrPlanDate = (dr["Rescheduling date"].ToString()).Split('/');
+                    int currConfYear = int.Parse(strCurrPlanDate[2]);
+                    int currConfMonth = int.Parse(strCurrPlanDate[0]);
+                    int currConfDay = int.Parse(strCurrPlanDate[1]);
+
+                    if (currConfYear == 0 && currConfMonth == 0 && currConfDay == 0)
+                    {
+                        string[] strNewCurrConfDate = (dr["Delivery Date"].ToString()).Split('/');
+                        currConfYear = int.Parse(strNewCurrConfDate[2]);
+                        currConfMonth = int.Parse(strNewCurrConfDate[0].TrimStart('0'));
+                        currConfDay = int.Parse(strNewCurrConfDate[1].TrimStart('0'));
+                    }
+                    else
+                    {
+                        currConfYear = int.Parse(strCurrPlanDate[2]);
+                        currConfMonth = int.Parse(strCurrPlanDate[0].TrimStart('0'));
+                        currConfDay = int.Parse(strCurrPlanDate[1].TrimStart('0'));
+                    }
+
+                    DateTime currPlanDate = new DateTime(currConfYear, currConfMonth, currConfDay);
+                    double elapsedDays = (confDate - currPlanDate).TotalDays;
+
+                    // Our time spans are in weeks but we want to catch the average amount of days.
+                    totalDays += elapsedDays;
+                    elapsedDays = (int)elapsedDays;
+
+
+                    // Apply the elapsed days against the time span conditions
+                    TimeSpanDump(elapsedDays);
+                }
+
+                // Calculate the average for this KPA
+                CalculateAverage(totalDays, TotalRecords);
+
+                // Calcualte the Percent Favorable for this KPA
+                CalculatePercentFavorable();
+
+                dt.Rows.Clear();
+                dt = null;
+                GC.Collect();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("An argument out of range exception was thrown", "Current Plan Date vs Curren Confirmation date Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
         }
 
 
@@ -294,7 +360,7 @@ namespace Reporting.KeyPerformanceActions.CurrentPlanVsActual
                 }
 
                 // Calculate the average for this KPA
-                CalculateAverage(totalDays);
+                CalculateAverage(totalDays, TotalRecords);
 
                 // Calcualte the Percent Favorable for this KPA
                 CalculatePercentFavorable();

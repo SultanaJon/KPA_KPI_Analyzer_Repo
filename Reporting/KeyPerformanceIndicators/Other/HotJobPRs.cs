@@ -153,7 +153,7 @@ namespace Reporting.KeyPerformanceIndicators.Other
         /// <summary>
         /// Calculates the selective report for this KPA
         /// </summary>
-        public override void RunSelectiveReport(string uniqueFilters)
+        public override void RunSelectiveReport(string uniqueFilter)
         {
 
         }

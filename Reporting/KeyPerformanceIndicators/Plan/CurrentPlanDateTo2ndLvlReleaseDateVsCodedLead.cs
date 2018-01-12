@@ -173,7 +173,7 @@ namespace Reporting.KeyPerformanceIndicators.Plan
         {
             try
             {
-                Average = Math.Round(_totalDays / TotalRecords, 2);
+                Average = Math.Round(_totalDays / _totalRecords, 2);
                 if (double.IsNaN(Average))
                     Average = 0;
             }
@@ -216,7 +216,7 @@ namespace Reporting.KeyPerformanceIndicators.Plan
         /// <summary>
         /// Calculates the selective report for this KPA
         /// </summary>
-        public override void RunSelectiveReport(string uniqueFilters)
+        public override void RunSelectiveReport(string uniqueFilter)
         {
 
         }
@@ -310,7 +310,7 @@ namespace Reporting.KeyPerformanceIndicators.Plan
 
 
                 // Calculate the average for this KPI
-                CalculateAverage(totalDays);
+                CalculateAverage(totalDays, TotalRecords);
 
                 // Calculate the percent favorable for this KPI
                 CalculatePercentFavorable();
