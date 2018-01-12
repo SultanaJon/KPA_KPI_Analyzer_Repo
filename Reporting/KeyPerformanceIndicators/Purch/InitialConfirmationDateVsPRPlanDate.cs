@@ -182,7 +182,7 @@ namespace Reporting.KeyPerformanceIndicators.Purch
         {
             try
             {
-                Average = Math.Round(_totalDays / _totalRecords, 2);
+                Average = Math.Round(_totalDays / TotalRecords, 2);
                 if (double.IsNaN(Average))
                     Average = 0;
             }
@@ -251,7 +251,7 @@ namespace Reporting.KeyPerformanceIndicators.Purch
         /// <summary>
         /// Calculates the selective report for this KPA
         /// </summary>
-        public override void RunSelectiveReport(string uniqueFilter)
+        public override void RunSelectiveReport(string uniqueFilters)
         {
 
         }
@@ -311,7 +311,7 @@ namespace Reporting.KeyPerformanceIndicators.Purch
                 }
 
                 // Calculate the average for this KPI
-                CalculateAverage(totalDays, TotalRecords);
+                CalculateAverage(totalDays);
 
                 // Calculate the percent unconfirmed for this KPI
                 CalculatePercentUnconfirmed(UnconfirmedTotal);

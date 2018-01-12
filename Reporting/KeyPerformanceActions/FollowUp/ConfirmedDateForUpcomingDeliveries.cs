@@ -187,11 +187,11 @@ namespace Reporting.KeyPerformanceActions.FollowUp
         /// <summary>
         /// Method to calculate the averate for this KPA
         /// </summary>
-        internal override void CalculateAverage(double _totalDays, int _totalRecords)
+        internal override void CalculateAverage(double _totalDays)
         {
             try
             {
-                Average = Math.Round(_totalDays / _totalRecords, 2);
+                Average = Math.Round(_totalDays / TotalRecords, 2);
                 if (double.IsNaN(Average))
                     Average = 0;
             }
@@ -215,7 +215,7 @@ namespace Reporting.KeyPerformanceActions.FollowUp
         /// <summary>
         /// Calculates the selective report for this KPA
         /// </summary>
-        public override void RunSelectiveReport(string uniqueFilter)
+        public override void RunSelectiveReport(string uniqueFilters)
         {
 
         }
@@ -257,7 +257,7 @@ namespace Reporting.KeyPerformanceActions.FollowUp
                 }
 
                 // Calculate the average for this KPA
-                CalculateAverage(totalDays, TotalRecords);
+                CalculateAverage(totalDays);
 
                 // Calculate the favorable percentage for this KPA
                 CalculatePercentFavorable();

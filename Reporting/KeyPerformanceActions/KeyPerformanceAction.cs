@@ -100,6 +100,6 @@
         /// <summary>
         /// Abstract method to calculate the average of the KPA
         /// </summary>
-        internal abstract void CalculateAverage(double _totalDays, int _totalRecords);
+        internal abstract void CalculateAverage(double _totalDays);
     }
 }
