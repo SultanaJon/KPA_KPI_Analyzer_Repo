@@ -47,6 +47,8 @@
   <ItemGroup>
     <Compile Include="ExcelFile.cs" />
     <Compile Include="Exporter.cs" />
+    <Compile Include="KpaReportExcelFile.cs" />
+    <Compile Include="KpiReportExceFile.cs" />
     <Compile Include="OverallExcelFile.cs" />
     <Compile Include="OverallExporterHelperFunctions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
