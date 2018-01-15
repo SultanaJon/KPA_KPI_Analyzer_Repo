@@ -7,6 +7,10 @@ namespace KPA_KPI_Analyzer
 {
     public partial class KPA_KPI_UI : Form
     {
+        /// <summary>
+        /// When the application is processing something, the loading screen will be presented with a message of what process is happening.
+        /// </summary>
+        /// <param name="_message">The message to display on the loading screen of the process.</param>
         private void ActivateLoadingScreen(string _message)
         {
             // Lock the navigation and the menu strip navigation
@@ -16,6 +20,8 @@ namespace KPA_KPI_Analyzer
             // Set the text of the progress bar.
             cpb_loadingScreenCircProgBar.Text = _message;
 
+
+            // Make the loading screen visible
             pnl_loadingScreen.Visible = true;
 
             // Bring the loading panel to the front if covered.
