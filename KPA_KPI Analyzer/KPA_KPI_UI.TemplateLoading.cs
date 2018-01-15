@@ -7,6 +7,22 @@ namespace KPA_KPI_Analyzer
 {
     public partial class KPA_KPI_UI : Form
     {
+        private void ActivateLoadingScreen(string _message)
+        {
+            // Lock the navigation and the menu strip navigation
+            NavigationLocked = true;
+            ms_applicaitonMenuStrip.Enabled = false;
+
+            // Set the text of the progress bar.
+            cpb_loadingScreenCircProgBar.Text = _message;
+
+            pnl_loadingScreen.Visible = true;
+
+            // Bring the loading panel to the front if covered.
+            pnl_loadingScreen.BringToFront();
+        }
+
+
         /// <summary>
         /// Instantiates a template object and adds the control to the active page panel for loading/viewing
         /// </summary>

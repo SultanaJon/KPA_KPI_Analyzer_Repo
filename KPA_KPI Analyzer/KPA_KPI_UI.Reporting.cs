@@ -271,6 +271,9 @@ namespace KPA_KPI_Analyzer
             // Pass the filters to the kpa report to use in the report generation
             (reports[ReportingType.KpaReport] as KpaReport).SetupReport(filters);
 
+            // Bring the loading screen to the front
+            ActivateLoadingScreen("Loading KPA Report...");
+
             // Run the KPA Report
             (reports[ReportingType.KpaReport] as KpaReport).RunReport();
         }

@@ -214,6 +214,9 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         public void BeginImportProcess()
         {
+            // Bring the loading screen to the front
+            ActivateLoadingScreen("Importing Data...");
+
             lbl_Country.Text = "Loading...";
             lbl_topPanelNavPrpoDate.Text = "Loading...";
 
@@ -226,9 +229,6 @@ namespace KPA_KPI_Analyzer
                 DatabaseManager.DropCreateDb();
             else
                 DatabaseManager.CreateAccessDB();
-
-            ShowPage(Pages.LoadingScreen);
-            cpb_loadingScreenCircProgBar.Text = "Importing Data...";
 
 
             // Start the timer to check if the import has completed.
@@ -383,9 +383,8 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         public void BeginDataLoadProcess()
         {
-            ShowPage(Pages.LoadingScreen);
-            cpb_loadingScreenCircProgBar.Text = "Loading Data...";
-            ms_applicaitonMenuStrip.Enabled = false;
+            // Bring the loading screen to the front
+            ActivateLoadingScreen("Loading Data...");
 
             // Create the report or recreate the overall report
             CreateReport(ReportingType.KpaOverall);

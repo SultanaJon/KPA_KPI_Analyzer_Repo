@@ -23,7 +23,7 @@ using System.Windows.Forms;
 
 namespace KPA_KPI_Analyzer
 {
-    public partial class KPA_KPI_UI : Form
+	public partial class KPA_KPI_UI : Form
 	{
 		#region FIELD DATA
 
@@ -356,15 +356,15 @@ namespace KPA_KPI_Analyzer
 
 
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void OverallDataToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void OverallDataToolStripMenuItem_Click(object sender, EventArgs e)
+		{
 
-        }
+		}
 
 
 
@@ -376,20 +376,20 @@ namespace KPA_KPI_Analyzer
 		/// <param name="e">The click event</param>
 		private void overallDataToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-            // Get the current country loaded into the application
-            Globals.CurrCountry = lbl_Country.Text;
+			// Get the current country loaded into the application
+			Globals.CurrCountry = lbl_Country.Text;
 
-            // Create a new exporter object
-            Exporter exporter = new Exporter();
-            
-            // Create a new overall excel file and export the overall data
-            exporter.ExportOverall(new OverallExcelFile()
-            {
-                    Country = lbl_Country.Text,
-                    PrpoGenerationDate = lbl_topPanelNavPrpoDate.Text,
-                    ContainsHeaders = true
-            });
-        }
+			// Create a new exporter object
+			Exporter exporter = new Exporter();
+			
+			// Create a new overall excel file and export the overall data
+			exporter.ExportOverall(new OverallExcelFile()
+			{
+					Country = lbl_Country.Text,
+					PrpoGenerationDate = lbl_topPanelNavPrpoDate.Text,
+					ContainsHeaders = true
+			});
+		}
 
 
 
@@ -520,11 +520,12 @@ namespace KPA_KPI_Analyzer
 			dp_finalReceiptFromDate.Value = today;
 			dp_finalReciptToDate.Value = today;
 
-			ShowPage(Pages.LoadingScreen);
+			// Bring the loading screen to the front.
+			ActivateLoadingScreen("Loading Data...");
+
 			ms_applicaitonMenuStrip.Enabled = false;
-			cpb_loadingScreenCircProgBar.Text = "Loading Filters...";
-			Filters.FilterUtils.FiltersLoaded = false;
-			Filters.FilterUtils.FilterLoadProcessStarted = false;
+			FilterUtils.FiltersLoaded = false;
+			FilterUtils.FilterLoadProcessStarted = false;
 			FiltersTimer.Start();
 		}
 
@@ -786,7 +787,6 @@ namespace KPA_KPI_Analyzer
 			Dashboard,
 			DragDropDash,
 			Filters,
-			LoadingScreen,
 			CountrySelector
 		}
 
@@ -819,12 +819,6 @@ namespace KPA_KPI_Analyzer
 					tblpnl_Filters.BringToFront();
 					break;
 				case 3:
-					NavigationLocked = true;
-					ms_applicaitonMenuStrip.Enabled = false;
-					pnl_loadingScreen.Visible = true;
-					pnl_loadingScreen.BringToFront();
-					break;
-				case 4:
 					NavigationLocked = true;
 					ms_applicaitonMenuStrip.Enabled = false;
 					pnl_CountrySelector.Visible = true;
