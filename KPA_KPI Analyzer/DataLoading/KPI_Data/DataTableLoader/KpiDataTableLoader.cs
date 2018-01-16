@@ -203,8 +203,8 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                             continue;
                         }
 
-
                         #endregion
+
 
                         DateTime prFullyRelDt = new DateTime(prFullyRelYear, prFullyRelMonth, prFullyRelDay);
                         DateTime prPlanDate = new DateTime(delConfYear, delConfMonth, delConfDay);
@@ -295,7 +295,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.StackTrace);
                 }
             }
 

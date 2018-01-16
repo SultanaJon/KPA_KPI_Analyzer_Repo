@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using Reporting.TimeSpans.Templates;
+using Reporting.Interfaces;
 
 namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 {
@@ -469,21 +470,24 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
 
             // Get List of template one data for this KPA
-            rowData = new List<string>((KpaOverallReport.Actions[(int)KpaOption.Purch_PoFirstRelease].TemplateBlock as TemplateOne).GetTemplateData());
+            rowData = new List<string>(KpaOverallReport.Actions[(int)KpaOption.Purch_PoFirstRelease].Details);
+            rowData.AddRange(new List<string>((KpaOverallReport.Actions[(int)KpaOption.Purch_PoFirstRelease].TemplateBlock as TemplateOne).GetTemplateData()));
 
             // Add the row to the data grid view control
             TemplateOneValuesGrid.Rows.Add(rowData.ToArray());
 
 
             // Get List of template one data for this KPA
-            rowData = new List<string>((KpaOverallReport.Actions[(int)KpaOption.Purch_PoPrevRelease].TemplateBlock as TemplateOne).GetTemplateData());
+            rowData = new List<string>(KpaOverallReport.Actions[(int)KpaOption.Purch_PoPrevRelease].Details);
+            rowData.AddRange(new List<string>((KpaOverallReport.Actions[(int)KpaOption.Purch_PoPrevRelease].TemplateBlock as TemplateOne).GetTemplateData()));
 
             // Add the row to the data grid view control
             TemplateOneValuesGrid.Rows.Add(rowData.ToArray());
 
 
             // Get List of template one data for this KPA
-            rowData = new List<string>((KpaOverallReport.Actions[(int)KpaOption.Purch_NoConfirmation].TemplateBlock as TemplateOne).GetTemplateData());
+            rowData = new List<string>(KpaOverallReport.Actions[(int)KpaOption.Purch_NoConfirmation].Details);
+            rowData.AddRange(new List<string>((KpaOverallReport.Actions[(int)KpaOption.Purch_NoConfirmation].TemplateBlock as TemplateOne).GetTemplateData()));
 
             // Add the row to the data grid view control
             TemplateOneValuesGrid.Rows.Add(rowData.ToArray());
@@ -500,14 +504,16 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         private void LoadPurchSub()
         {
             // Get List of template one data for this KPA
-            List<string> rowData = new List<string>((KpaOverallReport.Actions[(int)KpaOption.PurchSub_PrReleaseToPoRelease].TemplateBlock as TemplateOne).GetTemplateData());
+            List<string> rowData = new List<string>(KpaOverallReport.Actions[(int)KpaOption.PurchSub_PrReleaseToPoRelease].Details);
+            rowData.AddRange(new List<string>((KpaOverallReport.Actions[(int)KpaOption.PurchSub_PrReleaseToPoRelease].TemplateBlock as TemplateOne).GetTemplateData()));
 
             // Add the row to the data grid view control
             TemplateOneValuesGrid.Rows.Add(rowData.ToArray());
 
 
             // Get List of template one data for this KPA
-            rowData = new List<string>((KpaOverallReport.Actions[(int)KpaOption.PurchSub_PoCreationToConfirmationEntry].TemplateBlock as TemplateOne).GetTemplateData());
+            rowData = new List<string>(KpaOverallReport.Actions[(int)KpaOption.PurchSub_PoCreationToConfirmationEntry].Details);
+            rowData.AddRange(new List<string>((KpaOverallReport.Actions[(int)KpaOption.PurchSub_PoCreationToConfirmationEntry].TemplateBlock as TemplateOne).GetTemplateData()));
 
             // Add the row to the data grid view control
             TemplateOneValuesGrid.Rows.Add(rowData.ToArray());
@@ -524,7 +530,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         private void LoadPurchTotal()
         {
             // Get List of template one data for this KPA
-            List<string> rowData = new List<string>((KpaOverallReport.Actions[(int)KpaOption.PurchTotal_PrReleaseToConfirmationEntry].TemplateBlock as TemplateOne).GetTemplateData());
+            List<string> rowData = new List<string>(KpaOverallReport.Actions[(int)KpaOption.PurchTotal_PrReleaseToConfirmationEntry].Details);
+            rowData.AddRange(new List<string>((KpaOverallReport.Actions[(int)KpaOption.PurchTotal_PrReleaseToConfirmationEntry].TemplateBlock as TemplateOne).GetTemplateData()));
 
             // Add the row to the data grid view control
             TemplateOneValuesGrid.Rows.Add(rowData.ToArray());
@@ -541,19 +548,24 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         private void LoadFollowUp()
         {
             // Get List of template one data for this KPA
-            List<string> rowData = new List<string>((KpaOverallReport.Actions[(int)KpaOption.FollowUp_ConfirmedDateVsPlanDate].TemplateBlock as TemplateOne).GetTemplateData());
+            List<string> rowData = new List<string>(KpaOverallReport.Actions[(int)KpaOption.FollowUp_ConfirmedDateVsPlanDate].Details);
+            rowData.AddRange(new List<string>((KpaOverallReport.Actions[(int)KpaOption.FollowUp_ConfirmedDateVsPlanDate].TemplateBlock as TemplateOne).GetTemplateData()));
+            rowData.Add(string.Format("{0:n0}", (KpaOverallReport.Actions[(int)KpaOption.FollowUp_ConfirmedDateVsPlanDate] as IFavorable).PercentFavorable + "%"));
 
             // Add the row to the data grid view control
             TemplateOneValuesGrid.Rows.Add(rowData.ToArray());
 
             // Get List of template one data for this KPA
-            rowData = new List<string>((KpaOverallReport.Actions[(int)KpaOption.FollowUp_ConfirmedDateForUpcomingDeliveries].TemplateBlock as TemplateOne).GetTemplateData());
+            rowData = new List<string>(KpaOverallReport.Actions[(int)KpaOption.FollowUp_ConfirmedDateForUpcomingDeliveries].Details);
+            rowData.AddRange(new List<string>((KpaOverallReport.Actions[(int)KpaOption.FollowUp_ConfirmedDateForUpcomingDeliveries].TemplateBlock as TemplateOne).GetTemplateData()));
+            rowData.Add((string.Format("{0:n}", (KpaOverallReport.Actions[(int)KpaOption.FollowUp_ConfirmedDateForUpcomingDeliveries] as IFavorable).PercentFavorable + "%")));
 
             // Add the row to the data grid view control
             TemplateOneValuesGrid.Rows.Add(rowData.ToArray());
 
             // Get List of template one data for this KPA
-            rowData = new List<string>((KpaOverallReport.Actions[(int)KpaOption.FollowUp_DueTodayOrLateToConfirmed].TemplateBlock as TemplateOne).GetTemplateData());
+            rowData = new List<string>(KpaOverallReport.Actions[(int)KpaOption.FollowUp_DueTodayOrLateToConfirmed].Details);
+            rowData.AddRange(new List<string>((KpaOverallReport.Actions[(int)KpaOption.FollowUp_DueTodayOrLateToConfirmed].TemplateBlock as TemplateOne).GetTemplateData()));
 
             // Add the row to the data grid view control
             TemplateOneValuesGrid.Rows.Add(rowData.ToArray());
@@ -570,21 +582,24 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         private void LoadHotJobs()
         {
             // Get List of template one data for this KPA
-            List<string> rowData = new List<string>((KpaOverallReport.Actions[(int)KpaOption.HotJobs_PrsNotOnPo].TemplateBlock as TemplateOne).GetTemplateData());
+            List<string> rowData = new List<string>(KpaOverallReport.Actions[(int)KpaOption.HotJobs_PrsNotOnPo].Details);
+            rowData.AddRange(new List<string>((KpaOverallReport.Actions[(int)KpaOption.HotJobs_PrsNotOnPo].TemplateBlock as TemplateOne).GetTemplateData()));
 
             // Add the row to the data grid view control
             TemplateOneValuesGrid.Rows.Add(rowData.ToArray());
 
 
             // Get List of template one data for this KPA
-            rowData = new List<string>((KpaOverallReport.Actions[(int)KpaOption.HotJobs_NoConfirmations].TemplateBlock as TemplateOne).GetTemplateData());
+            rowData = new List<string>(KpaOverallReport.Actions[(int)KpaOption.HotJobs_NoConfirmations].Details);
+            rowData.AddRange(new List<string>((KpaOverallReport.Actions[(int)KpaOption.HotJobs_NoConfirmations].TemplateBlock as TemplateOne).GetTemplateData()));
 
             // Add the row to the data grid view control
             TemplateOneValuesGrid.Rows.Add(rowData.ToArray());
 
 
             // Get List of template one data for this KPA
-            rowData = new List<string>((KpaOverallReport.Actions[(int)KpaOption.HotJobs_LateToConfirmed].TemplateBlock as TemplateOne).GetTemplateData());
+            rowData = new List<string>(KpaOverallReport.Actions[(int)KpaOption.HotJobs_LateToConfirmed].Details);
+            rowData.AddRange(new List<string>((KpaOverallReport.Actions[(int)KpaOption.HotJobs_LateToConfirmed].TemplateBlock as TemplateOne).GetTemplateData()));
 
             // Add the row to the data grid view control
             TemplateOneValuesGrid.Rows.Add(rowData.ToArray());
@@ -601,21 +616,24 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         private void LoadExcessStockStock()
         {
             // Get List of template one data for this KPA
-            List<string> rowData = new List<string>((KpaOverallReport.Actions[(int)KpaOption.ExcessStockStock_PrsAgingNotReleased].TemplateBlock as TemplateOne).GetTemplateData());
+            List<string> rowData = new List<string>(KpaOverallReport.Actions[(int)KpaOption.ExcessStockStock_PrsAgingNotReleased].Details);
+            rowData.AddRange(new List<string>((KpaOverallReport.Actions[(int)KpaOption.ExcessStockStock_PrsAgingNotReleased].TemplateBlock as TemplateOne).GetTemplateData()));
 
             // Add the row to the data grid view control
             TemplateOneValuesGrid.Rows.Add(rowData.ToArray());
 
 
             // Get List of template one data for this KPA
-            rowData = new List<string>((KpaOverallReport.Actions[(int)KpaOption.ExcessStockStock_PrsAgingReleased].TemplateBlock as TemplateOne).GetTemplateData());
+            rowData = new List<string>(KpaOverallReport.Actions[(int)KpaOption.ExcessStockStock_PrsAgingReleased].Details);
+            rowData.AddRange(new List<string>((KpaOverallReport.Actions[(int)KpaOption.ExcessStockStock_PrsAgingReleased].TemplateBlock as TemplateOne).GetTemplateData()));
 
             // Add the row to the data grid view control
             TemplateOneValuesGrid.Rows.Add(rowData.ToArray());
 
 
             // Get List of template one data for this KPA
-            rowData = new List<string>((KpaOverallReport.Actions[(int)KpaOption.ExcessStockStock_PoCreationTruDelivery].TemplateBlock as TemplateOne).GetTemplateData());
+            rowData = new List<string>(KpaOverallReport.Actions[(int)KpaOption.ExcessStockStock_PoCreationTruDelivery].Details);
+            rowData.AddRange(new List<string>((KpaOverallReport.Actions[(int)KpaOption.ExcessStockStock_PoCreationTruDelivery].TemplateBlock as TemplateOne).GetTemplateData()));
 
             // Add the row to the data grid view control
             TemplateOneValuesGrid.Rows.Add(rowData.ToArray());
@@ -632,21 +650,24 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         private void LoadExcessStockOpenOrders()
         {
             // Get List of template one data for this KPA
-            List<string> rowData = new List<string>((KpaOverallReport.Actions[(int)KpaOption.ExcessStockOpenOrders_PrsAgingNotReleased].TemplateBlock as TemplateOne).GetTemplateData());
+            List<string> rowData = new List<string>(KpaOverallReport.Actions[(int)KpaOption.ExcessStockOpenOrders_PrsAgingNotReleased].Details);
+            rowData.AddRange(new List<string>((KpaOverallReport.Actions[(int)KpaOption.ExcessStockOpenOrders_PrsAgingNotReleased].TemplateBlock as TemplateOne).GetTemplateData()));
 
             // Add the row to the data grid view control
             TemplateOneValuesGrid.Rows.Add(rowData.ToArray());
 
 
             // Get List of template one data for this KPA
-            rowData = new List<string>((KpaOverallReport.Actions[(int)KpaOption.ExcessStockOpenOrders_PrsAgingReleased].TemplateBlock as TemplateOne).GetTemplateData());
+            rowData = new List<string>(KpaOverallReport.Actions[(int)KpaOption.ExcessStockOpenOrders_PrsAgingReleased].Details);
+            rowData.AddRange(new List<string>((KpaOverallReport.Actions[(int)KpaOption.ExcessStockOpenOrders_PrsAgingReleased].TemplateBlock as TemplateOne).GetTemplateData()));
 
             // Add the row to the data grid view control
             TemplateOneValuesGrid.Rows.Add(rowData.ToArray());
 
 
             // Get List of template one data for this KPA
-            rowData = new List<string>((KpaOverallReport.Actions[(int)KpaOption.ExcessStockOpenOrders_PoCreationTruDelivery].TemplateBlock as TemplateOne).GetTemplateData());
+            rowData = new List<string>(KpaOverallReport.Actions[(int)KpaOption.ExcessStockOpenOrders_PoCreationTruDelivery].Details);
+            rowData.AddRange(new List<string>((KpaOverallReport.Actions[(int)KpaOption.ExcessStockOpenOrders_PoCreationTruDelivery].TemplateBlock as TemplateOne).GetTemplateData()));
 
             // Add the row to the data grid view control
             TemplateOneValuesGrid.Rows.Add(rowData.ToArray());
@@ -663,13 +684,17 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         private void LoadCurrentPlanVsActual()
         {
             // Get List of template two data for this KPA
-            List<string> rowData = new List<string>((KpaOverallReport.Actions[(int)KpaOption.CurrentPlanVsActual_CurrentPlanDateVsCurrentConfirmationDate].TemplateBlock as TemplateTwo).GetTemplateData());
+            List<string> rowData = new List<string>(KpaOverallReport.Actions[(int)KpaOption.CurrentPlanVsActual_CurrentPlanDateVsCurrentConfirmationDate].Details);
+            rowData.AddRange(new List<string>((KpaOverallReport.Actions[(int)KpaOption.CurrentPlanVsActual_CurrentPlanDateVsCurrentConfirmationDate].TemplateBlock as TemplateTwo).GetTemplateData()));
+            rowData.Add((string.Format("{0:n0}", (KpaOverallReport.Actions[(int)KpaOption.CurrentPlanVsActual_CurrentPlanDateVsCurrentConfirmationDate] as IFavorable).PercentFavorable + "%")));
 
             // Add the row to the data grid view control
             TemplateTwoValuesGrid.Rows.Add(rowData.ToArray());
 
             // Get List of template two data for this KPA
-            rowData = new List<string>((KpaOverallReport.Actions[(int)KpaOption.CurrentPlanVsActual_CurrentPlanDateVsCurrentConfirmationDateForHotJobs].TemplateBlock as TemplateTwo).GetTemplateData());
+            rowData = new List<string>(KpaOverallReport.Actions[(int)KpaOption.CurrentPlanVsActual_CurrentPlanDateVsCurrentConfirmationDateForHotJobs].Details);
+            rowData.AddRange(new List<string>((KpaOverallReport.Actions[(int)KpaOption.CurrentPlanVsActual_CurrentPlanDateVsCurrentConfirmationDateForHotJobs].TemplateBlock as TemplateTwo).GetTemplateData()));
+            rowData.Add((string.Format("{0:n0}", (KpaOverallReport.Actions[(int)KpaOption.CurrentPlanVsActual_CurrentPlanDateVsCurrentConfirmationDateForHotJobs] as IFavorable).PercentFavorable + "%")));
 
             // Add the row to the data grid view control
             TemplateTwoValuesGrid.Rows.Add(rowData.ToArray());

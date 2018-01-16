@@ -1,6 +1,4 @@
-﻿
-
-using DataAccessLibrary;
+﻿using DataAccessLibrary;
 using Reporting.Interfaces;
 using Reporting.TimeSpans.Templates;
 using System;

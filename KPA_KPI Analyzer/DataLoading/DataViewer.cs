@@ -300,6 +300,7 @@ namespace KPA_KPI_Analyzer.DataLoading
                 Height = screen.WorkingArea.Height;
             }
         }
+
         #endregion
 
 
@@ -314,7 +315,7 @@ namespace KPA_KPI_Analyzer.DataLoading
         /// </summary>
         private void LoadData()
         {
-            thrd = new System.Threading.Thread(() =>
+            thrd = new Thread(() =>
             {
                 DataLoader(ColumnTag);
             });
@@ -326,7 +327,7 @@ namespace KPA_KPI_Analyzer.DataLoading
 
 
         /// <summary>
-        /// 
+        /// Orders the columns for viewing in the data viewer.
         /// </summary>
         private void OrderColumns()
         {
@@ -362,10 +363,6 @@ namespace KPA_KPI_Analyzer.DataLoading
                 dgv_dataViewerDgv.Columns["PO LIne Creat#DT"].DisplayIndex = 27;
                 dgv_dataViewerDgv.Columns["PO Line 1st Rel Dt"].DisplayIndex = 28;
                 dgv_dataViewerDgv.Columns["GR Posting Date"].DisplayIndex = 29;
-                
-                // Delivery Document seems to have been removed from the PRPO report.
-                //dgv_dataViewerDgv.Columns["Delivery Document"].DisplayIndex = 30;
-
                 dgv_dataViewerDgv.Columns["PO Sign Date"].DisplayIndex = 30;
                 dgv_dataViewerDgv.Columns["Delivery Date"].DisplayIndex = 31;
                 dgv_dataViewerDgv.Columns["Rescheduling date"].DisplayIndex = 32;
