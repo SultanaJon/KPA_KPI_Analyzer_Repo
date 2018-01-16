@@ -4,7 +4,8 @@ using KPA_KPI_Analyzer.Values;
 using Reporting;
 using Reporting.Interfaces;
 using Reporting.KeyPerformanceIndicators;
-using Reporting.Overall;
+using Reporting.TimeSpans.Templates;
+using Reporting.Reports;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -218,8 +219,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             AnalysisTwo = "- Difference between PO line items initial creation date and the date the PR was fully released.";
 
 
-            ITemplateFour tempFour = (KpiOverallReport.Indicators[(int)KpiOption.PurchTwo_PrFullyReleaseDateVsPoCreationDate]
-                    as Reporting.KeyPerformanceIndicators.PurchTwo.PR2ndLvlReleaseDateVsPOCreationDate);
+            TemplateFour tempFour = KpiOverallReport.Indicators[(int)KpiOption.PurchTwo_PrFullyReleaseDateVsPoCreationDate].TemplateBlock as TemplateFour;
 
             // Add the data to the column chart
             dp.addLabely(lbl_xLabelOne.Text, tempFour.LessThanEqualToZeroDays.ToString());
@@ -274,8 +274,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             AnalysisOne = "- Will show if PO line item has an initial release date.";
             AnalysisTwo = "- Difference between PO line initial release date and PO line creation date.";
 
-            ITemplateFour tempFour = (KpiOverallReport.Indicators[(int)KpiOption.PurchTwo_PoCreationDateVsPoReleaseDate]
-                    as Reporting.KeyPerformanceIndicators.PurchTwo.POCreationDateVsPOReleaseDate);
+            TemplateFour tempFour = KpiOverallReport.Indicators[(int)KpiOption.PurchTwo_PoCreationDateVsPoReleaseDate].TemplateBlock as TemplateFour;
 
             // Add the data to the column chart
             dp.addLabely(lbl_xLabelOne.Text, tempFour.LessThanEqualToZeroDays.ToString());
@@ -334,8 +333,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             AnalysisOne = "- Will show if PO line item is confirmed and has been previously released.";
             AnalysisTwo = "- Difference between date the initial confirmation was created and the PO line items first release date.";
 
-            ITemplateFour tempFour = (KpiOverallReport.Indicators[(int)KpiOption.PurchTwo_PoReleaseDateVsPoConfirmationDate]
-                    as Reporting.KeyPerformanceIndicators.PurchTwo.POReleaseDateVsPOConfirmationDate);
+            TemplateFour tempFour = KpiOverallReport.Indicators[(int)KpiOption.PurchTwo_PoReleaseDateVsPoConfirmationDate].TemplateBlock as TemplateFour;
 
             // Add the data to the column chart
             dp.addLabely(lbl_xLabelOne.Text, tempFour.LessThanEqualToZeroDays.ToString());

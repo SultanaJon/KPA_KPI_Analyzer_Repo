@@ -26,7 +26,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpiUtils.KpiQueries.GetAllData();
+                    dt = KpiManager.KpiQueries.GetAllData();
                     prPlanDateVsCurrPlanDt = new DataTable();
                     prPlanDateVsCurrPlanDt = dt.Clone();
 
@@ -164,7 +164,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpiUtils.KpiQueries.GetPr2ndLevelRelease();
+                    dt = KpiManager.KpiQueries.GetPr2ndLevelRelease();
                     OrigPlan2ndLvlRel_CodedLeadTime = new DataTable();
                     OrigPlan2ndLvlRel_CodedLeadTime = dt.Clone();
 
@@ -310,7 +310,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpiUtils.KpiQueries.GetPr2ndLevelRelease();
+                    dt = KpiManager.KpiQueries.GetPr2ndLevelRelease();
                     CurrPlan2ndLvlRel_CodedLeadTime = new DataTable();
                     CurrPlan2ndLvlRel_CodedLeadTime = dt.Clone();
 
@@ -485,7 +485,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpiUtils.KpiQueries.GetAllPOs();
+                    dt = KpiManager.KpiQueries.GetAllPOs();
                     initConfVsPrPlanDateDt = new DataTable();
                     unconfirmed = new DataTable();
                     initConfVsPrPlanDateDt = dt.Clone();
@@ -655,7 +655,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpiUtils.KpiQueries.GetAllPOs();
+                    dt = KpiManager.KpiQueries.GetAllPOs();
                     initConfVsCurrConf = new DataTable();
                     unconfirmed = new DataTable();
                     initConfVsCurrConf = dt.Clone();
@@ -823,7 +823,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpiUtils.KpiQueries.GetPoLinesReceivedComplete();
+                    dt = KpiManager.KpiQueries.GetPoLinesReceivedComplete();
                     finalConfDateVsFinalPlanDateDt = new DataTable();
                     unconfirmed = new DataTable();
                     finalConfDateVsFinalPlanDateDt = dt.Clone();
@@ -990,7 +990,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpiUtils.KpiQueries.GetPoLinesReceivedComplete();
+                    dt = KpiManager.KpiQueries.GetPoLinesReceivedComplete();
                     recDateVsCurrPlanDateDt = new DataTable();
                     recDateVsCurrPlanDateDt = dt.Clone();
 
@@ -1138,7 +1138,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpiUtils.KpiQueries.GetPoLinesReceivedComplete();
+                    dt = KpiManager.KpiQueries.GetPoLinesReceivedComplete();
                     recDateVsOrigConfDateDt = new DataTable();
                     unconfirmed = new DataTable();
                     recDateVsOrigConfDateDt = dt.Clone();
@@ -1316,7 +1316,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpiUtils.KpiQueries.GetPoLinesReceivedComplete();
+                    dt = KpiManager.KpiQueries.GetPoLinesReceivedComplete();
                     recDateVsCurrConfDateDt = new DataTable();
                     unconfirmed = new DataTable();
                     recDateVsCurrConfDateDt = dt.Clone();
@@ -1502,7 +1502,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpiUtils.KpiQueries.GetPr2ndLevelRelease();
+                    dt = KpiManager.KpiQueries.GetPr2ndLevelRelease();
                     MaterialDueOrigPlanDate = new DataTable();
                     MaterialDueOrigPlanDate = dt.Clone();
 
@@ -1654,7 +1654,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpiUtils.KpiQueries.GetAllPOs();
+                    dt = KpiManager.KpiQueries.GetAllPOs();
                     MaterialDueFinalPlannedDate = new DataTable();
                     MaterialDueFinalPlannedDate = dt.Clone();
 
@@ -1846,7 +1846,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpiUtils.KpiQueries.GetAllPOs();
+                    dt = KpiManager.KpiQueries.GetAllPOs();
                     pr2ndLvlRelVsPoCreate = new DataTable();
                     pr2ndLvlRelVsPoCreate = dt.Clone();
 
@@ -1992,7 +1992,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpiUtils.KpiQueries.GetAllPOs();
+                    dt = KpiManager.KpiQueries.GetAllPOs();
                     poCreateVsPORel = new DataTable();
                     poCreateVsPORel = dt.Clone();
 
@@ -2138,7 +2138,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpiUtils.KpiQueries.GetAllPOs();
+                    dt = KpiManager.KpiQueries.GetAllPOs();
                     poRelVsPoConf = new DataTable();
                     unconfirmed = new DataTable();
                     poRelVsPoConf = dt.Clone();
@@ -2328,7 +2328,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpiUtils.KpiQueries.GetAllPOs();
+                    dt = KpiManager.KpiQueries.GetAllPOs();
                     prRelVsPORel = new DataTable();
                     prRelVsPORel = dt.Clone();
 
@@ -2485,7 +2485,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpiUtils.KpiQueries.GetAllPOs();
+                    dt = KpiManager.KpiQueries.GetAllPOs();
                     poCreateVsConfEntry = new DataTable();
                     unconfirmed = new DataTable();
                     poCreateVsConfEntry = dt.Clone();
@@ -2663,7 +2663,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpiUtils.KpiQueries.GetAllPOs();
+                    dt = KpiManager.KpiQueries.GetAllPOs();
                     prReleaseConfEntry = new DataTable();
                     unconfirmed = new DataTable();
                     prReleaseConfEntry = dt.Clone();
@@ -2856,7 +2856,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpiUtils.KpiQueries.GetAllPOs();
+                    dt = KpiManager.KpiQueries.GetAllPOs();
                     poRelVsPRDelDateDt = new DataTable();
                     poRelVsPRDelDateDt = dt.Clone();
 
@@ -3007,7 +3007,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpiUtils.KpiQueries.GetAllData();
+                    dt = KpiManager.KpiQueries.GetAllData();
                     prsCreated = new DataTable();
                     prsCreated = dt.Clone();
 
@@ -3128,7 +3128,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpiUtils.KpiQueries.GetPr2ndLevelRelease();
+                    dt = KpiManager.KpiQueries.GetPr2ndLevelRelease();
                     prReleased = new DataTable();
                     prReleased = dt.Clone();
 
@@ -3260,7 +3260,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpiUtils.KpiQueries.GetAllPOs();
+                    dt = KpiManager.KpiQueries.GetAllPOs();
                     totalSpend = new DataTable();
                     totalSpend = dt.Clone();
 
@@ -3379,7 +3379,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpiUtils.KpiQueries.GetAllPOs();
+                    dt = KpiManager.KpiQueries.GetAllPOs();
                     prVsPOValue = new DataTable();
                     prVsPOValue = dt.Clone();
 
@@ -3499,7 +3499,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
             {
                 try
                 {
-                    dt = KpiUtils.KpiQueries.GetAllData();
+                    dt = KpiManager.KpiQueries.GetAllData();
                     hotJobPRs = new DataTable();
                     hotJobPRs = dt.Clone();
 

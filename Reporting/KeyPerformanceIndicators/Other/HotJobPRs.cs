@@ -1,53 +1,17 @@
-﻿
-
-using DataAccessLibrary;
-using Reporting.Interfaces;
-using Reporting.Overall;
+﻿using DataAccessLibrary;
+using Reporting.TimeSpans.Templates;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 
 namespace Reporting.KeyPerformanceIndicators.Other
 {
-    public sealed class HotJobPRs : KeyPerformanceIndicator, ISelective,  ITemplateFive
+    public sealed class HotJobPRs : KeyPerformanceIndicator
     {
-        #region ITemplateFive Properties
-
-        public decimal TotalValue { get; set; }
-        public int TotalRecords { get; set; }
-        public decimal GreaterThanEqualToZeroWeeks { get; set; }
-        public decimal GreaterThanEqualToNegOneWeek { get; set; }
-        public decimal GreaterThanEqualToNegTwoWeeks { get; set; }
-        public decimal GreaterThanEqualToNegThreeWeeks { get; set; }
-        public decimal GreaterThanEqualToNegFourWeeks { get; set; }
-        public decimal GreaterThanEqualToNegFiveWeeks { get; set; }
-        public decimal GreaterThanEqualToNegSixWeeks { get; set; }
-        public decimal GreaterThanEqualToNegSevenWeeks { get; set; }
-        public decimal GreaterThanEqualToNegEightWeeks { get; set; }
-        public decimal LessThanNegEightWeeks { get; set; }
-
-        #endregion
-
-
-
-
-
-        #region ISelective Properties
-
         /// <summary>
-        /// The selective average for the filter applied against the specific KPA or KPI
+        /// Interface to access the template data.
         /// </summary>
-        public double SelectiveAverage { get; set; }
-
-        /// <summary>
-        /// The selective total fo the filter applied against the specific KPA or KPI
-        /// </summary>
-        public int SelectiveTotal { get; set; }
-
-        #endregion
-
-
+        TemplateFive template;
 
 
         /// <summary>
@@ -55,6 +19,10 @@ namespace Reporting.KeyPerformanceIndicators.Other
         /// </summary>
         public HotJobPRs()
         {
+            // Create a new template object
+            TemplateBlock = new TemplateFive();
+            template = TemplateBlock as TemplateFive;
+
             Section = "Other";
             Name = "Hot Jobs PRs";
         }
@@ -62,108 +30,12 @@ namespace Reporting.KeyPerformanceIndicators.Other
 
 
 
-        /// <summary>
-        /// Returns the template one data for this KPA
-        /// </summary>
-        /// <returns></returns>
-        public List<string> GetTemplateData()
-        {
-            List<string> row = new List<string>();
-
-            // Add the Template three data
-            row.Add(Section);
-            row.Add(Name);
-            row.Add(string.Format("{0:n}", "$" + TotalValue));
-            row.Add(string.Format("{0:n0}", GreaterThanEqualToZeroWeeks));
-            row.Add(string.Format("{0:n0}", GreaterThanEqualToNegOneWeek));
-            row.Add(string.Format("{0:n0}", GreaterThanEqualToNegTwoWeeks));
-            row.Add(string.Format("{0:n0}", GreaterThanEqualToNegThreeWeeks));
-            row.Add(string.Format("{0:n0}", GreaterThanEqualToNegFourWeeks));
-            row.Add(string.Format("{0:n0}", GreaterThanEqualToNegFiveWeeks));
-            row.Add(string.Format("{0:n0}", GreaterThanEqualToNegSixWeeks));
-            row.Add(string.Format("{0:n0}", GreaterThanEqualToNegSevenWeeks));
-            row.Add(string.Format("{0:n0}", GreaterThanEqualToNegEightWeeks));
-            row.Add(string.Format("{0:n0}", LessThanNegEightWeeks));
-            row.Add(string.Format("{0:n0}", TotalRecords));
-
-            //return the template one data for this KPA
-            return row;
-        }
-
-
-
-
-        /// <summary>
-        /// Method to apply the elapsed days against the KPA or KPIs time span conditions
-        /// </summary>
-        public void TimeSpanDump(double _weeks)
-        {
-            // Increment the total number of records that satisfy this KPI
-            TotalRecords++;
-
-
-            // Apply the elapsed days agaisnt the timespan conditions
-            if (_weeks >= 0)
-            {
-                GreaterThanEqualToZeroWeeks++;
-            }
-            else if (_weeks >= (-1) && _weeks < 0)
-            {
-                GreaterThanEqualToNegOneWeek++;
-            }
-            else if (_weeks >= (-2) && _weeks < (-1))
-            {
-                GreaterThanEqualToNegTwoWeeks++;
-            }
-            else if (_weeks >= (-3) && _weeks < (-2))
-            {
-                GreaterThanEqualToNegThreeWeeks++;
-            }
-            else if (_weeks >= (-4) && _weeks < (-3))
-            {
-                GreaterThanEqualToNegFourWeeks++;
-            }
-            else if (_weeks >= (-5) && _weeks < (-4))
-            {
-                GreaterThanEqualToNegFiveWeeks++;
-            }
-            else if (_weeks >= (-6) && _weeks < (-5))
-            {
-                GreaterThanEqualToNegSixWeeks++;
-            }
-            else if (_weeks >= (-7) && _weeks < (-6))
-            {
-                GreaterThanEqualToNegSevenWeeks++;
-            }
-            else if (_weeks >= (-8) && _weeks < (-7))
-            {
-                GreaterThanEqualToNegEightWeeks++;
-            }
-            else if (_weeks < (-8))
-            {
-                LessThanNegEightWeeks++;
-            }
-        }
-
-
-
-
-
-
-        /// <summary>
-        /// Calculates the selective report for this KPA
-        /// </summary>
-        public override void RunSelectiveReport(string uniqueFilters)
-        {
-
-        }
-
 
 
         /// <summary>
         /// Calculates the overall report for this KPA
         /// </summary>
-        public override void RunOverallReport()
+        public override void Run()
         {
             try
             {
@@ -188,14 +60,14 @@ namespace Reporting.KeyPerformanceIndicators.Other
                     DateTime prReqDate = new DateTime(reqDateYear, reqDateMonth, reqDateDay);
 
                     // Get the total value for this line item
-                    TotalValue += decimal.Parse(dr["PR Pos#Value"].ToString());
+                    template.TotalValue += decimal.Parse(dr["PR Pos#Value"].ToString());
 
                     DateTime today = DateTime.Now.Date;
                     double elapsedDays = (prReqDate - today).TotalDays;
                     double weeks = Math.Floor(elapsedDays / 7);
 
                     // Apply the weeks against the time span conditions
-                    TimeSpanDump(weeks);
+                    template.TimeSpanDump(weeks);
                 }
             }
             catch (Exception)

@@ -4,6 +4,7 @@ using ExcelLibrary;
 using Filters;
 using KPA_KPI_Analyzer.Values;
 using Reporting;
+using Reporting.Reports;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -141,6 +142,8 @@ namespace KPA_KPI_Analyzer
                 (reports[ReportingType.KpaOverall] as KpaOverallReport).Save();
                 (reports[ReportingType.KpiOverall] as KpiOverallReport).Save();
 
+
+                // Start the loading of fitlers.
                 InitializeFilterLoadProcess();
             }
             else

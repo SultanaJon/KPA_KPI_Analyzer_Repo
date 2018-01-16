@@ -1,15 +1,14 @@
 ﻿using DataAccessLibrary;
 using Filters;
 using Reporting.Interfaces;
-using Reporting.Overall;
+using Reporting.TimeSpans.Templates;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 
 namespace Reporting.KeyPerformanceActions.CurrentPlanVsActual
 {
-    public sealed class CurrentPlanDateVsCurrentConfirmationDate : KeyPerformanceAction, ISelective,  ITemplateTwo, IFavorable
+    public sealed class CurrentPlanDateVsCurrentConfirmationDate : KeyPerformanceAction, IFavorable
     {
         #region IFavorable Properties
 
@@ -23,39 +22,10 @@ namespace Reporting.KeyPerformanceActions.CurrentPlanVsActual
 
 
 
-        #region ITemplateOne Properties
-
-        public double Average { get; set; }
-        public int TotalRecords { get; set; }
-        public int LessthanNegThreeWeeks { get; set; }
-        public int GreaterThanEqualToNegThreeWeeks { get; set; }
-        public int GreaterThanEqualToNegTwoWeeks { get; set; }
-        public int GreaterThanEqualNegOneWeek { get; set; }
-        public int ZeroWeeks { get; set; }
-        public int LessThanEqualToOneWeek { get; set; }
-        public int LessThanEqualToTwoWeeks { get; set; }
-        public int LessThanEqualToThreeWeeks { get; set; }
-        public int GreaterThanThreeWeeks { get; set; }
-
-        #endregion
-
-
-
-
-
-        #region ISelective Properties
-
         /// <summary>
-        /// The selective average for the filter applied against the specific KPA or KPI
+        /// Template to access the data.
         /// </summary>
-        public double SelectiveAverage { get; set; }
-
-        /// <summary>
-        /// The selective total fo the filter applied against the specific KPA or KPI
-        /// </summary>
-        public int SelectiveTotal { get; set; }
-
-        #endregion
+        ITemplateTwo template;
 
 
 
@@ -65,99 +35,12 @@ namespace Reporting.KeyPerformanceActions.CurrentPlanVsActual
         /// </summary>
         public CurrentPlanDateVsCurrentConfirmationDate()
         {
+            // Create a new template two object
+            TemplateBlock = new TemplateTwo();
+            template = TemplateBlock as TemplateTwo;
+
             Section = "Current Plan vs Actual";
             Name = "Current Plan Date vs Current Confirmation Date";
-        }
-
-
-
-
-        /// <summary>
-        /// Returns the template one data for this KPA
-        /// </summary>
-        /// <returns></returns>
-        public List<string> GetTemplateData()
-        {
-            List<string> row = new List<string>();
-
-            // Add the Template one data
-            row.Add(Section);
-            row.Add(Name);
-            row.Add(string.Format("{0:n}", Average));
-            row.Add(string.Format("{0:n0}", LessthanNegThreeWeeks));
-            row.Add(string.Format("{0:n0}", GreaterThanEqualToNegThreeWeeks));
-            row.Add(string.Format("{0:n0}", GreaterThanEqualToNegTwoWeeks));
-            row.Add(string.Format("{0:n0}", GreaterThanEqualNegOneWeek));
-            row.Add(string.Format("{0:n0}", ZeroWeeks));
-            row.Add(string.Format("{0:n0}", LessThanEqualToOneWeek));
-            row.Add(string.Format("{0:n0}", LessThanEqualToTwoWeeks));
-            row.Add(string.Format("{0:n0}", LessThanEqualToThreeWeeks));
-            row.Add(string.Format("{0:n0}", GreaterThanThreeWeeks));
-            row.Add(string.Format("{0:n0}", TotalRecords));
-            row.Add(string.Format("{0:n0}", PercentFavorable + "%"));
-
-            //return the template one data for this KPA
-            return row;
-        }
-
-
-
-
-        /// <summary>
-        /// Method to apply the elapsed days against the KPA or KPIs time span conditions
-        /// </summary>
-        public void TimeSpanDump(double _elapsedDays)
-        {
-            // Because the time spans are listed in weeks, we need to convert the elapsed days to weeks.
-            int weeks = 0;
-            if (_elapsedDays < 0)
-                weeks = (int)Math.Floor(_elapsedDays / 7);
-            else if (_elapsedDays == 0)
-                weeks = 0;
-            else // elapsed days > 0
-                weeks = (int)Math.Ceiling(_elapsedDays / 7);
-
-            // Increment the total number of records that apply to this KPA
-            TotalRecords++;
-
-
-            // Apply the number of weeks against the time span conditions
-            if (weeks < (-3))
-            {
-                LessthanNegThreeWeeks++;
-            }
-            else if (weeks >= (-3) && weeks < (-2))
-            {
-                GreaterThanEqualToNegThreeWeeks++;
-            }
-            else if (weeks >= (-2) && weeks < (-1))
-            {
-                GreaterThanEqualToNegTwoWeeks++;
-            }
-            else if (weeks >= (-1) && weeks < 0)
-            {
-                GreaterThanEqualNegOneWeek++;
-            }
-            else if (weeks == 0)
-            {
-                ZeroWeeks++;
-            }
-            else if (weeks > 0 && weeks <= 1)
-            {
-                LessThanEqualToOneWeek++;
-            }
-            else if (weeks > 1 && weeks <= 2)
-            {
-                LessThanEqualToTwoWeeks++;
-            }
-            else if (weeks > 2 && weeks <= 3)
-            {
-                LessThanEqualToThreeWeeks++;
-            }
-            else // Greater than 3 weeks
-            {
-                GreaterThanThreeWeeks++;
-            }
         }
 
 
@@ -173,12 +56,13 @@ namespace Reporting.KeyPerformanceActions.CurrentPlanVsActual
         {
             try
             {
-                if (TotalRecords != 0)
+                if (template.TotalRecords != 0)
                 {
-                    double favorableTimeSpanCounts = LessthanNegThreeWeeks + GreaterThanEqualToNegThreeWeeks + GreaterThanEqualToNegTwoWeeks + GreaterThanEqualNegOneWeek + ZeroWeeks;
+                    double favorableTimeSpanCounts = template.LessthanNegThreeWeeks + template.GreaterThanEqualToNegThreeWeeks 
+                        + template.GreaterThanEqualToNegTwoWeeks + template.GreaterThanEqualNegOneWeek + template.ZeroWeeks;
 
                     // calculate the Percent Favorable
-                    PercentFavorable = Math.Round((favorableTimeSpanCounts / TotalRecords) * 100, 2);
+                    PercentFavorable = Math.Round((favorableTimeSpanCounts / template.TotalRecords) * 100, 2);
                 }
             }
             catch (Exception)
@@ -195,51 +79,11 @@ namespace Reporting.KeyPerformanceActions.CurrentPlanVsActual
 
 
 
-        /// <summary>
-        /// Method to calculate the averate for this KPA
-        /// </summary>
-        internal override void CalculateAverage(double _totalDays)
-        {
-            try
-            {
-                Average = Math.Round(_totalDays / TotalRecords, 2);
-                if (double.IsNaN(Average))
-                    Average = 0;
-            }
-            catch (ArgumentOutOfRangeException)
-            {
-                MessageBox.Show("An argument out of range exception was thrown", "Current Plan Date vs Curren Confirmation date Average Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Application.Exit();
-            }
-            catch (DivideByZeroException)
-            {
-                Average = 0;
-            }
-        }
-
-
-        
-
-
-
-
-        /// <summary>
-        /// Calculates the selective report for this KPA
-        /// </summary>
-        public override void RunSelectiveReport(string uniqueFilters)
-        {
-
-        }
-
-
-
-
-
 
         /// <summary>
         /// Calculates the overall report for this KPA
         /// </summary>
-        public override void RunOverallReport()
+        public override void Run()
         {
             try
             {
@@ -290,11 +134,11 @@ namespace Reporting.KeyPerformanceActions.CurrentPlanVsActual
 
 
                     // Apply the elapsed days against the time span conditions
-                    TimeSpanDump(elapsedDays);
+                    template.TimeSpanDump(elapsedDays);
                 }
 
                 // Calculate the average for this KPA
-                CalculateAverage(totalDays);
+                template.CalculateAverage(totalDays);
 
                 // Calcualte the Percent Favorable for this KPA
                 CalculatePercentFavorable();

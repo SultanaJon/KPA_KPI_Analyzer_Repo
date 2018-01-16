@@ -5,10 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Reporting
+namespace Reporting.Reports
 {
     public class KpiOverallReport : Report, IStorable<KpiOverallReport>, ILoadable<KpiOverallReport>
     {
@@ -76,13 +75,13 @@ namespace Reporting
         /// <summary>
         /// Runs the overall report for all the Key Performance Actions (KPA)
         /// </summary>
-        public override void RunReport()
+        public void RunReport()
         {
             try
             {
                 foreach (KeyPerformanceIndicator indicator in Indicators)
                 {
-                    indicator.RunOverallReport();
+                    indicator.Run();
                 }
             }
             catch(ObjectDisposedException)

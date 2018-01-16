@@ -4,7 +4,8 @@ using KPA_KPI_Analyzer.Values;
 using Reporting;
 using Reporting.Interfaces;
 using Reporting.KeyPerformanceIndicators;
-using Reporting.Overall;
+using Reporting.TimeSpans.Templates;
+using Reporting.Reports;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -14,11 +15,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 {
     public partial class KPIPurchTotalTemplate : UserControl
     {
-
-        
-
-
-
         public delegate void UpdateCategoryHandler();
         public static event UpdateCategoryHandler ChangeCategory;
 
@@ -210,8 +206,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             AnalysisTwo = "- Difference between initial confirmation date creation and the date the PR was fully released.";
 
 
-            ITemplateFour tempFour = (KpiOverallReport.Indicators[(int)KpiOption.PurchTotal_PrReleaseDateToConfirmationEntryDate]
-                as Reporting.KeyPerformanceIndicators.PurchTotal.PRReleaseDateToConfirmationEntry);
+            TemplateFour tempFour = KpiOverallReport.Indicators[(int)KpiOption.PurchTotal_PrReleaseDateToConfirmationEntryDate].TemplateBlock as TemplateFour;
 
             // Add the data to the column chart
             dp.addLabely(lbl_xLabelOne.Text, tempFour.LessThanEqualToZeroDays.ToString());

@@ -1,15 +1,20 @@
 ﻿using DataAccessLibrary;
 using Reporting.Interfaces;
-using Reporting.Overall;
+using Reporting.TimeSpans.Templates;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 
 namespace Reporting.KeyPerformanceIndicators.Plan
 {
-    public sealed class OriginalPlanDateTo2ndLvlReleaseDateVsCodedLead : KeyPerformanceIndicator, ISelective,  ITemplateThree, IFavorable
+    public sealed class OriginalPlanDateTo2ndLvlReleaseDateVsCodedLead : KeyPerformanceIndicator, IFavorable
     {
+        /// <summary>
+        /// Interface to access the template data.
+        /// </summary>
+        TemplateThree template;
+
+
         #region IFavorable Properties
 
         /// <summary>
@@ -21,165 +26,17 @@ namespace Reporting.KeyPerformanceIndicators.Plan
 
 
 
-
-        #region ITemplateThree Properties
-
-        public double Average { get; set; }
-        public int TotalRecords { get; set; }
-        public int LessThanEqualToNegTwentyTwoDays { get; set; }
-        public int NegTwentyOneToNegFifteenDays { get; set; }
-        public int NegFourteenToNegEightDays { get; set; }
-        public int NegSevenToNegOneDays { get; set; }
-        public int ZeroDays { get; set; }
-        public int OneToSevenDays { get; set; }
-        public int EightToFourteenDays { get; set; }
-        public int FifteenToTwentyOneDays { get; set; }
-        public int GreaterThanEqualToTwentyTwoDays { get; set; }
-
-        #endregion
-
-
-
-
-
-        #region ISelective Properties
-
-        /// <summary>
-        /// The selective average for the filter applied against the specific KPA or KPI
-        /// </summary>
-        public double SelectiveAverage { get; set; }
-
-        /// <summary>
-        /// The selective total fo the filter applied against the specific KPA or KPI
-        /// </summary>
-        public int SelectiveTotal { get; set; }
-
-        #endregion
-
-
-
-
         /// <summary>
         /// Default Constructor
         /// </summary>
         public OriginalPlanDateTo2ndLvlReleaseDateVsCodedLead()
         {
+            // Create a new template object
+            TemplateBlock = new TemplateThree();
+            template = TemplateBlock as TemplateThree;
+
             Section = "Plan";
             Name = "(Original Plan Date - 2nd Lvl Release Date) vs Coded Lead-Time";
-        }
-
-
-
-
-        /// <summary>
-        /// Returns the template one data for this KPA
-        /// </summary>
-        /// <returns></returns>
-        public List<string> GetTemplateData()
-        {
-            List<string> row = new List<string>();
-
-            // Add the Template three data
-            row.Add(Section);
-            row.Add(Name);
-            row.Add(string.Format("{0:n}", Average));
-            row.Add(string.Format("{0:n0}", LessThanEqualToNegTwentyTwoDays));
-            row.Add(string.Format("{0:n0}", NegTwentyOneToNegFifteenDays));
-            row.Add(string.Format("{0:n0}", NegFourteenToNegEightDays));
-            row.Add(string.Format("{0:n0}", NegSevenToNegOneDays));
-            row.Add(string.Format("{0:n0}", ZeroDays));
-            row.Add(string.Format("{0:n0}", OneToSevenDays));
-            row.Add(string.Format("{0:n0}", EightToFourteenDays));
-            row.Add(string.Format("{0:n0}", FifteenToTwentyOneDays));
-            row.Add(string.Format("{0:n0}", GreaterThanEqualToTwentyTwoDays));
-            row.Add(string.Format("{0:n0}", TotalRecords));
-            row.Add("");
-            row.Add(string.Format("{0:n0}", PercentFavorable + "%"));
-
-            //return the template one data for this KPA
-            return row;
-        }
-
-
-
-
-        /// <summary>
-        /// Method to apply the elapsed days against the KPA or KPIs time span conditions
-        /// </summary>
-        public void TimeSpanDump(double _elapsedDays)
-        {
-            // We are dealing with both negative and positive time spand so we need to round either up or down
-            if (_elapsedDays < 0)
-                _elapsedDays = Math.Floor(_elapsedDays);
-
-            if (_elapsedDays > 0)
-                _elapsedDays = Math.Ceiling(_elapsedDays);
-
-            _elapsedDays = (int)_elapsedDays;
-
-            // Increment the total number of records that satisfy this KPI
-            TotalRecords++;
-
-
-            // Apply the elapsed days against the time span conditions
-            if (_elapsedDays <= (-22))
-            {
-                LessThanEqualToNegTwentyTwoDays++;
-            }
-            else if (_elapsedDays > (-22) && _elapsedDays <= (-15))
-            {
-                NegTwentyOneToNegFifteenDays++;
-            }
-            else if (_elapsedDays > (-15) && _elapsedDays <= (-8))
-            {
-                NegFourteenToNegEightDays++;
-            }
-            else if (_elapsedDays > (-8) && _elapsedDays <= (-1))
-            {
-                NegSevenToNegOneDays++;
-            }
-            else if (_elapsedDays == 0)
-            {
-                ZeroDays++;
-            }
-            else if (_elapsedDays >= 1 && _elapsedDays <= 7)
-            {
-                OneToSevenDays++;
-            }
-            else if (_elapsedDays >= 8 && _elapsedDays <= 14)
-            {
-                EightToFourteenDays++;
-            }
-            else if (_elapsedDays >= 15 && _elapsedDays <= 21)
-            {
-                FifteenToTwentyOneDays++;
-            }
-            else // 22 Days or greater
-            {
-                GreaterThanEqualToTwentyTwoDays++;
-            }
-        }
-
-
-
-
-
-
-        /// <summary>
-        /// Method to calculate the averate for this KPA
-        /// </summary>
-        private void CalculateAverage(double _totalDays)
-        {
-            try
-            {
-                Average = Math.Round(_totalDays / TotalRecords, 2);
-                if (double.IsNaN(Average))
-                    Average = 0;
-            }
-            catch (DivideByZeroException)
-            {
-                Average = 0;
-            }
         }
 
 
@@ -195,13 +52,13 @@ namespace Reporting.KeyPerformanceIndicators.Plan
         /// </summary>
         public void CalculatePercentFavorable()
         {
-            if (TotalRecords != 0)
+            if (template.TotalRecords != 0)
             {
                 // Get the favorable timespans
-                double favorableTimeSpans = ZeroDays + OneToSevenDays + EightToFourteenDays + FifteenToTwentyOneDays + GreaterThanEqualToTwentyTwoDays;
+                double favorableTimeSpans = template.ZeroDays + template.OneToSevenDays + template.EightToFourteenDays + template.FifteenToTwentyOneDays + template.GreaterThanEqualToTwentyTwoDays;
 
                 // calculate the Percent Favorable
-                PercentFavorable = Math.Round((favorableTimeSpans / TotalRecords) * 100, 2);
+                PercentFavorable = Math.Round((favorableTimeSpans / template.TotalRecords) * 100, 2);
             }
         }
 
@@ -210,21 +67,10 @@ namespace Reporting.KeyPerformanceIndicators.Plan
 
 
 
-
-        /// <summary>
-        /// Calculates the selective report for this KPA
-        /// </summary>
-        public override void RunSelectiveReport(string uniqueFilters)
-        {
-
-        }
-
-
-
         /// <summary>
         /// Calculates the overall report for this KPA
         /// </summary>
-        public override void RunOverallReport()
+        public override void Run()
         {
             double totalDays = 0;
 
@@ -274,11 +120,11 @@ namespace Reporting.KeyPerformanceIndicators.Plan
                     totalDays += elapsedDays;
 
                     // Apply the elapsed days against the time span conditions
-                    TimeSpanDump(elapsedDays);
+                    template.TimeSpanDump(elapsedDays);
                 }
 
                 // Calculate the average for this KPI
-                CalculateAverage(totalDays);
+                template.CalculateAverage(totalDays);
 
                 // Calculate the percent facvorable for this KPI
                 CalculatePercentFavorable();

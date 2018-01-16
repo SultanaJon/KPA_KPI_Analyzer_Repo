@@ -1,8 +1,8 @@
-﻿using Reporting;
-using Reporting.Interfaces;
+﻿using Reporting.Interfaces;
 using Reporting.KeyPerformanceActions;
 using Reporting.KeyPerformanceIndicators;
-using Reporting.Overall;
+using Reporting.Reports;
+using Reporting.TimeSpans.Templates;
 using System.Collections.Generic;
 
 namespace DataExporter
@@ -83,13 +83,16 @@ namespace DataExporter
             foreach (KeyPerformanceAction action in KpaOverallReport.Actions)
             {
                 // Make sure the action is from template one.
-                if(action is ITemplateOne)
+                if(action.TemplateBlock is TemplateOne)
                 {
                     // Convert the action to a ITemplate interface
-                    ITemplateOne tempOneData = action as ITemplateOne;
+                    TemplateOne tempOneData = action.TemplateBlock as TemplateOne;
 
                     // Get the template data from the action
                     List<string> tempData = tempOneData.GetTemplateData();
+
+                    if(action is IFavorable) 
+                        tempData.Add(string.Format("{0:n0}", (action as IFavorable).PercentFavorable + "%"));
 
                     // Remove any unwanted characters
                     CleanData(ref tempData);
@@ -141,13 +144,14 @@ namespace DataExporter
             foreach (KeyPerformanceAction action in KpaOverallReport.Actions)
             {
                 // Make sure the action is from template one.
-                if (action is ITemplateTwo)
+                if (action.TemplateBlock is TemplateTwo)
                 {
                     // Convert the action to a ITemplate interface
-                    ITemplateTwo tempTwoData = action as ITemplateTwo;
+                    TemplateTwo tempTwoData = action.TemplateBlock as TemplateTwo;
 
                     // Get the template data from the action
                     List<string> tempData = tempTwoData.GetTemplateData();
+                    tempData.Add(string.Format("{0:n0}", (action as IFavorable).PercentFavorable + "%"));
 
                     // Remove any unwanted characters
                     CleanData(ref tempData);
@@ -199,13 +203,24 @@ namespace DataExporter
             foreach(KeyPerformanceIndicator indicator in KpiOverallReport.Indicators)
             {
                 // Make sure the indicator is from template one.
-                if (indicator is ITemplateThree)
+                if (indicator.TemplateBlock is TemplateThree)
                 {
                     // Convert the indicator to a ITemplate interface
-                    ITemplateThree tempThreeData = indicator as ITemplateThree;
+                    TemplateThree tempThreeData = indicator.TemplateBlock as TemplateThree;
 
                     // Get the template data from the indicator
                     List<string> tempData = tempThreeData.GetTemplateData();
+
+                    if (indicator is IUnconfirmed)
+                        tempData.Add(string.Format("{0:n0}", (indicator as IUnconfirmed).PercentUnconfirmed + "%"));
+                    else
+                        tempData.Add("");
+
+
+                    if(indicator is IFavorable)
+                    {
+                        tempData.Add(string.Format("{0:n0}", (indicator as IFavorable).PercentFavorable + "%"));
+                    }
 
                     // Remove any unwanted characters
                     CleanData(ref tempData);
@@ -253,17 +268,19 @@ namespace DataExporter
             int colStart = (int)OverallExcelFile.OverallCellPositions.KpiOverallTempFourColStartPosition;
             int col = colStart;
 
-
             foreach (KeyPerformanceIndicator indicator in KpiOverallReport.Indicators)
             {
                 // Make sure the indicator is from template one.
-                if (indicator is ITemplateFour)
+                if (indicator.TemplateBlock is TemplateFour)
                 {
                     // Convert the indicator to a ITemplate interface
-                    ITemplateFour tempFourData = indicator as ITemplateFour;
+                    TemplateFour tempFourData = indicator.TemplateBlock as TemplateFour;
 
                     // Get the template data from the indicator
                     List<string> tempData = tempFourData.GetTemplateData();
+
+                    if (indicator is IUnconfirmed)
+                        tempData.Add(string.Format("{0:n0}", (indicator as IUnconfirmed).PercentUnconfirmed + "%"));
 
                     // Remove any unwanted characters
                     CleanData(ref tempData);
@@ -313,10 +330,10 @@ namespace DataExporter
             foreach (KeyPerformanceIndicator indicator in KpiOverallReport.Indicators)
             {
                 // Make sure the indicator is from template one.
-                if (indicator is ITemplateFive)
+                if (indicator.TemplateBlock is TemplateFive)
                 {
                     // Convert the indicator to a ITemplate interface
-                    ITemplateFive tempFiveData = indicator as ITemplateFive;
+                    TemplateFive tempFiveData = indicator.TemplateBlock as TemplateFive;
 
                     // Get the template data from the indicator
                     List<string> tempData = tempFiveData.GetTemplateData();

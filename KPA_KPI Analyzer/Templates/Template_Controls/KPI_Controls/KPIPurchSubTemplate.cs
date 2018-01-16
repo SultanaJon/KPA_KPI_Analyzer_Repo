@@ -4,7 +4,8 @@ using KPA_KPI_Analyzer.Values;
 using Reporting;
 using Reporting.Interfaces;
 using Reporting.KeyPerformanceIndicators;
-using Reporting.Overall;
+using Reporting.TimeSpans.Templates;
+using Reporting.Reports;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -14,10 +15,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 {
     public partial class KPIPurchSubTemplate : UserControl
     {
-        
-
-
-
         public delegate void UpdateCategoryHandler();
         public static event UpdateCategoryHandler ChangeCategory;
 
@@ -214,8 +211,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             AnalysisTwo = "- Difference between PO line initial release date and the date the PR was fully released.";
 
 
-            ITemplateFour tempFour = (KpiOverallReport.Indicators[(int)KpiOption.PurchSub_PrReleaseVsPoReleaseDate]
-                    as Reporting.KeyPerformanceIndicators.PurchSub.PRReleaseDateVsPOReleaseDate);
+            TemplateFour tempFour = KpiOverallReport.Indicators[(int)KpiOption.PurchSub_PrReleaseVsPoReleaseDate].TemplateBlock as TemplateFour;
 
             // Add the data to the column chart
             dp.addLabely(lbl_xLabelOne.Text, tempFour.LessThanEqualToZeroDays.ToString());
@@ -273,8 +269,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             AnalysisTwo = "- Difference between initial confirmation date creation and PO line item creation.";
 
 
-            ITemplateFour tempFour = (KpiOverallReport.Indicators[(int)KpiOption.PurchSub_PoCreationDateVsConfirmationEntryDate]
-                    as Reporting.KeyPerformanceIndicators.PurchSub.POCreationDateVsConfirmationEntry);
+            TemplateFour tempFour = KpiOverallReport.Indicators[(int)KpiOption.PurchSub_PoCreationDateVsConfirmationEntryDate].TemplateBlock as TemplateFour;
 
             // Add the data to the column chart
             dp.addLabely(lbl_xLabelOne.Text, tempFour.LessThanEqualToZeroDays.ToString());

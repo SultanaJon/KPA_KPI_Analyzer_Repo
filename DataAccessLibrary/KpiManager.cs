@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace DataAccessLibrary
 {
-    public static class KpiUtils
+    public static class KpiManager
     {
         public static class KpiQueries
         {

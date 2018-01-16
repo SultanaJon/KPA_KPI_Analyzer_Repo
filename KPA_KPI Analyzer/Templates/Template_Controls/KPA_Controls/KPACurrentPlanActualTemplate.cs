@@ -3,7 +3,8 @@ using KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader;
 using KPA_KPI_Analyzer.Values;
 using Reporting;
 using Reporting.KeyPerformanceActions;
-using Reporting.Overall;
+using Reporting.Reports;
+using Reporting.TimeSpans.Templates;
 using System;
 using System.Windows.Forms;
 
@@ -11,10 +12,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 {
     public partial class KPACurrentPlanActualTemplate : UserControl
     {
-        
-
-
-
         public delegate void UpdateCategoryHandler();
         public static event UpdateCategoryHandler ChangeCategory;
 
@@ -209,8 +206,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             AnalysisTwo = "- Difference between the confirmation date and the current planned date.";
 
 
-            ITemplateTwo tempTwo = (KpaOverallReport.Actions[(int)KpaOption.CurrentPlanVsActual_CurrentPlanDateVsCurrentConfirmationDate]
-                                as Reporting.KeyPerformanceActions.CurrentPlanVsActual.CurrentPlanDateVsCurrentConfirmationDate);
+            TemplateTwo tempTwo = KpaOverallReport.Actions[(int)KpaOption.CurrentPlanVsActual_CurrentPlanDateVsCurrentConfirmationDate].TemplateBlock as TemplateTwo;
 
 
             // Add the data to the column chart
@@ -265,8 +261,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             AnalysisTwo = "- Difference between confirmation date and the current planned date.";
 
 
-            ITemplateTwo tempTwo = (KpaOverallReport.Actions[(int)KpaOption.CurrentPlanVsActual_CurrentPlanDateVsCurrentConfirmationDateForHotJobs]
-                                as Reporting.KeyPerformanceActions.CurrentPlanVsActual.CurrentPlanDateVsCurrentConfirmationDateForHotJobs);
+            TemplateTwo  tempTwo = KpaOverallReport.Actions[(int)KpaOption.CurrentPlanVsActual_CurrentPlanDateVsCurrentConfirmationDateForHotJobs].TemplateBlock as TemplateTwo;
 
             // Add the data to the column chart
             dp.addLabely(lbl_xLabelOne.Text, tempTwo.LessthanNegThreeWeeks.ToString());

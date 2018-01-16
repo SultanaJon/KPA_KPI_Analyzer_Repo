@@ -2,16 +2,25 @@
 
 using DataAccessLibrary;
 using Reporting.Interfaces;
-using Reporting.Overall;
+using Reporting.TimeSpans.Templates;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 
 namespace Reporting.KeyPerformanceActions.FollowUp
 {
-    public sealed class ConfirmedDateForUpcomingDeliveries : KeyPerformanceAction, ISelective,  ITemplateOne, IFavorable
+    public sealed class ConfirmedDateForUpcomingDeliveries : KeyPerformanceAction, IFavorable
     {
+        /// <summary>
+        /// Template to access the data.
+        /// </summary>
+        TemplateOne template;
+
+
+
+
+
+
         #region IFavorable Properties
 
         /// <summary>
@@ -20,42 +29,6 @@ namespace Reporting.KeyPerformanceActions.FollowUp
         public double PercentFavorable { get; set; }
 
         #endregion
-
-
-
-
-        #region ITemplateOne Properties
-
-        public double Average { get; set; }
-        public int TotalRecords { get; set; }
-        public int LessThanEqualToZeroDays { get; set; }
-        public int OneToThreeDays { get; set; }
-        public int FourToSevenDays { get; set; }
-        public int EightToFourteenDays { get; set; }
-        public int FifteenToTwentyOneDays { get; set; }
-        public int TwentyTwoToTwentyEightDays { get; set; }
-        public int TwentyNinePlusDays { get; set; }
-
-        #endregion
-
-
-
-
-
-        #region ISelective Properties
-
-        /// <summary>
-        /// The selective average for the filter applied against the specific KPA or KPI
-        /// </summary>
-        public double SelectiveAverage { get; set; }
-
-        /// <summary>
-        /// The selective total fo the filter applied against the specific KPA or KPI
-        /// </summary>
-        public int SelectiveTotal { get; set; }
-
-        #endregion
-
 
 
 
@@ -73,35 +46,12 @@ namespace Reporting.KeyPerformanceActions.FollowUp
         /// </summary>
         public ConfirmedDateForUpcomingDeliveries()
         {
+            // Create a new template object
+            TemplateBlock = new TemplateOne();
+            template = TemplateBlock as TemplateOne;
+
             Section = "Follow Up";
             Name = "Confirmed Date for Upcoming Deliveries";
-        }
-
-
-
-        /// <summary>
-        /// Returns the template one data for this KPA
-        /// </summary>
-        /// <returns></returns>
-        public List<string> GetTemplateData()
-        {
-            List<string> row = new List<string>();
-
-            // Add the Template one data
-            row.Add(Section);
-            row.Add(Name);
-            row.Add(string.Format("{0:n0}", LessThanEqualToZeroDays));
-            row.Add(string.Format("{0:n0}", OneToThreeDays));
-            row.Add(string.Format("{0:n0}", FourToSevenDays));
-            row.Add(string.Format("{0:n0}", EightToFourteenDays));
-            row.Add(string.Format("{0:n0}", FifteenToTwentyOneDays));
-            row.Add(string.Format("{0:n0}", TwentyTwoToTwentyEightDays));
-            row.Add(string.Format("{0:n0}", TwentyNinePlusDays));
-            row.Add(string.Format("{0:n}", Average));
-            row.Add(string.Format("{0:n0}", TotalRecords));
-            row.Add(string.Format("{0:n0}", PercentFavorable + "%"));
-            //return the template one data for this KPA
-            return row;
         }
 
 
@@ -118,13 +68,15 @@ namespace Reporting.KeyPerformanceActions.FollowUp
         {
             try
             {
-                if (TotalRecords != 0)
+                if (template.TotalRecords != 0)
                 {
-                    double favorableTimeSpanCounts = OneToThreeDays + FourToSevenDays + EightToFourteenDays + FifteenToTwentyOneDays + TwentyTwoToTwentyEightDays + TwentyNinePlusDays;
+                    double favorableTimeSpanCounts = template.OneToThreeDays + template.FourToSevenDays + template.EightToFourteenDays + template.FifteenToTwentyOneDays
+                        + template.TwentyTwoToTwentyEightDays + template.TwentyNinePlusDays;
+
                     double totalFavorable = favorableTimeSpanCounts + DueTodayLateToConfirmedLessThanZeroDueToday;
 
                     // calculate the Percent Favorable
-                    PercentFavorable = Math.Round((totalFavorable / TotalRecords) * 100, 2);
+                    PercentFavorable = Math.Round((totalFavorable / template.TotalRecords) * 100, 2);
                 }
             }
             catch (Exception)
@@ -139,93 +91,12 @@ namespace Reporting.KeyPerformanceActions.FollowUp
 
 
 
-        /// <summary>
-        /// Method to apply the elapsed days against the KPA or KPIs time span conditions
-        /// </summary>
-        public void TimeSpanDump(double _elapsedDays)
-        {
-            // Increment the total number of records that satisfy this KPA or KPi
-            TotalRecords++;
-
-
-            // Apply the elapsed days against the timespan conditions
-            if (_elapsedDays <= 0)
-            {
-                LessThanEqualToZeroDays++;
-            }
-            else if (_elapsedDays >= 1 && _elapsedDays <= 3)
-            {
-                OneToThreeDays++;
-            }
-            else if (_elapsedDays >= 4 && _elapsedDays <= 7)
-            {
-                FourToSevenDays++;
-            }
-            else if (_elapsedDays >= 8 && _elapsedDays <= 14)
-            {
-                EightToFourteenDays++;
-            }
-            else if (_elapsedDays >= 15 && _elapsedDays <= 21)
-            {
-                FifteenToTwentyOneDays++;
-            }
-            else if (_elapsedDays >= 22 && _elapsedDays <= 28)
-            {
-                TwentyTwoToTwentyEightDays++;
-            }
-            else // 29+
-            {
-                TwentyNinePlusDays++;
-            }
-        }
-
-
-
-
-
-
-        /// <summary>
-        /// Method to calculate the averate for this KPA
-        /// </summary>
-        internal override void CalculateAverage(double _totalDays)
-        {
-            try
-            {
-                Average = Math.Round(_totalDays / TotalRecords, 2);
-                if (double.IsNaN(Average))
-                    Average = 0;
-            }
-            catch (ArgumentOutOfRangeException)
-            {
-                MessageBox.Show("An argument out of range exception was thrown", "Folow Up -> Confirmed Date for Upcoming Deliveries - Favorable Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Application.Exit();
-            }
-            catch (DivideByZeroException)
-            {
-                Average = 0;
-            }
-        }
-
-
-
-
-
-
-
-        /// <summary>
-        /// Calculates the selective report for this KPA
-        /// </summary>
-        public override void RunSelectiveReport(string uniqueFilters)
-        {
-
-        }
-
 
 
         /// <summary>
         /// Calculates the overall report for this KPA
         /// </summary>
-        public override void RunOverallReport()
+        public override void Run()
         {
             try
             {
@@ -253,11 +124,11 @@ namespace Reporting.KeyPerformanceActions.FollowUp
                     elapsedDays = (int)elapsedDays;
 
                     // Apply the elapsed days against the time spand conditions
-                    TimeSpanDump(elapsedDays);
+                    template.TimeSpanDump(elapsedDays);
                 }
 
                 // Calculate the average for this KPA
-                CalculateAverage(totalDays);
+                template.CalculateAverage(totalDays);
 
                 // Calculate the favorable percentage for this KPA
                 CalculatePercentFavorable();

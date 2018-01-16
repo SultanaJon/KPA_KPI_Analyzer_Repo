@@ -2,14 +2,14 @@
 using Newtonsoft.Json;
 using Reporting.KeyPerformanceActions;
 using Reporting.KeyPerformanceActions.FollowUp;
+using Reporting.TimeSpans.Templates;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Reporting
+namespace Reporting.Reports
 {
     public class KpaOverallReport : Report, IStorable<KpaOverallReport>, ILoadable<KpaOverallReport>
     {
@@ -75,7 +75,7 @@ namespace Reporting
         /// <summary>
         /// Runs the overall report for all the Key Performance Actions (KPA)
         /// </summary>
-        public override void RunReport()
+        public void RunReport()
         {
             try
             {
@@ -87,18 +87,18 @@ namespace Reporting
                     }
                     else
                     {
-                        action.RunOverallReport();
+                        action.Run();
                     }
                 }
 
                 // Get the lessThanZero data from Due Today or Late to confirmed
-                int lessThanEqualToZero = (Actions[(int)KpaOption.FollowUp_DueTodayOrLateToConfirmed] as DueTodayOrLateToConfirmed).LessThanEqualToZeroDays;
+                int lessThanEqualToZero = ((Actions[(int)KpaOption.FollowUp_DueTodayOrLateToConfirmed] as DueTodayOrLateToConfirmed).TemplateBlock as TemplateOne).LessThanEqualToZeroDays;
 
                 // supply Confirmed date for upcoming deliveries the above data
                 (Actions[(int)KpaOption.FollowUp_ConfirmedDateForUpcomingDeliveries] as ConfirmedDateForUpcomingDeliveries).DueTodayLateToConfirmedLessThanZeroDueToday = lessThanEqualToZero;
 
                 // Run the overall report for Follow up -> Confirmed Date for upcoming deliveries
-                Actions[(int)KpaOption.FollowUp_ConfirmedDateForUpcomingDeliveries].RunOverallReport();
+                Actions[(int)KpaOption.FollowUp_ConfirmedDateForUpcomingDeliveries].Run();
             }
             catch(ObjectDisposedException)
             {

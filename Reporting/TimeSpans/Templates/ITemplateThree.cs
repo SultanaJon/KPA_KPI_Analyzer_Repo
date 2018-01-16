@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-
-namespace Reporting.Overall
+﻿namespace Reporting.TimeSpans.Templates
 {
-    public interface ITemplateThree
+    internal interface ITemplateThree
     {
         double Average { get; set; }
         int TotalRecords { get; set; }
@@ -17,11 +15,17 @@ namespace Reporting.Overall
         int GreaterThanEqualToTwentyTwoDays { get; set; }
 
 
+        /// <summary>
+        /// Calculates the average for the specific KPA or KPI.
+        /// </summary>
+        /// <param name="_totalDays"></param>
+        void CalculateAverage(double _totalDays);
+
 
         /// <summary>
-        /// Method to return the template data of the function
+        /// Updates the time span buckets if the elapsed days meets their conditions
         /// </summary>
-        /// <returns></returns>
-        List<string> GetTemplateData();
+        /// <param name="_elapsedDays">The number of elapsed days.</param>
+        void TimeSpanDump(double _elapsedDays);
     }
 }

@@ -254,10 +254,10 @@ namespace DataAccessLibrary
                 {
                     using (OleDbDataAdapter da = new OleDbDataAdapter())
                     {
-                        prsOnPOsDt = KpiUtils.KpiQueries.GetAllPOs();
-                        posRecCompDt = KpiUtils.KpiQueries.GetPoLinesReceivedComplete();
-                        pr2ndLvlRelDateDt = KpiUtils.KpiQueries.GetPr2ndLevelRelease();
-                        AllDataDt = KpiUtils.KpiQueries.GetAllData();
+                        prsOnPOsDt = KpiManager.KpiQueries.GetAllPOs();
+                        posRecCompDt = KpiManager.KpiQueries.GetPoLinesReceivedComplete();
+                        pr2ndLvlRelDateDt = KpiManager.KpiQueries.GetPr2ndLevelRelease();
+                        AllDataDt = KpiManager.KpiQueries.GetAllData();
                     }
                 }
             }

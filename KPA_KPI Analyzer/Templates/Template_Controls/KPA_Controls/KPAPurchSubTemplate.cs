@@ -1,9 +1,9 @@
 ﻿using KPA_KPI_Analyzer.DataLoading;
 using KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader;
 using KPA_KPI_Analyzer.Values;
-using Reporting;
 using Reporting.KeyPerformanceActions;
-using Reporting.Overall;
+using Reporting.TimeSpans.Templates;
+using Reporting.Reports;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -12,10 +12,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 {
     public partial class KPAPurchSubTemplate : UserControl
     {
-        
-
-
-
         public delegate void UpdateCategoryHandler();
         public static event UpdateCategoryHandler ChangeCategory;
 
@@ -193,8 +189,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             AnalysisTwo = "- Difference between todays date and the date the PR was fully released.";
 
             // Get the template data
-            ITemplateOne tempOne = (KpaOverallReport.Actions[(int)KpaOption.PurchSub_PrReleaseToPoRelease]
-                                as Reporting.KeyPerformanceActions.PurchSub.PRReleaseToPORelease);
+            TemplateOne tempOne = KpaOverallReport.Actions[(int)KpaOption.PurchSub_PrReleaseToPoRelease].TemplateBlock as TemplateOne;
 
 
             // Add the data to the column chart
@@ -244,8 +239,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
 
             // Get the template data
-            ITemplateOne tempOne = (KpaOverallReport.Actions[(int)KpaOption.PurchSub_PoCreationToConfirmationEntry]
-                                as Reporting.KeyPerformanceActions.PurchSub.POCreationToConfirmationEntry);
+            TemplateOne tempOne = KpaOverallReport.Actions[(int)KpaOption.PurchSub_PoCreationToConfirmationEntry].TemplateBlock as TemplateOne;
 
             // Add the data to the column chart
             dp.addLabely(lbl_xLabelOne.Text, tempOne.LessThanEqualToZeroDays.ToString());

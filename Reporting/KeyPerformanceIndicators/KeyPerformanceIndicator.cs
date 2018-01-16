@@ -1,4 +1,7 @@
-﻿namespace Reporting.KeyPerformanceIndicators
+﻿using Reporting.TimeSpans.Templates;
+using System.Collections.Generic;
+
+namespace Reporting.KeyPerformanceIndicators
 {
     public enum KpiOption
     {
@@ -29,7 +32,7 @@
 
 
 
-    public abstract class KeyPerformanceIndicator : Performance
+    public abstract class KeyPerformanceIndicator
     {
         public static string[] options =
         {
@@ -59,6 +62,12 @@
         };
 
 
+        /// <summary>
+        /// Property to access the template data
+        /// </summary>
+        public Template TemplateBlock { get; set; }
+
+
 
         /// <summary>
         /// The section that this KPI belongs under
@@ -72,15 +81,27 @@
         public string Name { get; set; }
 
 
+
         /// <summary>
-        /// Method to calculate the selective report for this Key Performance Action (KPA)
+        /// Returns the details of the KPA
         /// </summary>
-        public abstract void RunSelectiveReport(string filter);
+        public List<string> Details
+        {
+            get
+            {
+                List<string> temp = new List<string>();
+                temp.Add(Section);
+                temp.Add(Name);
+                return temp;
+            }
+        }
+
+
 
 
         /// <summary>
-        /// Method to calculate the overall report this Key Performance Action (KPA)
+        /// Run the calculation of the KPI
         /// </summary>
-        public abstract void RunOverallReport();
+        public abstract void Run();
     }
 } 

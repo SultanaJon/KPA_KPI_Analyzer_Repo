@@ -15,8 +15,10 @@ namespace Filters
             PRPurchaseGroup,
             POPurchaseGroup,
             IRSuppName,
+            FxdSuppName,
             DsrdSuppName,
             CommodityCategory,
+            Escaped,
             PODocumentType,
             ProductionOrderMaterial
         }

@@ -16,6 +16,7 @@ using Filters;
 using Filters.Variants;
 using KPA_KPI_Analyzer.Values;
 using Reporting;
+using Reporting.Reports;
 using System;
 using System.Collections.Generic;
 using System.IO;

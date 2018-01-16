@@ -4,7 +4,8 @@ using KPA_KPI_Analyzer.Values;
 using Reporting;
 using Reporting.Interfaces;
 using Reporting.KeyPerformanceIndicators;
-using Reporting.Overall;
+using Reporting.TimeSpans.Templates;
+using Reporting.Reports;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -14,10 +15,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 {
     public partial class KPIPurchTemplate : UserControl
     {
-        
-
-
-
         public delegate void UpdateCategoryHandler();
         public static event UpdateCategoryHandler ChangeCategory;
 
@@ -201,8 +198,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             AnalysisTwo = "- Difference between first confirmed date and PR planned date.";
 
 
-            ITemplateThree tempThree = (KpiOverallReport.Indicators[(int)KpiOption.Purch_InitialConfirmationDateVsPrPlanDate]
-                    as Reporting.KeyPerformanceIndicators.Purch.InitialConfirmationDateVsPRPlanDate);
+            TemplateThree tempThree = KpiOverallReport.Indicators[(int)KpiOption.Purch_InitialConfirmationDateVsPrPlanDate].TemplateBlock as TemplateThree;
 
 
             // Add the data to the column chart

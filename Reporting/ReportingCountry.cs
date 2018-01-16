@@ -12,7 +12,7 @@
 
 
 
-    public class ReportingCountry
+    public static class ReportingCountry
     {
         // Array of countries that the application handles.
         public static string[] countries =

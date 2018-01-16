@@ -3,7 +3,8 @@ using KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader;
 using KPA_KPI_Analyzer.Values;
 using Reporting;
 using Reporting.KeyPerformanceActions;
-using Reporting.Overall;
+using Reporting.TimeSpans.Templates;
+using Reporting.Reports;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -182,8 +183,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             AnalysisTwo = "- Difference between todays date and the date the PR was fully released.";
 
 
-            ITemplateOne tempOne = (KpaOverallReport.Actions[(int)KpaOption.PurchTotal_PrReleaseToConfirmationEntry]
-                                as Reporting.KeyPerformanceActions.PurchTotal.PRReleaseToConfirmationEntry);
+            TemplateOne tempOne = KpaOverallReport.Actions[(int)KpaOption.PurchTotal_PrReleaseToConfirmationEntry].TemplateBlock as TemplateOne;
 
 
             // Add the data to the column chart

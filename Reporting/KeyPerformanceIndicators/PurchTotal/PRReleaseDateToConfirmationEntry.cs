@@ -1,14 +1,13 @@
 ﻿using DataAccessLibrary;
 using Reporting.Interfaces;
-using Reporting.Overall;
+using Reporting.TimeSpans.Templates;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 
 namespace Reporting.KeyPerformanceIndicators.PurchTotal
 {
-    public sealed class PRReleaseDateToConfirmationEntry : KeyPerformanceIndicator, ISelective,  ITemplateFour, IUnconfirmed
+    public sealed class PRReleaseDateToConfirmationEntry : KeyPerformanceIndicator, IUnconfirmed
     {
         #region IUnconfirmed Properties
 
@@ -28,42 +27,10 @@ namespace Reporting.KeyPerformanceIndicators.PurchTotal
 
 
 
-        #region ITemplateFour Properties
-
-        public double Average { get; set; }
-        public int TotalRecords { get; set; }
-        public int LessThanEqualToZeroDays { get; set; }
-        public int OneToThreeDays { get; set; }
-        public int FourToSevenDays { get; set; }
-        public int EightToFourteenDays { get; set; }
-        public int FifteenToTwentyOneDays { get; set; }
-        public int TwentyTwoToTwentyEightDays { get; set; }
-        public int TwentyNineToThirtyFiveDays { get; set; }
-        public int ThirtySixtoFourtyTwoDays { get; set; }
-        public int FourtyThreeToFourtyNineDays { get; set; }
-        public int FiftyToFiftySixDays { get; set; }
-        public int FiftySevenPlusDays { get; set; }
-
-        #endregion
-
-
-
-
-
-
-        #region ISelective Properties
-
         /// <summary>
-        /// The selective average for the filter applied against the specific KPA or KPI
+        /// Interface to access the template data.
         /// </summary>
-        public double SelectiveAverage { get; set; }
-
-        /// <summary>
-        /// The selective total fo the filter applied against the specific KPA or KPI
-        /// </summary>
-        public int SelectiveTotal { get; set; }
-
-        #endregion
+        TemplateFour template;
 
 
 
@@ -73,43 +40,14 @@ namespace Reporting.KeyPerformanceIndicators.PurchTotal
         /// </summary>
         public PRReleaseDateToConfirmationEntry()
         {
+            // Create a new template object
+            TemplateBlock = new TemplateFour();
+            template = TemplateBlock as TemplateFour;
+
             Section = "Purch Total";
             Name = "PR Release Date to Confirmation Entry";
         }
 
-
-
-
-        /// <summary>
-        /// Returns the template one data for this KPA
-        /// </summary>
-        /// <returns></returns>
-        public List<string> GetTemplateData()
-        {
-            List<string> row = new List<string>();
-
-            // Create template row data
-            row.Add(Section);
-            row.Add(Name);
-            row.Add(string.Format("{0:n}", Average));
-            row.Add(string.Format("{0:n0}", LessThanEqualToZeroDays));
-            row.Add(string.Format("{0:n0}", OneToThreeDays));
-            row.Add(string.Format("{0:n0}", FourToSevenDays));
-            row.Add(string.Format("{0:n0}", EightToFourteenDays));
-            row.Add(string.Format("{0:n0}", FifteenToTwentyOneDays));
-            row.Add(string.Format("{0:n0}", TwentyTwoToTwentyEightDays));
-            row.Add(string.Format("{0:n0}", TwentyNineToThirtyFiveDays));
-            row.Add(string.Format("{0:n0}", ThirtySixtoFourtyTwoDays));
-            row.Add(string.Format("{0:n0}", FourtyThreeToFourtyNineDays));
-            row.Add(string.Format("{0:n0}", FiftyToFiftySixDays));
-            row.Add(string.Format("{0:n0}", FiftySevenPlusDays));
-            row.Add(string.Format("{0:n0}", TotalRecords));
-            row.Add(string.Format("{0:n0}", PercentUnconfirmed + "%"));
-
-
-            //return the template data for this KPA
-            return row;
-        }
 
 
 
@@ -124,7 +62,7 @@ namespace Reporting.KeyPerformanceIndicators.PurchTotal
         {
             try
             {
-                PercentUnconfirmed = Math.Round(((double)_unconfirmedTotal / TotalRecords) * 100, 2);
+                PercentUnconfirmed = Math.Round(((double)_unconfirmedTotal / template.TotalRecords) * 100, 2);
                 if (double.IsNaN(PercentUnconfirmed))
                     PercentUnconfirmed = 0;
 
@@ -143,106 +81,10 @@ namespace Reporting.KeyPerformanceIndicators.PurchTotal
 
 
 
-
-
-        /// <summary>
-        /// Method to apply the elapsed days against the KPA or KPIs time span conditions
-        /// </summary>
-        public void TimeSpanDump(double _elapsedDays)
-        {
-            // Increment the total number of records that satisfy this KPI
-            TotalRecords++;
-
-
-            // Apply the elapsed days against the time span conditions
-            if (_elapsedDays <= 0)
-            {
-                LessThanEqualToZeroDays++;
-            }
-            else if (_elapsedDays >= 1 && _elapsedDays <= 3)
-            {
-                OneToThreeDays++;
-            }
-            else if (_elapsedDays >= 4 && _elapsedDays <= 7)
-            {
-                FourToSevenDays++;
-            }
-            else if (_elapsedDays >= 8 && _elapsedDays <= 14)
-            {
-                EightToFourteenDays++;
-            }
-            else if (_elapsedDays >= 15 && _elapsedDays <= 21)
-            {
-                FifteenToTwentyOneDays++;
-            }
-            else if (_elapsedDays >= 22 && _elapsedDays <= 28)
-            {
-                TwentyTwoToTwentyEightDays++;
-            }
-            else if (_elapsedDays >= 29 && _elapsedDays <= 35)
-            {
-                TwentyNineToThirtyFiveDays++;
-            }
-            else if (_elapsedDays >= 36 && _elapsedDays <= 42)
-            {
-                ThirtySixtoFourtyTwoDays++;
-            }
-            else if (_elapsedDays >= 43 && _elapsedDays <= 49)
-            {
-                FourtyThreeToFourtyNineDays++;
-            }
-            else if (_elapsedDays >= 50 && _elapsedDays <= 56)
-            {
-                FiftyToFiftySixDays++;
-            }
-            else // elapsed days is >= 57
-            {
-                FiftySevenPlusDays++;
-            }
-        }
-
-
-
-
-
-
-        /// <summary>
-        /// Method to calculate the averate for this KPA
-        /// </summary>
-        private void CalculateAverage(double _totalDays)
-        {
-            try
-            {
-                Average = Math.Round(_totalDays / TotalRecords, 2);
-                if (double.IsNaN(Average))
-                    Average = 0;
-            }
-            catch (DivideByZeroException)
-            {
-                Average = 0;
-            }
-        }
-
-
-
-
-
-
-
-        /// <summary>
-        /// Calculates the selective report for this KPA
-        /// </summary>
-        public override void RunSelectiveReport(string uniqueFilters)
-        {
-
-        }
-
-
-
         /// <summary>
         /// Calculates the overall report for this KPA
         /// </summary>
-        public override void RunOverallReport()
+        public override void Run()
         {
             double totalDays = 0;
 
@@ -265,7 +107,7 @@ namespace Reporting.KeyPerformanceIndicators.PurchTotal
                     if (firstConfCreateYear == 0 && firstConfCreateMonth == 0 & firstConfCreateDay == 0)
                     {
                         UnconfirmedTotal++;
-                        TotalRecords++;
+                        template.TotalRecords++;
                         continue;
                     }
                     else
@@ -302,7 +144,7 @@ namespace Reporting.KeyPerformanceIndicators.PurchTotal
 
 
                     // Apply the elapsed days against the time span conditions
-                    TimeSpanDump(elapsedDays);
+                    template.TimeSpanDump(elapsedDays);
 
                 }
 
@@ -310,7 +152,7 @@ namespace Reporting.KeyPerformanceIndicators.PurchTotal
                 CalculatePercentUnconfirmed(UnconfirmedTotal);
 
                 // Calculate the average for this KPI
-                CalculateAverage(totalDays);
+                template.CalculateAverage(totalDays);
             }
             catch (Exception)
             {

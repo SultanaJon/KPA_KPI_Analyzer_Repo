@@ -1,8 +1,10 @@
 ﻿using DataAccessLibrary;
 using KPA_KPI_Analyzer.PerformanceReporting;
 using Reporting;
+using Reporting.Reports;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KPA_KPI_Analyzer
@@ -69,11 +71,11 @@ namespace KPA_KPI_Analyzer
                         reports[ReportingType.KpiOverall] = KpiOverallReport.KpiOverallReportInstance;
                     }
                     break;
-                case ReportingType.KpaReport:
+                case ReportingType.ComparisonReport:
                     // Create the KPA Report
                     try
                     {
-                        reports.Add(_reportType, KpaReport.KpaReportInstance);
+                        //reports.Add(_reportType, KpaReport.KpaRepotInstance);
                     }
                     catch (ArgumentNullException)
                     {
@@ -82,30 +84,15 @@ namespace KPA_KPI_Analyzer
                     catch (ArgumentException)
                     {
                         // Create a new instance of a KPA Report
-                        KpaReport.CreateNewInstance();
-                        
+                        //KpaReport.CreateNewInstance();
+
                         // Assign that instance to the list of reports
-                        reports[ReportingType.KpaReport] = KpaReport.KpaReportInstance;
+                        //reports[ReportingType.KpaReport] = KpaReport.KpaReportInstance;
                     }
                     break;
+                case ReportingType.KpaReport:
+                    break;
                 case ReportingType.KpiReport:
-                    // Create the KPI Report
-                    try
-                    {
-                        reports.Add(_reportType, KpiReport.KpiReportInstance);
-                    }
-                    catch(ArgumentNullException)
-                    {
-                        MessageBox.Show("Argumment Null Exception was thrown.", "KPI Report Creation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    catch(ArgumentException)
-                    {
-                        // Create a new instance of a KPI Report
-                        KpiReport.CreateNewInstance();
-                        
-                        // Assign that instance to the list of reports.
-                        reports[ReportingType.KpiReport] = KpiReport.KpiReportInstance;
-                    }
                     break;
                 default:
                     break;
@@ -265,17 +252,14 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         private void GenerateKpaReport()
         {
-            // Get the filter the user want to use.
-            List<string> filters = GetFilters(reportingWidgetsController.SelectiveFilterOption);
+            //// Get the filter the user want to use.
+            //List<string> filters = GetFilters(reportingWidgetsController.SelectiveFilterOption);
 
-            // Pass the filters to the kpa report to use in the report generation
-            (reports[ReportingType.KpaReport] as KpaReport).SetupReport(filters);
+            //// Bring the loading screen to the front
+            //ActivateLoadingScreen("Loading KPA Report...");
 
-            // Bring the loading screen to the front
-            ActivateLoadingScreen("Loading KPA Report...");
-
-            // Run the KPA Report
-            (reports[ReportingType.KpaReport] as KpaReport).RunReport();
+            //// Pass the filters to the kpa report to use in the report generation
+            //(reports[ReportingType.KpaReport] as KpaReport).RunReport(filters, reportingWidgetsController.SelectiveFilterOption);
         }
 
 
@@ -286,14 +270,14 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         private void GenerateKpiReport()
         {
-            // Get the filter the user want to use.
-            List<string> filters = GetFilters(reportingWidgetsController.SelectiveFilterOption);
+            //// Get the filter the user want to use.
+            //List<string> filters = GetFilters(reportingWidgetsController.SelectiveFilterOption);
 
-            // Pass the filters to the KPI report to use in the report generation
-            (reports[ReportingType.KpiReport] as KpiReport).SetupReport(filters);
+            //// Bring the loading screen to the front
+            //ActivateLoadingScreen("Loading KPI Report...");
 
-            // Run the KPI Report
-            (reports[ReportingType.KpiReport] as KpiReport).RunReport();
+            //// Pass the filters to the KPI report to use in the report generation
+            //(reports[ReportingType.KpiReport] as KpiReport).RunReport(filters, reportingWidgetsController.SelectiveFilterOption);
         }
 
 

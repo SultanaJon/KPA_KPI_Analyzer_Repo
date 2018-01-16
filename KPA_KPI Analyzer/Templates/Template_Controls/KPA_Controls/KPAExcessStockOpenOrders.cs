@@ -3,7 +3,8 @@ using KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader;
 using KPA_KPI_Analyzer.Values;
 using Reporting;
 using Reporting.KeyPerformanceActions;
-using Reporting.Overall;
+using Reporting.TimeSpans.Templates;
+using Reporting.Reports;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -199,8 +200,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             AnalysisOne = "- Will only show in this field if the PR is not fully released, the PR Open Qty > 0, General Stock On Order > 0 and Project Stock On Order > 0.";
             AnalysisTwo = "- Difference between todays date and the date the PR was created.";
 
-            ITemplateOne tempOne = (KpaOverallReport.Actions[(int)KpaOption.ExcessStockOpenOrders_PrsAgingNotReleased]
-                                as Reporting.KeyPerformanceActions.ExcessStockOpenOrders.PRsAgingNotReleased);
+            TemplateOne tempOne = KpaOverallReport.Actions[(int)KpaOption.ExcessStockOpenOrders_PrsAgingNotReleased].TemplateBlock as TemplateOne;
 
 
             // Add the data to the column chart
@@ -249,8 +249,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             AnalysisOne = "- Will only show in this field if the PR is fully released, the PR open Qty > 0, General Stock On Order > 0 and Project Stock On Order > 0.";
             AnalysisTwo = "- Difference between todays date and the date the PR was fully released.";
 
-            ITemplateOne tempOne = (KpaOverallReport.Actions[(int)KpaOption.ExcessStockStock_PrsAgingReleased]
-                                as Reporting.KeyPerformanceActions.ExcessStockOpenOrders.PRsAgingReleased);
+            TemplateOne tempOne = KpaOverallReport.Actions[(int)KpaOption.ExcessStockStock_PrsAgingReleased].TemplateBlock as TemplateOne;
 
             // Add the data to the column chart
             dp.addLabely(lbl_xLabelOne.Text, tempOne.LessThanEqualToZeroDays.ToString());
@@ -295,8 +294,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             AnalysisOne = "- Will only show in this field if PR is on PO, PO line item does not have a confirmation date, PO line is not received complete, General Stock On Order > 0 and Project Stock On Order > 0.";
             AnalysisTwo = "- Difference between todays date and the date the PR was added to the PO.";
 
-            ITemplateOne tempOne = (KpaOverallReport.Actions[(int)KpaOption.ExcessStockStock_PoCreationTruDelivery]
-                                as Reporting.KeyPerformanceActions.ExcessStockOpenOrders.POCreationThruDelivery);
+            TemplateOne tempOne = KpaOverallReport.Actions[(int)KpaOption.ExcessStockStock_PoCreationTruDelivery].TemplateBlock as TemplateOne;
 
 
             // Add the data to the column chart

@@ -3,7 +3,9 @@ using KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader;
 using KPA_KPI_Analyzer.Values;
 using Reporting;
 using Reporting.KeyPerformanceActions;
-using Reporting.Overall;
+
+using Reporting.Reports;
+using Reporting.TimeSpans.Templates;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -176,8 +178,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             AnalysisTwo = "- Difference between current confirmed date and current plan date.";
 
 
-            ITemplateOne tempOne = (KpaOverallReport.Actions[(int)KpaOption.FollowUp_ConfirmedDateVsPlanDate]
-                                as Reporting.KeyPerformanceActions.FollowUp.ConfirmedDateVsPlanDate);
+            // Get the template data
+            TemplateOne tempOne = KpaOverallReport.Actions[(int)KpaOption.FollowUp_ConfirmedDateVsPlanDate].TemplateBlock as TemplateOne;
 
 
             // Add the data to the column chart
@@ -225,9 +227,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             AnalysisOne = "- Will only show for PO line items with a confirmation date and have not been received complete.";
             AnalysisTwo = "- Difference between the confirmation date and todays date.";
 
-
-            ITemplateOne tempOne = (KpaOverallReport.Actions[(int)KpaOption.FollowUp_ConfirmedDateForUpcomingDeliveries]
-                                as Reporting.KeyPerformanceActions.FollowUp.ConfirmedDateForUpcomingDeliveries);
+            // Get the template data
+            TemplateOne tempOne = KpaOverallReport.Actions[(int)KpaOption.FollowUp_ConfirmedDateForUpcomingDeliveries].TemplateBlock as TemplateOne;
 
 
             // Add the data to the column chart
@@ -275,8 +276,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             AnalysisOne = "- Open PO line which is confirmed for today or in the past.";
             AnalysisTwo = "- Difference between todays date and the current confirmation date.";
 
-            ITemplateOne tempOne = (KpaOverallReport.Actions[(int)KpaOption.FollowUp_DueTodayOrLateToConfirmed]
-                                as Reporting.KeyPerformanceActions.FollowUp.DueTodayOrLateToConfirmed);
+            // Get the template data
+            TemplateOne tempOne = KpaOverallReport.Actions[(int)KpaOption.FollowUp_DueTodayOrLateToConfirmed].TemplateBlock as TemplateOne;
 
 
             // Add the data to the column chart

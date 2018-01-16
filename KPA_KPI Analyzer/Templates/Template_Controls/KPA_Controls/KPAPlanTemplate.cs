@@ -3,7 +3,8 @@ using KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader;
 using KPA_KPI_Analyzer.Values;
 using Reporting;
 using Reporting.KeyPerformanceActions;
-using Reporting.Overall;
+using Reporting.TimeSpans.Templates;
+using Reporting.Reports;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -194,8 +195,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             AnalysisTwo = "- Difference between todays date and the date the PR was created.";
 
 
-            ITemplateOne tempOne = (KpaOverallReport.Actions[(int)KpaOption.Plan_PrsAgingNotReleased]
-                                as Reporting.KeyPerformanceActions.Plan.PRsAgingNotReleased);
+            TemplateOne tempOne = KpaOverallReport.Actions[(int)KpaOption.Plan_PrsAgingNotReleased].TemplateBlock as TemplateOne;
 
 
             // Add the data to the column chart
@@ -244,8 +244,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             AnalysisOne = "- Will only show in this field if PR is fully released and the PR Open Qty > 0.";
             AnalysisTwo = "- Difference between the current requirement date and todays date.";
 
-            ITemplateOne tempOne = (KpaOverallReport.Actions[(int)KpaOption.Plan_MaterialDue]
-                                as Reporting.KeyPerformanceActions.Plan.MaterialDue);
+            TemplateOne tempOne = KpaOverallReport.Actions[(int)KpaOption.Plan_MaterialDue].TemplateBlock as TemplateOne;
 
 
             // Add the data to the column chart

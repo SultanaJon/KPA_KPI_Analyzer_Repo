@@ -1,4 +1,7 @@
-﻿namespace Reporting.KeyPerformanceActions
+﻿using Reporting.TimeSpans.Templates;
+using System.Collections.Generic;
+
+namespace Reporting.KeyPerformanceActions
 {
     public enum KpaOption
     {
@@ -28,7 +31,7 @@
     }
 
 
-    public abstract class KeyPerformanceAction : Performance
+    public abstract class KeyPerformanceAction
     {
         public static string[] options =
         {
@@ -58,6 +61,12 @@
         };
 
 
+        /// <summary>
+        /// Property to access the template data
+        /// </summary>
+        public Template TemplateBlock { get; set; }
+
+
 
         /// <summary>
         /// The section that this KPA belongs under
@@ -73,33 +82,34 @@
 
 
         /// <summary>
-        /// Default Constructor
+        /// Returns the details of the KPA
         /// </summary>
-        public KeyPerformanceAction()
+        public List<string> Details
         {
-            if(1 == 1)
+            get
             {
-                ;
+                List<string> temp = new List<string>();
+                temp.Add(Section);
+                temp.Add(Name);
+                return temp;
             }
         }
 
 
-        /// <summary>
-        /// Method to calculate the selective report for this Key Performance Action (KPA)
-        /// </summary>
-        public abstract void RunSelectiveReport(string filter);
 
 
         /// <summary>
-        /// Method to calculate the overall report this Key Performance Action (KPA)
+        /// Default Constructor
         /// </summary>
-        public abstract void RunOverallReport();
-
+        public KeyPerformanceAction()
+        {
+            
+        }
 
 
         /// <summary>
-        /// Abstract method to calculate the average of the KPA
+        /// Method to calculate of the KPA
         /// </summary>
-        internal abstract void CalculateAverage(double _totalDays);
+        public abstract void Run();
     }
 }

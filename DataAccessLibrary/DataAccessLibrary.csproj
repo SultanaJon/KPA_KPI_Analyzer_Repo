@@ -52,7 +52,7 @@
     <Compile Include="FilterManager.cs" />
     <Compile Include="Importing\Importer.cs" />
     <Compile Include="KpaManager.cs" />
-    <Compile Include="KpiUtils.cs" />
+    <Compile Include="KpiManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Exceptions\PRPODatabaseNotFoundException.cs" />
     <Compile Include="Exceptions\TableNameMismatchException.cs" />

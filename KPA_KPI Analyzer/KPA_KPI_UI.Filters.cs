@@ -2,6 +2,7 @@
 using Filters;
 using Filters.Variants;
 using Reporting;
+using Reporting.Reports;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;

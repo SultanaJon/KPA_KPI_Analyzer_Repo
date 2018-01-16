@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IFavorable.cs" />
-    <Compile Include="Interfaces\ISelective.cs" />
     <Compile Include="Interfaces\ITotalValue.cs" />
     <Compile Include="Interfaces\IUnconfirmed.cs" />
     <Compile Include="KeyPerformanceActions\CurrentPlanVsActual\CurrentPlanDateVsCurrentConfirmationDate.cs" />
@@ -89,16 +88,9 @@
     <Compile Include="KeyPerformanceIndicators\PurchTwo\POReleaseDateVsPOConfirmationDate.cs" />
     <Compile Include="KeyPerformanceIndicators\PurchTwo\PR2ndLvlReleaseDateVsPOCreationDate.cs" />
     <Compile Include="KeyPerformanceIndicators\Purch\InitialConfirmationDateVsPRPlanDate.cs" />
-    <Compile Include="KpaOverallReport.cs" />
-    <Compile Include="KpaReport.cs" />
-    <Compile Include="KpiOverallReport.cs" />
-    <Compile Include="KpiReport.cs" />
-    <Compile Include="Overall\ITemplateFive.cs" />
-    <Compile Include="Overall\ITemplateFour.cs" />
-    <Compile Include="Overall\ITemplateOne.cs" />
-    <Compile Include="Overall\ITemplateThree.cs" />
-    <Compile Include="Overall\ITemplateTwo.cs" />
-    <Compile Include="Performance.cs" />
+    <Compile Include="Reports\ComparisonReport.cs" />
+    <Compile Include="Reports\KpaOverallReport.cs" />
+    <Compile Include="Reports\KpiOverallReport.cs" />
     <Compile Include="Report.cs" />
     <Compile Include="KeyPerformanceActions\Plan\MaterialDue.cs" />
     <Compile Include="KeyPerformanceActions\Plan\PRsAgingNotReleased.cs" />
@@ -111,6 +103,17 @@
     <Compile Include="KeyPerformanceActions\Purch\PRsAgingReleased.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReportingCountry.cs" />
+    <Compile Include="TimeSpans\Templates\ITemplateFive.cs" />
+    <Compile Include="TimeSpans\Templates\ITemplateFour.cs" />
+    <Compile Include="TimeSpans\Templates\ITemplateOne.cs" />
+    <Compile Include="TimeSpans\Templates\ITemplateThree.cs" />
+    <Compile Include="TimeSpans\Templates\ITemplateTwo.cs" />
+    <Compile Include="TimeSpans\Templates\Template.cs" />
+    <Compile Include="TimeSpans\Templates\TemplateFive.cs" />
+    <Compile Include="TimeSpans\Templates\TemplateFour.cs" />
+    <Compile Include="TimeSpans\Templates\TemplateOne.cs" />
+    <Compile Include="TimeSpans\Templates\TemplateThree.cs" />
+    <Compile Include="TimeSpans\Templates\TemplateTwo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ApplicationDirectoryLibrary\ApplicationIOLibrary.csproj">
@@ -129,6 +132,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

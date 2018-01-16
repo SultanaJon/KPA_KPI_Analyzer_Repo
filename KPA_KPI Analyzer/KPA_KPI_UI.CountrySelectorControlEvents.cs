@@ -1,6 +1,7 @@
 ﻿using ApplicationIOLibarary.ApplicationFiles;
 using KPA_KPI_Analyzer.Values;
 using Reporting;
+using Reporting.Reports;
 using System;
 using System.IO;
 using System.Windows.Forms;

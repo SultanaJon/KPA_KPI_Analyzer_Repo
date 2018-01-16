@@ -1,9 +1,9 @@
 ﻿using KPA_KPI_Analyzer.DataLoading;
 using KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader;
 using KPA_KPI_Analyzer.Values;
-using Reporting;
 using Reporting.KeyPerformanceActions;
-using Reporting.Overall;
+using Reporting.TimeSpans.Templates;
+using Reporting.Reports;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -200,8 +200,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             AnalysisTwo = "- Difference between todays date and the date the PR was fully released.";
 
             // Get the template data
-            ITemplateOne tempOne = (KpaOverallReport.Actions[(int)KpaOption.Purch_PRsAgingReleased]
-                    as Reporting.KeyPerformanceActions.Purch.PRsAgingReleased);
+            TemplateOne tempOne = KpaOverallReport.Actions[(int)KpaOption.Purch_PRsAgingReleased].TemplateBlock as TemplateOne;
 
 
             // Add the data to the column chart
@@ -250,8 +249,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             AnalysisTwo = "- Difference between todays date and the date the PR was added to the PO.";
 
             // Get the template data
-            ITemplateOne tempOne = (KpaOverallReport.Actions[(int)KpaOption.Purch_PoFirstRelease]
-                    as Reporting.KeyPerformanceActions.Purch.POFirstRelease);
+            TemplateOne tempOne = KpaOverallReport.Actions[(int)KpaOption.Purch_PoFirstRelease].TemplateBlock as TemplateOne;
 
 
             // Add the data to the column chart
@@ -301,8 +299,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
 
             // Get the template data
-            ITemplateOne tempOne = (KpaOverallReport.Actions[(int)KpaOption.Purch_PoPrevRelease]
-                    as Reporting.KeyPerformanceActions.Purch.POPrevRelease);
+            TemplateOne tempOne = KpaOverallReport.Actions[(int)KpaOption.Purch_PoPrevRelease].TemplateBlock as TemplateOne;
 
 
             // Add the data to the column chart
@@ -352,8 +349,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
 
             // Get the template data
-            ITemplateOne tempOne = (KpaOverallReport.Actions[(int)KpaOption.Purch_NoConfirmation]
-                    as Reporting.KeyPerformanceActions.Purch.NoConfirmations);
+            TemplateOne tempOne = KpaOverallReport.Actions[(int)KpaOption.Purch_NoConfirmation].TemplateBlock as TemplateOne;
 
 
             // Add the data to the column chart

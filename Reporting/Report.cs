@@ -101,15 +101,5 @@ namespace Reporting
 
             return actions;
         }
-
-
-
-
-
-
-        /// <summary>
-        /// Abstract method to run the specific report
-        /// </summary>
-        public abstract void RunReport();
     }
 }
