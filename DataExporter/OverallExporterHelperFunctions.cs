@@ -79,7 +79,6 @@ namespace DataExporter
             int colStart = (int)OverallExcelFile.OverallCellPositions.KpaOverallTempOneColStartPosition;
             int col = colStart;
 
-
             foreach (KeyPerformanceAction action in KpaOverallReport.Actions)
             {
                 // Make sure the action is from template one.
@@ -99,14 +98,12 @@ namespace DataExporter
 
                     if (tempData != null)
                     {
-                        int i;
-
                         // We are starting at position 2 in the array because the first two value are the section and cateogory
                         // The template already contains this data
-                        for (i = 2; i < tempData.Count; ++i)
+                        foreach(string data in tempData)
                         {
                             // if the value in the array is blank, move to the next index in the array
-                            if (tempData[i] == "")
+                            if (data == "")
                             {
                                 // Increment the column and continue
                                 ++col;
@@ -114,7 +111,7 @@ namespace DataExporter
                             }
 
                             // Add the value to the cel
-                            worksheet.Cells[row, col].Value = double.Parse(tempData[i]);
+                            worksheet.Cells[row, col].Value = double.Parse(data);
 
                             // Increment the column position within the excel file
                             ++col;
@@ -160,10 +157,10 @@ namespace DataExporter
                     {
                         // We are starting at position 2 in the array because the first two value are the section and cateogory
                         // The template already contains this data
-                        for (int i = 2; i < tempData.Count; ++i)
+                        foreach(string data in tempData)
                         {
                             // if the value in the array is blank, move to the next index in the array
-                            if (tempData[i] == "")
+                            if (data == "")
                             {
                                 // Increment the column and continue
                                 ++col;
@@ -171,7 +168,7 @@ namespace DataExporter
                             }
 
                             // Add the value to the cel
-                            worksheet.Cells[row, col].Value = double.Parse(tempData[i]);
+                            worksheet.Cells[row, col].Value = double.Parse(data);
 
                             // Increment the column position
                             ++col;
@@ -227,13 +224,12 @@ namespace DataExporter
 
                     if (tempData != null)
                     {
-
                         // We are starting at position 2 in the array because the first two value are the section and cateogory
                         // The template already contains this data
-                        for (int i = 2; i < tempData.Count; ++i)
+                        foreach(string data in tempData)
                         {
                             // if the value in the array is blank, move to the next index in the array
-                            if (tempData[i] == "")
+                            if (data == "")
                             {
                                 // Increment the column and continue
                                 ++col;
@@ -241,7 +237,7 @@ namespace DataExporter
                             }
 
                             // Add the value to the cel
-                            worksheet.Cells[row, col].Value = double.Parse(tempData[i]);
+                            worksheet.Cells[row, col].Value = double.Parse(data);
 
                             // Increment the column position
                             ++col;
@@ -289,10 +285,10 @@ namespace DataExporter
                     {
                         // We are starting at position 2 in the array because the first two value are the section and cateogory
                         // The template already contains this data
-                        for (int i = 2; i < tempData.Count; ++i)
+                        foreach(string data in tempData)
                         {
                             // if the value in the array is blank, move to the next index in the array
-                            if (tempData[i] == "")
+                            if (data == "")
                             {
                                 // Increment the column and continue
                                 ++col;
@@ -300,7 +296,7 @@ namespace DataExporter
                             }
 
                             // Add the value to the cel
-                            worksheet.Cells[row, col].Value = double.Parse(tempData[i]);
+                            worksheet.Cells[row, col].Value = double.Parse(data);
                             
                             // Increment the column position
                             ++col;
@@ -345,10 +341,10 @@ namespace DataExporter
                     {
                         // We are starting at position 2 in the array because the first two value are the section and cateogory
                         // The template already contains this data
-                        for (int i = 2; i < tempData.Count; ++i)
+                        foreach(string data in tempData)
                         {
                             // if the value in the array is blank, move to the next index in the array
-                            if (tempData[i] == "")
+                            if (data == "")
                             {
                                 // Increment the column and continue
                                 ++col;
@@ -356,7 +352,7 @@ namespace DataExporter
                             }
 
                             // Add the string to the cell
-                            worksheet.Cells[row, col].Value = double.Parse(tempData[i]);
+                            worksheet.Cells[row, col].Value = double.Parse(data);
 
                             // Move to the next column position
                             ++col;

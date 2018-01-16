@@ -95,11 +95,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             DefaultButtonTextColor = System.Drawing.Color.DarkGray;
             RenderOne();
             btn_One.selected = true;
-            btn_One.Textcolor = System.Drawing.Color.Coral;
+            btn_One.Textcolor = Color.Coral;
             DatavizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            Globals.CurrCategory = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PurchTotal][(int)Values.Categories.KpiCategory.PurchTotal.PRReleaseDatetoConfirmationEntryDate];
+            Globals.CurrCategory = Categories.kpiCategories[(int)Values.Sections.KpiSection.PurchTotal][(int)Categories.KpiCategory.PurchTotal.PRReleaseDatetoConfirmationEntryDate];
             ChangeCategory();
         }
 
@@ -196,9 +196,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PurchTotal][(int)Values.Categories.KpiCategory.PurchTotal.PRReleaseDatetoConfirmationEntryDate];
+            Title = Categories.kpiCategories[(int)Sections.KpiSection.PurchTotal][(int)Categories.KpiCategory.PurchTotal.PRReleaseDatetoConfirmationEntryDate];
             Globals.CurrCategory = Title;
-            Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.PurchTotal];
+            Globals.CurrSection = Sections.kpiections[(int)Sections.KpiSection.PurchTotal];
             ChangeCategory();
 
 
@@ -237,8 +237,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TotalOrders = string.Format("{0:n0}", tempFour.TotalRecords);
 
 
-            IUnconfirmed unconfirmedInfo = (KpiOverallReport.Indicators[(int)KpiOption.PurchTotal_PrReleaseDateToConfirmationEntryDate]
-                     as Reporting.KeyPerformanceIndicators.PurchTotal.PRReleaseDateToConfirmationEntry);
+            IUnconfirmed unconfirmedInfo = (KpiOverallReport.Indicators[(int)KpiOption.PurchTotal_PrReleaseDateToConfirmationEntryDate] as IUnconfirmed);
 
             // Get the uncofnrimed information
             PercNoConf = string.Format("{0:n}", unconfirmedInfo.PercentUnconfirmed);

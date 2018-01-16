@@ -226,8 +226,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TotalOrders = string.Format("{0:n0}", tempThree.TotalRecords);
 
 
-            IUnconfirmed unconfirmedInfo = (KpiOverallReport.Indicators[(int)KpiOption.Purch_InitialConfirmationDateVsPrPlanDate]
-                    as Reporting.KeyPerformanceIndicators.Purch.InitialConfirmationDateVsPRPlanDate);
+            IUnconfirmed unconfirmedInfo = (KpiOverallReport.Indicators[(int)KpiOption.Purch_InitialConfirmationDateVsPrPlanDate] as IUnconfirmed);
 
             // Get the uncofnrimed information
             PercNoConf = string.Format("{0:n}", unconfirmedInfo.PercentUnconfirmed);
