@@ -27,7 +27,7 @@ namespace DataAccessLibrary
                 }
                 catch (InvalidOperationException)
                 {
-                    MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Operation Exception was thrown", "Get All POs Error", MessageBoxButtons.OK);
                 }
 
                 return dt;
@@ -53,7 +53,7 @@ namespace DataAccessLibrary
                 }
                 catch (InvalidOperationException)
                 {
-                    MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Operation Exception was thrown", "Get PO Lines Unconfirmed Error", MessageBoxButtons.OK);
                 }
 
                 return dt;
@@ -78,7 +78,7 @@ namespace DataAccessLibrary
                 }
                 catch (InvalidOperationException)
                 {
-                    MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Operation Exception was thrown", "Get PO Lines Received Complete Error", MessageBoxButtons.OK);
                 }
 
                 return dt;
@@ -103,7 +103,7 @@ namespace DataAccessLibrary
                 }
                 catch (InvalidOperationException)
                 {
-                    MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Operation Exception was thrown", "Get Unconfirmed Received Complete PO Lines Error", MessageBoxButtons.OK);
                 }
 
                 return dt;
@@ -128,11 +128,38 @@ namespace DataAccessLibrary
                 }
                 catch (InvalidOperationException)
                 {
-                    MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Released to the Second Level Error", MessageBoxButtons.OK);
                 }
 
                 return dt;
             }
+
+
+            public static DataTable GetFullyReleasedPRs()
+            {
+                DataTable dt = new DataTable();
+
+                try
+                {
+                    OleDbConnection conn = DatabaseManager.GetDatabaseConnection();
+                    string cmdString = "SELECT * FROM " + DatabaseManager.TargetTable +
+                        " WHERE " + "(" + DatabaseManager.TargetTable + ".[PR Fully Rel Date] <> '00/00/0000')" + DatabaseManager.Filters;
+
+
+                    OleDbCommand cmd = new OleDbCommand(cmdString, conn);
+                    OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+
+                    da.Fill(dt);
+
+                }
+                catch (InvalidOperationException)
+                {
+                    MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Fully Released Error", MessageBoxButtons.OK);
+                }
+
+                return dt;
+            }
+
 
             public static DataTable GetAllData()
             {
@@ -161,7 +188,7 @@ namespace DataAccessLibrary
                 }
                 catch (InvalidOperationException)
                 {
-                    MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Operation Exception was thrown", "Get All Data Error", MessageBoxButtons.OK);
                 }
 
                 return dt;

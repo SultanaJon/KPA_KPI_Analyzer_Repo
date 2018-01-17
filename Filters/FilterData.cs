@@ -269,6 +269,7 @@ namespace Filters
             public static List<string> escaped = new List<string>();
             public static List<string> poDocumentType = new List<string>();
             public static List<string> prodOrderMat = new List<string>();
+            public static List<string> storageLocation = new List<string>();
 
             #endregion
 
@@ -295,6 +296,7 @@ namespace Filters
                 escaped.Clear();
                 poDocumentType.Clear();
                 prodOrderMat.Clear();
+                storageLocation.Clear();
             }
 
             #endregion
@@ -517,6 +519,8 @@ namespace Filters
             selectedFilters.Add(FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.Escaped], new List<string>(ColumnFilters.escaped));
             selectedFilters.Add(FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.PoDocType], new List<string>(ColumnFilters.poDocumentType));
             selectedFilters.Add(FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.ProdOrdMaterial], new List<string>(ColumnFilters.prodOrderMat));
+            selectedFilters.Add(FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.StorageLocation], new List<string>(ColumnFilters.storageLocation));
+
 
             return selectedFilters;
         }
@@ -555,6 +559,7 @@ namespace Filters
             ColumnFilters.escaped = new List<string>(variantDetails[FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.Escaped]]);
             ColumnFilters.poDocumentType = new List<string>(variantDetails[FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.PoDocType]]);
             ColumnFilters.prodOrderMat = new List<string>(variantDetails[FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.ProdOrdMaterial]]);
+            ColumnFilters.prodOrderMat = new List<string>(variantDetails[FilterVariants.filterCategories[(int)FilterVariants.FilterCategory.StorageLocation]]);
         }
 
         #endregion

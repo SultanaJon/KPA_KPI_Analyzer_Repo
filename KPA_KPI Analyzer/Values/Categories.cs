@@ -103,6 +103,7 @@
         {
             public enum Plan : byte
             {
+                PrReleaseDateVsPrCreationDate,
                 CurrentPlanDateVsPrPlanDate,
                 OriginalPlanDate2ndLvlReleaseDatevsCodedLeadTime,
                 CurrentPlanDate2ndLvlReleaseDatevsCodedLeadTime
@@ -169,7 +170,7 @@
         public static string[][] kpiCategories =
         {
                 // Plan One
-                new string[] { "Current Plan vs PR Plan Date", "(Original Plan Date - PR Fully Released Date) vs Coded Lead-Time", "(Current Plan Date - PR Fully Released Date) vs Coded Lead-Time"},
+                new string[] { "PR Release Date vs PR Creation Date", "Current Plan vs PR Plan Date", "(Original Plan Date - PR Fully Released Date) vs Coded Lead-Time", "(Current Plan Date - PR Fully Released Date) vs Coded Lead-Time"},
                 // Purch
                 new string[] { "Initial Confirmation Date vs PR Plan Date"},
                 // Follow Up

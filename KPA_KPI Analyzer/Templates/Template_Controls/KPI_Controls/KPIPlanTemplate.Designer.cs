@@ -153,6 +153,7 @@
             this.lbl_analysisTwo = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.lbl_analysisOne = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.datavizLoadTimer = new System.Windows.Forms.Timer(this.components);
+            this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.tblPnl_template.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -254,6 +255,7 @@
             // panel2
             // 
             this.tblPnl_template.SetColumnSpan(this.panel2, 2);
+            this.panel2.Controls.Add(this.bunifuFlatButton1);
             this.panel2.Controls.Add(this.btn_Three);
             this.panel2.Controls.Add(this.btn_Two);
             this.panel2.Controls.Add(this.btn_One);
@@ -270,7 +272,7 @@
             this.btn_Three.BackColor = System.Drawing.SystemColors.Control;
             this.btn_Three.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_Three.BorderRadius = 0;
-            this.btn_Three.ButtonText = "(Current Plan Date - PR Fully Released Date) vs coded lead-time";
+            this.btn_Three.ButtonText = "(Original Plan Date - PR Fully Released Date) vs coded lead-time";
             this.btn_Three.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Three.DisabledColor = System.Drawing.SystemColors.Control;
             this.btn_Three.Dock = System.Windows.Forms.DockStyle.Left;
@@ -297,7 +299,7 @@
             this.btn_Three.Size = new System.Drawing.Size(209, 50);
             this.btn_Three.TabIndex = 2;
             this.btn_Three.Tag = "2";
-            this.btn_Three.Text = "(Current Plan Date - PR Fully Released Date) vs coded lead-time";
+            this.btn_Three.Text = "(Original Plan Date - PR Fully Released Date) vs coded lead-time";
             this.btn_Three.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btn_Three.Textcolor = System.Drawing.Color.DimGray;
             this.btn_Three.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -309,7 +311,7 @@
             this.btn_Two.BackColor = System.Drawing.SystemColors.Control;
             this.btn_Two.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_Two.BorderRadius = 0;
-            this.btn_Two.ButtonText = "(Original Plan Date - PR Fully Released Date) vs coded lead-time";
+            this.btn_Two.ButtonText = "Current Planned Date vs PR Planned Date";
             this.btn_Two.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Two.DisabledColor = System.Drawing.SystemColors.Control;
             this.btn_Two.Dock = System.Windows.Forms.DockStyle.Left;
@@ -336,7 +338,7 @@
             this.btn_Two.Size = new System.Drawing.Size(214, 50);
             this.btn_Two.TabIndex = 1;
             this.btn_Two.Tag = "1";
-            this.btn_Two.Text = "(Original Plan Date - PR Fully Released Date) vs coded lead-time";
+            this.btn_Two.Text = "Current Planned Date vs PR Planned Date";
             this.btn_Two.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btn_Two.Textcolor = System.Drawing.Color.DimGray;
             this.btn_Two.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -348,7 +350,7 @@
             this.btn_One.BackColor = System.Drawing.SystemColors.Control;
             this.btn_One.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_One.BorderRadius = 0;
-            this.btn_One.ButtonText = "Current Planned Date vs PR Planned Date";
+            this.btn_One.ButtonText = "PR Release vs PR Creation";
             this.btn_One.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_One.DisabledColor = System.Drawing.Color.Gray;
             this.btn_One.Dock = System.Windows.Forms.DockStyle.Left;
@@ -374,7 +376,7 @@
             this.btn_One.Size = new System.Drawing.Size(175, 50);
             this.btn_One.TabIndex = 0;
             this.btn_One.Tag = "0";
-            this.btn_One.Text = "Current Planned Date vs PR Planned Date";
+            this.btn_One.Text = "PR Release vs PR Creation";
             this.btn_One.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btn_One.Textcolor = System.Drawing.Color.DimGray;
             this.btn_One.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -2194,6 +2196,44 @@
             this.datavizLoadTimer.Interval = 500;
             this.datavizLoadTimer.Tick += new System.EventHandler(this.datavizLoadTimer_Tick);
             // 
+            // bunifuFlatButton1
+            // 
+            this.bunifuFlatButton1.Activecolor = System.Drawing.SystemColors.Control;
+            this.bunifuFlatButton1.BackColor = System.Drawing.SystemColors.Control;
+            this.bunifuFlatButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuFlatButton1.BorderRadius = 0;
+            this.bunifuFlatButton1.ButtonText = "(Current Plan Date - PR Fully Released Date) vs coded lead-time";
+            this.bunifuFlatButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bunifuFlatButton1.DisabledColor = System.Drawing.Color.Gray;
+            this.bunifuFlatButton1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.bunifuFlatButton1.Iconcolor = System.Drawing.Color.Transparent;
+            this.bunifuFlatButton1.Iconimage = null;
+            this.bunifuFlatButton1.Iconimage_right = null;
+            this.bunifuFlatButton1.Iconimage_right_Selected = null;
+            this.bunifuFlatButton1.Iconimage_Selected = null;
+            this.bunifuFlatButton1.IconMarginLeft = 0;
+            this.bunifuFlatButton1.IconMarginRight = 0;
+            this.bunifuFlatButton1.IconRightVisible = true;
+            this.bunifuFlatButton1.IconRightZoom = 0D;
+            this.bunifuFlatButton1.IconVisible = true;
+            this.bunifuFlatButton1.IconZoom = 90D;
+            this.bunifuFlatButton1.IsTab = false;
+            this.bunifuFlatButton1.Location = new System.Drawing.Point(598, 0);
+            this.bunifuFlatButton1.Margin = new System.Windows.Forms.Padding(0);
+            this.bunifuFlatButton1.Name = "bunifuFlatButton1";
+            this.bunifuFlatButton1.Normalcolor = System.Drawing.SystemColors.Control;
+            this.bunifuFlatButton1.OnHovercolor = System.Drawing.SystemColors.Control;
+            this.bunifuFlatButton1.OnHoverTextColor = System.Drawing.Color.Coral;
+            this.bunifuFlatButton1.selected = false;
+            this.bunifuFlatButton1.Size = new System.Drawing.Size(175, 50);
+            this.bunifuFlatButton1.TabIndex = 3;
+            this.bunifuFlatButton1.Tag = "3";
+            this.bunifuFlatButton1.Text = "(Current Plan Date - PR Fully Released Date) vs coded lead-time";
+            this.bunifuFlatButton1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.bunifuFlatButton1.Textcolor = System.Drawing.Color.DimGray;
+            this.bunifuFlatButton1.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuFlatButton1.Click += new System.EventHandler(this.CategoryButton_Click);
+            // 
             // KPIPlanTemplate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2429,5 +2469,6 @@
         private Bunifu.Framework.UI.BunifuCustomLabel lbl_analysisOne;
         private Bunifu.Framework.UI.BunifuFlatButton btn_Three;
         private System.Windows.Forms.Timer datavizLoadTimer;
+        private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton1;
     }
 }

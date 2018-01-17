@@ -25,8 +25,8 @@ namespace KPA_KPI_Analyzer
         /// <summary>
         /// Updates the contents of the of the checked list boxes on the filters page.
         /// </summary>
-        /// <param name="data"></param>
-        /// <param name="filter"></param>
+        /// <param name="data">The hashset of filter to be added</param>
+        /// <param name="filter">The filter associated with the hashset filters</param>
         public void UpdateFilters(HashSet<string> data, FilterColumn filter)
         {
             HasFiltersAdded();
@@ -141,6 +141,14 @@ namespace KPA_KPI_Analyzer
                         ChkdListBx_productionOrderMat.Items.AddRange(lst.ToArray());
                     });
                     break;
+                case 16: // Storage Location
+                    ChkdListBx_storageLocation.Invoke((MethodInvoker)delegate
+                    {
+                        ChkdListBx_storageLocation.Items.Clear();
+                        lst = new List<string>(data);
+                        ChkdListBx_storageLocation.Items.AddRange(lst.ToArray());
+                    });
+                    break;
                 default:
                     break;
             }
@@ -197,6 +205,9 @@ namespace KPA_KPI_Analyzer
 
             data = FilterManager.GetUniqueProductionOrderMaterial();
             UpdateFilters(data, FilterColumn.ProdOrderMaterial);
+
+            data = FilterManager.GetUniqueStorageLocation();
+            UpdateFilters(data, FilterColumn.StorageLocation);
 
             FilterUtils.FiltersLoaded = true;
         }
@@ -384,7 +395,7 @@ namespace KPA_KPI_Analyzer
                         BuildQueryFilters();
                     }
                     break;
-                case 14: // PO Document Type
+                case 14: // Production Order Material
                     if (e.NewValue == CheckState.Checked)
                     {
                         FilterData.ColumnFilters.prodOrderMat.Add(clb.Items[e.Index].ToString());
@@ -393,6 +404,18 @@ namespace KPA_KPI_Analyzer
                     else
                     {
                         FilterData.ColumnFilters.prodOrderMat.Remove(clb.Items[e.Index].ToString());
+                        BuildQueryFilters();
+                    }
+                    break;
+                case 15: // Storage Location
+                    if (e.NewValue == CheckState.Checked)
+                    {
+                        FilterData.ColumnFilters.storageLocation.Add(clb.Items[e.Index].ToString());
+                        BuildQueryFilters();
+                    }
+                    else
+                    {
+                        FilterData.ColumnFilters.storageLocation.Remove(clb.Items[e.Index].ToString());
                         BuildQueryFilters();
                     }
                     break;
@@ -1037,6 +1060,23 @@ namespace KPA_KPI_Analyzer
                     }
                     ChkdListBx_productionOrderMat.ItemCheck += ckdListBox_ItemCheck;
                 }
+
+
+                // Storage Location
+                if (FilterData.ColumnFilters.storageLocation.Count > 0)
+                {
+                    ChkdListBx_storageLocation.ItemCheck -= ckdListBox_ItemCheck;
+                    foreach (string str in FilterData.ColumnFilters.storageLocation)
+                    {
+                        index = ChkdListBx_storageLocation.Items.IndexOf(str);
+                        if (index >= 0)
+                        {
+                            if (!ChkdListBx_storageLocation.GetItemChecked(index))
+                                ChkdListBx_storageLocation.SetItemChecked(index, true);
+                        }
+                    }
+                    ChkdListBx_storageLocation.ItemCheck += ckdListBox_ItemCheck;
+                }
             }
         }
 
@@ -1429,6 +1469,34 @@ namespace KPA_KPI_Analyzer
                         filters += ")";
                 }
             }
+
+
+
+
+            // Storage Location
+            if (FilterData.ColumnFilters.storageLocation.Count > 0)
+            {
+                for (int i = 0; i < FilterData.ColumnFilters.storageLocation.Count; ++i)
+                {
+                    if (i == 0 && filters != string.Empty)
+                        filters += " AND (";
+
+                    if (i == 0 && filters == string.Empty)
+                        filters += "(";
+
+
+                    if (FilterData.ColumnFilters.storageLocation[i] == "[Blanks]")
+                        filters += DatabaseManager.TargetTable + ".[" + FilterManager.filterColumns[(int)FilterColumn.StorageLocation] + "] IS NULL";
+                    else
+                        filters += DatabaseManager.TargetTable + ".[" + FilterManager.filterColumns[(int)FilterColumn.StorageLocation] + "] = " + "'" + FilterData.ColumnFilters.storageLocation[i] + "'";
+
+
+                    if (i != (FilterData.ColumnFilters.storageLocation.Count - 1))
+                        filters += " OR ";
+                    else
+                        filters += ")";
+                }
+            }
         }
 
 
@@ -1568,6 +1636,12 @@ namespace KPA_KPI_Analyzer
             foreach (int i in ChkdListBx_productionOrderMat.CheckedIndices)
             {
                 FilterData.ColumnFilters.prodOrderMat.Add(ChkdListBx_productionOrderMat.Items[i].ToString());
+            }
+
+            // Storage Location
+            foreach (int i in ChkdListBx_storageLocation.CheckedIndices)
+            {
+                FilterData.ColumnFilters.storageLocation.Add(ChkdListBx_storageLocation.Items[i].ToString());
             }
         }
 
@@ -1738,7 +1812,8 @@ namespace KPA_KPI_Analyzer
                 || FilterData.ColumnFilters.commCategory.Count > 0
                 || FilterData.ColumnFilters.escaped.Count > 0
                 || FilterData.ColumnFilters.poDocumentType.Count > 0
-                || FilterData.ColumnFilters.prodOrderMat.Count > 0)
+                || FilterData.ColumnFilters.prodOrderMat.Count > 0
+                || FilterData.ColumnFilters.storageLocation.Count > 0)
             {
                 FilterData.ColumnFilters.Added = true;
             }
@@ -1983,6 +2058,7 @@ namespace KPA_KPI_Analyzer
             checkListBoxes.Add(ChkdListBx_Escaped);
             checkListBoxes.Add(ChkdListBx_poDocumentType);
             checkListBoxes.Add(ChkdListBx_productionOrderMat);
+            checkListBoxes.Add(ChkdListBx_storageLocation);
         }
 
 

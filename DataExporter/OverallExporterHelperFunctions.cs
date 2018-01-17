@@ -209,14 +209,14 @@ namespace DataExporter
                     List<string> tempData = tempThreeData.GetTemplateData();
 
                     if (indicator is IUnconfirmed)
-                        tempData.Add(string.Format("{0:n0}", (indicator as IUnconfirmed).PercentUnconfirmed + "%"));
+                        tempData.Add((indicator as IUnconfirmed).PercentUnconfirmed.ToString());
                     else
                         tempData.Add("");
 
 
                     if(indicator is IFavorable)
                     {
-                        tempData.Add(string.Format("{0:n0}", (indicator as IFavorable).PercentFavorable + "%"));
+                        tempData.Add((indicator as IFavorable).PercentFavorable.ToString());
                     }
 
                     // Remove any unwanted characters

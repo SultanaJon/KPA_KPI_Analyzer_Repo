@@ -144,7 +144,7 @@ namespace KPA_KPI_Analyzer
 
 
                 // Start the loading of fitlers.
-                InitializeFilterLoadProcess();
+                BegingFilterLoadProcess();
             }
             else
             {
@@ -344,6 +344,8 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         public void BeginDataRemovalProcess()
         {
+            ActivateLoadingScreen("Cleaning Data...");
+
             DatabaseDataRemovalUtils.DataRemoved = false;
             DatabaseDataRemovalUtils.CompletedDataRemovals = 0;
             DatabaseDataRemovalUtils.ScheduledDataRemovals = 0;
@@ -395,6 +397,30 @@ namespace KPA_KPI_Analyzer
 
             // Start loading the overall data
             LoadOverallData();
+        }
+
+
+
+        /// <summary>
+        /// Start the loading of the filters.
+        /// </summary>
+        public void BegingFilterLoadProcess()
+        {
+            DateTime today = DateTime.Now.Date;
+            dp_PRFromDate.Value = today;
+            dp_PRToDate.Value = today;
+            dp_POFromDate.Value = today;
+            dp_POToDate.Value = today;
+            dp_finalReceiptFromDate.Value = today;
+            dp_finalReciptToDate.Value = today;
+
+            // Bring the loading screen to the front.
+            ActivateLoadingScreen("Loading Filters...");
+
+            ms_applicaitonMenuStrip.Enabled = false;
+            FilterUtils.FiltersLoaded = false;
+            FilterUtils.FilterLoadProcessStarted = false;
+            FiltersTimer.Start();
         }
 
         #endregion

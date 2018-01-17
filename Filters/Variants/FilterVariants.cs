@@ -92,7 +92,8 @@ namespace Filters.Variants
             CommCategory,
             Escaped,
             PoDocType,
-            ProdOrdMaterial
+            ProdOrdMaterial,
+            StorageLocation
         }
 
 
@@ -121,7 +122,8 @@ namespace Filters.Variants
             "Commodity Category",
             "Escaped",
             "PO Document Type",
-            "Production Order Material"
+            "Production Order Material",
+            "Storage Location"
         };
 
 

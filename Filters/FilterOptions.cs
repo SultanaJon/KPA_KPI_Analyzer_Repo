@@ -20,7 +20,8 @@ namespace Filters
             CommodityCategory,
             Escaped,
             PODocumentType,
-            ProductionOrderMaterial
+            ProductionOrderMaterial,
+            StorageLocation
         }
 
 
@@ -39,7 +40,8 @@ namespace Filters
             "Dsrd Supp Name",
             "Commodity Category",
             "PO Document Type",
-            "Production Order Material"
+            "Production Order Material",
+            "Storage Location"
         };
     }
 }

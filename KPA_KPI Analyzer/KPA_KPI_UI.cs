@@ -508,27 +508,7 @@ namespace KPA_KPI_Analyzer
 
 
 
-		/// <summary>
-		/// Start the loading of the filters.
-		/// </summary>
-		public void InitializeFilterLoadProcess()
-		{
-			DateTime today = DateTime.Now.Date;
-			dp_PRFromDate.Value = today;
-			dp_PRToDate.Value = today;
-			dp_POFromDate.Value = today;
-			dp_POToDate.Value = today;
-			dp_finalReceiptFromDate.Value = today;
-			dp_finalReciptToDate.Value = today;
 
-			// Bring the loading screen to the front.
-			ActivateLoadingScreen("Loading Data...");
-
-			ms_applicaitonMenuStrip.Enabled = false;
-			FilterUtils.FiltersLoaded = false;
-			FilterUtils.FilterLoadProcessStarted = false;
-			FiltersTimer.Start();
-		}
 
 
 
@@ -667,7 +647,7 @@ namespace KPA_KPI_Analyzer
 									dt = GetLoadedUsPrpoReportDate();
 									lbl_topPanelNavPrpoDate.Text = dt.ToString("MMMM dd, yyyy");
 									Globals.PrpoGenerationDate = lbl_topPanelNavPrpoDate.Text;
-									InitializeFilterLoadProcess();
+                                    BegingFilterLoadProcess();
 								}
 								else
 								{
@@ -720,7 +700,7 @@ namespace KPA_KPI_Analyzer
 									dt = GetLoadedMxPrpoReportDate();
 									lbl_topPanelNavPrpoDate.Text = dt.ToString("MMMM dd, yyyy");
 									Values.Globals.PrpoGenerationDate = lbl_topPanelNavPrpoDate.Text;
-									InitializeFilterLoadProcess();
+                                    BegingFilterLoadProcess();
 								}
 								else
 								{

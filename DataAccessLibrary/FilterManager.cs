@@ -5,7 +5,6 @@ using System.Windows.Forms;
 
 namespace DataAccessLibrary
 {
-
     /// <summary>
     /// The names of the columns that will be included in the category filters.
     /// </summary>
@@ -26,8 +25,13 @@ namespace DataAccessLibrary
         CommCat,
         Escaped,
         PoDocumentType,
-        ProdOrderMaterial
+        ProdOrderMaterial,
+        StorageLocation
     }
+
+
+
+
 
 
 
@@ -55,8 +59,14 @@ namespace DataAccessLibrary
             "Commodity category",
             "Escaped",
             "PO Doc# Type",
-            "Prd Ord Mat"
+            "Prd Ord Mat",
+            "Stor# Location"
         };
+
+
+
+
+
 
 
 
@@ -88,6 +98,10 @@ namespace DataAccessLibrary
             strData = tempHash;
             tempHash = null;
         }
+
+
+
+
 
 
 
@@ -161,6 +175,16 @@ namespace DataAccessLibrary
 
 
 
+
+
+
+
+
+
+        /// <summary>
+        /// Gets the unique WBS Element filters.
+        /// </summary>
+        /// <returns>A HasSet<string> data type containing the filters</returns>
         public static HashSet<string> GetUniqueWbsElement()
         {
             HashSet<string> strData = new HashSet<string>();
@@ -198,6 +222,16 @@ namespace DataAccessLibrary
 
 
 
+
+
+
+
+
+
+        /// <summary>
+        /// Gets the unique Material filters.
+        /// </summary>
+        /// <returns>A HasSet<string> data type containing the filters</returns>
         public static HashSet<string> GetUniqueMaterial()
         {
             HashSet<string> strData = new HashSet<string>();
@@ -236,6 +270,16 @@ namespace DataAccessLibrary
 
 
 
+
+
+
+
+
+
+        /// <summary>
+        /// Gets the unique Unique Material Group filters.
+        /// </summary>
+        /// <returns>A HasSet<string> data type containing the filters</returns>
         public static HashSet<string> GetUniqueMaterialGroup()
         {
             HashSet<string> strData = new HashSet<string>();
@@ -274,6 +318,16 @@ namespace DataAccessLibrary
 
 
 
+
+
+
+
+
+
+        /// <summary>
+        /// Gets the unique Unique Vendor filters.
+        /// </summary>
+        /// <returns>A HasSet<string> data type containing the filters</returns>
         public static HashSet<string> GetUniqueVendor()
         {
             HashSet<string> strData = new HashSet<string>();
@@ -311,6 +365,16 @@ namespace DataAccessLibrary
 
 
 
+
+
+
+
+
+
+        /// <summary>
+        /// Gets the unique Vendor Description filters.
+        /// </summary>
+        /// <returns>A HasSet<string> data type containing the filters</returns>
         public static HashSet<string> GetUniqueVendorDescription()
         {
             HashSet<string> strData = new HashSet<string>();
@@ -350,6 +414,15 @@ namespace DataAccessLibrary
 
 
 
+
+
+
+
+
+        /// <summary>
+        /// Gets the unique PR Purchase Group filters.
+        /// </summary>
+        /// <returns>A HasSet<string> data type containing the filters</returns>
         public static HashSet<string> GetUniquePrPurchaseGroup()
         {
             HashSet<string> strData = new HashSet<string>();
@@ -388,6 +461,15 @@ namespace DataAccessLibrary
 
 
 
+
+
+
+
+
+        /// <summary>
+        /// Gets the unique PO Purchase Group filters.
+        /// </summary>
+        /// <returns>A HasSet<string> data type containing the filters</returns>
         public static HashSet<string> GetUniquePoPurchaseGroup()
         {
             HashSet<string> strData = new HashSet<string>();
@@ -427,6 +509,15 @@ namespace DataAccessLibrary
 
 
 
+
+
+
+
+
+        /// <summary>
+        /// Gets the IR Supplier Name filters.
+        /// </summary>
+        /// <returns>A HasSet<string> data type containing the filters</returns>
         public static HashSet<string> GetUniqueIrSuppName()
         {
             HashSet<string> strData = new HashSet<string>();
@@ -464,6 +555,16 @@ namespace DataAccessLibrary
 
 
 
+
+
+
+
+
+
+        /// <summary>
+        /// Gets the unique Fixed Supplier Name filters.
+        /// </summary>
+        /// <returns>A HasSet<string> data type containing the filters</returns>
         public static HashSet<string> GetUniqueFxdSuppName()
         {
             HashSet<string> strData = new HashSet<string>();
@@ -502,6 +603,16 @@ namespace DataAccessLibrary
 
 
 
+
+
+
+
+
+
+        /// <summary>
+        /// Gets the unique Desired Supplier Name filters.
+        /// </summary>
+        /// <returns>A HasSet<string> data type containing the filters</returns>
         public static HashSet<string> GetUniqueDsrdSuppName()
         {
             HashSet<string> strData = new HashSet<string>();
@@ -538,6 +649,17 @@ namespace DataAccessLibrary
         }
 
 
+
+
+
+
+
+
+
+        /// <summary>
+        /// Gets the unique Commodity Category filters.
+        /// </summary>
+        /// <returns>A HasSet<string> data type containing the filters</returns>
         public static HashSet<string> GetUniqueCommodityCategory()
         {
             HashSet<string> strData = new HashSet<string>();
@@ -575,6 +697,16 @@ namespace DataAccessLibrary
 
 
 
+
+
+
+
+
+
+        /// <summary>
+        /// Gets the unique Escaped filters.
+        /// </summary>
+        /// <returns>A HasSet<string> data type containing the filters</returns>
         public static HashSet<string> GetUniqueEscaped()
         {
             HashSet<string> strData = new HashSet<string>();
@@ -612,6 +744,16 @@ namespace DataAccessLibrary
 
 
 
+
+
+
+
+
+
+        /// <summary>
+        /// Gets the unique PO Document type filters.
+        /// </summary>
+        /// <returns>A HasSet<string> data type containing the filters</returns>
         public static HashSet<string> GetUniquePoDocumentType()
         {
             HashSet<string> strData = new HashSet<string>();
@@ -649,6 +791,16 @@ namespace DataAccessLibrary
 
 
 
+
+
+
+
+
+
+        /// <summary>
+        /// Gets the unique production order material filters.
+        /// </summary>
+        /// <returns>A HasSet<string> data type containing the filters</returns>
         public static HashSet<string> GetUniqueProductionOrderMaterial()
         {
             HashSet<string> strData = new HashSet<string>();
@@ -679,6 +831,55 @@ namespace DataAccessLibrary
             catch (InvalidOperationException)
             {
                 MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
+            }
+
+            return strData;
+        }
+
+
+
+
+
+
+
+
+
+        /// <summary>
+        /// Gets the unique storage location filters.
+        /// </summary>
+        /// <returns>A HasSet<string> data type containing the filters</returns>
+        public static HashSet<string> GetUniqueStorageLocation()
+        {
+            HashSet<string> strData = new HashSet<string>();
+
+
+            try
+            {
+                // Get the database connection
+                OleDbConnection conn = DatabaseManager.GetDatabaseConnection();
+
+                string cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.StorageLocation] + "] FROM " + DatabaseManager.TargetTable;
+
+                OleDbCommand cmd = new OleDbCommand(cmdString, conn);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        if (reader[filterColumns[(int)FilterColumn.StorageLocation]] == DBNull.Value)
+                        {
+                            strData.Add("[Blanks]");
+                            continue;
+                        }
+                        else
+                        {
+                            strData.Add(reader[filterColumns[(int)FilterColumn.StorageLocation]].ToString());
+                        }
+                    }
+                }
+            }
+            catch(InvalidOperationException)
+            {
+                MessageBox.Show("Invalid Operation Exception was thrown", "Get Unique Storage Locations", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             return strData;

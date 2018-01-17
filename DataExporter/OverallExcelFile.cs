@@ -84,17 +84,17 @@
 
             KpiOverallTempThreeRowStartPosition = 2,
             KpiOverallTempThreeColStartPosition = 4,
-            KpiOverallTempThreeMaxRow = 10,
+            KpiOverallTempThreeMaxRow = 11,
             KpiOverallTempThreeMaxCol = 16,
 
-            KpiOverallTempFourRowStartPosition = 13,
+            KpiOverallTempFourRowStartPosition = 14,
             KpiOverallTempFourColStartPosition = 4,
-            KpiOverallTempFourMaxRow = 21,
+            KpiOverallTempFourMaxRow = 22,
             KpiOverallTempFourMaxCol = 17,
 
-            KpiOverallTempFiveRowStartPosition = 24,
+            KpiOverallTempFiveRowStartPosition = 25,
             KpiOverallTempFiveColStartPosition = 4,
-            KpiOverallTempFiveMaxRow = 28,
+            KpiOverallTempFiveMaxRow = 29,
             KpiOverallTempFiveMaxCol = 15
         }
     }

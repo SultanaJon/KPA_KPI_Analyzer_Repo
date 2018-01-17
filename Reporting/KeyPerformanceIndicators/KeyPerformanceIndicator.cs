@@ -5,6 +5,7 @@ namespace Reporting.KeyPerformanceIndicators
 {
     public enum KpiOption
     {
+        Plan_PrReleaseDateVsPrCreationDate,
         Plan_CurrentPlanDateVsPrPlanDate,
         Plan_OrigPlanDateMinusPrFullReleaseDateVsCodedLead,
         Plan_CurrentPlanDateMinusPrFullReleaseDateVsCodedLead,
@@ -36,6 +37,7 @@ namespace Reporting.KeyPerformanceIndicators
     {
         public static string[] options =
         {
+            "Plan - PR Release Date vs PR Creation Date",
             "Plan - Current Plan Date vs PR Plan Date",
             "Plan - (Original Plan Date - PR Fully Released Date) vs Coded Lead-Time",
             "Plan - (Current Plan Date - PR Fully Released Date) vs Coded Lead-Time",

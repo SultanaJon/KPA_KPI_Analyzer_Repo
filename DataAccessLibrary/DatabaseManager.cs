@@ -13,6 +13,7 @@ namespace DataAccessLibrary
         public static DataTable prsOnPOsDt;
         public static DataTable posRecCompDt;
         public static DataTable pr2ndLvlRelDateDt;
+        public static DataTable prFullyReleasedDt;
         public static DataTable AllDataDt;
 
 
@@ -246,6 +247,7 @@ namespace DataAccessLibrary
             prsOnPOsDt = new DataTable();
             posRecCompDt = new DataTable();
             pr2ndLvlRelDateDt = new DataTable();
+            prFullyReleasedDt = new DataTable();
             AllDataDt = new DataTable();
 
             try
@@ -257,6 +259,7 @@ namespace DataAccessLibrary
                         prsOnPOsDt = KpiManager.KpiQueries.GetAllPOs();
                         posRecCompDt = KpiManager.KpiQueries.GetPoLinesReceivedComplete();
                         pr2ndLvlRelDateDt = KpiManager.KpiQueries.GetPr2ndLevelRelease();
+                        prFullyReleasedDt = KpiManager.KpiQueries.GetFullyReleasedPRs();
                         AllDataDt = KpiManager.KpiQueries.GetAllData();
                     }
                 }
@@ -281,6 +284,8 @@ namespace DataAccessLibrary
             posRecCompDt = null;
             pr2ndLvlRelDateDt.Clear();
             pr2ndLvlRelDateDt = null;
+            prFullyReleasedDt.Clear();
+            prFullyReleasedDt = null;
             AllDataDt.Clear();
             AllDataDt = null;
             GC.Collect();
