@@ -99,7 +99,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             DatavizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            Globals.CurrCategory = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PurchPlan][(int)Values.Categories.KpiCategory.PurchPlan.POReleasevsPRDeliveryDate];
+            KPA_KPI_UI.topHandleBarModel.Category = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PurchPlan][(int)Values.Categories.KpiCategory.PurchPlan.POReleasevsPRDeliveryDate];
             ChangeCategory();
         }
 
@@ -188,8 +188,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PurchPlan][(int)Values.Categories.KpiCategory.PurchPlan.POReleasevsPRDeliveryDate];
-            Globals.CurrCategory = Title;
-            Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.PurchPlan];
+            KPA_KPI_UI.topHandleBarModel.Category = Title;
+            KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpiections[(int)Values.Sections.KpiSection.PurchPlan];
             ChangeCategory();
 
 

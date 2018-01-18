@@ -107,9 +107,8 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         private void CreateReportPage()
         {
-            lbl_Performance.Text = "N/A";
-            lbl_Section.Text = "N/A";
-            lbl_Category.Text = "N/A";
+            // Set the model indicating that there is currently no KPA or KPI being viewed.
+            topHandleBarModel.Update("N/A", "N/A", "N/A");
 
             FlowLayoutPanel wrapPanel = new FlowLayoutPanel()
             {
@@ -131,7 +130,6 @@ namespace KPA_KPI_Analyzer
             wrapPanel.BringToFront();
             MenuInFront = true;
             pnl_NavigationPanelMax.BringToFront();
-
 
             // Create and register the reporting controller
             reportingWidgetsController = new ReportingController(reportingControls[0] as ISelectiveReportingWidgetView, reportingControls[1] as IComparisonReportingWidgetView);

@@ -102,7 +102,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             DatavizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            Globals.CurrCategory = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PurchSub][(int)Values.Categories.KpiCategory.PurchSub.PRReleaseDatevsPOReleaseDate];
+            KPA_KPI_UI.topHandleBarModel.Category = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PurchSub][(int)Values.Categories.KpiCategory.PurchSub.PRReleaseDatevsPOReleaseDate];
             ChangeCategory();
         }
 
@@ -203,8 +203,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PurchSub][(int)Values.Categories.KpiCategory.PurchSub.PRReleaseDatevsPOReleaseDate];
-            Globals.CurrCategory = Title;
-            Globals.CurrSection = Sections.kpiections[(int)Values.Sections.KpiSection.PurchSub];
+            KPA_KPI_UI.topHandleBarModel.Category = Title;
+            KPA_KPI_UI.topHandleBarModel.Section = Sections.kpiections[(int)Values.Sections.KpiSection.PurchSub];
             ChangeCategory();
 
             AnalysisOne = "- Will show if PR is on a PO that has previously been released.";
@@ -260,8 +260,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PurchSub][(int)Values.Categories.KpiCategory.PurchSub.POCreationDatevsConfirmationEntryDate];
-            Globals.CurrCategory = Title;
-            Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.PurchSub];
+            KPA_KPI_UI.topHandleBarModel.Category = Title;
+            KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpiections[(int)Values.Sections.KpiSection.PurchSub];
             ChangeCategory();
 
 

@@ -36,9 +36,7 @@ namespace KPA_KPI_Analyzer
         private void CreateKpaOverallTemplate()
         {
             activeSectionBtn = btn_kpaOverall;
-            lbl_Performance.Text = "KPA";
-            lbl_Section.Text = "All";
-            lbl_Category.Text = "All";
+            topHandleBarModel.Update("KPA", "ALL", "ALL");
             MenuInFront = true;
             NewKPAOverall kpaOverall = new NewKPAOverall()
             {
@@ -57,14 +55,13 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         private void CreateKpaPlanTemplate()
         {
-            lbl_Section.Text = "Plan";
+            topHandleBarModel.Section = "Plan";
             KPAPlanTemplate kpaPlanTemp = new KPAPlanTemplate()
             {
                 Name = "Plan",
                 Dock = DockStyle.Fill,
             };
 
-            KPAPlanTemplate.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpaPlanTemp);
             kpaPlanTemp.BringToFront();
             MenuInFront = true;
@@ -78,14 +75,13 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         private void CreateKpaPurchTemplate()
         {
-            lbl_Section.Text = "Purch";
+            topHandleBarModel.Section = "Purch";
             KPAPurchTemplate kpaPurchTemp = new KPAPurchTemplate()
             {
                 Name = "Purch",
                 Dock = DockStyle.Fill,
 
             };
-            KPAPurchTemplate.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpaPurchTemp);
             kpaPurchTemp.BringToFront();
             MenuInFront = true;
@@ -99,14 +95,13 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         private void CreateKpaPurchSubTemplate()
         {
-            lbl_Section.Text = "Purch Sub";
+            topHandleBarModel.Section = "Purch Sub";
             KPAPurchSubTemplate kpaPurchSubTemp = new KPAPurchSubTemplate()
             {
                 Name = "PurchSub",
                 Dock = DockStyle.Fill,
             };
 
-            KPAPurchSubTemplate.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpaPurchSubTemp);
             kpaPurchSubTemp.BringToFront();
             MenuInFront = true;
@@ -120,14 +115,13 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         private void CreateKpaPurchTotalTemplate()
         {
-            lbl_Section.Text = "Purch Total";
+            topHandleBarModel.Section = "Purch Total";
             KPAPurchTotalTemplate kpaPurchTotalTemp = new KPAPurchTotalTemplate()
             {
                 Name = "PurchTotal",
                 Dock = DockStyle.Fill,
             };
 
-            KPAPurchTotalTemplate.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpaPurchTotalTemp);
             kpaPurchTotalTemp.BringToFront();
             MenuInFront = true;
@@ -141,13 +135,12 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         private void CreatekpaFollowUpTemplate()
         {
-            lbl_Section.Text = "Follow Up";
+            topHandleBarModel.Section = "Follow Up";
             KPAFollowUpTemplate kpaFollowUpTemp = new KPAFollowUpTemplate()
             {
                 Name = "FollowUp",
                 Dock = DockStyle.Fill,
             };
-            KPAFollowUpTemplate.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpaFollowUpTemp);
             kpaFollowUpTemp.BringToFront();
             MenuInFront = true;
@@ -161,14 +154,12 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         private void CreateKpaHotJobsTemplate()
         {
-            lbl_Section.Text = "Hot Jobs";
+            topHandleBarModel.Section = "Hot Jobs";
             KPAHotJobsTemplate kpaHotJobs = new KPAHotJobsTemplate()
             {
                 Name = "HotJobs",
                 Dock = DockStyle.Fill,
             };
-
-            KPAHotJobsTemplate.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpaHotJobs);
             kpaHotJobs.BringToFront();
             MenuInFront = true;
@@ -182,14 +173,13 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         private void CreateKpaExcessStockStockTemplate()
         {
-            lbl_Section.Text = "Excess Stock - Stock";
+            topHandleBarModel.Section = "Excess Stock - Stock";
             KPAExcessStockStock kpaExcessStockStock = new KPAExcessStockStock()
             {
                 Name = "ExcessStockStock",
                 Dock = DockStyle.Fill,
             };
 
-            KPAExcessStockStock.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpaExcessStockStock);
             kpaExcessStockStock.BringToFront();
             MenuInFront = true;
@@ -203,14 +193,13 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         private void CreateKpaExcessStockOpenOrdersTemplate()
         {
-            lbl_Section.Text = "Excess Stock - Open Orders";
+            topHandleBarModel.Section = "Excess Stock - Open Orders";
             KPAExcessStockOpenOrders kpaExcessStockOpenOrders = new KPAExcessStockOpenOrders()
             {
                 Name = "ExcessStockOpenOrders",
                 Dock = DockStyle.Fill,
             };
 
-            KPAExcessStockOpenOrders.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpaExcessStockOpenOrders);
             kpaExcessStockOpenOrders.BringToFront();
             MenuInFront = true;
@@ -224,13 +213,12 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         private void CreateKpaCurrPlanActualTemplate()
         {
-            lbl_Section.Text = "Current Plan vs Actual";
+            topHandleBarModel.Section = "Current Plan vs Actual";
             KPACurrentPlanActualTemplate kpaCurrPlanActual = new KPACurrentPlanActualTemplate()
             {
                 Name = "CurrPlanActual",
                 Dock = DockStyle.Fill,
             };
-            KPACurrentPlanActualTemplate.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpaCurrPlanActual);
             kpaCurrPlanActual.BringToFront();
             MenuInFront = true;
@@ -245,9 +233,8 @@ namespace KPA_KPI_Analyzer
         private void CreateKpiOverallTemplate()
         {
             activeSectionBtn = btn_kpiOverall;
-            lbl_Performance.Text = "KPI";
-            lbl_Section.Text = "All";
-            lbl_Category.Text = "All";
+            topHandleBarModel.Update("KPI", "ALL", "ALL");
+
             NewKPIOverall kpiOverall = new NewKPIOverall()
             {
                 Name = "Overall",
@@ -266,14 +253,13 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         private void CreateKpiPlanTemplate()
         {
-            lbl_Section.Text = "Plan";
+            topHandleBarModel.Section = "Plan";
             KPIPlanTemplate kpiPlanTemplate = new KPIPlanTemplate()
             {
                 Name = "Plan",
                 Dock = DockStyle.Fill
             };
 
-            KPIPlanTemplate.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpiPlanTemplate);
             kpiPlanTemplate.BringToFront();
             MenuInFront = true;
@@ -287,13 +273,12 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         private void CreateKpiPurchTemplate()
         {
-            lbl_Section.Text = "Purch";
+            topHandleBarModel.Section = "Purch";
             KPIPurchTemplate kpiPurchTemplate = new KPIPurchTemplate()
             {
                 Name = "Purch",
                 Dock = DockStyle.Fill
             };
-            KPIPurchTemplate.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpiPurchTemplate);
             kpiPurchTemplate.BringToFront();
             MenuInFront = true;
@@ -307,13 +292,12 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         private void CreateKpiFollowUpTemplate()
         {
-            lbl_Section.Text = "Follow Up";
+            topHandleBarModel.Section = "Follow Up";
             KPIFollowUpTemplate kpiFollowUpTemplate = new KPIFollowUpTemplate()
             {
                 Name = "FollowUp",
                 Dock = DockStyle.Fill
             };
-            KPIFollowUpTemplate.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpiFollowUpTemplate);
             kpiFollowUpTemplate.BringToFront();
             MenuInFront = true;
@@ -327,13 +311,12 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         private void CreateKpiPlanTwoTemplate()
         {
-            lbl_Section.Text = "Plan II";
+            topHandleBarModel.Section = "Plan II";
             KPIPlanTwoTemplate kpiPlanTwoTemplate = new KPIPlanTwoTemplate()
             {
                 Name = "Plan",
                 Dock = DockStyle.Fill
             };
-            KPIPlanTwoTemplate.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpiPlanTwoTemplate);
             kpiPlanTwoTemplate.BringToFront();
             MenuInFront = true;
@@ -347,13 +330,12 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         private void CreateKpiPurchTwoTemplate()
         {
-            lbl_Section.Text = "Purch II";
+            topHandleBarModel.Section = "Purch II";
             KPIPurchTwoTemplate kpiPurchTwoTemplate = new KPIPurchTwoTemplate()
             {
                 Name = "Purch",
                 Dock = DockStyle.Fill
             };
-            KPIPurchTwoTemplate.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpiPurchTwoTemplate);
             kpiPurchTwoTemplate.BringToFront();
             MenuInFront = true;
@@ -367,13 +349,12 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         private void CreateKpiPurchSubTemplate()
         {
-            lbl_Section.Text = "Purch Sub";
+            topHandleBarModel.Section = "Purch Sub";
             KPIPurchSubTemplate kpiPurchSubTemplate = new KPIPurchSubTemplate()
             {
                 Name = "PurchSub",
                 Dock = DockStyle.Fill
             };
-            KPIPurchSubTemplate.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpiPurchSubTemplate);
             kpiPurchSubTemplate.BringToFront();
             MenuInFront = true;
@@ -387,14 +368,13 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         private void CreateKpiPurchTotalTemplate()
         {
-            lbl_Section.Text = "Purch Total";
+            topHandleBarModel.Section = "Purch Total";
             KPIPurchTotalTemplate kpiPurchTotalTemplate = new KPIPurchTotalTemplate()
             {
                 Name = "PurchTotal",
                 Dock = DockStyle.Fill
             };
 
-            KPIPurchTotalTemplate.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpiPurchTotalTemplate);
             kpiPurchTotalTemplate.BringToFront();
             MenuInFront = true;
@@ -408,14 +388,13 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         private void CreateKpiPurchPlanTemplate()
         {
-            lbl_Section.Text = "Purch/Plan";
+            topHandleBarModel.Section = "Purch/Plan";
             KPIPurchPlanTemplate kpiPurchPlanTemplate = new KPIPurchPlanTemplate()
             {
                 Name = "PurchPlan",
                 Dock = DockStyle.Fill
             };
 
-            KPIPurchPlanTemplate.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpiPurchPlanTemplate);
             kpiPurchPlanTemplate.BringToFront();
             MenuInFront = true;
@@ -429,13 +408,12 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         private void CreateKpiOtherTemplate()
         {
-            lbl_Section.Text = "Other";
+            topHandleBarModel.Section = "Other";
             KPIOtherTemplate kpiOtherTemplate = new KPIOtherTemplate()
             {
                 Name = "Other",
                 Dock = DockStyle.Fill
             };
-            KPIOtherTemplate.ChangeCategory += UpdateCategoryStatus;
             pnl_activePage.Controls.Add(kpiOtherTemplate);
             kpiOtherTemplate.BringToFront();
             MenuInFront = true;
@@ -701,9 +679,7 @@ namespace KPA_KPI_Analyzer
             {
                 activeSectionBtn = btn_kpaOverall;
                 SetActiveSectionBtn(activeSectionBtn);
-                lbl_Performance.Text = "KPA";
-                lbl_Section.Text = "All";
-                lbl_Category.Text = "All";
+                topHandleBarModel.Update("KPA", "ALL", "ALL");
                 MenuInFront = true;
                 NewKPAOverall kpaOverall = new NewKPAOverall()
                 {
@@ -719,9 +695,8 @@ namespace KPA_KPI_Analyzer
             {
                 activeSectionBtn = btn_kpiOverall;
                 SetActiveSectionBtn(activeSectionBtn);
-                lbl_Performance.Text = "KPI";
-                lbl_Section.Text = "All";
-                lbl_Category.Text = "All";
+                topHandleBarModel.Update("KPI", "ALL", "ALL");
+
                 MenuInFront = true;
                 NewKPIOverall kpiOverall = new NewKPIOverall()
                 {
@@ -735,36 +710,13 @@ namespace KPA_KPI_Analyzer
         }
 
 
-
-        /// <summary>
-        /// Loads the data coming soon template.
-        /// </summary>
-        private void LoadDataComingSoonTemplate()
-        {
-            lbl_Section.Text = "N/A";
-            lbl_Category.Text = "N/A";
-            MenuInFront = true;
-            DataComingSoon comingSoon = new DataComingSoon()
-            {
-                Name = "DataComingSoon",
-                Dock = DockStyle.Fill
-            };
-
-            pnl_activePage.Controls.Add(comingSoon);
-            comingSoon.BringToFront();
-            pnl_NavigationPanelMax.BringToFront();
-        }
-
-
-
         /// <summary>
         /// Loads the correlation controls into view.
         /// </summary>
         private void CreateCorrelationWindow()
         {
-            lbl_Performance.Text = "N/A";
-            lbl_Section.Text = "N/A";
-            lbl_Category.Text = "N/A";
+            topHandleBarModel.Update("N/A", "ALL", "ALL");
+
             MenuInFront = true;
             Correlation.CorrelationControl correlation = new Correlation.CorrelationControl()
             {

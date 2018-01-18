@@ -47,5 +47,26 @@ namespace KPA_KPI_Analyzer.TopHandleBar
         /// </summary>
         /// <param name="_handler">The method to assign to the TopHandleModelUpdated event.</param>
         void RegisterTopHandleModelUpdateHandler(EventHandler _handler);
+
+
+
+        /// <summary>
+        /// Update the models country and generation date
+        /// </summary>
+        void Update(string _country, string _generationDate);
+
+
+
+        /// <summary>
+        /// Update the models country, generation date, perforamnce, section, and category
+        /// </summary>
+        void Update(string _country, string _generationDate, string _perforamnce, string _section, string _category);
+
+
+
+        /// <summary>
+        /// Update the models performance, section, and category
+        /// </summary>
+        void Update(string _performance, string _section, string _category);
     }
 }

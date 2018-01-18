@@ -102,7 +102,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             DatavizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            Globals.CurrCategory = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.FollowUp][(int)Values.Categories.KpiCategory.FollowUp.CurrentConfDateVsInitialConfDate];
+            KPA_KPI_UI.topHandleBarModel.Category = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.FollowUp][(int)Values.Categories.KpiCategory.FollowUp.CurrentConfDateVsInitialConfDate];
             ChangeCategory();
         }
 
@@ -217,8 +217,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.FollowUp][(int)Values.Categories.KpiCategory.FollowUp.CurrentConfDateVsInitialConfDate];
-            Globals.CurrCategory = Title;
-            Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.FollowUp];
+            KPA_KPI_UI.topHandleBarModel.Category = Title;
+            KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpiections[(int)Values.Sections.KpiSection.FollowUp];
             ChangeCategory();
 
             AnalysisOne = "- Will show if the PR is on a PO.";
@@ -276,8 +276,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.FollowUp][(int)Values.Categories.KpiCategory.FollowUp.FinalConfirmationDatevsFinalPlanDate];
-            Globals.CurrCategory = Title;
-            Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.FollowUp];
+            KPA_KPI_UI.topHandleBarModel.Category = Title;
+            KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpiections[(int)Values.Sections.KpiSection.FollowUp];
             ChangeCategory();
 
             AnalysisOne = "- Will show if PO line has been received complete.";
@@ -336,8 +336,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.FollowUp][(int)Values.Categories.KpiCategory.FollowUp.ReceiptDatevsCurrentPlanDate];
-            Globals.CurrCategory = Title;
-            Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.FollowUp];
+            KPA_KPI_UI.topHandleBarModel.Category = Title;
+            KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpiections[(int)Values.Sections.KpiSection.FollowUp];
             ChangeCategory();
 
             AnalysisOne = "- Will show if PO line has been received complete.";
@@ -387,8 +387,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.FollowUp][(int)Values.Categories.KpiCategory.FollowUp.ReceiptDatevsOriginalConfirmationDate];
-            Globals.CurrCategory = Title;
-            Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.FollowUp];
+            KPA_KPI_UI.topHandleBarModel.Category = Title;
+            KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpiections[(int)Values.Sections.KpiSection.FollowUp];
             ChangeCategory();
 
             AnalysisOne = "- Will show if PO line has been received complete.";
@@ -447,8 +447,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.FollowUp][(int)Values.Categories.KpiCategory.FollowUp.ReceiptDatevsCurrentConfirmationDate];
-            Globals.CurrCategory = Title;
-            Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.FollowUp];
+            KPA_KPI_UI.topHandleBarModel.Category = Title;
+            KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpiections[(int)Values.Sections.KpiSection.FollowUp];
             ChangeCategory();
 
             AnalysisOne = "- Will show if PO line has been received complete.";

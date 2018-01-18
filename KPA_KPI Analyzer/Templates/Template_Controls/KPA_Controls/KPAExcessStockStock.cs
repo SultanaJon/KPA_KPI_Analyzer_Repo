@@ -102,7 +102,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             DatavizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.ExcessStock_Stock][(int)Values.Categories.KpaCategory.ExcessStockStock.PrsAgingNotRel];
+            KPA_KPI_UI.topHandleBarModel.Category = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.ExcessStock_Stock][(int)Values.Categories.KpaCategory.ExcessStockStock.PrsAgingNotRel];
             ChangeCategory();
         }
 
@@ -192,8 +192,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = Categories.kpaCategories[(int)Sections.KpaSection.ExcessStock_Stock][(int)Categories.KpaCategory.ExcessStockStock.PrsAgingNotRel];
-            Globals.CurrCategory = Title;
-            Globals.CurrSection = Sections.kpaSections[(int)Sections.KpaSection.ExcessStock_Stock];
+            KPA_KPI_UI.topHandleBarModel.Category = Title;
+            KPA_KPI_UI.topHandleBarModel.Section = Sections.kpaSections[(int)Sections.KpaSection.ExcessStock_Stock];
             ChangeCategory();
 
             AnalysisOne = "- Will only show in this field if the PR is not fully released, the PR Open Qty > 0, General Stock On Hand > 0 and Project Stock On Hand > 0.";
@@ -241,8 +241,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             canvas = new Bunifu.DataViz.Canvas();
             dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.ExcessStock_Stock][(int)Values.Categories.KpaCategory.ExcessStockStock.PRsAgingRel];
-            Globals.CurrCategory = Title;
-            Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.ExcessStock_Stock];
+            KPA_KPI_UI.topHandleBarModel.Category = Title;
+            KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.ExcessStock_Stock];
             ChangeCategory();
 
             AnalysisOne = "- Will only show in this field if the PR is fully released, the PR open Qty > 0, General Stock On Hand > 0 and Project Stock On Hand > 0.";
@@ -287,8 +287,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             canvas = new Bunifu.DataViz.Canvas();
             dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.ExcessStock_Stock][(int)Values.Categories.KpaCategory.ExcessStockStock.POCreationThruDelivery];
-            Globals.CurrCategory = Title;
-            Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.ExcessStock_Stock];
+            KPA_KPI_UI.topHandleBarModel.Category = Title;
+            KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.ExcessStock_Stock];
             ChangeCategory();
 
             AnalysisOne = "- Will only show in this field if PR is on PO, PO line item does not have a confirmation date, PO line is not received complete, General Stock On Hand > 0 and Project Stock On Hand > 0.";

@@ -94,7 +94,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             DatavizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            Globals.CurrCategory = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.Plan][(int)Values.Categories.KpiCategory.Plan.CurrentPlanDateVsPrPlanDate];
+            KPA_KPI_UI.topHandleBarModel.Category = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.Plan][(int)Values.Categories.KpiCategory.Plan.CurrentPlanDateVsPrPlanDate];
             ChangeCategory();
         }
 
@@ -192,8 +192,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.Plan][(int)Values.Categories.KpiCategory.Plan.CurrentPlanDateVsPrPlanDate];
-            Globals.CurrCategory = Title;
-            Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.Plan];
+            KPA_KPI_UI.topHandleBarModel.Category = Title;
+            KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpiections[(int)Values.Sections.KpiSection.Plan];
             ChangeCategory();
 
 
@@ -245,8 +245,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.Plan][(int)Values.Categories.KpiCategory.Plan.OriginalPlanDate2ndLvlReleaseDatevsCodedLeadTime];
-            Globals.CurrCategory = Title;
-            Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.Plan];
+            KPA_KPI_UI.topHandleBarModel.Category = Title;
+            KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpiections[(int)Values.Sections.KpiSection.Plan];
             ChangeCategory();
 
 
@@ -297,8 +297,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.Plan][(int)Values.Categories.KpiCategory.Plan.CurrentPlanDate2ndLvlReleaseDatevsCodedLeadTime];
-            Globals.CurrCategory = Title;
-            Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.Plan];
+            KPA_KPI_UI.topHandleBarModel.Category = Title;
+            KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpiections[(int)Values.Sections.KpiSection.Plan];
             ChangeCategory();
 
 

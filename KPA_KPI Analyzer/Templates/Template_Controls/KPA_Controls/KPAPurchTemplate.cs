@@ -95,7 +95,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             btn_One.Textcolor = System.Drawing.Color.Coral;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.Purch][(int)Values.Categories.KpaCategory.Purch.PRsAgingRel];
+            KPA_KPI_UI.topHandleBarModel.Category = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.Purch][(int)Values.Categories.KpaCategory.Purch.PRsAgingRel];
             ChangeCategory();
         }
 
@@ -192,8 +192,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = Categories.kpaCategories[(int)Sections.KpaSection.Purch][(int)Categories.KpaCategory.Purch.PRsAgingRel];
-            Globals.CurrCategory = Title;
-            Globals.CurrSection = Values.Sections.kpaSections[(int)Sections.KpaSection.Purch];
+            KPA_KPI_UI.topHandleBarModel.Category = Title;
+            KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpaSections[(int)Sections.KpaSection.Purch];
             ChangeCategory();
 
             AnalysisOne = "- Will only show in this field if the PR is fully released and the PR open Qty > 0.";
@@ -241,8 +241,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.Purch][(int)Values.Categories.KpaCategory.Purch.POFirstRelease];
-            Globals.CurrCategory = Title;
-            Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.Purch];
+            KPA_KPI_UI.topHandleBarModel.Category = Title;
+            KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.Purch];
             ChangeCategory();
 
             AnalysisOne = "- Will only show in this field if PR is on the PO and the PO line item has never been released (approved).";
@@ -289,8 +289,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.Purch][(int)Values.Categories.KpaCategory.Purch.POPrevRelease];
-            Globals.CurrCategory = Title;
-            Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.PurchTotal];
+            KPA_KPI_UI.topHandleBarModel.Category = Title;
+            KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.PurchTotal];
             ChangeCategory();
 
             AnalysisOne = "- PR is on the PO, PO line items was previously released, PO currently not released (approved), and line item is not received.";
@@ -339,8 +339,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.Purch][(int)Values.Categories.KpaCategory.Purch.NoConfirmation];
-            Globals.CurrCategory = Title;
-            Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.PurchTotal];
+            KPA_KPI_UI.topHandleBarModel.Category = Title;
+            KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.PurchTotal];
             ChangeCategory();
 
 

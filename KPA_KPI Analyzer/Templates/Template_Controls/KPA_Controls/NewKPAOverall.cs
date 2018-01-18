@@ -72,12 +72,12 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             InitializeComponent();
             ApplyValuesGridStyles();
 
-            Globals.CurrPerformance = "KPA";
+            KPA_KPI_UI.topHandleBarModel.Performance = "KPA";
 
             if (ReportingCountry.TargetCountry == Country.UnitedStates)
-                Globals.CurrCountry = ReportingCountry.countries[(int)Country.UnitedStates];
+                KPA_KPI_UI.topHandleBarModel.CurrentCountry = ReportingCountry.countries[(int)Country.UnitedStates];
             else
-                Globals.CurrCountry = ReportingCountry.countries[(int)Country.Mexico];
+                KPA_KPI_UI.topHandleBarModel.CurrentCountry = ReportingCountry.countries[(int)Country.Mexico];
         }
 
         #region EVENTS
@@ -177,108 +177,108 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                 switch (e.RowIndex)
                 {
                     case 0: // Plan
-                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.Plan];
-                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.Plan][(int)Values.Categories.KpaCategory.Plan.PRsAgingNotRel];
+                        KPA_KPI_UI.topHandleBarModel.Section = Sections.kpaSections[(int)Sections.KpaSection.Plan];
+                        KPA_KPI_UI.topHandleBarModel.Category = Categories.kpaCategories[(int)Sections.KpaSection.Plan][(int)Categories.KpaCategory.Plan.PRsAgingNotRel];
                         HandlePlanDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 1:
-                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.Plan];
-                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.Plan][(int)Values.Categories.KpaCategory.Plan.MaterialDue];
+                        KPA_KPI_UI.topHandleBarModel.Section = Sections.kpaSections[(int)Sections.KpaSection.Plan];
+                        KPA_KPI_UI.topHandleBarModel.Category = Categories.kpaCategories[(int)Sections.KpaSection.Plan][(int)Categories.KpaCategory.Plan.MaterialDue];
                         HandlePlanDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 2: // Purch
-                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.Purch];
-                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.Purch][(int)Values.Categories.KpaCategory.Purch.PRsAgingRel];
+                        KPA_KPI_UI.topHandleBarModel.Section = Sections.kpaSections[(int)Sections.KpaSection.Purch];
+                        KPA_KPI_UI.topHandleBarModel.Category = Categories.kpaCategories[(int)Sections.KpaSection.Purch][(int)Categories.KpaCategory.Purch.PRsAgingRel];
                         HandlePurchDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 3:
-                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.Purch];
-                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.Purch][(int)Values.Categories.KpaCategory.Purch.POFirstRelease];
+                        KPA_KPI_UI.topHandleBarModel.Section = Sections.kpaSections[(int)Sections.KpaSection.Purch];
+                        KPA_KPI_UI.topHandleBarModel.Category = Categories.kpaCategories[(int)Sections.KpaSection.Purch][(int)Categories.KpaCategory.Purch.POFirstRelease];
                         HandlePurchDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 4:
-                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.Purch];
-                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.Purch][(int)Values.Categories.KpaCategory.Purch.POPrevRelease];
+                        KPA_KPI_UI.topHandleBarModel.Section = Sections.kpaSections[(int)Sections.KpaSection.Purch];
+                        KPA_KPI_UI.topHandleBarModel.Category = Categories.kpaCategories[(int)Sections.KpaSection.Purch][(int)Categories.KpaCategory.Purch.POPrevRelease];
                         HandlePurchDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 5:
-                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.Purch];
-                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.Purch][(int)Values.Categories.KpaCategory.Purch.NoConfirmation];
+                        KPA_KPI_UI.topHandleBarModel.Section = Sections.kpaSections[(int)Sections.KpaSection.Purch];
+                        KPA_KPI_UI.topHandleBarModel.Category = Categories.kpaCategories[(int)Sections.KpaSection.Purch][(int)Categories.KpaCategory.Purch.NoConfirmation];
                         HandlePurchDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 6: // Purch Sub
-                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.PurchSub];
-                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.PurchSub][(int)Values.Categories.KpaCategory.PurchSub.PRReleasePORelease];
+                        KPA_KPI_UI.topHandleBarModel.Section = Sections.kpaSections[(int)Sections.KpaSection.PurchSub];
+                        KPA_KPI_UI.topHandleBarModel.Category = Categories.kpaCategories[(int)Sections.KpaSection.PurchSub][(int)Categories.KpaCategory.PurchSub.PRReleasePORelease];
                         HandlePurchSubDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 7:
-                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.PurchSub];
-                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.PurchSub][(int)Values.Categories.KpaCategory.PurchSub.POCreationCOnfEntry];
+                        KPA_KPI_UI.topHandleBarModel.Section = Sections.kpaSections[(int)Sections.KpaSection.PurchSub];
+                        KPA_KPI_UI.topHandleBarModel.Category = Categories.kpaCategories[(int)Sections.KpaSection.PurchSub][(int)Categories.KpaCategory.PurchSub.POCreationCOnfEntry];
                         HandlePurchSubDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 8: // Purch Total
-                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.PurchTotal];
-                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.PurchTotal][(int)Values.Categories.KpaCategory.PurchTotal.PRRelConfEntry];
+                        KPA_KPI_UI.topHandleBarModel.Section = Sections.kpaSections[(int)Sections.KpaSection.PurchTotal];
+                        KPA_KPI_UI.topHandleBarModel.Category = Categories.kpaCategories[(int)Sections.KpaSection.PurchTotal][(int)Categories.KpaCategory.PurchTotal.PRRelConfEntry];
                         HandlePurchTotalDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 9: // Follow Up
-                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.FollowUp];
-                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.FollowUp][(int)Values.Categories.KpaCategory.FollowUp.ConfPlanDate];
+                        KPA_KPI_UI.topHandleBarModel.Section = Sections.kpaSections[(int)Sections.KpaSection.FollowUp];
+                        KPA_KPI_UI.topHandleBarModel.Category = Categories.kpaCategories[(int)Sections.KpaSection.FollowUp][(int)Categories.KpaCategory.FollowUp.ConfPlanDate];
                         HandleFollowUpDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 10:
-                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.FollowUp];
-                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.FollowUp][(int)Values.Categories.KpaCategory.FollowUp.ConfDateUpcomingDel];
+                        KPA_KPI_UI.topHandleBarModel.Section = Sections.kpaSections[(int)Sections.KpaSection.FollowUp];
+                        KPA_KPI_UI.topHandleBarModel.Category = Categories.kpaCategories[(int)Sections.KpaSection.FollowUp][(int)Categories.KpaCategory.FollowUp.ConfDateUpcomingDel];
                         HandleFollowUpDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 11:
-                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.FollowUp];
-                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.FollowUp][(int)Values.Categories.KpaCategory.FollowUp.DueTodayLateConf];
+                        KPA_KPI_UI.topHandleBarModel.Section = Sections.kpaSections[(int)Sections.KpaSection.FollowUp];
+                        KPA_KPI_UI.topHandleBarModel.Category = Categories.kpaCategories[(int)Sections.KpaSection.FollowUp][(int)Categories.KpaCategory.FollowUp.DueTodayLateConf];
                         HandleFollowUpDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 12: // Hot Jobs
-                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.HotJobs];
-                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.HotJobs][(int)Values.Categories.KpaCategory.HotJobs.PrsNotonPO];
+                        KPA_KPI_UI.topHandleBarModel.Section = Sections.kpaSections[(int)Sections.KpaSection.HotJobs];
+                        KPA_KPI_UI.topHandleBarModel.Category = Categories.kpaCategories[(int)Sections.KpaSection.HotJobs][(int)Categories.KpaCategory.HotJobs.PrsNotonPO];
                         HandleHotJobsDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 13:
-                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.HotJobs];
-                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.HotJobs][(int)Values.Categories.KpaCategory.HotJobs.NoConfirmations];
+                        KPA_KPI_UI.topHandleBarModel.Section = Sections.kpaSections[(int)Sections.KpaSection.HotJobs];
+                        KPA_KPI_UI.topHandleBarModel.Category = Categories.kpaCategories[(int)Sections.KpaSection.HotJobs][(int)Categories.KpaCategory.HotJobs.NoConfirmations];
                         HandleHotJobsDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 14:
-                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.HotJobs];
-                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.HotJobs][(int)Values.Categories.KpaCategory.HotJobs.LateToConfirmed];
+                        KPA_KPI_UI.topHandleBarModel.Section = Sections.kpaSections[(int)Sections.KpaSection.HotJobs];
+                        KPA_KPI_UI.topHandleBarModel.Category = Categories.kpaCategories[(int)Sections.KpaSection.HotJobs][(int)Categories.KpaCategory.HotJobs.LateToConfirmed];
                         HandleHotJobsDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 15: // Excess Stock - Stock
-                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.ExcessStock_Stock];
-                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.ExcessStock_Stock][(int)Values.Categories.KpaCategory.ExcessStockStock.PrsAgingNotRel];
+                        KPA_KPI_UI.topHandleBarModel.Section = Sections.kpaSections[(int)Sections.KpaSection.ExcessStock_Stock];
+                        KPA_KPI_UI.topHandleBarModel.Category = Categories.kpaCategories[(int)Sections.KpaSection.ExcessStock_Stock][(int)Categories.KpaCategory.ExcessStockStock.PrsAgingNotRel];
                         HandleExcessStockStock(e.RowIndex, e.ColumnIndex);
                         break;
                     case 16:
-                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.ExcessStock_Stock];
-                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.ExcessStock_Stock][(int)Values.Categories.KpaCategory.ExcessStockStock.PRsAgingRel];
+                        KPA_KPI_UI.topHandleBarModel.Section = Sections.kpaSections[(int)Sections.KpaSection.ExcessStock_Stock];
+                        KPA_KPI_UI.topHandleBarModel.Category = Categories.kpaCategories[(int)Sections.KpaSection.ExcessStock_Stock][(int)Categories.KpaCategory.ExcessStockStock.PRsAgingRel];
                         HandleExcessStockStock(e.RowIndex, e.ColumnIndex);
                         break;
                     case 17:
-                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.ExcessStock_Stock];
-                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.ExcessStock_Stock][(int)Values.Categories.KpaCategory.ExcessStockStock.POCreationThruDelivery];
+                        KPA_KPI_UI.topHandleBarModel.Section = Sections.kpaSections[(int)Sections.KpaSection.ExcessStock_Stock];
+                        KPA_KPI_UI.topHandleBarModel.Category = Categories.kpaCategories[(int)Sections.KpaSection.ExcessStock_Stock][(int)Categories.KpaCategory.ExcessStockStock.POCreationThruDelivery];
                         HandleExcessStockStock(e.RowIndex, e.ColumnIndex);
                         break;
                     case 18: // Excess Stock - Open Orders
-                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.ExcessStock_OpenOrders];
-                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.ExcessStock_OpenOrders][(int)Values.Categories.KpaCategory.ExcessStockOpenOrders.PrsAgingNotRel];
+                        KPA_KPI_UI.topHandleBarModel.Section = Sections.kpaSections[(int)Sections.KpaSection.ExcessStock_OpenOrders];
+                        KPA_KPI_UI.topHandleBarModel.Category = Categories.kpaCategories[(int)Sections.KpaSection.ExcessStock_OpenOrders][(int)Categories.KpaCategory.ExcessStockOpenOrders.PrsAgingNotRel];
                         HandleExcessStockOpenOrders(e.RowIndex, e.ColumnIndex);
                         break;
                     case 19:
-                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.ExcessStock_OpenOrders];
-                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.ExcessStock_OpenOrders][(int)Values.Categories.KpaCategory.ExcessStockOpenOrders.PRsAgingRel];
+                        KPA_KPI_UI.topHandleBarModel.Section = Sections.kpaSections[(int)Sections.KpaSection.ExcessStock_OpenOrders];
+                        KPA_KPI_UI.topHandleBarModel.Category = Categories.kpaCategories[(int)Sections.KpaSection.ExcessStock_OpenOrders][(int)Categories.KpaCategory.ExcessStockOpenOrders.PRsAgingRel];
                         HandleExcessStockOpenOrders(e.RowIndex, e.ColumnIndex);
                         break;
                     case 20:
-                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.ExcessStock_OpenOrders];
-                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.ExcessStock_OpenOrders][(int)Values.Categories.KpaCategory.ExcessStockOpenOrders.POCreationThruDelivery];
+                        KPA_KPI_UI.topHandleBarModel.Section = Sections.kpaSections[(int)Sections.KpaSection.ExcessStock_OpenOrders];
+                        KPA_KPI_UI.topHandleBarModel.Category = Categories.kpaCategories[(int)Sections.KpaSection.ExcessStock_OpenOrders][(int)Categories.KpaCategory.ExcessStockOpenOrders.POCreationThruDelivery];
                         HandleExcessStockOpenOrders(e.RowIndex, e.ColumnIndex);
                         break;
                 }
@@ -313,13 +313,13 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                 switch (e.RowIndex)
                 {
                     case 0:
-                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.CurrPlanActual];
-                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.CurrPlanActual][(int)Values.Categories.KpaCategory.CurrPlanVsActual.CurrPlanDateCurrConfDateOpenPO];
+                        KPA_KPI_UI.topHandleBarModel.Section = Sections.kpaSections[(int)Sections.KpaSection.CurrPlanActual];
+                        KPA_KPI_UI.topHandleBarModel.Category = Categories.kpaCategories[(int)Sections.KpaSection.CurrPlanActual][(int)Categories.KpaCategory.CurrPlanVsActual.CurrPlanDateCurrConfDateOpenPO];
                         HandleCurrentPlanVsActualDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                     case 1:
-                        Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.CurrPlanActual];
-                        Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.CurrPlanActual][(int)Values.Categories.KpaCategory.CurrPlanVsActual.CurrPlanDateCurrConfDateOpenPOHotJobs];
+                        KPA_KPI_UI.topHandleBarModel.Section = Sections.kpaSections[(int)Sections.KpaSection.CurrPlanActual];
+                        KPA_KPI_UI.topHandleBarModel.Category = Categories.kpaCategories[(int)Sections.KpaSection.CurrPlanActual][(int)Categories.KpaCategory.CurrPlanVsActual.CurrPlanDateCurrConfDateOpenPOHotJobs];
                         HandleCurrentPlanVsActualDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                 }

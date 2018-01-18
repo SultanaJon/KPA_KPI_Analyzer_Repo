@@ -101,7 +101,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             DatavizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            Globals.CurrCategory = Categories.kpaCategories[(int)Sections.KpaSection.Plan][(int)Categories.KpaCategory.Plan.PRsAgingNotRel];
+            KPA_KPI_UI.topHandleBarModel.Category = Categories.kpaCategories[(int)Sections.KpaSection.Plan][(int)Categories.KpaCategory.Plan.PRsAgingNotRel];
             ChangeCategory();
         }
 
@@ -187,8 +187,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.Plan][(int)Values.Categories.KpaCategory.Plan.PRsAgingNotRel];
-            Globals.CurrCategory = Title;
-            Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.Plan];
+            KPA_KPI_UI.topHandleBarModel.Category = Title;
+            KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.Plan];
             ChangeCategory();
 
             AnalysisOne = "- Will only show in this field if the PR is not fully released and the PR Open Qty > 0.";
@@ -237,8 +237,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             canvas = new Bunifu.DataViz.Canvas();
             dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = Categories.kpaCategories[(int)Sections.KpaSection.Plan][(int)Categories.KpaCategory.Plan.MaterialDue];
-            Globals.CurrCategory = Title;
-            Globals.CurrSection = Sections.kpaSections[(int)Sections.KpaSection.Plan];
+            KPA_KPI_UI.topHandleBarModel.Category = Title;
+            KPA_KPI_UI.topHandleBarModel.Section = Sections.kpaSections[(int)Sections.KpaSection.Plan];
             ChangeCategory();
 
             AnalysisOne = "- Will only show in this field if PR is fully released and the PR Open Qty > 0.";

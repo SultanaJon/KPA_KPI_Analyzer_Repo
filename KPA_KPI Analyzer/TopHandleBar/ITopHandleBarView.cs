@@ -19,12 +19,5 @@ namespace KPA_KPI_Analyzer.TopHandleBar
         /// </summary>
         /// <param name="_model">The model that is used to update the view</param>
         void UpdateView(ITopHandleBarModel _model);
-
-
-
-        /// <summary>
-        /// Updates the view with default values
-        /// </summary>
-        void UpdateDefaultView();
     }
 }

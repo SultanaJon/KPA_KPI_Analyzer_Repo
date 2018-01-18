@@ -90,7 +90,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             DatavizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.HotJobs][(int)Values.Categories.KpaCategory.HotJobs.PrsNotonPO];
+            KPA_KPI_UI.topHandleBarModel.Category = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.HotJobs][(int)Values.Categories.KpaCategory.HotJobs.PrsNotonPO];
             ChangeCategory();
         }
 
@@ -180,8 +180,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.HotJobs][(int)Values.Categories.KpaCategory.HotJobs.PrsNotonPO];
-            Globals.CurrCategory = Title;
-            Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.HotJobs];
+            KPA_KPI_UI.topHandleBarModel.Category = Title;
+            KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.HotJobs];
             ChangeCategory();
 
             AnalysisOne = "- Will only show if PR is assigned to purchase group UHJ, is fully released and the PR has not been placed on a PO.";
@@ -228,8 +228,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.HotJobs][(int)Values.Categories.KpaCategory.HotJobs.NoConfirmations];
-            Globals.CurrCategory = Title;
-            Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.HotJobs];
+            KPA_KPI_UI.topHandleBarModel.Category = Title;
+            KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.HotJobs];
             ChangeCategory();
 
 
@@ -277,8 +277,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.HotJobs][(int)Values.Categories.KpaCategory.HotJobs.LateToConfirmed];
-            Globals.CurrCategory = Title;
-            Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.HotJobs];
+            KPA_KPI_UI.topHandleBarModel.Category = Title;
+            KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.HotJobs];
             ChangeCategory();
 
 

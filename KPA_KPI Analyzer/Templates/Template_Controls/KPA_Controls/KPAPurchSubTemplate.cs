@@ -93,7 +93,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             btn_One.Textcolor = System.Drawing.Color.Coral;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.PurchSub][(int)Values.Categories.KpaCategory.PurchSub.PRReleasePORelease];
+            KPA_KPI_UI.topHandleBarModel.Category = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.PurchSub][(int)Values.Categories.KpaCategory.PurchSub.PRReleasePORelease];
             ChangeCategory();
         }
 
@@ -181,8 +181,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.PurchSub][(int)Values.Categories.KpaCategory.PurchSub.PRReleasePORelease];
-            Globals.CurrCategory = Title;
-            Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.PurchSub];
+            KPA_KPI_UI.topHandleBarModel.Category = Title;
+            KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.PurchSub];
             ChangeCategory();
 
             AnalysisOne = "- Will only show in this field if the PR is fully released AND (it is not on a PO OR it is on a PO but has never been released).";
@@ -230,8 +230,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
             Title = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.PurchSub][(int)Values.Categories.KpaCategory.PurchSub.POCreationCOnfEntry];
-            Globals.CurrCategory = Title;
-            Globals.CurrSection = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.PurchSub];
+            KPA_KPI_UI.topHandleBarModel.Category = Title;
+            KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.PurchSub];
             ChangeCategory();
 
             AnalysisOne = "- Will only show in this field if PR is on PO, PO line item does not have a confirmation date and PO line is not received complete.";

@@ -50,15 +50,15 @@ namespace KPA_KPI_Analyzer
             int actSecTag = int.Parse(btn.Tag.ToString());
 
             if (actSecTag >= 0 && actSecTag <= 9)
-                lbl_Performance.Text = "KPA";
+                topHandleBarModel.Performance = "KPA";
             else
-                lbl_Performance.Text = "KPI";
+                topHandleBarModel.Performance = "KPI";
 
 
             switch (actSecTag)
             {
                 case 0: // KPA --> Overall
-                    LoadOverallTemplate(Values.Performances.Performance.KPA);
+                    LoadOverallTemplate(Performances.Performance.KPA);
                     break;
                 case 1: // KPA --> Plan
                     CreateKpaPlanTemplate();
@@ -166,17 +166,6 @@ namespace KPA_KPI_Analyzer
             {
                 activeSectionBtn = btn_kpiOverall;
             }
-        }
-
-
-
-        /// <summary>
-        /// This function is used as a callback function for when the template controls are loaded and cateogries within 
-        /// the templates are clicked, the label showing the current category is updated.
-        /// </summary>
-        private void UpdateCategoryStatus()
-        {
-            lbl_Category.Text = Globals.CurrCategory;
         }
 
         #endregion

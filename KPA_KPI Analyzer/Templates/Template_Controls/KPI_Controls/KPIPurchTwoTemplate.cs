@@ -102,7 +102,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             DatavizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            Globals.CurrCategory = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PurchTwo][(int)Values.Categories.KpiCategory.PurchTwo.PR2ndLvlReleaseDatevsPOCreationDate];
+            KPA_KPI_UI.topHandleBarModel.Category = Categories.kpiCategories[(int)Sections.KpiSection.PurchTwo][(int)Categories.KpiCategory.PurchTwo.PR2ndLvlReleaseDatevsPOCreationDate];
             ChangeCategory();
         }
 
@@ -210,9 +210,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PurchTwo][(int)Values.Categories.KpiCategory.PurchTwo.PR2ndLvlReleaseDatevsPOCreationDate];
-            Globals.CurrCategory = Title;
-            Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.PurchTwo];
+            Title = Categories.kpiCategories[(int)Sections.KpiSection.PurchTwo][(int)Categories.KpiCategory.PurchTwo.PR2ndLvlReleaseDatevsPOCreationDate];
+            KPA_KPI_UI.topHandleBarModel.Category = Title;
+            KPA_KPI_UI.topHandleBarModel.Section = Sections.kpiections[(int)Sections.KpiSection.PurchTwo];
             ChangeCategory();
 
             AnalysisOne = "- Will show if PR is on PO.";
@@ -266,9 +266,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PurchTwo][(int)Values.Categories.KpiCategory.PurchTwo.POCreationDatevsPOReleaseDate];
-            Globals.CurrCategory = Title;
-            Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.PurchTwo];
+            Title = Categories.kpiCategories[(int)Sections.KpiSection.PurchTwo][(int)Categories.KpiCategory.PurchTwo.POCreationDatevsPOReleaseDate];
+            KPA_KPI_UI.topHandleBarModel.Category = Title;
+            KPA_KPI_UI.topHandleBarModel.Section = Sections.kpiections[(int)Sections.KpiSection.PurchTwo];
             ChangeCategory();
 
             AnalysisOne = "- Will show if PO line item has an initial release date.";
@@ -324,9 +324,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PurchTwo][(int)Values.Categories.KpiCategory.PurchTwo.POReleaseDatevsPOConfirmationDate];
-            Globals.CurrCategory = Title;
-            Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.PurchTwo];
+            Title = Categories.kpiCategories[(int)Sections.KpiSection.PurchTwo][(int)Categories.KpiCategory.PurchTwo.POReleaseDatevsPOConfirmationDate];
+            KPA_KPI_UI.topHandleBarModel.Category = Title;
+            KPA_KPI_UI.topHandleBarModel.Section = Sections.kpiections[(int)Sections.KpiSection.PurchTwo];
             ChangeCategory();
 
 

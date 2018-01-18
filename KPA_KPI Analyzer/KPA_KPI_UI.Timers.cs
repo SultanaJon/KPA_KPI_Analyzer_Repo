@@ -159,16 +159,14 @@ namespace KPA_KPI_Analyzer
                 // Populate Dashboard with PRPO report date.
                 DateTime dt = GetLoadedUsPrpoReportDate();
                 reportSettings.PrpoUsLastLoadedDate = DateTime.Now.Month.ToString() + " " + DateTime.Now.Day.ToString() + " " + DateTime.Now.Year.ToString();
-                lbl_topPanelNavPrpoDate.Text = dt.ToString("MMMM dd, yyyy");
-                Globals.PrpoGenerationDate = lbl_topPanelNavPrpoDate.Text;
+                topHandleBarModel.ReportGenerationDate = dt.ToString("MMMM dd, yyyy");
             }
             else
             {
                 // Populate Dashboard with PRPO report date
                 DateTime dt = GetLoadedMxPrpoReportDate();
                 reportSettings.PrpoMxLastLoadedDate = DateTime.Now.Month.ToString() + " " + DateTime.Now.Day.ToString() + " " + DateTime.Now.Year.ToString();
-                lbl_topPanelNavPrpoDate.Text = dt.ToString("MMMM dd, yyyy");
-                Globals.PrpoGenerationDate = lbl_topPanelNavPrpoDate.Text;
+                topHandleBarModel.ReportGenerationDate = dt.ToString("MMMM dd, yyyy");
             }
         }
 
@@ -220,8 +218,8 @@ namespace KPA_KPI_Analyzer
             // Bring the loading screen to the front
             ActivateLoadingScreen("Importing Data...");
 
-            lbl_Country.Text = "Loading...";
-            lbl_topPanelNavPrpoDate.Text = "Loading...";
+            // Update the top handle bar model
+            topHandleBarModel.Update("Loading...", "Loading...");
 
             // Create a new instance of the overall reports
             CreateReport(ReportingType.KpaOverall);

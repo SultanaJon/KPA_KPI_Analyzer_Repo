@@ -78,10 +78,8 @@ namespace KPA_KPI_Analyzer
             switch (tag)
             {
                 case 0: // Dashboard btn clicked
-                    lbl_Performance.Text = "Not Selected";
-                    lbl_Section.Text = "Not Selected";
-                    lbl_Category.Text = "Not Selected";
-                    toggleMainNavSection(tag);
+                    // update the top handle bar model
+                    topHandleBarModel.Update("N/A", "N/A", "N/A"); toggleMainNavSection(tag);
                     ShowPage(Pages.Dashboard);
                     break;
                 case 1: // KPA btn clicked
@@ -98,9 +96,8 @@ namespace KPA_KPI_Analyzer
                     toggleMainNavSection(tag);
                     break;
                 case 4: // Filters btn clicked
-                    lbl_Performance.Text = "Not Selected";
-                    lbl_Section.Text = "Not Selected";
-                    lbl_Category.Text = "Not Selected";
+                    // Set the model indicating that there is currently no KPA or KPI being viewed.
+                    topHandleBarModel.Update("N/A", "N/A", "N/A"); toggleMainNavSection(tag);
                     toggleMainNavSection(tag);
                     ShowPage(Pages.Filters);
                     break;

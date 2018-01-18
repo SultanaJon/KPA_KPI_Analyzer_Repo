@@ -80,8 +80,8 @@
             this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 1F));
             this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel14.Controls.Add(this.btn_navigation, 0, 0);
-            this.tableLayoutPanel14.Controls.Add(this.pnl_CountrySelectorButton, 2, 0);
             this.tableLayoutPanel14.Controls.Add(this.pnl_SectionSelectorButton, 8, 0);
+            this.tableLayoutPanel14.Controls.Add(this.pnl_CountrySelectorButton, 2, 0);
             this.tableLayoutPanel14.Controls.Add(this.pnl_PerformanceSelectorButton, 6, 0);
             this.tableLayoutPanel14.Controls.Add(this.pnl_CategorySelectorButton, 10, 0);
             this.tableLayoutPanel14.Controls.Add(this.panel8, 4, 0);
@@ -281,7 +281,6 @@
             this.Controls.Add(this.pnl_MainNavigation);
             this.Name = "TopHandleBarView";
             this.Size = new System.Drawing.Size(1154, 51);
-            this.Load += new System.EventHandler(this.TopHandleBarView_Load);
             this.pnl_MainNavigation.ResumeLayout(false);
             this.tableLayoutPanel14.ResumeLayout(false);
             this.pnl_CountrySelectorButton.ResumeLayout(false);

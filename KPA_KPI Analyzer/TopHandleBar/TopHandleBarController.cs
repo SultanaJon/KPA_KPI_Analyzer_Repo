@@ -17,7 +17,7 @@ namespace KPA_KPI_Analyzer.TopHandleBar
         /// <summary>
         /// A interface to interact with the top handle model
         /// </summary>
-        public ITopHandleBarModel Model { get; set; }
+        private ITopHandleBarModel Model { get; set; }
 
 
         /// <summary>
@@ -26,15 +26,14 @@ namespace KPA_KPI_Analyzer.TopHandleBar
         private ITopHandleBarView view;
 
 
-
         /// <summary>
         /// Custom Constructor
         /// </summary>
         /// <param name="_view">The view this controll will control</param>
-        public TopHandleBarController(ITopHandleBarView _view, EventHandler _handler)
+        public TopHandleBarController(ITopHandleBarView _view, EventHandler _handler, ITopHandleBarModel _model)
         {
-            // Create a new instance of a TopHandleBarModel
-            Model = new TopHandleBarModel();
+            // set the model instance to the one provided.
+            Model = _model;
 
             // Grab the instance of the view to send messages back and forth.
             view = _view;
@@ -48,6 +47,9 @@ namespace KPA_KPI_Analyzer.TopHandleBar
             // Register the models update event
             // When the model is updated, pass the model to the view by value to be updated
             Model.TopHandleModelUpdated += (sender, e) => { view.UpdateView(Model); };
+
+            // update the top handle bar model
+            Model.Update("N/A", "N/A", "N/A");
         }
     }
 }

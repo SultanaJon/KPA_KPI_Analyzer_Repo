@@ -72,8 +72,7 @@ namespace KPA_KPI_Analyzer
 
 
                             dt = GetLoadedUsPrpoReportDate();
-                            lbl_topPanelNavPrpoDate.Text = dt.ToString("MMMM dd, yyyy");
-                            Globals.PrpoGenerationDate = lbl_topPanelNavPrpoDate.Text;
+                            topHandleBarModel.ReportGenerationDate = dt.ToString("MMMM dd, yyyy");
                             BegingFilterLoadProcess();
                         }
                         else
@@ -120,8 +119,7 @@ namespace KPA_KPI_Analyzer
                             (reports[ReportingType.KpiOverall] as KpiOverallReport).Load();
 
                             dt = GetLoadedMxPrpoReportDate();
-                            lbl_topPanelNavPrpoDate.Text = dt.ToString("MMMM dd, yyyy");
-                            Values.Globals.PrpoGenerationDate = lbl_topPanelNavPrpoDate.Text;
+                            topHandleBarModel.ReportGenerationDate = dt.ToString("MMMM dd, yyyy");
                             BegingFilterLoadProcess();
                         }
                         else

@@ -23,6 +23,30 @@ namespace KPA_KPI_Analyzer.TopHandleBar
 
 
         /// <summary>
+        /// An enumeration parallel to the defaultLabelValues array
+        /// </summary>
+        private enum DefaultLabelValue
+        {
+            Country,
+            GenerationDate,
+            Performance,
+            Section,
+            Category
+        }
+
+
+        public static string[] defaultLabelValues =
+        {
+            "Checking...",
+            "Checking...",
+            "N/A",
+            "N/A",
+            "N/A"
+        };
+
+
+
+        /// <summary>
         /// The country that the PRPO report is associated with
         /// </summary>
         public string CurrentCountry
@@ -46,7 +70,7 @@ namespace KPA_KPI_Analyzer.TopHandleBar
         /// </summary>
         public string ReportGenerationDate
         {
-            get { return country; }
+            get { return generationDate; }
             set
             {
                 if (TopHandleModelUpdated != null)
@@ -65,7 +89,7 @@ namespace KPA_KPI_Analyzer.TopHandleBar
         /// </summary>
         public string Performance
         {
-            get { return country; }
+            get { return performance; }
             set
             {
                 if (TopHandleModelUpdated != null)
@@ -85,7 +109,7 @@ namespace KPA_KPI_Analyzer.TopHandleBar
         /// </summary>
         public string Section
         {
-            get { return country; }
+            get { return section; }
             set
             {
                 if (TopHandleModelUpdated != null)
@@ -104,7 +128,7 @@ namespace KPA_KPI_Analyzer.TopHandleBar
         /// </summary>
         public string Category
         {
-            get { return country; }
+            get { return category; }
             set
             {
                 if (TopHandleModelUpdated != null)
@@ -114,6 +138,58 @@ namespace KPA_KPI_Analyzer.TopHandleBar
                 }
             }
         }
+
+
+
+
+        /// <summary>
+        /// Update the models country and generation date
+        /// </summary>
+        public void Update(string _country, string _generationDate)
+        {
+            country = _country;
+            ReportGenerationDate = _generationDate;
+
+            // Notify the controller that the model has been updated
+            TopHandleModelUpdated(this, new EventArgs());
+        }
+
+
+
+
+        /// <summary>
+        /// Update the models country, generation date, perforamnce, section, and category
+        /// </summary>
+        public void Update(string _country, string _generationDate, string _performance, string _section, string _category)
+        {
+            country = _country;
+            ReportGenerationDate = _generationDate;
+            Performance = _performance;
+            Section = _section;
+            Category = _category;
+
+            // Notify the controller that the model has been updated
+            TopHandleModelUpdated(this, new EventArgs());
+        }
+
+
+
+        /// <summary>
+        /// Update the models performance, section, and category
+        /// </summary>
+        public void Update(string _performance, string _section, string _category)
+        {
+            Performance = _performance;
+            Section = _section;
+            Category = _category;
+
+            // Notify the controller that the model has been updated
+            TopHandleModelUpdated(this, new EventArgs());
+        }
+
+
+
+
 
 
 

@@ -96,7 +96,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             DatavizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            Globals.CurrCategory = Categories.kpiCategories[(int)Sections.KpiSection.Purch][(int)Categories.KpiCategory.Purch.InitialConfirmationDatevsPRPlanDate];
+            KPA_KPI_UI.topHandleBarModel.Category = Categories.kpiCategories[(int)Sections.KpiSection.Purch][(int)Categories.KpiCategory.Purch.InitialConfirmationDatevsPRPlanDate];
             ChangeCategory();
         }
 
@@ -190,8 +190,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.Purch][(int)Values.Categories.KpiCategory.Purch.InitialConfirmationDatevsPRPlanDate];
-            Globals.CurrCategory = Title;
-            Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.Purch];
+            KPA_KPI_UI.topHandleBarModel.Category = Title;
+            KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpiections[(int)Values.Sections.KpiSection.Purch];
             ChangeCategory();
 
             AnalysisOne = "- Will show if the PR is on a PO.";

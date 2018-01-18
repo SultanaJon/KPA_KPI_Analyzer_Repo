@@ -90,11 +90,23 @@ namespace KPA_KPI_Analyzer
 		private void KPA_KPI_UI_Load(object sender, EventArgs e)
 		{
 			mainNavActiveBtn = btn_Dashboard; // set the active button as the first button (Dashboard)
+
+			InitializeControllers();
 			InitializeProgramEvents();
 			GetCheckBoxControls();
 			GetCheckListBoxes();
 			InitializeProgram();
+		}
 
+
+
+		/// <summary>
+		/// Initializes the top handle bar controller.
+		/// </summary>
+		private void InitializeControllers()
+		{
+			// Create and initialize the top handle bar controller.
+			CreateTopHandleBarViewController();
 		}
 
 
@@ -377,17 +389,14 @@ namespace KPA_KPI_Analyzer
 		/// <param name="e">The click event</param>
 		private void overallDataToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			// Get the current country loaded into the application
-			Globals.CurrCountry = lbl_Country.Text;
-
-			// Create a new exporter object
-			Exporter exporter = new Exporter();
+            // Create a new exporter object
+            Exporter exporter = new Exporter();
 			
 			// Create a new overall excel file and export the overall data
 			exporter.ExportOverall(new OverallExcelFile()
 			{
-					Country = lbl_Country.Text,
-					PrpoGenerationDate = lbl_topPanelNavPrpoDate.Text,
+					Country = topHandleBarModel.CurrentCountry,
+					PrpoGenerationDate = topHandleBarModel.ReportGenerationDate,
 					ContainsHeaders = true
 			});
 		}
@@ -467,7 +476,7 @@ namespace KPA_KPI_Analyzer
 		/// </summary>
 		public void ConfigureToUnitedStates()
 		{
-			lbl_Country.Text = ReportingCountry.countries[(int)Country.UnitedStates];
+            topHandleBarModel.CurrentCountry = ReportingCountry.countries[(int)Country.UnitedStates];
 			ReportingCountry.TargetCountry = Country.UnitedStates;
 			DatabaseManager.TargetTable = DatabaseTables.databaseTables[(int)DatabaseTables.DatabaseTable.UnitedStates];
 		}
@@ -479,7 +488,7 @@ namespace KPA_KPI_Analyzer
 		/// </summary>
 		public void ConfigureToMexico()
 		{
-			lbl_Country.Text = ReportingCountry.countries[(int)Country.Mexico];
+            topHandleBarModel.CurrentCountry = ReportingCountry.countries[(int)Country.Mexico];
 			ReportingCountry.TargetCountry = Country.Mexico;
 			DatabaseManager.TargetTable = DatabaseTables.databaseTables[(int)DatabaseTables.DatabaseTable.Mexico];
 		}
@@ -645,8 +654,7 @@ namespace KPA_KPI_Analyzer
 
 
 									dt = GetLoadedUsPrpoReportDate();
-									lbl_topPanelNavPrpoDate.Text = dt.ToString("MMMM dd, yyyy");
-									Globals.PrpoGenerationDate = lbl_topPanelNavPrpoDate.Text;
+                                    topHandleBarModel.ReportGenerationDate = dt.ToString("MMMM dd, yyyy");
 									BegingFilterLoadProcess();
 								}
 								else
@@ -698,8 +706,7 @@ namespace KPA_KPI_Analyzer
 									(reports[ReportingType.KpiOverall] as KpiOverallReport).Load();
 
 									dt = GetLoadedMxPrpoReportDate();
-									lbl_topPanelNavPrpoDate.Text = dt.ToString("MMMM dd, yyyy");
-									Values.Globals.PrpoGenerationDate = lbl_topPanelNavPrpoDate.Text;
+                                    topHandleBarModel.ReportGenerationDate = dt.ToString("MMMM dd, yyyy");
 									BegingFilterLoadProcess();
 								}
 								else
@@ -733,9 +740,11 @@ namespace KPA_KPI_Analyzer
 						// Create a new instance of the settings file
 						Settings.ReportSettings.Clear();
 
-						lbl_Country.Text = "Waiting...";
-						lbl_topPanelNavPrpoDate.Text = "Waiting...";
-						ShowPage(Pages.DragDropDash);
+                        // Update the top handle bar model
+                        topHandleBarModel.Update("Waiting...", "Waiting...");
+
+                        // Display the drag and drop dashboard.
+                        ShowPage(Pages.DragDropDash);
 					}
 				}
 				catch (Exception ex)
@@ -749,10 +758,12 @@ namespace KPA_KPI_Analyzer
 				// Create a new instance of the settings file
 				Settings.ReportSettings.Clear();
 
-				lbl_Country.Text = "Waiting...";
-				lbl_topPanelNavPrpoDate.Text = "Waiting...";
-				ShowPage(Pages.DragDropDash);
-			}
+                // Update the top handle bar model
+                topHandleBarModel.Update("Waiting...", "Waiting...");
+
+                // Display the drag and drop dashboard.
+                ShowPage(Pages.DragDropDash);
+            }
 		}
 
 

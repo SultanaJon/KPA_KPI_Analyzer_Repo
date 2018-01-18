@@ -97,7 +97,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             btn_One.Textcolor = Color.Coral;
             DatavizLoaded = false;
             ActiveCategory = 0;
-            Globals.CurrCategory = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PlanTwo][(int)Values.Categories.KpiCategory.PlanTwo.MaterialDueOriginalPlanDate];
+            KPA_KPI_UI.topHandleBarModel.Category = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PlanTwo][(int)Values.Categories.KpiCategory.PlanTwo.MaterialDueOriginalPlanDate];
             ChangeCategory();
             datavizLoadTimer.Start();
         }
@@ -196,8 +196,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PlanTwo][(int)Values.Categories.KpiCategory.PlanTwo.MaterialDueOriginalPlanDate];
-            Globals.CurrCategory = Title;
-            Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.PlanTwo];
+            KPA_KPI_UI.topHandleBarModel.Category = Title;
+            KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpiections[(int)Values.Sections.KpiSection.PlanTwo];
             ChangeCategory();
 
 
@@ -254,8 +254,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PlanTwo][(int)Values.Categories.KpiCategory.PlanTwo.MaterialDueFinalPlannedDate];
-            Globals.CurrCategory = Title;
-            Globals.CurrSection = Values.Sections.kpiections[(int)Values.Sections.KpiSection.PlanTwo];
+            KPA_KPI_UI.topHandleBarModel.Category = Title;
+            KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpiections[(int)Values.Sections.KpiSection.PlanTwo];
             ChangeCategory();
 
             AnalysisOne = "- Will show if the PR line item is on a PO.";
@@ -310,8 +310,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = Categories.kpiCategories[(int)Sections.KpiSection.PlanTwo][(int)Categories.KpiCategory.PlanTwo.PrReleaseDateVsPrCreationDate];
-            Globals.CurrCategory = Title;
-            Globals.CurrSection = Sections.kpiections[(int)Sections.KpiSection.PlanTwo];
+            KPA_KPI_UI.topHandleBarModel.Category = Title;
+            KPA_KPI_UI.topHandleBarModel.Section = Sections.kpiections[(int)Sections.KpiSection.PlanTwo];
             ChangeCategory();
 
             AnalysisOne = "- Will show if the PR has been fully released";

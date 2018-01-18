@@ -92,7 +92,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             RenderPRRelToConfEntry();
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            Globals.CurrCategory = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.PurchTotal][(int)Values.Categories.KpaCategory.PurchTotal.PRRelConfEntry];
+            KPA_KPI_UI.topHandleBarModel.Category = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.PurchTotal][(int)Values.Categories.KpaCategory.PurchTotal.PRRelConfEntry];
             ChangeCategory();
         }
 
@@ -175,8 +175,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
             Title = Categories.kpaCategories[(int)Sections.KpaSection.PurchTotal][(int)Categories.KpaCategory.PurchTotal.PRRelConfEntry];
-            Globals.CurrCategory = Title;
-            Globals.CurrSection = Sections.kpaSections[(int)Sections.KpaSection.PurchTotal];
+            KPA_KPI_UI.topHandleBarModel.Category = Title;
+            KPA_KPI_UI.topHandleBarModel.Section = Sections.kpaSections[(int)Sections.KpaSection.PurchTotal];
             ChangeCategory();
 
             AnalysisOne = "- PRs fully released which are either not on a PO or on a PO (but have not been confirmed and are not delivered).";

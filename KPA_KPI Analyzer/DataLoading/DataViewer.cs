@@ -27,33 +27,6 @@ namespace KPA_KPI_Analyzer.DataLoading
         /// </summary>
         public int ColumnTag { get; set; }
 
-
-
-        /// <summary>
-        /// Current selected country to display in the data viewer
-        /// </summary>
-        public string Country { set { lbl_Country.Text = value; } }
-        
-
-        /// <summary>
-        /// Current selected performance to display in the data viewer
-        /// </summary>
-        public string Performance { set { lbl_Performance.Text = value; } }
-
-
-        /// <summary>
-        /// Current selected section to display in the data viewer
-        /// </summary>
-        public string Section { set { lbl_Section.Text = value; } }
-
-
-
-        /// <summary>
-        /// Current selected category to display in the data viewer
-        /// </summary>
-        public string Category { set { lbl_Category.Text = value; } }
-
-
         #endregion
 
 
@@ -65,8 +38,6 @@ namespace KPA_KPI_Analyzer.DataLoading
         public DataViewer()
         {
             InitializeComponent();
-            lbl_Country.Text = Globals.CurrCountry;
-            lbl_date.Text = Globals.PrpoGenerationDate;
             dgv_dataViewerDgv.DoubleBuffered = true;
         }
         #endregion
@@ -86,10 +57,6 @@ namespace KPA_KPI_Analyzer.DataLoading
         {
             DataViewerUtils.DataLoaded = false;
             DataViewerUtils.DataLoadProcessStarted = false;
-
-            lbl_Performance.Text = Globals.CurrPerformance;
-            lbl_Section.Text = Globals.CurrSection;
-            lbl_Category.Text = Globals.CurrCategory;
 
             tmr_waitTimer.Start();
         }
