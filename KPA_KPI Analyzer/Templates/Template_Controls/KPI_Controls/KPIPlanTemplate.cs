@@ -171,9 +171,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                 case 2:
                     RenderThree();
                     break;
-                case 3:
-                    RenderFour();
-                    break;
                 default:
                     break;
             }
@@ -186,72 +183,10 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
 
-
-
-
         /// <summary>
         /// Renders the specific KPI category into the loaded template
         /// </summary>
         private void RenderOne()
-        {
-            Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
-            Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
-
-            Title = Categories.kpiCategories[(int)Sections.KpiSection.Plan][(int)Categories.KpiCategory.Plan.PrReleaseDateVsPrCreationDate];
-            Globals.CurrCategory = Title;
-            Globals.CurrSection = Sections.kpiections[(int)Sections.KpiSection.Plan];
-            ChangeCategory();
-
-
-
-            AnalysisOne = "- Will show if the PR has been fully released";
-            AnalysisTwo = "- Difference between the PR full release date and the date the PR was created.";
-
-
-            TemplateThree tempThree = KpiOverallReport.Indicators[(int)KpiOption.Plan_PrReleaseDateVsPrCreationDate].TemplateBlock as TemplateThree;
-
-            // Add the data to the column chart
-            dp.addLabely(lbl_xLabelOne.Text, tempThree.LessThanEqualToNegTwentyTwoDays.ToString());
-            dp.addLabely(lbl_xLabelTwo.Text, tempThree.NegTwentyOneToNegFifteenDays.ToString());
-            dp.addLabely(lbl_xLabelThree.Text, tempThree.NegFourteenToNegEightDays.ToString());
-            dp.addLabely(lbl_xLabelFour.Text, tempThree.NegSevenToNegOneDays.ToString());
-            dp.addLabely(lbl_xLabelFive.Text, tempThree.ZeroDays.ToString());
-            dp.addLabely(lbl_xLabelSix.Text, tempThree.OneToSevenDays.ToString());
-            dp.addLabely(lbl_xLabelSeven.Text, tempThree.EightToFourteenDays.ToString());
-            dp.addLabely(lbl_xLabelSeven.Text, tempThree.FifteenToTwentyOneDays.ToString());
-            dp.addLabely(lbl_xLabelSeven.Text, tempThree.GreaterThanEqualToTwentyTwoDays.ToString());
-
-            Average = string.Format("{0:n}", tempThree.Average);
-            TimeBucketOne = string.Format("{0:n0}", tempThree.LessThanEqualToNegTwentyTwoDays);
-            TimeBucketTwo = string.Format("{0:n0}", tempThree.NegTwentyOneToNegFifteenDays);
-            TimeBucketThree = string.Format("{0:n0}", tempThree.NegFourteenToNegEightDays);
-            TimeBucketFour = string.Format("{0:n0}", tempThree.NegSevenToNegOneDays);
-            TimeBucketFive = string.Format("{0:n0}", tempThree.ZeroDays);
-            TimeBucketSix = string.Format("{0:n0}", tempThree.OneToSevenDays);
-            TimeBucketSeven = string.Format("{0:n0}", tempThree.EightToFourteenDays);
-            TimeBucketEight = string.Format("{0:n0}", tempThree.FifteenToTwentyOneDays);
-            TimeBucketNine = string.Format("{0:n0}", tempThree.GreaterThanEqualToTwentyTwoDays);
-            TotalOrders = string.Format("{0:n0}", tempThree.TotalRecords);
-
-            canvas.addData(dp);
-            dataviz.Render(canvas);
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-        /// <summary>
-        /// Renders the specific KPI category into the loaded template
-        /// </summary>
-        private void RenderTwo()
         {
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
@@ -304,7 +239,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// <summary>
         /// Renders the specific KPI category into the loaded template
         /// </summary>
-        private void RenderThree()
+        private void RenderTwo()
         {
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
@@ -356,7 +291,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// <summary>
         /// Renders the specific KPI category into the loaded template
         /// </summary>
-        private void RenderFour()
+        private void RenderThree()
         {
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);

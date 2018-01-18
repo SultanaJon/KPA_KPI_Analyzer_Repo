@@ -176,6 +176,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                 case 1:
                     RenderTwo();
                     break;
+                case 3:
+                    RenderThree();
+                    break;
                 default:
                     break;
             }
@@ -293,6 +296,59 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             dataviz.Render(canvas);
         }
 
+
+
+
+
+
+        /// <summary>
+        /// Renders the specific KPI category into the loaded template
+        /// </summary>
+        private void RenderThree()
+        {
+            Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
+            Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
+
+            Title = Categories.kpiCategories[(int)Sections.KpiSection.PlanTwo][(int)Categories.KpiCategory.PlanTwo.PrReleaseDateVsPrCreationDate];
+            Globals.CurrCategory = Title;
+            Globals.CurrSection = Sections.kpiections[(int)Sections.KpiSection.PlanTwo];
+            ChangeCategory();
+
+            AnalysisOne = "- Will show if the PR has been fully released";
+            AnalysisTwo = "- Difference between the PR full release date and the date the PR was created.";
+
+            TemplateFour tempFour = KpiOverallReport.Indicators[(int)KpiOption.PlanTwo_PrReleaseDateVsPrCreationDate].TemplateBlock as TemplateFour;
+
+            // Add the data to the column chart
+            dp.addLabely(lbl_xLabelOne.Text, tempFour.LessThanEqualToZeroDays.ToString());
+            dp.addLabely(lbl_xLabelTwo.Text, tempFour.OneToThreeDays.ToString());
+            dp.addLabely(lbl_xLabelThree.Text, tempFour.FourToSevenDays.ToString());
+            dp.addLabely(lbl_xLabelFour.Text, tempFour.EightToFourteenDays.ToString());
+            dp.addLabely(lbl_xLabelFive.Text, tempFour.FifteenToTwentyOneDays.ToString());
+            dp.addLabely(lbl_xLabelSix.Text, tempFour.TwentyTwoToTwentyEightDays.ToString());
+            dp.addLabely(lbl_xLabelSeven.Text, tempFour.TwentyNineToThirtyFiveDays.ToString());
+            dp.addLabely(lbl_xLabelEight.Text, tempFour.ThirtySixtoFourtyTwoDays.ToString());
+            dp.addLabely(lbl_xLabelNine.Text, tempFour.FourtyThreeToFourtyNineDays.ToString());
+            dp.addLabely(lbl_xLabelTen.Text, tempFour.FiftyToFiftySixDays.ToString());
+            dp.addLabely(lbl_xLabelEleven.Text, tempFour.FiftySevenPlusDays.ToString());
+
+            Average = string.Format("{0:n}", tempFour.Average);
+            TimeBucketOne = string.Format("{0:n0}", tempFour.LessThanEqualToZeroDays);
+            TimeBucketTwo = string.Format("{0:n0}", tempFour.OneToThreeDays);
+            TimeBucketThree = string.Format("{0:n0}", tempFour.FourToSevenDays);
+            TimeBucketFour = string.Format("{0:n0}", tempFour.EightToFourteenDays);
+            TimeBucketFive = string.Format("{0:n0}", tempFour.FifteenToTwentyOneDays);
+            TimeBucketSix = string.Format("{0:n0}", tempFour.TwentyTwoToTwentyEightDays);
+            TimeBucketSeven = string.Format("{0:n0}", tempFour.TwentyNineToThirtyFiveDays);
+            TimeBucketEight = string.Format("{0:n0}", tempFour.ThirtySixtoFourtyTwoDays);
+            TimeBucketNine = string.Format("{0:n0}", tempFour.FourtyThreeToFourtyNineDays);
+            TimeBucketTen = string.Format("{0:n0}", tempFour.FiftyToFiftySixDays);
+            TimeBucketEleven = string.Format("{0:n0}", tempFour.FiftySevenPlusDays);
+            TotalOrders = string.Format("{0:n0}", tempFour.TotalRecords);
+
+            canvas.addData(dp);
+            dataviz.Render(canvas);
+        }
 
 
 
