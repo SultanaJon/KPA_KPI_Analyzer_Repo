@@ -647,7 +647,7 @@ namespace KPA_KPI_Analyzer
 									dt = GetLoadedUsPrpoReportDate();
 									lbl_topPanelNavPrpoDate.Text = dt.ToString("MMMM dd, yyyy");
 									Globals.PrpoGenerationDate = lbl_topPanelNavPrpoDate.Text;
-                                    BegingFilterLoadProcess();
+									BegingFilterLoadProcess();
 								}
 								else
 								{
@@ -700,7 +700,7 @@ namespace KPA_KPI_Analyzer
 									dt = GetLoadedMxPrpoReportDate();
 									lbl_topPanelNavPrpoDate.Text = dt.ToString("MMMM dd, yyyy");
 									Values.Globals.PrpoGenerationDate = lbl_topPanelNavPrpoDate.Text;
-                                    BegingFilterLoadProcess();
+									BegingFilterLoadProcess();
 								}
 								else
 								{

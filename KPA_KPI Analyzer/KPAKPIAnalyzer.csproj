@@ -134,6 +134,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TopHandleBar\ITopHandleBarController.cs" />
+    <Compile Include="TopHandleBar\ITopHandleBarModel.cs" />
+    <Compile Include="TopHandleBar\ITopHandleBarView.cs" />
+    <Compile Include="TopHandleBar\TopHandleBarController.cs" />
+    <Compile Include="TopHandleBar\TopHandleBarModel.cs" />
+    <Compile Include="TopHandleBar\TopHandleBarView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TopHandleBar\TopHandleBarView.Designer.cs">
+      <DependentUpon>TopHandleBarView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Correlation\CorrelationConfiguration.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -380,6 +391,9 @@
     <Compile Include="Templates\TemplateThreeStructure.cs" />
     <Compile Include="Templates\TemplateTwoStructure.cs" />
     <Compile Include="Values\Globals.cs" />
+    <EmbeddedResource Include="TopHandleBar\TopHandleBarView.resx">
+      <DependentUpon>TopHandleBarView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Correlation\CorrelationConfiguration.resx">
       <DependentUpon>CorrelationConfiguration.cs</DependentUpon>
       <SubType>Designer</SubType>

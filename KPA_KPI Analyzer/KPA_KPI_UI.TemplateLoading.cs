@@ -1,6 +1,7 @@
 ﻿using KPA_KPI_Analyzer.PerformanceReporting;
 using KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls;
 using KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls;
+using System;
 using System.Windows.Forms;
 
 namespace KPA_KPI_Analyzer
@@ -595,7 +596,6 @@ namespace KPA_KPI_Analyzer
                 }
             }
         }
-
 
     
         /// <summary>

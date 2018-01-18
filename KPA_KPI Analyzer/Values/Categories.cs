@@ -103,7 +103,6 @@
         {
             public enum Plan : byte
             {
-                PrReleaseDateVsPrCreationDate,
                 CurrentPlanDateVsPrPlanDate,
                 OriginalPlanDate2ndLvlReleaseDatevsCodedLeadTime,
                 CurrentPlanDate2ndLvlReleaseDatevsCodedLeadTime
@@ -126,7 +125,8 @@
             public enum PlanTwo : byte
             {
                 MaterialDueOriginalPlanDate,
-                MaterialDueFinalPlannedDate
+                MaterialDueFinalPlannedDate,
+                PrReleaseDateVsPrCreationDate
             }
 
             public enum PurchTwo : byte
@@ -170,13 +170,13 @@
         public static string[][] kpiCategories =
         {
                 // Plan One
-                new string[] { "PR Release Date vs PR Creation Date", "Current Plan vs PR Plan Date", "(Original Plan Date - PR Fully Released Date) vs Coded Lead-Time", "(Current Plan Date - PR Fully Released Date) vs Coded Lead-Time"},
+                new string[] { "Current Plan vs PR Plan Date", "(Original Plan Date - PR Fully Released Date) vs Coded Lead-Time", "(Current Plan Date - PR Fully Released Date) vs Coded Lead-Time"},
                 // Purch
                 new string[] { "Initial Confirmation Date vs PR Plan Date"},
                 // Follow Up
                 new string[] { "Current Confirmation Date vs Initial Confirmation Date", "Final Confirmation Date vs Final Plan Date", "Receipt Date vs Current Plan Date", "Receipt Date vs Original Confirmation Date", "Receipt Date vs Current Confirmation Date"},
                 // Plan two
-                new string[] { "Material Due (Original Planned Date)", "Material Due (Final Planned Date)"},
+                new string[] { "Material Due (Original Planned Date)", "Material Due (Final Planned Date)", "PR Release Date vs PR Creation Date" },
                 // Purch Two
                 new string[] { "PR Fully Released Date vs PO Creation Date", "PO Creation Date vs PO Release Date", "PO Release Date vs PO Confirmation Date"},
                 // Purch Sub
