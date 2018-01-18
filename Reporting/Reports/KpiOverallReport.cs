@@ -116,9 +116,6 @@ namespace Reporting.Reports
                 // Run again the specific KPI option
                 switch (option)
                 {
-                    case KpiOption.Plan_PrReleaseDateVsPrCreationDate:
-                        Indicators[(int)option] = JsonConvert.DeserializeObject<KeyPerformanceIndicators.Plan.PrReleaseVsPrCreation>(results[(int)option]);
-                        break;
                     case KpiOption.Plan_CurrentPlanDateVsPrPlanDate:
                         Indicators[(int)option] = JsonConvert.DeserializeObject<KeyPerformanceIndicators.Plan.CurrentPlanDateVsPRPlanDate>(results[(int)option]);
                         break;
@@ -151,6 +148,9 @@ namespace Reporting.Reports
                         break;
                     case KpiOption.PlanTwo_MaterialDueFinalPlannedDate:
                         Indicators[(int)option] = JsonConvert.DeserializeObject<KeyPerformanceIndicators.PlanTwo.MaterialDueFinalPlannedDate>(results[(int)option]);
+                        break;
+                    case KpiOption.PlanTwo_PrReleaseDateVsPrCreationDate:
+                        Indicators[(int)option] = JsonConvert.DeserializeObject<KeyPerformanceIndicators.PlanTwo.PrReleaseVsPrCreation>(results[(int)option]);
                         break;
                     case KpiOption.PurchTwo_PrFullyReleaseDateVsPoCreationDate:
                         Indicators[(int)option] = JsonConvert.DeserializeObject<KeyPerformanceIndicators.PurchTwo.PR2ndLvlReleaseDateVsPOCreationDate>(results[(int)option]);

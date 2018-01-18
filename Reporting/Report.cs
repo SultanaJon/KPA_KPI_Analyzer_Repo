@@ -34,7 +34,6 @@ namespace Reporting
             List<KeyPerformanceIndicator> indicators = new List<KeyPerformanceIndicator>();
 
             // Add the indicators
-            indicators.Add(new KeyPerformanceIndicators.Plan.PrReleaseVsPrCreation());
             indicators.Add(new KeyPerformanceIndicators.Plan.CurrentPlanDateVsPRPlanDate());
             indicators.Add(new KeyPerformanceIndicators.Plan.OriginalPlanDateTo2ndLvlReleaseDateVsCodedLead());
             indicators.Add(new KeyPerformanceIndicators.Plan.CurrentPlanDateTo2ndLvlReleaseDateVsCodedLead());
@@ -46,6 +45,7 @@ namespace Reporting
             indicators.Add(new KeyPerformanceIndicators.FollowUp.ReceiptDateVsCurrentConfirmationDate());
             indicators.Add(new KeyPerformanceIndicators.PlanTwo.MaterialDueOriginalPlannedDate());
             indicators.Add(new KeyPerformanceIndicators.PlanTwo.MaterialDueFinalPlannedDate());
+            indicators.Add(new KeyPerformanceIndicators.PlanTwo.PrReleaseVsPrCreation());
             indicators.Add(new KeyPerformanceIndicators.PurchTwo.PR2ndLvlReleaseDateVsPOCreationDate());
             indicators.Add(new KeyPerformanceIndicators.PurchTwo.POCreationDateVsPOReleaseDate());
             indicators.Add(new KeyPerformanceIndicators.PurchTwo.POReleaseDateVsPOConfirmationDate());

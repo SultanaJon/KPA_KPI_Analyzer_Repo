@@ -5,7 +5,6 @@ namespace Reporting.KeyPerformanceIndicators
 {
     public enum KpiOption
     {
-        Plan_PrReleaseDateVsPrCreationDate,
         Plan_CurrentPlanDateVsPrPlanDate,
         Plan_OrigPlanDateMinusPrFullReleaseDateVsCodedLead,
         Plan_CurrentPlanDateMinusPrFullReleaseDateVsCodedLead,
@@ -17,6 +16,7 @@ namespace Reporting.KeyPerformanceIndicators
         FollowUp_ReceiptDateVsCurrentConfirmationDate,
         PlanTwo_MaterialDueOriginalPlannedDate,
         PlanTwo_MaterialDueFinalPlannedDate,
+        PlanTwo_PrReleaseDateVsPrCreationDate,
         PurchTwo_PrFullyReleaseDateVsPoCreationDate,
         PurchTwo_PoCreationDateVsPoReleaseDate,
         PurchTwo_PoReleaseDateVsPoConfirmationDate,

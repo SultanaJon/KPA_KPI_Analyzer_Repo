@@ -80,7 +80,7 @@
     <Compile Include="KeyPerformanceIndicators\Plan\CurrentPlanDateTo2ndLvlReleaseDateVsCodedLead.cs" />
     <Compile Include="KeyPerformanceIndicators\Plan\OriginalPlanDateTo2ndLvlReleaseDateVsCodedLead.cs" />
     <Compile Include="KeyPerformanceIndicators\Plan\CurrentPlanDateVsPRPlanDate.cs" />
-    <Compile Include="KeyPerformanceIndicators\Plan\PrReleaseVsPrCreation.cs" />
+    <Compile Include="KeyPerformanceIndicators\PlanTwo\PrReleaseVsPrCreation.cs" />
     <Compile Include="KeyPerformanceIndicators\PurchPlan\POReleaseVsPRDeliveryDate.cs" />
     <Compile Include="KeyPerformanceIndicators\PurchSub\POCreationDateVsConfirmationEntry.cs" />
     <Compile Include="KeyPerformanceIndicators\PurchSub\PRReleaseDateVsPOReleaseDate.cs" />
