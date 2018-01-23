@@ -17,8 +17,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         
 
 
-        public delegate void UpdateCategoryHandler();
-        public static event UpdateCategoryHandler ChangeCategory;
+        
+        
 
         /// <summary>
         /// Boolean value indicating whether the data was loaded into the dataviz control
@@ -103,7 +103,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             ActiveCategory = 0;
             datavizLoadTimer.Start();
             KPA_KPI_UI.topHandleBarModel.Category = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.FollowUp][(int)Values.Categories.KpiCategory.FollowUp.CurrentConfDateVsInitialConfDate];
-            ChangeCategory();
+            
         }
 
 
@@ -219,7 +219,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.FollowUp][(int)Values.Categories.KpiCategory.FollowUp.CurrentConfDateVsInitialConfDate];
             KPA_KPI_UI.topHandleBarModel.Category = Title;
             KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpiections[(int)Values.Sections.KpiSection.FollowUp];
-            ChangeCategory();
+            
 
             AnalysisOne = "- Will show if the PR is on a PO.";
             AnalysisTwo = "- Difference between final confirmation date and first confirmation date.";
@@ -278,7 +278,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.FollowUp][(int)Values.Categories.KpiCategory.FollowUp.FinalConfirmationDatevsFinalPlanDate];
             KPA_KPI_UI.topHandleBarModel.Category = Title;
             KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpiections[(int)Values.Sections.KpiSection.FollowUp];
-            ChangeCategory();
+            
 
             AnalysisOne = "- Will show if PO line has been received complete.";
             AnalysisTwo = "- Difference between current confirmation date and current planned date.";
@@ -338,7 +338,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.FollowUp][(int)Values.Categories.KpiCategory.FollowUp.ReceiptDatevsCurrentPlanDate];
             KPA_KPI_UI.topHandleBarModel.Category = Title;
             KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpiections[(int)Values.Sections.KpiSection.FollowUp];
-            ChangeCategory();
+            
 
             AnalysisOne = "- Will show if PO line has been received complete.";
             AnalysisTwo = "- Difference between final receipt date and current planned date.";
@@ -389,7 +389,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.FollowUp][(int)Values.Categories.KpiCategory.FollowUp.ReceiptDatevsOriginalConfirmationDate];
             KPA_KPI_UI.topHandleBarModel.Category = Title;
             KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpiections[(int)Values.Sections.KpiSection.FollowUp];
-            ChangeCategory();
+            
 
             AnalysisOne = "- Will show if PO line has been received complete.";
             AnalysisTwo = "- Difference between final receipt date and the original confirmation date.";
@@ -449,7 +449,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.FollowUp][(int)Values.Categories.KpiCategory.FollowUp.ReceiptDatevsCurrentConfirmationDate];
             KPA_KPI_UI.topHandleBarModel.Category = Title;
             KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpiections[(int)Values.Sections.KpiSection.FollowUp];
-            ChangeCategory();
+            
 
             AnalysisOne = "- Will show if PO line has been received complete.";
             AnalysisTwo = "- Difference between final receipt date and the current confirmation date.";

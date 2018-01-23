@@ -20,11 +20,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
 
 
-        public delegate void UpdateCategoryHandler();
-        public static event UpdateCategoryHandler ChangeCategory;
-
-
-
         /// <summary>
         /// Boolean value indicating whether the data was loaded into the dataviz control
         /// </summary>
@@ -102,7 +97,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             ActiveCategory = 0;
             datavizLoadTimer.Start();
             KPA_KPI_UI.topHandleBarModel.Category = Categories.kpaCategories[(int)Sections.KpaSection.Plan][(int)Categories.KpaCategory.Plan.PRsAgingNotRel];
-            ChangeCategory();
+            
         }
 
 
@@ -154,8 +149,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             btn_One.selected = false;
             btn_Two.selected = false;
             btn.selected = true;
-            DefaultButtonTextColor = System.Drawing.Color.DarkGray;
-            btn.Textcolor = System.Drawing.Color.Coral;
+            DefaultButtonTextColor = Color.DarkGray;
+            btn.Textcolor = Color.Coral;
 
             int tag = int.Parse(btn.Tag.ToString());
 
@@ -189,7 +184,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Title = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.Plan][(int)Values.Categories.KpaCategory.Plan.PRsAgingNotRel];
             KPA_KPI_UI.topHandleBarModel.Category = Title;
             KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.Plan];
-            ChangeCategory();
+            
 
             AnalysisOne = "- Will only show in this field if the PR is not fully released and the PR Open Qty > 0.";
             AnalysisTwo = "- Difference between todays date and the date the PR was created.";
@@ -239,7 +234,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Title = Categories.kpaCategories[(int)Sections.KpaSection.Plan][(int)Categories.KpaCategory.Plan.MaterialDue];
             KPA_KPI_UI.topHandleBarModel.Category = Title;
             KPA_KPI_UI.topHandleBarModel.Section = Sections.kpaSections[(int)Sections.KpaSection.Plan];
-            ChangeCategory();
+            
 
             AnalysisOne = "- Will only show in this field if PR is fully released and the PR Open Qty > 0.";
             AnalysisTwo = "- Difference between the current requirement date and todays date.";

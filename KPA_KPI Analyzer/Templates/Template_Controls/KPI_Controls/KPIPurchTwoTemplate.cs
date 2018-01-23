@@ -17,8 +17,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         
 
 
-        public delegate void UpdateCategoryHandler();
-        public static event UpdateCategoryHandler ChangeCategory;
+        
+        
 
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             ActiveCategory = 0;
             datavizLoadTimer.Start();
             KPA_KPI_UI.topHandleBarModel.Category = Categories.kpiCategories[(int)Sections.KpiSection.PurchTwo][(int)Categories.KpiCategory.PurchTwo.PR2ndLvlReleaseDatevsPOCreationDate];
-            ChangeCategory();
+            
         }
 
 
@@ -213,7 +213,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Title = Categories.kpiCategories[(int)Sections.KpiSection.PurchTwo][(int)Categories.KpiCategory.PurchTwo.PR2ndLvlReleaseDatevsPOCreationDate];
             KPA_KPI_UI.topHandleBarModel.Category = Title;
             KPA_KPI_UI.topHandleBarModel.Section = Sections.kpiections[(int)Sections.KpiSection.PurchTwo];
-            ChangeCategory();
+            
 
             AnalysisOne = "- Will show if PR is on PO.";
             AnalysisTwo = "- Difference between PO line items initial creation date and the date the PR was fully released.";
@@ -269,7 +269,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Title = Categories.kpiCategories[(int)Sections.KpiSection.PurchTwo][(int)Categories.KpiCategory.PurchTwo.POCreationDatevsPOReleaseDate];
             KPA_KPI_UI.topHandleBarModel.Category = Title;
             KPA_KPI_UI.topHandleBarModel.Section = Sections.kpiections[(int)Sections.KpiSection.PurchTwo];
-            ChangeCategory();
+            
 
             AnalysisOne = "- Will show if PO line item has an initial release date.";
             AnalysisTwo = "- Difference between PO line initial release date and PO line creation date.";
@@ -327,7 +327,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Title = Categories.kpiCategories[(int)Sections.KpiSection.PurchTwo][(int)Categories.KpiCategory.PurchTwo.POReleaseDatevsPOConfirmationDate];
             KPA_KPI_UI.topHandleBarModel.Category = Title;
             KPA_KPI_UI.topHandleBarModel.Section = Sections.kpiections[(int)Sections.KpiSection.PurchTwo];
-            ChangeCategory();
+            
 
 
             AnalysisOne = "- Will show if PO line item is confirmed and has been previously released.";

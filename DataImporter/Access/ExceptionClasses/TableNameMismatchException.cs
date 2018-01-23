@@ -2,6 +2,7 @@
 
 namespace DataImporter.Access.ExceptionClasses
 {
+    [Serializable]
     public class TableNameMismatchException : Exception
     {
         //public TableNameMismatchException() { }

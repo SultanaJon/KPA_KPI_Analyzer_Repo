@@ -17,8 +17,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         
 
 
-        public delegate void UpdateCategoryHandler();
-        public static event UpdateCategoryHandler ChangeCategory;
+        
+        
 
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             ActiveCategory = 0;
             datavizLoadTimer.Start();
             KPA_KPI_UI.topHandleBarModel.Category = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PurchPlan][(int)Values.Categories.KpiCategory.PurchPlan.POReleasevsPRDeliveryDate];
-            ChangeCategory();
+            
         }
 
 
@@ -190,7 +190,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PurchPlan][(int)Values.Categories.KpiCategory.PurchPlan.POReleasevsPRDeliveryDate];
             KPA_KPI_UI.topHandleBarModel.Category = Title;
             KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpiections[(int)Values.Sections.KpiSection.PurchPlan];
-            ChangeCategory();
+            
 
 
 

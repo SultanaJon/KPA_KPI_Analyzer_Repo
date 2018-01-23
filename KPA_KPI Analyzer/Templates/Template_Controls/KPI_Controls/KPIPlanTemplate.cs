@@ -13,8 +13,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 {
     public partial class KPIPlanTemplate : UserControl
     {
-        public delegate void UpdateCategoryHandler();
-        public static event UpdateCategoryHandler ChangeCategory;
+        
+        
 
         /// <summary>
         /// Boolean value indicating whether the data was loaded into the dataviz control
@@ -95,7 +95,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             ActiveCategory = 0;
             datavizLoadTimer.Start();
             KPA_KPI_UI.topHandleBarModel.Category = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.Plan][(int)Values.Categories.KpiCategory.Plan.CurrentPlanDateVsPrPlanDate];
-            ChangeCategory();
+            
         }
 
 
@@ -191,16 +191,12 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.Plan][(int)Values.Categories.KpiCategory.Plan.CurrentPlanDateVsPrPlanDate];
+            Title = Categories.kpiCategories[(int)Sections.KpiSection.Plan][(int)Categories.KpiCategory.Plan.CurrentPlanDateVsPrPlanDate];
             KPA_KPI_UI.topHandleBarModel.Category = Title;
-            KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpiections[(int)Values.Sections.KpiSection.Plan];
-            ChangeCategory();
-
-
-
+            KPA_KPI_UI.topHandleBarModel.Section = Sections.kpiections[(int)Sections.KpiSection.Plan];
+            
             AnalysisOne = "- Will show for PRs that are on a PO.";
             AnalysisTwo = "- Difference between current planned date and PR planned date.";
-
 
             TemplateThree tempThree = KpiOverallReport.Indicators[(int)KpiOption.Plan_CurrentPlanDateVsPrPlanDate].TemplateBlock as TemplateThree;
 
@@ -247,7 +243,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.Plan][(int)Values.Categories.KpiCategory.Plan.OriginalPlanDate2ndLvlReleaseDatevsCodedLeadTime];
             KPA_KPI_UI.topHandleBarModel.Category = Title;
             KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpiections[(int)Values.Sections.KpiSection.Plan];
-            ChangeCategory();
+            
 
 
             AnalysisOne = "- Will show if the PR is fully released.";
@@ -299,7 +295,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.Plan][(int)Values.Categories.KpiCategory.Plan.CurrentPlanDate2ndLvlReleaseDatevsCodedLeadTime];
             KPA_KPI_UI.topHandleBarModel.Category = Title;
             KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpiections[(int)Values.Sections.KpiSection.Plan];
-            ChangeCategory();
+            
 
 
             AnalysisOne = "- Will show if the PR is fully released.";

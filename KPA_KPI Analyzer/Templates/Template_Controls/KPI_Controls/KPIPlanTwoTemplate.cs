@@ -16,8 +16,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         
 
 
-        public delegate void UpdateCategoryHandler();
-        public static event UpdateCategoryHandler ChangeCategory;
+        
+        
 
 
         /// <summary>
@@ -75,6 +75,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             {
                 btn_One.Textcolor = value;
                 btn_Two.Textcolor = value;
+                btn_Three.Textcolor = value;
             }
         }
         #endregion
@@ -98,7 +99,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             DatavizLoaded = false;
             ActiveCategory = 0;
             KPA_KPI_UI.topHandleBarModel.Category = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PlanTwo][(int)Values.Categories.KpiCategory.PlanTwo.MaterialDueOriginalPlanDate];
-            ChangeCategory();
+            
             datavizLoadTimer.Start();
         }
 
@@ -156,8 +157,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
             btn_One.selected = false;
-            btn_One.selected = false;
-            btn_One.selected = false;
+            btn_Two.selected = false;
+            btn_Three.selected = false;
 
             btn.selected = true;
             DefaultButtonTextColor = Color.DarkGray;
@@ -176,7 +177,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                 case 1:
                     RenderTwo();
                     break;
-                case 3:
+                case 2:
                     RenderThree();
                     break;
                 default:
@@ -195,11 +196,10 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PlanTwo][(int)Values.Categories.KpiCategory.PlanTwo.MaterialDueOriginalPlanDate];
+            Title = Categories.kpiCategories[(int)Sections.KpiSection.PlanTwo][(int)Categories.KpiCategory.PlanTwo.MaterialDueOriginalPlanDate];
             KPA_KPI_UI.topHandleBarModel.Category = Title;
-            KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpiections[(int)Values.Sections.KpiSection.PlanTwo];
-            ChangeCategory();
-
+            KPA_KPI_UI.topHandleBarModel.Section = Sections.kpiections[(int)Sections.KpiSection.PlanTwo];
+            
 
 
             AnalysisOne = "- Will show if the PR has been fully released.";
@@ -256,7 +256,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PlanTwo][(int)Values.Categories.KpiCategory.PlanTwo.MaterialDueFinalPlannedDate];
             KPA_KPI_UI.topHandleBarModel.Category = Title;
             KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpiections[(int)Values.Sections.KpiSection.PlanTwo];
-            ChangeCategory();
+            
 
             AnalysisOne = "- Will show if the PR line item is on a PO.";
             AnalysisTwo = "- Difference between the current planned date and the date the PR was fully released.";
@@ -312,7 +312,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Title = Categories.kpiCategories[(int)Sections.KpiSection.PlanTwo][(int)Categories.KpiCategory.PlanTwo.PrReleaseDateVsPrCreationDate];
             KPA_KPI_UI.topHandleBarModel.Category = Title;
             KPA_KPI_UI.topHandleBarModel.Section = Sections.kpiections[(int)Sections.KpiSection.PlanTwo];
-            ChangeCategory();
+            
 
             AnalysisOne = "- Will show if the PR has been fully released";
             AnalysisTwo = "- Difference between the PR full release date and the date the PR was created.";

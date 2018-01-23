@@ -276,7 +276,9 @@ namespace DataExporter
                     List<string> tempData = tempFourData.GetTemplateData();
 
                     if (indicator is IUnconfirmed)
+                    {
                         tempData.Add(string.Format("{0:n0}", (indicator as IUnconfirmed).PercentUnconfirmed + "%"));
+                    }
 
                     // Remove any unwanted characters
                     CleanData(ref tempData);

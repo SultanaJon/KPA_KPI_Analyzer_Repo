@@ -17,8 +17,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
 
 
-        public delegate void UpdateCategoryHandler();
-        public static event UpdateCategoryHandler ChangeCategory;
+        
+        
 
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             ActiveCategory = 0;
             datavizLoadTimer.Start();
             KPA_KPI_UI.topHandleBarModel.Category = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.HotJobs][(int)Values.Categories.KpaCategory.HotJobs.PrsNotonPO];
-            ChangeCategory();
+            
         }
 
 
@@ -182,7 +182,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Title = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.HotJobs][(int)Values.Categories.KpaCategory.HotJobs.PrsNotonPO];
             KPA_KPI_UI.topHandleBarModel.Category = Title;
             KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.HotJobs];
-            ChangeCategory();
+            
 
             AnalysisOne = "- Will only show if PR is assigned to purchase group UHJ, is fully released and the PR has not been placed on a PO.";
             AnalysisTwo = "- Difference between todays date and the date the PR was fully released.";
@@ -230,7 +230,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Title = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.HotJobs][(int)Values.Categories.KpaCategory.HotJobs.NoConfirmations];
             KPA_KPI_UI.topHandleBarModel.Category = Title;
             KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.HotJobs];
-            ChangeCategory();
+            
 
 
             AnalysisOne = "- Will only show for PO line items with purchase group UHJ that do not have a confirmation date and are not received complete.";
@@ -279,7 +279,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Title = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.HotJobs][(int)Values.Categories.KpaCategory.HotJobs.LateToConfirmed];
             KPA_KPI_UI.topHandleBarModel.Category = Title;
             KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.HotJobs];
-            ChangeCategory();
+            
 
 
             AnalysisOne = "- Will only show for PO line items with purchase group UHJ that have confirmation dates less than today and have not been received complete.";

@@ -161,7 +161,9 @@ namespace KPA_KPI_Analyzer
         /// <param name="e">The click event</param>
         private void btn_dashboardCancel_Click(object sender, EventArgs e)
         {
-            NavigationLocked = true;
+            // Lock the navigation functionality
+            navigationSettings.Status = Navigation.Functionality.Locked;
+
             ms_applicaitonMenuStrip.Enabled = false;
             ShowPage(Pages.DragDropDash);
         }

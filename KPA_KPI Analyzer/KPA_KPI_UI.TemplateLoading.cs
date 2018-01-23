@@ -14,8 +14,9 @@ namespace KPA_KPI_Analyzer
         /// <param name="_message">The message to display on the loading screen of the process.</param>
         private void ActivateLoadingScreen(string _message)
         {
-            // Lock the navigation and the menu strip navigation
-            NavigationLocked = true;
+            // Lock the navigation functionality
+            navigationSettings.Status = Navigation.Functionality.Locked;
+
             ms_applicaitonMenuStrip.Enabled = false;
 
             // Set the text of the progress bar.
@@ -27,25 +28,6 @@ namespace KPA_KPI_Analyzer
 
             // Bring the loading panel to the front if covered.
             pnl_loadingScreen.BringToFront();
-        }
-
-
-        /// <summary>
-        /// Instantiates a template object and adds the control to the active page panel for loading/viewing
-        /// </summary>
-        private void CreateKpaOverallTemplate()
-        {
-            activeSectionBtn = btn_kpaOverall;
-            topHandleBarModel.Update("KPA", "ALL", "ALL");
-            MenuInFront = true;
-            NewKPAOverall kpaOverall = new NewKPAOverall()
-            {
-                Name = "Overall",
-                Dock = DockStyle.Fill
-            };
-            pnl_activePage.Controls.Add(kpaOverall);
-            kpaOverall.BringToFront();
-            pnl_NavigationPanelMax.BringToFront();
         }
 
 
@@ -64,8 +46,6 @@ namespace KPA_KPI_Analyzer
 
             pnl_activePage.Controls.Add(kpaPlanTemp);
             kpaPlanTemp.BringToFront();
-            MenuInFront = true;
-            pnl_NavigationPanelMax.BringToFront();
         }
     
 
@@ -84,8 +64,6 @@ namespace KPA_KPI_Analyzer
             };
             pnl_activePage.Controls.Add(kpaPurchTemp);
             kpaPurchTemp.BringToFront();
-            MenuInFront = true;
-            pnl_NavigationPanelMax.BringToFront();
         }
     
 
@@ -104,8 +82,6 @@ namespace KPA_KPI_Analyzer
 
             pnl_activePage.Controls.Add(kpaPurchSubTemp);
             kpaPurchSubTemp.BringToFront();
-            MenuInFront = true;
-            pnl_NavigationPanelMax.BringToFront();
         }
 
 
@@ -124,8 +100,6 @@ namespace KPA_KPI_Analyzer
 
             pnl_activePage.Controls.Add(kpaPurchTotalTemp);
             kpaPurchTotalTemp.BringToFront();
-            MenuInFront = true;
-            pnl_NavigationPanelMax.BringToFront();
         }
 
 
@@ -143,8 +117,6 @@ namespace KPA_KPI_Analyzer
             };
             pnl_activePage.Controls.Add(kpaFollowUpTemp);
             kpaFollowUpTemp.BringToFront();
-            MenuInFront = true;
-            pnl_NavigationPanelMax.BringToFront();
         }
 
 
@@ -162,8 +134,6 @@ namespace KPA_KPI_Analyzer
             };
             pnl_activePage.Controls.Add(kpaHotJobs);
             kpaHotJobs.BringToFront();
-            MenuInFront = true;
-            pnl_NavigationPanelMax.BringToFront();
         }
 
 
@@ -182,8 +152,6 @@ namespace KPA_KPI_Analyzer
 
             pnl_activePage.Controls.Add(kpaExcessStockStock);
             kpaExcessStockStock.BringToFront();
-            MenuInFront = true;
-            pnl_NavigationPanelMax.BringToFront();
         }
 
 
@@ -202,8 +170,6 @@ namespace KPA_KPI_Analyzer
 
             pnl_activePage.Controls.Add(kpaExcessStockOpenOrders);
             kpaExcessStockOpenOrders.BringToFront();
-            MenuInFront = true;
-            pnl_NavigationPanelMax.BringToFront();
         }
 
 
@@ -221,30 +187,9 @@ namespace KPA_KPI_Analyzer
             };
             pnl_activePage.Controls.Add(kpaCurrPlanActual);
             kpaCurrPlanActual.BringToFront();
-            MenuInFront = true;
-            pnl_NavigationPanelMax.BringToFront();
         }
 
 
-
-        /// <summary>
-        /// Instantiates a template object and adds the control to the active page panel for loading/viewing
-        /// </summary>
-        private void CreateKpiOverallTemplate()
-        {
-            activeSectionBtn = btn_kpiOverall;
-            topHandleBarModel.Update("KPI", "ALL", "ALL");
-
-            NewKPIOverall kpiOverall = new NewKPIOverall()
-            {
-                Name = "Overall",
-                Dock = DockStyle.Fill
-            };
-            pnl_activePage.Controls.Add(kpiOverall);
-            kpiOverall.BringToFront();
-            MenuInFront = true;
-            pnl_NavigationPanelMax.BringToFront();
-        }
 
 
 
@@ -262,8 +207,6 @@ namespace KPA_KPI_Analyzer
 
             pnl_activePage.Controls.Add(kpiPlanTemplate);
             kpiPlanTemplate.BringToFront();
-            MenuInFront = true;
-            pnl_NavigationPanelMax.BringToFront();
         }
 
 
@@ -281,8 +224,6 @@ namespace KPA_KPI_Analyzer
             };
             pnl_activePage.Controls.Add(kpiPurchTemplate);
             kpiPurchTemplate.BringToFront();
-            MenuInFront = true;
-            pnl_NavigationPanelMax.BringToFront();
         }
 
 
@@ -300,8 +241,6 @@ namespace KPA_KPI_Analyzer
             };
             pnl_activePage.Controls.Add(kpiFollowUpTemplate);
             kpiFollowUpTemplate.BringToFront();
-            MenuInFront = true;
-            pnl_NavigationPanelMax.BringToFront();
         }
 
 
@@ -319,8 +258,6 @@ namespace KPA_KPI_Analyzer
             };
             pnl_activePage.Controls.Add(kpiPlanTwoTemplate);
             kpiPlanTwoTemplate.BringToFront();
-            MenuInFront = true;
-            pnl_NavigationPanelMax.BringToFront();
         }
 
 
@@ -338,8 +275,6 @@ namespace KPA_KPI_Analyzer
             };
             pnl_activePage.Controls.Add(kpiPurchTwoTemplate);
             kpiPurchTwoTemplate.BringToFront();
-            MenuInFront = true;
-            pnl_NavigationPanelMax.BringToFront();
         }
 
 
@@ -357,8 +292,6 @@ namespace KPA_KPI_Analyzer
             };
             pnl_activePage.Controls.Add(kpiPurchSubTemplate);
             kpiPurchSubTemplate.BringToFront();
-            MenuInFront = true;
-            pnl_NavigationPanelMax.BringToFront();
         }
 
 
@@ -377,8 +310,6 @@ namespace KPA_KPI_Analyzer
 
             pnl_activePage.Controls.Add(kpiPurchTotalTemplate);
             kpiPurchTotalTemplate.BringToFront();
-            MenuInFront = true;
-            pnl_NavigationPanelMax.BringToFront();
         }
 
 
@@ -397,8 +328,6 @@ namespace KPA_KPI_Analyzer
 
             pnl_activePage.Controls.Add(kpiPurchPlanTemplate);
             kpiPurchPlanTemplate.BringToFront();
-            MenuInFront = true;
-            pnl_NavigationPanelMax.BringToFront();
         }
 
 
@@ -416,8 +345,6 @@ namespace KPA_KPI_Analyzer
             };
             pnl_activePage.Controls.Add(kpiOtherTemplate);
             kpiOtherTemplate.BringToFront();
-            MenuInFront = true;
-            pnl_NavigationPanelMax.BringToFront();
         }
 
 
@@ -475,102 +402,111 @@ namespace KPA_KPI_Analyzer
 
             if (e.Control is UserControl)
             {
-                int tag = int.Parse(activeSectionBtn.Tag.ToString());
-
-                switch (tag)
+                if(navigationController.MainTag == Navigation.MainNavigationTag.KPA)
                 {
-                    case 1:
-                        KPAPlanTemplate kpaPlan = (KPAPlanTemplate)e.Control;
-                        kpaPlan.LoadPanel();
-                        activeTemplate = kpaPlan;
-                        break;
-                    case 2:
-                        KPAPurchTemplate kpaPurch = (KPAPurchTemplate)e.Control;
-                        kpaPurch.LoadPanel();
-                        activeTemplate = kpaPurch;
-                        break;
-                    case 3:
-                        KPAPurchSubTemplate kpaPurchSub = (KPAPurchSubTemplate)e.Control;
-                        kpaPurchSub.LoadPanel();
-                        activeTemplate = kpaPurchSub;
-                        break;
-                    case 4:
-                        KPAPurchTotalTemplate kpaPurchTotal = (KPAPurchTotalTemplate)e.Control;
-                        kpaPurchTotal.LoadPanel();
-                        activeTemplate = kpaPurchTotal;
-                        break;
-                    case 5:
-                        KPAFollowUpTemplate kpaFollowUp = (KPAFollowUpTemplate)e.Control;
-                        kpaFollowUp.LoadPanel();
-                        activeTemplate = kpaFollowUp;
-                        break;
-                    case 6:
-                        KPAHotJobsTemplate kpaHotJobs = (KPAHotJobsTemplate)e.Control;
-                        kpaHotJobs.LoadPanel();
-                        activeTemplate = kpaHotJobs;
-                        break;
-                    case 7:
-                        KPAExcessStockStock kpaExcessStockStock = (KPAExcessStockStock)e.Control;
-                        kpaExcessStockStock.LoadPanel();
-                        activeTemplate = kpaExcessStockStock;
-                        break;
-                    case 8:
-                        KPAExcessStockOpenOrders kpaExcessStockOpenOrders = (KPAExcessStockOpenOrders)e.Control;
-                        kpaExcessStockOpenOrders.LoadPanel();
-                        activeTemplate = kpaExcessStockOpenOrders;
-                        break;
-                    case 9:
-                        KPACurrentPlanActualTemplate kpaCurrPlanActual = (KPACurrentPlanActualTemplate)e.Control;
-                        kpaCurrPlanActual.LoadPanel();
-                        activeTemplate = kpaCurrPlanActual;
-                        break;
-                    case 11:
-                        KPIPlanTemplate kpiPlan = (KPIPlanTemplate)e.Control;
-                        kpiPlan.LoadPanel();
-                        activeTemplate = kpiPlan;
-                        break;
-                    case 12:
-                        KPIPurchTemplate kpiPurch = (KPIPurchTemplate)e.Control;
-                        kpiPurch.LoadPanel();
-                        activeTemplate = kpiPurch;
-                        break;
-                    case 13:
-                        KPIFollowUpTemplate kpiFollowUp = (KPIFollowUpTemplate)e.Control;
-                        kpiFollowUp.LoadPanel();
-                        activeTemplate = kpiFollowUp;
-                        break;
-                    case 14:
-                        KPIPlanTwoTemplate kpiPlanTwo  = (KPIPlanTwoTemplate)e.Control;
-                        kpiPlanTwo.LoadPanel();
-                        activeTemplate = kpiPlanTwo;
-                        break;
-                    case 15:
-                        KPIPurchTwoTemplate kpiPurchTwo = (KPIPurchTwoTemplate)e.Control;
-                        kpiPurchTwo.LoadPanel();
-                        activeTemplate = kpiPurchTwo;
-                        break;
-                    case 16:
-                        KPIPurchSubTemplate kpiPurchSub = (KPIPurchSubTemplate)e.Control;
-                        kpiPurchSub.LoadPanel();
-                        activeTemplate = kpiPurchSub;
-                        break;
-                    case 17:
-                        KPIPurchTotalTemplate kpiPurchTotal = (KPIPurchTotalTemplate)e.Control;
-                        kpiPurchTotal.LoadPanel();
-                        activeTemplate = kpiPurchTotal;
-                        break;
-                    case 18:
-                        KPIPurchPlanTemplate kpiPurchPlan = (KPIPurchPlanTemplate)e.Control;
-                        kpiPurchPlan.LoadPanel();
-                        activeTemplate = kpiPurchPlan;
-                        break;
-                    case 19:
-                        KPIOtherTemplate kpiOther = (KPIOtherTemplate)e.Control;
-                        kpiOther.LoadPanel();
-                        activeTemplate = kpiOther;
-                        break;
-                    default:
-                        break;
+                    switch(navigationController.SectionTag)
+                    {
+                        case Navigation.SectionNavigationTag.Plan:
+                            KPAPlanTemplate kpaPlan = (KPAPlanTemplate)e.Control;
+                            kpaPlan.LoadPanel();
+                            activeTemplate = kpaPlan;
+                            break;
+                        case Navigation.SectionNavigationTag.Purch:
+                            KPAPurchTemplate kpaPurch = (KPAPurchTemplate)e.Control;
+                            kpaPurch.LoadPanel();
+                            activeTemplate = kpaPurch;
+                            break;
+                        case Navigation.SectionNavigationTag.PurchSub:
+                            KPAPurchSubTemplate kpaPurchSub = (KPAPurchSubTemplate)e.Control;
+                            kpaPurchSub.LoadPanel();
+                            activeTemplate = kpaPurchSub;
+                            break;
+                        case Navigation.SectionNavigationTag.PurchTotal:
+                            KPAPurchTotalTemplate kpaPurchTotal = (KPAPurchTotalTemplate)e.Control;
+                            kpaPurchTotal.LoadPanel();
+                            activeTemplate = kpaPurchTotal;
+                            break;
+                        case Navigation.SectionNavigationTag.FollowUp:
+                            KPAFollowUpTemplate kpaFollowUp = (KPAFollowUpTemplate)e.Control;
+                            kpaFollowUp.LoadPanel();
+                            activeTemplate = kpaFollowUp;
+                            break;
+                        case Navigation.SectionNavigationTag.HotJobs:
+                            KPAHotJobsTemplate kpaHotJobs = (KPAHotJobsTemplate)e.Control;
+                            kpaHotJobs.LoadPanel();
+                            activeTemplate = kpaHotJobs;
+                            break;
+                        case Navigation.SectionNavigationTag.ExcessStockStock:
+                            KPAExcessStockStock kpaExcessStockStock = (KPAExcessStockStock)e.Control;
+                            kpaExcessStockStock.LoadPanel();
+                            activeTemplate = kpaExcessStockStock;
+                            break;
+                        case Navigation.SectionNavigationTag.ExcessStockOpenOrders:
+                            KPAExcessStockOpenOrders kpaExcessStockOpenOrders = (KPAExcessStockOpenOrders)e.Control;
+                            kpaExcessStockOpenOrders.LoadPanel();
+                            activeTemplate = kpaExcessStockOpenOrders;
+                            break;
+                        case Navigation.SectionNavigationTag.CurrentPlanVsActual:
+                            KPACurrentPlanActualTemplate kpaCurrPlanActual = (KPACurrentPlanActualTemplate)e.Control;
+                            kpaCurrPlanActual.LoadPanel();
+                            activeTemplate = kpaCurrPlanActual;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                else // the user is interacting with the KPIs
+                {
+                    switch (navigationController.SectionTag)
+                    {
+                        case Navigation.SectionNavigationTag.Plan:
+                            KPIPlanTemplate kpiPlan = (KPIPlanTemplate)e.Control;
+                            kpiPlan.LoadPanel();
+                            activeTemplate = kpiPlan;
+                            break;
+                        case Navigation.SectionNavigationTag.Purch:
+                            KPIPurchTemplate kpiPurch = (KPIPurchTemplate)e.Control;
+                            kpiPurch.LoadPanel();
+                            activeTemplate = kpiPurch;
+                            break;
+                        case Navigation.SectionNavigationTag.FollowUp:
+                            KPIFollowUpTemplate kpiFollowUp = (KPIFollowUpTemplate)e.Control;
+                            kpiFollowUp.LoadPanel();
+                            activeTemplate = kpiFollowUp;
+                            break;
+                        case Navigation.SectionNavigationTag.PlanII:
+                            KPIPlanTwoTemplate kpiPlanTwo = (KPIPlanTwoTemplate)e.Control;
+                            kpiPlanTwo.LoadPanel();
+                            activeTemplate = kpiPlanTwo;
+                            break;
+                        case Navigation.SectionNavigationTag.PurchII:
+                            KPIPurchTwoTemplate kpiPurchTwo = (KPIPurchTwoTemplate)e.Control;
+                            kpiPurchTwo.LoadPanel();
+                            activeTemplate = kpiPurchTwo;
+                            break;
+                        case Navigation.SectionNavigationTag.PurchSub:
+                            KPIPurchSubTemplate kpiPurchSub = (KPIPurchSubTemplate)e.Control;
+                            kpiPurchSub.LoadPanel();
+                            activeTemplate = kpiPurchSub;
+                            break;
+                        case Navigation.SectionNavigationTag.PurchTotal:
+                            KPIPurchTotalTemplate kpiPurchTotal = (KPIPurchTotalTemplate)e.Control;
+                            kpiPurchTotal.LoadPanel();
+                            activeTemplate = kpiPurchTotal;
+                            break;
+                        case Navigation.SectionNavigationTag.PurchPlan:
+                            KPIPurchPlanTemplate kpiPurchPlan = (KPIPurchPlanTemplate)e.Control;
+                            kpiPurchPlan.LoadPanel();
+                            activeTemplate = kpiPurchPlan;
+                            break;
+                        case Navigation.SectionNavigationTag.Other:
+                            KPIOtherTemplate kpiOther = (KPIOtherTemplate)e.Control;
+                            kpiOther.LoadPanel();
+                            activeTemplate = kpiOther;
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
         }
@@ -583,82 +519,87 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         public void RefreshTemplate()
         {
-            if (activeSectionBtn.Tag != null)
+            if(navigationController.MainTag == Navigation.MainNavigationTag.KPA)
             {
-                int tag = int.Parse(activeSectionBtn.Tag.ToString());
-
-
-                switch (tag)
+                switch(navigationController.SectionTag)
                 {
-                    case 1:
+                    case Navigation.SectionNavigationTag.Plan:
                         KPAPlanTemplate kpaPlan = (KPAPlanTemplate)activeTemplate;
                         kpaPlan.RefreshTemplate();
                         break;
-                    case 2:
+                    case Navigation.SectionNavigationTag.Purch:
                         KPAPurchTemplate kpaPurch = (KPAPurchTemplate)activeTemplate;
                         kpaPurch.RefreshTemplate();
                         break;
-                    case 3:
+                    case Navigation.SectionNavigationTag.PurchSub:
                         KPAPurchSubTemplate kpaPurchSub = (KPAPurchSubTemplate)activeTemplate;
                         kpaPurchSub.RefreshTemplate();
                         break;
-                    case 4:
+                    case Navigation.SectionNavigationTag.PurchTotal:
                         KPAPurchTotalTemplate kpaPurchTotal = (KPAPurchTotalTemplate)activeTemplate;
                         kpaPurchTotal.RefreshTemplate();
                         break;
-                    case 5:
+                    case Navigation.SectionNavigationTag.FollowUp:
                         KPAFollowUpTemplate kpaFollowUp = (KPAFollowUpTemplate)activeTemplate;
                         kpaFollowUp.RefreshTemplate();
                         break;
-                    case 6:
+                    case Navigation.SectionNavigationTag.HotJobs:
                         KPAHotJobsTemplate kpaHotJobs = (KPAHotJobsTemplate)activeTemplate;
                         kpaHotJobs.RefreshTemplate();
                         break;
-                    case 7:
+                    case Navigation.SectionNavigationTag.ExcessStockStock:
                         KPAExcessStockStock kapExcessStockStock = (KPAExcessStockStock)activeTemplate;
                         kapExcessStockStock.RefreshTemplate();
                         break;
-                    case 8:
+                    case Navigation.SectionNavigationTag.ExcessStockOpenOrders:
                         KPAExcessStockOpenOrders kpaExcessStockOpenOrders = (KPAExcessStockOpenOrders)activeTemplate;
                         kpaExcessStockOpenOrders.RefreshTemplate();
                         break;
-                    case 9:
+                    case Navigation.SectionNavigationTag.CurrentPlanVsActual:
                         KPACurrentPlanActualTemplate kpaCurrPlanActual = (KPACurrentPlanActualTemplate)activeTemplate;
                         kpaCurrPlanActual.RefreshTemplate();
                         break;
-                    case 11:
+                    default:
+                        break;
+                }
+            }
+            else // The has  KPI currently loaded
+            {
+                switch(navigationController.SectionTag)
+                {
+                    case Navigation.SectionNavigationTag.Plan:
                         KPIPlanTemplate kpiPlan = (KPIPlanTemplate)activeTemplate;
                         kpiPlan.RefreshTemplate();
                         break;
-                    case 12:
+                    case Navigation.SectionNavigationTag.Purch:
                         KPIPurchTemplate kpiPurch = (KPIPurchTemplate)activeTemplate;
                         kpiPurch.RefreshTemplate();
                         break;
-                    case 13:
+                    case Navigation.SectionNavigationTag.FollowUp:
                         KPIFollowUpTemplate kpiFollowUp = (KPIFollowUpTemplate)activeTemplate;
                         kpiFollowUp.RefreshTemplate();
                         break;
-                    case 14:
+                    case Navigation.SectionNavigationTag.PlanII:
                         KPIPlanTwoTemplate kpiPlanTwo = (KPIPlanTwoTemplate)activeTemplate;
                         kpiPlanTwo.RefreshTemplate();
                         break;
-                    case 15:
+                    case Navigation.SectionNavigationTag.PurchII:
                         KPIPurchTwoTemplate kpiPurchTwo = (KPIPurchTwoTemplate)activeTemplate;
                         kpiPurchTwo.RefreshTemplate();
                         break;
-                    case 16:
+                    case Navigation.SectionNavigationTag.PurchSub:
                         KPIPurchSubTemplate kpiPurchSub = (KPIPurchSubTemplate)activeTemplate;
                         kpiPurchSub.RefreshTemplate();
                         break;
-                    case 17:
+                    case Navigation.SectionNavigationTag.PurchTotal:
                         KPIPurchTotalTemplate kpiPurchTotal = (KPIPurchTotalTemplate)activeTemplate;
                         kpiPurchTotal.RefreshTemplate();
                         break;
-                    case 18:
+                    case Navigation.SectionNavigationTag.PurchPlan:
                         KPIPurchPlanTemplate kpiPurchPlan = (KPIPurchPlanTemplate)activeTemplate;
                         kpiPurchPlan.RefreshTemplate();
                         break;
-                    case 19:
+                    case Navigation.SectionNavigationTag.Other:
                         KPIOtherTemplate kpiOther = (KPIOtherTemplate)activeTemplate;
                         kpiOther.RefreshTemplate();
                         break;
@@ -677,10 +618,9 @@ namespace KPA_KPI_Analyzer
         {
             if (page == Values.Performances.Performance.KPA)
             {
-                activeSectionBtn = btn_kpaOverall;
-                SetActiveSectionBtn(activeSectionBtn);
                 topHandleBarModel.Update("KPA", "ALL", "ALL");
-                MenuInFront = true;
+
+
                 NewKPAOverall kpaOverall = new NewKPAOverall()
                 {
                     Name = "Overall",
@@ -688,16 +628,12 @@ namespace KPA_KPI_Analyzer
                 };
                 pnl_activePage.Controls.Add(kpaOverall);
                 kpaOverall.BringToFront();
-                pnl_NavigationPanelMax.BringToFront();
             }
 
             if (page == Values.Performances.Performance.KPI)
             {
-                activeSectionBtn = btn_kpiOverall;
-                SetActiveSectionBtn(activeSectionBtn);
                 topHandleBarModel.Update("KPI", "ALL", "ALL");
 
-                MenuInFront = true;
                 NewKPIOverall kpiOverall = new NewKPIOverall()
                 {
                     Name = "Overall",
@@ -705,7 +641,6 @@ namespace KPA_KPI_Analyzer
                 };
                 pnl_activePage.Controls.Add(kpiOverall);
                 kpiOverall.BringToFront();
-                pnl_NavigationPanelMax.BringToFront();
             }
         }
 
@@ -717,7 +652,6 @@ namespace KPA_KPI_Analyzer
         {
             topHandleBarModel.Update("N/A", "ALL", "ALL");
 
-            MenuInFront = true;
             Correlation.CorrelationControl correlation = new Correlation.CorrelationControl()
             {
                 Name = "Correlation",
@@ -726,7 +660,6 @@ namespace KPA_KPI_Analyzer
 
             pnl_activePage.Controls.Add(correlation);
             correlation.BringToFront();
-            pnl_NavigationPanelMax.BringToFront();
         }
     }
 }

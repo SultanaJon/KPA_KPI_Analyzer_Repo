@@ -59,17 +59,19 @@ namespace KPA_KPI_Analyzer
 		public KPA_KPI_UI()
 		{
 			InitializeComponent();
-			NavigationLocked = true;
-		}
+
+            // Lock the navigations functionality
+            navigationSettings.Status = Navigation.Functionality.Locked;
+        }
 
 
 
-		/// <summary>
-		/// The custom constructor of the main user interface. This constructor takes a database conenection that will be used
-		/// to connect to and read data from.
-		/// </summary>
-		/// <param name="conn">The database connection that was established in the splash screen.</param>
-		public KPA_KPI_UI(Settings.ReportSettings settingsData)
+        /// <summary>
+        /// The custom constructor of the main user interface. This constructor takes a database conenection that will be used
+        /// to connect to and read data from.
+        /// </summary>
+        /// <param name="conn">The database connection that was established in the splash screen.</param>
+        public KPA_KPI_UI(Settings.ReportSettings settingsData)
 		{
 			InitializeComponent();
 		  
@@ -89,8 +91,6 @@ namespace KPA_KPI_Analyzer
 		/// <param name="e">The load event</param>
 		private void KPA_KPI_UI_Load(object sender, EventArgs e)
 		{
-			mainNavActiveBtn = btn_Dashboard; // set the active button as the first button (Dashboard)
-
 			InitializeControllers();
 			InitializeProgramEvents();
 			GetCheckBoxControls();
@@ -107,6 +107,9 @@ namespace KPA_KPI_Analyzer
 		{
 			// Create and initialize the top handle bar controller.
 			CreateTopHandleBarViewController();
+
+			// Create the controller for the navigation window.
+			CreateNavigationController();
 		}
 
 
@@ -306,6 +309,8 @@ namespace KPA_KPI_Analyzer
 				Width = screen.WorkingArea.Width;
 
 			}
+			
+			// Refresh the active template
 			RefreshTemplate();
 		}
 
@@ -389,8 +394,8 @@ namespace KPA_KPI_Analyzer
 		/// <param name="e">The click event</param>
 		private void overallDataToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-            // Create a new exporter object
-            Exporter exporter = new Exporter();
+			// Create a new exporter object
+			Exporter exporter = new Exporter();
 			
 			// Create a new overall excel file and export the overall data
 			exporter.ExportOverall(new OverallExcelFile()
@@ -476,7 +481,7 @@ namespace KPA_KPI_Analyzer
 		/// </summary>
 		public void ConfigureToUnitedStates()
 		{
-            topHandleBarModel.CurrentCountry = ReportingCountry.countries[(int)Country.UnitedStates];
+			topHandleBarModel.CurrentCountry = ReportingCountry.countries[(int)Country.UnitedStates];
 			ReportingCountry.TargetCountry = Country.UnitedStates;
 			DatabaseManager.TargetTable = DatabaseTables.databaseTables[(int)DatabaseTables.DatabaseTable.UnitedStates];
 		}
@@ -488,7 +493,7 @@ namespace KPA_KPI_Analyzer
 		/// </summary>
 		public void ConfigureToMexico()
 		{
-            topHandleBarModel.CurrentCountry = ReportingCountry.countries[(int)Country.Mexico];
+			topHandleBarModel.CurrentCountry = ReportingCountry.countries[(int)Country.Mexico];
 			ReportingCountry.TargetCountry = Country.Mexico;
 			DatabaseManager.TargetTable = DatabaseTables.databaseTables[(int)DatabaseTables.DatabaseTable.Mexico];
 		}
@@ -627,7 +632,10 @@ namespace KPA_KPI_Analyzer
 				{
 					if (reportSettings.PrpoUsReportLoaded && reportSettings.PrpoMxReportLoaded)
 					{
-						NavigationLocked = true;
+                        // Lock the navigations functionality
+                        navigationSettings.Status = Navigation.Functionality.Locked;
+
+						// Show the country selector page.
 						ShowPage(Pages.CountrySelector);
 					}
 					else if (reportSettings.PrpoUsReportLoaded)
@@ -639,7 +647,9 @@ namespace KPA_KPI_Analyzer
 							// the file exists
 							if (new FileInfo(FileUtils.overallFiles[(int)OverallFile.US_KPA_Overall]).Length > 0 && new FileInfo(FileUtils.overallFiles[(int)OverallFile.US_KPI_Overall]).Length > 0)
 							{
+                                // Get the last loaded US PRPO file date (the date is was last loaded into the application)
 								DateTime dt = GetLastLoadedUsPrpoReportDate();
+
 								if (dt == DateTime.Today.Date)
 								{
 									// The overall data exists so lets create the reports to hold that data
@@ -654,7 +664,7 @@ namespace KPA_KPI_Analyzer
 
 
 									dt = GetLoadedUsPrpoReportDate();
-                                    topHandleBarModel.ReportGenerationDate = dt.ToString("MMMM dd, yyyy");
+									topHandleBarModel.ReportGenerationDate = dt.ToString("MMMM dd, yyyy");
 									BegingFilterLoadProcess();
 								}
 								else
@@ -706,7 +716,7 @@ namespace KPA_KPI_Analyzer
 									(reports[ReportingType.KpiOverall] as KpiOverallReport).Load();
 
 									dt = GetLoadedMxPrpoReportDate();
-                                    topHandleBarModel.ReportGenerationDate = dt.ToString("MMMM dd, yyyy");
+									topHandleBarModel.ReportGenerationDate = dt.ToString("MMMM dd, yyyy");
 									BegingFilterLoadProcess();
 								}
 								else
@@ -740,11 +750,11 @@ namespace KPA_KPI_Analyzer
 						// Create a new instance of the settings file
 						Settings.ReportSettings.Clear();
 
-                        // Update the top handle bar model
-                        topHandleBarModel.Update("Waiting...", "Waiting...");
+						// Update the top handle bar model
+						topHandleBarModel.Update("Waiting...", "Waiting...");
 
-                        // Display the drag and drop dashboard.
-                        ShowPage(Pages.DragDropDash);
+						// Display the drag and drop dashboard.
+						ShowPage(Pages.DragDropDash);
 					}
 				}
 				catch (Exception ex)
@@ -758,12 +768,12 @@ namespace KPA_KPI_Analyzer
 				// Create a new instance of the settings file
 				Settings.ReportSettings.Clear();
 
-                // Update the top handle bar model
-                topHandleBarModel.Update("Waiting...", "Waiting...");
+				// Update the top handle bar model
+				topHandleBarModel.Update("Waiting...", "Waiting...");
 
-                // Display the drag and drop dashboard.
-                ShowPage(Pages.DragDropDash);
-            }
+				// Display the drag and drop dashboard.
+				ShowPage(Pages.DragDropDash);
+			}
 		}
 
 
@@ -801,8 +811,10 @@ namespace KPA_KPI_Analyzer
 					tblpnl_DashbaordPage.BringToFront();
 					break;
 				case 1:
-					NavigationLocked = true;
-					ms_applicaitonMenuStrip.Enabled = false;
+                    // Lock the navigations functionality
+                    navigationSettings.Status = Navigation.Functionality.Locked;
+
+                    ms_applicaitonMenuStrip.Enabled = false;
 					tblpnl_DragDrop.Visible = true;
 					tblpnl_DragDrop.BringToFront();
 					break;
@@ -811,8 +823,10 @@ namespace KPA_KPI_Analyzer
 					tblpnl_Filters.BringToFront();
 					break;
 				case 3:
-					NavigationLocked = true;
-					ms_applicaitonMenuStrip.Enabled = false;
+                    // Lock the navigations functionality
+                    navigationSettings.Status = Navigation.Functionality.Locked;
+
+                    ms_applicaitonMenuStrip.Enabled = false;
 					pnl_CountrySelector.Visible = true;
 					pnl_CountrySelector.BringToFront();
 					break;

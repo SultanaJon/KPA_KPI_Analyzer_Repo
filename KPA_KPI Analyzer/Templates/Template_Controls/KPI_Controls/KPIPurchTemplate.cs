@@ -15,8 +15,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 {
     public partial class KPIPurchTemplate : UserControl
     {
-        public delegate void UpdateCategoryHandler();
-        public static event UpdateCategoryHandler ChangeCategory;
+        
+        
 
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             ActiveCategory = 0;
             datavizLoadTimer.Start();
             KPA_KPI_UI.topHandleBarModel.Category = Categories.kpiCategories[(int)Sections.KpiSection.Purch][(int)Categories.KpiCategory.Purch.InitialConfirmationDatevsPRPlanDate];
-            ChangeCategory();
+            
         }
 
 
@@ -192,7 +192,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.Purch][(int)Values.Categories.KpiCategory.Purch.InitialConfirmationDatevsPRPlanDate];
             KPA_KPI_UI.topHandleBarModel.Category = Title;
             KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpiections[(int)Values.Sections.KpiSection.Purch];
-            ChangeCategory();
+            
 
             AnalysisOne = "- Will show if the PR is on a PO.";
             AnalysisTwo = "- Difference between first confirmed date and PR planned date.";

@@ -43,7 +43,17 @@ namespace KPA_KPI_Analyzer
         /// <param name="e">The click event</param>
         public void TopHandleBarNavigation_Click(object sender, EventArgs e)
         {
-            // TODO: Repond for when the user clicks the navigation button
+            // Change the position of the navigation window
+            if (navigationSettings.Visible == Navigation.Visibility.Open)
+            {
+                navigationSettings.Visible = Navigation.Visibility.Closed;
+                navigationWindow.AutoSize = false;
+            }
+            else
+            {
+                navigationSettings.Visible = Navigation.Visibility.Open;
+                navigationWindow.AutoSize = true;
+            }
         }
     }
 }

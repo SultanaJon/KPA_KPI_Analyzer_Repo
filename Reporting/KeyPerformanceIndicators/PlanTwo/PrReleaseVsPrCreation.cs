@@ -1,5 +1,4 @@
 ﻿using DataAccessLibrary;
-using Reporting.Interfaces;
 using Reporting.TimeSpans.Templates;
 using System;
 using System.Data;
@@ -26,6 +25,10 @@ namespace Reporting.KeyPerformanceIndicators.PlanTwo
 
 
 
+
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
         public PrReleaseVsPrCreation()
         {
             // Create a new template object

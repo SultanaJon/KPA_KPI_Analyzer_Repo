@@ -4,6 +4,7 @@ namespace DataImporter.Importing.Exceptions
 {
     public static class ImportExceptions
     {
+        [Serializable]
         public class InvalidDataFileException : Exception
         {
             public InvalidDataFileException() { }

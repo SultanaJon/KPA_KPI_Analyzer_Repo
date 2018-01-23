@@ -4,6 +4,7 @@ namespace KPA_KPI_Analyzer.FileProcessing.Exceptions
 {
     public static class FileProcessingExceptions
     {
+        [Serializable]
         public class PrpoFileOverloadException : Exception
         {
             public PrpoFileOverloadException() { }
@@ -13,7 +14,7 @@ namespace KPA_KPI_Analyzer.FileProcessing.Exceptions
 
 
 
-
+        [Serializable]
         public class FileProcessingInvalidExtensionException : Exception
         {
             public FileProcessingInvalidExtensionException() { }
@@ -23,7 +24,7 @@ namespace KPA_KPI_Analyzer.FileProcessing.Exceptions
 
 
 
-
+        [Serializable]
         public class FileProcessingInvalidExcelFileException : Exception
         {
             public FileProcessingInvalidExcelFileException() { }
@@ -32,7 +33,7 @@ namespace KPA_KPI_Analyzer.FileProcessing.Exceptions
 
 
 
-
+        [Serializable]
         public class PrpoDateProcessingErrorException : Exception
         {
             public PrpoDateProcessingErrorException() { }

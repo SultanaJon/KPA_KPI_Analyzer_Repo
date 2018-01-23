@@ -2,6 +2,7 @@
 
 namespace DataImporter.Access.ExceptionClasses
 {
+    [Serializable]
     public class PRPODatabaseNotFoundException : Exception
     {
         //public PRPODatabaseNotFoundException() { }

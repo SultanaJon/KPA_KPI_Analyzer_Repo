@@ -138,9 +138,9 @@ namespace KPA_KPI_Analyzer.FileProcessing
                 // Store the date of the file within the excel file object
                 _file.Date = dt;
             }
-            catch(FileProcessingExceptions.PrpoDateProcessingErrorException ex)
+            catch(FileProcessingExceptions.PrpoDateProcessingErrorException)
             {
-                throw ex;
+                throw;
             }
         }
 

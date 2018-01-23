@@ -13,15 +13,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 {
     public partial class KPIOtherTemplate : UserControl
     {
-        
-
-
-
-
-        public delegate void UpdateCategoryHandler();
-        public static event UpdateCategoryHandler ChangeCategory;
-
-
         /// <summary>
         /// Boolean value indicating whether the data was loaded into the dataviz control
         /// </summary>
@@ -73,7 +64,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         private string TimeBucketNine { get { return lbl_timebuckNine.Text; } set { lbl_timebuckNine.Text = value; } }
         private string TimeBucketTen { get { return lbl_timebuckTen.Text; } set { lbl_timebuckTen.Text = value;  } }
 
-        private System.Drawing.Color DefaultButtonTextColor
+        private Color DefaultButtonTextColor
         {
             set
             {
@@ -100,15 +91,15 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         {
             
             SetGraphColor();
-            DefaultButtonTextColor = System.Drawing.Color.DarkGray;
+            DefaultButtonTextColor = Color.DarkGray;
             RenderOne();
             btn_One.selected = true;
-            btn_One.Textcolor = System.Drawing.Color.Coral;
+            btn_One.Textcolor = Color.Coral;
             DatavizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            KPA_KPI_UI.topHandleBarModel.Category = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.Other][(int)Values.Categories.KpiCategory.Other.PRsCreated];
-            ChangeCategory();
+            KPA_KPI_UI.topHandleBarModel.Category = Categories.kpiCategories[(int)Sections.KpiSection.Other][(int)Categories.KpiCategory.Other.PRsCreated];
+            
         }
 
 
@@ -167,8 +158,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             btn_Five.selected = false;
 
             btn.selected = true;
-            DefaultButtonTextColor = System.Drawing.Color.DarkGray;
-            btn.Textcolor = System.Drawing.Color.Coral;
+            DefaultButtonTextColor = Color.DarkGray;
+            btn.Textcolor = Color.Coral;
 
 
             int tag = int.Parse(btn.Tag.ToString());
@@ -211,15 +202,14 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.Other][(int)Values.Categories.KpiCategory.Other.PRsCreated];
+            Title = Categories.kpiCategories[(int)Sections.KpiSection.Other][(int)Categories.KpiCategory.Other.PRsCreated];
             KPA_KPI_UI.topHandleBarModel.Category = Title;
-            KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpiections[(int)Values.Sections.KpiSection.Other];
-            ChangeCategory();
+            KPA_KPI_UI.topHandleBarModel.Section = Sections.kpiections[(int)Sections.KpiSection.Other];
+            
 
 
             AnalysisOne = "- Count of PRs by creation date.";
             AnalysisTwo = "- Difference between the date the PR was created and the todays date.";
-
 
             TemplateFive tempFive = KpiOverallReport.Indicators[(int)KpiOption.Other_PrsCreated].TemplateBlock as TemplateFive;
 
@@ -266,10 +256,10 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.Other][(int)Values.Categories.KpiCategory.Other.PRsReleased];
+            Title = Categories.kpiCategories[(int)Sections.KpiSection.Other][(int)Categories.KpiCategory.Other.PRsReleased];
             KPA_KPI_UI.topHandleBarModel.Category = Title;
-            KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpiections[(int)Values.Sections.KpiSection.Other];
-            ChangeCategory();
+            KPA_KPI_UI.topHandleBarModel.Section = Sections.kpiections[(int)Sections.KpiSection.Other];
+            
             
             AnalysisOne = "- Count of PRs by release date.";
             AnalysisTwo = "- Difference between PR fully released date and todays date.";
@@ -319,16 +309,16 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.Other][(int)Values.Categories.KpiCategory.Other.TotalSpend];
+            Title = Categories.kpiCategories[(int)Sections.KpiSection.Other][(int)Categories.KpiCategory.Other.TotalSpend];
             KPA_KPI_UI.topHandleBarModel.Category = Title;
-            KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpiections[(int)Values.Sections.KpiSection.Other];
-            ChangeCategory();
+            KPA_KPI_UI.topHandleBarModel.Section = Sections.kpiections[(int)Sections.KpiSection.Other];
+            
 
 
             AnalysisOne = "- Value of PO Lines based on PO line Creation Date.";
             AnalysisTwo = "";
 
-            TemplateFive tempFive = KpiOverallReport.Indicators[(int)KpiOption.Other_PrsCreated].TemplateBlock as TemplateFive;
+            TemplateFive tempFive = KpiOverallReport.Indicators[(int)KpiOption.Other_TotalSpend].TemplateBlock as TemplateFive;
 
             // Add the data to the column chart
             dp.addLabely(lbl_xLabelOne.Text, tempFive.GreaterThanEqualToZeroWeeks.ToString());
@@ -344,20 +334,18 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
             // Add the data to the time spans
-
-            TotalOrders = string.Format("{0:n0}", tempFive.TotalValue);
-            TotalValue = string.Format("{0:n}", tempFive.GreaterThanEqualToZeroWeeks);
-            TimeBucketOne = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegOneWeek);
-            TimeBucketTwo = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegTwoWeeks);
-            TimeBucketThree = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegThreeWeeks);
-            TimeBucketFour = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegFourWeeks);
-            TimeBucketFive = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegFiveWeeks);
-            TimeBucketSix = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegSixWeeks);
-            TimeBucketSeven = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegSevenWeeks);
-            TimeBucketEight = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegEightWeeks);
-            TimeBucketNine = "$" + string.Format("{0:n}", tempFive.LessThanNegEightWeeks);
-            TimeBucketTen = "$" + string.Format("{0:n}", tempFive.TotalRecords);
-
+            TotalValue = string.Format("{0:n0}", tempFive.TotalValue);
+            TimeBucketOne = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToZeroWeeks);
+            TimeBucketTwo = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegOneWeek);
+            TimeBucketThree = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegTwoWeeks);
+            TimeBucketFour = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegThreeWeeks);
+            TimeBucketFive = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegFourWeeks);
+            TimeBucketSix = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegFiveWeeks);
+            TimeBucketSeven = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegSixWeeks);
+            TimeBucketEight = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegSevenWeeks);
+            TimeBucketNine = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegEightWeeks);
+            TimeBucketTen = "$" + string.Format("{0:n}", tempFive.LessThanNegEightWeeks);
+            TotalOrders = string.Format("{0:n0}", tempFive.TotalRecords);
 
             canvas.addData(dp);
             dataviz.Render(canvas);
@@ -376,16 +364,15 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.Other][(int)Values.Categories.KpiCategory.Other.PRValuevsPOValue];
+            Title = Categories.kpiCategories[(int)Sections.KpiSection.Other][(int)Categories.KpiCategory.Other.PRValuevsPOValue];
             KPA_KPI_UI.topHandleBarModel.Category = Title;
-            KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpiections[(int)Values.Sections.KpiSection.Other];
-            ChangeCategory();
+            KPA_KPI_UI.topHandleBarModel.Section = Sections.kpiections[(int)Sections.KpiSection.Other];
+            
 
             AnalysisOne = "- Based on PO line Creation Date.";
             AnalysisTwo = "- Variance of PO line value vs PR line value over time.";
 
-
-            TemplateFive tempFive = KpiOverallReport.Indicators[(int)KpiOption.Other_PrsCreated].TemplateBlock as TemplateFive;
+            TemplateFive tempFive = KpiOverallReport.Indicators[(int)KpiOption.Other_PrValueVsPoValue].TemplateBlock as TemplateFive;
 
             // Add the data to the column chart
             dp.addLabely(lbl_xLabelOne.Text, tempFive.GreaterThanEqualToZeroWeeks.ToString());
@@ -401,20 +388,18 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
             // Add the data to the time spans
-
-            TotalOrders = string.Format("{0:n0}", tempFive.TotalValue);
-            TotalValue = string.Format("{0:n}", tempFive.GreaterThanEqualToZeroWeeks);
-            TimeBucketOne = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegOneWeek);
-            TimeBucketTwo = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegTwoWeeks);
-            TimeBucketThree = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegThreeWeeks);
-            TimeBucketFour = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegFourWeeks);
-            TimeBucketFive = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegFiveWeeks);
-            TimeBucketSix = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegSixWeeks);
-            TimeBucketSeven = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegSevenWeeks);
-            TimeBucketEight = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegEightWeeks);
-            TimeBucketNine = "$" + string.Format("{0:n}", tempFive.LessThanNegEightWeeks);
-            TimeBucketTen = "$" + string.Format("{0:n}", tempFive.TotalRecords);
-
+            TotalValue = string.Format("{0:n0}", tempFive.TotalValue);
+            TimeBucketOne = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToZeroWeeks);
+            TimeBucketTwo = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegOneWeek);
+            TimeBucketThree = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegTwoWeeks);
+            TimeBucketFour = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegThreeWeeks);
+            TimeBucketFive = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegFourWeeks);
+            TimeBucketSix = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegFiveWeeks);
+            TimeBucketSeven = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegSixWeeks);
+            TimeBucketEight = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegSevenWeeks);
+            TimeBucketNine = "$" + string.Format("{0:n}", tempFive.GreaterThanEqualToNegEightWeeks);
+            TimeBucketTen = "$" + string.Format("{0:n}", tempFive.LessThanNegEightWeeks);
+            TotalOrders = string.Format("{0:n0}", tempFive.TotalRecords);
 
             canvas.addData(dp);
             dataviz.Render(canvas);
@@ -433,10 +418,10 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.Other][(int)Values.Categories.KpiCategory.Other.HotJobPRs];
+            Title = Categories.kpiCategories[(int)Sections.KpiSection.Other][(int)Categories.KpiCategory.Other.HotJobPRs];
             KPA_KPI_UI.topHandleBarModel.Category = Title;
-            KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpiections[(int)Values.Sections.KpiSection.Other];
-            ChangeCategory();
+            KPA_KPI_UI.topHandleBarModel.Section = Sections.kpiections[(int)Sections.KpiSection.Other];
+            
 
             AnalysisOne = "- Will show for PRs which have Purchase Group of 'UHJ'.";
             AnalysisTwo = "- Difference between the date the PR was created and todays date.";

@@ -12,8 +12,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 {
     public partial class KPAPurchTemplate : UserControl
     {
-        public delegate void UpdateCategoryHandler();
-        public static event UpdateCategoryHandler ChangeCategory;
+        
+        
 
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             ActiveCategory = 0;
             datavizLoadTimer.Start();
             KPA_KPI_UI.topHandleBarModel.Category = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.Purch][(int)Values.Categories.KpaCategory.Purch.PRsAgingRel];
-            ChangeCategory();
+            
         }
 
 
@@ -194,7 +194,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Title = Categories.kpaCategories[(int)Sections.KpaSection.Purch][(int)Categories.KpaCategory.Purch.PRsAgingRel];
             KPA_KPI_UI.topHandleBarModel.Category = Title;
             KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpaSections[(int)Sections.KpaSection.Purch];
-            ChangeCategory();
+            
 
             AnalysisOne = "- Will only show in this field if the PR is fully released and the PR open Qty > 0.";
             AnalysisTwo = "- Difference between todays date and the date the PR was fully released.";
@@ -243,7 +243,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Title = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.Purch][(int)Values.Categories.KpaCategory.Purch.POFirstRelease];
             KPA_KPI_UI.topHandleBarModel.Category = Title;
             KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.Purch];
-            ChangeCategory();
+            
 
             AnalysisOne = "- Will only show in this field if PR is on the PO and the PO line item has never been released (approved).";
             AnalysisTwo = "- Difference between todays date and the date the PR was added to the PO.";
@@ -291,7 +291,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Title = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.Purch][(int)Values.Categories.KpaCategory.Purch.POPrevRelease];
             KPA_KPI_UI.topHandleBarModel.Category = Title;
             KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.PurchTotal];
-            ChangeCategory();
+            
 
             AnalysisOne = "- PR is on the PO, PO line items was previously released, PO currently not released (approved), and line item is not received.";
             AnalysisTwo = "- Difference between todays date and the date the PR was added to the PO.";
@@ -341,7 +341,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Title = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.Purch][(int)Values.Categories.KpaCategory.Purch.NoConfirmation];
             KPA_KPI_UI.topHandleBarModel.Category = Title;
             KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.PurchTotal];
-            ChangeCategory();
+            
 
 
             AnalysisOne = "- PR is on PO, PO previously released, no confirmation, and line not received complete.";

@@ -20,8 +20,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 
 
 
-        public delegate void UpdateCategoryHandler();
-        public static event UpdateCategoryHandler ChangeCategory;
+        
+        
 
 
 
@@ -103,7 +103,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             DatavizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();
-            ChangeCategory();
+            
         }
 
 
@@ -194,7 +194,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Title = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.ExcessStock_OpenOrders][(int)Values.Categories.KpaCategory.ExcessStockOpenOrders.PrsAgingNotRel];
             KPA_KPI_UI.topHandleBarModel.Category = Title;
             KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.ExcessStock_OpenOrders];
-            ChangeCategory();
+            
 
             AnalysisOne = "- Will only show in this field if the PR is not fully released, the PR Open Qty > 0, General Stock On Order > 0 and Project Stock On Order > 0.";
             AnalysisTwo = "- Difference between todays date and the date the PR was created.";
@@ -243,7 +243,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Title = Categories.kpaCategories[(int)Sections.KpaSection.ExcessStock_OpenOrders][(int)Categories.KpaCategory.ExcessStockOpenOrders.PRsAgingRel];
             KPA_KPI_UI.topHandleBarModel.Category = Title;
             KPA_KPI_UI.topHandleBarModel.Section = Sections.kpaSections[(int)Sections.KpaSection.ExcessStock_OpenOrders];
-            ChangeCategory();
+            
 
             AnalysisOne = "- Will only show in this field if the PR is fully released, the PR open Qty > 0, General Stock On Order > 0 and Project Stock On Order > 0.";
             AnalysisTwo = "- Difference between todays date and the date the PR was fully released.";
@@ -288,7 +288,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Title = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.ExcessStock_OpenOrders][(int)Values.Categories.KpaCategory.ExcessStockOpenOrders.POCreationThruDelivery];
             KPA_KPI_UI.topHandleBarModel.Category = Title;
             KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpaSections[(int)Values.Sections.KpaSection.ExcessStock_OpenOrders];
-            ChangeCategory();
+            
 
             AnalysisOne = "- Will only show in this field if PR is on PO, PO line item does not have a confirmation date, PO line is not received complete, General Stock On Order > 0 and Project Stock On Order > 0.";
             AnalysisTwo = "- Difference between todays date and the date the PR was added to the PO.";

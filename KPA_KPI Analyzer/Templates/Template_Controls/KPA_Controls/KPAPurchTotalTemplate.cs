@@ -13,8 +13,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
 {
     public partial class KPAPurchTotalTemplate : UserControl
     {
-        public delegate void UpdateCategoryHandler();
-        public static event UpdateCategoryHandler ChangeCategory;
+        
+        
 
 
 
@@ -93,7 +93,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             ActiveCategory = 0;
             datavizLoadTimer.Start();
             KPA_KPI_UI.topHandleBarModel.Category = Values.Categories.kpaCategories[(int)Values.Sections.KpaSection.PurchTotal][(int)Values.Categories.KpaCategory.PurchTotal.PRRelConfEntry];
-            ChangeCategory();
+            
         }
 
 
@@ -177,7 +177,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             Title = Categories.kpaCategories[(int)Sections.KpaSection.PurchTotal][(int)Categories.KpaCategory.PurchTotal.PRRelConfEntry];
             KPA_KPI_UI.topHandleBarModel.Category = Title;
             KPA_KPI_UI.topHandleBarModel.Section = Sections.kpaSections[(int)Sections.KpaSection.PurchTotal];
-            ChangeCategory();
+            
 
             AnalysisOne = "- PRs fully released which are either not on a PO or on a PO (but have not been confirmed and are not delivered).";
             AnalysisTwo = "- Difference between todays date and the date the PR was fully released.";

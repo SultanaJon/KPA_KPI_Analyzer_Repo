@@ -84,10 +84,10 @@
 
             KpiOverallTempThreeRowStartPosition = 2,
             KpiOverallTempThreeColStartPosition = 4,
-            KpiOverallTempThreeMaxRow = 11,
+            KpiOverallTempThreeMaxRow = 10,
             KpiOverallTempThreeMaxCol = 16,
 
-            KpiOverallTempFourRowStartPosition = 14,
+            KpiOverallTempFourRowStartPosition = 13,
             KpiOverallTempFourColStartPosition = 4,
             KpiOverallTempFourMaxRow = 22,
             KpiOverallTempFourMaxCol = 17,

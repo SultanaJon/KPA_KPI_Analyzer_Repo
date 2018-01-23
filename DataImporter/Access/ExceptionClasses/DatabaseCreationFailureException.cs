@@ -2,6 +2,7 @@
 
 namespace DataImporter.Access.ExceptionClasses
 {
+    [Serializable]
     public class DatabaseCreationFailureException : Exception
     {
         //public DatabaseCreationFailureException() { }

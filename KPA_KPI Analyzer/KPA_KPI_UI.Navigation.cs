@@ -1,58 +1,39 @@
-﻿using System;
+﻿using KPA_KPI_Analyzer.Navigation;
+using KPA_KPI_Analyzer.Values;
+using System;
 using System.Windows.Forms;
 
 namespace KPA_KPI_Analyzer
 {
     public partial class KPA_KPI_UI
     {
-        #region FIELD DATA
-
         /// <summary>
-        /// The active main navigation buttons
+        /// The controller of the navigation window
         /// </summary>
-        Bunifu.Framework.UI.BunifuFlatButton mainNavActiveBtn = new Bunifu.Framework.UI.BunifuFlatButton();
+        public NavigationController navigationController;
 
-
-        /// <summary>
-        /// The active panel if if KPA or KPI main navigation buttons are active.
-        /// </summary>
-        Panel mainNavActivePanel = new Panel() { Visible = false };
 
 
         /// <summary>
-        /// Boolean value indicating whether or not the navigation is locked from the user.
+        /// The settings of the navigation window
         /// </summary>
-        bool NavigationLocked = false;
+        public NavigationSettings navigationSettings;
+
 
 
         /// <summary>
-        /// Boolean value indicating whether or no the main navigation is in front.
+        /// Creates the navigation controller.
         /// </summary>
-        bool MenuInFront = false;
-
-        #endregion
-
-
-        #region EVENTS
-
-        /// <summary>
-        /// Triggered when the user clicks the navigation expander button.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btn_NavExpander_Click(object sender, EventArgs e)
+        public void CreateNavigationController()
         {
-            if (MenuInFront)
-            {
-                MenuInFront = false;
-                pnl_NavigationPanelMax.SendToBack();
-            }
-            else
-            {
-                MenuInFront = true;
-                pnl_NavigationPanelMax.BringToFront();
-            }
+            // Ceate a new navigation settings object
+            navigationSettings = new NavigationSettings();
+
+            // Create an instance of the controller
+            navigationController = new NavigationController(navigationWindow, MainNavigation_Click, navigationSettings);
         }
+
+
 
 
         /// <summary>
@@ -60,51 +41,52 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void mainNavButton_Click(object sender, EventArgs e)
+        private void MainNavigation_Click(object sender, NavigationArgs e)
         {
-            int tag = 0;
-            if (NavigationLocked)
-                return;
-
-            mainNavActiveBtn = (Bunifu.Framework.UI.BunifuFlatButton)sender;
-            tag = int.Parse(mainNavActiveBtn.Tag.ToString());
-
-
-
+            // Removes any templates that might be in the active panel.
             RemoveActivePanelControls();
 
 
             // Load the pages that correspond to the clicked button
-            switch (tag)
+            switch (e.MainTag)
             {
-                case 0: // Dashboard btn clicked
-                    // update the top handle bar model
-                    topHandleBarModel.Update("N/A", "N/A", "N/A"); toggleMainNavSection(tag);
+                case MainNavigationTag.Dashboard:
+                    topHandleBarModel.Update("N/A", "N/A", "N/A");
                     ShowPage(Pages.Dashboard);
                     break;
-                case 1: // KPA btn clicked
-                    toggleMainNavSection(tag);
-                    SetActiveSectionBtnToDefault();
-                    LoadOverallTemplate(Values.Performances.Performance.KPA);
+                case MainNavigationTag.KPA:
+                    if (e.SectionTag == SectionNavigationTag.Overall)
+                    {
+                        // Load the KPA overall template
+                        LoadOverallTemplate(Performances.Performance.KPA);
+                    }
+                    else
+                    {
+                        // Load the section template the user would like to view
+                        LoadKpaSectionPage(e);
+                    }
                     break;
-                case 2: // KPI btn clicked
-                    toggleMainNavSection(tag);
-                    SetActiveSectionBtnToDefault();
-                    LoadOverallTemplate(Values.Performances.Performance.KPI);
+                case MainNavigationTag.KPI:
+                    if (e.SectionTag == SectionNavigationTag.Overall)
+                    {
+                        // Load teh KPI overall template
+                        LoadOverallTemplate(Performances.Performance.KPI);
+                    }
+                    else
+                    {
+                        // Load the section template the user would like to view
+                        LoadKpiSectionPage(e);
+                    }
                     break;
-                case 3: // Charts btn clicked
-                    toggleMainNavSection(tag);
-                    break;
-                case 4: // Filters btn clicked
-                    // Set the model indicating that there is currently no KPA or KPI being viewed.
-                    topHandleBarModel.Update("N/A", "N/A", "N/A"); toggleMainNavSection(tag);
-                    toggleMainNavSection(tag);
-                    ShowPage(Pages.Filters);
-                    break;
-                case 5:
+                case MainNavigationTag.Correlation:
                     CreateCorrelationWindow();
                     break;
-                case 6:
+                case MainNavigationTag.Filters:
+                    // Set the model indicating that there is currently no KPA or KPI being viewed.
+                    topHandleBarModel.Update("N/A", "N/A", "N/A");
+                    ShowPage(Pages.Filters);
+                    break;
+                case MainNavigationTag.Reports:
                     CreateReportPage();
                     break;
                 default:
@@ -112,59 +94,104 @@ namespace KPA_KPI_Analyzer
             }
         }
 
-        #endregion
 
 
-        #region HELPER FUNCTIONS
 
         /// <summary>
-        /// This function will toggle the main navigation sections when either KPA or KPI buttons are clicked.
+        /// Loads the KPA section pages requested by the user
         /// </summary>
-        /// <param name="tag">The tag of the main navigation button that was clicked.</param>
-        private void toggleMainNavSection(int tag)
+        /// <param name="e">The navigation args aquired by the navigation view</param>
+        private void LoadKpaSectionPage(NavigationArgs e)
         {
-            switch (tag)
+            // Remove and Performance panel from the active panel view
+            RemoveActivePanelControls();
+
+            // Update the top handle bar to notify the user they are viewing KPA information
+            topHandleBarModel.Performance = "KPA";
+
+            switch(e.SectionTag)
             {
-                case 1:
-                    if (pnl_KPISectionsPanel.Visible)
-                    {
-                        pnl_KPISectionsPanel.Visible = false;
-                    }
-
-                    if (!pnl_KPASectionsPanel.Visible)
-                    {
-                        pnl_KPASectionsPanel.Visible = true;
-                        mainNavActivePanel = pnl_KPASectionsPanel;
-                    }
-                    else
-                    {
-                        pnl_KPASectionsPanel.Visible = false;
-                    }
+                case SectionNavigationTag.Plan:
+                    CreateKpaPlanTemplate();
                     break;
-                case 2:
-                    if (pnl_KPASectionsPanel.Visible)
-                    {
-                        pnl_KPASectionsPanel.Visible = false;
-                    }
-
-                    if (!pnl_KPISectionsPanel.Visible)
-                    {
-                        pnl_KPISectionsPanel.Visible = true;
-                        mainNavActivePanel = pnl_KPISectionsPanel;
-                    }
-                    else
-                    {
-                        pnl_KPISectionsPanel.Visible = false;
-                    }
-                    mainNavActivePanel = pnl_KPISectionsPanel;
+                case SectionNavigationTag.Purch:
+                    CreateKpaPurchTemplate();
+                    break;
+                case SectionNavigationTag.PurchSub:
+                    CreateKpaPurchSubTemplate();
+                    break;
+                case SectionNavigationTag.PurchTotal:
+                    CreateKpaPurchTotalTemplate();
+                    break;
+                case SectionNavigationTag.FollowUp:
+                    CreatekpaFollowUpTemplate();
+                    break;
+                case SectionNavigationTag.HotJobs:
+                    CreateKpaHotJobsTemplate();
+                    break;
+                case SectionNavigationTag.ExcessStockStock:
+                    CreateKpaExcessStockStockTemplate();
+                    break;
+                case SectionNavigationTag.ExcessStockOpenOrders:
+                    CreateKpaExcessStockOpenOrdersTemplate();
+                    break;
+                case SectionNavigationTag.CurrentPlanVsActual:
+                    CreateKpaCurrPlanActualTemplate();
                     break;
                 default:
-                    pnl_KPASectionsPanel.Visible = false;
-                    pnl_KPISectionsPanel.Visible = false;
                     break;
             }
         }
 
-        #endregion
+
+
+
+
+        /// <summary>
+        /// Loads the KPI section pages request by the user
+        /// </summary>
+        /// <param name="e">The navigation args aquired from the navigation view</param>
+        private void LoadKpiSectionPage(NavigationArgs e)
+        {
+            // Remove and Performance panel from the active panel view
+            RemoveActivePanelControls();
+
+            // Update the top handle bar to notify the user they are viewing KPI information
+            topHandleBarModel.Performance = "KPI";
+
+
+            switch(e.SectionTag)
+            {
+                case SectionNavigationTag.Plan:
+                    CreateKpiPlanTemplate();
+                    break;
+                case SectionNavigationTag.Purch:
+                    CreateKpiPurchTemplate();
+                    break;
+                case SectionNavigationTag.FollowUp:
+                    CreateKpiFollowUpTemplate();
+                    break;
+                case SectionNavigationTag.PlanII:
+                    CreateKpiPlanTwoTemplate();
+                    break;
+                case SectionNavigationTag.PurchII:
+                    CreateKpiPurchTwoTemplate();
+                    break;
+                case SectionNavigationTag.PurchSub:
+                    CreateKpiPurchSubTemplate();
+                    break;
+                case SectionNavigationTag.PurchTotal:
+                    CreateKpiPurchTotalTemplate();
+                    break;
+                case SectionNavigationTag.PurchPlan:
+                    CreateKpiPurchPlanTemplate();
+                    break;
+                case SectionNavigationTag.Other:
+                    CreateKpiOtherTemplate();
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

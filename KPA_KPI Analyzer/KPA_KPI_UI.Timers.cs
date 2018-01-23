@@ -104,7 +104,8 @@ namespace KPA_KPI_Analyzer
 
         private async void LoadOverallData()
         {
-            NavigationLocked = true;
+            // Lock the navigation functionality
+            navigationSettings.Status = Navigation.Functionality.Locked;
 
             // A task to load the KPA Overall Data
             Task kpaTask = new Task((reports[ReportingType.KpaOverall] as KpaOverallReport).RunReport);
@@ -150,7 +151,11 @@ namespace KPA_KPI_Analyzer
             {
                 ShowPage(Pages.Filters);
                 EnableClearFiltersButton();
-                NavigationLocked = false;
+
+                // Lock the navigation functionality
+                navigationSettings.Status = Navigation.Functionality.Unlocked;
+
+
                 ms_applicaitonMenuStrip.Enabled = true;
             }
 
@@ -201,7 +206,9 @@ namespace KPA_KPI_Analyzer
                 // Show the dashboard
                 ShowPage(Pages.Dashboard);
                 ms_applicaitonMenuStrip.Enabled = true;
-                NavigationLocked = false;
+
+                // Lock the navigation functionality
+                navigationSettings.Status = Navigation.Functionality.Unlocked;
             }
         }
 
@@ -263,7 +270,10 @@ namespace KPA_KPI_Analyzer
             ApplicationIOLibarary.ApplicationFiles.FileUtils fileUtils = new ApplicationIOLibarary.ApplicationFiles.FileUtils();
 
             ms_applicaitonMenuStrip.Enabled = false;
-            NavigationLocked = true; // Lock the navigation bar
+
+            // Lock the navigation functionality
+            navigationSettings.Status = Navigation.Functionality.Locked;
+
 
             if (_excelFile is ExcelFiles.UsPrpoExcelFile)
             {

@@ -128,8 +128,9 @@ namespace KPA_KPI_Analyzer
 
             pnl_activePage.Controls.Add(wrapPanel);
             wrapPanel.BringToFront();
-            MenuInFront = true;
-            pnl_NavigationPanelMax.BringToFront();
+
+            // Lock the navigation functionality
+            navigationSettings.Visible = Navigation.Visibility.Open;
 
             // Create and register the reporting controller
             reportingWidgetsController = new ReportingController(reportingControls[0] as ISelectiveReportingWidgetView, reportingControls[1] as IComparisonReportingWidgetView);

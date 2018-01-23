@@ -15,8 +15,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 {
     public partial class KPIPurchTotalTemplate : UserControl
     {
-        public delegate void UpdateCategoryHandler();
-        public static event UpdateCategoryHandler ChangeCategory;
+        
+        
 
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             ActiveCategory = 0;
             datavizLoadTimer.Start();
             KPA_KPI_UI.topHandleBarModel.Category = Categories.kpiCategories[(int)Values.Sections.KpiSection.PurchTotal][(int)Categories.KpiCategory.PurchTotal.PRReleaseDatetoConfirmationEntryDate];
-            ChangeCategory();
+            
         }
 
 
@@ -199,7 +199,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Title = Categories.kpiCategories[(int)Sections.KpiSection.PurchTotal][(int)Categories.KpiCategory.PurchTotal.PRReleaseDatetoConfirmationEntryDate];
             KPA_KPI_UI.topHandleBarModel.Category = Title;
             KPA_KPI_UI.topHandleBarModel.Section = Sections.kpiections[(int)Sections.KpiSection.PurchTotal];
-            ChangeCategory();
+            
 
 
             AnalysisOne = "- Will show if PO line item has a confirmation date.";

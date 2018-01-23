@@ -282,9 +282,9 @@ namespace KPA_KPI_Analyzer
                                 databaseCreated = true;
 
                             }
-                            catch (Exception ex)
+                            catch (Exception)
                             {
-                                throw ex;
+                                throw;
                             }
                         }
                         else

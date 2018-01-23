@@ -2,6 +2,7 @@
 
 namespace DataAccessLibrary.Exceptions
 {
+    [Serializable]
     public class PRPODatabaseNotFoundException : Exception
     {
         public PRPODatabaseNotFoundException() { }
