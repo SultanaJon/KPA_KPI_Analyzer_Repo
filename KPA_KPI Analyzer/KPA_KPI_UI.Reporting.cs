@@ -4,7 +4,6 @@ using Reporting;
 using Reporting.Reports;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KPA_KPI_Analyzer

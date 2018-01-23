@@ -169,7 +169,6 @@ namespace KPA_KPI_Analyzer.Correlation
                 Hide();
                 if(corrWind.ShowDialog() == DialogResult.Cancel)
                 {
-                    corrWind.Close();
                     Close();
                 }
             }

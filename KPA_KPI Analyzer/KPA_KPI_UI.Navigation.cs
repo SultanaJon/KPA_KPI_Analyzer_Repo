@@ -1,7 +1,5 @@
 ﻿using KPA_KPI_Analyzer.Navigation;
 using KPA_KPI_Analyzer.Values;
-using System;
-using System.Windows.Forms;
 
 namespace KPA_KPI_Analyzer
 {

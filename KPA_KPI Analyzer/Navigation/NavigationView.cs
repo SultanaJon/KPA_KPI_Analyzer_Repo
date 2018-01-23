@@ -1,7 +1,6 @@
-﻿using System;
+﻿using Bunifu.Framework.UI;
+using System;
 using System.Windows.Forms;
-using Bunifu.Framework.UI;
-using System.Collections.Generic;
 
 namespace KPA_KPI_Analyzer.Navigation
 {

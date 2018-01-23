@@ -1,9 +1,8 @@
 ﻿using KPA_KPI_Analyzer.DataLoading;
 using KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader;
-using KPA_KPI_Analyzer.Values;
 using Reporting.KeyPerformanceActions;
-using Reporting.TimeSpans.Templates;
 using Reporting.Reports;
+using Reporting.TimeSpans.Templates;
 using System;
 using System.Drawing;
 using System.Windows.Forms;

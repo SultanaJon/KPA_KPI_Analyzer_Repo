@@ -1,5 +1,4 @@
 ﻿using ExcelLibrary;
-using KPA_KPI_Analyzer.Values;
 using System;
 using System.Data;
 using System.Threading;

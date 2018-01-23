@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using KPA_KPI_Analyzer.TopHandleBar;
+using System;
 using System.Windows.Forms;
-using KPA_KPI_Analyzer.TopHandleBar;
 
 
 namespace KPA_KPI_Analyzer
