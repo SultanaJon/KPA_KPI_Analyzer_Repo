@@ -45,7 +45,8 @@ namespace Reporting.KeyPerformanceActions.Plan
                 double totalDays = 0;
 
                 // Get the fitlered data rows from the datatable
-                DataRow[] filteredResult = dt.Select(FilterOptions.GetColumnNames(_filterOption, _fitler));
+                string test = FilterOptions.GetColumnNames(_filterOption, _fitler);
+                DataRow[] filteredResult = dt.Select(test);
 
                 foreach (DataRow dr in filteredResult)
                 {
@@ -78,9 +79,9 @@ namespace Reporting.KeyPerformanceActions.Plan
                 dt = null;
                 GC.Collect();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("An argument out of range exception was thrown", "Plan -> PRs Aging (Not Released) - Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Plan -> PRs Aging (Not Released) - Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }

@@ -71,6 +71,10 @@ namespace KPA_KPI_Analyzer.PerformanceReporting
 
             // Load the KPA options into the KPA option combobox.
             LoadKpaOptions();
+
+            // Set the reporting type, fitler options and the kpa option to default
+            PerformanceReportType = ReportingType.KpaComparisonReport;
+            FilteringOption = default(FilterOptions.Options);
             KPAOption = default(KpaOption);
         }
 

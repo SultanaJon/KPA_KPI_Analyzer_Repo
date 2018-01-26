@@ -23,10 +23,7 @@ namespace KPA_KPI_Analyzer
 
 
             // Make the loading screen visible
-            pnl_loadingScreen.Visible = true;
-
-            // Bring the loading panel to the front if covered.
-            pnl_loadingScreen.BringToFront();
+            ShowPage(Pages.LoadingScreen);
         }
 
 

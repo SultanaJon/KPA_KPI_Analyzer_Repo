@@ -189,10 +189,15 @@ namespace KPA_KPI_Analyzer
 
                     if(await kpaComparisonReportTask)
                     {
+                        ActivateLoadingScreen("Loading Report...");
+
                         // The report has finished creating now run it.
-                        Task task = new Task(()=> { (reports[ReportingType.KpaComparisonReport] as KpaComparisonReport).RunReport(reportingWidgetsController.ComparisonFilterOption); });
-                        task.Start();
-                        await task;
+                        Task calculateComparisonReportTask = new Task(()=> { (reports[ReportingType.KpaComparisonReport] as KpaComparisonReport).RunReport(reportingWidgetsController.ComparisonFilterOption); });
+                        calculateComparisonReportTask.Start();
+                        await calculateComparisonReportTask;
+
+                        
+                        HidePages();
                     }
                     else
                     {

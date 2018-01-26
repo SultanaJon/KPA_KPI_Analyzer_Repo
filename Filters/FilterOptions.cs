@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using DataAccessLibrary;
+using System.Collections.Generic;
 
 namespace Filters
 {
@@ -57,10 +58,18 @@ namespace Filters
         {
             string result = string.Empty;
 
-            switch(_option)
+            //if (FilterData.ColumnFilters.projectNumber[i] == "[Blanks]")
+            //    filters += DatabaseManager.TargetTable + ".[" + FilterManager.filterColumns[(int)FilterColumn.ProjectNum_WBS_Element] + "] IS NULL OR " + DatabaseManager.TargetTable + ".[" + FilterManager.filterColumns[(int)FilterColumn.ProjectNUm_ProdOrdWbs] + "] IS NULL";
+            //else
+            //    filters += DatabaseManager.TargetTable + ".[" + FilterManager.filterColumns[(int)FilterColumn.ProjectNum_WBS_Element] + "] LIKE " + "'%" + FilterData.ColumnFilters.projectNumber[i] + "%' OR " + DatabaseManager.TargetTable + ".[" + FilterManager.filterColumns[(int)FilterColumn.ProjectNUm_ProdOrdWbs] + "] LIKE " + "'%" + FilterData.ColumnFilters.projectNumber[i] + "%'";
+
+            switch (_option)
             {
                 case Options.ProjectNumber:
-                    result = "[" + options[(int)_option] + "] = '" + filter + "' or [" + options[(int)_option] + "] = '" + filter + "'";
+                    if (filter == "[Blanks]")
+                        result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.ProjectNUm_ProdOrdWbs] + "] IS NULL OR [" + FIlterColumns.filterColumns[(int)FilterColumn.ProjectNum_WBS_Element] + "] IS NULL";
+                    else
+                        result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.ProjectNUm_ProdOrdWbs] + "] LIKE " + "'%" + filter + "%' OR [" + FIlterColumns.filterColumns[(int)FilterColumn.ProjectNum_WBS_Element] + "] LIKE '%" + filter + "%'";
                     break;
                 default:
                     break;
