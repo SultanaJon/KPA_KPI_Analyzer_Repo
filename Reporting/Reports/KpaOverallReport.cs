@@ -81,13 +81,14 @@ namespace Reporting.Reports
             {
                 foreach(KeyPerformanceAction action in Actions)
                 {
+                    // The KPA requires data from another KPA and must run last.
                     if (action is ConfirmedDateForUpcomingDeliveries)
                     {
                         continue;
                     }
                     else
                     {
-                        action.Run();
+                        action.RunOverall();
                     }
                 }
 
@@ -98,7 +99,7 @@ namespace Reporting.Reports
                 (Actions[(int)KpaOption.FollowUp_ConfirmedDateForUpcomingDeliveries] as ConfirmedDateForUpcomingDeliveries).DueTodayLateToConfirmedLessThanZeroDueToday = lessThanEqualToZero;
 
                 // Run the overall report for Follow up -> Confirmed Date for upcoming deliveries
-                Actions[(int)KpaOption.FollowUp_ConfirmedDateForUpcomingDeliveries].Run();
+                Actions[(int)KpaOption.FollowUp_ConfirmedDateForUpcomingDeliveries].RunOverall();
             }
             catch(ObjectDisposedException)
             {

@@ -195,7 +195,7 @@ namespace Filters.Variants
                 // Disable the buttons
                 btn_apply.Enabled = false;
                 btn_remove.Enabled = false;
-                btn_edit.Enabled = true;
+                btn_edit.Enabled = false;
                 btn_view.Enabled = false;
             }
         }

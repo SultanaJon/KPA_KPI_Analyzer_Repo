@@ -194,7 +194,7 @@ namespace Filters.Variants
             try
             {
                 var jsonString = File.ReadAllText(FileUtils.variantFiles[(int)VariantFile.FilterVariants]);
-                filterVariantsInstance = JsonConvert.DeserializeObject<FilterVariants>(jsonString);
+                variants = JsonConvert.DeserializeObject<List<Variant>>(jsonString);
             }
             catch(Exception ex)
             {
@@ -213,7 +213,7 @@ namespace Filters.Variants
         {
             try
             {
-                var jsonString = JsonConvert.SerializeObject(this);
+                var jsonString = JsonConvert.SerializeObject(variants);
                 File.WriteAllText(FileUtils.variantFiles[(int)VariantFile.FilterVariants], jsonString);   
             }
             catch(Exception ex)

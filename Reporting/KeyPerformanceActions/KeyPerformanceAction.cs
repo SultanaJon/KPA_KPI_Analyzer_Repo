@@ -118,6 +118,6 @@ namespace Reporting.KeyPerformanceActions
         /// <summary>
         /// Method to calculate of the KPA
         /// </summary>
-        public abstract void Run();
+        public abstract void RunOverall();
     }
 }

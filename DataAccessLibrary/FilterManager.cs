@@ -95,8 +95,62 @@ namespace DataAccessLibrary
                     tempHash.Add(tempStrArray[0]);
                 }
             }
+
             strData = tempHash;
             tempHash = null;
+        }
+
+
+
+
+
+
+
+        /// <summary>
+        /// Makes a call to the database getting the unique filters based on the command string supplied
+        /// </summary>
+        /// <param name="_cmdString">The unique command string used to request the filters</param>
+        /// <returns>returns the result (unique filters)</returns>
+        private static void GetFilterData(ref HashSet<string> _uniqueFilters, FilterColumn _column)
+        {
+            try
+            {
+                // Create a command string based on the filter column supplied.
+                string cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)_column] + "] FROM " + DatabaseManager.TargetTable;
+
+                // Get the connection to the database
+                OleDbConnection conn = DatabaseManager.GetDatabaseConnection();
+
+                // Create a new SQL Statement
+                OleDbCommand cmd = new OleDbCommand(cmdString, conn);
+
+
+                // Read each result returned from the SQL Statement
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        // If the cell in the database is blank, mark is as [Blanks] like excel
+                        if (reader[filterColumns[(int)_column]] == DBNull.Value)
+                        {
+                            _uniqueFilters.Add("[Blanks]");
+                            continue;
+                        }
+                        else
+                        {
+                            // Add the unique filter to the list of filters.
+                            _uniqueFilters.Add(reader[filterColumns[(int)_column]].ToString());
+                        }
+                    }
+                }
+            }
+            catch(InvalidOperationException)
+            {
+                MessageBox.Show("An invalid operation exception was thrown", "Unique Filter Request", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                // Close the application
+                Application.Exit();
+            }
         }
 
 
@@ -114,63 +168,19 @@ namespace DataAccessLibrary
         /// <returns></returns>
         public static HashSet<string> GetUniqueProjectNumber()
         {
-            HashSet<string> strData = new HashSet<string>();
+            HashSet<string> uniqueFitlerData = new HashSet<string>();
 
-            try
-            {
-                OleDbConnection conn = DatabaseManager.GetDatabaseConnection();
+            // Get the unique filters from the WBS Project Number
+            GetFilterData(ref uniqueFitlerData, FilterColumn.ProjectNUm_ProdOrdWbs);
 
-                string cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.ProjectNUm_ProdOrdWbs] + "] FROM " + DatabaseManager.TargetTable;
+            // Get the unique filters from the WBS Element Column
+            GetFilterData(ref uniqueFitlerData, FilterColumn.ProjectNum_WBS_Element);
 
-                OleDbCommand cmd = new OleDbCommand(cmdString, conn);
-                using (var reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        if (reader[filterColumns[(int)FilterColumn.ProjectNUm_ProdOrdWbs]] == DBNull.Value)
-                        {
-                            strData.Add("[Blanks]");
-                            continue;
-                        }
-                        else
-                        {
-                            strData.Add(reader[filterColumns[(int)FilterColumn.ProjectNUm_ProdOrdWbs]].ToString());
-                        }
-                    }
-                }
+            // Clean up the two sets of data and create one list of unique filters for project number
+            CleanUpProjectNumbers(ref uniqueFitlerData);
 
-
-
-
-
-                cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.ProjectNum_WBS_Element] + "] FROM " + DatabaseManager.TargetTable;
-
-                cmd = new OleDbCommand(cmdString, conn);
-                using (var reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        if (reader[filterColumns[(int)FilterColumn.ProjectNum_WBS_Element]] == DBNull.Value)
-                        {
-                            strData.Add("[Blanks]");
-                            continue;
-                        }
-                        else
-                        {
-                            strData.Add(reader[filterColumns[(int)FilterColumn.ProjectNum_WBS_Element]].ToString());
-                        }
-                    }
-                }
-
-
-                CleanUpProjectNumbers(ref strData);
-            }
-            catch (InvalidOperationException)
-            {
-                MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
-            }
-
-            return strData;
+            // Return the unique filters gathered to the caller
+            return uniqueFitlerData;
         }
 
 
@@ -187,37 +197,13 @@ namespace DataAccessLibrary
         /// <returns>A HasSet<string> data type containing the filters</returns>
         public static HashSet<string> GetUniqueWbsElement()
         {
-            HashSet<string> strData = new HashSet<string>();
+            HashSet<string> uniqueFilterData = new HashSet<string>();
 
-            try
-            {
-                OleDbConnection conn = DatabaseManager.GetDatabaseConnection();
+            // Get the unique filters from the WBS Element column
+            GetFilterData(ref uniqueFilterData, FilterColumn.ProjectNum_WBS_Element);
 
-                string cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.ProjectNum_WBS_Element] + "] FROM " + DatabaseManager.TargetTable;
-
-                OleDbCommand cmd = new OleDbCommand(cmdString, conn);
-                using (var reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        if (reader[filterColumns[(int)FilterColumn.ProjectNum_WBS_Element]] == DBNull.Value)
-                        {
-                            strData.Add("[Blanks]");
-                            continue;
-                        }
-                        else
-                        {
-                            strData.Add(reader[filterColumns[(int)FilterColumn.ProjectNum_WBS_Element]].ToString());
-                        }
-                    }
-                }
-            }
-            catch (InvalidOperationException)
-            {
-                MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
-            }
-
-            return strData;
+            // Return the unique filters gathered to the caller
+            return uniqueFilterData;
         }
 
 
@@ -234,38 +220,13 @@ namespace DataAccessLibrary
         /// <returns>A HasSet<string> data type containing the filters</returns>
         public static HashSet<string> GetUniqueMaterial()
         {
-            HashSet<string> strData = new HashSet<string>();
+            HashSet<string> uniqueFilterData = new HashSet<string>();
 
-            try
-            {
-                OleDbConnection conn = DatabaseManager.GetDatabaseConnection();
+            // Get the unique filters from the material column
+            GetFilterData(ref uniqueFilterData, FilterColumn.Material);
 
-                string cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.Material] + "] FROM " + DatabaseManager.TargetTable;
-
-
-                OleDbCommand cmd = new OleDbCommand(cmdString, conn);
-                using (var reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        if (reader[filterColumns[(int)FilterColumn.Material]] == DBNull.Value)
-                        {
-                            strData.Add("[Blanks]");
-                            continue;
-                        }
-                        else
-                        {
-                            strData.Add(reader[filterColumns[(int)FilterColumn.Material]].ToString());
-                        }
-                    }
-                }
-            }
-            catch (InvalidOperationException)
-            {
-                MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
-            }
-
-            return strData;
+            // Return the unique filters gathered to the caller
+            return uniqueFilterData;
         }
 
 
@@ -279,41 +240,16 @@ namespace DataAccessLibrary
         /// <summary>
         /// Gets the unique Unique Material Group filters.
         /// </summary>
-        /// <returns>A HasSet<string> data type containing the filters</returns>
+        /// <returns>A HashSet<string> data type containing the filters</returns>
         public static HashSet<string> GetUniqueMaterialGroup()
         {
-            HashSet<string> strData = new HashSet<string>();
+            HashSet<string> uniqueFilterData = new HashSet<string>();
 
-            try
-            {
-                OleDbConnection conn = DatabaseManager.GetDatabaseConnection();
+            // Get the unique filters from the material group column
+            GetFilterData(ref uniqueFilterData, FilterColumn.MaterialGroup);
 
-                string cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.MaterialGroup] + "] FROM " + DatabaseManager.TargetTable;
-
-
-                OleDbCommand cmd = new OleDbCommand(cmdString, conn);
-                using (var reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        if (reader[filterColumns[(int)FilterColumn.MaterialGroup]] == DBNull.Value)
-                        {
-                            strData.Add("[Blanks]");
-                            continue;
-                        }
-                        else
-                        {
-                            strData.Add(reader[filterColumns[(int)FilterColumn.MaterialGroup]].ToString());
-                        }
-                    }
-                }
-            }
-            catch (InvalidOperationException)
-            {
-                MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
-            }
-
-            return strData;
+            // Return the unique filters gathered to the caller
+            return uniqueFilterData;
         }
 
 
@@ -330,37 +266,13 @@ namespace DataAccessLibrary
         /// <returns>A HasSet<string> data type containing the filters</returns>
         public static HashSet<string> GetUniqueVendor()
         {
-            HashSet<string> strData = new HashSet<string>();
+            HashSet<string> uniqueFilterData = new HashSet<string>();
 
-            try
-            {
-                OleDbConnection conn = DatabaseManager.GetDatabaseConnection();
+            // Get the unique filters from the vendor column
+            GetFilterData(ref uniqueFilterData, FilterColumn.Vendor);
 
-                string cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.Vendor] + "] FROM " + DatabaseManager.TargetTable;
-
-                OleDbCommand cmd = new OleDbCommand(cmdString, conn);
-                using (var reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        if (reader[filterColumns[(int)FilterColumn.Vendor]] == DBNull.Value)
-                        {
-                            strData.Add("[Blanks]");
-                            continue;
-                        }
-                        else
-                        {
-                            strData.Add(reader[filterColumns[(int)FilterColumn.Vendor]].ToString());
-                        }
-                    }
-                }
-            }
-            catch (InvalidOperationException)
-            {
-                MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
-            }
-
-            return strData;
+            // Return the unique filters gathered to the caller
+            return uniqueFilterData;
         }
 
 
@@ -377,38 +289,13 @@ namespace DataAccessLibrary
         /// <returns>A HasSet<string> data type containing the filters</returns>
         public static HashSet<string> GetUniqueVendorDescription()
         {
-            HashSet<string> strData = new HashSet<string>();
+            HashSet<string> uniqueFilterData = new HashSet<string>();
 
-            try
-            {
-                OleDbConnection conn = DatabaseManager.GetDatabaseConnection();
+            // Get the unique filters from the vendor description column
+            GetFilterData(ref uniqueFilterData, FilterColumn.VendorDescription);
 
-                string cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.VendorDescription] + "] FROM " + DatabaseManager.TargetTable;
-
-
-                OleDbCommand cmd = new OleDbCommand(cmdString, conn);
-                using (var reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        if (reader[filterColumns[(int)FilterColumn.VendorDescription]] == DBNull.Value)
-                        {
-                            strData.Add("[Blanks]");
-                            continue;
-                        }
-                        else
-                        {
-                            strData.Add(reader[filterColumns[(int)FilterColumn.VendorDescription]].ToString());
-                        }
-                    }
-                }
-            }
-            catch (InvalidOperationException)
-            {
-                MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
-            }
-
-            return strData;
+            // Return the unique filters gathered to the caller
+            return uniqueFilterData;
         }
 
 
@@ -425,38 +312,13 @@ namespace DataAccessLibrary
         /// <returns>A HasSet<string> data type containing the filters</returns>
         public static HashSet<string> GetUniquePrPurchaseGroup()
         {
-            HashSet<string> strData = new HashSet<string>();
+            HashSet<string> uniqueFilterData = new HashSet<string>();
 
-            try
-            {
-                OleDbConnection conn = DatabaseManager.GetDatabaseConnection();
+            // Get the unique filters from the vendor PR Purchase Group column
+            GetFilterData(ref uniqueFilterData, FilterColumn.PurchGroup);
 
-                string cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.PurchGroup] + "] FROM " + DatabaseManager.TargetTable;
-
-
-                OleDbCommand cmd = new OleDbCommand(cmdString, conn);
-                using (var reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        if (reader[filterColumns[(int)FilterColumn.PurchGroup]] == DBNull.Value)
-                        {
-                            strData.Add("[Blanks]");
-                            continue;
-                        }
-                        else
-                        {
-                            strData.Add(reader[filterColumns[(int)FilterColumn.PurchGroup]].ToString());
-                        }
-                    }
-                }
-            }
-            catch (InvalidOperationException)
-            {
-                MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
-            }
-
-            return strData;
+            // Return the unique filters gathered to the caller
+            return uniqueFilterData;
         }
 
 
@@ -472,38 +334,13 @@ namespace DataAccessLibrary
         /// <returns>A HasSet<string> data type containing the filters</returns>
         public static HashSet<string> GetUniquePoPurchaseGroup()
         {
-            HashSet<string> strData = new HashSet<string>();
+            HashSet<string> uniqueFilterData = new HashSet<string>();
 
-            try
-            {
-                OleDbConnection conn = DatabaseManager.GetDatabaseConnection();
+            // Get the unique filters from the vendor PO Purchase Group column
+            GetFilterData(ref uniqueFilterData, FilterColumn.PoPurchGroup);
 
-                string cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.PoPurchGroup] + "] FROM " + DatabaseManager.TargetTable;
-
-
-                OleDbCommand cmd = new OleDbCommand(cmdString, conn);
-                using (var reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        if (reader[filterColumns[(int)FilterColumn.PoPurchGroup]] == DBNull.Value)
-                        {
-                            strData.Add("[Blanks]");
-                            continue;
-                        }
-                        else
-                        {
-                            strData.Add(reader[filterColumns[(int)FilterColumn.PoPurchGroup]].ToString());
-                        }
-                    }
-                }
-            }
-            catch (InvalidOperationException)
-            {
-                MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
-            }
-
-            return strData;
+            // Return the unique filters gathered to the caller
+            return uniqueFilterData;
         }
 
 
@@ -520,37 +357,13 @@ namespace DataAccessLibrary
         /// <returns>A HasSet<string> data type containing the filters</returns>
         public static HashSet<string> GetUniqueIrSuppName()
         {
-            HashSet<string> strData = new HashSet<string>();
+            HashSet<string> uniqueFilterData = new HashSet<string>();
 
-            try
-            {
-                OleDbConnection conn = DatabaseManager.GetDatabaseConnection();
+            // Get the unique filters from the vendor IR Supplier Name column
+            GetFilterData(ref uniqueFilterData, FilterColumn.IRSuppName);
 
-                string cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.IRSuppName] + "] FROM " + DatabaseManager.TargetTable;
-
-                OleDbCommand cmd = new OleDbCommand(cmdString, conn);
-                using (var reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        if (reader[filterColumns[(int)FilterColumn.IRSuppName]] == DBNull.Value)
-                        {
-                            strData.Add("[Blanks]");
-                            continue;
-                        }
-                        else
-                        {
-                            strData.Add(reader[filterColumns[(int)FilterColumn.IRSuppName]].ToString());
-                        }
-                    }
-                }
-            }
-            catch (InvalidOperationException)
-            {
-                MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
-            }
-
-            return strData;
+            // Return the unique filters gathered to the caller
+            return uniqueFilterData;
         }
 
 
@@ -567,38 +380,13 @@ namespace DataAccessLibrary
         /// <returns>A HasSet<string> data type containing the filters</returns>
         public static HashSet<string> GetUniqueFxdSuppName()
         {
-            HashSet<string> strData = new HashSet<string>();
+            HashSet<string> uniqueFilterData = new HashSet<string>();
 
-            try
-            {
-                OleDbConnection conn = DatabaseManager.GetDatabaseConnection();
+            // Get the unique filters from the vendor FX Supplier Name column
+            GetFilterData(ref uniqueFilterData, FilterColumn.FxdSuppName);
 
-                string cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.FxdSuppName] + "] FROM " + DatabaseManager.TargetTable;
-
-
-                OleDbCommand cmd = new OleDbCommand(cmdString, conn);
-                using (var reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        if (reader[filterColumns[(int)FilterColumn.FxdSuppName]] == DBNull.Value)
-                        {
-                            strData.Add("[Blanks]");
-                            continue;
-                        }
-                        else
-                        {
-                            strData.Add(reader[filterColumns[(int)FilterColumn.FxdSuppName]].ToString());
-                        }
-                    }
-                }
-            }
-            catch (InvalidOperationException)
-            {
-                MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
-            }
-
-            return strData;
+            // Return the unique filters gathered to the caller
+            return uniqueFilterData;
         }
 
 
@@ -615,37 +403,13 @@ namespace DataAccessLibrary
         /// <returns>A HasSet<string> data type containing the filters</returns>
         public static HashSet<string> GetUniqueDsrdSuppName()
         {
-            HashSet<string> strData = new HashSet<string>();
+            HashSet<string> uniqueFilterData = new HashSet<string>();
 
-            try
-            {
-                OleDbConnection conn = DatabaseManager.GetDatabaseConnection();
+            // Get the unique filters from the vendor Desired Supplier Name column
+            GetFilterData(ref uniqueFilterData, FilterColumn.DsrdSuppName);
 
-                string cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.DsrdSuppName] + "] FROM " + DatabaseManager.TargetTable;
-
-                OleDbCommand cmd = new OleDbCommand(cmdString, conn);
-                using (var reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        if (reader[filterColumns[(int)FilterColumn.DsrdSuppName]] == DBNull.Value)
-                        {
-                            strData.Add("[Blanks]");
-                            continue;
-                        }
-                        else
-                        {
-                            strData.Add(reader[filterColumns[(int)FilterColumn.DsrdSuppName]].ToString());
-                        }
-                    }
-                }
-            }
-            catch (InvalidOperationException)
-            {
-                MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
-            }
-
-            return strData;
+            // Return the unique filters gathered to the caller
+            return uniqueFilterData;
         }
 
 
@@ -662,37 +426,13 @@ namespace DataAccessLibrary
         /// <returns>A HasSet<string> data type containing the filters</returns>
         public static HashSet<string> GetUniqueCommodityCategory()
         {
-            HashSet<string> strData = new HashSet<string>();
+            HashSet<string> uniqueFilterData = new HashSet<string>();
 
-            try
-            {
-                OleDbConnection conn = DatabaseManager.GetDatabaseConnection();
+            // Get the unique filters from the Commodity Category column
+            GetFilterData(ref uniqueFilterData, FilterColumn.CommCat);
 
-                string cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.CommCat] + "] FROM " + DatabaseManager.TargetTable;
-
-                OleDbCommand cmd = new OleDbCommand(cmdString, conn);
-                using (var reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        if (reader[filterColumns[(int)FilterColumn.CommCat]] == DBNull.Value)
-                        {
-                            strData.Add("[Blanks]");
-                            continue;
-                        }
-                        else
-                        {
-                            strData.Add(reader[filterColumns[(int)FilterColumn.CommCat]].ToString());
-                        }
-                    }
-                }
-            }
-            catch (InvalidOperationException)
-            {
-                MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
-            }
-
-            return strData;
+            // Return the unique filters gathered to the caller
+            return uniqueFilterData;
         }
 
 
@@ -709,37 +449,13 @@ namespace DataAccessLibrary
         /// <returns>A HasSet<string> data type containing the filters</returns>
         public static HashSet<string> GetUniqueEscaped()
         {
-            HashSet<string> strData = new HashSet<string>();
+            HashSet<string> uniqueFilterData = new HashSet<string>();
 
-            try
-            {
-                OleDbConnection conn = DatabaseManager.GetDatabaseConnection();
+            // Get the unique filters from the Escaped column
+            GetFilterData(ref uniqueFilterData, FilterColumn.Escaped);
 
-                string cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.Escaped] + "] FROM " + DatabaseManager.TargetTable;
-
-                OleDbCommand cmd = new OleDbCommand(cmdString, conn);
-                using (var reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        if (reader[filterColumns[(int)FilterColumn.Escaped]] == DBNull.Value)
-                        {
-                            strData.Add("[Blanks]");
-                            continue;
-                        }
-                        else
-                        {
-                            strData.Add(reader[filterColumns[(int)FilterColumn.Escaped]].ToString());
-                        }
-                    }
-                }
-            }
-            catch (InvalidOperationException)
-            {
-                MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
-            }
-
-            return strData;
+            // Return the unique filters gathered to the caller
+            return uniqueFilterData;
         }
 
 
@@ -756,37 +472,13 @@ namespace DataAccessLibrary
         /// <returns>A HasSet<string> data type containing the filters</returns>
         public static HashSet<string> GetUniquePoDocumentType()
         {
-            HashSet<string> strData = new HashSet<string>();
+            HashSet<string> uniqueFilterData = new HashSet<string>();
 
-            try
-            {
-                OleDbConnection conn = DatabaseManager.GetDatabaseConnection();
+            // Get the unique filters from the PO Document column
+            GetFilterData(ref uniqueFilterData, FilterColumn.PoDocumentType);
 
-                string cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.PoDocumentType] + "] FROM " + DatabaseManager.TargetTable;
-
-                OleDbCommand cmd = new OleDbCommand(cmdString, conn);
-                using (var reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        if (reader[filterColumns[(int)FilterColumn.PoDocumentType]] == DBNull.Value)
-                        {
-                            strData.Add("[Blanks]");
-                            continue;
-                        }
-                        else
-                        {
-                            strData.Add(reader[filterColumns[(int)FilterColumn.PoDocumentType]].ToString());
-                        }
-                    }
-                }
-            }
-            catch (InvalidOperationException)
-            {
-                MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
-            }
-
-            return strData;
+            // Return the unique filters gathered to the caller
+            return uniqueFilterData;
         }
 
 
@@ -803,37 +495,13 @@ namespace DataAccessLibrary
         /// <returns>A HasSet<string> data type containing the filters</returns>
         public static HashSet<string> GetUniqueProductionOrderMaterial()
         {
-            HashSet<string> strData = new HashSet<string>();
+            HashSet<string> uniqueFilterData = new HashSet<string>();
 
-            try
-            {
-                OleDbConnection conn = DatabaseManager.GetDatabaseConnection();
+            // Get the unique filters from the Production Order Material column
+            GetFilterData(ref uniqueFilterData, FilterColumn.ProdOrderMaterial);
 
-                string cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.ProdOrderMaterial] + "] FROM " + DatabaseManager.TargetTable;
-
-                OleDbCommand cmd = new OleDbCommand(cmdString, conn);
-                using (var reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        if (reader[filterColumns[(int)FilterColumn.ProdOrderMaterial]] == DBNull.Value)
-                        {
-                            strData.Add("[Blanks]");
-                            continue;
-                        }
-                        else
-                        {
-                            strData.Add(reader[filterColumns[(int)FilterColumn.ProdOrderMaterial]].ToString());
-                        }
-                    }
-                }
-            }
-            catch (InvalidOperationException)
-            {
-                MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
-            }
-
-            return strData;
+            // Return the unique filters gathered to the caller
+            return uniqueFilterData;
         }
 
 
@@ -850,39 +518,13 @@ namespace DataAccessLibrary
         /// <returns>A HasSet<string> data type containing the filters</returns>
         public static HashSet<string> GetUniqueStorageLocation()
         {
-            HashSet<string> strData = new HashSet<string>();
+            HashSet<string> uniqueFilterData = new HashSet<string>();
 
+            // Get the unique filters from the Storage Location column
+            GetFilterData(ref uniqueFilterData, FilterColumn.StorageLocation);
 
-            try
-            {
-                // Get the database connection
-                OleDbConnection conn = DatabaseManager.GetDatabaseConnection();
-
-                string cmdString = "SELECT DISTINCT " + DatabaseManager.TargetTable + ".[" + filterColumns[(int)FilterColumn.StorageLocation] + "] FROM " + DatabaseManager.TargetTable;
-
-                OleDbCommand cmd = new OleDbCommand(cmdString, conn);
-                using (var reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        if (reader[filterColumns[(int)FilterColumn.StorageLocation]] == DBNull.Value)
-                        {
-                            strData.Add("[Blanks]");
-                            continue;
-                        }
-                        else
-                        {
-                            strData.Add(reader[filterColumns[(int)FilterColumn.StorageLocation]].ToString());
-                        }
-                    }
-                }
-            }
-            catch(InvalidOperationException)
-            {
-                MessageBox.Show("Invalid Operation Exception was thrown", "Get Unique Storage Locations", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            return strData;
+            // Return the unique filters gathered to the caller
+            return uniqueFilterData;
         }
     }
 }

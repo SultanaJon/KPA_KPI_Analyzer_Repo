@@ -67,7 +67,6 @@ namespace Reporting.KeyPerformanceActions.Plan
                     totalDays += elapsedDays;
                     elapsedDays = (int)elapsedDays;
 
-
                     // Apply the elapsed days against the time span conditions
                     template.TimeSpanDump(elapsedDays);
                 }
@@ -92,7 +91,7 @@ namespace Reporting.KeyPerformanceActions.Plan
         /// <summary>
         /// Calculates the overall report for this KPA
         /// </summary>
-        public override void Run()
+        public override void RunOverall()
         {
             try
             {
