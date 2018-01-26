@@ -41,7 +41,64 @@ namespace Reporting.KeyPerformanceActions.Purch
         /// <param name="_option">The filter option where this fitler was obtained</param>
         public override void RunComparison(string _filter, FilterOptions.Options _filterOption)
         {
-            throw new NotImplementedException();
+            try
+            {
+                DataTable dt = KpaUtils.PurchQueries.GetPrsAgingReleased();
+                double totalDays = 0;
+
+                // Get the fitlered data rows from the datatable
+                DataRow[] filteredResult = dt.Select(FilterOptions.GetColumnNames(_filterOption, _filter));
+
+                foreach (DataRow dr in filteredResult)
+                {
+                    //Check if the datarow meets the conditions of any applied filters.
+                    if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
+                    {
+                        // This datarow dos not meet the conditions of the filters applied.
+                        continue;
+                    }
+
+                    #region EVASO_BUT_NOT_FULLY_RELEASED_CHECK
+
+                    string[] strPrFullyRelDate = (dr["PR Fully Rel Date"].ToString()).Split('/');
+                    int prFullyRelYear = int.Parse(strPrFullyRelDate[2]);
+                    int prFullyRelMonth = int.Parse(strPrFullyRelDate[0]);
+                    int prFullyRelDay = int.Parse(strPrFullyRelDate[1]);
+
+
+                    if (prFullyRelYear == 0 && prFullyRelMonth == 0 && prFullyRelDay == 0)
+                    {
+                        // This PR line or PR in general might have been delted
+                        continue;
+                    }
+
+
+                    #endregion
+
+                    DateTime prFullyRelDt = new DateTime(prFullyRelYear, prFullyRelMonth, prFullyRelDay);
+                    DateTime today = DateTime.Now.Date;
+                    double elapsedDays = (today - prFullyRelDt).TotalDays;
+                    totalDays += elapsedDays;
+                    elapsedDays = (int)elapsedDays;
+
+
+                    // Apply the elapsed days against the time span dump
+                    template.TimeSpanDump(elapsedDays);
+                }
+
+
+                // Calculate the average for this KPA
+                template.CalculateAverage(totalDays);
+
+                dt.Rows.Clear();
+                dt = null;
+                GC.Collect();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("An argument out of range exception was thrown", "Purch -> PRs Aging (Released) - Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
         }
 
 

@@ -14,7 +14,9 @@
 
     public static class ReportingCountry
     {
-        // Array of countries that the application handles.
+        /// <summary>
+        /// Array of countries that the application handles.
+        /// </summary>
         public static string[] countries =
         {
             "United States",

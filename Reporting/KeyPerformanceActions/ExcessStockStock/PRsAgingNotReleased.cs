@@ -43,7 +43,51 @@ namespace Reporting.KeyPerformanceActions.ExcessStockStock
         /// <param name="_option">The filter option where this fitler was obtained</param>
         public override void RunComparison(string _filter, FilterOptions.Options _filterOption)
         {
-            throw new NotImplementedException();
+            try
+            {
+                DataTable dt = KpaUtils.ExcessStockStockQueries.GetPrsAgingNotReleased();
+                double totalDays = 0;
+
+                // Get the fitlered data rows from the datatable
+                DataRow[] filteredResult = dt.Select(FilterOptions.GetColumnNames(_filterOption, _filter));
+
+                foreach (DataRow dr in filteredResult)
+                {
+                    //Check if the datarow meets the conditions of any applied filters.
+                    if (!FilterUtils.EvaluateAgainstFilters(dr))
+                    {
+                        // This datarow dos not meet the conditions of the filters applied.
+                        continue;
+                    }
+
+                    string[] reqCreationDate = (dr["Requisn Date"].ToString()).Split('/');
+                    int year = int.Parse(reqCreationDate[2]);
+                    int month = int.Parse(reqCreationDate[0].TrimStart('0'));
+                    int day = int.Parse(reqCreationDate[1].TrimStart('0'));
+
+                    DateTime reqDate = new DateTime(year, month, day);
+                    DateTime today = DateTime.Now.Date;
+                    double elapsedDays = (today - reqDate).TotalDays;
+                    totalDays += elapsedDays;
+                    elapsedDays = (int)elapsedDays;
+
+                    // Apply the elapsed days against the time span conditions
+                    template.TimeSpanDump(elapsedDays);
+                }
+
+
+                // Calculate the average for this KPA
+                template.CalculateAverage(totalDays);
+
+                dt.Rows.Clear();
+                dt = null;
+                GC.Collect();
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("An argument out of range exception was thrown", "Excess Stock - Stock -> PRs Aging (Not Released) - Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
         }
 
 

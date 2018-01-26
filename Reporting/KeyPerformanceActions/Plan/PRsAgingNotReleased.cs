@@ -37,7 +37,7 @@ namespace Reporting.KeyPerformanceActions.Plan
         /// </summary>
         /// <param name="_fitler">The filter we want to run against this KPA</param>
         /// <param name="_option">The filter option where this fitler was obtained</param>
-        public override void RunComparison(string _fitler, FilterOptions.Options _option)
+        public override void RunComparison(string _fitler, FilterOptions.Options _filterOption)
         {
             try
             {
@@ -45,7 +45,7 @@ namespace Reporting.KeyPerformanceActions.Plan
                 double totalDays = 0;
 
                 // Get the fitlered data rows from the datatable
-                DataRow[] filteredResult = dt.Select(FilterOptions.GetColumnNames(_option, _fitler));
+                DataRow[] filteredResult = dt.Select(FilterOptions.GetColumnNames(_filterOption, _fitler));
 
                 foreach (DataRow dr in filteredResult)
                 {

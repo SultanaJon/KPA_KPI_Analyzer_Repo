@@ -41,7 +41,52 @@ namespace Reporting.KeyPerformanceActions.Purch
         /// <param name="_option">The filter option where this fitler was obtained</param>
         public override void RunComparison(string _filter, FilterOptions.Options _filterOption)
         {
-            throw new NotImplementedException();
+            try
+            {
+                DataTable dt = KpaUtils.PurchQueries.GetPoPrevRelease();
+                double totalDays = 0;
+
+                // Get the fitlered data rows from the datatable
+                DataRow[] filteredResult = dt.Select(FilterOptions.GetColumnNames(_filterOption, _filter));
+
+                foreach (DataRow dr in filteredResult)
+                {
+                    //Check if the datarow meets the conditions of any applied filters.
+                    if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
+                    {
+                        // This datarow dos not meet the conditions of the filters applied.
+                        continue;
+                    }
+
+
+                    string[] strDate = (dr["PO Line Creat#DT"].ToString()).Split('/');
+                    int year = int.Parse(strDate[2]);
+                    int month = int.Parse(strDate[0].TrimStart('0'));
+                    int day = int.Parse(strDate[1].TrimStart('0'));
+
+                    DateTime date = new DateTime(year, month, day);
+                    DateTime today = DateTime.Now.Date;
+                    double elapsedDays = (today - date).TotalDays;
+                    totalDays += elapsedDays;
+                    elapsedDays = (int)elapsedDays;
+
+                    // Apply the elapsed days against the time span dump
+                    template.TimeSpanDump(elapsedDays);
+                }
+
+
+                // Calculate the average for this KPA
+                template.CalculateAverage(totalDays);
+
+                dt.Rows.Clear();
+                dt = null;
+                GC.Collect();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("An argument out of range exception was thrown", "Purch -> PO Previous Release - Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
         }
 
 
