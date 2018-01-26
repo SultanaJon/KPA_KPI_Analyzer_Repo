@@ -1,4 +1,5 @@
-﻿using Reporting.TimeSpans.Templates;
+﻿using Filters;
+using Reporting.TimeSpans.Templates;
 using System.Collections.Generic;
 
 namespace Reporting.KeyPerformanceActions
@@ -74,6 +75,7 @@ namespace Reporting.KeyPerformanceActions
         public string Section { get; set; }
 
 
+
         /// <summary>
         /// The name of this specific KPA
         /// </summary>
@@ -105,6 +107,12 @@ namespace Reporting.KeyPerformanceActions
         {
             
         }
+
+
+        /// <summary>
+        /// Method to calculate the comparison of this KPA
+        /// </summary>
+        public abstract void RunComparison(string _filter, FilterOptions.Options _filterOption);
 
 
         /// <summary>

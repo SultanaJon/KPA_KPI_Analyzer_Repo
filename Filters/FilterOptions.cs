@@ -43,5 +43,30 @@ namespace Filters
             "Production Order Material",
             "Storage Location"
         };
+
+
+
+
+        /// <summary>
+        /// Returns the a seelct 
+        /// </summary>
+        /// <param name="_option"></param>
+        /// <param name="filter"></param>
+        /// <returns></returns>
+        public static string GetColumnNames(Options _option, string filter)
+        {
+            string result = string.Empty;
+
+            switch(_option)
+            {
+                case Options.ProjectNumber:
+                    result = "[" + options[(int)_option] + "] = '" + filter + "' or [" + options[(int)_option] + "] = '" + filter + "'";
+                    break;
+                default:
+                    break;
+            }
+
+            return result;
+        }
     }
 }

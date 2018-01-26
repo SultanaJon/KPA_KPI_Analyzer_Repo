@@ -89,14 +89,14 @@ namespace KPA_KPI_Analyzer.PerformanceReporting
             if(radioBtn_KpaReporting.Checked)
             {
                 label_CategoryOption.Text = "KPA Option:";
-                PerformanceReportType = ReportingType.KpaReport;
+                PerformanceReportType = ReportingType.KpaComparisonReport;
                 KPAOption = default(KpaOption);
                 LoadKpaOptions();
             }
             else
             {
                 label_CategoryOption.Text = "KPI Option:";
-                PerformanceReportType = ReportingType.KpiReport;
+                PerformanceReportType = ReportingType.KpiComparisonReport;
                 KPIOption = default(KpiOption);
                 LoadKpiOptions();
             }
@@ -245,11 +245,11 @@ namespace KPA_KPI_Analyzer.PerformanceReporting
         {
             if (radioBtn_KpaReporting.Checked)
             {
-                PerformanceReportType = ReportingType.KpaReport;
+                PerformanceReportType = ReportingType.KpaComparisonReport;
             }
             else
             {
-                PerformanceReportType = ReportingType.KpiReport;
+                PerformanceReportType = ReportingType.KpaComparisonReport;
             }
         }
 
@@ -285,7 +285,7 @@ namespace KPA_KPI_Analyzer.PerformanceReporting
         private void comboBox_CategoryOption_SelectedIndexChanged(object sender, EventArgs e)
         {
             int index = default(int);
-            if(PerformanceReportType == ReportingType.KpaReport)
+            if(PerformanceReportType == ReportingType.KpaComparisonReport)
             {
                 index = comboBox_CategoryOption.SelectedIndex;
                 foreach (KpaOption option in Enum.GetValues(typeof(KpaOption)))
@@ -296,7 +296,7 @@ namespace KPA_KPI_Analyzer.PerformanceReporting
                     }
                 }
             }
-            else // The Performance Report Type is KPI Report
+            else // The Performance Report Type is KPI Comparison Report
             {
                 index = comboBox_CategoryOption.SelectedIndex;
                 foreach(KpiOption option in Enum.GetValues(typeof(KpiOption)))

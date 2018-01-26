@@ -64,6 +64,7 @@
     <Compile Include="KeyPerformanceActions\HotJobs\NoConfirmations.cs" />
     <Compile Include="KeyPerformanceActions\HotJobs\PRsNotOnPO.cs" />
     <Compile Include="KeyPerformanceActions\KeyPerformanceAction.cs" />
+    <Compile Include="KeyPerformanceActions\Plan\PrsAgingNotReleased.cs" />
     <Compile Include="KeyPerformanceIndicators\FollowUp\CurrentConfirmationDateVsInitialConfirmationDate.cs" />
     <Compile Include="KeyPerformanceIndicators\FollowUp\FinalConfirmationDateVsFinalPlanDate.cs" />
     <Compile Include="KeyPerformanceIndicators\FollowUp\ReceiptDateVsCurrentConfirmationDate.cs" />
@@ -89,12 +90,12 @@
     <Compile Include="KeyPerformanceIndicators\PurchTwo\POReleaseDateVsPOConfirmationDate.cs" />
     <Compile Include="KeyPerformanceIndicators\PurchTwo\PR2ndLvlReleaseDateVsPOCreationDate.cs" />
     <Compile Include="KeyPerformanceIndicators\Purch\InitialConfirmationDateVsPRPlanDate.cs" />
-    <Compile Include="Reports\ComparisonReport.cs" />
+    <Compile Include="Reports\KpaComparisonReport.cs" />
     <Compile Include="Reports\KpaOverallReport.cs" />
+    <Compile Include="Reports\KpiComparisonReport.cs" />
     <Compile Include="Reports\KpiOverallReport.cs" />
     <Compile Include="Report.cs" />
     <Compile Include="KeyPerformanceActions\Plan\MaterialDue.cs" />
-    <Compile Include="KeyPerformanceActions\Plan\PRsAgingNotReleased.cs" />
     <Compile Include="KeyPerformanceActions\PurchSub\POCreationToConfirmationEntry.cs" />
     <Compile Include="KeyPerformanceActions\PurchSub\PRReleaseToPORelease.cs" />
     <Compile Include="KeyPerformanceActions\PurchTotal\PRReleaseToConfirmationEntry.cs" />

@@ -4,6 +4,7 @@ using Reporting;
 using Reporting.Reports;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KPA_KPI_Analyzer
@@ -70,28 +71,26 @@ namespace KPA_KPI_Analyzer
                         reports[ReportingType.KpiOverall] = KpiOverallReport.KpiOverallReportInstance;
                     }
                     break;
-                case ReportingType.ComparisonReport:
+                case ReportingType.KpaComparisonReport:
                     // Create the KPA Report
                     try
                     {
-                        //reports.Add(_reportType, KpaReport.KpaRepotInstance);
+                        reports.Add(_reportType, KpaComparisonReport.KpaComparisonReportInstance);
                     }
                     catch (ArgumentNullException)
                     {
-                        MessageBox.Show("Argumment Null Exception was thrown.", "KPA Report Creation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Argumment Null Exception was thrown.", "KPA Comparison Report Creation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     catch (ArgumentException)
                     {
-                        // Create a new instance of a KPA Report
-                        //KpaReport.CreateNewInstance();
+                        // Create a new instance of a KPI Overall Report
+                        KpaComparisonReport.CreateNewInstance();
 
                         // Assign that instance to the list of reports
-                        //reports[ReportingType.KpaReport] = KpaReport.KpaReportInstance;
+                        reports[ReportingType.KpaComparisonReport] = KpaComparisonReport.KpaComparisonReportInstance;
                     }
                     break;
-                case ReportingType.KpaReport:
-                    break;
-                case ReportingType.KpiReport:
+                case ReportingType.KpiComparisonReport:
                     break;
                 default:
                     break;
@@ -176,22 +175,51 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         /// <param name="sender">The Generate report button</param>
         /// <param name="e">The click event</param>
-        private void ComparisonReportGeneration(object sender, EventArgs e)
+        private async void ComparisonReportGeneration(object sender, EventArgs e)
         {
-            // Create the comparison report
-            CreateReport(ReportingType.ComparisonReport);
-
-            switch (reportingWidgetsController.SelectiveReportingType)
+            switch (reportingWidgetsController.ComparisonReportingType)
             {
-                case ReportingType.KpaReport:
+                case ReportingType.KpaComparisonReport:
+                    // Create the comparison report
+                    CreateReport(ReportingType.KpaComparisonReport);
+
                     // The user wants to create a KPA Comparison Report.
-                    GenerateKpaComparisonReport();
+                    Task<bool> kpaComparisonReportTask = new Task<bool>(GenerateKpaComparisonReport);
+                    kpaComparisonReportTask.Start();
+
+                    if(await kpaComparisonReportTask)
+                    {
+                        // The report has finished creating now run it.
+                        Task task = new Task(()=> { (reports[ReportingType.KpaComparisonReport] as KpaComparisonReport).RunReport(reportingWidgetsController.ComparisonFilterOption); });
+                        task.Start();
+                        await task;
+                    }
+                    else
+                    {
+                        // The report did not successfully create
+                        MessageBox.Show("The report failed to generate!", "KPA Comparison Report Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                     break;
-                case ReportingType.KpiReport:
-                    // The user wants to create a KPI Comparison Report
-                    GenerateKpiComparisonReport();
+                case ReportingType.KpiComparisonReport:
+                    // Create the comparison report
+                    CreateReport(ReportingType.KpiComparisonReport);
+
+                    // The user wants to create a KPI Comparison Report.
+                    Task<bool> kpiComparisonReportTask = new Task<bool>(GenerateKpiComparisonReport);
+                    kpiComparisonReportTask.Start();
+
+                    if (await kpiComparisonReportTask)
+                    {
+                        // The report has finished creating now run it.
+                    }
+                    else
+                    {
+                        // The report did not successfully create
+                        MessageBox.Show("The report failed to generate!", "KPA Comparison Report Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                     break;
                 default:
+                    MessageBox.Show("Could not determine the type of comparison Report", "Comparison Report Failure");
                     break;
             }
         }
@@ -207,6 +235,7 @@ namespace KPA_KPI_Analyzer
         private List<string> GetFilters(Filters.FilterOptions.Options _filterOption)
         {
             List<string> tempFilterList = new List<string>();
+
             switch (_filterOption)
             {
                 case Filters.FilterOptions.Options.ProjectNumber:
@@ -220,22 +249,23 @@ namespace KPA_KPI_Analyzer
                 case Filters.FilterOptions.Options.Vendor:
                     return new List<string>(FilterManager.GetUniqueVendor());
                 case Filters.FilterOptions.Options.VendorDescription:
-                    return new List<string>(FilterManager.GetUniqueVendorDescription());
+                    return  new List<string>(FilterManager.GetUniqueVendorDescription());
                 case Filters.FilterOptions.Options.PRPurchaseGroup:
-                    return new List<string>(FilterManager.GetUniquePrPurchaseGroup());
+                    return  new List<string>(FilterManager.GetUniquePrPurchaseGroup());
                 case Filters.FilterOptions.Options.POPurchaseGroup:
-                    return new List<string>(FilterManager.GetUniquePoPurchaseGroup());
+                    return  new List<string>(FilterManager.GetUniquePoPurchaseGroup());
                 case Filters.FilterOptions.Options.IRSuppName:
-                    return new List<string>(FilterManager.GetUniqueIrSuppName());
+                    return  new List<string>(FilterManager.GetUniqueIrSuppName());
                 case Filters.FilterOptions.Options.DsrdSuppName:
-                    return new List<string>(FilterManager.GetUniqueDsrdSuppName());
+                    return  new List<string>(FilterManager.GetUniqueDsrdSuppName());
                 case Filters.FilterOptions.Options.CommodityCategory:
-                    return new List<string>(FilterManager.GetUniqueCommodityCategory());
+                    return  new List<string>(FilterManager.GetUniqueCommodityCategory());
                 case Filters.FilterOptions.Options.PODocumentType:
-                    return new List<string>(FilterManager.GetUniquePoDocumentType());
+                    return  new List<string>(FilterManager.GetUniquePoDocumentType());
                 case Filters.FilterOptions.Options.ProductionOrderMaterial:
-                    return new List<string>(FilterManager.GetUniqueProductionOrderMaterial());
+                    return  new List<string>(FilterManager.GetUniqueProductionOrderMaterial());
             }
+
             return tempFilterList;
         }
 
@@ -285,14 +315,23 @@ namespace KPA_KPI_Analyzer
         /// <summary>
         /// Creates a Comparison Report and runs it based on the KPA option selected
         /// </summary>
-        private void GenerateKpaComparisonReport()
+        private bool GenerateKpaComparisonReport()
         {
-            //// Get the filter option that the user wants for the report
-            //List<string> filters = GetFilters(reportingWidgetsController.ComparisonFilterOption);
+            // Get the filter option that the user wants for the report
+            List<string> fitlers = GetFilters(reportingWidgetsController.ComparisonFilterOption);
 
-            //// Finish creating the Comparison report
-            //(reports[ReportingType.ComparisonReport] as ComparisonReport)
-            //    .CreateKpaComparisonReport(filters, reportingWidgetsController.ComparisonKpaOption);
+            // Finish creating the Comparison report
+            if((reports[ReportingType.KpaComparisonReport] as KpaComparisonReport)
+                .GenerateReport(fitlers, reportingWidgetsController.ComparisonKpaOption))
+            {
+                // The report was successfuly created. Start running the report.
+                return true;
+            }
+            else
+            {
+                // The report failed to create
+                return false;
+            }
         }
 
 
@@ -301,14 +340,23 @@ namespace KPA_KPI_Analyzer
         /// <summary>
         /// Creates a comparison report and runs it based on the KPI option selected
         /// </summary>
-        private void GenerateKpiComparisonReport()
+        private bool GenerateKpiComparisonReport()
         {
-            //// Get the filter option that the user wants for the report
-            //List<string> filters = GetFilters(reportingWidgetsController.ComparisonFilterOption);
+            // Get the filter option that the user wants for the report
+            List<string> filtersTaskResult = GetFilters(reportingWidgetsController.ComparisonFilterOption);
 
-            //// Finishes creating the report
-            //(reports[ReportingType.ComparisonReport] as ComparisonReport)
-            //    .CreateKpiComparisonReport(filters, reportingWidgetsController.ComparisonKpiOption);
+            // Finish creating the Comparison report
+            if ((reports[ReportingType.KpiComparisonReport] as KpaComparisonReport)
+                .GenerateReport(filtersTaskResult, reportingWidgetsController.ComparisonKpaOption))
+            {
+                // The report was successfuly created. Start running the report.
+                return true;
+            }
+            else
+            {
+                // The report failed to create
+                return false;
+            }
         }
     }
 }

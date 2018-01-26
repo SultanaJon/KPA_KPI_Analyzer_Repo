@@ -1,6 +1,6 @@
 ﻿namespace Reporting.TimeSpans.Templates
 {
-    internal interface ITemplateOne
+    public interface ITemplateOne
     {
         double Average { get; set; }
         int TotalRecords { get; set; }

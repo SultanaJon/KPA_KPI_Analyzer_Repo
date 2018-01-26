@@ -10,7 +10,8 @@ namespace Reporting
         KpiOverall,
         KpaReport,
         KpiReport,
-        ComparisonReport
+        KpaComparisonReport,
+        KpiComparisonReport
     }
 
 
@@ -61,6 +62,7 @@ namespace Reporting
             actions.Add(new KeyPerformanceActions.CurrentPlanVsActual.CurrentPlanDateVsCurrentConfirmationDate());
             actions.Add(new KeyPerformanceActions.CurrentPlanVsActual.CurrentPlanDateVsCurrentConfirmationDateForHotJobs());
 
+            // Return the list of actions
             return actions;
         }
 
