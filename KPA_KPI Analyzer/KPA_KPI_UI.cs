@@ -19,11 +19,12 @@ using Reporting.Reports;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KPA_KPI_Analyzer
 {
-    public partial class KPA_KPI_UI : Form
+	public partial class KPA_KPI_UI : Form
 	{
 		#region FIELD DATA
 
@@ -372,37 +373,32 @@ namespace KPA_KPI_Analyzer
 
 
 
-
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void OverallDataToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-
-		}
-
-
-
-
 		/// <summary>
 		/// Begins the export overall data operation.
 		/// </summary>
 		/// <param name="sender">The Tools->Export->Overall Data menu item</param>
 		/// <param name="e">The click event</param>
-		private void overallDataToolStripMenuItem_Click(object sender, EventArgs e)
+		private async void overallDataToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			// Create a new exporter object
 			Exporter exporter = new Exporter();
-			
+
 			// Create a new overall excel file and export the overall data
-			exporter.ExportOverall(new OverallExcelFile()
+			Task overallExportTask = new Task(() =>
 			{
-					Country = topHandleBarModel.CurrentCountry,
-					PrpoGenerationDate = topHandleBarModel.ReportGenerationDate,
-					ContainsHeaders = true
+			   exporter.ExportOverall(new OverallExcelFile()
+			   {
+				   Country = topHandleBarModel.CurrentCountry,
+				   PrpoGenerationDate = topHandleBarModel.ReportGenerationDate,
+				   ContainsHeaders = true
+			   });
 			});
+
+            // Start the export process
+            overallExportTask.Start();
+
+            // Wait until the overall export has finished
+			await overallExportTask;
 		}
 
 

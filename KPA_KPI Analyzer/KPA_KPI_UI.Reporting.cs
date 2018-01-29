@@ -195,8 +195,19 @@ namespace KPA_KPI_Analyzer
                         Task calculateComparisonReportTask = new Task(()=> { (reports[ReportingType.KpaComparisonReport] as KpaComparisonReport).RunReport(reportingWidgetsController.ComparisonFilterOption); });
                         calculateComparisonReportTask.Start();
                         await calculateComparisonReportTask;
-                        
+
+                        // Beging to export the comparison report to excel.
+                        // Task comparisonReportExport = new Task();
+                        // comparisonReportExport.Start();
+
+                        // Wait for the report to finish exporting
+                        // await comparisonReportExport;
+
+
+                        // Hide any pages that might be visible
                         HidePages();
+                        
+                        // Unclock the navigation and the menu strip.
                         navigationSettings.Status = Navigation.Functionality.Unlocked;
                         ms_applicaitonMenuStrip.Enabled = true;
                     }

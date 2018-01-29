@@ -69,7 +69,7 @@ namespace Reporting.Reports
 
 
         /// <summary>
-        /// Starts calculating the KPA
+        /// Runs each KPA comparison calculation in a seperate thread.
         /// </summary>
         public void RunReport(Filters.FilterOptions.Options _option)
         {
