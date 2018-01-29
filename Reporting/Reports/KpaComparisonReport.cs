@@ -1,12 +1,6 @@
-﻿using ApplicationIOLibarary.Interfaces;
-using Newtonsoft.Json;
-using Reporting.KeyPerformanceActions;
-using Reporting.TimeSpans.Templates;
+﻿using Reporting.KeyPerformanceActions;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -79,10 +73,7 @@ namespace Reporting.Reports
         /// </summary>
         public void RunReport(Filters.FilterOptions.Options _option)
         {
-            foreach(string filter in Contents.Keys)
-            {
-                Contents[filter].RunComparison(filter, _option);
-            }
+            Parallel.ForEach(Contents.Keys, filter => Contents[filter].RunComparison(filter, _option));
         }
 
 

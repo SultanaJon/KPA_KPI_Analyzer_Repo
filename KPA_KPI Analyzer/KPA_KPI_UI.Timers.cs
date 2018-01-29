@@ -194,9 +194,9 @@ namespace KPA_KPI_Analyzer
             }
 
 
-            if (Filters.FilterUtils.FiltersLoaded)
+            if (FilterUtils.FiltersLoaded)
             {
-                Filters.FilterUtils.FiltersLoaded = false;
+                FilterUtils.FiltersLoaded = false;
                 FiltersTimer.Stop();
 
                 // Save the settings

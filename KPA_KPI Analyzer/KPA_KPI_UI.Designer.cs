@@ -48,12 +48,8 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.addVariantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnl_topPanel = new System.Windows.Forms.Panel();
-            this.pnl_Minimize = new System.Windows.Forms.Panel();
-            this.pnl_Maximize = new System.Windows.Forms.Panel();
-            this.pnl_Close = new System.Windows.Forms.Panel();
             this.pnl_titlePanel = new System.Windows.Forms.Panel();
             this.lbl_title = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.pnl_logo = new System.Windows.Forms.Panel();
             this.ImportTimer = new System.Windows.Forms.Timer(this.components);
             this.DataRemovalTimer = new System.Windows.Forms.Timer(this.components);
             this.pnl_activePage = new System.Windows.Forms.Panel();
@@ -146,8 +142,6 @@
             this.pnl_note = new System.Windows.Forms.Panel();
             this.bunifuCustomLabel30 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel28 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.tblpnl_DashbaordPage = new System.Windows.Forms.TableLayoutPanel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.pnl_loadingScreen = new System.Windows.Forms.Panel();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.panel9 = new System.Windows.Forms.Panel();
@@ -167,10 +161,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.btn_dashboardCancel = new Bunifu.Framework.UI.BunifuFlatButton();
             this.tblpnl_DragDrop = new System.Windows.Forms.TableLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btn_reports = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.btn_Filters = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.btn_Correlation = new Bunifu.Framework.UI.BunifuFlatButton();
             this.pnl_KPISectionsPanel = new System.Windows.Forms.Panel();
             this.btn_kpiOther = new System.Windows.Forms.Button();
             this.btn_kpiPurchPlan = new System.Windows.Forms.Button();
@@ -182,7 +172,6 @@
             this.btn_kpiPurchOne = new System.Windows.Forms.Button();
             this.btn_kpiPlanOne = new System.Windows.Forms.Button();
             this.btn_kpiOverall = new System.Windows.Forms.Button();
-            this.btn_KPI = new Bunifu.Framework.UI.BunifuFlatButton();
             this.pnl_KPASectionsPanel = new System.Windows.Forms.Panel();
             this.btn_kpaCurrentPlanActual = new System.Windows.Forms.Button();
             this.btn_kpaExcessStock_OpenOrder = new System.Windows.Forms.Button();
@@ -194,8 +183,6 @@
             this.btn_kpaPurch = new System.Windows.Forms.Button();
             this.btn_kpaPlan = new System.Windows.Forms.Button();
             this.btn_kpaOverall = new System.Windows.Forms.Button();
-            this.btn_KPA = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.btn_Dashboard = new Bunifu.Framework.UI.BunifuFlatButton();
             this.FiltersTimer = new System.Windows.Forms.Timer(this.components);
             this.pnl_TopUIPanel = new System.Windows.Forms.Panel();
             this.dc_logo = new Bunifu.Framework.UI.BunifuDragControl(this.components);
@@ -205,6 +192,19 @@
             this.be_note = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.navigationWindow = new KPA_KPI_Analyzer.Navigation.NavigationView();
             this.topHandleBar = new KPA_KPI_Analyzer.TopHandleBar.TopHandleBarView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnl_Minimize = new System.Windows.Forms.Panel();
+            this.pnl_Maximize = new System.Windows.Forms.Panel();
+            this.pnl_Close = new System.Windows.Forms.Panel();
+            this.pnl_logo = new System.Windows.Forms.Panel();
+            this.btn_reports = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btn_Filters = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btn_Correlation = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btn_KPI = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btn_KPA = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btn_Dashboard = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.tblpnl_DashbaordPage = new System.Windows.Forms.TableLayoutPanel();
             this.pnl_menuStrip.SuspendLayout();
             this.ms_applicaitonMenuStrip.SuspendLayout();
             this.pnl_topPanel.SuspendLayout();
@@ -232,7 +232,6 @@
             this.tableLayoutPanel19.SuspendLayout();
             this.tableLayoutPanel20.SuspendLayout();
             this.pnl_note.SuspendLayout();
-            this.tblpnl_DashbaordPage.SuspendLayout();
             this.pnl_loadingScreen.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -245,6 +244,7 @@
             this.panel3.SuspendLayout();
             this.tblpnl_DragDrop.SuspendLayout();
             this.pnl_TopUIPanel.SuspendLayout();
+            this.tblpnl_DashbaordPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // dc_MainUI
@@ -402,45 +402,6 @@
             this.pnl_topPanel.TabIndex = 0;
             this.pnl_topPanel.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pnl_TopPanel_MouseDoubleClick);
             // 
-            // pnl_Minimize
-            // 
-            this.pnl_Minimize.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.Minimize;
-            this.pnl_Minimize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pnl_Minimize.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnl_Minimize.Location = new System.Drawing.Point(1050, 0);
-            this.pnl_Minimize.Name = "pnl_Minimize";
-            this.pnl_Minimize.Size = new System.Drawing.Size(50, 25);
-            this.pnl_Minimize.TabIndex = 4;
-            this.pnl_Minimize.Click += new System.EventHandler(this.btn_Minimize_Click);
-            this.pnl_Minimize.MouseLeave += new System.EventHandler(this.btn_Minimize_MouseLeave);
-            this.pnl_Minimize.MouseHover += new System.EventHandler(this.btn_Minimize_MouseEnter);
-            // 
-            // pnl_Maximize
-            // 
-            this.pnl_Maximize.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.Maximize;
-            this.pnl_Maximize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pnl_Maximize.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnl_Maximize.Location = new System.Drawing.Point(1100, 0);
-            this.pnl_Maximize.Name = "pnl_Maximize";
-            this.pnl_Maximize.Size = new System.Drawing.Size(50, 25);
-            this.pnl_Maximize.TabIndex = 3;
-            this.pnl_Maximize.Click += new System.EventHandler(this.btn_Expand_Click);
-            this.pnl_Maximize.MouseLeave += new System.EventHandler(this.btn_Expand_MouseLeave);
-            this.pnl_Maximize.MouseHover += new System.EventHandler(this.btn_Expand_MouseHover);
-            // 
-            // pnl_Close
-            // 
-            this.pnl_Close.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.Close;
-            this.pnl_Close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pnl_Close.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnl_Close.Location = new System.Drawing.Point(1150, 0);
-            this.pnl_Close.Name = "pnl_Close";
-            this.pnl_Close.Size = new System.Drawing.Size(50, 25);
-            this.pnl_Close.TabIndex = 2;
-            this.pnl_Close.Click += new System.EventHandler(this.btn_Close_Click);
-            this.pnl_Close.MouseLeave += new System.EventHandler(this.btn_Close_MouseLeave);
-            this.pnl_Close.MouseHover += new System.EventHandler(this.btn_Close_MouseHover);
-            // 
             // pnl_titlePanel
             // 
             this.pnl_titlePanel.Controls.Add(this.lbl_title);
@@ -460,16 +421,6 @@
             this.lbl_title.TabIndex = 0;
             this.lbl_title.Text = "KPA - KPI Analyzer";
             // 
-            // pnl_logo
-            // 
-            this.pnl_logo.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.comau_logo;
-            this.pnl_logo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pnl_logo.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnl_logo.Location = new System.Drawing.Point(0, 0);
-            this.pnl_logo.Name = "pnl_logo";
-            this.pnl_logo.Size = new System.Drawing.Size(50, 25);
-            this.pnl_logo.TabIndex = 0;
-            // 
             // ImportTimer
             // 
             this.ImportTimer.Tick += new System.EventHandler(this.ImportTimer_Tick);
@@ -480,8 +431,8 @@
             // 
             // pnl_activePage
             // 
-            this.pnl_activePage.Controls.Add(this.tblpnl_Filters);
             this.pnl_activePage.Controls.Add(this.tblpnl_DashbaordPage);
+            this.pnl_activePage.Controls.Add(this.tblpnl_Filters);
             this.pnl_activePage.Controls.Add(this.pnl_loadingScreen);
             this.pnl_activePage.Controls.Add(this.pnl_CountrySelector);
             this.pnl_activePage.Controls.Add(this.tblpnl_DragDrop);
@@ -1802,41 +1753,6 @@
             this.bunifuCustomLabel28.TabIndex = 5;
             this.bunifuCustomLabel28.Text = "*Note:";
             // 
-            // tblpnl_DashbaordPage
-            // 
-            this.tblpnl_DashbaordPage.AllowDrop = true;
-            this.tblpnl_DashbaordPage.ColumnCount = 4;
-            this.tblpnl_DashbaordPage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tblpnl_DashbaordPage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tblpnl_DashbaordPage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tblpnl_DashbaordPage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tblpnl_DashbaordPage.Controls.Add(this.panel2, 0, 0);
-            this.tblpnl_DashbaordPage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tblpnl_DashbaordPage.Location = new System.Drawing.Point(0, 0);
-            this.tblpnl_DashbaordPage.Name = "tblpnl_DashbaordPage";
-            this.tblpnl_DashbaordPage.RowCount = 3;
-            this.tblpnl_DashbaordPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 41.73355F));
-            this.tblpnl_DashbaordPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28.41092F));
-            this.tblpnl_DashbaordPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30.01605F));
-            this.tblpnl_DashbaordPage.Size = new System.Drawing.Size(1200, 623);
-            this.tblpnl_DashbaordPage.TabIndex = 52;
-            // 
-            // panel2
-            // 
-            this.panel2.AllowDrop = true;
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.dragDropLargeCenter;
-            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.tblpnl_DashbaordPage.SetColumnSpan(this.panel2, 4);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(10, 10);
-            this.panel2.Margin = new System.Windows.Forms.Padding(10, 10, 10, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1180, 249);
-            this.panel2.TabIndex = 9;
-            this.panel2.DragDrop += new System.Windows.Forms.DragEventHandler(this.pnl_DragDropArea_DragDrop);
-            this.panel2.DragEnter += new System.Windows.Forms.DragEventHandler(this.pnl_DragDropArea_DragEnter);
-            // 
             // pnl_loadingScreen
             // 
             this.pnl_loadingScreen.Controls.Add(this.tableLayoutPanel9);
@@ -2148,6 +2064,221 @@
             this.tblpnl_DragDrop.Size = new System.Drawing.Size(1200, 623);
             this.tblpnl_DragDrop.TabIndex = 54;
             // 
+            // pnl_KPISectionsPanel
+            // 
+            this.pnl_KPISectionsPanel.Location = new System.Drawing.Point(0, 0);
+            this.pnl_KPISectionsPanel.Name = "pnl_KPISectionsPanel";
+            this.pnl_KPISectionsPanel.Size = new System.Drawing.Size(200, 100);
+            this.pnl_KPISectionsPanel.TabIndex = 0;
+            // 
+            // btn_kpiOther
+            // 
+            this.btn_kpiOther.Location = new System.Drawing.Point(0, 0);
+            this.btn_kpiOther.Name = "btn_kpiOther";
+            this.btn_kpiOther.Size = new System.Drawing.Size(75, 23);
+            this.btn_kpiOther.TabIndex = 0;
+            // 
+            // btn_kpiPurchPlan
+            // 
+            this.btn_kpiPurchPlan.Location = new System.Drawing.Point(0, 0);
+            this.btn_kpiPurchPlan.Name = "btn_kpiPurchPlan";
+            this.btn_kpiPurchPlan.Size = new System.Drawing.Size(75, 23);
+            this.btn_kpiPurchPlan.TabIndex = 0;
+            // 
+            // btn_kpiPurchTotal
+            // 
+            this.btn_kpiPurchTotal.Location = new System.Drawing.Point(0, 0);
+            this.btn_kpiPurchTotal.Name = "btn_kpiPurchTotal";
+            this.btn_kpiPurchTotal.Size = new System.Drawing.Size(75, 23);
+            this.btn_kpiPurchTotal.TabIndex = 0;
+            // 
+            // btn_kpiPurchSub
+            // 
+            this.btn_kpiPurchSub.Location = new System.Drawing.Point(0, 0);
+            this.btn_kpiPurchSub.Name = "btn_kpiPurchSub";
+            this.btn_kpiPurchSub.Size = new System.Drawing.Size(75, 23);
+            this.btn_kpiPurchSub.TabIndex = 0;
+            // 
+            // btn_kpiPurchTwo
+            // 
+            this.btn_kpiPurchTwo.Location = new System.Drawing.Point(0, 0);
+            this.btn_kpiPurchTwo.Name = "btn_kpiPurchTwo";
+            this.btn_kpiPurchTwo.Size = new System.Drawing.Size(75, 23);
+            this.btn_kpiPurchTwo.TabIndex = 0;
+            // 
+            // btn_kpiPlanTwo
+            // 
+            this.btn_kpiPlanTwo.Location = new System.Drawing.Point(0, 0);
+            this.btn_kpiPlanTwo.Name = "btn_kpiPlanTwo";
+            this.btn_kpiPlanTwo.Size = new System.Drawing.Size(75, 23);
+            this.btn_kpiPlanTwo.TabIndex = 0;
+            // 
+            // btn_kpiFollowUp
+            // 
+            this.btn_kpiFollowUp.Location = new System.Drawing.Point(0, 0);
+            this.btn_kpiFollowUp.Name = "btn_kpiFollowUp";
+            this.btn_kpiFollowUp.Size = new System.Drawing.Size(75, 23);
+            this.btn_kpiFollowUp.TabIndex = 0;
+            // 
+            // btn_kpiPurchOne
+            // 
+            this.btn_kpiPurchOne.Location = new System.Drawing.Point(0, 0);
+            this.btn_kpiPurchOne.Name = "btn_kpiPurchOne";
+            this.btn_kpiPurchOne.Size = new System.Drawing.Size(75, 23);
+            this.btn_kpiPurchOne.TabIndex = 0;
+            // 
+            // btn_kpiPlanOne
+            // 
+            this.btn_kpiPlanOne.Location = new System.Drawing.Point(0, 0);
+            this.btn_kpiPlanOne.Name = "btn_kpiPlanOne";
+            this.btn_kpiPlanOne.Size = new System.Drawing.Size(75, 23);
+            this.btn_kpiPlanOne.TabIndex = 0;
+            // 
+            // btn_kpiOverall
+            // 
+            this.btn_kpiOverall.Location = new System.Drawing.Point(0, 0);
+            this.btn_kpiOverall.Name = "btn_kpiOverall";
+            this.btn_kpiOverall.Size = new System.Drawing.Size(75, 23);
+            this.btn_kpiOverall.TabIndex = 0;
+            // 
+            // pnl_KPASectionsPanel
+            // 
+            this.pnl_KPASectionsPanel.Location = new System.Drawing.Point(0, 0);
+            this.pnl_KPASectionsPanel.Name = "pnl_KPASectionsPanel";
+            this.pnl_KPASectionsPanel.Size = new System.Drawing.Size(200, 100);
+            this.pnl_KPASectionsPanel.TabIndex = 0;
+            // 
+            // btn_kpaCurrentPlanActual
+            // 
+            this.btn_kpaCurrentPlanActual.Location = new System.Drawing.Point(0, 0);
+            this.btn_kpaCurrentPlanActual.Name = "btn_kpaCurrentPlanActual";
+            this.btn_kpaCurrentPlanActual.Size = new System.Drawing.Size(75, 23);
+            this.btn_kpaCurrentPlanActual.TabIndex = 0;
+            // 
+            // btn_kpaExcessStock_OpenOrder
+            // 
+            this.btn_kpaExcessStock_OpenOrder.Location = new System.Drawing.Point(0, 0);
+            this.btn_kpaExcessStock_OpenOrder.Name = "btn_kpaExcessStock_OpenOrder";
+            this.btn_kpaExcessStock_OpenOrder.Size = new System.Drawing.Size(75, 23);
+            this.btn_kpaExcessStock_OpenOrder.TabIndex = 0;
+            // 
+            // btn_kpaExcessStock_Stock
+            // 
+            this.btn_kpaExcessStock_Stock.Location = new System.Drawing.Point(0, 0);
+            this.btn_kpaExcessStock_Stock.Name = "btn_kpaExcessStock_Stock";
+            this.btn_kpaExcessStock_Stock.Size = new System.Drawing.Size(75, 23);
+            this.btn_kpaExcessStock_Stock.TabIndex = 0;
+            // 
+            // btn_kpaHotJobs
+            // 
+            this.btn_kpaHotJobs.Location = new System.Drawing.Point(0, 0);
+            this.btn_kpaHotJobs.Name = "btn_kpaHotJobs";
+            this.btn_kpaHotJobs.Size = new System.Drawing.Size(75, 23);
+            this.btn_kpaHotJobs.TabIndex = 0;
+            // 
+            // btn_kpaFollowUp
+            // 
+            this.btn_kpaFollowUp.Location = new System.Drawing.Point(0, 0);
+            this.btn_kpaFollowUp.Name = "btn_kpaFollowUp";
+            this.btn_kpaFollowUp.Size = new System.Drawing.Size(75, 23);
+            this.btn_kpaFollowUp.TabIndex = 0;
+            // 
+            // btn_kpaPurchTotal
+            // 
+            this.btn_kpaPurchTotal.Location = new System.Drawing.Point(0, 0);
+            this.btn_kpaPurchTotal.Name = "btn_kpaPurchTotal";
+            this.btn_kpaPurchTotal.Size = new System.Drawing.Size(75, 23);
+            this.btn_kpaPurchTotal.TabIndex = 0;
+            // 
+            // btn_kpaPurchSub
+            // 
+            this.btn_kpaPurchSub.Location = new System.Drawing.Point(0, 0);
+            this.btn_kpaPurchSub.Name = "btn_kpaPurchSub";
+            this.btn_kpaPurchSub.Size = new System.Drawing.Size(75, 23);
+            this.btn_kpaPurchSub.TabIndex = 0;
+            // 
+            // btn_kpaPurch
+            // 
+            this.btn_kpaPurch.Location = new System.Drawing.Point(0, 0);
+            this.btn_kpaPurch.Name = "btn_kpaPurch";
+            this.btn_kpaPurch.Size = new System.Drawing.Size(75, 23);
+            this.btn_kpaPurch.TabIndex = 0;
+            // 
+            // btn_kpaPlan
+            // 
+            this.btn_kpaPlan.Location = new System.Drawing.Point(0, 0);
+            this.btn_kpaPlan.Name = "btn_kpaPlan";
+            this.btn_kpaPlan.Size = new System.Drawing.Size(75, 23);
+            this.btn_kpaPlan.TabIndex = 0;
+            // 
+            // btn_kpaOverall
+            // 
+            this.btn_kpaOverall.Location = new System.Drawing.Point(0, 0);
+            this.btn_kpaOverall.Name = "btn_kpaOverall";
+            this.btn_kpaOverall.Size = new System.Drawing.Size(75, 23);
+            this.btn_kpaOverall.TabIndex = 0;
+            // 
+            // FiltersTimer
+            // 
+            this.FiltersTimer.Tick += new System.EventHandler(this.FiltersTimer_Tick);
+            // 
+            // pnl_TopUIPanel
+            // 
+            this.pnl_TopUIPanel.BackColor = System.Drawing.Color.Black;
+            this.pnl_TopUIPanel.Controls.Add(this.pnl_topPanel);
+            this.pnl_TopUIPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnl_TopUIPanel.Location = new System.Drawing.Point(0, 0);
+            this.pnl_TopUIPanel.Name = "pnl_TopUIPanel";
+            this.pnl_TopUIPanel.Size = new System.Drawing.Size(1200, 26);
+            this.pnl_TopUIPanel.TabIndex = 56;
+            // 
+            // dc_logo
+            // 
+            this.dc_logo.Fixed = true;
+            this.dc_logo.Horizontal = true;
+            this.dc_logo.TargetControl = this.pnl_logo;
+            this.dc_logo.Vertical = true;
+            // 
+            // dc_title
+            // 
+            this.dc_title.Fixed = true;
+            this.dc_title.Horizontal = true;
+            this.dc_title.TargetControl = this.lbl_title;
+            this.dc_title.Vertical = true;
+            // 
+            // dc_titlePanel
+            // 
+            this.dc_titlePanel.Fixed = true;
+            this.dc_titlePanel.Horizontal = true;
+            this.dc_titlePanel.TargetControl = this.pnl_titlePanel;
+            this.dc_titlePanel.Vertical = true;
+            // 
+            // be_mainUI
+            // 
+            this.be_mainUI.ElipseRadius = 5;
+            this.be_mainUI.TargetControl = this;
+            // 
+            // be_note
+            // 
+            this.be_note.ElipseRadius = 5;
+            this.be_note.TargetControl = this.pnl_note;
+            // 
+            // navigationWindow
+            // 
+            this.navigationWindow.Dock = System.Windows.Forms.DockStyle.Left;
+            this.navigationWindow.Location = new System.Drawing.Point(0, 77);
+            this.navigationWindow.Name = "navigationWindow";
+            this.navigationWindow.Size = new System.Drawing.Size(0, 623);
+            this.navigationWindow.TabIndex = 6;
+            // 
+            // topHandleBar
+            // 
+            this.topHandleBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.topHandleBar.Location = new System.Drawing.Point(0, 26);
+            this.topHandleBar.Name = "topHandleBar";
+            this.topHandleBar.Size = new System.Drawing.Size(1200, 51);
+            this.topHandleBar.TabIndex = 1;
+            // 
             // panel1
             // 
             this.panel1.AllowDrop = true;
@@ -2164,6 +2295,55 @@
             this.panel1.TabIndex = 0;
             this.panel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.pnl_DragDropArea_DragDrop);
             this.panel1.DragEnter += new System.Windows.Forms.DragEventHandler(this.pnl_DragDropArea_DragEnter);
+            // 
+            // pnl_Minimize
+            // 
+            this.pnl_Minimize.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.Minimize;
+            this.pnl_Minimize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pnl_Minimize.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnl_Minimize.Location = new System.Drawing.Point(1050, 0);
+            this.pnl_Minimize.Name = "pnl_Minimize";
+            this.pnl_Minimize.Size = new System.Drawing.Size(50, 25);
+            this.pnl_Minimize.TabIndex = 4;
+            this.pnl_Minimize.Click += new System.EventHandler(this.btn_Minimize_Click);
+            this.pnl_Minimize.MouseLeave += new System.EventHandler(this.btn_Minimize_MouseLeave);
+            this.pnl_Minimize.MouseHover += new System.EventHandler(this.btn_Minimize_MouseEnter);
+            // 
+            // pnl_Maximize
+            // 
+            this.pnl_Maximize.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.Maximize;
+            this.pnl_Maximize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pnl_Maximize.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnl_Maximize.Location = new System.Drawing.Point(1100, 0);
+            this.pnl_Maximize.Name = "pnl_Maximize";
+            this.pnl_Maximize.Size = new System.Drawing.Size(50, 25);
+            this.pnl_Maximize.TabIndex = 3;
+            this.pnl_Maximize.Click += new System.EventHandler(this.btn_Expand_Click);
+            this.pnl_Maximize.MouseLeave += new System.EventHandler(this.btn_Expand_MouseLeave);
+            this.pnl_Maximize.MouseHover += new System.EventHandler(this.btn_Expand_MouseHover);
+            // 
+            // pnl_Close
+            // 
+            this.pnl_Close.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.Close;
+            this.pnl_Close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pnl_Close.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnl_Close.Location = new System.Drawing.Point(1150, 0);
+            this.pnl_Close.Name = "pnl_Close";
+            this.pnl_Close.Size = new System.Drawing.Size(50, 25);
+            this.pnl_Close.TabIndex = 2;
+            this.pnl_Close.Click += new System.EventHandler(this.btn_Close_Click);
+            this.pnl_Close.MouseLeave += new System.EventHandler(this.btn_Close_MouseLeave);
+            this.pnl_Close.MouseHover += new System.EventHandler(this.btn_Close_MouseHover);
+            // 
+            // pnl_logo
+            // 
+            this.pnl_logo.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.comau_logo;
+            this.pnl_logo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pnl_logo.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnl_logo.Location = new System.Drawing.Point(0, 0);
+            this.pnl_logo.Name = "pnl_logo";
+            this.pnl_logo.Size = new System.Drawing.Size(50, 25);
+            this.pnl_logo.TabIndex = 0;
             // 
             // btn_reports
             // 
@@ -2267,83 +2447,6 @@
             this.btn_Correlation.Textcolor = System.Drawing.Color.White;
             this.btn_Correlation.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
-            // pnl_KPISectionsPanel
-            // 
-            this.pnl_KPISectionsPanel.Location = new System.Drawing.Point(0, 0);
-            this.pnl_KPISectionsPanel.Name = "pnl_KPISectionsPanel";
-            this.pnl_KPISectionsPanel.Size = new System.Drawing.Size(200, 100);
-            this.pnl_KPISectionsPanel.TabIndex = 0;
-            // 
-            // btn_kpiOther
-            // 
-            this.btn_kpiOther.Location = new System.Drawing.Point(0, 0);
-            this.btn_kpiOther.Name = "btn_kpiOther";
-            this.btn_kpiOther.Size = new System.Drawing.Size(75, 23);
-            this.btn_kpiOther.TabIndex = 0;
-            // 
-            // btn_kpiPurchPlan
-            // 
-            this.btn_kpiPurchPlan.Location = new System.Drawing.Point(0, 0);
-            this.btn_kpiPurchPlan.Name = "btn_kpiPurchPlan";
-            this.btn_kpiPurchPlan.Size = new System.Drawing.Size(75, 23);
-            this.btn_kpiPurchPlan.TabIndex = 0;
-            // 
-            // btn_kpiPurchTotal
-            // 
-            this.btn_kpiPurchTotal.Location = new System.Drawing.Point(0, 0);
-            this.btn_kpiPurchTotal.Name = "btn_kpiPurchTotal";
-            this.btn_kpiPurchTotal.Size = new System.Drawing.Size(75, 23);
-            this.btn_kpiPurchTotal.TabIndex = 0;
-            // 
-            // btn_kpiPurchSub
-            // 
-            this.btn_kpiPurchSub.Location = new System.Drawing.Point(0, 0);
-            this.btn_kpiPurchSub.Name = "btn_kpiPurchSub";
-            this.btn_kpiPurchSub.Size = new System.Drawing.Size(75, 23);
-            this.btn_kpiPurchSub.TabIndex = 0;
-            // 
-            // btn_kpiPurchTwo
-            // 
-            this.btn_kpiPurchTwo.Location = new System.Drawing.Point(0, 0);
-            this.btn_kpiPurchTwo.Name = "btn_kpiPurchTwo";
-            this.btn_kpiPurchTwo.Size = new System.Drawing.Size(75, 23);
-            this.btn_kpiPurchTwo.TabIndex = 0;
-            // 
-            // btn_kpiPlanTwo
-            // 
-            this.btn_kpiPlanTwo.Location = new System.Drawing.Point(0, 0);
-            this.btn_kpiPlanTwo.Name = "btn_kpiPlanTwo";
-            this.btn_kpiPlanTwo.Size = new System.Drawing.Size(75, 23);
-            this.btn_kpiPlanTwo.TabIndex = 0;
-            // 
-            // btn_kpiFollowUp
-            // 
-            this.btn_kpiFollowUp.Location = new System.Drawing.Point(0, 0);
-            this.btn_kpiFollowUp.Name = "btn_kpiFollowUp";
-            this.btn_kpiFollowUp.Size = new System.Drawing.Size(75, 23);
-            this.btn_kpiFollowUp.TabIndex = 0;
-            // 
-            // btn_kpiPurchOne
-            // 
-            this.btn_kpiPurchOne.Location = new System.Drawing.Point(0, 0);
-            this.btn_kpiPurchOne.Name = "btn_kpiPurchOne";
-            this.btn_kpiPurchOne.Size = new System.Drawing.Size(75, 23);
-            this.btn_kpiPurchOne.TabIndex = 0;
-            // 
-            // btn_kpiPlanOne
-            // 
-            this.btn_kpiPlanOne.Location = new System.Drawing.Point(0, 0);
-            this.btn_kpiPlanOne.Name = "btn_kpiPlanOne";
-            this.btn_kpiPlanOne.Size = new System.Drawing.Size(75, 23);
-            this.btn_kpiPlanOne.TabIndex = 0;
-            // 
-            // btn_kpiOverall
-            // 
-            this.btn_kpiOverall.Location = new System.Drawing.Point(0, 0);
-            this.btn_kpiOverall.Name = "btn_kpiOverall";
-            this.btn_kpiOverall.Size = new System.Drawing.Size(75, 23);
-            this.btn_kpiOverall.TabIndex = 0;
-            // 
             // btn_KPI
             // 
             this.btn_KPI.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
@@ -2377,83 +2480,6 @@
             this.btn_KPI.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_KPI.Textcolor = System.Drawing.Color.White;
             this.btn_KPI.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            // 
-            // pnl_KPASectionsPanel
-            // 
-            this.pnl_KPASectionsPanel.Location = new System.Drawing.Point(0, 0);
-            this.pnl_KPASectionsPanel.Name = "pnl_KPASectionsPanel";
-            this.pnl_KPASectionsPanel.Size = new System.Drawing.Size(200, 100);
-            this.pnl_KPASectionsPanel.TabIndex = 0;
-            // 
-            // btn_kpaCurrentPlanActual
-            // 
-            this.btn_kpaCurrentPlanActual.Location = new System.Drawing.Point(0, 0);
-            this.btn_kpaCurrentPlanActual.Name = "btn_kpaCurrentPlanActual";
-            this.btn_kpaCurrentPlanActual.Size = new System.Drawing.Size(75, 23);
-            this.btn_kpaCurrentPlanActual.TabIndex = 0;
-            // 
-            // btn_kpaExcessStock_OpenOrder
-            // 
-            this.btn_kpaExcessStock_OpenOrder.Location = new System.Drawing.Point(0, 0);
-            this.btn_kpaExcessStock_OpenOrder.Name = "btn_kpaExcessStock_OpenOrder";
-            this.btn_kpaExcessStock_OpenOrder.Size = new System.Drawing.Size(75, 23);
-            this.btn_kpaExcessStock_OpenOrder.TabIndex = 0;
-            // 
-            // btn_kpaExcessStock_Stock
-            // 
-            this.btn_kpaExcessStock_Stock.Location = new System.Drawing.Point(0, 0);
-            this.btn_kpaExcessStock_Stock.Name = "btn_kpaExcessStock_Stock";
-            this.btn_kpaExcessStock_Stock.Size = new System.Drawing.Size(75, 23);
-            this.btn_kpaExcessStock_Stock.TabIndex = 0;
-            // 
-            // btn_kpaHotJobs
-            // 
-            this.btn_kpaHotJobs.Location = new System.Drawing.Point(0, 0);
-            this.btn_kpaHotJobs.Name = "btn_kpaHotJobs";
-            this.btn_kpaHotJobs.Size = new System.Drawing.Size(75, 23);
-            this.btn_kpaHotJobs.TabIndex = 0;
-            // 
-            // btn_kpaFollowUp
-            // 
-            this.btn_kpaFollowUp.Location = new System.Drawing.Point(0, 0);
-            this.btn_kpaFollowUp.Name = "btn_kpaFollowUp";
-            this.btn_kpaFollowUp.Size = new System.Drawing.Size(75, 23);
-            this.btn_kpaFollowUp.TabIndex = 0;
-            // 
-            // btn_kpaPurchTotal
-            // 
-            this.btn_kpaPurchTotal.Location = new System.Drawing.Point(0, 0);
-            this.btn_kpaPurchTotal.Name = "btn_kpaPurchTotal";
-            this.btn_kpaPurchTotal.Size = new System.Drawing.Size(75, 23);
-            this.btn_kpaPurchTotal.TabIndex = 0;
-            // 
-            // btn_kpaPurchSub
-            // 
-            this.btn_kpaPurchSub.Location = new System.Drawing.Point(0, 0);
-            this.btn_kpaPurchSub.Name = "btn_kpaPurchSub";
-            this.btn_kpaPurchSub.Size = new System.Drawing.Size(75, 23);
-            this.btn_kpaPurchSub.TabIndex = 0;
-            // 
-            // btn_kpaPurch
-            // 
-            this.btn_kpaPurch.Location = new System.Drawing.Point(0, 0);
-            this.btn_kpaPurch.Name = "btn_kpaPurch";
-            this.btn_kpaPurch.Size = new System.Drawing.Size(75, 23);
-            this.btn_kpaPurch.TabIndex = 0;
-            // 
-            // btn_kpaPlan
-            // 
-            this.btn_kpaPlan.Location = new System.Drawing.Point(0, 0);
-            this.btn_kpaPlan.Name = "btn_kpaPlan";
-            this.btn_kpaPlan.Size = new System.Drawing.Size(75, 23);
-            this.btn_kpaPlan.TabIndex = 0;
-            // 
-            // btn_kpaOverall
-            // 
-            this.btn_kpaOverall.Location = new System.Drawing.Point(0, 0);
-            this.btn_kpaOverall.Name = "btn_kpaOverall";
-            this.btn_kpaOverall.Size = new System.Drawing.Size(75, 23);
-            this.btn_kpaOverall.TabIndex = 0;
             // 
             // btn_KPA
             // 
@@ -2523,66 +2549,40 @@
             this.btn_Dashboard.Textcolor = System.Drawing.Color.White;
             this.btn_Dashboard.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
-            // FiltersTimer
+            // panel2
             // 
-            this.FiltersTimer.Tick += new System.EventHandler(this.FiltersTimer_Tick);
+            this.panel2.AllowDrop = true;
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.dragDropLargeCenter;
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.tblpnl_DashbaordPage.SetColumnSpan(this.panel2, 4);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(10, 10);
+            this.panel2.Margin = new System.Windows.Forms.Padding(10, 10, 10, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1180, 249);
+            this.panel2.TabIndex = 9;
+            this.panel2.DragDrop += new System.Windows.Forms.DragEventHandler(this.pnl_DragDropArea_DragDrop);
+            this.panel2.DragEnter += new System.Windows.Forms.DragEventHandler(this.pnl_DragDropArea_DragEnter);
             // 
-            // pnl_TopUIPanel
+            // tblpnl_DashbaordPage
             // 
-            this.pnl_TopUIPanel.BackColor = System.Drawing.Color.Black;
-            this.pnl_TopUIPanel.Controls.Add(this.pnl_topPanel);
-            this.pnl_TopUIPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnl_TopUIPanel.Location = new System.Drawing.Point(0, 0);
-            this.pnl_TopUIPanel.Name = "pnl_TopUIPanel";
-            this.pnl_TopUIPanel.Size = new System.Drawing.Size(1200, 26);
-            this.pnl_TopUIPanel.TabIndex = 56;
-            // 
-            // dc_logo
-            // 
-            this.dc_logo.Fixed = true;
-            this.dc_logo.Horizontal = true;
-            this.dc_logo.TargetControl = this.pnl_logo;
-            this.dc_logo.Vertical = true;
-            // 
-            // dc_title
-            // 
-            this.dc_title.Fixed = true;
-            this.dc_title.Horizontal = true;
-            this.dc_title.TargetControl = this.lbl_title;
-            this.dc_title.Vertical = true;
-            // 
-            // dc_titlePanel
-            // 
-            this.dc_titlePanel.Fixed = true;
-            this.dc_titlePanel.Horizontal = true;
-            this.dc_titlePanel.TargetControl = this.pnl_titlePanel;
-            this.dc_titlePanel.Vertical = true;
-            // 
-            // be_mainUI
-            // 
-            this.be_mainUI.ElipseRadius = 5;
-            this.be_mainUI.TargetControl = this;
-            // 
-            // be_note
-            // 
-            this.be_note.ElipseRadius = 5;
-            this.be_note.TargetControl = this.pnl_note;
-            // 
-            // navigationWindow
-            // 
-            this.navigationWindow.Dock = System.Windows.Forms.DockStyle.Left;
-            this.navigationWindow.Location = new System.Drawing.Point(0, 77);
-            this.navigationWindow.Name = "navigationWindow";
-            this.navigationWindow.Size = new System.Drawing.Size(0, 623);
-            this.navigationWindow.TabIndex = 6;
-            // 
-            // topHandleBar
-            // 
-            this.topHandleBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.topHandleBar.Location = new System.Drawing.Point(0, 26);
-            this.topHandleBar.Name = "topHandleBar";
-            this.topHandleBar.Size = new System.Drawing.Size(1200, 51);
-            this.topHandleBar.TabIndex = 1;
+            this.tblpnl_DashbaordPage.AllowDrop = true;
+            this.tblpnl_DashbaordPage.ColumnCount = 4;
+            this.tblpnl_DashbaordPage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tblpnl_DashbaordPage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tblpnl_DashbaordPage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tblpnl_DashbaordPage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tblpnl_DashbaordPage.Controls.Add(this.panel2, 0, 0);
+            this.tblpnl_DashbaordPage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tblpnl_DashbaordPage.Location = new System.Drawing.Point(0, 0);
+            this.tblpnl_DashbaordPage.Name = "tblpnl_DashbaordPage";
+            this.tblpnl_DashbaordPage.RowCount = 3;
+            this.tblpnl_DashbaordPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 41.73355F));
+            this.tblpnl_DashbaordPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28.41092F));
+            this.tblpnl_DashbaordPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30.01605F));
+            this.tblpnl_DashbaordPage.Size = new System.Drawing.Size(1200, 623);
+            this.tblpnl_DashbaordPage.TabIndex = 52;
             // 
             // KPA_KPI_UI
             // 
@@ -2657,7 +2657,6 @@
             this.tableLayoutPanel20.PerformLayout();
             this.pnl_note.ResumeLayout(false);
             this.pnl_note.PerformLayout();
-            this.tblpnl_DashbaordPage.ResumeLayout(false);
             this.pnl_loadingScreen.ResumeLayout(false);
             this.tableLayoutPanel9.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
@@ -2673,6 +2672,7 @@
             this.panel3.ResumeLayout(false);
             this.tblpnl_DragDrop.ResumeLayout(false);
             this.pnl_TopUIPanel.ResumeLayout(false);
+            this.tblpnl_DashbaordPage.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2682,8 +2682,6 @@
         private System.Windows.Forms.Timer ImportTimer;
         private System.Windows.Forms.Timer DataRemovalTimer;
         private System.Windows.Forms.Panel pnl_activePage;
-        private System.Windows.Forms.TableLayoutPanel tblpnl_DashbaordPage;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TableLayoutPanel tblpnl_DragDrop;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Timer FiltersTimer;
@@ -2853,6 +2851,8 @@
         private System.Windows.Forms.CheckedListBox ChkdListBx_storageLocation;
         private TopHandleBar.TopHandleBarView topHandleBar;
         private Navigation.NavigationView navigationWindow;
+        private System.Windows.Forms.TableLayoutPanel tblpnl_DashbaordPage;
+        private System.Windows.Forms.Panel panel2;
     }
 }
 
