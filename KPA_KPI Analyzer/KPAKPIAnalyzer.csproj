@@ -134,6 +134,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationIOLibrary\ApplicationDirectories\DirectoryUtils.cs" />
+    <Compile Include="ApplicationIOLibrary\ApplicationFiles\FileUtils.cs" />
+    <Compile Include="ApplicationIOLibrary\Interfaces\ILoadable.cs" />
+    <Compile Include="ApplicationIOLibrary\Interfaces\IStorable.cs" />
     <Compile Include="DataAccessLibrary\AccessDatabaseUtils.cs" />
     <Compile Include="DataAccessLibrary\AccessInfo.cs" />
     <Compile Include="DataAccessLibrary\DatabaseDataRemovalUtils.cs" />
@@ -710,12 +714,6 @@
     <None Include="Resources\MainNavBtn.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ApplicationDirectoryLibrary\ApplicationIOLibrary.csproj">
-      <Project>{fee6da32-f237-470c-afa9-1e756b7fd3aa}</Project>
-      <Name>ApplicationIOLibrary</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\drag &amp; drop Large.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -758,7 +756,6 @@
     <None Include="Resources\splashscreen.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ApplicationIOLibrary\" />
     <Folder Include="DataAccessLibrary\Importing\Exceptions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
