@@ -1,4 +1,6 @@
 ﻿using OfficeOpenXml;
+using Reporting.KeyPerformanceActions;
+using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.IO;
@@ -88,6 +90,35 @@ namespace KPA_KPI_Analyzer.ExcelLibrary
                 FileInfo tempOverallFileInfo = new FileInfo(OverallExcelFile.TemporaryOverallFilePath);
                 package.SaveAs(tempOverallFileInfo);
                 OpenExcelFile(OverallExcelFile.TemporaryOverallFilePath);
+            }
+        }
+
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="xlFile"></param>
+        /// <param name="content"></param>
+        /// <returns></returns>
+        public async Task ExportKpaComparisonReport(ComparisonReportExcelFile xlFile, Dictionary<string, KeyPerformanceAction> content)
+        {
+            FileInfo fileInfo = new FileInfo(ComparisonReportExcelFile.TemplateFilePath);
+            using (ExcelPackage package = new ExcelPackage(fileInfo))
+            {
+                // Start a new task to export the KPA overall data
+                Task kpaOverallTask = new Task(ExportKpaOverallData);
+                kpaOverallTask.Start();
+
+                // Wait until the KPA overall data has been exported
+                await kpaOverallTask;
+
+                // Open the updated excel file so the user can view it
+                FileInfo tempOverallFileInfo = new FileInfo(ComparisonReportExcelFile.ComparisonReportFilePath);
+                package.SaveAs(tempOverallFileInfo);
+                OpenExcelFile(ComparisonReportExcelFile.ComparisonReportFilePath);
             }
         }
 
