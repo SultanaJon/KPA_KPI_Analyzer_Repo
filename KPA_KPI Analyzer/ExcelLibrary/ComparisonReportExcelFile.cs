@@ -12,44 +12,56 @@
 
     public sealed class ComparisonReportExcelFile : ExcelFile
     {
-        private static string comparisonTemplateOneFilePath = @"Resources\Reports\ComparisonReportOneTemplate.xlsx";
-        private static string comparisonTemplateTwoFilePath = @"Resources\Reports\ComparisonReportTwoTemplate.xlsx";
-        private static string comparisonTemplateThreeFilePath = @"Resources\Reports\ComparisonReportThreeTemplate.xlsx";
-        private static string comparisonTemplateFourFilePath = @"Resources\Reports\ComparisonReportFourTemplate.xlsx";
-        private static string comparisonTemplateFiveFilePath = @"Resources\Reports\ComparisonReportFiveTemplate.xlsx";
-        private static string comparisonReportFilePath = @"Resources\Reports\ComparisonReport.xlsx";
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private static string[] templateFilePaths =
+        {
+            @"Resources\Reports\ComparisonReportOneTemplate.xlsx",
+            @"Resources\Reports\ComparisonReportTwoTemplate.xlsx",
+            @"Resources\Reports\ComparisonReportThreeTemplate.xlsx",
+            @"Resources\Reports\ComparisonReportFourTemplate.xlsx",
+            @"Resources\Reports\ComparisonReportFiveTemplate.xlsx",
+        };
+        
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static Template ChosenTemplate { get; set; }
 
+
+
+
+        /// <summary>
+        /// The file path based on the chosen template
+        /// </summary>
         public static string TemplateFilePath
         {
             get
             {
-                switch(ChosenTemplate)
-                {
-                    case Template.TemplateOne:
-                        return comparisonTemplateOneFilePath;
-                    case Template.TemplateTwo:
-                        return comparisonTemplateOneFilePath;
-                    case Template.TemplateThree:
-                        return comparisonTemplateOneFilePath;
-                    case Template.TemplateFour:
-                        return comparisonTemplateOneFilePath;
-                    default: // Template five
-                        return comparisonTemplateOneFilePath;
-                }
+                return templateFilePaths[(int)ChosenTemplate];
             }
         }
 
 
 
+        /// <summary>
+        /// The file path of the comparison report
+        /// </summary>
+        public static string ComparisonReportFilePath { get { return @"Resources\Reports\ComparisonReport.xlsx"; } }
 
-        public static string ComparisonReportFilePath { get { return comparisonReportFilePath; } }
 
 
 
 
+        /// <summary>
+        /// Customer Constructor
+        /// </summary>
+        /// <param name="template">The template the user is using</param>
         public ComparisonReportExcelFile(Template template)
         {
             switch (ChosenTemplate)
