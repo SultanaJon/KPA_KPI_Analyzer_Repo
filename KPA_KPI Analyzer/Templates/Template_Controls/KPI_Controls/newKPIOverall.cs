@@ -875,59 +875,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             {
                 switch (rowIndex)
                 {
-                    case 0: // PR Release vs PR Creation Date
-                        switch (columnIndex)
-                        {
-                            case 0: // section
-                            case 1: // category
-                            case 2: // Average
-                                return;
-                            case 3: // <= -22 Days
-                                dv.DataLoader += KpiDataTableLoader.Plan.LoadPrReleaseDateVsPrCreationDate;
-                                dv.ColumnTag = (int)TempThree.DataViews.Minus_TwentyTwo;
-                                break;
-                            case 4: // -(15 - 21) Days
-                                dv.DataLoader += KpiDataTableLoader.Plan.LoadPrReleaseDateVsPrCreationDate;
-                                dv.ColumnTag = (int)TempThree.DataViews.Minus_Fifteen_TwentyOne;
-                                break;
-                            case 5: // -(8 - 14) Days
-                                dv.DataLoader += KpiDataTableLoader.Plan.LoadPrReleaseDateVsPrCreationDate;
-                                dv.ColumnTag = (int)TempThree.DataViews.Minus_Eight_Fourteen;
-                                break;
-                            case 6: // -(1 - 7) Days
-                                dv.DataLoader += KpiDataTableLoader.Plan.LoadPrReleaseDateVsPrCreationDate;
-                                dv.ColumnTag = (int)TempThree.DataViews.Minus_One_Seven;
-                                break;
-                            case 7: // 0 days
-                                dv.DataLoader += KpiDataTableLoader.Plan.LoadPrReleaseDateVsPrCreationDate;
-                                dv.ColumnTag = (int)TempThree.DataViews.Zero;
-                                break;
-                            case 8: // 1 - 7 Days
-                                dv.DataLoader += KpiDataTableLoader.Plan.LoadPrReleaseDateVsPrCreationDate;
-                                dv.ColumnTag = (int)TempThree.DataViews.One_Seven;
-                                break;
-                            case 9: // 8 - 14 Days
-                                dv.DataLoader += KpiDataTableLoader.Plan.LoadPrReleaseDateVsPrCreationDate;
-                                dv.ColumnTag = (int)TempThree.DataViews.Eight_Fourteen;
-                                break;
-                            case 10: // 15 - 21 Days
-                                dv.DataLoader += KpiDataTableLoader.Plan.LoadPrReleaseDateVsPrCreationDate;
-                                dv.ColumnTag = (int)TempThree.DataViews.Fifteen_TwentyOne;
-                                break;
-                            case 11: // >= 22 Days
-                                dv.DataLoader += KpiDataTableLoader.Plan.LoadPrReleaseDateVsPrCreationDate;
-                                dv.ColumnTag = (int)TempThree.DataViews.TwentyTwo;
-                                break;
-                            case 12: // Total
-                                dv.DataLoader += KpiDataTableLoader.Plan.LoadPrReleaseDateVsPrCreationDate;
-                                dv.ColumnTag = (int)TempThree.DataViews.Total;
-                                break;
-                            case 13: // empy cell for % unconfirmed. This is not being recorded for this KPI
-                            case 14: // This is % Favorable and we want to ignore any cell double clicks.
-                                return;
-                        }
-                        break;
-                    case 1: // PR Plan Date vs Current Plan Date
+                    case 0: // PR Plan Date vs Current Plan Date
                         switch (columnIndex)
                         {
                             case 0: // section
@@ -979,7 +927,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                                 return;
                         }
                         break;
-                    case 2: // (Original Plan Date - 2nd Lvl Rel Date) vs Coded Lead-time
+                    case 1: // (Original Plan Date - 2nd Lvl Rel Date) vs Coded Lead-time
                         switch (columnIndex)
                         {
                             case 0: // section
@@ -1031,7 +979,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                                 return;
                         }
                         break;
-                    case 3: // (Current Plan Date - 2nd Lvl Rel Date) vs Coded Lead-time
+                    case 2: // (Current Plan Date - 2nd Lvl Rel Date) vs Coded Lead-time
                         switch (columnIndex)
                         {
                             case 0: // section
@@ -1540,7 +1488,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         {
                             case 0: // section
                             case 1: // category
-                                return;
                             case 2: // Average
                                 return;
                             case 3: // <= 0 Days
@@ -1589,6 +1536,63 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                                 break;
                             case 14: // Total
                                 dv.DataLoader += KpiDataTableLoader.PlanTwo.LoadMaterialDueFinalPlanDate;
+                                dv.ColumnTag = (int)TempFour.DataViews.Total;
+                                break;
+                        }
+                        break;
+                    case 2: // PR Release vs PR Creation Date
+                        switch (columnIndex)
+                        {
+                            case 0: // section
+                            case 1: // category
+                            case 2: // Average
+                                return;
+                            case 3: // <= 0 Days
+                                dv.DataLoader += KpiDataTableLoader.PlanTwo.LoadPrReleaseDateVsPrCreationDate;
+                                dv.ColumnTag = (int)TempFour.DataViews.LessThanZero;
+                                break;
+                            case 4: // 1 - 3 Days
+                                dv.DataLoader += KpiDataTableLoader.PlanTwo.LoadPrReleaseDateVsPrCreationDate;
+                                dv.ColumnTag = (int)TempFour.DataViews.One_Three;
+                                break;
+                            case 5: // 4 - 7 Days
+                                dv.DataLoader += KpiDataTableLoader.PlanTwo.LoadPrReleaseDateVsPrCreationDate;
+                                dv.ColumnTag = (int)TempFour.DataViews.Four_Seven;
+                                break;
+                            case 6: // 8 - 14 Days
+                                dv.DataLoader += KpiDataTableLoader.PlanTwo.LoadPrReleaseDateVsPrCreationDate;
+                                dv.ColumnTag = (int)TempFour.DataViews.Eight_Fourteen;
+                                break;
+                            case 7: // 15 - 21 Days
+                                dv.DataLoader += KpiDataTableLoader.PlanTwo.LoadPrReleaseDateVsPrCreationDate;
+                                dv.ColumnTag = (int)TempFour.DataViews.Fifteen_TwentyOne;
+                                break;
+                            case 8: // 22 - 28 Days
+                                dv.DataLoader += KpiDataTableLoader.PlanTwo.LoadPrReleaseDateVsPrCreationDate;
+                                dv.ColumnTag = (int)TempFour.DataViews.TwentyTwo_TwentyEight;
+                                break;
+                            case 9: // 29 - 35 Days
+                                dv.DataLoader += KpiDataTableLoader.PlanTwo.LoadPrReleaseDateVsPrCreationDate;
+                                dv.ColumnTag = (int)TempFour.DataViews.TwentyNine_ThirtyFive;
+                                break;
+                            case 10: // 36 - 42 Days
+                                dv.DataLoader += KpiDataTableLoader.PlanTwo.LoadPrReleaseDateVsPrCreationDate;
+                                dv.ColumnTag = (int)TempFour.DataViews.ThirtySix_FourtyTwo;
+                                break;
+                            case 11: // 43 - 49 Days
+                                dv.DataLoader += KpiDataTableLoader.PlanTwo.LoadPrReleaseDateVsPrCreationDate;
+                                dv.ColumnTag = (int)TempFour.DataViews.FourtyThree_FourtyNine;
+                                break;
+                            case 12: // 50 - 56 Days
+                                dv.DataLoader += KpiDataTableLoader.PlanTwo.LoadPrReleaseDateVsPrCreationDate;
+                                dv.ColumnTag = (int)TempFour.DataViews.Fifty_FiftySix;
+                                break;
+                            case 13: // 57+ Days
+                                dv.DataLoader += KpiDataTableLoader.PlanTwo.LoadPrReleaseDateVsPrCreationDate;
+                                dv.ColumnTag = (int)TempFour.DataViews.GreaterThanEqualFiftySeven;
+                                break;
+                            case 14: // Total
+                                dv.DataLoader += KpiDataTableLoader.PlanTwo.LoadPrReleaseDateVsPrCreationDate;
                                 dv.ColumnTag = (int)TempFour.DataViews.Total;
                                 break;
                         }

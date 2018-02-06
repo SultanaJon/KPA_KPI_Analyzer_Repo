@@ -13,140 +13,9 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
         public static class Plan
         {
-            private static DataTable prRelDateVsPrCreateDateDt, 
-                                     prPlanDateVsCurrPlanDt, 
+            private static DataTable prPlanDateVsCurrPlanDt, 
                                      OrigPlan2ndLvlRel_CodedLeadTimeDt, 
                                      CurrPlan2ndLvlRel_CodedLeadTimeDt;
-
-
-            /// <summary>
-            /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
-            /// </summary>
-            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
-            public static void LoadPrReleaseDateVsPrCreationDate(int tag)
-            {
-                dt = KpiManager.KpiQueries.GetFullyReleasedPRs();
-                prRelDateVsPrCreateDateDt = new DataTable();
-                prRelDateVsPrCreateDateDt = dt.Clone();
-
-                foreach (DataRow dr in dt.Rows)
-                {
-                    //Check if the datarow meets the conditions of any applied filters.
-                    if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
-                    {
-                        // This datarow dos not meet the conditions of the filters applied.
-                        continue;
-                    }
-
-
-                    #region EVASO_BUT_NOT_FULLY_RELEASED_CHECK
-
-                    string[] strPrFullyRelDate = (dr["PR Fully Rel Date"].ToString()).Split('/');
-                    int prFullyRelYear = int.Parse(strPrFullyRelDate[2]);
-                    int prFullyRelMonth = int.Parse(strPrFullyRelDate[0]);
-                    int prFullyRelDay = int.Parse(strPrFullyRelDate[1]);
-
-
-                    if (prFullyRelYear == 0 && prFullyRelMonth == 0 && prFullyRelDay == 0)
-                    {
-                        // This PR line or PR in general might have been deleted
-                        continue;
-                    }
-
-                    #endregion
-
-                    // Get the Requisition date and seperate the date into year, month, and day integers
-                    string[] strReqCreateDate = (dr["Requisn Date"].ToString()).Split('/');
-                    int reqCreateYear = int.Parse(strReqCreateDate[2]);
-                    int reqCreateMonth = int.Parse(strReqCreateDate[0].TrimStart('0'));
-                    int reqCreateDay = int.Parse(strReqCreateDate[1].TrimStart('0'));
-
-                    // Create the date objects
-                    DateTime reqCreateDate = new DateTime(reqCreateYear, reqCreateMonth, reqCreateDay);
-                    DateTime prFullReleaseDate = new DateTime(prFullyRelYear, prFullyRelMonth, prFullyRelDay);
-
-                    double elapsedDays = (prFullReleaseDate - reqCreateDate).TotalDays;
-
-                    if (elapsedDays < 0)
-                        elapsedDays = Math.Floor(elapsedDays);
-
-                    if (elapsedDays > 0)
-                        elapsedDays = Math.Ceiling(elapsedDays);
-
-                    elapsedDays = (int)elapsedDays;
-
-                    switch (tag)
-                    {
-                        case 0:
-                            prRelDateVsPrCreateDateDt.ImportRow(dr);
-                            break;
-                        case 1:
-                            if (elapsedDays <= (-22))
-                            {
-                                prRelDateVsPrCreateDateDt.ImportRow(dr);
-                            }
-                            continue;
-                        case 2:
-                            if (elapsedDays > (-22) && elapsedDays <= (-15))
-                            {
-                                prRelDateVsPrCreateDateDt.ImportRow(dr);
-                            }
-                            continue;
-                        case 3:
-                            if (elapsedDays > (-15) && elapsedDays <= (-8))
-                            {
-                                prRelDateVsPrCreateDateDt.ImportRow(dr);
-                            }
-                            continue;
-                        case 4:
-                            if (elapsedDays > (-8) && elapsedDays <= (-1))
-                            {
-                                prRelDateVsPrCreateDateDt.ImportRow(dr);
-                            }
-                            continue;
-                        case 5:
-                            if (elapsedDays == 0)
-                            {
-                                prRelDateVsPrCreateDateDt.ImportRow(dr);
-                            }
-                            continue;
-                        case 6:
-                            if (elapsedDays >= 1 && elapsedDays <= 7)
-                            {
-                                prRelDateVsPrCreateDateDt.ImportRow(dr);
-                            }
-                            continue;
-                        case 7:
-                            if (elapsedDays >= 8 && elapsedDays <= 14)
-                            {
-                                prRelDateVsPrCreateDateDt.ImportRow(dr);
-                            }
-                            continue;
-                        case 8:
-                            if (elapsedDays >= 15 && elapsedDays <= 21)
-                            {
-                                prRelDateVsPrCreateDateDt.ImportRow(dr);
-                            }
-                            continue;
-                        case 9:
-                            if (elapsedDays >= 22)
-                            {
-                                prRelDateVsPrCreateDateDt.ImportRow(dr);
-                            }
-                            continue;
-                        default:
-                            continue;
-                    }
-                }
-                DataViewerUtils.Data = prRelDateVsPrCreateDateDt.Copy();
-                DataViewerUtils.DataLoaded = true;
-
-                prRelDateVsPrCreateDateDt.Rows.Clear();
-                prRelDateVsPrCreateDateDt = null;
-                dt.Rows.Clear();
-                dt = null;
-                GC.Collect();
-            }
 
 
 
@@ -1616,7 +1485,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
         {
             private static DataTable MaterialDueOrigPlanDate;
             private static DataTable MaterialDueFinalPlannedDate;
-
+            private static DataTable prRelDateVsPrCreateDateDt;
 
 
             /// <summary>
@@ -1952,6 +1821,148 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                 {
                     MessageBox.Show(ex.Message);
                 }
+            }
+
+
+            /// <summary>
+            /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
+            /// </summary>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
+            public static void LoadPrReleaseDateVsPrCreationDate(int tag)
+            {
+                dt = KpiManager.KpiQueries.GetFullyReleasedPRs();
+                prRelDateVsPrCreateDateDt = new DataTable();
+                prRelDateVsPrCreateDateDt = dt.Clone();
+
+                foreach (DataRow dr in dt.Rows)
+                {
+                    //Check if the datarow meets the conditions of any applied filters.
+                    if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
+                    {
+                        // This datarow dos not meet the conditions of the filters applied.
+                        continue;
+                    }
+
+
+                    #region EVASO_BUT_NOT_FULLY_RELEASED_CHECK
+
+                    string[] strPrFullyRelDate = (dr["PR Fully Rel Date"].ToString()).Split('/');
+                    int prFullyRelYear = int.Parse(strPrFullyRelDate[2]);
+                    int prFullyRelMonth = int.Parse(strPrFullyRelDate[0]);
+                    int prFullyRelDay = int.Parse(strPrFullyRelDate[1]);
+
+
+                    if (prFullyRelYear == 0 && prFullyRelMonth == 0 && prFullyRelDay == 0)
+                    {
+                        // This PR line or PR in general might have been deleted
+                        continue;
+                    }
+
+                    #endregion
+
+                    // Get the Requisition date and seperate the date into year, month, and day integers
+                    string[] strReqCreateDate = (dr["Requisn Date"].ToString()).Split('/');
+                    int reqCreateYear = int.Parse(strReqCreateDate[2]);
+                    int reqCreateMonth = int.Parse(strReqCreateDate[0].TrimStart('0'));
+                    int reqCreateDay = int.Parse(strReqCreateDate[1].TrimStart('0'));
+
+                    // Create the date objects
+                    DateTime reqCreateDate = new DateTime(reqCreateYear, reqCreateMonth, reqCreateDay);
+                    DateTime prFullReleaseDate = new DateTime(prFullyRelYear, prFullyRelMonth, prFullyRelDay);
+
+                    double elapsedDays = (prFullReleaseDate - reqCreateDate).TotalDays;
+
+                    if (elapsedDays < 0)
+                        elapsedDays = Math.Floor(elapsedDays);
+
+                    if (elapsedDays > 0)
+                        elapsedDays = Math.Ceiling(elapsedDays);
+
+                    elapsedDays = (int)elapsedDays;
+
+                    switch (tag)
+                    {
+                        case 0:
+                            prRelDateVsPrCreateDateDt.ImportRow(dr);
+                            break;
+                        case 1:
+                            if (elapsedDays <= 0)
+                            {
+                                prRelDateVsPrCreateDateDt.ImportRow(dr);
+                            }
+                            continue;
+                        case 2:
+                            if (elapsedDays >= 1 && elapsedDays <= 3)
+                            {
+                                prRelDateVsPrCreateDateDt.ImportRow(dr);
+                            }
+                            continue;
+                        case 3:
+                            if (elapsedDays >= 4 && elapsedDays <= 7)
+                            {
+                                prRelDateVsPrCreateDateDt.ImportRow(dr);
+                            }
+                            continue;
+                        case 4:
+                            if (elapsedDays >= 8 && elapsedDays <= 14)
+                            {
+                                prRelDateVsPrCreateDateDt.ImportRow(dr);
+                            }
+                            continue;
+                        case 5:
+                            if (elapsedDays >= 15 && elapsedDays <= 21)
+                            {
+                                prRelDateVsPrCreateDateDt.ImportRow(dr);
+                            }
+                            continue;
+                        case 6:
+                            if (elapsedDays >= 22 && elapsedDays <= 28)
+                            {
+                                prRelDateVsPrCreateDateDt.ImportRow(dr);
+                            }
+                            continue;
+                        case 7:
+                            if (elapsedDays >= 29 && elapsedDays <= 35)
+                            {
+                                prRelDateVsPrCreateDateDt.ImportRow(dr);
+                            }
+                            continue;
+                        case 8:
+                            if (elapsedDays >= 36 && elapsedDays <= 42)
+                            {
+                                prRelDateVsPrCreateDateDt.ImportRow(dr);
+                            }
+                            continue;
+                        case 9:
+                            if (elapsedDays >= 43 && elapsedDays <= 49)
+                            {
+                                prRelDateVsPrCreateDateDt.ImportRow(dr);
+                            }
+                            continue;
+                        case 10:
+                            if (elapsedDays >= 50 && elapsedDays <= 56)
+                            {
+                                prRelDateVsPrCreateDateDt.ImportRow(dr);
+                            }
+                            continue;
+                        case 11:
+                            if (elapsedDays >= 57)
+                            {
+                                prRelDateVsPrCreateDateDt.ImportRow(dr);
+                            }
+                            continue;
+                        default:
+                            continue;
+                    }
+                }
+                DataViewerUtils.Data = prRelDateVsPrCreateDateDt.Copy();
+                DataViewerUtils.DataLoaded = true;
+
+                prRelDateVsPrCreateDateDt.Rows.Clear();
+                prRelDateVsPrCreateDateDt = null;
+                dt.Rows.Clear();
+                dt = null;
+                GC.Collect();
             }
         }
 
