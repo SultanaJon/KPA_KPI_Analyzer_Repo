@@ -757,7 +757,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DataAccessLibrary\Importing\Exceptions\" />
-    <Folder Include="ExcelFiles\" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="ADODB">

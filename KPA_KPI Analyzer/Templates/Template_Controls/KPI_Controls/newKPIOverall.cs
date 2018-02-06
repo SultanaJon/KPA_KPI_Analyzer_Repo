@@ -1,6 +1,5 @@
 ﻿using KPA_KPI_Analyzer.DataLoading;
 using KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader;
-using KPA_KPI_Analyzer.Values;
 using Reporting;
 using Reporting.Interfaces;
 using Reporting.KeyPerformanceIndicators;
@@ -106,10 +105,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
 
-
-
-
-
         /// <summary>
         /// Sets the color of the DataGridView Header cells only.
         /// </summary>
@@ -195,11 +190,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
         /// <summary>
-        /// 
+        /// Determines if the two cells next to eachother have the same value in template one
         /// </summary>
-        /// <param name="column"></param>
-        /// <param name="row"></param>
-        /// <returns></returns>
+        /// <param name="column">The column to check</param>
+        /// <param name="row">The row to check</param>
+        /// <returns>boolean value indicating whether or not the two cell next to eachother have the same value.</returns>
         bool IsTheSameCellValueGridOne(int column, int row)
         {
             DataGridViewCell cell1 = TemplateThreeDataGrid[column, row];
@@ -217,11 +212,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
         /// <summary>
-        /// 
+        /// Determines if the two cells next to eachother have the same value in template two
         /// </summary>
-        /// <param name="column"></param>
-        /// <param name="row"></param>
-        /// <returns></returns>
+        /// <param name="column">The column to check</param>
+        /// <param name="row">The row to check</param>
+        /// <returns>boolean value indicating whether or not the two cell next to eachother have the same value.</returns>
         bool IsTheSameCellValueGridTwo(int column, int row)
         {
             DataGridViewCell cell1 = TemplateFourDataGrid[column, row];
@@ -238,11 +233,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
         /// <summary>
-        /// 
+        /// Determines if the two cells next to eachother have the same value in template three
         /// </summary>
-        /// <param name="column"></param>
-        /// <param name="row"></param>
-        /// <returns></returns>
+        /// <param name="column">The column to check</param>
+        /// <param name="row">The row to check</param>
+        /// <returns>boolean value indicating whether or not the two cell next to eachother have the same value.</returns>
         bool IsTheSameCellValueGridThree(int column, int row)
         {
             DataGridViewCell cell1 = TemplateFiveDataGrid[column, row];
@@ -260,10 +255,10 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
         /// <summary>
-        /// 
+        /// If two cell next to eachother do have the same value then this function will populate it with a blank value in the template one data grid
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The bunifu datagrid</param>
+        /// <param name="e">cell formating event</param>
         private void bunifuCustomDataGrid1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.RowIndex == 0)
@@ -284,10 +279,10 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
         /// <summary>
-        /// 
+        /// If two cell next to eachother do have the same value then this function will populate it with a blank value in the template three data grid
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The bunifu datagrid</param>
+        /// <param name="e">cell formating event</param>
         private void bunifuCustomDataGrid2_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.RowIndex == 0)
@@ -308,10 +303,10 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
         /// <summary>
-        /// 
+        /// If two cell next to eachother do have the same value then this function will populate it with a blank value in the template four data grid
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The bunifu datagrid</param>
+        /// <param name="e">cell formating event</param>
         private void bunifuCustomDataGrid3_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.RowIndex == 0)
@@ -1140,7 +1135,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         {
                             case 0: // section
                             case 1: // category
-                                return;
                             case 2: // Average
                                 return;
                             case 3: // <= -22 Days
@@ -1196,7 +1190,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         {
                             case 0: // section
                             case 1: // category
-                                return;
                             case 2: // Average
                                 return;
                             case 3: // <= -22 Days
@@ -1249,7 +1242,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         {
                             case 0: // section
                             case 1: // category
-                                return;
                             case 2: // Average
                                 return;
                             case 3: // <= -22 Days
@@ -1305,7 +1297,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         {
                             case 0: // section
                             case 1: // category
-                                return;
                             case 2: // Average
                                 return;
                             case 3: // <= -22 Days
@@ -1575,7 +1566,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         {
                             case 0: // section
                             case 1: // category
-                                return;
                             case 2: // Average
                                 return;
                             case 3: // <= 0 Days
@@ -1633,7 +1623,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         {
                             case 0: // section
                             case 1: // category
-                                return;
                             case 2: // Average
                                 return;
                             case 3: // <= 0 Days
@@ -1691,7 +1680,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         {
                             case 0: // section
                             case 1: // category
-                                return;
                             case 2: // Average
                                 return;
                             case 3: // <= 0 Days
@@ -1774,7 +1762,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         {
                             case 0: // section
                             case 1: // category
-                                return;
                             case 2: // Average
                                 return;
                             case 3: // <= 0 Days
@@ -1832,7 +1819,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         {
                             case 0: // section
                             case 1: // category
-                                return;
                             case 2: // Average
                                 return;
                             case 3: // <= 0 Days
@@ -1915,7 +1901,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         {
                             case 0: // section
                             case 1: // category
-                                return;
                             case 2: // Average
                                 return;
                             case 3: // <= 0 Days
@@ -1998,7 +1983,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         {
                             case 0: // section
                             case 1: // category
-                                return;
                             case 2: // Average
                                 return;
                             case 3: // <= 0 Days
@@ -2076,7 +2060,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         {
                             case 0: // section
                             case 1: // category
-                                return;
                             case 2: // total value. The user can just click total to view all the data.
                                 return;
                             case 3: // >= 0 Weeks
@@ -2130,7 +2113,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         {
                             case 0: // section
                             case 1: // category
-                                return;
                             case 2: // total value. The user can just click total to view all the data.
                                 return;
                             case 3: // >= 0 Weeks
@@ -2184,7 +2166,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         {
                             case 0: // section
                             case 1: // category
-                                return;
                             case 2: // total value. The user can just click total to view all the data.
                                 return;
                             case 3: // >= 0 Weeks
@@ -2238,7 +2219,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         {
                             case 0: // section
                             case 1: // category
-                                return;
                             case 2: // total value. The user can just click total to view all the data.
                                 return;
                             case 3: // >= 0 Weeks
@@ -2292,7 +2272,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                         {
                             case 0: // section
                             case 1: // category
-                                return;
                             case 2: // total value. The user can just click total to view all the data.
                                 return;
                             case 3: // >= 0 Weeks

@@ -1,6 +1,5 @@
 ﻿using KPA_KPI_Analyzer.DataLoading;
 using KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader;
-using KPA_KPI_Analyzer.Values;
 using Reporting;
 using Reporting.Interfaces;
 using Reporting.KeyPerformanceActions;
@@ -134,10 +133,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         /// <summary>
         /// After the form is created, this load event will fire.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The newKpaOverall control</param>
+        /// <param name="e">The load event</param>
         private void NewKPAOverall_Load(object sender, EventArgs e)
         {
+            // Load the data into the template
             LoadPlan();
             LoadPurch();
             LoadPurchSub();
@@ -148,6 +148,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
             LoadExcessStockOpenOrders();
             LoadCurrentPlanVsActual();
 
+            // do not allow the columns to auto generate.
             TemplateOneValuesGrid.AutoGenerateColumns = false;
             TemplateTwoValuesGrid.AutoGenerateColumns = false;
         }
@@ -172,7 +173,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
                     MessageBox.Show("There is no data in this cell.", "Data Timespan", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-
 
                 switch (e.RowIndex)
                 {
