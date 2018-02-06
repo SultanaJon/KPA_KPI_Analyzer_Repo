@@ -295,7 +295,6 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
 
 
-
             /// <summary>
             /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
             /// </summary>
@@ -1480,7 +1479,6 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
         }
 
 
-
         public static class PlanTwo
         {
             private static DataTable MaterialDueOrigPlanDate;
@@ -1967,7 +1965,6 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
         }
 
 
-
         public static class PurchTwo
         {
             private static DataTable pr2ndLvlRelVsPoCreate;
@@ -2449,7 +2446,6 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
         }
 
 
-
         public static class PurchSub
         {
             private static DataTable prRelVsPORel;
@@ -2786,7 +2782,6 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
         }
 
 
-
         public static class PurchTotal
         {
             private static DataTable prReleaseConfEntry;
@@ -2976,7 +2971,6 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                 }
             }
         }
-
 
 
         public static class PurchPlan

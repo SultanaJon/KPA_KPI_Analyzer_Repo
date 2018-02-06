@@ -85,7 +85,6 @@ namespace KPA_KPI_Analyzer.PerformanceReporting
 
 
 
-
         /// <summary>
         /// Custom Constructor
         /// </summary>
@@ -101,7 +100,6 @@ namespace KPA_KPI_Analyzer.PerformanceReporting
 
 
 
-
         /// <summary>
         /// Assigns the Generate Report event handler of the selective report view
         /// </summary>
@@ -110,8 +108,6 @@ namespace KPA_KPI_Analyzer.PerformanceReporting
         {
             selectiveReportingView.RegisterReportGenerationHandler(_handler);
         }
-
-
 
 
 
