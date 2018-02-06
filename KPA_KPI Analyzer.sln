@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLibrary", "DataAc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationIOLibrary", "ApplicationDirectoryLibrary\ApplicationIOLibrary.csproj", "{FEE6DA32-F237-470C-AFA9-1E756B7FD3AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelLibrary", "ExcelLibrary\ExcelLibrary.csproj", "{42F5386D-F796-4CE2-B3E7-98969DFB43CF}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{FEE6DA32-F237-470C-AFA9-1E756B7FD3AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FEE6DA32-F237-470C-AFA9-1E756B7FD3AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FEE6DA32-F237-470C-AFA9-1E756B7FD3AA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{42F5386D-F796-4CE2-B3E7-98969DFB43CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{42F5386D-F796-4CE2-B3E7-98969DFB43CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{42F5386D-F796-4CE2-B3E7-98969DFB43CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{42F5386D-F796-4CE2-B3E7-98969DFB43CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -83,12 +83,6 @@
   <ItemGroup>
     <Folder Include="Importing\Exceptions\" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ExcelLibrary\ExcelLibrary.csproj">
-      <Project>{42f5386d-f796-4ce2-b3e7-98969dfb43cf}</Project>
-      <Name>ExcelLibrary</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

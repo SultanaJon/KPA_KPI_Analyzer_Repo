@@ -134,6 +134,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExcelLibrary\ComparisonReportExcelFile.cs" />
+    <Compile Include="ExcelLibrary\ExcelFile.cs" />
+    <Compile Include="ExcelLibrary\ExcelInfo.cs" />
+    <Compile Include="ExcelLibrary\Exporter.cs" />
+    <Compile Include="ExcelLibrary\OverallExcelFile.cs" />
+    <Compile Include="ExcelLibrary\OverallExporterHelperFunctions.cs" />
+    <Compile Include="ExcelLibrary\RawDataExcelFile.cs" />
     <Compile Include="Filters\FilterData.cs" />
     <Compile Include="Filters\FilterOptions.cs" />
     <Compile Include="Filters\FilterUtils.cs" />
@@ -738,7 +745,6 @@
     <Folder Include="ApplicationIOLibrary\" />
     <Folder Include="DataAccessLibrary\" />
     <Folder Include="DataImporter\" />
-    <Folder Include="ExcelLibrary\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
