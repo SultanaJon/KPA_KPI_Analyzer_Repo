@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace ExcelLibrary
+namespace KPA_KPI_Analyzer.ExcelLibrary
 {
     /// <summary>
     /// Indexers for the Excel file cell start positions

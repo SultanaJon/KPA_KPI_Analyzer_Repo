@@ -1,7 +1,7 @@
 ﻿using System.Data.OleDb;
 using System.IO;
 
-namespace ExcelLibrary
+namespace KPA_KPI_Analyzer.ExcelLibrary
 {
     public class ExcelInfo
     {

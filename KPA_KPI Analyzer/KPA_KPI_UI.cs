@@ -11,9 +11,9 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 using ApplicationIOLibarary.ApplicationFiles;
 using DataAccessLibrary;
-using DataExporter;
 using Filters;
 using Filters.Variants;
+using KPA_KPI_Analyzer.ExcelLibrary;
 using Reporting;
 using Reporting.Reports;
 using System;
@@ -24,7 +24,7 @@ using System.Windows.Forms;
 
 namespace KPA_KPI_Analyzer
 {
-	public partial class KPA_KPI_UI : Form
+    public partial class KPA_KPI_UI : Form
 	{
 		#region FIELD DATA
 
@@ -394,10 +394,10 @@ namespace KPA_KPI_Analyzer
 			   });
 			});
 
-            // Start the export process
-            overallExportTask.Start();
+			// Start the export process
+			overallExportTask.Start();
 
-            // Wait until the overall export has finished
+			// Wait until the overall export has finished
 			await overallExportTask;
 		}
 

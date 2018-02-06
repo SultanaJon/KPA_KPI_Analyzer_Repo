@@ -1,4 +1,4 @@
-﻿namespace KPA_KPI_Analyzer.ExcelFiles
+﻿namespace KPA_KPI_Analyzer.ExcelLibrary
 {
     public class UsPrpoExcelFile : PrpoExcelFile
     {

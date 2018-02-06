@@ -14,16 +14,6 @@ namespace Reporting.KeyPerformanceIndicators.PlanTwo
         TemplateFour template;
 
 
-        #region IFavorable Properties
-
-        /// <summary>
-        /// The percent favorable for the KPA or KPI it is attached to.
-        /// </summary>
-        public double PercentFavorable { get; set; }
-
-        #endregion
-
-
 
 
         /// <summary>

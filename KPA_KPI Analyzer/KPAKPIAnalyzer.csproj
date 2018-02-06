@@ -320,10 +320,10 @@
     <Compile Include="DataLoading\ExportUtils.cs" />
     <Compile Include="DataLoading\KPA_Data\DataTableLoader\KpaDataTableLoader.cs" />
     <Compile Include="DataLoading\KPI_Data\DataTableLoader\KpiDataTableLoader.cs" />
-    <Compile Include="ExcelFiles\ExcelFileType.cs" />
-    <Compile Include="ExcelFiles\PrpoExcelFile.cs" />
-    <Compile Include="ExcelFiles\MxPrpoExcelFile.cs" />
-    <Compile Include="ExcelFiles\UsPrpoExcelFile.cs" />
+    <Compile Include="ExcelLibrary\ExcelFileType.cs" />
+    <Compile Include="ExcelLibrary\PrpoExcelFile.cs" />
+    <Compile Include="ExcelLibrary\MxPrpoExcelFile.cs" />
+    <Compile Include="ExcelLibrary\UsPrpoExcelFile.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -757,6 +757,27 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DataAccessLibrary\Importing\Exceptions\" />
+    <Folder Include="ExcelFiles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="ADODB">
+      <Guid>{B691E011-1797-432E-907A-4D8C69339129}</Guid>
+      <VersionMajor>6</VersionMajor>
+      <VersionMinor>1</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="ADOX">
+      <Guid>{00000600-0000-0010-8000-00AA006D2EA4}</Guid>
+      <VersionMajor>6</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

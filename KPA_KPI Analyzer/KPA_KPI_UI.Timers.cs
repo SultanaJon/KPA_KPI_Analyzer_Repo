@@ -1,7 +1,7 @@
 ﻿using DataAccessLibrary;
 using DataAccessLibrary.Importing;
-using ExcelLibrary;
 using Filters;
+using KPA_KPI_Analyzer.ExcelLibrary;
 using Reporting;
 using Reporting.Reports;
 using System;
@@ -35,7 +35,7 @@ namespace KPA_KPI_Analyzer
 
                     foreach(var file in processedFiles)
                     {
-                        if(file is ExcelFiles.UsPrpoExcelFile)
+                        if(file is UsPrpoExcelFile)
                         {
                             if(AccessDatabaseUtils.US_PRPO_TableExists)
                             {
@@ -45,7 +45,7 @@ namespace KPA_KPI_Analyzer
                             }
                         }
 
-                        if(file is ExcelFiles.MxPrpoExcelFile)
+                        if(file is MxPrpoExcelFile)
                         {
                             if(AccessDatabaseUtils.MX_PRPO_TableExists)
                             {
@@ -244,13 +244,13 @@ namespace KPA_KPI_Analyzer
 
             foreach (var file in processedFiles)
             {
-                if (file is ExcelFiles.UsPrpoExcelFile)
+                if (file is UsPrpoExcelFile)
                 {
                     // This file is a US PRPO file.
                     // Start importing the Report
                     ImportPrpoExcelFile(file);
                 }
-                else if(file is ExcelFiles.MxPrpoExcelFile)
+                else if(file is MxPrpoExcelFile)
                 {
                     // This file is a MX PRPO file.
                     // Start importing the report
@@ -264,7 +264,7 @@ namespace KPA_KPI_Analyzer
         /// Starts the threads to import the PRPO reports.
         /// </summary>
         /// <param name="_excelFile"></param>
-        private void ImportPrpoExcelFile(ExcelFiles.PrpoExcelFile _excelFile)
+        private void ImportPrpoExcelFile(PrpoExcelFile _excelFile)
         {
             ApplicationIOLibarary.ApplicationFiles.FileUtils fileUtils = new ApplicationIOLibarary.ApplicationFiles.FileUtils();
 
@@ -274,7 +274,7 @@ namespace KPA_KPI_Analyzer
             navigationSettings.Status = Navigation.Functionality.Locked;
 
 
-            if (_excelFile is ExcelFiles.UsPrpoExcelFile)
+            if (_excelFile is UsPrpoExcelFile)
             {
                 reportSettings.PrpoUsReportFileName = _excelFile.Path;
 
@@ -309,7 +309,7 @@ namespace KPA_KPI_Analyzer
             }
 
 
-            if (_excelFile is ExcelFiles.MxPrpoExcelFile)
+            if (_excelFile is MxPrpoExcelFile)
             {
                 reportSettings.PrpoMxReportFileName = _excelFile.Path;
 

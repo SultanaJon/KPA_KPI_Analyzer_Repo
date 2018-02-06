@@ -1,7 +1,7 @@
 ﻿using Reporting;
 using System;
 
-namespace KPA_KPI_Analyzer.ExcelFiles
+namespace KPA_KPI_Analyzer.ExcelLibrary
 {
     public class PrpoExcelFile
     {

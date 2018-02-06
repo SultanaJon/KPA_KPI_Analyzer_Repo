@@ -99,7 +99,7 @@
             // 
             // pnl_Minimize
             // 
-            this.pnl_Minimize.BackgroundImage = Properties.Resources.Minimize;
+            this.pnl_Minimize.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.Minimize;
             this.pnl_Minimize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pnl_Minimize.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnl_Minimize.Location = new System.Drawing.Point(516, 0);
@@ -112,7 +112,7 @@
             // 
             // pnl_Close
             // 
-            this.pnl_Close.BackgroundImage = Properties.Resources.Close;
+            this.pnl_Close.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.Close;
             this.pnl_Close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pnl_Close.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnl_Close.Location = new System.Drawing.Point(566, 0);
@@ -144,7 +144,7 @@
             // 
             // pnl_logo
             // 
-            this.pnl_logo.BackgroundImage = Properties.Resources.comau_logo;
+            this.pnl_logo.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.comau_logo;
             this.pnl_logo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pnl_logo.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnl_logo.Location = new System.Drawing.Point(0, 0);

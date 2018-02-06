@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ExcelLibrary
+namespace KPA_KPI_Analyzer.ExcelLibrary
 {
     public partial class Exporter
     {

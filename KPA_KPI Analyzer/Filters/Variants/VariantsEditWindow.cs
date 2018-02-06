@@ -71,7 +71,7 @@ namespace Filters.Variants
         /// <param name="e">The Mouse Enter Event</param>
         private void btn_Minimize_MouseEnter(object sender, EventArgs e)
         {
-            pnl_Minimize.BackgroundImage = Properties.Resources.Minimize_Hover_Icon;
+            pnl_Minimize.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.Minimize_Hover_Icon;
         }
 
 
@@ -86,7 +86,7 @@ namespace Filters.Variants
         /// <param name="e">the Mouse Leave event</param>
         private void btn_Minimize_MouseLeave(object sender, EventArgs e)
         {
-            pnl_Minimize.BackgroundImage = Properties.Resources.Minimize;
+            pnl_Minimize.BackgroundImage = KPA_KPI_Analyzer.Properties.Resources.Minimize;
         }
 
 
@@ -113,7 +113,7 @@ namespace Filters.Variants
         /// <param name="e">The Mouse Over event</param>
         private void btn_Close_MouseHover(object sender, EventArgs e)
         {
-            pnl_Close.BackgroundImage = Properties.Resources.Close_Hover_icon;
+            pnl_Close.BackgroundImage = KPA_KPI_Analyzer.Properties.Resources.Close_Hover_icon;
         }
 
 
@@ -128,7 +128,7 @@ namespace Filters.Variants
         /// <param name="e">The MouseLeave event</param>
         private void btn_Close_MouseLeave(object sender, EventArgs e)
         {
-            pnl_Close.BackgroundImage = Properties.Resources.Close;
+            pnl_Close.BackgroundImage = KPA_KPI_Analyzer.Properties.Resources.Close;
         }
 
 

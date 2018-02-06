@@ -1,4 +1,4 @@
-﻿namespace ExcelLibrary
+﻿namespace KPA_KPI_Analyzer.ExcelLibrary
 {
 
     /// <summary>

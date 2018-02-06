@@ -1,6 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using Reporting.Interfaces;
+using Reporting.KeyPerformanceActions;
+using Reporting.KeyPerformanceIndicators;
+using Reporting.Reports;
+using Reporting.TimeSpans.Templates;
+using System.Collections.Generic;
 
-namespace ExcelLibrary
+namespace KPA_KPI_Analyzer.ExcelLibrary
 {
     public partial class Exporter
     {
