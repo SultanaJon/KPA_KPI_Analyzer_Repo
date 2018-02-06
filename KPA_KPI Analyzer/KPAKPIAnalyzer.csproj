@@ -134,6 +134,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataImporter\Access\AccessInfo.cs" />
+    <Compile Include="DataImporter\Access\AccessUtils.cs" />
+    <Compile Include="DataImporter\Access\ExceptionClasses\DatabaseCreationFailureException.cs" />
+    <Compile Include="DataImporter\Access\ExceptionClasses\PRPODatabaseNotFoundException.cs" />
+    <Compile Include="DataImporter\Access\ExceptionClasses\TableNameMismatchException.cs" />
+    <Compile Include="DataImporter\Access\ExceptionClasses\TablesDoNotExistException.cs" />
+    <Compile Include="DataImporter\Importing\Exceptions\ImportExceptions.cs" />
+    <Compile Include="DataImporter\Importing\Importer.cs" />
     <Compile Include="ExcelLibrary\ComparisonReportExcelFile.cs" />
     <Compile Include="ExcelLibrary\ExcelFile.cs" />
     <Compile Include="ExcelLibrary\ExcelInfo.cs" />
@@ -694,10 +702,6 @@
       <Project>{3bf2c771-f9e8-4596-b969-03a8cd251e57}</Project>
       <Name>DataAccessLibrary</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DataImporter\DataImporter.csproj">
-      <Project>{be102b8a-42d8-48d2-a37e-b1d83ad9ff12}</Project>
-      <Name>DataImporter</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\drag &amp; drop Large.jpg" />
@@ -744,7 +748,6 @@
   <ItemGroup>
     <Folder Include="ApplicationIOLibrary\" />
     <Folder Include="DataAccessLibrary\" />
-    <Folder Include="DataImporter\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -5,8 +5,6 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KPAKPIAnalyzer", "KPA_KPI Analyzer\KPAKPIAnalyzer.csproj", "{7E6D695C-BC2A-4A07-B78F-35E750342A48}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataImporter", "DataImporter\DataImporter.csproj", "{BE102B8A-42D8-48D2-A37E-B1D83AD9FF12}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLibrary", "DataAccessLibrary\DataAccessLibrary.csproj", "{3BF2C771-F9E8-4596-B969-03A8CD251E57}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationIOLibrary", "ApplicationDirectoryLibrary\ApplicationIOLibrary.csproj", "{FEE6DA32-F237-470C-AFA9-1E756B7FD3AA}"
@@ -21,10 +19,6 @@ Global
 		{7E6D695C-BC2A-4A07-B78F-35E750342A48}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E6D695C-BC2A-4A07-B78F-35E750342A48}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E6D695C-BC2A-4A07-B78F-35E750342A48}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BE102B8A-42D8-48D2-A37E-B1D83AD9FF12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BE102B8A-42D8-48D2-A37E-B1D83AD9FF12}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BE102B8A-42D8-48D2-A37E-B1D83AD9FF12}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BE102B8A-42D8-48D2-A37E-B1D83AD9FF12}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3BF2C771-F9E8-4596-B969-03A8CD251E57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3BF2C771-F9E8-4596-B969-03A8CD251E57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3BF2C771-F9E8-4596-B969-03A8CD251E57}.Release|Any CPU.ActiveCfg = Release|Any CPU
