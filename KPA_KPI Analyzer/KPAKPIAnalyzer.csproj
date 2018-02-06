@@ -134,6 +134,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccessLibrary\AccessDatabaseUtils.cs" />
+    <Compile Include="DataAccessLibrary\AccessInfo.cs" />
+    <Compile Include="DataAccessLibrary\DatabaseDataRemovalUtils.cs" />
+    <Compile Include="DataAccessLibrary\DatabaseManager.cs" />
+    <Compile Include="DataAccessLibrary\DatabaseTables.cs" />
+    <Compile Include="DataAccessLibrary\Exceptions\DatabaseCreationFailureException.cs" />
+    <Compile Include="DataAccessLibrary\Exceptions\PRPODatabaseNotFoundException.cs" />
+    <Compile Include="DataAccessLibrary\Exceptions\TableNameMismatchException.cs" />
+    <Compile Include="DataAccessLibrary\Exceptions\TablesDoNotExistException.cs" />
+    <Compile Include="DataAccessLibrary\Exceptions\ThreadInteruptedException.cs" />
+    <Compile Include="DataAccessLibrary\FIlterColumns.cs" />
+    <Compile Include="DataAccessLibrary\FilterManager.cs" />
+    <Compile Include="DataAccessLibrary\Importing\Importer.cs" />
+    <Compile Include="DataAccessLibrary\KpaManager.cs" />
+    <Compile Include="DataAccessLibrary\KpiManager.cs" />
+    <Compile Include="DataAccessLibrary\RemovableData.cs" />
     <Compile Include="DataImporter\Access\AccessInfo.cs" />
     <Compile Include="DataImporter\Access\AccessUtils.cs" />
     <Compile Include="DataImporter\Access\ExceptionClasses\DatabaseCreationFailureException.cs" />
@@ -698,10 +714,6 @@
       <Project>{fee6da32-f237-470c-afa9-1e756b7fd3aa}</Project>
       <Name>ApplicationIOLibrary</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DataAccessLibrary\DataAccessLibrary.csproj">
-      <Project>{3bf2c771-f9e8-4596-b969-03a8cd251e57}</Project>
-      <Name>DataAccessLibrary</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\drag &amp; drop Large.jpg" />
@@ -747,7 +759,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ApplicationIOLibrary\" />
-    <Folder Include="DataAccessLibrary\" />
+    <Folder Include="DataAccessLibrary\Importing\Exceptions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
