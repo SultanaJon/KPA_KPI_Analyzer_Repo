@@ -12,9 +12,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 {
     public partial class KPIPlanTemplate : UserControl
     {
-        
-        
-
         /// <summary>
         /// Boolean value indicating whether the data was loaded into the dataviz control
         /// </summary>

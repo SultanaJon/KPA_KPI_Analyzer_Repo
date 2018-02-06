@@ -12,13 +12,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 {
     public partial class KPIPlanTwoTemplate : UserControl
     {
-        
-
-
-        
-        
-
-
         /// <summary>
         /// Boolean value indicating whether the data was loaded into the dataviz control
         /// </summary>
@@ -52,6 +45,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// Properties for the various labels on the control
         /// </summary>
         #region Template Properties
+
         public string TotalOrders { get { return lbl_totalOrders.Text; } set { lbl_totalOrders.Text = value; } }
         private string Title { get { return lbl_title.Text; } set { lbl_title.Text = value; } }
         private string AnalysisOne { get { return lbl_analysisOne.Text; } set { lbl_analysisOne.Text = value; } }
@@ -77,6 +71,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                 btn_Three.Textcolor = value;
             }
         }
+
         #endregion
 
 
@@ -399,6 +394,10 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                             break;
                         case 1: // PO Release vs PO Confirmation
                             dv.DataLoader += KpiDataTableLoader.PlanTwo.LoadMaterialDueFinalPlanDate;
+                            dv.ColumnTag = tag;
+                            break;
+                        case 2: // PO Release vs PO Confirmation
+                            dv.DataLoader += KpiDataTableLoader.PlanTwo.LoadPrReleaseDateVsPrCreationDate;
                             dv.ColumnTag = tag;
                             break;
                         default:

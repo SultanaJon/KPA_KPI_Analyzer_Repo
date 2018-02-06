@@ -16,6 +16,7 @@ namespace KPA_KPI_Analyzer.DataLoading
         // Call back used to load the data into the data viewer
         public delegate void LoadDataGridHandler(int _tag);
         public event LoadDataGridHandler DataLoader;
+
         #endregion
 
 
