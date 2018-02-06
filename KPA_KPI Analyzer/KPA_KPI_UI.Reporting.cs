@@ -203,7 +203,6 @@ namespace KPA_KPI_Analyzer
                         // Wait for the report to finish exporting
                         // await comparisonReportExport;
 
-
                         // Hide any pages that might be visible
                         HidePages();
                         
@@ -285,8 +284,6 @@ namespace KPA_KPI_Analyzer
 
             return tempFilterList;
         }
-
-
 
 
 
