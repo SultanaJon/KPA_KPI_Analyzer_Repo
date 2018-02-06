@@ -1,4 +1,4 @@
-﻿using ExcelLibrary;
+﻿using DataExporter;
 using System;
 using System.Data;
 using System.Threading;
@@ -431,6 +431,8 @@ namespace KPA_KPI_Analyzer.DataLoading
         /// </summary>
         private void OpenSaveAsDialog()
         {
+            Exporter exporter = new Exporter();
+
             // Exporting to excel
             using (SaveFileDialog sfd = new SaveFileDialog())
             {
@@ -438,7 +440,7 @@ namespace KPA_KPI_Analyzer.DataLoading
                 if (sfd.ShowDialog() == DialogResult.OK)
                 {
                     thrd = new Thread(() => {
-                        Exporter.ExportData(ExportUtils.Data, new ExcelFile(sfd.FileName, true));
+                        exporter.ExportData(ExportUtils.Data, new RawDataExcelFile(sfd.FileName, true));
                     });
                     thrd.Start();
                 }

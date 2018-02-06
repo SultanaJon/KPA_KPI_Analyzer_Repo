@@ -134,6 +134,35 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Filters\FilterData.cs" />
+    <Compile Include="Filters\FilterOptions.cs" />
+    <Compile Include="Filters\FilterUtils.cs" />
+    <Compile Include="Filters\Variants\FilterVariants.cs" />
+    <Compile Include="Filters\Variants\Variant.cs" />
+    <Compile Include="Filters\Variants\VariantsCreationWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Filters\Variants\VariantsCreationWindow.Designer.cs">
+      <DependentUpon>VariantsCreationWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Filters\Variants\VariantsDetailDisplayWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Filters\Variants\VariantsDetailDisplayWindow.Designer.cs">
+      <DependentUpon>VariantsDetailDisplayWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Filters\Variants\VariantsEditWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Filters\Variants\VariantsEditWindow.Designer.cs">
+      <DependentUpon>VariantsEditWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Filters\Variants\VariantsViewWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Filters\Variants\VariantsViewWindow.Designer.cs">
+      <DependentUpon>VariantsViewWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="KPA_KPI_UI.TopHandleBar.cs">
       <DependentUpon>KPA_KPI_UI.cs</DependentUpon>
       <SubType>Form</SubType>
@@ -150,6 +179,75 @@
     <Compile Include="Navigation\NavigationView.Designer.cs">
       <DependentUpon>NavigationView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reporting\Interfaces\IFavorable.cs" />
+    <Compile Include="Reporting\Interfaces\ITotalValue.cs" />
+    <Compile Include="Reporting\Interfaces\IUnconfirmed.cs" />
+    <Compile Include="Reporting\KeyPerformanceActions\CurrentPlanVsActual\CurrentPlanDateVsCurrentConfirmationDate.cs" />
+    <Compile Include="Reporting\KeyPerformanceActions\CurrentPlanVsActual\CurrentPlanDateVsCurrentConfirmationDateForHotJobs.cs" />
+    <Compile Include="Reporting\KeyPerformanceActions\ExcessStockOpenOrders\POCreationThruDelivery.cs" />
+    <Compile Include="Reporting\KeyPerformanceActions\ExcessStockOpenOrders\PRsAgingNotReleased.cs" />
+    <Compile Include="Reporting\KeyPerformanceActions\ExcessStockOpenOrders\PRsAgingReleased.cs" />
+    <Compile Include="Reporting\KeyPerformanceActions\ExcessStockStock\POCreationThruDelivery.cs" />
+    <Compile Include="Reporting\KeyPerformanceActions\ExcessStockStock\PRsAgingNotReleased.cs" />
+    <Compile Include="Reporting\KeyPerformanceActions\ExcessStockStock\PRsAgingReleased.cs" />
+    <Compile Include="Reporting\KeyPerformanceActions\FollowUp\ConfirmedDateForUpcomingDeliveries.cs" />
+    <Compile Include="Reporting\KeyPerformanceActions\FollowUp\ConfirmedDateVsPlanDate.cs" />
+    <Compile Include="Reporting\KeyPerformanceActions\FollowUp\DueTodayOrLateToConfirmed.cs" />
+    <Compile Include="Reporting\KeyPerformanceActions\HotJobs\LateToConfirmed.cs" />
+    <Compile Include="Reporting\KeyPerformanceActions\HotJobs\NoConfirmations.cs" />
+    <Compile Include="Reporting\KeyPerformanceActions\HotJobs\PRsNotOnPO.cs" />
+    <Compile Include="Reporting\KeyPerformanceActions\KeyPerformanceAction.cs" />
+    <Compile Include="Reporting\KeyPerformanceActions\Plan\MaterialDue.cs" />
+    <Compile Include="Reporting\KeyPerformanceActions\Plan\PrsAgingNotReleased.cs" />
+    <Compile Include="Reporting\KeyPerformanceActions\PurchSub\POCreationToConfirmationEntry.cs" />
+    <Compile Include="Reporting\KeyPerformanceActions\PurchSub\PRReleaseToPORelease.cs" />
+    <Compile Include="Reporting\KeyPerformanceActions\PurchTotal\PRReleaseToConfirmationEntry.cs" />
+    <Compile Include="Reporting\KeyPerformanceActions\Purch\NoConfirmations.cs" />
+    <Compile Include="Reporting\KeyPerformanceActions\Purch\POFirstRelease.cs" />
+    <Compile Include="Reporting\KeyPerformanceActions\Purch\POPrevRelease.cs" />
+    <Compile Include="Reporting\KeyPerformanceActions\Purch\PRsAgingReleased.cs" />
+    <Compile Include="Reporting\KeyPerformanceIndicators\FollowUp\CurrentConfirmationDateVsInitialConfirmationDate.cs" />
+    <Compile Include="Reporting\KeyPerformanceIndicators\FollowUp\FinalConfirmationDateVsFinalPlanDate.cs" />
+    <Compile Include="Reporting\KeyPerformanceIndicators\FollowUp\ReceiptDateVsCurrentConfirmationDate.cs" />
+    <Compile Include="Reporting\KeyPerformanceIndicators\FollowUp\ReceiptDateVsCurrentPlanDate.cs" />
+    <Compile Include="Reporting\KeyPerformanceIndicators\FollowUp\ReceiptDateVsOriginalConfirmationDate.cs" />
+    <Compile Include="Reporting\KeyPerformanceIndicators\KeyPerformanceIndicator.cs" />
+    <Compile Include="Reporting\KeyPerformanceIndicators\Other\HotJobPRs.cs" />
+    <Compile Include="Reporting\KeyPerformanceIndicators\Other\PRsCreated.cs" />
+    <Compile Include="Reporting\KeyPerformanceIndicators\Other\PRsReleased.cs" />
+    <Compile Include="Reporting\KeyPerformanceIndicators\Other\PRValueVsPOValue.cs" />
+    <Compile Include="Reporting\KeyPerformanceIndicators\Other\TotalSpend.cs" />
+    <Compile Include="Reporting\KeyPerformanceIndicators\PlanTwo\MaterialDueFinalPlannedDate.cs" />
+    <Compile Include="Reporting\KeyPerformanceIndicators\PlanTwo\MaterialDueOriginalPlannedDate.cs" />
+    <Compile Include="Reporting\KeyPerformanceIndicators\PlanTwo\PrReleaseVsPrCreation.cs" />
+    <Compile Include="Reporting\KeyPerformanceIndicators\Plan\CurrentPlanDateTo2ndLvlReleaseDateVsCodedLead.cs" />
+    <Compile Include="Reporting\KeyPerformanceIndicators\Plan\CurrentPlanDateVsPRPlanDate.cs" />
+    <Compile Include="Reporting\KeyPerformanceIndicators\Plan\OriginalPlanDateTo2ndLvlReleaseDateVsCodedLead.cs" />
+    <Compile Include="Reporting\KeyPerformanceIndicators\PurchPlan\POReleaseVsPRDeliveryDate.cs" />
+    <Compile Include="Reporting\KeyPerformanceIndicators\PurchSub\POCreationDateVsConfirmationEntry.cs" />
+    <Compile Include="Reporting\KeyPerformanceIndicators\PurchSub\PRReleaseDateVsPOReleaseDate.cs" />
+    <Compile Include="Reporting\KeyPerformanceIndicators\PurchTotal\PRReleaseDateToConfirmationEntry.cs" />
+    <Compile Include="Reporting\KeyPerformanceIndicators\PurchTwo\POCreationDateVsPOReleaseDate.cs" />
+    <Compile Include="Reporting\KeyPerformanceIndicators\PurchTwo\POReleaseDateVsPOConfirmationDate.cs" />
+    <Compile Include="Reporting\KeyPerformanceIndicators\PurchTwo\PR2ndLvlReleaseDateVsPOCreationDate.cs" />
+    <Compile Include="Reporting\KeyPerformanceIndicators\Purch\InitialConfirmationDateVsPRPlanDate.cs" />
+    <Compile Include="Reporting\Report.cs" />
+    <Compile Include="Reporting\ReportingCountry.cs" />
+    <Compile Include="Reporting\Reports\KpaComparisonReport.cs" />
+    <Compile Include="Reporting\Reports\KpaOverallReport.cs" />
+    <Compile Include="Reporting\Reports\KpiComparisonReport.cs" />
+    <Compile Include="Reporting\Reports\KpiOverallReport.cs" />
+    <Compile Include="Reporting\TimeSpans\Templates\ITemplateFive.cs" />
+    <Compile Include="Reporting\TimeSpans\Templates\ITemplateFour.cs" />
+    <Compile Include="Reporting\TimeSpans\Templates\ITemplateOne.cs" />
+    <Compile Include="Reporting\TimeSpans\Templates\ITemplateThree.cs" />
+    <Compile Include="Reporting\TimeSpans\Templates\ITemplateTwo.cs" />
+    <Compile Include="Reporting\TimeSpans\Templates\Template.cs" />
+    <Compile Include="Reporting\TimeSpans\Templates\TemplateFive.cs" />
+    <Compile Include="Reporting\TimeSpans\Templates\TemplateFour.cs" />
+    <Compile Include="Reporting\TimeSpans\Templates\TemplateOne.cs" />
+    <Compile Include="Reporting\TimeSpans\Templates\TemplateThree.cs" />
+    <Compile Include="Reporting\TimeSpans\Templates\TemplateTwo.cs" />
     <Compile Include="TopHandleBar\ITopHandleBarController.cs" />
     <Compile Include="TopHandleBar\ITopHandleBarModel.cs" />
     <Compile Include="TopHandleBar\ITopHandleBarView.cs" />
@@ -403,6 +501,22 @@
     <Compile Include="Templates\TemplateThreeStructure.cs" />
     <Compile Include="Templates\TemplateTwoStructure.cs" />
     <Compile Include="Values\Globals.cs" />
+    <EmbeddedResource Include="Filters\Variants\VariantsCreationWindow.resx">
+      <DependentUpon>VariantsCreationWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Filters\Variants\VariantsDetailDisplayWindow.resx">
+      <DependentUpon>VariantsDetailDisplayWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Filters\Variants\VariantsEditWindow.resx">
+      <DependentUpon>VariantsEditWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Filters\Variants\VariantsViewWindow.resx">
+      <DependentUpon>VariantsViewWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Navigation\NavigationView.resx">
       <DependentUpon>NavigationView.cs</DependentUpon>
     </EmbeddedResource>
@@ -573,25 +687,9 @@
       <Project>{3bf2c771-f9e8-4596-b969-03a8cd251e57}</Project>
       <Name>DataAccessLibrary</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DataExporter\DataExporter.csproj">
-      <Project>{e3601d73-731a-46ee-8af0-b314580534a7}</Project>
-      <Name>DataExporter</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DataImporter\DataImporter.csproj">
       <Project>{be102b8a-42d8-48d2-a37e-b1d83ad9ff12}</Project>
       <Name>DataImporter</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ExcelLibrary\ExcelLibrary.csproj">
-      <Project>{834c157d-f4eb-452d-a938-62aa7332489c}</Project>
-      <Name>ExcelLibrary</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Filters\Filters.csproj">
-      <Project>{24c0b204-267f-44d4-a7f0-0cb288cf6b6f}</Project>
-      <Name>Filters</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Reporting\Reporting.csproj">
-      <Project>{755556d3-fa2f-4605-a90e-6563928988ce}</Project>
-      <Name>Reporting</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -636,7 +734,12 @@
     <None Include="Resources\logo.jpg" />
     <None Include="Resources\splashscreen.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ApplicationIOLibrary\" />
+    <Folder Include="DataAccessLibrary\" />
+    <Folder Include="DataImporter\" />
+    <Folder Include="ExcelLibrary\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -118,23 +118,14 @@
     <Compile Include="TimeSpans\Templates\TemplateTwo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\ApplicationDirectoryLibrary\ApplicationIOLibrary.csproj">
       <Project>{fee6da32-f237-470c-afa9-1e756b7fd3aa}</Project>
       <Name>ApplicationIOLibrary</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DataAccessLibrary\DataAccessLibrary.csproj">
-      <Project>{3bf2c771-f9e8-4596-b969-03a8cd251e57}</Project>
-      <Name>DataAccessLibrary</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Filters\Filters.csproj">
-      <Project>{24c0b204-267f-44d4-a7f0-0cb288cf6b6f}</Project>
-      <Name>Filters</Name>
-    </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

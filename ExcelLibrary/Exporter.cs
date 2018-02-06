@@ -1,42 +1,46 @@
 ﻿using OfficeOpenXml;
-using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace ExcelLibrary
 {
-    public class Exporter
+    public partial class Exporter
     {
-        #region PROPERTIES
+
+        /// <summary>
+        /// The worksheet of the excel file
+        /// </summary>
+        private ExcelWorksheet worksheet;
+
+
+
 
         /// <summary>
         /// Indicator of whether or no the export process has been completed
         /// </summary>
         public static bool ExportProcessCompleted { get; set; }
 
-        #endregion
 
-
-        #region STATIC HELPER FUNCTIONS
 
         /// <summary>
         /// Exports the data the supplied data table to excel.
         /// </summary>
         /// <param name="dt">The table of data</param>
         /// <param name="xlFile">The excel file object</param>
-        public static void ExportData(DataTable dt, ExcelFile xlFile)
+        public void ExportData(DataTable dt, RawDataExcelFile xlFile)
         {
-            System.IO.FileInfo xlFileInfo = new System.IO.FileInfo(xlFile.FileName);
+            FileInfo xlFileInfo = new FileInfo(xlFile.FileName);
 
             if (xlFileInfo.Exists)
                 xlFileInfo.Delete();
 
             using (ExcelPackage xlPackage = new ExcelPackage(xlFileInfo))
             {
-                ExcelWorksheet xlWorksheet = xlPackage.Workbook.Worksheets.Add(xlFile.SheetName);
-                xlWorksheet.Cells[(int)ExcelFile.ValuesColumnPosition.RowStartPosition, (int)ExcelFile.ValuesColumnPosition.ColumnStartPosition].LoadFromDataTable(dt, xlFile.HasHeaders);
+                ExcelWorksheet xlWorksheet = xlPackage.Workbook.Worksheets.Add("Sheet1");
+                xlWorksheet.Cells[(int)CellStartPosition.RowStartPosition, (int)CellStartPosition.ColumnStartPosition].LoadFromDataTable(dt, xlFile.ContainsHeaders);
                 xlPackage.Save();
 
                 ExportProcessCompleted = true;
@@ -53,135 +57,37 @@ namespace ExcelLibrary
         /// <summary>
         /// Exports the overall data to the overall excel file located in resources -> reports Overall.xlsx
         /// </summary>
-        /// <param name="tempOne">Overall data from KPA temp one</param>
-        /// <param name="tempTwo">Overall data from KPA temp two</param>
-        /// <param name="tempThree">Overall data from KPI temp three</param>
-        /// <param name="tempFour">Overall data from KPI temp four</param>
-        /// <param name="tempFive">Overall data from KPI temp five</param>
-        public static void ExportOverall(
-            List<List<string>> tempOne,
-            List<List<string>> tempTwo,
-            List<List<string>> tempThree,
-            List<List<string>> tempFour,
-            List<List<string>> tempFive,
-            string country,
-            string date)
+        public async void ExportOverall(OverallExcelFile xlFile)
         {
-            FileInfo fileInfo = new FileInfo(ExcelFile.OverallTemplateFilePath);
+            FileInfo fileInfo = new FileInfo(OverallExcelFile.OverallTemplateFilePath);
             using (ExcelPackage package = new ExcelPackage(fileInfo))
             {
-                ExcelWorksheet workSheet = package.Workbook.Worksheets.SingleOrDefault(x => x.Name == ExcelFile.overallSheetNames[(int)ExcelFile.OverallSheetNames.KPAOverall]);
-                workSheet.Cells[1, 1].Value = "KPA Overall Summery - " + country + " - " + date;
+                // Change the worksheet of the overall excel file to the KPA sheet
+                worksheet = package.Workbook.Worksheets.SingleOrDefault(x => x.Name == OverallExcelFile.overallSheetNames[(int)OverallSheetNames.KPAOverall]);
+                worksheet.Cells[1, 1].Value = "KPA Overall Summery - " + xlFile.Country + " - " + xlFile.PrpoGenerationDate;
 
-                // OUTPUT TO KPA SHEET \\
-                // Handle tempOne data
-                int row = (int)ExcelFile.OverallCellPositions.KpaOverallTempOneRowStartPosition;
-                int colStart = (int)ExcelFile.OverallCellPositions.KpaOverallTempOneColStartPosition;
-                int col = colStart;
+                // Start a new task to export the KPA overall data
+                Task kpaOverallTask = new Task(ExportKpaOverallData);
+                kpaOverallTask.Start();
 
-                foreach (List<string> listRow in tempOne)
-                {
-                    if (listRow != null)
-                    {
-                        foreach (string str in listRow)
-                        {
-                            workSheet.Cells[row, col].Value = double.Parse(str);
-                            ++col;
-                        }
-                    }
+                // Wait until the KPA overall data has been exported
+                await kpaOverallTask;
 
-                    col = colStart;
-                    ++row;
-                }
+                // Change the worksheet of the overall excel file to the KPI sheet
+                worksheet = package.Workbook.Worksheets.SingleOrDefault(x => x.Name == OverallExcelFile.overallSheetNames[(int)OverallSheetNames.KPIOverall]);
+                worksheet.Cells[1, 1].Value = "KPI Overall Summery - " + xlFile.Country + " - " + xlFile.PrpoGenerationDate;
 
+                // Start a new task to export the KPA overall data
+                Task kpiOverallTask = new Task(ExportKpiOverallData);
+                kpiOverallTask.Start();
 
-                // Handle tempTwo data
-                row = (int)ExcelFile.OverallCellPositions.KpaOverallTempTwoRowStartPosition;
-                colStart = (int)ExcelFile.OverallCellPositions.KpaOverallTempTwoColStartPosition;
-                col = colStart;
-                foreach (List<string> listRow in tempTwo)
-                {
-                    if (listRow != null)
-                    {
-                        foreach (string str in listRow)
-                        {
-                            workSheet.Cells[row, col].Value = double.Parse(str);
-                            ++col;
-                        }
-                    }
+                // Wait until the KPA overall data has been exported
+                await kpiOverallTask;
 
-                    col = colStart;
-                    ++row;
-                }
-
-
-
-                // OUTPUT TO KPI SHEET \\
-                workSheet = package.Workbook.Worksheets.SingleOrDefault(x => x.Name == ExcelFile.overallSheetNames[(int)ExcelFile.OverallSheetNames.KPIOverall]);
-                workSheet.Cells[1, 1].Value = "KPI Overall Summery - " + country + " - " + date;
-
-                // Handle tempThree data
-                row = (int)ExcelFile.OverallCellPositions.KpiOverallTempThreeRowStartPosition;
-                colStart = (int)ExcelFile.OverallCellPositions.KpiOverallTempThreeColStartPosition;
-                col = colStart;
-                foreach (List<string> listRow in tempThree)
-                {
-                    if (listRow != null)
-                    {
-                        foreach (string str in listRow)
-                        {
-                            workSheet.Cells[row, col].Value = double.Parse(str);
-                            ++col;
-                        }
-                    }
-
-                    col = colStart;
-                    ++row;
-                }
-
-
-                // Handle tempFour data
-                row = (int)ExcelFile.OverallCellPositions.KpiOverallTempFourRowStartPosition;
-                colStart = (int)ExcelFile.OverallCellPositions.KpiOverallTempFourColStartPosition;
-                col = colStart;
-                foreach (List<string> listRow in tempFour)
-                {
-                    if (listRow != null)
-                    {
-                        foreach (string str in listRow)
-                        {
-                            workSheet.Cells[row, col].Value = double.Parse(str);
-                            ++col;
-                        }
-                    }
-
-                    col = colStart;
-                    ++row;
-                }
-
-
-                // Handle tempFive data
-                row = (int)ExcelFile.OverallCellPositions.KpiOverallTempFiveRowStartPosition;
-                colStart = (int)ExcelFile.OverallCellPositions.KpiOverallTempFiveColStartPosition;
-                col = colStart;
-                foreach (List<string> listRow in tempFive)
-                {
-                    if (listRow != null)
-                    {
-                        foreach (string str in listRow)
-                        {
-                            workSheet.Cells[row, col].Value = double.Parse(str);
-                            ++col;
-                        }
-                    }
-
-                    col = colStart;
-                    ++row;
-                }
-
-                FileInfo tempOverallFileInfo = new FileInfo(ExcelFile.TempOverallFilePath);
+                // Open the updated excel file so the user can view it
+                FileInfo tempOverallFileInfo = new FileInfo(OverallExcelFile.TemporaryOverallFilePath);
                 package.SaveAs(tempOverallFileInfo);
-                OpenExcelFile(ExcelFile.TempOverallFilePath);
+                OpenExcelFile(OverallExcelFile.TemporaryOverallFilePath);
             }
         }
 
@@ -194,13 +100,11 @@ namespace ExcelLibrary
         /// Opens the supplied excel file in a new process for viewing
         /// </summary>
         /// <param name="xlFile">The excel file</param>
-        private static void OpenExcelFile(string filePath)
+        private void OpenExcelFile(string filePath)
         {
             Process excelProcess = new Process();
             excelProcess.StartInfo = new ProcessStartInfo(filePath);
             excelProcess.Start();
         }
-
-        #endregion
     }
 }

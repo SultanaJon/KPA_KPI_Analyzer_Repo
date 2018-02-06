@@ -85,7 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExcelLibrary\ExcelLibrary.csproj">
-      <Project>{834c157d-f4eb-452d-a938-62aa7332489c}</Project>
+      <Project>{42f5386d-f796-4ce2-b3e7-98969dfb43cf}</Project>
       <Name>ExcelLibrary</Name>
     </ProjectReference>
   </ItemGroup>
