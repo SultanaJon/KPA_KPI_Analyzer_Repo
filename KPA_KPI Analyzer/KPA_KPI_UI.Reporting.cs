@@ -1,4 +1,5 @@
 ﻿using DataAccessLibrary;
+using KPA_KPI_Analyzer.ExcelLibrary;
 using KPA_KPI_Analyzer.PerformanceReporting;
 using Reporting;
 using Reporting.Reports;
@@ -116,7 +117,6 @@ namespace KPA_KPI_Analyzer
 
             Control[] reportingControls = new Control[]
             {
-                new SelctiveReportingWidget() { Margin = new Padding(10, 10, 0, 0) },
                 new ComparisonReportingWidget() { Margin = new Padding(10, 10, 0, 0) }
             };
 
@@ -131,40 +131,8 @@ namespace KPA_KPI_Analyzer
             navigationSettings.Visible = Navigation.Visibility.Open;
 
             // Create and register the reporting controller
-            reportingWidgetsController = new ReportingController(reportingControls[0] as ISelectiveReportingWidgetView, reportingControls[1] as IComparisonReportingWidgetView);
-            reportingWidgetsController.RegisterSelectiveReportGenerationEvents(SelectiveReportGeneration);
+            reportingWidgetsController = new ReportingController(reportingControls[0] as IComparisonReportingWidgetView);
             reportingWidgetsController.RegisterComparisonReportGenerationEvents(ComparisonReportGeneration);
-        }
-
-
-
-
-        /// <summary>
-        /// Event listener for when the user wants to generate a KPA or KPI report
-        /// </summary>
-        /// <param name="sender">The generate report button</param>
-        /// <param name="e">the click event</param>
-        private void SelectiveReportGeneration(object sender, EventArgs e)
-        {
-            switch (reportingWidgetsController.SelectiveReportingType)
-            {
-                case ReportingType.KpaReport:
-                    // Create a KPA Report
-                    CreateReport(ReportingType.KpaReport);
-
-                    // Generate the rest of the report and build it
-                    GenerateKpaReport();
-                    break;
-                case ReportingType.KpiReport:
-                    // Create a KPI Report
-                    CreateReport(ReportingType.KpiReport);
-
-                    // Generate the rest of the report and build it
-                    GenerateKpiReport();
-                    break;
-                default:
-                    break;
-            }
         }
 
 
@@ -182,6 +150,7 @@ namespace KPA_KPI_Analyzer
                 case ReportingType.KpaComparisonReport:
                     // Create the comparison report
                     CreateReport(ReportingType.KpaComparisonReport);
+                    KpaComparisonReport kpaComparisonReport = (reports[ReportingType.KpaComparisonReport] as KpaComparisonReport);
 
                     // The user wants to create a KPA Comparison Report.
                     Task<bool> kpaComparisonReportTask = new Task<bool>(GenerateKpaComparisonReport);
@@ -192,16 +161,27 @@ namespace KPA_KPI_Analyzer
                         ActivateLoadingScreen("Loading Report...");
 
                         // The report has finished creating now run it.
-                        Task calculateComparisonReportTask = new Task(()=> { (reports[ReportingType.KpaComparisonReport] as KpaComparisonReport).RunReport(reportingWidgetsController.ComparisonFilterOption); });
+                        Task calculateComparisonReportTask = new Task(()=> { kpaComparisonReport.RunReport(reportingWidgetsController.ComparisonFilterOption); });
                         calculateComparisonReportTask.Start();
                         await calculateComparisonReportTask;
 
                         // Beging to export the comparison report to excel.
-                        // Task comparisonReportExport = new Task();
-                        // comparisonReportExport.Start();
+                        Task comparisonReportExport = new Task(() => 
+                        {
+                            ComparisonReportExcelFile xlFile = new ComparisonReportExcelFile(kpaComparisonReport.TemplateStructure)
+                            {
+                                Filter = reportingWidgetsController.ComparisonFilterOption.ToString(),
+                                Country = ReportingCountry.countries[(int)ReportingCountry.TargetCountry],
+                                ReportGenerationDate = $"{DateTime.Now:D}"
+                            };
+
+                            Exporter xporter = new Exporter();
+                            xporter.ExportComparisonReport(xlFile);
+                        });
+                        comparisonReportExport.Start();
 
                         // Wait for the report to finish exporting
-                        // await comparisonReportExport;
+                        await comparisonReportExport;
 
                         // Hide any pages that might be visible
                         HidePages();

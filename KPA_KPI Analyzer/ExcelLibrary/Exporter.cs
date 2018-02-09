@@ -1,16 +1,16 @@
 ﻿using OfficeOpenXml;
-using Reporting.KeyPerformanceActions;
-using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using static KPA_KPI_Analyzer.ExcelLibrary.ComparisonReportExcelFile;
 
 namespace KPA_KPI_Analyzer.ExcelLibrary
 {
     public partial class Exporter
     {
+        private int row, col, colStart;
 
         /// <summary>
         /// The worksheet of the excel file
@@ -59,7 +59,7 @@ namespace KPA_KPI_Analyzer.ExcelLibrary
         /// <summary>
         /// Exports the overall data to the overall excel file located in resources -> reports Overall.xlsx
         /// </summary>
-        public async void ExportOverall(OverallExcelFile xlFile)
+        public async Task ExportOverall(OverallExcelFile xlFile)
         {
             FileInfo fileInfo = new FileInfo(OverallExcelFile.OverallTemplateFilePath);
             using (ExcelPackage package = new ExcelPackage(fileInfo))
@@ -103,17 +103,43 @@ namespace KPA_KPI_Analyzer.ExcelLibrary
         /// <param name="xlFile"></param>
         /// <param name="content"></param>
         /// <returns></returns>
-        public async Task ExportKpaComparisonReport(ComparisonReportExcelFile xlFile, Dictionary<string, KeyPerformanceAction> content)
+        public void ExportComparisonReport(ComparisonReportExcelFile xlFile)
         {
-            FileInfo fileInfo = new FileInfo(ComparisonReportExcelFile.TemplateFilePath);
+            FileInfo fileInfo = new FileInfo(xlFile.TemplateFilePath);
+
             using (ExcelPackage package = new ExcelPackage(fileInfo))
             {
-                // Start a new task to export the KPA overall data
-                Task kpaOverallTask = new Task(ExportKpaOverallData);
-                kpaOverallTask.Start();
+                // Get the worksheet based on the excel file sheet name
+                worksheet = package.Workbook.Worksheets.SingleOrDefault(x => x.Name == xlFile.SheetName);
 
-                // Wait until the KPA overall data has been exported
-                await kpaOverallTask;
+                // Populate the report information
+                worksheet.Cells[(int)ReportInformationCellPosition.FilterRow, (int)ReportInformationCellPosition.ValueColumnPosition].Value = xlFile.Filter;
+                worksheet.Cells[(int)ReportInformationCellPosition.CountryRow, (int)ReportInformationCellPosition.ValueColumnPosition].Value = xlFile.Country;
+                worksheet.Cells[(int)ReportInformationCellPosition.ReportGenerationRow, (int)ReportInformationCellPosition.ValueColumnPosition].Value = xlFile.ReportGenerationDate;
+
+
+                // Populate the correct comparison report template.
+                switch (xlFile.ChosenTemplate)
+                {
+                    case Reporting.TemplateTypes.Template.TemplateOne:
+                        ExportComparisonTemplateOne();
+                        break;
+                    case Reporting.TemplateTypes.Template.TemplateTwo:
+                        ExportComparisonTemplateTwo();
+                        break;
+                    case Reporting.TemplateTypes.Template.TemplateThree:
+                        ExportComparisonTemplateThree();
+                        break;
+                    case Reporting.TemplateTypes.Template.TemplateFour:
+                        ExportComparisonTemplateFour();
+                        break;
+                    case Reporting.TemplateTypes.Template.TemplateFive:
+                        ExportComparisonTemplateFive();
+                        break;
+                    default:
+                        break;
+                }
+
 
                 // Open the updated excel file so the user can view it
                 FileInfo tempOverallFileInfo = new FileInfo(ComparisonReportExcelFile.ComparisonReportFilePath);

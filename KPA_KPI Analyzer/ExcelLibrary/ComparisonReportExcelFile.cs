@@ -1,17 +1,18 @@
-﻿namespace KPA_KPI_Analyzer.ExcelLibrary
+﻿using KPA_KPI_Analyzer.Reporting;
+
+namespace KPA_KPI_Analyzer.ExcelLibrary
 {
-    public enum Template
-    {
-        TemplateOne,
-        TemplateTwo,
-        TemplateThree,
-        TemplateFour,
-        TemplateFive
-    }
-
-
     public sealed class ComparisonReportExcelFile : ExcelFile
     {
+        public string Filter { get; set; }
+        public string Performance { get; set; }
+        public string Section { get; set; }
+        public string Category { get; set; }
+        public string Country { get; set; }
+        public string ReportGenerationDate { get; set; }
+
+
+
 
         /// <summary>
         /// 
@@ -31,7 +32,7 @@
         /// <summary>
         /// 
         /// </summary>
-        public static Template ChosenTemplate { get; set; }
+        public TemplateTypes.Template ChosenTemplate { get; private set; }
 
 
 
@@ -39,7 +40,7 @@
         /// <summary>
         /// The file path based on the chosen template
         /// </summary>
-        public static string TemplateFilePath
+        public string TemplateFilePath
         {
             get
             {
@@ -57,31 +58,15 @@
 
 
 
-
-        /// <summary>
-        /// Customer Constructor
-        /// </summary>
-        /// <param name="template">The template the user is using</param>
-        public ComparisonReportExcelFile(Template template)
+        public enum ReportInformationCellPosition
         {
-            switch (ChosenTemplate)
-            {
-                case Template.TemplateOne:
-                    ChosenTemplate = Template.TemplateOne;
-                    break;
-                case Template.TemplateTwo:
-                    ChosenTemplate = Template.TemplateTwo;
-                    break;
-                case Template.TemplateThree:
-                    ChosenTemplate = Template.TemplateThree;
-                    break;
-                case Template.TemplateFour:
-                    ChosenTemplate = Template.TemplateFour;
-                    break;
-                default: // Template five
-                    ChosenTemplate = Template.TemplateFive;
-                    break;
-            }
+            FilterRow = 4,
+            PerformanceRow = 5,
+            SectionRow = 6,
+            CateogoryRow = 7,
+            CountryRow = 8,
+            ReportGenerationRow = 9,
+            ValueColumnPosition = 4
         }
 
 
@@ -92,9 +77,9 @@
         /// </summary>
         public enum TemplateOneCellPosition : byte
         {
-            RowStart = 3,
+            RowStart = 12,
             ColumnStart = 2,
-            ColumnEnd = 11
+            ColumnEnd = 12
         }
 
         /// <summary>
@@ -102,17 +87,7 @@
         /// </summary>
         public enum TemplateTwoCellPosition : byte
         {
-            RowStart = 3,
-            ColumnStart = 2,
-            ColumnEnd = 13
-        }
-
-        /// <summary>
-        /// Indexers for cell positions within the KPA and KPI Overall summery sheets.
-        /// </summary>
-        public enum TemplateThreeCellPosition : byte
-        {
-            RowStart = 3,
+            RowStart = 12,
             ColumnStart = 2,
             ColumnEnd = 14
         }
@@ -120,9 +95,9 @@
         /// <summary>
         /// Indexers for cell positions within the KPA and KPI Overall summery sheets.
         /// </summary>
-        public enum TemplateFourCellPosition : byte
+        public enum TemplateThreeCellPosition : byte
         {
-            RowStart = 3,
+            RowStart = 12,
             ColumnStart = 2,
             ColumnEnd = 15
         }
@@ -130,11 +105,34 @@
         /// <summary>
         /// Indexers for cell positions within the KPA and KPI Overall summery sheets.
         /// </summary>
+        public enum TemplateFourCellPosition : byte
+        {
+            RowStart = 12,
+            ColumnStart = 2,
+            ColumnEnd = 16
+        }
+
+        /// <summary>
+        /// Indexers for cell positions within the KPA and KPI Overall summery sheets.
+        /// </summary>
         public enum TemplateFiveCellPosition : byte
         {
-            RowStart = 3,
+            RowStart = 12,
             ColumnStart = 2,
-            ColumnEnd = 13
+            ColumnEnd = 14
+        }
+
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="_templateStructure"></param>
+        public ComparisonReportExcelFile(TemplateTypes.Template _templateStructure)
+        {
+            SheetName = "Sheet1";
+            ChosenTemplate = _templateStructure;
         }
     }
 }

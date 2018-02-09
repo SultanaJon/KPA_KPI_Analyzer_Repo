@@ -390,7 +390,7 @@ namespace KPA_KPI_Analyzer
         /// <param name="e"></param>
         private void pnl_activePage_ControlAdded(object sender, ControlEventArgs e)
         {
-            if(e.Control is Correlation.CorrelationControl || e.Control is SelctiveReportingWidget)
+            if(e.Control is Correlation.CorrelationControl)
             {
                 return;
             }

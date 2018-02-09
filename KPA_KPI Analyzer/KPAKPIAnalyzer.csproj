@@ -162,6 +162,7 @@
     <Compile Include="DataImporter\Access\ExceptionClasses\TablesDoNotExistException.cs" />
     <Compile Include="DataImporter\Importing\Exceptions\ImportExceptions.cs" />
     <Compile Include="DataImporter\Importing\Importer.cs" />
+    <Compile Include="ExcelLibrary\ComparisonExpoterHelperFunctions.cs" />
     <Compile Include="ExcelLibrary\ComparisonReportExcelFile.cs" />
     <Compile Include="ExcelLibrary\ExcelFile.cs" />
     <Compile Include="ExcelLibrary\ExcelInfo.cs" />
@@ -272,6 +273,7 @@
     <Compile Include="Reporting\Reports\KpaOverallReport.cs" />
     <Compile Include="Reporting\Reports\KpiComparisonReport.cs" />
     <Compile Include="Reporting\Reports\KpiOverallReport.cs" />
+    <Compile Include="Reporting\TemplateTypes.cs" />
     <Compile Include="Reporting\TimeSpans\Templates\ITemplateFive.cs" />
     <Compile Include="Reporting\TimeSpans\Templates\ITemplateFour.cs" />
     <Compile Include="Reporting\TimeSpans\Templates\ITemplateOne.cs" />
@@ -337,14 +339,7 @@
     </Compile>
     <Compile Include="PerformanceReporting\IComparisonReportingWidgetView.cs" />
     <Compile Include="PerformanceReporting\IReportingController.cs" />
-    <Compile Include="PerformanceReporting\ISelectiveReportingWidgetView.cs" />
     <Compile Include="PerformanceReporting\ReportingController.cs" />
-    <Compile Include="PerformanceReporting\SelctiveReportingWidget.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="PerformanceReporting\SelctiveReportingWidget.Designer.cs">
-      <DependentUpon>SelctiveReportingWidget.cs</DependentUpon>
-    </Compile>
     <Compile Include="Settings\CorrelationSettings.cs" />
     <Compile Include="Settings\ReportSettings.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
@@ -579,9 +574,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PerformanceReporting\ComparisonReportingWidget.resx">
       <DependentUpon>ComparisonReportingWidget.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PerformanceReporting\SelctiveReportingWidget.resx">
-      <DependentUpon>SelctiveReportingWidget.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Templates\Template_Controls\KPA_Controls\KPAExcessStockOpenOrders.resx">
       <DependentUpon>KPAExcessStockOpenOrders.cs</DependentUpon>

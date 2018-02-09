@@ -1,4 +1,6 @@
-﻿using Reporting.KeyPerformanceActions;
+﻿using KPA_KPI_Analyzer.Reporting;
+using Reporting.KeyPerformanceActions;
+using Reporting.TimeSpans.Templates;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -35,10 +37,18 @@ namespace Reporting.Reports
 
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public TemplateTypes.Template TemplateStructure { get; private set; }
+
+
+
         /// <summary>
         /// A list of Key Performance Actions (KPAs) used by reports
         /// </summary>
-        public static Dictionary<string, KeyPerformanceAction> Contents { get; private set; }
+        public static Dictionary<string, KeyPerformanceAction> Content { get; private set; }
 
 
 
@@ -73,9 +83,11 @@ namespace Reporting.Reports
         /// </summary>
         public void RunReport(Filters.FilterOptions.Options _option)
         {
-            Parallel.ForEach(Contents.Keys, filter => Contents[filter].RunComparison(filter, _option));
+            foreach (string key in Content.Keys)
+            {
+                Content[key].RunComparison(key, _option);
+            }
         }
-
 
 
 
@@ -87,7 +99,7 @@ namespace Reporting.Reports
         public bool GenerateReport(List<string> filters, KpaOption _option)
         {
             bool result = true;
-            Contents = new Dictionary<string, KeyPerformanceAction>();
+            Content = new Dictionary<string, KeyPerformanceAction>();
 
             try
             {
@@ -96,10 +108,13 @@ namespace Reporting.Reports
                     // Get the KPA the user would like to use
                     KeyPerformanceAction action = GetAction(_option);
 
+                    // Get the structure type of the template being used.
+                    TemplateStructure = GetTemplateStructure(action);
+
                     if (action != null)
                     {
                         // add the filter and the action to the dictionary
-                        Contents.Add(filter, action);
+                        Content.Add(filter, action);
                     }
                     else
                     {
@@ -121,6 +136,39 @@ namespace Reporting.Reports
 
             // Return the result of the creation
             return result;
+        }
+
+
+
+
+
+        /// <summary>
+        /// Get the type of structure based on the selected KPA
+        /// </summary>
+        /// <param name="_action">The selected KPA</param>
+        /// <returns>The type of template structure</returns>
+        private TemplateTypes.Template GetTemplateStructure(KeyPerformanceAction _action)
+        {
+            if(_action.TemplateBlock is ITemplateOne)
+            {
+                return TemplateTypes.Template.TemplateOne;
+            }
+            else if(_action.TemplateBlock is ITemplateTwo)
+            {
+                return TemplateTypes.Template.TemplateTwo;
+            }
+            else if(_action.TemplateBlock is ITemplateThree)
+            {
+                return TemplateTypes.Template.TemplateThree;
+            }
+            else if (_action.TemplateBlock is ITemplateFour)
+            {
+                return TemplateTypes.Template.TemplateFour;
+            }
+            else
+            {
+                return TemplateTypes.Template.TemplateFive;
+            }
         }
 
 

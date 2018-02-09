@@ -70,6 +70,14 @@ namespace Reporting.KeyPerformanceActions
 
 
         /// <summary>
+        /// The performance (either KPA or KPI)
+        /// </summary>
+        public string Performance { get; set; } = "KPA";
+
+
+
+
+        /// <summary>
         /// The section that this KPA belongs under
         /// </summary>
         public string Section { get; set; }

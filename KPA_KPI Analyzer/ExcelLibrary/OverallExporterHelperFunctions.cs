@@ -75,9 +75,9 @@ namespace KPA_KPI_Analyzer.ExcelLibrary
         /// </summary>
         private void ExportTemplateOneData()
         {
-            int row = (int)OverallExcelFile.OverallCellPositions.KpaOverallTempOneRowStartPosition;
-            int colStart = (int)OverallExcelFile.OverallCellPositions.KpaOverallTempOneColStartPosition;
-            int col = colStart;
+            row = (int)OverallExcelFile.OverallCellPositions.KpaOverallTempOneRowStartPosition;
+            colStart = (int)OverallExcelFile.OverallCellPositions.KpaOverallTempOneColStartPosition;
+            col = colStart;
 
             foreach (KeyPerformanceAction action in KpaOverallReport.Actions)
             {
@@ -133,9 +133,9 @@ namespace KPA_KPI_Analyzer.ExcelLibrary
         /// </summary>
         private void ExportTemplateTwoData()
         {
-            int row = (int)OverallExcelFile.OverallCellPositions.KpaOverallTempTwoRowStartPosition;
-            int colStart = (int)OverallExcelFile.OverallCellPositions.KpaOverallTempTwoColStartPosition;
-            int col = colStart;
+            row = (int)OverallExcelFile.OverallCellPositions.KpaOverallTempTwoRowStartPosition;
+            colStart = (int)OverallExcelFile.OverallCellPositions.KpaOverallTempTwoColStartPosition;
+            col = colStart;
 
 
             foreach (KeyPerformanceAction action in KpaOverallReport.Actions)
@@ -192,9 +192,9 @@ namespace KPA_KPI_Analyzer.ExcelLibrary
         /// </summary>
         private void ExportTemplateThreeData()
         {
-            int row = (int)OverallExcelFile.OverallCellPositions.KpiOverallTempThreeRowStartPosition;
-            int colStart = (int)OverallExcelFile.OverallCellPositions.KpiOverallTempThreeColStartPosition;
-            int col = colStart;
+            row = (int)OverallExcelFile.OverallCellPositions.KpiOverallTempThreeRowStartPosition;
+            colStart = (int)OverallExcelFile.OverallCellPositions.KpiOverallTempThreeColStartPosition;
+            col = colStart;
 
 
             foreach (KeyPerformanceIndicator indicator in KpiOverallReport.Indicators)
@@ -260,9 +260,9 @@ namespace KPA_KPI_Analyzer.ExcelLibrary
         /// </summary>
         private void ExportTemplateFourData()
         {
-            int row = (int)OverallExcelFile.OverallCellPositions.KpiOverallTempFourRowStartPosition;
-            int colStart = (int)OverallExcelFile.OverallCellPositions.KpiOverallTempFourColStartPosition;
-            int col = colStart;
+            row = (int)OverallExcelFile.OverallCellPositions.KpiOverallTempFourRowStartPosition;
+            colStart = (int)OverallExcelFile.OverallCellPositions.KpiOverallTempFourColStartPosition;
+            col = colStart;
 
             foreach (KeyPerformanceIndicator indicator in KpiOverallReport.Indicators)
             {
@@ -320,9 +320,9 @@ namespace KPA_KPI_Analyzer.ExcelLibrary
         /// </summary>
         private void ExportTemplateFiveData()
         {
-            int row = (int)OverallExcelFile.OverallCellPositions.KpiOverallTempFiveRowStartPosition;
-            int colStart = (int)OverallExcelFile.OverallCellPositions.KpiOverallTempFiveColStartPosition;
-            int col = colStart;
+            row = (int)OverallExcelFile.OverallCellPositions.KpiOverallTempFiveRowStartPosition;
+            colStart = (int)OverallExcelFile.OverallCellPositions.KpiOverallTempFiveColStartPosition;
+            col = colStart;
 
 
             foreach (KeyPerformanceIndicator indicator in KpiOverallReport.Indicators)
