@@ -177,7 +177,7 @@ namespace KPA_KPI_Analyzer.ExcelLibrary
                 }
                 catch (NotSupportedException ex)
                 {
-                    MessageBox.Show(ex.Message, "Comparison Report Export Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "Comparison Report Export Error",    MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 }
                 catch (InvalidOperationException)
