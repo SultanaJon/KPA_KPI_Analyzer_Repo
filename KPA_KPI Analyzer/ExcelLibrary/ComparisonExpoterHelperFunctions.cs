@@ -9,17 +9,15 @@ namespace KPA_KPI_Analyzer.ExcelLibrary
 {
     public partial class Exporter
     {
-        bool reportInfoPrinted = false;
-
         private void ExportComparisonTemplateOne()
         {
-            row = (int)ComparisonReportExcelFile.TemplateOneCellPosition.RowStart;
-            colStart = (int)ComparisonReportExcelFile.TemplateOneCellPosition.ColumnStart;
+            row = (int)TemplateOneCellPosition.RowStart;
+            colStart = (int)TemplateOneCellPosition.ColumnStart;
             col = colStart;
 
             Dictionary<string, KeyPerformanceAction> content = KpaComparisonReport.Content;
 
-            foreach(string filter in content.Keys)
+            foreach (string filter in content.Keys)
             {
                 // Insert a row into the data table
                 worksheet.InsertRow(row, 1);
@@ -30,20 +28,11 @@ namespace KPA_KPI_Analyzer.ExcelLibrary
                     // Convert the action to a ITemplate interface
                     TemplateOne tempOneData = content[filter].TemplateBlock as TemplateOne;
 
-                    if(!reportInfoPrinted)
-                    {
-                        worksheet.Cells[(int)ReportInformationCellPosition.PerformanceRow, (int)ReportInformationCellPosition.ValueColumnPosition].Value = content[filter].Performance;
-                        worksheet.Cells[(int)ReportInformationCellPosition.SectionRow, (int)ReportInformationCellPosition.ValueColumnPosition].Value = content[filter].Section;
-                        worksheet.Cells[(int)ReportInformationCellPosition.CateogoryRow, (int)ReportInformationCellPosition.ValueColumnPosition].Value = content[filter].Name;
-                        reportInfoPrinted = true;
-                    }
-
-
                     // Get the template data from the action
                     List<string> tempData = new List<string>();
                     tempData.Add(filter);
                     tempData.AddRange(tempOneData.GetTemplateData());
-                    
+
                     if (content[filter] is IFavorable)
                         tempData.Add(string.Format("{0:n0}", (content[filter] as IFavorable).PercentFavorable + "%"));
 
@@ -64,8 +53,9 @@ namespace KPA_KPI_Analyzer.ExcelLibrary
                                 continue;
                             }
 
+                            // Add the value to the cell
                             double n;
-                            if(double.TryParse(data, out n))
+                            if (double.TryParse(data, out n))
                             {
                                 worksheet.Cells[row, col].Value = n;
                             }
@@ -88,8 +78,8 @@ namespace KPA_KPI_Analyzer.ExcelLibrary
 
         private void ExportComparisonTemplateTwo()
         {
-            row = (int)ComparisonReportExcelFile.TemplateTwoCellPosition.RowStart;
-            colStart = (int)ComparisonReportExcelFile.TemplateTwoCellPosition.ColumnStart;
+            row = (int)TemplateTwoCellPosition.RowStart;
+            colStart = (int)TemplateTwoCellPosition.ColumnStart;
             col = colStart;
 
             Dictionary<string, KeyPerformanceAction> content = KpaComparisonReport.Content;
@@ -129,13 +119,14 @@ namespace KPA_KPI_Analyzer.ExcelLibrary
                             }
 
                             // Add the value to the cell
-                            if (col == (int)ComparisonReportExcelFile.TemplateTwoCellPosition.ColumnStart)
+                            double n;
+                            if (double.TryParse(data, out n))
                             {
-                                worksheet.Cells[row, col].Value = data;
+                                worksheet.Cells[row, col].Value = n;
                             }
                             else
                             {
-                                worksheet.Cells[row, col].Value = double.Parse(data);
+                                worksheet.Cells[row, col].Value = data;
                             }
 
                             // Increment the column position within the excel file
@@ -152,8 +143,8 @@ namespace KPA_KPI_Analyzer.ExcelLibrary
 
         private void ExportComparisonTemplateThree()
         {
-            row = (int)ComparisonReportExcelFile.TemplateThreeCellPosition.RowStart;
-            colStart = (int)ComparisonReportExcelFile.TemplateThreeCellPosition.ColumnStart;
+            row = (int)TemplateThreeCellPosition.RowStart;
+            colStart = (int)TemplateThreeCellPosition.ColumnStart;
             col = colStart;
 
             Dictionary<string, KeyPerformanceAction> content = KpaComparisonReport.Content;
@@ -204,13 +195,14 @@ namespace KPA_KPI_Analyzer.ExcelLibrary
                             }
 
                             // Add the value to the cel;
-                            if (col == (int)ComparisonReportExcelFile.TemplateThreeCellPosition.ColumnStart)
+                            double n;
+                            if (double.TryParse(data, out n))
                             {
-                                worksheet.Cells[row, col].Value = data;
+                                worksheet.Cells[row, col].Value = n;
                             }
                             else
                             {
-                                worksheet.Cells[row, col].Value = double.Parse(data);
+                                worksheet.Cells[row, col].Value = data;
                             }
 
                             // Increment the column position within the excel file
@@ -226,9 +218,9 @@ namespace KPA_KPI_Analyzer.ExcelLibrary
 
 
         private void ExportComparisonTemplateFour()
-        {
-            row = (int)ComparisonReportExcelFile.TemplateFourCellPosition.RowStart;
-            colStart = (int)ComparisonReportExcelFile.TemplateFourCellPosition.ColumnStart;
+        { 
+            row = (int)TemplateFourCellPosition.RowStart;
+            colStart = (int)TemplateFourCellPosition.ColumnStart;
             col = colStart;
 
             Dictionary<string, KeyPerformanceAction> content = KpaComparisonReport.Content;
@@ -271,14 +263,15 @@ namespace KPA_KPI_Analyzer.ExcelLibrary
                                 continue;
                             }
 
-                            // Add the value to the cel;
-                            if (col == (int)ComparisonReportExcelFile.TemplateFourCellPosition.ColumnStart)
+                            // Add the value to the cell
+                            double n;
+                            if (double.TryParse(data, out n))
                             {
-                                worksheet.Cells[row, col].Value = data;
+                                worksheet.Cells[row, col].Value = n;
                             }
                             else
                             {
-                                worksheet.Cells[row, col].Value = double.Parse(data);
+                                worksheet.Cells[row, col].Value = data;
                             }
 
                             // Increment the column position within the excel file
@@ -295,8 +288,8 @@ namespace KPA_KPI_Analyzer.ExcelLibrary
 
         private void ExportComparisonTemplateFive()
         {
-            row = (int)ComparisonReportExcelFile.TemplateFiveCellPosition.RowStart;
-            colStart = (int)ComparisonReportExcelFile.TemplateFiveCellPosition.ColumnStart;
+            row = (int)TemplateFiveCellPosition.RowStart;
+            colStart = (int)TemplateFiveCellPosition.ColumnStart;
             col = colStart;
 
             Dictionary<string, KeyPerformanceAction> content = KpaComparisonReport.Content;
@@ -335,13 +328,14 @@ namespace KPA_KPI_Analyzer.ExcelLibrary
                             }
 
                             // Add the value to the cel;
-                            if (col == (int)ComparisonReportExcelFile.TemplateFiveCellPosition.ColumnStart)
+                            double n;
+                            if (double.TryParse(data, out n))
                             {
-                                worksheet.Cells[row, col].Value = data;
+                                worksheet.Cells[row, col].Value = n;
                             }
                             else
                             {
-                                worksheet.Cells[row, col].Value = double.Parse(data);
+                                worksheet.Cells[row, col].Value = data;
                             }
 
                             // Increment the column position within the excel file
