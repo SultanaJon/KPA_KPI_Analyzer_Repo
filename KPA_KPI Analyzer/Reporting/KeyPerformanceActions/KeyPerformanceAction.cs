@@ -117,6 +117,20 @@ namespace Reporting.KeyPerformanceActions
         }
 
 
+
+        /// <summary>
+        /// Remove any uneeded characters from the supplied fitler
+        /// </summary>
+        protected void CleanFilter(ref string _filter)
+        {
+            while (_filter.Contains("'"))
+            {
+                _filter = _filter.Remove(_filter.IndexOf('\''));
+            }
+        }
+
+
+
         /// <summary>
         /// Method to calculate the comparison of this KPA
         /// </summary>

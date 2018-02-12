@@ -16,6 +16,9 @@ namespace Reporting.KeyPerformanceActions.Plan
 
 
 
+        string test = string.Empty;
+
+
         /// <summary>
         /// Default Constructor
         /// </summary>
@@ -37,16 +40,18 @@ namespace Reporting.KeyPerformanceActions.Plan
         /// </summary>
         /// <param name="_fitler">The filter we want to run against this KPA</param>
         /// <param name="_option">The filter option where this fitler was obtained</param>
-        public override void RunComparison(string _fitler, FilterOptions.Options _filterOption)
+        public override void RunComparison(string _filter, FilterOptions.Options _filterOption)
         {
             try
             {
                 DataTable dt = KpaUtils.PlanQueries.GetPrsAgingNotReleased();
                 double totalDays = 0;
 
+                // remove any apostraphe's from the filter as an exception will be thrown.
+                CleanFilter(ref _filter);
+
                 // Get the fitlered data rows from the datatable
-                string test = FilterOptions.GetColumnNames(_filterOption, _fitler);
-                DataRow[] filteredResult = dt.Select(test);
+                DataRow[] filteredResult = dt.Select(FilterOptions.GetColumnNames(_filterOption, _filter));
 
                 foreach (DataRow dr in filteredResult)
                 {

@@ -104,6 +104,9 @@ namespace Reporting.KeyPerformanceActions.FollowUp
                 DataTable dt = KpaUtils.FollowUpQueries.GetConfrimedDateForUpcomingDeliveries();
                 double totalDays = 0;
 
+                // remove any apostraphe's from the filter as an exception will be thrown.
+                CleanFilter(ref _filter);
+
                 // Get the fitlered data rows from the datatable
                 DataRow[] filteredResult = dt.Select(FilterOptions.GetColumnNames(_filterOption, _filter));
 

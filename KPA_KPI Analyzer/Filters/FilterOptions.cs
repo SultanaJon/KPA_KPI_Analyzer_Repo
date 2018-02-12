@@ -88,7 +88,7 @@ namespace Filters
                     if (filter == "[Blanks]")
                         result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.Vendor] + "] IS NULL";
                     else
-                        result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.Vendor] + "] LIKE " + "'%" + filter + "%'";
+                        result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.Vendor] + "] = " + filter;
                     break;
                 case Options.VendorDescription:
                     if (filter == "[Blanks]")
