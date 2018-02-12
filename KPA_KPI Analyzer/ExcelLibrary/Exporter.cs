@@ -1,9 +1,11 @@
 ﻿using OfficeOpenXml;
+using System;
 using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using static KPA_KPI_Analyzer.ExcelLibrary.ComparisonReportExcelFile;
 
 namespace KPA_KPI_Analyzer.ExcelLibrary
@@ -141,10 +143,47 @@ namespace KPA_KPI_Analyzer.ExcelLibrary
                 }
 
 
-                // Open the updated excel file so the user can view it
-                FileInfo tempOverallFileInfo = new FileInfo(ComparisonReportExcelFile.ComparisonReportFilePath);
-                package.SaveAs(tempOverallFileInfo);
-                OpenExcelFile(ComparisonReportExcelFile.ComparisonReportFilePath);
+                try
+                {
+                    // Open the updated excel file so the user can view it
+                    FileInfo tempOverallFileInfo = new FileInfo(ComparisonReportFilePath);
+                    package.SaveAs(tempOverallFileInfo);
+                    OpenExcelFile(ComparisonReportFilePath);
+                }
+                catch(ArgumentNullException ex)
+                {
+                    MessageBox.Show(ex.Message, "Comparison Report Export Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+                catch (System.Security.SecurityException ex)
+                {
+                    MessageBox.Show(ex.Message, "Comparison Report Export Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+                catch (ArgumentException ex)
+                {
+                    MessageBox.Show(ex.Message, "Comparison Report Export Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+                catch (UnauthorizedAccessException ex)
+                {
+                    MessageBox.Show(ex.Message, "Comparison Report Export Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+                catch (PathTooLongException ex)
+                {
+                    MessageBox.Show(ex.Message, "Comparison Report Export Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+                catch (NotSupportedException ex)
+                {
+                    MessageBox.Show(ex.Message, "Comparison Report Export Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+                catch (InvalidOperationException)
+                {
+                    MessageBox.Show("Please make sure the comparison report excel file is closed before running the report.", "Comparison Report Export Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -159,9 +198,28 @@ namespace KPA_KPI_Analyzer.ExcelLibrary
         /// <param name="xlFile">The excel file</param>
         private void OpenExcelFile(string filePath)
         {
-            Process excelProcess = new Process();
-            excelProcess.StartInfo = new ProcessStartInfo(filePath);
-            excelProcess.Start();
+            try
+            {
+                Process excelProcess = new Process();
+                excelProcess.StartInfo = new ProcessStartInfo(filePath);
+                excelProcess.Start();
+            }
+            catch(ArgumentNullException ex)
+            {
+                MessageBox.Show(ex.Message, "Excel Process Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (ObjectDisposedException ex)
+            {
+                MessageBox.Show(ex.Message, "Excel Process Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (InvalidOperationException ex)
+            {
+                MessageBox.Show(ex.Message, "Excel Process Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.ComponentModel.Win32Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Excel Process Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
