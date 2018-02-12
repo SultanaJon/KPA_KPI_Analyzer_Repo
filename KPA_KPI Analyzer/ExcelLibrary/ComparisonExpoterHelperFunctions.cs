@@ -64,14 +64,14 @@ namespace KPA_KPI_Analyzer.ExcelLibrary
                                 continue;
                             }
 
-                            // Add the value to the cel;
-                            if(col == (int)ComparisonReportExcelFile.TemplateOneCellPosition.ColumnStart)
+                            double n;
+                            if(double.TryParse(data, out n))
                             {
-                                worksheet.Cells[row, col].Value = data;
+                                worksheet.Cells[row, col].Value = n;
                             }
                             else
                             {
-                                worksheet.Cells[row, col].Value = double.Parse(data);
+                                worksheet.Cells[row, col].Value = data;
                             }
 
                             // Increment the column position within the excel file
