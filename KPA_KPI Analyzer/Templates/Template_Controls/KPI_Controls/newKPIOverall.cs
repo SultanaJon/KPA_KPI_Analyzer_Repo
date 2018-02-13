@@ -3,6 +3,7 @@ using KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader;
 using Reporting;
 using Reporting.Interfaces;
 using Reporting.KeyPerformanceIndicators;
+using Reporting.KeyPerformanceIndicators.Other;
 using Reporting.Reports;
 using Reporting.TimeSpans.Templates;
 using System;
@@ -616,13 +617,13 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TemplateFiveDataGrid.Rows.Add(rowData.ToArray());
 
             rowData = new List<string>((KpiOverallReport.Indicators[(int)KpiOption.Other_TotalSpend].Details));
-            rowData.AddRange(new List<string>((KpiOverallReport.Indicators[(int)KpiOption.Other_TotalSpend].TemplateBlock as TemplateFive).GetTemplateData()));
+            rowData.AddRange(new List<string>((KpiOverallReport.Indicators[(int)KpiOption.Other_TotalSpend] as TotalSpend).GetTemplateData()));
 
             // Add the row to the data grid view control
             TemplateFiveDataGrid.Rows.Add(rowData.ToArray());
 
             rowData = new List<string>((KpiOverallReport.Indicators[(int)KpiOption.Other_PrValueVsPoValue].Details));
-            rowData.AddRange(new List<string>((KpiOverallReport.Indicators[(int)KpiOption.Other_PrValueVsPoValue].TemplateBlock as TemplateFive).GetTemplateData()));
+            rowData.AddRange(new List<string>((KpiOverallReport.Indicators[(int)KpiOption.Other_PrValueVsPoValue] as PRValueVsPOValue).GetTemplateData()));
 
             // Add the row to the data grid view control
             TemplateFiveDataGrid.Rows.Add(rowData.ToArray());

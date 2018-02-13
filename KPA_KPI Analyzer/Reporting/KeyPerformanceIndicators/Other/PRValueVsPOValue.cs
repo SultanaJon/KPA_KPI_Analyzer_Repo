@@ -1,6 +1,7 @@
 ﻿using DataAccessLibrary;
 using Reporting.TimeSpans.Templates;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 
@@ -26,6 +27,31 @@ namespace Reporting.KeyPerformanceIndicators.Other
 
             Section = "Other";
             Name = "PR Value vs PO Value";
+        }
+
+
+
+
+        /// <summary>
+        /// This KPI need its own GetTemplateData method because all values are currency except the total number of records.
+        /// </summary>
+        /// <returns>The list of template data</returns>
+        public List<string> GetTemplateData()
+        {
+            List<string> temp = new List<string>();
+            temp.Add(string.Format("{0:n}", "$" + template.TotalValue));
+            temp.Add(string.Format("{0:n}", "$" + template.GreaterThanEqualToZeroWeeks));
+            temp.Add(string.Format("{0:n}", "$" + template.GreaterThanEqualToNegOneWeek));
+            temp.Add(string.Format("{0:n}", "$" + template.GreaterThanEqualToNegTwoWeeks));
+            temp.Add(string.Format("{0:n}", "$" + template.GreaterThanEqualToNegThreeWeeks));
+            temp.Add(string.Format("{0:n}", "$" + template.GreaterThanEqualToNegFourWeeks));
+            temp.Add(string.Format("{0:n}", "$" + template.GreaterThanEqualToNegFiveWeeks));
+            temp.Add(string.Format("{0:n}", "$" + template.GreaterThanEqualToNegSixWeeks));
+            temp.Add(string.Format("{0:n}", "$" + template.GreaterThanEqualToNegSevenWeeks));
+            temp.Add(string.Format("{0:n}", "$" + template.GreaterThanEqualToNegEightWeeks));
+            temp.Add(string.Format("{0:n}", "$" + template.LessThanNegEightWeeks));
+            temp.Add(string.Format("{0:n0}", template.TotalRecords));
+            return temp;
         }
 
 
