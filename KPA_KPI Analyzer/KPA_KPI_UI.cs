@@ -31,10 +31,6 @@ namespace KPA_KPI_Analyzer
 		// Data regarding the form.
 		private FormData frmData = new FormData();
 
-		// The overall data calculated.
-
-		//
-
 		// The current active user controls visible.
 		private UserControl activeTemplate = new UserControl();
 
@@ -61,6 +57,7 @@ namespace KPA_KPI_Analyzer
 			InitializeComponent();
 
 			// Lock the navigations functionality
+			navigationSettings = new Navigation.NavigationSettings();
 			navigationSettings.Status = Navigation.Functionality.Locked;
 		}
 
@@ -501,7 +498,6 @@ namespace KPA_KPI_Analyzer
 		private void InitializeProgramEvents()
 		{
 			// Setup callback functions for Dataloading.
-			//DatabaseManager.RenewDataLoadTimer += RenewDataLoadTimer;
 			DatabaseManager.DisplayDragDropPage += ShowDragDropPage;
 
 			// Setup callback functions for Drag & Drop screen
