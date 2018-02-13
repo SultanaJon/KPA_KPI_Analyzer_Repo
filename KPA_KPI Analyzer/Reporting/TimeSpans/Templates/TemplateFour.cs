@@ -26,7 +26,7 @@ namespace Reporting.TimeSpans.Templates
         /// Returns the template data as a list of strings.
         /// </summary>
         /// <returns></returns>
-        public List<string> GetTemplateData()
+        public override List<string> GetTemplateData()
         {
             List<string> temp = new List<string>();
             temp.Add(string.Format("{0:n}", Average));

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Reporting.TimeSpans.Templates
@@ -30,5 +31,14 @@ namespace Reporting.TimeSpans.Templates
             // Return the average calculated
             return average;
         }
+
+
+
+
+        /// <summary>
+        /// Abstract method to get the data of the template
+        /// </summary>
+        /// <returns>The formated list of data from the template containing the data</returns>
+        public abstract List<string> GetTemplateData();
     }
 }

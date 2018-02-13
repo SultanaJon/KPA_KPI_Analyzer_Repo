@@ -153,7 +153,7 @@ namespace Reporting.KeyPerformanceActions.CurrentPlanVsActual
             }
             catch (Exception)
             {
-                MessageBox.Show("An argument out of range exception was thrown", "Current Plan Date vs Curren Confirmation date Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An argument out of range exception was thrown", "Current Plan Date vs Curren Confirmation date Comparison Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }

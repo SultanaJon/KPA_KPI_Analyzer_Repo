@@ -1,4 +1,5 @@
 ﻿using DataAccessLibrary;
+using Filters;
 using KPA_KPI_Analyzer.ExcelLibrary;
 using KPA_KPI_Analyzer.PerformanceReporting;
 using Reporting;
@@ -170,7 +171,7 @@ namespace KPA_KPI_Analyzer
                         {
                             ComparisonReportExcelFile xlFile = new ComparisonReportExcelFile(kpaComparisonReport.TemplateStructure)
                             {
-                                Filter = reportingWidgetsController.ComparisonFilterOption.ToString(),
+                                Filter = FilterOptions.options[(int)reportingWidgetsController.ComparisonFilterOption],
                                 Country = ReportingCountry.countries[(int)ReportingCountry.TargetCountry],
                                 ReportGenerationDate = $"{DateTime.Now:D}"
                             };
@@ -199,6 +200,7 @@ namespace KPA_KPI_Analyzer
                 case ReportingType.KpiComparisonReport:
                     // Create the comparison report
                     CreateReport(ReportingType.KpiComparisonReport);
+                    KpiComparisonReport kpiComparisonReport = (reports[ReportingType.KpiComparisonReport] as KpiComparisonReport);
 
                     // The user wants to create a KPI Comparison Report.
                     Task<bool> kpiComparisonReportTask = new Task<bool>(GenerateKpiComparisonReport);
@@ -206,12 +208,42 @@ namespace KPA_KPI_Analyzer
 
                     if (await kpiComparisonReportTask)
                     {
+                        ActivateLoadingScreen("Loading Report...");
+
                         // The report has finished creating now run it.
+                        Task calculateComparisonReportTask = new Task(() => { kpiComparisonReport.RunReport(reportingWidgetsController.ComparisonFilterOption); });
+                        calculateComparisonReportTask.Start();
+                        await calculateComparisonReportTask;
+
+                        // Beging to export the comparison report to excel.
+                        Task comparisonReportExport = new Task(() =>
+                        {
+                            ComparisonReportExcelFile xlFile = new ComparisonReportExcelFile(kpiComparisonReport.TemplateStructure)
+                            {
+                                Filter = FilterOptions.options[(int)reportingWidgetsController.ComparisonFilterOption],
+                                Country = ReportingCountry.countries[(int)ReportingCountry.TargetCountry],
+                                ReportGenerationDate = $"{DateTime.Now:D}"
+                            };
+
+                            Exporter xporter = new Exporter();
+                            xporter.ExportComparisonReport(xlFile);
+                        });
+                        comparisonReportExport.Start();
+
+                        // Wait for the report to finish exporting
+                        await comparisonReportExport;
+
+                        // Hide any pages that might be visible
+                        HidePages();
+
+                        // Unclock the navigation and the menu strip.
+                        navigationSettings.Status = Navigation.Functionality.Unlocked;
+                        ms_applicaitonMenuStrip.Enabled = true;
                     }
                     else
                     {
                         // The report did not successfully create
-                        MessageBox.Show("The report failed to generate!", "KPA Comparison Report Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("The report failed to generate!", "KPI Comparison Report Failure", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     break;
                 default:

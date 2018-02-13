@@ -39,7 +39,7 @@ namespace Reporting.Reports
 
 
         /// <summary>
-        /// 
+        /// The property to hold the structure of the report
         /// </summary>
         public TemplateTypes.Template TemplateStructure { get; private set; }
 
@@ -153,21 +153,9 @@ namespace Reporting.Reports
             {
                 return TemplateTypes.Template.TemplateOne;
             }
-            else if(_action.TemplateBlock is ITemplateTwo)
+            else // ITemplateTwo
             {
                 return TemplateTypes.Template.TemplateTwo;
-            }
-            else if(_action.TemplateBlock is ITemplateThree)
-            {
-                return TemplateTypes.Template.TemplateThree;
-            }
-            else if (_action.TemplateBlock is ITemplateFour)
-            {
-                return TemplateTypes.Template.TemplateFour;
-            }
-            else
-            {
-                return TemplateTypes.Template.TemplateFive;
             }
         }
 

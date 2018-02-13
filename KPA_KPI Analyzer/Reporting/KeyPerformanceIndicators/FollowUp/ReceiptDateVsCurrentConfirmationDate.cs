@@ -1,4 +1,5 @@
 ﻿using DataAccessLibrary;
+using Filters;
 using Reporting.Interfaces;
 using Reporting.TimeSpans.Templates;
 using System;
@@ -112,6 +113,21 @@ namespace Reporting.KeyPerformanceIndicators.FollowUp
 
         #endregion
 
+
+
+
+
+
+
+        /// <summary>
+        /// Runs the comparison report against the supplied filter
+        /// </summary>
+        /// <param name="_fitler">The filter we want to run against this KPA</param>
+        /// <param name="_option">The filter option where this fitler was obtained</param>
+        public override void RunComparison(string _filter, FilterOptions.Options _filterOption)
+        {
+
+        }
 
 
 

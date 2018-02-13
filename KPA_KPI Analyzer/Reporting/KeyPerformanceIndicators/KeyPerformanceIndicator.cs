@@ -1,4 +1,5 @@
-﻿using Reporting.TimeSpans.Templates;
+﻿using Filters;
+using Reporting.TimeSpans.Templates;
 using System.Collections.Generic;
 
 namespace Reporting.KeyPerformanceIndicators
@@ -104,6 +105,47 @@ namespace Reporting.KeyPerformanceIndicators
                 return temp;
             }
         }
+
+
+
+
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
+        public KeyPerformanceIndicator()
+        {
+
+        }
+
+
+
+
+        /// <summary>
+        /// Removes any uneeded character from the supplied filter
+        /// </summary>
+        /// <param name="_filter"></param>
+        protected void CleanFilter(ref string _filter)
+        {
+            while (_filter.Contains("'"))
+            {
+                _filter = _filter.Remove(_filter.IndexOf('\''));
+            }
+        }
+
+
+
+
+
+
+        /// <summary>
+        /// Abstract method to calculate the data for the comparison report
+        /// </summary>
+        /// <param name="_filter">The filter currently running against the KPI</param>
+        /// <param name="_filterOption">The filter option chosen to apply against the comparison report</param>
+        public abstract void RunComparison(string _filter, FilterOptions.Options _filterOption);
+
+
+
 
 
 
