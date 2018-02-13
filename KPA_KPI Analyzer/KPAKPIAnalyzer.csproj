@@ -530,7 +530,6 @@
     <Compile Include="Templates\TemplateOneStructure.cs" />
     <Compile Include="Templates\TemplateThreeStructure.cs" />
     <Compile Include="Templates\TemplateTwoStructure.cs" />
-    <Compile Include="Values\Globals.cs" />
     <EmbeddedResource Include="Filters\Variants\VariantsCreationWindow.resx">
       <DependentUpon>VariantsCreationWindow.cs</DependentUpon>
       <SubType>Designer</SubType>

@@ -48,11 +48,17 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.addVariantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnl_topPanel = new System.Windows.Forms.Panel();
+            this.pnl_Minimize = new System.Windows.Forms.Panel();
+            this.pnl_Maximize = new System.Windows.Forms.Panel();
+            this.pnl_Close = new System.Windows.Forms.Panel();
             this.pnl_titlePanel = new System.Windows.Forms.Panel();
             this.lbl_title = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.pnl_logo = new System.Windows.Forms.Panel();
             this.ImportTimer = new System.Windows.Forms.Timer(this.components);
             this.DataRemovalTimer = new System.Windows.Forms.Timer(this.components);
             this.pnl_activePage = new System.Windows.Forms.Panel();
+            this.tblpnl_DashbaordPage = new System.Windows.Forms.TableLayoutPanel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.tblpnl_Filters = new System.Windows.Forms.TableLayoutPanel();
             this.panel27 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -161,6 +167,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.btn_dashboardCancel = new Bunifu.Framework.UI.BunifuFlatButton();
             this.tblpnl_DragDrop = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.pnl_KPISectionsPanel = new System.Windows.Forms.Panel();
             this.btn_kpiOther = new System.Windows.Forms.Button();
             this.btn_kpiPurchPlan = new System.Windows.Forms.Button();
@@ -192,24 +199,18 @@
             this.be_note = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.navigationWindow = new KPA_KPI_Analyzer.Navigation.NavigationView();
             this.topHandleBar = new KPA_KPI_Analyzer.TopHandleBar.TopHandleBarView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pnl_Minimize = new System.Windows.Forms.Panel();
-            this.pnl_Maximize = new System.Windows.Forms.Panel();
-            this.pnl_Close = new System.Windows.Forms.Panel();
-            this.pnl_logo = new System.Windows.Forms.Panel();
             this.btn_reports = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btn_Filters = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btn_Correlation = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btn_KPI = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btn_KPA = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btn_Dashboard = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.tblpnl_DashbaordPage = new System.Windows.Forms.TableLayoutPanel();
             this.pnl_menuStrip.SuspendLayout();
             this.ms_applicaitonMenuStrip.SuspendLayout();
             this.pnl_topPanel.SuspendLayout();
             this.pnl_titlePanel.SuspendLayout();
             this.pnl_activePage.SuspendLayout();
+            this.tblpnl_DashbaordPage.SuspendLayout();
             this.tblpnl_Filters.SuspendLayout();
             this.panel27.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -244,7 +245,6 @@
             this.panel3.SuspendLayout();
             this.tblpnl_DragDrop.SuspendLayout();
             this.pnl_TopUIPanel.SuspendLayout();
-            this.tblpnl_DashbaordPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // dc_MainUI
@@ -402,6 +402,45 @@
             this.pnl_topPanel.TabIndex = 0;
             this.pnl_topPanel.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pnl_TopPanel_MouseDoubleClick);
             // 
+            // pnl_Minimize
+            // 
+            this.pnl_Minimize.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.Minimize;
+            this.pnl_Minimize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pnl_Minimize.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnl_Minimize.Location = new System.Drawing.Point(1050, 0);
+            this.pnl_Minimize.Name = "pnl_Minimize";
+            this.pnl_Minimize.Size = new System.Drawing.Size(50, 25);
+            this.pnl_Minimize.TabIndex = 4;
+            this.pnl_Minimize.Click += new System.EventHandler(this.btn_Minimize_Click);
+            this.pnl_Minimize.MouseLeave += new System.EventHandler(this.btn_Minimize_MouseLeave);
+            this.pnl_Minimize.MouseHover += new System.EventHandler(this.btn_Minimize_MouseEnter);
+            // 
+            // pnl_Maximize
+            // 
+            this.pnl_Maximize.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.Maximize;
+            this.pnl_Maximize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pnl_Maximize.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnl_Maximize.Location = new System.Drawing.Point(1100, 0);
+            this.pnl_Maximize.Name = "pnl_Maximize";
+            this.pnl_Maximize.Size = new System.Drawing.Size(50, 25);
+            this.pnl_Maximize.TabIndex = 3;
+            this.pnl_Maximize.Click += new System.EventHandler(this.btn_Expand_Click);
+            this.pnl_Maximize.MouseLeave += new System.EventHandler(this.btn_Expand_MouseLeave);
+            this.pnl_Maximize.MouseHover += new System.EventHandler(this.btn_Expand_MouseHover);
+            // 
+            // pnl_Close
+            // 
+            this.pnl_Close.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.Close;
+            this.pnl_Close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pnl_Close.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnl_Close.Location = new System.Drawing.Point(1150, 0);
+            this.pnl_Close.Name = "pnl_Close";
+            this.pnl_Close.Size = new System.Drawing.Size(50, 25);
+            this.pnl_Close.TabIndex = 2;
+            this.pnl_Close.Click += new System.EventHandler(this.btn_Close_Click);
+            this.pnl_Close.MouseLeave += new System.EventHandler(this.btn_Close_MouseLeave);
+            this.pnl_Close.MouseHover += new System.EventHandler(this.btn_Close_MouseHover);
+            // 
             // pnl_titlePanel
             // 
             this.pnl_titlePanel.Controls.Add(this.lbl_title);
@@ -420,6 +459,16 @@
             this.lbl_title.Size = new System.Drawing.Size(97, 13);
             this.lbl_title.TabIndex = 0;
             this.lbl_title.Text = "KPA - KPI Analyzer";
+            // 
+            // pnl_logo
+            // 
+            this.pnl_logo.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.comau_logo;
+            this.pnl_logo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pnl_logo.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnl_logo.Location = new System.Drawing.Point(0, 0);
+            this.pnl_logo.Name = "pnl_logo";
+            this.pnl_logo.Size = new System.Drawing.Size(50, 25);
+            this.pnl_logo.TabIndex = 0;
             // 
             // ImportTimer
             // 
@@ -442,6 +491,41 @@
             this.pnl_activePage.Size = new System.Drawing.Size(1200, 623);
             this.pnl_activePage.TabIndex = 44;
             this.pnl_activePage.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.pnl_activePage_ControlAdded);
+            // 
+            // tblpnl_DashbaordPage
+            // 
+            this.tblpnl_DashbaordPage.AllowDrop = true;
+            this.tblpnl_DashbaordPage.ColumnCount = 4;
+            this.tblpnl_DashbaordPage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tblpnl_DashbaordPage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tblpnl_DashbaordPage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tblpnl_DashbaordPage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tblpnl_DashbaordPage.Controls.Add(this.panel2, 0, 0);
+            this.tblpnl_DashbaordPage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tblpnl_DashbaordPage.Location = new System.Drawing.Point(0, 0);
+            this.tblpnl_DashbaordPage.Name = "tblpnl_DashbaordPage";
+            this.tblpnl_DashbaordPage.RowCount = 3;
+            this.tblpnl_DashbaordPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 41.73355F));
+            this.tblpnl_DashbaordPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28.41092F));
+            this.tblpnl_DashbaordPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30.01605F));
+            this.tblpnl_DashbaordPage.Size = new System.Drawing.Size(1200, 623);
+            this.tblpnl_DashbaordPage.TabIndex = 52;
+            // 
+            // panel2
+            // 
+            this.panel2.AllowDrop = true;
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.dragDropLargeCenter;
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.tblpnl_DashbaordPage.SetColumnSpan(this.panel2, 4);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(10, 10);
+            this.panel2.Margin = new System.Windows.Forms.Padding(10, 10, 10, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1180, 249);
+            this.panel2.TabIndex = 9;
+            this.panel2.DragDrop += new System.Windows.Forms.DragEventHandler(this.pnl_DragDropArea_DragDrop);
+            this.panel2.DragEnter += new System.Windows.Forms.DragEventHandler(this.pnl_DragDropArea_DragEnter);
             // 
             // tblpnl_Filters
             // 
@@ -723,7 +807,7 @@
             // 
             // chkBox_PoDateRange
             // 
-            this.chkBox_PoDateRange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
+            this.chkBox_PoDateRange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.chkBox_PoDateRange.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.chkBox_PoDateRange.Checked = false;
             this.chkBox_PoDateRange.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
@@ -737,7 +821,7 @@
             // 
             // chkBox_FinalReceiptDate
             // 
-            this.chkBox_FinalReceiptDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
+            this.chkBox_FinalReceiptDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.chkBox_FinalReceiptDate.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.chkBox_FinalReceiptDate.Checked = false;
             this.chkBox_FinalReceiptDate.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
@@ -751,7 +835,7 @@
             // 
             // chkBox_PrDateRange
             // 
-            this.chkBox_PrDateRange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
+            this.chkBox_PrDateRange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.chkBox_PrDateRange.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.chkBox_PrDateRange.Checked = false;
             this.chkBox_PrDateRange.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
@@ -2064,6 +2148,23 @@
             this.tblpnl_DragDrop.Size = new System.Drawing.Size(1200, 623);
             this.tblpnl_DragDrop.TabIndex = 54;
             // 
+            // panel1
+            // 
+            this.panel1.AllowDrop = true;
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.dragDropLargeCenter;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.tblpnl_DragDrop.SetColumnSpan(this.panel1, 2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(10, 10);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
+            this.panel1.Name = "panel1";
+            this.tblpnl_DragDrop.SetRowSpan(this.panel1, 2);
+            this.panel1.Size = new System.Drawing.Size(1180, 603);
+            this.panel1.TabIndex = 0;
+            this.panel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.pnl_DragDropArea_DragDrop);
+            this.panel1.DragEnter += new System.Windows.Forms.DragEventHandler(this.pnl_DragDropArea_DragEnter);
+            // 
             // pnl_KPISectionsPanel
             // 
             this.pnl_KPISectionsPanel.Location = new System.Drawing.Point(0, 0);
@@ -2279,72 +2380,6 @@
             this.topHandleBar.Size = new System.Drawing.Size(1200, 51);
             this.topHandleBar.TabIndex = 1;
             // 
-            // panel1
-            // 
-            this.panel1.AllowDrop = true;
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.dragDropLargeCenter;
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.tblpnl_DragDrop.SetColumnSpan(this.panel1, 2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(10, 10);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0);
-            this.panel1.Name = "panel1";
-            this.tblpnl_DragDrop.SetRowSpan(this.panel1, 2);
-            this.panel1.Size = new System.Drawing.Size(1180, 603);
-            this.panel1.TabIndex = 0;
-            this.panel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.pnl_DragDropArea_DragDrop);
-            this.panel1.DragEnter += new System.Windows.Forms.DragEventHandler(this.pnl_DragDropArea_DragEnter);
-            // 
-            // pnl_Minimize
-            // 
-            this.pnl_Minimize.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.Minimize;
-            this.pnl_Minimize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pnl_Minimize.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnl_Minimize.Location = new System.Drawing.Point(1050, 0);
-            this.pnl_Minimize.Name = "pnl_Minimize";
-            this.pnl_Minimize.Size = new System.Drawing.Size(50, 25);
-            this.pnl_Minimize.TabIndex = 4;
-            this.pnl_Minimize.Click += new System.EventHandler(this.btn_Minimize_Click);
-            this.pnl_Minimize.MouseLeave += new System.EventHandler(this.btn_Minimize_MouseLeave);
-            this.pnl_Minimize.MouseHover += new System.EventHandler(this.btn_Minimize_MouseEnter);
-            // 
-            // pnl_Maximize
-            // 
-            this.pnl_Maximize.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.Maximize;
-            this.pnl_Maximize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pnl_Maximize.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnl_Maximize.Location = new System.Drawing.Point(1100, 0);
-            this.pnl_Maximize.Name = "pnl_Maximize";
-            this.pnl_Maximize.Size = new System.Drawing.Size(50, 25);
-            this.pnl_Maximize.TabIndex = 3;
-            this.pnl_Maximize.Click += new System.EventHandler(this.btn_Expand_Click);
-            this.pnl_Maximize.MouseLeave += new System.EventHandler(this.btn_Expand_MouseLeave);
-            this.pnl_Maximize.MouseHover += new System.EventHandler(this.btn_Expand_MouseHover);
-            // 
-            // pnl_Close
-            // 
-            this.pnl_Close.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.Close;
-            this.pnl_Close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pnl_Close.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnl_Close.Location = new System.Drawing.Point(1150, 0);
-            this.pnl_Close.Name = "pnl_Close";
-            this.pnl_Close.Size = new System.Drawing.Size(50, 25);
-            this.pnl_Close.TabIndex = 2;
-            this.pnl_Close.Click += new System.EventHandler(this.btn_Close_Click);
-            this.pnl_Close.MouseLeave += new System.EventHandler(this.btn_Close_MouseLeave);
-            this.pnl_Close.MouseHover += new System.EventHandler(this.btn_Close_MouseHover);
-            // 
-            // pnl_logo
-            // 
-            this.pnl_logo.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.comau_logo;
-            this.pnl_logo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pnl_logo.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnl_logo.Location = new System.Drawing.Point(0, 0);
-            this.pnl_logo.Name = "pnl_logo";
-            this.pnl_logo.Size = new System.Drawing.Size(50, 25);
-            this.pnl_logo.TabIndex = 0;
-            // 
             // btn_reports
             // 
             this.btn_reports.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
@@ -2549,41 +2584,6 @@
             this.btn_Dashboard.Textcolor = System.Drawing.Color.White;
             this.btn_Dashboard.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
-            // panel2
-            // 
-            this.panel2.AllowDrop = true;
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.BackgroundImage = global::KPA_KPI_Analyzer.Properties.Resources.dragDropLargeCenter;
-            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.tblpnl_DashbaordPage.SetColumnSpan(this.panel2, 4);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(10, 10);
-            this.panel2.Margin = new System.Windows.Forms.Padding(10, 10, 10, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1180, 249);
-            this.panel2.TabIndex = 9;
-            this.panel2.DragDrop += new System.Windows.Forms.DragEventHandler(this.pnl_DragDropArea_DragDrop);
-            this.panel2.DragEnter += new System.Windows.Forms.DragEventHandler(this.pnl_DragDropArea_DragEnter);
-            // 
-            // tblpnl_DashbaordPage
-            // 
-            this.tblpnl_DashbaordPage.AllowDrop = true;
-            this.tblpnl_DashbaordPage.ColumnCount = 4;
-            this.tblpnl_DashbaordPage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tblpnl_DashbaordPage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tblpnl_DashbaordPage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tblpnl_DashbaordPage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tblpnl_DashbaordPage.Controls.Add(this.panel2, 0, 0);
-            this.tblpnl_DashbaordPage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tblpnl_DashbaordPage.Location = new System.Drawing.Point(0, 0);
-            this.tblpnl_DashbaordPage.Name = "tblpnl_DashbaordPage";
-            this.tblpnl_DashbaordPage.RowCount = 3;
-            this.tblpnl_DashbaordPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 41.73355F));
-            this.tblpnl_DashbaordPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28.41092F));
-            this.tblpnl_DashbaordPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30.01605F));
-            this.tblpnl_DashbaordPage.Size = new System.Drawing.Size(1200, 623);
-            this.tblpnl_DashbaordPage.TabIndex = 52;
-            // 
             // KPA_KPI_UI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2614,6 +2614,7 @@
             this.pnl_titlePanel.ResumeLayout(false);
             this.pnl_titlePanel.PerformLayout();
             this.pnl_activePage.ResumeLayout(false);
+            this.tblpnl_DashbaordPage.ResumeLayout(false);
             this.tblpnl_Filters.ResumeLayout(false);
             this.tblpnl_Filters.PerformLayout();
             this.panel27.ResumeLayout(false);
@@ -2672,7 +2673,6 @@
             this.panel3.ResumeLayout(false);
             this.tblpnl_DragDrop.ResumeLayout(false);
             this.pnl_TopUIPanel.ResumeLayout(false);
-            this.tblpnl_DashbaordPage.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

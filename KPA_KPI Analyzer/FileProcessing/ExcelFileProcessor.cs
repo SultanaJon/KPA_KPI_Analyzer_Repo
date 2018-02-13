@@ -127,14 +127,6 @@ namespace KPA_KPI_Analyzer.FileProcessing
 
                 DateTime dt = new DateTime(year, month, day);
 
-
-                if(dt < Globals.LastestExceptedPrpoReportDate)
-                {
-                    ResetFileProcessing();
-                    throw new FileProcessingExceptions.PrpoDateProcessingErrorException("The date of one or more of the PRPO reports is no longer excepted by the analyzer.");
-                }
-
-
                 // Store the date of the file within the excel file object
                 _file.Date = dt;
             }
