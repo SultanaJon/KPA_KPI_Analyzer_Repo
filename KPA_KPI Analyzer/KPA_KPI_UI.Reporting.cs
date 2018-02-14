@@ -93,6 +93,23 @@ namespace KPA_KPI_Analyzer
                     }
                     break;
                 case ReportingType.KpiComparisonReport:
+                    // Create the KPI Report
+                    try
+                    {
+                        reports.Add(_reportType, KpiComparisonReport.KpiComparisonReportInstance);
+                    }
+                    catch (ArgumentNullException)
+                    {
+                        MessageBox.Show("Argumment Null Exception was thrown.", "KPI Comparison Report Creation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    catch (ArgumentException)
+                    {
+                        // Create a new instance of a KPI Overall Report
+                        KpiComparisonReport.CreateNewInstance();
+
+                        // Assign that instance to the list of reports
+                        reports[ReportingType.KpiComparisonReport] = KpiComparisonReport.KpiComparisonReportInstance;
+                    }
                     break;
                 default:
                     break;
@@ -210,7 +227,10 @@ namespace KPA_KPI_Analyzer
                     {
                         ActivateLoadingScreen("Loading Report...");
 
-                        // TODO: Load the KPI tables before running the KPI comparison report.
+                        // Start loading the KPI table and wait for the table to finish loading before running the comparison report.
+                        Task kpaTableTask = new Task(DatabaseManager.LoadKPITables);
+                        kpaTableTask.Start();
+                        await kpaTableTask;
 
                         // The report has finished creating now run it.
                         Task calculateComparisonReportTask = new Task(() => { kpiComparisonReport.RunReport(reportingWidgetsController.ComparisonFilterOption); });
@@ -241,6 +261,9 @@ namespace KPA_KPI_Analyzer
                         // Unclock the navigation and the menu strip.
                         navigationSettings.Status = Navigation.Functionality.Unlocked;
                         ms_applicaitonMenuStrip.Enabled = true;
+
+                        // Release the KPI tables
+                        DatabaseManager.ReleaseKPITables();
                     }
                     else
                     {
@@ -374,8 +397,8 @@ namespace KPA_KPI_Analyzer
             List<string> filtersTaskResult = GetFilters(reportingWidgetsController.ComparisonFilterOption);
 
             // Finish creating the Comparison report
-            if ((reports[ReportingType.KpiComparisonReport] as KpaComparisonReport)
-                .GenerateReport(filtersTaskResult, reportingWidgetsController.ComparisonKpaOption))
+            if ((reports[ReportingType.KpiComparisonReport] as KpiComparisonReport)
+                .GenerateReport(filtersTaskResult, reportingWidgetsController.ComparisonKpiOption))
             {
                 // The report was successfuly created. Start running the report.
                 return true;

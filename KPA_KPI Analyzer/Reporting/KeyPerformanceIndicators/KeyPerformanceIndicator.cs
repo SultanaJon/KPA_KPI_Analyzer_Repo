@@ -38,7 +38,6 @@ namespace Reporting.KeyPerformanceIndicators
     {
         public static string[] options =
         {
-            "Plan - PR Release Date vs PR Creation Date",
             "Plan - Current Plan Date vs PR Plan Date",
             "Plan - (Original Plan Date - PR Fully Released Date) vs Coded Lead-Time",
             "Plan - (Current Plan Date - PR Fully Released Date) vs Coded Lead-Time",
@@ -50,6 +49,7 @@ namespace Reporting.KeyPerformanceIndicators
             "Follow Up - Receipt Date vs Current Confirmation Date",
             "Plan II - Material Due Original Planned Date",
             "Plan II - Material Due Final Planned Date",
+            "Plan II - PR Release Date vs PR Creation Date",
             "Purch II - PR Fully Released Date vs PO Creation Date",
             "Purch II - PO Creation Date vs PO Release Date",
             "Purch II - PO Release Date vs PO Confirmation Date",
