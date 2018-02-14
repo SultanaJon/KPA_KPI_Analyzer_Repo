@@ -87,7 +87,7 @@ namespace Reporting.KeyPerformanceActions.Purch
             }
             catch (Exception)
             {
-                MessageBox.Show("An argument out of range exception was thrown", "Purch -> PO Previous Release - Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An argument out of range exception was thrown", "Purch -> PO Previous Release - Comparison Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }

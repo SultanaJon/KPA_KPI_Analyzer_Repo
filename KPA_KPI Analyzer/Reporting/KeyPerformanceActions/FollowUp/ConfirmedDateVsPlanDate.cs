@@ -144,7 +144,7 @@ namespace Reporting.KeyPerformanceActions.FollowUp
             }
             catch (ArgumentOutOfRangeException)
             {
-                MessageBox.Show("An argument out of range exception was thrown", "Folow Up -> Confirmed Date vs Plan Date - Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An argument out of range exception was thrown", "Folow Up -> Confirmed Date vs Plan Date - Comparison Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }

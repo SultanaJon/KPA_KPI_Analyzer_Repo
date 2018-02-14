@@ -101,7 +101,7 @@ namespace Reporting.KeyPerformanceActions.ExcessStockStock
             }
             catch (Exception)
             {
-                MessageBox.Show("An argument out of range exception was thrown", "Excess Stock - Open Orders -> Prs Aging (Released) - Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An argument out of range exception was thrown", "Excess Stock - Open Orders -> Prs Aging (Released) - Comparison Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }

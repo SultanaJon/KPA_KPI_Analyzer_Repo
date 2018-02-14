@@ -86,7 +86,7 @@ namespace Reporting.KeyPerformanceActions.Plan
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Plan -> PRs Aging (Not Released) - Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Plan -> PRs Aging (Not Released) - Comparison Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }

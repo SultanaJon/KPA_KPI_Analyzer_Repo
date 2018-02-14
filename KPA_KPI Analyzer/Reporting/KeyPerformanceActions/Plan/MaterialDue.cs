@@ -83,7 +83,7 @@ namespace Reporting.KeyPerformanceActions.Plan
             }
             catch (Exception)
             {
-                MessageBox.Show("An argument out of range exception was thrown", "Plan -> Material Due - Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An argument out of range exception was thrown", "Plan -> Material Due - Comparison Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }

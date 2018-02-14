@@ -86,7 +86,7 @@ namespace Reporting.KeyPerformanceActions.PurchSub
             }
             catch (Exception)
             {
-                MessageBox.Show("An argument out of range exception was thrown", "Purch Sub -> PO Creation to Confirmation Entry - Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An argument out of range exception was thrown", "Purch Sub -> PO Creation to Confirmation Entry - Comparison Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }        }
 

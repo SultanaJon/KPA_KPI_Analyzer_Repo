@@ -100,7 +100,7 @@ namespace Reporting.KeyPerformanceActions.PurchTotal
             }
             catch (Exception)
             {
-                MessageBox.Show("An argument out of range exception was thrown", "Purch Total -> PR Release To Confirmation Entry - Average Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An argument out of range exception was thrown", "Purch Total -> PR Release To Confirmation Entry - Comparison Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }

@@ -87,7 +87,7 @@ namespace Reporting.KeyPerformanceActions.ExcessStockOpenOrders
             }
             catch (Exception)
             {
-                MessageBox.Show("An argument out of range exception was thrown", "Excess Stock - Open Orders -> PO Creation Thru Delivery - Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An argument out of range exception was thrown", "Excess Stock - Open Orders -> PO Creation Thru Delivery - Comparison Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }

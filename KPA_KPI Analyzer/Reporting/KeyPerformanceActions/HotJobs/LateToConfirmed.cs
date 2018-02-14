@@ -90,7 +90,7 @@ namespace Reporting.KeyPerformanceActions.HotJobs
             }
             catch (ArgumentOutOfRangeException)
             {
-                MessageBox.Show("An argument out of range exception was thrown", "Hot Jobs -> Late To Confirmed Date - Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An argument out of range exception was thrown", "Hot Jobs -> Late To Confirmed Date - Comparison Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }

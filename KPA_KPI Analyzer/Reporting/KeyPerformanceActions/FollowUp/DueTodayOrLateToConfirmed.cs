@@ -92,7 +92,7 @@ namespace Reporting.KeyPerformanceActions.FollowUp
             }
             catch (Exception)
             {
-                MessageBox.Show("An argument out of range exception was thrown", "Folow Up -> Due Today or Late to Confirmed - Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An argument out of range exception was thrown", "Folow Up -> Due Today or Late to Confirmed - Comparison Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }

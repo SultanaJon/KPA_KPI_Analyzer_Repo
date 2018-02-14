@@ -98,7 +98,7 @@ namespace Reporting.KeyPerformanceActions.PurchSub
             }
             catch (Exception)
             {
-                MessageBox.Show("An argument out of range exception was thrown", "Purch Sub -> PR Release to PO Release - Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An argument out of range exception was thrown", "Purch Sub -> PR Release to PO Release - Comparison Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }

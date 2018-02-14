@@ -89,7 +89,7 @@ namespace Reporting.KeyPerformanceActions.HotJobs
             }
             catch (Exception)
             {
-                MessageBox.Show("An argument out of range exception was thrown", "Hot Jobs -> No Confirmations - Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An argument out of range exception was thrown", "Hot Jobs -> No Confirmations - Comparison Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }

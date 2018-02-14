@@ -100,7 +100,7 @@ namespace Reporting.KeyPerformanceActions.HotJobs
             }
             catch (Exception)
             {
-                MessageBox.Show("An argument out of range exception was thrown", "Hot Jobs -> PRs (Not on PO) - Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An argument out of range exception was thrown", "Hot Jobs -> PRs (Not on PO) - Comparison Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }
