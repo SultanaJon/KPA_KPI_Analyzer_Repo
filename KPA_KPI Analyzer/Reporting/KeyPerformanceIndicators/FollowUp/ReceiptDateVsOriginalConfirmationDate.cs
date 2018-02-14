@@ -133,7 +133,6 @@ namespace Reporting.KeyPerformanceIndicators.FollowUp
                 // Get the fitlered data rows from the datatable
                 DataRow[] filteredResult = DatabaseManager.posRecCompDt.Select(FilterOptions.GetColumnNames(_filterOption, _filter));
 
-
                 foreach (DataRow dr in filteredResult)
                 {
                     //Check if the datarow meets the conditions of any applied filters.

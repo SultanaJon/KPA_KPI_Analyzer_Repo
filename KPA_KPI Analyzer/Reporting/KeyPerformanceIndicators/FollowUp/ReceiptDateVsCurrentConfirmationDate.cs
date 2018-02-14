@@ -126,7 +126,86 @@ namespace Reporting.KeyPerformanceIndicators.FollowUp
         /// <param name="_option">The filter option where this fitler was obtained</param>
         public override void RunComparison(string _filter, FilterOptions.Options _filterOption)
         {
+            double totalDays = 0;
 
+            try
+            {
+                // Remove any apostraphe's from the filter or an exception will be thrown
+                CleanFilter(ref _filter);
+
+                // Get the fitlered data rows from the datatable
+                DataRow[] filteredResult = DatabaseManager.posRecCompDt.Select(FilterOptions.GetColumnNames(_filterOption, _filter));
+
+                foreach (DataRow dr in DatabaseManager.posRecCompDt.Rows)
+                {
+                    //Check if the datarow meets the conditions of any applied filters.
+                    if (!FilterUtils.EvaluateAgainstFilters(dr))
+                    {
+                        // This datarow dos not meet the conditions of the filters applied.
+                        continue;
+                    }
+
+                    #region EVASO_BUT_NO_REC_DATE_CHECK
+
+                    string[] strLastPORecDate = (dr["Last PO Rec#Date"].ToString()).Split('/');
+                    int lastPORecDtYear = int.Parse(strLastPORecDate[2]);
+                    int lastPORecDtMonth = int.Parse(strLastPORecDate[0]);
+                    int lastPORecDtDay = int.Parse(strLastPORecDate[1]);
+
+
+                    if (lastPORecDtYear == 0 && lastPORecDtMonth == 0 && lastPORecDtDay == 0)
+                    {
+                        // this po line or po in general may have been deleted.
+                        continue;
+                    }
+
+                    #endregion
+
+
+                    DateTime lastPORecDate = new DateTime(lastPORecDtYear, lastPORecDtMonth, lastPORecDtDay);
+
+                    string[] strCurrConfDate = (dr["Latest Conf#Dt"].ToString()).Split('/');
+                    int currConfYear = int.Parse(strCurrConfDate[2]);
+                    int currConfMonth = int.Parse(strCurrConfDate[0]);
+                    int currConfDay = int.Parse(strCurrConfDate[1]);
+
+                    if (currConfYear == 0 && currConfMonth == 0 && currConfDay == 0)
+                    {
+                        UnconfirmedTotal++;
+                        template.TotalRecords++;
+                        continue;
+                    }
+                    else
+                    {
+                        currConfYear = int.Parse(strCurrConfDate[2]);
+                        currConfMonth = int.Parse(strCurrConfDate[0].TrimStart('0'));
+                        currConfDay = int.Parse(strCurrConfDate[1].TrimStart('0'));
+                    }
+
+                    DateTime currConfDate = new DateTime(currConfYear, currConfMonth, currConfDay);
+                    double elapsedDays = (lastPORecDate - currConfDate).TotalDays;
+                    totalDays += elapsedDays;
+
+                    // Apply the elpased days against the time span conditions
+                    template.TimeSpanDump(elapsedDays);
+                }
+
+
+                // Caclualte the percent unconfirmed
+                CalculatePercentUnconfirmed(UnconfirmedTotal);
+
+
+                // Calculate the average for this KPI
+                template.CalculateAverage(totalDays);
+
+                // Calculate percent favorable
+                CalculatePercentFavorable();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("An argument out of range exception was thrown", "Follow Up -> Receipt Date vs Current Confirmation Date - Comparison Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
         }
 
 

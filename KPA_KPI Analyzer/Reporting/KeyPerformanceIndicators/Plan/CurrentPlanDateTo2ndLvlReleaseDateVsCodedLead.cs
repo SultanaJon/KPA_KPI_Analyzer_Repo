@@ -79,7 +79,104 @@ namespace Reporting.KeyPerformanceIndicators.Plan
         /// <param name="_option">The filter option where this fitler was obtained</param>
         public override void RunComparison(string _filter, FilterOptions.Options _filterOption)
         {
+            double totalDays = 0;
 
+            try
+            {
+                // Remove any apostrophe's from the filter or an exception will be thrown
+                CleanFilter(ref _filter);
+
+                // Get the filtered data rows from the datatable
+                DataRow[] filteredResult = DatabaseManager.pr2ndLvlRelDateDt.Select(FilterOptions.GetColumnNames(_filterOption, _filter));
+
+                foreach (DataRow dr in filteredResult)
+                {
+                    //Check if the datarow meets the conditions of any applied filters.
+                    if (!FilterUtils.EvaluateAgainstFilters(dr))
+                    {
+                        // This datarow dos not meet the conditions of the filters applied.
+                        continue;
+                    }
+
+
+
+                    #region EVASO_BUT_NOT_FULLY_RELEASED_CHECK
+
+                    string[] strPrFullyRelDate = (dr["PR Fully Rel Date"].ToString()).Split('/');
+                    int prFullyRelYear = int.Parse(strPrFullyRelDate[2]);
+                    int prFullyRelMonth = int.Parse(strPrFullyRelDate[0]);
+                    int prFullyRelDay = int.Parse(strPrFullyRelDate[1]);
+
+
+                    if (prFullyRelYear == 0 && prFullyRelMonth == 0 && prFullyRelDay == 0)
+                    {
+                        // This PR line or PR in general might have been delted
+                        continue;
+                    }
+
+
+                    #endregion
+
+                    DateTime prFullyRelDt = new DateTime(prFullyRelYear, prFullyRelMonth, prFullyRelDay);
+
+
+                    string[] strCurrPlanDate = (dr["Rescheduling date"].ToString()).Split('/');
+                    int currPlanYear = int.Parse(strCurrPlanDate[2]);
+                    int currPlanMonth = int.Parse(strCurrPlanDate[0]);
+                    int currPlanDay = int.Parse(strCurrPlanDate[1]);
+
+                    if (currPlanYear == 0 && currPlanMonth == 0 && currPlanDay == 0)
+                    {
+                        string[] strNewCurrPlanDelDate = (dr["Delivery Date"].ToString()).Split('/');
+                        currPlanYear = int.Parse(strNewCurrPlanDelDate[2]);
+                        currPlanMonth = int.Parse(strNewCurrPlanDelDate[0]);
+                        currPlanDay = int.Parse(strNewCurrPlanDelDate[1]);
+
+                        if (currPlanYear == 0 && currPlanMonth == 0 && currPlanDay == 0)
+                        {
+                            string[] strNewCurrPlanPrDelDate = (dr["PR Delivery Date"].ToString()).Split('/');
+                            currPlanYear = int.Parse(strNewCurrPlanPrDelDate[2]);
+                            currPlanMonth = int.Parse(strNewCurrPlanPrDelDate[0].TrimStart('0'));
+                            currPlanDay = int.Parse(strNewCurrPlanPrDelDate[1].TrimStart('0'));
+                        }
+                        else
+                        {
+                            currPlanYear = int.Parse(strNewCurrPlanDelDate[2]);
+                            currPlanMonth = int.Parse(strNewCurrPlanDelDate[0].TrimStart('0'));
+                            currPlanDay = int.Parse(strNewCurrPlanDelDate[1].TrimStart('0'));
+                        }
+                    }
+                    else
+                    {
+                        currPlanYear = int.Parse(strCurrPlanDate[2]);
+                        currPlanMonth = int.Parse(strCurrPlanDate[0].TrimStart('0'));
+                        currPlanDay = int.Parse(strCurrPlanDate[1].TrimStart('0'));
+                    }
+
+                    DateTime currPlanDate = new DateTime(currPlanYear, currPlanMonth, currPlanDay);
+                    int commCodedLeadTime = int.Parse(dr["Pl# Deliv# Time"].ToString());
+
+                    double elapsedDays = (currPlanDate - prFullyRelDt).TotalDays;
+                    elapsedDays -= commCodedLeadTime;
+                    totalDays += elapsedDays;
+
+
+                    // Apply the elapsed days against the time span dump
+                    template.TimeSpanDump(elapsedDays);
+                }
+
+
+                // Calculate the average for this KPI
+                template.CalculateAverage(totalDays);
+
+                // Calculate the percent favorable for this KPI
+                CalculatePercentFavorable();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("An argument out of range exception was thrown", "KPI - Plan -> (Current Plan Date - 2nd Lvl Release Date) vs Coded Lead-Time - Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
         }
 
 
