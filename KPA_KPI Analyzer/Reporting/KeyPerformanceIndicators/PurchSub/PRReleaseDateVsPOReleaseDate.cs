@@ -111,7 +111,7 @@ namespace Reporting.KeyPerformanceIndicators.PurchSub
             }
             catch (Exception)
             {
-                MessageBox.Show("An argument out of range exception was thrown", "KPI - Purch Sub -> PR Release Date vs PO Release Date - Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An argument out of range exception was thrown", "KPI - Purch Sub -> PR Release Date vs PO Release Date - Comparison Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }

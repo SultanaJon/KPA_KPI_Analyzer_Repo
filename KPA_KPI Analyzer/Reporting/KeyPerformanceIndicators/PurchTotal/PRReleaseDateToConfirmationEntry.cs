@@ -167,7 +167,7 @@ namespace Reporting.KeyPerformanceIndicators.PurchTotal
             }
             catch (Exception)
             {
-                MessageBox.Show("An argument out of range exception was thrown", "KPI - Purch Total -> PR Release to Confirmed Entry Date - Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An argument out of range exception was thrown", "KPI - Purch Total -> PR Release to Confirmed Entry Date - Comparison Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }

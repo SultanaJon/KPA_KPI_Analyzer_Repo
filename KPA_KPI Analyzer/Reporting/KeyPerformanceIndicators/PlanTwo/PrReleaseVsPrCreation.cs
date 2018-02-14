@@ -100,7 +100,7 @@ namespace Reporting.KeyPerformanceIndicators.PlanTwo
             }
             catch (Exception)
             {
-                MessageBox.Show("An argument out of range exception was thrown", "KPI - Plan II -> PR Release Date vs PR Creation Date - Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An argument out of range exception was thrown", "KPI - Plan II -> PR Release Date vs PR Creation Date - Comparison Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }

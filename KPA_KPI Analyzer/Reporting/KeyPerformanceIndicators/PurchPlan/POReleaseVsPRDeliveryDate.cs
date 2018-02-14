@@ -101,7 +101,7 @@ namespace Reporting.KeyPerformanceIndicators.PurchPlan
             }
             catch (Exception)
             {
-                MessageBox.Show("An argument out of range exception was thrown", "KPI - PUrch/Plan -> PO Release vs PR Delivery Date - Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An argument out of range exception was thrown", "KPI - PUrch/Plan -> PO Release vs PR Delivery Date - Comparison Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }

@@ -82,7 +82,7 @@ namespace Reporting.KeyPerformanceIndicators.Other
             }
             catch (Exception)
             {
-                MessageBox.Show("An argument out of range exception was thrown", "Other -> Hot Job PRs - Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An argument out of range exception was thrown", "Other -> Hot Job PRs - Comparison Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }

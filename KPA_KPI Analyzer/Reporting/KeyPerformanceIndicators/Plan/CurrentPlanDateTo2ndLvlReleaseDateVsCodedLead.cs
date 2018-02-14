@@ -174,7 +174,7 @@ namespace Reporting.KeyPerformanceIndicators.Plan
             }
             catch (Exception)
             {
-                MessageBox.Show("An argument out of range exception was thrown", "KPI - Plan -> (Current Plan Date - 2nd Lvl Release Date) vs Coded Lead-Time - Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An argument out of range exception was thrown", "KPI - Plan -> (Current Plan Date - 2nd Lvl Release Date) vs Coded Lead-Time - Comparison Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }

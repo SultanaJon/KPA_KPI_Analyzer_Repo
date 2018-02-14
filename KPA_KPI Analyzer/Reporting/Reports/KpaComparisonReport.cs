@@ -3,7 +3,6 @@ using Reporting.KeyPerformanceActions;
 using Reporting.TimeSpans.Templates;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Reporting.Reports

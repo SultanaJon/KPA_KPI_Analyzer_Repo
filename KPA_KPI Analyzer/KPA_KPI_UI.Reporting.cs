@@ -210,6 +210,8 @@ namespace KPA_KPI_Analyzer
                     {
                         ActivateLoadingScreen("Loading Report...");
 
+                        // TODO: Load the KPI tables before running the KPI comparison report.
+
                         // The report has finished creating now run it.
                         Task calculateComparisonReportTask = new Task(() => { kpiComparisonReport.RunReport(reportingWidgetsController.ComparisonFilterOption); });
                         calculateComparisonReportTask.Start();
@@ -260,37 +262,37 @@ namespace KPA_KPI_Analyzer
         /// </summary>
         /// <param name="_filterOption">The filter being requested.</param>
         /// <returns>The unique list of filters.</returns>
-        private List<string> GetFilters(Filters.FilterOptions.Options _filterOption)
+        private List<string> GetFilters(FilterOptions.Options _filterOption)
         {
             List<string> tempFilterList = new List<string>();
 
             switch (_filterOption)
             {
-                case Filters.FilterOptions.Options.ProjectNumber:
+                case FilterOptions.Options.ProjectNumber:
                     return new List<string>(FilterManager.GetUniqueProjectNumber());
-                case Filters.FilterOptions.Options.WBSElement:
+                case FilterOptions.Options.WBSElement:
                     return new List<string>(FilterManager.GetUniqueWbsElement());
-                case Filters.FilterOptions.Options.Material:
+                case FilterOptions.Options.Material:
                     return new List<string>(FilterManager.GetUniqueMaterial());
-                case Filters.FilterOptions.Options.MaterialGroup:
+                case FilterOptions.Options.MaterialGroup:
                     return new List<string>(FilterManager.GetUniqueMaterialGroup());
-                case Filters.FilterOptions.Options.Vendor:
+                case FilterOptions.Options.Vendor:
                     return new List<string>(FilterManager.GetUniqueVendor());
-                case Filters.FilterOptions.Options.VendorDescription:
+                case FilterOptions.Options.VendorDescription:
                     return  new List<string>(FilterManager.GetUniqueVendorDescription());
-                case Filters.FilterOptions.Options.PRPurchaseGroup:
+                case FilterOptions.Options.PRPurchaseGroup:
                     return  new List<string>(FilterManager.GetUniquePrPurchaseGroup());
-                case Filters.FilterOptions.Options.POPurchaseGroup:
+                case FilterOptions.Options.POPurchaseGroup:
                     return  new List<string>(FilterManager.GetUniquePoPurchaseGroup());
-                case Filters.FilterOptions.Options.IRSuppName:
+                case FilterOptions.Options.IRSuppName:
                     return  new List<string>(FilterManager.GetUniqueIrSuppName());
-                case Filters.FilterOptions.Options.DsrdSuppName:
+                case FilterOptions.Options.DsrdSuppName:
                     return  new List<string>(FilterManager.GetUniqueDsrdSuppName());
-                case Filters.FilterOptions.Options.CommodityCategory:
+                case FilterOptions.Options.CommodityCategory:
                     return  new List<string>(FilterManager.GetUniqueCommodityCategory());
-                case Filters.FilterOptions.Options.PODocumentType:
+                case FilterOptions.Options.PODocumentType:
                     return  new List<string>(FilterManager.GetUniquePoDocumentType());
-                case Filters.FilterOptions.Options.ProductionOrderMaterial:
+                case FilterOptions.Options.ProductionOrderMaterial:
                     return  new List<string>(FilterManager.GetUniqueProductionOrderMaterial());
             }
 

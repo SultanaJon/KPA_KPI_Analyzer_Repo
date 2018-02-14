@@ -102,7 +102,7 @@ namespace Reporting.KeyPerformanceIndicators.Other
             }
             catch (Exception)
             {
-                MessageBox.Show("An argument out of range exception was thrown", "Other -> PR Value vs PO Value- Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An argument out of range exception was thrown", "Other -> PR Value vs PO Value- Comparison Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }

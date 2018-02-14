@@ -99,7 +99,7 @@ namespace Reporting.KeyPerformanceIndicators.PurchTwo
             }
             catch (Exception)
             {
-                MessageBox.Show("An argument out of range exception was thrown", "KPI - Purch II -> PR 2nd Lvl Release Date vs PO Creation Date - Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An argument out of range exception was thrown", "KPI - Purch II -> PR 2nd Lvl Release Date vs PO Creation Date - Comparison Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }
