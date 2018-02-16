@@ -76,6 +76,8 @@ namespace KPA_KPI_Analyzer
                         }
                         else
                         {
+                            dt = GetLoadedUsPrpoReportDate();
+                            topHandleBarModel.ReportGenerationDate = dt.ToString("MMMM dd, yyyy");
                             BeginDataLoadProcess();
                         }
                     }
@@ -123,6 +125,8 @@ namespace KPA_KPI_Analyzer
                         }
                         else
                         {
+                            dt = GetLoadedUsPrpoReportDate();
+                            topHandleBarModel.ReportGenerationDate = dt.ToString("MMMM dd, yyyy");
                             BeginDataLoadProcess();
                         }
                     }

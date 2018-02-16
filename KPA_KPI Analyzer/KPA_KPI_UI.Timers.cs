@@ -72,8 +72,8 @@ namespace KPA_KPI_Analyzer
         /// Once the data is loaded into the application this timer will begin. This timer event will begin
         /// running condition checks and then making a call to remove the data that is not needed from the database.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The data removal timer</param>
+        /// <param name="e">The tick event of the timer</param>
         private void DataRemovalTimer_Tick(object sender, EventArgs e)
         {
             if (DatabaseDataRemovalUtils.DataRemoved)
@@ -101,6 +101,11 @@ namespace KPA_KPI_Analyzer
 
 
 
+
+
+        /// <summary>
+        /// Loads the overall data including the KPA and KPI data and saves it to an external JSON file.
+        /// </summary>
         private async void LoadOverallData()
         {
             // Lock the navigation functionality

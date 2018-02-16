@@ -24,7 +24,7 @@ using System.Windows.Forms;
 
 namespace KPA_KPI_Analyzer
 {
-    public partial class KPA_KPI_UI : Form
+	public partial class KPA_KPI_UI : Form
 	{
 		#region FIELD DATA
 
@@ -660,6 +660,8 @@ namespace KPA_KPI_Analyzer
 								}
 								else
 								{
+									dt = GetLoadedUsPrpoReportDate();
+									topHandleBarModel.ReportGenerationDate = dt.ToString("MMMM dd, yyyy");
 									BeginDataLoadProcess();
 								}
 							}
@@ -712,6 +714,8 @@ namespace KPA_KPI_Analyzer
 								}
 								else
 								{
+									dt = GetLoadedUsPrpoReportDate();
+									topHandleBarModel.ReportGenerationDate = dt.ToString("MMMM dd, yyyy");
 									BeginDataLoadProcess();
 								}
 							}

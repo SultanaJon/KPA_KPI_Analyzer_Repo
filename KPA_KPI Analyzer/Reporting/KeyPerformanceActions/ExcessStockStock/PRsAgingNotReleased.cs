@@ -52,7 +52,7 @@ namespace Reporting.KeyPerformanceActions.ExcessStockStock
                 CleanFilter(ref _filter);
 
                 // Get the fitlered data rows from the datatable
-                DataRow[] filteredResult = dt.Select(FilterOptions.GetColumnNames(_filterOption, _filter));
+                DataRow[] filteredResult = dt.Select(FilterOptions.GetSelectStatement(_filterOption, _filter));
 
                 foreach (DataRow dr in filteredResult)
                 {

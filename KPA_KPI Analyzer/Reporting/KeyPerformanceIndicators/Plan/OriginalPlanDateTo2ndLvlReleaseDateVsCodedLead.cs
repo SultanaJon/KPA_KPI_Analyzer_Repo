@@ -86,7 +86,7 @@ namespace Reporting.KeyPerformanceIndicators.Plan
                 CleanFilter(ref _filter);
 
                 // Get the filtered data rows from the datatable
-                DataRow[] filteredResult = DatabaseManager.pr2ndLvlRelDateDt.Select(FilterOptions.GetColumnNames(_filterOption, _filter));
+                DataRow[] filteredResult = DatabaseManager.pr2ndLvlRelDateDt.Select(FilterOptions.GetSelectStatement(_filterOption, _filter));
 
                 foreach (DataRow dr in filteredResult)
                 {

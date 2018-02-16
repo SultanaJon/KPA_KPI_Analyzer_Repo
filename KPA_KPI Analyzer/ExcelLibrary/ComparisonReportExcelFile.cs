@@ -4,18 +4,45 @@ namespace KPA_KPI_Analyzer.ExcelLibrary
 {
     public sealed class ComparisonReportExcelFile : ExcelFile
     {
+        /// <summary>
+        /// The filter the user is reunning the report against
+        /// </summary>
         public string Filter { get; set; }
+
+
+        /// <summary>
+        /// The performance the category falls under (either KPA or KPI)
+        /// </summary>
         public string Performance { get; set; }
+
+
+        /// <summary>
+        /// The section the category falls under
+        /// </summary>
         public string Section { get; set; }
+
+
+        /// <summary>
+        /// The category the user is running the report against
+        /// </summary>
         public string Category { get; set; }
+
+
+        /// <summary>
+        /// The country the data is from
+        /// </summary>
         public string Country { get; set; }
+
+
+        /// <summary>
+        /// The date the comparison report was ran (this will always be today's date)
+        /// </summary>
         public string ReportGenerationDate { get; set; }
 
 
 
-
         /// <summary>
-        /// 
+        /// The file paths to all of the templates
         /// </summary>
         private static string[] templateFilePaths =
         {
@@ -30,7 +57,7 @@ namespace KPA_KPI_Analyzer.ExcelLibrary
 
 
         /// <summary>
-        /// 
+        /// The template type the category belongs to
         /// </summary>
         public TemplateTypes.Template ChosenTemplate { get; private set; }
 
@@ -57,7 +84,9 @@ namespace KPA_KPI_Analyzer.ExcelLibrary
 
 
 
-
+        /// <summary>
+        /// The cell positions of the report information
+        /// </summary>
         public enum ReportInformationCellPosition
         {
             FilterRow = 4,
@@ -77,9 +106,9 @@ namespace KPA_KPI_Analyzer.ExcelLibrary
         /// </summary>
         public enum TemplateOneCellPosition : byte
         {
-            RowStart = 12,
+            RowStart =    12,
             ColumnStart = 2,
-            ColumnEnd = 12
+            ColumnEnd =   12
         }
 
         /// <summary>
@@ -123,12 +152,10 @@ namespace KPA_KPI_Analyzer.ExcelLibrary
         }
 
 
-
-
         /// <summary>
-        /// 
+        /// Custom Constructor
         /// </summary>
-        /// <param name="_templateStructure"></param>
+        /// <param name="_templateStructure">The template structure being targeted (based on the category chosen for the report)</param>
         public ComparisonReportExcelFile(TemplateTypes.Template _templateStructure)
         {
             SheetName = "Sheet1";

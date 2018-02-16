@@ -51,7 +51,7 @@ namespace Reporting.KeyPerformanceIndicators.PlanTwo
                 CleanFilter(ref _filter);
 
                 // Get the filtered data rows from the datatable
-                DataRow[] filteredResult = DatabaseManager.prFullyReleasedDt.Select(FilterOptions.GetColumnNames(_filterOption, _filter));
+                DataRow[] filteredResult = DatabaseManager.prFullyReleasedDt.Select(FilterOptions.GetSelectStatement(_filterOption, _filter));
 
                 foreach (DataRow dr in filteredResult)
                 {

@@ -125,7 +125,7 @@ namespace Reporting.Reports
         /// <summary>
         /// Deserializes the list of actions(strings) back into the list of actions for the report
         /// </summary>
-        /// <param name="results">the list of action parsed from the json  file</param>
+        /// <param name="results">the list of action parsed from the json file</param>
         private void DeserializeActions(string[] results)
         {
             foreach(KpaOption option in Enum.GetValues(typeof(KpaOption)))

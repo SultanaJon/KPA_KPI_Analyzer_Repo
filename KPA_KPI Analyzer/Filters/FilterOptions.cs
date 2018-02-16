@@ -54,7 +54,7 @@ namespace Filters
         /// <param name="_option"></param>
         /// <param name="filter"></param>
         /// <returns></returns>
-        public static string GetColumnNames(Options _option, string filter)
+        public static string GetSelectStatement(Options _option, string filter)
         {
             string result = string.Empty;
 
@@ -62,7 +62,7 @@ namespace Filters
             {
                 case Options.ProjectNumber:
                     if (filter == "[Blanks]")
-                        result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.ProjectNUm_ProdOrdWbs] + "] IS NULL OR [" + FIlterColumns.filterColumns[(int)FilterColumn.ProjectNum_WBS_Element] + "] IS NULL";
+                        result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.ProjectNUm_ProdOrdWbs] + "] IS NULL AND [" + FIlterColumns.filterColumns[(int)FilterColumn.ProjectNum_WBS_Element] + "] IS NULL";
                     else
                         result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.ProjectNUm_ProdOrdWbs] + "] LIKE " + "'%" + filter + "%' OR [" + FIlterColumns.filterColumns[(int)FilterColumn.ProjectNum_WBS_Element] + "] LIKE '%" + filter + "%'";
                     break;

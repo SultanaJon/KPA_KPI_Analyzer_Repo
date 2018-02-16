@@ -148,8 +148,8 @@ namespace KPA_KPI_Analyzer.ExcelLibrary
                     // Get the template data from the KPA
                     List<string> templateData = GatherKpaTemplateData(filter);
 
-                    if (kpiContent[filter] is IFavorable)
-                        templateData.Add(string.Format("{0:n0}", (kpiContent[filter] as IFavorable).PercentFavorable + "%"));
+                    if (kpaContent[filter] is IFavorable)
+                        templateData.Add(string.Format("{0:n0}", (kpaContent[filter] as IFavorable).PercentFavorable + "%"));
 
                     // Remove any unwanted characters
                     CleanData(ref templateData);

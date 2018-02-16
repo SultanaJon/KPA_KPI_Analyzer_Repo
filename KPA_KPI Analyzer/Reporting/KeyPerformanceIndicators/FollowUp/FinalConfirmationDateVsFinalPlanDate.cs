@@ -127,7 +127,7 @@ namespace Reporting.KeyPerformanceIndicators.FollowUp
                 CleanFilter(ref _filter);
 
                 // Get the fitlered data rows from the datatable
-                DataRow[] filteredResult = DatabaseManager.posRecCompDt.Select(FilterOptions.GetColumnNames(_filterOption, _filter));
+                DataRow[] filteredResult = DatabaseManager.posRecCompDt.Select(FilterOptions.GetSelectStatement(_filterOption, _filter));
 
 
                 foreach (DataRow dr in DatabaseManager.posRecCompDt.Rows)
