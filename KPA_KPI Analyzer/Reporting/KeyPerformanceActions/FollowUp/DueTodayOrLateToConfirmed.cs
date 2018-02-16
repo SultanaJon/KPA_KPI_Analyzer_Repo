@@ -113,7 +113,7 @@ namespace Reporting.KeyPerformanceActions.FollowUp
                 foreach (DataRow dr in dt.Rows)
                 {
                     //Check if the datarow meets the conditions of any applied filters.
-                    if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
+                    if (!FilterUtils.EvaluateAgainstFilters(dr))
                     {
                         // This datarow dos not meet the conditions of the filters applied.
                         continue;

@@ -62,7 +62,7 @@ namespace Filters
             {
                 case Options.ProjectNumber:
                     if (filter == "[Blanks]")
-                        result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.ProjectNUm_ProdOrdWbs] + "] IS NULL AND [" + FIlterColumns.filterColumns[(int)FilterColumn.ProjectNum_WBS_Element] + "] IS NULL";
+                        result = "ISNULL([" + FIlterColumns.filterColumns[(int)FilterColumn.ProjectNUm_ProdOrdWbs] + "], '') = '' AND ISNULL([" + FIlterColumns.filterColumns[(int)FilterColumn.ProjectNum_WBS_Element] + "], '') = ''";
                     else
                         result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.ProjectNUm_ProdOrdWbs] + "] LIKE " + "'%" + filter + "%' OR [" + FIlterColumns.filterColumns[(int)FilterColumn.ProjectNum_WBS_Element] + "] LIKE '%" + filter + "%'";
                     break;

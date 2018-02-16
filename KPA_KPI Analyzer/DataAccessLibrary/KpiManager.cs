@@ -27,7 +27,7 @@ namespace DataAccessLibrary
                 }
                 catch (InvalidOperationException)
                 {
-                    MessageBox.Show("Invalid Operation Exception was thrown", "Get All POs Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Operation Exception was thrown", "KPI - Get All POs Error", MessageBoxButtons.OK);
                 }
 
                 return dt;
@@ -53,7 +53,7 @@ namespace DataAccessLibrary
                 }
                 catch (InvalidOperationException)
                 {
-                    MessageBox.Show("Invalid Operation Exception was thrown", "Get PO Lines Unconfirmed Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Operation Exception was thrown", "KPI - Get PO Lines Unconfirmed Error", MessageBoxButtons.OK);
                 }
 
                 return dt;
@@ -78,7 +78,7 @@ namespace DataAccessLibrary
                 }
                 catch (InvalidOperationException)
                 {
-                    MessageBox.Show("Invalid Operation Exception was thrown", "Get PO Lines Received Complete Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Operation Exception was thrown", "KPI - Get PO Lines Received Complete Error", MessageBoxButtons.OK);
                 }
 
                 return dt;
@@ -103,7 +103,7 @@ namespace DataAccessLibrary
                 }
                 catch (InvalidOperationException)
                 {
-                    MessageBox.Show("Invalid Operation Exception was thrown", "Get Unconfirmed Received Complete PO Lines Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Operation Exception was thrown", "KPI - Get Unconfirmed Received Complete PO Lines Error", MessageBoxButtons.OK);
                 }
 
                 return dt;
@@ -128,7 +128,7 @@ namespace DataAccessLibrary
                 }
                 catch (InvalidOperationException)
                 {
-                    MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Released to the Second Level Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Operation Exception was thrown", "KPI - Get PRs Released to the Second Level Error", MessageBoxButtons.OK);
                 }
 
                 return dt;
@@ -154,7 +154,7 @@ namespace DataAccessLibrary
                 }
                 catch (InvalidOperationException)
                 {
-                    MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Fully Released Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Operation Exception was thrown", "KPI - Get PRs Fully Released Error", MessageBoxButtons.OK);
                 }
 
                 return dt;

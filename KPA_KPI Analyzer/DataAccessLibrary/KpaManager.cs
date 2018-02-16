@@ -28,7 +28,7 @@ namespace DataAccessLibrary
                 }
                 catch (InvalidOperationException)
                 {
-                    MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Operation Exception was thrown", "Plan - Get PRs Aging Not Released Error", MessageBoxButtons.OK);
                 }
 
                 return dt;
@@ -54,7 +54,7 @@ namespace DataAccessLibrary
                 }
                 catch (InvalidOperationException)
                 {
-                    MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Operation Exception was thrown", "Plan - Get Material Due Error", MessageBoxButtons.OK);
                 }
 
                 return dt;
@@ -84,7 +84,7 @@ namespace DataAccessLibrary
                 }
                 catch (InvalidOperationException)
                 {
-                    MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Operation Exception was thrown", "Purch - Get PRs Aging Released Error", MessageBoxButtons.OK);
                 }
 
                 return dt;
@@ -111,7 +111,7 @@ namespace DataAccessLibrary
                 }
                 catch (InvalidOperationException)
                 {
-                    MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Operation Exception was thrown", "Purch - Get PRs Aging Not Released Error", MessageBoxButtons.OK);
                 }
 
                 return dt;
@@ -140,7 +140,7 @@ namespace DataAccessLibrary
                 }
                 catch (InvalidOperationException)
                 {
-                    MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Operation Exception was thrown", "Purch - Get PRs Aging Not Released Error", MessageBoxButtons.OK);
                 }
 
                 return dt;
@@ -169,7 +169,7 @@ namespace DataAccessLibrary
                 }
                 catch (InvalidOperationException)
                 {
-                    MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Operation Exception was thrown", "Purch - Get PRs Aging Not Released Error", MessageBoxButtons.OK);
                 }
 
                 return dt;
@@ -199,7 +199,7 @@ namespace DataAccessLibrary
                 }
                 catch (InvalidOperationException)
                 {
-                    MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Operation Exception was thrown", "Purch Sub - Get PRs Aging Not Released Error", MessageBoxButtons.OK);
                 }
 
                 return dt;
@@ -225,7 +225,7 @@ namespace DataAccessLibrary
                 }
                 catch (InvalidOperationException)
                 {
-                    MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Operation Exception was thrown", "Purch Sub - Get PRs Aging Not Released Error", MessageBoxButtons.OK);
                 }
 
                 return dt;
@@ -255,7 +255,7 @@ namespace DataAccessLibrary
                 }
                 catch (InvalidOperationException)
                 {
-                    MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Operation Exception was thrown", "Purch Total - Get PRs Aging Not Released Error", MessageBoxButtons.OK);
                 }
 
                 return dt;
@@ -285,7 +285,7 @@ namespace DataAccessLibrary
                 }
                 catch (InvalidOperationException)
                 {
-                    MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Operation Exception was thrown", "Follow Up - Get PRs Aging Not Released Error", MessageBoxButtons.OK);
                 }
 
                 return dt;
@@ -310,7 +310,7 @@ namespace DataAccessLibrary
                 }
                 catch (InvalidOperationException)
                 {
-                    MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Operation Exception was thrown", "Follow Up - Get PRs Aging Not Released Error", MessageBoxButtons.OK);
                 }
 
                 return dt;
@@ -336,7 +336,7 @@ namespace DataAccessLibrary
                 }
                 catch (InvalidOperationException)
                 {
-                    MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Operation Exception was thrown", "Follow Up - Get PRs Aging Not Released Error", MessageBoxButtons.OK);
                 }
 
                 return dt;
@@ -367,7 +367,7 @@ namespace DataAccessLibrary
                 }
                 catch (InvalidOperationException)
                 {
-                    MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Operation Exception was thrown", "Hot Jobs - Get PRs Aging Not Released Error", MessageBoxButtons.OK);
                 }
 
                 return dt;
@@ -395,7 +395,7 @@ namespace DataAccessLibrary
                 }
                 catch (InvalidOperationException)
                 {
-                    MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Operation Exception was thrown", "Hot Jobs - Get PRs Aging Not Released Error", MessageBoxButtons.OK);
                 }
 
                 return dt;
@@ -422,7 +422,7 @@ namespace DataAccessLibrary
                 }
                 catch (InvalidOperationException)
                 {
-                    MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Operation Exception was thrown", "Hot Jobs - Get PRs Aging Not Released Error", MessageBoxButtons.OK);
                 }
 
                 return dt;
@@ -454,7 +454,7 @@ namespace DataAccessLibrary
                 }
                 catch (InvalidOperationException)
                 {
-                    MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Operation Exception was thrown", "Excess Stock (Stock) - Get PRs Aging Not Released Error", MessageBoxButtons.OK);
                 }
 
                 return dt;
@@ -481,7 +481,7 @@ namespace DataAccessLibrary
                 }
                 catch (InvalidOperationException)
                 {
-                    MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Operation Exception was thrown", "Excess Stock (Stock) - Get PRs Aging Not Released Error", MessageBoxButtons.OK);
                 }
 
                 return dt;
@@ -510,7 +510,7 @@ namespace DataAccessLibrary
                 }
                 catch (InvalidOperationException)
                 {
-                    MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Operation Exception was thrown", "Excess Stock (Stock) - Get PRs Aging Not Released Error", MessageBoxButtons.OK);
                 }
 
                 return dt;
@@ -542,7 +542,7 @@ namespace DataAccessLibrary
                 }
                 catch (InvalidOperationException)
                 {
-                    MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Operation Exception was thrown", "Excess Stock (Open Orders) - Get PRs Aging Not Released Error", MessageBoxButtons.OK);
                 }
 
                 return dt;
@@ -569,7 +569,7 @@ namespace DataAccessLibrary
                 }
                 catch (InvalidOperationException)
                 {
-                    MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Operation Exception was thrown", "Excess Stock (Open Orders) - Get PRs Aging Not Released Error", MessageBoxButtons.OK);
                 }
 
                 return dt;
@@ -597,7 +597,7 @@ namespace DataAccessLibrary
                 }
                 catch (InvalidOperationException)
                 {
-                    MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Operation Exception was thrown", "Excess Stock (Open Orders) - Get PRs Aging Not Released Error", MessageBoxButtons.OK);
                 }
 
                 return dt;
@@ -629,7 +629,7 @@ namespace DataAccessLibrary
                 }
                 catch (InvalidOperationException)
                 {
-                    MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Operation Exception was thrown", "Current Plan vs Actual - Get PRs Aging Not Released Error", MessageBoxButtons.OK);
                 }
 
                 return dt;
@@ -656,7 +656,7 @@ namespace DataAccessLibrary
                 }
                 catch (InvalidOperationException)
                 {
-                    MessageBox.Show("Invalid Operation Exception was thrown", "Get PRs Aging Not Released Error", MessageBoxButtons.OK);
+                    MessageBox.Show("Invalid Operation Exception was thrown", "Current Plan vs Actual - Get PRs Aging Not Released Error", MessageBoxButtons.OK);
                 }
 
                 return dt;
