@@ -9,6 +9,12 @@ namespace DataAccessLibrary
     {
         public static class PlanQueries
         {
+
+
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             public static DataTable GetPrsAgingNotReleased()
             {
                 DataTable dt = new DataTable();
@@ -36,6 +42,12 @@ namespace DataAccessLibrary
 
 
 
+
+
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             public static DataTable GetMaterialDue()
             {
                 DataTable dt = new DataTable();
@@ -64,7 +76,10 @@ namespace DataAccessLibrary
 
         public static class PurchQueries
         {
-
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             public static DataTable GetPrsAgingReleased()
             {
                 DataTable dt = new DataTable();
@@ -91,6 +106,12 @@ namespace DataAccessLibrary
             }
 
 
+
+
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             public static DataTable GetPoFirstRelease()
             {
                 DataTable dt = new DataTable();
@@ -118,6 +139,12 @@ namespace DataAccessLibrary
             }
 
 
+
+
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             public static DataTable GetPoPrevRelease()
             {
                 DataTable dt = new DataTable();
@@ -147,6 +174,12 @@ namespace DataAccessLibrary
             }
 
 
+
+
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             public static DataTable GetNoConfirmations()
             {
                 DataTable dt = new DataTable();
@@ -180,7 +213,10 @@ namespace DataAccessLibrary
 
         public static class PurchSubQueries
         {
-
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             public static DataTable GetPrReleaseToPoRelease()
             {
                 DataTable dt = new DataTable();
@@ -205,6 +241,12 @@ namespace DataAccessLibrary
                 return dt;
             }
 
+
+
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             public static DataTable GetPoCreationToConfirmationEntry()
             {
                 DataTable dt = new DataTable();
@@ -236,6 +278,10 @@ namespace DataAccessLibrary
 
         public static class PurchTotalQueries
         {
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             public static DataTable GetPrReleaseToConfirmationEntry()
             {
                 DataTable dt = new DataTable();
@@ -266,6 +312,10 @@ namespace DataAccessLibrary
 
         public static class FollowUpQueries
         {
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             public static DataTable GetConfirmedDateVsPlanDate()
             {
                 DataTable dt = new DataTable();
@@ -291,6 +341,12 @@ namespace DataAccessLibrary
                 return dt;
             }
 
+
+
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             public static DataTable GetConfrimedDateForUpcomingDeliveries()
             {
                 DataTable dt = new DataTable();
@@ -316,6 +372,12 @@ namespace DataAccessLibrary
                 return dt;
             }
 
+
+
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             public static DataTable GetDueTodayOrLateToConfirmed()
             {
                 DataTable dt = new DataTable();
@@ -347,7 +409,10 @@ namespace DataAccessLibrary
 
         public static class HotJobsQueries
         {
-
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             public static DataTable GetPrsNotOnPo()
             {
                 DataTable dt = new DataTable();
@@ -373,6 +438,12 @@ namespace DataAccessLibrary
                 return dt;
             }
 
+
+
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             public static DataTable GetNoConfirmations()
             {
                 DataTable dt = new DataTable();
@@ -401,6 +472,12 @@ namespace DataAccessLibrary
                 return dt;
             }
 
+
+
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             public static DataTable GetLateToConfirmed()
             {
                 DataTable dt = new DataTable();
@@ -432,7 +509,10 @@ namespace DataAccessLibrary
 
         public static class ExcessStockStockQueries
         {
-
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             public static DataTable GetPrsAgingNotReleased()
             {
                 DataTable dt = new DataTable();
@@ -461,6 +541,12 @@ namespace DataAccessLibrary
             }
 
 
+
+
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             public static DataTable GetPrsAgingReleased()
             {
                 DataTable dt = new DataTable();
@@ -489,6 +575,11 @@ namespace DataAccessLibrary
 
 
 
+
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             public static DataTable GetPoCreationThruDelivery()
             {
                 DataTable dt = new DataTable();
@@ -521,6 +612,10 @@ namespace DataAccessLibrary
 
         public static class ExcessStockOpenOrdersQueries
         {
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             public static DataTable GetPrsAgingNotReleased()
             {
                 DataTable dt = new DataTable();
@@ -549,6 +644,12 @@ namespace DataAccessLibrary
             }
 
 
+
+
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             public static DataTable GetPrsAgingReleased()
             {
                 DataTable dt = new DataTable();
@@ -576,6 +677,12 @@ namespace DataAccessLibrary
             }
 
 
+
+
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             public static DataTable GetPoCreationThruDelivery()
             {
                 DataTable dt = new DataTable();
@@ -608,7 +715,10 @@ namespace DataAccessLibrary
 
         public static class CurrentPlanVsActualQueries
         {
-
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             public static DataTable GetCurrentPlanDateVsCurrentConfirmationDate()
             {
                 DataTable dt = new DataTable();
@@ -635,6 +745,12 @@ namespace DataAccessLibrary
                 return dt;
             }
 
+
+
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             public static DataTable GetCurrentPlanDateVsCurrentConfirmationDateForHotJobs()
             {
                 DataTable dt = new DataTable();

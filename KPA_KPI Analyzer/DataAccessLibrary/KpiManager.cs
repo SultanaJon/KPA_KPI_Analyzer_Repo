@@ -9,6 +9,10 @@ namespace DataAccessLibrary
     {
         public static class KpiQueries
         {
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             public static DataTable GetAllPOs()
             {
                 DataTable dt = new DataTable();
@@ -33,6 +37,13 @@ namespace DataAccessLibrary
                 return dt;
             }
 
+
+
+
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             public static DataTable GetPoLinesUnconfirmed()
             {
                 DataTable dt = new DataTable();
@@ -59,6 +70,12 @@ namespace DataAccessLibrary
                 return dt;
             }
 
+
+
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             public static DataTable GetPoLinesReceivedComplete()
             {
                 DataTable dt = new DataTable();
@@ -84,6 +101,12 @@ namespace DataAccessLibrary
                 return dt;
             }
 
+
+
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             public static DataTable GetUnconfirmedReceivedCompletePoLines()
             {
                 DataTable dt = new DataTable();
@@ -109,6 +132,12 @@ namespace DataAccessLibrary
                 return dt;
             }
 
+
+
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             public static DataTable GetPr2ndLevelRelease()
             {
                 DataTable dt = new DataTable();
@@ -133,8 +162,14 @@ namespace DataAccessLibrary
 
                 return dt;
             }
+            
 
 
+
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             public static DataTable GetFullyReleasedPRs()
             {
                 DataTable dt = new DataTable();
@@ -161,6 +196,12 @@ namespace DataAccessLibrary
             }
 
 
+
+
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <returns></returns>
             public static DataTable GetAllData()
             {
                 DataTable dt = new DataTable();
