@@ -94,10 +94,10 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         {
             
             SetGraphColor();
-            DefaultButtonTextColor = System.Drawing.Color.DarkGray;
+            DefaultButtonTextColor = Color.DarkGray;
             RenderOne();
             btn_One.selected = true;
-            btn_One.Textcolor = System.Drawing.Color.Coral;
+            btn_One.Textcolor = Color.Coral;
             DatavizLoaded = false;
             ActiveCategory = 0;
             datavizLoadTimer.Start();

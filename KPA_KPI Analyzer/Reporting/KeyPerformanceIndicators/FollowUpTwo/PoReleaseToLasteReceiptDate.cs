@@ -1,19 +1,39 @@
 ﻿using DataAccessLibrary;
 using Filters;
+using Reporting.Interfaces;
 using Reporting.KeyPerformanceIndicators;
 using Reporting.TimeSpans.Templates;
 using System;
 using System.Data;
 using System.Windows.Forms;
 
-namespace KPA_KPI_Analyzer.Reporting.KeyPerformanceIndicators.FollowUpTwo
+namespace Reporting.KeyPerformanceIndicators.FollowUpTwo
 {
-    public sealed class PoReleaseToLasteReceiptDate : KeyPerformanceIndicator
+    public sealed class PoReleaseToLasteReceiptDate : KeyPerformanceIndicator, IUnconfirmed
     {
         /// <summary>
         /// Interface to access the template data.
         /// </summary>
         TemplateFour template;
+
+
+
+
+        #region IUnconfirmed Properties
+
+        /// <summary>
+        /// The total of records that are unconfirmed
+        /// </summary>
+        public int UnconfirmedTotal { get; set; }
+
+
+
+        /// <summary>
+        /// The percent of unconfirmed records within the KPA or KPI
+        /// </summary>
+        public double PercentUnconfirmed { get; set; }
+
+        #endregion
 
 
 
@@ -29,6 +49,36 @@ namespace KPA_KPI_Analyzer.Reporting.KeyPerformanceIndicators.FollowUpTwo
             Section = "Follow Up II";
             Name = "Release Date to Last Receipt Date";
         }
+
+
+
+
+
+        #region IUnconfirmed Methods
+
+        /// <summary>
+        /// Calculated the percentage of unconfirmed records
+        /// </summary>
+        public void CalculatePercentUnconfirmed(int _unconfirmedTotal)
+        {
+            try
+            {
+                PercentUnconfirmed = Math.Round(((double)_unconfirmedTotal / template.TotalRecords) * 100, 2);
+
+                if (double.IsNaN(PercentUnconfirmed))
+                    PercentUnconfirmed = 0;
+
+                if (double.IsInfinity(PercentUnconfirmed))
+                    PercentUnconfirmed = 100;
+            }
+            catch (DivideByZeroException)
+            {
+                PercentUnconfirmed = 0;
+            }
+        }
+
+        #endregion
+
 
 
 
@@ -50,7 +100,6 @@ namespace KPA_KPI_Analyzer.Reporting.KeyPerformanceIndicators.FollowUpTwo
 
                 // Get the fitlered data rows from the datatable
                 DataRow[] filteredResult = DatabaseManager.posRecCompDt.Select(FilterOptions.GetSelectStatement(_filterOption, _filter));
-
 
                 foreach (DataRow dr in filteredResult)
                 {
@@ -79,30 +128,37 @@ namespace KPA_KPI_Analyzer.Reporting.KeyPerformanceIndicators.FollowUpTwo
                     #endregion
 
 
+                    string[] strDate = (dr["PO Line 1st Rel Dt"].ToString()).Split('/');
+                    int poLine1stRelDateYear = int.Parse(strDate[2]);
+                    int poLine1stRelDateMonth = int.Parse(strDate[0]);
+                    int poLine1stRelDateDay = int.Parse(strDate[1]);
+
+                    if (poLine1stRelDateYear == 0 && poLine1stRelDateMonth == 0 && poLine1stRelDateDay == 0)
+                    {
+                        // this po line or po in general may have been deleted.
+                        continue;
+                    }
+
+
+
+
+                    string[] strPOLineFirstConfCreateDate = (dr["1st Conf Creation Da"].ToString()).Split('/');
+                    int poLineFirstConfCreateYear = int.Parse(strPOLineFirstConfCreateDate[2]);
+                    int poLineFirstConfCreateMonth = int.Parse(strPOLineFirstConfCreateDate[0]);
+                    int poLineFirstConfCreateDay = int.Parse(strPOLineFirstConfCreateDate[1]);
+
+
+                    if (poLineFirstConfCreateYear == 0 && poLineFirstConfCreateMonth == 0 && poLineFirstConfCreateDay == 0)
+                    {
+                        UnconfirmedTotal++;
+                        template.TotalRecords++;
+                        continue;
+                    }
+
                     DateTime lastPORecDate = new DateTime(lastPORecDtYear, lastPORecDtMonth, lastPORecDtDay);
+                    DateTime firstRelDate = new DateTime(poLine1stRelDateYear, poLine1stRelDateMonth, poLine1stRelDateDay);
 
-                    string[] strCurrPlanDate = (dr["Rescheduling date"].ToString()).Split('/');
-                    int currConfYear = int.Parse(strCurrPlanDate[2]);
-                    int currConfMonth = int.Parse(strCurrPlanDate[0]);
-                    int currConfDay = int.Parse(strCurrPlanDate[1]);
-
-                    if (currConfYear == 0 && currConfMonth == 0 && currConfDay == 0)
-                    {
-                        string[] strNewCurrConfDate = (dr["Delivery Date"].ToString()).Split('/');
-                        currConfYear = int.Parse(strNewCurrConfDate[2]);
-                        currConfMonth = int.Parse(strNewCurrConfDate[0].TrimStart('0'));
-                        currConfDay = int.Parse(strNewCurrConfDate[1].TrimStart('0'));
-                    }
-                    else
-                    {
-                        currConfYear = int.Parse(strCurrPlanDate[2]);
-                        currConfMonth = int.Parse(strCurrPlanDate[0].TrimStart('0'));
-                        currConfDay = int.Parse(strCurrPlanDate[1].TrimStart('0'));
-                    }
-
-                    DateTime currPlanDate = new DateTime(currConfYear, currConfMonth, currConfDay);
-
-                    double elapsedDays = (lastPORecDate - currPlanDate).TotalDays;
+                    double elapsedDays = (lastPORecDate - firstRelDate).TotalDays;
                     totalDays += elapsedDays;
 
                     // Apply the elpased days against the time span conditions
@@ -111,10 +167,13 @@ namespace KPA_KPI_Analyzer.Reporting.KeyPerformanceIndicators.FollowUpTwo
 
                 // Calculate the average for this KPI
                 template.CalculateAverage(totalDays);
+
+                // Calcualte the percent unconfrimed for this KPI
+                CalculatePercentUnconfirmed(UnconfirmedTotal);
             }
             catch (Exception)
             {
-                MessageBox.Show("An argument out of range exception was thrown", "Follow Up -> Receipt Date vs Current Plan Date - Comparison Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An argument out of range exception was thrown", "Follow Up II -> PO Release Date to Last PO Receipt Date - Comparison Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }
@@ -160,12 +219,35 @@ namespace KPA_KPI_Analyzer.Reporting.KeyPerformanceIndicators.FollowUpTwo
 
 
                     string[] strDate = (dr["PO Line 1st Rel Dt"].ToString()).Split('/');
-                    int year = int.Parse(strDate[2]);
-                    int month = int.Parse(strDate[0].TrimStart('0'));
-                    int day = int.Parse(strDate[1].TrimStart('0'));
+                    int poLine1stRelDateYear = int.Parse(strDate[2]);
+                    int poLine1stRelDateMonth = int.Parse(strDate[0]);
+                    int poLine1stRelDateDay = int.Parse(strDate[1]);
+
+                    if (poLine1stRelDateYear == 0 && poLine1stRelDateMonth == 0 && poLine1stRelDateDay == 0)
+                    {
+                        // this po line or po in general may have been deleted.
+                        continue;
+                    }
+
+
+
+
+                    string[] strPOLineFirstConfCreateDate = (dr["1st Conf Creation Da"].ToString()).Split('/');
+                    int poLineFirstConfCreateYear = int.Parse(strPOLineFirstConfCreateDate[2]);
+                    int poLineFirstConfCreateMonth = int.Parse(strPOLineFirstConfCreateDate[0]);
+                    int poLineFirstConfCreateDay = int.Parse(strPOLineFirstConfCreateDate[1]);
+
+
+                    if (poLineFirstConfCreateYear == 0 && poLineFirstConfCreateMonth == 0 && poLineFirstConfCreateDay == 0)
+                    {
+                        UnconfirmedTotal++;
+                        template.TotalRecords++;
+                        continue;
+                    }
+
 
                     DateTime lastPORecDate = new DateTime(lastPORecDtYear, lastPORecDtMonth, lastPORecDtDay);
-                    DateTime firstRelDate = new DateTime(year, month, day);
+                    DateTime firstRelDate = new DateTime(poLine1stRelDateYear, poLine1stRelDateMonth, poLine1stRelDateDay);
 
                     double elapsedDays = (lastPORecDate - firstRelDate).TotalDays;
                     totalDays += elapsedDays;
@@ -176,10 +258,13 @@ namespace KPA_KPI_Analyzer.Reporting.KeyPerformanceIndicators.FollowUpTwo
 
                 // Calculate the average for this KPI
                 template.CalculateAverage(totalDays);
+
+                // Calcualte the percent unconfrimed for this KPI
+                CalculatePercentUnconfirmed(UnconfirmedTotal);
             }
             catch (Exception)
             {
-                MessageBox.Show("An argument out of range exception was thrown", "Follow Up -> Receipt Date vs Current Plan Date - Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An argument out of range exception was thrown", "Follow Up II -> PO Release Date to Last PO Receipt Date - Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }

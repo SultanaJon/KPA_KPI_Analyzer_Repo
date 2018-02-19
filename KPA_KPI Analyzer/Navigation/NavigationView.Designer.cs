@@ -37,6 +37,7 @@
             this.btn_kpiPurchPlan = new System.Windows.Forms.Button();
             this.btn_kpiPurchTotal = new System.Windows.Forms.Button();
             this.btn_kpiPurchSub = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.btn_kpiPurchTwo = new System.Windows.Forms.Button();
             this.btn_kpiPlanTwo = new System.Windows.Forms.Button();
             this.btn_kpiFollowUp = new System.Windows.Forms.Button();
@@ -104,7 +105,7 @@
             this.btn_reports.IconVisible = true;
             this.btn_reports.IconZoom = 100D;
             this.btn_reports.IsTab = false;
-            this.btn_reports.Location = new System.Drawing.Point(0, 700);
+            this.btn_reports.Location = new System.Drawing.Point(0, 723);
             this.btn_reports.Margin = new System.Windows.Forms.Padding(0);
             this.btn_reports.Name = "btn_reports";
             this.btn_reports.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(201)))), ((int)(((byte)(169)))));
@@ -143,7 +144,7 @@
             this.btn_Filters.IconVisible = true;
             this.btn_Filters.IconZoom = 100D;
             this.btn_Filters.IsTab = false;
-            this.btn_Filters.Location = new System.Drawing.Point(0, 652);
+            this.btn_Filters.Location = new System.Drawing.Point(0, 675);
             this.btn_Filters.Margin = new System.Windows.Forms.Padding(0);
             this.btn_Filters.Name = "btn_Filters";
             this.btn_Filters.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
@@ -182,7 +183,7 @@
             this.btn_Correlation.IconVisible = true;
             this.btn_Correlation.IconZoom = 90D;
             this.btn_Correlation.IsTab = false;
-            this.btn_Correlation.Location = new System.Drawing.Point(0, 604);
+            this.btn_Correlation.Location = new System.Drawing.Point(0, 627);
             this.btn_Correlation.Margin = new System.Windows.Forms.Padding(0);
             this.btn_Correlation.Name = "btn_Correlation";
             this.btn_Correlation.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(163)))), ((int)(((byte)(156)))));
@@ -207,6 +208,7 @@
             this.pnl_KPISectionsPanel.Controls.Add(this.btn_kpiPurchPlan);
             this.pnl_KPISectionsPanel.Controls.Add(this.btn_kpiPurchTotal);
             this.pnl_KPISectionsPanel.Controls.Add(this.btn_kpiPurchSub);
+            this.pnl_KPISectionsPanel.Controls.Add(this.button1);
             this.pnl_KPISectionsPanel.Controls.Add(this.btn_kpiPurchTwo);
             this.pnl_KPISectionsPanel.Controls.Add(this.btn_kpiPlanTwo);
             this.pnl_KPISectionsPanel.Controls.Add(this.btn_kpiFollowUp);
@@ -217,7 +219,7 @@
             this.pnl_KPISectionsPanel.Location = new System.Drawing.Point(0, 374);
             this.pnl_KPISectionsPanel.Margin = new System.Windows.Forms.Padding(0);
             this.pnl_KPISectionsPanel.Name = "pnl_KPISectionsPanel";
-            this.pnl_KPISectionsPanel.Size = new System.Drawing.Size(228, 230);
+            this.pnl_KPISectionsPanel.Size = new System.Drawing.Size(228, 253);
             this.pnl_KPISectionsPanel.TabIndex = 20;
             this.pnl_KPISectionsPanel.Visible = false;
             // 
@@ -229,7 +231,7 @@
             this.btn_kpiOther.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_kpiOther.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_kpiOther.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
-            this.btn_kpiOther.Location = new System.Drawing.Point(0, 207);
+            this.btn_kpiOther.Location = new System.Drawing.Point(0, 230);
             this.btn_kpiOther.Margin = new System.Windows.Forms.Padding(0);
             this.btn_kpiOther.Name = "btn_kpiOther";
             this.btn_kpiOther.Size = new System.Drawing.Size(228, 23);
@@ -248,7 +250,7 @@
             this.btn_kpiPurchPlan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_kpiPurchPlan.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_kpiPurchPlan.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
-            this.btn_kpiPurchPlan.Location = new System.Drawing.Point(0, 184);
+            this.btn_kpiPurchPlan.Location = new System.Drawing.Point(0, 207);
             this.btn_kpiPurchPlan.Margin = new System.Windows.Forms.Padding(0);
             this.btn_kpiPurchPlan.Name = "btn_kpiPurchPlan";
             this.btn_kpiPurchPlan.Size = new System.Drawing.Size(228, 23);
@@ -267,7 +269,7 @@
             this.btn_kpiPurchTotal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_kpiPurchTotal.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_kpiPurchTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
-            this.btn_kpiPurchTotal.Location = new System.Drawing.Point(0, 161);
+            this.btn_kpiPurchTotal.Location = new System.Drawing.Point(0, 184);
             this.btn_kpiPurchTotal.Margin = new System.Windows.Forms.Padding(0);
             this.btn_kpiPurchTotal.Name = "btn_kpiPurchTotal";
             this.btn_kpiPurchTotal.Size = new System.Drawing.Size(228, 23);
@@ -286,7 +288,7 @@
             this.btn_kpiPurchSub.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_kpiPurchSub.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_kpiPurchSub.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
-            this.btn_kpiPurchSub.Location = new System.Drawing.Point(0, 138);
+            this.btn_kpiPurchSub.Location = new System.Drawing.Point(0, 161);
             this.btn_kpiPurchSub.Margin = new System.Windows.Forms.Padding(0);
             this.btn_kpiPurchSub.Name = "btn_kpiPurchSub";
             this.btn_kpiPurchSub.Size = new System.Drawing.Size(228, 23);
@@ -296,6 +298,25 @@
             this.btn_kpiPurchSub.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_kpiPurchSub.UseVisualStyleBackColor = false;
             this.btn_kpiPurchSub.Click += new System.EventHandler(this.SectionNavigation_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(41)))), ((int)(((byte)(46)))));
+            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(110)))), ((int)(((byte)(117)))));
+            this.button1.Location = new System.Drawing.Point(0, 138);
+            this.button1.Margin = new System.Windows.Forms.Padding(0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(228, 23);
+            this.button1.TabIndex = 47;
+            this.button1.Tag = "15";
+            this.button1.Text = "       Follow Up II";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.SectionNavigation_Click);
             // 
             // btn_kpiPurchTwo
             // 
@@ -786,5 +807,6 @@
         private System.Windows.Forms.Button btn_kpaOverall;
         private Bunifu.Framework.UI.BunifuFlatButton btn_KPA;
         private Bunifu.Framework.UI.BunifuFlatButton btn_Dashboard;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -175,6 +175,9 @@ namespace KPA_KPI_Analyzer
                 case SectionNavigationTag.PurchII:
                     CreateKpiPurchTwoTemplate();
                     break;
+                case SectionNavigationTag.FollowUpTwo:
+                    CreateKpiFollowUpTwoTemplate();
+                    break;
                 case SectionNavigationTag.PurchSub:
                     CreateKpiPurchSubTemplate();
                     break;

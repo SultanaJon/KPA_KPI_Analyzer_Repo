@@ -197,14 +197,14 @@
             this.dc_titlePanel = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.be_mainUI = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.be_note = new Bunifu.Framework.UI.BunifuElipse(this.components);
-            this.navigationWindow = new KPA_KPI_Analyzer.Navigation.NavigationView();
-            this.topHandleBar = new KPA_KPI_Analyzer.TopHandleBar.TopHandleBarView();
             this.btn_reports = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btn_Filters = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btn_Correlation = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btn_KPI = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btn_KPA = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btn_Dashboard = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.navigationWindow = new KPA_KPI_Analyzer.Navigation.NavigationView();
+            this.topHandleBar = new KPA_KPI_Analyzer.TopHandleBar.TopHandleBarView();
             this.pnl_menuStrip.SuspendLayout();
             this.ms_applicaitonMenuStrip.SuspendLayout();
             this.pnl_topPanel.SuspendLayout();
@@ -485,6 +485,7 @@
             this.pnl_activePage.Controls.Add(this.pnl_loadingScreen);
             this.pnl_activePage.Controls.Add(this.pnl_CountrySelector);
             this.pnl_activePage.Controls.Add(this.tblpnl_DragDrop);
+            this.pnl_activePage.Controls.Add(this.navigationWindow);
             this.pnl_activePage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl_activePage.Location = new System.Drawing.Point(0, 77);
             this.pnl_activePage.Name = "pnl_activePage";
@@ -807,7 +808,7 @@
             // 
             // chkBox_PoDateRange
             // 
-            this.chkBox_PoDateRange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
+            this.chkBox_PoDateRange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
             this.chkBox_PoDateRange.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.chkBox_PoDateRange.Checked = false;
             this.chkBox_PoDateRange.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
@@ -821,7 +822,7 @@
             // 
             // chkBox_FinalReceiptDate
             // 
-            this.chkBox_FinalReceiptDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
+            this.chkBox_FinalReceiptDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
             this.chkBox_FinalReceiptDate.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.chkBox_FinalReceiptDate.Checked = false;
             this.chkBox_FinalReceiptDate.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
@@ -835,7 +836,7 @@
             // 
             // chkBox_PrDateRange
             // 
-            this.chkBox_PrDateRange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
+            this.chkBox_PrDateRange.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
             this.chkBox_PrDateRange.ChechedOffColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(135)))), ((int)(((byte)(140)))));
             this.chkBox_PrDateRange.Checked = false;
             this.chkBox_PrDateRange.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
@@ -2364,22 +2365,6 @@
             this.be_note.ElipseRadius = 5;
             this.be_note.TargetControl = this.pnl_note;
             // 
-            // navigationWindow
-            // 
-            this.navigationWindow.Dock = System.Windows.Forms.DockStyle.Left;
-            this.navigationWindow.Location = new System.Drawing.Point(0, 77);
-            this.navigationWindow.Name = "navigationWindow";
-            this.navigationWindow.Size = new System.Drawing.Size(0, 623);
-            this.navigationWindow.TabIndex = 6;
-            // 
-            // topHandleBar
-            // 
-            this.topHandleBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.topHandleBar.Location = new System.Drawing.Point(0, 26);
-            this.topHandleBar.Name = "topHandleBar";
-            this.topHandleBar.Size = new System.Drawing.Size(1200, 51);
-            this.topHandleBar.TabIndex = 1;
-            // 
             // btn_reports
             // 
             this.btn_reports.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
@@ -2584,6 +2569,22 @@
             this.btn_Dashboard.Textcolor = System.Drawing.Color.White;
             this.btn_Dashboard.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
+            // navigationWindow
+            // 
+            this.navigationWindow.Dock = System.Windows.Forms.DockStyle.Left;
+            this.navigationWindow.Location = new System.Drawing.Point(0, 0);
+            this.navigationWindow.Name = "navigationWindow";
+            this.navigationWindow.Size = new System.Drawing.Size(0, 623);
+            this.navigationWindow.TabIndex = 6;
+            // 
+            // topHandleBar
+            // 
+            this.topHandleBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.topHandleBar.Location = new System.Drawing.Point(0, 26);
+            this.topHandleBar.Name = "topHandleBar";
+            this.topHandleBar.Size = new System.Drawing.Size(1200, 51);
+            this.topHandleBar.TabIndex = 1;
+            // 
             // KPA_KPI_UI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2592,7 +2593,6 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1200, 700);
             this.Controls.Add(this.pnl_activePage);
-            this.Controls.Add(this.navigationWindow);
             this.Controls.Add(this.topHandleBar);
             this.Controls.Add(this.pnl_TopUIPanel);
             this.DoubleBuffered = true;

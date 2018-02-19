@@ -161,6 +161,9 @@ namespace Reporting.Reports
                     case KpiOption.PurchTwo_PoReleaseDateVsPoConfirmationDate:
                         Indicators[(int)option] = JsonConvert.DeserializeObject<KeyPerformanceIndicators.PurchTwo.POReleaseDateVsPOConfirmationDate>(results[(int)option]);
                         break;
+                    case KpiOption.FollowUpTwo_PoReleaseToLastPoReceiptDate:
+                        Indicators[(int)option] = JsonConvert.DeserializeObject<KeyPerformanceIndicators.FollowUpTwo.PoReleaseToLasteReceiptDate>(results[(int)option]);
+                        break;
                     case KpiOption.PurchSub_PrReleaseVsPoReleaseDate:
                         Indicators[(int)option] = JsonConvert.DeserializeObject<KeyPerformanceIndicators.PurchSub.PRReleaseDateVsPOReleaseDate>(results[(int)option]);
                         break;

@@ -83,22 +83,6 @@ namespace Reporting.KeyPerformanceIndicators.PurchTwo
 
 
 
-        #region IFavorable Method
-
-        /// <summary>
-        /// Calculates the percent favorable for the specific KPA or KPI it is attached to
-        /// </summary>
-        public void CalculatePercentFavorable()
-        {
-
-        }
-
-        #endregion
-
-
-
-
-
 
 
         /// <summary>

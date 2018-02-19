@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Reporting.TimeSpans.Templates;
 using KPA_KPI_Analyzer.Values;
 using Reporting.Reports;
 using Reporting.KeyPerformanceIndicators;
+using KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader;
+using KPA_KPI_Analyzer.DataLoading;
+using Reporting.Interfaces;
 
 namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 {
@@ -66,7 +63,9 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         private string TimeBucketNine { get { return lbl_timebuckNine.Text; } set { lbl_timebuckNine.Text = value; } }
         private string TimeBucketTen { get { return lbl_timebuckTen.Text; } set { lbl_timebuckTen.Text = value; } }
         private string TimeBucketEleven { get { return lbl_timebuckEleven.Text; } set { lbl_timebuckEleven.Text = value; } }
-        private System.Drawing.Color DefaultButtonTextColor
+        private string PercNoConf { get { return lbl_Percent.Text; } set { lbl_Percent.Text = value + "%"; } }
+        private string PercNoConfTotal { get { return lbl_percUnconfTotal.Text; } set { lbl_percUnconfTotal.Text = value; } }
+        private Color DefaultButtonTextColor
         {
             set
             {
@@ -86,7 +85,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// </summary>
         public void LoadPanel()
         {
-
             SetGraphColor();
             DefaultButtonTextColor = Color.DarkGray;
             RenderOne();
@@ -94,7 +92,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             btn_One.Textcolor = Color.Coral;
             DatavizLoaded = false;
             ActiveCategory = 0;
-            KPA_KPI_UI.topHandleBarModel.Category = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PlanTwo][(int)Values.Categories.KpiCategory.PlanTwo.MaterialDueOriginalPlanDate];
+            KPA_KPI_UI.topHandleBarModel.Category = Categories.kpiCategories[(int)Sections.KpiSection.FollowUpTwo][(int)Categories.KpiCategory.FollowUpTwo.PoReleaseToLastPoReceiptDate];
 
             datavizLoadTimer.Start();
         }
@@ -151,13 +149,10 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         {
             Bunifu.Framework.UI.BunifuFlatButton btn = (Bunifu.Framework.UI.BunifuFlatButton)sender;
 
-
             btn_One.selected = false;
-
             btn.selected = true;
             DefaultButtonTextColor = Color.DarkGray;
             btn.Textcolor = Color.Coral;
-
 
             int tag = int.Parse(btn.Tag.ToString());
 
@@ -184,19 +179,15 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
             Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
 
-            Title = Categories.kpiCategories[(int)Sections.KpiSection.PlanTwo][(int)Categories.KpiCategory.PlanTwo.MaterialDueOriginalPlanDate];
+            Title = Categories.kpiCategories[(int)Sections.KpiSection.FollowUpTwo][(int)Categories.KpiCategory.FollowUpTwo.PoReleaseToLastPoReceiptDate];
             KPA_KPI_UI.topHandleBarModel.Category = Title;
-            KPA_KPI_UI.topHandleBarModel.Section = Sections.kpiections[(int)Sections.KpiSection.PlanTwo];
-
-
+            KPA_KPI_UI.topHandleBarModel.Section = Sections.kpiections[(int)Sections.KpiSection.FollowUpTwo];
 
             AnalysisOne = "- Will show if the PR has been fully released.";
             AnalysisTwo = "- Difference between PR delivery date and the date the PR was fully released.";
 
-
-
-            TemplateFour tempFour = KpiOverallReport.Indicators[(int)KpiOption.PlanTwo_MaterialDueOriginalPlannedDate].TemplateBlock as TemplateFour;
-
+            // TODO: Need to get the template from the correct KPI.
+            TemplateFour tempFour = KpiOverallReport.Indicators[(int)KpiOption.FollowUpTwo_PoReleaseToLastPoReceiptDate].TemplateBlock as TemplateFour;
 
             // Add the data to the column chart
             dp.addLabely(lbl_xLabelOne.Text, tempFour.LessThanEqualToZeroDays.ToString());
@@ -225,6 +216,12 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TimeBucketTen = string.Format("{0:n0}", tempFour.FiftyToFiftySixDays);
             TimeBucketEleven = string.Format("{0:n0}", tempFour.FiftySevenPlusDays);
             TotalOrders = string.Format("{0:n0}", tempFour.TotalRecords);
+
+            IUnconfirmed unconfirmedInfo = (KpiOverallReport.Indicators[(int)KpiOption.FollowUpTwo_PoReleaseToLastPoReceiptDate] as IUnconfirmed);
+
+            // Get the uncofnrimed information
+            PercNoConf = string.Format("{0:n}", unconfirmedInfo.PercentUnconfirmed);
+            PercNoConfTotal = string.Format("{0:n0}", unconfirmedInfo.UnconfirmedTotal);
 
             canvas.addData(dp);
             dataviz.Render(canvas);
@@ -274,8 +271,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
                     switch (ActiveCategory)
                     {
-                        case 0: // PO Release vs PO Confirmation
-                            dv.DataLoader += KpiDataTableLoader.PlanTwo.LoadMaterialDueOrigPlanDate;
+                        case 0: // PO Release to Last PO Receipt Date
+                            dv.DataLoader += KpiDataTableLoader.FollowUpTwo.LoadPoReleaseDateToLastPoReceiptDate;
                             dv.ColumnTag = tag;
                             break;
                         default:
@@ -286,7 +283,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "KPI -> Follow Up II - Data Viewer Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "KPI -> Follow Up II Viewer Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

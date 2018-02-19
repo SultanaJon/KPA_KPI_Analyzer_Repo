@@ -40,7 +40,8 @@
         ExcessStockStock,
         ExcessStockOpenOrders,
         CurrentPlanVsActual,
-        Other
+        Other,
+        FollowUpTwo
     }
 
 

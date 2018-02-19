@@ -340,6 +340,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             LoadFollowUp();
             LoadPlanTwo();
             LoadPurchTwo();
+            LoadFollowUpTwo();
             LoadPurchSub();
             LoadPurchTotal();
             LoadPurchPlan();
@@ -357,11 +358,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
         /// <summary>
-        /// Loads all of the KPA Plan data into the datagridview.
+        /// Loads all of the KPI Plan data into the datagridview.
         /// </summary>
         private void LoadPlan()
         {
-            // Get List of template one data for this KPA
+            // Get List of template one data for this KPI
             List<string> rowData = new List<string>((KpiOverallReport.Indicators[(int)KpiOption.Plan_CurrentPlanDateVsPrPlanDate].Details));
             rowData.AddRange(new List<string>((KpiOverallReport.Indicators[(int)KpiOption.Plan_CurrentPlanDateVsPrPlanDate].TemplateBlock as TemplateThree).GetTemplateData()));
             rowData.Add(string.Empty);
@@ -370,7 +371,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             // Add the row to the data grid view control
             TemplateThreeDataGrid.Rows.Add(rowData.ToArray());
 
-            // Get List of template one data for this KPA
+            // Get List of template one data for this KPI
             rowData = new List<string>((KpiOverallReport.Indicators[(int)KpiOption.Plan_OrigPlanDateMinusPrFullReleaseDateVsCodedLead].Details));
             rowData.AddRange(new List<string>((KpiOverallReport.Indicators[(int)KpiOption.Plan_OrigPlanDateMinusPrFullReleaseDateVsCodedLead].TemplateBlock as TemplateThree).GetTemplateData()));
             rowData.Add(string.Empty);
@@ -379,7 +380,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             // Add the row to the data grid view control
             TemplateThreeDataGrid.Rows.Add(rowData.ToArray());
 
-            // Get List of template one data for this KPA
+            // Get List of template one data for this KPI
             rowData = new List<string>((KpiOverallReport.Indicators[(int)KpiOption.Plan_CurrentPlanDateMinusPrFullReleaseDateVsCodedLead].Details));
             rowData.AddRange(new List<string>((KpiOverallReport.Indicators[(int)KpiOption.Plan_CurrentPlanDateMinusPrFullReleaseDateVsCodedLead].TemplateBlock as TemplateThree).GetTemplateData()));
             rowData.Add(string.Empty);
@@ -396,11 +397,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
         /// <summary>
-        /// Loads all of the KPA Purch data into the datagridview.
+        /// Loads all of the KPI Purch data into the datagridview.
         /// </summary>
         private void LoadPurch()
         {
-            // Get List of template one data for this KPA
+            // Get List of template one data for this KPI
             List<string> rowData = new List<string>((KpiOverallReport.Indicators[(int)KpiOption.Purch_InitialConfirmationDateVsPrPlanDate].Details));
             rowData.AddRange(new List<string>((KpiOverallReport.Indicators[(int)KpiOption.Purch_InitialConfirmationDateVsPrPlanDate].TemplateBlock as TemplateThree).GetTemplateData()));
             rowData.Add(string.Format("{0:n0}", (KpiOverallReport.Indicators[(int)KpiOption.Purch_InitialConfirmationDateVsPrPlanDate] as IUnconfirmed).PercentUnconfirmed + "%"));
@@ -417,11 +418,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
         /// <summary>
-        /// Loads all of the KPA Purch Sub data into the datagridview.
+        /// Loads all of the KPI Follow Up data into the datagridview.
         /// </summary>
         private void LoadFollowUp()
         {
-            // Get List of template one data for this KPA
+            // Get List of template one data for this KPI
             List<string> rowData = new List<string>((KpiOverallReport.Indicators[(int)KpiOption.FollowUp_CurrentConfirmationDateVsInitialConfirmationDate].Details));
             rowData.AddRange(new List<string>((KpiOverallReport.Indicators[(int)KpiOption.FollowUp_CurrentConfirmationDateVsInitialConfirmationDate].TemplateBlock as TemplateThree).GetTemplateData()));
             rowData.Add(string.Format("{0:n0}", (KpiOverallReport.Indicators[(int)KpiOption.FollowUp_CurrentConfirmationDateVsInitialConfirmationDate] as IUnconfirmed).PercentUnconfirmed + "%"));
@@ -430,7 +431,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             // Add the row to the data grid view control
             TemplateThreeDataGrid.Rows.Add(rowData.ToArray());
 
-            // Get List of template one data for this KPA
+            // Get List of template one data for this KPI
             rowData = new List<string>((KpiOverallReport.Indicators[(int)KpiOption.FollowUp_FinalConfirmationDateVsInitialConfirmationDate].Details));
             rowData.AddRange(new List<string>((KpiOverallReport.Indicators[(int)KpiOption.FollowUp_FinalConfirmationDateVsInitialConfirmationDate].TemplateBlock as TemplateThree).GetTemplateData()));
             rowData.Add(string.Format("{0:n0}", (KpiOverallReport.Indicators[(int)KpiOption.FollowUp_FinalConfirmationDateVsInitialConfirmationDate] as IUnconfirmed).PercentUnconfirmed + "%"));
@@ -439,7 +440,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             // Add the row to the data grid view control
             TemplateThreeDataGrid.Rows.Add(rowData.ToArray());
 
-            // Get List of template one data for this KPA
+            // Get List of template one data for this KPI
             rowData = new List<string>((KpiOverallReport.Indicators[(int)KpiOption.FollowUp_ReceiptDateVsCurrentPlanDate].Details));
             rowData.AddRange(new List<string>((KpiOverallReport.Indicators[(int)KpiOption.FollowUp_ReceiptDateVsCurrentPlanDate].TemplateBlock as TemplateThree).GetTemplateData()));
             rowData.Add(string.Empty);
@@ -448,7 +449,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             // Add the row to the data grid view control
             TemplateThreeDataGrid.Rows.Add(rowData.ToArray());
 
-            // Get List of template one data for this KPA
+            // Get List of template one data for this KPI
             rowData = new List<string>((KpiOverallReport.Indicators[(int)KpiOption.FollowUp_ReceiptDateVsOriginalConfirmationDate].Details));
             rowData.AddRange(new List<string>((KpiOverallReport.Indicators[(int)KpiOption.FollowUp_ReceiptDateVsOriginalConfirmationDate].TemplateBlock as TemplateThree).GetTemplateData()));
             rowData.Add(string.Format("{0:n0}", (KpiOverallReport.Indicators[(int)KpiOption.FollowUp_ReceiptDateVsOriginalConfirmationDate] as IUnconfirmed).PercentUnconfirmed + "%"));
@@ -457,7 +458,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             // Add the row to the data grid view control
             TemplateThreeDataGrid.Rows.Add(rowData.ToArray());
 
-            // Get List of template one data for this KPA
+            // Get List of template one data for this KPI
             rowData = new List<string>((KpiOverallReport.Indicators[(int)KpiOption.FollowUp_ReceiptDateVsCurrentConfirmationDate].Details));
             rowData.AddRange(new List<string>((KpiOverallReport.Indicators[(int)KpiOption.FollowUp_ReceiptDateVsCurrentConfirmationDate].TemplateBlock as TemplateThree).GetTemplateData()));
             rowData.Add(string.Format("{0:n0}", (KpiOverallReport.Indicators[(int)KpiOption.FollowUp_ReceiptDateVsCurrentConfirmationDate] as IUnconfirmed).PercentUnconfirmed + "%"));
@@ -472,25 +473,25 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
         /// <summary>
-        /// Loads all of the KPA Purch Total data into the datagridview.
+        /// Loads all of the KPI Plan II data into the datagridview.
         /// </summary>
         private void LoadPlanTwo()
         {
-            // Get List of template one data for this KPA
+            // Get List of template one data for this KPI
             List<string> rowData = new List<string>((KpiOverallReport.Indicators[(int)KpiOption.PlanTwo_MaterialDueOriginalPlannedDate].Details));
             rowData.AddRange(new List<string>((KpiOverallReport.Indicators[(int)KpiOption.PlanTwo_MaterialDueOriginalPlannedDate].TemplateBlock as TemplateFour).GetTemplateData()));
 
             // Add the row to the data grid view control
             TemplateFourDataGrid.Rows.Add(rowData.ToArray());
 
-            // Get List of template one data for this KPA
+            // Get List of template one data for this KPI
             rowData = new List<string>((KpiOverallReport.Indicators[(int)KpiOption.PlanTwo_MaterialDueFinalPlannedDate].Details));
             rowData.AddRange(new List<string>((KpiOverallReport.Indicators[(int)KpiOption.PlanTwo_MaterialDueFinalPlannedDate].TemplateBlock as TemplateFour).GetTemplateData()));
 
             // Add the row to the data grid view control
             TemplateFourDataGrid.Rows.Add(rowData.ToArray());
 
-            // Get List of template one data for this KPA
+            // Get List of template one data for this KPI
             rowData = new List<string>((KpiOverallReport.Indicators[(int)KpiOption.PlanTwo_PrReleaseDateVsPrCreationDate].Details));
             rowData.AddRange(new List<string>((KpiOverallReport.Indicators[(int)KpiOption.PlanTwo_PrReleaseDateVsPrCreationDate].TemplateBlock as TemplateFour).GetTemplateData()));
 
@@ -503,11 +504,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
         /// <summary>
-        /// Loads all of the KPA Purch Plan data into the datagridview.
+        /// Loads all of the KPI Purch II data into the datagridview.
         /// </summary>
         private void LoadPurchTwo()
         {
-            // Get List of template one data for this KPA
+            // Get List of template one data for this KPI
             List<string> rowData = new List<string>((KpiOverallReport.Indicators[(int)KpiOption.PurchTwo_PrFullyReleaseDateVsPoCreationDate].Details));
             rowData.AddRange(new List<string>((KpiOverallReport.Indicators[(int)KpiOption.PurchTwo_PrFullyReleaseDateVsPoCreationDate].TemplateBlock as TemplateFour).GetTemplateData()));
             rowData.Add(string.Empty);
@@ -515,7 +516,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             // Add the row to the data grid view control
             TemplateFourDataGrid.Rows.Add(rowData.ToArray());
 
-            // Get List of template one data for this KPA
+            // Get List of template one data for this KPI
             rowData = new List<string>((KpiOverallReport.Indicators[(int)KpiOption.PurchTwo_PoCreationDateVsPoReleaseDate].Details));
             rowData.AddRange(new List<string>((KpiOverallReport.Indicators[(int)KpiOption.PurchTwo_PoCreationDateVsPoReleaseDate].TemplateBlock as TemplateFour).GetTemplateData()));
             rowData.Add(string.Empty);
@@ -523,7 +524,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             // Add the row to the data grid view control
             TemplateFourDataGrid.Rows.Add(rowData.ToArray());
 
-            // Get List of template one data for this KPA
+            // Get List of template one data for this KPI
             rowData = new List<string>((KpiOverallReport.Indicators[(int)KpiOption.PurchTwo_PoReleaseDateVsPoConfirmationDate].Details));
             rowData.AddRange(new List<string>((KpiOverallReport.Indicators[(int)KpiOption.PurchTwo_PoReleaseDateVsPoConfirmationDate].TemplateBlock as TemplateFour).GetTemplateData()));
             rowData.Add(string.Format("{0:n0}", (KpiOverallReport.Indicators[(int)KpiOption.PurchTwo_PoReleaseDateVsPoConfirmationDate] as IUnconfirmed).PercentUnconfirmed + "%"));
@@ -535,13 +536,30 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
 
+        /// <summary>
+        /// Loads all of the KPI Follow Up II data dinto the datagridview.
+        /// </summary>
+        private void LoadFollowUpTwo()
+        {
+            // Get List of template one data for this KPI
+            List<string> rowData = new List<string>((KpiOverallReport.Indicators[(int)KpiOption.FollowUpTwo_PoReleaseToLastPoReceiptDate].Details));
+            rowData.AddRange(new List<string>((KpiOverallReport.Indicators[(int)KpiOption.FollowUpTwo_PoReleaseToLastPoReceiptDate].TemplateBlock as TemplateFour).GetTemplateData()));
+            rowData.Add(string.Format("{0:n0}", (KpiOverallReport.Indicators[(int)KpiOption.FollowUpTwo_PoReleaseToLastPoReceiptDate] as IUnconfirmed).PercentUnconfirmed + "%"));
+
+            // Add the row to the data grid view control
+            TemplateFourDataGrid.Rows.Add(rowData.ToArray());
+        }
+
+
+
+
 
         /// <summary>
-        /// Loads all of the KPA Follow Up data into the datagridview.
+        /// Loads all of the KPI Purch Sub data into the datagridview.
         /// </summary>
         private void LoadPurchSub()
         {
-            // Get List of template one data for this KPA
+            // Get List of template one data for this KPI
             List<string> rowData = new List<string>((KpiOverallReport.Indicators[(int)KpiOption.PurchSub_PrReleaseVsPoReleaseDate].Details));
             rowData.AddRange(new List<string>((KpiOverallReport.Indicators[(int)KpiOption.PurchSub_PrReleaseVsPoReleaseDate].TemplateBlock as TemplateFour).GetTemplateData()));
             rowData.Add(string.Empty);
@@ -549,7 +567,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             // Add the row to the data grid view control
             TemplateFourDataGrid.Rows.Add(rowData.ToArray());
 
-            // Get List of template one data for this KPA
+            // Get List of template one data for this KPI
             rowData = new List<string>((KpiOverallReport.Indicators[(int)KpiOption.PurchSub_PoCreationDateVsConfirmationEntryDate].Details));
             rowData.AddRange(new List<string>((KpiOverallReport.Indicators[(int)KpiOption.PurchSub_PoCreationDateVsConfirmationEntryDate].TemplateBlock as TemplateFour).GetTemplateData()));
             rowData.Add(string.Format("{0:n0}", (KpiOverallReport.Indicators[(int)KpiOption.PurchSub_PoCreationDateVsConfirmationEntryDate] as IUnconfirmed).PercentUnconfirmed + "%"));
@@ -563,11 +581,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
         /// <summary>
-        /// Loads all of the KPA Cancellations data into the datagridview.
+        /// Loads all of the KPI Purch Total data into the datagridview.
         /// </summary>
         private void LoadPurchTotal()
         {
-            // Get List of template one data for this KPA
+            // Get List of template one data for this KPI
             List<string> rowData = new List<string>((KpiOverallReport.Indicators[(int)KpiOption.PurchTotal_PrReleaseDateToConfirmationEntryDate].Details));
             rowData.AddRange(new List<string>((KpiOverallReport.Indicators[(int)KpiOption.PurchTotal_PrReleaseDateToConfirmationEntryDate].TemplateBlock as TemplateFour).GetTemplateData()));
             rowData.Add(string.Format("{0:n0}", (KpiOverallReport.Indicators[(int)KpiOption.PurchTotal_PrReleaseDateToConfirmationEntryDate] as IUnconfirmed).PercentUnconfirmed + "%"));
@@ -581,11 +599,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
         /// <summary>
-        /// Loads all of the NCRs Plan data into the datagridview.
+        /// Loads all of the Purch Plan data into the datagridview.
         /// </summary>
         private void LoadPurchPlan()
         {
-            // Get List of template one data for this KPA
+            // Get List of template one data for this KPI
             List<string> rowData = new List<string>((KpiOverallReport.Indicators[(int)KpiOption.PurchPlan_PoReleaseVsPrDeliveryDate].Details));
             rowData.AddRange(new List<string>((KpiOverallReport.Indicators[(int)KpiOption.PurchPlan_PoReleaseVsPrDeliveryDate].TemplateBlock as TemplateFour).GetTemplateData()));
             rowData.Add(string.Empty);
@@ -599,11 +617,11 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
         /// <summary>
-        /// Loads all of the KPA Excess Stock - Stock data into the datagridview.
+        /// Loads all of the KPI Other data into the datagridview.
         /// </summary>
         private void LoadOther()
         {
-            // Get List of template one data for this KPA
+            // Get List of template one data for this KPI
             List<string> rowData = new List<string>((KpiOverallReport.Indicators[(int)KpiOption.Other_PrsCreated].Details));
             rowData.AddRange(new List<string>((KpiOverallReport.Indicators[(int)KpiOption.Other_PrsCreated].TemplateBlock as TemplateFive).GetTemplateData()));
 
@@ -739,16 +757,19 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                     case 5:
                         HandlePurchTwoDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
-                    case 6: // 7 - 8 Purch Sub
+                    case 6: // Follow Up II
+                        HandleFollowUpTwoDataTableLoading(e.RowIndex, e.ColumnIndex);
+                        break;
+                    case 7: // Purch Sub
                         HandlePurchSubDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
-                    case 7:
+                    case 8:
                         HandlePurchSubDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
-                    case 8: // Purch Total
+                    case 9: // Purch Total
                         HandlePurchTotalDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
-                    case 9: // 10 - 11 = Purch Plan
+                    case 10: // Purch Plan
                         HandlePurchPlanDataTableLoading(e.RowIndex, e.ColumnIndex);
                         break;
                 }
@@ -1752,13 +1773,95 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// </summary>
         /// <param name="rowIndex">The row index of the clicked cell</param>
         /// <param name="columnIndex">The column index of the clicked cell</param>
+        private void HandleFollowUpTwoDataTableLoading(int rowIndex, int columnIndex)
+        {
+            using (DataViewer dv = new DataViewer())
+            {
+                switch (rowIndex)
+                {
+                    case 6: // PO Release to Last PO Receipt Date
+                        switch (columnIndex)
+                        {
+                            case 0: // section
+                            case 1: // category
+                            case 2: // Average
+                                return;
+                            case 3: // <= 0 Days
+                                dv.DataLoader += KpiDataTableLoader.FollowUpTwo.LoadPoReleaseDateToLastPoReceiptDate;
+                                dv.ColumnTag = (int)TempFour.DataViews.LessThanZero;
+                                break;
+                            case 4: // 1 - 3 Days
+                                dv.DataLoader += KpiDataTableLoader.FollowUpTwo.LoadPoReleaseDateToLastPoReceiptDate;
+                                dv.ColumnTag = (int)TempFour.DataViews.One_Three;
+                                break;
+                            case 5: // 4 - 7 Days
+                                dv.DataLoader += KpiDataTableLoader.FollowUpTwo.LoadPoReleaseDateToLastPoReceiptDate;
+                                dv.ColumnTag = (int)TempFour.DataViews.Four_Seven;
+                                break;
+                            case 6: // 8 - 14 Days
+                                dv.DataLoader += KpiDataTableLoader.FollowUpTwo.LoadPoReleaseDateToLastPoReceiptDate;
+                                dv.ColumnTag = (int)TempFour.DataViews.Eight_Fourteen;
+                                break;
+                            case 7: // 15 - 21 Days
+                                dv.DataLoader += KpiDataTableLoader.FollowUpTwo.LoadPoReleaseDateToLastPoReceiptDate;
+                                dv.ColumnTag = (int)TempFour.DataViews.Fifteen_TwentyOne;
+                                break;
+                            case 8: // 22 - 28 Days
+                                dv.DataLoader += KpiDataTableLoader.FollowUpTwo.LoadPoReleaseDateToLastPoReceiptDate;
+                                dv.ColumnTag = (int)TempFour.DataViews.TwentyTwo_TwentyEight;
+                                break;
+                            case 9: // 29 - 35 Days
+                                dv.DataLoader += KpiDataTableLoader.FollowUpTwo.LoadPoReleaseDateToLastPoReceiptDate;
+                                dv.ColumnTag = (int)TempFour.DataViews.TwentyNine_ThirtyFive;
+                                break;
+                            case 10: // 36 - 42 Days
+                                dv.DataLoader += KpiDataTableLoader.FollowUpTwo.LoadPoReleaseDateToLastPoReceiptDate;
+                                dv.ColumnTag = (int)TempFour.DataViews.ThirtySix_FourtyTwo;
+                                break;
+                            case 11: // 43 - 49 Days
+                                dv.DataLoader += KpiDataTableLoader.FollowUpTwo.LoadPoReleaseDateToLastPoReceiptDate;
+                                dv.ColumnTag = (int)TempFour.DataViews.FourtyThree_FourtyNine;
+                                break;
+                            case 12: // 50 - 56 Days
+                                dv.DataLoader += KpiDataTableLoader.FollowUpTwo.LoadPoReleaseDateToLastPoReceiptDate;
+                                dv.ColumnTag = (int)TempFour.DataViews.Fifty_FiftySix;
+                                break;
+                            case 13: // 57+ Days
+                                dv.DataLoader += KpiDataTableLoader.FollowUpTwo.LoadPoReleaseDateToLastPoReceiptDate;
+                                dv.ColumnTag = (int)TempFour.DataViews.GreaterThanEqualFiftySeven;
+                                break;
+                            case 14: // Total
+                                dv.DataLoader += KpiDataTableLoader.FollowUpTwo.LoadPoReleaseDateToLastPoReceiptDate;
+                                dv.ColumnTag = (int)TempFour.DataViews.Total;
+                                break;
+                            case 15: // Percent Unconfirmed
+                                dv.DataLoader += KpiDataTableLoader.FollowUpTwo.LoadPoReleaseDateToLastPoReceiptDate;
+                                dv.ColumnTag = (int)TempFour.DataViews.PercentUnconf;
+                                break;
+                        }
+                        break;
+                }
+                dv.ShowDialog();
+            }
+        }
+
+
+
+
+
+
+        /// <summary>
+        /// Loads cells the data table loading funciton depending on the particular cell click under a particular KPA
+        /// </summary>
+        /// <param name="rowIndex">The row index of the clicked cell</param>
+        /// <param name="columnIndex">The column index of the clicked cell</param>
         private void HandlePurchSubDataTableLoading(int rowIndex, int columnIndex)
         {
             using (DataViewer dv = new DataViewer())
             { 
                 switch (rowIndex)
                 {
-                    case 6: // PR Release Date vs PO Release Date
+                    case 7: // PR Release Date vs PO Release Date
                         switch (columnIndex)
                         {
                             case 0: // section
@@ -1815,7 +1918,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                                 break;
                         }
                         break;
-                    case 7: // PO Creation Date vs Confirmation Entry Date
+                    case 8: // PO Creation Date vs Confirmation Entry Date
                         switch (columnIndex)
                         {
                             case 0: // section
@@ -1897,7 +2000,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             { 
                 switch (rowIndex)
                 {
-                    case 8: // Pr Release Date to Confirmation Entry Date
+                    case 9: // Pr Release Date to Confirmation Entry Date
                         switch (columnIndex)
                         {
                             case 0: // section
@@ -1979,7 +2082,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             { 
                 switch (rowIndex)
                 {
-                    case 9: // PO Release vs PR Delivery Date
+                    case 10: // PO Release vs PR Delivery Date
                         switch (columnIndex)
                         {
                             case 0: // section

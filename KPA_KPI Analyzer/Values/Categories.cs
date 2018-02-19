@@ -136,6 +136,12 @@
                 POReleaseDatevsPOConfirmationDate
             }
 
+
+            public enum FollowUpTwo : byte
+            {
+                PoReleaseToLastPoReceiptDate
+            }
+
             public enum PurchSub : byte
             {
                 PRReleaseDatevsPOReleaseDate,
@@ -175,10 +181,12 @@
                 new string[] { "Initial Confirmation Date vs PR Plan Date"},
                 // Follow Up
                 new string[] { "Current Confirmation Date vs Initial Confirmation Date", "Final Confirmation Date vs Final Plan Date", "Receipt Date vs Current Plan Date", "Receipt Date vs Original Confirmation Date", "Receipt Date vs Current Confirmation Date"},
-                // Plan two
+                // Plan II
                 new string[] { "Material Due (Original Planned Date)", "Material Due (Final Planned Date)", "PR Release Date vs PR Creation Date" },
-                // Purch Two
+                // Purch II
                 new string[] { "PR Fully Released Date vs PO Creation Date", "PO Creation Date vs PO Release Date", "PO Release Date vs PO Confirmation Date"},
+                // Follow Up II
+                new string[] { "PO Release Date to Last PO Receipt Date" },
                 // Purch Sub
                 new string[] { "PR Release Date vs PO Release Date", "PO Creation Date vs Confirmation Entry Date" },
                 // Purch Total

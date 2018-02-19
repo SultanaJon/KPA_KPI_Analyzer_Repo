@@ -2243,21 +2243,17 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     }
                     DataViewerUtils.Data = poCreateVsPORel.Copy();
                     DataViewerUtils.DataLoaded = true;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
+
                     poCreateVsPORel.Rows.Clear();
                     poCreateVsPORel = null;
                     dt.Rows.Clear();
                     dt = null;
                     GC.Collect();
                 }
-
-
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
 
 
@@ -2426,6 +2422,207 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                     {
                         poRelVsPoConf.Rows.Clear();
                         poRelVsPoConf = null;
+                    }
+
+                    if (unconfirmed != null)
+                    {
+                        unconfirmed.Rows.Clear();
+                        unconfirmed = null;
+                    }
+
+                    dt.Rows.Clear();
+                    dt = null;
+                    GC.Collect();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+
+        public static class FollowUpTwo
+        {
+            private static DataTable poReleaseToLastPoReceipt;
+
+
+            /// <summary>
+            /// Loads the data into a datagrid view in the dataViewer UI depending on the button clicked in the template or the cell clicked in the overall page.
+            /// </summary>
+            /// <param name="tag">The tag of the button that was clicked on the template or the column number that was clicked on the overall DataGridView.</param>
+            public static void LoadPoReleaseDateToLastPoReceiptDate(int tag)
+            {
+                try
+                {
+                    dt = KpiManager.KpiQueries.GetPoLinesReceivedComplete();
+                    poReleaseToLastPoReceipt = new DataTable();
+                    unconfirmed = new DataTable();
+                    poReleaseToLastPoReceipt = dt.Clone();
+                    unconfirmed = dt.Clone();
+
+
+
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        //Check if the datarow meets the conditions of any applied filters.
+                        if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
+                        {
+                            // This datarow dos not meet the conditions of the filters applied.
+                            continue;
+                        }
+
+                        #region EVASO_BUT_NO_REC_DATE_CHECK
+
+                        string[] strLastPORecDate = (dr["Last PO Rec#Date"].ToString()).Split('/');
+                        int lastPORecDtYear = int.Parse(strLastPORecDate[2]);
+                        int lastPORecDtMonth = int.Parse(strLastPORecDate[0]);
+                        int lastPORecDtDay = int.Parse(strLastPORecDate[1]);
+
+
+                        if (lastPORecDtYear == 0 && lastPORecDtMonth == 0 && lastPORecDtDay == 0)
+                        {
+                            // this po line or po in general may have been deleted.
+                            continue;
+                        }
+
+                        #endregion
+
+
+                        string[] strDate = (dr["PO Line 1st Rel Dt"].ToString()).Split('/');
+                        int poLine1stRelDateYear = int.Parse(strDate[2]);
+                        int poLine1stRelDateMonth = int.Parse(strDate[0]);
+                        int poLine1stRelDateDay = int.Parse(strDate[1]);
+
+                        if (poLine1stRelDateYear == 0 && poLine1stRelDateMonth == 0 && poLine1stRelDateDay == 0)
+                        {
+                            // this po line or po in general may have been deleted.
+                            continue;
+                        }
+
+
+
+
+                        string[] strPOLineFirstConfCreateDate = (dr["1st Conf Creation Da"].ToString()).Split('/');
+                        int poLineFirstConfCreateYear = int.Parse(strPOLineFirstConfCreateDate[2]);
+                        int poLineFirstConfCreateMonth = int.Parse(strPOLineFirstConfCreateDate[0]);
+                        int poLineFirstConfCreateDay = int.Parse(strPOLineFirstConfCreateDate[1]);
+
+
+                        if (poLineFirstConfCreateYear == 0 && poLineFirstConfCreateMonth == 0 && poLineFirstConfCreateDay == 0)
+                        {
+                            if (tag == 12)
+                            {
+                                unconfirmed.ImportRow(dr);
+                            }
+
+                            if (tag == 0) // The user wants to view the total which also includes
+                            {
+                                poReleaseToLastPoReceipt.ImportRow(dr);
+                            }
+                            continue;
+                        }
+
+
+
+                        DateTime lastPORecDate = new DateTime(lastPORecDtYear, lastPORecDtMonth, lastPORecDtDay);
+                        DateTime firstRelDate = new DateTime(poLine1stRelDateYear, poLine1stRelDateMonth, poLine1stRelDateDay);
+
+                        double elapsedDays = (int)(lastPORecDate - firstRelDate).TotalDays;
+
+                        switch (tag)
+                        {
+                            case 0:
+                                poReleaseToLastPoReceipt.ImportRow(dr);
+                                break;
+                            case 1:
+                                if (elapsedDays <= 0)
+                                {
+                                    poReleaseToLastPoReceipt.ImportRow(dr);
+                                }
+                                continue;
+                            case 2:
+                                if (elapsedDays >= 1 && elapsedDays <= 3)
+                                {
+                                    poReleaseToLastPoReceipt.ImportRow(dr);
+                                }
+                                continue;
+                            case 3:
+                                if (elapsedDays >= 4 && elapsedDays <= 7)
+                                {
+                                    poReleaseToLastPoReceipt.ImportRow(dr);
+                                }
+                                continue;
+                            case 4:
+                                if (elapsedDays >= 8 && elapsedDays <= 14)
+                                {
+                                    poReleaseToLastPoReceipt.ImportRow(dr);
+                                }
+                                continue;
+                            case 5:
+                                if (elapsedDays >= 15 && elapsedDays <= 21)
+                                {
+                                    poReleaseToLastPoReceipt.ImportRow(dr);
+                                }
+                                continue;
+                            case 6:
+                                if (elapsedDays >= 22 && elapsedDays <= 28)
+                                {
+                                    poReleaseToLastPoReceipt.ImportRow(dr);
+                                }
+                                continue;
+                            case 7:
+                                if (elapsedDays >= 29 && elapsedDays <= 35)
+                                {
+                                    poReleaseToLastPoReceipt.ImportRow(dr);
+                                }
+                                continue;
+                            case 8:
+                                if (elapsedDays >= 36 && elapsedDays <= 42)
+                                {
+                                    poReleaseToLastPoReceipt.ImportRow(dr);
+                                }
+                                continue;
+                            case 9:
+                                if (elapsedDays >= 43 && elapsedDays <= 49)
+                                {
+                                    poReleaseToLastPoReceipt.ImportRow(dr);
+                                }
+                                continue;
+                            case 10:
+                                if (elapsedDays >= 50 && elapsedDays <= 56)
+                                {
+                                    poReleaseToLastPoReceipt.ImportRow(dr);
+                                }
+                                continue;
+                            case 11:
+                                if (elapsedDays >= 57)
+                                {
+                                    poReleaseToLastPoReceipt.ImportRow(dr);
+                                }
+                                continue;
+                            default:
+                                continue;
+                        }
+                    }
+
+
+                    if (tag != 12)
+                    {
+                        DataViewerUtils.Data = poReleaseToLastPoReceipt.Copy();
+                        DataViewerUtils.DataLoaded = true;
+                    }
+                    else
+                    {
+                        DataViewerUtils.Data = unconfirmed.Copy();
+                        DataViewerUtils.DataLoaded = true;
+                    }
+
+
+                    if (poReleaseToLastPoReceipt != null)
+                    {
+                        poReleaseToLastPoReceipt.Rows.Clear();
+                        poReleaseToLastPoReceipt = null;
                     }
 
                     if (unconfirmed != null)

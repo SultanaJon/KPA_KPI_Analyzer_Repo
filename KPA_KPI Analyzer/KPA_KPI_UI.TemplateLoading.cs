@@ -274,6 +274,24 @@ namespace KPA_KPI_Analyzer
 
 
 
+
+        /// <summary>
+        /// Instantiates a template object and adds the control to the active page panel for loading/viewing
+        /// </summary>
+        private void CreateKpiFollowUpTwoTemplate()
+        {
+            topHandleBarModel.Section = "Follow Up II";
+            KPIFollowUpTwoTemplate kpiFollowUpTwoTemplate = new KPIFollowUpTwoTemplate()
+            {
+                Name = "FollowUp",
+                Dock = DockStyle.Fill
+            };
+            pnl_activePage.Controls.Add(kpiFollowUpTwoTemplate);
+            kpiFollowUpTwoTemplate.BringToFront();
+        }
+
+
+
         /// <summary>
         /// Instantiates a template object and adds the control to the active page panel for loading/viewing
         /// </summary>
@@ -479,6 +497,11 @@ namespace KPA_KPI_Analyzer
                             kpiPurchTwo.LoadPanel();
                             activeTemplate = kpiPurchTwo;
                             break;
+                        case Navigation.SectionNavigationTag.FollowUpTwo:
+                            KPIFollowUpTwoTemplate kpiFollowUpTwo = (KPIFollowUpTwoTemplate)e.Control;
+                            kpiFollowUpTwo.LoadPanel();
+                            activeTemplate = kpiFollowUpTwo;
+                            break;
                         case Navigation.SectionNavigationTag.PurchSub:
                             KPIPurchSubTemplate kpiPurchSub = (KPIPurchSubTemplate)e.Control;
                             kpiPurchSub.LoadPanel();
@@ -581,6 +604,10 @@ namespace KPA_KPI_Analyzer
                     case Navigation.SectionNavigationTag.PurchII:
                         KPIPurchTwoTemplate kpiPurchTwo = (KPIPurchTwoTemplate)activeTemplate;
                         kpiPurchTwo.RefreshTemplate();
+                        break;
+                    case Navigation.SectionNavigationTag.FollowUpTwo:
+                        KPIFollowUpTwoTemplate kpiFollowUpTwo = (KPIFollowUpTwoTemplate)activeTemplate;
+                        kpiFollowUpTwo.RefreshTemplate();
                         break;
                     case Navigation.SectionNavigationTag.PurchSub:
                         KPIPurchSubTemplate kpiPurchSub = (KPIPurchSubTemplate)activeTemplate;
