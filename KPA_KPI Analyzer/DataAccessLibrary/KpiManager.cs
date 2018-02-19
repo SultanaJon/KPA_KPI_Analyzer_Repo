@@ -10,9 +10,9 @@ namespace DataAccessLibrary
         public static class KpiQueries
         {
             /// <summary>
-            /// 
+            /// KPI -> Get all POs
             /// </summary>
-            /// <returns></returns>
+            /// <returns>A data table containing the data.</returns>
             public static DataTable GetAllPOs()
             {
                 DataTable dt = new DataTable();
@@ -27,7 +27,6 @@ namespace DataAccessLibrary
                     OleDbDataAdapter da = new OleDbDataAdapter(cmd);
 
                     da.Fill(dt);
-
                 }
                 catch (InvalidOperationException)
                 {
@@ -41,9 +40,9 @@ namespace DataAccessLibrary
 
 
             /// <summary>
-            /// 
+            /// KPI -> Get all the PO lines that do not have a confirmation date.
             /// </summary>
-            /// <returns></returns>
+            /// <returns>A data table containing the data.</returns>
             public static DataTable GetPoLinesUnconfirmed()
             {
                 DataTable dt = new DataTable();
@@ -55,12 +54,10 @@ namespace DataAccessLibrary
                                         " WHERE " + "(" + DatabaseManager.TargetTable + ".[Qty Ordered] > 0 AND " + 
                                         DatabaseManager.TargetTable + ".[Del#Conf#Date] = '00/00/0000')" + DatabaseManager.Filters;
 
-
                     OleDbCommand cmd = new OleDbCommand(cmdString, conn);
                     OleDbDataAdapter da = new OleDbDataAdapter(cmd);
 
                     da.Fill(dt);
-
                 }
                 catch (InvalidOperationException)
                 {
@@ -73,9 +70,9 @@ namespace DataAccessLibrary
 
 
             /// <summary>
-            /// 
+            /// KPI -> Get all the PO lines that have been received complete (EVASO)
             /// </summary>
-            /// <returns></returns>
+            /// <returns>A data table containing the data.</returns>
             public static DataTable GetPoLinesReceivedComplete()
             {
                 DataTable dt = new DataTable();
@@ -104,9 +101,9 @@ namespace DataAccessLibrary
 
 
             /// <summary>
-            /// 
+            /// KPI -> Gets all PO lines that have been received complete but do not have a confirmation date for delivery.
             /// </summary>
-            /// <returns></returns>
+            /// <returns>A data table containing the data.</returns>
             public static DataTable GetUnconfirmedReceivedCompletePoLines()
             {
                 DataTable dt = new DataTable();
@@ -135,9 +132,9 @@ namespace DataAccessLibrary
 
 
             /// <summary>
-            /// 
+            /// KPI -> Get all PRs that have been released to the second level.
             /// </summary>
-            /// <returns></returns>
+            /// <returns>A data table containing the data.</returns>
             public static DataTable GetPr2ndLevelRelease()
             {
                 DataTable dt = new DataTable();
@@ -167,9 +164,9 @@ namespace DataAccessLibrary
 
 
             /// <summary>
-            /// 
+            /// KPI -> Get all PRs that have been fully releasd.
             /// </summary>
-            /// <returns></returns>
+            /// <returns>A data table containing the data.</returns>
             public static DataTable GetFullyReleasedPRs()
             {
                 DataTable dt = new DataTable();
@@ -199,9 +196,9 @@ namespace DataAccessLibrary
 
 
             /// <summary>
-            /// 
+            /// KPI -> Get all the data
             /// </summary>
-            /// <returns></returns>
+            /// <returns>A data table containing the data</returns>
             public static DataTable GetAllData()
             {
                 DataTable dt = new DataTable();

@@ -1,16 +1,20 @@
-﻿using KPA_KPI_Analyzer.DataLoading;
-using KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader;
-using KPA_KPI_Analyzer.Values;
-using Reporting.KeyPerformanceIndicators;
-using Reporting.Reports;
-using Reporting.TimeSpans.Templates;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using Reporting.TimeSpans.Templates;
+using KPA_KPI_Analyzer.Values;
+using Reporting.Reports;
+using Reporting.KeyPerformanceIndicators;
 
 namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 {
-    public partial class KPIPlanTwoTemplate : UserControl
+    public partial class KPIFollowUpTwoTemplate : UserControl
     {
         /// <summary>
         /// Boolean value indicating whether the data was loaded into the dataviz control
@@ -32,7 +36,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// <summary>
         /// Default Constructor
         /// </summary>
-        public KPIPlanTwoTemplate()
+        public KPIFollowUpTwoTemplate()
         {
             InitializeComponent();
         }
@@ -67,8 +71,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             set
             {
                 btn_One.Textcolor = value;
-                btn_Two.Textcolor = value;
-                btn_Three.Textcolor = value;
             }
         }
 
@@ -84,6 +86,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         /// </summary>
         public void LoadPanel()
         {
+
             SetGraphColor();
             DefaultButtonTextColor = Color.DarkGray;
             RenderOne();
@@ -92,7 +95,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             DatavizLoaded = false;
             ActiveCategory = 0;
             KPA_KPI_UI.topHandleBarModel.Category = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PlanTwo][(int)Values.Categories.KpiCategory.PlanTwo.MaterialDueOriginalPlanDate];
-            
+
             datavizLoadTimer.Start();
         }
 
@@ -150,8 +153,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 
 
             btn_One.selected = false;
-            btn_Two.selected = false;
-            btn_Three.selected = false;
 
             btn.selected = true;
             DefaultButtonTextColor = Color.DarkGray;
@@ -166,12 +167,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             {
                 case 0:
                     RenderOne();
-                    break;
-                case 1:
-                    RenderTwo();
-                    break;
-                case 2:
-                    RenderThree();
                     break;
                 default:
                     break;
@@ -192,7 +187,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             Title = Categories.kpiCategories[(int)Sections.KpiSection.PlanTwo][(int)Categories.KpiCategory.PlanTwo.MaterialDueOriginalPlanDate];
             KPA_KPI_UI.topHandleBarModel.Category = Title;
             KPA_KPI_UI.topHandleBarModel.Section = Sections.kpiections[(int)Sections.KpiSection.PlanTwo];
-            
+
 
 
             AnalysisOne = "- Will show if the PR has been fully released.";
@@ -217,114 +212,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             dp.addLabely(lbl_xLabelEleven.Text, tempFour.FiftySevenPlusDays.ToString());
 
             // Add the data to the time spans
-            Average = string.Format("{0:n}", tempFour.Average);
-            TimeBucketOne = string.Format("{0:n0}", tempFour.LessThanEqualToZeroDays);
-            TimeBucketTwo = string.Format("{0:n0}", tempFour.OneToThreeDays);
-            TimeBucketThree = string.Format("{0:n0}", tempFour.FourToSevenDays);
-            TimeBucketFour = string.Format("{0:n0}", tempFour.EightToFourteenDays);
-            TimeBucketFive = string.Format("{0:n0}", tempFour.FifteenToTwentyOneDays);
-            TimeBucketSix = string.Format("{0:n0}", tempFour.TwentyTwoToTwentyEightDays);
-            TimeBucketSeven = string.Format("{0:n0}", tempFour.TwentyNineToThirtyFiveDays);
-            TimeBucketEight = string.Format("{0:n0}", tempFour.ThirtySixtoFourtyTwoDays);
-            TimeBucketNine = string.Format("{0:n0}", tempFour.FourtyThreeToFourtyNineDays);
-            TimeBucketTen = string.Format("{0:n0}", tempFour.FiftyToFiftySixDays);
-            TimeBucketEleven = string.Format("{0:n0}", tempFour.FiftySevenPlusDays);
-            TotalOrders = string.Format("{0:n0}", tempFour.TotalRecords);
-
-            canvas.addData(dp);
-            dataviz.Render(canvas);
-        }
-
-
-
-
-        /// <summary>
-        /// Renders the specific KPI category into the loaded template
-        /// </summary>
-        private void RenderTwo()
-        {
-            Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
-            Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
-
-            Title = Values.Categories.kpiCategories[(int)Values.Sections.KpiSection.PlanTwo][(int)Values.Categories.KpiCategory.PlanTwo.MaterialDueFinalPlannedDate];
-            KPA_KPI_UI.topHandleBarModel.Category = Title;
-            KPA_KPI_UI.topHandleBarModel.Section = Values.Sections.kpiections[(int)Values.Sections.KpiSection.PlanTwo];
-            
-
-            AnalysisOne = "- Will show if the PR line item is on a PO.";
-            AnalysisTwo = "- Difference between the current planned date and the date the PR was fully released.";
-
-
-            TemplateFour tempFour = KpiOverallReport.Indicators[(int)KpiOption.PlanTwo_MaterialDueFinalPlannedDate].TemplateBlock as TemplateFour;
-
-            // Add the data to the column chart
-            dp.addLabely(lbl_xLabelOne.Text, tempFour.LessThanEqualToZeroDays.ToString());
-            dp.addLabely(lbl_xLabelTwo.Text, tempFour.OneToThreeDays.ToString());
-            dp.addLabely(lbl_xLabelThree.Text, tempFour.FourToSevenDays.ToString());
-            dp.addLabely(lbl_xLabelFour.Text, tempFour.EightToFourteenDays.ToString());
-            dp.addLabely(lbl_xLabelFive.Text, tempFour.FifteenToTwentyOneDays.ToString());
-            dp.addLabely(lbl_xLabelSix.Text, tempFour.TwentyTwoToTwentyEightDays.ToString());
-            dp.addLabely(lbl_xLabelSeven.Text, tempFour.TwentyNineToThirtyFiveDays.ToString());
-            dp.addLabely(lbl_xLabelEight.Text, tempFour.ThirtySixtoFourtyTwoDays.ToString());
-            dp.addLabely(lbl_xLabelNine.Text, tempFour.FourtyThreeToFourtyNineDays.ToString());
-            dp.addLabely(lbl_xLabelTen.Text, tempFour.FiftyToFiftySixDays.ToString());
-            dp.addLabely(lbl_xLabelEleven.Text, tempFour.FiftySevenPlusDays.ToString());
-
-            // Add the data to the time spans
-            Average = string.Format("{0:n}", tempFour.Average);
-            TimeBucketOne = string.Format("{0:n0}", tempFour.LessThanEqualToZeroDays);
-            TimeBucketTwo = string.Format("{0:n0}", tempFour.OneToThreeDays);
-            TimeBucketThree = string.Format("{0:n0}", tempFour.FourToSevenDays);
-            TimeBucketFour = string.Format("{0:n0}", tempFour.EightToFourteenDays);
-            TimeBucketFive = string.Format("{0:n0}", tempFour.FifteenToTwentyOneDays);
-            TimeBucketSix = string.Format("{0:n0}", tempFour.TwentyTwoToTwentyEightDays);
-            TimeBucketSeven = string.Format("{0:n0}", tempFour.TwentyNineToThirtyFiveDays);
-            TimeBucketEight = string.Format("{0:n0}", tempFour.ThirtySixtoFourtyTwoDays);
-            TimeBucketNine = string.Format("{0:n0}", tempFour.FourtyThreeToFourtyNineDays);
-            TimeBucketTen = string.Format("{0:n0}", tempFour.FiftyToFiftySixDays);
-            TimeBucketEleven = string.Format("{0:n0}", tempFour.FiftySevenPlusDays);
-            TotalOrders = string.Format("{0:n0}", tempFour.TotalRecords);
-
-            canvas.addData(dp);
-            dataviz.Render(canvas);
-        }
-
-
-
-
-
-
-        /// <summary>
-        /// Renders the specific KPI category into the loaded template
-        /// </summary>
-        private void RenderThree()
-        {
-            Bunifu.DataViz.Canvas canvas = new Bunifu.DataViz.Canvas();
-            Bunifu.DataViz.DataPoint dp = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
-
-            Title = Categories.kpiCategories[(int)Sections.KpiSection.PlanTwo][(int)Categories.KpiCategory.PlanTwo.PrReleaseDateVsPrCreationDate];
-            KPA_KPI_UI.topHandleBarModel.Category = Title;
-            KPA_KPI_UI.topHandleBarModel.Section = Sections.kpiections[(int)Sections.KpiSection.PlanTwo];
-            
-
-            AnalysisOne = "- Will show if the PR has been fully released";
-            AnalysisTwo = "- Difference between the PR full release date and the date the PR was created.";
-
-            TemplateFour tempFour = KpiOverallReport.Indicators[(int)KpiOption.PlanTwo_PrReleaseDateVsPrCreationDate].TemplateBlock as TemplateFour;
-
-            // Add the data to the column chart
-            dp.addLabely(lbl_xLabelOne.Text, tempFour.LessThanEqualToZeroDays.ToString());
-            dp.addLabely(lbl_xLabelTwo.Text, tempFour.OneToThreeDays.ToString());
-            dp.addLabely(lbl_xLabelThree.Text, tempFour.FourToSevenDays.ToString());
-            dp.addLabely(lbl_xLabelFour.Text, tempFour.EightToFourteenDays.ToString());
-            dp.addLabely(lbl_xLabelFive.Text, tempFour.FifteenToTwentyOneDays.ToString());
-            dp.addLabely(lbl_xLabelSix.Text, tempFour.TwentyTwoToTwentyEightDays.ToString());
-            dp.addLabely(lbl_xLabelSeven.Text, tempFour.TwentyNineToThirtyFiveDays.ToString());
-            dp.addLabely(lbl_xLabelEight.Text, tempFour.ThirtySixtoFourtyTwoDays.ToString());
-            dp.addLabely(lbl_xLabelNine.Text, tempFour.FourtyThreeToFourtyNineDays.ToString());
-            dp.addLabely(lbl_xLabelTen.Text, tempFour.FiftyToFiftySixDays.ToString());
-            dp.addLabely(lbl_xLabelEleven.Text, tempFour.FiftySevenPlusDays.ToString());
-
             Average = string.Format("{0:n}", tempFour.Average);
             TimeBucketOne = string.Format("{0:n0}", tempFour.LessThanEqualToZeroDays);
             TimeBucketTwo = string.Format("{0:n0}", tempFour.OneToThreeDays);
@@ -391,14 +278,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                             dv.DataLoader += KpiDataTableLoader.PlanTwo.LoadMaterialDueOrigPlanDate;
                             dv.ColumnTag = tag;
                             break;
-                        case 1: // PO Release vs PO Confirmation
-                            dv.DataLoader += KpiDataTableLoader.PlanTwo.LoadMaterialDueFinalPlanDate;
-                            dv.ColumnTag = tag;
-                            break;
-                        case 2: // PO Release vs PO Confirmation
-                            dv.DataLoader += KpiDataTableLoader.PlanTwo.LoadPrReleaseDateVsPrCreationDate;
-                            dv.ColumnTag = tag;
-                            break;
                         default:
                             break;
                     }
@@ -407,7 +286,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "KPI -> Plan Two Values Viewer Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "KPI -> Follow Up II - Data Viewer Calculation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

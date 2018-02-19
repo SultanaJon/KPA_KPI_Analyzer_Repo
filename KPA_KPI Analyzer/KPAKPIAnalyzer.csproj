@@ -242,6 +242,7 @@
     <Compile Include="Reporting\KeyPerformanceActions\Purch\POFirstRelease.cs" />
     <Compile Include="Reporting\KeyPerformanceActions\Purch\POPrevRelease.cs" />
     <Compile Include="Reporting\KeyPerformanceActions\Purch\PRsAgingReleased.cs" />
+    <Compile Include="Reporting\KeyPerformanceIndicators\FollowUpTwo\PoReleaseToLasteReceiptDate.cs" />
     <Compile Include="Reporting\KeyPerformanceIndicators\FollowUp\CurrentConfirmationDateVsInitialConfirmationDate.cs" />
     <Compile Include="Reporting\KeyPerformanceIndicators\FollowUp\FinalConfirmationDateVsFinalPlanDate.cs" />
     <Compile Include="Reporting\KeyPerformanceIndicators\FollowUp\ReceiptDateVsCurrentConfirmationDate.cs" />
@@ -285,6 +286,12 @@
     <Compile Include="Reporting\TimeSpans\Templates\TemplateOne.cs" />
     <Compile Include="Reporting\TimeSpans\Templates\TemplateThree.cs" />
     <Compile Include="Reporting\TimeSpans\Templates\TemplateTwo.cs" />
+    <Compile Include="Templates\Template_Controls\KPI_Controls\KPIFollowUpTwoTemplate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Templates\Template_Controls\KPI_Controls\KPIFollowUpTwoTemplate.Designer.cs">
+      <DependentUpon>KPIFollowUpTwoTemplate.cs</DependentUpon>
+    </Compile>
     <Compile Include="TopHandleBar\ITopHandleBarController.cs" />
     <Compile Include="TopHandleBar\ITopHandleBarModel.cs" />
     <Compile Include="TopHandleBar\ITopHandleBarView.cs" />
@@ -548,6 +555,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Navigation\NavigationView.resx">
       <DependentUpon>NavigationView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Templates\Template_Controls\KPI_Controls\KPIFollowUpTwoTemplate.resx">
+      <DependentUpon>KPIFollowUpTwoTemplate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TopHandleBar\TopHandleBarView.resx">
       <DependentUpon>TopHandleBarView.cs</DependentUpon>
