@@ -326,42 +326,6 @@ namespace KPA_KPI_Analyzer
 
 
 
-        /// <summary>
-        /// Finishes initializing the KPA Report and begins running the report
-        /// </summary>
-        private void GenerateKpaReport()
-        {
-            //// Get the filter the user want to use.
-            //List<string> filters = GetFilters(reportingWidgetsController.SelectiveFilterOption);
-
-            //// Bring the loading screen to the front
-            //ActivateLoadingScreen("Loading KPA Report...");
-
-            //// Pass the filters to the kpa report to use in the report generation
-            //(reports[ReportingType.KpaReport] as KpaReport).RunReport(filters, reportingWidgetsController.SelectiveFilterOption);
-        }
-
-
-
-
-        /// <summary>
-        /// Finishes initializing the KPI Report and begins running the report.
-        /// </summary>
-        private void GenerateKpiReport()
-        {
-            //// Get the filter the user want to use.
-            //List<string> filters = GetFilters(reportingWidgetsController.SelectiveFilterOption);
-
-            //// Bring the loading screen to the front
-            //ActivateLoadingScreen("Loading KPI Report...");
-
-            //// Pass the filters to the KPI report to use in the report generation
-            //(reports[ReportingType.KpiReport] as KpiReport).RunReport(filters, reportingWidgetsController.SelectiveFilterOption);
-        }
-
-
-
-
 
         /// <summary>
         /// Creates a Comparison Report and runs it based on the KPA option selected

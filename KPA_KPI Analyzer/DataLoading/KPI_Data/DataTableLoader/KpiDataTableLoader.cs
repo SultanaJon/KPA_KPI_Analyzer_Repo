@@ -2468,7 +2468,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                         //Check if the datarow meets the conditions of any applied filters.
                         if (!Filters.FilterUtils.EvaluateAgainstFilters(dr))
                         {
-                            // This datarow dos not meet the conditions of the filters applied.
+                            // This datarow does not meet the conditions of the filters applied.
                             continue;
                         }
 
@@ -2478,7 +2478,6 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                         int lastPORecDtYear = int.Parse(strLastPORecDate[2]);
                         int lastPORecDtMonth = int.Parse(strLastPORecDate[0]);
                         int lastPORecDtDay = int.Parse(strLastPORecDate[1]);
-
 
                         if (lastPORecDtYear == 0 && lastPORecDtMonth == 0 && lastPORecDtDay == 0)
                         {
@@ -2503,7 +2502,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
 
 
 
-                        string[] strPOLineFirstConfCreateDate = (dr["1st Conf Creation Da"].ToString()).Split('/');
+                        string[] strPOLineFirstConfCreateDate = (dr["Del#Conf#Date"].ToString()).Split('/');
                         int poLineFirstConfCreateYear = int.Parse(strPOLineFirstConfCreateDate[2]);
                         int poLineFirstConfCreateMonth = int.Parse(strPOLineFirstConfCreateDate[0]);
                         int poLineFirstConfCreateDay = int.Parse(strPOLineFirstConfCreateDate[1]);

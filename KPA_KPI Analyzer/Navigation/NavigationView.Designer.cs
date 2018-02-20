@@ -88,13 +88,13 @@
             this.btn_reports.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(201)))), ((int)(((byte)(169)))));
             this.btn_reports.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_reports.BorderRadius = 0;
-            this.btn_reports.ButtonText = "Reports";
+            this.btn_reports.ButtonText = "  Reports";
             this.btn_reports.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_reports.DisabledColor = System.Drawing.Color.Gray;
             this.btn_reports.Dock = System.Windows.Forms.DockStyle.Top;
             this.btn_reports.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_reports.Iconcolor = System.Drawing.Color.Transparent;
-            this.btn_reports.Iconimage = global::KPA_KPI_Analyzer.Properties.Resources.DashboardLogo;
+            this.btn_reports.Iconimage = global::KPA_KPI_Analyzer.Properties.Resources.ic_library_books_white_24dp_2x;
             this.btn_reports.Iconimage_right = null;
             this.btn_reports.Iconimage_right_Selected = null;
             this.btn_reports.Iconimage_Selected = null;
@@ -103,7 +103,7 @@
             this.btn_reports.IconRightVisible = false;
             this.btn_reports.IconRightZoom = 0D;
             this.btn_reports.IconVisible = true;
-            this.btn_reports.IconZoom = 100D;
+            this.btn_reports.IconZoom = 50D;
             this.btn_reports.IsTab = false;
             this.btn_reports.Location = new System.Drawing.Point(0, 723);
             this.btn_reports.Margin = new System.Windows.Forms.Padding(0);
@@ -115,7 +115,7 @@
             this.btn_reports.Size = new System.Drawing.Size(228, 48);
             this.btn_reports.TabIndex = 25;
             this.btn_reports.Tag = "5";
-            this.btn_reports.Text = "Reports";
+            this.btn_reports.Text = "  Reports";
             this.btn_reports.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_reports.Textcolor = System.Drawing.Color.White;
             this.btn_reports.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -127,7 +127,7 @@
             this.btn_Filters.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(198)))), ((int)(((byte)(187)))));
             this.btn_Filters.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_Filters.BorderRadius = 0;
-            this.btn_Filters.ButtonText = "  Filters";
+            this.btn_Filters.ButtonText = "Filters";
             this.btn_Filters.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Filters.DisabledColor = System.Drawing.Color.Gray;
             this.btn_Filters.Dock = System.Windows.Forms.DockStyle.Top;
@@ -154,7 +154,7 @@
             this.btn_Filters.Size = new System.Drawing.Size(228, 48);
             this.btn_Filters.TabIndex = 24;
             this.btn_Filters.Tag = "4";
-            this.btn_Filters.Text = "  Filters";
+            this.btn_Filters.Text = "Filters";
             this.btn_Filters.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_Filters.Textcolor = System.Drawing.Color.White;
             this.btn_Filters.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -444,7 +444,7 @@
             this.btn_KPI.Dock = System.Windows.Forms.DockStyle.Top;
             this.btn_KPI.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_KPI.Iconcolor = System.Drawing.Color.Transparent;
-            this.btn_KPI.Iconimage = global::KPA_KPI_Analyzer.Properties.Resources.kpiLogo;
+            this.btn_KPI.Iconimage = global::KPA_KPI_Analyzer.Properties.Resources.ic_multiline_chart_white_24dp_2x;
             this.btn_KPI.Iconimage_right = null;
             this.btn_KPI.Iconimage_right_Selected = null;
             this.btn_KPI.Iconimage_Selected = null;
@@ -453,7 +453,7 @@
             this.btn_KPI.IconRightVisible = true;
             this.btn_KPI.IconRightZoom = 0D;
             this.btn_KPI.IconVisible = true;
-            this.btn_KPI.IconZoom = 90D;
+            this.btn_KPI.IconZoom = 50D;
             this.btn_KPI.IsTab = false;
             this.btn_KPI.Location = new System.Drawing.Point(0, 326);
             this.btn_KPI.Margin = new System.Windows.Forms.Padding(0);
@@ -694,7 +694,7 @@
             this.btn_KPA.Dock = System.Windows.Forms.DockStyle.Top;
             this.btn_KPA.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_KPA.Iconcolor = System.Drawing.Color.Transparent;
-            this.btn_KPA.Iconimage = global::KPA_KPI_Analyzer.Properties.Resources.kpaLogo;
+            this.btn_KPA.Iconimage = global::KPA_KPI_Analyzer.Properties.Resources.ic_insert_chart_white_24dp_2x;
             this.btn_KPA.Iconimage_right = null;
             this.btn_KPA.Iconimage_right_Selected = null;
             this.btn_KPA.Iconimage_Selected = null;
@@ -703,7 +703,7 @@
             this.btn_KPA.IconRightVisible = true;
             this.btn_KPA.IconRightZoom = 0D;
             this.btn_KPA.IconVisible = true;
-            this.btn_KPA.IconZoom = 75D;
+            this.btn_KPA.IconZoom = 50D;
             this.btn_KPA.IsTab = false;
             this.btn_KPA.Location = new System.Drawing.Point(0, 48);
             this.btn_KPA.Margin = new System.Windows.Forms.Padding(0);
@@ -727,13 +727,13 @@
             this.btn_Dashboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(201)))), ((int)(((byte)(169)))));
             this.btn_Dashboard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_Dashboard.BorderRadius = 0;
-            this.btn_Dashboard.ButtonText = "Dashboard";
+            this.btn_Dashboard.ButtonText = "  Dashboard";
             this.btn_Dashboard.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_Dashboard.DisabledColor = System.Drawing.Color.Gray;
             this.btn_Dashboard.Dock = System.Windows.Forms.DockStyle.Top;
             this.btn_Dashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Dashboard.Iconcolor = System.Drawing.Color.Transparent;
-            this.btn_Dashboard.Iconimage = global::KPA_KPI_Analyzer.Properties.Resources.DashboardLogo;
+            this.btn_Dashboard.Iconimage = global::KPA_KPI_Analyzer.Properties.Resources.ic_dashboard_white_24dp_2x;
             this.btn_Dashboard.Iconimage_right = null;
             this.btn_Dashboard.Iconimage_right_Selected = null;
             this.btn_Dashboard.Iconimage_Selected = null;
@@ -742,7 +742,7 @@
             this.btn_Dashboard.IconRightVisible = false;
             this.btn_Dashboard.IconRightZoom = 0D;
             this.btn_Dashboard.IconVisible = true;
-            this.btn_Dashboard.IconZoom = 100D;
+            this.btn_Dashboard.IconZoom = 50D;
             this.btn_Dashboard.IsTab = false;
             this.btn_Dashboard.Location = new System.Drawing.Point(0, 0);
             this.btn_Dashboard.Margin = new System.Windows.Forms.Padding(0);
@@ -754,7 +754,7 @@
             this.btn_Dashboard.Size = new System.Drawing.Size(228, 48);
             this.btn_Dashboard.TabIndex = 23;
             this.btn_Dashboard.Tag = "0";
-            this.btn_Dashboard.Text = "Dashboard";
+            this.btn_Dashboard.Text = "  Dashboard";
             this.btn_Dashboard.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_Dashboard.Textcolor = System.Drawing.Color.White;
             this.btn_Dashboard.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

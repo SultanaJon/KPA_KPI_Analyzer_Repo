@@ -62,99 +62,100 @@ namespace Filters
             {
                 case Options.ProjectNumber:
                     if (filter == "[Blanks]")
-                        result = "ISNULL([" + FIlterColumns.filterColumns[(int)FilterColumn.ProjectNUm_ProdOrdWbs] + "], '') = '' AND ISNULL([" + FIlterColumns.filterColumns[(int)FilterColumn.ProjectNum_WBS_Element] + "], '') = ''";
+                        result = "ISNULL([" + FilterColumns.filterColumns[(int)FilterColumn.ProjectNUm_ProdOrdWbs] + "], '') = '' AND ISNULL([" + FilterColumns.filterColumns[(int)FilterColumn.ProjectNum_WBS_Element] + "], '') = ''";
                     else
-                        result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.ProjectNUm_ProdOrdWbs] + "] LIKE " + "'%" + filter + "%' OR [" + FIlterColumns.filterColumns[(int)FilterColumn.ProjectNum_WBS_Element] + "] LIKE '%" + filter + "%'";
+                        result = "[" + FilterColumns.filterColumns[(int)FilterColumn.ProjectNUm_ProdOrdWbs] + "] LIKE " + "'%" + filter + "%' OR [" + FilterColumns.filterColumns[(int)FilterColumn.ProjectNum_WBS_Element] + "] LIKE '%" + filter + "%'";
                     break;
                 case Options.WBSElement:
                     if (filter == "[Blanks]")
-                        result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.WBS_Element] + "] IS NULL";
+                        result = "ISNULL([" + FilterColumns.filterColumns[(int)FilterColumn.WBS_Element] + "], '') = ''";
+
                     else
-                        result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.WBS_Element] + "] LIKE " + "'%" + filter + "%'";
+                        result = "[" + FilterColumns.filterColumns[(int)FilterColumn.WBS_Element] + "] LIKE " + "'%" + filter + "%'";
                     break;
                 case Options.Material:
                     if (filter == "[Blanks]")
-                        result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.Material] + "] IS NULL";
+                        result = "ISNULL([" + FilterColumns.filterColumns[(int)FilterColumn.Material] + "], '') = ''";
                     else
-                        result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.Material] + "] LIKE " + "'%" + filter + "%'";
+                        result = "[" + FilterColumns.filterColumns[(int)FilterColumn.Material] + "] LIKE " + "'%" + filter + "%'";
                     break;
                 case Options.MaterialGroup:
                     if (filter == "[Blanks]")
-                        result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.MaterialGroup] + "] IS NULL";
+                        result = "ISNULL([" + FilterColumns.filterColumns[(int)FilterColumn.MaterialGroup] + "], '') = ''";
                     else
-                        result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.MaterialGroup] + "] LIKE " + "'%" + filter + "%'";
+                        result = "[" + FilterColumns.filterColumns[(int)FilterColumn.MaterialGroup] + "] LIKE " + "'%" + filter + "%'";
                     break;
                 case Options.Vendor:
                     if (filter == "[Blanks]")
-                        result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.Vendor] + "] IS NULL";
+                        result = "ISNULL([" + FilterColumns.filterColumns[(int)FilterColumn.Vendor] + "], '') = ''";
                     else
-                        result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.Vendor] + "] = " + filter;
+                        result = "[" + FilterColumns.filterColumns[(int)FilterColumn.Vendor] + "] = " + filter;
                     break;
                 case Options.VendorDescription:
                     if (filter == "[Blanks]")
-                        result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.VendorDescription] + "] IS NULL";
+                        result = "ISNULL([" + FilterColumns.filterColumns[(int)FilterColumn.VendorDescription] + "], '') = ''";
                     else
-                        result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.VendorDescription] + "] LIKE " + "'%" + filter + "%'";
+                        result = "[" + FilterColumns.filterColumns[(int)FilterColumn.VendorDescription] + "] LIKE " + "'%" + filter + "%'";
                     break;
                 case Options.PRPurchaseGroup:
                     if (filter == "[Blanks]")
-                        result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.PurchGroup] + "] IS NULL";
+                        result = "ISNULL([" + FilterColumns.filterColumns[(int)FilterColumn.PurchGroup] + "], '') = ''";
                     else
-                        result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.PurchGroup] + "] LIKE " + "'%" + filter + "%'";
+                        result = "[" + FilterColumns.filterColumns[(int)FilterColumn.PurchGroup] + "] LIKE " + "'%" + filter + "%'";
                     break;
                 case Options.POPurchaseGroup:
                     if (filter == "[Blanks]")
-                        result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.PoPurchGroup] + "] IS NULL";
+                        result = "ISNULL([" + FilterColumns.filterColumns[(int)FilterColumn.PoPurchGroup] + "], '') = ''";
                     else
-                        result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.PoPurchGroup] + "] LIKE " + "'%" + filter + "%'";
+                        result = "[" + FilterColumns.filterColumns[(int)FilterColumn.PoPurchGroup] + "] LIKE " + "'%" + filter + "%'";
                     break;
                 case Options.IRSuppName:
                     if (filter == "[Blanks]")
-                        result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.IRSuppName] + "] IS NULL";
+                        result = "ISNULL([" + FilterColumns.filterColumns[(int)FilterColumn.IRSuppName] + "], '') = ''";
                     else
-                        result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.IRSuppName] + "] LIKE " + "'%" + filter + "%'";
+                        result = "[" + FilterColumns.filterColumns[(int)FilterColumn.IRSuppName] + "] LIKE " + "'%" + filter + "%'";
                     break;
                 case Options.FxdSuppName:
                     if (filter == "[Blanks]")
-                        result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.FxdSuppName] + "] IS NULL";
+                        result = "ISNULL([" + FilterColumns.filterColumns[(int)FilterColumn.FxdSuppName] + "], '') = ''";
                     else
-                        result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.FxdSuppName] + "] LIKE " + "'%" + filter + "%'";
+                        result = "[" + FilterColumns.filterColumns[(int)FilterColumn.FxdSuppName] + "] LIKE " + "'%" + filter + "%'";
                     break;
                 case Options.DsrdSuppName:
                     if (filter == "[Blanks]")
-                        result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.DsrdSuppName] + "] IS NULL";
+                        result = "ISNULL([" + FilterColumns.filterColumns[(int)FilterColumn.DsrdSuppName] + "], '') = ''";
                     else
-                        result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.DsrdSuppName] + "] LIKE " + "'%" + filter + "%'";
+                        result = "[" + FilterColumns.filterColumns[(int)FilterColumn.DsrdSuppName] + "] LIKE " + "'%" + filter + "%'";
                     break;
                 case Options.CommodityCategory:
                     if (filter == "[Blanks]")
-                        result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.CommCat] + "] IS NULL";
+                        result = "ISNULL([" + FilterColumns.filterColumns[(int)FilterColumn.CommCat] + "], '') = ''";
                     else
-                        result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.CommCat] + "] LIKE " + "'%" + filter + "%'";
+                        result = "[" + FilterColumns.filterColumns[(int)FilterColumn.CommCat] + "] LIKE " + "'%" + filter + "%'";
                     break;
                 case Options.Escaped:
                     if (filter == "[Blanks]")
-                        result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.Escaped] + "] IS NULL";
+                        result = "ISNULL([" + FilterColumns.filterColumns[(int)FilterColumn.Escaped] + "], '') = ''";
                     else
-                        result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.Escaped] + "] LIKE " + "'%" + filter + "%'";
+                        result = "[" + FilterColumns.filterColumns[(int)FilterColumn.Escaped] + "] LIKE " + "'%" + filter + "%'";
                     break;
                 case Options.PODocumentType:
                     if (filter == "[Blanks]")
-                        result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.PoDocumentType] + "] IS NULL";
+                        result = "ISNULL([" + FilterColumns.filterColumns[(int)FilterColumn.PoDocumentType] + "], '') = ''";
                     else
-                        result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.PoDocumentType] + "] LIKE " + "'%" + filter + "%'";
+                        result = "[" + FilterColumns.filterColumns[(int)FilterColumn.PoDocumentType] + "] LIKE " + "'%" + filter + "%'";
                     break;
                 case Options.ProductionOrderMaterial:
                     if (filter == "[Blanks]")
-                        result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.ProdOrderMaterial] + "] IS NULL";
+                        result = "ISNULL([" + FilterColumns.filterColumns[(int)FilterColumn.ProdOrderMaterial] + "], '') = ''";
                     else
-                        result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.ProdOrderMaterial] + "] LIKE " + "'%" + filter + "%'";
+                        result = "[" + FilterColumns.filterColumns[(int)FilterColumn.ProdOrderMaterial] + "] LIKE " + "'%" + filter + "%'";
                     break;
                 case Options.StorageLocation:
                     if (filter == "[Blanks]")
-                        result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.StorageLocation] + "] IS NULL";
+                        result = "ISNULL([" + FilterColumns.filterColumns[(int)FilterColumn.StorageLocation] + "], '') = ''";
                     else
-                        result = "[" + FIlterColumns.filterColumns[(int)FilterColumn.StorageLocation] + "] LIKE " + "'%" + filter + "%'";
+                        result = "[" + FilterColumns.filterColumns[(int)FilterColumn.StorageLocation] + "] LIKE " + "'%" + filter + "%'";
                     break;
                 default:
                     break;

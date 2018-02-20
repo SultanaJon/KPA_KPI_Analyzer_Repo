@@ -1,6 +1,6 @@
 ﻿namespace DataAccessLibrary
 {
-    public class FIlterColumns
+    public class FilterColumns
     {
         /// <summary>
         /// The names of the columns that will be included in the category DatabaseManager.Filters.

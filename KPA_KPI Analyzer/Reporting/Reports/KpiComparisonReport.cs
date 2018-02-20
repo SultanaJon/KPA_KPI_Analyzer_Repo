@@ -219,6 +219,9 @@ namespace Reporting.Reports
                 case KpiOption.PurchTwo_PoReleaseDateVsPoConfirmationDate:
                     indicator = new KeyPerformanceIndicators.PurchTwo.POReleaseDateVsPOConfirmationDate();
                     break;
+                case KpiOption.FollowUpTwo_PoReleaseToLastPoReceiptDate:
+                    indicator = new KeyPerformanceIndicators.FollowUpTwo.PoReleaseToLasteReceiptDate();
+                    break;
                 case KpiOption.PurchSub_PrReleaseVsPoReleaseDate:
                     indicator = new KeyPerformanceIndicators.PurchSub.PRReleaseDateVsPOReleaseDate();
                     break;

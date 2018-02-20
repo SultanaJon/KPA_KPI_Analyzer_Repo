@@ -148,7 +148,7 @@
     <Compile Include="DataAccessLibrary\Exceptions\TableNameMismatchException.cs" />
     <Compile Include="DataAccessLibrary\Exceptions\TablesDoNotExistException.cs" />
     <Compile Include="DataAccessLibrary\Exceptions\ThreadInteruptedException.cs" />
-    <Compile Include="DataAccessLibrary\FIlterColumns.cs" />
+    <Compile Include="DataAccessLibrary\FilterColumns.cs" />
     <Compile Include="DataAccessLibrary\FilterManager.cs" />
     <Compile Include="DataAccessLibrary\Importing\Importer.cs" />
     <Compile Include="DataAccessLibrary\KpaManager.cs" />
@@ -722,6 +722,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="lgo.ico" />
+    <None Include="Resources\ic_dashboard_white_24dp_2x.png" />
+    <None Include="Resources\ic_insert_chart_white_24dp_2x.png" />
+    <None Include="Resources\ic_multiline_chart_white_24dp_2x.png" />
+    <None Include="Resources\ic_library_books_white_24dp_2x.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

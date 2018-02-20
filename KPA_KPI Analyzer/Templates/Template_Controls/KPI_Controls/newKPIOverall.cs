@@ -511,7 +511,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             // Get List of template one data for this KPI
             List<string> rowData = new List<string>((KpiOverallReport.Indicators[(int)KpiOption.PurchTwo_PrFullyReleaseDateVsPoCreationDate].Details));
             rowData.AddRange(new List<string>((KpiOverallReport.Indicators[(int)KpiOption.PurchTwo_PrFullyReleaseDateVsPoCreationDate].TemplateBlock as TemplateFour).GetTemplateData()));
-            rowData.Add(string.Empty);
 
             // Add the row to the data grid view control
             TemplateFourDataGrid.Rows.Add(rowData.ToArray());
@@ -519,7 +518,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             // Get List of template one data for this KPI
             rowData = new List<string>((KpiOverallReport.Indicators[(int)KpiOption.PurchTwo_PoCreationDateVsPoReleaseDate].Details));
             rowData.AddRange(new List<string>((KpiOverallReport.Indicators[(int)KpiOption.PurchTwo_PoCreationDateVsPoReleaseDate].TemplateBlock as TemplateFour).GetTemplateData()));
-            rowData.Add(string.Empty);
 
             // Add the row to the data grid view control
             TemplateFourDataGrid.Rows.Add(rowData.ToArray());
@@ -562,7 +560,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             // Get List of template one data for this KPI
             List<string> rowData = new List<string>((KpiOverallReport.Indicators[(int)KpiOption.PurchSub_PrReleaseVsPoReleaseDate].Details));
             rowData.AddRange(new List<string>((KpiOverallReport.Indicators[(int)KpiOption.PurchSub_PrReleaseVsPoReleaseDate].TemplateBlock as TemplateFour).GetTemplateData()));
-            rowData.Add(string.Empty);
 
             // Add the row to the data grid view control
             TemplateFourDataGrid.Rows.Add(rowData.ToArray());
@@ -606,7 +603,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             // Get List of template one data for this KPI
             List<string> rowData = new List<string>((KpiOverallReport.Indicators[(int)KpiOption.PurchPlan_PoReleaseVsPrDeliveryDate].Details));
             rowData.AddRange(new List<string>((KpiOverallReport.Indicators[(int)KpiOption.PurchPlan_PoReleaseVsPrDeliveryDate].TemplateBlock as TemplateFour).GetTemplateData()));
-            rowData.Add(string.Empty);
 
             // Add the row to the data grid view control
             TemplateFourDataGrid.Rows.Add(rowData.ToArray());
@@ -671,7 +667,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         {
             try
             {
-                if (TemplateThreeDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == "0" || TemplateThreeDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == "$0.00" || TemplateThreeDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == string.Empty)
+                if (TemplateThreeDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == "0" || TemplateThreeDataGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == "$0.00")
                 {
                     MessageBox.Show("There is no data in this cell", "Data Timespan", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;

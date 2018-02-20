@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KPA_KPI_Analyzer.Properties
-{
-
-
+namespace KPA_KPI_Analyzer.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -126,6 +126,46 @@ namespace KPA_KPI_Analyzer.Properties
         internal static System.Drawing.Bitmap FiltersLogo {
             get {
                 object obj = ResourceManager.GetObject("FiltersLogo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_dashboard_white_24dp_2x {
+            get {
+                object obj = ResourceManager.GetObject("ic_dashboard_white_24dp_2x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_insert_chart_white_24dp_2x {
+            get {
+                object obj = ResourceManager.GetObject("ic_insert_chart_white_24dp_2x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_library_books_white_24dp_2x {
+            get {
+                object obj = ResourceManager.GetObject("ic_library_books_white_24dp_2x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_multiline_chart_white_24dp_2x {
+            get {
+                object obj = ResourceManager.GetObject("ic_multiline_chart_white_24dp_2x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

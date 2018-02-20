@@ -123,7 +123,8 @@ namespace Reporting.KeyPerformanceActions.ExcessStockOpenOrders
                     totalDays += elapsedDays;
                     elapsedDays = (int)elapsedDays;
 
-                    template.TotalRecords++;
+                    // Apply the elapsed days against the timespan conditions.
+                    template.TimeSpanDump(elapsedDays);
                 }
 
                 // Calculate the average for this KPA

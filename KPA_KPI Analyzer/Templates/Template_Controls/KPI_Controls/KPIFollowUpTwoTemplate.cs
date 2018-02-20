@@ -183,8 +183,8 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             KPA_KPI_UI.topHandleBarModel.Category = Title;
             KPA_KPI_UI.topHandleBarModel.Section = Sections.kpiections[(int)Sections.KpiSection.FollowUpTwo];
 
-            AnalysisOne = "- Will show if the PR has been fully released.";
-            AnalysisTwo = "- Difference between PR delivery date and the date the PR was fully released.";
+            AnalysisOne = "- Will show if the PO has been received complete.";
+            AnalysisTwo = "- Difference between the last PO receipt date and the PO line 1st release date.";
 
             // TODO: Need to get the template from the correct KPI.
             TemplateFour tempFour = KpiOverallReport.Indicators[(int)KpiOption.FollowUpTwo_PoReleaseToLastPoReceiptDate].TemplateBlock as TemplateFour;

@@ -47,7 +47,7 @@ namespace Reporting.KeyPerformanceIndicators.FollowUpTwo
             template = TemplateBlock as TemplateFour;
 
             Section = "Follow Up II";
-            Name = "Release Date to Last Receipt Date";
+            Name = "PO Release Date to Last PO Receipt Date";
         }
 
 
@@ -225,14 +225,11 @@ namespace Reporting.KeyPerformanceIndicators.FollowUpTwo
 
                     if (poLine1stRelDateYear == 0 && poLine1stRelDateMonth == 0 && poLine1stRelDateDay == 0)
                     {
-                        // this po line or po in general may have been deleted.
                         continue;
                     }
 
 
-
-
-                    string[] strPOLineFirstConfCreateDate = (dr["1st Conf Creation Da"].ToString()).Split('/');
+                    string[] strPOLineFirstConfCreateDate = (dr["Del#Conf#Date"].ToString()).Split('/');
                     int poLineFirstConfCreateYear = int.Parse(strPOLineFirstConfCreateDate[2]);
                     int poLineFirstConfCreateMonth = int.Parse(strPOLineFirstConfCreateDate[0]);
                     int poLineFirstConfCreateDay = int.Parse(strPOLineFirstConfCreateDate[1]);
@@ -244,7 +241,6 @@ namespace Reporting.KeyPerformanceIndicators.FollowUpTwo
                         template.TotalRecords++;
                         continue;
                     }
-
 
                     DateTime lastPORecDate = new DateTime(lastPORecDtYear, lastPORecDtMonth, lastPORecDtDay);
                     DateTime firstRelDate = new DateTime(poLine1stRelDateYear, poLine1stRelDateMonth, poLine1stRelDateDay);

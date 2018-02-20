@@ -1640,7 +1640,7 @@ namespace KPA_KPI_Analyzer.DataLoading.KPA_Data.DataTableLoader
 
                         DateTime currReqDate = new DateTime(year, month, day);
                         DateTime today = DateTime.Now.Date;
-                        double elapsedDays = (currReqDate - today).TotalDays;
+                        double elapsedDays = (today - currReqDate).TotalDays;
                         elapsedDays = (int)elapsedDays;
 
                         switch (tag)

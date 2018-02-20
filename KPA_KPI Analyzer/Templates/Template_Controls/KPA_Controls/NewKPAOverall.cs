@@ -262,7 +262,7 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPA_Controls
         {
             try
             {
-                if (TemplateTwoValuesGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == "0" || TemplateTwoValuesGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == string.Empty)
+                if (TemplateTwoValuesGrid[e.ColumnIndex, e.RowIndex].Value.ToString() == "0")
                 {
                     MessageBox.Show("There is no data in this cell.", "Values Timespan", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
