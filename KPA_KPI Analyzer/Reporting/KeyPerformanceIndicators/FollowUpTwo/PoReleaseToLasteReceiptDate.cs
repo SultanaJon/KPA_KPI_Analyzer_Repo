@@ -1,7 +1,5 @@
 ﻿using DataAccessLibrary;
 using Filters;
-using Reporting.Interfaces;
-using Reporting.KeyPerformanceIndicators;
 using Reporting.TimeSpans.Templates;
 using System;
 using System.Data;
@@ -9,31 +7,12 @@ using System.Windows.Forms;
 
 namespace Reporting.KeyPerformanceIndicators.FollowUpTwo
 {
-    public sealed class PoReleaseToLasteReceiptDate : KeyPerformanceIndicator, IUnconfirmed
+    public sealed class PoReleaseToLasteReceiptDate : KeyPerformanceIndicator
     {
         /// <summary>
         /// Interface to access the template data.
         /// </summary>
         TemplateFour template;
-
-
-
-
-        #region IUnconfirmed Properties
-
-        /// <summary>
-        /// The total of records that are unconfirmed
-        /// </summary>
-        public int UnconfirmedTotal { get; set; }
-
-
-
-        /// <summary>
-        /// The percent of unconfirmed records within the KPA or KPI
-        /// </summary>
-        public double PercentUnconfirmed { get; set; }
-
-        #endregion
 
 
 
@@ -49,35 +28,6 @@ namespace Reporting.KeyPerformanceIndicators.FollowUpTwo
             Section = "Follow Up II";
             Name = "PO Release Date to Last PO Receipt Date";
         }
-
-
-
-
-
-        #region IUnconfirmed Methods
-
-        /// <summary>
-        /// Calculated the percentage of unconfirmed records
-        /// </summary>
-        public void CalculatePercentUnconfirmed(int _unconfirmedTotal)
-        {
-            try
-            {
-                PercentUnconfirmed = Math.Round(((double)_unconfirmedTotal / template.TotalRecords) * 100, 2);
-
-                if (double.IsNaN(PercentUnconfirmed))
-                    PercentUnconfirmed = 0;
-
-                if (double.IsInfinity(PercentUnconfirmed))
-                    PercentUnconfirmed = 100;
-            }
-            catch (DivideByZeroException)
-            {
-                PercentUnconfirmed = 0;
-            }
-        }
-
-        #endregion
 
 
 
@@ -140,21 +90,6 @@ namespace Reporting.KeyPerformanceIndicators.FollowUpTwo
                     }
 
 
-
-
-                    string[] strPOLineFirstConfCreateDate = (dr["1st Conf Creation Da"].ToString()).Split('/');
-                    int poLineFirstConfCreateYear = int.Parse(strPOLineFirstConfCreateDate[2]);
-                    int poLineFirstConfCreateMonth = int.Parse(strPOLineFirstConfCreateDate[0]);
-                    int poLineFirstConfCreateDay = int.Parse(strPOLineFirstConfCreateDate[1]);
-
-
-                    if (poLineFirstConfCreateYear == 0 && poLineFirstConfCreateMonth == 0 && poLineFirstConfCreateDay == 0)
-                    {
-                        UnconfirmedTotal++;
-                        template.TotalRecords++;
-                        continue;
-                    }
-
                     DateTime lastPORecDate = new DateTime(lastPORecDtYear, lastPORecDtMonth, lastPORecDtDay);
                     DateTime firstRelDate = new DateTime(poLine1stRelDateYear, poLine1stRelDateMonth, poLine1stRelDateDay);
 
@@ -167,9 +102,6 @@ namespace Reporting.KeyPerformanceIndicators.FollowUpTwo
 
                 // Calculate the average for this KPI
                 template.CalculateAverage(totalDays);
-
-                // Calcualte the percent unconfrimed for this KPI
-                CalculatePercentUnconfirmed(UnconfirmedTotal);
             }
             catch (Exception)
             {
@@ -228,20 +160,6 @@ namespace Reporting.KeyPerformanceIndicators.FollowUpTwo
                         continue;
                     }
 
-
-                    string[] strPOLineFirstConfCreateDate = (dr["Del#Conf#Date"].ToString()).Split('/');
-                    int poLineFirstConfCreateYear = int.Parse(strPOLineFirstConfCreateDate[2]);
-                    int poLineFirstConfCreateMonth = int.Parse(strPOLineFirstConfCreateDate[0]);
-                    int poLineFirstConfCreateDay = int.Parse(strPOLineFirstConfCreateDate[1]);
-
-
-                    if (poLineFirstConfCreateYear == 0 && poLineFirstConfCreateMonth == 0 && poLineFirstConfCreateDay == 0)
-                    {
-                        UnconfirmedTotal++;
-                        template.TotalRecords++;
-                        continue;
-                    }
-
                     DateTime lastPORecDate = new DateTime(lastPORecDtYear, lastPORecDtMonth, lastPORecDtDay);
                     DateTime firstRelDate = new DateTime(poLine1stRelDateYear, poLine1stRelDateMonth, poLine1stRelDateDay);
 
@@ -254,9 +172,6 @@ namespace Reporting.KeyPerformanceIndicators.FollowUpTwo
 
                 // Calculate the average for this KPI
                 template.CalculateAverage(totalDays);
-
-                // Calcualte the percent unconfrimed for this KPI
-                CalculatePercentUnconfirmed(UnconfirmedTotal);
             }
             catch (Exception)
             {

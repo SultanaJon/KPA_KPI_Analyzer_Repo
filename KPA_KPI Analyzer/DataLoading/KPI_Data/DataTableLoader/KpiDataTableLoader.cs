@@ -2500,30 +2500,6 @@ namespace KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader
                         }
 
 
-
-
-                        string[] strPOLineFirstConfCreateDate = (dr["Del#Conf#Date"].ToString()).Split('/');
-                        int poLineFirstConfCreateYear = int.Parse(strPOLineFirstConfCreateDate[2]);
-                        int poLineFirstConfCreateMonth = int.Parse(strPOLineFirstConfCreateDate[0]);
-                        int poLineFirstConfCreateDay = int.Parse(strPOLineFirstConfCreateDate[1]);
-
-
-                        if (poLineFirstConfCreateYear == 0 && poLineFirstConfCreateMonth == 0 && poLineFirstConfCreateDay == 0)
-                        {
-                            if (tag == 12)
-                            {
-                                unconfirmed.ImportRow(dr);
-                            }
-
-                            if (tag == 0) // The user wants to view the total which also includes
-                            {
-                                poReleaseToLastPoReceipt.ImportRow(dr);
-                            }
-                            continue;
-                        }
-
-
-
                         DateTime lastPORecDate = new DateTime(lastPORecDtYear, lastPORecDtMonth, lastPORecDtDay);
                         DateTime firstRelDate = new DateTime(poLine1stRelDateYear, poLine1stRelDateMonth, poLine1stRelDateDay);
 

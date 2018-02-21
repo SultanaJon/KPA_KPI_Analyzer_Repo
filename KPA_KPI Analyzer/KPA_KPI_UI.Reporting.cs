@@ -309,6 +309,8 @@ namespace KPA_KPI_Analyzer
                     return  new List<string>(FilterManager.GetUniquePoPurchaseGroup());
                 case FilterOptions.Options.IRSuppName:
                     return  new List<string>(FilterManager.GetUniqueIrSuppName());
+                case FilterOptions.Options.FxdSuppName:
+                    return new List<string>(FilterManager.GetUniqueFxdSuppName());
                 case FilterOptions.Options.DsrdSuppName:
                     return  new List<string>(FilterManager.GetUniqueDsrdSuppName());
                 case FilterOptions.Options.CommodityCategory:
@@ -317,6 +319,8 @@ namespace KPA_KPI_Analyzer
                     return  new List<string>(FilterManager.GetUniquePoDocumentType());
                 case FilterOptions.Options.ProductionOrderMaterial:
                     return  new List<string>(FilterManager.GetUniqueProductionOrderMaterial());
+                case FilterOptions.Options.StorageLocation:
+                    return new List<string>(FilterManager.GetUniqueStorageLocation());
             }
 
             return tempFilterList;

@@ -1,13 +1,13 @@
-﻿using System;
+﻿using KPA_KPI_Analyzer.DataLoading;
+using KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader;
+using KPA_KPI_Analyzer.Values;
+using Reporting.Interfaces;
+using Reporting.KeyPerformanceIndicators;
+using Reporting.Reports;
+using Reporting.TimeSpans.Templates;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
-using Reporting.TimeSpans.Templates;
-using KPA_KPI_Analyzer.Values;
-using Reporting.Reports;
-using Reporting.KeyPerformanceIndicators;
-using KPA_KPI_Analyzer.DataLoading.KPI_Data.DataTableLoader;
-using KPA_KPI_Analyzer.DataLoading;
-using Reporting.Interfaces;
 
 namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
 {
@@ -63,8 +63,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
         private string TimeBucketNine { get { return lbl_timebuckNine.Text; } set { lbl_timebuckNine.Text = value; } }
         private string TimeBucketTen { get { return lbl_timebuckTen.Text; } set { lbl_timebuckTen.Text = value; } }
         private string TimeBucketEleven { get { return lbl_timebuckEleven.Text; } set { lbl_timebuckEleven.Text = value; } }
-        private string PercNoConf { get { return lbl_Percent.Text; } set { lbl_Percent.Text = value + "%"; } }
-        private string PercNoConfTotal { get { return lbl_percUnconfTotal.Text; } set { lbl_percUnconfTotal.Text = value; } }
         private Color DefaultButtonTextColor
         {
             set
@@ -218,10 +216,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             TotalOrders = string.Format("{0:n0}", tempFour.TotalRecords);
 
             IUnconfirmed unconfirmedInfo = (KpiOverallReport.Indicators[(int)KpiOption.FollowUpTwo_PoReleaseToLastPoReceiptDate] as IUnconfirmed);
-
-            // Get the uncofnrimed information
-            PercNoConf = string.Format("{0:n}", unconfirmedInfo.PercentUnconfirmed);
-            PercNoConfTotal = string.Format("{0:n0}", unconfirmedInfo.UnconfirmedTotal);
 
             canvas.addData(dp);
             dataviz.Render(canvas);

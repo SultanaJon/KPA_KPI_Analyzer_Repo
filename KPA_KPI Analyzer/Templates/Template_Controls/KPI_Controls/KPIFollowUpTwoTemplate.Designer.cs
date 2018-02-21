@@ -42,18 +42,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btn_One = new Bunifu.Framework.UI.BunifuFlatButton();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.pnl_PercentagePanel = new Bunifu.Framework.UI.BunifuCards();
-            this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel50 = new System.Windows.Forms.Panel();
-            this.bunifuFlatButton16 = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.panel51 = new System.Windows.Forms.Panel();
-            this.lbl_percUnconfTotal = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.lbl_Percent = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.panel56 = new System.Windows.Forms.Panel();
-            this.bunifuSeparator12 = new Bunifu.Framework.UI.BunifuSeparator();
-            this.panel57 = new System.Windows.Forms.Panel();
-            this.bunifuCustomLabel2 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCards3 = new Bunifu.Framework.UI.BunifuCards();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -65,8 +53,6 @@
             this.bunifuCards2 = new Bunifu.Framework.UI.BunifuCards();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.panel59 = new System.Windows.Forms.Panel();
-            this.btn_unconfIncludedStatusButton = new Bunifu.Framework.UI.BunifuFlatButton();
             this.lbl_totalOrders = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.bunifuSeparator1 = new Bunifu.Framework.UI.BunifuSeparator();
@@ -192,12 +178,6 @@
             this.panel41.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            this.pnl_PercentagePanel.SuspendLayout();
-            this.tableLayoutPanel16.SuspendLayout();
-            this.panel50.SuspendLayout();
-            this.panel51.SuspendLayout();
-            this.panel56.SuspendLayout();
-            this.panel57.SuspendLayout();
             this.bunifuCards3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -206,7 +186,6 @@
             this.bunifuCards2.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.panel6.SuspendLayout();
-            this.panel59.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -475,7 +454,6 @@
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.pnl_PercentagePanel, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.bunifuCards3, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.bunifuCards2, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -489,184 +467,6 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(313, 293);
             this.tableLayoutPanel2.TabIndex = 2;
-            // 
-            // pnl_PercentagePanel
-            // 
-            this.pnl_PercentagePanel.BackColor = System.Drawing.Color.White;
-            this.pnl_PercentagePanel.BorderRadius = 5;
-            this.pnl_PercentagePanel.BottomSahddow = true;
-            this.pnl_PercentagePanel.color = System.Drawing.Color.Gainsboro;
-            this.tableLayoutPanel2.SetColumnSpan(this.pnl_PercentagePanel, 2);
-            this.pnl_PercentagePanel.Controls.Add(this.tableLayoutPanel16);
-            this.pnl_PercentagePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnl_PercentagePanel.LeftSahddow = false;
-            this.pnl_PercentagePanel.Location = new System.Drawing.Point(0, 180);
-            this.pnl_PercentagePanel.Margin = new System.Windows.Forms.Padding(0, 0, 5, 5);
-            this.pnl_PercentagePanel.Name = "pnl_PercentagePanel";
-            this.pnl_PercentagePanel.RightSahddow = true;
-            this.pnl_PercentagePanel.ShadowDepth = 20;
-            this.pnl_PercentagePanel.Size = new System.Drawing.Size(308, 85);
-            this.pnl_PercentagePanel.TabIndex = 5;
-            // 
-            // tableLayoutPanel16
-            // 
-            this.tableLayoutPanel16.ColumnCount = 2;
-            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 55F));
-            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel16.Controls.Add(this.panel50, 1, 0);
-            this.tableLayoutPanel16.Controls.Add(this.panel51, 0, 2);
-            this.tableLayoutPanel16.Controls.Add(this.panel56, 0, 1);
-            this.tableLayoutPanel16.Controls.Add(this.panel57, 0, 0);
-            this.tableLayoutPanel16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel16.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel16.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.tableLayoutPanel16.Name = "tableLayoutPanel16";
-            this.tableLayoutPanel16.RowCount = 3;
-            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 76F));
-            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24F));
-            this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
-            this.tableLayoutPanel16.Size = new System.Drawing.Size(308, 85);
-            this.tableLayoutPanel16.TabIndex = 1;
-            // 
-            // panel50
-            // 
-            this.panel50.Controls.Add(this.bunifuFlatButton16);
-            this.panel50.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel50.Location = new System.Drawing.Point(253, 0);
-            this.panel50.Margin = new System.Windows.Forms.Padding(0);
-            this.panel50.Name = "panel50";
-            this.panel50.Size = new System.Drawing.Size(55, 37);
-            this.panel50.TabIndex = 16;
-            // 
-            // bunifuFlatButton16
-            // 
-            this.bunifuFlatButton16.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.bunifuFlatButton16.BackColor = System.Drawing.Color.DarkSalmon;
-            this.bunifuFlatButton16.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bunifuFlatButton16.BorderRadius = 5;
-            this.bunifuFlatButton16.ButtonText = "View";
-            this.bunifuFlatButton16.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuFlatButton16.DisabledColor = System.Drawing.Color.Gray;
-            this.bunifuFlatButton16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuFlatButton16.Iconcolor = System.Drawing.Color.Transparent;
-            this.bunifuFlatButton16.Iconimage = null;
-            this.bunifuFlatButton16.Iconimage_right = null;
-            this.bunifuFlatButton16.Iconimage_right_Selected = null;
-            this.bunifuFlatButton16.Iconimage_Selected = null;
-            this.bunifuFlatButton16.IconMarginLeft = 0;
-            this.bunifuFlatButton16.IconMarginRight = 0;
-            this.bunifuFlatButton16.IconRightVisible = true;
-            this.bunifuFlatButton16.IconRightZoom = 0D;
-            this.bunifuFlatButton16.IconVisible = true;
-            this.bunifuFlatButton16.IconZoom = 90D;
-            this.bunifuFlatButton16.IsTab = false;
-            this.bunifuFlatButton16.Location = new System.Drawing.Point(0, 12);
-            this.bunifuFlatButton16.Name = "bunifuFlatButton16";
-            this.bunifuFlatButton16.Normalcolor = System.Drawing.Color.DarkSalmon;
-            this.bunifuFlatButton16.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.bunifuFlatButton16.OnHoverTextColor = System.Drawing.Color.White;
-            this.bunifuFlatButton16.selected = false;
-            this.bunifuFlatButton16.Size = new System.Drawing.Size(47, 19);
-            this.bunifuFlatButton16.TabIndex = 15;
-            this.bunifuFlatButton16.Tag = "12";
-            this.bunifuFlatButton16.Text = "View";
-            this.bunifuFlatButton16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.bunifuFlatButton16.Textcolor = System.Drawing.Color.White;
-            this.bunifuFlatButton16.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuFlatButton16.Click += new System.EventHandler(this.btn_viewData_Click);
-            // 
-            // panel51
-            // 
-            this.tableLayoutPanel16.SetColumnSpan(this.panel51, 2);
-            this.panel51.Controls.Add(this.lbl_percUnconfTotal);
-            this.panel51.Controls.Add(this.bunifuCustomLabel1);
-            this.panel51.Controls.Add(this.lbl_Percent);
-            this.panel51.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel51.Location = new System.Drawing.Point(0, 48);
-            this.panel51.Margin = new System.Windows.Forms.Padding(0);
-            this.panel51.Name = "panel51";
-            this.panel51.Size = new System.Drawing.Size(308, 37);
-            this.panel51.TabIndex = 2;
-            // 
-            // lbl_percUnconfTotal
-            // 
-            this.lbl_percUnconfTotal.AutoSize = true;
-            this.lbl_percUnconfTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_percUnconfTotal.ForeColor = System.Drawing.Color.IndianRed;
-            this.lbl_percUnconfTotal.Location = new System.Drawing.Point(142, 3);
-            this.lbl_percUnconfTotal.Name = "lbl_percUnconfTotal";
-            this.lbl_percUnconfTotal.Size = new System.Drawing.Size(49, 20);
-            this.lbl_percUnconfTotal.TabIndex = 10;
-            this.lbl_percUnconfTotal.Text = "9,645";
-            // 
-            // bunifuCustomLabel1
-            // 
-            this.bunifuCustomLabel1.AutoSize = true;
-            this.bunifuCustomLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel1.ForeColor = System.Drawing.Color.IndianRed;
-            this.bunifuCustomLabel1.Location = new System.Drawing.Point(95, 3);
-            this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
-            this.bunifuCustomLabel1.Size = new System.Drawing.Size(48, 20);
-            this.bunifuCustomLabel1.TabIndex = 11;
-            this.bunifuCustomLabel1.Text = "Total:";
-            // 
-            // lbl_Percent
-            // 
-            this.lbl_Percent.AutoSize = true;
-            this.lbl_Percent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Percent.ForeColor = System.Drawing.Color.IndianRed;
-            this.lbl_Percent.Location = new System.Drawing.Point(6, 3);
-            this.lbl_Percent.Name = "lbl_Percent";
-            this.lbl_Percent.Size = new System.Drawing.Size(67, 20);
-            this.lbl_Percent.TabIndex = 7;
-            this.lbl_Percent.Text = "123,156";
-            // 
-            // panel56
-            // 
-            this.tableLayoutPanel16.SetColumnSpan(this.panel56, 2);
-            this.panel56.Controls.Add(this.bunifuSeparator12);
-            this.panel56.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel56.Location = new System.Drawing.Point(0, 37);
-            this.panel56.Margin = new System.Windows.Forms.Padding(0);
-            this.panel56.Name = "panel56";
-            this.panel56.Size = new System.Drawing.Size(308, 11);
-            this.panel56.TabIndex = 1;
-            // 
-            // bunifuSeparator12
-            // 
-            this.bunifuSeparator12.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuSeparator12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bunifuSeparator12.ForeColor = System.Drawing.Color.LightGray;
-            this.bunifuSeparator12.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.bunifuSeparator12.LineThickness = 1;
-            this.bunifuSeparator12.Location = new System.Drawing.Point(0, 0);
-            this.bunifuSeparator12.Name = "bunifuSeparator12";
-            this.bunifuSeparator12.Size = new System.Drawing.Size(308, 11);
-            this.bunifuSeparator12.TabIndex = 4;
-            this.bunifuSeparator12.Transparency = 255;
-            this.bunifuSeparator12.Vertical = false;
-            // 
-            // panel57
-            // 
-            this.panel57.Controls.Add(this.bunifuCustomLabel2);
-            this.panel57.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel57.Location = new System.Drawing.Point(0, 0);
-            this.panel57.Margin = new System.Windows.Forms.Padding(0);
-            this.panel57.Name = "panel57";
-            this.panel57.Size = new System.Drawing.Size(253, 37);
-            this.panel57.TabIndex = 14;
-            // 
-            // bunifuCustomLabel2
-            // 
-            this.bunifuCustomLabel2.AutoSize = true;
-            this.bunifuCustomLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuCustomLabel2.ForeColor = System.Drawing.Color.IndianRed;
-            this.bunifuCustomLabel2.Location = new System.Drawing.Point(6, 8);
-            this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
-            this.bunifuCustomLabel2.Size = new System.Drawing.Size(174, 24);
-            this.bunifuCustomLabel2.TabIndex = 13;
-            this.bunifuCustomLabel2.Text = "% No Confirmations";
             // 
             // bunifuCards3
             // 
@@ -817,7 +617,6 @@
             // panel6
             // 
             this.tableLayoutPanel5.SetColumnSpan(this.panel6, 2);
-            this.panel6.Controls.Add(this.panel59);
             this.panel6.Controls.Add(this.lbl_totalOrders);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(0, 48);
@@ -825,53 +624,6 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(308, 37);
             this.panel6.TabIndex = 2;
-            // 
-            // panel59
-            // 
-            this.panel59.Controls.Add(this.btn_unconfIncludedStatusButton);
-            this.panel59.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel59.Location = new System.Drawing.Point(146, 0);
-            this.panel59.Name = "panel59";
-            this.panel59.Size = new System.Drawing.Size(162, 37);
-            this.panel59.TabIndex = 11;
-            // 
-            // btn_unconfIncludedStatusButton
-            // 
-            this.btn_unconfIncludedStatusButton.Activecolor = System.Drawing.Color.IndianRed;
-            this.btn_unconfIncludedStatusButton.BackColor = System.Drawing.Color.IndianRed;
-            this.btn_unconfIncludedStatusButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_unconfIncludedStatusButton.BorderRadius = 5;
-            this.btn_unconfIncludedStatusButton.ButtonText = "Unconfirmed Included";
-            this.btn_unconfIncludedStatusButton.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.btn_unconfIncludedStatusButton.DisabledColor = System.Drawing.Color.IndianRed;
-            this.btn_unconfIncludedStatusButton.Enabled = false;
-            this.btn_unconfIncludedStatusButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_unconfIncludedStatusButton.ForeColor = System.Drawing.Color.White;
-            this.btn_unconfIncludedStatusButton.Iconcolor = System.Drawing.Color.Transparent;
-            this.btn_unconfIncludedStatusButton.Iconimage = null;
-            this.btn_unconfIncludedStatusButton.Iconimage_right = null;
-            this.btn_unconfIncludedStatusButton.Iconimage_right_Selected = null;
-            this.btn_unconfIncludedStatusButton.Iconimage_Selected = null;
-            this.btn_unconfIncludedStatusButton.IconMarginLeft = 0;
-            this.btn_unconfIncludedStatusButton.IconMarginRight = 0;
-            this.btn_unconfIncludedStatusButton.IconRightVisible = true;
-            this.btn_unconfIncludedStatusButton.IconRightZoom = 0D;
-            this.btn_unconfIncludedStatusButton.IconVisible = true;
-            this.btn_unconfIncludedStatusButton.IconZoom = 90D;
-            this.btn_unconfIncludedStatusButton.IsTab = false;
-            this.btn_unconfIncludedStatusButton.Location = new System.Drawing.Point(5, 7);
-            this.btn_unconfIncludedStatusButton.Name = "btn_unconfIncludedStatusButton";
-            this.btn_unconfIncludedStatusButton.Normalcolor = System.Drawing.Color.IndianRed;
-            this.btn_unconfIncludedStatusButton.OnHovercolor = System.Drawing.Color.IndianRed;
-            this.btn_unconfIncludedStatusButton.OnHoverTextColor = System.Drawing.Color.White;
-            this.btn_unconfIncludedStatusButton.selected = false;
-            this.btn_unconfIncludedStatusButton.Size = new System.Drawing.Size(151, 19);
-            this.btn_unconfIncludedStatusButton.TabIndex = 15;
-            this.btn_unconfIncludedStatusButton.Tag = "0";
-            this.btn_unconfIncludedStatusButton.Text = "Unconfirmed Included";
-            this.btn_unconfIncludedStatusButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btn_unconfIncludedStatusButton.Textcolor = System.Drawing.Color.White;
-            this.btn_unconfIncludedStatusButton.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // lbl_totalOrders
             // 
@@ -2719,14 +2471,6 @@
             this.panel41.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
-            this.pnl_PercentagePanel.ResumeLayout(false);
-            this.tableLayoutPanel16.ResumeLayout(false);
-            this.panel50.ResumeLayout(false);
-            this.panel51.ResumeLayout(false);
-            this.panel51.PerformLayout();
-            this.panel56.ResumeLayout(false);
-            this.panel57.ResumeLayout(false);
-            this.panel57.PerformLayout();
             this.bunifuCards3.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
@@ -2738,7 +2482,6 @@
             this.tableLayoutPanel5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
-            this.panel59.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
@@ -2850,18 +2593,6 @@
         private System.Windows.Forms.Panel panel2;
         private Bunifu.Framework.UI.BunifuFlatButton btn_One;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private Bunifu.Framework.UI.BunifuCards pnl_PercentagePanel;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel16;
-        private System.Windows.Forms.Panel panel50;
-        private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton16;
-        private System.Windows.Forms.Panel panel51;
-        private Bunifu.Framework.UI.BunifuCustomLabel lbl_percUnconfTotal;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
-        private Bunifu.Framework.UI.BunifuCustomLabel lbl_Percent;
-        private System.Windows.Forms.Panel panel56;
-        private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator12;
-        private System.Windows.Forms.Panel panel57;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel2;
         private Bunifu.Framework.UI.BunifuCards bunifuCards3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Panel panel5;
@@ -2873,8 +2604,6 @@
         private Bunifu.Framework.UI.BunifuCards bunifuCards2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Panel panel59;
-        private Bunifu.Framework.UI.BunifuFlatButton btn_unconfIncludedStatusButton;
         private Bunifu.Framework.UI.BunifuCustomLabel lbl_totalOrders;
         private System.Windows.Forms.Panel panel8;
         private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator1;

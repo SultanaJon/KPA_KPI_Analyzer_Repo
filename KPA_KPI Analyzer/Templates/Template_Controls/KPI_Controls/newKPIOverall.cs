@@ -542,7 +542,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
             // Get List of template one data for this KPI
             List<string> rowData = new List<string>((KpiOverallReport.Indicators[(int)KpiOption.FollowUpTwo_PoReleaseToLastPoReceiptDate].Details));
             rowData.AddRange(new List<string>((KpiOverallReport.Indicators[(int)KpiOption.FollowUpTwo_PoReleaseToLastPoReceiptDate].TemplateBlock as TemplateFour).GetTemplateData()));
-            rowData.Add(string.Format("{0:n0}", (KpiOverallReport.Indicators[(int)KpiOption.FollowUpTwo_PoReleaseToLastPoReceiptDate] as IUnconfirmed).PercentUnconfirmed + "%"));
 
             // Add the row to the data grid view control
             TemplateFourDataGrid.Rows.Add(rowData.ToArray());
@@ -1829,10 +1828,6 @@ namespace KPA_KPI_Analyzer.Templates.Template_Controls.KPI_Controls
                             case 14: // Total
                                 dv.DataLoader += KpiDataTableLoader.FollowUpTwo.LoadPoReleaseDateToLastPoReceiptDate;
                                 dv.ColumnTag = (int)TempFour.DataViews.Total;
-                                break;
-                            case 15: // Percent Unconfirmed
-                                dv.DataLoader += KpiDataTableLoader.FollowUpTwo.LoadPoReleaseDateToLastPoReceiptDate;
-                                dv.ColumnTag = (int)TempFour.DataViews.PercentUnconf;
                                 break;
                         }
                         break;

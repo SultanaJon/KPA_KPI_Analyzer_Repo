@@ -24,7 +24,7 @@ using System.Windows.Forms;
 
 namespace KPA_KPI_Analyzer
 {
-	public partial class KPA_KPI_UI : Form
+    public partial class KPA_KPI_UI : Form
 	{
 		#region FIELD DATA
 

@@ -5,6 +5,27 @@ using System.Windows.Forms;
 
 namespace DataAccessLibrary
 {
+    public enum ReportingFilterColumn : byte
+    {
+        ProjectNum_WBS_Element,
+        ProjectNUm_ProdOrdWbs,
+        WBS_Element,
+        Material,
+        MaterialGroup,
+        Vendor,
+        VendorDescription,
+        PurchGroup,
+        PoPurchGroup,
+        IRSuppName,
+        FxdSuppName,
+        DsrdSuppName,
+        CommCat,
+        PoDocumentType,
+        ProdOrderMaterial,
+        StorageLocation
+    }
+
+
     /// <summary>
     /// The names of the columns that will be included in the category filters.
     /// </summary>
@@ -30,12 +51,7 @@ namespace DataAccessLibrary
     }
 
 
-
-
-
-
-
-
+    
 
     public static class FilterManager
     {
@@ -58,6 +74,27 @@ namespace DataAccessLibrary
             "Dsrd Supp Name",
             "Commodity category",
             "Escaped",
+            "PO Doc# Type",
+            "Prd Ord Mat",
+            "Stor# Location"
+        };
+
+
+        public static string[] reportingFilterColumns =
+        {
+            "WBS Element",
+            "Prd Ord WBS",
+            "WBS Element",
+            "Material",
+            "Material Group",
+            "Vendor",
+            "Vendor Description",
+            "Purch# Group",
+            "POPurcGroup",
+            "IR Supp Name",
+            "Fxd Supp Name",
+            "Dsrd Supp Name",
+            "Commodity category",
             "PO Doc# Type",
             "Prd Ord Mat",
             "Stor# Location"

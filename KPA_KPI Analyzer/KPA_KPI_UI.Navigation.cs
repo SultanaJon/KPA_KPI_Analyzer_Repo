@@ -44,7 +44,6 @@ namespace KPA_KPI_Analyzer
             // Removes any templates that might be in the active panel.
             RemoveActivePanelControls();
 
-
             // Load the pages that correspond to the clicked button
             switch (e.MainTag)
             {

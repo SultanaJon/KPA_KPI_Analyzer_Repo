@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Reporting.KeyPerformanceActions.CurrentPlanVsActual
 {
-	public sealed class CurrentPlanDateVsCurrentConfirmationDateForHotJobs : KeyPerformanceAction, IFavorable
+    public sealed class CurrentPlanDateVsCurrentConfirmationDateForHotJobs : KeyPerformanceAction, IFavorable
 	{
 		#region IFavorable Properties
 

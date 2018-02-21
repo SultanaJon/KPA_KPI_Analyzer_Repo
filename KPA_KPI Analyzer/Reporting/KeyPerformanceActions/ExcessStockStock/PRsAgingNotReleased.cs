@@ -130,7 +130,6 @@ namespace Reporting.KeyPerformanceActions.ExcessStockStock
                     template.TimeSpanDump(elapsedDays);
                 }
 
-
                 // Calculate the average for this KPA
                 template.CalculateAverage(totalDays);
 

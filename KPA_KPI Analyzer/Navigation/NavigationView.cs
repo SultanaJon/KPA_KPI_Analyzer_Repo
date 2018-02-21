@@ -135,6 +135,9 @@ namespace KPA_KPI_Analyzer.Navigation
                         // If we are not dealing with the KPA or KPI main navigation buttons
                         if (navTag != MainNavigationTag.KPA && navTag != MainNavigationTag.KPI)
                         {
+                            // Open or close the section window
+                            ToggleSectionWindow(tag);
+
                             // Set the tag to the main tag (button) that was clicked and no section
                             SetArgs(navTag, SectionNavigationTag.None);
 
@@ -239,17 +242,17 @@ namespace KPA_KPI_Analyzer.Navigation
             }
             catch (FormatException)
             {
-                MessageBox.Show("A format exception was thrown", "Navigation Click Event", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("A format exception was thrown", "Section Navigation Click Event", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
             catch (InvalidCastException)
             {
-                MessageBox.Show("An invalid cast exception was thrown.", "Navigation Click Event", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An invalid cast exception was thrown.", "Section Navigation Click Event", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
             catch (OverflowException)
             {
-                MessageBox.Show("An overflow exception was thrown.", "Navigation Click Event", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An overflow exception was thrown.", "Section Navigation Click Event", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }
