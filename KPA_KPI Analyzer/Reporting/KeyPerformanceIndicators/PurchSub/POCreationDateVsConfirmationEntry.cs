@@ -133,8 +133,8 @@ namespace Reporting.KeyPerformanceIndicators.PurchSub
 
                     string[] strPOLineCreateDt = (dr["PO Line Creat#DT"].ToString()).Split('/');
                     int poLineCreateYear = int.Parse(strPOLineCreateDt[2]);
-                    int poLineCreateMonth = int.Parse(strPOLineCreateDt[0].TrimStart('0'));
-                    int poLineCreateDay = int.Parse(strPOLineCreateDt[1].TrimStart('0'));
+                    int poLineCreateMonth = int.Parse(strPOLineCreateDt[0].Trim('0'));
+                    int poLineCreateDay = int.Parse(strPOLineCreateDt[1]);
 
                     DateTime poLineItemCreateDate = new DateTime(poLineCreateYear, poLineCreateMonth, poLineCreateDay);
 
@@ -204,8 +204,9 @@ namespace Reporting.KeyPerformanceIndicators.PurchSub
 
                     string[] strPOLineCreateDt = (dr["PO Line Creat#DT"].ToString()).Split('/');
                     int poLineCreateYear = int.Parse(strPOLineCreateDt[2]);
-                    int poLineCreateMonth = int.Parse(strPOLineCreateDt[0].TrimStart('0'));
-                    int poLineCreateDay = int.Parse(strPOLineCreateDt[1].TrimStart('0'));
+                    int poLineCreateMonth = int.Parse(strPOLineCreateDt[0].Trim('0'));
+                    int poLineCreateDay = int.Parse(strPOLineCreateDt[1]);
+
 
                     DateTime poLineItemCreateDate = new DateTime(poLineCreateYear, poLineCreateMonth, poLineCreateDay);
 

@@ -84,8 +84,30 @@ namespace Reporting.KeyPerformanceIndicators.Other
 
                     string[] strPoCreateDt = (dr["PO Line Creat#DT"].ToString()).Split('/');
                     int poCreateDtYear = int.Parse(strPoCreateDt[2]);
-                    int poCreateDtMonth = int.Parse(strPoCreateDt[0].TrimStart('0'));
-                    int poCreateDtDay = int.Parse(strPoCreateDt[1].TrimStart('0'));
+                    int poCreateDtMonth = int.Parse(strPoCreateDt[0]);
+                    int poCreateDtDay = int.Parse(strPoCreateDt[1]);
+
+                    //////////////////////////////////////////////////////////////////////////////
+                    //
+                    // The below if statement was added on 03/27/2018.
+                    // -----------------------------------------------
+                    // There was some issues with a few POs that conatined dates of 00/00/0000
+                    // that were causing erros. This if else statement ignores those files.
+                    //
+                    //////////////////////////////////////////////////////////////////////////////
+                    if (poCreateDtDay == 0 && poCreateDtMonth == 0 && poCreateDtYear == 0)
+                    {
+                        // This situation is a SAP issue. We should never have POs that dont
+                        // have a PO creation date.
+                        // Skip these records
+                        continue;
+                    }
+                    else
+                    {
+                        // trim the zeros off of month and day if there is any.
+                        poCreateDtMonth = int.Parse(strPoCreateDt[0].Trim('0'));
+                        poCreateDtDay = int.Parse(strPoCreateDt[1].Trim('0'));
+                    }
 
                     DateTime poCreateDate = new DateTime(poCreateDtYear, poCreateDtMonth, poCreateDtDay);
 
@@ -126,10 +148,33 @@ namespace Reporting.KeyPerformanceIndicators.Other
                         continue;
                     }
 
+
                     string[] strPoCreateDt = (dr["PO Line Creat#DT"].ToString()).Split('/');
                     int poCreateDtYear = int.Parse(strPoCreateDt[2]);
-                    int poCreateDtMonth = int.Parse(strPoCreateDt[0].TrimStart('0'));
-                    int poCreateDtDay = int.Parse(strPoCreateDt[1].TrimStart('0'));
+                    int poCreateDtMonth = int.Parse(strPoCreateDt[0]);
+                    int poCreateDtDay = int.Parse(strPoCreateDt[1]);
+
+                    //////////////////////////////////////////////////////////////////////////////
+                    //
+                    // The below if statement was added on 03/27/2018.
+                    // -----------------------------------------------
+                    // There was some issues with a few POs that conatined dates of 00/00/0000
+                    // that were causing erros. This if else statement ignores those files.
+                    //
+                    //////////////////////////////////////////////////////////////////////////////
+                    if (poCreateDtDay == 0 && poCreateDtMonth == 0 && poCreateDtYear == 0)
+                    {
+                        // This situation is a SAP issue. We should never have POs that dont
+                        // have a PO creation date.
+                        // Skip these records
+                        continue;
+                    }
+                    else
+                    {
+                        // trim the zeros off of month and day if there is any.
+                        poCreateDtMonth = int.Parse(strPoCreateDt[0].Trim('0'));
+                        poCreateDtDay = int.Parse(strPoCreateDt[1].Trim('0'));
+                    }
 
                     DateTime poCreateDate = new DateTime(poCreateDtYear, poCreateDtMonth, poCreateDtDay);
 

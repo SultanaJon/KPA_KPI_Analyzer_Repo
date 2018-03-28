@@ -114,8 +114,33 @@ namespace Reporting.KeyPerformanceIndicators.Plan
                     {
                         string[] strNewCurrConfDate = (dr["Delivery Date"].ToString()).Split('/');
                         currConfYear = int.Parse(strNewCurrConfDate[2]);
-                        currConfMonth = int.Parse(strNewCurrConfDate[0].TrimStart('0'));
-                        currConfDay = int.Parse(strNewCurrConfDate[1].TrimStart('0'));
+                        currConfMonth = int.Parse(strNewCurrConfDate[0]);
+                        currConfDay = int.Parse(strNewCurrConfDate[1]);
+
+
+
+                        //////////////////////////////////////////////////////////////////////////////
+                        //
+                        //
+                        // The below if statement was added on 03/27/2018.
+                        // -----------------------------------------------
+                        // There was some issues with a few POs that conatined dates of 00/00/0000
+                        // that were causing erros. This if else statement ignores those files.
+                        //
+                        //////////////////////////////////////////////////////////////////////////////
+                        if (currConfDay == 0 && currConfMonth == 0 && currConfYear == 0)
+                        {
+                            // This situation is a SAP issue. We should never have POs that dont
+                            // have a PO creation date.
+                            // Skip these records
+                            continue;
+                        }
+                        else
+                        {
+                            // trim the zeros off of month and day if there is any.
+                            currConfMonth = int.Parse(strNewCurrConfDate[0].Trim('0'));
+                            currConfDay = int.Parse(strNewCurrConfDate[1].Trim('0'));
+                        }
                     }
                     else
                     {
@@ -182,8 +207,31 @@ namespace Reporting.KeyPerformanceIndicators.Plan
                     {
                         string[] strNewCurrConfDate = (dr["Delivery Date"].ToString()).Split('/');
                         currConfYear = int.Parse(strNewCurrConfDate[2]);
-                        currConfMonth = int.Parse(strNewCurrConfDate[0].TrimStart('0'));
-                        currConfDay = int.Parse(strNewCurrConfDate[1].TrimStart('0'));
+                        currConfMonth = int.Parse(strNewCurrConfDate[0]);
+                        currConfDay = int.Parse(strNewCurrConfDate[1]);
+
+                        //////////////////////////////////////////////////////////////////////////////
+                        //
+                        //
+                        // The below if statement was added on 03/27/2018.
+                        // -----------------------------------------------
+                        // There was some issues with a few POs that conatined dates of 00/00/0000
+                        // that were causing erros. This if else statement ignores those files.
+                        //
+                        //////////////////////////////////////////////////////////////////////////////
+                        if (currConfDay == 0 && currConfMonth == 0 && currConfYear == 0)
+                        {
+                            // This situation is a SAP issue. We should never have POs that dont
+                            // have a PO creation date.
+                            // Skip these records
+                            continue;
+                        }
+                        else
+                        {
+                            // trim the zeros off of month and day if there is any.
+                            currConfMonth = int.Parse(strNewCurrConfDate[0].Trim('0'));
+                            currConfDay = int.Parse(strNewCurrConfDate[1].Trim('0'));
+                        }
                     }
                     else
                     {

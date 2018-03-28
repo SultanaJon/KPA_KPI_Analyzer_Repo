@@ -64,8 +64,32 @@ namespace Reporting.KeyPerformanceActions.Purch
 
                     string[] strDate = (dr["PO Line Creat#DT"].ToString()).Split('/');
                     int year = int.Parse(strDate[2]);
-                    int month = int.Parse(strDate[0].TrimStart('0'));
-                    int day = int.Parse(strDate[1].TrimStart('0'));
+                    int month = int.Parse(strDate[0]);
+                    int day = int.Parse(strDate[1]);
+
+
+                    //////////////////////////////////////////////////////////////////////////////
+                    //
+                    //
+                    // The below if statement was added on 03/27/2018.
+                    // -----------------------------------------------
+                    // There was some issues with a few POs that conatined dates of 00/00/0000
+                    // that were causing erros. This if else statement ignores those files.
+                    //
+                    //////////////////////////////////////////////////////////////////////////////
+                    if (day == 0 && month == 0 && year == 0)
+                    {
+                        // This situation is a SAP issue. We should never have POs that dont
+                        // have a PO creation date.
+                        // Skip these records
+                        continue;
+                    }
+                    else
+                    {
+                        // trim the zeros off of month and day if there is any.
+                        month = int.Parse(strDate[0].Trim('0'));
+                        day = int.Parse(strDate[1].Trim('0'));
+                    }
 
                     DateTime date = new DateTime(year, month, day);
                     DateTime today = DateTime.Now.Date;
@@ -114,11 +138,34 @@ namespace Reporting.KeyPerformanceActions.Purch
                         continue;
                     }
 
-
                     string[] strDate = (dr["PO Line Creat#DT"].ToString()).Split('/');
                     int year = int.Parse(strDate[2]);
-                    int month = int.Parse(strDate[0].TrimStart('0'));
-                    int day = int.Parse(strDate[1].TrimStart('0'));
+                    int month = int.Parse(strDate[0]);
+                    int day = int.Parse(strDate[1]);
+
+                    //////////////////////////////////////////////////////////////////////////////
+                    //
+                    //
+                    // The below if statement was added on 03/27/2018.
+                    // -----------------------------------------------
+                    // There was some issues with a few POs that conatined dates of 00/00/0000
+                    // that were causing erros. This if else statement ignores those files.
+                    //
+                    //////////////////////////////////////////////////////////////////////////////
+                    if (day == 0 && month == 0 && year == 0)
+                    {
+                        // This situation is a SAP issue. We should never have POs that dont
+                        // have a PO creation date.
+                        // Skip these records
+                        continue;
+                    }
+                    else
+                    {
+                        // trim the zeros off of month and day if there is any.
+                        month = int.Parse(strDate[0].Trim('0'));
+                        day = int.Parse(strDate[1].Trim('0'));
+                    }
+
 
                     DateTime date = new DateTime(year, month, day);
                     DateTime today = DateTime.Now.Date;
@@ -138,9 +185,9 @@ namespace Reporting.KeyPerformanceActions.Purch
                 dt = null;
                 GC.Collect();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("An argument out of range exception was thrown", "Purch -> PO First Release - Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Purch -> PO First Release - Overall Run Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }
